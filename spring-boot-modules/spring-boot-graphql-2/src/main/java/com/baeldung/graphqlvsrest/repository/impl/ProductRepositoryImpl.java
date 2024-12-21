@@ -1,16 +1,17 @@
 package com.baeldung.graphqlvsrest.repository.impl;
 
-import com.baeldung.graphqlvsrest.entity.Product;
-import com.baeldung.graphqlvsrest.model.ProductModel;
-import com.baeldung.graphqlvsrest.repository.ProductRepository;
-import org.springframework.stereotype.Repository;
+import static java.util.Collections.singletonList;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static java.util.Collections.singletonList;
+import org.springframework.stereotype.Repository;
+
+import com.baeldung.graphqlvsrest.entity.Product;
+import com.baeldung.graphqlvsrest.model.ProductModel;
+import com.baeldung.graphqlvsrest.repository.ProductRepository;
 
 @Repository
 public class ProductRepositoryImpl implements ProductRepository {

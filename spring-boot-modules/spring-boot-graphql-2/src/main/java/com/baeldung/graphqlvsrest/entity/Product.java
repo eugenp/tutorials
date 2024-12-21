@@ -1,8 +1,8 @@
 package com.baeldung.graphqlvsrest.entity;
 
-import com.baeldung.graphqlvsrest.model.ProductModel;
-
 import java.util.List;
+
+import com.baeldung.graphqlvsrest.model.ProductModel;
 
 public class Product {
     private Integer id;
