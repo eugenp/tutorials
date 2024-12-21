@@ -55,9 +55,9 @@ public class JodaTimeUnitTest {
         Instant oneMinuteAgoInstant = new Instant(oneMinuteAgoDate);
 
         // epochMilli and epochSecond
-        long milliesFromEpochTime = System.currentTimeMillis();
-        long secondsFromEpochTime = milliesFromEpochTime / 1000;
-        Instant instantFromEpochMilli = Instant.ofEpochMilli(milliesFromEpochTime);
+        long millisFromEpochTime = System.currentTimeMillis();
+        long secondsFromEpochTime = millisFromEpochTime / 1000;
+        Instant instantFromEpochMilli = Instant.ofEpochMilli(millisFromEpochTime);
         Instant instantFromEpocSeconds = Instant.ofEpochSecond(secondsFromEpochTime);
 
         // convert Instants
@@ -71,7 +71,7 @@ public class JodaTimeUnitTest {
 
         // Duration, Period, Instant
         long currentTimestamp = System.currentTimeMillis();
-        long oneHourAgo = currentTimestamp - 24*60*1000;
+        long oneHourAgo = currentTimestamp - 24 * 60 * 1000;
 
         Duration duration = new Duration(oneHourAgo, currentTimestamp);
         Instant.now().plus(duration);
@@ -84,7 +84,7 @@ public class JodaTimeUnitTest {
 
         // converting between classes
         DateTimeUtils.setCurrentMillisFixed(currentTimestamp);
-        LocalDateTime currentDateAndTime  = LocalDateTime.now();
+        LocalDateTime currentDateAndTime = LocalDateTime.now();
 
         assertEquals(new DateTime(currentTimestamp), currentDateAndTime.toDateTime());
         assertEquals(new LocalDate(currentTimestamp), currentDateAndTime.toLocalDate());
