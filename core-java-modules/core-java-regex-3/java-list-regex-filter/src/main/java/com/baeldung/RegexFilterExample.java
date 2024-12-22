@@ -34,9 +34,9 @@ public class RegexFilterExample {
         Pattern pattern = Pattern.compile("^t.*");
 
         for (String item : numbers) {
-          Matcher matcher = pattern.matcher(item);
-          if (matcher.matches())
-            startWithTList.add(item);
+            Matcher matcher = pattern.matcher(item);
+            if (matcher.matches())
+                startWithTList.add(item);
         }
 
         return startWithTList;
