@@ -7,12 +7,16 @@ import java.util.UUID;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 class RequireNonNullUnitTest {
 
+    private static final Logger logger = LoggerFactory.getLogger(RequireNonNullUnitTest.class);
+
     void greet(String name) {
         Objects.requireNonNull(name, "Name cannot be null");
-        System.out.println("Hello, " + name + "!");
+        logger.info("Hello, {}!", name);
     }
 
     @Test
@@ -62,7 +66,7 @@ class RequireNonNullUnitTest {
             message = message.concat("Please provide a valid order.");
             return message;
         });
-        System.out.println("Processing order with id: " + orderId);
+        logger.info("Processing order with id: {}", orderId);
     }
 
     private static int getOrderAmount() {
