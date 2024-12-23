@@ -11,7 +11,7 @@
 </head>
 <body>
     <form action="/welcome" method="post">
-        Name: <input type="text" name="text" value="${message.getName()}">
+        Name: <input type="text" name="name" value="${message.getName()}">
         Message: <input type="text" name="text" value="${message.getText()}">
         <input type="submit" value="Submit">
     </form>
