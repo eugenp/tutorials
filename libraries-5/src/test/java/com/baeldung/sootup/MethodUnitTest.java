@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -31,7 +32,7 @@ public class MethodUnitTest {
 
         SootClass sootClass = view.getClassOrThrow(javaClass);
         Set<? extends SootMethod> methods = sootClass.getMethods();
-        assertTrue(methods.size() > 0);
+        assertThat(methods).isNotEmpty();
     }
 
     @Test

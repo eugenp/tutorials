@@ -11,17 +11,18 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AnalyzeUnitTest {
     @Test
-    void whenAnalyzingTheJVM_thenWeCanListClasses() {
+    void whenAnalyzingTheJvm_thenWeCanListClasses() {
         AnalysisInputLocation inputLocation = new JrtFileSystemAnalysisInputLocation();
 
         JavaView view = new JavaView(inputLocation);
 
-        assertTrue(view.getClasses().size() > 0);
+        assertThat(view.getClasses()).isNotEmpty();
     }
 
     @Test
@@ -52,6 +53,6 @@ public class AnalyzeUnitTest {
 
         JavaView view = new JavaView(inputLocation);
 
-        assertTrue(view.getClasses().size() > 0);
+        assertThat(view.getClasses()).isNotEmpty();
     }
 }
