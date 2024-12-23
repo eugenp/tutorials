@@ -55,6 +55,16 @@
             <version>${rest-assured.version}</version>
             <scope>test</scope>
         </dependency>
+        <!--JSF -->
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>jakarta.faces</artifactId>
+            <version>${jakarta.faces.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -85,6 +95,7 @@
         <xstream.version>1.4.11.1</xstream.version>
         <rest-assured.version>5.5.0</rest-assured.version>
         <spring-boot.version>3.2.2</spring-boot.version>
+        <jakarta.faces.version>4.1.0-M1</jakarta.faces.version>
     </properties>
 
 </project>

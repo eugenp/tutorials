@@ -61,12 +61,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- ROME for RSS -->
-        <dependency>
-            <groupId>com.rometools</groupId>
-            <artifactId>rome</artifactId>
-            <version>${rome.version}</version>
-        </dependency>
         <!--Validation -->
         <dependency>
             <groupId>org.hibernate.validator</groupId>
@@ -95,6 +89,11 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -111,12 +110,10 @@
     </build>
 
     <properties>
-        <!-- ROME for RSS -->
-        <rome.version>1.10.0</rome.version>
         <jakarta.faces.version>4.1.0-M1</jakarta.faces.version>
         <aspectj.version>1.9.20.1</aspectj.version>
         <jakarta.validation-api.version>3.1.0-M1</jakarta.validation-api.version>
-        <start-class>com.baeldung.springbootmvc.SpringBootMvcApplication</start-class>
+        <start-class>com.baeldung.students.SpringBootStudentsApplication</start-class>
     </properties>
 
 </project>

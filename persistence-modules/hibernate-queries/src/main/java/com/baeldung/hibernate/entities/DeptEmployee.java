@@ -1,10 +1,6 @@
 package com.baeldung.hibernate.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @org.hibernate.annotations.NamedQueries({ @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindByEmployeeNumber", query = "from DeptEmployee where employeeNumber = :employeeNo"),
         @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindAllByDesgination", query = "from DeptEmployee where employeeNumber = :employeeNumber"),
