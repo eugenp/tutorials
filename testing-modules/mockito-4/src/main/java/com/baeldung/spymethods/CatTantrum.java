@@ -28,8 +28,7 @@ public class CatTantrum {
     }
 
     public HumanReaction biteCatBack() {
-        System.out.println("Running to catch cat");
-        System.out.println("Apologizing in advance");
+        // Some logic
         return HumanReaction.BITE_BACK;
     }
 
