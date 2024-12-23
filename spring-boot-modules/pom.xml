@@ -44,6 +44,7 @@
         <module>spring-boot-data</module>
         <module>spring-boot-environment</module>
         <module>spring-boot-exceptions</module>
+        <module>spring-boot-featureFlag-Unleash</module>
         <module>spring-boot-flowable</module>
         <module>spring-boot-graphql</module>
         <!--<module>spring-boot-groovy</module>--> <!-- failing after upgrading to jdk17-->
