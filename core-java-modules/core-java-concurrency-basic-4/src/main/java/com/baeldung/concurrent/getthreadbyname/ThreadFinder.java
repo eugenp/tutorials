@@ -1,4 +1,4 @@
-package com.baeldung.getthreadbyname;
+package com.baeldung.concurrent.getthreadbyname;
 
 public class ThreadFinder {
 
