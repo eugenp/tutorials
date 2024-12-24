@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.splunk</groupId>
-  <artifactId>log4j</artifactId>
+  <artifactId>splunk-with-log4j2</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>log4j</name>
+  <name>splunk-with-log4j2</name>
   <description>Demo project for Splunk with Spring Boot</description>
 
   <parent>
