@@ -88,8 +88,4 @@ public class MethodBodyUnitTest {
         var capitals = name.toUpperCase();
         System.out.println("Hello, " + capitals);
     }
-
-    private void someMethod(int id) {
-        System.out.println("Hello, " + id);
-    }
 }

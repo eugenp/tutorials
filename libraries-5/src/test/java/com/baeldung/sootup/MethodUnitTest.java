@@ -69,8 +69,9 @@ public class MethodUnitTest {
 
         SootClass sootClass = view.getClassOrThrow(javaClass);
         Set<? extends SootMethod> method = sootClass.getMethodsByName("someMethod");
-        assertEquals(1, method.size());
+        assertEquals(2, method.size());
     }
 
     private void someMethod(String name) {}
+    private void someMethod(int value) {}
 }
