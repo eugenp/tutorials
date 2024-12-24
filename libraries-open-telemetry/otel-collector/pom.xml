@@ -10,7 +10,7 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>open-telemetry</artifactId>
+        <artifactId>libraries-open-telemetry</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
