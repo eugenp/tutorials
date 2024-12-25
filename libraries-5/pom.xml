@@ -133,6 +133,16 @@
             <version>${lanterna.version}</version>
         </dependency>
         <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-retry</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-circuitbreaker</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${spring-boot.version}</version>
@@ -149,6 +159,7 @@
         <armeria.version>1.29.2</armeria.version>
         <yauaa.version>7.28.1</yauaa.version>
         <yavi.version>0.14.1</yavi.version>
+        <resilience4j.version>2.1.0</resilience4j.version>
     </properties>
 
 </project>
