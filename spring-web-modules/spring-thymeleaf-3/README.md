@@ -11,4 +11,6 @@ This module contains articles about Spring with Thymeleaf
 - [Using Hidden Inputs with Spring and Thymeleaf](https://www.baeldung.com/spring-thymeleaf-hidden-inputs)
 - [Thymeleaf Variables](https://www.baeldung.com/thymeleaf-variables)
 - [Displaying Error Messages with Thymeleaf in Spring](https://www.baeldung.com/spring-thymeleaf-error-messages)
+- [Thymeleaf: Custom Layout Dialect](https://www.baeldung.com/thymeleaf-spring-layouts)
+- [Spring and Thymeleaf 3: Expressions](https://www.baeldung.com/spring-thymeleaf-3-expressions)
 - More articles: [[<-- prev]](../spring-thymeleaf-2) [[next -->]](../spring-thymeleaf-4)
