@@ -14,4 +14,18 @@
             </column>
         </createTable>
     </changeSet>
+
+    <changeSet id="2" author="unknown">
+        <createTable tableName="authors">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>

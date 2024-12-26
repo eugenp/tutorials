@@ -1,13 +1,12 @@
 package com.baeldung.hibernate.cache.service;
 
-import java.util.List;
-
+import com.baeldung.hibernate.cache.dao.IFooDao;
+import com.baeldung.hibernate.cache.model.Foo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.baeldung.hibernate.cache.dao.IFooDao;
-import com.baeldung.hibernate.cache.model.Foo;
+import java.util.List;
 
 @Service
 @Transactional
@@ -34,4 +33,15 @@ public class FooService {
         return dao.findAll();
     }
 
+    public long countAllRowsUsingHibernateCriteria() {
+        return dao.countAllRowsUsingHibernateCriteria(); // Cast to FooDao to access AbstractJpaDAO method
+    }
+
+    public long getFooCountByBarNameUsingHibernateCriteria(String barName) {
+        return dao.getFooCountByBarNameUsingHibernateCriteria(barName);
+    }
+
+    public long getFooCountByBarNameAndFooNameUsingHibernateCriteria(String barName, String fooName) {
+        return dao.getFooCountByBarNameAndFooNameUsingHibernateCriteria(barName, fooName);
+    }
 }

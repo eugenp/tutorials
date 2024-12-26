@@ -29,7 +29,7 @@ public class Foo implements Serializable {
     @Column(name = "NAME")
     private String name;
 
-    @ManyToOne(targetEntity = Bar.class, fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = Bar.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "BAR_ID")
     private Bar bar;
 
