@@ -1,10 +1,10 @@
 package com.baeldung.producerconsumer;
 
+import static com.baeldung.producerconsumer.ThreadUtil.sleep;
+
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.logging.Logger;
-
-import static com.baeldung.producerconsumer.ThreadUtil.sleep;
 
 public class SimpleProducerConsumerDemonstrator {
     private static final Logger log = Logger.getLogger(SimpleProducerConsumerDemonstrator.class.getCanonicalName());

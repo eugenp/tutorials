@@ -1,9 +1,10 @@
 package com.baeldung.producerconsumer;
 
+import static com.baeldung.producerconsumer.ThreadUtil.sleep;
+import static com.baeldung.producerconsumer.ThreadUtil.waitForAllThreadsToComplete;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.baeldung.producerconsumer.ThreadUtil.*;
 
 public class ProducerConsumerDemonstrator {
     private static final int MAX_QUEUE_CAPACITY = 5;
