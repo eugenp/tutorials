@@ -107,6 +107,7 @@
         <module>spring-boot-3-testcontainers</module>
         <module>spring-boot-3-2</module>
         <!-- <module>spring-boot-3-3</module> --> <!-- JAVA-42049 -->
+        <module>spring-boot-3-4</module>
         <module>spring-boot-resilience4j</module>
         <module>spring-boot-properties</module>
         <module>spring-boot-properties-2</module>
