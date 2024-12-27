@@ -8,10 +8,6 @@
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>parent-modules</name>
-    <modules>
-        <module>core-java-modules/core-java-concurrency-advanced-6</module>
-    </modules>
-
     <packaging>pom</packaging>
 
     <dependencies>
@@ -652,25 +648,25 @@
                 <module>akka-modules</module>
                 <module>algorithms-modules</module>
                 <module>apache-cxf-modules</module>
+                <module>apache-httpclient</module>
                 <module>apache-httpclient-2</module>
                 <module>apache-httpclient4</module>
-                <module>apache-httpclient</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
                 <module>apache-libraries</module>
                 <module>apache-libraries-2</module>
                 <module>apache-libraries-3</module>
                 <module>apache-olingo</module><!-- apache-olingo wasn't updated to boot-3 because a workaround for jakarta namespace wasn't found JAVA-27818 -->
+                <module>apache-poi</module>
                 <module>apache-poi-2</module>
                 <module>apache-poi-3</module>
                 <module>apache-poi-4</module>
-                <module>apache-poi</module>
                 <module>apache-thrift</module>
                 <module>apache-velocity</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
-                <!-- <module>azure-functions</module>--> <!-- BAEL-6423 -->
+                <module>azure-functions</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
                 <module>core-java-modules</module>
@@ -683,7 +679,7 @@
                 <module>drools</module>
                 <module>dubbo</module>
                 <module>feign</module>
-                <!-- <module>gcp-firebase</module> --> <!-- BAEL-8475 -->
+                <module>gcp-firebase</module>
                 <module>geotools</module>
                 <module>google-auto-project</module>
                 <module>google-cloud</module>
@@ -705,10 +701,10 @@
                 <module>java-panama</module>
                 <module>javafx</module>
                 <module>javax-sound</module>
-                <module>javaxval-2</module>
                 <module>javaxval</module>
-                <module>jdbc-cp</module>
+                <module>javaxval-2</module>
                 <module>jaxb</module>
+                <module>jdbc-cp</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
@@ -724,17 +720,18 @@
                 <module>libraries-4</module>
                 <module>libraries-5</module>
                 <module>libraries-ai</module>
+                <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
-                <module>libraries-apache-commons</module>
                 <module>libraries-bytecode</module>
                 <module>libraries-cli</module>
                 <module>libraries-concurrency</module>
+                <module>libraries-data</module>
                 <module>libraries-data-2</module>
                 <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
-                <module>libraries-data</module>
+                <module>libraries-data-io-2</module>
                 <module>libraries-data-mariadb4j</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
@@ -745,18 +742,19 @@
                 <module>libraries-primitive</module>
                 <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
-                <module>libraries-server-2</module>
+                <module>libraries-security-2</module>
                 <module>libraries-server</module>
+                <module>libraries-server-2</module>
                 <module>libraries-stream</module>
                 <module>libraries-testing-2</module>
                 <module>libraries-transform</module>
-                <module>libraries-security-2</module>
                 <module>lightrun</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>lucene</module>
                 <module>mapstruct</module>
                 <module>mapstruct-2</module>
+                <module>maven-modules</module>
                 <module>messaging-modules</module>
                 <module>metrics</module>
                 <module>microservices-modules</module>
@@ -770,8 +768,8 @@
                 <module>patterns-modules</module>
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
-                <module>protobuffer</module>
                 <module>podman</module>
+                <module>protobuffer</module>
                 <module>quarkus-modules</module>
                 <module>reactive-systems</module>
                 <module>reactor-core</module>
@@ -783,46 +781,45 @@
                 <module>security-modules</module>
                 <module>server-modules</module>
                 <module>spf4j</module>
-                <module>spring-webflux-2</module>
-                <module>spring-webflux</module>
                 <module>spring-5</module>
+                <module>spring-5-rest-docs</module>
                 <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
                 <module>spring-ai-2</module>
-                <module>spring-aop-2</module>
                 <module>spring-aop</module>
+                <module>spring-aop-2</module>
                 <module>spring-batch</module>
                 <module>spring-batch-2</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
                 <module>spring-boot-rest-2</module>
+                <module>spring-cloud-modules/spring-cloud-bootstrap</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
                 <module>spring-cloud-modules/spring-cloud-eureka</module>
                 <module>spring-cloud-modules/spring-cloud-netflix-feign</module>
                 <module>spring-cloud-modules/spring-cloud-security</module>
-                <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
-                <module>spring-cloud-modules/spring-cloud-bootstrap</module>
                 <module>spring-cloud-modules/spring-cloud-task</module>
+                <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
+                <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-4</module>
-                <module>spring-core</module>
                 <module>spring-credhub</module>
                 <module>spring-cucumber</module>
+                <module>spring-di</module>
                 <module>spring-di-3</module>
                 <module>spring-di-4</module>
-                <module>spring-di</module>
                 <module>spring-drools</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
                 <module>spring-jersey</module>
+                <module>spring-kafka</module>
                 <module>spring-kafka-2</module>
                 <module>spring-kafka-3</module>
                 <module>spring-kafka-4</module>
-                <module>spring-kafka</module>
                 <module>spring-katharsis</module> <!-- Upgrade to Boot 3 not possible as the project has not been upgraded to Support Jakarta dependencies-->
                 <module>spring-mobile</module>
                 <module>spring-native</module>
@@ -843,6 +840,8 @@
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
+                <module>spring-webflux</module>
+                <module>spring-webflux-2</module>
                 <module>spring-websockets</module>
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
@@ -857,9 +856,6 @@
                 <module>xml-2</module>
                 <module>xml-3</module>
                 <module>xstream</module>
-                <module>libraries-data-io-2</module>
-                <module>spring-5-rest-docs</module>
-                <module>maven-modules</module>
             </modules>
 
             <properties>
@@ -898,6 +894,7 @@
 
             <modules>
                 <module>core-java-modules/core-java-22</module>
+                <module>core-java-modules/core-java-concurrency-advanced-6</module>
             </modules>
 
             <properties>
@@ -943,6 +940,7 @@
                 <java.version>23</java.version>
                 <maven.compiler.source>23</maven.compiler.source>
                 <maven.compiler.target>23</maven.compiler.target>
+                <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
             </properties>
 
         </profile>
@@ -1041,25 +1039,25 @@
                 <module>akka-modules</module>
                 <module>algorithms-modules</module>
                 <module>apache-cxf-modules</module>
+                <module>apache-httpclient</module>
                 <module>apache-httpclient-2</module>
                 <module>apache-httpclient4</module>
-                <module>apache-httpclient</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
                 <module>apache-libraries</module>
                 <module>apache-libraries-2</module>
                 <module>apache-libraries-3</module>
                 <module>apache-olingo</module><!-- apache-olingo wasn't updated to boot-3 because a workaround for jakarta namespace wasn't found JAVA-27818 -->
+                <module>apache-poi</module>
                 <module>apache-poi-2</module>
                 <module>apache-poi-3</module>
                 <module>apache-poi-4</module>
-                <module>apache-poi</module>
                 <module>apache-thrift</module>
                 <module>apache-velocity</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
-                <!-- <module>azure-functions</module>--> <!-- BAEL-6423 -->
+                <module>azure-functions</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
                 <module>core-java-modules</module>
@@ -1094,8 +1092,8 @@
                 <module>java-panama</module>
                 <module>javafx</module>
                 <module>javax-sound</module>
-                <module>javaxval-2</module>
                 <module>javaxval</module>
+                <module>javaxval-2</module>
                 <module>jaxb</module>
                 <module>jdbc-cp</module>
                 <module>jetbrains</module>
@@ -1106,26 +1104,28 @@
                 <module>jws</module>
                 <module>ksqldb</module>
                 <module>kubernetes-modules</module>
-               <!-- <module>language-interop</module>-->
+                <!--<module>language-interop</module>-->
                 <module>libraries</module> <!-- very long running -->
                 <module>libraries-2</module>
                 <module>libraries-3</module>
                 <module>libraries-4</module>
                 <module>libraries-5</module>
                 <module>libraries-ai</module>
+                <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
-                <module>libraries-apache-commons</module>
                 <module>libraries-bytecode</module>
                 <module>libraries-cli</module>
                 <module>libraries-concurrency</module>
+                <module>libraries-data</module>
                 <module>libraries-data-2</module>
                 <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
-                <module>libraries-data</module>
+                <module>libraries-data-io-2</module>
+                <module>libraries-data-mariadb4j</module>
                 <module>libraries-files</module>
-		        <module>libraries-http</module>
+                <module>libraries-http</module>
                 <module>libraries-http-2</module>
                 <module>libraries-http-3</module>
                 <module>libraries-io</module>
@@ -1134,8 +1134,8 @@
                 <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
                 <module>libraries-security-2</module>
-                <module>libraries-server-2</module>
                 <module>libraries-server</module>
+                <module>libraries-server-2</module>
                 <module>libraries-stream</module>
                 <module>libraries-testing-2</module>
                 <module>libraries-transform</module>
@@ -1144,7 +1144,8 @@
                 <module>lombok-modules</module>
                 <module>lucene</module>
                 <module>mapstruct</module>
-				<module>mapstruct-2</module>
+                <module>mapstruct-2</module>
+                <module>maven-modules</module>
                 <module>messaging-modules</module>
                 <module>metrics</module>
                 <module>microservices-modules</module>
@@ -1158,8 +1159,8 @@
                 <module>patterns-modules</module>
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
-                <module>protobuffer</module>
                 <module>podman</module>
+                <module>protobuffer</module>
                 <module>quarkus-modules</module>
                 <module>reactive-systems</module>
                 <module>reactor-core</module>
@@ -1171,45 +1172,45 @@
                 <module>security-modules</module>
                 <module>server-modules</module>
                 <module>spf4j</module>
-                <module>spring-webflux-2</module>
-                <module>spring-webflux</module>
                 <module>spring-5</module>
+                <module>spring-5-rest-docs</module>
                 <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
                 <module>spring-ai-2</module>
-                <module>spring-aop-2</module>
                 <module>spring-aop</module>
+                <module>spring-aop-2</module>
                 <module>spring-batch</module>
                 <module>spring-batch-2</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
+                <module>spring-boot-rest-2</module>
+                <module>spring-cloud-modules/spring-cloud-bootstrap</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
                 <module>spring-cloud-modules/spring-cloud-eureka</module>
                 <module>spring-cloud-modules/spring-cloud-netflix-feign</module>
                 <module>spring-cloud-modules/spring-cloud-security</module>
-                <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
-                <module>spring-cloud-modules/spring-cloud-bootstrap</module>
                 <module>spring-cloud-modules/spring-cloud-task</module>
+                <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
+                <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-4</module>
-                <module>spring-core</module>
                 <module>spring-credhub</module>
                 <module>spring-cucumber</module>
+                <module>spring-di</module>
                 <module>spring-di-3</module>
                 <module>spring-di-4</module>
-                <module>spring-di</module>
                 <module>spring-drools</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
                 <module>spring-jersey</module>
+                <module>spring-kafka</module>
                 <module>spring-kafka-2</module>
                 <module>spring-kafka-3</module>
                 <module>spring-kafka-4</module>
-                <module>spring-kafka</module>
                 <module>spring-katharsis</module> <!-- Upgrade to Boot 3 not possible as the project has not been upgraded to Support Jakarta dependencies-->
                 <module>spring-mobile</module>
                 <module>spring-native</module>
@@ -1230,12 +1231,14 @@
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
+                <module>spring-webflux</module>
+                <module>spring-webflux-2</module>
                 <module>spring-websockets</module>
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
                 <module>timefold-solver</module>
-                <module>vavr-modules</module>
                 <module>vaadin</module>
+                <module>vavr-modules</module>
                 <module>vector-db</module>
                 <module>vertx-modules</module>
                 <module>web-modules</module>
@@ -1244,9 +1247,6 @@
                 <module>xml-2</module>
                 <module>xml-3</module>
                 <module>xstream</module>
-                <module>libraries-data-io-2</module>
-                <module>spring-5-rest-docs</module>
-                <module>maven-modules</module>
             </modules>
 
             <properties>
@@ -1288,7 +1288,7 @@
                 <module>apache-libraries</module>
                 <module>apache-spark</module> <!-- failing after upgrading to jdk17 -->
                 <module>atomix</module>
-                <!-- <module>gcp-firebase</module> --> <!-- BAEL-8475 -->
+                <module>gcp-firebase</module>
                 <module>libraries-data-io</module>
                 <module>persistence-modules/spring-data-jpa-enterprise</module>
                 <module>persistence-modules/spring-data-jpa-query-2</module>

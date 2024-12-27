@@ -20,6 +20,7 @@
         <module>apache-derby</module>
         <module>atomikos</module>
         <module>blaze-persistence</module>
+        <module>clickhouse</module>
         <module>core-java-persistence</module>
         <module>core-java-persistence-2</module>
         <module>core-java-persistence-3</module>
