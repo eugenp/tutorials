@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-data-elasticsearch</artifactId>
     <name>spring-data-elasticsearch</name>
@@ -46,6 +46,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+            <version>${commons-csv.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-batch</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -68,6 +78,7 @@
     <properties>
         <spring-data-elasticsearch.version>5.1.2</spring-data-elasticsearch.version>
         <elasticsearch.version>8.9.0</elasticsearch.version>
+        <commons-csv.version>1.12.0</commons-csv.version>
     </properties>
 
 </project>
