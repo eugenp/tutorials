@@ -12,7 +12,7 @@ public class TestcontainersConfiguration {
     @Bean
     @ServiceConnection
     OllamaContainer ollamaContainer() {
-        return new OllamaContainer(DockerImageName.parse("ollama/ollama:0.5.4"));
+        return new OllamaContainer("ollama/ollama:0.5.4");
     }
 
 }
