@@ -108,7 +108,7 @@
    </build>
 
    <properties>
-       <spring-boot.version>3.3.5</spring-boot.version>
+       <spring-boot.version>3.4.1</spring-boot.version>
        <spring-ai.version>1.0.0-M5</spring-ai.version>
        <junit-jupiter.version>5.9.0</junit-jupiter.version>
    </properties>
