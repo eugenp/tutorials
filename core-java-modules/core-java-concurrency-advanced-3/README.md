@@ -9,7 +9,6 @@ This module contains articles about advanced topics about multithreading with co
 - [Common Concurrency Pitfalls in Java](https://www.baeldung.com/java-common-concurrency-pitfalls)
 - [Guide to RejectedExecutionHandler](https://www.baeldung.com/java-rejectedexecutionhandler)
 - [Guide to Work Stealing in Java](https://www.baeldung.com/java-work-stealing)
-- [Asynchronous Programming in Java](https://www.baeldung.com/java-asynchronous-programming)
 - [Java Thread Deadlock and Livelock](https://www.baeldung.com/java-deadlock-livelock)
 - [Guide to AtomicStampedReference in Java](https://www.baeldung.com/java-atomicstampedreference)
 - [The ABA Problem in Concurrency](https://www.baeldung.com/cs/aba-concurrency)

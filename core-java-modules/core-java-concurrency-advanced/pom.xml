@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-concurrency-advanced</artifactId>
     <packaging>jar</packaging>
@@ -34,6 +34,27 @@
             <artifactId>commons-math3</artifactId>
             <version>${commons-math3.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.jcabi</groupId>
+            <artifactId>jcabi-aspects</artifactId>
+            <version>${jcabi-aspects.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${aspectjrt.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.cactoos</groupId>
+            <artifactId>cactoos</artifactId>
+            <version>${cactoos.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ea.async</groupId>
+            <artifactId>ea-async</artifactId>
+            <version>${ea-async.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -44,10 +65,53 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.jcabi</groupId>
+                <artifactId>jcabi-maven-plugin</artifactId>
+                <version>${jcabi-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>ajc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjtools</artifactId>
+                        <version>${aspectjtools.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectjweaver.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
     </build>
 
     <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <commons-math3.version>3.6.1</commons-math3.version>
+        <jcabi-aspects.version>0.22.6</jcabi-aspects.version>
+        <aspectjrt.version>1.9.20.1</aspectjrt.version>
+        <cactoos.version>0.55.0</cactoos.version>
+        <ea-async.version>1.2.3</ea-async.version>
+        <jcabi-maven-plugin.version>0.14.1</jcabi-maven-plugin.version>
+        <aspectjtools.version>1.9.20.1</aspectjtools.version>
+        <aspectjweaver.version>1.9.20.1</aspectjweaver.version>
     </properties>
 
 </project>

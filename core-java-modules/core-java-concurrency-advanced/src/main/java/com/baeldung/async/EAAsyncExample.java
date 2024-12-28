@@ -1,6 +1,7 @@
 package com.baeldung.async;
 
 import static com.ea.async.Async.await;
+
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
