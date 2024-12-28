@@ -16,7 +16,7 @@
 
     <modules>
         <module>spring-cloud-stream-kafka</module>
-        <module>spring-cloud-stream-rabbit</module>
+<!--        <module>spring-cloud-stream-rabbit</module>-->
         <module>spring-cloud-stream-kinesis</module>
     </modules>
 
