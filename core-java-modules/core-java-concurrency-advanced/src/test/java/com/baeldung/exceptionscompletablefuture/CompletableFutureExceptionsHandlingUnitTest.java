@@ -1,4 +1,4 @@
-package com.baeldung.exceptions_completablefuture;
+package com.baeldung.exceptionscompletablefuture;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;

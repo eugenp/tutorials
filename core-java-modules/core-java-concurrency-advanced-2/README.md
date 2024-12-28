@@ -12,5 +12,4 @@ This module contains articles about advanced topics about multithreading with co
 - [Guide to the Fork/Join Framework in Java](https://www.baeldung.com/java-fork-join)
 - [Guide to ThreadLocalRandom in Java](https://www.baeldung.com/java-thread-local-random)
 - [Passing Parameters to Java Threads](https://www.baeldung.com/java-thread-parameters)
-
-[[<-- previous]](/core-java-modules/core-java-concurrency-advanced)[[next -->]](/core-java-modules/core-java-concurrency-advanced-3)
+- More articles: [[<-- prev]](../core-java-concurrency-advanced)[[next -->]](../core-java-concurrency-advanced-3)

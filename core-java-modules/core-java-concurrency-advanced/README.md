@@ -8,4 +8,5 @@ This module contains articles about advanced topics about multithreading with co
 - [Guide to java.util.concurrent.Locks](https://www.baeldung.com/java-concurrent-locks)
 - [An Introduction to ThreadLocal in Java](https://www.baeldung.com/java-threadlocal)
 - [An Introduction to Atomic Variables in Java](https://www.baeldung.com/java-atomic-variables)
+- [Working with Exceptions in Java CompletableFuture](https://www.baeldung.com/java-exceptions-completablefuture)
 - More Articles: [[next -->]](/core-java-modules/core-java-concurrency-advanced-2)

@@ -16,4 +16,4 @@ This module contains articles about advanced topics about multithreading with co
 - [Introduction to Lock-Free Data Structures with Java Examples](https://www.baeldung.com/lock-free-programming)
 - [Introduction to Exchanger in Java](https://www.baeldung.com/java-exchanger)
 - [Why Not to Start a Thread in the Constructor?](https://www.baeldung.com/java-thread-constructor)
-- [[<-- previous]](/core-java-modules/core-java-concurrency-advanced-2)
+- More articles: [[<-- prev]](../core-java-concurrency-advanced-2)[[next -->]](../core-java-concurrency-advanced-4)
