@@ -9,6 +9,9 @@ This module contains articles about Spring with Thymeleaf
 - [Working with Fragments in Thymeleaf](https://www.baeldung.com/spring-thymeleaf-fragments)
 - [Conditionals in Thymeleaf](https://www.baeldung.com/spring-thymeleaf-conditionals)
 - [Iteration in Thymeleaf](https://www.baeldung.com/thymeleaf-iteration)
+- [Add CSS and JS to Thymeleaf](https://www.baeldung.com/spring-thymeleaf-css-js)
+- [Working with Select and Option in Thymeleaf](https://www.baeldung.com/thymeleaf-select-option)
+- [Displaying Error Messages with Thymeleaf in Spring](https://www.baeldung.com/spring-thymeleaf-error-messages)
 - [[next -->]](../spring-thymeleaf-2)
 
 ### Build the Project
