@@ -1,13 +1,35 @@
 
 spring:
   cloud:
+    function:
+#     definition: enrichLogMessage;highlightMessage
+      definition: enrichLogMessage;highlightMessage|enrichLogMessage;processLogs
     stream:
+      function.routing.enabled: true
       bindings:
         enrichLogMessage-in-0:
           destination: input-topic
           group: test-group
         enrichLogMessage-out-0:
           destination: output-topic
+
+        highlightMessage|enrichLogMessage-in-0:
+          destination: input-topicX
+          group: test-group
+        highlightMessage|enrichLogMessage-out-0:
+          destination: output-topicX
+
+      binders:
+        local_rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: guest
+                password: guest
+                virtual-host: /
 
 server:
   port: 0
