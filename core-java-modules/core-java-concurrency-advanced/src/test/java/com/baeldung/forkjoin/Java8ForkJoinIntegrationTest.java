@@ -1,15 +1,16 @@
 package com.baeldung.forkjoin;
 
-import com.baeldung.forkjoin.util.PoolUtil;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Random;
 import java.util.concurrent.ForkJoinPool;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.baeldung.forkjoin.util.PoolUtil;
 
 public class Java8ForkJoinIntegrationTest {
 

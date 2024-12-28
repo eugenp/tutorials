@@ -1,13 +1,13 @@
 package com.baeldung.forkjoin;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveAction;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CustomRecursiveAction extends RecursiveAction {
 

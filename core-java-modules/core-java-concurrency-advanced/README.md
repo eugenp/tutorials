@@ -10,4 +10,5 @@ This module contains articles about advanced topics about multithreading with co
 - [An Introduction to Atomic Variables in Java](https://www.baeldung.com/java-atomic-variables)
 - [Working with Exceptions in Java CompletableFuture](https://www.baeldung.com/java-exceptions-completablefuture)
 - [Asynchronous Programming in Java](https://www.baeldung.com/java-asynchronous-programming)
+- [Guide to the Fork/Join Framework in Java](https://www.baeldung.com/java-fork-join)
 - More Articles: [[next -->]](/core-java-modules/core-java-concurrency-advanced-2)
