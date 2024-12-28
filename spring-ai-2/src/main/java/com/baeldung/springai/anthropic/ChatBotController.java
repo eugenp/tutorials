@@ -29,10 +29,10 @@ public class ChatBotController {
     public ResponseEntity<ChatResponse> chat(
         @RequestPart(name = "question") String question,
         @RequestPart(name = "chatId", required = false) UUID chatId,
-        @ValidFileType @RequestPart(name = "file", required = false) MultipartFile file
+        @RequestPart(name = "files", required = false) MultipartFile[] files
     ) {
         ChatRequest chatRequest = new ChatRequest(chatId, question);
-        ChatResponse chatResponse = chatBotService.chat(chatRequest, file);
+        ChatResponse chatResponse = chatBotService.chat(chatRequest, files);
         return ResponseEntity.ok(chatResponse);
     }
 
