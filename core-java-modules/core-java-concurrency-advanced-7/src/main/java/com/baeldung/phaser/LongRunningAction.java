@@ -1,9 +1,9 @@
-package com.baeldung.concurrent.phaser;
+package com.baeldung.phaser;
+
+import java.util.concurrent.Phaser;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.concurrent.Phaser;
 
 class LongRunningAction implements Runnable {
 

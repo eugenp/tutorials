@@ -1,4 +1,4 @@
-package com.baeldung.concurrent.diningphilosophers;
+package com.baeldung.diningphilosophers;
 
 public class DiningPhilosophers {
 

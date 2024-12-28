@@ -34,12 +34,6 @@
             <artifactId>commons-math3</artifactId>
             <version>${commons-math3.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.jayway.awaitility</groupId>
-            <artifactId>awaitility</artifactId>
-            <version>${avaitility.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -54,7 +48,6 @@
 
     <properties>
         <commons-math3.version>3.6.1</commons-math3.version>
-        <avaitility.version>1.7.0</avaitility.version>
     </properties>
 
 </project>

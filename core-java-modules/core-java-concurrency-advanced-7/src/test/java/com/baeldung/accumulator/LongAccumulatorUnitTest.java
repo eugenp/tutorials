@@ -1,6 +1,6 @@
-package com.baeldung.concurrent.accumulator;
+package com.baeldung.accumulator;
 
-import org.junit.Test;
+import static junit.framework.TestCase.assertEquals;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.LongAccumulator;
 import java.util.function.LongBinaryOperator;
 import java.util.stream.IntStream;
 
-import static junit.framework.TestCase.assertEquals;
+import org.junit.Test;
 
 public class LongAccumulatorUnitTest {
 

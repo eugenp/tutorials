@@ -1,6 +1,7 @@
-package com.baeldung.concurrent.adder;
+package com.baeldung.adder;
 
-import org.junit.Test;
+import static com.jayway.awaitility.Awaitility.await;
+import static junit.framework.TestCase.assertEquals;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -8,8 +9,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.LongAdder;
 import java.util.stream.IntStream;
 
-import static com.jayway.awaitility.Awaitility.await;
-import static junit.framework.TestCase.assertEquals;
+import org.junit.Test;
 
 public class LongAdderUnitTest {
     @Test

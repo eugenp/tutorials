@@ -1,4 +1,4 @@
-package com.baeldung.concurrent.cyclicbarrier;
+package com.baeldung.cyclicbarrier;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;

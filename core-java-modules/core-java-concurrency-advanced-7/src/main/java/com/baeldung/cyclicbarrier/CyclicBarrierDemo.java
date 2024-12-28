@@ -1,4 +1,4 @@
-package com.baeldung.concurrent.cyclicbarrier;
+package com.baeldung.cyclicbarrier;
 
 import java.util.ArrayList;
 import java.util.Collections;

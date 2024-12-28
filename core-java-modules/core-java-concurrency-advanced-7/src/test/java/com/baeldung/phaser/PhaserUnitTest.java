@@ -1,15 +1,14 @@
-package com.baeldung.concurrent.phaser;
+package com.baeldung.phaser;
+
+import static junit.framework.TestCase.assertEquals;
+
+import java.util.concurrent.Phaser;
 
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.concurrent.Phaser;
-
-import static junit.framework.TestCase.assertEquals;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class PhaserUnitTest {
