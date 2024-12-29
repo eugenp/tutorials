@@ -104,7 +104,7 @@
     </build>
 
     <properties>
-    	<maven.compiler.release>11</maven.compiler.release>
+        <maven.compiler.release>11</maven.compiler.release>
         <jersey.version>3.1.9</jersey.version>
     </properties>
 
