@@ -1,9 +1,9 @@
 package com.baeldung.caching.config;
 
+import java.lang.reflect.Method;
+
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.util.StringUtils;
-
-import java.lang.reflect.Method;
 
 public class CustomKeyGenerator implements KeyGenerator {
 

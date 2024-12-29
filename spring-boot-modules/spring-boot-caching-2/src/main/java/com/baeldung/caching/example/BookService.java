@@ -1,11 +1,12 @@
 package com.baeldung.caching.example;
 
-import com.baeldung.caching.model.Book;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.baeldung.caching.model.Book;
 
 @Component
 public class BookService {
