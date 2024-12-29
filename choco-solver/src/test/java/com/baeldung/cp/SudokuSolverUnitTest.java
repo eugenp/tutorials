@@ -1,6 +1,7 @@
 package com.baeldung.cp;
 
 import org.chocosolver.solver.Model;
+import org.chocosolver.solver.Solution;
 import org.chocosolver.solver.variables.IntVar;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -15,6 +16,29 @@ public class SudokuSolverUnitTest {
         Model sudokuModel = new Model("Sudoku Solver");
         IntVar[][] sudokuCells = sudokuModel.intVarMatrix("board", 9, 9, 1, 9);
 
+        setConstraints(sudokuCells, sudokuModel);
+
+        findSolutions(sudokuModel);
+    }
+
+    @Test
+    void givenSudokuBoard_whenPartiallySolved_thenFindSolution() {
+        Model sudokuModel = new Model("Sudoku Solver");
+        IntVar[][] sudokuCells = sudokuModel.intVarMatrix("board", 9, 9, 1, 9);
+
+        setConstraints(sudokuCells, sudokuModel);
+        partiallySolve(sudokuCells);
+
+        findSolution(sudokuModel);
+    }
+
+    private void findSolution(Model sudokuModel) {
+        Solution solution = sudokuModel.getSolver().findSolution();
+        IntVar[] sudokuCells = solution.retrieveIntVars(true).toArray(new IntVar[0]);
+        printSolution(sudokuCells);
+    }
+
+    private void setConstraints(IntVar[][] sudokuCells, Model sudokuModel) {
         for (int i = 0; i < 9; i++) {
             IntVar[] rowCells = getRowCells(sudokuCells, i);
             sudokuModel.allDifferent(rowCells).post();
@@ -29,8 +53,6 @@ public class SudokuSolverUnitTest {
                 sudokuModel.allDifferent(cellsInRange).post();
             }
         }
-
-        findSolution(sudokuModel);
     }
 
     private IntVar[] getRowCells(IntVar[][] sudokuCells, int rowNum) {
@@ -57,7 +79,7 @@ public class SudokuSolverUnitTest {
         return cellsInRange;
     }
 
-    private void findSolution(Model model) {
+    private void findSolutions(Model model) {
         int solutionCount = 0;
         while (model.getSolver().solve()) {
             if(solutionCount++ > 2) {
@@ -88,5 +110,32 @@ public class SudokuSolverUnitTest {
         }
         stringBuilder.append("\n");
         logger.info(stringBuilder.toString());
+    }
+
+    private void partiallySolve(IntVar[][] sudokuCells) {
+        int[][] initialValues = partiallyFillSudokuBoard();
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (initialValues[i][j] != 0) {
+                    sudokuCells[i][j].eq(initialValues[i][j]).post();
+                }
+            }
+        }
+    }
+
+    private static int[][] partiallyFillSudokuBoard() {
+        int[][] initialValues = {
+            {0, 0, 0, 0, 0, 0, 0, 6, 3},
+            {5, 0, 0, 4, 0, 0, 8, 0, 0},
+            {1, 0, 0, 0, 3, 0, 0, 4, 0},
+            {2, 0, 0, 8, 0, 0, 9, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 1, 0, 0, 7, 4, 0, 0},
+            {0, 0, 6, 3, 0, 0, 0, 0, 0},
+            {0, 0, 9, 2, 0, 0, 1, 0, 0},
+            {0, 0, 7, 0, 8, 0, 6, 0, 9}
+        };
+        return initialValues;
     }
 }
