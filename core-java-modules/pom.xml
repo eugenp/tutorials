@@ -244,6 +244,7 @@
         <module>core-java-datetime-conversion</module>
         <module>core-java-datetime-conversion-2</module>
         <module>core-java-datetime-conversion-3</module>
+        <module>core-java-datetime-conversion-4</module>
         <module>core-java-httpclient</module>
         <module>java-native</module>
         <module>java-rmi</module>
