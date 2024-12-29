@@ -1,7 +1,12 @@
 package com.baeldung.springdatacaching.repositories;
 
-import com.baeldung.caching.boot.CacheApplication;
-import com.baeldung.springdatacaching.model.Book;
+import static java.util.Optional.empty;
+import static java.util.Optional.ofNullable;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.Optional;
+import java.util.UUID;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,12 +17,8 @@ import org.springframework.cache.CacheManager;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.util.Optional;
-import java.util.UUID;
-
-import static java.util.Optional.empty;
-import static java.util.Optional.ofNullable;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import com.baeldung.springdatacaching.CacheApplication;
+import com.baeldung.springdatacaching.model.Book;
 
 @ExtendWith(SpringExtension.class)
 @EntityScan(basePackageClasses = Book.class)
