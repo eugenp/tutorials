@@ -5,6 +5,9 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+import java.io.IOException;
+import java.util.Optional;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,12 +21,10 @@ import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import redis.embedded.RedisServer;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
-import java.io.IOException;
-import java.util.Optional;
+import redis.embedded.RedisServer;
 
 @Import({ CacheConfig.class, ItemService.class })
 @ExtendWith(SpringExtension.class)
