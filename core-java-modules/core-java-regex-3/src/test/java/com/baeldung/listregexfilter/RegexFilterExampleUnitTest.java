@@ -12,25 +12,25 @@ class RegexFilterExampleUnitTest {
 
     @Test
     void whenMethod1Called_thenReturnElementsStartingWithA() {
-        List<String> newList = regexFilterExample.method1();
+        List<String> newList = regexFilterExample.filterUsingPatternAndPredicate();
         Assertions.assertEquals(List.of("apple", "apricot", "avocado"), newList);
     }
 
     @Test
     void whenMethod2Called_thenReturnElementsContainingDig() {
-        List<String> newList = regexFilterExample.method2();
+        List<String> newList = regexFilterExample.filterUsingStringMatches();
         Assertions.assertEquals(List.of("123", "789"), newList);
     }
 
     @Test
     void whenMethod1Called_thenReturnElementsStartingWithT3() {
-        List<String> newList = regexFilterExample.method3();
+        List<String> newList = regexFilterExample.filterUsingPatternCompile();
         Assertions.assertEquals(List.of("two", "three"), newList);
     }
 
     @Test
     void whenMethod1Called_thenReturnElementsStartingWithA4() {
-        Map<Boolean, List<String>> newList = regexFilterExample.method4();
+        Map<Boolean, List<String>> newList = regexFilterExample.filterUsingCollectorsPartitioningBy();
         Assertions.assertEquals(List.of("apple", "apricot"), newList.get(true));
         Assertions.assertEquals(List.of("banana", "berry"), newList.get(false));
     }

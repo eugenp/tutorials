@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class RegexFilterExample {
 
-    public List<String> method1() {
+    public List<String> filterUsingPatternAndPredicate() {
         List<String> fruits = List.of("apple", "banana", "cherry", "apricot", "avocado");
 
         Pattern pattern = Pattern.compile("^a.*");
@@ -19,7 +19,7 @@ public class RegexFilterExample {
           .toList();
     }
 
-    public List<String> method2() {
+    public List<String> filterUsingStringMatches() {
         List<String> list = List.of("123", "abc", "456def", "789", "xyz");
 
         return list.stream()
@@ -27,7 +27,7 @@ public class RegexFilterExample {
           .toList();
     }
 
-    public List<String> method3() {
+    public List<String> filterUsingPatternCompile() {
         List<String> numbers = List.of("one", "two", "three", "four", "five");
         List<String> startWithTList = new ArrayList<>();
 
@@ -42,7 +42,7 @@ public class RegexFilterExample {
         return startWithTList;
     }
 
-    public Map<Boolean, List<String>> method4() {
+    public Map<Boolean, List<String>> filterUsingCollectorsPartitioningBy() {
         List<String> fruits = List.of("apple", "banana", "apricot", "berry");
 
         Pattern pattern = Pattern.compile("^a.*");
@@ -53,9 +53,9 @@ public class RegexFilterExample {
 
     public static void main(String[] args) {
         RegexFilterExample regexFilterExample = new RegexFilterExample();
-        regexFilterExample.method1();
-        regexFilterExample.method2();
-        regexFilterExample.method3();
-        regexFilterExample.method4();
+        regexFilterExample.filterUsingPatternAndPredicate();
+        regexFilterExample.filterUsingStringMatches();
+        regexFilterExample.filterUsingPatternCompile();
+        regexFilterExample.filterUsingCollectorsPartitioningBy();
     }
 }
