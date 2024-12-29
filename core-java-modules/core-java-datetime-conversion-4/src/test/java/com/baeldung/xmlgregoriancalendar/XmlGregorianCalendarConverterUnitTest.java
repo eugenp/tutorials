@@ -1,14 +1,15 @@
 package com.baeldung.xmlgregoriancalendar;
 
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.time.LocalDate;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeConstants;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
-import java.time.LocalDate;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Test;
 
 public class XmlGregorianCalendarConverterUnitTest {
 
