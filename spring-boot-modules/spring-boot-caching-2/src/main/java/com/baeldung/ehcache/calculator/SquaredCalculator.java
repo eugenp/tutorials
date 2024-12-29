@@ -1,8 +1,9 @@
 package com.baeldung.ehcache.calculator;
 
-import com.baeldung.ehcache.config.CacheHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.baeldung.ehcache.config.CacheHelper;
 
 public class SquaredCalculator {
 

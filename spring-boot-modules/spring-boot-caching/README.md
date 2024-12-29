@@ -1,5 +1,4 @@
 ### Relevant articles:
-- [Introduction To Ehcache](http://www.baeldung.com/ehcache)
 - [A Guide To Caching in Spring](http://www.baeldung.com/spring-cache-tutorial)
 - [Cache Eviction in Spring Boot](https://www.baeldung.com/spring-boot-evict-cache)
 - [Using Multiple Cache Managers in Spring](https://www.baeldung.com/spring-multiple-cache-managers)
