@@ -1,10 +1,10 @@
 package com.baeldung.caching.ttl.repository;
 
-import com.baeldung.caching.ttl.model.Hotel;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-import java.util.Optional;
+import com.baeldung.caching.ttl.model.Hotel;
 
 public interface HotelRepository extends JpaRepository<Hotel, Long> {
 

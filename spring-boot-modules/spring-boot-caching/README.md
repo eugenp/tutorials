@@ -6,4 +6,5 @@
 - [Using Multiple Cache Managers in Spring](https://www.baeldung.com/spring-multiple-cache-managers)
 - [Testing @Cacheable on Spring Data Repositories](https://www.baeldung.com/spring-data-testing-cacheable)
 - [Spring Boot Ehcache Example](https://www.baeldung.com/spring-boot-ehcache)
+- [Setting Time-To-Live Value for Caching](https://www.baeldung.com/spring-setting-ttl-value-cache)
 - More articles: [[next -->]](/spring-boot-modules/spring-boot-caching-2)

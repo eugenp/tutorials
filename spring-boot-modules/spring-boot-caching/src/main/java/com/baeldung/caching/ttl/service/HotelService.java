@@ -1,7 +1,7 @@
 package com.baeldung.caching.ttl.service;
 
-import com.baeldung.caching.ttl.repository.HotelRepository;
-import com.baeldung.caching.ttl.model.Hotel;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.CacheEvict;
@@ -9,7 +9,8 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.baeldung.caching.ttl.model.Hotel;
+import com.baeldung.caching.ttl.repository.HotelRepository;
 
 @Service
 public class HotelService {
