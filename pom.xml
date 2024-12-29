@@ -673,6 +673,7 @@
                 <!-- <module>azure-functions</module>--> <!-- BAEL-6423 -->
                 <module>bazel</module>
                 <module>checker-framework</module>
+                <module>choco-solver</module>
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
@@ -1062,6 +1063,7 @@
                 <!-- <module>azure-functions</module>--> <!-- BAEL-6423 -->
                 <module>bazel</module>
                 <module>checker-framework</module>
+                <module>choco-solver</module>
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
