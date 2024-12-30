@@ -232,6 +232,7 @@
         <module>core-java-regex</module>
         <module>core-java-regex-2</module>
         <module>core-java-regex-3</module>
+        <module>core-java-regex-4</module>
         <module>core-java-uuid</module>
         <module>core-java-collections-maps-6</module>
         <module>core-java-records</module>
