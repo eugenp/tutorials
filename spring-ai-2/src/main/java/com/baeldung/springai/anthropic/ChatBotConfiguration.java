@@ -19,6 +19,10 @@ public class ChatBotConfiguration {
         return new InMemoryChatMemory();
     }
 
+    /**
+     * When using Amazon Bedrock Converse API, use
+     * @Qualifier("bedrockProxyChatModel") instead.
+     */
     @Bean
     public ChatClient chatClient(
         @Qualifier("anthropicChatModel") ChatModel chatModel,
