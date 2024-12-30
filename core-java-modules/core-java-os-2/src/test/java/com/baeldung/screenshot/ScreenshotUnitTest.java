@@ -1,19 +1,15 @@
 package com.baeldung.screenshot;
 
-import javax.imageio.ImageIO;
-import java.awt.Component;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
-import java.awt.Robot;
-import java.awt.Toolkit;
+import static org.junit.Assert.assertTrue;
+
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
+import javax.imageio.ImageIO;
+
 import org.junit.Ignore;
 import org.junit.Test;
-
-import static org.junit.Assert.assertTrue;
 
 @Ignore
 public class ScreenshotUnitTest {

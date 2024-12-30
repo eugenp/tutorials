@@ -1,8 +1,5 @@
 package com.baeldung.java9.process;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 public class OutputStreamExample {
 
     public static void main(String[] args) {
