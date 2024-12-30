@@ -1,16 +1,18 @@
 package com.baeldung.grep;
 
+import static org.junit.Assert.assertEquals;
+
+import static org.unix4j.Unix4j.grep;
+import static org.unix4j.unix.Grep.Options;
+import static org.unix4j.unix.cut.CutOption.fields;
+
 import java.io.File;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.unix4j.Unix4j;
-import static org.unix4j.Unix4j.*;
-import static org.junit.Assert.assertEquals;
 import org.unix4j.line.Line;
-import static org.unix4j.unix.Grep.*;
-import static org.unix4j.unix.cut.CutOption.*;
 
 public class GrepWithUnix4JIntegrationTest {
 

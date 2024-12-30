@@ -1,11 +1,11 @@
 package com.baeldung.printscreen;
 
-import org.junit.After;
-import org.junit.Test;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 
-import static org.junit.Assert.assertTrue;
+import org.junit.After;
+import org.junit.Test;
 
 public class ScreenshotLiveTest {
 
