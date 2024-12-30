@@ -16,17 +16,17 @@ import ch.qos.logback.classic.LoggerContext;
 
 class BusinessWorkerUnitTest {
 
-    private static MemoryAppender memoryAppender;
+    private static final MemoryAppender memoryAppender = new MemoryAppender();
     private static final String LOGGER_NAME = "com.baeldung.junit.log";
     private static final String MSG = "This is a test message!!!";
 
     @BeforeEach
     void setup() {
         Logger logger = (Logger) LoggerFactory.getLogger(LOGGER_NAME);
-        memoryAppender = new MemoryAppender();
-        memoryAppender.setContext((LoggerContext) LoggerFactory.getILoggerFactory());
         logger.setLevel(Level.DEBUG);
         logger.addAppender(memoryAppender);
+
+        memoryAppender.setContext((LoggerContext) LoggerFactory.getILoggerFactory());
         memoryAppender.start();
     }
 
@@ -37,16 +37,12 @@ class BusinessWorkerUnitTest {
     }
 
     @Test
-    void test() {
+    void whenLogsGenerated_thenMemoryAppenderContainsLogsWithCorrectLevel() {
         BusinessWorker worker = new BusinessWorker();
         worker.generateLogs(MSG);
 
-        // I check that I only have 4 messages (all but trace)
         assertThat(memoryAppender.countEventsForLogger(LOGGER_NAME)).isEqualTo(4);
-        // I look for a specific message at a specific level, and I only have 1
-        assertThat(memoryAppender.search(MSG, Level.INFO)
-            .size()).isEqualTo(1);
-        // I check that the entry that is not present is the trace level
+        assertThat(memoryAppender.search(MSG, Level.INFO)).hasSize(1);
         assertThat(memoryAppender.contains(MSG, Level.TRACE)).isFalse();
     }
 
@@ -54,13 +50,12 @@ class BusinessWorkerUnitTest {
     void whenMultipleLogLevel_thenReturnExpectedResult() {
         BusinessWorker worker = new BusinessWorker();
         worker.generateLogs("Transaction started for Order ID: 1001");
+
         assertThat(memoryAppender.countEventsForLogger(LOGGER_NAME)).isEqualTo(4);
-        assertThat(memoryAppender.search("Transaction started", Level.INFO)
-            .size()).isEqualTo(1);
-        assertThat(memoryAppender.search("Transaction started", Level.WARN)
-            .size()).isEqualTo(1);
-        assertThat(memoryAppender.search("Transaction started", Level.ERROR)
-            .size()).isEqualTo(1);
+        assertThat(memoryAppender.search("Transaction started", Level.DEBUG)).hasSize(1);
+        assertThat(memoryAppender.search("Transaction started", Level.INFO)).hasSize(1);
+        assertThat(memoryAppender.search("Transaction started", Level.WARN)).hasSize(1);
+        assertThat(memoryAppender.search("Transaction started", Level.ERROR)).hasSize(1);
         assertThat(memoryAppender.search("Transaction started", Level.TRACE)).isEmpty();
     }
 
@@ -71,6 +66,7 @@ class BusinessWorkerUnitTest {
 
         Pattern orderPattern = Pattern.compile(".*Order ID: \\d{5}.*");
 
+        assertThat(memoryAppender.containsPattern(orderPattern, Level.DEBUG)).isTrue();
         assertThat(memoryAppender.containsPattern(orderPattern, Level.INFO)).isTrue();
         assertThat(memoryAppender.containsPattern(orderPattern, Level.WARN)).isTrue();
         assertThat(memoryAppender.containsPattern(orderPattern, Level.ERROR)).isTrue();
@@ -87,8 +83,10 @@ class BusinessWorkerUnitTest {
             Pattern.compile(".*timestamp=\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.*")
         );
 
+        assertThat(memoryAppender.containsPatterns(patterns, Level.DEBUG)).isTrue();
         assertThat(memoryAppender.containsPatterns(patterns, Level.INFO)).isTrue();
         assertThat(memoryAppender.containsPatterns(patterns, Level.WARN)).isTrue();
+        assertThat(memoryAppender.containsPatterns(patterns, Level.ERROR)).isTrue();
+        assertThat(memoryAppender.containsPatterns(patterns, Level.TRACE)).isFalse();
     }
-
 }
