@@ -4,4 +4,7 @@
 - [Extracting Text Between Parentheses in Java](https://www.baeldung.com/java-get-text-between-parentheses)
 - [Validating Linux Folder Paths using Regex in Java](https://www.baeldung.com/java-regex-check-linux-path-valid)
 - [Regular Expression: \z vs \Z Anchors in Java](https://www.baeldung.com/java-regular-expression-z-vs-z-anchors)
-- More articles: [[<-- prev]](/core-java-modules/core-java-regex-2)
+- [Understanding the Pattern.quote Method](https://www.baeldung.com/java-pattern-quote)
+- [Pre-compile Regex Patterns Into Pattern Objects](https://www.baeldung.com/java-regex-pre-compile)
+- [An Overview of Regular Expressions Performance in Java](https://www.baeldung.com/java-regex-performance)
+- More articles: [[<-- prev]](../core-java-regex-2)[[next -->]](../core-java-regex-4)

@@ -8,4 +8,4 @@
 - [Getting the Text That Follows After the Regex Match in Java](https://www.baeldung.com/java-regex-text-after-match)
 - [Extract Text Between Square Brackets](https://www.baeldung.com/java-get-content-between-square-brackets)
 - [Get the Indexes of Regex Pattern Matches in Java](https://www.baeldung.com/java-indexes-regex-pattern-matches)
-- More articles: [[<-- prev]](/core-java-modules/core-java-regex)
+- More articles: [[<-- prev]](../core-java-regex)[[next -->]](../core-java-regex-3)
