@@ -8,12 +8,16 @@ import java.util.regex.Pattern;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.LoggerFactory;
 
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.LoggerContext;
+import org.springframework.boot.test.system.CapturedOutput;
+import org.springframework.boot.test.system.OutputCaptureExtension;
 
+@ExtendWith(OutputCaptureExtension.class)
 class BusinessWorkerUnitTest {
 
     private static final MemoryAppender memoryAppender = new MemoryAppender();
@@ -37,7 +41,7 @@ class BusinessWorkerUnitTest {
     }
 
     @Test
-    void whenLogsGenerated_thenMemoryAppenderContainsLogsWithCorrectLevel() {
+    void whenLogsGenerated_thenMemoryAppenderContainsLogs() {
         BusinessWorker worker = new BusinessWorker();
         worker.generateLogs(MSG);
 
@@ -89,4 +93,15 @@ class BusinessWorkerUnitTest {
         assertThat(memoryAppender.containsPatterns(patterns, Level.ERROR)).isTrue();
         assertThat(memoryAppender.containsPatterns(patterns, Level.TRACE)).isFalse();
     }
+
+    @Test
+    void whenLogsGenerated_thenCapturedOutputContainsLogs(CapturedOutput capturedOutput) {
+        String log = "Order processed successfully for Order ID: 12345.";
+        BusinessWorker worker = new BusinessWorker();
+        worker.generateLogs(log);
+
+        assertThat(capturedOutput.getOut()).contains(log);
+        assertThat(capturedOutput.getOut()).containsPattern(".*Order ID: \\d{5}.*");
+    }
+
 }

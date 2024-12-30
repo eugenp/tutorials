@@ -30,6 +30,12 @@
             <version>${hamcrest.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <version>${spring-boot-test.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -46,6 +52,7 @@
 
     <properties>
         <hamcrest.version>2.2</hamcrest.version>
+        <spring-boot-test.version>3.4.1</spring-boot-test.version>
     </properties>
 
 </project>
