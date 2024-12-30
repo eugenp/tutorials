@@ -220,6 +220,7 @@
         <module>core-java-string-conversions</module>
         <module>core-java-string-conversions-2</module>
         <module>core-java-string-conversions-3</module>
+        <module>core-java-string-conversions-4</module>
         <module>core-java-string-operations</module>
         <module>core-java-string-operations-2</module>
         <module>core-java-string-operations-6</module>
