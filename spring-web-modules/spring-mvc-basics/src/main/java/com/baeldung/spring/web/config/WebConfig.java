@@ -1,7 +1,10 @@
 package com.baeldung.spring.web.config;
 
 import jakarta.servlet.MultipartConfigElement;
+
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
+import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.ui.context.support.ResourceBundleThemeSource;
@@ -16,6 +19,8 @@ import org.springframework.web.servlet.theme.CookieThemeResolver;
 import org.springframework.web.servlet.theme.ThemeChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 //@EnableWebMvc
 //@ComponentScan(basePackages = { "com.baeldung.web.controller" })
@@ -85,4 +90,15 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(themeChangeInterceptor());
     }
 
+
+
+    @Bean
+    public WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> enableDefaultServlet() {
+        return factory -> factory.setRegisterDefaultServlet(true);
+    }
+
+    @Bean
+    public ObjectMapper objectMapper() {
+        return new ObjectMapper();
+    }
 }
