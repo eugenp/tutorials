@@ -7,3 +7,4 @@
 - [Convert a String to a List of Characters in Java](https://www.baeldung.com/java-convert-string-list-characters)
 - [Difference Between Casting to String and String.valueOf()](https://www.baeldung.com/java-string-cast-vs-valueof)
 - [Convert Between CLOB and String in Java](https://www.baeldung.com/java-string-character-large-object-conversion)
+- More articles: [[<-- prev]](../core-java-string-conversions-2)[[next -->]](../core-java-string-conversions-4)

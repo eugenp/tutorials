@@ -1,13 +1,18 @@
 package com.baeldung.stringtocamelcase;
 
+import static com.baeldung.stringtocamelcase.StringToCamelCase.toCamelCaseByIteration;
+import static com.baeldung.stringtocamelcase.StringToCamelCase.toCamelCaseByRegex;
+import static com.baeldung.stringtocamelcase.StringToCamelCase.toCamelCaseBySplitting;
+import static com.baeldung.stringtocamelcase.StringToCamelCase.toCamelCaseBySplittingUsingStreams;
+import static com.baeldung.stringtocamelcase.StringToCamelCase.toCamelCaseUsingApacheCommons;
+import static com.baeldung.stringtocamelcase.StringToCamelCase.toCamelCaseUsingGuava;
+import static com.baeldung.stringtocamelcase.StringToCamelCase.toCamelCaseUsingICU4J;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import com.google.common.base.CaseFormat;
 import org.apache.commons.text.CaseUtils;
 import org.junit.Test;
 
-import static com.baeldung.stringtocamelcase.StringToCamelCase.*;
-import static org.assertj.core.api.Assertions.*;
-
+import com.google.common.base.CaseFormat;
 
 public class StringToCamelCaseUnitTest {
 

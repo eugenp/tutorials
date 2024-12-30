@@ -29,6 +29,11 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>${commons-text.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -44,6 +49,7 @@
     <properties>
         <icu4j.version>61.1</icu4j.version>
         <argLine>-Djava.locale.providers=COMPAT</argLine>
+        <commons-text.version>1.9</commons-text.version>
     </properties>
 
 </project>

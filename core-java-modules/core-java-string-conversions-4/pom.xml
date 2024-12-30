@@ -13,6 +13,19 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.ibm.icu</groupId>
+            <artifactId>icu4j</artifactId>
+            <version>${icu4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>${commons-text.version}</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <finalName>core-java-string-conversions-4</finalName>
         <resources>
@@ -22,5 +35,10 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <icu4j.version>61.1</icu4j.version>
+        <commons-text.version>1.9</commons-text.version>
+    </properties>
 
 </project>

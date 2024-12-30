@@ -1,13 +1,13 @@
 package com.baeldung.stringtocamelcase;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
+import org.apache.commons.text.WordUtils;
+
 import com.google.common.base.CaseFormat;
 import com.ibm.icu.lang.UCharacter;
 import com.ibm.icu.text.BreakIterator;
-import org.apache.commons.text.CaseUtils;
-import org.apache.commons.text.WordUtils;
-
-import java.util.Arrays;
-import java.util.stream.Collectors;
 
 public class StringToCamelCase {
 
