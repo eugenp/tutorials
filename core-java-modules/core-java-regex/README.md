@@ -12,4 +12,5 @@
 - [Regular Expressions \s and \s+ in Java](https://www.baeldung.com/java-regex-s-splus)
 - [Validate Phone Numbers With Java Regex](https://www.baeldung.com/java-regex-validate-phone-numbers)
 - [Understanding the Pattern.quote Method](https://www.baeldung.com/java-pattern-quote)
+- [Check if a String Is Strictly Alphanumeric With Java](https://www.baeldung.com/java-check-string-contains-only-letters-numbers)
 - More articles: [[next -->]](/core-java-modules/core-java-regex-2)
