@@ -5,40 +5,39 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.slf4j.LoggerFactory;
 
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.LoggerContext;
 
-public class BusinessWorkerUnitTest {
+class BusinessWorkerUnitTest {
 
     private static MemoryAppender memoryAppender;
     private static final String LOGGER_NAME = "com.baeldung.junit.log";
     private static final String MSG = "This is a test message!!!";
 
-    @Before
-    public void setup() {
+    @BeforeEach
+    void setup() {
         Logger logger = (Logger) LoggerFactory.getLogger(LOGGER_NAME);
         memoryAppender = new MemoryAppender();
         memoryAppender.setContext((LoggerContext) LoggerFactory.getILoggerFactory());
         logger.setLevel(Level.DEBUG);
         logger.addAppender(memoryAppender);
         memoryAppender.start();
-
     }
 
-    @After
-    public void cleanUp() {
+    @AfterEach
+    void cleanUp() {
         memoryAppender.reset();
         memoryAppender.stop();
     }
 
     @Test
-    public void test() {
+    void test() {
         BusinessWorker worker = new BusinessWorker();
         worker.generateLogs(MSG);
 
@@ -52,7 +51,7 @@ public class BusinessWorkerUnitTest {
     }
 
     @Test
-    public void whenMultipleLogLevel_thenReturnExpectedResult() {
+    void whenMultipleLogLevel_thenReturnExpectedResult() {
         BusinessWorker worker = new BusinessWorker();
         worker.generateLogs("Transaction started for Order ID: 1001");
         assertThat(memoryAppender.countEventsForLogger(LOGGER_NAME)).isEqualTo(4);
@@ -66,7 +65,7 @@ public class BusinessWorkerUnitTest {
     }
 
     @Test
-    public void whenUsingPattern_thenReturnExpectedResult() {
+    void whenUsingPattern_thenReturnExpectedResult() {
         BusinessWorker worker = new BusinessWorker();
         worker.generateLogs("Order processed successfully for Order ID: 12345");
 
@@ -79,7 +78,7 @@ public class BusinessWorkerUnitTest {
     }
 
     @Test
-    public void whenUsingMultiplePatterns_thenReturnExpectedResult() {
+    void whenUsingMultiplePatterns_thenReturnExpectedResult() {
         BusinessWorker worker = new BusinessWorker();
         worker.generateLogs("User Login: username=user123, timestamp=2024-11-25T10:15:30");
 
@@ -91,4 +90,5 @@ public class BusinessWorkerUnitTest {
         assertThat(memoryAppender.containsPatterns(patterns, Level.INFO)).isTrue();
         assertThat(memoryAppender.containsPatterns(patterns, Level.WARN)).isTrue();
     }
+
 }
