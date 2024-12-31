@@ -8,6 +8,7 @@ This module contains articles about core Spring Security
 - [Introduction to Spring Method Security](https://www.baeldung.com/spring-security-method-security)
 - [Overview and Need for DelegatingFilterProxy in Spring](https://www.baeldung.com/spring-delegating-filter-proxy)
 - [Spring Security: Check If a User Has a Role in Java](https://www.baeldung.com/spring-security-check-user-role)
+- [Prevent Cross-Site Scripting (XSS) in a Spring Application](https://www.baeldung.com/spring-prevent-xss)
 
 ### Build the Project
 
