@@ -1,9 +1,8 @@
 package com.baeldung.jwtsignkey.securityconfig;
 
-import com.baeldung.jwtsignkey.jwtconfig.AuthEntryPointJwt;
-import com.baeldung.jwtsignkey.jwtconfig.AuthTokenFilter;
+import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,10 +17,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
-import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
+import com.baeldung.jwtsignkey.jwtconfig.AuthEntryPointJwt;
+import com.baeldung.jwtsignkey.jwtconfig.AuthTokenFilter;
 
 @Configuration
 @EnableWebSecurity

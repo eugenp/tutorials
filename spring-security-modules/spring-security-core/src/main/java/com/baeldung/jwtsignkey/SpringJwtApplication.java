@@ -9,6 +9,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 public class SpringJwtApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(com.baeldung.jwtsignkey.SpringJwtApplication.class);
+        SpringApplication.run(SpringJwtApplication.class);
     }
 }

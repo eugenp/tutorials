@@ -8,7 +8,6 @@ This module contains articles about core Spring Security
 - [Guide to the AuthenticationManagerResolver in Spring Security](https://www.baeldung.com/spring-security-authenticationmanagerresolver)
 - [HttpSecurity vs. WebSecurity in Spring Security](https://www.baeldung.com/spring-security-httpsecurity-vs-websecurity)
 - [Migrate Application from Spring Security 5 to Spring Security 6/Spring Boot 3](https://www.baeldung.com/spring-security-migrate-5-to-6)
-- [Creating a Spring Security Key for Signing a JWT Token](https://www.baeldung.com/spring-security-sign-jwt-token)
 - [Deny Access on Missing @PreAuthorize to Spring Controller Methods](https://www.baeldung.com/spring-deny-access)
 - [Filtering Jackson JSON Output Based on Spring Security Role](https://www.baeldung.com/spring-security-role-filter-json)
  

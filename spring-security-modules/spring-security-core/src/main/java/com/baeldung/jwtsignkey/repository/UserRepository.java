@@ -1,9 +1,10 @@
 package com.baeldung.jwtsignkey.repository;
 
-import com.baeldung.jwtsignkey.model.User;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+import com.baeldung.jwtsignkey.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
