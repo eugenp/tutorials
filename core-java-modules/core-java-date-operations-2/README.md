@@ -15,4 +15,4 @@ This module contains articles about date operations in Java.
 - [How to Calculate “Time Ago” in Java](https://www.baeldung.com/java-calculate-time-ago)
 - [Handling Daylight Savings Time in Java](http://www.baeldung.com/java-daylight-savings)
 - [Add Hours to a Date in Java](https://www.baeldung.com/java-add-hours-date)
-- [[<-- Prev]](/core-java-modules/core-java-date-operations-1) [[Next-->]](/core-java-modules/core-java-date-operations-3)
+- More articles: [[<-- prev]](../core-java-date-operations-1)[[more -->]](../core-java-date-operations-3)

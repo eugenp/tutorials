@@ -1,8 +1,8 @@
 package com.baeldung.datetime.modify;
 
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
 
 public class DateIncrementerUnitTest {
     private final static String DATE_TO_INCREMENT = "2018-07-03";

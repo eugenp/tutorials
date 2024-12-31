@@ -1,10 +1,12 @@
 package com.baeldung.date;
 
 import static org.junit.Assert.assertEquals;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+
 import org.junit.jupiter.api.Test;
 
 public class AgeCalculatorUnitTest {
