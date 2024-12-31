@@ -6,4 +6,6 @@ This module contains articles about date operations in Java.
 - [Get Date Without Time in Java](http://www.baeldung.com/java-date-without-time)
 - [Extract Year, Month and Day From Date in Java](https://www.baeldung.com/java-year-month-day)
 - [Introduction to Joda-Time](http://www.baeldung.com/joda-time)
+- [Converting Java Date to OffsetDateTime](https://www.baeldung.com/java-convert-date-to-offsetdatetime)
+- [How to Set the JVM Time Zone](https://www.baeldung.com/java-jvm-time-zone)
 - [[Next -->]](/core-java-modules/core-java-date-operations-2)

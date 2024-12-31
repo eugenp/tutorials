@@ -1,15 +1,13 @@
 package com.baeldung.offsetdatetime;
 
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.time.OffsetDateTime;
-import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.TimeZone;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
 public class ConvertToOffsetDateTimeUnitTest {
 
