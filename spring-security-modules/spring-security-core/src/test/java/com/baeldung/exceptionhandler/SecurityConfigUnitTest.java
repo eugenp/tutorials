@@ -5,15 +5,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.baeldung.exceptionhandler.security.CustomAccessDeniedHandler;
-import com.baeldung.exceptionhandler.security.CustomAuthenticationFailureHandler;
-import com.baeldung.global.exceptionhandler.controller.LoginController;
-import com.baeldung.global.exceptionhandler.security.CustomAuthenticationEntryPoint;
-import com.baeldung.global.exceptionhandler.security.DelegatedAuthenticationEntryPoint;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.test.context.support.WithMockUser;
