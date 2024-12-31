@@ -121,7 +121,7 @@
         <module>core-java-concurrency-collections-2</module>
         <module>core-java-console</module>
         <module>core-java-datetime-string-2</module>
-        <module>core-java-date-operations-1</module>
+        <module>core-java-date-operations</module>
         <module>core-java-date-operations-2</module>
         <module>core-java-date-operations-3</module>
         <module>core-java-date-operations-4</module>

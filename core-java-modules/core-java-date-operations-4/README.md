@@ -12,4 +12,4 @@ This module contains articles about date operations in Java.
 - [Guide to java.util.GregorianCalendar](http://www.baeldung.com/java-gregorian-calendar)
 - [Increment Date in Java](http://www.baeldung.com/java-increment-date)
 - [Calculate Age in Java](http://www.baeldung.com/java-get-age)
-- More articles: [[<-- prev]](../core-java-date-operations-3)[[more -->]](../core-java-date-operations-5)
+- More articles: [[<-- prev]](../core-java-date-operations-3)[[next -->]](../core-java-date-operations-5)
