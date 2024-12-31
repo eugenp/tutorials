@@ -2,3 +2,5 @@
 This module contains articles about date operations in Java.
 
 ### Relevant Articles:
+- [Extract Year, Month and Day From Date in Java](https://www.baeldung.com/java-year-month-day)
+
