@@ -1,9 +1,9 @@
 package com.baeldung.concurrent.delayqueue;
 
-import com.google.common.primitives.Ints;
-
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
+
+import com.google.common.primitives.Ints;
 
 public class DelayObject implements Delayed {
     private String data;
