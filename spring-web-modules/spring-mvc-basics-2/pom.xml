@@ -84,6 +84,12 @@
             <artifactId>spring-jade4j</artifactId>
             <version>${jade.version}</version>
         </dependency>
+        <!-- jte dependency -->
+        <dependency>
+            <groupId>gg.jte</groupId>
+            <artifactId>jte-spring-boot-starter-3</artifactId>
+            <version>${jte.version}</version>
+        </dependency>
         <!--Testing -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -128,6 +134,16 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
     <properties>
@@ -143,6 +159,7 @@
         <json.version>20240303</json.version>
         <jakarta.mail.version>2.0.1</jakarta.mail.version>
         <jakarta.servlet-api.version>6.1.0-M2</jakarta.servlet-api.version>
+        <jte.version>3.1.15</jte.version>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 

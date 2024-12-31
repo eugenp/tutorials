@@ -3,3 +3,8 @@
 - [Difference Between Fluent Interface and Builder Pattern in Java](https://www.baeldung.com/java-fluent-interface-vs-builder-pattern)
 - [Smart Batching in Java](https://www.baeldung.com/java-smart-batching)
 - [Convert Null Value to a Default Value in Java](https://www.baeldung.com/java-convert-null-default-value)
+- [Interpreter Design Pattern in Java](https://www.baeldung.com/java-interpreter-pattern)
+- [Introduction to the Null Object Pattern](https://www.baeldung.com/java-null-object-pattern)
+- [The Mediator Pattern in Java](https://www.baeldung.com/java-mediator-pattern)
+- [Implementing the Template Method Pattern in Java](https://www.baeldung.com/java-template-method-pattern)
+- More Articles: [[<-- prev]](../design-patterns-behavioral)
