@@ -119,7 +119,6 @@
         <dependency>
             <groupId>net.sourceforge.htmlunit</groupId>
             <artifactId>htmlunit</artifactId>
-            <version>${htmlunit.version}</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -176,6 +175,5 @@
         <rest-assured.version>5.5.0</rest-assured.version>
         <jaxb-runtime.version>4.0.1</jaxb-runtime.version>
         <spring-oxm.version>6.1.4</spring-oxm.version>
-        <htmlunit.version>2.32</htmlunit.version>
     </properties>
 </project>
