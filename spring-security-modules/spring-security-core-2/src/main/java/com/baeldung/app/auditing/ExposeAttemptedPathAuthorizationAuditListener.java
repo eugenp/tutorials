@@ -1,15 +1,15 @@
 package com.baeldung.app.auditing;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.function.Supplier;
+
 import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.boot.actuate.security.AbstractAuthorizationAuditListener;
 import org.springframework.security.authorization.event.AuthorizationDeniedEvent;
 import org.springframework.security.authorization.event.AuthorizationEvent;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.function.Supplier;
 
 @Component
 public class ExposeAttemptedPathAuthorizationAuditListener extends AbstractAuthorizationAuditListener {
