@@ -11,11 +11,11 @@ import java.util.UUID;
 import java.util.stream.Stream;
 
 @Service
-public class ChatBotService {
+public class ChatbotService {
 
     private final ChatClient chatClient;
 
-    public ChatBotService(ChatClient chatClient) {
+    public ChatbotService(ChatClient chatClient) {
         this.chatClient = chatClient;
     }
 

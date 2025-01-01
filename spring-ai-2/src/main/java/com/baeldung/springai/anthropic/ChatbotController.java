@@ -11,17 +11,17 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.UUID;
 
 @RestController
-public class ChatBotController {
+public class ChatbotController {
 
-    private final ChatBotService chatBotService;
+    private final ChatbotService chatbotService;
 
-    public ChatBotController(ChatBotService chatBotService) {
-        this.chatBotService = chatBotService;
+    public ChatbotController(ChatbotService chatbotService) {
+        this.chatbotService = chatbotService;
     }
 
     @PostMapping("/chat")
     public ResponseEntity<ChatResponse> chat(@RequestBody ChatRequest chatRequest) {
-        ChatResponse chatResponse = chatBotService.chat(chatRequest);
+        ChatResponse chatResponse = chatbotService.chat(chatRequest);
         return ResponseEntity.ok(chatResponse);
     }
 
@@ -32,7 +32,7 @@ public class ChatBotController {
         @RequestPart(name = "files", required = false) MultipartFile[] files
     ) {
         ChatRequest chatRequest = new ChatRequest(chatId, question);
-        ChatResponse chatResponse = chatBotService.chat(chatRequest, files);
+        ChatResponse chatResponse = chatbotService.chat(chatRequest, files);
         return ResponseEntity.ok(chatResponse);
     }
 
