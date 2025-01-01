@@ -12,6 +12,7 @@ import com.baeldung.hibernate.exception.persistentobject.entity.Article;
 import com.baeldung.hibernate.exception.persistentobject.entity.Author;
 import com.baeldung.hibernate.exception.persistentobject.entity.Book;
 import com.baeldung.hibernate.namedparameternotbound.Person;
+import com.baeldung.hibernate.noargumentforordinalparameter.Employee;
 
 public class HibernateUtil {
     private static SessionFactory sessionFactory;
@@ -36,6 +37,7 @@ public class HibernateUtil {
                 configuration.addAnnotatedClass(Author.class);
                 configuration.addAnnotatedClass(Article.class);
                 configuration.addAnnotatedClass(Person.class);
+                configuration.addAnnotatedClass(Employee.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();
