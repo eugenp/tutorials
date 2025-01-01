@@ -16,7 +16,7 @@ class ChatbotServiceLiveTest {
     private ChatbotService chatbotService;
 
     @Test
-    void whenChatBotCalledInSequence_thenConversationContextIsMaintained() {
+    void whenChatbotCalledInSequence_thenConversationContextIsMaintained() {
         ChatRequest chatRequest = new ChatRequest(null, "Who wanted to kill Harry Potter?");
         ChatResponse chatResponse = chatbotService.chat(chatRequest);
 
