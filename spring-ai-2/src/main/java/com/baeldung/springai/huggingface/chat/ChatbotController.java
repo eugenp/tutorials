@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ChatBotController {
+public class ChatbotController {
 
-    private final ChatBotService chatBotService;
+    private final ChatbotService chatBotService;
 
-    public ChatBotController(ChatBotService chatBotService) {
+    public ChatbotController(ChatbotService chatBotService) {
         this.chatBotService = chatBotService;
     }
 

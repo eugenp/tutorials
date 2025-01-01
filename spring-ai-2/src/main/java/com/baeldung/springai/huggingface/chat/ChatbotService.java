@@ -7,11 +7,11 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class ChatBotService {
+public class ChatbotService {
 
     private final ChatClient chatClient;
 
-    public ChatBotService(ChatClient chatClient) {
+    public ChatbotService(ChatClient chatClient) {
         this.chatClient = chatClient;
     }
 

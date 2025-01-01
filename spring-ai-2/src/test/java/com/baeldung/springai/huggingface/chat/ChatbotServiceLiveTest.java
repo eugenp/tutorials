@@ -10,10 +10,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Import(TestcontainersConfiguration.class)
-class ChatBotServiceLiveTest {
+class ChatbotServiceLiveTest {
 
     @Autowired
-    private ChatBotService chatBotService;
+    private ChatbotService chatBotService;
 
     @Test
     void whenChatBotCalledInSequence_thenConversationContextIsMaintained() {
