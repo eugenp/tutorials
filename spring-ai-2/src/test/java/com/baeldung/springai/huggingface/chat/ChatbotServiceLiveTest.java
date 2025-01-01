@@ -13,12 +13,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ChatbotServiceLiveTest {
 
     @Autowired
-    private ChatbotService chatBotService;
+    private ChatbotService chatbotService;
 
     @Test
     void whenChatBotCalledInSequence_thenConversationContextIsMaintained() {
         ChatRequest chatRequest = new ChatRequest(null, "Who wanted to kill Harry Potter?");
-        ChatResponse chatResponse = chatBotService.chat(chatRequest);
+        ChatResponse chatResponse = chatbotService.chat(chatRequest);
 
         assertThat(chatResponse)
             .isNotNull()
@@ -30,7 +30,7 @@ class ChatbotServiceLiveTest {
             });
 
         ChatRequest followUpChatRequest = new ChatRequest(chatResponse.chatId(), "Who should he have gone after instead?");
-        ChatResponse followUpChatResponse = chatBotService.chat(followUpChatRequest);
+        ChatResponse followUpChatResponse = chatbotService.chat(followUpChatRequest);
 
         assertThat(followUpChatResponse)
             .isNotNull()

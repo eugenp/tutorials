@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ChatbotController {
 
-    private final ChatbotService chatBotService;
+    private final ChatbotService chatbotService;
 
-    public ChatbotController(ChatbotService chatBotService) {
-        this.chatBotService = chatBotService;
+    public ChatbotController(ChatbotService chatbotService) {
+        this.chatbotService = chatbotService;
     }
 
     @PostMapping("/chat")
     public ResponseEntity<ChatResponse> chat(@RequestBody ChatRequest chatRequest) {
-        ChatResponse chatResponse = chatBotService.chat(chatRequest);
+        ChatResponse chatResponse = chatbotService.chat(chatRequest);
         return ResponseEntity.ok(chatResponse);
     }
 
