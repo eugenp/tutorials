@@ -27,10 +27,10 @@
         <module>spring-boot-basic-customization</module>
         <module>spring-boot-basic-customization-2</module>
         <module>spring-boot-bootstrap</module>
-        <!--<module>spring-boot-basic-customization-3</module>--> <!--JAVA-33979-->
+        <module>spring-boot-basic-customization-3</module>
         <module>spring-boot-logging-loki</module>
-        <module>spring-boot-caching</module>  <!-- failing after upgrading to spring boot 3.2.x -->
-        <module>spring-boot-caching-2</module>  <!-- failing after upgrading to spring boot 3.2.x -->
+        <module>spring-boot-caching</module>
+        <module>spring-boot-caching-2</module>
         <module>spring-boot-client</module>
         <module>spring-boot-config-jpa-error</module>
         <module>spring-boot-ctx-fluent</module>
@@ -53,8 +53,8 @@
         <module>spring-boot-jsp</module>
         <module>spring-boot-keycloak</module>
         <module>spring-boot-keycloak-2</module>
-        <!--        <module>spring-boot-libraries</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
-<!--        <module>spring-boot-libraries-2</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
+        <module>spring-boot-libraries</module>
+        <module>spring-boot-libraries-2</module>
         <module>spring-boot-libraries-3</module>
         <module>spring-boot-process-automation</module>
         <module>spring-boot-logging-logback</module>
@@ -79,22 +79,24 @@
         <module>spring-boot-telegram</module>
         <module>spring-boot-springdoc</module>
         <module>spring-boot-swagger</module>
-<!--        <module>spring-boot-swagger-2</module>--> <!-- failing after upgrading to spring boot 3. Swagger codegen yet not compatible?!-->
+        <!--        <module>spring-boot-swagger-2</module>--> <!-- failing after upgrading to spring boot 3. Swagger codegen yet not
+        compatible?!-->
         <module>spring-boot-swagger-jwt</module>
         <module>spring-boot-swagger-keycloak</module>
         <module>spring-boot-swagger-springfox</module>
         <module>spring-boot-testing</module>
         <module>spring-boot-testing-2</module>
         <module>spring-boot-testing-3</module>
+        <module>spring-boot-testing-4</module>
         <module>spring-boot-testing-spock</module>
         <module>spring-boot-vue</module>
         <module>spring-boot-actuator</module>
         <module>spring-boot-data-2</module>
         <module>spring-boot-validation</module>
-<!--        <module>spring-boot-data-3</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
+        <!--        <module>spring-boot-data-3</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
         <module>spring-boot-redis</module>
         <module>spring-boot-cassandre</module>
-<!--        <module>spring-boot-react</module>--> <!-- Migrated to heavy profile -->
+        <!--        <module>spring-boot-react</module>--> <!-- Migrated to heavy profile -->
         <module>spring-caching-3</module>
         <!-- <module>spring-boot-3</module> --> <!-- JAVA-20931 -->
         <module>spring-boot-3-grpc</module>
@@ -103,10 +105,11 @@
         <module>spring-boot-3-test-pitfalls</module>
         <module>spring-boot-3-testcontainers</module>
         <module>spring-boot-3-2</module>
+        <module>spring-boot-3-4</module>
         <module>spring-boot-resilience4j</module>
         <module>spring-boot-properties</module>
         <module>spring-boot-properties-2</module>
-        <module>spring-boot-properties-3</module> <!-- failing after upgrading to spring boot 3.2.x -->
+        <module>spring-boot-properties-3</module>
         <module>spring-boot-properties-4</module>
         <module>spring-boot-properties-migrator-demo</module>
         <module>spring-boot-aws</module>
@@ -119,7 +122,22 @@
         <module>spring-boot-validations</module>
         <module>spring-boot-openapi</module>
         <module>spring-boot-brave</module>
+        <module>spring-boot-simple</module>
     </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencyManagement>
         <dependencies>

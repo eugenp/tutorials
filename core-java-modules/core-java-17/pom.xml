@@ -34,7 +34,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${surefire.plugin.version}</version>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <argLine>--enable-preview</argLine>
                     <argLine>--enable-native-access=core.java</argLine>
@@ -64,9 +64,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <properties>
-        <surefire.plugin.version>3.0.0-M5</surefire.plugin.version>
-    </properties>
 
 </project>

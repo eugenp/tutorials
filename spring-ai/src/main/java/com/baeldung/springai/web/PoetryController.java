@@ -26,10 +26,7 @@ public class PoetryController {
     }
 
     @GetMapping("/poetry")
-    public ResponseEntity<PoetryDto> generatePoetry(
-            @RequestParam("genre") String genre,
-            @RequestParam("theme") String theme
-    ) {
+    public ResponseEntity<PoetryDto> generatePoetry(@RequestParam("genre") String genre, @RequestParam("theme") String theme) {
         return ResponseEntity.ok(poetryService.getPoetryByGenreAndTheme(genre, theme));
     }
 }

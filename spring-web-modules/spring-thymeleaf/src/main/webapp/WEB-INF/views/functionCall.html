@@ -12,6 +12,16 @@
     function salute(name) {
         alert("hello: " + name)
     }
+
+    /*<![CDATA[*/
+
+    let total = /*[[${totalStudents}]]*/ '50';
+
+    function totalstudent() {
+        alert("total students: " + total)
+    }
+
+    /*]]>*/
 </script>
 
 <body>
@@ -26,6 +36,7 @@
                 <button th:onclick="'javascript:alert(\'There are exactly '  + ${totalStudents}  +  ' students\');'">using javascript:function</button>
                 <button th:data-name="${student.name}" th:onclick="salute(this.getAttribute('data-name'))">using data attribute</button>
                 <button th:onclick="salute([[${student.name}]])">using double brackets</button>
+                <button th:attr="onclick='salute([[${student.name}]])'">Click to greet student</button>
         </section>
     </main>
 </body>

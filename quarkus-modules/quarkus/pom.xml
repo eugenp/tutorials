@@ -55,17 +55,14 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-resteasy-jackson</artifactId>
-            <version>${quarkus.version}</version>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-hibernate-orm-panache</artifactId>
-            <version>${quarkus.version}</version>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-jdbc-h2</artifactId>
-            <version>${quarkus.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -81,19 +78,16 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-junit5</artifactId>
-            <version>${quarkus.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-junit5-mockito</artifactId>
-            <version>${quarkus.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-test-h2</artifactId>
-            <version>${quarkus.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -110,6 +104,16 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-micrometer-registry-prometheus</artifactId>
             <version>${micrometer.prometheus.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>${byte-buddy.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.transaction</groupId>
+            <artifactId>jakarta.transaction-api</artifactId>
+            <version>${jakarta.transaction-api.version}</version>
         </dependency>
     </dependencies>
 
@@ -129,6 +133,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <forkCount>1</forkCount>
                     <reuseForks>true</reuseForks>
@@ -184,9 +189,11 @@
     </profiles>
 
     <properties>
-        <quarkus.version>2.16.3.Final</quarkus.version>
-        <mockito.version>4.4.0</mockito.version> <!-- Current quarkus doesn't support latest version. If Upgrading to a new quarkus remove this. -->
+        <quarkus.version>3.5.0</quarkus.version>
+        <mockito.version>5.12.0</mockito.version>
         <micrometer.prometheus.version>3.11.0</micrometer.prometheus.version>
+        <jakarta.transaction-api.version>2.0.1</jakarta.transaction-api.version>
+        <byte-buddy.version>1.14.17</byte-buddy.version>
     </properties>
 
 </project>

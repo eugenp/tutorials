@@ -1,0 +1,16 @@
+<configuration>
+    <property resource="logback.properties" />
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="${root.level}">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+    <logger name="com.baeldung.logback.services" level="${logger.com.baeldung.logback.services}" />
+    <logger name="com.baeldung.logback" level="${logger.com.baeldung.logback}" />
+</configuration>

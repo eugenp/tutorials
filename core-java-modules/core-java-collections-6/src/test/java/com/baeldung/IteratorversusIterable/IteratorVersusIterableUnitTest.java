@@ -1,4 +1,4 @@
-package IteratorversusIterable;
+package com.baeldung.IteratorversusIterable;
 
 import org.junit.Test;
 

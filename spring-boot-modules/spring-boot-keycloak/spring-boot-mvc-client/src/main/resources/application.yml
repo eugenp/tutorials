@@ -1,0 +1,42 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: spring-boot-mvc-client
+
+  security:
+    oauth2:
+      client:
+        provider:
+          baeldung-keycloak:
+            issuer-uri: http://localhost:8080/realms/baeldung-keycloak
+        registration:
+          keycloak:
+            provider: baeldung-keycloak
+            authorization-grant-type: authorization_code
+            client-id: baeldung-keycloak-confidential
+            client-secret: secret
+            scope: openid
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+        boot: INFO
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true

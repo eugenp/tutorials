@@ -14,9 +14,9 @@ public class CustomSkipPolicy implements SkipPolicy {
             return true;
         }
 
-        if (throwable instanceof NegativeAmountException ex && skipCount < MAX_SKIP_COUNT ) {
-            return ex.getAmount() >= INVALID_TX_AMOUNT_LIMIT;
-        }
+//        if (throwable instanceof NegativeAmountException ex && skipCount < MAX_SKIP_COUNT ) {
+//            return ex.getAmount() >= INVALID_TX_AMOUNT_LIMIT;
+//        }
 
         return false;
     }

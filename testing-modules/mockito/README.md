@@ -1,12 +1,9 @@
 ### Relevant articles
 
-- [Mockito’s Java 8 Features](https://www.baeldung.com/mockito-java-8)
-- [Lazy Verification with Mockito 2](https://www.baeldung.com/mockito-lazy-verification)
-- [Mockito Strict Stubbing and The UnnecessaryStubbingException](https://www.baeldung.com/mockito-unnecessary-stubbing-exception)
-- [Mockito and Fluent APIs](https://www.baeldung.com/mockito-fluent-apis)
+- [Mockito Strict Stubbing and The UnnecessaryStubbingException](https://www.baeldung.com/mockito-unnecessary-stubbing-exception) 
 - [Mocking the ObjectMapper readValue() Method](https://www.baeldung.com/mockito-mock-jackson-read-value)
-- [Introduction to Mockito’s AdditionalAnswers](https://www.baeldung.com/mockito-additionalanswers)
-- [Difference Between when() and doXxx() Methods in Mockito](https://www.baeldung.com/java-mockito-when-vs-do)
-- [Overview of Mockito MockSettings](https://www.baeldung.com/mockito-mocksettings)
-- [Testing Callbacks with Mockito](https://www.baeldung.com/mockito-callbacks)
 - [Quick Guide to BDDMockito](https://www.baeldung.com/bdd-mockito)
+- [Resolving Mockito Exception: Wanted But Not Invoked](https://www.baeldung.com/mockito-exception-wanted-but-not-invoked)
+- [Mock Same Method with Different Parameters](https://www.baeldung.com/java-mock-same-method-other-parameters)
+- [How to Mock Constructors for Unit Testing using Mockito](https://www.baeldung.com/java-mockito-constructors-unit-testing)
+- [Overview of Mockito MockedConstruction](https://www.baeldung.com/java-mockito-mockedconstruction)

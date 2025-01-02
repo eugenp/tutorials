@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-native</artifactId>
-    <name>spring-native</name>
     <packaging>jar</packaging>
+    <name>spring-native</name>
     <description>Intro to Spring Native</description>
 
     <parent>
@@ -56,7 +56,6 @@
         <builder>paketobuildpacks/builder:tiny</builder>
         <spring-boot.version>2.7.1</spring-boot.version>
         <spring-native.version>0.12.1</spring-native.version>
-        <log4j2.version>2.17.1</log4j2.version>
     </properties>
     <!-- Experimental dependency in this repository cannot rely on Maven Central alone -->
     <repositories>

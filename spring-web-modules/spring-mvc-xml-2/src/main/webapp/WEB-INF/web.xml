@@ -21,6 +21,9 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    <listener>
+        <listener-class>org.crsh.plugin.WebPluginLifeCycle</listener-class>
+    </listener>
 
     <!-- Spring child -->
     <servlet>
@@ -33,7 +36,27 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!-- JSP Servlet -->
+
+    <servlet>
+        <servlet-name>ExampleOne</servlet-name>
+        <servlet-class>com.baeldung.jsp.ExampleOne</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ExampleOne</servlet-name>
+        <url-pattern>/jsp/ExampleOne</url-pattern>
+    </servlet-mapping>
+        <servlet>
+        <servlet-name>ExampleThree</servlet-name>
+        <servlet-class>com.baeldung.jsp.ExampleThree</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ExampleThree</servlet-name>
+        <url-pattern>/jsp/ExampleThree</url-pattern>
+    </servlet-mapping>
+
     <!-- additional config -->
+
     <session-config>
         <session-timeout>10</session-timeout>
     </session-config>

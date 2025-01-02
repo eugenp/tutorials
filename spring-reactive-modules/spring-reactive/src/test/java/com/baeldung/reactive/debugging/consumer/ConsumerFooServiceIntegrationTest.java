@@ -8,17 +8,20 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
 import com.baeldung.reactive.debugging.consumer.model.Foo;
 import com.baeldung.reactive.debugging.consumer.service.FooService;
 import com.baeldung.reactive.debugging.consumer.utils.ListAppender;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.classic.spi.IThrowableProxy;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Hooks;
 
+@SpringBootTest
 class ConsumerFooServiceIntegrationTest {
 
     FooService service = new FooService();

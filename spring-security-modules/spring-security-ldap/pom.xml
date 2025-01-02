@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-security-ldap</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-security-ldap</name>
     <packaging>war</packaging>
+    <name>spring-security-ldap</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

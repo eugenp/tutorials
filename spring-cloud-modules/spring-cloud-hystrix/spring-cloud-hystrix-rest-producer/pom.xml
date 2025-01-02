@@ -26,9 +26,4 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <!-- we need the Mockito version provided by Spring Boot -->
-        <mockito.version>1.10.19</mockito.version>
-    </properties>
-
 </project>

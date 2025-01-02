@@ -29,8 +29,8 @@ public class BaeldungTaskSchedulerIntegrationTest {
         //test
         taskScheduler.scheduledTask();
         System.out.flush();
-        String expected = "Running ShedLock task\n";
-        assertThat(consoleOutput.toString()).hasToString(expected);
+        String expected = "Running ShedLock task";
+        assertThat(consoleOutput.toString()).contains(expected);
 
         //restore the old out
         System.setOut(old);

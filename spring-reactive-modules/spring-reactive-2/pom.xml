@@ -5,15 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-reactive-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-reactive-2</name>
     <packaging>jar</packaging>
+    <name>spring-reactive-2</name>
     <description>spring sample project about new features</description>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
+        <groupId>com.baeldung.spring.reactive</groupId>
+        <artifactId>spring-reactive-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -93,6 +92,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <systemPropertyVariables>
                                 <logback.configurationFile>${project.basedir}/src/test/resources/logback-test.xml</logback.configurationFile>
@@ -109,6 +109,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <systemPropertyVariables>
                                 <logback.configurationFile>${project.basedir}/src/test/resources/logback-test.xml</logback.configurationFile>
@@ -122,7 +123,7 @@
 
     <properties>
         <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
-        <wiremock.version>3.3.1</wiremock.version>
+        <wiremock.version>3.9.1</wiremock.version>
     </properties>
 
 </project>

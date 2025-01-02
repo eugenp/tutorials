@@ -1,0 +1,8 @@
+com:
+  baeldung:
+    storage:
+      proxy-endpoint: ${S3PROXY_ENDPOINT}
+      identity: ${GCP_SERVICE_ACCOUNT_EMAIL}
+      credential: ${GCP_SERVICE_ACCOUNT_PRIVATE_KEY}
+      region: ${GCP_CLOUD_STORAGE_REGION}
+      bucket-name: ${GCP_CLOUD_STORAGE_BUCKET_NAME}

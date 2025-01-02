@@ -1,6 +1,5 @@
 package com.baeldung.spring.cloud.bootstrap.config;
 
-import org.apache.commons.configuration.AbstractConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;

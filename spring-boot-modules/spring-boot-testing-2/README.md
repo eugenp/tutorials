@@ -7,12 +7,11 @@ This module contains articles about Spring Boot testing
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 ### Relevant Articles:
-
-- [Setting the Log Level in Spring Boot When Testing](https://www.baeldung.com/spring-boot-testing-log-level)
-- [Failed to Load ApplicationContext for JUnit Test of Spring Controller](https://www.baeldung.com/spring-junit-failed-to-load-applicationcontext)
 - [Spring Web Service Integration Tests with @WebServiceServerTest](https://www.baeldung.com/spring-webserviceservertest)
 - [Spring Boot – Testing Redis With Testcontainers](https://www.baeldung.com/spring-boot-redis-testcontainers)
 - [Spring Boot – Keycloak Integration Testing with Testcontainers](https://www.baeldung.com/spring-boot-keycloak-integration-testing)
 - [Difference Between @Spy and @SpyBean](https://www.baeldung.com/spring-spy-vs-spybean)
-- [Overriding Spring Beans in Integration Test](https://www.baeldung.com/spring-beans-integration-test-override)
+- [Prevent ApplicationRunner or CommandLineRunner Beans From Executing During Junit Testing](https://www.baeldung.com/spring-junit-prevent-runner-beans-testing-execution)
+- [Testing in Spring Boot](https://www.baeldung.com/spring-boot-testing)
+- [Fixing the NoSuchMethodError JUnit Error](https://www.baeldung.com/junit-nosuchmethoderror)
 - More articles: [[more -->]](../spring-boot-testing-3)

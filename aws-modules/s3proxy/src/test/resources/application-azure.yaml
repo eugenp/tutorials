@@ -1,0 +1,8 @@
+com:
+  baeldung:
+    storage:
+      proxy-endpoint: ${S3PROXY_ENDPOINT}
+      identity: ${AZURE_STORAGE_ACCOUNT_NAME}
+      credential: ${AZURE_STORAGE_ACCOUNT_KEY}
+      region: ${AZURE_STORAGE_ACCOUNT_REGION}
+      bucket-name: ${AZURE_CONTAINER_NAME}

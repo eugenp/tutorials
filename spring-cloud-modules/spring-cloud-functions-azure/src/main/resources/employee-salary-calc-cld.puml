@@ -1,0 +1,71 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide empty attributes
+skinparam Handwritten false
+skinparam ClassBorderColor black
+skinparam BackgroundColor #fffce8/#f8f9fa
+skinparam class {
+ ArrowColor SeaGreen
+ BackgroundColor #fffce8
+}
+
+interface Function <Employee, Employee> {
+  +apply(Employee)::Employee
+}
+
+class AzureSpringCloudFunctionApplication {
+  {static}+main()::void
+}
+
+class EmployeeSalaryHandler {
+  -employeeSalaryFunction::Function
+  +calculateSalary(HttpRequestMessage, ExecutionContext)::HttpResponseMessage
+}
+
+class ApplicationConfiguration {
+  +employeeSalaryFunction()::Function<Employee, Employee>
+}
+
+class EmployeeSalaryFunction {
+  +apply(Employee)::Employee
+}
+
+class Employee {
+  -name::String
+  -department::String
+  -city::String
+  -salary::Integer
+}
+
+note top of ApplicationConfiguration
+  <b>@Configuration</b>
+end note
+
+note left of AzureSpringCloudFunctionApplication
+  <b>@SpringBootApplication</b>
+end note
+
+note left of ApplicationConfiguration::employeeSalaryFunction
+ <b>@Bean</b>
+end note
+
+note top of EmployeeSalaryHandler
+  <b>@Component</b>
+end note
+
+note right of EmployeeSalaryHandler::employeeSalaryFunction
+  <b>@Autowired</b>
+end note
+
+
+note bottom of EmployeeSalaryHandler
+  <b>@HttpTrigger</b>
+end note
+
+EmployeeSalaryFunction --|> Function: implements
+EmployeeSalaryHandler --> Function: uses
+ApplicationConfiguration -down-> EmployeeSalaryFunction: instantiates
+EmployeeSalaryHandler -up-> Employee: uses
+EmployeeSalaryFunction -up-> Employee: uses
+AzureSpringCloudFunctionApplication -down-> ApplicationConfiguration: enables
+@enduml

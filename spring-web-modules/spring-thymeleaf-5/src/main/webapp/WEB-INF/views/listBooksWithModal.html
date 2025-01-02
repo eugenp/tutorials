@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book List with Modals</title>
+</head>
+<body>
+
+<div>
+    <h1>Book List</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Book ID</th>
+            <th>Book Name</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.id}"></td>
+            <td th:text="${book.name}"></td>
+            <td>
+                <!-- Button to open modal for the selected book -->
+                <button th:attr="onclick=|showModal('infoModal' + ${book.id})|">View Details</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal template for each book -->
+<div th:each="book : ${books}" th:attr="id=${'infoModal' + book.id}" style="display: none;">
+    <div>
+        <h3>Book Details</h3>
+        <p><strong>ID:</strong> <span th:text="${book.id}"></span></p>
+        <p><strong>Name:</strong> <span th:text="${book.name}"></span></p>
+        <button th:attr="onclick=|hideModal('infoModal' + ${book.id})|">Close</button>
+    </div>
+</div>
+
+<script>
+    function showModal(modalId) {
+        document.getElementById(modalId).style.display = 'block';
+    }
+
+    function hideModal(modalId) {
+        document.getElementById(modalId).style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

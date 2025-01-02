@@ -49,7 +49,7 @@
     </dependencies>
 
     <properties>
-        <kafka.version>3.6.1</kafka.version>
+        <kafka.version>3.8.0</kafka.version>
         <jackson.databind.version>2.15.2</jackson.databind.version>
         <testcontainers-kafka.version>1.19.3</testcontainers-kafka.version>
         <testcontainers-jupiter.version>1.19.3</testcontainers-jupiter.version>

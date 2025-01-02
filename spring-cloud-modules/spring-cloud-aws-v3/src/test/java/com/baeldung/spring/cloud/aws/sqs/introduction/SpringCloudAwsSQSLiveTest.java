@@ -14,13 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import com.baeldung.spring.cloud.aws.sqs.BaseSqsLiveTest;
-
 import io.awspring.cloud.sqs.operations.SqsTemplate;
 
 @ActiveProfiles("introduction")
 @SpringBootTest
-public class SpringCloudAwsSQSLiveTest extends BaseSqsLiveTest {
+public class SpringCloudAwsSQSLiveTest {
 
     private static final Logger logger = LoggerFactory.getLogger(SpringCloudAwsSQSLiveTest.class);
 

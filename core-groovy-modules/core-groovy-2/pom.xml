@@ -55,6 +55,11 @@
             <artifactId>groovy-wslite</artifactId>
             <version>${groovy-wslite.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.groovy</groupId>
+            <artifactId>groovy-dateutil</artifactId>
+            <version>${groovy-dateutil.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -115,6 +120,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <useFile>false</useFile>
                     <includes>
@@ -160,6 +166,7 @@
         <compiler.plugin.version>3.12.1</compiler.plugin.version>
         <groovy.compiler.version>3.9.0</groovy.compiler.version>
         <groovy-eclipse-batch.version>3.0.9-03</groovy-eclipse-batch.version>
+        <groovy-dateutil.version>4.0.21</groovy-dateutil.version>
     </properties>
 
 </project>

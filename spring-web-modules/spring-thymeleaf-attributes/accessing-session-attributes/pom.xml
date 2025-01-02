@@ -74,7 +74,6 @@
         <file.encoding>UTF-8</file.encoding>
         <downloadSources>true</downloadSources>
         <downloadJavadocs>true</downloadJavadocs>
-        <mockito.version>5.3.1</mockito.version>
         <spring.boot.starter.thymeleaf>3.1.1</spring.boot.starter.thymeleaf>
     </properties>
 

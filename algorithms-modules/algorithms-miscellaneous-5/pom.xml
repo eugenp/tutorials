@@ -31,12 +31,6 @@
             <version>${tradukisto.version}</version>
         </dependency>
 
-        <!-- API, java.xml.bind module -->
-        <dependency>
-            <groupId>jakarta.xml.bind</groupId>
-            <artifactId>jakarta.xml.bind-api</artifactId>
-            <version>${xml-bind-api.version}</version>
-        </dependency>
         <!-- Runtime, com.sun.xml.bind module -->
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
@@ -59,7 +53,6 @@
     </build>
 
     <properties>
-        <xml-bind-api.version>4.0.0</xml-bind-api.version>
         <jaxb-runtime.version>4.0.0</jaxb-runtime.version>
     </properties>
 

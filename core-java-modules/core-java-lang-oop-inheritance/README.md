@@ -13,4 +13,4 @@ This module contains articles about inheritance in Java
 - [Object Type Casting in Java](https://www.baeldung.com/java-type-casting)
 - [Variable and Method Hiding in Java](https://www.baeldung.com/java-variable-method-hiding)
 - [Inner Classes vs. Subclasses in Java](https://www.baeldung.com/java-inner-classes-vs-subclasses)
-- [Upcasting Vs. Downcasting in Java](https://www.baeldung.com/java-upcasting-vs-downcasting)
+- More articles: [next -->](https://github.com/eugenp/tutorials/tree/master/core-java-modules/core-java-lang-oop-inheritance-2)

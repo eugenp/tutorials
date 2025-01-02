@@ -4,27 +4,21 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-reactive-4</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-reactive-4</name>
     <packaging>jar</packaging>
+    <name>spring-reactive-4</name>
     <description>spring sample project about new features</description>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
+        <groupId>com.baeldung.spring.reactive</groupId>
+        <artifactId>spring-reactive-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
-
-    <properties>
-        <wiremock-spring-cloud.version>4.1.2</wiremock-spring-cloud.version>
-    </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -46,5 +40,9 @@
             <version>${wiremock-spring-cloud.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <wiremock-spring-cloud.version>4.1.2</wiremock-spring-cloud.version>
+    </properties>
 
 </project>

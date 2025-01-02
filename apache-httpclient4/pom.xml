@@ -10,9 +10,8 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-5</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-spring-5</relativePath>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -203,6 +202,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <executions>
                             <execution>
                                 <phase>integration-test</phase>
@@ -226,12 +226,14 @@
     </profiles>
 
     <properties>
+        <spring.version>5.3.28</spring.version>
+        <spring-security.version>5.7.3</spring-security.version>
         <spring-oxm.version>6.1.4</spring-oxm.version>
         <!-- util -->
         <commons-codec.version>1.16.0</commons-codec.version>
         <httpasyncclient.version>4.1.5</httpasyncclient.version>
         <!-- testing -->
-        <wiremock.version>3.3.1</wiremock.version>
+        <wiremock.version>3.9.1</wiremock.version>
         <httpcore.version>4.4.16</httpcore.version>
         <httpclient.version>4.5.14</httpclient.version>
         <mockserver.version>5.11.2</mockserver.version>

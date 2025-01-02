@@ -316,7 +316,6 @@
         <debezium.version>2.5.0.Final</debezium.version>
         <flexy-pool.version>2.2.3</flexy-pool.version>
         <testcontainers-version>1.19.3</testcontainers-version>
-        <mapdb.version>3.0.8</mapdb.version>
         <jakarta.xml.bind.version>4.0.1</jakarta.xml.bind.version>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip> <!-- to avoid repackaging of the jar -->
     </properties>

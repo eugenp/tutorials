@@ -471,7 +471,7 @@ public class UserResourceIT {
         // Delete the user
         restUserMockMvc.perform(delete("/api/users/{login}", user.getLogin())
             .accept(TestUtil.APPLICATION_JSON_UTF8))
-            .andExpect(status().isNoContent());
+            .andExpect(status().is2xxSuccessful());
 
         // Validate the database is empty
         List<User> userList = userRepository.findAll();

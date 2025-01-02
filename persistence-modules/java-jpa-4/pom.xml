@@ -40,6 +40,16 @@
             <artifactId>jackson-databind</artifactId>
             <version>${fasterxml.jackson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>${commons.beanutils.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>${modelmapper.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -62,6 +72,8 @@
         <h2.version>2.1.214</h2.version>
         <jakarta.persistence-api.version>3.1.0</jakarta.persistence-api.version>
         <fasterxml.jackson.version>2.17.0</fasterxml.jackson.version>
+        <commons.beanutils.version>1.9.4</commons.beanutils.version>
+        <modelmapper.version>3.2.1</modelmapper.version>
     </properties>
 
 </project>

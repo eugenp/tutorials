@@ -14,6 +14,7 @@
 
     <properties>
         <guava.version>18.0</guava.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version> <!-- Upgrading to latest version throws error -->
     </properties>
 
 </project>

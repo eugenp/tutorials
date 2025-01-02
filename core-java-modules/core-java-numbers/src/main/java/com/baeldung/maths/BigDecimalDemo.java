@@ -15,15 +15,11 @@ public class BigDecimalDemo {
     public static BigDecimal calculateTotalAmount(BigDecimal quantity,
         BigDecimal unitPrice, BigDecimal discountRate, BigDecimal taxRate) {
         BigDecimal amount = quantity.multiply(unitPrice);
-        BigDecimal discount = amount.multiply(discountRate);
-        BigDecimal discountedAmount = amount.subtract(discount);
-        BigDecimal tax = discountedAmount.multiply(taxRate);
-        BigDecimal total = discountedAmount.add(tax);
+        BigDecimal discountedAmount = amount.multiply(BigDecimal.ONE.subtract(discountRate));
+        BigDecimal total = discountedAmount.multiply(BigDecimal.ONE.add(taxRate));
 
         // round to 2 decimal places using HALF_EVEN
-        BigDecimal roundedTotal = total.setScale(2, RoundingMode.HALF_EVEN);
-
-        return roundedTotal;
+        return total.setScale(2, RoundingMode.HALF_EVEN);
     }
 
 }

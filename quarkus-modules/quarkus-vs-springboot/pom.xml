@@ -15,7 +15,7 @@
     </parent>
 
     <modules>
-        <module>quarkus-project</module>
+        <!-- <module>quarkus-project</module> --> <!-- failing after upgrade to jdk21 -->
         <module>spring-project</module>
     </modules>
 

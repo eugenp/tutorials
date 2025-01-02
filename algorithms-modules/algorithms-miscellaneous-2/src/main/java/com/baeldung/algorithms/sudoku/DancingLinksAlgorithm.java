@@ -11,7 +11,7 @@ public class DancingLinksAlgorithm {
     private static final int MAX_VALUE = 9;
     private static final int COVER_START_INDEX = 1;
 
-    private static int[][] board = {
+    private static final int[][] board = {
       {8, 0, 0, 0, 0, 0, 0, 0, 0},
       {0, 0, 3, 6, 0, 0, 0, 0, 0},
       {0, 7, 0, 0, 9, 0, 2, 0, 0},

@@ -1,0 +1,6 @@
+com:
+  baeldung:
+    storage:
+      proxy-endpoint: http://127.0.0.1:8080
+      bucket-name: baeldungbucket
+      local-file-base-directory: tmp-store

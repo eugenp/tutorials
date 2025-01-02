@@ -1,0 +1,6 @@
+<configuration>
+    <appender name="TEST" class="com.baeldung.springretry.logging.LogAppender"/>
+    <root level="info">
+        <appender-ref ref="TEST"/>
+    </root>
+</configuration>

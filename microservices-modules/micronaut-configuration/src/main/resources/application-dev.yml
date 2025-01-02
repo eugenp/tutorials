@@ -1,0 +1,3 @@
+service:
+  test:
+    property: 'something-in-dev'

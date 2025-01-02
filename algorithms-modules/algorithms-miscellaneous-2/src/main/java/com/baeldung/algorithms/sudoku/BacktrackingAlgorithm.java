@@ -12,7 +12,7 @@ public class BacktrackingAlgorithm {
     private static final int MIN_VALUE = 1;
     private static final int MAX_VALUE = 9;
 
-    private static int[][] board = {
+    private static final int[][] board = {
       {8, 0, 0, 0, 0, 0, 0, 0, 0},
       {0, 0, 3, 6, 0, 0, 0, 0, 0},
       {0, 7, 0, 0, 9, 0, 2, 0, 0},
@@ -39,7 +39,7 @@ public class BacktrackingAlgorithm {
         }
     }
 
-    private boolean solve(int[][] board) {
+    public boolean solve(int[][] board) {
         for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row++) {
             for (int column = BOARD_START_INDEX; column < BOARD_SIZE; column++) {
                 if (board[row][column] == NO_VALUE) {
@@ -81,14 +81,22 @@ public class BacktrackingAlgorithm {
 
     private boolean columnConstraint(int[][] board, int column) {
         boolean[] constraint = new boolean[BOARD_SIZE];
-        return IntStream.range(BOARD_START_INDEX, BOARD_SIZE)
-          .allMatch(row -> checkConstraint(board, row, constraint, column));
+        for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row++) {
+            if (!checkConstraint(board, row, constraint, column)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private boolean rowConstraint(int[][] board, int row) {
         boolean[] constraint = new boolean[BOARD_SIZE];
-        return IntStream.range(BOARD_START_INDEX, BOARD_SIZE)
-          .allMatch(column -> checkConstraint(board, row, constraint, column));
+        for (int column = BOARD_START_INDEX; column < BOARD_SIZE; column++) {
+            if (!checkConstraint(board, row, constraint, column)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private boolean checkConstraint(int[][] board, int row, boolean[] constraint, int column) {

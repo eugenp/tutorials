@@ -20,9 +20,14 @@ public class GetRequestMockServer {
 
     public static int serverPort;
 
+    public static String serviceOneUrl;
+    public static String serviceTwoUrl;
+
     public static final String SERVER_ADDRESS = "127.0.0.1";
 
-    public static final String SECURITY_PATH = "/spring-security-rest-basic-auth/api/foos/1";
+    public static final String PATH_ONE = "/path_one";
+    public static final String PATH_TWO = "/path-two";
+    public static final String METHOD = "GET";
 
     public static final String UPLOAD_PATH = "/spring-mvc-java/stub/multipart";
 
@@ -31,6 +36,9 @@ public class GetRequestMockServer {
         serverPort = getFreePort();
         System.out.println("Free port " + serverPort);
         mockServer = startClientAndServer(serverPort);
+
+        serviceOneUrl = "http://" + SERVER_ADDRESS + ":" + serverPort + PATH_ONE;
+        serviceTwoUrl = "http://" + SERVER_ADDRESS + ":" + serverPort + PATH_TWO;
         mockGetRequest();
     }
 
@@ -45,18 +53,6 @@ public class GetRequestMockServer {
 
         client.when(
                 request()
-                  .withPath(SECURITY_PATH)
-                  .withMethod("GET"), 
-                exactly(1)
-              )
-              .respond(
-                response()
-                  .withStatusCode(HttpStatus.SC_OK)
-                  .withBody("{\"status\":\"ok\"}")
-              );
-
-        client.when(
-                request()
                   .withPath(UPLOAD_PATH)
                   .withMethod("POST"), 
                 exactly(4)
@@ -67,6 +63,31 @@ public class GetRequestMockServer {
                   .withBody("{\"status\":\"ok\"}")
                   .withHeader("Content-Type", "multipart/form-data")
               );
+
+        client
+                .when(
+                        request()
+                                .withPath(PATH_ONE)
+                                .withMethod(METHOD),
+                        exactly(5)
+                )
+                .respond(
+                        response()
+                                .withStatusCode(HttpStatus.SC_OK)
+                                .withBody("{\"status\":\"ok\"}")
+                );
+        client
+                .when(
+                        request()
+                                .withPath(PATH_TWO)
+                                .withMethod(METHOD),
+                        exactly(1)
+                )
+                .respond(
+                        response()
+                                .withStatusCode(HttpStatus.SC_OK)
+                                .withBody("{\"status\":\"ok\"}")
+                );
     }
 
     private static int getFreePort() throws IOException {

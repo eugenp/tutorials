@@ -7,9 +7,9 @@ public class MapMax {
 
     public <K, V extends Comparable<V>> V maxUsingIteration(Map<K, V> map) {
 
-        Map.Entry<K, V> maxEntry = null;
+        Entry<K, V> maxEntry = null;
 
-        for (Map.Entry<K, V> entry : map.entrySet()) {
+        for (Entry<K, V> entry : map.entrySet()) {
 
             if (maxEntry == null || entry.getValue()
                 .compareTo(maxEntry.getValue()) > 0) {
@@ -42,7 +42,7 @@ public class MapMax {
 
     public <K, V extends Comparable<V>> V maxUsingCollectionsMaxAndMethodReference(Map<K, V> map) {
 
-        Entry<K, V> maxEntry = Collections.max(map.entrySet(), Comparator.comparing(Map.Entry::getValue));
+        Entry<K, V> maxEntry = Collections.max(map.entrySet(), Comparator.comparing(Entry::getValue));
 
         return maxEntry.getValue();
     }
@@ -62,10 +62,18 @@ public class MapMax {
 
         Optional<Entry<K, V>> maxEntry = map.entrySet()
             .stream()
-            .max(Comparator.comparing(Map.Entry::getValue));
+            .max(Comparator.comparing(Entry::getValue));
 
         return maxEntry.get()
             .getValue();
+    }
+
+    public <K, V extends Comparable<V>> K keyOfMaxUsingStream(Map<K, V> map) {
+        return map.entrySet()
+            .stream()
+            .max(Map.Entry.comparingByValue())
+            .map(Map.Entry::getKey)
+            .orElse(null);
     }
 
     public static void main(String[] args) {

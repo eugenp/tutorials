@@ -8,8 +8,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <artifactId>parent-spring-6</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-spring-6</relativePath>
     </parent>
 
     <dependencies>
@@ -21,12 +22,10 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${spring-context.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${spring-test.version}</version>
         </dependency>
         <dependency>
             <groupId>com.jayway.awaitility</groupId>
@@ -37,9 +36,7 @@
     </dependencies>
 
     <properties>
-        <spring-statemachine-core.version>3.2.0</spring-statemachine-core.version>
-        <spring-context.version>5.3.19</spring-context.version>
-        <spring-test.version>5.3.19</spring-test.version>
+        <spring-statemachine-core.version>4.0.0</spring-statemachine-core.version>
         <jayway.awaitility.version>1.7.0</jayway.awaitility.version>
     </properties>
 

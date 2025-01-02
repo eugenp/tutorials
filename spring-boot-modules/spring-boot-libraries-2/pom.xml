@@ -14,7 +14,7 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.springframework.experimental</groupId>
+                <groupId>org.springframework.modulith</groupId>
                 <artifactId>spring-modulith-bom</artifactId>
                 <version>${spring-modulith-bom.version}</version>
                 <scope>import</scope>
@@ -43,6 +43,10 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
         <!-- JobRunr -->
         <dependency>
@@ -100,11 +104,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.experimental</groupId>
+            <groupId>org.springframework.modulith</groupId>
             <artifactId>spring-modulith-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.experimental</groupId>
+            <groupId>org.springframework.modulith</groupId>
             <artifactId>spring-modulith-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
@@ -128,11 +132,15 @@
                             <generatorName>spring</generatorName>
                             <apiPackage>com.baeldung.openapi.api</apiPackage>
                             <modelPackage>com.baeldung.openapi.model</modelPackage>
+                            <generateApis>true</generateApis>
+                            <generateModels>true</generateModels>
+                            <generateSupportingFiles>true</generateSupportingFiles>
                             <supportingFilesToGenerate>
                                 ApiUtil.java
                             </supportingFilesToGenerate>
                             <configOptions>
-                                <delegatePattern>true</delegatePattern>
+                                <delegatePattern>false</delegatePattern>
+                                <useJakartaEe>true</useJakartaEe>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -163,10 +171,10 @@
     </build>
 
     <properties>
-        <spring-modulith-bom.version>0.5.1</spring-modulith-bom.version>
-        <jobrunr-spring-boot-starter.version>3.1.1</jobrunr-spring-boot-starter.version>
+        <spring-modulith-bom.version>1.2.2</spring-modulith-bom.version>
+        <jobrunr-spring-boot-starter.version>5.1.7</jobrunr-spring-boot-starter.version>
         <awaitility.version>4.0.3</awaitility.version>
-        <openapi-generator.version>7.1.0</openapi-generator.version>
+        <openapi-generator.version>7.8.0</openapi-generator.version>
         <spring.data.version>2.4.5</spring.data.version>
         <jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
         <reflections.version>0.10.2</reflections.version>
@@ -176,6 +184,7 @@
         <jandex-maven-plugin.version>1.2.3</jandex-maven-plugin.version>
         <springdoc.version>1.7.0</springdoc.version>
         <start-class>com.baeldung.openapi.OpenApiApplication</start-class>
+        <spring-boot.version>3.2.2</spring-boot.version>
     </properties>
 
 </project>

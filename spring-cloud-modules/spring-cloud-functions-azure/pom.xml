@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.baeldung.functions</groupId>
+    <artifactId>spring-cloud-functions-azure</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>spring-cloud-functions-azure</name>
+    <parent>
+        <groupId>com.baeldung.spring.cloud</groupId>
+        <artifactId>spring-cloud-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <!--Ideally, this should be the parent for the spring boot maven plugin to work properly to add the main class in the manifest file-->
+<!--    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.11</version>
+        <relativePath/>
+    </parent>-->
+
+    <properties>
+        <java.version>17</java.version>
+
+        <spring-boot-thin-layout.version>1.0.28.RELEASE</spring-boot-thin-layout.version>
+
+        <!-- Spring Boot start class! WARING: correct class must be set! -->
+        <start-class>com.baeldung.azure.functions.AzureSpringCloudFunctionApplication</start-class>
+        <!-- AZURE FUNCTION CONFIG -->
+        <azure.functions.maven.plugin.version>1.36.0</azure.functions.maven.plugin.version>
+        <functionAppName>SCF-baeldung-samples</functionAppName>
+        <functionAppRegion>westus</functionAppRegion>
+        <functionResourceGroup>baeldung-resource-group</functionResourceGroup>
+        <functionAppServicePlanName>sample-service-plan</functionAppServicePlanName>
+        <functionPricingTier>Consumption</functionPricingTier>
+    </properties>
+    <dependencies>
+
+        <dependency>
+            <groupId>com.microsoft.azure.functions</groupId>
+            <artifactId>azure-functions-java-library</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-function-adapter-azure</artifactId>
+            <version>4.0.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>3.1.2</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.microsoft.azure</groupId>
+                <artifactId>azure-functions-maven-plugin</artifactId>
+                <version>${azure.functions.maven.plugin.version}</version>
+
+                <configuration>
+                    <appName>${functionAppName}</appName>
+                    <resourceGroup>${functionResourceGroup}</resourceGroup>
+                    <region>${functionAppRegion}</region>
+                    <appServicePlanName>${functionAppServicePlanName}</appServicePlanName>
+                    <pricingTier>${functionPricingTier}</pricingTier>
+
+                    <hostJson>${project.basedir}/src/main/resources/host.json</hostJson>
+                    <localSettingsJson>${project.basedir}/src/main/resources/local.settings.json</localSettingsJson>
+
+                    <runtime>
+                        <os>linux</os>
+                        <javaVersion>17</javaVersion>
+                    </runtime>
+
+                    <appSettings>
+                        <property>
+                            <name>FUNCTIONS_EXTENSION_VERSION</name>
+                            <value>~4</value>
+                        </property>
+                    </appSettings>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>package-functions</id>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+          <!--this is required because we are not using spring-boot-starter-parent-->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>${maven-jar-plugin.version}</version>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <mainClass>${start-class}</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+        </plugin>
+<!--Don't need spring-boot-thin-layout as it is already part of the parent dependency-->
+<!--            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                &lt;!&ndash;it does not work as we are not using spring-boot-starter-parent&ndash;&gt;
+&lt;!&ndash;                <configuration>
+                    <mainClass>${start-class}</mainClass>
+                    &lt;!&ndash; this is necessary as we're not using the Boot parent &ndash;&gt;
+                </configuration>&ndash;&gt;
+                <dependencies>
+                    <dependency>
+                        <groupId>org.springframework.boot.experimental</groupId>
+                        <artifactId>spring-boot-thin-layout</artifactId>
+                        <version>${thin.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>-->
+        </plugins>
+    </build>
+</project>
