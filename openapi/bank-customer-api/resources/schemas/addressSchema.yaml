@@ -1,0 +1,18 @@
+components:
+  schemas:
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+          description: "The street address."
+        city:
+          type: string
+          description: "The city of residence."
+        zipCode:
+          type: string
+          description: "The postal code."
+      required:
+        - street
+        - city
+        - zipCode
