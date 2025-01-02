@@ -30,6 +30,6 @@ public class TwilioSmsStatusAsyncExample {
                     public void onFailure(Throwable t) {
                         System.out.println("Failed to get message status: " + t.getMessage());
                     }
-                }, null);
+                });
     }
 }
