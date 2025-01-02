@@ -3,9 +3,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>core-java-concurrency-advanced-3</artifactId>
+    <artifactId>core-java-concurrency-advanced-7</artifactId>
     <packaging>jar</packaging>
-    <name>core-java-concurrency-advanced-3</name>
+    <name>core-java-concurrency-advanced-7</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -13,14 +13,17 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <build>
-        <finalName>core-java-concurrency-advanced-3</finalName>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-    </build>
+    <dependencies>
+        <dependency>
+            <groupId>com.jayway.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${awaitility.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <awaitility.version>1.7.0</awaitility.version>
+    </properties>
 
 </project>
