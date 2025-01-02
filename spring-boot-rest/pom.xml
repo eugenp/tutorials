@@ -119,7 +119,6 @@
         <dependency>
             <groupId>net.sourceforge.htmlunit</groupId>
             <artifactId>htmlunit</artifactId>
-            <version>2.70.0</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
