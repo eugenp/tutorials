@@ -56,7 +56,7 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.baeldung.jersey.server.http.EmbeddedHttpServer</mainClass>
+                    <mainClass>com.baeldung.jersey.timeout.server.JerseyTimeoutServerApp</mainClass>
                 </configuration>
             </plugin>
         </plugins>
