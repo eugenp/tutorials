@@ -12,7 +12,21 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <repositories>
+        <repository>
+            <id>local-libs</id>
+            <url>file://${project.basedir}/libs</url>
+        </repository>
+    </repositories>
+
     <dependencies>
+        <dependency>
+            <groupId>ai.h2o</groupId>
+            <artifactId>h2o-genmodel</artifactId>
+            <version>${h2o-genmodel.version}</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/h2o-genmodel.jar</systemPath>
+        </dependency>
         <dependency>
             <groupId>edu.stanford.nlp</groupId>
             <artifactId>stanford-corenlp</artifactId>
@@ -50,6 +64,7 @@
         <opennlp-tools.version>2.1.1</opennlp-tools.version>
         <neuroph.version>2.92</neuroph.version>
         <theokanning.gpt>0.18.2</theokanning.gpt>
+        <h2o-genmodel.version>1.0</h2o-genmodel.version>
     </properties>
 
 </project>
