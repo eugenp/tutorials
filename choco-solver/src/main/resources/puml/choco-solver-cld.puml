@@ -1,0 +1,73 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide empty attributes
+skinparam Handwritten false
+skinparam ClassBorderColor black
+skinparam BackgroundColor #fffce8/#f8f9fa
+skinparam class {
+ ArrowColor SeaGreen
+ BackgroundColor #fffce8
+}
+
+class "Model" as m {
+  +getSolver():Solver
+  +getVars():Variable[]
+}
+
+interface "IVariableFactory" as iv {
+  +intVar():IntVar
+  +intVarArray():IntVar[]
+  +intVarArray():IntVar[][]
+  +boolVar():BoolVar
+  +boolVarArray():BoolVar[]
+  +boolVarMatrix():BoolVar[][]
+  +intVarMatrix():IntVar[][]
+  ..
+  <i>additional methods for defining\n<i>complex variables
+  ..
+  }
+
+class Solver {
+  +solve():boolean
+  +findSolution(): Solution
+  +findAllSolutions():List<Solution>
+}
+
+interface "IIntConstraintFactory" as icf {
+ +arithm(IntVar var1, String op, IntVar var2):Constraint
+ +sum(IntVar[] vars, String operator, IntVar sum):Constraint
+ +allDifferent(IntVar...vars):Constraint
+ +allEqual(IntVar...vars):Constraint
+ ..
+ <i>\tadditional methods to define complex constraints
+ ..
+}
+
+interface "Variable" as v {
+  +asIntVar():IntVar
+  +asRealVar():RealVar
+  +asBoolVar():BoolVar
+  +asSetVar():SetVar
+}
+
+class "Constraint" as c {
+  +post():void
+  +reify():BoolVar
+}
+
+
+class "Solution" as sln {
+  +retrieveIntVars():List<IntVar>
+  +retrieveBoolVars():List<BoolVar>
+  +retrieveRealVars():List<RealVar>
+}
+
+m --|> icf:implements
+m -up-|> iv:implements
+m -up-> v:encapsulates
+m -left-> c: encapsulates
+m -right-> Solver:encapsulates
+Solver -up-> sln:provides
+iv -left-> v:creates
+icf -up-> c:creates
+@enduml
