@@ -47,6 +47,16 @@
             <version>${mock-sever-netty-version}</version>
         </dependency>
         <dependency>
+            <groupId>org.mock-server</groupId>
+            <artifactId>mockserver-netty-no-dependencies</artifactId>
+            <version>${mock-sever-netty-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mock-server</groupId>
+            <artifactId>mockserver-client-java-no-dependencies</artifactId>
+            <version>${mock-sever-netty-version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>${apche-http-version}</version>
@@ -62,6 +72,12 @@
             <version>${spring-boot.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${org.json.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -78,11 +94,13 @@
     </build>
 
     <properties>
-        <mock-sever-netty-version>3.10.8</mock-sever-netty-version>
+        <mock-sever-netty-version>5.15.0</mock-sever-netty-version>
+        <apche-http-version>4.4.1</apche-http-version>
         <apche-http-version>4.4.1</apche-http-version>
         <spring-boot.version>3.3.2</spring-boot.version>
         <spring.webflux.version>6.1.13</spring.webflux.version>
         <jackson.version>2.18.0</jackson.version>
+        <org.json.version>20240303</org.json.version>
     </properties>
 
 </project>
