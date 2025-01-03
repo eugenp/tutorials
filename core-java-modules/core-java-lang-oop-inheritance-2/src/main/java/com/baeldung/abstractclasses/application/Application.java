@@ -1,12 +1,13 @@
 package com.baeldung.abstractclasses.application;
 
-import com.baeldung.abstractclasses.filereaders.BaseFileReader;
-import com.baeldung.abstractclasses.filereaders.LowercaseFileReader;
-import com.baeldung.abstractclasses.filereaders.UppercaseFileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import com.baeldung.abstractclasses.filereaders.BaseFileReader;
+import com.baeldung.abstractclasses.filereaders.LowercaseFileReader;
+import com.baeldung.abstractclasses.filereaders.UppercaseFileReader;
 
 public class Application {
 
