@@ -2,22 +2,17 @@
 spring:
   cloud:
     function:
-#     definition: enrichLogMessage;highlightMessage
-      definition: enrichLogMessage;highlightMessage|enrichLogMessage;processLogs
+     definition: enrichLogMessage;processLogs;highlightLogs
     stream:
       function.routing.enabled: true
       bindings:
         enrichLogMessage-in-0:
-          destination: input-topic
+          destination: queue.log.messages
           group: test-group
+          binder: local_rabbit
         enrichLogMessage-out-0:
-          destination: output-topic
-
-        highlightMessage|enrichLogMessage-in-0:
-          destination: input-topicX
-          group: test-group
-        highlightMessage|enrichLogMessage-out-0:
-          destination: output-topicX
+          destination: queue.pretty.log.messages
+          binder: local_rabbit
 
       binders:
         local_rabbit:

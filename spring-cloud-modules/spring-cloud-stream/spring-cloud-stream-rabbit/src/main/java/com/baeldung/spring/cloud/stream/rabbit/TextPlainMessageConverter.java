@@ -1,11 +1,11 @@
-package com.baeldung.spring.cloud.stream.rabbit.messages;
+package com.baeldung.spring.cloud.stream.rabbit;
 
 import org.springframework.messaging.Message;
 import org.springframework.messaging.converter.AbstractMessageConverter;
+import org.springframework.stereotype.Component;
 import org.springframework.util.MimeType;
 
-import com.baeldung.spring.cloud.stream.rabbit.model.LogMessage;
-
+@Component
 public class TextPlainMessageConverter extends AbstractMessageConverter {
 
     public TextPlainMessageConverter() {
