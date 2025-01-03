@@ -3,9 +3,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>core-java-string-conversions-2</artifactId>
+    <artifactId>core-java-string-conversions-4</artifactId>
     <packaging>jar</packaging>
-    <name>core-java-string-conversions-2</name>
+    <name>core-java-string-conversions-4</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -17,17 +17,17 @@
         <dependency>
             <groupId>com.ibm.icu</groupId>
             <artifactId>icu4j</artifactId>
-            <version>${icu.version}</version>
+            <version>${icu4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
+            <artifactId>commons-text</artifactId>
+            <version>${commons-text.version}</version>
         </dependency>
     </dependencies>
 
     <build>
-        <finalName>core-java-string-conversions-2</finalName>
+        <finalName>core-java-string-conversions-4</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -37,7 +37,9 @@
     </build>
 
     <properties>
-        <icu.version>64.2</icu.version>
+        <icu4j.version>61.1</icu4j.version>
+        <argLine>-Djava.locale.providers=COMPAT</argLine>
+        <commons-text.version>1.9</commons-text.version>
     </properties>
 
 </project>
