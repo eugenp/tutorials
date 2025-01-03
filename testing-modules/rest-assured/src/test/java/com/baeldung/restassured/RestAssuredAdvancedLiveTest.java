@@ -12,12 +12,12 @@ import io.restassured.response.Response;
 
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class RestAssuredAdvancedLiveTest {
     
-    @Before
+    @BeforeEach
     public void setup(){
         RestAssured.baseURI = "https://api.github.com";
         RestAssured.port = 443;
