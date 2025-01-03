@@ -5,10 +5,10 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.springbootmvc.SpringBootMvcApplication;
+import com.baeldung.students.SpringBootStudentsApplication;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = SpringBootMvcApplication.class)
+@SpringBootTest(classes = SpringBootStudentsApplication.class)
 public class SpringContextTest {
 
     @Test
