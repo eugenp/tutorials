@@ -30,6 +30,22 @@
             </exclusions>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+            <version>${h2.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
@@ -134,7 +150,8 @@
     </build>
 
     <properties>
-        <spring-data.version>2.3.2.RELEASE</spring-data.version>
+        <spring-data.version>3.1.5</spring-data.version>
+        <spring-boot.version>3.1.5</spring-boot.version>
         <org.thymeleaf-version>3.1.2.RELEASE</org.thymeleaf-version>
         <org.thymeleaf.extras-version>3.0.4.RELEASE</org.thymeleaf.extras-version>
         <thymeleaf-layout-dialect.version>2.4.1</thymeleaf-layout-dialect.version>

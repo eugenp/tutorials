@@ -37,12 +37,4 @@ public class StudentController {
         return "addStudent.html";
     }
 
-    @RequestMapping(value = "/listStudents", method = RequestMethod.GET)
-    public String listStudent(Model model) {
-
-        model.addAttribute("students", StudentUtils.buildStudents());
-
-        return "listStudents.html";
-    }
-
 }
