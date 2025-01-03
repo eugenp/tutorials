@@ -33,7 +33,7 @@
         <module>spring-webflux-amqp</module>
 
         <!--    the following submodules are commented out as a workaround in order to use java 19+ and SB 3.2.x -->
-        <!--    <module>spring-reactive-performance</module>-->
+        <!--    <module>spring-reactive-performance</module>--> <!-- JAVA-42050 -->
     </modules>
 
     <dependencyManagement>

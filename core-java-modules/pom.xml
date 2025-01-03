@@ -86,6 +86,7 @@
         <module>core-java-arrays-operations-advanced-3</module>
         <module>core-java-booleans</module>
         <module>core-java-char</module>
+        <!-- <module>core-java-classloader</module> --> <!-- JAVA-42033 -->
         <module>core-java-collections</module>
         <module>core-java-collections-2</module>
         <module>core-java-collections-3</module>
@@ -240,7 +241,7 @@
         <module>core-java-9-jigsaw</module>
         <!--<module>core-java-20</module>--> <!--JAVA-29040-->
         <module>core-java-21</module>
-        <!--<module>core-java-conditionals</module>--> <!--JAVA-20931-->
+        <!--<module>core-java-conditionals</module>--> <!-- JAVA-42035 -->
         <module>core-java-collections-set</module>
         <module>core-java-date-operations-1</module>
         <module>core-java-datetime-conversion</module>
