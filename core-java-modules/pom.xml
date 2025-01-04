@@ -195,6 +195,7 @@
         <module>core-java-numbers-7</module>
         <module>core-java-numbers-8</module>
         <module>core-java-numbers-9</module>
+        <module>core-java-numbers-10</module>
         <module>core-java-optional</module>
         <module>core-java-optional-2</module>
         <module>core-java-perf</module>
