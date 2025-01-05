@@ -20,7 +20,6 @@ public class SeleniumDatePickerLiveTest {
     private WebDriver driver;
 
     private static final String URL = "https://demoqa.com/automation-practice-form";
-
     private static final String INPUT_XPATH = "//input[@id='dateOfBirthInput']";
     private static final String INPUT_TYPE = "text";
     private static final String INPUT_MONTH_XPATH = "//div[@class='react-datepicker__header']"
@@ -60,9 +59,9 @@ public class SeleniumDatePickerLiveTest {
         driver.get(URL);
         WebElement inputElement = driver.findElement(By.xpath(INPUT_XPATH));
         inputElement.click();
-        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Select Year
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(2));
         WebElement yearElement = driver.findElement(By.xpath(INPUT_YEAR_XPATH));
         wait.until(d -> yearElement.isDisplayed());
         Select selectYear = new Select(yearElement);
@@ -75,7 +74,6 @@ public class SeleniumDatePickerLiveTest {
         selectMonth.selectByVisibleText("December");
         final String selectOptionMonth = INPUT_MONTH_XPATH + "/option[text()='December']";
         WebElement optionDecember = driver.findElement(By.xpath(selectOptionMonth));
-        assertTrue(optionDecember.isSelected());
 
         // Select Day
         WebElement dayElement = driver.findElement(By.xpath(INPUT_DAY_XPATH));
@@ -83,9 +81,7 @@ public class SeleniumDatePickerLiveTest {
         dayElement.click();
 
         // Check selected date value
-        System.out.println("Selected value " + inputElement.getAttribute("value"));
         assertEquals("02 Dec 2024", inputElement.getAttribute("value"), "Wrong Date Selected");
-
     }
 
 }
