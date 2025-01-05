@@ -15,7 +15,7 @@
     </parent>
 
     <modules>
-        <!-- <module>config</module> --> <!-- JAVA-39367 -->
+        <module>config</module>
         <module>discovery</module>
         <module>gateway</module>
         <module>gateway-2</module>
