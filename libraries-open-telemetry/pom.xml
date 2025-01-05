@@ -3,9 +3,9 @@
     xmlns="http://maven.apache.org/POM/4.0.0"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>open-telemetry</artifactId>
+    <artifactId>libraries-open-telemetry</artifactId>
     <packaging>pom</packaging>
-    <name>open-telemetry</name>
+    <name>libraries-open-telemetry</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

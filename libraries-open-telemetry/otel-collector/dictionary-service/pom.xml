@@ -13,8 +13,7 @@
     <artifactId>dictionary-service</artifactId>
     <version>0.0.1</version>
     <packaging>jar</packaging>
-
-    <name>Dictionary Service Application</name>
+    <name>dictionary-service</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
