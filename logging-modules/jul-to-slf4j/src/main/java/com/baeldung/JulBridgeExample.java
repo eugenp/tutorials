@@ -11,25 +11,28 @@ public class JulBridgeExample {
 
     private static final org.slf4j.Logger logger = LoggerFactory.getLogger(JulBridgeExample.class);
 
-
     public static void main(String[] args) {
+        // Test output before slf4j bridge was installed
+        julLog();
+
         // Remove existing handlers
         SLF4JBridgeHandler.removeHandlersForRootLogger();
 
         // Install SLF4J bridge
         SLF4JBridgeHandler.install();
 
+        // Test output after slf4j bridge was installed
         julLog();
 
         slf4jLog();
     }
 
-    public static void julLog() {
+    private static void julLog() {
         julLogger.info("This is a JUL info log message!");
         julLogger.warning("This is a JUL warning log message!");
     }
 
-    public static void slf4jLog() {
+    private static void slf4jLog() {
         logger.info("This is an SLF4J info log message!");
         logger.error("This is an SLF4J error log message!");
     }
