@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * 
  */
 @Controller
-public class StudentController {
+public class StudentFormController {
 
 
     @RequestMapping(value = "/student", method = RequestMethod.GET)
