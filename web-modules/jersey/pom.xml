@@ -19,21 +19,23 @@
             <artifactId>jersey-server</artifactId>
             <version>${jersey.version}</version>
         </dependency>
+        <!-- Jersey Dependencies -->
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
             <artifactId>jersey-client</artifactId>
-            <version>${jersey.version}</version>
+            <version>3.0.5</version> <!-- Use the appropriate version -->
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-json-jackson</artifactId>
-            <version>2.29.1</version>
+            <artifactId>jersey-media-json-binding</artifactId>
+            <version>3.0.5</version>
         </dependency>
+
+        <!-- JAXB (for XML support) -->
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
             <version>2.3.1</version>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
