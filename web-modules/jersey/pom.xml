@@ -23,24 +23,24 @@
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
             <artifactId>jersey-client</artifactId>
-            <version>3.0.5</version> <!-- Use the appropriate version -->
+            <version>${jersey.version}</version> <!-- Use the appropriate version -->
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-json-binding</artifactId>
-            <version>3.0.5</version>
+            <version>${jersey.version}</version>
         </dependency>
 
         <!-- JAXB (for XML support) -->
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
-            <version>2.3.1</version>
+            <version>${jaxb-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
-            <version>2.3.1</version>
+            <version>${jaxb-runtime.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.bundles</groupId>
@@ -123,6 +123,8 @@
 
     <properties>
         <jersey.version>3.1.5</jersey.version>
+        <jaxb-api.version>2.3.1</jaxb-api.version>
+        <jaxb-runtime.version>2.3.1</jaxb-runtime.version>
     </properties>
 
 </project>
