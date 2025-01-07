@@ -13,6 +13,9 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
 import java.io.InputStream;
+import org.glassfish.jersey.client.ClientConfig;
+import org.glassfish.jersey.test.spi.TestContainerFactory;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class XMLResponseTest extends JerseyTest {
 

@@ -9,6 +9,8 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.glassfish.jersey.server.ResourceConfig;
 import static org.junit.Assert.assertEquals;
+import org.glassfish.jersey.client.ClientConfig;
+import org.glassfish.jersey.test.spi.TestContainerFactory;
 
 public class GenericRestResponseTest extends JerseyTest {
 
