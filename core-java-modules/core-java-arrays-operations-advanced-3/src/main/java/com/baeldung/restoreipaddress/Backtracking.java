@@ -3,7 +3,7 @@ package com.baeldung.restoreipaddress;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Backtracking {
+public class Backtracking implements RestoreIPAddress {
     public List<String> restoreIPAddresses(String s) {
         List<String> result = new ArrayList<>();
         backtrack(result, s, new ArrayList<>(), 0);

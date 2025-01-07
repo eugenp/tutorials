@@ -3,7 +3,7 @@ package com.baeldung.restoreipaddress;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DynamicProgramming {
+public class DynamicProgramming implements RestoreIPAddress {
     public List<String> restoreIPAddresses(String s) {
         int n = s.length();
         if (n < 4 || n > 12) return new ArrayList<>();

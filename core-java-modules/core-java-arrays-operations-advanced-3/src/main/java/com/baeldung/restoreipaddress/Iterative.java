@@ -3,7 +3,7 @@ package com.baeldung.restoreipaddress;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Iterative {
+public class Iterative implements RestoreIPAddress {
     public List<String> restoreIPAddresses(String s) {
         List<String> result = new ArrayList<>();
 
@@ -29,9 +29,7 @@ public class Iterative {
     }
 
     private boolean isValid(String part) {
-        if (part.length() > 1 && part.charAt(0) == '0') {
-            return false;
-        }
+        if (part.length() > 1 && part.startsWith("0")) return false;
         int num = Integer.parseInt(part);
         return num >= 0 && num <= 255;
     }
