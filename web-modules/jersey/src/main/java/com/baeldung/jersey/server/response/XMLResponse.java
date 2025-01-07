@@ -1,4 +1,5 @@
 package com.baeldung.jersey.server.response;
+
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.Entity;
@@ -8,6 +9,8 @@ import jakarta.ws.rs.core.Response;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.InputStream;
 
 public class XMLResponse {
@@ -29,5 +32,36 @@ public class XMLResponse {
             response.close();
             client.close();
         }
+    }
+}
+
+@XmlRootElement
+class Product {
+    private int id;
+    private String name;
+
+    public Product() {}
+
+    public Product(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    @XmlElement
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @XmlElement
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
