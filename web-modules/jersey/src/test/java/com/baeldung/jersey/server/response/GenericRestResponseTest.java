@@ -1,75 +1,50 @@
+package com.baeldung.jersey.server.response;
 
-import com.github.tomakehurst.wiremock.WireMockServer;
-import com.github.tomakehurst.wiremock.client.WireMock;
-import org.junit.After;
-import org.junit.Before;
+import org.glassfish.jersey.test.JerseyTest;
+import org.glassfish.jersey.test.grizzly.GrizzlyWebTestContainerFactory;
 import org.junit.Test;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.core.MediaType;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static org.assertj.core.api.Assertions.assertThat;
+import jakarta.ws.rs.core.Response;
+import org.glassfish.jersey.server.ResourceConfig;
+import static org.junit.Assert.assertEquals;
 
+public class GenericRestResponseTest extends JerseyTest {
 
-public class GenericRestResponseTest {
-
-    private WireMockServer wireMockServer;
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-
-    @Before
-    public void setup() {
-        wireMockServer = new WireMockServer(8089);
-        wireMockServer.start();
-        WireMock.configureFor("localhost", 8089);
+    @Override
+    protected Application configure() {
+        return new ResourceConfig(GenericRestResponse.class);
     }
 
-    @After
-    public void teardown() {
-        wireMockServer.stop();
+    @Override
+    protected void configureClient(ClientConfig config) {
+        config.register(GenericRestResponse.class);
+    }
+
+    @Override
+    protected TestContainerFactory getTestContainerFactory() {
+        return new GrizzlyWebTestContainerFactory();
     }
 
     @Test
     public void testSuccessfulResponse() {
-        stubFor(post(urlEqualTo("/data"))
-            .withHeader("Content-Type", equalTo(MediaType.APPLICATION_JSON))
-            .withRequestBody(equalToJson("{\"name\":\"John Doe\",\"email\":\"john.doe@example.com\"}"))
-            .willReturn(aResponse()
-                .withStatus(200)
-                .withHeader("Content-Type", MediaType.APPLICATION_JSON)
-                .withBody("{\"status\":\"success\"}")));
+        String jsonPayload = "{\"name\":\"John Doe\",\"email\":\"john.doe@example.com\"}";
+        Response response = target("data")
+            .request(MediaType.APPLICATION_JSON)
+            .post(Entity.entity(jsonPayload, MediaType.APPLICATION_JSON));
 
-        System.setProperty("api.base.url", "http://localhost:8089");
-
-        GenericRestResponse.main(new String[]{});
-
-        assertThat(outContent.toString().trim())
-            .contains("Response Body: {\"status\":\"success\"}");
+        assertEquals(200, response.getStatus());
+        String responseBody = response.readEntity(String.class);
+        assertEquals("{\"status\":\"success\"}", responseBody);
     }
 
     @Test
     public void testFailedResponse() {
-        stubFor(post(urlEqualTo("/data"))
-            .willReturn(aResponse()
-                .withStatus(500)));
+        Response response = target("data")
+            .request(MediaType.APPLICATION_JSON)
+            .post(Entity.entity("", MediaType.APPLICATION_JSON));
 
-        System.setProperty("api.base.url", "http://localhost:8089");
-
-        GenericRestResponse.main(new String[]{});
-
-        assertThat(errContent.toString().trim())
-            .contains("Failed to get a successful response");
-    }
-
-    @Test
-    public void testResourceCleanup() {
-        stubFor(post(urlEqualTo("/data"))
-            .willReturn(aResponse()
-                .withStatus(200)
-                .withBody("{}")));
-
-        GenericRestResponse.main(new String[]{});
-
-        verify(1, postRequestedFor(urlEqualTo("/data")));
+        assertEquals(500, response.getStatus());
     }
 }

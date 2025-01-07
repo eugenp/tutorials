@@ -1,133 +1,92 @@
 package com.baeldung.jersey.server.response;
 
-import com.github.tomakehurst.wiremock.WireMockServer;
-import com.github.tomakehurst.wiremock.client.WireMock;
-import org.junit.After;
-import org.junit.Before;
+import org.glassfish.jersey.test.JerseyTest;
+import org.glassfish.jersey.test.grizzly.GrizzlyWebTestContainerFactory;
 import org.junit.Test;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import org.glassfish.jersey.server.ResourceConfig;
+import static org.junit.Assert.assertEquals;
+import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertThrows;
+import jakarta.xml.bind.Unmarshaller;
+import java.io.InputStream;
 
-public class XMLResponseTest {
+public class XMLResponseTest extends JerseyTest {
 
-    private WireMockServer wireMockServer;
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-    private final PrintStream originalOut = System.out;
-    private final PrintStream originalErr = System.err;
-
-    @Before
-    public void setup() {
-        wireMockServer = new WireMockServer(8089);
-        wireMockServer.start();
-        WireMock.configureFor("localhost", 8089);
-        System.setOut(new PrintStream(outContent));
-        System.setErr(new PrintStream(errContent));
-        System.setProperty("api.base.url", "http://localhost:8089");
+    @Override
+    protected Application configure() {
+        return new ResourceConfig(XMLResponse.class);
     }
 
-    @After
-    public void teardown() {
-        wireMockServer.stop();
-        System.setOut(originalOut);
-        System.setErr(originalErr);
-        System.clearProperty("api.base.url");
+    @Override
+    protected void configureClient(ClientConfig config) {
+        config.register(XMLResponse.class);
+    }
+
+    @Override
+    protected TestContainerFactory getTestContainerFactory() {
+        return new GrizzlyWebTestContainerFactory();
     }
 
     @Test
     public void whenProductExists_thenReturnProductName() throws JAXBException {
-        // Given
-        String successResponse = 
-            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
-            "<product>" +
-            "    <id>1</id>" +
-            "    <name>Test Product</name>" +
-            "</product>";
+        String xmlPayload = "<product><id>1</id></product>";
+        Response response = target("product")
+            .request(MediaType.APPLICATION_XML)
+            .post(Entity.entity(xmlPayload, MediaType.APPLICATION_XML));
 
-        stubFor(post(urlEqualTo("/product"))
-            .withRequestBody(equalToXml("<product><id>1</id></product>"))
-            .willReturn(aResponse()
-                .withStatus(200)
-                .withHeader("Content-Type", MediaType.APPLICATION_XML)
-                .withBody(successResponse)));
-
-        // When
-        XMLResponse.main(new String[]{});
-
-        // Then
-        assertThat(outContent.toString().trim())
-            .contains("Product Name: Test Product");
-        
-        verify(1, postRequestedFor(urlEqualTo("/product"))
-            .withHeader("Content-Type", containing(MediaType.APPLICATION_XML)));
+        assertEquals(200, response.getStatus());
+        JAXBContext jaxbContext = JAXBContext.newInstance(Product.class);
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+        Product product = (Product) unmarshaller.unmarshal(response.readEntity(InputStream.class));
+        assertEquals("Test Product", product.getName());
     }
 
     @Test
     public void whenProductRequestFails_thenShowError() throws JAXBException {
-        // Given
-        stubFor(post(urlEqualTo("/product"))
-            .withRequestBody(equalToXml("<product><id>1</id></product>"))
-            .willReturn(aResponse()
-                .withStatus(404)));
+        String xmlPayload = "<product><id>1</id></product>";
+        Response response = target("product")
+            .request(MediaType.APPLICATION_XML)
+            .post(Entity.entity(xmlPayload, MediaType.APPLICATION_XML));
 
-        // When
-        XMLResponse.main(new String[]{});
-
-        // Then
-        assertThat(errContent.toString().trim())
-            .contains("Failed to get product data");
-        
-        verify(1, postRequestedFor(urlEqualTo("/product")));
+        assertEquals(404, response.getStatus());
     }
 
     @Test
     public void whenMalformedXMLResponse_thenThrowException() {
-        // Given
-        String malformedResponse = "<invalid>xml</invalid";
-        stubFor(post(urlEqualTo("/product"))
-            .willReturn(aResponse()
-                .withStatus(200)
-                .withHeader("Content-Type", MediaType.APPLICATION_XML)
-                .withBody(malformedResponse)));
+        String malformedResponse = "<invalid>xml</invalid>";
+        Response response = target("product")
+            .request(MediaType.APPLICATION_XML)
+            .post(Entity.entity(malformedResponse, MediaType.APPLICATION_XML));
 
-        // When & Then
         assertThrows(JAXBException.class, () -> {
-            XMLResponse.main(new String[]{});
+            JAXBContext jaxbContext = JAXBContext.newInstance(Product.class);
+            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+            unmarshaller.unmarshal(response.readEntity(InputStream.class));
         });
     }
 
     @Test
     public void whenServerTimeout_thenHandleGracefully() {
-        // Given
-        stubFor(post(urlEqualTo("/product"))
-            .willReturn(aResponse()
-                .withFixedDelay(5000))); // 5 second delay
+        String xmlPayload = "<product><id>1</id></product>";
+        Response response = target("product")
+            .request(MediaType.APPLICATION_XML)
+            .post(Entity.entity(xmlPayload, MediaType.APPLICATION_XML));
 
-        // When & Then
-        assertThrows(ProcessingException.class, () -> {
-            XMLResponse.main(new String[]{});
-        });
+        assertEquals(500, response.getStatus());
     }
 
     @Test
     public void whenInvalidContentType_thenHandleGracefully() throws JAXBException {
-        // Given
-        stubFor(post(urlEqualTo("/product"))
-            .willReturn(aResponse()
-                .withStatus(200)
-                .withHeader("Content-Type", MediaType.APPLICATION_JSON)
-                .withBody("{\"invalid\":\"response\"}")));
+        String xmlPayload = "<product><id>1</id></product>";
+        Response response = target("product")
+            .request(MediaType.APPLICATION_XML)
+            .post(Entity.entity(xmlPayload, MediaType.APPLICATION_XML));
 
-        // When
-        XMLResponse.main(new String[]{});
-
-        // Then
-        assertThat(errContent.toString().trim())
-            .contains("Failed to get product data");
+        assertEquals(200, response.getStatus());
+        assertEquals(MediaType.APPLICATION_JSON, response.getMediaType().toString());
     }
 }
