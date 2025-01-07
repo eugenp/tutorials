@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration xmlns:xi="http://www.w3.org/2001/XInclude"
-    packages="com.baeldung" status="WARN">
+               packages="com.baeldung" status="WARN">
     <Appenders>
         <xi:include
-            href="log4j2-includes/console-appender_pattern-layout_colored.xml" />
+                href="log4j2-includes/console-appender_pattern-layout_colored.xml" />
         <Console name="ConsoleAppender" target="SYSTEM_OUT">
             <PatternLayout pattern="%style{%date{DEFAULT}}{yellow} %highlight{%-5level}{FATAL=bg_red, ERROR=red, WARN=yellow, INFO=green} %message"/>
         </Console>
@@ -13,15 +13,15 @@
         </Console>
         <Console name="ConsoleGreenAppender" target="SYSTEM_OUT">
             <PatternLayout
-                pattern="%style{userId=%X{userId}:}{white} %style{%message}{green}%n" />
+                    pattern="%style{userId=%X{userId}:}{white} %style{%message}{green}%n" />
         </Console>
         <Console name="ConsoleJSONAppender" target="SYSTEM_OUT">
-            <JsonLayout complete="false" compact="false">
-                <KeyValuePair key="myCustomField" value="myCustomValue" />
-            </JsonLayout>
+            <JsonTemplateLayout  eventTemplateUri="classpath:JsonLayout.json">
+                <EventTemplateAdditionalField key="myCustomField" value="myCustomValue" />
+            </JsonTemplateLayout>
         </Console>
         <File name="JSONLogfileAppender" fileName="${sys:logging.folder.path}" >
-            <JSONLayout compact="true" eventEol="true" />
+            <JsonTemplateLayout  eventTemplateUri="classpath:JsonLayout.json" />
             <BurstFilter level="INFO" rate="2" maxBurst="10" />
         </File>
         <Async name="AsyncAppender" bufferSize="80">
@@ -33,8 +33,8 @@
             <Failovers> <AppenderRef ref="ConsoleAppender" /> </Failovers> </Failover> -->
         <JDBC name="JDBCAppender" tableName="logs">
             <ConnectionFactory
-                class="com.baeldung.logging.log4j2.tests.jdbc.ConnectionFactory"
-                method="getConnection" />
+                    class="com.baeldung.logging.log4j2.tests.jdbc.ConnectionFactory"
+                    method="getConnection" />
             <Column name="when" isEventTimestamp="true" />
             <Column name="logger" pattern="%logger" />
             <Column name="level" pattern="%level" />
@@ -42,11 +42,11 @@
             <Column name="throwable" pattern="%ex{full}" />
         </JDBC>
         <RollingFile name="XMLRollingfileAppender" fileName="target/logfile.xml"
-            filePattern="target/logfile-%d{yyyy-MM-dd}-%i.log.gz">
+                     filePattern="target/logfile-%d{yyyy-MM-dd}-%i.log.gz">
             <XMLLayout />
             <Policies>
                 <SizeBasedTriggeringPolicy
-                    size="17 kB" />
+                        size="17 kB" />
             </Policies>
         </RollingFile>
         <MapAppender name="MapAppender"/>
@@ -59,18 +59,18 @@
     </Appenders>
     <Loggers>
         <Logger name="CONSOLE_PATTERN_APPENDER_MARKER" level="TRACE"
-            additivity="false">
+                additivity="false">
             <AppenderRef ref="ConsoleRedAppender" />
         </Logger>
         <Logger name="CONSOLE_PATTERN_APPENDER_THREAD_CONTEXT"
-            level="INFO" additivity="false">
+                level="INFO" additivity="false">
             <AppenderRef ref="ConsoleGreenAppender" />
             <ThreadContextMapFilter>
                 <KeyValuePair key="userId" value="1000" />
             </ThreadContextMapFilter>
         </Logger>
         <Logger name="ASYNC_JSON_FILE_APPENDER" level="INFO"
-            additivity="false">
+                additivity="false">
             <AppenderRef ref="AsyncAppender" />
         </Logger>
         <!-- <Logger name="FAIL_OVER_SYSLOG_APPENDER" level="INFO" additivity="false"> 
@@ -79,11 +79,11 @@
             <AppenderRef ref="JDBCAppender" />
         </Logger>
         <Logger name="XML_ROLLING_FILE_APPENDER" level="INFO"
-            additivity="false">
+                additivity="false">
             <AppenderRef ref="XMLRollingfileAppender" />
         </Logger>
         <Logger name="CONSOLE_JSON_APPENDER" level="TRACE"
-            additivity="false">
+                additivity="false">
             <AppenderRef ref="ConsoleJSONAppender" />
         </Logger>
         <Logger name="com.baeldung.logging.log4j2.plugins" level="INFO">
