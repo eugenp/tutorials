@@ -1,15 +1,16 @@
+package com.baeldung.jersey.server.response;
+
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-package com.baeldung.jersey.server.response;
 
 
 
