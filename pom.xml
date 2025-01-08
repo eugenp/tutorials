@@ -1302,6 +1302,7 @@
                 <module>persistence-modules/spring-data-gemfire</module> <!-- Won't Fix in JAVA-14499 -->
                 <module>persistence-modules/spring-jooq</module> <!--JAVA-31341-->
                 <module>rule-engines-modules/jess</module> <!-- requires dependencies which are not publicly available -->
+                <module>persistence-modules/jdbc/solving-class-not-found-exception-mysql-jdbc/junit5-jupiter-starter-maven</module> <!-- JAVA-42058 -->
                 <module>patterns-modules/axon</module> <!-- JAVA-42358 -->
                 <module>core-java-modules/core-java-14</module> <!-- JAVA-26056 -->
                 <module>core-java-modules/core-java-17</module> <!-- JAVA-26056 -->
@@ -1336,7 +1337,11 @@
                 <module>persistence-modules/spring-boot-persistence-5</module> <!-- JAVA-42046 -->
                 <module>persistence-modules/spring-data-elasticsearch</module> <!-- JAVA-42359 -->
                 <module>persistence-modules/spring-data-mongodb-2</module> <!-- JAVA-42145 -->
+                <module>quarkus-modules/mongo-db</module> <!-- JAVA-42048 -->
+                <module>quarkus-modules/quarkus-rbac</module> <!-- JAVA-42048 -->
+                <module>quarkus-modules/consume-rest-api/consume-api</module>
                 <module>maven-modules/maven-exec-plugin</module> <!-- JAVA-42059 -->
+                <module>maven-modules/dependencygraph</module> <!-- JAVA-42057 -->
                 <module>spring-boot-modules/spring-boot-swagger-2</module> <!-- JAVA-42060 -->
                 <module>spring-boot-modules/spring-boot-groovy</module> <!-- JAVA-42052 -->
                 <module>spring-boot-modules/spring-boot-data-3</module> <!-- JAVA-42051 -->
@@ -1372,6 +1377,7 @@
                 <module>persistence-modules/spring-data-gemfire</module> <!-- Won't Fix in JAVA-14499 -->
                 <module>persistence-modules/spring-jooq</module> <!--JAVA-31341-->
                 <module>rule-engines-modules/jess</module> <!-- requires dependencies which are not publicly available -->
+                <module>persistence-modules/jdbc/solving-class-not-found-exception-mysql-jdbc/junit5-jupiter-starter-maven</module> <!-- JAVA-42058 -->
                 <module>patterns-modules/axon</module> <!-- JAVA-42358 -->
                 <module>core-java-modules/core-java-14</module> <!-- JAVA-26056 -->
                 <module>core-java-modules/core-java-17</module> <!-- JAVA-26056 -->
@@ -1406,7 +1412,11 @@
                 <module>persistence-modules/spring-boot-persistence-5</module> <!-- JAVA-42046 -->
                 <module>persistence-modules/spring-data-elasticsearch</module> <!-- JAVA-42359 -->
                 <module>persistence-modules/spring-data-mongodb-2</module> <!-- JAVA-42145 -->
+                <module>quarkus-modules/mongo-db</module> <!-- JAVA-42048 -->
+                <module>quarkus-modules/quarkus-rbac</module> <!-- JAVA-42048 -->
+                <module>quarkus-modules/consume-rest-api/consume-api</module>
                 <module>maven-modules/maven-exec-plugin</module> <!-- JAVA-42059 -->
+                <module>maven-modules/dependencygraph</module> <!-- JAVA-42057 -->
                 <module>spring-boot-modules/spring-boot-swagger-2</module> <!-- JAVA-42060 -->
                 <module>spring-boot-modules/spring-boot-groovy</module> <!-- JAVA-42052 -->
                 <module>spring-boot-modules/spring-boot-data-3</module> <!-- JAVA-42051 -->

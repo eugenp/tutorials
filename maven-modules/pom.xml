@@ -18,6 +18,7 @@
         <module>animal-sniffer-mvn-plugin</module>
         <module>compiler-plugin-java-9</module>
         <module>dependency-ordering</module>
+        <!-- <module>dependencygraph</module> --> <!-- JAVA-42057 -->
         <module>dependency-exclusion</module>
         <module>host-maven-repo-example</module>
         <module>jacoco-coverage-aggregation</module>
