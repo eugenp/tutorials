@@ -26,7 +26,7 @@ public class AnnotationDrivenEventListener {
         hitSuccessfulEventHandler = true;
     }
 
-    @TransactionalEventListener(phase = TransactionPhase.BEFORE_COMMIT, fallbackExecution = true)
+    @TransactionalEventListener(phase = TransactionPhase.BEFORE_COMMIT)
     public void handleCustom(final CustomSpringEvent event) {
         System.out.println("Handling event inside a transaction BEFORE COMMIT.");
         hitCustomEventHandler = true;
