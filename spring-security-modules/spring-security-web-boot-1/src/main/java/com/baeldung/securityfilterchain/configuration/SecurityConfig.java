@@ -24,7 +24,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf->csrf.disable())
-            .requiresChannel(channel -> channel.anyRequest().requiresSecure())
+            // .requiresChannel(channel -> channel.anyRequest().requiresSecure())
           .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
                   authorizationManagerRequestMatcherRegistry.requestMatchers(HttpMethod.DELETE).hasRole("ADMIN")
                           .requestMatchers("/admin/**").hasAnyRole("ADMIN")
