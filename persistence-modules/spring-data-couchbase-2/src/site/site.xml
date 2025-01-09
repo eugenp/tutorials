@@ -6,11 +6,11 @@
     	<href>index.html</href>
 	</bannerLeft>
 
-  <skin>
-    <groupId>org.springframework.maven.skins</groupId>
-    <artifactId>maven-spring-skin</artifactId>
-    <version>1.0.5</version>
-  </skin>
+	<skin>
+		<groupId>org.apache.maven.skins</groupId>
+		<artifactId>maven-fluido-skin</artifactId>
+		<version>2.0.1</version>
+	</skin>
 
 	<body>
 
