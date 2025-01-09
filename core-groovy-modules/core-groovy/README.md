@@ -10,4 +10,5 @@ This module contains articles about core Groovy concepts
 - [Closures in Groovy](https://www.baeldung.com/groovy-closures)
 - [Pattern Matching in Strings in Groovy](https://www.baeldung.com/groovy-pattern-matching)
 - [Working with XML in Groovy](https://www.baeldung.com/groovy-xml)
-- [[More -->]](/core-groovy-2)
+- More articles: [[next -->]](../core-groovy-2)
+
