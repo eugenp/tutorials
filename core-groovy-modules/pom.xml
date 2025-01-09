@@ -16,6 +16,7 @@
     <modules>
         <module>core-groovy</module>
         <module>core-groovy-2</module> <!-- We cannot upgrade this module to the JDK 21 since groovy-wslite and other dependencies are not updated for a while. JAVA-37702-->
+        <module>core-groovy-3</module>
         <module>core-groovy-collections</module>
         <module>core-groovy-strings</module>
     </modules>
