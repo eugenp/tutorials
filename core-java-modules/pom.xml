@@ -86,6 +86,7 @@
         <module>core-java-arrays-operations-advanced-3</module>
         <module>core-java-booleans</module>
         <module>core-java-char</module>
+        <!-- <module>core-java-classloader</module> --> <!-- JAVA-42033 -->
         <module>core-java-collections</module>
         <module>core-java-collections-2</module>
         <module>core-java-collections-3</module>
@@ -113,6 +114,7 @@
         <module>core-java-concurrency-advanced-2</module>
         <module>core-java-concurrency-advanced-3</module>
         <module>core-java-concurrency-advanced-4</module>
+        <module>core-java-concurrency-advanced-7</module>
         <module>core-java-concurrency-basic</module>
         <module>core-java-concurrency-basic-2</module>
         <module>core-java-concurrency-basic-3</module>
@@ -121,14 +123,17 @@
         <module>core-java-concurrency-collections-2</module>
         <module>core-java-console</module>
         <module>core-java-datetime-string-2</module>
+        <module>core-java-date-operations</module>
         <module>core-java-date-operations-2</module>
         <module>core-java-date-operations-3</module>
         <module>core-java-date-operations-4</module>
+        <module>core-java-date-operations-5</module>
         <module>core-java-documentation</module>
         <module>core-java-exceptions</module>
         <module>core-java-exceptions-2</module>
         <module>core-java-exceptions-3</module>
         <!-- <module>core-java-exceptions-4</module> --> <!-- failing after upgrade to jdk21 -->
+        <module>core-java-exceptions-5</module>
         <module>core-java-function</module>
         <module>core-java-functional</module>
         <module>core-java-hex</module>
@@ -192,6 +197,7 @@
         <module>core-java-numbers-7</module>
         <module>core-java-numbers-8</module>
         <module>core-java-numbers-9</module>
+        <module>core-java-numbers-10</module>
         <module>core-java-optional</module>
         <module>core-java-optional-2</module>
         <module>core-java-perf</module>
@@ -219,6 +225,7 @@
         <module>core-java-string-conversions</module>
         <module>core-java-string-conversions-2</module>
         <module>core-java-string-conversions-3</module>
+        <module>core-java-string-conversions-4</module>
         <module>core-java-string-operations</module>
         <module>core-java-string-operations-2</module>
         <module>core-java-string-operations-6</module>
@@ -231,18 +238,19 @@
         <module>core-java-regex</module>
         <module>core-java-regex-2</module>
         <module>core-java-regex-3</module>
+        <module>core-java-regex-4</module>
         <module>core-java-uuid</module>
         <module>core-java-collections-maps-6</module>
         <module>core-java-records</module>
         <module>core-java-9-jigsaw</module>
         <!--<module>core-java-20</module>--> <!--JAVA-29040-->
         <module>core-java-21</module>
-        <!--<module>core-java-conditionals</module>--> <!--JAVA-20931-->
+        <!--<module>core-java-conditionals</module>--> <!-- JAVA-42035 -->
         <module>core-java-collections-set</module>
-        <module>core-java-date-operations-1</module>
         <module>core-java-datetime-conversion</module>
         <module>core-java-datetime-conversion-2</module>
         <module>core-java-datetime-conversion-3</module>
+        <module>core-java-datetime-conversion-4</module>
         <module>core-java-httpclient</module>
         <module>java-native</module>
         <module>java-rmi</module>
