@@ -25,6 +25,12 @@
             <version>${groovy-all.version}</version>
             <type>pom</type>
         </dependency>
+        <dependency>
+            <groupId>org.spockframework</groupId>
+            <artifactId>spock-core</artifactId>
+            <version>${spock-core.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
