@@ -2,34 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  <groupId>com.splunk</groupId>
+  <artifactId>splunk-with-log4j2</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>splunk-with-log4j2</name>
+  <description>Demo project for Splunk with Spring Boot</description>
+
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>3.3.4</version>
     <relativePath/>
   </parent>
-  <groupId>com.splunk</groupId>
-  <artifactId>log4j</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>log4j</name>
-  <description>Demo project for Splunk with Spring Boot</description>
-  <properties>
-    <java.version>17</java.version>
-    <splunk-logging.version>1.8.0</splunk-logging.version>
-  </properties>
-
-  <repositories>
-    <repository>
-      <id>splunk-artifactory</id>
-      <name>Splunk Releases</name>
-      <url>https://splunk.jfrog.io/splunk/ext-releases-local</url>
-    </repository>
-    <repository>
-      <id>central</id>
-      <name>Central Repository</name>
-      <url>https://repo1.maven.org/maven2/</url>
-    </repository>
-  </repositories>
 
   <dependencies>
     <dependency>
@@ -72,5 +56,22 @@
       </plugin>
     </plugins>
   </build>
+
+  <repositories>
+    <repository>
+      <id>splunk-artifactory</id>
+      <name>Splunk Releases</name>
+      <url>https://splunk.jfrog.io/splunk/ext-releases-local</url>
+    </repository>
+    <repository>
+      <id>central</id>
+      <name>Central Repository</name>
+      <url>https://repo1.maven.org/maven2/</url>
+    </repository>
+  </repositories>
+
+  <properties>
+    <splunk-logging.version>1.8.0</splunk-logging.version>
+  </properties>
 
 </project>

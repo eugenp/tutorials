@@ -14,23 +14,4 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.inferred</groupId>
-            <artifactId>freebuilder</artifactId>
-            <version>${freebuilder.version}</version>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.findbugs</groupId>
-            <artifactId>jsr305</artifactId>
-            <version>${javax.annotations.version}</version>
-        </dependency>
-    </dependencies>
-
-    <properties>
-        <freebuilder.version>2.4.1</freebuilder.version>
-        <javax.annotations.version>3.0.2</javax.annotations.version>
-    </properties>
-
 </project>

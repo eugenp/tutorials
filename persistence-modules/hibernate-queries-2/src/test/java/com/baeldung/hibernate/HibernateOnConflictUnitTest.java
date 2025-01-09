@@ -48,7 +48,7 @@ public class HibernateOnConflictUnitTest {
 
         long rowCountBefore = getRowCount();
         int updated = session.createMutationQuery("""
-            insert into Student (studentId, name) values (2, 'Sean')
+            insert into Student (studentId, name, age) values (2, 'Sean', 20)
             on conflict(studentId) do update
             set name = excluded.name
             """)
@@ -64,7 +64,7 @@ public class HibernateOnConflictUnitTest {
 
         long rowCountBefore = getRowCount();
         int updated = session.createMutationQuery("""
-            insert into Student (studentId, name) values (1, 'Sean')
+            insert into Student (studentId, name, age) values (1, 'Sean', 20)
             on conflict(studentId) do update
             set name = excluded.name
             """)
@@ -79,7 +79,7 @@ public class HibernateOnConflictUnitTest {
     public void givenInsertQueryWithOnConflictClause_whenNoConflcitDoNothing_ThenInsertNewRecord() {
         long rowCountBefore = getRowCount();
         int updated = session.createMutationQuery("""
-            insert into Student (studentId, name) values (2, 'Sean')
+            insert into Student (studentId, name, age) values (2, 'Sean', 20)
             on conflict do nothing
             """)
             .executeUpdate();
@@ -93,7 +93,7 @@ public class HibernateOnConflictUnitTest {
     public void givenInsertQueryWithOnConflictClause_whenOnConflcitDoNothing_ThenErrorIsLogged() {
         long rowCountBefore = getRowCount();
         int updated = session.createMutationQuery("""
-            insert into Student (studentId, name) values (1, 'Sean')
+            insert into Student (studentId, name, age) values (1, 'Sean', 20)
             on conflict do nothing
             """)
             .executeUpdate();
