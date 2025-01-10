@@ -5,4 +5,4 @@
 - [Unnamed Patterns and Variables in Java 21](https://www.baeldung.com/java-unnamed-patterns-variables)
 - [JFR View Command in Java 21](https://www.baeldung.com/java-flight-recorder-view)
 - [New Features in Java 21](https://www.baeldung.com/java-lts-21-new-features)
-- [Java 21 Improved Emoji Support](https://www.baeldung.com/java-21-improved-emoji-support)
+- [Java Improved Emoji Support](https://www.baeldung.com/java-21-improved-emoji-support)
