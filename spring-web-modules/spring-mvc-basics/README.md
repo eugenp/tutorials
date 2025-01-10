@@ -7,7 +7,7 @@ their own module.
 The "REST With Spring" Classes: https://bit.ly/restwithspring
 
 ### Relevant Articles: 
-- [Spring MVC Tutorial](https://www.baeldung.com/spring-mvc-tutorial)
+
 - [An Intro to the Spring DispatcherServlet](https://www.baeldung.com/spring-dispatcherservlet)
 - [The Spring @Controller and @RestController Annotations](https://www.baeldung.com/spring-controller-vs-restcontroller)
 - [Spring MVC Custom Validation](https://www.baeldung.com/spring-mvc-custom-validator)
