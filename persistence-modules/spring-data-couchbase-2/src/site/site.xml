@@ -8,8 +8,8 @@
 
   <skin>
     <groupId>org.apache.maven.skins</groupId>
-	<artifactId>maven-fluido-skin</artifactId>
-	<version>2.0.1</version>
+    <artifactId>maven-fluido-skin</artifactId>
+    <version>2.0.1</version>
   </skin>
 
 	<body>
