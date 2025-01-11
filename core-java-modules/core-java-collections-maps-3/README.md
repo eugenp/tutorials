@@ -9,7 +9,6 @@ This module contains articles about Map data structures in Java.
 - [Collections.synchronizedMap vs. ConcurrentHashMap](https://www.baeldung.com/java-synchronizedmap-vs-concurrenthashmap)
 - [Java HashMap Load Factor](https://www.baeldung.com/java-hashmap-load-factor)
 - [Converting Java Properties to HashMap](https://www.baeldung.com/java-convert-properties-to-hashmap)
-- [Get Values and Keys as ArrayList From a HashMap](https://www.baeldung.com/java-values-keys-arraylists-hashmap)
 - [Remove Duplicate Values From HashMap in Java](https://www.baeldung.com/java-hashmap-delete-duplicates)
 - [Create an Empty Map in Java](https://www.baeldung.com/java-create-empty-map)
 - [How to Check If a Key Exists in a Map](https://www.baeldung.com/java-map-key-exists)

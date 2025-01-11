@@ -1,4 +1,4 @@
-package com.baeldung.map.hashmap.kvtolist;
+package com.baeldung.map.kvtolist;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
