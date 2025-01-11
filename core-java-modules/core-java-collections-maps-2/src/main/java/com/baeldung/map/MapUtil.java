@@ -19,7 +19,7 @@ public class MapUtil {
         return map.entrySet()
                 .stream()
                 .filter(entry -> value.equals(entry.getValue()))
-                .map(Map.Entry::getKey);
+                .map(Entry::getKey);
     }
     
     public static <K, V> Set<K> getKeys(Map<K, V> map, V value) {

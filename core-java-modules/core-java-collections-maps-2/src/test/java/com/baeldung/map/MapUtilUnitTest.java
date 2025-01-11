@@ -3,10 +3,7 @@
  */
 package com.baeldung.map;
 
-import com.google.common.collect.HashBiMap;
-import org.apache.commons.collections4.BidiMap;
-import org.apache.commons.collections4.bidimap.DualHashBidiMap;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -14,7 +11,11 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
+import org.apache.commons.collections4.BidiMap;
+import org.apache.commons.collections4.bidimap.DualHashBidiMap;
+import org.junit.Test;
+
+import com.google.common.collect.HashBiMap;
 
 /**
  * @author swpraman

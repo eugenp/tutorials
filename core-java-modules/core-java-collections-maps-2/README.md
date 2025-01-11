@@ -14,4 +14,5 @@ This module contains articles about Map data structures in Java.
 - [Immutable Map Implementations in Java](https://www.baeldung.com/java-immutable-maps)
 - [A Guide to TreeMap in Java](https://www.baeldung.com/java-treemap)
 - [A Guide to LinkedHashMap in Java](https://www.baeldung.com/java-linked-hashmap)
+- [Get the Key for a Value from a Java Map](https://www.baeldung.com/java-map-key-from-value)
 - More articles: [[<-- prev]](/core-java-modules/core-java-collections-maps) [[next -->]](/core-java-modules/core-java-collections-maps-3)
