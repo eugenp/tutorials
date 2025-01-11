@@ -24,11 +24,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-text</artifactId>
-            <version>${commons-text.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -43,7 +38,6 @@
 
     <properties>
         <icu.version>64.2</icu.version>
-        <commons-text.version>1.9</commons-text.version>
     </properties>
 
 </project>

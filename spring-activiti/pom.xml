@@ -75,7 +75,7 @@
     </build>
 
     <properties>
-        <activiti.version>8.0.0</activiti.version>
+        <activiti.version>8.6.0</activiti.version>
     </properties>
 
 </project>
