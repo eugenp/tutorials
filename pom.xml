@@ -713,6 +713,7 @@
 	            <module>libraries-http-3</module>
                 <module>libraries-io</module>
                 <module>libraries-llms</module>
+                <module>libraries-open-telemetry</module>
                 <module>libraries-primitive</module>
                 <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
@@ -726,6 +727,7 @@
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>lucene</module>
+                <module>lwjgl</module>
                 <module>mapstruct</module>
                 <module>mapstruct-2</module>
                 <module>maven-modules</module>
@@ -1094,6 +1096,7 @@
                 <module>libraries-http-3</module>
                 <module>libraries-io</module>
                 <module>libraries-llms</module>
+                <module>libraries-open-telemetry</module>
                 <module>libraries-primitive</module>
                 <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
@@ -1107,6 +1110,7 @@
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>lucene</module>
+                <module>lwjgl</module>
                 <module>mapstruct</module>
                 <module>mapstruct-2</module>
                 <module>maven-modules</module>
@@ -1299,7 +1303,15 @@
             </build>
 
             <modules>
-                <!-- from jdk8 profile -->
+                <module>persistence-modules/spring-data-gemfire</module> <!-- Won't Fix in JAVA-14499 -->
+                <module>persistence-modules/spring-jooq</module> <!--JAVA-31341-->
+                <module>rule-engines-modules/jess</module> <!-- requires dependencies which are not publicly available -->
+                <module>persistence-modules/jdbc/solving-class-not-found-exception-mysql-jdbc/junit5-jupiter-starter-maven</module> <!-- JAVA-42058 -->
+                <module>patterns-modules/axon</module> <!-- JAVA-42358 -->
+                <module>core-java-modules/core-java-14</module> <!-- JAVA-26056 -->
+                <module>core-java-modules/core-java-17</module> <!-- JAVA-26056 -->
+                <module>core-java-modules/core-java-19</module> <!-- JAVA-26056 -->
+                <module>core-java-modules/core-java-20</module> <!--JAVA-29040-->
                 <module>clojure-modules</module> <!-- Not a maven project -->
                 <module>ethereum</module> <!-- JAVA-6001 -->
                 <module>gradle-modules</module> <!-- Not a maven project -->
@@ -1307,12 +1319,8 @@
                 <module>pants</module> <!-- Not a maven project -->
                 <module>spring-cloud-cli</module> <!-- Not a maven project -->
                 <module>spring-roo</module> <!-- Not supported JAVA-17327 -->
-
-                <!-- from heavy profile -->
                 <module>apache-spark</module> <!-- JAVA-42030 -->
                 <module>jhipster-modules/jhipster-uaa</module><!-- failing after upgrading to jdk17-->
-
-                <!-- from jdk17 profile -->
                 <module>libraries-security</module> <!-- JAVA-40889 -->
                 <module>persistence-modules/java-harperdb</module> <!-- This module requires a library to download manually --> <!-- JAVA-42044 -->
                 <module>spring-cloud-modules/spring-cloud-data-flow</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42054 -->
@@ -1323,8 +1331,6 @@
                 <module>spring-swagger-codegen-modules/openapi-custom-generator</module>
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> <!-- cannot add the individual modules here because the order is not guaranteed -->
                 <module>persistence-modules/spring-data-cassandra</module>   <!-- failing after upgrading to jdk17. JDK 17 compatibility in progress CASSANDRA-16895 --> <!-- JAVA-42047 -->
-
-                <!-- from jdk21 profile -->
                 <module>language-interop</module>
                 <module>spring-scheduling</module> <!-- BAEL-8382 -->
                 <module>spring-security-modules/spring-security-web-login</module> <!-- JAVA-42041 -->
@@ -1335,14 +1341,23 @@
                 <module>persistence-modules/spring-boot-persistence-5</module> <!-- JAVA-42046 -->
                 <module>persistence-modules/spring-data-elasticsearch</module> <!-- JAVA-42359 -->
                 <module>persistence-modules/spring-data-mongodb-2</module> <!-- JAVA-42145 -->
+                <module>quarkus-modules/mongo-db</module> <!-- JAVA-42048 -->
+                <module>quarkus-modules/quarkus-rbac</module> <!-- JAVA-42048 -->
+                <module>quarkus-modules/consume-rest-api/consume-api</module>
                 <module>maven-modules/maven-exec-plugin</module> <!-- JAVA-42059 -->
+                <module>maven-modules/dependencygraph</module> <!-- JAVA-42057 -->
                 <module>spring-boot-modules/spring-boot-swagger-2</module> <!-- JAVA-42060 -->
                 <module>spring-boot-modules/spring-boot-groovy</module> <!-- JAVA-42052 -->
                 <module>spring-boot-modules/spring-boot-data-3</module> <!-- JAVA-42051 -->
                 <module>spring-reactive-modules/spring-reactive-performance</module> <!-- JAVA-42050 -->
-
-
-                <!-- modules not added to the build process -->
+                <module>spring-boot-modules/spring-boot-3-3</module> <!-- JAVA-42049 -->
+                <module>spring-boot-modules/spring-boot-cli</module> <!-- Not a maven project -->
+                <module>spring-boot-modules/spring-boot-graphql-2</module> <!-- JAVA-42053 -->
+                <module>spring-remoting-modules/remoting-hessian-burlap</module> <!-- cannot upgrade logback due to usage of old spring boot 1 version -->
+                <module>spring-security-modules/spring-security-saml</module> <!-- This module wasn't able to update to spring boot 3 because Jakarta clashes with javax -->
+                <module>spring-security-modules/spring-security-web-boot-3</module> <!-- JAVA-42146 -->
+                <module>web-modules/ninja</module> <!-- JAVA-24584 -->
+                <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
                 <module>core-java-modules/core-java-classloader</module> <!-- JAVA-42033 -->
                 <module>core-java-modules/core-java-conditionals</module> <!-- JAVA-42035 -->
@@ -1363,7 +1378,15 @@
             </build>
 
             <modules>
-                <!-- from jdk8 profile -->
+                <module>persistence-modules/spring-data-gemfire</module> <!-- Won't Fix in JAVA-14499 -->
+                <module>persistence-modules/spring-jooq</module> <!--JAVA-31341-->
+                <module>rule-engines-modules/jess</module> <!-- requires dependencies which are not publicly available -->
+                <module>persistence-modules/jdbc/solving-class-not-found-exception-mysql-jdbc/junit5-jupiter-starter-maven</module> <!-- JAVA-42058 -->
+                <module>patterns-modules/axon</module> <!-- JAVA-42358 -->
+                <module>core-java-modules/core-java-14</module> <!-- JAVA-26056 -->
+                <module>core-java-modules/core-java-17</module> <!-- JAVA-26056 -->
+                <module>core-java-modules/core-java-19</module> <!-- JAVA-26056 -->
+                <module>core-java-modules/core-java-20</module> <!--JAVA-29040-->
                 <module>clojure-modules</module> <!-- Not a maven project -->
                 <module>ethereum</module> <!-- JAVA-6001 -->
                 <module>gradle-modules</module> <!-- Not a maven project -->
@@ -1371,12 +1394,8 @@
                 <module>pants</module> <!-- Not a maven project -->
                 <module>spring-cloud-cli</module> <!-- Not a maven project -->
                 <module>spring-roo</module> <!-- Not supported JAVA-17327 -->
-
-                <!-- from heavy profile -->
                 <module>apache-spark</module> <!-- JAVA-42030 -->
                 <module>jhipster-modules/jhipster-uaa</module><!-- failing after upgrading to jdk17-->
-
-                <!-- from jdk17 profile -->
                 <module>libraries-security</module> <!-- JAVA-40889 -->
                 <module>persistence-modules/java-harperdb</module> <!-- This module requires a library to download manually --> <!-- JAVA-42044 -->
                 <module>spring-cloud-modules/spring-cloud-data-flow</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42054 -->
@@ -1387,8 +1406,6 @@
                 <module>spring-swagger-codegen-modules/openapi-custom-generator</module>
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> <!-- cannot add the individual modules here because the order is not guaranteed -->
                 <module>persistence-modules/spring-data-cassandra</module>   <!-- failing after upgrading to jdk17. JDK 17 compatibility in progress CASSANDRA-16895 --> <!-- JAVA-42047 -->
-
-                <!-- from jdk21 profile -->
                 <module>language-interop</module>
                 <module>spring-scheduling</module> <!-- BAEL-8382 -->
                 <module>spring-security-modules/spring-security-web-login</module> <!-- JAVA-42041 -->
@@ -1399,14 +1416,23 @@
                 <module>persistence-modules/spring-boot-persistence-5</module> <!-- JAVA-42046 -->
                 <module>persistence-modules/spring-data-elasticsearch</module> <!-- JAVA-42359 -->
                 <module>persistence-modules/spring-data-mongodb-2</module> <!-- JAVA-42145 -->
+                <module>quarkus-modules/mongo-db</module> <!-- JAVA-42048 -->
+                <module>quarkus-modules/quarkus-rbac</module> <!-- JAVA-42048 -->
+                <module>quarkus-modules/consume-rest-api/consume-api</module>
                 <module>maven-modules/maven-exec-plugin</module> <!-- JAVA-42059 -->
+                <module>maven-modules/dependencygraph</module> <!-- JAVA-42057 -->
                 <module>spring-boot-modules/spring-boot-swagger-2</module> <!-- JAVA-42060 -->
                 <module>spring-boot-modules/spring-boot-groovy</module> <!-- JAVA-42052 -->
                 <module>spring-boot-modules/spring-boot-data-3</module> <!-- JAVA-42051 -->
                 <module>spring-reactive-modules/spring-reactive-performance</module> <!-- JAVA-42050 -->
-
-
-                <!-- modules not added to the build process -->
+                <module>spring-boot-modules/spring-boot-3-3</module> <!-- JAVA-42049 -->
+                <module>spring-boot-modules/spring-boot-cli</module> <!-- Not a maven project -->
+                <module>spring-boot-modules/spring-boot-graphql-2</module> <!-- JAVA-42053 -->
+                <module>spring-remoting-modules/remoting-hessian-burlap</module> <!-- cannot upgrade logback due to usage of old spring boot 1 version -->
+                <module>spring-security-modules/spring-security-saml</module> <!-- This module wasn't able to update to spring boot 3 because Jakarta clashes with javax -->
+                <module>spring-security-modules/spring-security-web-boot-3</module> <!-- JAVA-42146 -->
+                <module>web-modules/ninja</module> <!-- JAVA-24584 -->
+                <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
                 <module>core-java-modules/core-java-classloader</module> <!-- JAVA-42033 -->
                 <module>core-java-modules/core-java-conditionals</module> <!-- JAVA-42035 -->
