@@ -1,11 +1,13 @@
-package com.baeldung.map;
+package com.baeldung.map.keycheck;
 
-import org.junit.Test;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Collections;
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
 
 public class KeyCheckUnitTest {
 

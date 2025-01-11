@@ -1,4 +1,4 @@
-package com.baeldung.map;
+package com.baeldung.map.emptymap;
 
 import java.util.Collections;
 import java.util.HashMap;

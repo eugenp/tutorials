@@ -1,4 +1,4 @@
-package com.baeldung.map;
+package com.baeldung.map.emptymap;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
