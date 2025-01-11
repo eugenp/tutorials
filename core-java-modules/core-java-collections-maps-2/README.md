@@ -11,4 +11,7 @@ This module contains articles about Map data structures in Java.
 - [Sort a HashMap in Java](https://www.baeldung.com/java-hashmap-sort)
 - [Finding the Highest Value in a Java Map](https://www.baeldung.com/java-find-map-max)
 - [Initialize a HashMap in Java](https://www.baeldung.com/java-initialize-hashmap)
+- [Immutable Map Implementations in Java](https://www.baeldung.com/java-immutable-maps)
+- [A Guide to TreeMap in Java](https://www.baeldung.com/java-treemap)
+- [A Guide to LinkedHashMap in Java](https://www.baeldung.com/java-linked-hashmap)
 - More articles: [[<-- prev]](/core-java-modules/core-java-collections-maps) [[next -->]](/core-java-modules/core-java-collections-maps-3)

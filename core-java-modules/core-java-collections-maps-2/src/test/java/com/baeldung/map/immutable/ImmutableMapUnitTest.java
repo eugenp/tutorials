@@ -1,4 +1,4 @@
-package com.baeldung.map;
+package com.baeldung.map.immutable;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
