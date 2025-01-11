@@ -1,5 +1,13 @@
 package com.baeldung.map.primitives;
 
+import java.math.BigDecimal;
+
+import org.eclipse.collections.api.map.primitive.ImmutableIntIntMap;
+import org.eclipse.collections.api.map.primitive.MutableIntIntMap;
+import org.eclipse.collections.api.map.primitive.MutableObjectDoubleMap;
+import org.eclipse.collections.impl.factory.primitive.IntIntMaps;
+import org.eclipse.collections.impl.factory.primitive.ObjectDoubleMaps;
+
 import com.carrotsearch.hppc.IntLongHashMap;
 import com.carrotsearch.hppc.IntLongScatterMap;
 import com.carrotsearch.hppc.IntObjectHashMap;
@@ -9,19 +17,7 @@ import com.carrotsearch.hppc.IntObjectScatterMap;
 import it.unimi.dsi.fastutil.ints.Int2BooleanMap;
 import it.unimi.dsi.fastutil.ints.Int2BooleanMaps;
 import it.unimi.dsi.fastutil.ints.Int2BooleanOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2BooleanSortedMap;
-import it.unimi.dsi.fastutil.ints.Int2BooleanSortedMaps;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
-
-import org.eclipse.collections.api.map.primitive.ImmutableIntIntMap;
-import org.eclipse.collections.api.map.primitive.MutableIntIntMap;
-import org.eclipse.collections.api.map.primitive.MutableObjectDoubleMap;
-import org.eclipse.collections.impl.factory.primitive.IntIntMaps;
-import org.eclipse.collections.impl.factory.primitive.ObjectDoubleMaps;
-
-import static java.lang.String.format;
-
-import java.math.BigDecimal;
 
 public class PrimitiveMaps {
 

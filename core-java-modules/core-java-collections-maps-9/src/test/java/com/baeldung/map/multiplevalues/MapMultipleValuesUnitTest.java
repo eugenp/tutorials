@@ -1,4 +1,4 @@
-package com.baeldung.map;
+package com.baeldung.map.multiplevalues;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
