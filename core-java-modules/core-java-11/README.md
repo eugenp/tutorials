@@ -4,7 +4,7 @@ This module contains articles about Java 11 core features
 
 ### Relevant articles
 
-- [Java 11 Single File Source Code](https://www.baeldung.com/java-single-file-source-code)
+- [Java Single File Source Code](https://www.baeldung.com/java-single-file-source-code)
 - [Java Local Variable Syntax for Lambda Parameters](https://www.baeldung.com/java-var-lambda-params)
 - [Java Nest Based Access Control](https://www.baeldung.com/java-nest-based-access-control)
 - [Exploring the New HTTP Client in Java](https://www.baeldung.com/java-9-http-client)
