@@ -16,6 +16,7 @@
     <modules>
         <module>core-groovy</module>
         <module>core-groovy-2</module> <!-- We cannot upgrade this module to the JDK 21 since groovy-wslite and other dependencies are not updated for a while. JAVA-37702-->
+        <module>core-groovy-3</module>
         <module>core-groovy-collections</module>
         <module>core-groovy-strings</module>
     </modules>
@@ -23,7 +24,6 @@
     <properties>
         <groovy.version>4.0.21</groovy.version>
         <groovy-all.version>4.0.21</groovy-all.version>
-        <groovy-sql.version>4.0.21</groovy-sql.version>
         <hsqldb.version>2.7.1</hsqldb.version>
         <spock-core.version>2.4-M4-groovy-4.0</spock-core.version>
         <gmavenplus-plugin.version>3.0.0</gmavenplus-plugin.version>
