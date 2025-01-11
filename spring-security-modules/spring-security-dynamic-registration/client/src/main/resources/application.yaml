@@ -1,0 +1,36 @@
+server:
+  port: 8090
+
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          spring-auth-server:
+            issuer-uri: http://localhost:8080
+        registration:
+          test-client:
+            provider: spring-auth-server
+            client-name: test-client
+            client-id: ignored  # Dynamically set
+            client-secret: ignored # Dynamically set
+            authorization-grant-type:
+              - authorization_code
+              - refresh_token
+              - client_credentials
+            scope:
+              - openid
+              - email
+              - profile
+
+baeldung:
+  security:
+    client:
+      registration:
+        registration-endpoint: http://localhost:8080/connect/register
+        registration-username: registrar-client
+        registration-password: secret
+        token-endpoint: http://localhost:8080/oauth2/token
+        registration-scopes: client.create
+        grant-types: client_credentials
+

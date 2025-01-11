@@ -70,7 +70,7 @@
             <version>1.0.0.RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-spatial</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
@@ -85,7 +85,7 @@
             <version>${mariaDB4j.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-testing</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
@@ -114,13 +114,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>3.2.5</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
             <version>3.1.6</version>
             <scope>test</scope>
             <exclusions>
@@ -130,13 +123,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <groupId>io.projectreactor</groupId>
-            <artifactId>reactor-test</artifactId>
-            <version>3.6.6</version>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -159,7 +145,6 @@
         <mysql.version>8.2.0</mysql.version>
         <mariaDB4j.version>2.6.0</mariaDB4j.version>
         <h2.version>2.1.214</h2.version>
-        <hibernate.version>6.4.2.Final</hibernate.version>
         <testcontainers.mysql.version>1.17.6</testcontainers.mysql.version>
     </properties>
 

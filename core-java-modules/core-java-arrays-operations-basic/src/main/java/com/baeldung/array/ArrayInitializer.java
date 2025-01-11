@@ -129,4 +129,23 @@ public class ArrayInitializer {
         return matrix;
     }
 
+    static int[] resizeArrayUsingSystemCopyArray() {
+        // declare numbers array
+        int[] numbers = null;
+
+        // initialize it to array of size 3
+        numbers = new int[3];
+        numbers[0] = 0;
+        numbers[1] = 1;
+        numbers[2] = 2; // consumed the capacity.
+
+        // resizing with creating new array and copying elements from previous array
+        int[] newArr = new int[10];
+        System.arraycopy(numbers, 0, newArr, 0, numbers.length);
+        numbers = newArr;
+        numbers[3] = 3;
+        numbers[4] = 4;
+
+        return numbers;
+    }
 }

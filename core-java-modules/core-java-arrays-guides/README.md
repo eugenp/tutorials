@@ -11,3 +11,5 @@ This module contains complete guides about arrays in Java
 - [Maximum Size of Java Arrays](https://www.baeldung.com/java-arrays-max-size)
 - [Merge Two Arrays and Remove Duplicates in Java](https://www.baeldung.com/java-merge-two-arrays-delete-duplicates)
 - [Print a Java 2D Array](https://www.baeldung.com/java-2d-array-print)
+- [How to Print the Content of an Array in Java](https://www.baeldung.com/java-print-array)
+- [Difference Between null and Empty Array in Java](https://www.baeldung.com/java-null-vs-empty-array)

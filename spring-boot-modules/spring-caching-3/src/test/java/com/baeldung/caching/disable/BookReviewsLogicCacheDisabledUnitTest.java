@@ -35,10 +35,10 @@ public class BookReviewsLogicCacheDisabledUnitTest {
 
         bookReviewsLogic.getBooksByIsbn(bookReview.getIsbn());
 
-        String target = "Hibernate: select b1_0.reviews_id,"
-            + "b1_0.book_rating,b1_0.isbn,b1_0.user_id "
-            + "from book_reviews b1_0 "
-            + "where b1_0.isbn=?";
+        String target = "Hibernate: select br1_0.reviews_id,"
+            + "br1_0.book_rating,br1_0.isbn,br1_0.user_id "
+            + "from book_reviews br1_0 "
+            + "where br1_0.isbn=?";
 
         String[] logs = output.toString()
             .split("\\r?\\n");

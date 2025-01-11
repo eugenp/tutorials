@@ -69,10 +69,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <release>${maven.compiler.release}</release>
-                    <compilerArgs>--enable-preview</compilerArgs>
-                    <source>${maven.compiler.source.version}</source>
-                    <target>${maven.compiler.target.version}</target>
+                    <source>9</source>
+                    <target>9</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -81,10 +79,6 @@
     <properties>
         <mysql-connector-java.version>8.2.0</mysql-connector-java.version>
         <liquibase-maven-plugin.version>4.25.0</liquibase-maven-plugin.version>
-        <maven.compiler.source.version>17</maven.compiler.source.version>
-        <maven.compiler.target.version>17</maven.compiler.target.version>
-        <maven.compiler.release>17</maven.compiler.release>
-        <java.version>17</java.version>
         <spring-boot.version>3.2.3</spring-boot.version>
         <liquibase.version>4.26.0</liquibase.version>
         <postgresql.version>42.7.2</postgresql.version>

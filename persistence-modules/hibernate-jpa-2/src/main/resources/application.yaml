@@ -1,0 +1,19 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        integrator_provider: com.baeldung.changevalue.hibernate.HibernateEventListenerIntegratorProvider
+        query:
+          in_clause_parameter_padding: true
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        orm:
+          jdbc:
+            bind: TRACE
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE

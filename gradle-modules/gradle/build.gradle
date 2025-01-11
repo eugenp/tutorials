@@ -1,8 +1,28 @@
 plugins {
-    id 'org.shipkit.bintray-release' version '2.3.5'
+    // id 'org.shipkit.bintray' version '2.3.5'
+    id "nebula.lint" version "18.1.0"
 }
 
+
+description = "Gradle root project"
 allprojects {
+    apply plugin: "java"
+    apply plugin: "nebula.lint"
+    gradleLint {
+        rules = [
+               // 'unused-dependency',
+               // 'dependency-parentheses',
+               // 'undeclared-dependency',
+               // 'minimum-dependency-version'
+        ]
+        reportFormat = 'text'
+        reportOnlyFixableViolations = true
+    }
+    group = "com.baeldung"
+    version = "0.0.1"
+    sourceCompatibility = "1.8"
+    targetCompatibility = "1.8"
+
     repositories {
         mavenCentral()
     }

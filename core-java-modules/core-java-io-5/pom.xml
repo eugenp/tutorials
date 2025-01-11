@@ -50,6 +50,11 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh.version}</version>
         </dependency>
+        <dependency> 
+            <groupId>de.vandermeer</groupId> 
+            <artifactId>asciitable</artifactId> 
+            <version>0.3.2</version> 
+        </dependency>
     </dependencies>
 
     <build>
@@ -63,10 +68,11 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>11</source>
-                    <target>11</target>
-                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resources-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
@@ -78,5 +84,6 @@
         <jodd-util.version>6.2.1</jodd-util.version>
         <simplemagic.version>1.17</simplemagic.version>
         <jmh.version>1.37</jmh.version>
+        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
     </properties>
 </project>

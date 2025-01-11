@@ -37,6 +37,7 @@
             <version>${spring-data-jpa.version}</version>
         </dependency>
         <dependency>
+            <!-- JAVA-37421 cannot upgrade to Jakarta namespace -->
             <groupId>javax.transaction</groupId>
             <artifactId>javax.transaction-api</artifactId>
             <version>${transaction-api.version}</version>

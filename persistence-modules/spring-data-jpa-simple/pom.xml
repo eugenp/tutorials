@@ -60,11 +60,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <hibernate.version>6.4.2.Final</hibernate.version>
-        <jakarta.xml.bind.version>4.0.0</jakarta.xml.bind.version>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -82,7 +77,16 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <jakarta.xml.bind.version>4.0.0</jakarta.xml.bind.version>
+        <hibernate.version>6.5.2.Final</hibernate.version>
+    </properties>
 
 </project>

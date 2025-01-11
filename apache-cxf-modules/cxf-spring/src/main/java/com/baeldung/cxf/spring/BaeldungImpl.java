@@ -1,6 +1,6 @@
 package com.baeldung.cxf.spring;
 
-import javax.jws.WebService;
+import jakarta.jws.WebService;
 
 @WebService(endpointInterface = "com.baeldung.cxf.spring.Baeldung")
 public class BaeldungImpl implements Baeldung {

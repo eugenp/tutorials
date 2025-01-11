@@ -34,7 +34,6 @@
         <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
         <quarkus.platform.version>3.4.3</quarkus.platform.version>
-        <surefire-plugin.version>3.0.0</surefire-plugin.version>
         <loom-unit.version>0.3.0</loom-unit.version>
         <panache-common-deployment.version>3.6.0</panache-common-deployment.version>
     </properties>
@@ -132,7 +131,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${surefire-plugin.version}</version>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <systemPropertyVariables>
                         <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>

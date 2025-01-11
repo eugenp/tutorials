@@ -1,6 +1,7 @@
 package com.baeldung.resilientapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -9,7 +10,7 @@ public class ExternalAPICaller {
     private final RestTemplate restTemplate;
 
     @Autowired
-    public ExternalAPICaller(RestTemplate restTemplate) {
+    public ExternalAPICaller(@Qualifier("default") RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 

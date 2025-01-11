@@ -45,6 +45,11 @@
             <artifactId>swagger-annotations</artifactId>
             <version>${swagger-annotations.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.swagger.parser.v3</groupId>
+            <artifactId>swagger-parser</artifactId>
+            <version>${swagger-parser.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -89,8 +94,9 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <openapi-generator.version>7.3.0</openapi-generator.version>
+        <openapi-generator.version>7.7.0</openapi-generator.version>
         <swagger-annotations.version>2.2.20</swagger-annotations.version>
+        <swagger-parser.version>2.1.22</swagger-parser.version>
     </properties>
 
 </project>

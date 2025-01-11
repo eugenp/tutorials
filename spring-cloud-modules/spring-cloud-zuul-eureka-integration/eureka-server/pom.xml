@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>eureka-server</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>eureka-server</name>
     <packaging>jar</packaging>
+    <name>eureka-server</name>
     <description>Spring Cloud Eureka Server Demo</description>
 
     <parent>
@@ -52,15 +52,12 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <byte-buddy.version>1.14.13</byte-buddy.version>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <argLine>
                         --add-opens java.base/java.lang=ALL-UNNAMED

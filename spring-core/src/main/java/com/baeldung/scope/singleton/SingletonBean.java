@@ -1,14 +1,14 @@
 package com.baeldung.scope.singleton;
 
 import com.baeldung.scope.prototype.PrototypeBean;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import java.time.LocalTime;
+import org.slf4j.LoggerFactory;
+import ch.qos.logback.classic.Logger;
 
 public class SingletonBean {
 
-    private final Logger logger = Logger.getLogger(this.getClass());
+    private final Logger logger = (Logger) LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private PrototypeBean prototypeBean;

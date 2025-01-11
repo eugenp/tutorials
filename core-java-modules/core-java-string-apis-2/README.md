@@ -9,3 +9,4 @@ This module contains articles about string APIs.
 - [Java Localization – Formatting Messages](https://www.baeldung.com/java-localization-messages-formatting)
 - [Compare StringBuilder Objects in Java](https://www.baeldung.com/java-stringbuilder-objects-comparison)
 - [Finding the N-th Occurrence of a Substring in a String in Java](https://www.baeldung.com/java-locate-nth-match-substring)
+- [How to Convert String to StringBuilder and Vice Versa in Java](https://www.baeldung.com/java-convert-string-stringbuilder)

@@ -1,0 +1,1 @@
+go build -o libhello.dll -buildmode=c-shared hello.go

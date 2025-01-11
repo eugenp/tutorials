@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-mvc-basics-6</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-mvc-basics-6</name>
     <packaging>jar</packaging>
+    <name>spring-mvc-basics-6</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

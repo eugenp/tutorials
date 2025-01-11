@@ -41,6 +41,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <suiteXmlFiles>
                                 <suiteXmlFile>src\test\resources\parametrized_testng.xml</suiteXmlFile>
@@ -59,6 +60,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <suiteXmlFiles>
                                 <suiteXmlFile>src\test\resources\test_group.xml</suiteXmlFile>

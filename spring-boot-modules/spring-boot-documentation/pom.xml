@@ -8,7 +8,7 @@
     <version>1.0.0-SNAPSHOT</version>
     <name>spring-boot-documentation</name>
     <description>Documentation Spring Event Driven API Using AsyncAPI and Springwolf</description>
-    <packaging>pom</packaging>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
@@ -16,53 +16,51 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter</artifactId>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.kafka</groupId>
-                <artifactId>spring-kafka</artifactId>
-            </dependency>
-            <dependency>
-                <groupId>io.swagger.core.v3</groupId>
-                <artifactId>swagger-core-jakarta</artifactId>
-                <version>${swagger-core-jakarta.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.github.springwolf</groupId>
-                <artifactId>springwolf-kafka</artifactId>
-                <version>${springwolf-kafka.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.github.springwolf</groupId>
-                <artifactId>springwolf-ui</artifactId>
-                <version>${springwolf-ui.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.kafka</groupId>
-                <artifactId>spring-kafka-test</artifactId>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.testcontainers</groupId>
-                <artifactId>junit-jupiter</artifactId>
-                <version>${testcontainers-kafka.version}</version>
-                <scope>test</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-core-jakarta</artifactId>
+            <version>${swagger-core-jakarta.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.springwolf</groupId>
+            <artifactId>springwolf-kafka</artifactId>
+            <version>${springwolf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.springwolf</groupId>
+            <artifactId>springwolf-ui</artifactId>
+            <version>${springwolf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${testcontainers-kafka.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -77,10 +75,9 @@
     </build>
 
     <properties>
-        <swagger-core-jakarta.version>2.2.11</swagger-core-jakarta.version>
-        <springwolf-kafka.version>0.14.0</springwolf-kafka.version>
-        <springwolf-ui.version>0.14.0</springwolf-ui.version>
-        <testcontainers-kafka.version>1.19.3</testcontainers-kafka.version>
+        <swagger-core-jakarta.version>2.2.22</swagger-core-jakarta.version>
+        <springwolf.version>1.7.0</springwolf.version>
+        <testcontainers-kafka.version>1.20.0</testcontainers-kafka.version>
     </properties>
 
 </project>

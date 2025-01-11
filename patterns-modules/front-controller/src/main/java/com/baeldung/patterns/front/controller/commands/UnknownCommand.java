@@ -1,6 +1,6 @@
 package com.baeldung.patterns.front.controller.commands;
 
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 import java.io.IOException;
 
 public class UnknownCommand extends FrontCommand {

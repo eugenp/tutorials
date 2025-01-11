@@ -15,3 +15,4 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 - [Intro to Spring Security Expressions](https://www.baeldung.com/spring-security-expressions)
 - [Error Handling for REST with Spring](https://www.baeldung.com/exception-handling-for-rest-with-spring)
 - [How to Solve 403 Error in Spring Boot POST Request](https://www.baeldung.com/java-spring-fix-403-error)
+- [Removing ROLE_ Prefix in Spring Security](https://www.baeldung.com/spring-security-remove-role_prefix)

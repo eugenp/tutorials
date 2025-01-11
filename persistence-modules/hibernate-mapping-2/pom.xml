@@ -65,7 +65,6 @@
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
         <com.sun.xml.version>4.0.2</com.sun.xml.version>
         <h2.version>2.1.214</h2.version>
-        <hibernate.version>6.4.2.Final</hibernate.version>
     </properties>
 
 </project>

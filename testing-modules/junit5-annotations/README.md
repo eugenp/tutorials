@@ -10,3 +10,4 @@ This module contains articles about JUnit 5 Annotations
 - [Writing Templates for Test Cases Using JUnit 5](https://www.baeldung.com/junit5-test-templates)
 - [JUnit 5 @Nested Test Classes](https://www.baeldung.com/junit-5-nested-test-classes)
 - [A Guide to @Timeout Annotation in JUnit 5](https://www.baeldung.com/java-junit-5-timeout-annotation)
+- [A Guide to the @AutoClose Extension in JUnit5](https://www.baeldung.com/junit-autoclose-extension-tutorial)

@@ -65,13 +65,20 @@
             <artifactId>awaitility</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
     </dependencies>
 
     <properties>
         <testcontainers-kafka.version>1.19.7</testcontainers-kafka.version>
         <kafka-streams.version>3.7.0</kafka-streams.version>
         <start-class>com.baeldung.spring.kafka.dlt.KafkaDltApplication</start-class>
-        <mockito.version>4.4.0</mockito.version>
     </properties>
 
 </project>

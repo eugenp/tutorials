@@ -27,9 +27,4 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <org.slf4j.version>2.0.7</org.slf4j.version>
-        <logback.version>1.4.11</logback.version>
-    </properties>
-
 </project>

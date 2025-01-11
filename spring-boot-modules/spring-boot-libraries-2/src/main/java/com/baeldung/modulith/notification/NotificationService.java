@@ -5,7 +5,6 @@ import com.baeldung.modulith.notification.internal.NotificationType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.modulith.ApplicationModuleListener;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,7 +18,6 @@ public class NotificationService {
           , notification.getDate(), notification.getFormat());
     }
 
-    @Async
     @ApplicationModuleListener
     public void notificationEvent(NotificationDTO event) {
         Notification notification = toEntity(event);

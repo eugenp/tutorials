@@ -13,4 +13,3 @@
 - [Why Missing Annotations Don’t Cause ClassNotFoundException](https://www.baeldung.com/classnotfoundexception-missing-annotation)
 - [Valid @SuppressWarnings Warning Names](https://www.baeldung.com/java-suppresswarnings-valid-names)
 - [Get a Field’s Annotations Using Reflection](https://www.baeldung.com/java-get-field-annotations)
-- [Supply Enum Value to an Annotation From a Constant in Java](https://www.baeldung.com/java-enum-annotation-constant)

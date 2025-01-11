@@ -1,0 +1,32 @@
+.jmix
+bin
+
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+# Remove this line if you want to follow recommendations in src/main/bundles/README.md
+src/main/bundles/
+
+### IntelliJ IDEA ###
+.idea/*
+!.idea/encodings.xml
+*.iws
+*.iml
+*.ipr
+out/
+/target/
+
+### VS Code ###
+.vscode/
+
+# The following files are generated/updated by vaadin-gradle-plugin
+node_modules/
+frontend/generated/
+pnpmfile.js
+vite.generated.ts
+webpack.generated.js
+
+.DS_Store

@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: postgresqlssltest
+  datasource:
+    url: jdbc:postgresql://localhost:5432/testdb?ssl=true&sslmode=verify-ca&sslrootcert=certs/root.crt&sslcert=certs/pg_client.crt&sslkey=certs/pg_client.pk8
+    username: postgres
+    password: "password"
+    driver-class-name: org.postgresql.Driver

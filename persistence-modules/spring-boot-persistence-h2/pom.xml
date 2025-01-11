@@ -49,7 +49,7 @@
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.core.version}</version>
+            <version>${hibernate.version}</version>
         </dependency>
     </dependencies>
 
@@ -57,7 +57,7 @@
         <!-- The main class to start by executing java -jar -->
         <start-class>com.baeldung.h2db.demo.server.SpringBootApp</start-class>
         <db-util.version>1.0.7</db-util.version>
-        <hibernate.core.version>6.4.2.Final</hibernate.core.version>
+        <hibernate.version>6.5.2.Final</hibernate.version>
     </properties>
 
 </project>

@@ -2,9 +2,9 @@ package com.baeldung.spring.taglibrary;
 
 import java.util.List;
 
-import jakarta.validation.constraints.NotEmpty;
-
 import org.springframework.web.multipart.MultipartFile;
+
+import jakarta.validation.constraints.NotEmpty;
 
 public class Person {
 

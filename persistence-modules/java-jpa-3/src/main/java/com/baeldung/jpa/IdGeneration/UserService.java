@@ -1,7 +1,7 @@
 package com.baeldung.jpa.IdGeneration;
 
-import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
+import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 
 public class UserService {
 

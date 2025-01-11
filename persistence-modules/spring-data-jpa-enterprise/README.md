@@ -4,7 +4,6 @@ This module contains articles about Spring Data JPA used in enterprise applicati
 
 ### Relevant Articles: 
 
-- [Spring Data Java 8 Support](https://www.baeldung.com/spring-data-java-8)
 - [DB Integration Tests with Spring Boot and Testcontainers](https://www.baeldung.com/spring-boot-testcontainers-integration-test)
 - [A Guide to Spring’s Open Session in View](https://www.baeldung.com/spring-open-session-in-view)
 - [Partial Data Update With Spring Data](https://www.baeldung.com/spring-data-partial-update)

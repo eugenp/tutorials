@@ -37,34 +37,59 @@
             <artifactId>commons-dbutils</artifactId>
             <version>${commons-dbutils.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
             <scope>runtime</scope>
         </dependency>
-
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>${org.json.version}</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter -->
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq</artifactId>
+            <version>${jooq.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.juliomarcopineda</groupId>
+            <artifactId>jdbc-stream</artifactId>
+            <version>${jdbc-stream.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
-            <version>${mockito.junit.jupiter.version}</version>
+            <version>${mockito-junit-jupiter.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${springframework.spring-web.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${springframework.boot.spring-boot-starter.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
-        <h2.version>2.1.214</h2.version>
+        <h2.version>2.3.230</h2.version>
         <commons-dbutils.version>1.8.1</commons-dbutils.version>
         <postgresql.version>42.7.3</postgresql.version>
         <org.json.version>20240303</org.json.version>
-        <mockito.junit.jupiter.version>5.12.0</mockito.junit.jupiter.version>
+        <jooq.version>3.19.11</jooq.version>
+        <jdbc-stream.version>0.1.1</jdbc-stream.version>
+        <springframework.boot.spring-boot-starter.version>3.0.4</springframework.boot.spring-boot-starter.version>
+        <springframework.spring-web.version>6.0.6</springframework.spring-web.version>
     </properties>
+
 </project>

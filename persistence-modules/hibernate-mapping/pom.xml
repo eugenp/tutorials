@@ -80,7 +80,6 @@
 
     <properties>
         <h2.version>2.1.214</h2.version> <!-- needs to be specified as it fails with parent's 1.4.200 -->
-        <hibernate.version>6.4.2.Final</hibernate.version>
         <hibernate-types.version>2.21.1</hibernate-types.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <money-api.version>1.1</money-api.version>

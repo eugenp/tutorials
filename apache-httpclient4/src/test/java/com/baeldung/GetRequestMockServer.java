@@ -12,9 +12,12 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.mockserver.client.MockServerClient;
 import org.mockserver.integration.ClientAndServer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class GetRequestMockServer {
 
+    private static final Logger log = LoggerFactory.getLogger(GetRequestMockServer.class);
     public static ClientAndServer mockServer;
     public static int serverPort;
     public static String simplePathUrl;
@@ -24,7 +27,7 @@ public class GetRequestMockServer {
     @BeforeAll
     static void startServer() throws IOException {
         serverPort = getFreePort();
-        System.out.println("Free port " + serverPort);
+        log.debug("Free port {}", serverPort);
         mockServer = startClientAndServer(serverPort);
 
         simplePathUrl = "http://" + SERVER_ADDRESS + ":" + serverPort + SIMPLE_PATH;

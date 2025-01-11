@@ -6,4 +6,6 @@
 - [Difference between ZoneOffset.UTC and ZoneId.of(“UTC”)](https://www.baeldung.com/java-zoneoffset-utc-zoneid-of)
 - [Check if a Given Time Lies Between Two Times Regardless of Date](https://www.baeldung.com/java-check-between-two-times)
 - [Convert String to OffsetDateTime](https://www.baeldung.com/java-convert-string-offsetdatetime)
+- [Get Date and Time From a Datetime String in Java](https://www.baeldung.com/java-date-time-from-string)
+- [Combine Date and Time from Separate Variables in Java](https://www.baeldung.com/java-combine-local-date-time)
 - [[<-- Prev]](/core-java-modules/core-java-8-datetime-2)

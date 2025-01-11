@@ -13,3 +13,4 @@ This module contains articles about Java 9 core features
 - [Java Scanner useDelimiter with Examples](https://www.baeldung.com/java-scanner-usedelimiter)
 - [Is There a Destructor in Java?](https://www.baeldung.com/java-destructor)
 - [Java 9 Migration Issues and Resolutions](https://www.baeldung.com/java-9-migration-issue)
+- [Unescape HTML Symbols in Java](https://www.baeldung.com/java-unescape-html-characters)

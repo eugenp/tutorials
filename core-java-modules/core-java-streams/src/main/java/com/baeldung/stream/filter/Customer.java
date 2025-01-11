@@ -3,6 +3,8 @@ package com.baeldung.stream.filter;
 import javax.net.ssl.HttpsURLConnection;
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 public class Customer {
@@ -36,18 +38,18 @@ public class Customer {
         return this.points > 100;
     }
 
-    public boolean hasValidProfilePhoto() throws IOException {
-        URL url = new URL(this.profilePhotoUrl);
+    public boolean hasValidProfilePhoto() throws Exception {
+        URL url = new URI(this.profilePhotoUrl).toURL();
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
         return connection.getResponseCode() == HttpURLConnection.HTTP_OK;
     }
 
     public boolean hasValidProfilePhotoWithoutCheckedException() {
         try {
-            URL url = new URL(this.profilePhotoUrl);
+            URL url = new URI(this.profilePhotoUrl).toURL();
             HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
             return connection.getResponseCode() == HttpURLConnection.HTTP_OK;
-        } catch (IOException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }

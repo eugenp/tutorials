@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Selenium Exceptions test suite" parallel="tests">
+    <test name="Automated browser testing using Chrome">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="browserVersion" value="129"/>
+        <parameter name="platform" value="Windows 10"/>
+        <classes>
+            <class name="com.baeldung.selenium.automatedbrowsertesting.AutomatedBrowserTest">
+                <methods>
+                    <include name="whenUserNavigatesToMp3PlayersPage_thenPageHeaderShouldBeCorrectlyDisplayed"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Automated browser testing using Firefox">
+        <parameter name="browser" value="firefox"/>
+        <parameter name="browserVersion" value="131"/>
+        <parameter name="platform" value="Windows 10"/>
+        <classes>
+            <class name="com.baeldung.selenium.automatedbrowsertesting.AutomatedBrowserTest">
+                <methods>
+                    <include name="whenUserNavigatesToMp3PlayersPage_thenPageHeaderShouldBeCorrectlyDisplayed"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>

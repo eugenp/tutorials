@@ -1,0 +1,37 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide empty attributes
+skinparam Handwritten false
+skinparam ClassBorderColor black
+skinparam BackgroundColor #fffce8/#f8f9fa
+skinparam class {
+ArrowColor SeaGreen
+BackgroundColor #fffce8
+}
+
+class MilvusClientV2 {
+  +delete(DeleteReq)::DeleteResp
+}
+
+class DeleteReq {
+  +builder()
+  +setFilter()
+  +setIds()
+}
+
+class DeleteResp {
+  +getDeleteCnt()
+}
+
+class DeleteReqBuilder {
+  collectionName(String)
+  ids(List<Object>)
+  filter(String)
+  build()
+}
+
+DeleteReqBuilder -down-+ DeleteReq: contains
+MilvusClientV2 -left-> DeleteReq: uses
+MilvusClientV2 -up-> DeleteResp: uses
+
+@enduml

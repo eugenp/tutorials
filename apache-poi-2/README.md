@@ -7,7 +7,6 @@ This module contains articles about Apache POI.
 - [Adding a Column to an Excel Sheet Using Apache POI](https://www.baeldung.com/java-excel-add-column)
 - [Add an Image to a Cell in an Excel File With Java](https://www.baeldung.com/java-add-image-excel)
 - [Numeric Format Using POI](https://www.baeldung.com/apache-poi-numeric-format)
-- [Microsoft Word Processing in Java with Apache POI](https://www.baeldung.com/java-microsoft-word-with-apache-poi)
 - [Creating a MS PowerPoint Presentation in Java](https://www.baeldung.com/apache-poi-slideshow)
 - [Finding the Last Row in an Excel Spreadsheet From Java](https://www.baeldung.com/java-excel-find-last-row)
 - [Setting Formulas in Excel with Apache POI](https://www.baeldung.com/java-apache-poi-set-formulas)

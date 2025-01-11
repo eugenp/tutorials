@@ -84,6 +84,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <systemPropertyVariables>
                         <logback.configurationFile>${project.basedir}/src/test/resources/logback-test.xml</logback.configurationFile>
@@ -99,8 +100,8 @@
         <docx4j.version>3.3.5</docx4j.version>
         <angus.mail.version>2.0.1</angus.mail.version>
         <angus.activation.version>2.0.0</angus.activation.version>
-        <logback.version>1.4.8</logback.version>
-        <slf4j.version>2.0.4</slf4j.version>
+        <logback.version>1.5.6</logback.version>
+        <slf4j.version>2.1.0-alpha1</slf4j.version>
     </properties>
 
 </project>

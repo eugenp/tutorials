@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide empty attributes
+skinparam Handwritten false
+skinparam ClassBorderColor black
+skinparam BackgroundColor #fffce8/#f8f9fa
+skinparam class {
+ ArrowColor SeaGreen
+ BackgroundColor #fffce8
+}
+
+class MilvusClientV2 {
+   +createPartition(CreatePartitionReq)
+}
+
+class CreatePartitionReq {
+   +builder()
+   +setPartitionName()
+   +setCollectionName()
+}
+
+
+class CreatePartitionReqBuilder {
+   +collectionName()
+   +paritionName()
+   +build()
+}
+
+CreatePartitionReqBuilder -up-+ CreatePartitionReq: contains
+MilvusClientV2 -down-> CreatePartitionReq: uses
+
+@enduml

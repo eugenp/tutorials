@@ -70,4 +70,18 @@ public class EscapingCharsUnitTest {
 
         assertEquals(output, m.replaceAll(strReplacement));
     }
+
+    @Test
+    public void givenStringWithSpecialCharacters_whenUsingCharacterClass_thenReplace() {
+        String inputString = "#$%^&*() SimpleText123 ";
+        StringBuilder escapedString = new StringBuilder();
+        for (char c : inputString.toCharArray()) {
+            if (!Character.isLetterOrDigit(c)) {
+                escapedString.append("\\");
+            }
+            escapedString.append(c);
+        }
+        String expectedOutputString = "\\#\\$\\%\\^\\&\\*\\(\\)\\ SimpleText123\\ ";
+        assertEquals(expectedOutputString, escapedString.toString());
+    }
 }

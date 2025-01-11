@@ -6,8 +6,8 @@ import java.lang.StackWalker.StackFrame;
 import java.util.Base64;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.Marshaller;
 
 import com.sun.crypto.provider.SunJCE;
 

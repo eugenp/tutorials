@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <include
-            resource="org/springframework/boot/logging/logback/base.xml" />
-    <appender name="LISTAPPENDER"
-              class="com.baeldung.failureanalyzer.utils.ListAppender">
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
     </appender>
-    <logger
-            name="org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter">
-        <appender-ref ref="LISTAPPENDER" />
-    </logger>
-    <root level="info">
+
+    <root level="INFO">
         <appender-ref ref="CONSOLE" />
     </root>
 </configuration>

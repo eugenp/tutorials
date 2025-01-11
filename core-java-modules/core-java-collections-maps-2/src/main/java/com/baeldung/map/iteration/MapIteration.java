@@ -1,118 +1,141 @@
 package com.baeldung.map.iteration;
 
-import java.util.HashMap;
+import org.apache.commons.collections4.IterableMap;
+import org.apache.commons.collections4.MapIterator;
+import org.eclipse.collections.api.map.MutableMap;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class MapIteration {
 
-    public static void main(String[] args) {
-        MapIteration mapIteration = new MapIteration();
-        Map<String, Integer> map = new HashMap<>();
+    private final Logger LOGGER = LoggerFactory.getLogger(MapIteration.class);
 
-        map.put("One", 1);
-        map.put("Three", 3);
-        map.put("Two", 2);
-
-        System.out.println("Iterating Keys of Map Using KeySet");
-        mapIteration.iterateKeys(map);
-
-        System.out.println("Iterating Values of Map Using values()");
-        mapIteration.iterateValues(map);
-
-        System.out.println("Iterating Map Using Entry Set");
-        mapIteration.iterateUsingEntrySet(map);
-
-        System.out.println("Iterating Using Iterator and Map Entry");
-        mapIteration.iterateUsingIteratorAndEntry(map);
-
-        System.out.println("Iterating Using Iterator and KeySet");
-        mapIteration.iterateUsingIteratorAndKeySet(map);
-
-        System.out.println("Iterating values Using Iterator and values()");
-        mapIteration.iterateUsingIteratorAndValues(map);
-
-        System.out.println("Iterating Using KeySet and For Each");
-        mapIteration.iterateUsingKeySetAndForeach(map);
-
-        System.out.println("Iterating Map Using Lambda Expression");
-        mapIteration.iterateUsingLambda(map);
-
-        System.out.println("Iterating Map By Keys Using Lambda Expression");
-        mapIteration.iterateByKeysUsingLambda(map);
-
-        System.out.println("Iterating values Using Lambda Expression");
-        mapIteration.iterateValuesUsingLambda(map);
-
-        System.out.println("Iterating Using Stream API");
-        mapIteration.iterateUsingStreamAPI(map);
-    }
-
-    public void iterateUsingIteratorAndValues(Map<String, Integer> map) {
-        Iterator<Integer> iterator = map.values().iterator();
-        while (iterator.hasNext()) {
-            Integer value = iterator.next();
-            System.out.println("value :" + value);
-        }
-    }
-
-    public void iterateUsingEntrySet(Map<String, Integer> map) {
-        for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            System.out.println(entry.getKey() + ":" + entry.getValue());
-        }
-    }
-
-    public void iterateUsingLambda(Map<String, Integer> map) {
-        map.forEach((k, v) -> System.out.println((k + ":" + v)));
-    }
-
-    public void iterateByKeysUsingLambda(Map<String, Integer> map) {
-        map.keySet().forEach(k -> System.out.println((k + ":" + map.get(k))));
-    }
-
-    public void iterateValuesUsingLambda(Map<String, Integer> map) {
-        map.values().forEach(v -> System.out.println(("value: " + v)));
-    }
-
-    public void iterateUsingIteratorAndEntry(Map<String, Integer> map) {
-        Iterator<Map.Entry<String, Integer>> iterator = map.entrySet()
+    public long iterateUsingIteratorAndValues(Map<Integer, Integer> map) {
+        long sum = 0;
+        Iterator<Integer> iterator = map.values()
             .iterator();
         while (iterator.hasNext()) {
-            Map.Entry<String, Integer> pair = iterator.next();
-            System.out.println(pair.getKey() + ":" + pair.getValue());
+            Integer value = iterator.next();
+            sum += value;
         }
+        return sum;
     }
 
-    public void iterateUsingIteratorAndKeySet(Map<String, Integer> map) {
-        Iterator<String> iterator = map.keySet().iterator();
+    public long iterateUsingEnhancedForLoopAndEntrySet(Map<Integer, Integer> map) {
+        long sum = 0;
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            sum += entry.getValue();
+        }
+        return sum;
+    }
+
+    public void iterateUsingLambdaAndForEach(Map<Integer, Integer> map) {
+        map.forEach((k, v) -> LOGGER.info("Key: {}, Value: {}", k, v));
+    }
+
+    public long iterateByKeysUsingLambdaAndForEach(Map<Integer, Integer> map) {
+        AtomicLong sum = new AtomicLong(0);
+        map.keySet()
+            .forEach(k -> sum.addAndGet(map.get(k)));
+        return sum.get();
+    }
+
+    public long iterateValuesUsingLambdaAndForEach(Map<Integer, Integer> map) {
+        AtomicLong sum = new AtomicLong(0);
+        map.values()
+            .forEach(v -> sum.addAndGet(v));
+        return sum.get();
+    }
+
+    public long iterateUsingIteratorAndEntrySet(Map<Integer, Integer> map) {
+        long sum = 0;
+        Iterator<Map.Entry<Integer, Integer>> iterator = map.entrySet()
+            .iterator();
         while (iterator.hasNext()) {
-            String key = iterator.next();
-            System.out.println(key + ":" + map.get(key));
+            Map.Entry<Integer, Integer> pair = iterator.next();
+            sum += pair.getValue();
         }
+        return sum;
     }
 
-    public void iterateUsingKeySetAndForeach(Map<String, Integer> map) {
-        for (String key : map.keySet()) {
-            System.out.println(key + ":" + map.get(key));
+    public long iterateUsingIteratorAndKeySet(Map<Integer, Integer> map) {
+        long sum = 0;
+        Iterator<Integer> iterator = map.keySet()
+            .iterator();
+        while (iterator.hasNext()) {
+            Integer key = iterator.next();
+            sum += map.get(key);
         }
+        return sum;
     }
 
-    public void iterateUsingStreamAPI(Map<String, Integer> map) {
-        map.entrySet()
+    public long iterateUsingKeySetAndEnhanceForLoop(Map<Integer, Integer> map) {
+        long sum = 0;
+        for (Integer key : map.keySet()) {
+            sum += map.get(key);
+        }
+        return sum;
+    }
+
+    public long iterateUsingStreamAPIAndEntrySet(Map<Integer, Integer> map) {
+        return map.entrySet()
             .stream()
-            .forEach(e -> System.out.println(e.getKey() + ":" + e.getValue()));
+            .mapToLong(Map.Entry::getValue)
+            .sum();
+
     }
 
-    public void iterateKeys(Map<String, Integer> map) {
-        for (String key : map.keySet()) {
-            System.out.println(key);
+    public long iterateUsingStreamAPIAndKeySet(Map<Integer, Integer> map) {
+        return map.keySet()
+            .stream()
+            .mapToLong(map::get)
+            .sum();
+    }
+
+    public long iterateKeysUsingKeySetAndEnhanceForLoop(Map<Integer, Integer> map) {
+        long sum = 0;
+        for (Integer key : map.keySet()) {
+            sum += map.get(key);
         }
+        return sum;
     }
 
-    public void iterateValues(Map<String, Integer> map) {
+    public long iterateValuesUsingValuesMethodAndEnhanceForLoop(Map<Integer, Integer> map) {
+        long sum = 0;
         for (Integer value : map.values()) {
-            System.out.println(value);
+            sum += value;
         }
+        return sum;
+    }
+
+    public long iterateUsingMapIteratorApacheCollection(IterableMap<Integer, Integer> map) {
+        long sum = 0;
+        MapIterator<Integer, Integer> iterate = map.mapIterator();
+        while (iterate.hasNext()) {
+            iterate.next();
+            sum += iterate.getValue();
+        }
+        return sum;
+    }
+
+    public long iterateEclipseMap(MutableMap<Integer, Integer> mutableMap) throws IOException {
+        AtomicLong sum = new AtomicLong(0);
+        mutableMap.forEachKeyValue((key, value) -> {
+            sum.addAndGet(value);
+        });
+        return sum.get();
+    }
+
+    public long iterateMapUsingParallelStreamApi(Map<Integer, Integer> map) throws IOException {
+        return map.entrySet()
+            .parallelStream()
+            .mapToLong(Map.Entry::getValue)
+            .sum();
     }
 
 }

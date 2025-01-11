@@ -17,6 +17,7 @@ import static com.baeldung.array.ArrayInitializer.initializeArrayUsingArraysStre
 import static com.baeldung.array.ArrayInitializer.initializeArrayUsingIntStream;
 import static com.baeldung.array.ArrayInitializer.initializeArrayOfDoubleTypeUsingStreamApi;
 import static com.baeldung.array.ArrayInitializer.initializeTwoDimensionalArrayUsingStream;
+import static com.baeldung.array.ArrayInitializer.resizeArrayUsingSystemCopyArray;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -169,5 +170,11 @@ public class ArrayInitializerUnitTest {
         int[] numbers = new int[5];
         Arrays.setAll(numbers, i -> i * 2);
         assertArrayEquals(new int[] { 0, 2, 4, 6, 8 }, numbers);
+    }
+
+    @Test
+    public void whenResizeArrayUsingSystemCopyArray_thenCorrect() {
+        assertEquals(10, resizeArrayUsingSystemCopyArray().length);
+        assertArrayEquals(new int[] { 0, 1, 2, 3, 4, 0, 0, 0, 0, 0 }, resizeArrayUsingSystemCopyArray());
     }
 }
