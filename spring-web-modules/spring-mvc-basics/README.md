@@ -6,8 +6,7 @@ their own module.
 ### The Course
 The "REST With Spring" Classes: https://bit.ly/restwithspring
 
-### Relevant Articles: 
-
+### Relevant Articles:
 - [An Intro to the Spring DispatcherServlet](https://www.baeldung.com/spring-dispatcherservlet)
 - [The Spring @Controller and @RestController Annotations](https://www.baeldung.com/spring-controller-vs-restcontroller)
 - [Spring MVC Custom Validation](https://www.baeldung.com/spring-mvc-custom-validator)
@@ -16,4 +15,5 @@ The "REST With Spring" Classes: https://bit.ly/restwithspring
 - [Spring @RequestParam Annotation](https://www.baeldung.com/spring-request-param)
 - [Spring MVC and the @ModelAttribute Annotation](https://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation)
 - [Quick Guide to Spring Controllers](https://www.baeldung.com/spring-controllers)
+- [Guide to Spring Email](https://www.baeldung.com/spring-email)
 - More articles: [[more -->]](../spring-mvc-basics-2)
