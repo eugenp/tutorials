@@ -1,4 +1,4 @@
-package com.baeldung.map;
+package com.baeldung.map.advanced;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
