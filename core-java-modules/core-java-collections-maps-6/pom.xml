@@ -17,7 +17,7 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>1.36</version>
+            <version>${jmh-core.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -25,16 +25,6 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>5.8.1</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
-
-    <properties>
-        <spring.version>5.2.5.RELEASE</spring.version>
-    </properties>
 
 </project>
