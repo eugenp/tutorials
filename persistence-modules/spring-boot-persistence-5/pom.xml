@@ -60,8 +60,8 @@
     </build>
 
     <properties>
-        <lombok.version>1.18.32</lombok.version>
-        <instancio.version>2.9.0</instancio.version>
+        <lombok.version>1.18.36</lombok.version>
+        <instancio.version>5.2.1</instancio.version>
     </properties>
 
 </project>
