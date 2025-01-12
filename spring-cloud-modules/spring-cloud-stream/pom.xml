@@ -17,9 +17,8 @@
     <modules>
         <module>spring-cloud-stream-kafka</module>
         <module>spring-cloud-stream-kinesis</module>
-
 <!--  This module directly extends parent-boot-3 because it needs SB 3.x and Spring Cloud 2024.x -->
-<!--  <module>spring-cloud-stream-rabbit</module>-->
+        <module>spring-cloud-stream-rabbit</module>
     </modules>
 
     <dependencyManagement>
