@@ -5,7 +5,7 @@
 
 package com.baeldung.logging.log4j2.simpleconfigurator;
 
-import com.baeldung.logging.log4j2.Log4j2BaseIntegrationTest;
+import com.baeldung.logging.log4j2.Log4j2BaseUnitTest;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.appender.ConsoleAppender;
 import org.apache.logging.log4j.core.config.Configurator;
@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class SimpleConfiguratorIntegrationTest extends Log4j2BaseIntegrationTest {
+public class SimpleConfiguratorUnitTest extends Log4j2BaseUnitTest {
 
     @Test
     public void givenDefaultLog4j2Environment_whenProgrammaticallyConfigured_thenLogsCorrectly() {
