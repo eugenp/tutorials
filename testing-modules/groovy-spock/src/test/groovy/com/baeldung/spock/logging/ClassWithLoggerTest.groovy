@@ -14,6 +14,7 @@ class ClassWithLoggerTest extends Specification {
 
     @Subject
     def subject = new ClassWithLogger()
+
     def logger = (Logger) LoggerFactory.getLogger(ClassWithLogger)
     ListAppender<ILoggingEvent> listAppender
 
@@ -27,7 +28,18 @@ class ClassWithLoggerTest extends Specification {
         listAppender.stop()
     }
 
-    def "given a class when it logs an info warning message then we validate the message was logged at the right level"() {
+    def "when our subject logs an info message then we validate an info message was logged"() {
+        when: "we invoke a method that logs an info message"
+        subject.logInfo()
+
+        then: 'the details match for the first message in the list'
+        with (listAppender.list[0]) {
+            getMessage() == "info message"
+            getLevel() == Level.INFO
+        }
+    }
+
+    def "when our subject logs an info message then we validate an info message was logged even when not the first message"() {
         when: "we invoke a method that logs an info message"
         subject.logInfo()
 
@@ -42,25 +54,13 @@ class ClassWithLoggerTest extends Specification {
             getMessage() == "info message"
             getLevel() == Level.INFO
         }
-
-        and: 'the details match for the first message in the list'
-        with (listAppender.list[0]) {
-            getMessage() == "info message"
-            getLevel() == Level.INFO
-        }
     }
 
-    def "given a class when it logs an info message from a template then we validate the message was logged at the right level"() {
+    def "when our subject logs an info message from a template then we validate the an info message was logged with a parameter"() {
         when: "we invoke a method that logs an info message with a parameter"
         subject.logInfoWithParameter("parameter")
 
-        then: "we get our expected message"
-        def ourMessage = listAppender.list.stream()
-                .filter(logEvent -> logEvent.getMessage().contains("info"))
-                .findAny()
-        ourMessage.isPresent()
-
-        and: 'the details match for the first message in the list'
+        then: 'the details match for the first message in the list'
         with (listAppender.list[0]) {
             getMessage() == 'info message: {}'
             getArgumentArray()[0] == 'parameter'
