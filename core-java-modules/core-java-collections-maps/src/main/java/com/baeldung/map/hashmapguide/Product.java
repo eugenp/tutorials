@@ -1,6 +1,10 @@
-package com.baeldung.map;
+package com.baeldung.map.hashmapguide;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class Product {
 

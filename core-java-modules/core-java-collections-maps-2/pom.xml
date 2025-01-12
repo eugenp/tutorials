@@ -15,11 +15,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.eclipse.collections</groupId>
-            <artifactId>eclipse-collections</artifactId>
-            <version>${eclipse-collections.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
@@ -55,7 +50,6 @@
     <properties>
         <streamex.version>0.8.1</streamex.version>
         <avaitility.version>1.7.0</avaitility.version>
-        <eclipse-collections.version>8.2.0</eclipse-collections.version>
         <jmh.version>1.37</jmh.version>
     </properties>
 

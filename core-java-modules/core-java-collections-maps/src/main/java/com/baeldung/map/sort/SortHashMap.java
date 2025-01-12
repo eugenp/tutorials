@@ -1,12 +1,19 @@
 package com.baeldung.map.sort;
 
-import com.baeldung.map.mergemaps.Employee;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
+
 import com.google.common.base.Functions;
 import com.google.common.collect.ImmutableSortedMap;
 import com.google.common.collect.Ordering;
-
-import java.util.*;
-import java.util.stream.Collectors;
 
 public class SortHashMap {
 

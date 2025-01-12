@@ -40,11 +40,17 @@
             <artifactId>json</artifactId>
             <version>${org.json.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.eclipse.collections</groupId>
+            <artifactId>eclipse-collections</artifactId>
+            <version>${eclipse-collections.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <jackson-databind.version>2.16.0</jackson-databind.version>
         <gson.version>2.10.1</gson.version>
+        <eclipse-collections.version>8.2.0</eclipse-collections.version>
     </properties>
 
 </project>
