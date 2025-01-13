@@ -14,6 +14,14 @@ public class CamelToSnakeCaseConverterUnitTest {
     }
 
     @Test
+    public void whenConvertNotNormalCamelCase_thenGetCorrectSnakeCase() {
+        String input = "convertCCamelCase";
+        String expected = "convert_c_camel_case";
+        Assertions.assertEquals(expected, CamelToSnakeCaseConverter.convertCamelCaseToSnake(input));
+        Assertions.assertEquals(expected, CamelToSnakeCaseConverter.convertCamelCaseToSnakeRegex(input));
+    }
+
+    @Test
     public void whenConvertAlreadySnakeCase_thenGetUnchangedSnakeCase() {
         String input = "snake_case";
         String expected = "snake_case";
