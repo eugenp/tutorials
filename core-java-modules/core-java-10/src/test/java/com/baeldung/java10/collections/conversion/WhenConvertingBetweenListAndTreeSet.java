@@ -12,7 +12,7 @@ public class WhenConvertingBetweenListAndTreeSet {
     @Test
     public void givenComparableObject_whenConvertingToTreeSet_thenNoExceptionThrown() {
 
-        ArrayList&lt;Employee&gt; arrayList = new ArrayList&lt;Employee&gt;();
+        ArrayList<Employee> arrayList = new ArrayList<Employee>();
 
         arrayList.add(new Employee(3, "John"));
         arrayList.add(new Employee(5, "Mike"));
@@ -20,15 +20,15 @@ public class WhenConvertingBetweenListAndTreeSet {
         arrayList.add(new Employee(1, "Tom"));
         arrayList.add(new Employee(4, "Johnny"));
         
-        assertDoesNotThrow(()-&gt;{
-        TreeSet&lt;Employee&gt; treeSet=new TreeSet&lt;Employee&gt;(arrayList);
+        assertDoesNotThrow(()->{
+        TreeSet<Employee> treeSet=new TreeSet<Employee>(arrayList);
         });
     }
 
     @Test
     public void givenTreeSet_whenConvertingToList_thenNoExceptionThrown() {
 
-        TreeSet&lt;Employee&gt; treeSet = new TreeSet&lt;Employee&gt;();
+        TreeSet<Employee> treeSet = new TreeSet<Employee>();
 
         treeSet.add(new Employee(3, "John"));
         treeSet.add(new Employee(5, "Mike"));
@@ -36,8 +36,8 @@ public class WhenConvertingBetweenListAndTreeSet {
         treeSet.add(new Employee(1, "Tom"));
         treeSet.add(new Employee(4, "Johnny"));
         
-        assertDoesNotThrow(()-&gt;{
-        ArrayList&lt;Employee&gt; arrayList=new ArrayList&lt;Employee&gt;(treeSet);
+        assertDoesNotThrow(()->{
+        ArrayList<Employee> arrayList=new ArrayList<Employee>(treeSet);
         });
     }
 
