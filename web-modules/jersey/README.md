@@ -13,3 +13,4 @@ This module contains articles about Jersey.
 - [Exception Handling With Jersey](https://www.baeldung.com/java-exception-handling-jersey)
 - [@FormDataParam vs. @FormParam in Jersey](https://www.baeldung.com/jersey-formdataparam-vs-formparam)
 - [Add a List as Query Parameter in Jersey](https://www.baeldung.com/java-jersey-list-query-param)
+- More articles: [[next -->]](/web-modules/jersey-2)
