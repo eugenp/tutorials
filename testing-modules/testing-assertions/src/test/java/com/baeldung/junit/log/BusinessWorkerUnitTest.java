@@ -20,7 +20,7 @@ import org.springframework.boot.test.system.OutputCaptureExtension;
 @ExtendWith(OutputCaptureExtension.class)
 class BusinessWorkerUnitTest {
 
-    private static final MemoryAppender memoryAppender = new MemoryAppender();
+    private final MemoryAppender memoryAppender = new MemoryAppender();
     private static final String LOGGER_NAME = "com.baeldung.junit.log";
     private static final String MSG = "This is a test message!!!";
 
