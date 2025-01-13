@@ -163,6 +163,16 @@
             <version>${resilience4j.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.jline</groupId>
+            <artifactId>jline</artifactId>
+            <version>${jline.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jline</groupId>
+            <artifactId>jline-terminal-jansi</artifactId>
+            <version>${jline.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${spring-boot.version}</version>
@@ -181,6 +191,7 @@
         <yavi.version>0.14.1</yavi.version>
         <sootup.version>1.3.0</sootup.version>
         <resilience4j.version>2.1.0</resilience4j.version>
+        <jline.version>3.28.0</jline.version>
     </properties>
 
 </project>
