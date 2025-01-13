@@ -1,6 +1,6 @@
 package com.baeldung.spring.notamanagedtype.missedannotation;
 
-import javax.persistence.Id;
+import jakarta.persistence.Id;
 
 public class EntityWithoutAnnotation {
     @Id
