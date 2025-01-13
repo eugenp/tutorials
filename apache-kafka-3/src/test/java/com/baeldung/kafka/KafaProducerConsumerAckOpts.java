@@ -2,22 +2,14 @@ package com.baeldung.kafka;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
-import java.time.Duration;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
-import java.util.Set;
 import java.util.concurrent.ExecutionException;
 
-import org.apache.kafka.clients.admin.AdminClient;
-import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -40,8 +32,10 @@ import org.testcontainers.utility.DockerImageName;
 @Testcontainers
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class KafaProducerConsumerAckOpts {
+
     private final static String CONSUMER_GROUP_ID = "ConsumerGroup1";
-    
+
+    private final static long INVALID_OFFSET = -1;
     private final static String TOPIC = "baeldung-kafka-github";
     private static String MESSAGE_KEY = "message";
     private final static String TEST_MESSAGE = "Kafka Test Message";
@@ -118,123 +112,79 @@ public class KafaProducerConsumerAckOpts {
 
     @Test
     @Order(1)
-    void givenProducerAck0_whenProducerSendsRecord_thenReplyReceivedWithoutConfirmingWrite() throws ExecutionException, InterruptedException {
+    void givenProducerAck0_whenProducerSendsRecord_thenDoesNotReturnOffset() throws ExecutionException, InterruptedException {
 
         ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC, 0, MESSAGE_KEY, TEST_MESSAGE + "_0");
         for (int i = 0; i < 50; i++) {
             RecordMetadata metadata = producerack0.send(record)
                 .get();
-            assertEquals(-1, metadata.offset());
+            assertEquals(INVALID_OFFSET, metadata.offset());
         }
     }
 
     @Test
     @Order(2)
-    void givenProducerAck1_whenProducerSendsRecord_thenReplyReceivedConfirmingWriteToLeader() throws ExecutionException, InterruptedException {
+    void givenProducerAck1_whenProducerSendsRecord_thenReturnsValidOffset() throws ExecutionException, InterruptedException {
 
         ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC, 1, MESSAGE_KEY, TEST_MESSAGE + "_1");
         for (int i = 0; i < 50; i++) {
             RecordMetadata metadata = producerack1.send(record)
                 .get();
-            assertNotEquals(-1, metadata.offset());
+            assertNotEquals(INVALID_OFFSET, metadata.offset());
         }
     }
 
     @Test
     @Order(3)
-    void givenProducerAckAll_whenProducerSendsRecord_thenReplyReceivedConfirmingWriteToAllReplicas() throws ExecutionException, InterruptedException {
+    void givenProducerAckAll_whenProducerSendsRecord_theReturnsValidOffset() throws ExecutionException, InterruptedException {
 
         ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC, 2, MESSAGE_KEY, TEST_MESSAGE + "_ALL");
         for (int i = 0; i < 50; i++) {
             RecordMetadata metadata = producerackAll.send(record)
                 .get();
-            assertNotEquals(-1, metadata.offset());
+            assertNotEquals(INVALID_OFFSET, metadata.offset());
         }
     }
 
     @Test
     @Order(4)
-    void whenSeekingKafkaResetConfigLatest_consumerRetrievesLatestMessages() throws ExecutionException, InterruptedException {
+    void whenSeekingKafkaResetConfigLatest_consumerOffsetSetToLatestRecordOffset() throws ExecutionException, InterruptedException {
         Properties consumerProperties = getConsumerProperties();
+        consumerProperties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
         consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
+        long expected_offset = 50;
+        long actual_offset = -1;
 
         try (KafkaConsumer<String, String> consumer = new KafkaConsumer<>(consumerProperties)) {
             TopicPartition partition1 = new TopicPartition(TOPIC, 1);
             List<TopicPartition> partitions = new ArrayList<>();
             partitions.add(partition1);
             consumer.assign(partitions);
-
-            ConsumerRecords<String, String> records = consumer.poll(Duration.ofMinutes(1));
-
-            deleteConsumerGroupOffsets();
-
-            ProducerRecord<String, String> producerRecord = new ProducerRecord<>(TOPIC, 1, MESSAGE_KEY, TEST_MESSAGE + "_1");
-            for (int i = 0; i < 20; i++) {
-                producerack1.send(producerRecord)
-                    .get();
-            }
-
-            records = consumer.poll(Duration.ofMinutes(1));
-
-            for (ConsumerRecord<String, String> record : records) {
-                assertEquals(MESSAGE_KEY, record.key());
-                assertTrue(record.value()
-                    .contains(TEST_MESSAGE));
-            }
+            actual_offset = consumer.position(partition1);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        assertEquals(expected_offset, actual_offset);
     }
 
     @Test
     @Order(5)
-    void whenSeekingKafkaResetConfigEarliest_consumerRetrievesEarliestMessages() throws ExecutionException, InterruptedException {
+    void whenSeekingKafkaResetConfigEarliest_consumerOffsetSetToZero() throws ExecutionException, InterruptedException {
         Properties consumerProperties = getConsumerProperties();
+        consumerProperties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
         consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+        long expected_offset = 0;
+        long actual_offset = -1;
 
         try (KafkaConsumer<String, String> consumer = new KafkaConsumer<>(consumerProperties)) {
-
             TopicPartition partition2 = new TopicPartition(TOPIC, 2);
             List<TopicPartition> partitions = new ArrayList<>();
             partitions.add(partition2);
             consumer.assign(partitions);
-
-            ConsumerRecords<String, String> records = consumer.poll(Duration.ofMinutes(1));
-
-            deleteConsumerGroupOffsets();
-
-            ProducerRecord<String, String> producerRecord = new ProducerRecord<>(TOPIC, 2, MESSAGE_KEY, TEST_MESSAGE + "_all");
-            for (int i = 0; i < 20; i++) {
-                producerackAll.send(producerRecord)
-                    .get();
-            }
-
-            records = consumer.poll(Duration.ofMinutes(1));
-
-            for (ConsumerRecord<String, String> record : records) {
-                assertEquals(MESSAGE_KEY, record.key());
-                assertTrue(record.value()
-                    .contains(TEST_MESSAGE));
-            }
+            actual_offset = consumer.position(partition2);
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
-    }
-
-    public static void deleteConsumerGroupOffsets() {
-        Properties props = new Properties();
-        props.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_CONTAINER.getBootstrapServers());
-        Set<TopicPartition> topicSet = new HashSet<>();
-        topicSet.add(new TopicPartition(TOPIC, 0));
-        topicSet.add(new TopicPartition(TOPIC, 1));
-        topicSet.add(new TopicPartition(TOPIC, 2));
-
-        try (AdminClient adminClient = AdminClient.create(props)) {
-            // Delete offsets for the specified topic and group            
-            adminClient.deleteConsumerGroupOffsets(CONSUMER_GROUP_ID, topicSet)
-                .all()
-                .get();
-        } catch (Exception e) {
-        }
+        assertEquals(expected_offset, actual_offset);
     }
 }
