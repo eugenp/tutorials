@@ -32,6 +32,16 @@
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
+         <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.hypersistence</groupId>
+            <artifactId>hypersistence-utils-hibernate-60</artifactId>
+            <version>${hypersistance-utils-hibernate-60.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -78,6 +88,7 @@
         <lombok.version>1.18.30</lombok.version>
         <liquibase-core.version>4.24.0</liquibase-core.version>
         <logback-core.version>1.5.8</logback-core.version>
+         <hypersistance-utils-hibernate-60.version>3.3.1</hypersistance-utils-hibernate-60.version>
     </properties>
 
 </project>
