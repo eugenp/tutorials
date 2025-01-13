@@ -31,25 +31,25 @@ import org.testcontainers.utility.DockerImageName;
 
 @Testcontainers
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class KafaProducerConsumerAckOpts {
+public class KafaProducerConsumerAckOptsLiveTest {
 
-    private final static String CONSUMER_GROUP_ID = "ConsumerGroup1";
+    private static final String CONSUMER_GROUP_ID = "ConsumerGroup1";
 
-    private final static long INVALID_OFFSET = -1;
-    private final static String TOPIC = "baeldung-kafka-github";
-    private static String MESSAGE_KEY = "message";
-    private final static String TEST_MESSAGE = "Kafka Test Message";
-    private final static Integer PARTITION_NUMBER = 3;
+    private static final long INVALID_OFFSET = -1;
+    private static final String TOPIC = "baeldung-kafka-github";
+    private static final String MESSAGE_KEY = "message";
+    private static final String TEST_MESSAGE = "Kafka Test Message";
+    private static final Integer PARTITION_NUMBER = 3;
 
     static KafkaProducer<String, String> producerack0;
     static KafkaProducer<String, String> producerack1;
     static KafkaProducer<String, String> producerackAll;
 
     @Container
-    private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:latest"));
+    private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka"));
 
     @BeforeAll
-    static void setup() throws IOException, InterruptedException {
+    static void setUp() throws IOException, InterruptedException {
 
         KAFKA_CONTAINER.addExposedPort(9092);
 
@@ -113,7 +113,6 @@ public class KafaProducerConsumerAckOpts {
     @Test
     @Order(1)
     void givenProducerAck0_whenProducerSendsRecord_thenDoesNotReturnOffset() throws ExecutionException, InterruptedException {
-
         ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC, 0, MESSAGE_KEY, TEST_MESSAGE + "_0");
         for (int i = 0; i < 50; i++) {
             RecordMetadata metadata = producerack0.send(record)
@@ -125,7 +124,6 @@ public class KafaProducerConsumerAckOpts {
     @Test
     @Order(2)
     void givenProducerAck1_whenProducerSendsRecord_thenReturnsValidOffset() throws ExecutionException, InterruptedException {
-
         ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC, 1, MESSAGE_KEY, TEST_MESSAGE + "_1");
         for (int i = 0; i < 50; i++) {
             RecordMetadata metadata = producerack1.send(record)
@@ -137,7 +135,6 @@ public class KafaProducerConsumerAckOpts {
     @Test
     @Order(3)
     void givenProducerAckAll_whenProducerSendsRecord_theReturnsValidOffset() throws ExecutionException, InterruptedException {
-
         ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC, 2, MESSAGE_KEY, TEST_MESSAGE + "_ALL");
         for (int i = 0; i < 50; i++) {
             RecordMetadata metadata = producerackAll.send(record)
@@ -148,43 +145,39 @@ public class KafaProducerConsumerAckOpts {
 
     @Test
     @Order(4)
-    void whenSeekingKafkaResetConfigLatest_consumerOffsetSetToLatestRecordOffset() throws ExecutionException, InterruptedException {
+    void whenSeekingKafkaResetConfigLatest_consumerOffsetSetToLatestRecordOffset() {
         Properties consumerProperties = getConsumerProperties();
         consumerProperties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
         consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
-        long expected_offset = 50;
-        long actual_offset = -1;
+        long expected_start_offset = 50;
+        long actual_start_offset = -1;
 
-        try (KafkaConsumer<String, String> consumer = new KafkaConsumer<>(consumerProperties)) {
-            TopicPartition partition1 = new TopicPartition(TOPIC, 1);
-            List<TopicPartition> partitions = new ArrayList<>();
-            partitions.add(partition1);
-            consumer.assign(partitions);
-            actual_offset = consumer.position(partition1);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        assertEquals(expected_offset, actual_offset);
+        KafkaConsumer<String, String> consumer = new KafkaConsumer<>(consumerProperties);
+        TopicPartition partition1 = new TopicPartition(TOPIC, 1);
+        List<TopicPartition> partitions = new ArrayList<>();
+        partitions.add(partition1);
+        consumer.assign(partitions);
+        actual_start_offset = consumer.position(partition1);
+
+        assertEquals(expected_start_offset, actual_start_offset);
     }
 
     @Test
     @Order(5)
-    void whenSeekingKafkaResetConfigEarliest_consumerOffsetSetToZero() throws ExecutionException, InterruptedException {
+    void whenSeekingKafkaResetConfigEarliest_consumerOffsetSetToZero() {
         Properties consumerProperties = getConsumerProperties();
         consumerProperties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
         consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-        long expected_offset = 0;
-        long actual_offset = -1;
+        long expected_start_offset = 0;
+        long actual_start_offset = -1;
 
-        try (KafkaConsumer<String, String> consumer = new KafkaConsumer<>(consumerProperties)) {
-            TopicPartition partition2 = new TopicPartition(TOPIC, 2);
-            List<TopicPartition> partitions = new ArrayList<>();
-            partitions.add(partition2);
-            consumer.assign(partitions);
-            actual_offset = consumer.position(partition2);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        assertEquals(expected_offset, actual_offset);
+        KafkaConsumer<String, String> consumer = new KafkaConsumer<>(consumerProperties);
+        TopicPartition partition2 = new TopicPartition(TOPIC, 2);
+        List<TopicPartition> partitions = new ArrayList<>();
+        partitions.add(partition2);
+        consumer.assign(partitions);
+        actual_start_offset = consumer.position(partition2);
+
+        assertEquals(expected_start_offset, actual_start_offset);
     }
 }
