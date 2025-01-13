@@ -1,4 +1,4 @@
-package com.baeldung.collection;
+package com.baeldung.java10.collections.conversion;
 
 public class Employee implements Comparable<Employee> {
     private int employeeId;
