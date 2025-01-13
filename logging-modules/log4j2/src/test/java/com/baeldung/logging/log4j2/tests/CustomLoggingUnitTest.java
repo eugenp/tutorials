@@ -20,7 +20,7 @@ import org.junit.runners.JUnit4;
 import com.baeldung.logging.log4j2.tests.jdbc.ConnectionFactory;
 
 @RunWith(JUnit4.class)
-public class CustomLoggingIntegrationTest {
+public class CustomLoggingUnitTest {
 
     private static String logFilePath = System.getProperty("logging.folder.path");
     
