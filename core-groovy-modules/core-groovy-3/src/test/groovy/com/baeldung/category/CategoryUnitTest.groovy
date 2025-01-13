@@ -2,13 +2,14 @@ package com.baeldung.category
 
 import groovy.time.TimeCategory
 import groovy.xml.DOMBuilder
-import groovy.xml.QName
 import groovy.xml.dom.DOMCategory
+import org.junit.Test
 
 import java.text.SimpleDateFormat
 
-class CategoryUnitTest extends GroovyTestCase {
+class CategoryUnitTest {
 
+    @Test
     void test_whenUsingTimeCategory_thenOperationOnDate() {
         def jan_1_2019 = new Date("01/01/2019")
         use(TimeCategory) {
@@ -28,6 +29,7 @@ class CategoryUnitTest extends GroovyTestCase {
         }
     }
 
+    @Test
     void test_whenUsingTimeCategory_thenOperationOnNumber() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy")
         use(TimeCategory) {
@@ -39,6 +41,7 @@ class CategoryUnitTest extends GroovyTestCase {
         }
     }
 
+    @Test
     void test_whenUsingDOMCategory_thenOperationOnXML() {
 
         def baeldungArticlesText = """
@@ -65,7 +68,7 @@ class CategoryUnitTest extends GroovyTestCase {
             assert articles[0].title.text() == "An Intro to the Java Debug Interface (JDI)"
             assert articles[1].desc.text() == "Learn how to work with Web Services in Groovy."
 
-            def articleNode3 = root.appendNode(new QName("article"), ["core-java": "false"])
+            def articleNode3 = root.appendNode(new groovy.namespace.QName("article"), ["core-java": "false"])
 
             articleNode3.appendNode("title", "Metaprogramming in Groovy")
             articleNode3.appendNode("desc", "Explore the concept of runtime and compile-time metaprogramming in Groovy")
@@ -76,12 +79,14 @@ class CategoryUnitTest extends GroovyTestCase {
         }
     }
 
+    @Test
     void test_whenUsingBaeldungCategory_thenCapitalizeString() {
         use(BaeldungCategory) {
             assert "norman".capitalize() == "Norman"
         }
     }
 
+    @Test
     void test_whenUsingBaeldungCategory_thenOperationsOnNumber() {
         use(BaeldungCategory) {
             assert 50.toThePower(2) == 2500
@@ -89,6 +94,7 @@ class CategoryUnitTest extends GroovyTestCase {
         }
     }
 
+    @Test
     void test_whenUsingNumberCategory_thenOperationsOnNumber() {
         use(NumberCategory) {
             assert 3.cube() == 27

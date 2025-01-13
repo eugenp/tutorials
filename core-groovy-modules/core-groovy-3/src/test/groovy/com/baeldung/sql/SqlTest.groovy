@@ -1,4 +1,4 @@
-package com.baeldung.groovy.sql
+package com.baeldung.sql
 
 import groovy.sql.GroovyResultSet
 import groovy.sql.Sql
