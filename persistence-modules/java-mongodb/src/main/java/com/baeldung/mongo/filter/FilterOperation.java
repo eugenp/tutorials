@@ -1,14 +1,24 @@
 package com.baeldung.mongo.filter;
 
+import static com.mongodb.client.model.Filters.and;
+import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Filters.exists;
+import static com.mongodb.client.model.Filters.gt;
+import static com.mongodb.client.model.Filters.in;
+import static com.mongodb.client.model.Filters.lt;
+import static com.mongodb.client.model.Filters.ne;
+import static com.mongodb.client.model.Filters.nin;
+import static com.mongodb.client.model.Filters.or;
+import static com.mongodb.client.model.Filters.regex;
+
+import org.bson.Document;
+import org.bson.conversions.Bson;
+
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
-import org.bson.Document;
-import org.bson.conversions.Bson;
-
-import static com.mongodb.client.model.Filters.*;
 
 public class FilterOperation {
 

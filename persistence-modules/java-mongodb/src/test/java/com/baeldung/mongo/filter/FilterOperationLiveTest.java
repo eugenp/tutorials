@@ -1,25 +1,34 @@
 package com.baeldung.mongo.filter;
 
-import com.baeldung.mongo.find.FindOperationLiveTest;
-import com.mongodb.MongoClient;
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
-import com.mongodb.client.MongoDatabase;
-import org.bson.Document;
-import org.bson.conversions.Bson;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static com.mongodb.client.model.Filters.and;
+import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Filters.exists;
+import static com.mongodb.client.model.Filters.gt;
+import static com.mongodb.client.model.Filters.in;
+import static com.mongodb.client.model.Filters.lt;
+import static com.mongodb.client.model.Filters.ne;
+import static com.mongodb.client.model.Filters.nin;
+import static com.mongodb.client.model.Filters.or;
+import static com.mongodb.client.model.Filters.regex;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import static com.mongodb.client.model.Filters.*;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import com.mongodb.MongoClient;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoDatabase;
 
 public class FilterOperationLiveTest {
 
@@ -38,7 +47,7 @@ public class FilterOperationLiveTest {
 
             collection.drop();
 
-            InputStream is = FindOperationLiveTest.class.getResourceAsStream(DATASET_JSON);
+            InputStream is = FilterOperationLiveTest.class.getResourceAsStream(DATASET_JSON);
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             reader.lines()
                     .forEach(line -> collection.insertOne(Document.parse(line)));

@@ -1,4 +1,4 @@
-package com.baeldung.mongo;
+package com.baeldung.mongo.collectionexistence;
 
 import static org.junit.Assert.assertEquals;
 
