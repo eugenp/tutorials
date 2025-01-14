@@ -134,7 +134,7 @@ public class KafaProducerConsumerAckOptsLiveTest {
 
     @Test
     @Order(3)
-    void givenProducerAckAll_whenProducerSendsRecord_theReturnsValidOffset() throws ExecutionException, InterruptedException {
+    void givenProducerAckAll_whenProducerSendsRecord_thenReturnsValidOffset() throws ExecutionException, InterruptedException {
         ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC, 2, MESSAGE_KEY, TEST_MESSAGE + "_ALL");
         for (int i = 0; i < 50; i++) {
             RecordMetadata metadata = producerackAll.send(record)
@@ -145,39 +145,41 @@ public class KafaProducerConsumerAckOptsLiveTest {
 
     @Test
     @Order(4)
-    void whenSeekingKafkaResetConfigLatest_consumerOffsetSetToLatestRecordOffset() {
+    void whenSeekingKafkaResetConfigLatest_thenConsumerOffsetSetToLatestRecordOffset() {
         Properties consumerProperties = getConsumerProperties();
         consumerProperties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
         consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
-        long expected_start_offset = 50;
-        long actual_start_offset = -1;
+        long expectedStartOffset = 50;
+        long actualStartOffset;
 
-        KafkaConsumer<String, String> consumer = new KafkaConsumer<>(consumerProperties);
-        TopicPartition partition1 = new TopicPartition(TOPIC, 1);
-        List<TopicPartition> partitions = new ArrayList<>();
-        partitions.add(partition1);
-        consumer.assign(partitions);
-        actual_start_offset = consumer.position(partition1);
+        try (KafkaConsumer<String, String> consumer = new KafkaConsumer<>(consumerProperties)) {
+            TopicPartition partition1 = new TopicPartition(TOPIC, 1);
+            List<TopicPartition> partitions = new ArrayList<>();
+            partitions.add(partition1);
+            consumer.assign(partitions);
+            actualStartOffset = consumer.position(partition1);
+        }
 
-        assertEquals(expected_start_offset, actual_start_offset);
+        assertEquals(expectedStartOffset, actualStartOffset);
     }
 
     @Test
     @Order(5)
-    void whenSeekingKafkaResetConfigEarliest_consumerOffsetSetToZero() {
+    void whenSeekingKafkaResetConfigEarliest_thenConsumerOffsetSetToZero() {
         Properties consumerProperties = getConsumerProperties();
         consumerProperties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
         consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-        long expected_start_offset = 0;
-        long actual_start_offset = -1;
+        long expectedStartOffset = 0;
+        long actualStartOffset;
 
-        KafkaConsumer<String, String> consumer = new KafkaConsumer<>(consumerProperties);
-        TopicPartition partition2 = new TopicPartition(TOPIC, 2);
-        List<TopicPartition> partitions = new ArrayList<>();
-        partitions.add(partition2);
-        consumer.assign(partitions);
-        actual_start_offset = consumer.position(partition2);
+        try (KafkaConsumer<String, String> consumer = new KafkaConsumer<>(consumerProperties)) {
+            TopicPartition partition2 = new TopicPartition(TOPIC, 2);
+            List<TopicPartition> partitions = new ArrayList<>();
+            partitions.add(partition2);
+            consumer.assign(partitions);
+            actualStartOffset = consumer.position(partition2);
+        }
 
-        assertEquals(expected_start_offset, actual_start_offset);
+        assertEquals(expectedStartOffset, actualStartOffset);
     }
 }
