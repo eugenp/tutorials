@@ -10,4 +10,5 @@ This module contains articles about MongoDB in Java.
 - [Update Documents in MongoDB](https://www.baeldung.com/mongodb-update-documents)
 - [Guide to Filters in MongoDB](https://www.baeldung.com/java-mongodb-filters)
 - [Checking Connection to MongoDB](https://www.baeldung.com/mongodb-check-connection)
+- [MongoDB Aggregations Using Java](https://www.baeldung.com/java-mongodb-aggregations)
 - More articles: [next -->](../java-mongodb-2)
