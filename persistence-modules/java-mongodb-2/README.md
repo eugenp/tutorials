@@ -12,4 +12,5 @@ This module contains articles about MongoDB in Java.
 - [Retrieve a Value from MongoDB by Its Key Name](https://www.baeldung.com/mongodb-get-value-by-key-name)
 - [Push and Set Operations in Same MongoDB Update](https://www.baeldung.com/java-mongodb-push-set)
 - [Checking Connection to MongoDB](https://www.baeldung.com/mongodb-check-connection)
+- [MongoDB BSON Guide](https://www.baeldung.com/mongodb-bson)
 - More articles: [[<-- prev]](../java-mongodb)
