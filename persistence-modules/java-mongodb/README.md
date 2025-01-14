@@ -9,4 +9,5 @@ This module contains articles about MongoDB in Java.
 - [Update Multiple Fields in a MongoDB Document](https://www.baeldung.com/mongodb-update-multiple-fields)
 - [Update Documents in MongoDB](https://www.baeldung.com/mongodb-update-documents)
 - [Guide to Filters in MongoDB](https://www.baeldung.com/java-mongodb-filters)
+- [Checking Connection to MongoDB](https://www.baeldung.com/mongodb-check-connection)
 - More articles: [next -->](../java-mongodb-2)

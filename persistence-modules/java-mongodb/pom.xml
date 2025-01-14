@@ -59,7 +59,7 @@
         <slf4j.version>2.0.13</slf4j.version>
         <junit.jupiter.version>5.7.0</junit.jupiter.version>
         <flapdoodle.version>4.4.1</flapdoodle.version>
-        <morphia.version>2.0.0</morphia.version>
+        <morphia.version>2.4.14</morphia.version>
     </properties>
 
 </project>
