@@ -1,4 +1,4 @@
-package com.baeldung.mongo;
+package com.baeldung.update;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -7,8 +7,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.bson.Document;
 import org.junit.AfterClass;
@@ -18,17 +16,12 @@ import org.junit.Test;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.DeleteOneModel;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.FindOneAndUpdateOptions;
-import com.mongodb.client.model.InsertOneModel;
-import com.mongodb.client.model.ReplaceOneModel;
+import com.mongodb.client.model.ReplaceOptions;
 import com.mongodb.client.model.ReturnDocument;
-import com.mongodb.client.model.UpdateManyModel;
-import com.mongodb.client.model.UpdateOneModel;
 import com.mongodb.client.model.UpdateOptions;
 import com.mongodb.client.model.Updates;
-import com.mongodb.client.model.WriteModel;
 import com.mongodb.client.result.UpdateResult;
 
 public class UpsertOperationLiveTest {
@@ -46,7 +39,7 @@ public class UpsertOperationLiveTest {
             collection = db.getCollection("vehicle");
             collection.drop();
 
-            InputStream is = BulkOperationLiveTest.class.getResourceAsStream(DATASET_JSON);
+            InputStream is = UpsertOperationLiveTest.class.getResourceAsStream(DATASET_JSON);
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             reader.lines()
                 .forEach(line -> collection.insertOne(Document.parse(line)));
@@ -95,7 +88,7 @@ public class UpsertOperationLiveTest {
     @Test
     public void givenVehicleCollection_whenreplaceOneOperations_thenCheckingForDocument() {
 
-        UpdateOptions options = new UpdateOptions().upsert(true);
+        ReplaceOptions options = new ReplaceOptions().upsert(true);
         Document replaceDocument = new Document();
         replaceDocument.append("modelName", "GTPP")
             .append("companyName", "Hero Honda")

@@ -11,4 +11,5 @@ This module contains articles about MongoDB in Java.
 - [Guide to Filters in MongoDB](https://www.baeldung.com/java-mongodb-filters)
 - [Checking Connection to MongoDB](https://www.baeldung.com/mongodb-check-connection)
 - [MongoDB Aggregations Using Java](https://www.baeldung.com/java-mongodb-aggregations)
+- [Guide to Upsert in MongoDB](https://www.baeldung.com/mongodb-upsert)
 - More articles: [next -->](../java-mongodb-2)
