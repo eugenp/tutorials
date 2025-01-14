@@ -1,4 +1,4 @@
-package com.baeldung.mongo;
+package com.baeldung.mongo.collectionexistence;
 
 import java.util.ArrayList;
 

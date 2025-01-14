@@ -1,10 +1,9 @@
-package com.baeldung.morphia.domain;
+package com.baeldung.mongo.morphia.domain;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-import dev.morphia.annotations.Embedded;
 import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Field;
 import dev.morphia.annotations.Id;

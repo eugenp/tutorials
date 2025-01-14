@@ -1,4 +1,4 @@
-package com.baeldung.morphia.domain;
+package com.baeldung.mongo.morphia.domain;
 
 import java.util.List;
 
