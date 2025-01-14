@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.TreeSet;
  
 
-public class WhenConvertingBetweenListAndTreeSet {
+public class ConvertBetweenListAndTreeSet {
     
     @Test
     public void givenComparableObject_whenConvertingToTreeSet_thenNoExceptionThrown() {
