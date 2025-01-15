@@ -6,5 +6,7 @@ import java.util.Optional;
 public interface OttSenderService {
 
     void sendTokenToUser(String username, String token, Instant expirationTime);
-    Optional<String> getLastTokenForUser(String username);
+
+    // Optional method used for tests
+    default Optional<String> getLastTokenForUser(String username) { return Optional.empty();}
 }

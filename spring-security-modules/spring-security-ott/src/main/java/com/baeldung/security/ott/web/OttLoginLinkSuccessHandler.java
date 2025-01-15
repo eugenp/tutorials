@@ -14,14 +14,13 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class OttLoginLinkSuccessHandler implements OneTimeTokenGenerationSuccessHandler {
 
-    private final OttSenderService smsService;
-    //private final OneTimeTokenGenerationSuccessHandler redirectHandler = new RedirectOneTimeTokenGenerationSuccessHandler("/login/ott");
-    private final OneTimeTokenGenerationSuccessHandler redirectHandler = new RedirectOneTimeTokenGenerationSuccessHandler("/ott/sent.html");
+    private final OttSenderService senderService;
+    private final OneTimeTokenGenerationSuccessHandler redirectHandler = new RedirectOneTimeTokenGenerationSuccessHandler("/login/ott");
 
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, OneTimeToken oneTimeToken) throws IOException, ServletException {
 
-        smsService.sendTokenToUser(oneTimeToken.getUsername(),oneTimeToken.getTokenValue(),oneTimeToken.getExpiresAt());
+        senderService.sendTokenToUser(oneTimeToken.getUsername(),oneTimeToken.getTokenValue(),oneTimeToken.getExpiresAt());
         redirectHandler.handle(request, response, oneTimeToken);
     }
 }
