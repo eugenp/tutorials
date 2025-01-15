@@ -19,6 +19,10 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
@@ -36,11 +40,45 @@
             <artifactId>spring-oxm</artifactId>
             <version>${spring-oxm.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-envers</artifactId>
+            <version>${hibernate-envers.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-dbcp</artifactId>
+            <version>${tomcat-dbcp.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <datasource-proxy.version>1.4.1</datasource-proxy.version>
         <spring-oxm.version>6.1.4</spring-oxm.version>
+        <hibernate.version>6.5.2.Final</hibernate.version>
+        <hibernate-envers.version>6.5.2.Final</hibernate-envers.version>
+        <mysql.version>8.2.0</mysql.version>
+        <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
     </properties>
 
 </project>

@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -14,6 +15,7 @@ import org.junit.Test;
  * @author Donato Rimenti
  *
  */
+@Ignore("This test is disabled as the synthetic constructor is no longer generated starting with JDK 11")
 public class SyntheticUnitTest {
 
     /**

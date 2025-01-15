@@ -11,4 +11,29 @@
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
+     <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <testng.version>7.10.2</testng.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version> <!-- cannot upgrade BigDecimalToIntegerConversionUnitTest breaks -->
+    </properties>
 </project>
