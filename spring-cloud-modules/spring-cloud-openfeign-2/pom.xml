@@ -7,7 +7,7 @@
     <artifactId>spring-cloud-openfeign-2</artifactId>
     <name>spring-cloud-openfeign-2</name>
     <description>OpenFeign project for Spring Boot</description>
-    <build>
+    <!--<build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -18,7 +18,7 @@
                 </configuration>
             </plugin>
         </plugins>
-    </build>
+    </build>-->
 
     <parent>
         <groupId>com.baeldung.spring.cloud</groupId>
@@ -52,6 +52,10 @@
             <artifactId>feign-okhttp</artifactId>
         </dependency>
         <dependency>
+            <groupId>io.github.openfeign.form</groupId>
+            <artifactId>feign-form-spring</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.github.tomakehurst</groupId>
             <artifactId>wiremock-jre8</artifactId>
             <version>${wire.mock.version}</version>
@@ -63,10 +67,16 @@
             <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <properties>
-        <spring-cloud.version>2021.0.7</spring-cloud.version>
+        <spring-cloud.version>2021.0.4</spring-cloud.version>
         <wire.mock.version>2.35.0</wire.mock.version>
     </properties>
 
