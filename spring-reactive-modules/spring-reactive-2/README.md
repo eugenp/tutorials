@@ -2,7 +2,7 @@
 
 This module contains articles about reactive Spring Boot.
 
-- [Validation for Functional Endpoints in Spring 6](https://www.baeldung.com/spring-functional-endpoints-validation)
+- [Validation for Functional Endpoints in Spring](https://www.baeldung.com/spring-functional-endpoints-validation)
 - [Testing Reactive Streams Using StepVerifier and TestPublisher](https://www.baeldung.com/reactive-streams-step-verifier-test-publisher)
 - [Static Content in Spring WebFlux](https://www.baeldung.com/spring-webflux-static-content)
 - [Server-Sent Events in Spring](https://www.baeldung.com/spring-server-sent-events)
