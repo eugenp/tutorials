@@ -1,4 +1,4 @@
-package com.baeldung.array;
+package com.baeldung.nullablearraytolist;
 
 import java.util.ArrayList;
 import java.util.Arrays;

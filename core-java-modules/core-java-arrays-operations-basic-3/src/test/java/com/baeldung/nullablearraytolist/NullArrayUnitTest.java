@@ -1,9 +1,7 @@
-package com.baeldung.arrays;
+package com.baeldung.nullablearraytolist;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import com.baeldung.array.NullArray;
 
 public class NullArrayUnitTest {
 
