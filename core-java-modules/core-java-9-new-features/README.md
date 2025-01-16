@@ -8,7 +8,7 @@ This module contains articles about core Java features that have been introduced
 - [Java Variable Handles Demystified](http://www.baeldung.com/java-variable-handles)
 - [Multi-Release Jar Files](https://www.baeldung.com/java-multi-release-jar)
 - [Ahead of Time Compilation (AoT)](https://www.baeldung.com/ahead-of-time-compilation)
-- [Introduction to Java 9 StackWalking API](https://www.baeldung.com/java-9-stackwalking-api)
+- [Introduction to Java StackWalking API](https://www.baeldung.com/java-9-stackwalking-api)
 - [Java Platform Logging API](https://www.baeldung.com/java-9-logging-api)
 - [Java Reactive Streams](https://www.baeldung.com/java-9-reactive-streams)
 - [Multi-Release JAR Files with Maven](https://www.baeldung.com/maven-multi-release-jars)
