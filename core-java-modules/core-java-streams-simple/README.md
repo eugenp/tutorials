@@ -14,5 +14,5 @@ Since this is a module tied to an e-book, it should **not** be moved or used to 
 - [Working With Maps Using Streams](https://www.baeldung.com/java-maps-streams)
 - [The Difference Between map() and flatMap()](https://www.baeldung.com/java-difference-map-and-flatmap)
 - [When to Use a Parallel Stream in Java](https://www.baeldung.com/java-when-to-use-parallel-stream)
-- [Guide to Java 8 groupingBy Collector](https://www.baeldung.com/java-groupingby-collector)
+- [Guide to Java groupingBy Collector](https://www.baeldung.com/java-groupingby-collector)
 - [Guide to Stream.reduce()](https://www.baeldung.com/java-stream-reduce)
