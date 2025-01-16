@@ -10,7 +10,7 @@ This module contains articles describing reactive processing in Spring.
 - [Intro To Reactor Core](https://www.baeldung.com/reactor-core)
 - [Debugging Reactive Streams in Java](https://www.baeldung.com/spring-debugging-reactive-streams)
 - [Guide to Spring WebFlux](https://www.baeldung.com/spring-webflux)
-- [Introduction to the Functional Web Framework in Spring 5](https://www.baeldung.com/spring-5-functional-web)
+- [Introduction to the Functional Web Framework in Spring](https://www.baeldung.com/spring-5-functional-web)
 - [Spring WebClient](https://www.baeldung.com/spring-5-webclient)
 - [Spring WebClient vs. RestTemplate](https://www.baeldung.com/spring-webclient-resttemplate)
 - [Spring WebClient Requests with Parameters](https://www.baeldung.com/webflux-webclient-parameters)
