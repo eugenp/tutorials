@@ -4,7 +4,7 @@ This module contains articles about the Stream API in Java.
 
 ### Relevant Articles:
 - [The Java 8 Stream API Tutorial](https://www.baeldung.com/java-8-streams)
-- [Java 8 Stream findFirst() vs. findAny()](https://www.baeldung.com/java-stream-findfirst-vs-findany)
+- [Java Stream findFirst() vs. findAny()](https://www.baeldung.com/java-stream-findfirst-vs-findany)
 - [Java IntStream Conversions](https://www.baeldung.com/java-intstream-convert)
 - [Java Streams peek() API](https://www.baeldung.com/java-streams-peek-api)
 - [Collect a Java Stream to an Immutable Collection](https://www.baeldung.com/java-stream-immutable-collection)
