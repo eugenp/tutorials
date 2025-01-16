@@ -6,7 +6,7 @@
 - [Lambda Expressions and Functional Interfaces: Tips and Best Practices](http://www.baeldung.com/java-8-lambda-expressions-tips)
 - [Exceptions in Java Lambda Expressions](https://www.baeldung.com/java-lambda-exceptions)
 - [Method References in Java](https://www.baeldung.com/java-method-references)
-- [The Double Colon Operator in Java 8](https://www.baeldung.com/java-8-double-colon-operator)
+- [The Double Colon Operator in Java](https://www.baeldung.com/java-8-double-colon-operator)
 - [Serialize a Lambda in Java](https://www.baeldung.com/java-serialize-lambda)
 - [Convert Anonymous Class into Lambda in Java](https://www.baeldung.com/java-from-anonymous-class-to-lambda)
 - [When to Use Callable and Supplier in Java](https://www.baeldung.com/java-callable-vs-supplier)
