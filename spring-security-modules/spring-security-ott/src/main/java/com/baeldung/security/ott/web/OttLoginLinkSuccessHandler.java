@@ -19,7 +19,6 @@ public class OttLoginLinkSuccessHandler implements OneTimeTokenGenerationSuccess
 
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, OneTimeToken oneTimeToken) throws IOException, ServletException {
-
         senderService.sendTokenToUser(oneTimeToken.getUsername(),oneTimeToken.getTokenValue(),oneTimeToken.getExpiresAt());
         redirectHandler.handle(request, response, oneTimeToken);
     }
