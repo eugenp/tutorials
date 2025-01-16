@@ -4,7 +4,7 @@ This module contains articles about Java 8 core features
 
 ### Relevant Articles: 
 - [New Features in Java 8](https://www.baeldung.com/java-8-new-features)
-- [Strategy Design Pattern in Java 8](https://www.baeldung.com/java-strategy-pattern)
+- [Strategy Design Pattern in Java](https://www.baeldung.com/java-strategy-pattern)
 - [Guide to Java Comparator.comparing()](https://www.baeldung.com/java-8-comparator-comparing)
 - [Guide to the Java 8 forEach](https://www.baeldung.com/foreach-java)
 - [Introduction to Spliterator in Java](https://www.baeldung.com/java-spliterator)
