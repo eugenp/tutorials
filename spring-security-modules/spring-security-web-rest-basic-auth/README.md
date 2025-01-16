@@ -12,6 +12,6 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 - [A Custom Filter in the Spring Security Filter Chain](https://www.baeldung.com/spring-security-custom-filter)
 - [Spring Security Basic Authentication](https://www.baeldung.com/spring-security-basic-authentication)
 - [New Password Storage in Spring Security 5](https://www.baeldung.com/spring-security-5-password-storage)
-- [Default Password Encoder in Spring Security 5](https://www.baeldung.com/spring-security-5-default-password-encoder)
+- [Default Password Encoder in Spring Security](https://www.baeldung.com/spring-security-5-default-password-encoder)
 - [Basic Authentication With Postman](https://www.baeldung.com/java-postman-authentication)
 
