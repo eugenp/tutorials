@@ -8,7 +8,7 @@ Since this is a module tied to an e-book, it should **not** be moved or used to 
 
 ### Relevant Articles
 
-- [Introduction to Java 8 Streams](https://www.baeldung.com/java-8-streams-introduction)
+- [Introduction to Java Streams](https://www.baeldung.com/java-8-streams-introduction)
 - [Guide to Java 8’s Collectors](https://www.baeldung.com/java-8-collectors)
 - [Java Stream Filter with Lambda Expression](https://www.baeldung.com/java-stream-filter-lambda)
 - [Working With Maps Using Streams](https://www.baeldung.com/java-maps-streams)
