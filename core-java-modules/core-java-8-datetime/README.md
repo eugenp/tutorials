@@ -3,7 +3,7 @@
 This module contains articles about the Date and Time API introduced with Java 8.
 
 ### Relevant Articles: 
-- [Introduction to the Java 8 Date/Time API](http://www.baeldung.com/java-8-date-time-intro)
+- [Introduction to the Java Date/Time API](https://www.baeldung.com/java-8-date-time-intro)
 - [Migrating to the New Java 8 Date Time API](http://www.baeldung.com/migrating-to-java-8-date-time-api)
 - [Get the Current Date and Time in Java](https://www.baeldung.com/current-date-time-and-timestamp-in-java-8)
 - [TemporalAdjuster in Java](http://www.baeldung.com/java-temporal-adjuster)
