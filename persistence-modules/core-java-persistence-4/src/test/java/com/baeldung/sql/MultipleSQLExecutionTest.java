@@ -30,7 +30,7 @@ public class MultipleSQLExecutionTest {
     }
 
     @Test
-    public void whenExecutingMultipleStatements_thenRecordsAreInserted() throws SQLException {
+    public void givenMultipleStatements_whenExecuting_thenRecordsAreInserted() throws SQLException {
         
         MultipleSQLExecution execution = new MultipleSQLExecution(connection);
         boolean result = execution.executeMultipleStatements();
@@ -45,7 +45,7 @@ public class MultipleSQLExecutionTest {
     }
 
     @Test
-    public void whenExecutingBatchProcessing_thenRecordsAreInserted() throws SQLException {
+    public void givenBatchProcessing_whenExecuting_thenRecordsAreInserted() throws SQLException {
         
         MultipleSQLExecution execution = new MultipleSQLExecution(connection);
         int[] updateCounts = execution.executeBatchProcessing();
@@ -60,7 +60,7 @@ public class MultipleSQLExecutionTest {
     }
 
     @Test
-    public void whenCallingStoredProcedure_thenRecordsAreInserted() throws SQLException {
+    public void givenStoredProcedure_whenCalling_thenRecordsAreInserted() throws SQLException {
         
         MultipleSQLExecution execution = new MultipleSQLExecution(connection);
         boolean result = execution.callStoredProcedure();

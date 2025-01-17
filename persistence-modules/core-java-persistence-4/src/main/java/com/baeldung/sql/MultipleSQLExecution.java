@@ -13,21 +13,17 @@ public class MultipleSQLExecution {
         this.connection = connection;
     }
 
-    public boolean executeMultipleStatements() {
+    public boolean executeMultipleStatements() throws SQLException {
         String sql = "INSERT INTO users (name, email) VALUES ('Alice', 'alice@example.com');" +
                      "INSERT INTO users (name, email) VALUES ('Bob', 'bob@example.com');";
 
         try (Statement statement = connection.createStatement()) {
             statement.execute(sql);
-            System.out.println("Multiple statements executed successfully.");
             return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
         }
     }
 
-    public int[] executeBatchProcessing() {
+    public int[] executeBatchProcessing() throws SQLException {
         try (Statement statement = connection.createStatement()) {
             connection.setAutoCommit(false);
 
@@ -37,22 +33,14 @@ public class MultipleSQLExecution {
             int[] updateCounts = statement.executeBatch();
             connection.commit();
 
-            System.out.println("Batch executed successfully. Update counts: " + updateCounts.length);
             return updateCounts;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return new int[0];
         }
     }
 
-    public boolean callStoredProcedure() {
+    public boolean callStoredProcedure() throws SQLException {
         try (CallableStatement callableStatement = connection.prepareCall("{CALL InsertMultipleUsers()}")) {
             callableStatement.execute();
-            System.out.println("Stored procedure executed successfully.");
             return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
         }
     }
 }
