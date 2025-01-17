@@ -2,6 +2,7 @@ package com.baeldung.kafka.exactlyonce;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.ConsumerGroupMetadata;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.consumer.OffsetAndMetadata;
 import org.apache.kafka.clients.producer.KafkaProducer;
@@ -63,7 +64,7 @@ public class TransactionalWordCount {
                     offsetsToCommit.put(partition, new OffsetAndMetadata(offset + 1));
                 }
 
-                producer.sendOffsetsToTransaction(offsetsToCommit, CONSUMER_GROUP_ID);
+                producer.sendOffsetsToTransaction(offsetsToCommit, new ConsumerGroupMetadata(CONSUMER_GROUP_ID));
                 producer.commitTransaction();
 
             }

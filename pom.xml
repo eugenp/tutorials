@@ -1320,7 +1320,7 @@
                 <module>spring-cloud-cli</module> <!-- Not a maven project -->
                 <module>spring-roo</module> <!-- Not supported JAVA-17327 -->
                 <module>apache-spark</module> <!-- JAVA-42030 -->
-                <module>jhipster-modules/jhipster-uaa</module><!-- failing after upgrading to jdk17-->
+                <module>jhipster-modules</module><!-- failing after upgrading to jdk17-->
                 <module>libraries-security</module> <!-- JAVA-40889 -->
                 <module>persistence-modules/java-harperdb</module> <!-- This module requires a library to download manually --> <!-- JAVA-42044 -->
                 <module>spring-cloud-modules/spring-cloud-data-flow</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42054 -->
@@ -1395,7 +1395,7 @@
                 <module>spring-cloud-cli</module> <!-- Not a maven project -->
                 <module>spring-roo</module> <!-- Not supported JAVA-17327 -->
                 <module>apache-spark</module> <!-- JAVA-42030 -->
-                <module>jhipster-modules/jhipster-uaa</module><!-- failing after upgrading to jdk17-->
+                <module>jhipster-modules</module><!-- failing after upgrading to jdk17-->
                 <module>libraries-security</module> <!-- JAVA-40889 -->
                 <module>persistence-modules/java-harperdb</module> <!-- This module requires a library to download manually --> <!-- JAVA-42044 -->
                 <module>spring-cloud-modules/spring-cloud-data-flow</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42054 -->
@@ -1505,7 +1505,7 @@
         <custom-pmd.version>0.0.1</custom-pmd.version>
         <maven-jxr-plugin.version>3.4.0</maven-jxr-plugin.version>
         <gitflow-incremental-builder.version>4.5.4</gitflow-incremental-builder.version>
-        <maven-pmd-plugin.version>3.23.0</maven-pmd-plugin.version>
+        <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
         <lombok.version>1.18.32</lombok.version>
         <h2.version>2.2.224</h2.version>
         <guava.version>33.2.1-jre</guava.version>
