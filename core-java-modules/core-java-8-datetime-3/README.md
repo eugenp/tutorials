@@ -7,4 +7,6 @@
 - [Convert String to OffsetDateTime](https://www.baeldung.com/java-convert-string-offsetdatetime)
 - [Get Date and Time From a Datetime String in Java](https://www.baeldung.com/java-date-time-from-string)
 - [Combine Date and Time from Separate Variables in Java](https://www.baeldung.com/java-combine-local-date-time)
+- [How to Get the Start and the End of a Day using Java](http://www.baeldung.com/java-day-start-end)
+- [Migrating to the New Java 8 Date Time API](http://www.baeldung.com/migrating-to-java-8-date-time-api)
 - [[<-- Prev]](/core-java-modules/core-java-8-datetime-2)
