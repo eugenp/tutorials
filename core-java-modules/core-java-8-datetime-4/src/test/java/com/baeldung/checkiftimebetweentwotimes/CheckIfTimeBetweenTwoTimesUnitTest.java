@@ -1,12 +1,12 @@
 package com.baeldung.checkiftimebetweentwotimes;
 
-import org.junit.Test;
+import static org.junit.Assert.assertTrue;
 
 import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Date;
 
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
 public class CheckIfTimeBetweenTwoTimesUnitTest {
     private LocalTime startTime = LocalTime.parse("09:00:00");
