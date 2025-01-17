@@ -9,4 +9,5 @@ This module contains articles about the Date and Time API introduced with Java 8
 - [Differences Between ZonedDateTime and OffsetDateTime](https://www.baeldung.com/java-zoneddatetime-offsetdatetime)
 - [Period and Duration in Java](http://www.baeldung.com/java-period-duration)
 - [Comparing Dates in Java](https://www.baeldung.com/java-comparing-dates)
+- [Format LocalDate to ISO 8601 With T and Z](https://www.baeldung.com/java-format-localdate-iso-8601-t-z)
 - [[Next -->]](/core-java-modules/core-java-datetime-java8-2)
