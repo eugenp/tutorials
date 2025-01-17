@@ -9,4 +9,5 @@
 - [Combine Date and Time from Separate Variables in Java](https://www.baeldung.com/java-combine-local-date-time)
 - [How to Get the Start and the End of a Day using Java](http://www.baeldung.com/java-day-start-end)
 - [Migrating to the New Java 8 Date Time API](http://www.baeldung.com/migrating-to-java-8-date-time-api)
-- [[<-- Prev]](/core-java-modules/core-java-8-datetime-2)
+- [Set the Time Zone of a Date in Java](https://www.baeldung.com/java-set-date-time-zone)
+- [[<-- Prev]](/core-java-modules/core-java-8-datetime-2)[[Next -->]](/core-java-modules/core-java-8-datetime-4)
