@@ -99,7 +99,7 @@
         <module>spring-boot-cassandre</module>
         <!-- <module>spring-boot-react</module>--> <!-- Migrated to heavy profile -->
         <module>spring-caching-3</module>
-        <!-- <module>spring-boot-3</module> --> <!-- JAVA-20931 -->
+        <module>spring-boot-3</module>
         <module>spring-boot-3-grpc</module>
         <module>spring-boot-3-native</module>
         <module>spring-boot-3-observation</module>
