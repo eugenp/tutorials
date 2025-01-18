@@ -13,11 +13,11 @@ class Person {
     }
 }
 
-class Woman extends Person {
+class Child extends Person {
 
     @Override
     String sayHello() {
-        return "Woman: How are you?";
+        return "Child: How are you?";
     }
 
     String mySuperSayHello() {
@@ -25,14 +25,14 @@ class Woman extends Person {
     }
 }
 
-class Girl extends Woman {
+class Grandchild extends Child {
 
     @Override
     String sayHello() {
-        return "Girl: How are you?";
+        return "Grandchild: How are you?";
     }
 
-    String womanSayHello() {
+    String childSayHello() {
         return super.sayHello();
     }
 
@@ -67,9 +67,9 @@ public class CallMethodsInGrandparentClassUnitTest {
 
     @Test
     void whenCallFathersMySuperSayHelloMethod_thenCalledGrandpaSayHelloMethod() {
-        Girl aGirl = new Girl();
-        assertEquals("Girl: How are you?", aGirl.sayHello());
-        assertEquals("Woman: How are you?", aGirl.womanSayHello());
-        assertEquals("Person: How are you?", aGirl.personSayHello());
+        Grandchild aGrandchild = new Grandchild();
+        assertEquals("Grandchild: How are you?", aGrandchild.sayHello());
+        assertEquals("Child: How are you?", aGrandchild.childSayHello());
+        assertEquals("Person: How are you?", aGrandchild.personSayHello());
     }
 }
