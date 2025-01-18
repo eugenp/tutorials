@@ -73,7 +73,7 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-commons</artifactId>
-            <version>1.11.4</version>
+            <version>${junit-platform-commons.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mock-server</groupId>
@@ -133,6 +133,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-core</artifactId>
+            <version>${swagger-core.version}</version>
         </dependency>
     </dependencies>
 
@@ -229,6 +234,8 @@
         <springdoc-openapi-webmvc-ui.version>2.5.0</springdoc-openapi-webmvc-ui.version>
         <logback.version>1.5.16</logback.version>
         <org.slf4j.version>2.0.16</org.slf4j.version>
+        <swagger-core.version>2.2.28</swagger-core.version>
+        <junit-platform-commons.version>1.11.4</junit-platform-commons.version>
     </properties>
 
 </project>
