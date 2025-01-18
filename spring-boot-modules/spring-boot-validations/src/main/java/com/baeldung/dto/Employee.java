@@ -16,8 +16,8 @@ public class Employee {
     @Valid
     private List<@Pattern(regexp = "ROLE_[A-Z]+", message = "Each role must start with 'ROLE_' and contain uppercase letters only") String> roles;
 
-    @NotEmpty(message = "Department cannot be empty")
+    @NotEmpty(message = "Departments list cannot be empty")
     @AllowedValues(values = {"Management", "Software Development", "DevOps", "Architect"},
         message = "Invalid department provided")
-    private List<String> department;
+    private List<String> departments;
 }

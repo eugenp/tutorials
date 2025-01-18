@@ -33,7 +33,7 @@ public class EmployeeUnitTest {
         roles.add("ROLE_USER");
         dept.add("Architect");
         request.setRoles(roles);
-        request.setDepartment(dept);
+        request.setDepartments(dept);
 
         boolean isValid = validator.validate(request)
             .isEmpty();
@@ -72,7 +72,7 @@ public class EmployeeUnitTest {
         department.add("Architect");
         roles.add("ROLE_ADMIN");
         request.setRoles(roles);
-        request.setDepartment(department);
+        request.setDepartments(department);
 
         Set violations = validator.validate(request);
         assertTrue(violations.isEmpty(), "Validation should pass for valid dept");
@@ -86,7 +86,7 @@ public class EmployeeUnitTest {
         department.add("SDE");
         roles.add("ROLE_ADMIN");
         request.setRoles(roles);
-        request.setDepartment(department);
+        request.setDepartments(department);
 
         Set violations = validator.validate(request);
         assertFalse(violations.isEmpty(), "Validation should pass for valid dept");
