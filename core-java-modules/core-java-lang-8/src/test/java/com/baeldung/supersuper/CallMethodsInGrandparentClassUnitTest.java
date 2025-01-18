@@ -6,18 +6,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-class Grandpa {
+class Person {
 
     String sayHello() {
-        return "Grandpa: How are you?";
+        return "Person: How are you?";
     }
 }
 
-class Father extends Grandpa {
+class Woman extends Person {
 
     @Override
     String sayHello() {
-        return "Father: How are you?";
+        return "Woman: How are you?";
     }
 
     String mySuperSayHello() {
@@ -25,23 +25,23 @@ class Father extends Grandpa {
     }
 }
 
-class Child extends Father {
+class Girl extends Woman {
 
     @Override
     String sayHello() {
-        return "Child: How are you?";
+        return "Girl: How are you?";
     }
 
-    String fatherSayHello() {
+    String womanSayHello() {
         return super.sayHello();
     }
 
     // super.super.sayHello() doesn't compile
-    // String grandpaSayHello() {
+    // String personSayHello() {
     //     return super.super.sayHello();
     // }
 
-    String grandpaSayHello() {
+    String personSayHello() {
         return super.mySuperSayHello();
     }
 }
@@ -67,9 +67,9 @@ public class CallMethodsInGrandparentClassUnitTest {
 
     @Test
     void whenCallFathersMySuperSayHelloMethod_thenCalledGrandpaSayHelloMethod() {
-        Child aChild = new Child();
-        assertEquals("Child: How are you?", aChild.sayHello());
-        assertEquals("Father: How are you?", aChild.fatherSayHello());
-        assertEquals("Grandpa: How are you?", aChild.grandpaSayHello());
+        Girl aGirl = new Girl();
+        assertEquals("Girl: How are you?", aGirl.sayHello());
+        assertEquals("Woman: How are you?", aGirl.womanSayHello());
+        assertEquals("Person: How are you?", aGirl.personSayHello());
     }
 }
