@@ -7,7 +7,7 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 ### Relevant Articles:
 
-- [How to Set a Header on a Response with Spring 6](https://www.baeldung.com/spring-response-header)
+- [How to Set a Header on a Response with Spring](https://www.baeldung.com/spring-response-header)
 - [Spring RequestMapping](https://www.baeldung.com/spring-requestmapping)
 - [Using JSON Patch in Spring REST APIs](https://www.baeldung.com/spring-rest-json-patch)
 - [Guide to UriComponentsBuilder in Spring](https://www.baeldung.com/spring-uricomponentsbuilder)
