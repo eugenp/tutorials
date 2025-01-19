@@ -1,12 +1,12 @@
-package com.baeldung.exception.sneakythrows;
+package com.baeldung.exceptions.sneakythrows;
 
-import org.junit.Test;
+import static com.baeldung.exceptions.sneakythrows.SneakyThrowsExamples.throwSneakyIOException;
+import static com.baeldung.exceptions.sneakythrows.SneakyThrowsExamples.throwSneakyIOExceptionUsingLombok;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.io.IOException;
 
-import static com.baeldung.exception.sneakythrows.SneakyThrowsExamples.throwSneakyIOException;
-import static com.baeldung.exception.sneakythrows.SneakyThrowsExamples.throwSneakyIOExceptionUsingLombok;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import org.junit.Test;
 
 public class SneakyThrowsExamplesUnitTest {
 

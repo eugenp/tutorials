@@ -1,8 +1,8 @@
-package com.baeldung.exception.sneakythrows;
-
-import lombok.SneakyThrows;
+package com.baeldung.exceptions.sneakythrows;
 
 import java.io.IOException;
+
+import lombok.SneakyThrows;
 
 public class SneakyThrowsExamples {
 
