@@ -1,13 +1,13 @@
 package com.baeldung.creationdate;
 
-import org.junit.Test;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.nio.file.Path;
 import java.time.Instant;
 import java.util.Optional;
 
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
 public class CreationDateResolverUnitTest {
 
