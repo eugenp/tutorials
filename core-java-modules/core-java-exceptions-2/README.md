@@ -11,5 +11,6 @@ This module contains articles about core java exceptions
 - [How to Find an Exception’s Root Cause in Java](https://www.baeldung.com/java-exception-root-cause)
 - [Java IOException “Too many open files”](https://www.baeldung.com/java-too-many-open-files)
 - [When Does Java Throw the ExceptionInInitializerError?](https://www.baeldung.com/java-exceptionininitializererror)
+- [Fix the IllegalArgumentException: No enum const class](https://www.baeldung.com/java-fix-no-enum-const-class)
 - More articles: [[<-- prev]](../core-java-exceptions) [[next -->]](../core-java-exceptions-3)
 

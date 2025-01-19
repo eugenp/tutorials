@@ -1,4 +1,4 @@
-package com.baeldung.exception.noenumconst;
+package com.baeldung.noenumconst;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;

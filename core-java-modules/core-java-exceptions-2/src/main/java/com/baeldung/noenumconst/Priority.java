@@ -1,4 +1,4 @@
-package com.baeldung.exception.noenumconst;
+package com.baeldung.noenumconst;
 
 public enum Priority {
 
