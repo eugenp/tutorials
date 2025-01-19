@@ -1,4 +1,4 @@
-package com.baeldung.exceptions;
+package com.baeldung.exceptions.unknownhostexception;
 
 import java.io.IOException;
 import java.net.UnknownHostException;

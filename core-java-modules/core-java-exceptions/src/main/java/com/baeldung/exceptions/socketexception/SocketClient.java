@@ -1,4 +1,4 @@
-package com.baeldung.socketexception;
+package com.baeldung.exceptions.socketexception;
 
 import java.io.BufferedReader;
 import java.io.IOException;
