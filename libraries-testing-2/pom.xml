@@ -152,6 +152,13 @@
             <version>${jakarta.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.easymock</groupId>
+            <artifactId>easymock</artifactId>
+            <version>${easymock.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -197,6 +204,7 @@
         <jaxb.version>2.3.0</jaxb.version>
         <jakarta.servlet-api.version>5.0.0</jakarta.servlet-api.version>
         <jakarta.xml.bind-api.version>2.3.2</jakarta.xml.bind-api.version>
+        <easymock.version>5.5.0</easymock.version>
     </properties>
 
 </project>
