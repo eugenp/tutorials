@@ -10,4 +10,6 @@ This module contains articles about core java exceptions
 - [Errors and Exceptions in Java](https://www.baeldung.com/java-errors-vs-exceptions)
 - [How to Fix EOFException in Java](https://www.baeldung.com/java-fix-eofexception)
 - [Fix ClassCastException: java.math.BigInteger cannot be cast to java.lang.Integer](https://www.baeldung.com/java-biginteger-integer-classcastexception)
-- [[<-- Prev]](../core-java-exceptions-3)
+- [AbstractMethodError in Java](https://www.baeldung.com/java-abstractmethoderror)
+- [Java IndexOutOfBoundsException “Source Does Not Fit in Dest”](https://www.baeldung.com/java-indexoutofboundsexception)
+- More articles: [[<-- prev]](../core-java-exceptions-3) [[next -->]](../core-java-exceptions-5)
