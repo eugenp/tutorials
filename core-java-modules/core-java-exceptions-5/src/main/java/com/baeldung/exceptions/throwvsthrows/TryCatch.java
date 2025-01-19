@@ -1,8 +1,8 @@
 package com.baeldung.exceptions.throwvsthrows;
 
-import com.sun.mail.iap.ConnectionException;
-
 import java.net.SocketException;
+
+import com.sun.mail.iap.ConnectionException;
 
 public class TryCatch {
 

@@ -1,11 +1,11 @@
 package com.baeldung.exceptions.throwvsthrows;
 
-import com.sun.mail.iap.ConnectionException;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.SocketException;
+
+import com.sun.mail.iap.ConnectionException;
 
 public class Main {
 

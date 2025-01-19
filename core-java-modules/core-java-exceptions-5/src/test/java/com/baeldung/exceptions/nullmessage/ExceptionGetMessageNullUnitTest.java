@@ -1,4 +1,4 @@
-package com.baeldung.exception.nullmessage;
+package com.baeldung.exceptions.nullmessage;
 
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
