@@ -1,6 +1,6 @@
 package com.baeldung.asyncfilechannel;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 import java.net.URI;
@@ -14,7 +14,7 @@ import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 public class AsyncFileChannelIntegrationTest {
 
