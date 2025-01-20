@@ -1,7 +1,6 @@
-package com.baeldung.stream;
+package com.baeldung.streams.infinitestream;
 
-
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 public class InfiniteStreamUnitTest {
 

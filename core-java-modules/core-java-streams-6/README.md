@@ -5,3 +5,7 @@
 - [Return Non-null Elements From Java Map Operation](https://www.baeldung.com/java-stream-non-null-map)
 - [How to Convert to and From a Stream and Two Dimensional Array in Java](https://www.baeldung.com/java-convert-stream-2d-array)
 - [Understanding findAny() and anyMatch() in Streams](https://www.baeldung.com/java-streams-findany-anymatch)
+- [Java and Infinite Streams](https://www.baeldung.com/java-inifinite-streams)
+- [Skip Bytes in InputStream in Java](https://www.baeldung.com/java-inputstream-skip-bytes)
+- [How to Find All Getters Returning Null](https://www.baeldung.com/java-getters-returning-null)
+
