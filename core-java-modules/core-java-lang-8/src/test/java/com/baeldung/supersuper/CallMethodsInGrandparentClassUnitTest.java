@@ -66,7 +66,7 @@ public class CallMethodsInGrandparentClassUnitTest {
     }
 
     @Test
-    void whenCallFathersMySuperSayHelloMethod_thenCalledGrandpaSayHelloMethod() {
+    void whenCallChildMySuperSayHelloMethod_thenCalledPersonSayHelloMethod() {
         Grandchild aGrandchild = new Grandchild();
         assertEquals("Grandchild: How are you?", aGrandchild.sayHello());
         assertEquals("Child: How are you?", aGrandchild.childSayHello());
