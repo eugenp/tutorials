@@ -6,7 +6,12 @@ import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory
+
 public class GenericRestResponse {
+    private static final Logger logger = LoggerFactory.getLogger(GenericRestResponse.class);
+
     public static void main(String[] args) {
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target("https://api.example.com/data"); // Create a JSON payload
@@ -15,9 +20,9 @@ public class GenericRestResponse {
         try {
             if (response.getStatus() == Response.Status.OK.getStatusCode()) {
                 String responseBody = response.readEntity(String.class);
-                System.out.println("Response Body: " + responseBody);
+                logger.info("Response Body: " + responseBody);
             } else {
-            System.err.println("Failed to get a successful response");
+                logger.error("Failed to get a successful response");
         }
         } finally {
             response.close();

@@ -13,7 +13,11 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.InputStream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory
+
 public class XMLResponse {
+    private static final Logger logger = LoggerFactory.getLogger(XMLResponse.class);
     public static void main(String[] args) throws JAXBException {
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target("https://api.example.com/product");
@@ -24,9 +28,9 @@ public class XMLResponse {
                 JAXBContext jaxbContext = JAXBContext.newInstance(Product.class);
                 Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
                 Product product = (Product) unmarshaller.unmarshal(response.readEntity(InputStream.class));
-                System.out.println("Product Name: " + product.getName());
+                logger.info("Product Name: " + product.getName());
             } else {
-                System.err.println("Failed to get product data");
+                logger.error("Failed to get product data");
             }
         } finally {
             response.close();

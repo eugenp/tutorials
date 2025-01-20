@@ -1,5 +1,3 @@
-package com.baeldung.jersey.server.response;
-
 import org.glassfish.jersey.test.JerseyTest;
 import org.glassfish.jersey.test.grizzly.GrizzlyWebTestContainerFactory;
 import org.junit.Test;
@@ -30,7 +28,7 @@ public class JsonResponseTest extends JerseyTest {
     }
 
     @Test
-    public void whenUserExists_thenReturnUserName() {
+    public void givenUserExists_whenPostRequest_thenReturnUserName() {
         String jsonPayload = "{\"id\":1}";
         Response response = target("user")
             .request(MediaType.APPLICATION_JSON)
@@ -42,7 +40,7 @@ public class JsonResponseTest extends JerseyTest {
     }
 
     @Test
-    public void whenUserRequestFails_thenShowError() {
+    public void givenUserRequestFails_whenPostRequest_thenShowError() {
         String jsonPayload = "{\"id\":1}";
         Response response = target("user")
             .request(MediaType.APPLICATION_JSON)

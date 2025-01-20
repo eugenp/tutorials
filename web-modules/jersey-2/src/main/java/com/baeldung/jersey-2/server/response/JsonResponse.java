@@ -7,7 +7,12 @@ import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory
+
 public class JsonResponse {
+    private static final Logger logger = LoggerFactory.getLogger(JsonResponse.class);
+
     public static void main(String[] args) {
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target("https://api.example.com/user");
@@ -16,9 +21,9 @@ public class JsonResponse {
         try {
             if (response.getStatus() == Response.Status.OK.getStatusCode()) {
                 User user = response.readEntity(User.class);
-                System.out.println("User Name: " + user.getName());
+                logger.info("User Name: " + user.getName());
             } else {
-                System.err.println("Failed to get user data");
+                logger.error("Failed to get user data");
             }
         } finally {
             response.close();

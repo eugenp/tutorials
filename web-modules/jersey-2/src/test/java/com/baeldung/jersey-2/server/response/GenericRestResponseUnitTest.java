@@ -1,5 +1,3 @@
-package com.baeldung.jersey.server.response;
-
 import org.glassfish.jersey.test.JerseyTest;
 import org.glassfish.jersey.test.grizzly.GrizzlyWebTestContainerFactory;
 import org.junit.Test;
@@ -30,7 +28,7 @@ public class GenericRestResponseTest extends JerseyTest {
     }
 
     @Test
-    public void testSuccessfulResponse() {
+    public void givenValidPayload_whenPostRequest_thenResponseIsSuccessful() {
         String jsonPayload = "{\"name\":\"John Doe\",\"email\":\"john.doe@example.com\"}";
         Response response = target("data")
             .request(MediaType.APPLICATION_JSON)
@@ -42,7 +40,7 @@ public class GenericRestResponseTest extends JerseyTest {
     }
 
     @Test
-    public void testFailedResponse() {
+    public void givenEmptyPayload_whenPostRequest_thenResponseIsServerError() {
         Response response = target("data")
             .request(MediaType.APPLICATION_JSON)
             .post(Entity.entity("", MediaType.APPLICATION_JSON));

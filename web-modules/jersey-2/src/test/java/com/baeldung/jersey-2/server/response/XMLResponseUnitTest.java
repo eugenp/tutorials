@@ -35,11 +35,11 @@ public class XMLResponseTest extends JerseyTest {
     }
 
     @Test
-    public void whenProductExists_thenReturnProductName() throws JAXBException {
+    public void givenProductExists_whenPostRequest_thenReturnProductName() throws JAXBException {
         String xmlPayload = "<product><id>1</id></product>";
         Response response = target("product")
-            .request(MediaType.APPLICATION_XML)
-            .post(Entity.entity(xmlPayload, MediaType.APPLICATION_XML));
+                .request(MediaType.APPLICATION_XML)
+                .post(Entity.entity(xmlPayload, MediaType.APPLICATION_XML));
 
         assertEquals(200, response.getStatus());
         JAXBContext jaxbContext = JAXBContext.newInstance(Product.class);
@@ -49,21 +49,21 @@ public class XMLResponseTest extends JerseyTest {
     }
 
     @Test
-    public void whenProductRequestFails_thenShowError() throws JAXBException {
+    public void givenProductRequestFails_whenPostRequest_thenShowError() throws JAXBException {
         String xmlPayload = "<product><id>1</id></product>";
         Response response = target("product")
-            .request(MediaType.APPLICATION_XML)
-            .post(Entity.entity(xmlPayload, MediaType.APPLICATION_XML));
+                .request(MediaType.APPLICATION_XML)
+                .post(Entity.entity(xmlPayload, MediaType.APPLICATION_XML));
 
         assertEquals(404, response.getStatus());
     }
 
     @Test
-    public void whenMalformedXMLResponse_thenThrowException() {
+    public void givenMalformedXMLResponse_whenPostRequest_thenThrowException() {
         String malformedResponse = "<invalid>xml</invalid>";
         Response response = target("product")
-            .request(MediaType.APPLICATION_XML)
-            .post(Entity.entity(malformedResponse, MediaType.APPLICATION_XML));
+                .request(MediaType.APPLICATION_XML)
+                .post(Entity.entity(malformedResponse, MediaType.APPLICATION_XML));
 
         assertThrows(JAXBException.class, () -> {
             JAXBContext jaxbContext = JAXBContext.newInstance(Product.class);
@@ -73,21 +73,21 @@ public class XMLResponseTest extends JerseyTest {
     }
 
     @Test
-    public void whenServerTimeout_thenHandleGracefully() {
+    public void givenServerTimeout_whenPostRequest_thenHandleGracefully() {
         String xmlPayload = "<product><id>1</id></product>";
         Response response = target("product")
-            .request(MediaType.APPLICATION_XML)
-            .post(Entity.entity(xmlPayload, MediaType.APPLICATION_XML));
+                .request(MediaType.APPLICATION_XML)
+                .post(Entity.entity(xmlPayload, MediaType.APPLICATION_XML));
 
         assertEquals(500, response.getStatus());
     }
 
     @Test
-    public void whenInvalidContentType_thenHandleGracefully() throws JAXBException {
+    public void givenInvalidContentType_whenPostRequest_thenHandleGracefully() throws JAXBException {
         String xmlPayload = "<product><id>1</id></product>";
         Response response = target("product")
-            .request(MediaType.APPLICATION_XML)
-            .post(Entity.entity(xmlPayload, MediaType.APPLICATION_XML));
+                .request(MediaType.APPLICATION_XML)
+                .post(Entity.entity(xmlPayload, MediaType.APPLICATION_XML));
 
         assertEquals(200, response.getStatus());
         assertEquals(MediaType.APPLICATION_JSON, response.getMediaType().toString());
