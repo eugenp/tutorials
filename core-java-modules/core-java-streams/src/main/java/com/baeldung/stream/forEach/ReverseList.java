@@ -1,4 +1,4 @@
-package com.baeldung.streams.forEach;
+package com.baeldung.stream.forEach;
 
 import java.util.ArrayList;
 import java.util.Arrays;
