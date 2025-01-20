@@ -51,7 +51,7 @@ public class StoredProcedureLiveTest {
         final StoredProcedureQuery findByYearProcedure = entityManager.createNamedStoredProcedureQuery("findByYearProcedure");
         final StoredProcedureQuery storedProcedure = findByYearProcedure.setParameter("p_year", 2015);
         storedProcedure.getResultList()
-            .forEach(c -> Assert.assertEquals(new Integer(2015), ((Car) c).getYear()));
+            .forEach(c -> Assert.assertEquals(Integer.valueOf(2015), ((Car) c).getYear()));
     }
 
     @Test
@@ -60,7 +60,7 @@ public class StoredProcedureLiveTest {
             .registerStoredProcedureParameter(1, Integer.class, ParameterMode.IN)
             .setParameter(1, 2015);
         storedProcedure.getResultList()
-            .forEach(c -> Assert.assertEquals(new Integer(2015), ((Car) c).getYear()));
+            .forEach(c -> Assert.assertEquals(Integer.valueOf(2015), ((Car) c).getYear()));
     }
 
     @AfterClass
