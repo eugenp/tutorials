@@ -1506,7 +1506,7 @@
         <maven-jxr-plugin.version>3.4.0</maven-jxr-plugin.version>
         <gitflow-incremental-builder.version>4.5.4</gitflow-incremental-builder.version>
         <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
-        <lombok.version>1.18.32</lombok.version>
+        <lombok.version>1.18.36</lombok.version>
         <h2.version>2.2.224</h2.version>
         <guava.version>33.2.1-jre</guava.version>
         <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
