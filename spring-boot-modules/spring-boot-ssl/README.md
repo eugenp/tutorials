@@ -1,2 +1,2 @@
 ## Relevant Articles
-- [Securing Spring Boot 3 Applications With SSL Bundles](https://www.baeldung.com/spring-boot-security-ssl-bundles)
+- [Spring Boot SSL](https://docs.spring.io/spring-boot/reference/features/ssl.html#features.ssl)
