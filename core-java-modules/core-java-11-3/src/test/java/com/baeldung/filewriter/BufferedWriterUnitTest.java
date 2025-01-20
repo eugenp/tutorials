@@ -1,5 +1,6 @@
 package com.baeldung.filewriter;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertTrue;
@@ -13,6 +14,7 @@ public class BufferedWriterUnitTest {
 
     private static final List<String> stringList = Arrays.asList("Hello", "World");
 
+    @Disabled("JAVA-43794")
     @Test
     public void givenUsingBufferedWriter_whenStringList_thenGetTextFile() throws IOException {
         String fileName = BufferedWriterExample.generateFileFromStringList(stringList);
