@@ -1,4 +1,4 @@
-package com.baeldung.stream;
+package com.baeldung.streams;
 
 import java.util.List;
 import java.util.stream.Stream;

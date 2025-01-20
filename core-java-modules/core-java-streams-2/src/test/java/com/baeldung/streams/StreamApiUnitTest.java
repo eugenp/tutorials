@@ -1,11 +1,11 @@
-package com.baeldung.stream;
+package com.baeldung.streams;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 public class StreamApiUnitTest {
 

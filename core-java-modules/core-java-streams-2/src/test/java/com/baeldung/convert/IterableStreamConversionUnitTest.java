@@ -1,15 +1,15 @@
-package com.baeldung.conversion;
+package com.baeldung.convert;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class IterableStreamConversionUnitTest {
 
