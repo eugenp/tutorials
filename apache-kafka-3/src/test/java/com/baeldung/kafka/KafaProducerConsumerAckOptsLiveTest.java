@@ -64,12 +64,12 @@ public class KafaProducerConsumerAckOptsLiveTest {
         producerack0 = new KafkaProducer<>(producerProperties);
 
         Properties producerack1Prop = getProducerProperties();
-        producerProperties.put(ProducerConfig.ACKS_CONFIG, "1");
+        producerack1Prop.put(ProducerConfig.ACKS_CONFIG, "2");
 
         producerack1 = new KafkaProducer<>(producerack1Prop);
 
         Properties producerackAllProp = getProducerProperties();
-        producerProperties.put(ProducerConfig.ACKS_CONFIG, "all");
+        producerackAllProp.put(ProducerConfig.ACKS_CONFIG, "all");
 
         producerackAll = new KafkaProducer<>(producerackAllProp);
 
