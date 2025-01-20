@@ -16,18 +16,13 @@
     <dependencies>
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-server</artifactId>
+            <artifactId>jersey-client</artifactId>
             <version>${jersey.version}</version>
         </dependency>
         <!-- Jersey Dependencies -->
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-client</artifactId>
-            <version>${jersey.version}</version> <!-- Use the appropriate version -->
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-json-binding</artifactId>
+            <artifactId>jersey-server</artifactId>
             <version>${jersey.version}</version>
         </dependency>
 
@@ -102,7 +97,7 @@
     </dependencies>
 
     <build>
-        <finalName>jersey</finalName>
+        <finalName>jersey-2</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
@@ -115,14 +110,15 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.baeldung.jersey.server.http.EmbeddedHttpServer</mainClass>
+                    <mainClass>com.baeldung.jersey.timeout.server.JerseyTimeoutServerApp</mainClass>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
     <properties>
-        <jersey.version>3.1.5</jersey.version>
+        <maven.compiler.release>11</maven.compiler.release>
+        <jersey.version>3.1.9</jersey.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <jaxb-runtime.version>2.3.1</jaxb-runtime.version>
     </properties>
