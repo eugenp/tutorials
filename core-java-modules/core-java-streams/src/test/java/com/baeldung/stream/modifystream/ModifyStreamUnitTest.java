@@ -1,11 +1,7 @@
-package com.baeldung.modifystream;
+package com.baeldung.stream.modifystream;
 
-import com.baeldung.modifystream.entity.ImmutablePerson;
-import com.baeldung.modifystream.entity.Person;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
@@ -13,8 +9,13 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.baeldung.stream.modifystream.entity.ImmutablePerson;
+import com.baeldung.stream.modifystream.entity.Person;
 
 public class ModifyStreamUnitTest {
     Logger logger = LoggerFactory.getLogger(ModifyStreamUnitTest.class);

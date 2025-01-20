@@ -1,4 +1,4 @@
-package com.baeldung.modifystream.entity;
+package com.baeldung.stream.modifystream.entity;
 
 public class Person {
     private String name;
