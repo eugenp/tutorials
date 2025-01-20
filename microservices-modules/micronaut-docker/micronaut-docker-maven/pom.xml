@@ -7,15 +7,17 @@
   <packaging>${packaging}</packaging>
 
   <parent>
-    <groupId>io.micronaut.platform</groupId>
-    <artifactId>micronaut-parent</artifactId>
-    <version>4.7.3</version>
-    <relativePath> </relativePath>
+    <groupId>com.baeldung</groupId>
+    <artifactId>micronaut-docker</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
   <properties>
     <packaging>jar</packaging>
     <jdk.version>17</jdk.version>
     <release.version>17</release.version>
+    <micronaut.core.version>4.7.3</micronaut.core.version>
+    <micronaut.serialization.version>2.13.0</micronaut.serialization.version>
     <micronaut.version>4.7.3</micronaut.version>
     <micronaut.aot.enabled>false</micronaut.aot.enabled>
     <micronaut.aot.packageName>com.baeldung.aot.generated</micronaut.aot.packageName>
@@ -37,37 +39,49 @@
     <dependency>
       <groupId>io.micronaut</groupId>
       <artifactId>micronaut-http-server-netty</artifactId>
+      <version>4.7.12</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>io.micronaut.serde</groupId>
       <artifactId>micronaut-serde-jackson</artifactId>
+      <version>2.13.0</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
+      <version>1.4.12</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>io.micronaut</groupId>
       <artifactId>micronaut-http-client</artifactId>
+      <version>4.7.12</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>io.micronaut.test</groupId>
       <artifactId>micronaut-test-junit5</artifactId>
+      <version>4.6.2</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
+      <version>5.11.4</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.11.4</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.micronaut</groupId>
+      <artifactId>micronaut-inject-java</artifactId>
+      <version>4.7.10</version>
     </dependency>
   </dependencies>
   <build>
