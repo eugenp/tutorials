@@ -13,4 +13,5 @@ This module contains articles about the Stream API in Java.
 - [Stream Ordering in Java](https://www.baeldung.com/java-stream-ordering)
 - [Iterable to Stream in Java](https://www.baeldung.com/java-iterable-to-stream)
 - [How to Get the Last Element of a Stream in Java?](https://www.baeldung.com/java-stream-last-element)
+- [How to Use if/else Logic in Java Streams](https://www.baeldung.com/java-8-streams-if-else-logic)
 - More articles: [[<-- prev>]](/../core-java-streams) [[next -->]](/../core-java-streams-3)
