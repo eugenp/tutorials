@@ -1,11 +1,10 @@
-package com.baeldung.stream.filter;
+package com.baeldung.streams.filter;
 
-import javax.net.ssl.HttpsURLConnection;
-import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
+
+import javax.net.ssl.HttpsURLConnection;
 
 public class Customer {
     private String name;

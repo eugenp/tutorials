@@ -1,12 +1,12 @@
-package com.baeldung.stream.filter;
+package com.baeldung.streams.filter;
 
-import org.junit.Test;
-import org.junit.Before;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Before;
+import org.junit.Test;
 
 public class StreamCountUnitTest {
 
