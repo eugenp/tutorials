@@ -1,4 +1,4 @@
-package com.baeldung.streamsvsloops;
+package com.baeldung.stream.streamsvsloops;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;

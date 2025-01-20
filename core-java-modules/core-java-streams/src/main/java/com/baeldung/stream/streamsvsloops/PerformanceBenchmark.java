@@ -1,4 +1,4 @@
-package com.baeldung.streams.streamsvsloops;
+package com.baeldung.stream.streamsvsloops;
 
 import java.util.ArrayList;
 import java.util.List;
