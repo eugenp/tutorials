@@ -3,7 +3,7 @@
 This module contains articles about string APIs.
 
 ### Relevant Articles:
-- [Java 8 StringJoiner](https://www.baeldung.com/java-string-joiner)
+- [Java StringJoiner](https://www.baeldung.com/java-string-joiner)
 - [Quick Guide to the Java StringTokenizer](https://www.baeldung.com/java-stringtokenizer)
 - [Guide to java.util.Formatter](https://www.baeldung.com/java-string-formatter)
 - [Guide to StreamTokenizer](https://www.baeldung.com/java-streamtokenizer)
