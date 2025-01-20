@@ -1,7 +1,7 @@
 package com.baeldung.modifystream;
 
-import com.baledung.modifystream.entity.ImmutablePerson;
-import com.baledung.modifystream.entity.Person;
+import com.baeldung.modifystream.entity.ImmutablePerson;
+import com.baeldung.modifystream.entity.Person;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;

@@ -1,4 +1,4 @@
-package com.baeldung.streams.multiplefilters;
+package com.baeldung.stream.multiplefilters;
 
 import java.text.MessageFormat;
 import java.util.function.Function;

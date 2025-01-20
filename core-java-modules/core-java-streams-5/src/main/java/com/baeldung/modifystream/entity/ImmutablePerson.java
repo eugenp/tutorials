@@ -1,4 +1,4 @@
-package com.baledung.modifystream.entity;
+package com.baeldung.modifystream.entity;
 
 public class ImmutablePerson {
 

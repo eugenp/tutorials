@@ -1,4 +1,4 @@
-package com.baeldung.streams.multiplefilters;
+package com.baeldung.stream.multiplefilters;
 
 import java.util.List;
 import java.util.stream.Collectors;

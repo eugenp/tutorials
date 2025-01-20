@@ -1,4 +1,4 @@
-package com.baeldung.streams.multiplefilters;
+package com.baeldung.stream.multiplefilters;
 
 import static java.util.function.Predicate.not;
 import static org.assertj.core.api.Assertions.assertThat;
