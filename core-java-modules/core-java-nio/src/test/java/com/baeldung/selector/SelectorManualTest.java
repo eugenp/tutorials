@@ -1,6 +1,8 @@
 package com.baeldung.selector;
 
-import org.junit.Test;
+import static java.nio.channels.SelectionKey.OP_READ;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.io.IOException;
 import java.nio.channels.Pipe;
 import java.nio.channels.SelectableChannel;
@@ -10,9 +12,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import static java.nio.channels.SelectionKey.OP_READ;
+import org.junit.Test;
 
 public class SelectorManualTest {
 
