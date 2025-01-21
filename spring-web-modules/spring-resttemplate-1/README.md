@@ -10,4 +10,4 @@ This module contains articles about Spring RestTemplate
 - [How to Make Multiple REST Calls in CompletableFuture](https://www.baeldung.com/rest-completablefuture-several-calls)
 - [Uploading MultipartFile with Spring RestTemplate](https://www.baeldung.com/spring-rest-template-multipart-upload)
 - [Access HTTPS REST Service Using Spring RestTemplate](https://www.baeldung.com/spring-resttemplate-secure-https-service)
-
+- More articles: [[<-- prev>]](/../spring-resttemplate) [[next -->]](/../spring-resttemplate-2)

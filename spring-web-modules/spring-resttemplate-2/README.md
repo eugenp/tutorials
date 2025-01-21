@@ -10,3 +10,4 @@ This module contains articles about Spring RestTemplate
 - [Download a Large File Through a Spring RestTemplate](https://www.baeldung.com/spring-resttemplate-download-large-file)
 - [Encoding of URI Variables on RestTemplate](https://www.baeldung.com/spring-resttemplate-uri-variables-encode)
 - [Difference Between exchange(), postForEntity(), and execute() in RestTemplate](https://www.baeldung.com/spring-resttemplate-exchange-postforentity-execute)
+- More articles: [[<-- prev>]](/../spring-resttemplate-1) [[next -->]](/../spring-resttemplate-3)
