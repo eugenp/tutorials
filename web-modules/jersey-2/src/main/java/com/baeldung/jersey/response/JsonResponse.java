@@ -1,61 +1,42 @@
 package com.baeldung.jersey.response;
 
+import com.baeldung.jersey.model.User;
 import jakarta.ws.rs.client.Client;
-import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class JsonResponse {
-    private static final Logger logger = LoggerFactory.getLogger(JsonResponse.class);
+    private final Logger logger;
+    private final Client client;
+    private final String baseUrl;
 
-    public static void main(String[] args) {
-        Client client = ClientBuilder.newClient();
-        WebTarget target = client.target("https://api.example.com/user");
-        String jsonPayload = "{\"id\":1}";
-        Response response = target.request(MediaType.APPLICATION_JSON).post(Entity.entity(jsonPayload, MediaType.APPLICATION_JSON));
-        try {
+    public JsonResponse(Client client, Logger logger, String baseUrl) {
+        this.client = client;
+        this.logger = logger;
+        this.baseUrl = baseUrl;
+    }
+
+    public User fetchUserData(int userId) {
+        WebTarget target = client.target(baseUrl);
+        String jsonPayload = String.format("{\"id\":%d}", userId);
+
+        try (Response response = target.request(MediaType.APPLICATION_JSON)
+                .post(Entity.entity(jsonPayload, MediaType.APPLICATION_JSON))) {
+
             if (response.getStatus() == Response.Status.OK.getStatusCode()) {
-                User user = response.readEntity(User.class);
-                logger.info("User Name: " + user.getName());
+                return response.readEntity(User.class);
             } else {
-                logger.error("Failed to get user data");
+                logger.error("Failed to get user data. Status: {}", response.getStatus());
+                return null;
             }
-        } finally {
-            response.close();
-            client.close();
+        } catch (Exception e) {
+            logger.error("Error processing user data", e);
+            return null;
         }
     }
 }
 
-class User {
-    private int id;
-    private String name;
-
-    public User() {}
-
-    public User(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-}

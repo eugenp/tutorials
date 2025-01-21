@@ -1,7 +1,7 @@
 package com.baeldung.jersey.response;
 
+import com.baeldung.jersey.model.Product;
 import jakarta.ws.rs.client.Client;
-import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.MediaType;
@@ -9,63 +9,42 @@ import jakarta.ws.rs.core.Response;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
+import org.slf4j.Logger;
 import java.io.InputStream;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class XMLResponse {
-    private static final Logger logger = LoggerFactory.getLogger(XMLResponse.class);
-    public static void main(String[] args) throws JAXBException {
-        Client client = ClientBuilder.newClient();
-        WebTarget target = client.target("https://api.example.com/product");
-        String xmlPayload = "<product><id>1</id></product>";
-        Response response = target.request(MediaType.APPLICATION_XML).post(Entity.entity(xmlPayload, MediaType.APPLICATION_XML));
-        try {
+    private final Logger logger;
+    private final Client client;
+    private final String baseUrl;
+
+    public XMLResponse(Client client, Logger logger, String baseUrl) {
+        this.client = client;
+        this.logger = logger;
+        this.baseUrl = baseUrl;
+    }
+
+    public Product fetchProductData(int productId) {
+        WebTarget target = client.target(baseUrl);
+        String xmlPayload = String.format("<product><id>%d</id></product>", productId);
+
+        try (Response response = target.request(MediaType.APPLICATION_XML)
+                .post(Entity.entity(xmlPayload, MediaType.APPLICATION_XML))) {
+
             if (response.getStatus() == Response.Status.OK.getStatusCode()) {
                 JAXBContext jaxbContext = JAXBContext.newInstance(Product.class);
                 Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-                Product product = (Product) unmarshaller.unmarshal(response.readEntity(InputStream.class));
-                logger.info("Product Name: " + product.getName());
+                return (Product) unmarshaller.unmarshal(response.readEntity(InputStream.class));
             } else {
-                logger.error("Failed to get product data");
+                logger.error("Failed to get product data. Status: {}", response.getStatus());
+                return null;
             }
-        } finally {
-            response.close();
-            client.close();
+        } catch (JAXBException e) {
+            logger.error("Error unmarshalling product data", e);
+            return null;
+        } catch (Exception e) {
+            logger.error("Error processing product data", e);
+            return null;
         }
     }
 }
 
-@XmlRootElement
-class Product {
-    private int id;
-    private String name;
-
-    public Product() {}
-
-    public Product(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    @XmlElement
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @XmlElement
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-}

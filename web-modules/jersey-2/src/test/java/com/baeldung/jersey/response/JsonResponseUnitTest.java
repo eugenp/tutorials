@@ -1,52 +1,93 @@
 package com.baeldung.jersey.response;
-import org.glassfish.jersey.test.JerseyTest;
-import org.glassfish.jersey.test.grizzly.GrizzlyWebTestContainerFactory;
-import org.junit.Test;
+
+import com.baeldung.jersey.model.User;
+import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.Entity;
-import jakarta.ws.rs.core.Application;
+import jakarta.ws.rs.client.Invocation;
+import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import org.glassfish.jersey.server.ResourceConfig;
-import static org.junit.Assert.assertEquals;
-import org.glassfish.jersey.client.ClientConfig;
-import org.glassfish.jersey.test.spi.TestContainerFactory;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.slf4j.Logger;
 
-public class JsonResponseUnitTest extends JerseyTest {
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.*;
 
-    @Override
-    protected Application configure() {
-        return new ResourceConfig(JsonResponse.class);
-    }
+@ExtendWith(MockitoExtension.class)
+@DisplayName("JsonResponse Tests")
+class JsonResponseUnitTest {
 
-    @Override
-    protected void configureClient(ClientConfig config) {
-        config.register(JsonResponse.class);
-    }
+    @Mock private Client client;
+    @Mock private WebTarget webTarget;
+    @Mock private Invocation.Builder builder;
+    @Mock private Response response;
+    @Mock private Logger logger;
 
-    @Override
-    protected TestContainerFactory getTestContainerFactory() {
-        return new GrizzlyWebTestContainerFactory();
+    private JsonResponse jsonResponse;
+    private static final String BASE_URL = "https://api.example.com/user";
+
+    @BeforeEach
+    void setUp() {
+        jsonResponse = new JsonResponse(client, logger, BASE_URL);
+
+        // Common mock setup
+        when(client.target(anyString())).thenReturn(webTarget);
+        when(webTarget.request(MediaType.APPLICATION_JSON)).thenReturn(builder);
+        when(builder.post(any(Entity.class))).thenReturn(response);
     }
 
     @Test
-    public void givenUserExists_whenPostRequest_thenReturnUserName() {
-        String jsonPayload = "{\"id\":1}";
-        Response response = target("user")
-                .request(MediaType.APPLICATION_JSON)
-                .post(Entity.entity(jsonPayload, MediaType.APPLICATION_JSON));
+    @DisplayName("Should successfully fetch user data")
+    void whenValidUserId_thenReturnUserData() {
+        // Given
+        User expectedUser = new User(1, "John Doe");
+        when(response.getStatus()).thenReturn(Response.Status.OK.getStatusCode());
+        when(response.readEntity(User.class)).thenReturn(expectedUser);
 
-        assertEquals(200, response.getStatus());
-        String responseBody = response.readEntity(String.class);
-        assertEquals("{\"name\":\"John Smith\",\"id\":1}", responseBody);
+        // When
+        User actualUser = jsonResponse.fetchUserData(1);
+
+        // Then
+        assertNotNull(actualUser);
+        assertEquals(expectedUser.getId(), actualUser.getId());
+        assertEquals(expectedUser.getName(), actualUser.getName());
+        verify(response).close();
     }
 
     @Test
-    public void givenUserRequestFails_whenPostRequest_thenShowError() {
-        String jsonPayload = "{\"id\":1}";
-        Response response = target("user")
-                .request(MediaType.APPLICATION_JSON)
-                .post(Entity.entity(jsonPayload, MediaType.APPLICATION_JSON));
+    @DisplayName("Should handle non-200 response")
+    void whenNon200Response_thenReturnNull() {
+        // Given
+        when(response.getStatus()).thenReturn(Response.Status.BAD_REQUEST.getStatusCode());
 
-        assertEquals(500, response.getStatus());
+        // When
+        User user = jsonResponse.fetchUserData(1);
+
+        // Then
+        assertNull(user);
+        verify(logger).error(eq("Failed to get user data. Status: {}"), eq(400));
+        verify(response).close();
+    }
+
+    @Test
+    @DisplayName("Should handle exception during processing")
+    void whenExceptionOccurs_thenReturnNull() {
+        // Given
+        when(response.getStatus()).thenThrow(new RuntimeException("Test exception"));
+
+        // When
+        User user = jsonResponse.fetchUserData(1);
+
+        // Then
+        assertNull(user);
+        verify(logger).error(eq("Error processing user data"), any(RuntimeException.class));
+        verify(response).close();
     }
 }
