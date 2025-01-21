@@ -4,7 +4,7 @@ This module contains articles about Java syntax
 
 ### Relevant Articles: 
 - [The Basics of Java Generics](https://www.baeldung.com/java-generics)
-- [Java Primitive Conversions](https://www.baeldung.com/java-primitive-conversions)
+- [Java Primitives Type Casting](https://www.baeldung.com/java-primitive-conversions)
 - [A Guide to Creating Objects in Java](https://www.baeldung.com/java-initialization)
 - [A Guide to Java Loops](https://www.baeldung.com/java-loops)
 - [Varargs in Java](https://www.baeldung.com/java-varargs)

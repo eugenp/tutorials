@@ -6,7 +6,7 @@
 - [Introduction to Apache Beam](https://www.baeldung.com/apache-beam)
 - [Introduction to Apache Pulsar](https://www.baeldung.com/apache-pulsar)
 - [Introduction to Apache Curator](https://www.baeldung.com/apache-curator)
-- [Introduction to Apache BVal](https://www.baeldung.com/apache-bval)
+- [Intro to Apache BVal](https://www.baeldung.com/apache-bval)
 - [Building a Microservice with Apache Meecrowave](https://www.baeldung.com/apache-meecrowave)
 - [A Quick Guide to Apache Geode](https://www.baeldung.com/apache-geode)
 - [Convert Avro File to JSON File in Java](https://www.baeldung.com/java-avro-json)
