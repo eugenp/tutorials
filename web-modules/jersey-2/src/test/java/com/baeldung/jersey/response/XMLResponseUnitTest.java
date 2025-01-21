@@ -1,3 +1,4 @@
+package com.baeldung.jersey.response;
 import org.glassfish.jersey.test.JerseyTest;
 import org.glassfish.jersey.test.grizzly.GrizzlyWebTestContainerFactory;
 import org.junit.Test;
@@ -9,17 +10,18 @@ import org.glassfish.jersey.server.ResourceConfig;
 import static org.junit.Assert.assertEquals;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.test.spi.TestContainerFactory;
+import com.baeldung.jersey.response.XMLResponse;
 
 public class XMLResponseUnitTest extends JerseyTest {
 
     @Override
     protected Application configure() {
-        return new ResourceConfig(JsonResponse.class);
+        return new ResourceConfig(XMLResponse.class);
     }
 
     @Override
     protected void configureClient(ClientConfig config) {
-        config.register(JsonResponse.class);
+        config.register(XMLResponse.class);
     }
 
     @Override
