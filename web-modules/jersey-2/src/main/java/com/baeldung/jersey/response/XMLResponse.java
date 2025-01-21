@@ -14,7 +14,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.InputStream;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory
+import org.slf4j.LoggerFactory;
 
 public class XMLResponse {
     private static final Logger logger = LoggerFactory.getLogger(XMLResponse.class);

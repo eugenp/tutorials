@@ -8,7 +8,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory
+import org.slf4j.LoggerFactory;
 
 public class JsonResponse {
     private static final Logger logger = LoggerFactory.getLogger(JsonResponse.class);
