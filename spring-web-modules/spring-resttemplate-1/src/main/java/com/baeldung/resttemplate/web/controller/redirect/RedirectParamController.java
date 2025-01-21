@@ -1,12 +1,12 @@
-package com.baeldung.sampleapp.web.controller.redirect;
-
-import jakarta.servlet.http.HttpServletRequest;
+package com.baeldung.resttemplate.web.controller.redirect;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/")

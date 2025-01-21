@@ -1,4 +1,4 @@
-package com.baeldung.web.controller.redirect;
+package com.baeldung.resttemplate.web.controller.redirect;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

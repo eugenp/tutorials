@@ -1,6 +1,4 @@
-package com.baeldung.sampleapp.web.controller.redirect;
-
-import jakarta.servlet.http.HttpServletRequest;
+package com.baeldung.resttemplate.web.controller.redirect;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -12,6 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/")
