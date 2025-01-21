@@ -9,4 +9,6 @@ This module contains articles about the Stream API in Java.
 - [Java 8 Streams: Multiple Filters vs. Complex Condition](https://www.baeldung.com/java-streams-multiple-filters-vs-condition)
 - [Modifying Objects Within Stream While Iterating](https://www.baeldung.com/java-stream-modify-objects-during-iteration)
 - [Streams vs. Loops in Java](https://www.baeldung.com/java-streams-vs-loops)
+- [Java Streams peek() API](https://www.baeldung.com/java-streams-peek-api)
+- [Java Stream findFirst() vs. findAny()](https://www.baeldung.com/java-stream-findfirst-vs-findany)
 - More articles: [[next -->]](/../core-java-streams-2)

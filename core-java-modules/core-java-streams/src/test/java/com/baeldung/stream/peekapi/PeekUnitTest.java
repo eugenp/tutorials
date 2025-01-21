@@ -1,19 +1,16 @@
-package com.baeldung.streams;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import java.io.StringWriter;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import java.util.List;
+package com.baeldung.stream.peekapi;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
+
+import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class PeekUnitTest {
 
@@ -104,7 +101,7 @@ public class PeekUnitTest {
     @Test
     void givenIntegerList_whenCallingMap_thenTransformsElement() {
         List<Integer> integers = Arrays.asList(1, 2, 3, 4);
-        java.util.List<Integer> transformedElements = integers.stream()
+        List<Integer> transformedElements = integers.stream()
             .map(e -> e * 2)
             .collect(Collectors.toList());
         List<Integer> expected = (List<Integer>) Arrays.asList(2, 4, 6, 8);
