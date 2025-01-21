@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.test.spi.TestContainerFactory;
 
-public class JsonResponseTest extends JerseyTest {
+public class JsonResponseUnitTest extends JerseyTest {
 
     @Override
     protected Application configure() {
