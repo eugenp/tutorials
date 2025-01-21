@@ -9,3 +9,5 @@ This module contains articles about core java exceptions
 - [Difference Between Throw and Throws in Java](https://www.baeldung.com/java-throw-throws)
 - [Will an Error Be Caught by Catch Block in Java?](https://www.baeldung.com/java-error-catch)
 - [Differences Between Final, Finally and Finalize in Java](https://www.baeldung.com/java-final-finally-finalize)
+- [Common Java Exceptions](https://www.baeldung.com/java-common-exceptions)
+- More articles: [[<-- prev]](../core-java-exceptions-4)

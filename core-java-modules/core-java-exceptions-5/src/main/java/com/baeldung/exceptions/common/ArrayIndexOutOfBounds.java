@@ -1,4 +1,4 @@
-package com.baeldung.globalexceptionhandler;
+package com.baeldung.exceptions.common;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
