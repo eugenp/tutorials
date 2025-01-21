@@ -1,7 +1,6 @@
 package com.baeldung.sql;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
@@ -13,20 +12,21 @@ import java.sql.Statement;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class MultipleSQLExecutionTest {
+public class MultipleSQLExecutionLiveTest {
 
-    private Connection connection;
-
-    @BeforeEach
-    public void setupConnection() throws SQLException {
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/user_db", "username", "password");
-    }
-
-    @AfterEach
-    public void closeConnection() throws SQLException {
-        if (connection != null) {
-            connection.close();
-        }
+    private static Connection connection;
+    
+    @Before
+    public void setup() throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        String url = "jdbc:mysql://localhost:3306/user_db?allowMultiQueries=true";
+        String username = "username";
+        String password = "password";
+        connection = DriverManager.getConnection(url, username, password);
+            
+        Statement statement = connection.createStatement();
+        String createUsersSql = "CREATE TABLE users ( id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50) NOT NULL, email VARCHAR(100) NOT NULL UNIQUE );";
+        statement.execute(createUsersSql);
     }
 
     @Test
