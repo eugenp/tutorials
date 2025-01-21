@@ -65,7 +65,7 @@ public class ApplicationUnitTest {
 
         Inventory inventory = new Inventory();
         inventory.setProductId(productId);
-        inventory.setBalance(new Long(10000));
+        inventory.setBalance(Long.valueOf(10000));
         inventoryRepository.save(inventory);
 
     }
