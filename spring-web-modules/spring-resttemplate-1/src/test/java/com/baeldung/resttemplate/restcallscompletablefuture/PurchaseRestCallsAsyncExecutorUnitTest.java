@@ -1,4 +1,4 @@
-package com.baeldung.restcallscompletablefuture;
+package com.baeldung.resttemplate.restcallscompletablefuture;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;

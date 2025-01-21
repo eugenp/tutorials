@@ -1,4 +1,8 @@
-package com.baeldung.web.upload.client;
+package com.baeldung.resttemplate.web.upload.client;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -9,10 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 public class MultipartFileUploadClient {
 
@@ -30,7 +30,7 @@ public class MultipartFileUploadClient {
 
 
         HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
-        String serverUrl = "http://localhost:8082/spring-rest/fileserver/singlefileupload/";
+        String serverUrl = "http://localhost:8080/spring-rest/fileserver/singlefileupload/";
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.postForEntity(serverUrl, requestEntity, String.class);
         System.out.println("Response code: " + response.getStatusCode());
@@ -46,7 +46,7 @@ public class MultipartFileUploadClient {
         body.add("files", getTestFile());
 
         HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
-        String serverUrl = "http://localhost:8082/spring-rest/fileserver/multiplefileupload/";
+        String serverUrl = "http://localhost:8080/spring-rest/fileserver/multiplefileupload/";
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.postForEntity(serverUrl, requestEntity, String.class);
         System.out.println("Response code: " + response.getStatusCode());

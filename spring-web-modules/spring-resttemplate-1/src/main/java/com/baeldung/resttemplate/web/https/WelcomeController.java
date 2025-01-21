@@ -1,4 +1,4 @@
-package com.baeldung.web.https;
+package com.baeldung.resttemplate.web.https;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,4 +1,4 @@
-package com.baeldung.web.upload.app;
+package com.baeldung.resttemplate.web.upload.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -7,7 +7,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.ComponentScan;
 
 @EnableAutoConfiguration
-@ComponentScan("com.baeldung.web.upload")
+@ComponentScan("com.baeldung.resttemplate.web.upload")
 @SpringBootApplication
 public class UploadApplication extends SpringBootServletInitializer {
 

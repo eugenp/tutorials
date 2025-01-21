@@ -1,4 +1,4 @@
-package com.baeldung.restcallscompletablefuture;
+package com.baeldung.resttemplate.restcallscompletablefuture;
 
 import static java.lang.String.format;
 
@@ -10,6 +10,7 @@ import java.util.function.BiFunction;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+
 
 @Component
 public class PurchaseRestCallsAsyncExecutor {

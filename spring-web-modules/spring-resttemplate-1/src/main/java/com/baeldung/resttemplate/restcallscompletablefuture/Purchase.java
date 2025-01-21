@@ -1,4 +1,4 @@
-package com.baeldung.restcallscompletablefuture;
+package com.baeldung.resttemplate.restcallscompletablefuture;
 
 public class Purchase {
 
