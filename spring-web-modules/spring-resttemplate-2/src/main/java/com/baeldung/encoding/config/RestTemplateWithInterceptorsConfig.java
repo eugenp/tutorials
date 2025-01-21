@@ -1,12 +1,13 @@
 package com.baeldung.encoding.config;
 
-import com.baeldung.encoding.UriEncodingInterceptor;
+import java.util.Collections;
+
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Collections;
+import com.baeldung.encoding.UriEncodingInterceptor;
 
 @Configuration
 public class RestTemplateWithInterceptorsConfig {

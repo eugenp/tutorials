@@ -1,4 +1,6 @@
-package com.baeldung.resttemplate.methods;
+package com.baeldung.resttemplate.json.methods;
+
+import java.io.IOException;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpEntity;
@@ -10,8 +12,6 @@ import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.web.client.RequestCallback;
 import org.springframework.web.client.ResponseExtractor;
 import org.springframework.web.client.RestTemplate;
-
-import java.io.IOException;
 
 /**
  * Examples of making the same call with RestTemplate
