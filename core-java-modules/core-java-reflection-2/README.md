@@ -1,6 +1,7 @@
 ### Relevant Articles:
 
 - [Reading the Value of ‘private’ Fields from a Different Class in Java](https://www.baeldung.com/java-reflection-read-private-field-value)
+- [Void Type in Java](https://www.baeldung.com/java-void-type)
 - [Set Field Value With Reflection](https://www.baeldung.com/java-set-private-field-value)
 - [Checking if a Method Is Static Using Reflection in Java](https://www.baeldung.com/java-check-method-is-static)
 - [Checking if a Java Class Is ‘Abstract’ Using Reflection](https://www.baeldung.com/java-reflection-is-class-abstract)

@@ -1,6 +1,4 @@
 ## Relevant Articles
-
-- [Void Type in Java](https://www.baeldung.com/java-void-type)
 - [Retrieve Fields from a Java Class Using Reflection](https://www.baeldung.com/java-reflection-class-fields)
 - [Method Parameter Reflection in Java](http://www.baeldung.com/java-parameter-reflection)
 - [Changing Annotation Parameters at Runtime](https://www.baeldung.com/java-reflection-change-annotation-params)
