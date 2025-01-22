@@ -16,13 +16,13 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 @ExtendWith({ SpringExtension.class, OutputCaptureExtension.class })
 @SpringBootTest
 @AutoConfigureMockMvc
-public class LoggingFilterTest {
+public class LoggingFilterIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void testRequestIsLogged(CapturedOutput output) throws Exception {
+    public void whenRequestIsHandled_thenIncomingRequestIsLogged(CapturedOutput output) throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/hello")
             .header("X-Test-Header", "HeaderValue"))
           .andReturn();
@@ -31,7 +31,7 @@ public class LoggingFilterTest {
     }
 
     @Test
-    public void testResponseIsLogged(CapturedOutput output) throws Exception {
+    public void whenResponseIsSent_thenOutgoingResponseIsLogged(CapturedOutput output) throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/hello"))
           .andReturn();
 
