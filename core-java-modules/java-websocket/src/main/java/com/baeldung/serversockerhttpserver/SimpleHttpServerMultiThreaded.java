@@ -24,20 +24,16 @@ public class SimpleHttpServerMultiThreaded {
         this.port = port;
     }
 
-    public void start() {
-        ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
+    public void start() throws IOException {
 
-        try (ServerSocket serverSocket = new ServerSocket(port)) {
+        try (ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
+            ServerSocket serverSocket = new ServerSocket(port)) {
             logger.info("Server started on port: {}", port);
 
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 threadPool.execute(() -> handleClient(clientSocket));
             }
-        } catch (IOException e) {
-            logger.error("Error starting server", e);
-        } finally {
-            threadPool.shutdown();
         }
     }
 
@@ -90,7 +86,7 @@ public class SimpleHttpServerMultiThreaded {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         int port = 8080;
         SimpleHttpServerMultiThreaded server = new SimpleHttpServerMultiThreaded(port);
         server.start();
