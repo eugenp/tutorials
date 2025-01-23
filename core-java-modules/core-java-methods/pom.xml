@@ -47,7 +47,7 @@
             </resource>
         </resources>
     </build>
-    
+
     <properties>
         <vavr.version>0.9.0</vavr.version>
         <commons-lang.version>3.14.0</commons-lang.version>

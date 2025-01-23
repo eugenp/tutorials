@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>lwjgl</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -13,11 +13,6 @@
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
-    <properties>
-        <lwjgl.version>3.3.4</lwjgl.version>
-        <lwjgl.natives>natives-macos-arm64</lwjgl.natives>
-    </properties>
 
     <dependencyManagement>
         <dependencies>
@@ -60,5 +55,10 @@
             <classifier>${lwjgl.natives}</classifier>
         </dependency>
     </dependencies>
+
+    <properties>
+        <lwjgl.version>3.3.4</lwjgl.version>
+        <lwjgl.natives>natives-macos-arm64</lwjgl.natives>
+    </properties>
 
 </project>

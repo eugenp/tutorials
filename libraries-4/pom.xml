@@ -103,7 +103,6 @@
             <artifactId>aeron-all</artifactId>
             <version>${aeron.version}</version>
         </dependency>
-
     </dependencies>
 
     <properties>

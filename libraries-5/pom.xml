@@ -67,7 +67,6 @@
             <artifactId>jetcache-autoconfigure</artifactId>
             <version>${jetcache.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -88,7 +87,6 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
             <version>${spring-boot.version}</version>
         </dependency>
-
         <dependency>
             <groupId>systems.manifold</groupId>
             <artifactId>manifold-json-rt</artifactId>

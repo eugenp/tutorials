@@ -141,7 +141,7 @@
             <groupId>org.apache.sshd</groupId>
             <artifactId>sshd-scp</artifactId>
             <version>${apache-scp.version}</version>
-        </dependency>        
+        </dependency>
     </dependencies>
 
     <build>

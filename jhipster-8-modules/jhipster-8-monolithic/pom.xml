@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung.jhipster8</groupId>
     <artifactId>jhipster-8-monolithic</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>jhipster-8-monolithic</name>
     <description>Description for Jhipster 8 Monolithic</description>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -1064,9 +1064,13 @@
                                     <target>
                                         <condition property="skip.npm" value="true" else="false">
                                             <and>
-                                                <available file="checksums.csv" filepath="${project.build.directory}"/>
-                                                <available file="checksums.csv.old" filepath="${project.build.directory}"/>
-                                                <filesmatch file1="${project.build.directory}/checksums.csv" file2="${project.build.directory}/checksums.csv.old"/>
+                                                <available file="checksums.csv"
+                                                    filepath="${project.build.directory}"/>
+                                                <available file="checksums.csv.old"
+                                                    filepath="${project.build.directory}"/>
+                                                <filesmatch
+                                                    file1="${project.build.directory}/checksums.csv"
+                                                    file2="${project.build.directory}/checksums.csv.old"/>
                                             </and>
                                         </condition>
                                     </target>

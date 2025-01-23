@@ -7,15 +7,15 @@
     <packaging>pom</packaging>
     <name>core-java-9-jigsaw</name>
 
-    <modules>
-        <module>library-core</module>
-    </modules>
-
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+    
+    <modules>
+        <module>library-core</module>
+    </modules>
 
     <build>
         <finalName>core-java-9-jigsaw</finalName>

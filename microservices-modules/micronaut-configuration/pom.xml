@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.micronaut</groupId>
     <artifactId>micronaut-configuration</artifactId>
@@ -64,14 +64,12 @@
             <scope>provided</scope>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.4.12</version>
             <scope>runtime</scope>
         </dependency>
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -146,7 +144,6 @@
         <jdk.version>17</jdk.version>
         <release.version>17</release.version>
         <packaging>jar</packaging>
-
         <micronaut.version>4.4.3</micronaut.version>
         <exec.mainClass>com.baeldung.micronaut.httpfilters.ServerApplication</exec.mainClass>
         <micronaut.validation.version>4.6.1</micronaut.validation.version>

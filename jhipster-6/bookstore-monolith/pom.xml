@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.jhipster6</groupId>
     <artifactId>bookstore-monolith</artifactId>
@@ -42,7 +44,6 @@
             <artifactId>jhipster-framework</artifactId>
             <version>3.0.1</version>
         </dependency>
-
         <dependency>
             <groupId>org.javassist</groupId>
             <artifactId>javassist</artifactId>
@@ -94,10 +95,10 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-bean-validators</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.mattbertolini</groupId>-->
-<!--            <artifactId>liquibase-slf4j</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.mattbertolini</groupId>-->
+        <!--            <artifactId>liquibase-slf4j</artifactId>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
@@ -140,10 +141,10 @@
             <groupId>net.logstash.logback</groupId>
             <artifactId>logstash-logback-encoder</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.mapstruct</groupId>-->
-<!--            <artifactId>mapstruct-jdk8</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.mapstruct</groupId>-->
+        <!--            <artifactId>mapstruct-jdk8</artifactId>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
@@ -423,28 +424,28 @@
                     <artifactId>jib-maven-plugin</artifactId>
                     <version>${jib-maven-plugin.version}</version>
                     <configuration>
-                      <from>
-                          <image>openjdk:8-jre-alpine</image>
-                      </from>
-                      <to>
-                          <image>bookstore:latest</image>
-                      </to>
-                      <container>
-                          <entrypoint>
-                              <shell>sh</shell>
-                              <option>-c</option>
-                              <arg>chmod +x /entrypoint.sh &amp;&amp; sync &amp;&amp; /entrypoint.sh</arg>
-                          </entrypoint>
-                          <ports>
-                              <port>8080</port>
-                          </ports>
-                          <environment>
-                              <SPRING_OUTPUT_ANSI_ENABLED>ALWAYS</SPRING_OUTPUT_ANSI_ENABLED>
-                              <JHIPSTER_SLEEP>0</JHIPSTER_SLEEP>
-                          </environment>
-                          <useCurrentTimestamp>true</useCurrentTimestamp>
-                      </container>
-                  </configuration>
+                        <from>
+                            <image>openjdk:8-jre-alpine</image>
+                        </from>
+                        <to>
+                            <image>bookstore:latest</image>
+                        </to>
+                        <container>
+                            <entrypoint>
+                                <shell>sh</shell>
+                                <option>-c</option>
+                                <arg>chmod +x /entrypoint.sh &amp;&amp; sync &amp;&amp; /entrypoint.sh</arg>
+                            </entrypoint>
+                            <ports>
+                                <port>8080</port>
+                            </ports>
+                            <environment>
+                                <SPRING_OUTPUT_ANSI_ENABLED>ALWAYS</SPRING_OUTPUT_ANSI_ENABLED>
+                                <JHIPSTER_SLEEP>0</JHIPSTER_SLEEP>
+                            </environment>
+                            <useCurrentTimestamp>true</useCurrentTimestamp>
+                        </container>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.liquibase</groupId>
@@ -1133,9 +1134,9 @@
         <m2e.apt.activation>jdt_apt</m2e.apt.activation>
         <run.addResources>false</run.addResources>
         <!-- These remain empty unless the corresponding profile is active -->
-        <profile.no-liquibase />
-        <profile.swagger />
-        <profile.tls />
+        <profile.no-liquibase/>
+        <profile.swagger/>
+        <profile.tls/>
 
         <!-- Dependency versions -->
         <jhipster-dependencies.version>3.0.1</jhipster-dependencies.version>

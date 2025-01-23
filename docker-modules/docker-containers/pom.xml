@@ -61,5 +61,4 @@
         <jib-maven-plugin.version>2.7.1</jib-maven-plugin.version>
     </properties>
 
-
 </project>

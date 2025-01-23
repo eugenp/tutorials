@@ -55,7 +55,6 @@
         <log4j-core.version>2.23.1</log4j-core.version>
         <log4j-api.version>2.23.1</log4j-api.version>
         <log4j-slf4j.version>2.23.1</log4j-slf4j.version>
-
         <disruptor.version>3.3.6</disruptor.version>
     </properties>
 
