@@ -717,6 +717,7 @@
                 <module>libraries-primitive</module>
                 <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
+                <module>libraries-security</module>
                 <module>libraries-security-2</module>
                 <module>libraries-server</module>
                 <module>libraries-server-2</module>
@@ -1100,6 +1101,7 @@
                 <module>libraries-primitive</module>
                 <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
+                <module>libraries-security</module>
                 <module>libraries-security-2</module>
                 <module>libraries-server</module>
                 <module>libraries-server-2</module>
@@ -1321,7 +1323,6 @@
                 <module>spring-roo</module> <!-- Not supported JAVA-17327 -->
                 <module>apache-spark</module> <!-- JAVA-42030 -->
                 <module>jhipster-modules</module><!-- failing after upgrading to jdk17-->
-                <module>libraries-security</module> <!-- JAVA-40889 -->
                 <module>persistence-modules/java-harperdb</module> <!-- This module requires a library to download manually --> <!-- JAVA-42044 -->
                 <module>spring-cloud-modules/spring-cloud-data-flow</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42054 -->
                 <module>spring-cloud-modules/spring-cloud-stream-starters</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42055 -->
@@ -1396,7 +1397,6 @@
                 <module>spring-roo</module> <!-- Not supported JAVA-17327 -->
                 <module>apache-spark</module> <!-- JAVA-42030 -->
                 <module>jhipster-modules</module><!-- failing after upgrading to jdk17-->
-                <module>libraries-security</module> <!-- JAVA-40889 -->
                 <module>persistence-modules/java-harperdb</module> <!-- This module requires a library to download manually --> <!-- JAVA-42044 -->
                 <module>spring-cloud-modules/spring-cloud-data-flow</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42054 -->
                 <module>spring-cloud-modules/spring-cloud-stream-starters</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42055 -->
