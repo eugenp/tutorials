@@ -1,0 +1,51 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog 
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <preConditions>
+        <dbms type="mysql"/>
+        <runningAs username="baeldung"/>
+        <sqlCheck expectedResult="9.1.0">
+            SELECT @@version;
+        </sqlCheck>
+    </preConditions>
+
+
+    <changeSet id="BAEL-1000" author="baeldung">
+        <addColumn tableName="users">
+            <column name="country" type="varchar(25)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="BAEL-1001" author="baeldung">
+        <preConditions onError="HALT" onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="users" columnName="code"/>
+            </not>
+        </preConditions>
+        <addColumn tableName="tutorials">
+            <column name="code" type="varchar(5)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="BAEL-1002" author="baeldung">
+        <preConditions>
+            <tableExists tableName="users"/>
+            <columnExists tableName="users" columnName="last_visit"/>
+        </preConditions>
+        <dropColumn tableName="users" columnName="last_visit"/>
+    </changeSet>
+
+    <changeSet id="BAEL-1003" author="baeldung">
+        <preConditions onFail="WARN" onFailMessage="Column verified already exists">
+            <not>
+                <columnExists tableName="users" columnName="verified"/>
+            </not>
+        </preConditions>
+        <addColumn tableName="users">
+            <column name="verified" type="boolean" defaultValue="false"/>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>
