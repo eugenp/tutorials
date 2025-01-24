@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: log-all-requests
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: httpexchanges
