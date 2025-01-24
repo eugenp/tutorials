@@ -1,4 +1,4 @@
-package com.baeldung.reflection;
+package com.baeldung.streams.gettersreturningnull;
 
 public class Customer {
 
