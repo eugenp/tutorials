@@ -42,7 +42,7 @@ public class EvaluatorOptimizerWorkflow {
             iterations++;
         } while (shouldContinueOptimization(evaluationResponse, iterations));
 
-        return currentResponse.toString();
+        return currentResponse.getResult().getOutput().getContent();
     }
 
     private Prompt generatePrompt(String question, EvaluationResponse previousEvaluation, ChatResponse currentResponse) {
