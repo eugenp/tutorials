@@ -3,7 +3,6 @@
 This module contains articles about the Stream API in Java.
 
 ### Relevant Articles:
-- [The Java 8 Stream API Tutorial](https://www.baeldung.com/java-8-streams)
 - [Java IntStream Conversions](https://www.baeldung.com/java-intstream-convert)
 - [Collect a Java Stream to an Immutable Collection](https://www.baeldung.com/java-stream-immutable-collection)
 - [How to Add a Single Element to a Stream](https://www.baeldung.com/java-stream-append-prepend)
