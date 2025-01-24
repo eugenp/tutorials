@@ -45,7 +45,7 @@ class JsonResponseUnitTest {
 
     @Test
     @DisplayName("Should successfully fetch user data")
-    void whenValidUserId_thenReturnUserData() {
+    void givenValidUserId_whenFetchingUserData_thenReturnUser() {
         // Given
         User expectedUser = new User(1, "John Doe");
         when(response.getStatus()).thenReturn(Response.Status.OK.getStatusCode());
@@ -63,7 +63,7 @@ class JsonResponseUnitTest {
 
     @Test
     @DisplayName("Should handle non-200 response")
-    void whenNon200Response_thenReturnNull() {
+    void givenNon200Response_whenFetchingUserData_thenReturnNull() {
         // Given
         when(response.getStatus()).thenReturn(Response.Status.BAD_REQUEST.getStatusCode());
 
@@ -78,7 +78,7 @@ class JsonResponseUnitTest {
 
     @Test
     @DisplayName("Should handle exception during processing")
-    void whenExceptionOccurs_thenReturnNull() {
+    void givenExceptionDuringProcessing_whenFetchingUserData_thenReturnNull() {
         // Given
         when(response.getStatus()).thenThrow(new RuntimeException("Test exception"));
 

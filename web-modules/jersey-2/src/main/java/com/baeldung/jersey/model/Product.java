@@ -1,5 +1,6 @@
 package com.baeldung.jersey.model;
 
+
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
@@ -7,14 +8,6 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 public class Product {
     private int id;
     private String name;
-
-    public Product() {
-    }
-
-    public Product(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 
     @XmlElement
     public int getId() {

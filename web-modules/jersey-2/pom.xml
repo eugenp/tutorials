@@ -110,6 +110,11 @@
             <version>4.5.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${jaxb-runtime.version}</version> <!-- Or the latest version -->
+        </dependency>
     </dependencies>
 
     <build>
@@ -136,7 +141,7 @@
         <maven.compiler.release>11</maven.compiler.release>
         <jersey.version>3.1.9</jersey.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
-        <jaxb-runtime.version>2.3.1</jaxb-runtime.version>
+        <jaxb-runtime.version>3.0.1</jaxb-runtime.version>
     </properties>
 
 </project>

@@ -7,7 +7,9 @@ import jakarta.ws.rs.client.Invocation;
 import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Unmarshaller;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -49,7 +51,7 @@ class XMLResponseUnitTest {
 
     @Test
     @DisplayName("Should successfully fetch product data")
-    void whenValidProductId_thenReturnProductData() {
+    void givenValidProductId_whenFetchingProductData_thenReturnProduct() {
         // Given
         String validXml = "<product><id>1</id><name>Test Product</name></product>";
         when(response.getStatus()).thenReturn(Response.Status.OK.getStatusCode());
@@ -68,7 +70,7 @@ class XMLResponseUnitTest {
 
     @Test
     @DisplayName("Should handle non-200 response")
-    void whenNon200Response_thenReturnNull() {
+    void givenNon200Response_whenFetchingProductData_thenReturnNull() {
         // Given
         when(response.getStatus()).thenReturn(Response.Status.BAD_REQUEST.getStatusCode());
 
@@ -78,6 +80,39 @@ class XMLResponseUnitTest {
         // Then
         assertNull(product);
         verify(logger).error(eq("Failed to get product data. Status: {}"), eq(400));
+        verify(response).close();
+    }
+
+    @Test
+    @DisplayName("Should handle unmarshalling error")
+    void givenInvalidXmlResponse_whenFetchingProductData_thenReturnNull() {
+        // Given
+        String invalidXml = "<invalid><data></data></invalid>";
+        when(response.getStatus()).thenReturn(Response.Status.OK.getStatusCode());
+        when(response.readEntity(InputStream.class))
+                .thenReturn(new ByteArrayInputStream(invalidXml.getBytes()));
+
+        // When
+        Product product = xmlResponse.fetchProductData(1);
+
+        // Then
+        assertNull(product);
+        verify(logger).error(eq("Error unmarshalling product data"), any(JAXBException.class));
+        verify(response).close();
+    }
+
+    @Test
+    @DisplayName("Should handle exception during processing")
+    void givenExceptionDuringProcessing_whenFetchingProductData_thenReturnNull() {
+        // Given
+        when(response.getStatus()).thenThrow(new RuntimeException("Test exception"));
+
+        // When
+        Product product = xmlResponse.fetchProductData(1);
+
+        // Then
+        assertNull(product);
+        verify(logger).error(eq("Error processing product data"), any(RuntimeException.class));
         verify(response).close();
     }
 }
