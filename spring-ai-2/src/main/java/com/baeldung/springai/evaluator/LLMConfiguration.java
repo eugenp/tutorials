@@ -14,6 +14,7 @@ import org.springframework.ai.ollama.management.PullModelStrategy;
 import org.springframework.ai.vectorstore.SimpleVectorStore;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -33,11 +34,14 @@ public class LLMConfiguration {
     }
 
     @Bean
-    public ChatClient contentEvaluator(OllamaApi olamaApi, VectorStore vectorStore) {
+    public ChatClient contentEvaluator(
+        OllamaApi olamaApi,
+        VectorStore vectorStore,
+        @Value("${com.baeldung.ollama.evaluation.model}") String evaluationModel) {
         ChatModel chatModel = OllamaChatModel.builder()
             .ollamaApi(olamaApi)
             .defaultOptions(OllamaOptions.builder()
-                .model("bespoke-minicheck")
+                .model(evaluationModel)
                 .build())
             .modelManagementOptions(ModelManagementOptions.builder()
                 .pullModelStrategy(PullModelStrategy.WHEN_MISSING)
