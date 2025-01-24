@@ -7,6 +7,8 @@ import org.springframework.ai.evaluation.RelevancyEvaluator;
 import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
+import org.springframework.ai.ollama.management.ModelManagementOptions;
+import org.springframework.ai.ollama.management.PullModelStrategy;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +27,9 @@ public class LLMConfiguration {
             .ollamaApi(olamaApi)
             .defaultOptions(OllamaOptions.builder()
                 .model("bespoke-minicheck")
+                .build())
+            .modelManagementOptions(ModelManagementOptions.builder()
+                .pullModelStrategy(PullModelStrategy.WHEN_MISSING)
                 .build())
             .build();
         return ChatClient.builder(chatModel).build();
