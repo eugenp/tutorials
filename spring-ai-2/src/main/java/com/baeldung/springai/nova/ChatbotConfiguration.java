@@ -9,7 +9,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Description;
 import org.springframework.core.io.Resource;
+
+import java.util.function.Function;
 
 @Configuration
 public class ChatbotConfiguration {
@@ -20,6 +23,12 @@ public class ChatbotConfiguration {
     }
 
     @Bean
+    @Description("Get Baeldung author details using an article title")
+    public Function<AuthorFetcher.Query, AuthorFetcher.Author> getAuthor() {
+        return new AuthorFetcher();
+    }
+
+    @Bean
     public ChatClient chatClient(
         ChatModel chatModel,
         ChatMemory chatMemory,
@@ -27,6 +36,7 @@ public class ChatbotConfiguration {
     ) {
         return ChatClient
             .builder(chatModel)
+            .defaultFunctions("getAuthor")
             .defaultSystem(systemPrompt)
             .defaultAdvisors(new MessageChatMemoryAdvisor(chatMemory))
             .build();
