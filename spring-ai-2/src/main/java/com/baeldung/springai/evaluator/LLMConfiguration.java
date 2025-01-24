@@ -7,6 +7,7 @@ import org.springframework.ai.evaluation.RelevancyEvaluator;
 import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -30,13 +31,13 @@ public class LLMConfiguration {
     }
 
     @Bean
-    public FactCheckingEvaluator factCheckingEvaluator(ChatClient contentEvaluator) {
-        return new FactCheckingEvaluator(contentEvaluator.mutate());
+    public FactCheckingEvaluator factCheckingEvaluator(@Qualifier("contentEvaluator") ChatClient chatClient) {
+        return new FactCheckingEvaluator(chatClient.mutate());
     }
 
     @Bean
-    public RelevancyEvaluator relevancyEvaluator(ChatClient contentEvaluator) {
-        return new RelevancyEvaluator(contentEvaluator.mutate());
+    public RelevancyEvaluator relevancyEvaluator(@Qualifier("contentEvaluator") ChatClient chatClient) {
+        return new RelevancyEvaluator(chatClient.mutate());
     }
 
 }
