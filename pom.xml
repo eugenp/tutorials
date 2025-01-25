@@ -843,7 +843,7 @@
         </profile>
 
         <profile>
-            <id>profile-jdk22</id>
+            <id>default-jdk22</id>
             <build>
                 <plugins>
                     <plugin>
@@ -855,13 +855,15 @@
                             <includes>
                                 <include>SpringContextTest</include>
                                 <include>**/*UnitTest</include>
-                                <include>**/*IntegrationTest.java</include>
-                                <include>**/*IntTest.java</include>
-                                <include>**/*LongRunningUnitTest.java</include>
-                                <include>**/*ManualTest.java</include>
-                                <include>**/JdbcTest.java</include>
-                                <include>**/*LiveTest.java</include>
                             </includes>
+                            <excludes>
+                                <exclude>**/*IntegrationTest.java</exclude>
+                                <exclude>**/*IntTest.java</exclude>
+                                <exclude>**/*LongRunningUnitTest.java</exclude>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/JdbcTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -882,7 +884,7 @@
         </profile>
 
         <profile>
-            <id>profile-jdk23</id>
+            <id>default-jdk23</id>
             <build>
                 <plugins>
                     <plugin>
@@ -894,13 +896,15 @@
                             <includes>
                                 <include>SpringContextTest</include>
                                 <include>**/*UnitTest</include>
-                                <include>**/*IntegrationTest.java</include>
-                                <include>**/*IntTest.java</include>
-                                <include>**/*LongRunningUnitTest.java</include>
-                                <include>**/*ManualTest.java</include>
-                                <include>**/JdbcTest.java</include>
-                                <include>**/*LiveTest.java</include>
                             </includes>
+                            <excludes>
+                                <exclude>**/*IntegrationTest.java</exclude>
+                                <exclude>**/*IntTest.java</exclude>
+                                <exclude>**/*LongRunningUnitTest.java</exclude>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/JdbcTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -1226,6 +1230,78 @@
         </profile>
 
         <profile>
+            <id>integration-jdk22</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*IntegrationTest.java</include>
+                                <include>**/*IntTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>core-java-modules/core-java-22</module>
+                <module>core-java-modules/core-java-concurrency-advanced-6</module>
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>22</java.version>
+                <maven.compiler.source>22</maven.compiler.source>
+                <maven.compiler.target>22</maven.compiler.target>
+            </properties>
+
+        </profile>
+
+        <profile>
+            <id>integration-jdk23</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*IntegrationTest.java</include>
+                                <include>**/*IntTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>core-java-modules/core-java-23</module>
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>23</java.version>
+                <maven.compiler.source>23</maven.compiler.source>
+                <maven.compiler.target>23</maven.compiler.target>
+                <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
+            </properties>
+
+        </profile>
+
+        <profile>
             <id>live-all</id>
             <build>
                 <plugins>
@@ -1506,7 +1582,7 @@
         <maven-jxr-plugin.version>3.4.0</maven-jxr-plugin.version>
         <gitflow-incremental-builder.version>4.5.4</gitflow-incremental-builder.version>
         <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
-        <lombok.version>1.18.32</lombok.version>
+        <lombok.version>1.18.36</lombok.version>
         <h2.version>2.2.224</h2.version>
         <guava.version>33.2.1-jre</guava.version>
         <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>

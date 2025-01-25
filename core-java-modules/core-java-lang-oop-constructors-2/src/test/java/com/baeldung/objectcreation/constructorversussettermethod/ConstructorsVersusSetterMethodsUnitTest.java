@@ -1,4 +1,4 @@
-package com.baeldung.constructorversussettermethod;
+package com.baeldung.objectcreation.constructorversussettermethod;
 
 import org.junit.Test;
 

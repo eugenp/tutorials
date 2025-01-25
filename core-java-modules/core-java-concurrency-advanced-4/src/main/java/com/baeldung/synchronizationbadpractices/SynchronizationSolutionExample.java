@@ -10,7 +10,7 @@ public class SynchronizationSolutionExample {
     }
 
     private int count = 0;
-    private final Integer intLock = new Integer(count);
+    private final Integer intLock = Integer.valueOf(count);
     public void boxedPrimitiveSolution() {
         synchronized(intLock) {
             count++; 
