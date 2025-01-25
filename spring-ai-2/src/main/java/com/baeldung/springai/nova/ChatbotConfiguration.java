@@ -5,7 +5,6 @@ import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.InMemoryChatMemory;
 import org.springframework.ai.chat.model.ChatModel;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,7 +31,7 @@ public class ChatbotConfiguration {
     public ChatClient chatClient(
         ChatModel chatModel,
         ChatMemory chatMemory,
-        @Value("classpath:prompts/nova-chatbot-system-prompt.st") Resource systemPrompt
+        @Value("classpath:prompts/grumpgpt-system-prompt.st") Resource systemPrompt
     ) {
         return ChatClient
             .builder(chatModel)
