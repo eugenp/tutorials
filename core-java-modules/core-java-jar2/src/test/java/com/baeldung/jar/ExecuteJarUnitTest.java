@@ -38,22 +38,18 @@ public class ExecuteJarUnitTest {
 
         String[] command = { "java", "-cp", jarFile, "com.company.HelloWorld" };
 
-        Process process = Runtime.getRuntime()
-            .exec(command);
+        ProcessBuilder processBuilder = new ProcessBuilder(command);
+        processBuilder.redirectErrorStream(true);
+
+        Process process = processBuilder.start();
 
         InputStream inputStream = process.getInputStream();
-        InputStream errorStream = process.getErrorStream();
-
         byte[] output = inputStream.readAllBytes();
         System.out.println("Output: " + new String(output));
 
-        byte[] error = errorStream.readAllBytes();
-        if (error.length > 0) {
-            System.err.println("Error: " + new String(error));
-        }
-
         int exitCode = process.waitFor();
         Assert.assertEquals(0, exitCode);
+
     }
 
     private String getJarPath(String resourcePath) throws URISyntaxException {
