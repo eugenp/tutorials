@@ -1,2 +1,2 @@
 ## Relevant Articles
-- [Spring Boot SSL](https://docs.spring.io/spring-boot/reference/features/ssl.html#features.ssl)
+- [Unified SSL Support in Spring Framework](https://drafts.baeldung.com/unified-ssl-support-in-spring-framework?preview=true)
