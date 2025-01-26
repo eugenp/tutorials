@@ -6,7 +6,7 @@ import static net.javacrumbs.jsonunit.assertj.JsonAssertions.assertThatJson;
 import org.apache.avro.Schema;
 import org.junit.jupiter.api.Test;
 
-class AvroSchemaBuilderTest {
+class AvroSchemaBuilderUnitTest {
 
     @Test
     void whenCallingSchemaToString_thenReturnJsonAvroSchema() {
