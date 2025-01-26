@@ -10,14 +10,14 @@ class DirectionUtilUnitTest {
 
     @Test
     void givenMockedDirection_whenGetDescription_thenThrowException() {
-        try (MockedStatic<Direction> enumMock = Mockito.mockStatic(Direction.class)) {
+        try (MockedStatic<Direction> directionMock = Mockito.mockStatic(Direction.class)) {
             final Direction unsupported = Mockito.mock(Direction.class);
             Mockito.doReturn(4)
-                .when(unsupported)
-                .ordinal();
+              .when(unsupported)
+              .ordinal();
 
-            enumMock.when(Direction::values)
-                .thenReturn(new Direction[] { Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST, unsupported });
+            directionMock.when(Direction::values)
+              .thenReturn(new Direction[] { Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST, unsupported });
 
             assertThrows(IllegalArgumentException.class, () -> DirectionUtils.getDescription(unsupported));
         }

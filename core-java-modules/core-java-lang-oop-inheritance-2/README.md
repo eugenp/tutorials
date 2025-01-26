@@ -3,7 +3,7 @@
 This module contains articles about inheritance in Java
 
 ### Relevant Articles: 
-- [Upcasting Vs. Downcasting in Java](https://www.baeldung.com/java-upcasting-vs-downcasting)
+- [Upcasting vs. Downcasting in Java](https://www.baeldung.com/java-upcasting-vs-downcasting)
 - [Abstract Classes in Java](https://www.baeldung.com/java-abstract-class)
 - [A Guide to Inner Interfaces in Java](https://www.baeldung.com/java-inner-interfaces)
 - [Guide to the super Java Keyword](https://www.baeldung.com/java-super)

@@ -4,7 +4,7 @@ This module contains articles about the Java List collection
 
 ### Relevant Articles: 
 - [Check if Two Lists Are Equal in Java](https://www.baeldung.com/java-test-a-list-for-ordinality-and-equality)
-- [Java 8 Streams: Find Items From One List Based on Values From Another List](https://www.baeldung.com/java-streams-find-list-items)
+- [Java Streams: Find Items From One List Based on Values From Another List](https://www.baeldung.com/java-streams-find-list-items)
 - [A Guide to the Java LinkedList](https://www.baeldung.com/java-linkedlist)
 - [Java List UnsupportedOperationException](https://www.baeldung.com/java-list-unsupported-operation-exception)
 - [Flattening Nested Collections in Java](https://www.baeldung.com/java-flatten-nested-collections)
