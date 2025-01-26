@@ -50,16 +50,16 @@ public class ConsecutiveSumCheckerUnitTest {
     }
 
     @Test
+    public void givenEvenNumber_whenUsingMathFormula_thenReturnNull() {
+        int[] result = getConsecutiveNumbersSum(10);
+        assertArrayEquals(new int[0], result);
+    }
+
+    @Test
     public void givenOddNumber_whenUsingMathFormula_thenReturnConsecutiveNumbers() {
         int[] result = getConsecutiveNumbersSum(oddNumber);
         assertNotNull(result);
         assertArrayEquals(new int[]{10, 11}, result);
-    }
-
-    @Test
-    public void givenEvenNumber_whenUsingMathFormula_thenReturnNull() {
-        int[] result = getConsecutiveNumbersSum(evenNumber);
-        assertNull(new int[0], result);
     }
 
     @Test
@@ -69,7 +69,6 @@ public class ConsecutiveSumCheckerUnitTest {
         assertArrayEquals(new int[]{10, 11}, oddResults.get(0));
         assertArrayEquals(new int[]{6, 7, 8}, oddResults.get(1));
         assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6}, oddResults.get(2));
-
         List<int[]> evenResults = findConsecutiveSums(evenNumber);
         assertEquals(1, evenResults.size());
         assertArrayEquals(new int[]{1, 2, 3, 4}, evenResults.get(0));
