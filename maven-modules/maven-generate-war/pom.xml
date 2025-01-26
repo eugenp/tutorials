@@ -57,8 +57,19 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <finalName>war-with-main-class</finalName>
+                    <mainClass>com.baeldung.MavenGenerateWarApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>
