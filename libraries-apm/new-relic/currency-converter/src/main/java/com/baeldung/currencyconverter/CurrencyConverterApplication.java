@@ -1,4 +1,4 @@
-package com.baeldung.currency_converter;
+package com.baeldung.currencyconverter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

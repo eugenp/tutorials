@@ -1,7 +1,7 @@
-package com.baeldung.currency_converter.service;
+package com.baeldung.currencyconverter.service;
 
 import org.springframework.stereotype.Service;
-import com.baeldung.currency_converter.dto.ExchangeRateResponse;
+import com.baeldung.currencyconverter.dto.ExchangeRateResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.newrelic.api.agent.NewRelic;
 import com.newrelic.api.agent.Trace;

@@ -1,4 +1,4 @@
-package com.baeldung.currency_converter.dto;
+package com.baeldung.currencyconverter.dto;
 
 import java.util.Map;
 

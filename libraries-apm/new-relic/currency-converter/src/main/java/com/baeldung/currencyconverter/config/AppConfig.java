@@ -1,4 +1,4 @@
-package com.baeldung.currency_converter.config;
+package com.baeldung.currencyconverter.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
