@@ -3,7 +3,7 @@
 This module contains articles about the Stream API in Java.
 
 ### Relevant Articles: 
-- [Java 8 and Infinite Streams](https://www.baeldung.com/java-inifinite-streams)
+- [Java and Infinite Streams](https://www.baeldung.com/java-inifinite-streams)
 - [How to Get the Last Element of a Stream in Java?](https://www.baeldung.com/java-stream-last-element)
 - [“Stream has already been operated upon or closed” Exception in Java](https://www.baeldung.com/java-stream-operated-upon-or-closed-exception)
 - [Iterable to Stream in Java](https://www.baeldung.com/java-iterable-to-stream)

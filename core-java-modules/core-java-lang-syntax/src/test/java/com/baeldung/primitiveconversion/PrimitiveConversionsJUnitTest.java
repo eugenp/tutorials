@@ -45,13 +45,13 @@ public class PrimitiveConversionsJUnitTest {
         int myInt = 127;
         
         Integer myIntegerReference = myInt;
-        assertEquals(new Integer("127"), myIntegerReference);
+        assertEquals(Integer.valueOf("127"), myIntegerReference);
         
     }
     
     @Test
     public void givenWrapperObjectData_whenAssiginingToPrimitive_thenAutomaticUnboxingHappens(){
-        Integer myIntegerReference = new Integer("127");
+        Integer myIntegerReference = Integer.valueOf("127");
         
         int myOtherInt = myIntegerReference;
         assertEquals(127, myOtherInt);
