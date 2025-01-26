@@ -12,7 +12,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.FluentWait;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class SeleniumDatePickerLiveTest {
@@ -61,7 +61,7 @@ public class SeleniumDatePickerLiveTest {
         inputElement.click();
 
         // Select Year
-        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        Wait<WebDriver> wait = new FluentWait(driver);
         WebElement yearElement = driver.findElement(By.xpath(INPUT_YEAR_XPATH));
         wait.until(d -> yearElement.isDisplayed());
         Select selectYear = new Select(yearElement);
