@@ -72,9 +72,7 @@ public class SeleniumDatePickerLiveTest {
         wait.until(d -> monthElement.isDisplayed());
         Select selectMonth = new Select(monthElement);
         selectMonth.selectByVisibleText("December");
-        final String selectOptionMonth = INPUT_MONTH_XPATH + "/option[text()='December']";
-        WebElement optionDecember = driver.findElement(By.xpath(selectOptionMonth));
-
+        
         // Select Day
         WebElement dayElement = driver.findElement(By.xpath(INPUT_DAY_XPATH));
         wait.until(d -> dayElement.isDisplayed());
