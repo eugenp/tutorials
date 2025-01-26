@@ -3,11 +3,7 @@ package com.baeldung.serversockerhttpserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.time.LocalDateTime;
@@ -26,8 +22,7 @@ public class SimpleHttpServerMultiThreaded {
 
     public void start() throws IOException {
 
-        try (ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
-            ServerSocket serverSocket = new ServerSocket(port)) {
+        try (ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_POOL_SIZE); ServerSocket serverSocket = new ServerSocket(port)) {
             logger.info("Server started on port: {}", port);
 
             while (true) {
@@ -38,8 +33,7 @@ public class SimpleHttpServerMultiThreaded {
     }
 
     private void handleClient(Socket clientSocket) {
-        try (BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()))) {
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())); BufferedWriter out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()))) {
 
             String clientInputLine;
             while ((clientInputLine = in.readLine()) != null) {
@@ -56,9 +50,9 @@ public class SimpleHttpServerMultiThreaded {
                         <h1>Baeldung Home Page</h1>
                         <p>Java Tutorials</p>
                         <ul>
-                            <li><a href="/java">Java</a></li>
-                            <li><a href="/spring">Spring</a></li>
-                            <li><a href="/hibernate">Hibernate</a></li>
+                            <li><a href="https://www.baeldung.com/get-started-with-java-series">Java</a></li>
+                            <li><a href="https://www.baeldung.com/spring-boot">Spring</a></li>
+                            <li><a href="https://www.baeldung.com/learn-jpa-hibernate">Hibernate</a></li>
                         </ul>
                     </body>
                 </html>

@@ -48,9 +48,9 @@ public class SimpleHttpServer {
                                     <h1> Baeldung Home Page </h1>
                                     <p> Java Tutorials </p>
                                     <ul>
-                                        <li> <a href="/java"> Java </a> </li>
-                                        <li> <a href="/spring"> Spring </a> </li>
-                                        <li> <a href="/hibernate"> Hibernate </a> </li>
+                                        <li> <a href="https://www.baeldung.com/get-started-with-java-series"> Java </a> </li>
+                                        <li> <a href="https://www.baeldung.com/spring-boot"> Spring </a> </li>
+                                        <li> <a href="https://www.baeldung.com/learn-jpa-hibernate"> Hibernate </a> </li>
                                     </ul>
                                 </body>
                             </html>
