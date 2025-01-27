@@ -1,9 +1,5 @@
 package com.baeldung.localdatetoiso;
 
-import org.apache.commons.lang3.time.FastDateFormat;
-import org.joda.time.DateTimeZone;
-import org.joda.time.format.ISODateTimeFormat;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -11,6 +7,10 @@ import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.TimeZone;
+
+import org.apache.commons.lang3.time.FastDateFormat;
+import org.joda.time.DateTimeZone;
+import org.joda.time.format.ISODateTimeFormat;
 
 public class LocalDateToISO {
     public String formatUsingDateTimeFormatter(LocalDate localDate) {
