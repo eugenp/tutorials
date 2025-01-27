@@ -19,11 +19,6 @@
             <artifactId>assertj-guava</artifactId>
             <version>${assertj-guava.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.javalite</groupId>
-            <artifactId>javalite-common</artifactId>
-            <version>${javalite.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -44,7 +39,6 @@
     <properties>
         <assertj-guava.version>3.4.0</assertj-guava.version>
         <assertj-generator.version>2.1.0</assertj-generator.version>
-        <javalite.version>1.4.13</javalite.version>
     </properties>
 
 </project>

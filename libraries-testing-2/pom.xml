@@ -185,6 +185,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>org.javalite</groupId>
+            <artifactId>javalite-common</artifactId>
+            <version>${javalite.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -232,6 +237,7 @@
         <jakarta.xml.bind-api.version>2.3.2</jakarta.xml.bind-api.version>
         <truth.version>0.32</truth.version>
         <jgotesting.version>0.12</jgotesting.version>
+        <javalite.version>1.4.13</javalite.version>
     </properties>
 
 </project>
