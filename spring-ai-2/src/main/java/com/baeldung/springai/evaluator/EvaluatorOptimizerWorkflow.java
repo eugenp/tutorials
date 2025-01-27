@@ -30,13 +30,13 @@ public class EvaluatorOptimizerWorkflow {
         this.optimizationFeebackPrompt = optimizationFeebackPrompt;
     }
 
-    public String process(String question) {
+    public String execute(String question) {
         ChatResponse currentResponse = null;
         EvaluationResponse evaluationResponse = null;
         int iterations = 0;
 
         do {
-            Prompt prompt = generatePrompt(question, evaluationResponse, currentResponse);
+            Prompt prompt = constructUserPrompt(question, evaluationResponse, currentResponse);
             currentResponse = chatbotService.chat(prompt);
             evaluationResponse = llmResponseEvaluator.evaluate(prompt, currentResponse);
             iterations++;
@@ -45,7 +45,7 @@ public class EvaluatorOptimizerWorkflow {
         return currentResponse.getResult().getOutput().getContent();
     }
 
-    private Prompt generatePrompt(String question, EvaluationResponse previousEvaluation, ChatResponse currentResponse) {
+    private Prompt constructUserPrompt(String question, EvaluationResponse previousEvaluation, ChatResponse currentResponse) {
         if (previousEvaluation == null) {
             return new Prompt(question);
         }

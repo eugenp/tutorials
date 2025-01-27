@@ -18,7 +18,7 @@ public class ChatbotController {
 
     @PostMapping("/chat")
     public ResponseEntity<ChatResponse> chat(@RequestBody ChatRequest chatRequest) {
-        String answer = evaluatorOptimizerWorkflow.process(chatRequest.question);
+        String answer = evaluatorOptimizerWorkflow.execute(chatRequest.question);
         return ResponseEntity.ok(new ChatResponse(answer));
     }
 

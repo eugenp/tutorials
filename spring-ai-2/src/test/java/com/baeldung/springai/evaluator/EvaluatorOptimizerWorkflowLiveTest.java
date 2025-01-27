@@ -20,7 +20,7 @@ class EvaluatorOptimizerWorkflowLiveTest {
     @Test
     void whenEmployeeDevelopmentQuestionAsked_thenRelevantAnswerReturned() {
         String question = "What is the annual learning budget I get? And what are the learning portals I get access to?";
-        String answer = evaluatorOptimizerWorkflow.process(question);
+        String answer = evaluatorOptimizerWorkflow.execute(question);
 
         assertThat(answer)
             .isNotBlank()
@@ -35,7 +35,7 @@ class EvaluatorOptimizerWorkflowLiveTest {
     @Test
     void whenLeavePolicyQuestionAsked_thenRelevantAnswerReturned() {
         String question = "How many sick days do I get per year? And how long in advance do I have to submit my vacation leaves?";
-        String answer = evaluatorOptimizerWorkflow.process(question);
+        String answer = evaluatorOptimizerWorkflow.execute(question);
 
         assertThat(answer)
             .isNotBlank()
@@ -49,7 +49,7 @@ class EvaluatorOptimizerWorkflowLiveTest {
     @Test
     void whenRemoteWorkQuestionAsked_thenRelevantAnswerReturned() {
         String question = "I can begin remote work after 15 days of joining the company, right? And do we use Whatsapp for communication?";
-        String answer = evaluatorOptimizerWorkflow.process(question);
+        String answer = evaluatorOptimizerWorkflow.execute(question);
 
         assertThat(answer)
             .isNotBlank()
