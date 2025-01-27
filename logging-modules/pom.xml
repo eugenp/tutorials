@@ -23,6 +23,7 @@
         <module>logging-techniques</module>
         <module>solarwinds-loggly</module>
         <module>splunk-with-log4j2</module>
+        <module>log-all-requests</module>
     </modules>
 
 </project>

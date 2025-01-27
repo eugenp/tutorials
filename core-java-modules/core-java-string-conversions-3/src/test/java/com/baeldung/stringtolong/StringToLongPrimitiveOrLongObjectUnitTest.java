@@ -12,13 +12,13 @@ public class StringToLongPrimitiveOrLongObjectUnitTest {
 
     @Test
     void givenString_whenUsingLongConstructor_thenObtainLongObject() {
-        Long l = new Long("2147483648");
+        Long l = Long.valueOf("2147483648");
         assertThat(l).isEqualTo(2147483648L);
     }
 
     @Test
     void givenInvalidString_whenUsingLongConstructor_thenNumberFormatExceptionThrown() {
-        Assertions.assertThrows(NumberFormatException.class, () -> new Long("Invalid String"));
+        Assertions.assertThrows(NumberFormatException.class, () -> Long.valueOf("Invalid String"));
     }
 
     @Test

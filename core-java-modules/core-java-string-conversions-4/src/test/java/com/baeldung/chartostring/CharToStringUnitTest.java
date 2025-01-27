@@ -28,7 +28,7 @@ public class CharToStringUnitTest {
     public void givenChar_whenCallingCharacterConstructor_shouldConvertToString3() {
         final char givenChar = 'x';
 
-        final String result = new Character(givenChar).toString();
+        final String result = Character.toString(givenChar);
 
         assertThat(result).isEqualTo("x");
     }
