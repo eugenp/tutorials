@@ -167,7 +167,7 @@ public class StringToFloatConversionUnitTest {
     public void givenString_whenConstructor_thenReturnFloat() {
         String givenString = "1.25";
 
-        Float result = new Float(givenString);
+        Float result = Float.valueOf(givenString);
 
         assertEquals(1.25f, result);
     }

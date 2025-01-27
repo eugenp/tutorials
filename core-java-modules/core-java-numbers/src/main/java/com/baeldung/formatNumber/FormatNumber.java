@@ -25,16 +25,16 @@ public class FormatNumber {
         DecimalFormat df2 = new DecimalFormat("#,###,###,##0.00");
         DecimalFormat df3 = new DecimalFormat("#,###,###,##0.000");
         if (places == 2)
-            return new Double(df2.format(value));
+            return Double.valueOf(df2.format(value));
         else if (places == 3)
-            return new Double(df3.format(value));
+            return Double.valueOf(df3.format(value));
         else
             throw new IllegalArgumentException();
     }
 
     public static double withDecimalFormatLocal(double value) {
         DecimalFormat df = (DecimalFormat) NumberFormat.getNumberInstance(Locale.getDefault());
-        return new Double(df.format(value));
+        return Double.valueOf(df.format(value));
     }
 
     public static String withStringFormat(double value, int places) {
@@ -47,7 +47,7 @@ public class FormatNumber {
 
     public static double withTwoDecimalPlaces(double value) {
         DecimalFormat df = new DecimalFormat("#.00");
-        return new Double(df.format(value));
+        return Double.valueOf(df.format(value));
     }
 
     public static String withLargeIntegers(double value) {
