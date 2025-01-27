@@ -1,4 +1,4 @@
-package com.baeldung.assertj.soft_assertions;
+package com.baeldung.assertj.softassertions;
 
 public class Request {
     private String type;

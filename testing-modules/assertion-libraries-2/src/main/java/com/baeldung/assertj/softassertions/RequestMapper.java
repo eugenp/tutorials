@@ -1,4 +1,4 @@
-package com.baeldung.assertj.soft_assertions;
+package com.baeldung.assertj.softassertions;
 
 import java.util.UUID;
 

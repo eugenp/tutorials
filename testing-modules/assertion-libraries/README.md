@@ -8,4 +8,4 @@
 - [Using Conditions with AssertJ Assertions](http://www.baeldung.com/assertj-conditions)
 - [AssertJ Exception Assertions](http://www.baeldung.com/assertj-exception-assertion)
 - [Extract Values using AssertJ in Java](https://www.baeldung.com/java-extract-values-assertj)
-- [Soft Assertions with AssertJ](https://www.baeldung.com/java-assertj-soft-assertions)
+- More Articles: [[next -->]](../assertion-libraries-2)
