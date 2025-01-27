@@ -39,7 +39,7 @@ public class LLMConfiguration {
     public ChatClient contentEvaluator(
         OllamaApi olamaApi,
         VectorStore vectorStore,
-        @Value("${com.baeldung.ollama.evaluation.model}") String evaluationModel) {
+        @Value("${com.baeldung.evaluation.model}") String evaluationModel) {
         ChatModel chatModel = OllamaChatModel.builder()
             .ollamaApi(olamaApi)
             .defaultOptions(OllamaOptions.builder()
