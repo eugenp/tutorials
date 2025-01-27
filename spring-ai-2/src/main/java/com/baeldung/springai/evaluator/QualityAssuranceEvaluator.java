@@ -35,12 +35,13 @@ public class QualityAssuranceEvaluator implements Evaluator {
     @Override
     public EvaluationResponse evaluate(EvaluationRequest evaluationRequest) {
         Prompt userPrompt = constructUserPrompt(evaluationRequest);
-        return chatClient
+        var response = chatClient
             .prompt()
             .system(evaluationSystemPrompt)
             .user(userPrompt.getContents())
             .call()
-            .entity(EvaluationResponse.class);
+            .entity(QualityAssuranceEvaluationResponse.class);
+        return new EvaluationResponse(response.pass(), response.score(), response.feedback(), null);
     }
 
     private Prompt constructUserPrompt(EvaluationRequest evaluationRequest) {
