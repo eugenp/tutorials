@@ -23,7 +23,9 @@ public class LLMConfiguration {
 
     @Bean
     public VectorStore vectorStore(EmbeddingModel embeddingModel) {
-        return SimpleVectorStore.builder(embeddingModel).build();
+        return SimpleVectorStore
+            .builder(embeddingModel)
+            .build();
     }
 
     @Bean
