@@ -1,0 +1,5 @@
+amends "ToolIntegration.pkl"
+url = "https://api.github.com"
+name = "GitHub"
+user = "gituser"
+password = "gitpassword"

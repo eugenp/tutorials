@@ -1,0 +1,5 @@
+module com.baeldung.spring.pkl.ToolIntegration
+url:String
+name:String
+user:String
+password:String
