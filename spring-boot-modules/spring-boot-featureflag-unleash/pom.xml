@@ -3,9 +3,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-boot-featureFlag-Unleash</artifactId>
+    <artifactId>spring-boot-featureflag-unleash</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-featureFlag-Unleash</name>
+    <name>spring-boot-featureflag-unleash</name>
     <description>Demo project for Spring Boot FeatureFlag with Unleash</description>
 
     <parent>
@@ -53,7 +53,7 @@
     <properties>
         <java.version>21</java.version>
         <springdoc.version>2.2.0</springdoc.version>
-        <start-class>com.baeldung.DemoApplication</start-class>
+        <start-class>com.baeldung.unleash.DemoApplication</start-class>
     </properties>
 
 </project>
