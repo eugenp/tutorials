@@ -9,7 +9,7 @@
 - [Guide to Selenium with JUnit / TestNG](http://www.baeldung.com/java-selenium-with-junit-and-testng)
 - [How to Handle Alerts and Popups in Selenium](https://www.baeldung.com/java-selenium-handle-alerts-popups)
 - [Automated Accessibility Testing With Selenium](https://www.baeldung.com/java-selenium-accessibility-testing)
-
+- More articles [[<-- prev]](../selenium) [[next -->]](../selenium-3)
 
 #### Notes:
 - to run the live tests for the article *Fixing Selenium WebDriver Executable Path Error*, follow the manual setup described
