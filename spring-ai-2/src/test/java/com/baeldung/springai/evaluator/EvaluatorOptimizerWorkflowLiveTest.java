@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Import;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-@SpringBootTest
 @Import(TestcontainersConfiguration.class)
+@SpringBootTest(properties = "com.baeldung.evaluation.model=deepseek-r1")
 class EvaluatorOptimizerWorkflowLiveTest {
 
     @Autowired

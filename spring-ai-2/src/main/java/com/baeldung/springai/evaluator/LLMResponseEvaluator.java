@@ -14,17 +14,17 @@ import java.util.List;
 @Component
 public class LLMResponseEvaluator {
 
-    private final FactCheckingEvaluator factCheckingEvaluator;
+    private final QualityAssuranceEvaluator evaluator;
 
-    public LLMResponseEvaluator(FactCheckingEvaluator factCheckingEvaluator) {
-        this.factCheckingEvaluator = factCheckingEvaluator;
+    public LLMResponseEvaluator(QualityAssuranceEvaluator evaluator) {
+        this.evaluator = evaluator;
     }
 
     public EvaluationResponse evaluate(Prompt question, ChatResponse chatResponse) {
         String answer = chatResponse.getResult().getOutput().getContent();
         List<Document> documents = chatResponse.getMetadata().get(QuestionAnswerAdvisor.RETRIEVED_DOCUMENTS);
         EvaluationRequest evaluationRequest = new EvaluationRequest(question.getContents(), documents, answer);
-        return factCheckingEvaluator.evaluate(evaluationRequest);
+        return evaluator.evaluate(evaluationRequest);
     }
 
 }
