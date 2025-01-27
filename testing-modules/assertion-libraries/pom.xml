@@ -24,20 +24,6 @@
             <artifactId>javalite-common</artifactId>
             <version>${javalite.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.jgotesting</groupId>
-            <artifactId>jgotesting</artifactId>
-            <version>${jgotesting.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <!-- junit4 dependency is excluded as it should to be resolved from junit-vintage-engine -->
-                <!-- included in parent-modules. -->
-                <exclusion>
-                    <groupId>junit</groupId>
-                    <artifactId>junit</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
     </dependencies>
 
     <build>
@@ -59,7 +45,6 @@
         <assertj-guava.version>3.4.0</assertj-guava.version>
         <assertj-generator.version>2.1.0</assertj-generator.version>
         <javalite.version>1.4.13</javalite.version>
-        <jgotesting.version>0.12</jgotesting.version>
     </properties>
 
 </project>
