@@ -37,12 +37,12 @@ class LLMResponseEvaluatorLiveTest {
             .user(question)
             .call()
             .chatResponse();
+
         String answer = chatResponse.getResult().getOutput().getContent();
         List<Document> documents = chatResponse.getMetadata().get(QuestionAnswerAdvisor.RETRIEVED_DOCUMENTS);
-
         EvaluationRequest evaluationRequest = new EvaluationRequest(question, documents, answer);
-        EvaluationResponse evaluationResponse = relevancyEvaluator.evaluate(evaluationRequest);
 
+        EvaluationResponse evaluationResponse = relevancyEvaluator.evaluate(evaluationRequest);
         assertThat(evaluationResponse.isPass()).isTrue();
     }
 
@@ -53,12 +53,12 @@ class LLMResponseEvaluatorLiveTest {
             .user(question)
             .call()
             .chatResponse();
-        String nonContextualAnswer = "A lion is the king of the jungle";
+
+        String nonRelevantAnswer = "A lion is the king of the jungle";
         List<Document> documents = chatResponse.getMetadata().get(QuestionAnswerAdvisor.RETRIEVED_DOCUMENTS);
+        EvaluationRequest evaluationRequest = new EvaluationRequest(question, documents, nonRelevantAnswer);
 
-        EvaluationRequest evaluationRequest = new EvaluationRequest(question, documents, nonContextualAnswer);
         EvaluationResponse evaluationResponse = relevancyEvaluator.evaluate(evaluationRequest);
-
         assertThat(evaluationResponse.isPass()).isFalse();
     }
 
@@ -69,12 +69,12 @@ class LLMResponseEvaluatorLiveTest {
             .user(question)
             .call()
             .chatResponse();
+
         String answer = chatResponse.getResult().getOutput().getContent();
         List<Document> documents = chatResponse.getMetadata().get(QuestionAnswerAdvisor.RETRIEVED_DOCUMENTS);
-
         EvaluationRequest evaluationRequest = new EvaluationRequest(question, documents, answer);
-        EvaluationResponse evaluationResponse = factCheckingEvaluator.evaluate(evaluationRequest);
 
+        EvaluationResponse evaluationResponse = factCheckingEvaluator.evaluate(evaluationRequest);
         assertThat(evaluationResponse.isPass()).isTrue();
     }
 
@@ -85,12 +85,12 @@ class LLMResponseEvaluatorLiveTest {
             .user(question)
             .call()
             .chatResponse();
+
         String wrongAnswer = "You can take no leaves. Get back to work!";
         List<Document> documents = chatResponse.getMetadata().get(QuestionAnswerAdvisor.RETRIEVED_DOCUMENTS);
-
         EvaluationRequest evaluationRequest = new EvaluationRequest(question, documents, wrongAnswer);
-        EvaluationResponse evaluationResponse = factCheckingEvaluator.evaluate(evaluationRequest);
 
+        EvaluationResponse evaluationResponse = factCheckingEvaluator.evaluate(evaluationRequest);
         assertThat(evaluationResponse.isPass()).isFalse();
     }
 
