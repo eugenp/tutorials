@@ -1,5 +1,5 @@
 Query: {query}
 
-Response to evaluate: {response}
+Response: {response}
 
-Context information: {context}
+Context: {context}
