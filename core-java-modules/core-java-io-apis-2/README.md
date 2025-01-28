@@ -12,3 +12,4 @@ This module contains articles about core Java input/output(IO) APIs.
 - [Read Input Character-by-Character in Java](https://www.baeldung.com/java-read-input-character)
 - [Difference Between flush() and close() in Java FileWriter](https://www.baeldung.com/java-filewriter-flush-vs-close)
 - [Java InputStream vs. InputStreamReader](https://www.baeldung.com/java-inputstream-vs-inputstreamreader)
+- More articles: [[<-- prev]](../core-java-io-apis) [[next -->]](../core-java-io-apis-3)
