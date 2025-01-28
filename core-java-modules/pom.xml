@@ -147,6 +147,7 @@
         <!-- <module>core-java-io-6</module> --> <!-- failing after upgrade to jdk21 -->
         <module>core-java-io-apis</module>
         <module>core-java-io-apis-2</module>
+        <module>core-java-io-apis-3</module>
         <module>core-java-io-conversions</module>
         <module>core-java-io-conversions-3</module>
         <module>core-java-jar</module>
