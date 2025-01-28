@@ -13,3 +13,4 @@ This module contains articles about core Java input/output(IO) APIs.
 - [Difference Between FileReader and BufferedReader in Java](https://www.baeldung.com/java-filereader-vs-bufferedreader)
 - [Read Multiple Inputs on the Same Line in Java](https://www.baeldung.com/java-read-multiple-inputs-same-line)
 - [Write Console Output to Text File in Java](https://www.baeldung.com/java-write-console-output-file)
+- [Get a Path to a Resource in a Java JAR File](https://www.baeldung.com/java-get-path-resource-jar)
