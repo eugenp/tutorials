@@ -14,4 +14,6 @@ This module contains articles about types in Java
 - [Determine if an Object Is of Primitive Type](https://www.baeldung.com/java-object-primitive-type)
 - [Extending Enums in Java](https://www.baeldung.com/java-extending-enums)
 - [Java Class File Naming Conventions](https://www.baeldung.com/java-class-file-naming)
+- [Check if an Enum Value Exists in Java](https://www.baeldung.com/java-search-enum-values)
+
 

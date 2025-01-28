@@ -1,12 +1,11 @@
 package com.baeldung.enums;
 
-import org.assertj.core.api.Assertions;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import org.assertj.core.api.Assertions;
+import org.junit.Test;
 
 public class EnumSearcherUnitTest {
 
