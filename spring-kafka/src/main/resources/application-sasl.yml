@@ -1,0 +1,24 @@
+spring:
+  kafka:
+    jaas:
+      control-flag: required
+      enabled: true
+      login-module: com.sun.security.auth.module.Krb5LoginModule
+      options:
+        useKeyTab: true
+        keyTab: ./client.keytab
+        storeKey: true
+        debug: true
+        serviceName: kafka
+        principal: client@BAELDUNG.COM
+    security:
+      protocol: "SASL_PLAINTEXT"
+    bootstrap-servers: baeldung.com:9092
+    consumer:
+      group-id: demo-group-id
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer

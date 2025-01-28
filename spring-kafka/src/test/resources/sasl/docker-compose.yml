@@ -1,0 +1,55 @@
+services:
+
+  kdc:
+    hostname: baeldung.com
+    container_name: kdc
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./config:/etc/krb5kdc
+      - ./keytabs:/etc/krb5kdc/keytabs
+      - ./config/krb5.conf:/etc/krb5.conf
+    ports:
+      - 88:88
+      - 749:749
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    hostname: baeldung.com
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      KAFKA_OPTS: "-Djava.security.auth.login.config=/etc/kafka/zookeeper_jaas.conf"
+    volumes:
+      - ./config/zookeeper_jaas.conf:/etc/kafka/zookeeper_jaas.conf
+      - ./keytabs:/etc/kafka/keytabs
+      - ./config/krb5.conf:/etc/krb5.conf
+    ports:
+      - 2181:2181
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    hostname: baeldung.com
+    container_name: kafka
+    depends_on:
+      - zookeeper
+      - kdc
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ZOOKEEPER_SASL_CLIENT: true
+      KAFKA_ZOOKEEPER_SASL_CLIENT_USERNAME: zookeeper
+      KAFKA_LISTENERS: SASL_PLAINTEXT://kafka:9092
+      KAFKA_ADVERTISED_LISTENERS: SASL_PLAINTEXT://:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: SASL_PLAINTEXT:SASL_PLAINTEXT
+      KAFKA_SASL_MECHANISM_INTER_BROKER_PROTOCOL: GSSAPI
+      KAFKA_SECURITY_INTER_BROKER_PROTOCOL: SASL_PLAINTEXT
+      KAFKA_OPTS: "-Djava.security.auth.login.config=/etc/kafka/kafka_server_jaas.conf -Dsun.security.krb5.debug=true"
+      KAFKA_SASL_ENABLED_MECHANISMS: GSSAPI
+    volumes:
+      - ./config/kafka_server_jaas.conf:/etc/kafka/kafka_server_jaas.conf
+      - ./keytabs:/etc/kafka/keytabs
+      - ./config/krb5.conf:/etc/krb5.conf
+    ports:
+      - 9092:9092
