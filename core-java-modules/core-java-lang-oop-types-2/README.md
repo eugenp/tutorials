@@ -12,3 +12,4 @@ This module contains articles about types in Java
 - [Checking if an Object’s Type Is Enum](https://www.baeldung.com/java-check-object-enum)
 - [Declare an Enum in an Inner Class in Java](https://www.baeldung.com/java-declare-enum-inner-class)
 - [Java Class.cast() vs. Cast Operator](https://www.baeldung.com/java-class-cast-operator-difference)
+- More articles: [[<-- prev]](../core-java-lang-oop-types)[[next -->]](../core-java-lang-oop-types-3)
