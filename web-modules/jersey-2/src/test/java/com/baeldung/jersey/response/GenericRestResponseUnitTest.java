@@ -79,8 +79,8 @@ public class GenericRestResponseUnitTest {
     }
 
     @Test
-    @DisplayName("Should handle runtime exception")
-    void shouldHandleRuntimeException() {
+    @DisplayName("Given runtime exception, when sending request, then handle exception appropriately")
+    void givenRuntimeException_whenSendingRequest_thenHandleException() {
         // Given
         RuntimeException testException = new RuntimeException("Test exception");
         when(response.getStatus()).thenThrow(testException);
@@ -95,8 +95,8 @@ public class GenericRestResponseUnitTest {
     }
 
     @Test
-    @DisplayName("Should handle empty response body")
-    void shouldHandleEmptyResponseBody() {
+    @DisplayName("Given empty response body, when sending request, then process empty response")
+    void givenEmptyResponseBody_whenSendingRequest_thenProcessEmptyResponse() {
         // Given
         when(response.getStatus()).thenReturn(Response.Status.OK.getStatusCode());
         when(response.readEntity(String.class)).thenReturn("");
