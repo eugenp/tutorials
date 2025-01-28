@@ -69,16 +69,6 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${springframework.spring-web.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-            <version>${springframework.boot.spring-boot-starter.version}</version>
-        </dependency>
     </dependencies>
 
     <properties>
@@ -88,8 +78,6 @@
         <org.json.version>20240303</org.json.version>
         <jooq.version>3.19.11</jooq.version>
         <jdbc-stream.version>0.1.1</jdbc-stream.version>
-        <springframework.boot.spring-boot-starter.version>3.0.4</springframework.boot.spring-boot-starter.version>
-        <springframework.spring-web.version>6.0.6</springframework.spring-web.version>
     </properties>
 
 </project>

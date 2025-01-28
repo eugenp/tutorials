@@ -1,26 +1,26 @@
 package com.baeldung.starter;
 
 import jakarta.mail.MessagingException;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.subethamail.wiser.Wiser;
 import org.subethamail.wiser.WiserMessage;
 
 import java.io.IOException;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = Application.class)
 public class SpringBootMailIntegrationTest {
     @Autowired
@@ -33,14 +33,14 @@ public class SpringBootMailIntegrationTest {
     private final String subject = "Test subject";
     private final String textMail = "Text subject mail";
 
-    @Before
+    @BeforeEach
     public void setUp() {
         final int TEST_PORT = 8025;
         wiser = Wiser.port(TEST_PORT);
         wiser.start();
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         wiser.stop();
     }

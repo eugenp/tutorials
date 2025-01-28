@@ -17,7 +17,7 @@
 
     <modules>
         <module>dummy-api</module>
-        <!-- <module>consume-api</module> --> <!-- BAEL-8301 -->
+        <module>consume-api</module>
     </modules>
 
 </project>

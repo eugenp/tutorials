@@ -43,6 +43,7 @@
         <module>mockito-simple</module>
         <module>mocks</module>
         <module>mocks-2</module>
+        <module>mocks-3</module>
         <module>mockserver</module>
         <module>parallel-tests-junit</module>
         <module>powermock</module>
@@ -51,6 +52,7 @@
         <module>selenide</module>
         <module>selenium</module>
         <module>selenium-2</module>
+        <module>selenium-3</module>
         <module>selenium-testng</module>
         <module>spring-mockito</module>
         <module>spring-testing-2</module>
@@ -67,6 +69,7 @@
         <module>zerocode</module>
         <module>mockito-2</module>
         <module>mockito-3</module>
+        <module>mockito-4</module>
         <module>gatling-java</module>
     </modules>
 

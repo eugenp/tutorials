@@ -1,11 +1,5 @@
 ### Relevant Articles:
-- [Convert a Number to a Letter in Java](https://www.baeldung.com/java-convert-number-to-letter)
-- [Convert Long to BigDecimal in Java](https://www.baeldung.com/java-convert-long-bigdecimal)
 - [Convert int to Long in Java](https://www.baeldung.com/java-convert-int-long)
 - [How to Convert Double to Float in Java](https://www.baeldung.com/java-convert-double-float)
-- [Converting from float to BigDecimal in Java](https://www.baeldung.com/java-convert-float-bigdecimal)
 - [Convert Positive Integer to Negative and Vice Versa in Java](https://www.baeldung.com/java-negating-integer)
-- [Rounding Up a Number to Nearest Multiple of 5 in Java](https://www.baeldung.com/java-round-nearest-multiple-five)
-- [Convert byte to int Type in Java](https://www.baeldung.com/java-byte-integer-conversion)
-- [Converting BigDecimal to Integer in Java](https://www.baeldung.com/java-integer-bigdecimal-conversion)
-- [Converting Integer to BigDecimal in Java](https://www.baeldung.com/java-from-integer-to-bigdecimal)
+- [Convert From int to short in Java](https://www.baeldung.com/java-int-short-conversion)
