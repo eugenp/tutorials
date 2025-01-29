@@ -118,7 +118,7 @@
     </profiles>
 
     <properties>
-        <springdoc.version>2.8.4</springdoc.version>
+        <springdoc.version>2.6.0</springdoc.version>
         <springdoc-openapi-maven-plugin.version>1.4</springdoc-openapi-maven-plugin.version>
     </properties>
 
