@@ -39,7 +39,7 @@ public class ConsecutiveSumCheckerUnitTest {
 
     @Test
     public void givenOddNumber_whenCheckingSumOfConsecutiveNumbers_thenReturnTrue() {
-        boolean oddModTwo = (oddNumber % 2);
+        boolean oddModTwo = (oddNumber % 2 != 0);
         assertEquals(1, oddModTwo);
     }
 
