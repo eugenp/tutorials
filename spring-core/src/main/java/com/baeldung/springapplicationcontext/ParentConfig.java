@@ -1,4 +1,4 @@
-package com.baeldung.applicationcontext;
+package com.baeldung.springapplicationcontext;
 
 import org.springframework.context.annotation.Configuration;
 
