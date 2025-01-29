@@ -39,14 +39,14 @@ public class ConsecutiveSumCheckerUnitTest {
 
     @Test
     public void givenOddNumber_whenCheckingSumOfConsecutiveNumbers_thenReturnTrue() {
-        boolean canBeExpressed = (oddNumber % 2 != 0);
-        assertTrue(canBeExpressed);
+        boolean oddModTwo = (oddNumber % 2);
+        assertEquals(1, oddModTwo);
     }
 
     @Test
     public void givenEvenNumber_whenCheckingSumOfConsecutiveNumbers_thenReturnFalse() {
-        boolean canBeExpressed = (evenNumber % 2 != 0);
-        assertFalse(canBeExpressed);
+        boolean evenModTwo = (evenNumber % 2 != 0);
+        assertEquals(0, evenModTwo);
     }
 
     @Test
