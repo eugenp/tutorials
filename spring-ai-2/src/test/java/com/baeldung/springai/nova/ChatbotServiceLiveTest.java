@@ -24,22 +24,18 @@ class ChatbotServiceLiveTest {
 
         assertThat(chatResponse)
             .isNotNull()
-            .satisfies(response -> {
-                assertThat(response.chatId())
-                    .isNotNull();
-                assertThat(response.answer())
-                    .contains("Martha");
-            });
+            .hasNoNullFieldsOrProperties();
+        assertThat(chatResponse.answer())
+            .contains("Martha");
 
         ChatRequest followUpChatRequest = new ChatRequest(chatResponse.chatId(), "Which bald billionaire hates him?");
         ChatResponse followUpChatResponse = chatbotService.chat(followUpChatRequest);
 
         assertThat(followUpChatResponse)
             .isNotNull()
-            .satisfies(response -> {
-                assertThat(response.answer())
-                    .containsAnyOf("Lex Luthor");
-            });
+            .hasNoNullFieldsOrProperties();
+        assertThat(followUpChatResponse.answer())
+            .contains("Lex Luthor");
     }
 
     @Test
@@ -58,12 +54,9 @@ class ChatbotServiceLiveTest {
         ChatResponse chatResponse = chatbotService.chat(chatRequest, image);
         assertThat(chatResponse)
             .isNotNull()
-            .satisfies(response -> {
-                assertThat(response.chatId())
-                    .isNotNull();
-                assertThat(response.answer())
-                    .containsAnyOf("Batman", "Deadpool", "Santa Claus", "Christmas");
-            });
+            .hasNoNullFieldsOrProperties();
+        assertThat(chatResponse.answer())
+            .containsAnyOf("Batman", "Deadpool", "Santa Claus", "Christmas");
     }
 
     @Test
@@ -73,10 +66,9 @@ class ChatbotServiceLiveTest {
 
         assertThat(chatResponse)
             .isNotNull()
-            .satisfies(response -> {
-                assertThat(response.answer())
-                    .contains("John Doe", "john.doe@baeldung.com");
-            });
+            .hasNoNullFieldsOrProperties();
+        assertThat(chatResponse.answer())
+            .contains("John Doe", "john.doe@baeldung.com");
     }
 
 }

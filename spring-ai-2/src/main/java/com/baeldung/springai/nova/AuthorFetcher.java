@@ -9,8 +9,10 @@ public class AuthorFetcher implements Function<AuthorFetcher.Query, AuthorFetche
         return new Author("John Doe", "john.doe@baeldung.com");
     }
 
-    public record Author(String name, String emailId) { }
+    public record Author(String name, String emailId) {
+    }
 
-    public record Query(String articleTitle) { }
+    public record Query(String articleTitle) {
+    }
 
 }
