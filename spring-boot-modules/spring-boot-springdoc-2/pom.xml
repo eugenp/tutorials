@@ -63,8 +63,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>16</source>
-                    <target>16</target>
+                    <source>21</source>
+                    <target>21</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -118,7 +118,7 @@
     </profiles>
 
     <properties>
-        <springdoc.version>2.6.0</springdoc.version>
+        <springdoc.version>2.8.4</springdoc.version>
         <springdoc-openapi-maven-plugin.version>1.4</springdoc-openapi-maven-plugin.version>
     </properties>
 
