@@ -26,7 +26,6 @@ public class SimpleHttpServer {
             logger.info("Server started on port: " + port);
 
             while (true) {
-
                 Socket clientSocket = serverSocket.accept();
 
                 try (BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())); BufferedWriter out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()))) {
@@ -65,12 +64,10 @@ public class SimpleHttpServer {
                         out.write("Content-Length: " + length + "\r\n");
                         out.write("\r\n");
                         out.write(body);
-
                     }
                 }
             }
         }
-
     }
 
     public static void main(String [] args) throws IOException {

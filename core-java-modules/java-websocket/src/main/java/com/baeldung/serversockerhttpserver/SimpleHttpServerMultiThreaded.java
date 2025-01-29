@@ -3,7 +3,11 @@ package com.baeldung.serversockerhttpserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.time.LocalDateTime;
@@ -21,7 +25,6 @@ public class SimpleHttpServerMultiThreaded {
     }
 
     public void start() throws IOException {
-
         try (ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_POOL_SIZE); ServerSocket serverSocket = new ServerSocket(port)) {
             logger.info("Server started on port: {}", port);
 
@@ -68,7 +71,6 @@ public class SimpleHttpServerMultiThreaded {
             out.write("Content-Length: " + length + "\r\n");
             out.write("\r\n");
             out.write(body);
-
         } catch (IOException e) {
             logger.error("Error handling client", e);
         } finally {
