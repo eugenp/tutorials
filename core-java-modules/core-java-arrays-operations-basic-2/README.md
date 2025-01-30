@@ -11,3 +11,4 @@ This module contains articles about Java array fundamentals. They assume no prev
 - [Calculate the Sum of Diagonal Values in a 2d Java Array](https://www.baeldung.com/java-2d-array-sum-diagonals)
 - [Remove All Elements From a String Array in Java](https://www.baeldung.com/java-array-delete-all-strings)
 - [Comparing Two Byte Arrays in Java](https://www.baeldung.com/java-comparing-byte-arrays)
+- More articles: [[<-- prev]](../core-java-arrays-operations-basic) [[next -->]](../core-java-arrays-operations-basic-3)
