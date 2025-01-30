@@ -12,3 +12,5 @@ This module contains articles about Java array fundamentals. They assume no prev
 - [Extending an Array’s Length](https://www.baeldung.com/java-array-add-element-at-the-end)
 - [Initializing a Boolean Array in Java](https://www.baeldung.com/java-initializing-boolean-array)
 - [Find the Index of an Element in a Java Array](https://www.baeldung.com/java-array-find-index)
+- [Checking if an Array Is Null or Empty in Java](https://www.baeldung.com/java-array-check-null-empty)
+
