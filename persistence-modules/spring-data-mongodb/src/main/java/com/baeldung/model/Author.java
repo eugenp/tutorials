@@ -22,7 +22,7 @@ public class Author {
     @Field(name = "article_count")
     private int articleCount;
 
-    private boolean active;
+    private Boolean active;
 
     public UUID getId() {
         return id;
@@ -56,11 +56,11 @@ public class Author {
         this.articleCount = articleCount;
     }
 
-    public boolean isActive() {
+    public Boolean isActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 
