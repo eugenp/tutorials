@@ -1,5 +1,6 @@
 package com.baeldung.repository;
 
+import com.baeldung.Application;
 import com.baeldung.TestcontainersConfiguration;
 import com.baeldung.model.Author;
 import net.bytebuddy.utility.RandomString;
@@ -21,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.instancio.Select.field;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@SpringBootTest
+@SpringBootTest(classes = Application.class)
 @Import(TestcontainersConfiguration.class)
 class AuthorCrudLiveTest {
 
