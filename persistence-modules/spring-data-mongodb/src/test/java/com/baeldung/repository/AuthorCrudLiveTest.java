@@ -108,8 +108,8 @@ class AuthorCrudLiveTest {
             retrievedAuthors = authorRepository.findAll(nextPageRequest).getContent();
 
             assertThat(retrievedAuthors)
-                .hasSize(5);
-            assertThat(retrievedAuthors.stream().map(Author::getName))
+                .hasSize(5)
+                .extracting(Author::getName)
                 .isSorted();
         }
 
