@@ -20,7 +20,7 @@ public class Author {
     private String email;
 
     @Field(name = "article_count")
-    private int articleCount;
+    private Integer articleCount;
 
     private Boolean active;
 
@@ -48,11 +48,11 @@ public class Author {
         this.email = email;
     }
 
-    public int getArticleCount() {
+    public Integer getArticleCount() {
         return articleCount;
     }
 
-    public void setArticleCount(int articleCount) {
+    public void setArticleCount(Integer articleCount) {
         this.articleCount = articleCount;
     }
 

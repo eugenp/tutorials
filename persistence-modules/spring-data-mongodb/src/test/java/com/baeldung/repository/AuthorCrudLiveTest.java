@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.dao.DuplicateKeyException;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.DirtiesContext;
@@ -62,9 +61,13 @@ class AuthorCrudLiveTest {
 
             String updatedName = RandomString.make();
             savedAuthor.setName(updatedName);
+            authorRepository.save(savedAuthor);
 
-            Author updatedAuthor = authorRepository.save(savedAuthor);
-            assertThat(updatedAuthor.getName())
+            Optional<Author> updatedAuthor = authorRepository.findById(savedAuthor.getId());
+            assertThat(updatedAuthor)
+                .isPresent()
+                .get()
+                .extracting(Author::getName)
                 .isEqualTo(updatedName);
         }
 
@@ -73,7 +76,7 @@ class AuthorCrudLiveTest {
             Author author = Instancio.create(Author.class);
             Author savedAuthor = authorRepository.save(author);
 
-            boolean authorExists = authorRepository.existsById(savedAuthor.getId());
+            Boolean authorExists = authorRepository.existsById(savedAuthor.getId());
             assertThat(authorExists)
                 .isTrue();
 
@@ -94,17 +97,15 @@ class AuthorCrudLiveTest {
 
             Sort sort = Sort.by("name").ascending();
             PageRequest pageRequest = PageRequest.of(0, 5, sort);
-            Page<Author> retrievedPage = authorRepository.findAll(pageRequest);
-            List<Author> retrievedAuthors = retrievedPage.getContent();
+            List<Author> retrievedAuthors = authorRepository.findAll(pageRequest).getContent();
 
             assertThat(retrievedAuthors)
-                .hasSize(5);
-            assertThat(retrievedAuthors.stream().map(Author::getName))
+                .hasSize(5)
+                .extracting(Author::getName)
                 .isSorted();
 
             PageRequest nextPageRequest = PageRequest.of(1, 5, sort);
-            retrievedPage = authorRepository.findAll(nextPageRequest);
-            retrievedAuthors = retrievedPage.getContent();
+            retrievedAuthors = authorRepository.findAll(nextPageRequest).getContent();
 
             assertThat(retrievedAuthors)
                 .hasSize(5);
@@ -132,7 +133,7 @@ class AuthorCrudLiveTest {
             int articleCount = 10;
             Author author = Instancio.of(Author.class)
                 .set(field(Author::isActive), true)
-                .set(field(Author::getArticleCount), articleCount)
+                .generate(field(Author::getArticleCount), gen -> gen.ints().min(articleCount))
                 .create();
             authorRepository.save(author);
 
@@ -182,12 +183,8 @@ class AuthorCrudLiveTest {
 
             assertThat(retrievedAuthors)
                 .hasSize(authorCount)
-                .allSatisfy(author -> {
-                    assertThat(author)
-                        .hasAllNullFieldsOrPropertiesExcept("id", "email", "articleCount");
-                    assertThat(author.getArticleCount())
-                        .isEqualTo(0);
-                });
+                .allSatisfy(author -> assertThat(author)
+                    .hasAllNullFieldsOrPropertiesExcept("id", "email"));
         }
 
     }
