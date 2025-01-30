@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.UUID;
 
-@Document(collation = "authors")
+@Document(collection = "authors")
 public class Author {
 
     @Id
