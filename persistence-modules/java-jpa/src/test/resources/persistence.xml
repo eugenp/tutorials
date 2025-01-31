@@ -30,7 +30,6 @@
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 			<property name="show_sql" value="false"/>
 			<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
-			<property name="hibernate.proc.param_null_passing" value="true" />
 		</properties>
 	</persistence-unit>
 
