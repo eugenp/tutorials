@@ -7,6 +7,12 @@ import jakarta.persistence.ParameterMode;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.StoredProcedureQuery;
 
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
@@ -19,13 +25,13 @@ public class StoredProcedureNullParamUnitTest {
     private static EntityManagerFactory factory = null;
     private static EntityManager entityManager = null;
 
-    @BeforeEach
+    @BeforeClass
     public void init() {
         factory = Persistence.createEntityManagerFactory("jpa-db");
         entityManager = factory.createEntityManager();
     }
 
-    @BeforeEach
+    @Before
     public void setup() {
     }
 
@@ -56,7 +62,7 @@ public class StoredProcedureNullParamUnitTest {
         });
     }
 
-    @AfterEach
+    @AfterClass
     public void destroy() {
 
         if (entityManager != null) {
