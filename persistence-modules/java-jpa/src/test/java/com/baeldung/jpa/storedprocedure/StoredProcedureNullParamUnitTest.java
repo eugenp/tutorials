@@ -20,7 +20,7 @@ public class StoredProcedureNullParamUnitTest {
     private static EntityManager entityManager = null;
 
     @BeforeEach
-    public static void init() {
+    public void init() {
         factory = Persistence.createEntityManagerFactory("jpa-db");
         entityManager = factory.createEntityManager();
     }
@@ -49,15 +49,15 @@ public class StoredProcedureNullParamUnitTest {
     @Test
     public void givenStoredProc_whenNullParamPassed_thenNoExceptionThrown() {
         final StoredProcedureQuery storedProcedure = entityManager.createStoredProcedureQuery("FIND_CAR_BY_YEAR", Car.class)
-            .registerStoredProcedureParameter(1, Integer.class, ParameterMode.IN);
+          .registerStoredProcedureParameter(1, Integer.class, ParameterMode.IN);
              
         assertDoesNotThrow(() -> {
-            storedProcedure.setParameter(1, null);
+          storedProcedure.setParameter(1, null);
         });
     }
 
     @AfterEach
-    public static void destroy() {
+    public void destroy() {
 
         if (entityManager != null) {
             entityManager.close();
