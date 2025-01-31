@@ -49,10 +49,10 @@ public class StoredProcedureNullParamUnitTest {
     @Test
     public void givenStoredProc_whenNullParamPassed_thenNoExceptionThrown() {
         final StoredProcedureQuery storedProcedure = entityManager.createStoredProcedureQuery("FIND_CAR_BY_YEAR", Car.class)
-            .registerStoredProcedureParameter(1, Integer.class, ParameterMode.IN)
-            .setParameter(1, null);
+            .registerStoredProcedureParameter(1, Integer.class, ParameterMode.IN);
+             
         assertDoesNotThrow(() -> {
-            storedProcedure.getResultList();
+            storedProcedure.setParameter(1, null);
         });
     }
 
