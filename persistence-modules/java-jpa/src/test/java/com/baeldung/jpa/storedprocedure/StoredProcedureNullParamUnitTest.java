@@ -35,7 +35,7 @@ public class StoredProcedureNullParamUnitTest {
     public void setup() {
     }
 
-    @Test
+    @org.junit.Test
     public void createCarTest() {
         final EntityTransaction transaction = entityManager.getTransaction();
         try {
@@ -52,7 +52,7 @@ public class StoredProcedureNullParamUnitTest {
     }
 
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void givenStoredProc_whenNullParamPassed_thenNoExceptionThrown() {
         final StoredProcedureQuery storedProcedure = entityManager.createStoredProcedureQuery("FIND_CAR_BY_YEAR", Car.class)
           .registerStoredProcedureParameter(1, Integer.class, ParameterMode.IN);
