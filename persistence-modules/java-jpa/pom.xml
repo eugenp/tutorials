@@ -135,7 +135,7 @@
         <h2.version>2.1.214</h2.version>
         <jakarta.xml.bind-api.version>4.0.2</jakarta.xml.bind-api.version>
         <javax.annotation.version>3.0.0</javax.annotation.version>
-        <mysql.version>8.2.0</mysql.version>
+        <mysql.version>8.4.0</mysql.version>
     </properties>
 
 </project>
