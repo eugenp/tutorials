@@ -12,6 +12,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import com.baeldung.jpa.model.Car;
 
@@ -51,19 +52,29 @@ public class StoredProcedureLiveTest {
         final StoredProcedureQuery findByYearProcedure = entityManager.createNamedStoredProcedureQuery("findByYearProcedure");
         final StoredProcedureQuery storedProcedure = findByYearProcedure.setParameter("p_year", 2015);
         storedProcedure.getResultList()
-            .forEach(c -> Assert.assertEquals(Integer.valueOf(2015), ((Car) c).getYear()));
+          .forEach(c -> Assert.assertEquals(Integer.valueOf(2015), ((Car) c).getYear()));
     }
 
     @Test
     public void findCarsByYearNoNamed() {
         final StoredProcedureQuery storedProcedure = entityManager.createStoredProcedureQuery("FIND_CAR_BY_YEAR", Car.class)
-            .registerStoredProcedureParameter(1, Integer.class, ParameterMode.IN)
-            .setParameter(1, 2015);
+          .registerStoredProcedureParameter(1, Integer.class, ParameterMode.IN)
+          .setParameter(1, 2015);
         storedProcedure.getResultList()
-            .forEach(c -> Assert.assertEquals(Integer.valueOf(2015), ((Car) c).getYear()));
+          .forEach(c -> Assert.assertEquals(Integer.valueOf(2015), ((Car) c).getYear()));
     }
 
 
+    @org.junit.jupiter.api.Test
+    public void givenStoredProc_whenNullParamPassed_thenNoExceptionThrown() {
+        final StoredProcedureQuery storedProcedure = entityManager.createStoredProcedureQuery("FIND_CAR_BY_YEAR", Car.class)
+          .registerStoredProcedureParameter(1, Integer.class, ParameterMode.IN);
+             
+        assertDoesNotThrow(() -> {
+          storedProcedure.setParameter(1, null);
+        });
+    }
+    
     @AfterClass
     public static void destroy() {
 
