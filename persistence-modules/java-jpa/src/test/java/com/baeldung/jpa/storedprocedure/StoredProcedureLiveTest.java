@@ -68,8 +68,10 @@ public class StoredProcedureLiveTest {
         final StoredProcedureQuery storedProcedure = entityManager.createStoredProcedureQuery("FIND_CAR_BY_YEAR", Car.class)
             .registerStoredProcedureParameter(1, Integer.class, ParameterMode.IN)
             .setParameter(1, null);
-        storedProcedure.getResultList()
-            .forEach(c -> Assert.assertEquals(Integer.valueOf(2015), ((Car) c).getYear()));
+        assertDoesNotThrow(() -> {
+            storedProcedure.getResultList()
+              .forEach(c -> Assert.assertEquals(Integer.valueOf(null), ((Car) c).getYear()));
+        });
     }
 
     @AfterClass
