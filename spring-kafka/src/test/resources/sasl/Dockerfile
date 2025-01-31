@@ -9,15 +9,13 @@ RUN apt-get update && \
 # Copy configuration files and scripts
 COPY config/krb5.conf /etc/krb5.conf
 COPY config/kdc.conf /etc/krb5kdc/kdc.conf
-COPY config/kadm5.acl /etc/krb5kdc/kadm5.acl
-COPY init_kdc.sh /init_kdc.sh
-COPY create_keytabs.sh /create_keytabs.sh
+COPY setup_kdc.sh /setup_kdc.sh
 
 # Set execution permissions
-RUN chmod +x /init_kdc.sh /create_keytabs.sh
+RUN chmod +x /setup_kdc.sh
 
 # Expose KDC ports
 EXPOSE 88 749
 
 # Start KDC
-CMD ["/init_kdc.sh"]
+CMD ["/setup_kdc.sh"]

@@ -1,21 +1,21 @@
 spring:
   kafka:
-    jaas:
-      control-flag: required
-      enabled: true
-      login-module: com.sun.security.auth.module.Krb5LoginModule
-      options:
-        useKeyTab: true
-        keyTab: ./client.keytab
-        storeKey: true
-        debug: true
-        serviceName: kafka
-        principal: client@BAELDUNG.COM
+    bootstrap-servers: localhost:9092
+    properties:
+      sasl.mechanism: GSSAPI
+      sasl.kerberos.service.name: kafka
+      sasl.jaas.config: >
+        com.sun.security.auth.module.Krb5LoginModule required
+        useKeyTab=true
+        keyTab="/Users/saikat/dev/tutorials/spring-kafka/src/test/resources/sasl/keytabs/client.keytab"
+        principal="client/localhost@BAELDUNG.COM"
+        useTicketCache=false
+        serviceName="kafka"
+        storeKey=true;
     security:
       protocol: "SASL_PLAINTEXT"
-    bootstrap-servers: baeldung.com:9092
     consumer:
-      group-id: demo-group-id
+      group-id: test
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
