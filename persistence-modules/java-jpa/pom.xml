@@ -86,9 +86,9 @@
             <version>${jakarta.xml.bind-api.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>javax.annotation-api</artifactId>
-            <version>${javax.annotation.version}</version>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>${jakarta.annotation.version}</version>
         </dependency>
         <dependency>
             <groupId>com.mysql</groupId>
@@ -155,7 +155,7 @@
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
         <h2.version>2.1.214</h2.version>
         <jakarta.xml.bind-api.version>4.0.0</jakarta.xml.bind-api.version>
-        <javax.annotation.version>1.3.5</javax.annotation.version>
+        <jakarta.annotation.version>3.0.0</jakarta.annotation.version>
         <mysql.version>8.4.0</mysql.version>
     </properties>
 
