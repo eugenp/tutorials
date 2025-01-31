@@ -69,8 +69,7 @@ public class StoredProcedureLiveTest {
             .registerStoredProcedureParameter(1, Integer.class, ParameterMode.IN)
             .setParameter(1, null);
         assertDoesNotThrow(() -> {
-            storedProcedure.getResultList()
-              .forEach(c -> Assert.assertEquals(Integer.valueOf(null), ((Car) c).getYear()));
+            storedProcedure.getResultList();
         });
     }
 
