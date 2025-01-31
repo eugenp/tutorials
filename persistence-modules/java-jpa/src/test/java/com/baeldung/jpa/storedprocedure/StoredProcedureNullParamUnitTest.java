@@ -11,9 +11,6 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import com.baeldung.jpa.model.Car;
@@ -24,7 +21,7 @@ public class StoredProcedureNullParamUnitTest {
     private static EntityManager entityManager = null;
 
     @BeforeClass
-    public void init() {
+    public static void init() {
         factory = Persistence.createEntityManagerFactory("jpa-db");
         entityManager = factory.createEntityManager();
     }
@@ -61,7 +58,7 @@ public class StoredProcedureNullParamUnitTest {
     }
 
     @AfterClass
-    public void destroy() {
+    public static void destroy() {
 
         if (entityManager != null) {
             entityManager.close();
