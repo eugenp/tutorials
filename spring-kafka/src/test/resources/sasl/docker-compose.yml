@@ -6,17 +6,15 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./config:/etc/krb5kdc
-      - ./keytabs:/etc/krb5kdc/keytabs
       - ./config/krb5.conf:/etc/krb5.conf
+      - ./keytabs:/etc/krb5kdc/keytabs
     ports:
       - "88:88/udp"
-    networks:
-      - kafka-network
+
 
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
     container_name: zookeeper
-    hostname: zookeeper
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
@@ -27,8 +25,7 @@ services:
       - ./config/krb5.conf:/etc/krb5.conf
     ports:
       - 2181:2181
-    networks:
-      - kafka-network
+
 
   kafka:
     image: confluentinc/cp-kafka:latest
@@ -40,10 +37,9 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_SASL_MECHANISM_INTER_BROKER_PROTOCOL: GSSAPI
       KAFKA_SASL_ENABLED_MECHANISMS: GSSAPI
-      KAFKA_LISTENERS: "INTERNAL://:29092,EXTERNAL://:9092"
-      KAFKA_ADVERTISED_LISTENERS: "INTERNAL://localhost:29092,EXTERNAL://localhost:9092"
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "INTERNAL:SASL_PLAINTEXT,EXTERNAL:SASL_PLAINTEXT"
-      KAFKA_INTER_BROKER_LISTENER_NAME: "INTERNAL"
+      KAFKA_LISTENERS: SASL_PLAINTEXT://:9092
+      KAFKA_ADVERTISED_LISTENERS: SASL_PLAINTEXT://localhost:9092
+      KAFKA_INTER_BROKER_LISTENER_NAME: SASL_PLAINTEXT
       KAFKA_OPTS: "-Djava.security.auth.login.config=/etc/kafka/kafka_server_jaas.conf"
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
@@ -53,9 +49,6 @@ services:
       - ./config/krb5.conf:/etc/krb5.conf
     ports:
       - 9092:9092
-    networks:
-      - kafka-network
 
-networks:
-  kafka-network:
-    driver: bridge
+
+
