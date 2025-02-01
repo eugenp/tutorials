@@ -1,8 +1,5 @@
-package com.baeldung.assertj.soft_assertions;
+package com.baeldung.assertj.softassertions;
 
-import com.baeldung.assertj.soft_assertions.DomainModel;
-import com.baeldung.assertj.soft_assertions.Request;
-import com.baeldung.assertj.soft_assertions.RequestMapper;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Disabled;

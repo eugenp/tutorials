@@ -1,13 +1,19 @@
-package com.baeldung.testing.jgotesting;
+package com.baeldung.jgotesting;
 
-import java.io.File;
 import static org.hamcrest.Matchers.equalToIgnoringCase;
 import static org.hamcrest.Matchers.is;
-import org.jgotesting.rule.JGoTestRule;
-import static org.jgotesting.Assert.*; // same methods as org.junit.Assert.*
-import static org.jgotesting.Check.*; // ditto, with different names
-import static org.jgotesting.Testing.*;
+import static org.jgotesting.Assert.assertEquals;
+import static org.jgotesting.Check.checkEquals;
+import static org.jgotesting.Check.checkSame;
+import static org.jgotesting.Check.checkTrue;
+import static org.jgotesting.Testing.log;
+import static org.jgotesting.Testing.logf;
+import static org.jgotesting.Testing.terminateIf;
+
+import java.io.File;
+
 import org.jgotesting.Checker;
+import org.jgotesting.rule.JGoTestRule;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
