@@ -23,11 +23,11 @@ public class SeleniumDatePickerLiveTest {
     private static final String INPUT_XPATH = "//input[@id='dateOfBirthInput']";
     private static final String INPUT_TYPE = "text";
     private static final String INPUT_MONTH_XPATH = "//div[@class='react-datepicker__header']"
-            + "//select[@class='react-datepicker__month-select']";
+      + "//select[@class='react-datepicker__month-select']";
     private static final String INPUT_YEAR_XPATH = "//div[@class='react-datepicker__header']"
-            + "//select[@class='react-datepicker__year-select']";
+      + "//select[@class='react-datepicker__year-select']";
     private static final String INPUT_DAY_XPATH = "//div[contains(@class,\"react-datepicker__day\") and " 
-            + "contains(@aria-label,\"December\") and text()=\"2\"]";
+      + "contains(@aria-label,\"December\") and text()=\"2\"]";
 
     @BeforeEach
     public void setUp() {
