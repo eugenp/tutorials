@@ -3,7 +3,7 @@ package com.baeldung.ignorable.fields;
 import java.io.Serializable;
 import java.util.StringJoiner;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Users")

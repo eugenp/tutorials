@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-cloud-ribbon-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-cloud-ribbon-client</name>
     <packaging>jar</packaging>
+    <name>spring-cloud-ribbon-client</name>
     <description>Introduction to Spring Cloud Rest Client with Netflix Ribbon</description>
 
     <parent>

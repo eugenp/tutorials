@@ -118,7 +118,6 @@
     </profiles>
 
     <properties>
-        <java.version>17</java.version>
         <vaadin.version>24.3.3</vaadin.version>
     </properties>
 

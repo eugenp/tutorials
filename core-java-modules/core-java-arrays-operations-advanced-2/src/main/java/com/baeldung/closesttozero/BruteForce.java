@@ -2,17 +2,25 @@ package com.baeldung.closesttozero;
 
 public class BruteForce {
 
-    public static int findClosestToZero(int[] arr) throws IllegalAccessException {
-        if (arr == null || arr.length == 0) {
-            throw new IllegalAccessException("Array must not be null or Empty");
+    public static int findClosestToZero(int[] nums)
+      throws IllegalAccessException {
+        if (nums == null || nums.length == 0) {
+            throw new IllegalAccessException(
+              "int array must not be null or empty");
         }
 
-        int closest = arr[0];
-        for (int i = 1; i < arr.length; i++) {
-            if ((Math.abs(arr[i]) < Math.abs(closest)) || ((Math.abs(arr[i]) == Math.abs(closest)) && (arr[i] > closest))) {
-                closest = arr[i];
+        int closest = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            if (Math.abs(closest) == (nums[i])) {
+                closest = nums[i];
+            }
+
+            if (Math.abs(nums[i]) < Math.abs(closest)) {
+                closest = nums[i];
             }
         }
+
         return closest;
     }
 }

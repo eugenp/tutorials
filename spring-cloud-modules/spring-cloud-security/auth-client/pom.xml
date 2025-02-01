@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>auth-client</artifactId>
-    <name>auth-client</name>
     <packaging>jar</packaging>
+    <name>auth-client</name>
     <description>Spring Cloud Security APP Client Module</description>
 
     <parent>

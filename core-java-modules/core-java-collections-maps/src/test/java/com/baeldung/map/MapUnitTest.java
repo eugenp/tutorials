@@ -237,8 +237,7 @@ public class MapUnitTest {
         Set<Integer> keys = map.keySet();
         Integer[] arr = keys.toArray(new Integer[0]);
         for (int i = 0; i < arr.length; i++) {
-            assertEquals(new Integer(i + 1), arr[i]);
-
+            assertEquals(Integer.valueOf(i + 1), arr[i]);
         }
     }
 
@@ -327,8 +326,8 @@ public class MapUnitTest {
         Set<Integer> keysLessThan3 = map.headMap(3).keySet();
         Set<Integer> keysGreaterThanEqTo3 = map.tailMap(3).keySet();
 
-        assertEquals(new Integer(5), highestKey);
-        assertEquals(new Integer(1), lowestKey);
+        assertEquals(Integer.valueOf(5), highestKey);
+        assertEquals(Integer.valueOf(1), lowestKey);
         assertEquals("[1, 2]", keysLessThan3.toString());
         assertEquals("[3, 4, 5]", keysGreaterThanEqTo3.toString());
     }

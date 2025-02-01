@@ -16,7 +16,7 @@
 
     <modules>
         <module>genie</module>
-        <module>mantis</module>
+         <module>mantis</module>
     </modules>
 
 </project>

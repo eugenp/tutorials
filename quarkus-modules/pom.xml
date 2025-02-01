@@ -14,14 +14,23 @@
     </parent>
 
     <modules>
+        <module>jfr</module>
+        <!-- <module>mongo-db</module> --> <!-- JAVA-42048 -->
         <module>quarkus</module>
         <module>quarkus-citrus</module>
+        <module>quarkus-clientbasicauth</module>
         <module>quarkus-extension</module>
+        <module>quarkus-elasticsearch</module>
         <module>quarkus-jandex</module>
-        <!-- <module>quarkus-vs-springboot</module> fixing in JAVA-37334 -->
+        <module>quarkus-vs-springboot</module>
         <module>quarkus-funqy</module>
         <module>quarkus-testcontainers</module>
-        <!-- requires Java 21 <module>quarkus-virtual-threads</module> -->
+        <module>consume-rest-api</module>
+        <module>quarkus-virtual-threads</module>
+        <!--<module>quarkus-hibernate-reactive</module>--> <!--moved to heavy profile-->
+        <module>quarkus-langchain4j</module>
+        <!-- <module>quarkus-rbac</module> --> <!-- JAVA-42048 -->
+        <module>quarkus-websockets-next</module>
     </modules>
 
 </project>

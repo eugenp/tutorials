@@ -24,14 +24,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-registry-prometheus</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
             <version>${spring-kafka.version}</version>
@@ -87,8 +79,8 @@
     </build>
 
     <properties>
-        <spring-kafka.version>3.1.2</spring-kafka.version>
-        <spring-boot.version>3.2.2</spring-boot.version>
+        <spring-kafka.version>3.3.1</spring-kafka.version>
+        <spring-boot.version>3.4.1</spring-boot.version>
     </properties>
 
 </project>

@@ -28,6 +28,6 @@ public class Pizza {
 
     public static void main(String[] a) {
         // Create instance of the static class without an instance of enclosing class
-        new Pizza.PizzaSalesCounter();
+        new PizzaSalesCounter();
     }
 }

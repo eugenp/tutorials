@@ -15,7 +15,7 @@ This module contains articles about bootstrapping Spring Cloud applications that
 
 - First, you need a redis server running on the default port
 - To run the project:
-  - copy the appliction-config folder to c:\Users\{username}\ on Windows or /home/{username}/ on *nix. Then open a git bash terminal in application-config and run:
+  - copy the application-config folder to c:\Users\{username}\ on Windows or /home/{username}/ on *nix. Then open a git bash terminal in application-config and run:
     - git init
     - git add .
     - git commit -m "First commit"

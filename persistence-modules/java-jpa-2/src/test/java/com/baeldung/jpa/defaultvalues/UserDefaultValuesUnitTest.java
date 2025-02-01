@@ -11,14 +11,17 @@ public class UserDefaultValuesUnitTest {
 
     private static UserRepository userRepository = null;
 
+    private static UserEntityRepository userEntityRepository = null;
+
     @BeforeClass
     public static void once() {
         userRepository = new UserRepository();
+        userEntityRepository = new UserEntityRepository();
     }
 
     @Test
     @Ignore // SQL default values are also defined
-    public void saveUser_shouldSaveWithDefaultFieldValues() {
+    public void givenUser_whenUsingEntityValue_thenSavedWithDefaultValues() {
         User user = new User();
         userRepository.save(user, 1L);
 
@@ -30,7 +33,7 @@ public class UserDefaultValuesUnitTest {
 
     @Test
     @Ignore // SQL default values are also defined
-    public void saveUser_shouldSaveWithNullName() {
+    public void givenUser_whenNameIsNull_thenSavedNameWithNullValue() {
         User user = new User();
         user.setName(null);
         userRepository.save(user, 2L);
@@ -42,7 +45,8 @@ public class UserDefaultValuesUnitTest {
     }
 
     @Test
-    public void saveUser_shouldSaveWithDefaultSqlValues() {
+    @Ignore
+    public void givenUser_whenUsingSQLDefault_thenSavedWithDefaultValues() {
         User user = new User();
         userRepository.save(user, 3L);
 
@@ -52,9 +56,30 @@ public class UserDefaultValuesUnitTest {
         assertFalse(user.getLocked());
     }
 
+    @Test
+    public void givenUser_whenSaveUsingQuery_thenSavedWithDefaultValues() {
+        UserEntity user = new UserEntity();
+        userEntityRepository.saveEntity(user, 2L);
+        user = userEntityRepository.find(2L);
+        assertEquals(user.getName(), "John Snow");
+        assertEquals(25, (int) user.getAge());
+        assertFalse(user.getLocked());
+    }
+
+    @Test
+    public void givenUser_whenSaveUsingPrePersist_thenSavedWithDefaultValues() {
+        UserEntity user = new UserEntity();
+        userEntityRepository.save(user, 3L);
+        user = userEntityRepository.find(3L);
+        assertEquals(user.getName(), "John Snow");
+        assertEquals(25, (int) user.getAge());
+        assertFalse(user.getLocked());
+    }
+
     @AfterClass
     public static void destroy() {
         userRepository.clean();
+        userEntityRepository.clean();
     }
 
 }

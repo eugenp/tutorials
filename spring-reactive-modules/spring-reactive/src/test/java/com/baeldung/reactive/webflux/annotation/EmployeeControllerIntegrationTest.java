@@ -2,8 +2,11 @@ package com.baeldung.reactive.webflux.annotation;
 
 import com.baeldung.reactive.webflux.Employee;
 import com.baeldung.reactive.webflux.EmployeeRepository;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -20,6 +23,7 @@ import static org.mockito.Mockito.verifyNoInteractions;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT, classes = EmployeeSpringApplication.class)
+@AutoConfigureMockMvc
 class EmployeeControllerIntegrationTest {
 
     @Autowired

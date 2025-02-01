@@ -1,9 +1,7 @@
 
 ### Relevant Articles:
-- [How to Center Text Output in Java](https://www.baeldung.com/java-center-text-output)
 - [Capitalize the First Letter of Each Word in a String](https://www.baeldung.com/java-string-initial-capital-letter-every-word)
 - [Create a “Mutable” String in Java](https://www.baeldung.com/java-mutable-string)
-- [Check if a String Contains a Number Value in Java](https://www.baeldung.com/java-string-number-presence)
 - [String’s Maximum Length in Java](https://www.baeldung.com/java-strings-maximum-length)
 - [Java’s String.length() and String.getBytes().length](https://www.baeldung.com/java-string-length-vs-getbytes-length)
 - [Comparing One String With Multiple Values in One Expression in Java](https://www.baeldung.com/java-compare-string-multiple-values-one-expression)

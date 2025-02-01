@@ -1,7 +1,7 @@
 
 ## Relevant Articles
 
-- [AssertJ’s Java 8 Features](http://www.baeldung.com/assertJ-java-8-features)
+- [AssertJ Support for Optional, Streams and LocalDate API](https://www.baeldung.com/assertJ-java-8-features)
 - [AssertJ for Guava](http://www.baeldung.com/assertJ-for-guava)
 - [Introduction to AssertJ](http://www.baeldung.com/introduction-to-assertj)
 - [Testing with Google Truth](http://www.baeldung.com/google-truth)
@@ -11,3 +11,4 @@
 - [Using Conditions with AssertJ Assertions](http://www.baeldung.com/assertj-conditions)
 - [AssertJ Exception Assertions](http://www.baeldung.com/assertj-exception-assertion)
 - [Extract Values using AssertJ in Java](https://www.baeldung.com/java-extract-values-assertj)
+- [Soft Assertions with AssertJ](https://www.baeldung.com/java-assertj-soft-assertions)

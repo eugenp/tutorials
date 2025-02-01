@@ -63,11 +63,19 @@
                     <mainClass>com.baeldung.activitiwithspring.ActivitiWithSpringApplication</mainClass>
                 </configuration>
             </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
     <properties>
-        <activiti.version>8.0.0</activiti.version>
+        <activiti.version>8.6.0</activiti.version>
     </properties>
 
 </project>

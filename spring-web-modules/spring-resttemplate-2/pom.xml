@@ -73,7 +73,7 @@
 
     <properties>
         <start-class>com.baeldung.compress.SpringCompressRequestApplication</start-class>
-        <rest-assured.version>3.3.0</rest-assured.version>
+        <rest-assured.version>5.5.0</rest-assured.version>
         <jakarta.servlet-api.version>6.0.0</jakarta.servlet-api.version>
         <jetty.version>11.0.15</jetty.version>
         <spring-boot.version>3.1.5</spring-boot.version>

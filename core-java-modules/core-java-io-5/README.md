@@ -13,5 +13,6 @@ This module contains articles about core Java input and output (IO)
 - [Reading a .gz File Line by Line Using GZIPInputStream](https://www.baeldung.com/java-gzipinputstream-read-gz-file-line-by-line)
 - [Opening HTML File Using Java](https://www.baeldung.com/java-open-html-file)
 - [PrintWriter write() vs print() Method in Java](https://www.baeldung.com/java-printwriter-write-vs-print)
+- [Format Output in a Table Format Using System.out](https://www.baeldung.com/java-format-output-table-system-out)
 - [[<-- Prev]](/core-java-modules/core-java-io-4)
 

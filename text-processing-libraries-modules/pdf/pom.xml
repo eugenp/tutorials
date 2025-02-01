@@ -66,6 +66,21 @@
             <artifactId>thymeleaf</artifactId>
             <version>${thymeleaf.version}</version>
         </dependency>
+         <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>kernel</artifactId>
+            <version>${itextpdf.kernel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>layout</artifactId>
+            <version>${itextpdf.layput.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>${pdfbox.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.xhtmlrenderer</groupId>
             <artifactId>flying-saucer-pdf</artifactId>
@@ -91,11 +106,6 @@
             <artifactId>pdfbox</artifactId>
             <version>${pdfbox.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>itextpdf</artifactId>
-            <version>${itext.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -104,6 +114,9 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
+                <excludes>
+                    <exclude>**/*.pdf</exclude> <!-- Exclude PDF files from filtering -->
+                </excludes>
             </resource>
         </resources>
     </build>
@@ -123,6 +136,10 @@
         <jsoup.version>1.17.2</jsoup.version>
         <pdfbox.version>2.0.31</pdfbox.version>
         <itext.version>5.5.13.3</itext.version>
+        <itextpdf.layput.version>7.2.5</itextpdf.layput.version>
+        <itextpdf.kernel.version>7.2.5</itextpdf.kernel.version>
+        <pdfbox.version>2.0.29</pdfbox.version>
+        <commons-csv.version>1.9.0</commons-csv.version>
     </properties>
 
 </project>

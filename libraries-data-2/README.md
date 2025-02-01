@@ -3,7 +3,6 @@
 This module contains articles about libraries for data processing in Java.
 
 ### Relevant articles
-- [Introduction to Apache Flink with Java](https://www.baeldung.com/apache-flink)
 - [Guide to the HyperLogLog Algorithm in Java](https://www.baeldung.com/java-hyperloglog)
 - [Introduction to Conflict-Free Replicated Data Types](https://www.baeldung.com/java-conflict-free-replicated-data-types)
 - [Introduction to javax.measure](https://www.baeldung.com/javax-measure)
@@ -12,6 +11,9 @@ This module contains articles about libraries for data processing in Java.
 - [Intro to Derive4J](https://www.baeldung.com/derive4j)
 - [Univocity Parsers](https://www.baeldung.com/java-univocity-parsers)
 - [Guide to Swagger Parser](https://www.baeldung.com/java-swagger-parser)
+- [A Guide to Apache Ignite](https://www.baeldung.com/apache-ignite)
+- [Guide to JMapper](https://www.baeldung.com/jmapper)
+
 - More articles: [[<-- prev]](/../libraries-data)
 
 ##### Building the project

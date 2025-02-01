@@ -28,6 +28,7 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages = { "com.baeldung.web.controller", "com.baeldung.persistence.service", "com.baeldung.persistence.dao" })
 @EnableWebMvc
 public class MvcConfig implements WebMvcConfigurer {
+
     @Autowired
     Environment env;
 

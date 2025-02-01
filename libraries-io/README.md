@@ -7,3 +7,4 @@
 - [Delete a Directory Recursively in Java](https://www.baeldung.com/java-delete-directory)
 - [Introduction to Simple Java Mail](https://www.baeldung.com/java-sjm-email)
 - [List All Files on the Remote Server in Java](https://www.baeldung.com/java-show-every-file-remote-server)
+- [Accessing Emails From Gmail Using IMAP](https://www.baeldung.com/java-access-gmail-imap)

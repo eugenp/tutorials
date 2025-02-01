@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <style>
+            body { font-family: Arial; line-height: 2; text-align: Center; }
+            h2 { color: DeepSkyBlue; }
+            .alert { background: Red; color: White; padding: 1rem; font-size: 1.5rem; font-weight: bold; }
+            .message { border: .3rem solid DeepSkyBlue; padding: 1rem; margin-top: 1rem; }
+            .status { background: LightCyan; padding: 1rem; margin-top: 1rem; }
+        </style>
+    </head>
+    <body>
+        <div class="alert">⚠️ URGENT HYDRATION ALERT ⚠️</div>
+        <div class="message">
+            <h2>It's time to drink water!</h2>
+            <p>Hey {{name}}, this is your friendly reminder to stay hydrated. Your body will thank you!</p>
+            <div class="status">
+                <p><strong>Last drink:</strong> {{lastDrinkTime}}</p>
+                <p><strong>Hydration status:</strong> {{hydrationStatus}}</p>
+            </div>
+        </div>
+    </body>
+</html>

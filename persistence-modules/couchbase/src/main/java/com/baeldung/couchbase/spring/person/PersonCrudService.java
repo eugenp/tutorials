@@ -3,8 +3,7 @@ package com.baeldung.couchbase.spring.person;
 import java.util.List;
 import java.util.UUID;
 
-import javax.annotation.PostConstruct;
-
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

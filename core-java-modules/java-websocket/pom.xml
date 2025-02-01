@@ -15,9 +15,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax.websocket</groupId>
-            <artifactId>javax.websocket-api</artifactId>
-            <version>${javax.websocket-api.version}</version>
+            <groupId>jakarta.websocket</groupId>
+            <artifactId>jakarta.websocket-api</artifactId>
+            <version>${jakarta.websocket-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.websocket</groupId>
+            <artifactId>jakarta.websocket-client-api</artifactId>
+            <version>${jakarta.websocket-api.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -28,7 +34,7 @@
     </dependencies>
 
     <properties>
-        <javax.websocket-api.version>1.1</javax.websocket-api.version>
+        <jakarta.websocket-api.version>2.2.0</jakarta.websocket-api.version>
         <gson.version>2.11.0</gson.version>
     </properties>
 

@@ -2,7 +2,7 @@ package com.baeldung.stackreversal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.baeldung.collections.sorting.Employee;
+import com.baeldung.collections.stackreversal.Employee;
 import com.baeldung.collections.stackreversal.ReverseStackUsingQueue;
 import com.baeldung.collections.stackreversal.ReverseStackUsingRecursion;
 

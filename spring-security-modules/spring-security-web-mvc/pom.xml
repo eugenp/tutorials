@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-security-web-mvc</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-security-web-mvc</name>
     <packaging>jar</packaging>
+    <name>spring-security-web-mvc</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -43,6 +43,7 @@
         <dependency>
             <groupId>io.dropwizard.metrics</groupId>
             <artifactId>metrics-core</artifactId>
+            <version>${dropwizard.metrics.version}</version>
         </dependency>
         <!-- Test -->
         <dependency>
@@ -79,6 +80,7 @@
 
     <properties>
         <javax.version>4.0.1</javax.version>
+        <dropwizard.metrics.version>4.2.17</dropwizard.metrics.version>
     </properties>
 
 </project>

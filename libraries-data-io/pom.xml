@@ -14,24 +14,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.esotericsoftware</groupId>
-            <artifactId>kryo</artifactId>
-            <version>${kryo.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
             <version>${snakeyaml.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.milyn</groupId>
-            <artifactId>milyn-smooks-all</artifactId>
-            <version>${smooks.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mvel</groupId>
-            <artifactId>mvel2</artifactId>
-            <version>${mvel2.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
         <dependency>
@@ -100,19 +85,11 @@
             <artifactId>protobuf-java</artifactId>
             <version>${google-protobuf.version}</version>
         </dependency>
-        <!-- jetcd core api -->
-        <dependency>
-            <groupId>io.etcd</groupId>
-            <artifactId>jetcd-core</artifactId>
-            <version>${jetcd-version}</version>
-        </dependency>
     </dependencies>
 
     <properties>
-        <snakeyaml.version>2.2</snakeyaml.version>
-        <kryo.version>4.0.1</kryo.version>
-        <smooks.version>1.7.1</smooks.version>
-        <mvel2.version>2.5.2.Final</mvel2.version>
+        <!-- Downgraded SNAKEYAML version 1.30 to demonstrate the vulnerability scenario (CVE-2022-1471) -->
+        <snakeyaml.version>1.30</snakeyaml.version>
         <opencsv.version>5.8</opencsv.version>
         <google-api.version>1.23.0</google-api.version>
         <google-sheets.version>v4-rev493-1.21.0</google-sheets.version>
@@ -122,7 +99,6 @@
         <yamlbeans.version>1.15</yamlbeans.version>
         <apache-thrift.version>0.14.2</apache-thrift.version>
         <google-protobuf.version>3.17.3</google-protobuf.version>
-        <jetcd-version>0.7.7</jetcd-version>
     </properties>
 
 </project>

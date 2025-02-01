@@ -1,5 +1,7 @@
 package com.baeldung.batch;
 
+import java.util.stream.Stream;
+
 import javax.sql.DataSource;
 
 import com.baeldung.batch.model.Transaction;
@@ -25,6 +27,7 @@ import org.springframework.batch.item.UnexpectedInputException;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
+import org.springframework.batch.item.support.IteratorItemReader;
 import org.springframework.batch.item.xml.StaxEventItemWriter;
 import org.springframework.batch.support.transaction.ResourcelessTransactionManager;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -185,5 +188,41 @@ public class SpringBatchConfig {
         jobLauncher.setJobRepository(getJobRepository());
         jobLauncher.afterPropertiesSet();
         return jobLauncher;
+    }
+
+    @Bean
+    public Step firstStep(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
+        return new StepBuilder("firstStep", jobRepository)
+            .<String, String>chunk(1, transactionManager)
+            .reader(new IteratorItemReader<>(Stream.of("Data from Step 1").iterator()))
+            .processor(item -> {
+                System.out.println("Processing: " + item);
+                return item;
+            })
+            .writer(items -> items.forEach(System.out::println))
+            .build();
+    }
+
+    @Bean
+    public Step secondStep(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
+        return new StepBuilder("secondStep", jobRepository)
+            .<String, String>chunk(1, transactionManager)
+            .reader(new IteratorItemReader<>(Stream.of("Data from Step 2").iterator()))
+            .processor(item -> {
+                System.out.println("Processing: " + item);
+                return item;
+            })
+            .writer(items -> items.forEach(System.out::println))
+            .build();
+    }
+
+    @Bean(name = "parentJob")
+    public Job parentJob(JobRepository jobRepository,
+        @Qualifier("firstStep") Step firstStep,
+        @Qualifier("secondStep") Step secondStep) {
+        return new JobBuilder("parentJob", jobRepository)
+            .start(firstStep)
+            .next(secondStep)
+            .build();
     }
 }

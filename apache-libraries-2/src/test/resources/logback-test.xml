@@ -7,6 +7,12 @@
         </encoder>
     </appender>
 
+    <logger name="org.apache.camel.test.junit5" level="WARN"/>
+
+    <logger name="org.apache.camel.impl.engine" level="WARN"/>
+
+    <logger name="org.apache.zookeeper" level="WARN"/>
+
     <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>

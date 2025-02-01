@@ -36,6 +36,7 @@
 
     <properties>
         <spqr.version>0.12.4</spqr.version>
+        <junit-jupiter.version>5.10.3</junit-jupiter.version> <!-- Updating to 5.11.x breaks changes -->
     </properties>
 
 </project>

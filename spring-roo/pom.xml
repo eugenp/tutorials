@@ -8,8 +8,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>spring-roo</artifactId>
     <version>1.0.0.BUILD-SNAPSHOT</version>
-    <name>spring-roo</name>
     <packaging>jar</packaging>
+    <name>spring-roo</name>
 
     <!-- The Spring-roo is not supported anymore. Latest update of Spring-roo was in 2017 -->
     <!-- The official repo of Spring-roo was archived in October 28th, 2018, https://github.com/spring-attic/spring-roo -->
@@ -481,6 +481,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
                     <configuration>
                         <excludes>
                             <exclude>**/*_Roo_*</exclude>
@@ -570,6 +571,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

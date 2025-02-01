@@ -11,3 +11,4 @@ This module contains articles about JSON Conversions
 - [How to Convert Excel to JSON in Java](https://www.baeldung.com/java-excel-json-conversion)
 - [Include null Value in JSON Serialization](https://www.baeldung.com/java-json-null-serialization)
 - [Convert Jackson JsonNode to Typed Collection](https://www.baeldung.com/java-jackson-jsonnode-collection)
+- [How to Convert JsonNode to ObjectNode](https://www.baeldung.com/java-jackson-jsonnode-objectnode)

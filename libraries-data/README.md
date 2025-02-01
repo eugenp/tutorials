@@ -4,10 +4,10 @@ This module contains articles about libraries for data processing in Java.
 
 ### Relevant articles
 - [Introduction to JCache](https://www.baeldung.com/jcache)
-- [A Guide to Apache Ignite](https://www.baeldung.com/apache-ignite)
-- [Apache Ignite with Spring Data](https://www.baeldung.com/apache-ignite-spring-data)
-- [A Guide to Apache Crunch](https://www.baeldung.com/apache-crunch)
-- [Intro to Apache Storm](https://www.baeldung.com/apache-storm)
-- [Guide to JMapper](https://www.baeldung.com/jmapper)
-- [What Does It Mean to Hydrate an Object?](https://www.baeldung.com/java-object-hydration)
+- [Introduction to Caffeine](https://www.baeldung.com/java-caching-caffeine)
+- [Guide to Using ModelMapper](https://www.baeldung.com/java-modelmapper)
+- [A Guide to Mapping With Dozer](https://www.baeldung.com/dozer)
+- [Introduction to Javatuples](https://www.baeldung.com/java-tuples)
+- [Introduction to Apache Flink with Java](https://www.baeldung.com/apache-flink)
+
 - More articles: [[next -->]](/../libraries-data-2)
