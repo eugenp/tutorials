@@ -132,7 +132,7 @@
         <module>core-java-exceptions</module>
         <module>core-java-exceptions-2</module>
         <module>core-java-exceptions-3</module>
-        <!-- <module>core-java-exceptions-4</module> --> <!-- failing after upgrade to jdk21 -->
+        <module>core-java-exceptions-4</module>
         <module>core-java-exceptions-5</module>
         <module>core-java-function</module>
         <module>core-java-functional</module>
@@ -189,6 +189,7 @@
         <!--<module>core-java-networking-5</module>--> <!--moved to heavy profile-->
         <module>core-java-nio</module>
         <module>core-java-nio-2</module>
+        <module>core-java-nio-3</module>
         <module>core-java-numbers</module>
         <module>core-java-numbers-2</module>
         <module>core-java-numbers-3</module>
@@ -258,6 +259,7 @@
         <module>java-spi</module>
         <module>java-websocket</module>
         <module>core-java-8-datetime-3</module>
+        <module>core-java-8-datetime-4</module>
         <!--<module>core-java-22</module>--> <!-- Migrated to default-jdk22 profile -->
         <!--<module>core-java-23</module>--> <!-- Migrated to default-jdk23 profile -->
     </modules>

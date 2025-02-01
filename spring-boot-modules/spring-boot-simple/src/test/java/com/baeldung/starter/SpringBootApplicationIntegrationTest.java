@@ -34,14 +34,20 @@ public class SpringBootApplicationIntegrationTest {
     }
 
     @Test
-    public void givenRequestHasBeenMade_whenMeetsAllOfGivenConditions_thenCorrect() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/entity/all")).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON)).andExpect(jsonPath("$", hasSize(4)));
+    public void givenRequestHasBeenMade_whenMeetsAllOfGivenConditions_thenCorrect()
+      throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/entity/all"))
+          .andExpect(MockMvcResultMatchers.status().isOk())
+          .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
+          .andExpect(jsonPath("$", hasSize(4)));
     }
 
     @Test
-    public void givenRequestHasBeenMade_whenMeetsFindByDateOfGivenConditions_thenCorrect() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/entity/findbydate/{date}", "2011-12-03T10:15:30")).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.id", equalTo(1)));
+    public void givenRequestHasBeenMade_whenMeetsFindByDateOfGivenConditions_thenCorrect()
+      throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/entity/findbydate/{date}", "2011-12-03T10:15:30"))
+          .andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
+          .andExpect(jsonPath("$.id", equalTo(1)));
     }
 
 }

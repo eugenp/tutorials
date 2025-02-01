@@ -116,19 +116,19 @@ public class CollectionsUnitTest {
         BidiMap<Integer, Integer> map = new TreeBidiMap<>();
         start = System.nanoTime();
         for (int i = 0; i < 100000; i++) {
-            Integer key = new Integer(i);
-            Integer value = new Integer(i + 1);
+            Integer key = Integer.valueOf(i);
+            Integer value = Integer.valueOf(i + 1);
             map.put(key, value);
         }
         System.out.println("Insertion time:" + TimeUnit.MILLISECONDS.convert(System.nanoTime() - start, TimeUnit.NANOSECONDS));
 
         start = System.nanoTime();
-        Integer value = (Integer) map.get(new Integer(500));
+        Integer value = (Integer) map.get(Integer.valueOf(500));
         System.out.println("Value:" + value);
         System.out.println("Fetch time key:" + TimeUnit.MICROSECONDS.convert(System.nanoTime() - start, TimeUnit.NANOSECONDS));
 
         start = System.nanoTime();
-        Integer key = (Integer) map.getKey(new Integer(501));
+        Integer key = (Integer) map.getKey(Integer.valueOf(501));
         System.out.println("Key:" + key);
         System.out.println("Fetch time value:" + TimeUnit.MICROSECONDS.convert(System.nanoTime() - start, TimeUnit.NANOSECONDS));
     }
@@ -139,19 +139,19 @@ public class CollectionsUnitTest {
         BidiMap<Integer, Integer> map = new DualTreeBidiMap<>();
         start = System.nanoTime();
         for (int i = 0; i < 100000; i++) {
-            Integer key = new Integer(i);
-            Integer value = new Integer(i + 1);
+            Integer key = Integer.valueOf(i);
+            Integer value = Integer.valueOf(i + 1);
             map.put(key, value);
         }
         System.out.println("Insertion time:" + TimeUnit.MILLISECONDS.convert(System.nanoTime() - start, TimeUnit.NANOSECONDS));
 
         start = System.nanoTime();
-        Integer value = (Integer) map.get(new Integer(500));
+        Integer value = (Integer) map.get(Integer.valueOf(500));
         System.out.println("Value:" + value);
         System.out.println("Fetch time key:" + TimeUnit.MICROSECONDS.convert(System.nanoTime() - start, TimeUnit.NANOSECONDS));
 
         start = System.nanoTime();
-        Integer key = (Integer) map.getKey(new Integer(501));
+        Integer key = (Integer) map.getKey(Integer.valueOf(501));
         System.out.println("Key:" + key);
         System.out.println("Fetch time value:" + TimeUnit.MICROSECONDS.convert(System.nanoTime() - start, TimeUnit.NANOSECONDS));
     }
@@ -162,19 +162,19 @@ public class CollectionsUnitTest {
         BidiMap<Integer, Integer> map = new DualHashBidiMap<>();
         start = System.nanoTime();
         for (int i = 0; i < 100000; i++) {
-            Integer key = new Integer(i);
-            Integer value = new Integer(i + 1);
+            Integer key = Integer.valueOf(i);
+            Integer value = Integer.valueOf(i + 1);
             map.put(key, value);
         }
         System.out.println("Insertion time:" + TimeUnit.MILLISECONDS.convert(System.nanoTime() - start, TimeUnit.NANOSECONDS));
 
         start = System.nanoTime();
-        Integer value = (Integer) map.get(new Integer(500));
+        Integer value = (Integer) map.get(Integer.valueOf(500));
         System.out.println("Value:" + value);
         System.out.println("Fetch time key:" + TimeUnit.MICROSECONDS.convert(System.nanoTime() - start, TimeUnit.NANOSECONDS));
 
         start = System.nanoTime();
-        Integer key = (Integer) map.getKey(new Integer(501));
+        Integer key = (Integer) map.getKey(Integer.valueOf(501));
         System.out.println("Key:" + key);
         System.out.println("Fetch time value:" + TimeUnit.MICROSECONDS.convert(System.nanoTime() - start, TimeUnit.NANOSECONDS));
     }
