@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import jakarta.inject.Inject;
 
 @MicronautTest
-class Micronautdocker_mvnTest {
+class MicronautdockerUnitTests {
 
     @Inject
     EmbeddedApplication<?> application;
