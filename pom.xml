@@ -1085,6 +1085,7 @@
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
+                <module>libraries-apm</module>
                 <module>libraries-bytecode</module>
                 <module>libraries-cli</module>
                 <module>libraries-concurrency</module>
