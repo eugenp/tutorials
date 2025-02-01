@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class KafkaSaslApplication {
 
     public static void main(String[] args) {
+        System.setProperty("spring.config.name", "application-sasl");
         SpringApplication.run(KafkaSaslApplication.class, args);
     }
 

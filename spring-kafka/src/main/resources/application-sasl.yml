@@ -7,7 +7,7 @@ spring:
       sasl.jaas.config: >
         com.sun.security.auth.module.Krb5LoginModule required
         useKeyTab=true
-        keyTab="/Users/saikat/dev/tutorials/spring-kafka/src/test/resources/sasl/keytabs/client.keytab"
+        keyTab="./src/test/resources/sasl/keytabs/client.keytab"
         principal="client/localhost@BAELDUNG.COM"
         useTicketCache=false
         serviceName="kafka"

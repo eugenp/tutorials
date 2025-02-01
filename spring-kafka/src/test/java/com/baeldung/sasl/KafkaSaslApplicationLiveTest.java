@@ -7,7 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import java.io.File;
 import java.time.Duration;
 import java.util.UUID;
 
@@ -20,10 +19,6 @@ import static org.awaitility.Awaitility.await;
 @Testcontainers
 @SpringBootTest(classes = KafkaSaslApplication.class)
 class KafkaSaslApplicationLiveTest {
-
-    private static final File KAFKA_COMPOSE_FILE = new File("src/test/resources/sasl/docker-compose.yml");
-    private static final String KAFKA_SERVICE = "kafka";
-    private static final int PORT = 9092;
 
     @Autowired
     private KafkaProducer kafkaProducer;
