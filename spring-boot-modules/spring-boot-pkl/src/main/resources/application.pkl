@@ -1,5 +1,17 @@
-amends "ToolIntegration.pkl"
-url = "https://api.github.com"
-name = "GitHub"
-user = "gituser"
-password = "gitpassword"
+amends "ToolIntegrationTemplate.pkl"
+gitConnection {
+  url = "https://api.github.com"
+  name = "GitHub"
+  credential {
+    user = "gituser"
+    password = "gitpassword"
+  }
+}
+jiraConnection {
+  url = "https://jira.atlassian.com"
+  name = "Jira"
+  credential {
+    user = "jirauser"
+    password = "jirapassword"
+  }
+}

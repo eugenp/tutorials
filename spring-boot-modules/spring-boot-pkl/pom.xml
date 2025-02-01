@@ -27,9 +27,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.pkl-lang</groupId>
-            <artifactId>pkl-spring</artifactId>
-            <version>0.16.0</version>
+        <groupId>org.pkl-lang</groupId>
+        <artifactId>pkl-spring</artifactId>
+        <version>0.16.0</version>
         </dependency>
     </dependencies>
 
@@ -51,35 +51,35 @@
             </plugins>
         </pluginManagement>
         <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>gen-pkl-java-bind</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>org.pkl.codegen.java.Main</mainClass>
-                            <includeProjectDependencies>false</includeProjectDependencies>
-                            <additionalClasspathElements>
-                                <classpathElement>
-                                    ${settings.localRepository}/org/pkl-lang/pkl-tools/0.27.2/pkl-tools-0.27.2.jar
-                                    <!--${project.basedir}/src/main/resources/pkl-tools-0.27.2.jar-->
-                                </classpathElement>
-                            </additionalClasspathElements>
-                            <arguments>
-                                <argument>src/main/resources/ToolIntegration.pkl</argument>
-                                <argument>-o</argument>
-                                <argument>${project.basedir}/src/main</argument>
-                                <argument>--generate-spring-boot</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <executions>
+                <execution>
+                    <id>gen-pkl-java-bind</id>
+                    <phase>generate-sources</phase>
+                    <goals>
+                        <goal>java</goal>
+                    </goals>
+                    <configuration>
+                        <mainClass>org.pkl.codegen.java.Main</mainClass>
+                        <includeProjectDependencies>false</includeProjectDependencies>
+                        <additionalClasspathElements>
+                            <classpathElement>
+                                ${settings.localRepository}/org/pkl-lang/pkl-tools/0.27.2/pkl-tools-0.27.2.jar
+                            </classpathElement>
+                        </additionalClasspathElements>
+                        <arguments>
+                            <argument>src/main/resources/ToolIntegrationTemplate.pkl</argument>
+                            <argument>-o</argument>
+                            <argument>${project.basedir}/src/main</argument>
+                            <argument>--generate-spring-boot</argument>
+                            <argument>--generate-getters</argument>
+                        </arguments>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
         </plugins>
     </build>
 

@@ -1,18 +1,17 @@
 package com.baeldung.spring.pkl;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class GitHubService {
+    private final ToolIntegrationProperties.Connection gitConnection;
 
-    private final Logger logger = LoggerFactory.getLogger(GitHubService.class);
-    private ToolIntegration toolIntegration;
-
-    public GitHubService(ToolIntegration toolIntegration) {
-        this.toolIntegration = toolIntegration;
+    public GitHubService(ToolIntegrationProperties.Connection connection) {
+        this.gitConnection = connection;
     }
 
-    public ToolIntegration getToolIntegration() {
-        return toolIntegration;
+    public String readIssues() {
+        return "Reading issues from GitHub";
+    }
+
+    public ToolIntegrationProperties.Connection getGitConnection() {
+        return gitConnection;
     }
 }
