@@ -32,7 +32,7 @@ class LLMResponseEvaluatorLiveTest {
 
     @Test
     void whenChatClientProvidesAnswerRelevantToTopic_thenRelevancyEvaluationSucceeds() {
-        String question = "How many sick leaves can I take?";
+        String question = "How many days sick leave can I take?";
         ChatResponse chatResponse = contentGenerator.prompt()
             .user(question)
             .call()
@@ -48,7 +48,7 @@ class LLMResponseEvaluatorLiveTest {
 
     @Test
     void whenChatClientProvidesAnswerIrrelevantToTopic_thenRelevancyEvaluationFails() {
-        String question = "How many sick leaves can I take?";
+        String question = "How many days sick leave can I take?";
         ChatResponse chatResponse = contentGenerator.prompt()
             .user(question)
             .call()
@@ -64,7 +64,7 @@ class LLMResponseEvaluatorLiveTest {
 
     @Test
     void whenChatClientProvidesWrongAnswerRelevantToTopic_thenRelevancyEvaluationFails() {
-        String question = "How many sick leaves can I take?";
+        String question = "How many days sick leave can I take?";
         ChatResponse chatResponse = contentGenerator.prompt()
             .user(question)
             .call()
@@ -80,7 +80,7 @@ class LLMResponseEvaluatorLiveTest {
 
     @Test
     void whenChatClientProvidesFactuallyCorrectAnswer_thenFactCheckingEvaluationSucceeds() {
-        String question = "How many sick leaves can I take?";
+        String question = "How many days sick leave can I take?";
         ChatResponse chatResponse = contentGenerator.prompt()
             .user(question)
             .call()
@@ -96,7 +96,7 @@ class LLMResponseEvaluatorLiveTest {
 
     @Test
     void whenChatClientProvidesFactuallyIncorrectAnswer_thenFactCheckingEvaluationFails() {
-        String question = "How many sick leaves can I take?";
+        String question = "How many days sick leave can I take?";
         ChatResponse chatResponse = contentGenerator.prompt()
             .user(question)
             .call()
