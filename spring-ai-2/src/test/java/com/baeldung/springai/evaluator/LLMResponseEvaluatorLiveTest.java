@@ -63,6 +63,22 @@ class LLMResponseEvaluatorLiveTest {
     }
 
     @Test
+    void whenChatClientProvidesWrongAnswerRelevantToTopic_thenRelevancyEvaluationFails() {
+        String question = "How many sick leaves can I take?";
+        ChatResponse chatResponse = contentGenerator.prompt()
+            .user(question)
+            .call()
+            .chatResponse();
+
+        String wrongAnswer = "You can take no leaves. Get back to work!";
+        List<Document> documents = chatResponse.getMetadata().get(QuestionAnswerAdvisor.RETRIEVED_DOCUMENTS);
+        EvaluationRequest evaluationRequest = new EvaluationRequest(question, documents, wrongAnswer);
+
+        EvaluationResponse evaluationResponse = relevancyEvaluator.evaluate(evaluationRequest);
+        assertThat(evaluationResponse.isPass()).isFalse();
+    }
+
+    @Test
     void whenChatClientProvidesFactuallyCorrectAnswer_thenFactCheckingEvaluationSucceeds() {
         String question = "How many sick leaves can I take?";
         ChatResponse chatResponse = contentGenerator.prompt()
