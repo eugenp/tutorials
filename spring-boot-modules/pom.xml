@@ -44,6 +44,7 @@
         <module>spring-boot-data</module>
         <module>spring-boot-environment</module>
         <module>spring-boot-exceptions</module>
+        <module>spring-boot-featureflag-unleash</module>
         <module>spring-boot-flowable</module>
         <module>spring-boot-graphql</module>
         <!-- <module>spring-boot-graphql-2</module> --> <!-- JAVA-42053 -->
