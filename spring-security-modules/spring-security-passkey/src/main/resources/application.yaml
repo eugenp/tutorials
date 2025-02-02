@@ -1,0 +1,20 @@
+server:
+  port: 8080
+#  ssl:
+#    key-store: classpath:certs/keystore.p12
+#    key-store-password: changeit
+#    key-alias: mycert
+spring:
+  security:
+    webauthn:
+      rpName: "WebAuthn Demo"
+      rpId:  fit-lab-partly.ngrok-free.app
+      allowedOrigins:
+        - "https://fit-lab-partly.ngrok-free.app"
+    user:
+      name: alice
+      password: changeit
+logging:
+  level:
+    org.springframework.web: TRACE
+    org.springframework.security: TRACE
