@@ -36,10 +36,7 @@ public class SudokuSolver {
     private List<Integer[][]> getSolutions(int MAX_SOLUTIONS) {
         List<Integer[][]> solvedSudokuBoards = new ArrayList<>();
         int solutionCount = 0;
-        while (sudokuModel.getSolver().solve()) {
-            if(solutionCount++ > MAX_SOLUTIONS - 1) {
-                break;
-            }
+        while (solutionCount++ < MAX_SOLUTIONS && sudokuModel.getSolver().solve()) {
             logger.info("Solution #{}", solutionCount);
             IntVar[] solvedSudokuCells = sudokuModel.retrieveIntVars(true);
 

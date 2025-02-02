@@ -22,6 +22,6 @@ public class Bar extends Foo {
 
     @Override
     public Integer generateNumber() {
-        return new Integer(10);
+        return Integer.valueOf(10);
     }
 }
