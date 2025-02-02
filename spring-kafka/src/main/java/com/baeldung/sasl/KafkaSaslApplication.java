@@ -10,5 +10,4 @@ public class KafkaSaslApplication {
         System.setProperty("spring.config.name", "application-sasl");
         SpringApplication.run(KafkaSaslApplication.class, args);
     }
-
 }

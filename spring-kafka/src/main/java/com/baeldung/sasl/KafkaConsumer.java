@@ -13,7 +13,6 @@ import java.util.List;
 public class KafkaConsumer {
 
     public static final String TOPIC = "test-topic";
-
     public final List<String> messages = new ArrayList<>();
 
     @KafkaListener(topics = TOPIC)
@@ -21,5 +20,4 @@ public class KafkaConsumer {
         log.info("Received payload: '{}'", consumerRecord.toString());
         messages.add(consumerRecord.value());
     }
-
 }
