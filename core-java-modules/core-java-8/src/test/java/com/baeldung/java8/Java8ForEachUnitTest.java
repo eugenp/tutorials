@@ -32,18 +32,18 @@ public class Java8ForEachUnitTest {
         // Java 5 - for-loop
         LOG.debug("--- Enhanced for-loop ---");
         for (String name : names) {
-            LOG.debug(name);
+            LOG.info(name);
         }
 
         // Java 8 - forEach
         names.forEach(name -> {
-            System.out.println(name);
+            LOG.info(name);
         });
 
         LOG.debug("--- Print Consumer ---");
         Consumer<String> printConsumer = new Consumer<String>() {
             public void accept(String name) {
-                System.out.println(name);
+                LOG.info(name);
             };
         };
 
@@ -53,38 +53,38 @@ public class Java8ForEachUnitTest {
         LOG.debug("--- Anonymous inner class ---");
         names.forEach(new Consumer<String>() {
             public void accept(String name) {
-                LOG.debug(name);
+                LOG.info(name);
             }
         });
 
         // Java 8 - forEach - Lambda Syntax
         LOG.debug("--- forEach method ---");
-        names.forEach(name -> LOG.debug(name));
+        names.forEach(name -> LOG.info(name));
 
         // Java 8 - forEach - Print elements using a Method Reference
         LOG.debug("--- Method Reference ---");
-        names.forEach(LOG::debug);
+        names.forEach(LOG::info);
     }
 
     @Test
     public void givenList_thenIterateAndPrintResults() {
         List<String> names = Arrays.asList("Larry", "Steve", "James");
 
-        names.forEach(System.out::println);
+        names.forEach(LOG::info);
     }
 
     @Test
     public void givenSet_thenIterateAndPrintResults() {
         Set<String> uniqueNames = new HashSet<>(Arrays.asList("Larry", "Steve", "James"));
 
-        uniqueNames.forEach(System.out::println);
+        uniqueNames.forEach(LOG::info);
     }
 
     @Test
     public void givenQueue_thenIterateAndPrintResults() {
         Queue<String> namesQueue = new ArrayDeque<>(Arrays.asList("Larry", "Steve", "James"));
 
-        namesQueue.forEach(System.out::println);
+        namesQueue.forEach(LOG::info);
     }
 
     @Test
@@ -95,7 +95,7 @@ public class Java8ForEachUnitTest {
         namesMap.put(3, "James");
 
         namesMap.entrySet()
-            .forEach(entry -> System.out.println(entry.getKey() + " " + entry.getValue()));
+            .forEach(entry -> LOG.info("{} {}", entry.getKey(), entry.getValue()));
     }
 
     @Test
@@ -105,7 +105,18 @@ public class Java8ForEachUnitTest {
         namesMap.put(2, "Steve");
         namesMap.put(3, "James");
 
-        namesMap.forEach((key, value) -> System.out.println(key + " " + value));
+        namesMap.forEach((key, value) -> LOG.info("{} {}", key, value));
     }
 
+    @Test
+    public void givenArray_whenIteratingWithForEachMethod_thenLogResult() {
+        String [] foodItems = {"rice", "beans", "egg"};
+        Arrays.stream(foodItems).forEach(LOG::info);
+    }
+
+    @Test
+    public void givenACollection_whenIteratingWithForEachInParallel_thenLogResult() {
+        List<String> names = new ArrayList<>(List.of("Larry", "Steve", "James"));
+        names.parallelStream().forEach(LOG::info);
+    }
 }
