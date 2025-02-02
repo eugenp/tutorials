@@ -71,7 +71,7 @@
                             </classpathElement>
                         </additionalClasspathElements>
                         <arguments>
-                            <argument>src/main/resources/ToolIntegrationTemplate.pkl</argument>
+                            <argument>${project.basedir}/src/main/resources/ToolIntegrationTemplate.pkl</argument>
                             <argument>-o</argument>
                             <argument>${project.basedir}/src/main</argument>
                             <argument>--generate-spring-boot</argument>
