@@ -26,31 +26,30 @@ services:
       - ./keytabs:/etc/kafka/keytabs
       - ./config/krb5.conf:/etc/krb5.conf
     ports:
-      - 2181:2181
+      - "2181:2181"
     networks:
       - kafka-network
 
   kafka:
     image: confluentinc/cp-kafka:latest
     container_name: kafka
-    depends_on:
-      - zookeeper
-      - kdc
     environment:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_SASL_MECHANISM_INTER_BROKER_PROTOCOL: GSSAPI
       KAFKA_SASL_ENABLED_MECHANISMS: GSSAPI
-      KAFKA_LISTENERS: "INTERNAL://:29092,EXTERNAL://:9092"
-      KAFKA_ADVERTISED_LISTENERS: "INTERNAL://localhost:29092,EXTERNAL://localhost:9092"
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "INTERNAL:SASL_PLAINTEXT,EXTERNAL:SASL_PLAINTEXT"
-      KAFKA_INTER_BROKER_LISTENER_NAME: "INTERNAL"
+      KAFKA_LISTENERS: SASL_PLAINTEXT://:9092
+      KAFKA_ADVERTISED_LISTENERS: SASL_PLAINTEXT://localhost:9092
+      KAFKA_INTER_BROKER_LISTENER_NAME: SASL_PLAINTEXT
       KAFKA_OPTS: "-Djava.security.auth.login.config=/etc/kafka/kafka_server_jaas.conf"
-      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: true
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     volumes:
       - ./config/kafka_server_jaas.conf:/etc/kafka/kafka_server_jaas.conf
       - ./keytabs:/etc/kafka/keytabs
       - ./config/krb5.conf:/etc/krb5.conf
+    depends_on:
+      - zookeeper
+      - kdc
     ports:
       - 9092:9092
     networks:
