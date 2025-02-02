@@ -6,6 +6,8 @@ import com.google.common.collect.Range;
 import com.google.common.collect.Table;
 import com.google.common.collect.TreeBasedTable;
 import com.google.common.collect.TreeMultiset;
+import com.google.common.truth.Truth8;
+
 import static com.baeldung.truth.UserSubject.*;
 import static com.google.common.truth.Truth.*;
 import static com.google.common.truth.Truth8.*;
@@ -15,7 +17,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map; 
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -407,28 +409,28 @@ public class GoogleTruthUnitTest {
     public void whenCheckingJavaOptional_thenHasValue() {
         Optional<Integer> anOptional = Optional.of(1);
 
-        assertThat(anOptional).hasValue(1);
+        Truth8.assertThat(anOptional).hasValue(1);
     }
 
     @Test
     public void whenCheckingJavaOptional_thenPresent() {
         Optional<String> anOptional = Optional.of("Baeldung");
 
-        assertThat(anOptional).isPresent();
+        Truth8.assertThat(anOptional).isPresent();
     }
 
     @Test
     public void whenCheckingJavaOptional_thenEmpty() {
         Optional anOptional = Optional.empty();
 
-        assertThat(anOptional).isEmpty();
+        Truth8.assertThat(anOptional).isEmpty();
     }
 
     @Test
     public void whenCheckingStream_thenContainsInOrder() {
         Stream<Integer> anStream = Stream.of(1, 2, 3);
 
-        assertThat(anStream).containsAllOf(1, 2, 3)
+        Truth8.assertThat(anStream).containsAllOf(1, 2, 3)
             .inOrder();
     }
 
@@ -437,7 +439,7 @@ public class GoogleTruthUnitTest {
         Stream<Integer> anStream = IntStream.range(1, 100)
             .boxed();
 
-        assertThat(anStream).doesNotContain(0);
+        Truth8.assertThat(anStream).doesNotContain(0);
     }
 
     // Guava Tests
