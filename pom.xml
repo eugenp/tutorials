@@ -746,6 +746,7 @@
                 <module>persistence-modules</module>
                 <module>podman</module>
                 <module>protobuffer</module>
+                <module>pulumi</module>
                 <module>quarkus-modules</module>
                 <module>reactive-systems</module>
                 <module>reactor-core</module>
