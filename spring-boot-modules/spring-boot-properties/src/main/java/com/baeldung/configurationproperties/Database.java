@@ -2,7 +2,6 @@ package com.baeldung.configurationproperties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-
 @ConfigurationProperties(prefix = "database")
 public class Database {
 
