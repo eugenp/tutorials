@@ -38,7 +38,6 @@ public class LLMConfiguration {
     @Bean
     public ChatClient contentEvaluator(
         OllamaApi olamaApi,
-        VectorStore vectorStore,
         @Value("${com.baeldung.evaluation.model}") String evaluationModel) {
         ChatModel chatModel = OllamaChatModel.builder()
             .ollamaApi(olamaApi)
@@ -50,7 +49,6 @@ public class LLMConfiguration {
                 .build())
             .build();
         return ChatClient.builder(chatModel)
-            .defaultAdvisors(new QuestionAnswerAdvisor(vectorStore))
             .build();
     }
 
