@@ -1,7 +1,9 @@
 package com.baeldung.classfile;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
+
 import com.baeldung.classfile.Outer.Nested;
 
 public class OuterUnitTest {
