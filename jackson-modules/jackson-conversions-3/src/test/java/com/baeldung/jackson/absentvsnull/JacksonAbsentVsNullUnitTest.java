@@ -1,130 +1,257 @@
 package com.baeldung.jackson.absentvsnull;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
-import com.baeldung.jackson.absentvsnull.model.Sample;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 
 class JacksonAbsentVsNullUnitTest {
 
-    private static final String ID_FIELD = "id";
-    private static final String PRIMITIVE_FIELD = "amount";
-    private static final ObjectMapper DEFAULT_MAPPER = new ObjectMapper();
+    static final TypeReference<Map<String, Serializable>> MAP_TYPE = new TypeReference<Map<String, Serializable>>() {
+    };
 
-    private static final Sample ZERO_ARG_SAMPLE = new Sample();
-    private static final Sample FULL_SAMPLE = new Sample();
+    static class Sample {
 
-    @AfterEach
-    void setup() {
-        List<String> keys = new ArrayList<>();
-        keys.add("foo");
-        keys.add("bar");
+        private Long id;
+        private String name;
+        private int amount = 1;
+        private List<String> keys;
+        private List<Integer> values;
 
-        List<Integer> values = new ArrayList<>();
-        values.add(1);
-        values.add(2);
+        public Long getId() {
+            return id;
+        }
 
-        FULL_SAMPLE.setId(1l);
-        FULL_SAMPLE.setName(ID_FIELD);
-        FULL_SAMPLE.setAmount(3);
-        FULL_SAMPLE.setKeys(keys);
-        FULL_SAMPLE.setValues(values);
+        public void setId(Long id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getAmount() {
+            return amount;
+        }
+
+        public void setAmount(int amount) {
+            this.amount = amount;
+        }
+
+        public List<String> getKeys() {
+            return keys;
+        }
+
+        public void setKeys(List<String> names) {
+            this.keys = names;
+        }
+
+        public List<Integer> getValues() {
+            return values;
+        }
+
+        public void setValues(List<Integer> values) {
+            this.values = values;
+        }
+
+        static Sample basic() {
+            Sample defaults = new Sample();
+
+            List<String> keys = List.of("foo", "bar");
+            List<Integer> values = List.of(1, 2);
+
+            defaults.setId(1l);
+            defaults.setName("name");
+            defaults.setAmount(3);
+            defaults.setKeys(keys);
+            defaults.setValues(values);
+
+            return defaults;
+        }
+    }
+
+    static void updateIgnoringNulls(String json, Sample current) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        Sample update = mapper.readValue(json, Sample.class);
+        mapper.setSerializationInclusion(Include.NON_DEFAULT);
+
+        if (update.getId() != null) {
+            current.setId(update.getId());
+        }
+
+        if (update.getName() != null) {
+            current.setName(update.getName());
+        }
+
+        current.setAmount(update.getAmount());
+
+        if (update.getKeys() != null) {
+            current.setKeys(update.getKeys());
+        }
+
+        if (update.getValues() != null) {
+            current.setValues(update.getValues());
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    static void updateNonAbsent(String json, Sample current) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Serializable> update = mapper.readValue(json, MAP_TYPE);
+        mapper.setSerializationInclusion(Include.NON_DEFAULT);
+
+        if (update.containsKey("id")) {
+            current.setId((Long) update.get("id"));
+        }
+
+        if (update.containsKey("name")) {
+            current.setName((String) update.get("name"));
+        }
+
+        if (update.containsKey("amount")) {
+            current.setAmount((int) update.get("amount"));
+        }
+
+        if (update.containsKey("keys")) {
+            current.setKeys((List<String>) update.get("keys"));
+        }
+
+        if (update.containsKey("values")) {
+            current.setValues((List<Integer>) update.get("values"));
+        }
     }
 
     @Test
-    final void whenSerializingWithDefaults_thenNullValuesIncluded() {
-        Sample sample = ZERO_ARG_SAMPLE;
-        Map<String, Serializable> map = DEFAULT_MAPPER.convertValue(sample, SampleUtils.MAP_TYPE);
+    void whenSerializingWithDefaults_thenNullValuesIncluded() {
+        Sample zeroArg = new Sample();
+        Map<String, Serializable> map = new ObjectMapper().convertValue(zeroArg, MAP_TYPE);
 
-        assertEquals(ZERO_ARG_SAMPLE.getAmount(), map.get("amount"));
-        assertTrue(map.containsKey(ID_FIELD));
-        assertNull(map.get(ID_FIELD));
+        assertEquals(zeroArg.getAmount(), map.get("amount"));
+        assertTrue(map.containsKey("id"));
+        assertNull(map.get("id"));
     }
 
     @Test
-    final void whenDeserializingToMapWithDefaults_thenAbsentFieldsAreIgnored() throws JsonProcessingException {
-        String json = "{\"values\": [2], \"keys\": []}";
-        Map<String, Serializable> map = DEFAULT_MAPPER.readValue(json, SampleUtils.MAP_TYPE);
+    void whenDeserializingToMapWithDefaults_thenAbsentFieldsAreIgnored() throws JsonProcessingException {
+        String json = """
+            {
+              "values": [2],
+              "keys": []}
+            """;
+        Map<String, Serializable> map = new ObjectMapper().readValue(json, MAP_TYPE);
 
-        assertFalse(map.containsKey(PRIMITIVE_FIELD));
+        Set<String> keySet = map.keySet();
+        assertEquals(2, keySet.size());
+        assertTrue(keySet.containsAll(List.of("keys", "values")));
     }
 
     @Test
-    final void whenDeserializingToMapWithDefaults_thenNullPrimitiveIsDefaulted() throws JsonProcessingException {
-        String json = "{\"amount\": null}";
-        Sample sample = DEFAULT_MAPPER.readValue(json, Sample.class);
+    void whenDeserializingToMapWithDefaults_thenNullPrimitiveIsDefaulted() throws JsonProcessingException {
+        String json = """
+            {
+              "amount": null
+            }
+            """;
+        Sample sample = new ObjectMapper().readValue(json, Sample.class);
 
-        assertNotEquals(ZERO_ARG_SAMPLE.getAmount(), sample.getAmount());
+        assertEquals(0, sample.getAmount());
     }
 
     @Test
-    final void whenValidatingNullPrimitives_thenFailOnNullAmount() {
-        String json = "{\"amount\": null}";
+    void whenValidatingNullPrimitives_thenFailOnNullAmount() {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.enable(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES);
 
-        assertThrows(MismatchedInputException.class, () -> SampleUtils.MAPPER
-            .readValue(json, Sample.class));
+        String json = """
+            {
+              "amount": null
+            }
+            """;
+
+        assertThrows(MismatchedInputException.class, () -> mapper.readValue(json, Sample.class));
     }
 
     @Test
-    final void whenDeserializingToJavaWithDefaults_thenAbsentFieldsArePresent() throws JsonProcessingException {
-        String json = "{\"values\": [2], \"keys\": []}";
-        Sample sample = DEFAULT_MAPPER.readValue(json, Sample.class);
+    void whenDeserializingToJavaWithDefaults_thenAbsentFieldsArePresent() throws JsonProcessingException {
+        String json = """
+            {
+              "values": [2],
+              "keys": []
+            }
+            """;
+        Sample sample = new ObjectMapper().readValue(json, Sample.class);
 
-        assertEquals(ZERO_ARG_SAMPLE.getAmount(), sample.getAmount());
+        assertEquals(new Sample().getAmount(), sample.getAmount());
     }
 
     @Test
-    final void whenSerializingNonDefault_thenOnlyNonJavaDefaultsIncluded() {
-        final ObjectMapper mapper = SampleUtils.MAPPER;
+    void whenSerializingNonDefault_thenOnlyNonJavaDefaultsIncluded() {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.setSerializationInclusion(Include.NON_DEFAULT);
 
-        Sample sample = ZERO_ARG_SAMPLE;
+        Sample zeroArg = new Sample();
 
-        Map<String, Serializable> map = mapper.convertValue(sample, SampleUtils.MAP_TYPE);
+        Map<String, Serializable> map = mapper.convertValue(zeroArg, MAP_TYPE);
 
-        assertEquals(sample.getAmount(), map.get("amount"));
-        assertFalse(map.containsKey(ID_FIELD));
+        assertEquals(zeroArg.getAmount(), map.get("amount"));
+        assertEquals(1, map.keySet()
+            .size());
     }
 
     @Test
-    final void whenPatchingNonNulls_thenNullsIgnored() throws JsonProcessingException {
-        List<Integer> values = new ArrayList<>();
-        values.add(3);
+    void whenPatchingNonNulls_thenNullsIgnored() throws JsonProcessingException {
+        List<Integer> values = List.of(3);
 
-        String json = String.format("{\"values\": %s}", values);
+        Sample defaults = Sample.basic();
 
-        SampleUtils.updateIgnoringNulls(json, FULL_SAMPLE);
+        String json = """
+            {
+              "values": %s
+            }
+            """.formatted(values);
 
-        assertEquals(values, FULL_SAMPLE.getValues());
-        assertNotNull(FULL_SAMPLE.getKeys());
+        updateIgnoringNulls(json, defaults);
+
+        assertEquals(values, defaults.getValues());
+        assertNotNull(defaults.getKeys());
     }
 
     @Test
-    final void whenPatchingNonAbsent_thenNullsConsidered() throws JsonProcessingException {
-        List<Integer> values = new ArrayList<>();
-        values.add(3);
+    void whenPatchingNonAbsent_thenNullsConsidered() throws JsonProcessingException {
+        List<Integer> values = List.of(3);
 
-        String json = String.format("{\"values\": %s, \"keys\": null}", values);
+        Sample defaults = Sample.basic();
 
-        SampleUtils.updateNonAbsent(json, FULL_SAMPLE);
+        String json = """
+            {
+              "values": %s,
+              "keys": null
+            }
+            """.formatted(values);
 
-        assertEquals(values, FULL_SAMPLE.getValues());
-        assertNull(FULL_SAMPLE.getKeys());
-        assertNotNull(FULL_SAMPLE.getId());
+        updateNonAbsent(json, defaults);
+
+        assertEquals(values, defaults.getValues());
+        assertNull(defaults.getKeys());
+        assertNotNull(defaults.getId());
     }
 }
