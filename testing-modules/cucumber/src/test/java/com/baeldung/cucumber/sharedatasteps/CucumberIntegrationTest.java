@@ -1,4 +1,4 @@
-package com.baeldung.sharedatasteps;
+package com.baeldung.cucumber.sharedatasteps;
 
 import org.springframework.boot.test.context.SpringBootTest;
 
