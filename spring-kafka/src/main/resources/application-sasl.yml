@@ -7,18 +7,14 @@ spring:
       sasl.jaas.config: >
         com.sun.security.auth.module.Krb5LoginModule required
         useKeyTab=true
+        storeKey=true
         keyTab="./src/test/resources/sasl/keytabs/client.keytab"
         principal="client@BAELDUNG.COM"
-        useTicketCache=false
-        serviceName="kafka"
-        storeKey=true;
+        serviceName="kafka";
     security:
       protocol: "SASL_PLAINTEXT"
     consumer:
       group-id: test
       auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    producer:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
