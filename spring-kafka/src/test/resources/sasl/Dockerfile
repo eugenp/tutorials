@@ -6,7 +6,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 COPY config/krb5.conf /etc/krb5.conf
-COPY config/kdc.conf /etc/krb5kdc/kdc.conf
 COPY setup_kdc.sh /setup_kdc.sh
 
 RUN chmod +x /setup_kdc.sh
