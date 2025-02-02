@@ -16,22 +16,20 @@ public class ExecuteJarUnitTest {
 
     @Test
     public void givenRunnableJar_whenExecuted_thenShouldRunSuccessfully() {
+        String jarFile;
         try {
-            String jarFile = new File(Objects.requireNonNull(getClass().getClassLoader()
+            jarFile = new File(Objects.requireNonNull(getClass().getClassLoader()
                 .getResource(RUNNABLE_JAR_PATH))
                 .toURI()).getAbsolutePath();
-
             ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", jarFile);
             processBuilder.redirectErrorStream(true);
-
-            try (Process process = processBuilder.start(); InputStream inputStream = process.getInputStream()) {
-
+            Process process = processBuilder.start();
+            try (InputStream inputStream = process.getInputStream()) {
                 byte[] output = inputStream.readAllBytes();
                 System.out.println("Output: " + new String(output));
-
-                int exitCode = process.waitFor();
-                Assert.assertEquals("Process exited with an unexpected exit code", 0, exitCode);
             }
+            int exitCode = process.waitFor();
+            Assert.assertEquals("Process exited with an unexpected exit code", 0, exitCode);
         } catch (IOException | InterruptedException | URISyntaxException e) {
             Assert.fail("Test failed due to exception: " + e.getMessage());
         }
@@ -39,23 +37,21 @@ public class ExecuteJarUnitTest {
 
     @Test
     public void givenNonRunnableJar_whenExecutedWithMainClass_thenShouldRunSuccessfully() {
+        String jarFile;
         try {
-            String jarFile = new File(Objects.requireNonNull(getClass().getClassLoader()
+            jarFile = new File(Objects.requireNonNull(getClass().getClassLoader()
                 .getResource(NON_RUNNABLE_JAR_PATH))
                 .toURI()).getAbsolutePath();
-
             String[] command = { "java", "-cp", jarFile, "com.company.HelloWorld", "arg1", "arg2" };
             ProcessBuilder processBuilder = new ProcessBuilder(command);
             processBuilder.redirectErrorStream(true);
-
-            try (Process process = processBuilder.start(); InputStream inputStream = process.getInputStream()) {
-
+            Process process = processBuilder.start();
+            try (InputStream inputStream = process.getInputStream()) {
                 byte[] output = inputStream.readAllBytes();
                 System.out.println("Output: " + new String(output));
-
-                int exitCode = process.waitFor();
-                Assert.assertEquals("Process exited with an unexpected exit code", 0, exitCode);
             }
+            int exitCode = process.waitFor();
+            Assert.assertEquals("Process exited with an unexpected exit code", 0, exitCode);
         } catch (IOException | InterruptedException | URISyntaxException e) {
             Assert.fail("Test failed due to exception: " + e.getMessage());
         }
