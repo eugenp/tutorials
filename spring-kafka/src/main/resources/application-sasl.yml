@@ -8,7 +8,7 @@ spring:
         com.sun.security.auth.module.Krb5LoginModule required
         useKeyTab=true
         keyTab="./src/test/resources/sasl/keytabs/client.keytab"
-        principal="client/localhost@BAELDUNG.COM"
+        principal="client@BAELDUNG.COM"
         useTicketCache=false
         serviceName="kafka"
         storeKey=true;
