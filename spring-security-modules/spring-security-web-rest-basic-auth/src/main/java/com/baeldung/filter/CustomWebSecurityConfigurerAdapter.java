@@ -39,7 +39,7 @@ public class CustomWebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public SecurityFilterChain securedGFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securedFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
                 authorizationManagerRequestMatcherRegistry.requestMatchers("/secured/**").authenticated())
             .httpBasic(Customizer.withDefaults());
