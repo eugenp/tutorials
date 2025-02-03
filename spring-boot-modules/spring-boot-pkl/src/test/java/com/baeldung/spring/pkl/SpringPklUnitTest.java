@@ -1,6 +1,8 @@
 package com.baeldung.spring.pkl;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +28,8 @@ public class SpringPklUnitTest {
             () -> assertEquals("https://jira.atlassian.com", jiraConnection.getUrl()),
             () -> assertEquals("jirauser", jiraCredential.getUser()),
             () -> assertEquals("jirapassword", jiraCredential.getPassword()),
-            () -> assertDoesNotThrow(jiraService::readIssues)
+            () -> assertEquals("Reading issues from Jira URL https://jira.atlassian.com",
+                jiraService.readIssues())
         );
     }
 
@@ -35,13 +38,12 @@ public class SpringPklUnitTest {
         ToolIntegrationProperties.Connection gitHubConnection = gitHubService.getGitConnection();
         ToolIntegrationProperties.Credential gitHubCredential = gitHubConnection.getCredential();
 
-        assertAll(() -> {
-            assertEquals("GitHub", gitHubConnection.getName());
-            assertEquals("https://api.github.com", gitHubConnection.getUrl());
-            assertEquals("gituser", gitHubCredential.getUser());
-            assertEquals("gitpassword", gitHubCredential.getPassword());
-
-            assertDoesNotThrow(gitHubService::readIssues);
-        });
+        assertAll(
+            () -> assertEquals("GitHub", gitHubConnection.getName()),
+            () -> assertEquals("https://api.github.com", gitHubConnection.getUrl()),
+            () -> assertEquals("gituser", gitHubCredential.getUser()),
+            () -> assertEquals("gitpassword", gitHubCredential.getPassword()),
+            () -> assertEquals("Reading issues from GitHub URL https://api.github.com", gitHubService.readIssues())
+        );
     }
 }

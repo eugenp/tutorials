@@ -4,7 +4,7 @@ gitConnection {
   name = "GitHub"
   credential {
     user = "gituser"
-    password = "gitpassword"
+    password = read("env:GITHUB_PASSWORD")
   }
 }
 jiraConnection {
@@ -12,6 +12,6 @@ jiraConnection {
   name = "Jira"
   credential {
     user = "jirauser"
-    password = "jirapassword"
+    password = read("env:JIRA_PASSWORD")
   }
 }

@@ -8,7 +8,7 @@ public class JiraService {
     }
 
     public String readIssues() {
-        return "Reading issues from Jira";
+        return "Reading issues from Jira URL " + jiraConnection.getUrl();
     }
 
     public ToolIntegrationProperties.Connection getJiraConnection() {

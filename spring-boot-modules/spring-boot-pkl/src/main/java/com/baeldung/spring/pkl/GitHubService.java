@@ -8,7 +8,7 @@ public class GitHubService {
     }
 
     public String readIssues() {
-        return "Reading issues from GitHub";
+        return "Reading issues from GitHub URL " + gitConnection.getUrl();
     }
 
     public ToolIntegrationProperties.Connection getGitConnection() {
