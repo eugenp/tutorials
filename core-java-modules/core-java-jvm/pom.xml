@@ -20,34 +20,14 @@
             <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.javassist</groupId>
-            <artifactId>javassist</artifactId>
-            <version>${javaassist.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.owasp.esapi</groupId>
-            <artifactId>esapi</artifactId>
-            <version>${esapi.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.ow2.asm</groupId>
-            <artifactId>asm</artifactId>
-            <version>${asm.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.ow2.asm</groupId>
-            <artifactId>asm-util</artifactId>
-            <version>${asm.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.bcel</groupId>
-            <artifactId>bcel</artifactId>
-            <version>${bcel.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.openjdk.jol</groupId>
             <artifactId>jol-core</artifactId>
             <version>${jol-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>${javaassist.version}</version>
         </dependency>
     </dependencies>
 
@@ -162,11 +142,8 @@
     </profiles>
 
     <properties>
-        <javaassist.version>3.30.2-GA</javaassist.version>
-        <esapi.version>2.5.2.0</esapi.version>
         <jol-core.version>0.10</jol-core.version>
-        <asm.version>9.7.1</asm.version>
-        <bcel.version>6.5.0</bcel.version>
+        <javaassist.version>3.30.2-GA</javaassist.version>
     </properties>
 
 </project>
