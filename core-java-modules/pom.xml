@@ -153,7 +153,7 @@
         <module>core-java-io-conversions-3</module>
         <module>core-java-jar</module>
         <module>core-java-jndi</module>
-        <!-- <module>core-java-jvm</module> --> <!-- failing after upgrade to jdk21 -->
+        <module>core-java-jvm</module>
         <module>core-java-jvm-2</module>
         <module>core-java-jvm-3</module>
         <module>core-java-lambdas</module>
