@@ -10,6 +10,7 @@ This module contains articles about working with the Java Virtual Machine (JVM).
 - [How to Get the Size of an Object in Java](http://www.baeldung.com/java-size-of-object)
 - [Measuring Object Sizes in the JVM](https://www.baeldung.com/jvm-measuring-object-sizes)
 - [Adding Shutdown Hooks for JVM Applications](https://www.baeldung.com/jvm-shutdown-hooks)
+- [Difference Between Class.getResource() and ClassLoader.getResource()](https://www.baeldung.com/java-class-vs-classloader-getresource)
 - More articles: [[next -->]](/core-java-modules/core-java-jvm-2)
 
 
