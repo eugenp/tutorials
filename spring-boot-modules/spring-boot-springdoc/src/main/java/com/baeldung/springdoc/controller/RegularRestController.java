@@ -1,12 +1,11 @@
 package com.baeldung.springdoc.controller;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
+import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.swagger.v3.oas.annotations.Hidden;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Hidden
 @RestController
