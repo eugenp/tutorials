@@ -1,4 +1,4 @@
-package com.baeldung.array;
+package com.baeldung.array.remove;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;
