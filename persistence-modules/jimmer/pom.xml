@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>jpa-hibernate-cascade-type</artifactId>
+  <properties>
+    <jimmer.version>0.9.37</jimmer.version>
+  </properties>
+
+  <parent>
+    <groupId>com.baeldung</groupId>
+    <artifactId>persistence-modules</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>3.4.1</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>${h2.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.babyfish.jimmer</groupId>
+      <artifactId>jimmer-spring-boot-starter</artifactId>
+      <version>${jimmer.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.babyfish.jimmer</groupId>
+      <artifactId>jimmer-sql</artifactId>
+      <version>${jimmer.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.babyfish.jimmer</groupId>
+      <artifactId>jimmer-core</artifactId>
+      <version>${jimmer.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>2.3.230</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+        <configuration>
+          <release>17</release>
+          <annotationProcessorPaths>
+            <annotationProcessorPath>
+              <groupId>org.babyfish.jimmer</groupId>
+              <artifactId>jimmer-apt</artifactId>
+              <version>${jimmer.version}</version>
+            </annotationProcessorPath>
+          </annotationProcessorPaths>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
