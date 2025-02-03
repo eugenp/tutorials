@@ -82,10 +82,29 @@
                             <arguments>
                                 <argument>${pkl-template-filepath}/ToolIntegrationTemplate.pkl</argument>
                                 <argument>-o</argument>
-                                <argument>${project.basedir}/src/main</argument>
+                                <argument>${project.build.directory}/generated-sources</argument>
                                 <argument>--generate-spring-boot</argument>
                                 <argument>--generate-getters</argument>
                             </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>${build-helper-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>target/generated-sources</source>
+                            </sources>
                         </configuration>
                     </execution>
                 </executions>
@@ -102,6 +121,7 @@
         <exec-maven-plugin.version>3.3.0</exec-maven-plugin.version>
         <pkl-tools.version>0.27.2</pkl-tools.version>
         <surefire.version>3.5.0</surefire.version>
+        <build-helper-maven-plugin.version>3.4.0</build-helper-maven-plugin.version>
 
         <pkl-tools-filepath>${settings.localRepository}/org/pkl-lang/pkl-tools/0.27.2</pkl-tools-filepath>
         <pkl-template-filepath>${project.basedir}/src/main/resources</pkl-template-filepath>
