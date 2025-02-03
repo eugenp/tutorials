@@ -1,6 +1,8 @@
 package com.baeldung.math.swap;
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 public class SwappingVariablesUnitTest {
@@ -13,8 +15,8 @@ public class SwappingVariablesUnitTest {
         
         swap(a, b);
         
-        Assertions.assertFalse(a.equals("b"));
-        Assertions.assertFalse(b.equals("a"));
+        assertFalse(a.equals("b"));
+        assertFalse(b.equals("a"));
     }
     
     @Test
@@ -25,8 +27,8 @@ public class SwappingVariablesUnitTest {
         
         swap(a, b);
         
-        Assertions.assertTrue(a.string.equals("b"));
-        Assertions.assertTrue(b.string.equals("a"));
+        assertTrue(a.string.equals("b"));
+        assertTrue(b.string.equals("a"));
     }
     
     @Test
@@ -39,8 +41,8 @@ public class SwappingVariablesUnitTest {
         b = a - b;
         a = a - b;
                 
-        Assertions.assertTrue(a == 10);
-        Assertions.assertTrue(b == 5);
+        assertTrue(a == 10);
+        assertTrue(b == 5);
     }
     
     @Test
@@ -53,8 +55,8 @@ public class SwappingVariablesUnitTest {
         b = a / b;
         a = a / b;
                 
-        Assertions.assertTrue(a == 10);
-        Assertions.assertTrue(b == 5);
+        assertTrue(a == 10);
+        assertTrue(b == 5);
     }
     
     @Test
@@ -67,8 +69,8 @@ public class SwappingVariablesUnitTest {
         b = a / b;
         a = a / b;
         
-        Assertions.assertTrue(a == 10);
-        Assertions.assertFalse(b == Integer.MAX_VALUE);
+        assertTrue(a == 10);
+        assertFalse(b == Integer.MAX_VALUE);
     }
     
     @Test
@@ -80,9 +82,9 @@ public class SwappingVariablesUnitTest {
         a = (char)(a * b);
         b = (char)(a / b);
         a = (char)(a / b);
-        
-        Assertions.assertTrue(a == 'b');
-        Assertions.assertTrue(b == 'a');
+
+        assertTrue(a == 'b');
+        assertTrue(b == 'a');
     }
     
     @Test
@@ -95,8 +97,8 @@ public class SwappingVariablesUnitTest {
         b = a ^ b;
         a = a ^ b;
         
-        Assertions.assertTrue(a == 10);
-        Assertions.assertTrue(b == 5);
+        assertTrue(a == 10);
+        assertTrue(b == 5);
     }
     
     @Test
@@ -107,8 +109,8 @@ public class SwappingVariablesUnitTest {
                 
         a = a ^ b ^ (b = a);
         
-        Assertions.assertTrue(a == 10);
-        Assertions.assertTrue(b == 5);
+        assertTrue(a == 10);
+        assertTrue(b == 5);
     }
     
     @Test
@@ -119,8 +121,8 @@ public class SwappingVariablesUnitTest {
                 
         b = (a + b) - (a = b);
         
-        Assertions.assertTrue(a == 10);
-        Assertions.assertTrue(b == 5);
+        assertTrue(a == 10);
+        assertTrue(b == 5);
     }
     
     /**
@@ -137,21 +139,15 @@ public class SwappingVariablesUnitTest {
      * Illustrates swapping in a method with Wrapper class
      */
     private void swap(Wrapper a, Wrapper b) {
-        
         String temp = b.string;
         b.string = a.string;
         a.string = temp;        
     }
 
     class Wrapper {
-        
         public String string;
-
         public Wrapper(String string) {
-            
             this.string = string;
         }
-        
-        
     }
 }

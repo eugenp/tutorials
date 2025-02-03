@@ -5,6 +5,7 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.fathzer.soft.javaluator.DoubleEvaluator;
@@ -71,6 +72,7 @@ public class EvalauteMathExpressionsUnitTest {
     }
 
     @Test
+    @Disabled("Use with jdk 8")
     public void givenJavaScriptingApiAndSimpleExpression_whenCallEvalMethod_thenSuccess() throws ScriptException {
         ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
         ScriptEngine scriptEngine = scriptEngineManager.getEngineByName("JavaScript");
@@ -80,6 +82,7 @@ public class EvalauteMathExpressionsUnitTest {
     }
     
     @Test
+    @Disabled("Use with jdk 8")
     public void givenJavaScriptingApi_whenCallEvalMethod_thenSuccess() throws ScriptException {
         ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
         ScriptEngine scriptEngine = scriptEngineManager.getEngineByName("JavaScript");
