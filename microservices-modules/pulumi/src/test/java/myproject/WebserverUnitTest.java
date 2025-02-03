@@ -25,7 +25,7 @@ class WebserverUnitTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> givenWebServerInfrastructure() {
+    Stream<DynamicTest> givenWebServerInfrastructure_whenDeployed_thenResourcesAreConfiguredCorrectly() {
         var result = PulumiTest.withMocks(new MyMocks())
           .runTest(WebserverInfra::stack);
 
@@ -43,16 +43,14 @@ class WebserverUnitTest {
                 .isNotEmpty();
           }),
 
-          dynamicTest("VPC should be created with the correct CIDR block", () -> {
-              result.resources()
-                .stream()
-                .filter(r -> r instanceof Vpc)
-                .map(r -> (Vpc) r)
-                .forEach(vpc -> {
-                    var cidrBlock = extractValue(vpc.cidrBlock());
-                    assertThat(cidrBlock).isEqualTo("10.0.0.0/16");
-                });
-          }),
+          dynamicTest("VPC should be created with the correct CIDR block", () -> result.resources()
+            .stream()
+            .filter(r -> r instanceof Vpc)
+            .map(r -> (Vpc) r)
+            .forEach(vpc -> {
+                var cidrBlock = extractValue(vpc.cidrBlock());
+                assertThat(cidrBlock).isEqualTo("10.0.0.0/16");
+            })),
 
           dynamicTest("instance must have a public IP", () -> {
               var publicIp = instance.map(Instance::publicIp);
