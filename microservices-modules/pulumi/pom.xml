@@ -17,6 +17,12 @@
         <mainArgs/>
     </properties>
 
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>microservices-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
     <dependencies>
         <dependency>
             <groupId>com.pulumi</groupId>

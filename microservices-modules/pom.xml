@@ -24,6 +24,7 @@
         <module>open-liberty</module>
         <module>rest-express</module>
         <module>event-driven-microservice</module>
+        <module>pulumi</module>
     </modules>
 
 </project>
