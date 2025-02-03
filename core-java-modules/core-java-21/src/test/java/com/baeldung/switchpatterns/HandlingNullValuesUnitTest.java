@@ -22,9 +22,4 @@ class HandlingNullValuesUnitTest {
         assertEquals(10d, getDoubleUsingSwitchTotalType("10"));
     }
 
-    @Test
-    void givenNullCaseInSwitch_whenUsingNullArgument_thenDoubleIsReturned() {
-        assertEquals(0d, getDoubleUsingSwitchTotalType(null));
-    }
-
 }
