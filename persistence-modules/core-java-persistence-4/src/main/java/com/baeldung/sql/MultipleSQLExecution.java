@@ -5,13 +5,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MultipleSQLExecution {
-    
-    private final Logger logger = LoggerFactory.getLogger(MultipleSQLExecution.class);
 
     private Connection connection;
 
@@ -50,33 +47,27 @@ public class MultipleSQLExecution {
         }
     }
     
-    public boolean executeMultipleSelectStatements() throws SQLException {
+    public List<User> executeMultipleSelectStatements() throws SQLException {
         String sql = "SELECT * FROM users WHERE email = 'alice@example.com';" +
                      "SELECT * FROM users WHERE email = 'bob@example.com';";
 
+        List<User> users = new ArrayList<>();
+
         try (Statement statement = connection.createStatement()) {
-            boolean hasResultSet = statement.execute(sql);
-            // We'll log each record using this loop
+            statement.execute(sql); // Here we execute the multiple queries
+
             do {
-                if (hasResultSet) {
-                    try (ResultSet resultSet = statement.getResultSet()) {
-                        while (resultSet.next()) {
-                            logger.info("User ID: " + resultSet.getInt("id"));
-                            logger.info("Name: " + resultSet.getString("name"));
-                            logger.info("Email: " + resultSet.getString("email"));
-                        }
-                    }
-                } else {
-                    // Here we don't have any update statements. 
-                    // However, if SQL contains update statements the we need to handle update counts gracefully
-                    int updateCount = statement.getUpdateCount();
-                    if (updateCount == -1) {
-                        logger.info("No update counts for this statement.");
+                try (ResultSet resultSet = statement.getResultSet()) {
+                    while (resultSet != null && resultSet.next()) {
+                        int id = resultSet.getInt("id");
+                        String name = resultSet.getString("name");
+                        String email = resultSet.getString("email");
+                        users.add(new User(id, name, email));
                     }
                 }
-            } while (statement.getMoreResults() || statement.getUpdateCount() != -1);
+            } while (statement.getMoreResults());
 
-            return true;
         }
+        return users;
     }
 }

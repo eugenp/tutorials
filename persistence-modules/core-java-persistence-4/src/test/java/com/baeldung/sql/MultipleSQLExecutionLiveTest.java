@@ -8,12 +8,13 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-// We need to make sure that database user_db is created along with the necessary users table.
-// We have added it in the setup() method.
+// Please note, this test requires a MySQL server running on localhost:3306 with database users_db already created.
+// We have added creation of the table it in the setup() method.
 public class MultipleSQLExecutionLiveTest {
 
     private static Connection connection;
@@ -74,24 +75,22 @@ public class MultipleSQLExecutionLiveTest {
     }
     
     @Test
-    public void givenMultipleSelectStatements_whenExecuting_thenRecordsAreFetched() throws SQLException {
-        // First, we'll insert data for testing
+    public void givenMultipleSelectStatements_whenExecuting_thenCorrectUsersAreFetched() throws SQLException {
         MultipleSQLExecution execution = new MultipleSQLExecution(connection);
         execution.executeMultipleStatements();
 
-        // Next, we'll execute the select statements
-        boolean result = execution.executeMultipleSelectStatements();
-        assertTrue(result, "The select statements should execute successfully.");
+        List<User> users = execution.executeMultipleSelectStatements();
 
-        // Lastly, we'll verify if the correct records are returned
-        try (Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery("SELECT * FROM users WHERE email IN ('alice@example.com', 'bob@example.com')")) {
-            int count = 0;
-            while (resultSet.next()) {
-                count++;
-            }
-            assertEquals(2, count, "There should be two records fetched.");
-        }
+        // Here we verify the correct number of users were fetched
+        assertEquals(2, users.size(), "There should be exactly two users fetched.");
+
+        List<String> fetchedUserNames = users.stream()
+                                             .map(User::getName)
+                                             .toList();
+
+        // Here, we verify that expected users are present
+        List<String> expectedUserNames = List.of("Alice", "Bob");
+        assertTrue(fetchedUserNames.containsAll(expectedUserNames), "Fetched users should match the expected names.");
     }
 }
 
