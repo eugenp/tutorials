@@ -1,10 +1,10 @@
 package com.baeldung.systemgc;
 
+import static java.util.UUID.randomUUID;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-
-import static java.util.UUID.randomUUID;
 
 public class DemoApplication {
 

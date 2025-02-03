@@ -14,4 +14,6 @@ This module contains articles about working with the Java Virtual Machine (JVM).
 - [An Introduction to the Constant Pool in the JVM](https://www.baeldung.com/jvm-constant-pool)
 - [List All the Classes Loaded in the JVM](https://www.baeldung.com/jvm-list-all-classes-loaded)
 - [Static Fields and Garbage Collection](https://www.baeldung.com/java-static-fields-gc)
+- [Guide to System.gc()](https://www.baeldung.com/java-system-gc)
+- [What Causes java.lang.OutOfMemoryError: unable to create new native thread](https://www.baeldung.com/java-outofmemoryerror-unable-to-create-new-native-thread)
 - More articles: [[<-- prev]](/core-java-modules/core-java-jvm) [[next -->]](/core-java-modules/core-java-jvm-3)
