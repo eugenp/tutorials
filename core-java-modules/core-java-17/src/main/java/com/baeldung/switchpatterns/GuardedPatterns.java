@@ -17,7 +17,7 @@ public class GuardedPatterns {
 
     static double getDoubleValueUsingGuardedPatterns(Object o) {
         return switch (o) {
-            case String s when s.length() > 0 -> Double.parseDouble(s);
+            case String s && s.length() > 0 -> Double.parseDouble(s);
             default -> 0d;
         };
     }
