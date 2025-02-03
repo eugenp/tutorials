@@ -5,8 +5,6 @@ This module contains articles about working with the Java Virtual Machine (JVM).
 ### Relevant Articles: 
 
 - [Memory Layout of Objects in Java](https://www.baeldung.com/java-memory-layout)
-- [Measuring Object Sizes in the JVM](https://www.baeldung.com/jvm-measuring-object-sizes)
-- [Adding Shutdown Hooks for JVM Applications](https://www.baeldung.com/jvm-shutdown-hooks)
 - [boolean and boolean[] Memory Layout in the JVM](https://www.baeldung.com/jvm-boolean-memory-layout)
 - [Memory Address of Objects in Java](https://www.baeldung.com/java-object-memory-address)
 - [List All Classes Loaded in a Specific Class Loader](https://www.baeldung.com/java-list-classes-class-loader)
