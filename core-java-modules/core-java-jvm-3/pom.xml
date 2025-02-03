@@ -39,6 +39,11 @@
             <artifactId>bcel</artifactId>
             <version>${bcel.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjdk.jol</groupId>
+            <artifactId>jol-core</artifactId>
+            <version>${jol-core.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -46,6 +51,7 @@
         <javaassist.version>3.30.2-GA</javaassist.version>
         <asm.version>9.7.1</asm.version>
         <bcel.version>6.5.0</bcel.version>
+        <jol-core.version>0.10</jol-core.version>
     </properties>
 
 </project>

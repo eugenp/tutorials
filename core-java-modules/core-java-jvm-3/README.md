@@ -11,4 +11,6 @@ This module contains articles about working with the Java Virtual Machine (JVM).
 - [View Bytecode of a Class File in Java](https://www.baeldung.com/java-class-view-bytecode)
 - [Method Inlining in the JVM](https://www.baeldung.com/jvm-method-inlining)
 - [Runtime.getRuntime().halt() vs System.exit() in Java](https://www.baeldung.com/java-runtime-halt-vs-system-exit)
+- [Where Is the Array Length Stored in JVM?](https://www.baeldung.com/java-jvm-array-length)
+- [Static Fields and Garbage Collection](https://www.baeldung.com/java-static-fields-gc)
 - More articles: [[<-- prev]](/core-java-modules/core-java-jvm-2)
