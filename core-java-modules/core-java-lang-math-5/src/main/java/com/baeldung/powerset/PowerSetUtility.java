@@ -1,6 +1,5 @@
 package com.baeldung.powerset;
 
-import javax.annotation.Nullable;
 import java.util.AbstractSet;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,6 +11,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
+
+import javax.annotation.Nullable;
 
 public class PowerSetUtility<T> {
 

@@ -2,7 +2,7 @@ package com.baeldung.algorithms.logarithm;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class LogarithmUnitTest {
 
@@ -20,8 +20,8 @@ public class LogarithmUnitTest {
 
     @Test
     public void givenCustomLog_shouldReturnValidResults() {
-        assertEquals(customLog(2, 256), 8);
-        assertEquals(customLog(10, 100), 2);
+        assertEquals(8, customLog(2, 256));
+        assertEquals(2, customLog(10, 100));
     }
 
     private static double customLog(double base, double logNumber) {
