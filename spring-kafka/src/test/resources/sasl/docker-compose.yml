@@ -10,8 +10,6 @@ services:
       - ./config/krb5.conf:/etc/krb5.conf
     ports:
       - "88:88/udp"
-    networks:
-      - kafka-network
 
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
@@ -27,8 +25,6 @@ services:
       - ./config/krb5.conf:/etc/krb5.conf
     ports:
       - "2181:2181"
-    networks:
-      - kafka-network
 
   kafka:
     image: confluentinc/cp-kafka:latest
@@ -52,9 +48,3 @@ services:
       - kdc
     ports:
       - 9092:9092
-    networks:
-      - kafka-network
-
-networks:
-  kafka-network:
-    driver: bridge
