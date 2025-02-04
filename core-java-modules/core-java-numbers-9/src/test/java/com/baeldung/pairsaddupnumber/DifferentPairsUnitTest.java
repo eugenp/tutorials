@@ -33,7 +33,7 @@ public class DifferentPairsUnitTest {
         /* Check results */
         assertNotNull(pairs);
         assertEquals(pairs.size(),2);
-        assertEquals(pairs.get(0), new Integer(4));
+        assertEquals(pairs.get(0), Integer.valueOf(4));
         assertThat(pairs).hasSize(2).contains(4,3).doesNotContain(8);
     }
 }

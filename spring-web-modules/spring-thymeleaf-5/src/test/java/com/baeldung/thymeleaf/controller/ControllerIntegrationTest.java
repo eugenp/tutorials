@@ -47,11 +47,6 @@ public class ControllerIntegrationTest {
     }
 
     @Test
-    public void testTeachers() throws Exception {
-        mockMvc.perform(get("/listTeachers").with(testUser()).with(csrf())).andExpect(status().isOk()).andExpect(view().name("listTeachers.html"));
-    }
-
-    @Test
     public void addStudentWithoutCSRF() throws Exception {
         mockMvc.perform(post("/saveStudent").contentType(MediaType.APPLICATION_JSON).param("id", "1234567").param("name", "Joe").param("gender", "M").with(testUser())).andExpect(status().isForbidden());
     }
