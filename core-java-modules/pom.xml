@@ -214,6 +214,7 @@
         <module>core-java-security-2</module>
         <module>core-java-security-3</module>
         <module>core-java-security-4</module>
+        <module>core-java-security-5</module>
         <module>core-java-security-algorithms</module>
         <module>core-java-serialization</module>
         <module>core-java-streams</module>
