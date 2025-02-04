@@ -8,7 +8,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 
-@Entity
+@Entity(name = "department-person")
 @Table(name = "person")
 public class Person {
 
