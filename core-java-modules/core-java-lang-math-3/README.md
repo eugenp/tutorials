@@ -11,4 +11,4 @@
 - [Creating a Magic Square in Java](https://www.baeldung.com/java-magic-square)
 - [Validate if a String Is a Valid Geo Coordinate](https://www.baeldung.com/java-geo-coordinates-validation)
 - [Calculating the Power of Any Number in Java Without Using Math pow() Method](https://www.baeldung.com/java-calculating-the-power-without-math-pow)
-- More articles: [[<-- Prev]](/core-java-modules/core-java-lang-math-2)
+- More articles: [[<-- Prev]](/core-java-modules/core-java-lang-math-2)[[Next -->]](/core-java-modules/core-java-lang-math-4)
