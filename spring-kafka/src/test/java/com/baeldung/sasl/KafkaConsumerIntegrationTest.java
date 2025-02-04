@@ -41,7 +41,7 @@ public class KafkaConsumerIntegrationTest {
     }
 
     @Test
-    public void testKafkaListener() throws Exception {
+    public void testKafkaListener() {
         String testMessage = "Hello!";
         kafkaTemplate.send(TOPIC, testMessage);
 
