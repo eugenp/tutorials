@@ -16,6 +16,26 @@
     <dependencies>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <argLine>
+                        --add-opens java.base/java.util=ALL-UNNAMED
+                        --add-opens java.base/java.lang=ALL-UNNAMED
+                        -Djava.security.manager=allow
+                    </argLine>
+                    <environmentVariables>
+                        <SET_BY_SUREFIRE>YES</SET_BY_SUREFIRE>
+                    </environmentVariables>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
     </properties>
 
