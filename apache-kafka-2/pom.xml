@@ -121,7 +121,7 @@
 
     <properties>
         <jna.version>5.7.0</jna.version>
-        <kafka.version>3.6.1</kafka.version>
+        <kafka.version>3.9.0</kafka.version>
         <testcontainers-kafka.version>1.19.3</testcontainers-kafka.version>
         <testcontainers-jupiter.version>1.19.3</testcontainers-jupiter.version>
         <jackson.databind.version>2.15.2</jackson.databind.version>
