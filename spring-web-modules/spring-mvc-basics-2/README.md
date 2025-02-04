@@ -5,7 +5,7 @@ This module contains articles about Spring MVC
 ## Relevant articles:
 - [HandlerAdapters in Spring MVC](https://www.baeldung.com/spring-mvc-handler-adapters)
 - [Template Engines for Spring](https://www.baeldung.com/spring-template-engines)
-- [Spring 5 and Servlet 4 – The PushBuilder](https://www.baeldung.com/spring-5-push)
+- [Spring and Servlet 4 – The PushBuilder](https://www.baeldung.com/spring-5-push)
 - [Servlet Redirect vs Forward](https://www.baeldung.com/servlet-redirect-forward)
 - [Guide to Spring Email](https://www.baeldung.com/spring-email)
 - [Using ThymeLeaf and FreeMarker Emails Templates with Spring](https://www.baeldung.com/spring-email-templates)

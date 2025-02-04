@@ -44,9 +44,11 @@
         <module>spring-boot-data</module>
         <module>spring-boot-environment</module>
         <module>spring-boot-exceptions</module>
+        <module>spring-boot-featureflag-unleash</module>
         <module>spring-boot-flowable</module>
         <module>spring-boot-graphql</module>
-        <!--<module>spring-boot-groovy</module>--> <!-- failing after upgrading to jdk17-->
+        <!-- <module>spring-boot-graphql-2</module> --> <!-- JAVA-42053 -->
+        <!-- <module>spring-boot-groovy</module> --> <!-- failing after upgrading to jdk17--> <!-- JAVA-42052 -->
         <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
         <module>spring-boot-grpc</module>
         <module>spring-boot-jasypt</module>
@@ -80,7 +82,7 @@
         <module>spring-boot-springdoc</module>
         <module>spring-boot-swagger</module>
         <!--        <module>spring-boot-swagger-2</module>--> <!-- failing after upgrading to spring boot 3. Swagger codegen yet not
-        compatible?!-->
+        compatible?!--> <!-- JAVA-42060 -->
         <module>spring-boot-swagger-jwt</module>
         <module>spring-boot-swagger-keycloak</module>
         <module>spring-boot-swagger-springfox</module>
@@ -93,10 +95,10 @@
         <module>spring-boot-actuator</module>
         <module>spring-boot-data-2</module>
         <module>spring-boot-validation</module>
-        <!--        <module>spring-boot-data-3</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
+        <!-- <module>spring-boot-data-3</module>--> <!-- failing after upgrading to spring boot 3.2.x --> <!-- JAVA-42051 -->
         <module>spring-boot-redis</module>
         <module>spring-boot-cassandre</module>
-        <!--        <module>spring-boot-react</module>--> <!-- Migrated to heavy profile -->
+        <!-- <module>spring-boot-react</module>--> <!-- Migrated to heavy profile -->
         <module>spring-caching-3</module>
         <!-- <module>spring-boot-3</module> --> <!-- JAVA-20931 -->
         <module>spring-boot-3-grpc</module>
@@ -105,6 +107,7 @@
         <module>spring-boot-3-test-pitfalls</module>
         <module>spring-boot-3-testcontainers</module>
         <module>spring-boot-3-2</module>
+        <!-- <module>spring-boot-3-3</module> --> <!-- JAVA-42049 -->
         <module>spring-boot-3-4</module>
         <module>spring-boot-resilience4j</module>
         <module>spring-boot-properties</module>

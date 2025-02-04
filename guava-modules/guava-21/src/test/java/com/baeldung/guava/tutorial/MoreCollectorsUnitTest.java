@@ -20,7 +20,7 @@ public class MoreCollectorsUnitTest {
           .map(e -> e * 2)
           .collect(MoreCollectors.toOptional());
 
-        Assert.assertEquals(number.get(), new Integer(2));
+        Assert.assertEquals(number.get(), Integer.valueOf(2));
     }
 
     @Test
@@ -32,7 +32,7 @@ public class MoreCollectorsUnitTest {
           .map(e -> e * 2)
           .collect(MoreCollectors.onlyElement());
 
-        Assert.assertEquals(number, new Integer(2));
+        Assert.assertEquals(number, Integer.valueOf(2));
     }
 
 }

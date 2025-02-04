@@ -31,11 +31,6 @@
             <version>${groovy.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.groovy</groupId>
-            <artifactId>groovy-sql</artifactId>
-            <version>${groovy-sql.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
             <version>${junit-platform.version}</version>

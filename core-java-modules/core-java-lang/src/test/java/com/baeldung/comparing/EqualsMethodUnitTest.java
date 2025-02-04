@@ -9,8 +9,8 @@ class EqualsMethodUnitTest {
 
     @Test
     void givenTwoIntegersWithSameValue_whenEquals_thenTrue() {
-        Integer a = new Integer(1);
-        Integer b = new Integer(1);
+        Integer a = Integer.valueOf(1);
+        Integer b = Integer.valueOf(1);
 
         assertThat(a.equals(b)).isTrue();
     }

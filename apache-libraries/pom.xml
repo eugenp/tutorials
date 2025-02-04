@@ -23,12 +23,12 @@
         <dependency>
             <groupId>org.apache.avro</groupId>
             <artifactId>avro-compiler</artifactId>
-            <version>${avro.version}</version>
+            <version>${apache.avro.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.avro</groupId>
             <artifactId>avro-maven-plugin</artifactId>
-            <version>${avro.version}</version>
+            <version>${apache.avro.version}</version>
         </dependency>
         <!-- bval -->
         <dependency>
@@ -78,6 +78,13 @@
             <artifactId>mesos</artifactId>
             <version>${mesos.library.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>net.javacrumbs.json-unit</groupId>
+            <artifactId>json-unit-assertj</artifactId>
+            <version>${json-unit-assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -88,8 +95,8 @@
                 <artifactId>avro-maven-plugin</artifactId>
                 <version>${apache.avro.version}</version>
                 <configuration>
-                    <sourceDirectory>src/main/java/com/baeldung/apache/avro/schemas</sourceDirectory>
-                    <outputDirectory>src/main/java</outputDirectory>
+                    <sourceDirectory>${project.basedir}/src/main/resources/schemas</sourceDirectory>
+                    <outputDirectory>${project.build.directory}/generated-sources/avro/</outputDirectory>
                     <stringType>String</stringType>
                 </configuration>
                 <executions>
@@ -101,16 +108,24 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>15</source>
+                    <target>15</target>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
     <properties>
-        <avro.version>1.8.2</avro.version>
         <bval.version>3.0.1</bval.version>
         <jakarta.validation.validation-api.version>3.1.0</jakarta.validation.validation-api.version><opennlp.opennlp-tools.version>1.8.4</opennlp.opennlp-tools.version>
         <solr.solr-solrj.version>6.4.0</solr.solr-solrj.version>
         <apache.avro.version>1.12.0</apache.avro.version>
         <mesos.library.version>1.11.0</mesos.library.version>
+        <json-unit-assertj.version>3.5.0</json-unit-assertj.version>
     </properties>
 
 </project>
