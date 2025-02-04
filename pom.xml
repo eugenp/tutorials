@@ -683,6 +683,7 @@
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
+                <module>jmonkeyengine</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
@@ -1070,6 +1071,7 @@
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
+                <module>jmonkeyengine</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
