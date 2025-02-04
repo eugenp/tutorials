@@ -7,6 +7,5 @@
 - [Batch Processing of Stream Data in Java](https://www.baeldung.com/java-stream-batch-processing)
 - [Stream to Iterable in Java](https://www.baeldung.com/java-stream-to-iterable)
 - [Understanding the Difference Between Stream.of() and IntStream.range()](https://www.baeldung.com/java-stream-of-and-intstream-range)
-- [Check if Object Is an Array in Java](https://www.baeldung.com/java-check-if-object-is-an-array)
 - [Mapping an Array of Integers to Strings Using Java Streams](https://www.baeldung.com/java-stream-integer-array-to-strings)
 - More articles: [[<-- prev>]](/../core-java-streams-3) [[next -->]](/../core-java-streams-5)
