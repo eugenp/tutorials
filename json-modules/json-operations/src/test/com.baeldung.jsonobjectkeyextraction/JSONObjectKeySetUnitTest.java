@@ -9,30 +9,40 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class JSONObjectKeySetUnitTest {
 
-    @Test
-    void givenJSONObject_whenUsingKeySet_thenKeysExtracted() {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("name", "John Doe");
-        jsonObject.put("age", 30);
-        jsonObject.put("isEmployed", true);
+    private static final String jsonString = "{"
+            + "\"name\": \"John Doe\", "
+            + "\"age\": 30, "
+            + "\"isEmployed\": true, "
+            + "\"address\": {"
+            + "    \"city\": \"New York\", "
+            + "    \"zipCode\": \"10001\""
+            + "}"
+            + "}";
 
+    @Test
+    void givenJSONObject_whenUsingKeySet_thenReturnsKeys() {
+        JSONObject jsonObject = new JSONObject(jsonString);
+        Set<String> keys = jsonObject.keySet();
+        assertEquals(Set.of("name", "age", "isEmployed", "address"), keys);
+    }
+
+    @Test
+    void givenJSONString_whenParsing_thenKeysExtracted() {
+        JSONObject jsonObject = new JSONObject(jsonString);
         Set<String> keys = jsonObject.keySet();
 
         assertTrue(keys.contains("name"));
         assertTrue(keys.contains("age"));
         assertTrue(keys.contains("isEmployed"));
-        assertEquals(3, keys.size());
+        assertTrue(keys.contains("address"));
+        assertEquals(4, keys.size());
     }
 
     @Test
     void givenJSONObject_whenIteratingKeys_thenValuesProcessed() {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("name", "John Doe");
-        jsonObject.put("age", 30);
-        jsonObject.put("isEmployed", true);
+        JSONObject jsonObject = new JSONObject(jsonString);
 
-        Set<String> keys = jsonObject.keySet();
-        for (String key : keys) {
+        for (String key : jsonObject.keySet()) {
             Object value = jsonObject.get(key);
             assertNotNull(value);
         }
@@ -40,25 +50,17 @@ class JSONObjectKeySetUnitTest {
 
     @Test
     void givenNestedJSONObject_whenUsingKeySet_thenAllKeysExtracted() {
-        JSONObject address = new JSONObject();
-        address.put("city", "New York");
-        address.put("zipCode", "10001");
+        JSONObject jsonObject = new JSONObject(jsonString);
 
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("name", "John Doe");
-        jsonObject.put("address", address);
+        Set<String> topLevelKeys = jsonObject.keySet();
+        assertTrue(topLevelKeys.contains("name"));
+        assertTrue(topLevelKeys.contains("address"));
+        assertEquals(4, topLevelKeys.size());
 
-        Set<String> keys = jsonObject.keySet();
-
-        assertTrue(keys.contains("name"));
-        assertTrue(keys.contains("address"));
-        assertEquals(2, keys.size());
-
-        JSONObject nestedAddress = jsonObject.getJSONObject("address");
-        Set<String> nestedKeys = nestedAddress.keySet();
-
-        assertTrue(nestedKeys.contains("city"));
-        assertTrue(nestedKeys.contains("zipCode"));
-        assertEquals(2, nestedKeys.size());
+        JSONObject addressObject = jsonObject.getJSONObject("address");
+        Set<String> addressKeys = addressObject.keySet();
+        assertTrue(addressKeys.contains("city"));
+        assertTrue(addressKeys.contains("zipCode"));
+        assertEquals(2, addressKeys.size());
     }
 }
