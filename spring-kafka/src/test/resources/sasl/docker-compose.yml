@@ -37,7 +37,7 @@ services:
       KAFKA_ADVERTISED_LISTENERS: SASL_PLAINTEXT://localhost:9092
       KAFKA_INTER_BROKER_LISTENER_NAME: SASL_PLAINTEXT
       KAFKA_OPTS: "-Djava.security.auth.login.config=/etc/kafka/kafka_server_jaas.conf"
-      KAFKA_AUTO_CREATE_TOPICS_ENABLE: true
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     volumes:
       - ./config/kafka_server_jaas.conf:/etc/kafka/kafka_server_jaas.conf
