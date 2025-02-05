@@ -1,5 +1,6 @@
 package com.baeldung.springdoc.model;
 
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 

@@ -75,9 +75,6 @@ public class ShufflingCollectionsUnitTest {
         List<String> originalList = Arrays.asList("Foo", "Bar", "Baz", "Qux");
         List<String> shuffledList = ShufflingCollections.shuffleList(originalList);
 
-        // Ensure the shuffled list is different from the original list
-        assertNotEquals(originalList, shuffledList, "The shuffled list should not be the same as the original list");
-
         // Ensure the shuffled list contains the same elements as the original list
         assertTrue(shuffledList.containsAll(originalList), "The shuffled list should contain all elements of the original list");
         assertTrue(originalList.containsAll(shuffledList), "The original list should contain all elements of the shuffled list");

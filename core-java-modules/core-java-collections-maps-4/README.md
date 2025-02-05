@@ -9,4 +9,5 @@ This module contains articles about Map data structures in Java.
 - [Difference Between Map and HashMap in Java](https://www.baeldung.com/java-map-vs-hashmap)
 - [How to Create a New Entry in a Map](https://www.baeldung.com/java-map-new-entry)
 - [Difference Between Map and MultivaluedMap in Java](https://www.baeldung.com/java-map-vs-multivaluedmap)
+- [Guide to Apache Commons MultiValuedMap](https://www.baeldung.com/apache-commons-multi-valued-map)
 - More articles: [[<-- prev]](/core-java-modules/core-java-collections-maps-3)[[next -->]](/core-java-modules/core-java-collections-maps-5)
