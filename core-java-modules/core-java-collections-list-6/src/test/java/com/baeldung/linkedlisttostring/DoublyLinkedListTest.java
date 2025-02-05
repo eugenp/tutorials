@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class DoublyLinkedListTest {
     @Test
-    public void testAddAndToString() {
+    void testAddAndToString() {
         DoublyLinkedList list = new DoublyLinkedList();
         list.add(101);
         list.add(102);
