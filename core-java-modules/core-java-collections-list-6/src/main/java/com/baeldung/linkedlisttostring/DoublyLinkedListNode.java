@@ -1,4 +1,5 @@
 package com.baeldung.linkedlisttostring;
+
 public class DoublyLinkedListNode {
     Integer data;
     DoublyLinkedListNode next;
