@@ -23,10 +23,10 @@ public class DoublyLinkedList {
         } else {
             DoublyLinkedListNode currentNode = list.head;
             while (currentNode != null) {
-                sb.append(currentNode.data).append(" <-> ");
+                sb.append(currentNode.data).append(" - ");
                 currentNode = currentNode.next;
             }
-            sb.delete(sb.length() - 4, sb.length());  
+            sb.delete(sb.length() - 3, sb.length());  
         }
         return sb.toString();
     }
