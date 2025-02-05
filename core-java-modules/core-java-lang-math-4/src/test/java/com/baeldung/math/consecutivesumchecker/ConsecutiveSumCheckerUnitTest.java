@@ -18,7 +18,11 @@ public class ConsecutiveSumCheckerUnitTest {
         int n = (number - 1) / 2;
         return new int[]{n, n + 1};
     }
-
+    
+    public boolean isOdd(int number) {
+        return number % 2 != 0
+    }
+    
     public static List<int[]> findConsecutiveSums(int number) {
         List<int[]> results = new ArrayList<>();
         for (int k = 2; k * (k - 1) / 2 < number; k++) {
@@ -39,14 +43,12 @@ public class ConsecutiveSumCheckerUnitTest {
 
     @Test
     public void givenOddNumber_whenCheckingSumOfConsecutiveNumbers_thenReturnTrue() {
-        boolean oddModTwo = (oddNumber % 2 != 0);
-        assertEquals(true, oddModTwo);
+        assertTrue(isOdd(oddNumber))
     }
 
     @Test
     public void givenEvenNumber_whenCheckingSumOfConsecutiveNumbers_thenReturnFalse() {
-        boolean evenModTwo = (evenNumber % 2 != 0);
-        assertEquals(false, evenModTwo);
+        assertFalse(isOdd(evenNumber))
     }
 
     @Test
