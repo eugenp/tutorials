@@ -35,6 +35,11 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${hikari.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.instancio</groupId>
             <artifactId>instancio-junit</artifactId>
             <version>${instancio.version}</version>
@@ -61,6 +66,7 @@
 
     <properties>
         <lombok.version>1.18.36</lombok.version>
+        <hikari.version>6.2.1</hikari.version>
         <instancio.version>5.2.1</instancio.version>
         <spring-boot.version>3.4.1</spring-boot.version>
     </properties>
