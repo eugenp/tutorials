@@ -746,7 +746,7 @@
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
                 <module>podman</module>
-                <module>protobuffer</module>
+                <module>google-protocol-buffer</module>
                 <module>quarkus-modules</module>
                 <module>reactive-systems</module>
                 <module>reactor-core</module>
@@ -1135,7 +1135,7 @@
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
                 <module>podman</module>
-                <module>protobuffer</module>
+                <module>google-protocol-buffer</module>
                 <module>quarkus-modules</module>
                 <module>reactive-systems</module>
                 <module>reactor-core</module>
