@@ -20,7 +20,7 @@ public class ConsecutiveSumCheckerUnitTest {
     }
     
     public boolean isOdd(int number) {
-        return number % 2 != 0
+        return number % 2 != 0;
     }
     
     public static List<int[]> findConsecutiveSums(int number) {
@@ -43,12 +43,12 @@ public class ConsecutiveSumCheckerUnitTest {
 
     @Test
     public void givenOddNumber_whenCheckingSumOfConsecutiveNumbers_thenReturnTrue() {
-        assertTrue(isOdd(oddNumber))
+        assertTrue(isOdd(oddNumber));
     }
 
     @Test
     public void givenEvenNumber_whenCheckingSumOfConsecutiveNumbers_thenReturnFalse() {
-        assertFalse(isOdd(evenNumber))
+        assertFalse(isOdd(evenNumber));
     }
 
     @Test
