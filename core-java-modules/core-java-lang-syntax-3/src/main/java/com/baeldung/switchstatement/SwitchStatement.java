@@ -11,9 +11,8 @@ public class SwitchStatement {
             return "Grade: C";
         } else if (score >= 60) {
             return "Grade: D";
-        } else {
-            return "Grade: F";
         }
+        return "Grade: F";
     }
 
     // Method 2: Assign grade using switch with integer division
@@ -41,7 +40,7 @@ public class SwitchStatement {
     }
 
     public String assignGradeUsingEnum(int score) {
-        ScoreRange range;
+        ScoreRange range = ScoreRange.F; // Default assignment
 
         if (score >= 90) {
             range = ScoreRange.A;
@@ -51,23 +50,9 @@ public class SwitchStatement {
             range = ScoreRange.C;
         } else if (score >= 60) {
             range = ScoreRange.D;
-        } else {
-            range = ScoreRange.F;
         }
 
-        switch (range) {
-            case A:
-                return "Grade: A";
-            case B:
-                return "Grade: B";
-            case C:
-                return "Grade: C";
-            case D:
-                return "Grade: D";
-            case F:
-                return "Grade: F";
-            default:
-                throw new IllegalStateException("Unexpected value: " + range);
-        }
+        return "Grade: " + range;
     }
+
 }
