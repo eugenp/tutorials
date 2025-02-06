@@ -3,6 +3,7 @@ package com.baeldung.reactive.kafka;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -48,7 +49,9 @@ public class ReactorKafkaConsumerUnitTest {
 
     @BeforeEach
     void setUp() {
-        kafkaAdmin = new KafkaAdmin(Map.of(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers));
+        Map<String, Object> map = new HashMap<>();
+        map.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
+        kafkaAdmin = new KafkaAdmin(map);
     }
 
     @AfterEach
