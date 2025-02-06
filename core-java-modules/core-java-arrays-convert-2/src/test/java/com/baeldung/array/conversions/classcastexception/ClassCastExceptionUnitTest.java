@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.lang.reflect.Array;
 import java.time.Instant;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -40,6 +41,13 @@ public class ClassCastExceptionUnitTest {
         return intArray;
     }
 
+    Integer[] objArrayToIntArrayByStream() {
+        Object[] objArray = new Object[] { 1, 2, 3 };
+        Integer[] intArray = Stream.of(objArray)
+            .toArray(Integer[]::new);
+        return intArray;
+    }
+
     <T> T[] convertFromObjectArray(Class<T> clazz, Object[] objArray) {
         T[] targetArray = (T[]) Array.newInstance(clazz, objArray.length);
         for (int i = 0; i < objArray.length; i++) {
@@ -67,6 +75,11 @@ public class ClassCastExceptionUnitTest {
     @Test
     void whenCallingObjArrayToIntArray_thenCorrect() {
         assertArrayEquals(new Integer[] { 1, 2, 3 }, objArrayToIntArray());
+    }
+
+    @Test
+    void whenCallingObjArrayToIntArrayByStream_thenCorrect() {
+        assertArrayEquals(new Integer[] { 1, 2, 3 }, objArrayToIntArrayByStream());
     }
 
     @Test
