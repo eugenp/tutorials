@@ -9,7 +9,8 @@ import org.springframework.context.annotation.PropertySource;
 @SpringBootApplication(exclude = {
 		OpenAiAutoConfiguration.class,
 		ChromaVectorStoreAutoConfiguration.class
-})@PropertySource("classpath:application-semantic-search.properties")
+})
+@PropertySource("classpath:application-semantic-search.properties")
 public class Application {
 
 	public static void main(String[] args) {
