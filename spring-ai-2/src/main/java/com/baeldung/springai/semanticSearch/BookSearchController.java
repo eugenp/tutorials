@@ -1,11 +1,8 @@
 package com.baeldung.springai.semanticSearch;
 
 
-import org.springframework.ai.chat.messages.SystemMessage;
-import org.springframework.ai.chat.messages.UserMessage;
-import org.springframework.ai.chat.prompt.Prompt;
+import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.document.Document;
-import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,11 +16,11 @@ import java.util.List;
 @RequestMapping("/books")
 public class BookSearchController {
     private final VectorStore vectorStore;
-    private final OllamaChatModel ollamaChatClient;
+    private final ChatClient chatClient;
 
-    public BookSearchController(VectorStore vectorStore, OllamaChatModel ollamaChatClient) {
+    public BookSearchController(VectorStore vectorStore, ChatClient.Builder chatClientBuilder) {
         this.vectorStore = vectorStore;
-        this.ollamaChatClient = ollamaChatClient;
+        this.chatClient = chatClientBuilder.build();
     }
 
     @PostMapping("/search")
@@ -47,13 +44,11 @@ public class BookSearchController {
                 .map(Document::getText)
                 .reduce("", (a, b) -> a + b + "\n");
 
-
-        var generalInstructionsSystemMessage = new SystemMessage(context);
-        var currentPromptMessage = new UserMessage(query);
-
-        var prompt = new Prompt(List.of(generalInstructionsSystemMessage, currentPromptMessage));
-
-        return ollamaChatClient.call(prompt).getResult().getOutput().getText();
+        return chatClient.prompt()
+                .system(context)
+                .user(query)
+                .call()
+                .content();
     }
 
 }
