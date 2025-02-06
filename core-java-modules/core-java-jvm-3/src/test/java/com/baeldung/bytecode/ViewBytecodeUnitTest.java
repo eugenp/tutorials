@@ -12,6 +12,7 @@ import org.apache.bcel.classfile.JavaClass;
 import org.junit.Test;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.util.TraceClassVisitor;
+
 import javassist.ClassPool;
 import javassist.NotFoundException;
 import javassist.bytecode.ClassFile;
@@ -32,8 +33,8 @@ public class ViewBytecodeUnitTest {
     public void whenUsingBCEL_thenReadBytecode() throws ClassNotFoundException {
         JavaClass objectClazz = Repository.lookupClass("java.lang.Object");
         
-        assertEquals(objectClazz.getClassName(), "java.lang.Object");   
-        assertEquals(objectClazz.getMethods().length, 12);
+        assertEquals("java.lang.Object", objectClazz.getClassName());
+        assertEquals(13, objectClazz.getMethods().length);
         assertTrue(objectClazz.toString().contains("public class java.lang.Object"));
     }
     
@@ -42,8 +43,8 @@ public class ViewBytecodeUnitTest {
         ClassPool cp = ClassPool.getDefault();
         ClassFile cf = cp.get("java.lang.Object").getClassFile();
         
-        assertEquals(cf.getName(), "java.lang.Object");
-        assertEquals(cf.getMethods().size(), 12);
+        assertEquals("java.lang.Object", cf.getName());
+        assertEquals(13, cf.getMethods().size());
     }
     
 }
