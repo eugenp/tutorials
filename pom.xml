@@ -1416,7 +1416,6 @@
                 <module>persistence-modules/spring-boot-persistence-mongodb-2</module> <!-- JAVA-42371 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb-4</module> <!-- JAVA-42372 -->
                 <module>persistence-modules/spring-boot-persistence-4</module> <!-- JAVA-42045 -->
-                <module>persistence-modules/spring-boot-persistence-5</module> <!-- JAVA-42046 -->
                 <module>persistence-modules/spring-data-elasticsearch</module> <!-- JAVA-42359 -->
                 <module>persistence-modules/spring-data-mongodb-2</module> <!-- JAVA-42145 -->
                 <module>quarkus-modules/mongo-db</module> <!-- JAVA-42048 -->
@@ -1490,7 +1489,6 @@
                 <module>persistence-modules/spring-boot-persistence-mongodb-2</module> <!-- JAVA-42371 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb-4</module> <!-- JAVA-42372 -->
                 <module>persistence-modules/spring-boot-persistence-4</module> <!-- JAVA-42045 -->
-                <module>persistence-modules/spring-boot-persistence-5</module> <!-- JAVA-42046 -->
                 <module>persistence-modules/spring-data-elasticsearch</module> <!-- JAVA-42359 -->
                 <module>persistence-modules/spring-data-mongodb-2</module> <!-- JAVA-42145 -->
                 <module>quarkus-modules/mongo-db</module> <!-- JAVA-42048 -->
