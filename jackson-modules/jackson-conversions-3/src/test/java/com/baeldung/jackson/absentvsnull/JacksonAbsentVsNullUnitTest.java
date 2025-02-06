@@ -199,43 +199,43 @@ class JacksonAbsentVsNullUnitTest {
         private List<String> keys;
         private List<Integer> values;
 
-        Long getId() {
+        public Long getId() {
             return id;
         }
 
-        void setId(Long id) {
+        public void setId(Long id) {
             this.id = id;
         }
 
-        String getName() {
+        public String getName() {
             return name;
         }
 
-        void setName(String name) {
+        public void setName(String name) {
             this.name = name;
         }
 
-        int getAmount() {
+        public int getAmount() {
             return amount;
         }
 
-        void setAmount(int amount) {
+        public void setAmount(int amount) {
             this.amount = amount;
         }
 
-        List<String> getKeys() {
+        public List<String> getKeys() {
             return keys;
         }
 
-        void setKeys(List<String> names) {
+        public void setKeys(List<String> names) {
             this.keys = names;
         }
 
-        List<Integer> getValues() {
+        public List<Integer> getValues() {
             return values;
         }
 
-        void setValues(List<Integer> values) {
+        public void setValues(List<Integer> values) {
             this.values = values;
         }
 
