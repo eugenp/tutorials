@@ -183,7 +183,7 @@
         <wiremock-jre8.version>2.34.0</wiremock-jre8.version>
         <jandex-maven-plugin.version>1.2.3</jandex-maven-plugin.version>
         <springdoc.version>1.7.0</springdoc.version>
-        <start-class>com.baeldung.OpenApiApplication</start-class>
+        <start-class>com.baeldung.openapi.OpenApiApplication</start-class>
         <spring-boot.version>3.2.2</spring-boot.version>
     </properties>
 

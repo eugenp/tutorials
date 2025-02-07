@@ -25,11 +25,4 @@
         </plugins>
     </build>
 
-    <properties>
-        <maven.compiler.source>23</maven.compiler.source>
-        <maven.compiler.target>23</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>23</java.version>
-    </properties>
-    
 </project>

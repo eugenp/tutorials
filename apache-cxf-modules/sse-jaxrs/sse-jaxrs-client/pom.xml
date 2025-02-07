@@ -59,8 +59,4 @@
         </plugins>
     </build>
 
-    <properties>
-        <jakarta-ws.version>3.1.0</jakarta-ws.version>
-    </properties>
-
 </project>

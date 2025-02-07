@@ -10,16 +10,14 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-6</artifactId>
+        <artifactId>spring-web-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-spring-6</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${spring.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>commons-logging</artifactId>
@@ -60,7 +58,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring-boot.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -103,6 +100,7 @@
         <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
         <jakarta.servlet-api.version>6.1.0</jakarta.servlet-api.version>
         <jakarta.servlet.jsp-api.version>4.0.0</jakarta.servlet.jsp-api.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
 </project>

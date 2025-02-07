@@ -8,6 +8,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import com.baeldung.books.models.WebsiteUser;
+import com.baeldung.books.projections.CustomBook;
 
 @Configuration
 public class RestConfig implements RepositoryRestConfigurer {
@@ -17,5 +18,6 @@ public class RestConfig implements RepositoryRestConfigurer {
                                                      CorsRegistry cors) {
         ExposureConfiguration config = repositoryRestConfiguration.getExposureConfiguration();
         config.forDomainType(WebsiteUser.class).withItemExposure((metadata, httpMethods) -> httpMethods.disable(HttpMethod.PATCH));
+        repositoryRestConfiguration.getProjectionConfiguration().addProjection(CustomBook.class);
     }
 }

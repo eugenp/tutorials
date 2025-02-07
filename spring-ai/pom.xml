@@ -14,11 +14,6 @@
         <relativePath>../parent-boot-3</relativePath>
     </parent>
 
-    <properties>
-        <spring-boot.version>3.3.2</spring-boot.version>
-        <spring-ai.version>1.0.0-M1</spring-ai.version>
-    </properties>
-
     <repositories>
         <repository>
             <id>spring-snapshots</id>
@@ -88,32 +83,8 @@
             <artifactId>spring-ai-mongodb-atlas-store-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-openai-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-redis-store-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-transformers-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-pdf-document-reader</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-mistral-ai-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
 
@@ -140,5 +111,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <spring-boot.version>3.3.2</spring-boot.version>
+        <spring-ai.version>1.0.0-M3</spring-ai.version>
+        <junit-jupiter.version>5.9.0</junit-jupiter.version>
+    </properties>
 
 </project>

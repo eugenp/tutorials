@@ -10,9 +10,8 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-6</artifactId>
+        <artifactId>spring-web-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-spring-6</relativePath>
     </parent>
 
     <dependencies>
@@ -102,6 +101,7 @@
         <spring-boot-starter-test.version>3.3.3</spring-boot-starter-test.version>
         <tomee-maven-plugin.version>8.0.1</tomee-maven-plugin.version>
         <jakarta-servlet.version>6.1.0</jakarta-servlet.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
 </project>

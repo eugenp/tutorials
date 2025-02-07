@@ -1,30 +1,21 @@
 package com.baeldung.loginextrafieldssimple;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
 @PropertySource("classpath:/application-extrafields.properties")
+@Configuration
 public class SecurityConfig extends AbstractHttpConfigurer<SecurityConfig, HttpSecurity> {
-
-    @Autowired
-    private UserDetailsService userDetailsService;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
@@ -38,19 +29,16 @@ public class SecurityConfig extends AbstractHttpConfigurer<SecurityConfig, HttpS
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.csrf(AbstractHttpConfigurer::disable)
+            .authorizeRequests()
             .requestMatchers("/css/**", "/index")
             .permitAll()
             .requestMatchers("/user/**")
             .authenticated()
             .and()
-            .formLogin()
-            .loginPage("/login")
-            .and()
-            .logout()
-            .logoutUrl("/logout")
-            .and()
-            .apply(securityConfig());
+            .formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer.loginPage("/login").permitAll())
+            .logout(httpSecurityLogoutConfigurer -> httpSecurityLogoutConfigurer.logoutUrl("/logout").permitAll())
+            .with(securityConfig(), Customizer.withDefaults());
         return http.getOrBuild();
     }
 
@@ -59,18 +47,6 @@ public class SecurityConfig extends AbstractHttpConfigurer<SecurityConfig, HttpS
         filter.setAuthenticationManager(authenticationManager);
         filter.setAuthenticationFailureHandler(failureHandler());
         return filter;
-    }
-
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authProvider());
-    }
-
-    public AuthenticationProvider authProvider() {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setUserDetailsService(userDetailsService);
-        provider.setPasswordEncoder(passwordEncoder);
-        return provider;
     }
 
     public SimpleUrlAuthenticationFailureHandler failureHandler() {

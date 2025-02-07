@@ -18,7 +18,11 @@ public class MessageSender {
     private QueueSession session;
     private QueueSender sender;
 
-    public MessageSender() throws JMSException {
+    public MessageSender() {
+
+    }
+
+    public void initialize() throws JMSException {
         factory = new JMSSetup().createConnectionFactory();
         connection = factory.createQueueConnection();
         session = connection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);

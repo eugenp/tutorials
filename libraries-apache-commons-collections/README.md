@@ -11,3 +11,4 @@ This module contains articles about Apache Commons Collections
 - [A Guide to Apache Commons Collections CollectionUtils](https://www.baeldung.com/apache-commons-collection-utils)
 - [Apache Commons Collections BidiMap](https://www.baeldung.com/commons-collections-bidi-map)
 - [Apache Commons Collections MapUtils](https://www.baeldung.com/apache-commons-map-utils)
+- [Apache Commons Collections vs Google Guava](https://www.baeldung.com/apache-commons-collections-vs-guava)

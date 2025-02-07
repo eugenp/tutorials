@@ -3,10 +3,6 @@
 This module contains articles about JSON.
 
 ### Relevant Articles:
-
-- [Introduction to Jsoniter](https://www.baeldung.com/java-jsoniter)
-- [Introduction to Moshi Json](https://www.baeldung.com/java-json-moshi)
-- [Hypermedia Serialization With JSON-LD](https://www.baeldung.com/json-linked-data)
 - [A Guide to FastJson](https://www.baeldung.com/fastjson)
 - [Remove Whitespaces From a JSON in Java](https://www.baeldung.com/java-json-minify-remove-whitespaces)
 - [Programmatic Generation of JSON Schemas in Java](https://www.baeldung.com/java-json-schema-create-automatically)

@@ -25,7 +25,6 @@
             <artifactId>vavr</artifactId>
             <version>${vavr.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
@@ -34,10 +33,10 @@
     </dependencies>
 
     <build>
-        <finalName>core-java-streams-4</finalName>
+        <finalName>core-java-streams-5</finalName>
         <resources>
             <resource>
-                <directory>../core-java-streams-4/src/main</directory>
+                <directory>../core-java-streams-5/src/main</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>

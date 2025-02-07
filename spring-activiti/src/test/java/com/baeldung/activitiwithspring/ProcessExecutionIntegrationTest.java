@@ -41,7 +41,7 @@ public class ProcessExecutionIntegrationTest {
 
         Map<String, Object> variables = new HashMap<String, Object>();
         variables.put("employeeName", "Kermit");
-        variables.put("numberOfDays", new Integer(4));
+        variables.put("numberOfDays", Integer.valueOf(4));
         variables.put("vacationMotivation", "I'm really tired!");
 
         RuntimeService runtimeService = processEngine.getRuntimeService();
@@ -62,7 +62,7 @@ public class ProcessExecutionIntegrationTest {
 
         Map<String, Object> variables = new HashMap<String, Object>();
         variables.put("employeeName", "Kermit");
-        variables.put("numberOfDays", new Integer(4));
+        variables.put("numberOfDays", Integer.valueOf(4));
         variables.put("vacationMotivation", "I'm really tired!");
 
         RuntimeService runtimeService = processEngine.getRuntimeService();

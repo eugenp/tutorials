@@ -6,7 +6,7 @@
         <servlet-name>rest-servlet</servlet-name>
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
         <init-param>
-            <param-name>javax.ws.rs.Application</param-name>
+            <param-name>jakarta.ws.rs.Application</param-name>
             <param-value>com.baeldung.maven.it.EndpointConfig</param-value>
         </init-param>
     </servlet>

@@ -17,6 +17,7 @@
     <modules>
         <module>apache-camel</module>
         <module>apache-rocketmq</module>
+        <module>automq</module>
         <module>jgroups</module>
         <module>java-redpanda</module>
         <module>rabbitmq</module>
@@ -24,7 +25,7 @@
         <module>spring-apache-camel</module>
         <module>spring-jms</module>
         <module>postgres-notify</module>
-        <!-- <module>ibm-mq</module> --> <!-- BAEL-8412 -->
+        <module>ibm-mq</module>
     </modules>
 
 </project>
