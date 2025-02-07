@@ -5,7 +5,6 @@ This module contains articles about core Java Security
 ### Relevant Articles: 
 
 - [Guide to the Cipher Class](http://www.baeldung.com/java-cipher-class)
-- [Introduction to SSL in Java](http://www.baeldung.com/java-ssl)
 - [Java KeyStore API](http://www.baeldung.com/java-keystore)  this is failing need to debug
 - [SSL Handshake Failures](https://www.baeldung.com/java-ssl-handshake-failures)
 - [MD5 Hashing in Java](http://www.baeldung.com/java-md5)
