@@ -13,6 +13,9 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <maven.compiler.release>17</maven.compiler.release>
+        <pulumi.version>(,1.0]</pulumi.version>
+        <pulumi.aws.version>(6.0.2,6.99]</pulumi.aws.version>
+        <junit.jupiter.version>5.7.0</junit.jupiter.version>
         <mainClass>myproject.WebserverInfra</mainClass>
         <mainArgs/>
     </properties>
@@ -27,28 +30,22 @@
         <dependency>
             <groupId>com.pulumi</groupId>
             <artifactId>pulumi</artifactId>
-            <version>(,1.0]</version>
+            <version>${pulumi.version}</version>
         </dependency>
         <dependency>
             <groupId>com.pulumi</groupId>
             <artifactId>aws</artifactId>
-            <version>(6.0.2,6.99]</version>
+            <version>${pulumi.aws.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.7.0</version>
+            <version>${junit.jupiter.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.7.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.26.0</version>
+            <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
