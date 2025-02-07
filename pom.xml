@@ -603,6 +603,7 @@
                 <!--<module>spring-swagger-codegen-modules/openapi-custom-generator</module>
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
                 <module>vavr-modules/vavr</module>
+                <module>spring-boot-modules/newrelic</module>
             </modules>
 
             <properties>
