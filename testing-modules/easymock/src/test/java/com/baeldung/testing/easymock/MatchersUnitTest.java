@@ -1,4 +1,4 @@
-package com.baeldung.easymock;
+package com.baeldung.testing.easymock;
 
 import static org.easymock.EasyMock.*;
 import static org.junit.jupiter.api.Assertions.*;
