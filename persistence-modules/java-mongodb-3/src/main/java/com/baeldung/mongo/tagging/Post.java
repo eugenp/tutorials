@@ -1,4 +1,4 @@
-package com.baeldung.tagging;
+package com.baeldung.mongo.tagging;
 
 import java.util.List;
 

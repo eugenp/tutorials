@@ -1,4 +1,4 @@
-package com.baeldung.morphia;
+package com.baeldung.mongo.morphia;
 
 import static dev.morphia.aggregation.Group.grouping;
 import static dev.morphia.aggregation.Group.push;
@@ -17,9 +17,9 @@ import org.bson.types.ObjectId;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.baeldung.morphia.domain.Author;
-import com.baeldung.morphia.domain.Book;
-import com.baeldung.morphia.domain.Publisher;
+import com.baeldung.mongo.morphia.domain.Author;
+import com.baeldung.mongo.morphia.domain.Book;
+import com.baeldung.mongo.morphia.domain.Publisher;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.model.ReturnDocument;
 
