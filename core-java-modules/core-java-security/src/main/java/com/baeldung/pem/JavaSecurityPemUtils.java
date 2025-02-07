@@ -1,7 +1,5 @@
 package com.baeldung.pem;
 
-import org.apache.commons.codec.binary.Base64;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -12,6 +10,8 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
+
+import org.apache.commons.codec.binary.Base64;
 
 public class JavaSecurityPemUtils {
 

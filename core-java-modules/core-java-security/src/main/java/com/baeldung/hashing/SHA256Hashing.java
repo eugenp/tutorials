@@ -1,15 +1,16 @@
 package com.baeldung.hashing;
 
-import com.google.common.hash.Hashing;
-import org.apache.commons.codec.digest.DigestUtils;
-import org.bouncycastle.util.encoders.Hex;
+import static com.baeldung.hashing.DigestAlgorithms.SHA_256;
+import static com.baeldung.hashing.SHACommonUtils.bytesToHex;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import static com.baeldung.hashing.DigestAlgorithms.SHA_256;
-import static com.baeldung.hashing.SHACommonUtils.bytesToHex;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.bouncycastle.util.encoders.Hex;
+
+import com.google.common.hash.Hashing;
 
 public class SHA256Hashing {
 

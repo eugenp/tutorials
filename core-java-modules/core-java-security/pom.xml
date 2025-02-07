@@ -13,6 +13,24 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>${jaxb-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${commons-codec.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk18on</artifactId>
+            <version>${bouncycastle.version}</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -38,5 +56,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <jaxb-api.version>2.3.1</jaxb-api.version>
+        <commons-codec.version>1.16.0</commons-codec.version>
+        <bouncycastle.version>1.76</bouncycastle.version>
+    </properties>
 
 </project>
