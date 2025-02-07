@@ -12,6 +12,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 // Please note, this test requires a MySQL server running on localhost:3306 with database users_db already created.
 // We have added creation of the table it in the setup() method.
@@ -81,16 +82,11 @@ public class MultipleSQLExecutionLiveTest {
 
         List<User> users = execution.executeMultipleSelectStatements();
 
-        // Here we verify the correct number of users were fetched
-        assertEquals(2, users.size(), "There should be exactly two users fetched.");
-
-        List<String> fetchedUserNames = users.stream()
-                                             .map(User::getName)
-                                             .toList();
-
-        // Here, we verify that expected users are present
-        List<String> expectedUserNames = List.of("Alice", "Bob");
-        assertTrue(fetchedUserNames.containsAll(expectedUserNames), "Fetched users should match the expected names.");
+        // Here we verify that exactly two users are fetched and their names match the expected ones
+        assertThat(users)
+            .hasSize(2)
+            .extracting(User::getName)
+            .containsExactlyInAnyOrder("Alice", "Bob");
     }
 }
 
