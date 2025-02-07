@@ -70,7 +70,7 @@ public class HttpClientUnitTest {
     @Test
     public void shouldFollowRedirectWhenSetToAlways() throws IOException, InterruptedException, URISyntaxException {
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(new URI("http://stackoverflow.com/questions"))
+            .uri(new URI("http://stackoverflow.com"))
             .version(HttpClient.Version.HTTP_1_1)
             .GET()
             .build();
