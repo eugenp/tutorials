@@ -6,7 +6,7 @@ import java.util.LinkedList;
 public class LinkedListToStringTest {
 
     @Test
-    void testDefaultToString() {
+    void givenList_toString_defaultFormat() {
         LinkedList<Integer> idsList = new LinkedList<>();
         idsList.add(101);
         idsList.add(102);
@@ -16,7 +16,7 @@ public class LinkedListToStringTest {
     }
 
     @Test
-    void testEmptyDefaultToString() {
+    void emptyList_toString_defaultFormat() {
         LinkedList<Integer> emptyList = new LinkedList<>();
 
         assertEquals("[]", emptyList.toString(), "Empty LinkedList should return empty brackets.");
