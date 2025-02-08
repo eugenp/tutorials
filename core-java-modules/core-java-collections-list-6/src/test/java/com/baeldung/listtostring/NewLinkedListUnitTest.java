@@ -7,7 +7,7 @@ public class NewLinkedListTest {
 
     // Test for custom toString() when the list is not empty
     @Test
-    void testCustomToString() {
+    void givenList_customToString_formattedOutput() {
         LinkedList<Integer> idsList = new LinkedList<>();
         idsList.add(101);
         idsList.add(102);
@@ -20,7 +20,7 @@ public class NewLinkedListTest {
 
     // Test for custom toString() when the list is empty
     @Test
-    void testEmptyCustomToString() {
+    void emptyList_customToString_formattedOutput() {
         LinkedList<Integer> emptyList = new LinkedList<>();
         
         String expected = "Custom LinkedList: Empty List";
