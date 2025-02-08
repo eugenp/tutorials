@@ -1,4 +1,4 @@
-package com.baeldung.applicationcontext;
+package com.baeldung.springapplicationcontext;
 
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

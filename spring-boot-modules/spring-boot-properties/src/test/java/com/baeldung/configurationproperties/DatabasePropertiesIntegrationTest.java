@@ -9,9 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.configurationproperties.Database;
-
-
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DatabaseConfigPropertiesApp.class)
 @TestPropertySource("classpath:database-test.properties")

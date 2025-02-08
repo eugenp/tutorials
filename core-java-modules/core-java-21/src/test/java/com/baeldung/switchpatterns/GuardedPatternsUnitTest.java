@@ -3,9 +3,9 @@ package com.baeldung.switchpatterns;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static com.baeldung.switchpatterns.ParenthesizedPatterns.*;
+import static com.baeldung.switchpatterns.GuardedPatterns.*;
 
-class ParenthesizedPatternsUnitTest {
+class GuardedPatternsUnitTest {
 
     @Test
     void givenIfImplementation_whenUsingEmptyString_thenDoubleIsReturned() {
@@ -18,23 +18,13 @@ class ParenthesizedPatternsUnitTest {
     }
 
     @Test
-    void givenIfImplementation_whenStringContainsSpecialChar_thenDoubleIsReturned() {
-        assertEquals(0d, getDoubleValueUsingIf("@10"));
-    }
-
-    @Test
     void givenPatternsImplementation_whenUsingEmptyString_thenDoubleIsReturned() {
-        assertEquals(0d, getDoubleValueUsingParenthesizedPatterns(""));
+        assertEquals(0d, getDoubleValueUsingGuardedPatterns(""));
     }
 
     @Test
     void givenPatternsImplementation_whenUsingNonEmptyString_thenDoubleIsReturned() {
-        assertEquals(10d, getDoubleValueUsingParenthesizedPatterns("10"));
-    }
-
-    @Test
-    void givenPatternsImplementation_whenStringContainsSpecialChar_thenDoubleIsReturned() {
-        assertEquals(0d, getDoubleValueUsingParenthesizedPatterns("@10"));
+        assertEquals(10d, getDoubleValueUsingGuardedPatterns("10"));
     }
 
 }
