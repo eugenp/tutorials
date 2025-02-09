@@ -33,10 +33,8 @@ public class ActiveJTest {
         PersonService personService = Injector.of(personModule).getInstance(PersonService.class);
 
         Eventloop eventloop = Eventloop.create();
-
+        eventloop.run();
         personService.findAndVerifyPerson("Good person")
           .whenResult(verifiedPerson -> assertEquals("SUCCESS", verifiedPerson.result()));
-
-        eventloop.run();
     }
 }
