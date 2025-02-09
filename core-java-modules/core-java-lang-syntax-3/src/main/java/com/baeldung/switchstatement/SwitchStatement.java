@@ -33,26 +33,4 @@ public class SwitchStatement {
                 return "Grade: F";
         }
     }
-
-    // Method 3: Assign grade using enums
-    enum ScoreRange {
-        A, B, C, D, F
-    }
-
-    public String assignGradeUsingEnum(int score) {
-        ScoreRange range = ScoreRange.F; // Default assignment
-
-        if (score >= 90) {
-            range = ScoreRange.A;
-        } else if (score >= 80) {
-            range = ScoreRange.B;
-        } else if (score >= 70) {
-            range = ScoreRange.C;
-        } else if (score >= 60) {
-            range = ScoreRange.D;
-        }
-
-        return "Grade: " + range;
-    }
-
 }

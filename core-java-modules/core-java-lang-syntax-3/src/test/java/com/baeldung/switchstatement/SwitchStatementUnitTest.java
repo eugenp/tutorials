@@ -25,14 +25,4 @@ public class SwitchStatementUnitTest {
         assertEquals("Grade: D", gradeAssignment.assignGradeUsingRangesWithIntegerDivision(65));
         assertEquals("Grade: F", gradeAssignment.assignGradeUsingRangesWithIntegerDivision(55));
     }
-
-    // --- Grouped Tests for Enum Approach ---
-    @Test
-    public void givenVariousScores_whenAssignGradeUsingEnum_thenCorrectGradesAssigned() {
-        assertEquals("Grade: A", gradeAssignment.assignGradeUsingEnum(95));
-        assertEquals("Grade: B", gradeAssignment.assignGradeUsingEnum(85));
-        assertEquals("Grade: C", gradeAssignment.assignGradeUsingEnum(75));
-        assertEquals("Grade: D", gradeAssignment.assignGradeUsingEnum(65));
-        assertEquals("Grade: F", gradeAssignment.assignGradeUsingEnum(55));
-    }
 }
