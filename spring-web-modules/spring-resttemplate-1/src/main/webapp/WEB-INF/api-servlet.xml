@@ -8,28 +8,19 @@
 
     <context:component-scan base-package="com.baeldung.resttemplate.web" />
 
-    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" >
+    <mvc:annotation-driven >
         <mvc:message-converters register-defaults="true">
            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
-<!-- <bean class="org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter"/>         -->      
-  </mvc:message-converters>
+            <!-- <bean class="org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter"/>         -->
+        </mvc:message-converters>
     </mvc:annotation-driven>
     
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" />
     <bean class="org.springframework.web.servlet.view.XmlViewResolver">
-        <property name="location">
-            <value>/WEB-INF/spring-views.xml</value>
-        </property>
+        <property name="location" value="/WEB-INF/spring-views.xml"/>
         <property name="order" value="0" />
     </bean>
-
-    
-    <bean id="contentNegotiationManager"
-             class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
-       <property name="defaultContentType" value="application/json" />
-  </bean>
-
 
 </beans>
 
