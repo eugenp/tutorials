@@ -9,7 +9,7 @@ import jakarta.validation.constraints.Size
 data class Foo(
     @Id
     val id: Long = 0,
-		
+
     @NotBlank
     @Size(min = 0, max = 50)
     val name: String = ""

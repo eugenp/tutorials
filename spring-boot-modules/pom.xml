@@ -44,6 +44,7 @@
         <module>spring-boot-data</module>
         <module>spring-boot-environment</module>
         <module>spring-boot-exceptions</module>
+        <module>spring-boot-featureflag-unleash</module>
         <module>spring-boot-flowable</module>
         <module>spring-boot-graphql</module>
         <!-- <module>spring-boot-graphql-2</module> --> <!-- JAVA-42053 -->
@@ -70,6 +71,7 @@
         <module>spring-boot-nashorn</module>
         <module>spring-boot-parent</module>
         <module>spring-boot-performance</module>
+        <module>spring-boot-pkl</module>
         <module>spring-boot-property-exp</module>
         <module>spring-boot-request-params</module>
         <module>spring-boot-runtime</module>
