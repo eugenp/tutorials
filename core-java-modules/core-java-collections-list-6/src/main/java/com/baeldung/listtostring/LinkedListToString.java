@@ -7,8 +7,8 @@ public class LinkedListToString {
         idsList.add(101);
         idsList.add(102);
         idsList.add(103);
-        System.out.println(idsList.toString());
+        System.out.println("LinkedList: " + idsList.toString());
         LinkedList<Integer> emptyList = new LinkedList<>();
-        System.out.println(emptyList.toString());
+        System.out.println("LinkedList: " + emptyList.toString());
     }
 }
