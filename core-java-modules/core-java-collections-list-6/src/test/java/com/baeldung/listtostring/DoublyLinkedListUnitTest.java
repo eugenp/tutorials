@@ -2,7 +2,7 @@ package com.baeldung.listtostring;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class DoublyLinkedListTest {
+public class DoublyLinkedListUnitTest {
 
     @Test
     void givenList_toString_formattedOutput() {
