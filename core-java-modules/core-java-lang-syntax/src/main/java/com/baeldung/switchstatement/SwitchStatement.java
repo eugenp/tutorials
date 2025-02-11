@@ -1,6 +1,5 @@
 package com.baeldung.switchstatement;
 
-import com.baeldung.loops.LoopsInJava;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
