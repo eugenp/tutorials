@@ -1,4 +1,5 @@
 package com.baeldung.listtostring;
+
 public class DoublyLinkedList {
     DoublyLinkedListNode head;
     DoublyLinkedListNode tail;
