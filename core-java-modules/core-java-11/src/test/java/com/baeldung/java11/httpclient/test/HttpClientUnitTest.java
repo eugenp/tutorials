@@ -82,7 +82,7 @@ public class HttpClientUnitTest {
         assertThat(response.statusCode(), equalTo(HttpURLConnection.HTTP_OK));
         assertThat(response.request()
             .uri()
-            .toString(), equalTo("https://stackoverflow.com/"));
+            .toString(), equalTo("https://stackoverflow.com/questions"));
     }
 
     @Test
