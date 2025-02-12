@@ -2,6 +2,7 @@ package com.baeldung.securityconfig.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 import javax.sql.DataSource;
 
@@ -29,12 +31,25 @@ public class SecurityConfig {
             .anyRequest().authenticated())
           .formLogin(withDefaults())
           .httpBasic(withDefaults())
-          .logout(withDefaults());
+          .logout(logout -> logout
+            .logoutSuccessUrl("/")
+            .invalidateHttpSession(true)
+            .logoutSuccessHandler(webSecurityUserLogoutHandler())
+            .deleteCookies("JSESSIONID"));
         return http.build();
     }
 
     @Bean
-    public AuthenticationManager authManager(HttpSecurity http) throws Exception {
+    public LogoutSuccessHandler webSecurityUserLogoutHandler() {
+        return (request, response, authentication) -> {
+          System.out.println("User logged out successfully!");
+          response.sendRedirect("/app");
+        };
+    }
+
+    @Bean
+    @Profile("inmemory")
+    public AuthenticationManager inMemoryAuthManager(HttpSecurity http) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder =
           http.getSharedObject(AuthenticationManagerBuilder.class);
 
@@ -51,10 +66,11 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authManager(HttpSecurity http, DataSource dataSource,
+    @Profile("jdbc")
+    public AuthenticationManager jdbcAuthManager(HttpSecurity http, DataSource dataSource,
       PasswordEncoder passwordEncoder) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder =
-                http.getSharedObject(AuthenticationManagerBuilder.class);
+          http.getSharedObject(AuthenticationManagerBuilder.class);
 
         authenticationManagerBuilder
           .jdbcAuthentication()
