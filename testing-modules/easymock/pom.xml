@@ -23,7 +23,7 @@
     </dependencies>
 
     <properties>
-        <easymock.version>4.0.2</easymock.version>
+        <easymock.version>5.5.0</easymock.version>
     </properties>
 
 </project>

@@ -25,6 +25,7 @@
         <module>rest-express</module>
         <module>event-driven-microservice</module>
         <module>micronaut-docker</module>
+        <module>pulumi</module>
     </modules>
 
 </project>

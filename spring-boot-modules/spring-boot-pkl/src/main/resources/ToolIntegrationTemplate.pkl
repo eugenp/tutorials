@@ -1,0 +1,15 @@
+module com.baeldung.spring.pkl.ToolIntegrationProperties
+
+class Connection {
+  url:String
+  name:String
+  credential:Credential
+}
+
+class Credential {
+  user:String
+  password:String
+}
+
+gitConnection: Connection
+jiraConnection: Connection
