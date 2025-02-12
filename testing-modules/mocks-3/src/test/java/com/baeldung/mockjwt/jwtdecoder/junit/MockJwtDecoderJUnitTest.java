@@ -7,6 +7,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +22,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
@@ -34,14 +37,10 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(MockitoExtension.class)
 public class MockJwtDecoderJUnitTest {
-
-    @Autowired
-    private MockMvc mockMvc;
 
     @Mock
     private JwtDecoder jwtDecoder;
@@ -86,52 +85,65 @@ public class MockJwtDecoderJUnitTest {
             .claims(existingClaims -> existingClaims.putAll(claims))
             .build();
 
-        List<GrantedAuthority> authorities = ((List<String>) jwt.getClaim("roles"))
-            .stream()
+        List<GrantedAuthority> authorities = ((List<String>) jwt.getClaim("roles")).stream()
             .map(role -> new SimpleGrantedAuthority(role))
             .collect(Collectors.toList());
 
-        JwtAuthenticationToken authentication = new JwtAuthenticationToken(
-            jwt,
-            authorities,
-            jwt.getClaim("sub")
-        );
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+        JwtAuthenticationToken authentication = new JwtAuthenticationToken(jwt, authorities, jwt.getClaim("sub"));
+        SecurityContextHolder.getContext()
+            .setAuthentication(authentication);
 
         ResponseEntity<String> response = userController.getUserInfo(jwt);
 
         assertEquals("Hello, john.doe", response.getBody());
         assertEquals(HttpStatus.OK, response.getStatusCode());
 
-        assertTrue(authentication.getAuthorities().stream()
-            .anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN")));
+        assertTrue(authentication.getAuthorities()
+            .stream()
+            .anyMatch(auth -> auth.getAuthority()
+                .equals("ROLE_ADMIN")));
     }
 
     @Test
-    void whenInvalidToken_thenThrowsException() throws Exception {
-        when(jwtDecoder.decode("invalid_token"))
-            .thenThrow(new JwtValidationException(
-                "Invalid token",
-                Arrays.asList(new OAuth2Error("invalid_token"))
-            ));
+    void whenInvalidToken_thenThrowsException() {
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("sub", null);
 
-        // Simulate token validation (this would normally happen in the filter chain)
-        assertThrows(JwtValidationException.class, () -> jwtDecoder.decode("invalid_token"));
+        Jwt invalidJwt = Jwt.withTokenValue("invalid_token")
+            .header("alg", "none")
+            .claims(existingClaims -> existingClaims.putAll(claims))
+            .build();
+
+        JwtAuthenticationToken authentication = new JwtAuthenticationToken(invalidJwt);
+        SecurityContextHolder.getContext()
+            .setAuthentication(authentication);
+
+        JwtValidationException exception = assertThrows(JwtValidationException.class, () -> {
+            userController.getUserInfo(invalidJwt);
+        });
+
+        assertEquals("Invalid token", exception.getMessage());
     }
 
     @Test
-    void whenTokenExpired_thenThrowsException() {
-        when(jwtDecoder.decode("expired_token"))
-            .thenThrow(new JwtValidationException(
-                "Token expired",
-                Arrays.asList(new OAuth2Error("expired_token"))
-            ));
+    void whenExpiredToken_thenThrowsException() throws Exception {
+        // Simulate an expired JWT
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("sub", "john.doe");
+        claims.put("exp", Instant.now().minus(1, ChronoUnit.DAYS));
 
-        JwtValidationException thrown = assertThrows(
-            JwtValidationException.class,
-            () -> jwtDecoder.decode("expired_token")
-        );
+        Jwt expiredJwt = Jwt.withTokenValue("expired_token")
+            .header("alg", "none")
+            .claims(existingClaims -> existingClaims.putAll(claims))
+            .build();
 
-        assertEquals("Token expired", thrown.getMessage());
+        JwtAuthenticationToken authentication = new JwtAuthenticationToken(expiredJwt);
+        SecurityContextHolder.getContext()
+            .setAuthentication(authentication);
+        JwtValidationException exception = assertThrows(JwtValidationException.class, () -> {
+            userController.getUserInfo(expiredJwt);
+        });
+
+        assertEquals("Token has expired", exception.getMessage());
     }
 }
