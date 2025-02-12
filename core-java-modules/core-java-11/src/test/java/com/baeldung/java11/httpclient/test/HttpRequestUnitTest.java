@@ -38,7 +38,7 @@ public class HttpRequestUnitTest {
     @Test
     public void shouldUseHttp2WhenWebsiteUsesHttp2() throws IOException, InterruptedException, URISyntaxException {
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(new URI("https://stackoverflow.com"))
+            .uri(new URI("https://stackoverflow.com/questions"))
             .version(HttpClient.Version.HTTP_2)
             .GET()
             .build();
