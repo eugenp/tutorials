@@ -17,9 +17,9 @@ public class TimeBasedGreeterController {
 
         if (currentHour >= 6 && currentHour < 12) {
             greeting = "Good Morning!";
-        } else if (currentHour >= 12 && currentHour < 18) {
+        } else if (currentHour >= 12 && currentHour < 16) {
             greeting = "Good Afternoon!";
-        } else if (currentHour >= 18 && currentHour < 24) {
+        } else if (currentHour >= 16 && currentHour <= 19) {
             greeting = "Good Evening!";
         } else {
             greeting = "Good Night!";
