@@ -15,24 +15,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.16.0</version>
-        </dependency>
-        <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>1.36</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.10.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>${org.json.version}</version>
+            <version>${jmh-core.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -40,16 +25,6 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>5.8.1</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
-
-    <properties>
-        <spring.version>5.2.5.RELEASE</spring.version>
-    </properties>
 
 </project>
