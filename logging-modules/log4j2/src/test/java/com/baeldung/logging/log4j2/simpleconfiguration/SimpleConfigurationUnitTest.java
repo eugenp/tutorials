@@ -4,17 +4,17 @@
 **/
 package com.baeldung.logging.log4j2.simpleconfiguration;
 
-import com.baeldung.logging.log4j2.Log4j2BaseIntegrationTest;
+import com.baeldung.logging.log4j2.Log4j2BaseUnitTest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
 import org.apache.logging.log4j.core.config.plugins.util.PluginManager;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
-public class SimpleConfigurationIntegrationTest extends Log4j2BaseIntegrationTest {
-    @BeforeClass
+public class SimpleConfigurationUnitTest extends Log4j2BaseUnitTest {
+    @BeforeAll
     public static void setUp() {
         PluginManager.addPackage("com.baeldung.logging.log4j2.simpleconfiguration");
     }

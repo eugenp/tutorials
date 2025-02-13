@@ -12,19 +12,16 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
 import org.apache.logging.log4j.ThreadContext;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import com.baeldung.logging.log4j2.tests.jdbc.ConnectionFactory;
 
-@RunWith(JUnit4.class)
-public class CustomLoggingIntegrationTest {
+public class CustomLoggingUnitTest {
 
     private static String logFilePath = System.getProperty("logging.folder.path");
     
-    @BeforeClass
+    @BeforeAll
     public static void setup() throws Exception {
         
         Connection connection = ConnectionFactory.getConnection();
