@@ -8,8 +8,10 @@ spring:
   security:
     webauthn:
       rpName: "WebAuthn Demo"
+      # Replace with the domainname of your application
       rpId:  fit-lab-partly.ngrok-free.app
       allowedOrigins:
+        # Replace with the URL of your application. Notice: this _MUST_ be an HTTPS URL with a valid certificate
         - "https://fit-lab-partly.ngrok-free.app"
     user:
       name: alice
