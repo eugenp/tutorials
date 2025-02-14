@@ -335,7 +335,6 @@
                 <module>core-java-modules/core-java-8-datetime-2</module>
                 <module>core-java-modules/core-java-sun</module>
                 <module>core-java-modules/core-java-lang</module>
-                <module>core-java-modules/core-java-lang-math-3</module>
                 <module>core-java-modules/core-java-streams-2</module>
                 <module>libraries-jdk8</module>
                 <module>lombok-modules/lombok-custom</module>
@@ -447,7 +446,6 @@
                 <module>core-java-modules/core-java-8-datetime-2</module>
                 <module>core-java-modules/core-java-sun</module>
                 <module>core-java-modules/core-java-lang</module>
-                <module>core-java-modules/core-java-lang-math-3</module>
                 <module>core-java-modules/core-java-streams-2</module>
                 <module>libraries-jdk8</module>
                 <module>lombok-modules/lombok-custom</module>

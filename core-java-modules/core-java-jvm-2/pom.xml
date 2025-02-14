@@ -15,14 +15,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.openjdk.jol</groupId>
-            <artifactId>jol-core</artifactId>
-            <version>${jol-core.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.reflections</groupId>
             <artifactId>reflections</artifactId>
             <version>${reflections.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jol</groupId>
+            <artifactId>jol-core</artifactId>
+            <version>${jol-core.version}</version>
         </dependency>
     </dependencies>
 
@@ -41,8 +41,8 @@
     </build>
 
     <properties>
-        <jol-core.version>0.10</jol-core.version>
         <reflections.version>0.10.2</reflections.version>
+        <jol-core.version>0.10</jol-core.version>
     </properties>
 
 </project>

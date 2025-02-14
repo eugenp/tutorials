@@ -22,7 +22,6 @@
         <!--<module>core-java-8-datetime</module> -->
         <!--<module>core-java-8-datetime-2</module> -->
         <!--<module>core-java-lang-8</module> -->
-        <!--<module>core-java-lang-math-3</module> -->
         <!--<module>core-java-streams-2</module> -->
         <!--<module>core-java-sun</module> -->
         <module>core-java-collections-conversions-2</module>
@@ -75,6 +74,7 @@
         <module>core-java-arrays-guides</module>
         <module>core-java-arrays-multidimensional</module>
         <module>core-java-arrays-convert</module>
+        <module>core-java-arrays-convert-2</module>
         <module>core-java-arrays-operations-basic</module>
         <module>core-java-arrays-operations-basic-2</module>
         <module>core-java-arrays-operations-basic-3</module>
@@ -148,11 +148,13 @@
         <!-- <module>core-java-io-6</module> --> <!-- failing after upgrade to jdk21 -->
         <module>core-java-io-apis</module>
         <module>core-java-io-apis-2</module>
+        <module>core-java-io-apis-3</module>
         <module>core-java-io-conversions</module>
         <module>core-java-io-conversions-3</module>
         <module>core-java-jar</module>
+        <module>core-java-jar2</module>
         <module>core-java-jndi</module>
-        <!-- <module>core-java-jvm</module> --> <!-- failing after upgrade to jdk21 -->
+        <module>core-java-jvm</module>
         <module>core-java-jvm-2</module>
         <module>core-java-jvm-3</module>
         <module>core-java-lambdas</module>
@@ -166,7 +168,9 @@
         <module>core-java-lang-8</module>
         <module>core-java-lang-math</module>
         <module>core-java-lang-math-2</module>
+        <module>core-java-lang-math-3</module>
         <module>core-java-lang-math-4</module>
+        <module>core-java-lang-math-5</module>
         <module>core-java-lang-oop-constructors</module>
         <module>core-java-lang-oop-patterns</module>
         <module>core-java-lang-oop-generics</module>

@@ -6,7 +6,6 @@
 
 - [Calculate Factorial in Java](https://www.baeldung.com/java-calculate-factorial)
 - [Check if Two Rectangles Overlap in Java](https://www.baeldung.com/java-check-if-two-rectangles-overlap)
-- [Calculate the Distance Between Two Points in Java](https://www.baeldung.com/java-distance-between-two-points)
 - [Find the Intersection of Two Lines in Java](https://www.baeldung.com/java-intersection-of-two-lines)
 - [Round Up to the Nearest Hundred in Java](https://www.baeldung.com/java-round-up-nearest-hundred)
 - [Convert Latitude and Longitude to a 2D Point in Java](https://www.baeldung.com/java-convert-latitude-longitude)
