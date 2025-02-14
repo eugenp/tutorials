@@ -26,7 +26,7 @@ class ReflectDataUnitTest {
         assertThatJson(jsonSchema).isEqualTo("""
             {
               "type" : "record",
-              "name" : "BankAccount",
+              "name" : "SimpleBankAccount",
               "namespace" : "com.baeldung.apache.avro.model",
               "fields" : [ {
                 "name" : "bankAccountNumber",
