@@ -5,7 +5,7 @@ This module contains articles about core Java Security
 ### Relevant Articles: 
 
 - [Guide to the Cipher Class](http://www.baeldung.com/java-cipher-class)
-- [Java KeyStore API](http://www.baeldung.com/java-keystore)  this is failing need to debug
+- [Java KeyStore API](http://www.baeldung.com/java-keystore)
 - [SSL Handshake Failures](https://www.baeldung.com/java-ssl-handshake-failures)
 - [MD5 Hashing in Java](http://www.baeldung.com/java-md5)
 - [How to Read PEM File to Get Public and Private Keys](https://www.baeldung.com/java-read-pem-file-keys)
