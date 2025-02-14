@@ -1,90 +1,66 @@
 package com.baeldung.customlinkedlist;
 
 import org.junit.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class ListNodeUnitTest {
 
     @Test
     public void givenLinkedList_whenBuildingReferenceBetweenNodes_thenCorrect() {
-        ListNode listNode0 = new ListNode(1);
-        ListNode listNode1 = new ListNode(2);
-        ListNode listNode2 = new ListNode(3);
+        Node<Integer> node0 = new Node<>(1);
+        Node<Integer> node1 = new Node<>(2);
+        Node<Integer> node2 = new Node<>(3);
+        node0.next = node1;
+        node1.next = node2;
 
-        listNode0.next = listNode1;
-        listNode1.next = listNode2;
-
-        assertEquals(1, listNode0.value);
-        assertEquals(2, listNode0.next.value);
-        assertEquals(3, listNode0.next.next.value);
-        assertNull(listNode0.next.next.next);
+        assertEquals(1, node0.value);
+        assertEquals(2, node0.next.value);
+        assertEquals(3, node0.next.next.value);
     }
 
     @Test
-    public void givenLinkedList_whenInsertingNode_thenCorrect() {
-        ListNode listNode0 = new ListNode(1);
-        ListNode listNode1 = new ListNode(2);
-        ListNode listNode2 = new ListNode(3);
-        ListNode newNode = new ListNode(4);
-        ListNode newNode2 = new ListNode(5);
-
-        listNode0.next = listNode1;
-        listNode1.next = listNode2;
-
-        listNode0.insert(listNode0, newNode);
-        listNode0.insert(listNode0, newNode2);
-
-        assertEquals(1, listNode0.value);
-        assertEquals(5, listNode0.next.value);
-        assertEquals(4, listNode0.next.next.value);
-        assertEquals(2, listNode0.next.next.next.value);
-        assertEquals(3, listNode0.next.next.next.next.value);
-        assertNull(listNode0.next.next.next.next.next);
+    public void givenAnEmptyCustomLinkedList_whenInsertingNodes_thenReturnValueOfSpecifiedIndex() {
+        CustomLinkedList<String> fruit = new CustomLinkedList<>();
+        fruit.insertTail("Avocado");
+        fruit.insertTail("Banana");
+        fruit.insertTail("Apple");
+        assertEquals("Apple", fruit.get(2));
     }
 
     @Test
-    public void givenLinkedList_whenRemovingNode_thenCorrect() {
-        ListNode listNode0 = new ListNode(1);
-        ListNode listNode1 = new ListNode(2);
-        ListNode listNode2 = new ListNode(3);
-
-        listNode0.next = listNode1;
-        listNode1.next = listNode2;
-
-        listNode0.remove(listNode0);
-
-        assertEquals(1, listNode0.value);
-        assertEquals(3, listNode0.next.value);
-        assertNull(listNode0.next.next);
+    public void givenLinkedList_whenGettingElementByIndex_thenCorrect() {
+        CustomLinkedList<String> fruit = new CustomLinkedList<>();
+        fruit.insertTail("Avocado");
+        fruit.insertTail("Banana");
+        fruit.insertTail("Apple");
+        assertEquals("Avocado", fruit.get(0));
     }
 
     @Test
-    public void givenLinkedList_whenGettingANodeThroughIndex_thenCorrect() {
-        ListNode listNode0 = new ListNode(1);
-        ListNode listNode1 = new ListNode(2);
-        ListNode listNode2 = new ListNode(3);
-
-        listNode0.next = listNode1;
-        listNode1.next = listNode2;
-
-        ListNode resultNode = listNode0.get(listNode0, 1);
-
-        assertEquals(2, resultNode.value);
+    public void givenEmptyCustomLinkedList_whenInsertingElementAtTheHead_thenReturnCorrectSize() {
+        CustomLinkedList<String> fruit = new CustomLinkedList<>();
+        fruit.insertTop("Avocado");
+        fruit.insertTop("Banana");
+        fruit.insertTop("Apple");
+        assertEquals(3, fruit.size());
     }
 
     @Test
-    public void givenLinkedList_whenFindingNodeByValue_thenCorrect() {
-        ListNode listNode0 = new ListNode(1);
-        ListNode listNode1 = new ListNode(2);
-        ListNode listNode2 = new ListNode(3);
+    public void givenCustomLinkedList_whenRetrievingTheSizeOfTheList_thenCorrect() {
+        CustomLinkedList<String> fruit = new CustomLinkedList<>();
+        fruit.insertTop("Avocado");
+        fruit.insertTop("Banana");
+        fruit.insertTop("Apple");
+        assertEquals(3, fruit.size());
+    }
 
-        listNode0.next = listNode1;
-        listNode1.next = listNode2;
-
-        int index = listNode0.find(listNode0, 3);
-
-        assertEquals(2, index);
+    @Test
+    public void givenCustomLinkedList_whenRemovingANodeBaseOnIndex_thenReturnNewSize() {
+        CustomLinkedList<String> fruit = new CustomLinkedList<>();
+        fruit.insertTop("Avocado");
+        fruit.insertTop("Banana");
+        fruit.insertTop("Apple");
+        fruit.removeAtIndex(2);
+        assertEquals(2, fruit.size());
     }
 }
