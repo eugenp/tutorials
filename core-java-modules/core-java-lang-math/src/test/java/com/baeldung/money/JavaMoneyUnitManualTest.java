@@ -1,10 +1,14 @@
 package com.baeldung.money;
 
-import org.javamoney.moneta.FastMoney;
-import org.javamoney.moneta.Money;
-import org.javamoney.moneta.format.CurrencyStyle;
-import org.junit.Ignore;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 
 import javax.money.CurrencyUnit;
 import javax.money.Monetary;
@@ -15,15 +19,12 @@ import javax.money.convert.MonetaryConversions;
 import javax.money.format.AmountFormatQueryBuilder;
 import javax.money.format.MonetaryAmountFormat;
 import javax.money.format.MonetaryFormats;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import org.javamoney.moneta.FastMoney;
+import org.javamoney.moneta.Money;
+import org.javamoney.moneta.format.CurrencyStyle;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 public class JavaMoneyUnitManualTest {
 
@@ -32,14 +33,16 @@ public class JavaMoneyUnitManualTest {
         CurrencyUnit usd = Monetary.getCurrency("USD");
 
         assertNotNull(usd);
-        assertEquals(usd.getCurrencyCode(), "USD");
-        assertEquals(usd.getNumericCode(), 840);
-        assertEquals(usd.getDefaultFractionDigits(), 2);
+        assertEquals("USD", usd.getCurrencyCode());
+        assertEquals(840, usd.getNumericCode());
+        assertEquals(2, usd.getDefaultFractionDigits());
     }
 
-    @Test(expected = UnknownCurrencyException.class)
+    @Test
     public void givenCurrencyCode_whenNoExist_thanThrowsError() {
-        Monetary.getCurrency("AAA");
+        assertThrows(UnknownCurrencyException.class, () -> {
+            Monetary.getCurrency("AAA");
+        });
     }
 
     @Test
@@ -72,15 +75,18 @@ public class JavaMoneyUnitManualTest {
         assertTrue(oneDolar.equals(Money.of(1, "USD")));
     }
 
-    @Test(expected = ArithmeticException.class)
+    @Test
     public void givenAmount_whenDivided_thanThrowsException() {
-        MonetaryAmount oneDolar = Monetary
+        MonetaryAmount oneDollar = Monetary
           .getDefaultAmountFactory()
           .setCurrency("USD")
           .setNumber(1)
           .create();
-        oneDolar.divide(3);
-        fail(); // if no exception
+
+        assertThrows(ArithmeticException.class, () -> {
+            oneDollar.divide(3);
+        });
+
     }
 
     @Test
@@ -137,7 +143,7 @@ public class JavaMoneyUnitManualTest {
     }
 
     @Test
-    @Ignore("Currency providers are not always available")
+    @Disabled("Currency providers are not always available")
     public void givenAmount_whenConversion_thenNotNull() {
         MonetaryAmount oneDollar = Monetary
           .getDefaultAmountFactory()

@@ -10,3 +10,6 @@
 - [Calculate Percentage Difference Between Two Numbers in Java](https://www.baeldung.com/java-percentage-difference)
 - [Why Is 2 * (i * i) Faster Than 2 * i * i in Java?](https://www.baeldung.com/java-performance-2-i-i-multiplication)
 - [How to Check if Multiplying Two Numbers in Java Will Cause an Overflow](https://www.baeldung.com/java-multiply-numbers-overflow)
+- [Java Unsigned Arithmetic Support](https://www.baeldung.com/java-unsigned-arithmetic)
+- More articles: [[<-- Prev]](/core-java-modules/core-java-lang-math-3)[[Next -->]](/core-java-modules/core-java-lang-math-5)
+

@@ -1,14 +1,5 @@
 package com.baeldung.powerset;
 
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
-import org.hamcrest.collection.IsCollectionWithSize;
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -16,6 +7,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.hamcrest.collection.IsCollectionWithSize;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 
 public class PowerSetUtilityUnitTest {
 
