@@ -3,7 +3,7 @@ package com.baeldung.customlinkedlist;
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ListNodeUnitTest {
+public class CustomLinkedListUnitTest {
 
     @Test
     public void givenLinkedList_whenBuildingReferenceBetweenNodes_thenCorrect() {
