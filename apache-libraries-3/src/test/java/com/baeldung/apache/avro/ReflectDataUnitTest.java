@@ -2,16 +2,20 @@ package com.baeldung.apache.avro;
 
 import static net.javacrumbs.jsonunit.assertj.JsonAssertions.assertThatJson;
 
+import org.apache.avro.Conversions;
 import org.apache.avro.Schema;
+import org.apache.avro.data.TimeConversions;
 import org.apache.avro.reflect.ReflectData;
 import org.junit.jupiter.api.Test;
 
+import com.baeldung.apache.avro.model.BankAccountWithAbstractField;
 import com.baeldung.apache.avro.model.BankAccountWithIgnoredField;
+import com.baeldung.apache.avro.model.BankAccountWithLogicalTypes;
 import com.baeldung.apache.avro.model.BankAccountWithNullableField;
 import com.baeldung.apache.avro.model.BankAccountWithOverriddenField;
 import com.baeldung.apache.avro.model.SimpleBankAccount;
 
-class JavaClassToAvroUnitTest {
+class ReflectDataUnitTest {
 
     @Test
     void givenSimpleRecord_whenGeneratingSchema_thenAValidAvroSchemaIsReturned() {
@@ -74,7 +78,6 @@ class JavaClassToAvroUnitTest {
             """);
     }
 
-
     @Test
     void givenRecordWithOverriddenField_whenGeneratingSchema_thenAValidAvroSchemaIsReturned() {
         Schema schema = ReflectData.get()
@@ -92,6 +95,84 @@ class JavaClassToAvroUnitTest {
               }, {
                 "name" : "bankAccountReference",
                 "type" : "string"
+              } ]
+            }
+            """);
+    }
+
+    @Test
+    void givenRecordWithAbstractField_whenGeneratingSchema_thenAValidAvroSchemaIsReturned() {
+        Schema schema = ReflectData.get()
+            .getSchema(BankAccountWithAbstractField.class);
+        String jsonSchema = schema.toString();
+
+        assertThatJson(jsonSchema).isEqualTo("""
+            {
+              "type" : "record",
+              "name" : "BankAccountWithAbstractField",
+              "namespace" : "com.baeldung.apache.avro.model",
+              "fields" : [ {
+                "name" : "bankAccountNumber",
+                "type" : "string"
+              }, {
+                "name" : "reference",
+                "type" : [ {
+                  "type" : "record",
+                  "name" : "PersonalBankAccountReference",
+                  "namespace" : "com.baeldung.apache.avro.model.BankAccountWithAbstractField",
+                  "fields" : [ {
+                    "name" : "holderName",
+                    "type" : "string"
+                  }, {
+                    "name" : "reference",
+                    "type" : "string"
+                  } ]
+                }, {
+                  "type" : "record",
+                  "name" : "BusinessBankAccountReference",
+                  "namespace" : "com.baeldung.apache.avro.model.BankAccountWithAbstractField",
+                  "fields" : [ {
+                    "name" : "businessEntityId",
+                    "type" : "string"
+                  }, {
+                    "name" : "reference",
+                    "type" : "string"
+                  } ]
+                } ]
+              } ]
+            }
+            """);
+    }
+
+    @Test
+    void givenRecordWithLogicalTypes_whenGeneratingSchema_thenAValidAvroSchemaIsReturned() {
+        ReflectData reflectData = ReflectData.get();
+        reflectData.addLogicalTypeConversion(new Conversions.UUIDConversion());
+        reflectData.addLogicalTypeConversion(new TimeConversions.LocalTimestampMillisConversion());
+
+        String jsonSchema = reflectData.getSchema(BankAccountWithLogicalTypes.class)
+            .toString();
+
+        assertThatJson(jsonSchema).isEqualTo("""
+            {
+              "type" : "record",
+              "name" : "BankAccountWithLogicalTypes",
+              "namespace" : "com.baeldung.apache.avro.model",
+              "fields" : [ {
+                "name" : "bankAccountNumber",
+                "type" : "string"
+              }, {
+                "name" : "expiryDate",
+                "type" : {
+                  "type" : "long",
+                  "logicalType" : "local-timestamp-millis"
+                }
+              }, {
+                "name" : "reference",
+                "type" : {
+                  "type" : "string",
+                  "logicalType" : "uuid"
+                }
               } ]
             }
             """);
