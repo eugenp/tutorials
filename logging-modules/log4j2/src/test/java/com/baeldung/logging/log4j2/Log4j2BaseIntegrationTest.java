@@ -5,7 +5,7 @@ import org.junit.jupiter.api.AfterAll;
 
 import java.lang.reflect.Field;
 
-public class Log4j2BaseUnitTest {
+public class Log4j2BaseIntegrationTest {
 	@AfterAll
 	static void tearDown() throws Exception {
 		Field factories = ConfigurationFactory.class.getDeclaredField("factories");

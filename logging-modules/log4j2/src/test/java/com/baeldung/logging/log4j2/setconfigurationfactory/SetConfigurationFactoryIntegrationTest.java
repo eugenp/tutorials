@@ -4,7 +4,7 @@
 **/
 package com.baeldung.logging.log4j2.setconfigurationfactory;
 
-import com.baeldung.logging.log4j2.Log4j2BaseUnitTest;
+import com.baeldung.logging.log4j2.Log4j2BaseIntegrationTest;
 import com.baeldung.logging.log4j2.simpleconfiguration.CustomConfigurationFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,7 +14,7 @@ import org.apache.logging.log4j.core.config.ConfigurationFactory;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class SetConfigurationFactoryUnitTest extends Log4j2BaseUnitTest {
+public class SetConfigurationFactoryIntegrationTest extends Log4j2BaseIntegrationTest {
     @BeforeAll
     public static void setUp() {
         CustomConfigurationFactory customConfigurationFactory = new CustomConfigurationFactory();

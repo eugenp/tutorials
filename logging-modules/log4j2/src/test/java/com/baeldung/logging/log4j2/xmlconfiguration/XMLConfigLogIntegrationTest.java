@@ -7,7 +7,7 @@
 
 package com.baeldung.logging.log4j2.xmlconfiguration;
 
-import com.baeldung.logging.log4j2.Log4j2BaseUnitTest;
+import com.baeldung.logging.log4j2.Log4j2BaseIntegrationTest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
@@ -18,7 +18,7 @@ import org.apache.logging.log4j.core.config.plugins.util.PluginManager;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class XMLConfigLogUnitTest extends Log4j2BaseUnitTest {
+public class XMLConfigLogIntegrationTest extends Log4j2BaseIntegrationTest {
 
     @BeforeAll
     public static void setUp() {

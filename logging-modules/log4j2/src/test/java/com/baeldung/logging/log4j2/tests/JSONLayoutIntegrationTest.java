@@ -2,7 +2,7 @@ package com.baeldung.logging.log4j2.tests;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.baeldung.logging.log4j2.Log4j2BaseUnitTest;
+import com.baeldung.logging.log4j2.Log4j2BaseIntegrationTest;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
@@ -19,7 +19,7 @@ import java.io.CharArrayWriter;
 import java.io.Writer;
 
 
-public class JSONLayoutUnitTest extends Log4j2BaseUnitTest {
+public class JSONLayoutIntegrationTest extends Log4j2BaseIntegrationTest {
 
     private Appender appender;
     private Logger logger;

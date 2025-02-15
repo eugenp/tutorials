@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
 import com.baeldung.logging.log4j2.tests.jdbc.ConnectionFactory;
 
 
-public class CustomLoggingUnitTest {
+public class CustomLoggingIntegrationTest {
 
     private static String logFilePath = System.getProperty("logging.folder.path");
     
