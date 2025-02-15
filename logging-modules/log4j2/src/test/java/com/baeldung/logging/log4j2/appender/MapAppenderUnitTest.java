@@ -12,13 +12,13 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class MapAppenderIntegrationTest {
+public class MapAppenderUnitTest {
 
     private Logger logger;
 
     @Before
     public void setup() {
-        logger = LogManager.getLogger(MapAppenderIntegrationTest.class);
+        logger = LogManager.getLogger(MapAppenderUnitTest.class);
     }
 
     @Test

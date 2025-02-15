@@ -35,6 +35,7 @@ public class JSONLayoutIntegrationTest extends Log4j2BaseIntegrationTest {
         appender.start();
 
         ((org.apache.logging.log4j.core.Logger) logger).addAppender(appender);
+        ((org.apache.logging.log4j.core.Logger) logger).setLevel(org.apache.logging.log4j.Level.DEBUG);
     }
 
     @Test
