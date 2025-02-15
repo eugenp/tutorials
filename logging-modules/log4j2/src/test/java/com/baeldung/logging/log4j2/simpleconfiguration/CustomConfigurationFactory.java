@@ -53,13 +53,13 @@ public class CustomConfigurationFactory extends ConfigurationFactory {
         file.addAttribute("fileName", "target/logging.log");
         file.add(layout);
         builder.add(file);
-        AppenderComponentBuilder mapAppender = builder.newAppender("MapAppender", "MapAppender");
-        builder.add(mapAppender);
+//        AppenderComponentBuilder mapAppender = builder.newAppender("MapAppender", "MapAppender");
+//        builder.add(mapAppender);
         LoggerComponentBuilder logger = builder.newLogger("com", Level.DEBUG);
         logger.add(builder.newAppenderRef("Stdout"));
         logger.add(builder.newAppenderRef("rolling"));
         logger.add(builder.newAppenderRef("FileSystem"));
-        logger.add(builder.newAppenderRef("MapAppender"));
+//        logger.add(builder.newAppenderRef("MapAppender"));
         logger.addAttribute("additivity", false);
         builder.add(logger);
         RootLoggerComponentBuilder rootLogger = builder.newRootLogger(Level.ERROR);

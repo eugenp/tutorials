@@ -13,10 +13,8 @@ import org.apache.logging.log4j.core.config.builder.api.AppenderComponentBuilder
 import org.apache.logging.log4j.core.config.builder.api.ConfigurationBuilder;
 import org.apache.logging.log4j.core.config.builder.api.ConfigurationBuilderFactory;
 import org.apache.logging.log4j.core.config.builder.impl.BuiltConfiguration;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-@Disabled
 public class SimpleConfiguratorUnitTest extends Log4j2BaseUnitTest {
 
     @Test

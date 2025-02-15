@@ -14,7 +14,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-@Disabled
+//@Disabled
 public class SimpleConfigurationUnitTest extends Log4j2BaseUnitTest {
     @BeforeAll
     public static void setUp() {

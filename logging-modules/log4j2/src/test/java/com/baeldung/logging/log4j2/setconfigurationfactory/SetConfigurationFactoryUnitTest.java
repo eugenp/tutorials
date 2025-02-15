@@ -12,10 +12,8 @@ import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
 import org.apache.logging.log4j.core.config.ConfigurationFactory;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-@Disabled
 public class SetConfigurationFactoryUnitTest extends Log4j2BaseUnitTest {
     @BeforeAll
     public static void setUp() {
