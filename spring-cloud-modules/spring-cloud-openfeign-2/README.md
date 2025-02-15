@@ -5,4 +5,8 @@
 - [Configuring Spring Cloud FeignClient URL](https://www.baeldung.com/spring-cloud-feignclient-url)
 - [Using CompletableFuture With Feign Client in Spring Boot](https://www.baeldung.com/feign-client-completablefuture-spring-boot)
 - [Provide an OAuth2 Token to a Feign Client](https://www.baeldung.com/spring-cloud-feign-oauth-token)
+- [File Upload With Open Feign](https://www.baeldung.com/java-feign-file-upload)
+- [Retrieve Original Message From Feign ErrorDecoder](https://www.baeldung.com/feign-retrieve-original-message)
+- [Propagating Exceptions With OpenFeign and Spring](https://www.baeldung.com/spring-openfeign-propagate-exception)
+- [Post form-url-encoded Data with Spring Cloud Feign](https://www.baeldung.com/spring-cloud-post-form-url-encoded-data)
 - More articles: [[<-- prev]](/spring-cloud-modules/spring-cloud-openfeign)

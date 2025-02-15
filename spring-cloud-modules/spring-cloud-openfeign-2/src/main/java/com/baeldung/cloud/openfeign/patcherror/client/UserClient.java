@@ -1,3 +1,4 @@
+/*
 package com.baeldung.cloud.openfeign.patcherror.client;
 
 import com.baeldung.cloud.openfeign.patcherror.model.User;
@@ -13,4 +14,4 @@ public interface UserClient {
     @RequestMapping(value = "{userId}", method = RequestMethod.PATCH)
     User updateUser(@PathVariable(value = "userId") String userId, @RequestBody User user);
 
-}
+}*/

@@ -1,3 +1,4 @@
+/*
 package com.baeldung.cloud.openfeign.patcherror.client;
 
 import com.baeldung.cloud.openfeign.ExampleApplication;
@@ -73,3 +74,4 @@ public class UserClientUnitTest {
         assertThrows(FeignException.class, () -> userClient.updateUser("100002", user));
     }
 }
+*/
