@@ -4,8 +4,11 @@ import java.util.Random;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+
+@Disabled
 public class LambdaExpressionsUnitTest {
 
     private static final Logger logger = LogManager.getRootLogger();

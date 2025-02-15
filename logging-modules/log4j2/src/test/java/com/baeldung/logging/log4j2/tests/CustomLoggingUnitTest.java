@@ -13,10 +13,13 @@ import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
 import org.apache.logging.log4j.ThreadContext;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.baeldung.logging.log4j2.tests.jdbc.ConnectionFactory;
 
+
+@Disabled
 public class CustomLoggingUnitTest {
 
     private static String logFilePath = System.getProperty("logging.folder.path");

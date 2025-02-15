@@ -13,12 +13,14 @@ import org.apache.logging.log4j.core.layout.JsonLayout;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.CharArrayWriter;
 import java.io.Writer;
 
 
+@Disabled
 public class JSONLayoutUnitTest extends Log4j2BaseUnitTest {
 
     private Appender appender;

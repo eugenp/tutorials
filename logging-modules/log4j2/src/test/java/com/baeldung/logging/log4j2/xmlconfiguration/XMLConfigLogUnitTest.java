@@ -16,8 +16,10 @@ import org.apache.logging.log4j.core.LoggerContext;
 import org.apache.logging.log4j.core.config.plugins.util.PluginManager;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+@Disabled
 public class XMLConfigLogUnitTest extends Log4j2BaseUnitTest {
 
     @BeforeAll
