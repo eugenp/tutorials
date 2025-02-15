@@ -21,7 +21,7 @@ public class CustomLinkedList<T> {
         size++;
     }
 
-    public void insertTop(T value) {
+    public void insertHead(T value) {
 
         Node<T> newNode = new Node<>(value);
         newNode.next = head;
@@ -47,7 +47,7 @@ public class CustomLinkedList<T> {
         return current.value;
     }
 
-    public void removeTop() {
+    public void removeHead() {
         if (head == null)
             return;
         head = head.next;
@@ -83,7 +83,7 @@ public class CustomLinkedList<T> {
         }
 
         if (index == 0) {
-            removeTop();
+            removeHead();
             return;
         }
 

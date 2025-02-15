@@ -39,27 +39,27 @@ public class CustomLinkedListUnitTest {
     @Test
     public void givenEmptyCustomLinkedList_whenInsertingElementAtTheHead_thenReturnCorrectSize() {
         CustomLinkedList<String> fruit = new CustomLinkedList<>();
-        fruit.insertTop("Avocado");
-        fruit.insertTop("Banana");
-        fruit.insertTop("Apple");
+        fruit.insertHead("Avocado");
+        fruit.insertHead("Banana");
+        fruit.insertHead("Apple");
         assertEquals(3, fruit.size());
     }
 
     @Test
     public void givenCustomLinkedList_whenRetrievingTheSizeOfTheList_thenCorrect() {
         CustomLinkedList<String> fruit = new CustomLinkedList<>();
-        fruit.insertTop("Avocado");
-        fruit.insertTop("Banana");
-        fruit.insertTop("Apple");
+        fruit.insertHead("Avocado");
+        fruit.insertHead("Banana");
+        fruit.insertHead("Apple");
         assertEquals(3, fruit.size());
     }
 
     @Test
     public void givenCustomLinkedList_whenRemovingANodeBaseOnIndex_thenReturnNewSize() {
         CustomLinkedList<String> fruit = new CustomLinkedList<>();
-        fruit.insertTop("Avocado");
-        fruit.insertTop("Banana");
-        fruit.insertTop("Apple");
+        fruit.insertHead("Avocado");
+        fruit.insertHead("Banana");
+        fruit.insertHead("Apple");
         fruit.removeAtIndex(2);
         assertEquals(2, fruit.size());
     }
