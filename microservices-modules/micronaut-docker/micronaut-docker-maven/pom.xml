@@ -66,7 +66,7 @@
             <plugin>
                 <groupId>io.micronaut.maven</groupId>
                 <artifactId>micronaut-maven-plugin</artifactId>
-                <version>${micronaut-maven-plugin.version}</version>-->
+                <version>${micronaut-maven-plugin.version}</version>
                 <configuration>
                     <configFile>aot-${packaging}.properties</configFile>
                 </configuration>
@@ -74,6 +74,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
+                <version>${maven-enforcer-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -162,6 +163,7 @@
         <junit.jupiter.api.version>5.11.4</junit.jupiter.api.version>
         <junit.jupiter.engine.version>5.11.4</junit.jupiter.engine.version>
         <micronaut.inject.java.version>4.7.10</micronaut.inject.java.version>
+        <maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
     </properties>
 
 </project>
