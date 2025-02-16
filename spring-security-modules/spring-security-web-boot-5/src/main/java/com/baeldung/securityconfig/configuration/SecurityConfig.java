@@ -89,6 +89,7 @@ public class SecurityConfig {
     }
 
     @Bean
+    @Profile("jdbc")
     public UserDetailsManager userDetailsManager(DataSource dataSource) {
         JdbcUserDetailsManager userDetailsManager = new JdbcUserDetailsManager();
         userDetailsManager.setDataSource(dataSource);
