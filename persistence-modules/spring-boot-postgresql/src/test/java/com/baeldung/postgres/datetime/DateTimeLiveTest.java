@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {Application.class})
-public class DateTimeIntegrationTest {
+public class DateTimeLiveTest {
 
     @Autowired
     private DateTimeValueRepository dateTimeValueRepository;
