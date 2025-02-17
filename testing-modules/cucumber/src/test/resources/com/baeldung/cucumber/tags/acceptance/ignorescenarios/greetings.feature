@@ -1,4 +1,5 @@
 Feature: Time based Greeter
+  # Morning
   Scenario: Should greet Good Morning in the morning
     Given the current time is "0700" hours
     When I ask the greeter to greet
@@ -8,7 +9,8 @@ Feature: Time based Greeter
     Given the current time is "1900" hours
     When I ask the greeter to greet
     Then I should receive "Good Evening!"
-  # Nighttime
+  # Night
+  @custom-ignore
   Scenario: Should greet Good Night in the night
     Given the current time is "2300" hours
     When I ask the greeter to greet
