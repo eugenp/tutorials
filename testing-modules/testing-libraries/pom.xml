@@ -218,7 +218,7 @@
         <checkstyle-maven-plugin.version>3.0.0</checkstyle-maven-plugin.version>
         <spring-boot.version>2.4.3</spring-boot.version>
         <system-rules.version>1.19.0</system-rules.version>
-        <system-lambda.version>1.0.0</system-lambda.version>
+        <system-lambda.version>1.2.0</system-lambda.version>
         <system-stubs.version>2.1.6</system-stubs.version>
         <testng.version>7.8.0</testng.version>
         <junit.pioneer.version>2.1.0</junit.pioneer.version>
