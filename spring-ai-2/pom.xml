@@ -84,11 +84,6 @@
            <scope>test</scope>
        </dependency>
        <dependency>
-           <groupId>org.springframework.boot</groupId>
-           <artifactId>spring-boot-testcontainers</artifactId>
-           <scope>test</scope>
-       </dependency>
-       <dependency>
            <groupId>org.springframework.ai</groupId>
            <artifactId>spring-ai-spring-boot-testcontainers</artifactId>
            <scope>test</scope>
@@ -104,15 +99,9 @@
            <scope>test</scope>
        </dependency>
        <dependency>
-           <groupId>org.testcontainers</groupId>
-           <artifactId>postgresql</artifactId>
-           <scope>test</scope>
-       </dependency>
-
-       <dependency>
-           <groupId>org.junit.platform</groupId>
-           <artifactId>junit-platform-launcher</artifactId>
-           <scope>test</scope>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-docker-compose</artifactId>
+           <version>3.1.1</version>
        </dependency>
    </dependencies>
 

@@ -2,8 +2,12 @@ package com.baeldung.springai.semanticSearch;
 
 import org.springframework.ai.autoconfigure.openai.OpenAiAutoConfiguration;
 import org.springframework.ai.autoconfigure.vectorstore.chroma.ChromaVectorStoreAutoConfiguration;
+import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication(exclude = {
@@ -17,4 +21,9 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
+	@Bean
+	@Primary
+	public ChatModel chatModel(OllamaChatModel ollamaChatModel) {
+		return ollamaChatModel;
+	}
 }
