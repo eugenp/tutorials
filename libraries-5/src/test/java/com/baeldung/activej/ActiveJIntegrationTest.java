@@ -12,7 +12,10 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.ServerSocket;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -36,8 +39,8 @@ public class ActiveJIntegrationTest {
           .build();
 
         server = HttpServer.builder(eventloop, servlet)
-          .withListenPort(8080)
-          .build();
+                .withListenPort(randomPort())
+                .build();
 
         server.listen();
 
@@ -46,6 +49,14 @@ public class ActiveJIntegrationTest {
         InetAddress dnsServerAddress = InetAddress.getByName("8.8.8.8");
         DnsClient dnsClient = DnsClient.builder(eventloop, dnsServerAddress).build();
         client = HttpClient.builder(eventloop, dnsClient).build();
+    }
+
+    private static int randomPort() {
+        try (ServerSocket socket = new ServerSocket(0)) {
+            return socket.getLocalPort();
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to find a free port", e);
+        }
     }
 
     @AfterAll
