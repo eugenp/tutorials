@@ -11,13 +11,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class JsonUtils {
 
-    @Value("users.json")
+    @Value("classpath:users.json")
     private File userFile;
 
-    @Value("groups.json")
+    @Value("classpath:groups.json")
     private File groupFile;
 
-    @Value("groups_with_members.json")
+    @Value("classpath:groups_with_members.json")
     private File groupsWithMembersFile;
 
     private static final ObjectMapper MAPPER = new ObjectMapper();

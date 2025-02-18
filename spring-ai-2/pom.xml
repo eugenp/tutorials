@@ -45,6 +45,10 @@
        </dependency>
        <dependency>
            <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-markdown-document-reader</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.ai</groupId>
            <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
        </dependency>
        <dependency>
@@ -117,7 +121,7 @@
 
    <properties>
        <spring-boot.version>3.4.1</spring-boot.version>
-       <spring-ai.version>1.0.0-M5</spring-ai.version>
+       <spring-ai.version>1.0.0-M6</spring-ai.version>
        <junit-jupiter.version>5.9.0</junit-jupiter.version>
    </properties>
 
