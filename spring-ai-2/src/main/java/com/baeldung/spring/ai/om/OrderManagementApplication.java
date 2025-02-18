@@ -14,10 +14,10 @@ import org.springframework.context.annotation.PropertySource;
  * only needed by other articles in the shared codebase.
  */
 @SpringBootApplication(exclude = {
-	OllamaAutoConfiguration.class,
-	AnthropicAutoConfiguration.class,
-	ChromaVectorStoreAutoConfiguration.class,
-	BedrockConverseProxyChatAutoConfiguration.class
+    OllamaAutoConfiguration.class,
+    AnthropicAutoConfiguration.class,
+    ChromaVectorStoreAutoConfiguration.class,
+    BedrockConverseProxyChatAutoConfiguration.class
 })
 @PropertySource("classpath:application-aiassistant.properties")
 public class OrderManagementApplication {
