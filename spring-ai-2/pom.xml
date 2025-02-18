@@ -49,6 +49,10 @@
        </dependency>
        <dependency>
            <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-mcp-client-spring-boot-starter</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.ai</groupId>
            <artifactId>spring-ai-mcp-server-webmvc-spring-boot-starter</artifactId>
        </dependency>
        <dependency>
