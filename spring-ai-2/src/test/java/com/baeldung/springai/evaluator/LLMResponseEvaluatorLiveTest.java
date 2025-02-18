@@ -38,7 +38,7 @@ class LLMResponseEvaluatorLiveTest {
             .call()
             .chatResponse();
 
-        String answer = chatResponse.getResult().getOutput().getContent();
+        String answer = chatResponse.getResult().getOutput().getText();
         List<Document> documents = chatResponse.getMetadata().get(QuestionAnswerAdvisor.RETRIEVED_DOCUMENTS);
         EvaluationRequest evaluationRequest = new EvaluationRequest(question, documents, answer);
 
@@ -86,7 +86,7 @@ class LLMResponseEvaluatorLiveTest {
             .call()
             .chatResponse();
 
-        String answer = chatResponse.getResult().getOutput().getContent();
+        String answer = chatResponse.getResult().getOutput().getText();
         List<Document> documents = chatResponse.getMetadata().get(QuestionAnswerAdvisor.RETRIEVED_DOCUMENTS);
         EvaluationRequest evaluationRequest = new EvaluationRequest(question, documents, answer);
 
