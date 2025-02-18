@@ -22,7 +22,6 @@
         <!--<module>core-java-8-datetime</module> -->
         <!--<module>core-java-8-datetime-2</module> -->
         <!--<module>core-java-lang-8</module> -->
-        <!--<module>core-java-lang-math-3</module> -->
         <!--<module>core-java-security</module> -->
         <!--<module>core-java-streams-2</module> -->
         <!--<module>core-java-sun</module> -->
@@ -170,7 +169,9 @@
         <module>core-java-lang-8</module>
         <module>core-java-lang-math</module>
         <module>core-java-lang-math-2</module>
+        <module>core-java-lang-math-3</module>
         <module>core-java-lang-math-4</module>
+        <module>core-java-lang-math-5</module>
         <module>core-java-lang-oop-constructors</module>
         <module>core-java-lang-oop-patterns</module>
         <module>core-java-lang-oop-generics</module>
@@ -184,6 +185,7 @@
         <module>core-java-lang-oop-others</module>
         <module>core-java-lang-operators</module>
         <module>core-java-lang-operators-2</module>
+		<module>core-java-lang-operators-3</module>
         <module>core-java-lang-syntax</module>
         <module>core-java-lang-syntax-2</module>
         <module>core-java-lang-syntax-3</module>
