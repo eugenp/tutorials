@@ -21,6 +21,7 @@ public class QuartzUnitTest {
         calendar.set(Calendar.HOUR_OF_DAY, 10);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);  // Ensure no milliseconds for testTime
         Date testTime = calendar.getTime(); // Set a fixed time: 10:00 AM
 
         Date nextFireTime = expression.getNextValidTimeAfter(testTime);
@@ -31,8 +32,11 @@ public class QuartzUnitTest {
         calendar.add(Calendar.MINUTE, 2);
         Date expectedNextFireTime = calendar.getTime();
 
-        assertEquals(expectedNextFireTime.getTime(), nextFireTime.getTime());
-    }
+        // Compare the times in seconds (ignoring milliseconds)
+        long nextFireTimeInSeconds = nextFireTime.getTime() / 1000;
+        long expectedNextFireTimeInSeconds = expectedNextFireTime.getTime() / 1000;
 
+        assertEquals(expectedNextFireTimeInSeconds, nextFireTimeInSeconds);
+    }
 
 }
