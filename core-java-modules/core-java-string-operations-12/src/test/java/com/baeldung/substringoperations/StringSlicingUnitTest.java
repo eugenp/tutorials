@@ -36,4 +36,14 @@ class StringSlicingUnitTest {
             .toString();
         assertEquals("!dlroW ,olleH", reversed);
     }
+
+    @Test
+    void testNegativeStepWithStartStop() {
+        String s = "Hello, World!";
+        StringBuilder result = new StringBuilder();
+        for (int i = s.length() - 7; i < s.length() - 1; i += 2) {
+            result.append(s.charAt(i));
+        }
+        assertEquals(" ol", result.toString());
+    }
 }
