@@ -1,8 +1,5 @@
 package com.baeldung.truststore;
 
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
-
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.KeyStore;
@@ -10,6 +7,9 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 import java.security.cert.PKIXParameters;
+
+import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 public class TrustStoreUnitTest {
 

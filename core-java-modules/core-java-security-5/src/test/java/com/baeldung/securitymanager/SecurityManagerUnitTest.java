@@ -1,13 +1,11 @@
 package com.baeldung.securitymanager;
 
+import java.net.URI;
+import java.security.AccessControlException;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.io.IOException;
-import java.net.URI;
-import java.net.URL;
-import java.security.AccessControlException;
 
 public class SecurityManagerUnitTest {
 

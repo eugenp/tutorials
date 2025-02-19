@@ -1,11 +1,11 @@
 package com.baeldung.hmac;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 public class HMACUtilUnitTest {
 
