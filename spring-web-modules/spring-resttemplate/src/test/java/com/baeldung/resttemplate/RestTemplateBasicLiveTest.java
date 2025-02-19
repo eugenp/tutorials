@@ -293,7 +293,7 @@ public class RestTemplateBasicLiveTest {
 
         // Socket timeout 
         SocketConfig socketConfig = SocketConfig.custom() 
-          .setSoTime out(Timeout.ofMilliseconds(timeout*1000)).build();
+          .setSoTimeout(Timeout.ofMilliseconds(timeout*1000)).build();
 
         PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
         connectionManager.setDefaultSocketConfig(socketConfig);
