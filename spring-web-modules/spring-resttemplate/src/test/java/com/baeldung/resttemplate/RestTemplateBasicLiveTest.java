@@ -300,7 +300,7 @@ public class RestTemplateBasicLiveTest {
       .setConnectionManager(connectionManager)
       .setDefaultRequestConfig(requestConfig)
       .build();
-    return new HttpComponentsClientHttpRequestFactory(client);
+    return new HttpComponentsClientHttpRequestFactory(httpClient);
 }
 
 }
