@@ -35,7 +35,7 @@ import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 import org.apache.hc.core5.http.io.SocketConfig;
 import org.apache.hc.client5.http.config.ConnectionConfig;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.client.RestTemplate;
@@ -278,6 +278,7 @@ public class RestTemplateBasicLiveTest {
 
     ClientHttpRequestFactory getClientHttpRequestFactoryAlternate() {
     long timeout = 5;
+    int readTimeout = 5;    
 
     // Connect timeout
     ConnectionConfig connectionConfig = ConnectionConfig.custom()
@@ -286,7 +287,7 @@ public class RestTemplateBasicLiveTest {
         
     RequestConfig requestConfig = RequestConfig.custom()
       .setConnectionRequestTimeout(Timeout.ofMilliseconds(timeout*2000))
-      .setReadTimeout(timeout*3000)
+      .setReadTimeout(readTimeout*3000)
       .build();
 
     SocketConfig socketConfig = SocketConfig.custom() 
