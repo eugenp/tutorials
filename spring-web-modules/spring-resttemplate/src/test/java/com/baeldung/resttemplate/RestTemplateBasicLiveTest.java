@@ -287,7 +287,6 @@ public class RestTemplateBasicLiveTest {
         
     RequestConfig requestConfig = RequestConfig.custom()
       .setConnectionRequestTimeout(Timeout.ofMilliseconds(timeout*2000))
-      .setReadTimeout(readTimeout*3000)
       .build();
 
     SocketConfig socketConfig = SocketConfig.custom() 
@@ -300,7 +299,7 @@ public class RestTemplateBasicLiveTest {
     CloseableHttpClient httpClient = HttpClientBuilder.create()
       .setConnectionManager(connectionManager)
       .setDefaultRequestConfig(requestConfig)
-      .build();
+      .build().setReadTimeout(readTimeout*3000);
     return new HttpComponentsClientHttpRequestFactory(httpClient);
 }
 
