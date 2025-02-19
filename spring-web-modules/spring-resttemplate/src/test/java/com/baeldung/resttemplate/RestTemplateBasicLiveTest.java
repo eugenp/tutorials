@@ -30,9 +30,12 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RequestCallback;
 import org.springframework.web.client.RestTemplate;
 import org.apache.hc.client5.http.config.RequestConfig;
+import org.apache.hc.core5.util.Timeout;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 import org.apache.hc.core5.http.io.SocketConfig;
+import org.apache.hc.client5.http.config.ConnectionConfig;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.client.RestTemplate;
@@ -274,20 +277,28 @@ public class RestTemplateBasicLiveTest {
     // Alternate GET ClientHttpRequestFactory
 
     ClientHttpRequestFactory getClientHttpRequestFactoryAlternate() {
-    int timeout = 5;
+    long timeout = 5;
+
+    // Connect timeout
+    ConnectionConfig connectionConfig = ConnectionConfig.custom()
+      .setConnectTimeout(Timeout.ofMilliseconds(timeout*1000))
+      .build();
+        
     RequestConfig requestConfig = RequestConfig.custom()
-      .setConnectTimeout(timeout*1000)
-      .setConnectionRequestTimeout(timeout*2000)
+      .setConnectionRequestTimeout(Timeout.ofMilliseconds(timeout*2000))
       .setReadTimeout(timeout*3000)
       .build();
 
     SocketConfig socketConfig = SocketConfig.custom() 
-        .setSoTimeout(timeout*1000).build();
+      .setSoTimeout(Timeout.ofMilliseconds(timeout*1000)).build();
 
-    CloseableHttpClient client = HttpClientBuilder
-      .create()
+    PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
+        connectionManager.setDefaultSocketConfig(socketConfig);
+        connectionManager.setDefaultConnectionConfig(connectionConfig);    
+
+    CloseableHttpClient httpClient = HttpClientBuilder.create()
+      .setConnectionManager(connectionManager)
       .setDefaultRequestConfig(requestConfig)
-      .setDefaultSocketConfig(socketConfig)
       .build();
     return new HttpComponentsClientHttpRequestFactory(client);
 }
