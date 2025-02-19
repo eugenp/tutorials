@@ -20,7 +20,7 @@ import java.nio.file.Path;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest(classes = ClientApplication.class)
-@EnabledIfEnvironmentVariable(named = "OPENAI_API_KEY", matches = ".*")
+@EnabledIfEnvironmentVariable(named = "ANTHROPIC_API_KEY", matches = ".*")
 class ChatbotServiceLiveTest {
 
     @Autowired
