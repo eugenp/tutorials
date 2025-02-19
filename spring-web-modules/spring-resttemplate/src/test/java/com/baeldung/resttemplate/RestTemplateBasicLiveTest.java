@@ -271,8 +271,7 @@ public class RestTemplateBasicLiveTest {
         final int timeout = 5;
         final HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();
         clientHttpRequestFactory
-        .setConnectTimeout(timeout * 1000)
-        .setReadTimeout(timeout*3000)    ;
+        .setReadTimeout(timeout*3000);
         return clientHttpRequestFactory;
     }
 
@@ -280,6 +279,7 @@ public class RestTemplateBasicLiveTest {
 
     ClientHttpRequestFactory getClientHttpRequestFactoryAlternate() {
         long timeout = 5;
+        int readTimeout = 5;
 
         // Connect timeout
         ConnectionConfig connectionConfig = ConnectionConfig.custom()
@@ -303,8 +303,12 @@ public class RestTemplateBasicLiveTest {
           .setConnectionManager(connectionManager)
           .setDefaultRequestConfig(requestConfig)
           .build();
+
+        final HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
+        clientHttpRequestFactory
+        .setReadTimeout(readTimeout*3000);
   
-        return new HttpComponentsClientHttpRequestFactory(httpClient);
+        return clientHttpRequestFactory;
     }
 
 }
