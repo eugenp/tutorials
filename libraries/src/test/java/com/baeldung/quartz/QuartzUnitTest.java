@@ -31,7 +31,8 @@ public class QuartzUnitTest {
         calendar.add(Calendar.MINUTE, 2);
         Date expectedNextFireTime = calendar.getTime();
 
-        assertEquals(expectedNextFireTime, nextFireTime);
+        assertEquals(expectedNextFireTime.getTime(), nextFireTime.getTime());
     }
+
 
 }
