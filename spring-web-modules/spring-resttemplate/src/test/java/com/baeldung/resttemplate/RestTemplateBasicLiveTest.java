@@ -270,37 +270,41 @@ public class RestTemplateBasicLiveTest {
     ClientHttpRequestFactory getClientHttpRequestFactory() {
         final int timeout = 5;
         final HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();
-        clientHttpRequestFactory.setConnectTimeout(timeout * 1000);
+        clientHttpRequestFactory
+        .setConnectTimeout(timeout * 1000)
+        .setReadTimeout(timeout*3000)    ;
         return clientHttpRequestFactory;
     }
 
     // Alternate GET ClientHttpRequestFactory
 
     ClientHttpRequestFactory getClientHttpRequestFactoryAlternate() {
-    long timeout = 5;
-    int readTimeout = 5;    
+        long timeout = 5;
 
-    // Connect timeout
-    ConnectionConfig connectionConfig = ConnectionConfig.custom()
-      .setConnectTimeout(Timeout.ofMilliseconds(timeout*1000))
-      .build();
-        
-    RequestConfig requestConfig = RequestConfig.custom()
-      .setConnectionRequestTimeout(Timeout.ofMilliseconds(timeout*2000))
-      .build();
+        // Connect timeout
+        ConnectionConfig connectionConfig = ConnectionConfig.custom()
+          .setConnectTimeout(Timeout.ofMilliseconds(timeout*1000))
+          .build();
 
-    SocketConfig socketConfig = SocketConfig.custom() 
-      .setSoTimeout(Timeout.ofMilliseconds(timeout*1000)).build();
+        // Connection request timeout
+        RequestConfig requestConfig = RequestConfig.custom()
+          .setConnectionRequestTimeout(Timeout.ofMilliseconds(timeout*2000))
+          .build();
 
-    PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
+        // Socket timeout 
+        SocketConfig socketConfig = SocketConfig.custom() 
+          .setSoTime out(Timeout.ofMilliseconds(timeout*1000)).build();
+
+        PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
         connectionManager.setDefaultSocketConfig(socketConfig);
         connectionManager.setDefaultConnectionConfig(connectionConfig);    
 
-    CloseableHttpClient httpClient = HttpClientBuilder.create()
-      .setConnectionManager(connectionManager)
-      .setDefaultRequestConfig(requestConfig)
-      .build().setReadTimeout(readTimeout*3000);
-    return new HttpComponentsClientHttpRequestFactory(httpClient);
-}
+        CloseableHttpClient httpClient = HttpClientBuilder.create()
+          .setConnectionManager(connectionManager)
+          .setDefaultRequestConfig(requestConfig)
+          .build();
+  
+        return new HttpComponentsClientHttpRequestFactory(httpClient);
+    }
 
 }
