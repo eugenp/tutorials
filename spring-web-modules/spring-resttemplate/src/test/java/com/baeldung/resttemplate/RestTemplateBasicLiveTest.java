@@ -29,7 +29,10 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RequestCallback;
 import org.springframework.web.client.RestTemplate;
-
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.config.SocketConfig;
+import org.apache.http.impl.client.CloseableHttpClient;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.client.RestTemplate;
@@ -271,15 +274,15 @@ public class RestTemplateBasicLiveTest {
     // Alternate GET ClientHttpRequestFactory
 
     ClientHttpRequestFactory getClientHttpRequestFactoryAlternate() {
-    int timeout = 5000;
+    int timeout = 5;
     RequestConfig requestConfig = RequestConfig.custom()
-      .setConnectTimeout(timeout)
-      .setConnectionRequestTimeout(Timeout.ofMilliseconds(2000))
-      .setReadTimeout(Timeout.ofMilliseconds(3000))
+      .setConnectTimeout(timeout*1000)
+      .setConnectionRequestTimeout(timeout*2000)
+      .setReadTimeout(timeout*3000)
       .build();
 
     SocketConfig socketConfig = SocketConfig.custom() 
-        .setSoTimeout(Timeout.ofMilliseconds(2000)).build();
+        .setSoTimeout(timeout*1000).build();
 
     CloseableHttpClient client = HttpClientBuilder
       .create()
