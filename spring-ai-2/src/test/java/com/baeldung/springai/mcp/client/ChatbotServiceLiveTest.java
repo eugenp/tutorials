@@ -1,11 +1,17 @@
 package com.baeldung.springai.mcp.client;
 
+import com.baeldung.springai.mcp.server.ServerApplication;
+
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,12 +19,24 @@ import java.nio.file.Path;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-@SpringBootTest
+@SpringBootTest(classes = ClientApplication.class)
 @EnabledIfEnvironmentVariable(named = "OPENAI_API_KEY", matches = ".*")
 class ChatbotServiceLiveTest {
 
     @Autowired
     private ChatbotService chatbotService;
+
+    private static ConfigurableApplicationContext serverContext;
+
+    @BeforeAll
+    static void startServer() {
+        serverContext = SpringApplication.run(ServerApplication.class);
+    }
+
+    @AfterAll
+    static void stopServer() {
+        serverContext.close();
+    }
 
     @Nested
     @EnabledIfEnvironmentVariable(named = "BRAVE_API_KEY", matches = ".*")
@@ -51,9 +69,10 @@ class ChatbotServiceLiveTest {
 
             assertThat(answer)
                 .isNotBlank();
-            assertThat(Files.exists(Path.of(FILE_NAME)))
+            Path filePath = Path.of(FILE_NAME);
+            assertThat(Files.exists(filePath))
                 .isTrue();
-            assertThat(Files.readString(Path.of(FILE_NAME)))
+            assertThat(Files.readString(filePath))
                 .isEqualTo(content);
         }
 

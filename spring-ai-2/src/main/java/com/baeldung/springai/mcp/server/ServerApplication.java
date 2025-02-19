@@ -16,7 +16,7 @@ import org.springframework.context.annotation.PropertySource;
     ChromaVectorStoreAutoConfiguration.class
 })
 @PropertySource("classpath:application-mcp-server.properties")
-class ServerApplication {
+public class ServerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ServerApplication.class, args);
