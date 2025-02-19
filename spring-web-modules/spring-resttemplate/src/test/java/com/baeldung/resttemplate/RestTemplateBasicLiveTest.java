@@ -187,6 +187,7 @@ public class RestTemplateBasicLiveTest {
             .getId();
         final HttpEntity<Foo> requestUpdate = new HttpEntity<>(updatedResource, headers);
         final ClientHttpRequestFactory requestFactory = getClientHttpRequestFactory();
+        final ClientHttpRequestFactory requestFactory_alternate = getClientHttpRequestFactoryAlternate();
         final RestTemplate template = new RestTemplate(requestFactory);
         template.setMessageConverters(Arrays.asList(new MappingJackson2HttpMessageConverter()));
         template.patchForObject(resourceUrl, requestUpdate, Void.class);
@@ -266,5 +267,26 @@ public class RestTemplateBasicLiveTest {
         clientHttpRequestFactory.setConnectTimeout(timeout * 1000);
         return clientHttpRequestFactory;
     }
+
+    // Alternate GET ClientHttpRequestFactory
+
+    ClientHttpRequestFactory getClientHttpRequestFactoryAlternate() {
+    int timeout = 5000;
+    RequestConfig requestConfig = RequestConfig.custom()
+      .setConnectTimeout(timeout)
+      .setConnectionRequestTimeout(Timeout.ofMilliseconds(2000))
+      .setReadTimeout(Timeout.ofMilliseconds(3000))
+      .build();
+
+    SocketConfig socketConfig = SocketConfig.custom() 
+        .setSoTimeout(Timeout.ofMilliseconds(2000)).build();
+
+    CloseableHttpClient client = HttpClientBuilder
+      .create()
+      .setDefaultRequestConfig(requestConfig)
+      .setDefaultSocketConfig(socketConfig)
+      .build();
+    return new HttpComponentsClientHttpRequestFactory(client);
+}
 
 }
