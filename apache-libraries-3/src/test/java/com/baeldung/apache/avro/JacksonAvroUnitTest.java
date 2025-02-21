@@ -2,9 +2,7 @@ package com.baeldung.apache.avro;
 
 import static net.javacrumbs.jsonunit.assertj.JsonAssertions.assertThatJson;
 
-import org.apache.avro.LogicalTypes;
 import org.apache.avro.Schema;
-import org.apache.avro.SchemaBuilder;
 import org.junit.jupiter.api.Test;
 
 import com.baeldung.apache.avro.model.BankAccountWithLogicalTypes;
@@ -12,14 +10,13 @@ import com.baeldung.apache.avro.model.JacksonBankAccountWithRequiredField;
 import com.baeldung.apache.avro.model.SimpleBankAccount;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.dataformat.avro.AvroMapper;
-import com.fasterxml.jackson.dataformat.avro.AvroSchema;
 import com.fasterxml.jackson.dataformat.avro.jsr310.AvroJavaTimeModule;
 import com.fasterxml.jackson.dataformat.avro.schema.AvroSchemaGenerator;
 
 class JacksonAvroUnitTest {
 
     @Test
-    void givenSimpleRecord_whenGeneratingSchemaWithJackson_thenAValidAvroSchemaIsReturned() throws JsonMappingException {
+    void whenConvertingRecord_thenAvroSchemaIsCorrect() throws JsonMappingException {
         AvroMapper avroMapper = new AvroMapper();
         AvroSchemaGenerator avroSchemaGenerator = new AvroSchemaGenerator();
 
@@ -42,7 +39,7 @@ class JacksonAvroUnitTest {
     }
 
     @Test
-    void givenRecordWithRequiredField_whenGeneratingSchemaWithJackson_thenAValidAvroSchemaIsReturned() throws JsonMappingException {
+    void whenConvertingRecordWithRequiredField_thenAvroSchemaIsCorrect() throws JsonMappingException {
         AvroMapper avroMapper = new AvroMapper();
         AvroSchemaGenerator avroSchemaGenerator = new AvroSchemaGenerator();
 
@@ -65,7 +62,7 @@ class JacksonAvroUnitTest {
     }
 
     @Test
-    void givenRecordWithLogicalField_whenGeneratingSchemaWithJackson_thenAValidAvroSchemaIsReturned() throws JsonMappingException {
+    void whenConvertingRecordWithLogicalField_whenGeneratingSchemaWithJackson_thenAvroSchemaIsCorrect() throws JsonMappingException {
         AvroMapper avroMapper = AvroMapper.builder()
             .addModule(new AvroJavaTimeModule())
             .build();
@@ -105,11 +102,4 @@ class JacksonAvroUnitTest {
             """);
     }
 
-    private static AvroSchema createUUIDSchema() {
-        Schema uuidSchema = SchemaBuilder.builder()
-            .stringType();
-        LogicalTypes.uuid()
-            .addToSchema(uuidSchema);
-        return new AvroSchema(uuidSchema);
-    }
 }

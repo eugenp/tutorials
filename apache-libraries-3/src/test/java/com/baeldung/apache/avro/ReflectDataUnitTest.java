@@ -18,7 +18,7 @@ import com.baeldung.apache.avro.model.SimpleBankAccount;
 class ReflectDataUnitTest {
 
     @Test
-    void givenSimpleRecord_whenGeneratingSchema_thenAValidAvroSchemaIsReturned() {
+    void whenConvertingSimpleRecord_thenAvroSchemaIsCorrect() {
         Schema schema = ReflectData.get()
             .getSchema(SimpleBankAccount.class);
         String jsonSchema = schema.toString();
@@ -37,7 +37,7 @@ class ReflectDataUnitTest {
     }
 
     @Test
-    void givenRecordWithNullableField_whenGeneratingSchema_thenAValidAvroSchemaIsReturned() {
+    void whenConvertingRecordWithNullableField_thenAvroSchemaIsCorrect() {
         Schema schema = ReflectData.get()
             .getSchema(BankAccountWithNullableField.class);
         String jsonSchema = schema.toString();
@@ -60,7 +60,7 @@ class ReflectDataUnitTest {
     }
 
     @Test
-    void givenRecordWithIgnoredField_whenGeneratingSchema_thenAValidAvroSchemaIsReturned() {
+    void whenConvertingRecordWithIgnoredField_thenAvroSchemaIsCorrect() {
         Schema schema = ReflectData.get()
             .getSchema(BankAccountWithIgnoredField.class);
         String jsonSchema = schema.toString();
@@ -79,7 +79,7 @@ class ReflectDataUnitTest {
     }
 
     @Test
-    void givenRecordWithOverriddenField_whenGeneratingSchema_thenAValidAvroSchemaIsReturned() {
+    void whenConvertingRecordWithOverriddenField_thenAvroSchemaIsCorrect() {
         Schema schema = ReflectData.get()
             .getSchema(BankAccountWithOverriddenField.class);
         String jsonSchema = schema.toString();
@@ -101,7 +101,7 @@ class ReflectDataUnitTest {
     }
 
     @Test
-    void givenRecordWithAbstractField_whenGeneratingSchema_thenAValidAvroSchemaIsReturned() {
+    void whenConvertingRecordWithAbstractField_thenAvroSchemaIsCorrect() {
         Schema schema = ReflectData.get()
             .getSchema(BankAccountWithAbstractField.class);
         String jsonSchema = schema.toString();
@@ -145,7 +145,7 @@ class ReflectDataUnitTest {
     }
 
     @Test
-    void givenRecordWithLogicalTypes_whenGeneratingSchema_thenAValidAvroSchemaIsReturned() {
+    void whenConvertingRecordWithLogicalTypes_thenAvroSchemaIsCorrect() {
         ReflectData reflectData = ReflectData.get();
         reflectData.addLogicalTypeConversion(new Conversions.UUIDConversion());
         reflectData.addLogicalTypeConversion(new TimeConversions.LocalTimestampMillisConversion());
