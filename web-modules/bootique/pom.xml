@@ -44,6 +44,11 @@
             <artifactId>bootique-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>${guice.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -57,18 +62,14 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <argLine>
-                        --add-opens java.base/java.lang=ALL-UNNAMED
-                    </argLine>
-                </configuration>
             </plugin>
         </plugins>
     </build>
 
     <properties>
         <main.class>com.baeldung.bootique.App</main.class>
-        <bootique-bom.version>0.23</bootique-bom.version>
+        <bootique-bom.version>1.3</bootique-bom.version>
+        <guice.version>7.0.0</guice.version>
         <maven-shade-plugin.version>2.4.3</maven-shade-plugin.version>
     </properties>
 
