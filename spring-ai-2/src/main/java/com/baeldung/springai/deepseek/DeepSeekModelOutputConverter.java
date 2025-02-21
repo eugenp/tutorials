@@ -13,8 +13,8 @@ class DeepSeekModelOutputConverter implements StructuredOutputConverter<DeepSeek
 
     @Override
     public DeepSeekModelResponse convert(@NonNull String text) {
-        String chainOfThought = "";
-        String answer = text;
+        String chainOfThought;
+        String answer;
 
         int openingThinkTag = text.indexOf("<think>");
         int closingThinkTag = text.indexOf("</think>");
@@ -24,6 +24,8 @@ class DeepSeekModelOutputConverter implements StructuredOutputConverter<DeepSeek
             answer = text.substring(closingThinkTag + 8).trim();
         } else {
             logger.debug("No <think> tags found in the response. Treating entire text as answer.");
+            chainOfThought = null;
+            answer = text;
         }
         return new DeepSeekModelResponse(chainOfThought, answer);
     }
