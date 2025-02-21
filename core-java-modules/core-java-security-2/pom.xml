@@ -24,18 +24,11 @@
             <artifactId>bcprov-jdk18on</artifactId>
             <version>${bouncycastle.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>${jaxb-api.version}</version>
-        </dependency>
     </dependencies>
 
     <properties>
         <bouncycastle.version>1.76</bouncycastle.version>
         <commons-codec.version>1.16.0</commons-codec.version>
-        <jaxb-api.version>2.3.1</jaxb-api.version>
     </properties>
 
 </project>

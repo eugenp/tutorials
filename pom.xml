@@ -334,9 +334,7 @@
                 <module>core-java-modules/core-java-8-datetime</module>
                 <module>core-java-modules/core-java-8-datetime-2</module>
                 <module>core-java-modules/core-java-sun</module>
-                <module>core-java-modules/core-java-security</module>
                 <module>core-java-modules/core-java-lang</module>
-                <module>core-java-modules/core-java-lang-math-3</module>
                 <module>core-java-modules/core-java-streams-2</module>
                 <module>libraries-jdk8</module>
                 <module>lombok-modules/lombok-custom</module>
@@ -447,9 +445,7 @@
                 <module>core-java-modules/core-java-8-datetime</module>
                 <module>core-java-modules/core-java-8-datetime-2</module>
                 <module>core-java-modules/core-java-sun</module>
-                <module>core-java-modules/core-java-security</module>
                 <module>core-java-modules/core-java-lang</module>
-                <module>core-java-modules/core-java-lang-math-3</module>
                 <module>core-java-modules/core-java-streams-2</module>
                 <module>libraries-jdk8</module>
                 <module>lombok-modules/lombok-custom</module>
@@ -1415,7 +1411,6 @@
                 <module>persistence-modules/spring-boot-persistence-mongodb</module> <!-- JAVA-42144 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb-2</module> <!-- JAVA-42371 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb-4</module> <!-- JAVA-42372 -->
-                <module>persistence-modules/spring-boot-persistence-4</module> <!-- JAVA-42045 -->
                 <module>persistence-modules/spring-boot-persistence-5</module> <!-- JAVA-42046 -->
                 <module>persistence-modules/spring-data-elasticsearch</module> <!-- JAVA-42359 -->
                 <module>persistence-modules/spring-data-mongodb-2</module> <!-- JAVA-42145 -->
@@ -1424,7 +1419,6 @@
                 <module>quarkus-modules/consume-rest-api/consume-api</module>
                 <module>maven-modules/maven-exec-plugin</module> <!-- JAVA-42059 -->
                 <module>maven-modules/dependencygraph</module> <!-- JAVA-42057 -->
-                <module>spring-boot-modules/spring-boot-swagger-2</module> <!-- JAVA-42060 -->
                 <module>spring-boot-modules/spring-boot-groovy</module> <!-- JAVA-42052 -->
                 <module>spring-boot-modules/spring-boot-data-3</module> <!-- JAVA-42051 -->
                 <module>spring-reactive-modules/spring-reactive-performance</module> <!-- JAVA-42050 -->
@@ -1489,7 +1483,6 @@
                 <module>persistence-modules/spring-boot-persistence-mongodb</module> <!-- JAVA-42144 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb-2</module> <!-- JAVA-42371 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb-4</module> <!-- JAVA-42372 -->
-                <module>persistence-modules/spring-boot-persistence-4</module> <!-- JAVA-42045 -->
                 <module>persistence-modules/spring-boot-persistence-5</module> <!-- JAVA-42046 -->
                 <module>persistence-modules/spring-data-elasticsearch</module> <!-- JAVA-42359 -->
                 <module>persistence-modules/spring-data-mongodb-2</module> <!-- JAVA-42145 -->
@@ -1498,7 +1491,6 @@
                 <module>quarkus-modules/consume-rest-api/consume-api</module>
                 <module>maven-modules/maven-exec-plugin</module> <!-- JAVA-42059 -->
                 <module>maven-modules/dependencygraph</module> <!-- JAVA-42057 -->
-                <module>spring-boot-modules/spring-boot-swagger-2</module> <!-- JAVA-42060 -->
                 <module>spring-boot-modules/spring-boot-groovy</module> <!-- JAVA-42052 -->
                 <module>spring-boot-modules/spring-boot-data-3</module> <!-- JAVA-42051 -->
                 <module>spring-reactive-modules/spring-reactive-performance</module> <!-- JAVA-42050 -->
