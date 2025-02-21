@@ -4,9 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.converter.StructuredOutputConverter;
 import org.springframework.lang.NonNull;
-import org.springframework.stereotype.Component;
 
-@Component
 class DeepSeekModelOutputConverter implements StructuredOutputConverter<DeepSeekModelResponse> {
 
     private final Logger logger = LoggerFactory.getLogger(DeepSeekModelOutputConverter.class);
