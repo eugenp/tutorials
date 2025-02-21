@@ -1,50 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>libraries-ai</artifactId>
-	<name>libraries-ai</name>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>libraries-ai</artifactId>
+    <name>libraries-ai</name>
 
-	<parent>
-		<groupId>com.baeldung</groupId>
-		<artifactId>parent-modules</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-	</parent>
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
-	<properties>
-		<stanford-corenlp.version>4.5.3</stanford-corenlp.version>
-		<opennlp-tools.version>2.1.1</opennlp-tools.version>
-		<neuroph.version>2.92</neuroph.version>
-		<theokanning.gpt>0.18.2</theokanning.gpt>
-		<h2o-genmodel.version>3.46.0.6</h2o-genmodel.version>
-		<openai.version>0.22.0</openai.version>
-	</properties>
+    <repositories>
+        <repository>
+            <id>local-libs</id>
+            <url>file://${project.basedir}/libs</url>
+        </repository>
+    </repositories>
 
-	<dependencies>
-		<dependency>
-			<groupId>ai.h2o</groupId>
-			<artifactId>h2o-genmodel</artifactId>
-			<version>${h2o-genmodel.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>edu.stanford.nlp</groupId>
-			<artifactId>stanford-corenlp</artifactId>
-			<version>${stanford-corenlp.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.opennlp</groupId>
-			<artifactId>opennlp-tools</artifactId>
-			<version>${opennlp-tools.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.beykery</groupId>
-			<artifactId>neuroph</artifactId>
-			<version>${neuroph.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.theokanning.openai-gpt3-java</groupId>
-			<artifactId>client</artifactId>
-			<version>${theokanning.gpt}</version>
-			<exclusions>
+    <dependencies>
+        <dependency>
+            <groupId>ai.h2o</groupId>
+            <artifactId>h2o-genmodel</artifactId>
+            <version>${h2o-genmodel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>edu.stanford.nlp</groupId>
+            <artifactId>stanford-corenlp</artifactId>
+            <version>${stanford-corenlp.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.opennlp</groupId>
+            <artifactId>opennlp-tools</artifactId>
+            <version>${opennlp-tools.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.beykery</groupId>
+            <artifactId>neuroph</artifactId>
+            <version>${neuroph.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.theokanning.openai-gpt3-java</groupId>
+            <artifactId>api</artifactId>
+            <version>${theokanning.gpt}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.theokanning.openai-gpt3-java</groupId>
+            <artifactId>client</artifactId>
+            <version>${theokanning.gpt}</version>
+            <exclusions>
 				<exclusion>
 					<groupId>com.squareup.okhttp3</groupId>
 					<artifactId>okhttp</artifactId>
@@ -61,13 +66,13 @@
 					<groupId>com.fasterxml.jackson.core</groupId>
 					<artifactId>jackson-databind</artifactId>
 				</exclusion>
-			</exclusions>
+            </exclusions>
 		</dependency>
 		<dependency>
-			<groupId>com.theokanning.openai-gpt3-java</groupId>
-			<artifactId>service</artifactId>
-			<version>${theokanning.gpt}</version>
-			<exclusions>
+            <groupId>com.theokanning.openai-gpt3-java</groupId>
+            <artifactId>service</artifactId>
+            <version>${theokanning.gpt}</version>
+            <exclusions>
 				<exclusion>
 					<groupId>com.fasterxml.jackson.core</groupId>
 					<artifactId>jackson-annotations</artifactId>
@@ -80,13 +85,22 @@
 					<groupId>com.fasterxml.jackson.core</groupId>
 					<artifactId>jackson-databind</artifactId>
 				</exclusion>
-			</exclusions>
+            </exclusions>
 		</dependency>
 		<dependency>
-			<groupId>com.openai</groupId>
-			<artifactId>openai-java</artifactId>
-			<version>${openai.version}</version>
+            <groupId>com.openai</groupId>
+            <artifactId>openai-java</artifactId>
+            <version>${openai.version}</version>
 		</dependency>
-	</dependencies>
+    </dependencies>
+
+    <properties>
+        <stanford-corenlp.version>4.5.3</stanford-corenlp.version>
+        <opennlp-tools.version>2.1.1</opennlp-tools.version>
+        <neuroph.version>2.92</neuroph.version>
+        <theokanning.gpt>0.18.2</theokanning.gpt>
+        <h2o-genmodel.version>3.46.0.6</h2o-genmodel.version>
+        <openai.version>0.22.0</openai.version>
+    </properties>
 
 </project>
