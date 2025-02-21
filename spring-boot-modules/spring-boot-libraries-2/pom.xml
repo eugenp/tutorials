@@ -141,6 +141,7 @@
                             <configOptions>
                                 <delegatePattern>false</delegatePattern>
                                 <useJakartaEe>true</useJakartaEe>
+                                <useSpringBoot3>true</useSpringBoot3>
                             </configOptions>
                         </configuration>
                     </execution>
