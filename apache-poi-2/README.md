@@ -13,4 +13,4 @@ This module contains articles about Apache POI.
 - [Set the Date Format Using Apache POI](https://www.baeldung.com/java-apache-poi-date-format)
 - [Replacing Variables in a Document Template with Java](https://www.baeldung.com/java-replace-pattern-word-document-doc-docx)
 - [Lock Header Rows With Apache POI](https://www.baeldung.com/java-apache-poi-lock-header-rows)
-- More articles: [[<-- prev]](../apache-poi)[[next -->]](../apache-poi-3)
+- More articles: [[<-- prev]](../apache-poi)[[next -->]](../apache-poi-3) 
