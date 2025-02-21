@@ -41,11 +41,6 @@
             <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.mock-server</groupId>
-            <artifactId>mockserver-netty</artifactId>
-            <version>${mockserver.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>${junit-jupiter.version}</version>
@@ -69,11 +64,6 @@
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-commons</artifactId>
             <version>${junit-platform-commons.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mock-server</groupId>
-            <artifactId>mockserver-client-java</artifactId>
-            <version>${mockserver.version}</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -128,11 +118,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${spring-boot.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-core</artifactId>
-            <version>${swagger-core.version}</version>
         </dependency>
     </dependencies>
 
@@ -223,13 +208,11 @@
     <properties>
         <mapstruct.version>1.6.0.Beta1</mapstruct.version>
         <start-class>com.baeldung.sample.TodoApplication</start-class>
-        <mockserver.version>5.14.0</mockserver.version>
         <spring-boot.version>3.4.1</spring-boot.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <springdoc-openapi-webmvc-ui.version>2.5.0</springdoc-openapi-webmvc-ui.version>
         <logback.version>1.5.16</logback.version>
         <org.slf4j.version>2.0.16</org.slf4j.version>
-        <swagger-core.version>2.2.28</swagger-core.version>
         <junit-platform-commons.version>1.11.4</junit-platform-commons.version>
     </properties>
 
