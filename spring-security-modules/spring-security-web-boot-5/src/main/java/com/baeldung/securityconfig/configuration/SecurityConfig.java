@@ -7,8 +7,11 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
@@ -23,7 +26,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http, LogoutSuccessHandler webSecurityUserLogoutHandler) throws Exception {
         http
           .authorizeHttpRequests((authz) -> authz
             .requestMatchers("/").hasRole("USER")
@@ -34,7 +37,7 @@ public class SecurityConfig {
           .logout(logout -> logout
             .logoutSuccessUrl("/")
             .invalidateHttpSession(true)
-            .logoutSuccessHandler(webSecurityUserLogoutHandler())
+            .logoutSuccessHandler(webSecurityUserLogoutHandler)
             .deleteCookies("JSESSIONID"));
         return http.build();
     }
@@ -47,7 +50,7 @@ public class SecurityConfig {
         };
     }
 
-    @Bean
+   /* @Bean
     @Profile("inmemory")
     public AuthenticationManager inMemoryAuthManager(HttpSecurity http) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder =
@@ -63,9 +66,44 @@ public class SecurityConfig {
             .password(passwordEncoder().encode("password"))
             .roles("ADMIN");
         return authenticationManagerBuilder.build();
+    }*/
+
+    @Bean
+    @Profile("inmemory")
+    public InMemoryUserDetailsManager inMemoryUserDetailsService() {
+        UserDetails user = User.builder()
+          .username("user")
+          .password("password")
+          .roles("USER")
+          .build();
+        UserDetails admin = User.builder()
+          .username("admin")
+          .password("password")
+          .roles("ADMIN")
+          .build();
+        return new InMemoryUserDetailsManager(user, admin);
     }
 
     @Bean
+    @Profile("jdbc")
+    public UserDetailsManager jdbcUserDetailsManager(DataSource dataSource) {
+        JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
+        UserDetails user = User.builder()
+          .username("user")
+          .password("password")
+          .roles("USER")
+          .build();
+        UserDetails admin = User.builder()
+          .username("admin")
+          .password("password")
+          .roles("ADMIN")
+          .build();
+        jdbcUserDetailsManager.createUser(user);
+        jdbcUserDetailsManager.createUser(admin);
+        return jdbcUserDetailsManager;
+    }
+
+    /*@Bean
     @Profile("jdbc")
     public AuthenticationManager jdbcAuthManager(HttpSecurity http, DataSource dataSource,
       PasswordEncoder passwordEncoder) throws Exception {
@@ -86,7 +124,7 @@ public class SecurityConfig {
           .roles("ADMIN");
 
         return authenticationManagerBuilder.build();
-    }
+    }*/
 
     @Bean
     @Profile("jdbc")
@@ -98,6 +136,6 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 }
