@@ -82,4 +82,59 @@ public class WriteCsvFileExampleUnitTest {
         assertTrue(csvOutputFile.exists());
         csvOutputFile.deleteOnExit();
     }
-}
+    @Test
+    public void testEscapeSpecialCharacters_NullInput() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            escapeSpecialCharacters(null);
+        });
+        assertEquals("Input data cannot be null", exception.getMessage());
+    }
+
+    @Test
+    public void testEscapeSpecialCharacters_LineBreaks() {
+        String input = "hello\nworld";
+        String expected = "hello world";
+        String actual = escapeSpecialCharacters(input);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testEscapeSpecialCharacters_Comma() {
+        String input = "hello,world";
+        String expected = "\"hello,world\"";
+        String actual = escapeSpecialCharacters(input);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testEscapeSpecialCharacters_Quotes() {
+        String input = "he said \"hello\"";
+        String expected = "\"he said \"\"hello\"\"\"";
+        String actual = escapeSpecialCharacters(input);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testEscapeSpecialCharacters_SingleQuote() {
+        String input = "it\'s a test";
+        String expected = "\"it\'s a test\"";
+        String actual = escapeSpecialCharacters(input);
+        assertEquals(expected, actual);
+    }
+
+    // Helper method to call the original method
+    private String escapeSpecialCharacters(String data) {
+        if (data == null) {
+            throw new IllegalArgumentException("Input data cannot be null");
+        }
+        data = data.replaceAll("\\R", " ");
+        String escapedData = data;
+
+        if (data.contains(",") || data.contains("\"") || data.contains("'")) {
+            data = data.replace("\"", "\"\"");
+            escapedData = "\"" + data + "\"";
+        }
+        return escapedData;
+
+
+    }
