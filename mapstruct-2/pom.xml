@@ -23,11 +23,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok-mapstruct-binding</artifactId>
-            <version>${lombok.mapstruct.binding.version}</version>
+            <scope>provided</scope>     
         </dependency>
     </dependencies>
     <build>
