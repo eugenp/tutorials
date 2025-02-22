@@ -1,4 +1,9 @@
 spring:
+  datasource:
+    url: jdbc:h2:./target/test-data/passkey
+  sql:
+    init:
+      mode: always
   security:
     webauthn:
       rpName: "WebAuthn Demo"

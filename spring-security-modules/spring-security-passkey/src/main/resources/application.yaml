@@ -16,7 +16,7 @@ spring:
     user:
       name: alice
       password: changeit
-logging:
-  level:
-    org.springframework.web: TRACE
-    org.springframework.security: TRACE
+#logging:
+#  level:
+#    org.springframework.web: TRACE
+#    org.springframework.security: TRACE

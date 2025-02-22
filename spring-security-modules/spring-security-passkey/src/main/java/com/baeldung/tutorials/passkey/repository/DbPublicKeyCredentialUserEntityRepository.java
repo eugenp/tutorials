@@ -16,29 +16,24 @@ public class DbPublicKeyCredentialUserEntityRepository implements PublicKeyCrede
 
     @Override
     public PublicKeyCredentialUserEntity findById(Bytes id) {
-
+        log.info("findById: id={}", id.toBase64UrlString());
         var externalId = id.toBase64UrlString();
-        var user = userRepository.findByExternalId(externalId);
-
-        if (user.isEmpty()) {
-            return null;
-        }
-
-        return mapToUserEntity(user.get());
+        return userRepository.findByExternalId(externalId)
+          .map(DbPublicKeyCredentialUserEntityRepository::mapToUserEntity)
+          .orElse(null);
     }
 
     @Override
     public PublicKeyCredentialUserEntity findByUsername(String username) {
-        var user = userRepository.findByName(username);
-        if (user.isEmpty()) {
-            return null;
-        }
-        return mapToUserEntity(user.get());
+        log.info("findByUsername: username={}", username);
+        return userRepository.findByName(username)
+          .map(DbPublicKeyCredentialUserEntityRepository::mapToUserEntity)
+          .orElse(null);
     }
 
     @Override
     public void save(PublicKeyCredentialUserEntity userEntity) {
-
+        log.info("save: username={}, externalId={}", userEntity.getName(),userEntity.getId().toBase64UrlString());
         var entity = userRepository.findByExternalId(userEntity.getId().toBase64UrlString())
           .orElse(new PasskeyUser());
 
@@ -47,17 +42,16 @@ public class DbPublicKeyCredentialUserEntityRepository implements PublicKeyCrede
         entity.setDisplayName(userEntity.getDisplayName());
 
         userRepository.save(entity);
-
     }
 
     @Override
     public void delete(Bytes id) {
+        log.info("delete: id={}", id.toBase64UrlString());
         userRepository.findByExternalId(id.toBase64UrlString())
           .ifPresent(userRepository::delete);
     }
 
     private static PublicKeyCredentialUserEntity mapToUserEntity(PasskeyUser user) {
-
         return ImmutablePublicKeyCredentialUserEntity.builder()
           .id(Bytes.fromBase64(user.getExternalId()))
           .name(user.getName())

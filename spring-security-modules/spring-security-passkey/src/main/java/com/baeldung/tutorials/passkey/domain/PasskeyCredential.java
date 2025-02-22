@@ -1,6 +1,7 @@
 package com.baeldung.tutorials.passkey.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.jdbc.core.mapping.AggregateReference;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -13,7 +14,7 @@ public class PasskeyCredential {
     public Long id;
 
     @Column(value = "USER_ID")
-    public PasskeyUser user;
+    public Long userId;
 
     @Column(value = "LABEL")
     public String label;
@@ -59,12 +60,12 @@ public class PasskeyCredential {
         this.id = id;
     }
 
-    public com.baeldung.tutorials.passkey.domain.PasskeyUser getUser() {
-        return user;
+    public AggregateReference<PasskeyUser, Long> getUser() {
+        return AggregateReference.to(userId);
     }
 
-    public void setUser(PasskeyUser user) {
-        this.user = user;
+    public void setUser(AggregateReference<PasskeyUser, Long> userId) {
+        this.userId = userId.getId();
     }
 
     public String getLabel() {

@@ -1,5 +1,9 @@
 package com.baeldung.tutorials.passkey.config;
 
+import com.baeldung.tutorials.passkey.repository.DbPublicKeyCredentialUserEntityRepository;
+import com.baeldung.tutorials.passkey.repository.DbUserCredentialRepository;
+import com.baeldung.tutorials.passkey.repository.PasskeyCredentialRepository;
+import com.baeldung.tutorials.passkey.repository.PasskeyUserRepository;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -33,13 +37,13 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    PublicKeyCredentialUserEntityRepository userEntityRepository() {
-        return new MapPublicKeyCredentialUserEntityRepository();
+    PublicKeyCredentialUserEntityRepository userEntityRepository(PasskeyUserRepository userRepository) {
+        return new DbPublicKeyCredentialUserEntityRepository(userRepository);
     }
 
     @Bean
-    UserCredentialRepository userCredentialRepository() {
-        return new MapUserCredentialRepository();
+    UserCredentialRepository userCredentialRepository(PasskeyUserRepository userRepository, PasskeyCredentialRepository credentialRepository) {
+        return new DbUserCredentialRepository(credentialRepository,userRepository);
     }
 
     @ConfigurationProperties(prefix = "spring.security.webauthn")
