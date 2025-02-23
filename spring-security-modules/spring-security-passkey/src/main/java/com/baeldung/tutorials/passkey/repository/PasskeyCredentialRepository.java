@@ -1,7 +1,6 @@
 package com.baeldung.tutorials.passkey.repository;
 
 import com.baeldung.tutorials.passkey.domain.PasskeyCredential;
-import com.baeldung.tutorials.passkey.domain.PasskeyUser;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

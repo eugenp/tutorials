@@ -8,7 +8,6 @@ import org.springframework.data.jdbc.core.mapping.AggregateReference;
 import org.springframework.security.web.webauthn.api.*;
 import org.springframework.security.web.webauthn.management.UserCredentialRepository;
 
-import java.time.Clock;
 import java.util.*;
 import java.util.stream.Collectors;
 
