@@ -30,12 +30,14 @@ public class UserView {
      * View that is used to hide sensitive information
      */
     public interface PublicView {
+
     }
 
     /**
      * View that is used to show all information
      */
     public interface InternalView extends PublicView {
+
     }
 
 }

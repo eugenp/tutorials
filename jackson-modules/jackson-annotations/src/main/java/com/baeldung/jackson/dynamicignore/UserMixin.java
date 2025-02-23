@@ -28,6 +28,7 @@ public class UserMixin {
      * Mixin interface that is used to hide sensitive information
      */
     public interface PublicMixIn {
+
         @JsonIgnore
         Long getId();
     }
