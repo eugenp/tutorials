@@ -1,0 +1,27 @@
+# config file version
+apiVersion: 1
+
+# list of datasources that should be deleted from the database
+#deleteDatasources:
+#  - name: Prometheus
+#    orgId: 1
+
+# list of datasources to insert/update depending
+# whats available in the database
+datasources:
+  - name: Prometheus-docker
+    type: prometheus
+    isDefault: false
+    access: proxy
+    url: http://prometheus:9090
+    basicAuth: false
+    jsonData:
+      graphiteVersion: "1.1"
+      tlsAuth: false
+      tlsAuthWithCACert: false
+    secureJsonData:
+      tlsCACert: "..."
+      tlsClientCert: "..."
+      tlsClientKey: "..."
+    version: 1
+    editable: true
