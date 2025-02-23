@@ -1,4 +1,4 @@
-package com.baeldung.sharedatasteps;
+package com.baeldung.cucumber.sharedatasteps;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
