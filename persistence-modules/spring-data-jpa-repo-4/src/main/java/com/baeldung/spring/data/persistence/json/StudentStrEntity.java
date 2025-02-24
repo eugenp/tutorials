@@ -1,6 +1,6 @@
 package com.baeldung.spring.data.persistence.json;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import lombok.*;
 
