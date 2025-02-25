@@ -1,5 +1,8 @@
 package com.baeldung.hibernate.fetchMode;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -7,8 +10,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 public class Customer {

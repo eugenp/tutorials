@@ -13,3 +13,4 @@ This module contains articles about Hibernate Mappings.
 - [Hibernate Validator Specific Constraints](https://www.baeldung.com/hibernate-validator-constraints)
 - [Mapping A Hibernate Query to a Custom Class](https://www.baeldung.com/hibernate-query-to-custom-class)
 - [Dynamic Mapping with Hibernate](https://www.baeldung.com/hibernate-dynamic-mapping)
+- [FetchMode in Hibernate](https://www.baeldung.com/hibernate-fetchmode)
