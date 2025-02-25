@@ -1,12 +1,21 @@
 package com.baeldung.hibernate.pojo;
 
-import org.hibernate.annotations.*;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
+import org.hibernate.annotations.Formula;
+import org.hibernate.annotations.ParamDef;
+import org.hibernate.annotations.Where;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 
 @Entity
 @Where(clause = "deleted = false")

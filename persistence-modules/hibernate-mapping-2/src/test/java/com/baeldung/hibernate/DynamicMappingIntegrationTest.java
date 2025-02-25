@@ -1,18 +1,19 @@
 package com.baeldung.hibernate;
 
-import com.baeldung.hibernate.pojo.Employee;
-import com.baeldung.hibernate.pojo.EntityDescription;
-import com.baeldung.hibernate.pojo.Phone;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.io.IOException;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.IOException;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import com.baeldung.hibernate.pojo.Employee;
+import com.baeldung.hibernate.pojo.EntityDescription;
+import com.baeldung.hibernate.pojo.Phone;
 
 public class DynamicMappingIntegrationTest {
 
@@ -22,7 +23,7 @@ public class DynamicMappingIntegrationTest {
 
     @Before
     public void setUp() throws IOException {
-        session = HibernateUtil.getSessionFactory().openSession();
+        session = HibernateUtil3.getSessionFactory().openSession();
         transaction = session.beginTransaction();
 
         session.createNativeQuery("delete from phone").executeUpdate();

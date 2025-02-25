@@ -5,9 +5,7 @@ This module contains articles about Object-relational Mapping (ORM) with Hiberna
 ### Relevant Articles: 
 
 - [Difference Between @Size, @Length, and @Column(length=value)](https://www.baeldung.com/jpa-size-length-column-differences)
-- [Dynamic Mapping with Hibernate](https://www.baeldung.com/hibernate-dynamic-mapping)
 - [Hibernate Inheritance Mapping](https://www.baeldung.com/hibernate-inheritance)
-- [Mapping A Hibernate Query to a Custom Class](https://www.baeldung.com/hibernate-query-to-custom-class)
 - [Hibernate – Mapping Date and Time](https://www.baeldung.com/hibernate-date-time)
 - [FetchMode in Hibernate](https://www.baeldung.com/hibernate-fetchmode)
 - [Mapping PostgreSQL Array With Hibernate](https://www.baeldung.com/java-hibernate-map-postgresql-array)

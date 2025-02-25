@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.io.IOException;
 import java.util.List;
 
-import com.baeldung.hibernate.entities.DeptEmployee;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -15,6 +14,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.baeldung.hibernate.entities.Department;
+import com.baeldung.hibernate.entities.DeptEmployee;
 import com.baeldung.hibernate.pojo.Result;
 
 public class CustomClassIntegrationTest {
@@ -25,7 +25,7 @@ public class CustomClassIntegrationTest {
 
     @BeforeEach
     public void setUp() throws IOException {
-        session = HibernateUtil.getSessionFactory().openSession();
+        session = HibernateUtil3.getSessionFactory().openSession();
         transaction = session.beginTransaction();
         session.createNativeQuery("delete from department").executeUpdate();
         Department department = new Department("Sales");
