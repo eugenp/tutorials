@@ -278,47 +278,40 @@ public class RestTemplateBasicLiveTest {
         return clientHttpRequestFactory;
         }
  
-        // Alternate GET ClientHttpRequestFactory
-        ClientHttpRequestFactory
-        getClientHttpRequestFactoryAlternate() {
-            long timeout = 5;
-            int readTimeout = 5;
-            // Connect timeout
-            ConnectionConfig connectionConfig =
-                ConnectionConfig.custom()
-                .setConnectTimeout(Timeout.ofMilliseconds(timeout * 2000))
-                .build();
-            // Connection request timeout
-            RequestConfig requestConfig =
-                RequestConfig.custom()
-                .setConnectionRequestTimeout(Timeout.ofMilliseconds(timeout * 1000))
-                .build();
-            // Socket timeout 
-            SocketConfig socketConfig =
-                SocketConfig.custom()
-                .setSoTimeout(Timeout.ofMilliseconds(timeout * 1000)).build();
-            PoolingHttpClientConnectionManager
-            connectionManager = new
-            PoolingHttpClientConnectionManager();
-            connectionManager.setDefaultSocketConfig(socketConfig);
-            connectionManager.setDefaultConnectionConfig(connectionConfig);
-            CloseableHttpClient httpClient =
-                HttpClientBuilder.create()
-                .setConnectionManager(connectionManager)
-                .setDefaultRequestConfig(requestConfig)
-                .build();
-            /**final 
-
-HttpComponentsClientHttpRequestFactory 
-
-clientHttpRequestFactory = new 
-
-HttpComponentsClientHttpRequestFactory(httpClient);
-        clientHttpRequestFactory
-        .setReadTimeout(readTimeout*3000);**/
-            //return clientHttpRequestFactory; 
-            return new
-            HttpComponentsClientHttpRequestFactory(httpClient);
-        }
+    // Alternate GET ClientHttpRequestFactory
+    ClientHttpRequestFactory getClientHttpRequestFactoryAlternate() {
+        long timeout = 5;
+        int readTimeout = 5;
+         
+        // Connect timeout
+        ConnectionConfig connectionConfig = ConnectionConfig.custom()
+          .setConnectTimeout(Timeout.ofMilliseconds(timeout * 2000))
+          .build();
+         
+        // Connection request timeout
+        RequestConfig requestConfig = RequestConfig.custom()
+          .setConnectionRequestTimeout(Timeout.ofMilliseconds(timeout * 1000))
+          .build();
+         
+        // Socket timeout 
+        SocketConfig socketConfig = SocketConfig.custom()
+          .setSoTimeout(Timeout.ofMilliseconds(timeout * 1000)).build();
+        PoolingHttpClientConnectionManager connectionManager = new
+          PoolingHttpClientConnectionManager();
+         
+        connectionManager.setDefaultSocketConfig(socketConfig);
+        connectionManager.setDefaultConnectionConfig(connectionConfig);
+        CloseableHttpClient httpClient = HttpClientBuilder.create()
+          .setConnectionManager(connectionManager)
+          .setDefaultRequestConfig(requestConfig)
+          .build();
+         
+        /**final HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new 
+        HttpComponentsClientHttpRequestFactory(httpClient);
+        clientHttpRequestFactory.setReadTimeout(readTimeout*3000);**/
+        //return clientHttpRequestFactory; 
+        return new HttpComponentsClientHttpRequestFactory(httpClient);
+    
+    }
 
 }
