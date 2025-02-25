@@ -1,5 +1,4 @@
-package com.baeldung.springai.semanticSearch;
-
+package com.baeldung.springai.semanticsearch;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.document.Document;
@@ -15,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/books")
 public class BookSearchController {
+
     private final VectorStore vectorStore;
     private final ChatClient chatClient;
 
@@ -26,29 +26,29 @@ public class BookSearchController {
     @PostMapping("/search")
     List<String> semanticSearch(@RequestBody String query) {
         return vectorStore.similaritySearch(SearchRequest.builder()
-                        .query(query)
-                        .topK(3)
-                        .build())
-                .stream()
-                .map(Document::getText)
-                .toList();
+                .query(query)
+                .topK(3)
+                .build())
+            .stream()
+            .map(Document::getText)
+            .toList();
     }
 
     @PostMapping("/enhanced-search")
     String enhancedSearch(@RequestBody String query) {
         String context = vectorStore.similaritySearch(SearchRequest.builder()
-                        .query(query)
-                        .topK(3)
-                        .build())
-                .stream()
-                .map(Document::getText)
-                .reduce("", (a, b) -> a + b + "\n");
+                .query(query)
+                .topK(3)
+                .build())
+            .stream()
+            .map(Document::getText)
+            .reduce("", (a, b) -> a + b + "\n");
 
         return chatClient.prompt()
-                .system(context)
-                .user(query)
-                .call()
-                .content();
+            .system(context)
+            .user(query)
+            .call()
+            .content();
     }
 
 }
