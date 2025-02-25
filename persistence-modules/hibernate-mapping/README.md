@@ -11,6 +11,5 @@ This module contains articles about Object-relational Mapping (ORM) with Hiberna
 - [Hibernate Inheritance Mapping](https://www.baeldung.com/hibernate-inheritance)
 - [Mapping A Hibernate Query to a Custom Class](https://www.baeldung.com/hibernate-query-to-custom-class)
 - [Hibernate – Mapping Date and Time](https://www.baeldung.com/hibernate-date-time)
-- [Mapping LOB Data in Hibernate](https://www.baeldung.com/hibernate-lob)
 - [FetchMode in Hibernate](https://www.baeldung.com/hibernate-fetchmode)
 - [Mapping PostgreSQL Array With Hibernate](https://www.baeldung.com/java-hibernate-map-postgresql-array)
