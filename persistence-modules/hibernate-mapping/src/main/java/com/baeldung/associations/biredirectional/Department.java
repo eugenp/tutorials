@@ -1,7 +1,10 @@
 package com.baeldung.associations.biredirectional;
 
 import java.util.List;
-import jakarta.persistence.*;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 
 @Entity

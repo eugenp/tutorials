@@ -1,13 +1,11 @@
 package com.baeldung.hibernate.uuids;
 
-import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
+import java.util.UUID;
+
 import org.hibernate.annotations.UuidGenerator;
 
-import java.util.UUID;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import org.hibernate.annotations.UuidGenerator;
 
 @Entity
 public class Sale {

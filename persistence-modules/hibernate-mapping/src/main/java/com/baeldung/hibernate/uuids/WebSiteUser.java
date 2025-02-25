@@ -1,10 +1,12 @@
 package com.baeldung.hibernate.uuids;
 
-import java.util.UUID;
 import java.time.LocalDate;
-import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
+import java.util.UUID;
+
 import org.hibernate.annotations.UuidGenerator;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
 public class WebSiteUser {

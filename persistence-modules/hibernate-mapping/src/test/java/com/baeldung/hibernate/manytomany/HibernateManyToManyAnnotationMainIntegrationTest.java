@@ -16,9 +16,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.jupiter.api.Disabled;
 
+import com.baeldung.hibernate.HibernateUtil;
 import com.baeldung.hibernate.manytomany.model.Employee;
 import com.baeldung.hibernate.manytomany.model.Project;
-import com.baeldung.hibernate.HibernateUtil;
 
 /**
  * Configured in: manytomany.cfg.xml

@@ -1,10 +1,11 @@
 package com.baeldung.hibernate.uuids;
 
 import java.util.UUID;
-import jakarta.persistence.Id;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Reservation {

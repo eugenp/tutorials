@@ -1,16 +1,17 @@
 package com.baeldung.hibernate.uuids;
 
-import com.baeldung.hibernate.HibernateUtil;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.UUID;
 
 import org.assertj.core.api.Assertions;
-import java.io.IOException;
-
-import org.hibernate.SessionFactory;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.Test;
-import java.util.UUID;
-import java.time.LocalDate;
+
+import com.baeldung.hibernate.HibernateUtil;
+import com.baeldung.hibernate.HibernateUtil1;
 
 public class UUIDsHibernateGenerationIntegrationTest {
 
@@ -20,7 +21,7 @@ public class UUIDsHibernateGenerationIntegrationTest {
 
     @Before
     public void setUp() throws IOException {
-        sessionFactory = HibernateUtil.getSessionFactory();
+        sessionFactory = HibernateUtil1.getSessionFactory();
         session = sessionFactory.openSession();
     }
 

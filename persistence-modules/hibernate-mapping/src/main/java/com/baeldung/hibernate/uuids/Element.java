@@ -1,9 +1,9 @@
 package com.baeldung.hibernate.uuids;
 
-import java.util.UUID;
+import org.hibernate.annotations.UuidGenerator;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import org.hibernate.annotations.UuidGenerator;
 
 @Entity
 public class Element {
