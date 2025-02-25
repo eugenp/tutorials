@@ -141,6 +141,7 @@
                             <configOptions>
                                 <delegatePattern>false</delegatePattern>
                                 <useJakartaEe>true</useJakartaEe>
+                                <!--useSpringBoot3>true</useSpringBoot3--> <!--we can uncomment this option if the project uses Spring Boot 3 and above-->
                             </configOptions>
                         </configuration>
                     </execution>

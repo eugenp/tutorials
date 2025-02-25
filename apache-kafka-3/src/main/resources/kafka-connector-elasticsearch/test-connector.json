@@ -1,0 +1,12 @@
+{
+    "name": "elasticsearch-sink-connector-test",
+    "config": {
+        "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
+        "tasks.max": "1",
+        "topics": "logs",
+        "connection.url": "http://elasticsearch:9200",
+        "type.name": "_doc",
+        "key.ignore": "true",
+        "schema.ignore": "true"
+    }
+}

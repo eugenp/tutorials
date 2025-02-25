@@ -61,6 +61,7 @@
         <module>spring-security-authorization</module>
         <module>spring-security-dynamic-registration</module>
         <module>spring-security-ott</module>
+        <module>spring-security-passkey</module>
     </modules>
 
     <build>
