@@ -1,13 +1,14 @@
 package com.baeldung.pmd;
 
-import net.sourceforge.pmd.lang.java.ast.ASTClassOrInterfaceDeclaration;
-import net.sourceforge.pmd.lang.java.rule.AbstractJavaRule;
+import net.sourceforge.pmd.lang.java.ast.ASTClassDeclaration;
+import net.sourceforge.pmd.lang.java.ast.JavaVisitorBase;
+import net.sourceforge.pmd.reporting.RuleContext;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class UnitTestNamingConventionRule extends AbstractJavaRule {
+public class UnitTestNamingConventionRule extends JavaVisitorBase<RuleContext, Void>{
 
     private static List<String> allowedEndings = Arrays.asList(
       "IntegrationTest",
@@ -19,19 +20,19 @@ public class UnitTestNamingConventionRule extends AbstractJavaRule {
       "jmhTest");
 
     @Override
-    public Object visit(ASTClassOrInterfaceDeclaration node, Object data) {
+    public Void visit(ASTClassDeclaration node, RuleContext ctx) {
         String className = node.getSimpleName();
         Objects.requireNonNull(className);
 
         if (className.endsWith("SpringContextTest")) {
-            return data;
-        }
-        
-        if (className.endsWith("Tests")
-                || (className.endsWith("Test") && allowedEndings.stream().noneMatch(className::endsWith))) {
-            addViolation(data, node);
+            return null;
         }
 
-        return data;
+        if (className.endsWith("Tests")
+            || (className.endsWith("Test") && allowedEndings.stream().noneMatch(className::endsWith))) {
+            ctx.addViolation(node);
+        }
+
+        return null;
     }
 }
