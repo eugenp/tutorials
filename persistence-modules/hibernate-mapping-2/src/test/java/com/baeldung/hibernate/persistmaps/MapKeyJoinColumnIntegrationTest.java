@@ -1,10 +1,14 @@
 package com.baeldung.hibernate.persistmaps;
 
-import com.baeldung.hibernate.HibernateUtil;
-import com.baeldung.hibernate.Strategy;
-import com.baeldung.hibernate.persistmaps.mapkeyjoincolumn.Item;
-import com.baeldung.hibernate.persistmaps.mapkeyjoincolumn.Order;
-import com.baeldung.hibernate.persistmaps.mapkeyjoincolumn.Seller;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.time.Instant;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.After;
@@ -13,14 +17,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.time.Instant;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import com.baeldung.hibernate.HibernateUtil;
+import com.baeldung.hibernate.HibernateUtil2;
+import com.baeldung.hibernate.Strategy;
+import com.baeldung.hibernate.persistmaps.mapkeyjoincolumn.Item;
+import com.baeldung.hibernate.persistmaps.mapkeyjoincolumn.Order;
+import com.baeldung.hibernate.persistmaps.mapkeyjoincolumn.Seller;
 
 public class MapKeyJoinColumnIntegrationTest {
     private static SessionFactory sessionFactory;
@@ -29,7 +31,7 @@ public class MapKeyJoinColumnIntegrationTest {
 
     @BeforeClass
     public static void beforeTests() {
-        sessionFactory = HibernateUtil.getSessionFactory(Strategy.MAP_KEY_JOIN_COLUMN_BASED);
+        sessionFactory = HibernateUtil2.getSessionFactory(Strategy.MAP_KEY_JOIN_COLUMN_BASED);
     }
 
     @Before

@@ -40,22 +40,7 @@
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.glassfish.expressly</groupId>
-            <artifactId>expressly</artifactId>
-            <version>5.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.money</groupId>
-            <artifactId>money-api</artifactId>
-            <version>${money-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.javamoney</groupId>
-            <artifactId>moneta</artifactId>
-            <version>${moneta.version}</version>
-            <type>pom</type>
-        </dependency>
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -71,19 +56,14 @@
             <artifactId>jackson-module-jakarta-xmlbind-annotations</artifactId>
             <version>${jackson-module-jakarta-xmlbind-annotation}</version>
         </dependency>
-        <dependency>
-            <groupId>org.openjdk.nashorn</groupId>
-            <artifactId>nashorn-core</artifactId>
-            <version>15.4</version>
-        </dependency>
+
     </dependencies>
 
     <properties>
         <h2.version>2.1.214</h2.version> <!-- needs to be specified as it fails with parent's 1.4.200 -->
         <hibernate-types.version>2.21.1</hibernate-types.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
-        <money-api.version>1.1</money-api.version>
-        <moneta.version>1.4.2</moneta.version>
+
         <jackson-module-jakarta-xmlbind-annotation>2.16.0</jackson-module-jakarta-xmlbind-annotation>
     </properties>
 

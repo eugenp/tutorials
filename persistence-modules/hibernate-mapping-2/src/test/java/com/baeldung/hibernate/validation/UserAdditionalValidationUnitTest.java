@@ -9,10 +9,6 @@ import java.util.Set;
 
 import javax.money.Monetary;
 import javax.money.MonetaryAmount;
-import jakarta.validation.ConstraintViolation;
-import jakarta.validation.Validation;
-import jakarta.validation.Validator;
-import jakarta.validation.ValidatorFactory;
 
 import org.hibernate.validator.constraints.CodePointLength;
 import org.hibernate.validator.constraints.CreditCardNumber;
@@ -27,6 +23,11 @@ import org.hibernate.validator.constraints.time.DurationMin;
 import org.javamoney.moneta.Money;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 
 public class UserAdditionalValidationUnitTest {
 

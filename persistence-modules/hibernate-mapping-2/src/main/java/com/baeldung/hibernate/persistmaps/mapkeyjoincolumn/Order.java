@@ -1,4 +1,6 @@
-package com.baeldung.hibernate.persistmaps.mapkey;
+package com.baeldung.hibernate.persistmaps.mapkeyjoincolumn;
+
+import java.util.Map;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -7,10 +9,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.MapKey;
+import jakarta.persistence.MapKeyJoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import java.util.Map;
 
 @Entity
 @Table(name = "orders")
@@ -23,8 +24,8 @@ public class Order {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "order_item_mapping", joinColumns = {@JoinColumn(name = "order_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "item_id", referencedColumnName = "id")})
-    @MapKey(name = "itemName")
-    private Map<String, Item> itemMap;
+    @MapKeyJoinColumn(name = "seller_id")
+    private Map<Seller, Item> sellerItemMap;
 
     public int getId() {
         return id;
@@ -34,11 +35,11 @@ public class Order {
         this.id = id;
     }
 
-    public Map<String, Item> getItemMap() {
-        return itemMap;
+    public Map<Seller, Item> getSellerItemMap() {
+        return sellerItemMap;
     }
 
-    public void setItemMap(Map<String, Item> itemMap) {
-        this.itemMap = itemMap;
+    public void setSellerItemMap(Map<Seller, Item> sellerItemMap) {
+        this.sellerItemMap = sellerItemMap;
     }
 }

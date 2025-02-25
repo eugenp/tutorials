@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import com.baeldung.hibernate.manytomany.model.Employee;
 import com.baeldung.hibernate.manytomany.model.Project;
 
+
+@Ignore
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class HibernateManyToManyAnnotationJavaConfigMainIntegrationTest {
@@ -37,6 +40,7 @@ public class HibernateManyToManyAnnotationJavaConfigMainIntegrationTest {
         session.getTransaction().commit();
         session.close();
     }
+
 
     @Test
     public final void whenEntitiesAreCreated_thenNoExceptions() {

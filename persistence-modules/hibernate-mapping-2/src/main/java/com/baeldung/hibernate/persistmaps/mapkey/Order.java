@@ -1,6 +1,6 @@
-package com.baeldung.hibernate.persistmaps.mapkeytemporal;
+package com.baeldung.hibernate.persistmaps.mapkey;
 
-import com.baeldung.hibernate.persistmaps.mapkey.Item;
+import java.util.Map;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -9,12 +9,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.MapKeyTemporal;
+import jakarta.persistence.MapKey;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.TemporalType;
-import java.util.Date;
-import java.util.Map;
 
 @Entity
 @Table(name = "orders")
@@ -27,8 +24,8 @@ public class Order {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "order_item_mapping", joinColumns = {@JoinColumn(name = "order_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "item_id", referencedColumnName = "id")})
-    @MapKeyTemporal(TemporalType.TIMESTAMP)
-    private Map<Date, Item> itemMap;
+    @MapKey(name = "itemName")
+    private Map<String, Item> itemMap;
 
     public int getId() {
         return id;
@@ -38,11 +35,11 @@ public class Order {
         this.id = id;
     }
 
-    public Map<Date, Item> getItemMap() {
+    public Map<String, Item> getItemMap() {
         return itemMap;
     }
 
-    public void setItemMap(Map<Date, Item> itemMap) {
+    public void setItemMap(Map<String, Item> itemMap) {
         this.itemMap = itemMap;
     }
 }

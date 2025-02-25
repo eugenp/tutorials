@@ -1,4 +1,9 @@
-package com.baeldung.hibernate.persistmaps.mapkeyjoincolumn;
+package com.baeldung.hibernate.persistmaps.mapkeytemporal;
+
+import java.util.Date;
+import java.util.Map;
+
+import com.baeldung.hibernate.persistmaps.mapkey.Item;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -7,10 +12,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.MapKeyJoinColumn;
+import jakarta.persistence.MapKeyTemporal;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import java.util.Map;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "orders")
@@ -23,8 +28,8 @@ public class Order {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "order_item_mapping", joinColumns = {@JoinColumn(name = "order_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "item_id", referencedColumnName = "id")})
-    @MapKeyJoinColumn(name = "seller_id")
-    private Map<Seller, Item> sellerItemMap;
+    @MapKeyTemporal(TemporalType.TIMESTAMP)
+    private Map<Date, Item> itemMap;
 
     public int getId() {
         return id;
@@ -34,11 +39,11 @@ public class Order {
         this.id = id;
     }
 
-    public Map<Seller, Item> getSellerItemMap() {
-        return sellerItemMap;
+    public Map<Date, Item> getItemMap() {
+        return itemMap;
     }
 
-    public void setSellerItemMap(Map<Seller, Item> sellerItemMap) {
-        this.sellerItemMap = sellerItemMap;
+    public void setItemMap(Map<Date, Item> itemMap) {
+        this.itemMap = itemMap;
     }
 }

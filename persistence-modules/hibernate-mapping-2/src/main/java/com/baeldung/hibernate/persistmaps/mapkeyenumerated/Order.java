@@ -1,5 +1,7 @@
 package com.baeldung.hibernate.persistmaps.mapkeyenumerated;
 
+import java.util.Map;
+
 import com.baeldung.hibernate.persistmaps.ItemType;
 import com.baeldung.hibernate.persistmaps.mapkey.Item;
 
@@ -14,7 +16,6 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.MapKeyEnumerated;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import java.util.Map;
 
 @Entity
 @Table(name = "orders")

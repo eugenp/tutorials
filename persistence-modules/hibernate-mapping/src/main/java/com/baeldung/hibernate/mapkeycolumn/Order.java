@@ -1,4 +1,6 @@
-package com.baeldung.hibernate.persistmaps.mapkeycolumn;
+package com.baeldung.hibernate.mapkeycolumn;
+
+import java.util.Map;
 
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
@@ -9,7 +11,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MapKeyColumn;
 import jakarta.persistence.Table;
-import java.util.Map;
 
 @Entity
 @Table(name = "orders")

@@ -1,12 +1,12 @@
 package com.baeldung.hibernate.persistmaps.mapkey;
 
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name="users2")

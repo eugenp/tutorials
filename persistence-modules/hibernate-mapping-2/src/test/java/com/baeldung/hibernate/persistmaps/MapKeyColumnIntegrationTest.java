@@ -1,8 +1,12 @@
 package com.baeldung.hibernate.persistmaps;
 
-import com.baeldung.hibernate.HibernateUtil;
-import com.baeldung.hibernate.Strategy;
-import com.baeldung.hibernate.persistmaps.mapkeycolumn.Order;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.After;
@@ -11,12 +15,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import com.baeldung.hibernate.HibernateUtil;
+import com.baeldung.hibernate.HibernateUtil2;
+import com.baeldung.hibernate.Strategy;
+import com.baeldung.hibernate.persistmaps.mapkeycolumn.Order;
 
 public class MapKeyColumnIntegrationTest {
     private static SessionFactory sessionFactory;
@@ -25,7 +27,7 @@ public class MapKeyColumnIntegrationTest {
 
     @BeforeClass
     public static void beforeTests() {
-        sessionFactory = HibernateUtil.getSessionFactory(Strategy.MAP_KEY_COLUMN_BASED);
+        sessionFactory = HibernateUtil2.getSessionFactory(Strategy.MAP_KEY_COLUMN_BASED);
     }
 
     @Before

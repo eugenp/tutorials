@@ -1,20 +1,25 @@
 package com.baeldung.hibernate.validation;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.Set;
-import jakarta.persistence.PersistenceException;
-import jakarta.validation.ConstraintViolation;
-import jakarta.validation.Validation;
-import jakarta.validation.Validator;
-import jakarta.validation.ValidatorFactory;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 import com.baeldung.hibernate.HibernateUtil;
+import com.baeldung.hibernate.HibernateUtil2;
 import com.baeldung.hibernate.Strategy;
 import com.baeldung.hibernate.persistmaps.mapkey.User;
+
+import jakarta.persistence.PersistenceException;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 
 public class UserValidationUnitTest {
 
@@ -27,7 +32,7 @@ public class UserValidationUnitTest {
     public static void before() {
         ValidatorFactory config = Validation.buildDefaultValidatorFactory();
         validator = config.getValidator();
-        sessionFactory = HibernateUtil.getSessionFactory(Strategy.MAP_KEY_BASED);
+        sessionFactory = HibernateUtil2.getSessionFactory(Strategy.MAP_KEY_BASED);
     }
 
     @Before
