@@ -1,6 +1,5 @@
 package com.baeldung.hibernate;
 
-import static org.hibernate.boot.registry.StandardServiceRegistryBuilder.DEFAULT_CFG_RESOURCE_NAME;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -10,12 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.baeldung.hibernate.booleanconverters.model.Question;
-import com.baeldung.hibernate.manytomany.model.Employee;
-import com.baeldung.hibernate.manytomany.model.Project;
-import com.baeldung.hibernate.uuids.WebSiteUser;
-import com.baeldung.hibernate.uuids.Element;
-import com.baeldung.hibernate.uuids.Reservation;
-import com.baeldung.hibernate.uuids.Sale;
+
 
 public class HibernateUtil {
 
@@ -26,12 +20,6 @@ public class HibernateUtil {
         try {
             // Create the SessionFactory from hibernate-annotation.cfg.xml
             Configuration configuration = new Configuration();
-            configuration.addAnnotatedClass(Employee.class);
-            configuration.addAnnotatedClass(Project.class);
-            configuration.addAnnotatedClass(WebSiteUser.class);
-            configuration.addAnnotatedClass(Element.class);
-            configuration.addAnnotatedClass(Reservation.class);
-            configuration.addAnnotatedClass(Sale.class);
             configuration.addAnnotatedClass(Question.class);
             configuration.addPackage(Question.class.getPackageName());
             configuration.configure(resource);
