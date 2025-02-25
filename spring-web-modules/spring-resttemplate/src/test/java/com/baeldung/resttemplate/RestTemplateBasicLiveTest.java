@@ -269,16 +269,15 @@ public class RestTemplateBasicLiveTest {
     // Simply setting restTemplate timeout using ClientHttpRequestFactory
 
     ClientHttpRequestFactory getClientHttpRequestFactory() {
-            final int timeout = 5;
-            final HttpComponentsClientHttpRequestFactory
-            clientHttpRequestFactory = new
-            HttpComponentsClientHttpRequestFactory();
-            clientHttpRequestFactory.setConnectionRequestTimeout(timeout * 1000);
-            clientHttpRequestFactory.setConnectTimeout(timeout * 2000);
-            //clientHttpRequestFactory.setReadTimeout
-            (timeout * 3000);
-            return clientHttpRequestFactory;
+        final int timeout = 5;
+        final HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = 
+          new HttpComponentsClientHttpRequestFactory();
+        clientHttpRequestFactory.setConnectionRequestTimeout(timeout * 1000);
+        clientHttpRequestFactory.setConnectTimeout(timeout * 2000);
+        //clientHttpRequestFactory.setReadTimeout(timeout * 3000);
+        return clientHttpRequestFactory;
         }
+ 
         // Alternate GET ClientHttpRequestFactory
         ClientHttpRequestFactory
         getClientHttpRequestFactoryAlternate() {
