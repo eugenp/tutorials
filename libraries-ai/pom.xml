@@ -24,8 +24,6 @@
             <groupId>ai.h2o</groupId>
             <artifactId>h2o-genmodel</artifactId>
             <version>${h2o-genmodel.version}</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/h2o-genmodel.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>edu.stanford.nlp</groupId>
@@ -51,12 +49,49 @@
             <groupId>com.theokanning.openai-gpt3-java</groupId>
             <artifactId>client</artifactId>
             <version>${theokanning.gpt}</version>
-        </dependency>
-        <dependency>
+            <exclusions>
+            	<exclusion>
+            		<groupId>com.squareup.okhttp3</groupId>
+            		<artifactId>okhttp</artifactId>
+            	</exclusion>
+            	<exclusion>
+            		<groupId>com.fasterxml.jackson.core</groupId>
+            		<artifactId>jackson-annotations</artifactId>
+            	</exclusion>
+            	<exclusion>
+            		<groupId>com.fasterxml.jackson.core</groupId>
+            		<artifactId>jackson-core</artifactId>
+            	</exclusion>
+            	<exclusion>
+            		<groupId>com.fasterxml.jackson.core</groupId>
+            		<artifactId>jackson-databind</artifactId>
+            	</exclusion>
+            </exclusions>
+		</dependency>
+		<dependency>
             <groupId>com.theokanning.openai-gpt3-java</groupId>
             <artifactId>service</artifactId>
             <version>${theokanning.gpt}</version>
-        </dependency>
+            <exclusions>
+            	<exclusion>
+            		<groupId>com.fasterxml.jackson.core</groupId>
+            		<artifactId>jackson-annotations</artifactId>
+            	</exclusion>
+            	<exclusion>
+            		<groupId>com.fasterxml.jackson.core</groupId>
+            		<artifactId>jackson-core</artifactId>
+            	</exclusion>
+            	<exclusion>
+            		<groupId>com.fasterxml.jackson.core</groupId>
+            		<artifactId>jackson-databind</artifactId>
+            	</exclusion>
+            </exclusions>
+		</dependency>
+		<dependency>
+            <groupId>com.openai</groupId>
+            <artifactId>openai-java</artifactId>
+            <version>${openai.version}</version>
+		</dependency>
     </dependencies>
 
     <properties>
@@ -64,7 +99,8 @@
         <opennlp-tools.version>2.1.1</opennlp-tools.version>
         <neuroph.version>2.92</neuroph.version>
         <theokanning.gpt>0.18.2</theokanning.gpt>
-        <h2o-genmodel.version>1.0</h2o-genmodel.version>
+        <h2o-genmodel.version>3.46.0.6</h2o-genmodel.version>
+        <openai.version>0.22.0</openai.version>
     </properties>
 
 </project>
