@@ -5,12 +5,12 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-import static org.springframework.batch.test.AssertFile.assertFileEquals;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.batch.core.ExitStatus;
@@ -76,7 +76,7 @@ public class SpringBatchRetryIntegrationTest {
 
         assertEquals("retryBatchJob", actualJobInstance.getJobName());
         assertEquals("COMPLETED", actualJobExitStatus.getExitCode());
-        assertFileEquals(expectedResult, actualResult);
+        org.assertj.core.api.Assertions.assertThat(actualResult.getFile()).hasSameTextualContentAs(expectedResult.getFile());
     }
 
     private JobParameters defaultJobParameters() {

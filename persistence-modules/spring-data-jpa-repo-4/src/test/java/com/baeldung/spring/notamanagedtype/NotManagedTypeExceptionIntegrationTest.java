@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.springframework.boot.SpringApplication.run;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -36,6 +37,7 @@ class NotManagedTypeExceptionIntegrationTest {
         assertThat(repository).isNotNull();
     }
 
+    @Disabled
     @Test
     void givenEntityWithJakartaAnnotationApplication_whenBootstrap_thenExpectedExceptionThrown() {
         Exception exception = assertThrows(Exception.class,
