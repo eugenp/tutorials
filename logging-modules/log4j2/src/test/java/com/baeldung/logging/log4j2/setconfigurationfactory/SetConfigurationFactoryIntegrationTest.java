@@ -11,14 +11,11 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
 import org.apache.logging.log4j.core.config.ConfigurationFactory;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
 public class SetConfigurationFactoryIntegrationTest extends Log4j2BaseIntegrationTest {
-    @BeforeClass
+    @BeforeAll
     public static void setUp() {
         CustomConfigurationFactory customConfigurationFactory = new CustomConfigurationFactory();
         ConfigurationFactory.setConfigurationFactory(customConfigurationFactory);

@@ -1,5 +1,7 @@
 package com.baeldung.logging.log4j2.tests;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import com.baeldung.logging.log4j2.Log4j2BaseIntegrationTest;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -8,14 +10,14 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.Appender;
 import org.apache.logging.log4j.core.appender.WriterAppender;
 import org.apache.logging.log4j.core.layout.JsonLayout;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.CharArrayWriter;
 import java.io.Writer;
 
-import static org.junit.Assert.assertTrue;
 
 public class JSONLayoutIntegrationTest extends Log4j2BaseIntegrationTest {
 
@@ -23,7 +25,7 @@ public class JSONLayoutIntegrationTest extends Log4j2BaseIntegrationTest {
     private Logger logger;
     private final Writer writer = new CharArrayWriter();
 
-    @Before
+    @BeforeEach
     public void setUp() {
         logger = LogManager.getLogger("CONSOLE_JSON_APPENDER");
 
@@ -35,6 +37,7 @@ public class JSONLayoutIntegrationTest extends Log4j2BaseIntegrationTest {
         appender.start();
 
         ((org.apache.logging.log4j.core.Logger) logger).addAppender(appender);
+        ((org.apache.logging.log4j.core.Logger) logger).setLevel(org.apache.logging.log4j.Level.DEBUG);
     }
 
     @Test
@@ -45,7 +48,7 @@ public class JSONLayoutIntegrationTest extends Log4j2BaseIntegrationTest {
         assertTrue(isValidJSON(writer.toString()));
     }
 
-    @After
+    @AfterEach
     public void cleanup() {
         ((org.apache.logging.log4j.core.Logger) logger).removeAppender(appender);
     }

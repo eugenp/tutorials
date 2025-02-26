@@ -14,12 +14,13 @@ import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
 import org.apache.logging.log4j.core.LoggerContext;
 import org.apache.logging.log4j.core.config.plugins.util.PluginManager;
-import org.junit.BeforeClass;
-import org.junit.Test;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class XMLConfigLogIntegrationTest extends Log4j2BaseIntegrationTest {
 
-    @BeforeClass
+    @BeforeAll
     public static void setUp() {
         PluginManager.addPackage("com.baeldung.logging.log4j2.xmlconfiguration");
     }
