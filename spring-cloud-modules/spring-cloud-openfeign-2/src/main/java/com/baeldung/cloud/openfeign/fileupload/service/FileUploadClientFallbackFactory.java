@@ -2,7 +2,6 @@ package com.baeldung.cloud.openfeign.fileupload.service;
 
 import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.baeldung.cloud.openfeign.exception.BadRequestException;
 import com.baeldung.cloud.openfeign.exception.NotFoundException;

@@ -1,10 +1,12 @@
 package com.baeldung.cloud.openfeign.patcherror.client;
 
-import com.baeldung.cloud.openfeign.ExampleApplication;
-import com.baeldung.cloud.openfeign.patcherror.model.User;
-
-import com.github.tomakehurst.wiremock.WireMockServer;
-import feign.FeignException;
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.patch;
+import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,8 +17,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static org.junit.jupiter.api.Assertions.*;
+import com.baeldung.cloud.openfeign.ExampleApplication;
+import com.baeldung.cloud.openfeign.patcherror.client.UserClient;
+import com.baeldung.cloud.openfeign.patcherror.model.User;
+import com.github.tomakehurst.wiremock.WireMockServer;
+
+import feign.FeignException;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = ExampleApplication.class)
