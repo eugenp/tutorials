@@ -1,5 +1,6 @@
 ## Relevant Articles
 - [Setup Http Patch Request With OpenFeign](https://www.baeldung.com/openfeign-http-patch-request)
+- [Differences Between Netflix Feign and OpenFeign](https://www.baeldung.com/netflix-feign-vs-openfeign)
 - [Using CompletableFuture With Feign Client in Spring Boot](https://www.baeldung.com/feign-client-completablefuture-spring-boot)
 - [Provide an OAuth2 Token to a Feign Client](https://www.baeldung.com/spring-cloud-feign-oauth-token)
 - [File Upload With Open Feign](https://www.baeldung.com/java-feign-file-upload)
