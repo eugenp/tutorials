@@ -136,8 +136,8 @@
     </profiles>
 
     <properties>
-        <spring-boot.version>3.4.2</spring-boot.version>
-        <springdoc.version>2.8.4</springdoc.version>
+        <spring-boot.version>3.4.3</spring-boot.version>
+        <springdoc.version>2.8.5</springdoc.version>
         <springdoc-openapi-maven-plugin.version>1.4</springdoc-openapi-maven-plugin.version>
         <start-class>com.baeldung.restdocopenapi.Application</start-class>
     </properties>
