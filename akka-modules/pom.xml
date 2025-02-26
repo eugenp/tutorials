@@ -33,6 +33,7 @@
 
     <properties>
         <scala.version>2.12</scala.version>
+        <akkastreams.version>2.5.11</akkastreams.version>
     </properties>
 
 </project>
