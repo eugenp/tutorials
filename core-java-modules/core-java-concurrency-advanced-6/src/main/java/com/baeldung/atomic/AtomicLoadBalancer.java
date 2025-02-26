@@ -12,8 +12,7 @@ public class AtomicLoadBalancer {
     }
 
     public String getServer() {
-        int index = counter.get() % serverList.size();
-        counter.incrementAndGet();
+        int index = counter.getAndIncrement() % serverList.size();
         return serverList.get(index);
     }
 
