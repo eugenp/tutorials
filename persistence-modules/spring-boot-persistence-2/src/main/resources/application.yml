@@ -7,3 +7,10 @@
 spring:
    profiles:
       active: none
+   jpa:
+      hibernate:
+        naming:
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+   sql:
+     init:
+       data-locations: import_*_users.sql	
