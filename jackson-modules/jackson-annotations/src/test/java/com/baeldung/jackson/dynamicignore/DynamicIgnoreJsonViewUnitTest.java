@@ -3,7 +3,6 @@ package com.baeldung.jackson.dynamicignore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -12,17 +11,10 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 class DynamicIgnoreJsonViewUnitTest {
 
-    private ObjectMapper mapper;
-
-    @BeforeEach
-    public void setUp() {
-        mapper = new ObjectMapper();
-    }
-
     @Test
     void whenWritingWithPublicView_idIsIgnored() throws JsonProcessingException {
         UserView user = new UserView(1L, "John");
-        String result = mapper.writerWithView(UserView.PublicView.class)
+        String result = new ObjectMapper().writerWithView(UserView.PublicView.class)
             .writeValueAsString(user);
 
         assertThat(result).contains("John");
@@ -32,7 +24,7 @@ class DynamicIgnoreJsonViewUnitTest {
     @Test
     void whenWritingWithInternalView_idIsPresent() throws JsonProcessingException {
         UserView user = new UserView(1L, "John");
-        String result = mapper.writerWithView(UserView.InternalView.class)
+        String result = new ObjectMapper().writerWithView(UserView.InternalView.class)
             .writeValueAsString(user);
 
         assertThat(result).contains("John");
@@ -42,7 +34,7 @@ class DynamicIgnoreJsonViewUnitTest {
     @Test
     void whenReadingWithPublicView_idIsIgnored() throws JsonProcessingException {
         String json = "{\"id\":1,\"name\":\"John\"}";
-        UserView user = mapper.readerWithView(UserView.PublicView.class)
+        UserView user = new ObjectMapper().readerWithView(UserView.PublicView.class)
             .forType(UserView.class)
             .readValue(json);
         assertEquals("John", user.getName());
@@ -52,7 +44,7 @@ class DynamicIgnoreJsonViewUnitTest {
     @Test
     void whenReadingWithInternalView_idIsPresent() throws JsonProcessingException {
         String json = "{\"id\":1,\"name\":\"John\"}";
-        UserView user = mapper.readerWithView(UserView.InternalView.class)
+        UserView user = new ObjectMapper().readerWithView(UserView.InternalView.class)
             .forType(UserView.class)
             .readValue(json);
         assertEquals("John", user.getName());

@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,13 +14,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DynamicIgnoreJsonFilterUnitTest {
 
-    private ObjectMapper mapper;
-
-    @BeforeEach
-    public void setUp() {
-        mapper = new ObjectMapper();
-    }
-
     @Test
     void whenWritingWithoutFilter_idIsPresent() throws JsonProcessingException {
         UserFilter user = new UserFilter(1L, "John");
@@ -29,7 +21,7 @@ class DynamicIgnoreJsonFilterUnitTest {
         SimpleFilterProvider filterProvider = new SimpleFilterProvider();
         filterProvider.addFilter("publicFilter", SimpleBeanPropertyFilter.serializeAll());
 
-        String result = mapper.setFilterProvider(filterProvider)
+        String result = new ObjectMapper().setFilterProvider(filterProvider)
             .writeValueAsString(user);
 
         assertThat(result).contains("John");
@@ -43,7 +35,7 @@ class DynamicIgnoreJsonFilterUnitTest {
         SimpleFilterProvider filterProvider = new SimpleFilterProvider();
         filterProvider.addFilter("publicFilter", SimpleBeanPropertyFilter.serializeAllExcept("id"));
 
-        String result = mapper.writer(filterProvider)
+        String result = new ObjectMapper().writer(filterProvider)
             .writeValueAsString(user);
         assertTrue(result.contains("John"));
         assertFalse(result.contains("1"));
@@ -59,7 +51,7 @@ class DynamicIgnoreJsonFilterUnitTest {
         SimpleFilterProvider filterProvider = new SimpleFilterProvider();
         filterProvider.addFilter("publicFilter", SimpleBeanPropertyFilter.serializeAll());
 
-        UserFilter result = mapper.setFilterProvider(filterProvider)
+        UserFilter result = new ObjectMapper().setFilterProvider(filterProvider)
             .readValue(json, UserFilter.class);
         assertEquals(1L, result.getId());
         assertEquals("John", result.getName());
@@ -72,7 +64,7 @@ class DynamicIgnoreJsonFilterUnitTest {
         SimpleFilterProvider filterProvider = new SimpleFilterProvider();
         filterProvider.addFilter("publicFilter", SimpleBeanPropertyFilter.serializeAllExcept("id"));
 
-        UserFilter result = mapper.setFilterProvider(filterProvider)
+        UserFilter result = new ObjectMapper().setFilterProvider(filterProvider)
             .readValue(json, UserFilter.class);
         assertEquals(1L, result.getId());
         assertEquals("John", result.getName());
