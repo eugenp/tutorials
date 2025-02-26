@@ -1,7 +1,7 @@
 package com.baeldung.scheduled;
 
 import com.baeldung.config.ScheduledConfig;
-import org.awaitility.Duration;
+import org.awaitility.Durations;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
@@ -18,7 +18,7 @@ public class ScheduledAwaitilityIntegrationTest {
     @Test
     public void whenWaitOneSecond_thenScheduledIsCalledAtLeastTenTimes() {
         await()
-          .atMost(Duration.ONE_SECOND)
+          .atMost(Durations.ONE_SECOND)
           .untilAsserted(() -> verify(counter, atLeast(10)).scheduled());
     }
 }
