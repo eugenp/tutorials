@@ -96,6 +96,11 @@
             <version>${h2.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jolokia</groupId>
+            <artifactId>jolokia-support-spring</artifactId>
+            <version>${jolokia-support-spring.version}</version>
+        </dependency>
     </dependencies>
 
 
@@ -106,6 +111,7 @@
         <awaitility.version>4.2.0</awaitility.version>
         <postgresql.version>42.3.1</postgresql.version>
         <h2.version>2.2.224</h2.version>
+        <jolokia-support-spring.version>2.2.1</jolokia-support-spring.version>
     </properties>
 
 </project>
