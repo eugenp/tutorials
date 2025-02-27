@@ -84,6 +84,10 @@
            <artifactId>hsqldb</artifactId>
            <scope>runtime</scope>
        </dependency>
+       <dependency>
+           <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-pgvector-store-spring-boot-starter</artifactId>
+       </dependency>
 
        <!-- Test dependencies -->
        <dependency>
@@ -105,6 +109,11 @@
            <groupId>org.testcontainers</groupId>
            <artifactId>ollama</artifactId>
            <scope>test</scope>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-docker-compose</artifactId>
+           <version>${spring-boot-docker-compose.version}</version>
        </dependency>
    </dependencies>
 
@@ -131,6 +140,7 @@
        <spring-boot.version>3.4.1</spring-boot.version>
        <spring-ai.version>1.0.0-M6</spring-ai.version>
        <junit-jupiter.version>5.9.0</junit-jupiter.version>
+       <spring-boot-docker-compose.version>3.1.1</spring-boot-docker-compose.version>
    </properties>
 
 </project>
