@@ -37,8 +37,4 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <combinatoricslib3.version>3.3.3</combinatoricslib3.version>
-    </properties>
-
 </project>

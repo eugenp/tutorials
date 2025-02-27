@@ -68,7 +68,6 @@
     </reporting>
 
     <properties>
-        <combinatoricslib3.version>3.3.0</combinatoricslib3.version>
         <xml-bind-api.version>4.0.0</xml-bind-api.version>
     </properties>
 

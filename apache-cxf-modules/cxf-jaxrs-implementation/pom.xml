@@ -31,7 +31,7 @@
         <dependency>
             <groupId>jakarta.jws</groupId>
             <artifactId>jakarta.jws-api</artifactId>
-            <version>${jakarta-jws.version}</version>
+            <version>${jakarta.jws.version}</version>
         </dependency>
         <dependency>
             <groupId>jakarta.platform</groupId>
@@ -66,8 +66,6 @@
 
     <properties>
         <httpclient.version>4.5.2</httpclient.version>
-        <jakarta-xml.version>4.0.0</jakarta-xml.version>
-        <jakarta-jws.version>3.0.0</jakarta-jws.version>
         <jakarta-platform.version>9.0.0</jakarta-platform.version>
     </properties>
 

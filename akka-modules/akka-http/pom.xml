@@ -21,7 +21,7 @@
         <dependency>
             <groupId>com.typesafe.akka</groupId>
             <artifactId>akka-stream_${scala.version}</artifactId>
-            <version>${akka.stream.version}</version>
+            <version>${akkastreams.version}</version>
         </dependency>
         <dependency>
             <groupId>com.typesafe.akka</groupId>
@@ -38,7 +38,6 @@
 
     <properties>
         <akka.http.version>10.0.11</akka.http.version>
-        <akka.stream.version>2.5.11</akka.stream.version>
     </properties>
 
 </project>

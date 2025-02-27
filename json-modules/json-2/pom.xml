@@ -181,7 +181,6 @@
 
     <properties>
         <fastjson.version>1.2.21</fastjson.version>
-        <jsonschema2pojo-core.version>1.1.1</jsonschema2pojo-core.version>
         <jsonschema-generator.version>4.31.1</jsonschema-generator.version>
         <jakarta.validation.version>3.0.2</jakarta.validation.version>
         <jsonb-api.version>1.0</jsonb-api.version>
