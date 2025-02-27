@@ -22,7 +22,7 @@
     </dependencies>
 
     <properties>
-        <guice.version>5.0.1</guice.version>
+        <guice.version>7.0.0</guice.version>
     </properties>
 
 </project>
