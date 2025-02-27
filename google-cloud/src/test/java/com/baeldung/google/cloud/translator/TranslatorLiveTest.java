@@ -11,13 +11,22 @@ public class TranslatorLiveTest {
     @Test
     void whenTranslateTextIsCalledWithEnglishTextAndFrenchTargetLanguage_thenReturnTranslatedText() {
         String originalText = "Hello, world!";
-        String originalHtml = "<p>Hello, world!</p>";
         String targetLanguage = "es";
         String expectedTranslatedText = "¡Hola Mundo!";
-        String expectedTranslatedHtml = "<p>¡Hola Mundo!</p>";
+
         String translatedText = Translator.translateText(originalText, targetLanguage);
-        String translatedHtml = Translator.translateText(originalHtml, targetLanguage);
+
         assertEquals(expectedTranslatedText, translatedText);
+    }
+
+    @Test
+    void whenTranslateTextIsCalledWithEnglishHTMLAndFrenchTargetLanguage_thenReturnTranslatedHTML() {
+        String originalText = "Hello, world!";
+        String targetLanguage = "es";
+        String expectedTranslatedHtml = "<p>¡Hola Mundo!</p>";
+
+        String translatedHtml = Translator.translateText(originalHtml, targetLanguage);
+
         assertEquals(expectedTranslatedHtml, translatedHtml);
     }
 
