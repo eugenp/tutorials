@@ -62,7 +62,7 @@
         <spring-boot.version>3.0.4</spring-boot.version>
         <h2.version>2.1.214</h2.version>
         <p6spy.version>3.9.1</p6spy.version>
-        <jakarta-persistence.version>3.2.0</jakarta-persistence.version>
+        <jakarta-persistence.version>3.1.0</jakarta-persistence.version>
     </properties>
 
 </project>
