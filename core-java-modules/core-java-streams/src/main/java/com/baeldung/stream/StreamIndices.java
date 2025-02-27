@@ -1,6 +1,8 @@
 package com.baeldung.stream;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -59,4 +61,17 @@ public class StreamIndices {
         return oddIndexedNames;
     }
 
+    public static List<String> getEvenIndexedStringsUsingAtomicInteger(String[] names) {
+        AtomicInteger index = new AtomicInteger(0);
+        return Arrays.stream(names)
+            .filter(name -> index.getAndIncrement() % 2 == 0)
+            .collect(Collectors.toList());
+    }
+
+    public static List<String> getEvenIndexedStringsAtomicIntegerParallel(String[] names) {
+        AtomicInteger index = new AtomicInteger(0);
+        return Arrays.stream(names)
+            .parallel()
+            .filter(name -> index.getAndIncrement() % 2 == 0) .collect(Collectors.toList());
+    }
 }
