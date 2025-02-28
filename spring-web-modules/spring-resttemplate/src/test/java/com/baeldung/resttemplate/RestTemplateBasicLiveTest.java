@@ -311,7 +311,6 @@ public class RestTemplateBasicLiveTest {
         clientHttpRequestFactory.setReadTimeout(readTimeout*3000);**/
         //return clientHttpRequestFactory; 
         return new HttpComponentsClientHttpRequestFactory(httpClient);
-    
     }
 
 }
