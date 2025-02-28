@@ -3,12 +3,13 @@ package com.baeldung.securityconfig.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -19,6 +20,7 @@ import org.springframework.security.web.authentication.logout.LogoutSuccessHandl
 
 import javax.sql.DataSource;
 
+import static org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType.H2;
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
@@ -26,7 +28,8 @@ import static org.springframework.security.config.Customizer.withDefaults;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http, LogoutSuccessHandler webSecurityUserLogoutHandler) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http, LogoutSuccessHandler webSecurityUserLogoutHandler)
+        throws Exception {
         http
           .authorizeHttpRequests((authz) -> authz
             .requestMatchers("/").hasRole("USER")
@@ -50,35 +53,17 @@ public class SecurityConfig {
         };
     }
 
-   /* @Bean
-    @Profile("inmemory")
-    public AuthenticationManager inMemoryAuthManager(HttpSecurity http) throws Exception {
-        AuthenticationManagerBuilder authenticationManagerBuilder =
-          http.getSharedObject(AuthenticationManagerBuilder.class);
-
-        authenticationManagerBuilder
-          .inMemoryAuthentication()
-            .withUser("user")
-            .password(passwordEncoder().encode("password"))
-            .roles("USER")
-            .and()
-            .withUser("admin")
-            .password(passwordEncoder().encode("password"))
-            .roles("ADMIN");
-        return authenticationManagerBuilder.build();
-    }*/
-
     @Bean
     @Profile("inmemory")
-    public InMemoryUserDetailsManager inMemoryUserDetailsService() {
+    public UserDetailsService inMemoryUserDetailsService() {
         UserDetails user = User.builder()
           .username("user")
-          .password("password")
+          .password(passwordEncoder().encode("password"))
           .roles("USER")
           .build();
         UserDetails admin = User.builder()
           .username("admin")
-          .password("password")
+          .password(passwordEncoder().encode("password"))
           .roles("ADMIN")
           .build();
         return new InMemoryUserDetailsManager(user, admin);
@@ -90,12 +75,12 @@ public class SecurityConfig {
         JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
         UserDetails user = User.builder()
           .username("user")
-          .password("password")
+          .password(passwordEncoder().encode("password"))
           .roles("USER")
           .build();
         UserDetails admin = User.builder()
           .username("admin")
-          .password("password")
+          .password(passwordEncoder().encode("password"))
           .roles("ADMIN")
           .build();
         jdbcUserDetailsManager.createUser(user);
@@ -103,35 +88,13 @@ public class SecurityConfig {
         return jdbcUserDetailsManager;
     }
 
-    /*@Bean
-    @Profile("jdbc")
-    public AuthenticationManager jdbcAuthManager(HttpSecurity http, DataSource dataSource,
-      PasswordEncoder passwordEncoder) throws Exception {
-        AuthenticationManagerBuilder authenticationManagerBuilder =
-          http.getSharedObject(AuthenticationManagerBuilder.class);
-
-        authenticationManagerBuilder
-          .jdbcAuthentication()
-            .dataSource(dataSource)
-            .passwordEncoder(passwordEncoder)
-            .withDefaultSchema()
-          .withUser("user")
-          .password(passwordEncoder.encode("password"))
-          .roles("USER")
-          .and()
-          .withUser("admin")
-          .password(passwordEncoder.encode("password"))
-          .roles("ADMIN");
-
-        return authenticationManagerBuilder.build();
-    }*/
-
     @Bean
     @Profile("jdbc")
-    public UserDetailsManager userDetailsManager(DataSource dataSource) {
-        JdbcUserDetailsManager userDetailsManager = new JdbcUserDetailsManager();
-        userDetailsManager.setDataSource(dataSource);
-        return userDetailsManager;
+    DataSource dataSource() {
+        return new EmbeddedDatabaseBuilder()
+          .setType(H2)
+          .addScript(JdbcDaoImpl.DEFAULT_USER_SCHEMA_DDL_LOCATION)
+          .build();
     }
 
     @Bean
