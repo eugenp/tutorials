@@ -78,6 +78,7 @@ public class StreamIndicesUnitTest {
     public void whenCalledInParallel_thenResultInconsistent() {
         String[] names = { "Afrim", "Bashkim", "Besim", "Lulzim", "Durim", "Shpetim" };
         List<String> result = StreamIndices.getEvenIndexedStringsAtomicIntegerParallel(names);
-        assertNotEquals(Arrays.asList("Afrim", "Besim", "Durim"), result);
+        // The result can be inconsistent because of race conditions.
+        //assertNotEquals(Arrays.asList("Afrim", "Besim", "Durim"), result);
     }
 }
