@@ -21,7 +21,7 @@ public class TranslatorLiveTest {
 
     @Test
     void whenTranslateTextIsCalledWithEnglishHTMLAndFrenchTargetLanguage_thenReturnTranslatedHTML() {
-        String originalText = "Hello, world!";
+        String originalHtml = "<p>Hello, world!</p>";
         String targetLanguage = "es";
         String expectedTranslatedHtml = "<p>¡Hola Mundo!</p>";
 
