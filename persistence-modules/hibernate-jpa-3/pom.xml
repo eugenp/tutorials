@@ -62,6 +62,10 @@
         <spring-boot.version>3.0.4</spring-boot.version>
         <h2.version>2.1.214</h2.version>
         <p6spy.version>3.9.1</p6spy.version>
+        <!--
+        Spring Boot v3.0.4 is designed and tested with Jakarta Persistence API v3.1.0
+        Version upgrade should be done with cautious, and in correlation with Spring Boot version upgrade
+        -->
         <jakarta-persistence.version>3.1.0</jakarta-persistence.version>
     </properties>
 
