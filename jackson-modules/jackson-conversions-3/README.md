@@ -5,3 +5,4 @@
 - [Deserialize Immutable Objects with Jackson](https://www.baeldung.com/jackson-deserialize-immutable-objects)
 - [Serialize and Deserialize Booleans as Integers With Jackson](https://www.baeldung.com/jackson-booleans-as-integers)
 - [Reading JSON From a URL in Java](https://www.baeldung.com/java-read-json-from-url)
+- [How to Distinguish Between Field Absent vs. Null in Jackson](https://www.baeldung.com/jackson-field-absent-vs-null-difference)
