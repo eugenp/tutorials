@@ -13,35 +13,34 @@ class DynamicIgnoreJsonMixinUnitTest {
 
     @Test
     void whenWritingWithoutMixin_idIsPresent() throws JsonProcessingException {
-        UserMixin user = new UserMixin(1L, "John");
+        UserMixin user = new UserMixin(1000L, "John");
         String result = new ObjectMapper().writeValueAsString(user);
-
         assertThat(result).contains("John");
-        assertThat(result).contains("1");
+        assertThat(result).contains("1000");
     }
 
     @Test
     void whenWritingWithPublicMixin_idIsIgnored() throws JsonProcessingException {
-        UserMixin user = new UserMixin(1L, "John");
-        String result = new ObjectMapper().addMixIn(UserMixin.class, UserMixin.PublicMixIn.class)
-            .writeValueAsString(user);
+        UserMixin user = new UserMixin(1000L, "John");
+        ObjectMapper objectMapper = new ObjectMapper().addMixIn(UserMixin.class, UserMixin.PublicMixIn.class);
+        String result = objectMapper.writeValueAsString(user);
         assertThat(result).contains("John");
-        assertThat(result).doesNotContain("1");
+        assertThat(result).doesNotContain("1000");
     }
 
     @Test
     void whenReadingWithoutMixin_idIsPresent() throws JsonProcessingException {
-        String json = "{\"id\":1,\"name\":\"John\"}";
+        String json = "{\"id\":1000,\"name\":\"John\"}";
         UserMixin user = new ObjectMapper().readValue(json, UserMixin.class);
-        assertEquals(1L, user.getId());
+        assertEquals(1000L, user.getId());
         assertEquals("John", user.getName());
     }
 
     @Test
     void whenReadingWithPublicMixin_idIsIgnored() throws JsonProcessingException {
-        String json = "{\"id\":1,\"name\":\"John\"}";
-        UserMixin user = new ObjectMapper().addMixIn(UserMixin.class, UserMixin.PublicMixIn.class)
-            .readValue(json, UserMixin.class);
+        String json = "{\"id\":1000,\"name\":\"John\"}";
+        ObjectMapper objectMapper = new ObjectMapper().addMixIn(UserMixin.class, UserMixin.PublicMixIn.class);
+        UserMixin user = objectMapper.readValue(json, UserMixin.class);
         assertNull(user.getId());
         assertEquals("John", user.getName());
     }
