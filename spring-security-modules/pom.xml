@@ -59,6 +59,7 @@
         <module>spring-security-pkce-spa</module>
         <module>spring-security-compromised-password</module>
         <module>spring-security-authorization</module>
+        <module>spring-disable-security</module>
         <module>spring-security-dynamic-registration</module>
         <module>spring-security-ott</module>
         <module>spring-security-passkey</module>
