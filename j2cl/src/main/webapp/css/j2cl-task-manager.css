@@ -1,11 +1,11 @@
 body {
     background-color: #cefb56;
-	color: black;
-	font-family: Calibri, Arial, sans-serif;
+    color: black;
+    font-family: Calibri, Arial, sans-serif;
 }
 
 .deleteButton {
-	margin-left: 1rem;
+    margin-left: 1rem;
 }
 
 .errorMessage {
