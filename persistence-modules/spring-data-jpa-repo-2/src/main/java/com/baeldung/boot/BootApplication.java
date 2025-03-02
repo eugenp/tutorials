@@ -7,9 +7,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.baeldung.jpa.JpaApplication;
+import com.baeldung.boot.daos.impl.ExtendedRepositoryImpl;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = "com.baeldung.boot.daos")
+@EnableJpaRepositories(repositoryBaseClass = ExtendedRepositoryImpl.class, basePackages = "com.baeldung.boot.daos")
 @EntityScan({"com.baeldung.boot.domain"})
 @ComponentScan("com.baeldung.boot.daos")
 public class BootApplication {

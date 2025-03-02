@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -16,11 +17,13 @@ public class Item {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "ITEM_TYPE_ID")
     private ItemType itemType;
 
     private String name;
     private BigDecimal price;
     @ManyToOne
+    @JoinColumn(name = "STORE_ID")
     private Store store;
 
     public String getColor() {

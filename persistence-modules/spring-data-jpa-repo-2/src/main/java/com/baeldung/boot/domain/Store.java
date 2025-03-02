@@ -22,6 +22,7 @@ public class Store {
     private Long itemsSold;
 
     @ManyToOne
+    @JoinColumn(name = "LOCATION_ID")
     private Location location;
 
     private String name;
