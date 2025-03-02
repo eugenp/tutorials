@@ -1,11 +1,15 @@
 package com.baeldung.list;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
 import com.baeldung.list.entity.Car;
 import com.baeldung.list.entity.CarDto;
+import com.baeldung.list.entity.ManufacturingPlantDto;
 
 public class SourcePropsToListElementsUnitTest {
     @Test
@@ -18,7 +22,8 @@ public class SourcePropsToListElementsUnitTest {
         assertEquals("Mini", carDto.getModel());
         assertEquals(1969, carDto.getYear());
         assertEquals(4, carDto.getNumberOfSeats());
-        assertEquals(2, carDto.getManufacturingPlantDtos().size());
+
+        validateTargetList(carDto.getManufacturingPlantDtos());
     }
 
     @Test
@@ -31,7 +36,22 @@ public class SourcePropsToListElementsUnitTest {
         assertEquals("Mini", carDto.getModel());
         assertEquals(1969, carDto.getYear());
         assertEquals(4, carDto.getNumberOfSeats());
-        assertEquals(2, carDto.getManufacturingPlantDtos().size());
+
+        validateTargetList(carDto.getManufacturingPlantDtos());
+    }
+
+    @Test
+    void whenUsingQualifiedByName_thenConvertCarToCarDto() {
+        Car car = createCarObject();
+
+        CarDto carDto = QualifiedByNameCarMapper.INSTANCE.carToCarDto(car);
+
+        assertEquals("Morris", carDto.getMake());
+        assertEquals("Mini", carDto.getModel());
+        assertEquals(1969, carDto.getYear());
+        assertEquals(4, carDto.getNumberOfSeats());
+
+        validateTargetList(carDto.getManufacturingPlantDtos());
     }
 
 
@@ -44,4 +64,13 @@ public class SourcePropsToListElementsUnitTest {
         return car;
     }
 
+    private void validateTargetList(List<ManufacturingPlantDto> manufacturingPlantDtos) {
+        assertEquals(2, manufacturingPlantDtos.size());
+        manufacturingPlantDtos.forEach(plant -> {
+            switch (plant.getPlantName()) {
+                case "Oxford", "Swinden" -> assertEquals("United Kingdom", plant.getLocation());
+                default -> fail("Unexpected plant name: " + plant.getPlantName());
+            }
+        });
+    }
 }
