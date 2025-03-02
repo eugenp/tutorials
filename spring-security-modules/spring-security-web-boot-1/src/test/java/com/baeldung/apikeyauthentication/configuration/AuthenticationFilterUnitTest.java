@@ -45,7 +45,7 @@ public class AuthenticationFilterUnitTest {
     }
 
     @Test
-    public void whenAuthenticationSuccessfullCallDoFilter() throws IOException, ServletException {
+    public void givenValidAuthentication_whenDoFilter_thenProceedsWithFilterChain() throws IOException, ServletException {
         try (MockedStatic<AuthenticationService> mockedAuthService = Mockito.mockStatic(AuthenticationService.class)) {
             mockedAuthService.when(() -> AuthenticationService.getAuthentication(request)).thenReturn(authentication);
             
@@ -58,7 +58,7 @@ public class AuthenticationFilterUnitTest {
     }
 
     @Test
-    public void whenAuthenticationFailsThenDoNotCallDoFilter() throws IOException, ServletException {
+    public void givenAuthenticationFailure_whenDoFilter_thenReturnsUnauthorizedResponse() throws IOException, ServletException {
         try (MockedStatic<AuthenticationService> mockedAuthService = Mockito.mockStatic(AuthenticationService.class)) {
             mockedAuthService.when(() -> AuthenticationService.getAuthentication(request))
                 .thenThrow(new RuntimeException("Authentication failed"));
