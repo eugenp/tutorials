@@ -813,8 +813,6 @@
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
-                <module>spring-webflux</module>
-                <module>spring-webflux-2</module>
                 <module>spring-websockets</module>
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
@@ -1203,8 +1201,6 @@
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
-                <module>spring-webflux</module>
-                <module>spring-webflux-2</module>
                 <module>spring-websockets</module>
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
@@ -1344,6 +1340,8 @@
                 <module>spring-reactive-modules/spring-reactive-oauth</module>
                 <module>spring-reactive-modules/spring-reactive-security</module>
                 <module>spring-reactive-modules/spring-reactive</module>
+                <module>spring-reactive-modules/spring-webflux</module>
+                <module>spring-reactive-modules/spring-webflux-2</module>
                 <module>spring-reactive-modules/spring-webflux-amqp</module>
                 <module>spring-web-modules/spring-rest-http</module>
                 <module>web-modules/jee-7</module>
