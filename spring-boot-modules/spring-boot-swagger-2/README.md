@@ -6,3 +6,4 @@
 - [Map Date Types With OpenAPI Generator](https://www.baeldung.com/openapi-map-date-types)
 - [API First Development with Spring Boot and OpenAPI 3.0](https://www.baeldung.com/spring-boot-openapi-api-first-development)
 - [Swagger @ApiParam vs @ApiModelProperty](https://www.baeldung.com/swagger-apiparam-vs-apimodelproperty)
+- [Document Enum in Swagger](https://www.baeldung.com/swagger-enum)
