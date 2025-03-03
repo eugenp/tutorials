@@ -1,4 +1,4 @@
-package com.baeldung.swagger2bootmvc.model;
+package com.baeldung.parametervsschema.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
