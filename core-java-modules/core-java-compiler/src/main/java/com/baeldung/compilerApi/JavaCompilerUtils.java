@@ -1,5 +1,8 @@
 package com.baeldung.compilerApi;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.tools.*;
 import java.io.*;
 import java.net.URL;
@@ -18,6 +21,8 @@ public class JavaCompilerUtils {
     private final JavaCompiler compiler;
     private final StandardJavaFileManager standardFileManager;
     private final Path outputDirectory;
+
+    private static final Logger logger = LoggerFactory.getLogger(JavaCompilerUtils.class);
 
     /**
      * Constructs a new JavaCompilerUtil instance.
@@ -60,7 +65,7 @@ public class JavaCompilerUtils {
                     standardFileManager.getJavaFileObjectsFromFiles(Collections.singletonList(sourceFile.toFile()));
             return compile(compilationUnits);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Compilation failed: ", e);
             return false;
         }
     }
@@ -100,7 +105,7 @@ public class JavaCompilerUtils {
 
         // Print compilation diagnostics
         for (Diagnostic<? extends JavaFileObject> diagnostic : diagnostics.getDiagnostics()) {
-            System.out.println(diagnostic.getMessage(null));
+            logger.debug(diagnostic.getMessage(null));
         }
 
         return success;

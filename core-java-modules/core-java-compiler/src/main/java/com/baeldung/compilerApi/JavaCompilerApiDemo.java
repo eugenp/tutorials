@@ -1,5 +1,8 @@
 package com.baeldung.compilerApi;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -8,15 +11,15 @@ import java.nio.file.Paths;
  * Demonstration of the JavaCompilerUtil class.
  */
 public class JavaCompilerApiDemo {
+    private static final Logger logger = LoggerFactory.getLogger(JavaCompilerApiDemo.class);
 
     public static void main(String[] args) {
         try {
             // Create output directory for compiled classes
             Path outputDir = Paths.get("compiled-classes");
 
-            // Initialize the compiler utility
             JavaCompilerUtils compilerUtil = new JavaCompilerUtils(outputDir);
-            System.out.println("Java compiler initialized with output directory: " + outputDir.toAbsolutePath());
+            logger.debug("Java compiler initialized with output directory: {}", outputDir.toAbsolutePath());
 
             // Example 1: Compile from string
             compileFromStringExample(compilerUtil);
@@ -25,13 +28,12 @@ public class JavaCompilerApiDemo {
             compileFromFileExample(compilerUtil);
 
         } catch (Exception e) {
-            System.err.println("Error in compiler demo: ");
-            e.printStackTrace();
+            logger.error("Compilation failed {}", e.getMessage(), e);
         }
     }
 
     private static void compileFromStringExample(JavaCompilerUtils compilerUtil) throws Exception {
-        System.out.println("\n--- Example 1: Compile from String ---");
+        logger.debug("\n--- Example 1: Compile from String ---");
 
         // Define a simple class
         String className = "HelloWorld";
@@ -45,20 +47,20 @@ public class JavaCompilerApiDemo {
         boolean success = compilerUtil.compileFromString(className, sourceCode);
 
         if (success) {
-            System.out.println("Compilation successful!");
-            System.out.println("Running the compiled class:");
+            logger.debug("Compilation successful!");
+            logger.debug("Running the compiled class:");
 
             // Run the compiled class
-            System.out.println("----- Output from HelloWorld -----");
+            logger.debug("----- Output from HelloWorld -----");
             compilerUtil.runClass(className, "arg1", "arg2");
-            System.out.println("---------------------------------");
+            logger.debug("---------------------------------");
         } else {
-            System.out.println("Compilation failed.");
+            logger.error("Compilation failed.");
         }
     }
 
     private static void compileFromFileExample(JavaCompilerUtils compilerUtil) throws Exception {
-        System.out.println("\n--- Example 2: Compile from File ---");
+        logger.debug("\n--- Example 2: Compile from File ---");
 
         // Create a temporary Java file
         Path tempFile = Paths.get("Calculator.java");
@@ -84,26 +86,26 @@ public class JavaCompilerApiDemo {
                 "}";
         Files.write(tempFile, sourceCode.getBytes());
 
-        System.out.println("Created temporary Java file: " + tempFile);
+        logger.debug("Created temporary Java file: {}", tempFile);
 
         // Compile the file
         boolean success = compilerUtil.compileFile(tempFile);
 
         if (success) {
-            System.out.println("Compilation successful!");
-            System.out.println("Running the compiled class:");
+            logger.debug("Compilation successful!");
+            logger.debug("Running the compiled class:");
 
             // Run the compiled class
-            System.out.println("----- Output from Calculator -----");
+            logger.debug("----- Output from Calculator -----");
             compilerUtil.runClass("Calculator", "5", "7");
-            System.out.println("----------------------------------");
+            logger.debug("----------------------------------");
         } else {
             System.out.println("Compilation failed.");
         }
 
         // Clean up the temporary file
         Files.delete(tempFile);
-        System.out.println("Deleted temporary file: " + tempFile);
+        logger.debug("Deleted temporary file: {}", tempFile);
     }
 
 }
