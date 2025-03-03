@@ -1,0 +1,69 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide empty attributes
+skinparam Handwritten false
+skinparam ClassBorderColor black
+skinparam BackgroundColor #fffce8/#f8f9fa
+skinparam class {
+ ArrowColor SeaGreen
+ BackgroundColor #fffce8
+}
+
+class Car {
+  -make: String
+  -model: String
+  -year: int
+  -seats: int
+  -plant1: String
+  -plant2: String
+  -plant1Loc: String
+  -plant2Loc: String
+  __
+  +Car(make: String, model: String, year: int, seats: int)
+  __
+  <i>Standard getter and setter methods
+}
+
+class CarDto {
+  -make: String
+  -model: String
+  -year: int
+  -numberOfseats: int
+  -manufacturingPlantDtos:List<ManufacturingPlantDto>
+  __
+  +CarDto(make: String, model: String, year: int, numberOfSeats: int)
+  __
+  <i>Standard getter and setter methods
+}
+
+
+
+class ManufacturingPlantDto {
+  -plantName: String
+  -location: String
+  __
+  +ManufacturingPlantDto(plantName: String, location: String)
+  __
+  <i>Standard getter and setter methods
+}
+
+note left of Car
+  Source object
+end note
+
+note left of CarDto
+  Target object derived from Car
+end note
+
+note left of ManufacturingPlantDto::plantName
+  possible values mapped to
+ Car#plant1 and Car#plant2
+end note
+note left of ManufacturingPlantDto::location
+   possible values mapped to
+ Car#plant1Loc and Car#plant2Loc
+end note
+
+CarDto -down-> ManufacturingPlantDto: 1\n*
+Car .down. CarDto: 1\n1
+@enduml

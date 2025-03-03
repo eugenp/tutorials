@@ -54,13 +54,15 @@
                             <version>${lombok.mapstruct.binding.version}</version>
                         </path>
                     </annotationProcessorPaths>
+                    <source>17</source>
+                    <target>17</target>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
     <properties>
-        <org.mapstruct.version>1.6.0.Beta2</org.mapstruct.version>
+        <org.mapstruct.version>1.6.3</org.mapstruct.version>
         <lombok.mapstruct.binding.version>0.2.0</lombok.mapstruct.binding.version>
     </properties>
 
