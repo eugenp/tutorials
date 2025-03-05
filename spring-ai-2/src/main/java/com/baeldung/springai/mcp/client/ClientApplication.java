@@ -4,6 +4,7 @@ import org.springframework.ai.autoconfigure.bedrock.converse.BedrockConverseProx
 import org.springframework.ai.autoconfigure.ollama.OllamaAutoConfiguration;
 import org.springframework.ai.autoconfigure.openai.OpenAiAutoConfiguration;
 import org.springframework.ai.autoconfigure.vectorstore.chroma.ChromaVectorStoreAutoConfiguration;
+import org.springframework.ai.autoconfigure.vectorstore.pgvector.PgVectorStoreAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
@@ -16,6 +17,7 @@ import org.springframework.context.annotation.PropertySource;
 @SpringBootApplication(exclude = {
     OllamaAutoConfiguration.class,
     OpenAiAutoConfiguration.class,
+    PgVectorStoreAutoConfiguration.class,
     ChromaVectorStoreAutoConfiguration.class,
     BedrockConverseProxyChatAutoConfiguration.class
 })
