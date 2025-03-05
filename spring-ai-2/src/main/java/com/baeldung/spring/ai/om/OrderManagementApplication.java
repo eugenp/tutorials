@@ -17,7 +17,7 @@ import org.springframework.context.annotation.PropertySource;
 @SpringBootApplication(exclude = {
     OllamaAutoConfiguration.class,
     AnthropicAutoConfiguration.class,
-	PgVectorStoreAutoConfiguration.class,
+    PgVectorStoreAutoConfiguration.class,
     ChromaVectorStoreAutoConfiguration.class,
     BedrockConverseProxyChatAutoConfiguration.class
 })
