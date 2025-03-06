@@ -74,30 +74,6 @@
                             </configOptions>
                         </configuration>
                     </execution>
-                    <execution>
-                        <id>dates</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/static/event.yaml</inputSpec>
-                            <language>spring</language>
-                            <configOptions>
-                                <java8>true</java8>
-                                <dateLibrary>custom</dateLibrary>
-                                <jakarta>true</jakarta>
-                                <useSpringBoot3>true</useSpringBoot3>
-                            </configOptions>
-                            <typeMappings>
-                                <typeMapping>DateTime=Instant</typeMapping>
-                                <typeMapping>Date=Date</typeMapping>
-                            </typeMappings>
-                            <importMappings>
-                                <importMapping>Instant=java.time.Instant</importMapping>
-                                <importMapping>Date=java.util.Date</importMapping>
-                            </importMappings>
-                        </configuration>
-                    </execution>
                 </executions>
             </plugin>
             <plugin>
@@ -111,7 +87,6 @@
                         </goals>
                         <configuration>
                             <skipValidateSpec>true</skipValidateSpec>
-                            <inputSpec>${project.basedir}/src/main/resources/static/event.yaml</inputSpec>
                             <inputSpec>${project.basedir}/src/main/resources/static/account_api_description.yaml</inputSpec>
                             <generatorName>spring</generatorName>
                             <configOptions>
