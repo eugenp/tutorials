@@ -11,6 +11,7 @@ spring:
       hibernate:
         naming:
           implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+      defer-datasource-initialization: true
    sql:
      init:
        data-locations: import_*_users.sql	
