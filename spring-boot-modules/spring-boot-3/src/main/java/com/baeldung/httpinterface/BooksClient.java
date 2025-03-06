@@ -12,7 +12,7 @@ public class BooksClient {
 
     public BooksClient(WebClient webClient) {
         HttpServiceProxyFactory httpServiceProxyFactory =
-          HttpServiceProxyFactory.builder(WebClientAdapter.forClient(webClient))
+          HttpServiceProxyFactory.builder()
             .build();
         booksService = httpServiceProxyFactory.createClient(BooksService.class);
     }

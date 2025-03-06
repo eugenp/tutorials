@@ -7,11 +7,9 @@
 - [Retrieve the Value of an HTML Input in Selenium WebDriver](https://www.baeldung.com/java-selenium-html-input-value)
 - [Clicking Elements in Selenium using JavaScript](https://www.baeldung.com/java-selenium-javascript)
 - [Guide to Selenium with JUnit / TestNG](http://www.baeldung.com/java-selenium-with-junit-and-testng)
-- [Finding Element by Attribute in Selenium](https://www.baeldung.com/selenium-find-element-by-attribute)
-- [Automated Visual Regression Testing Over Scalable Cloud Grid](https://www.baeldung.com/automated-visual-regression-testing)
 - [How to Handle Alerts and Popups in Selenium](https://www.baeldung.com/java-selenium-handle-alerts-popups)
 - [Automated Accessibility Testing With Selenium](https://www.baeldung.com/java-selenium-accessibility-testing)
-
+- More articles [[<-- prev]](../selenium) [[next -->]](../selenium-3)
 
 #### Notes:
 - to run the live tests for the article *Fixing Selenium WebDriver Executable Path Error*, follow the manual setup described

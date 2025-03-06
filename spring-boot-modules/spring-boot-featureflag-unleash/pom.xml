@@ -22,7 +22,7 @@
         <dependency>
             <groupId>io.getunleash</groupId>
             <artifactId>unleash-client-java</artifactId>
-            <version>LATEST</version>
+            <version>${unleash-client-java.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -51,7 +51,7 @@
     </build>
 
     <properties>
-        <java.version>21</java.version>
+        <unleash-client-java.version>10.0.1</unleash-client-java.version>
         <springdoc.version>2.2.0</springdoc.version>
         <start-class>com.baeldung.unleash.DemoApplication</start-class>
     </properties>

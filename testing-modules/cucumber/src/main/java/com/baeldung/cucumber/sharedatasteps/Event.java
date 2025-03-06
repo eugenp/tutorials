@@ -1,4 +1,4 @@
-package com.baeldung.sharedatasteps;
+package com.baeldung.cucumber.sharedatasteps;
 
 public class Event {
     private String uuid;

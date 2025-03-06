@@ -1,15 +1,15 @@
 package com.baeldung.spring.web.config;
 
 import jakarta.servlet.MultipartConfigElement;
+
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
+import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.MediaType;
 import org.springframework.ui.context.support.ResourceBundleThemeSource;
 import org.springframework.util.unit.DataSize;
-import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -17,9 +17,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.PathResourceResolver;
 import org.springframework.web.servlet.theme.CookieThemeResolver;
 import org.springframework.web.servlet.theme.ThemeChangeInterceptor;
-import org.springframework.web.servlet.view.BeanNameViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 //@EnableWebMvc
 //@ComponentScan(basePackages = { "com.baeldung.web.controller" })
@@ -89,41 +90,15 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(themeChangeInterceptor());
     }
 
-    /** END theme configuration */
+
 
     @Bean
-    public BeanNameViewResolver beanNameViewResolver(){
-        BeanNameViewResolver beanNameViewResolver = new BeanNameViewResolver();
-        beanNameViewResolver.setOrder(1);
-        return beanNameViewResolver;
+    public WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> enableDefaultServlet() {
+        return factory -> factory.setRegisterDefaultServlet(true);
     }
 
     @Bean
-    public View sample() {
-        return new JstlView("/WEB-INF/view/sample.jsp");
-    }
-
-    @Bean
-    public View sample2() {
-        return new JstlView("/WEB-INF/view2/sample2.jsp");
-    }
-
-    @Bean
-    public View sample3(){
-        return new JstlView("/WEB-INF/view3/sample3.jsp");
-    }
-
-    /**
-     * Spring Boot allows configuring Content Negotiation using properties
-     */
-    @Override
-    public void configureContentNegotiation(final ContentNegotiationConfigurer configurer) {
-        configurer.favorParameter(true)
-            .parameterName("mediaType")
-            .ignoreAcceptHeader(false)
-            .useRegisteredExtensionsOnly(false)
-            .defaultContentType(MediaType.APPLICATION_JSON)
-            .mediaType("xml", MediaType.APPLICATION_XML)
-            .mediaType("json", MediaType.APPLICATION_JSON);
+    public ObjectMapper objectMapper() {
+        return new ObjectMapper();
     }
 }
