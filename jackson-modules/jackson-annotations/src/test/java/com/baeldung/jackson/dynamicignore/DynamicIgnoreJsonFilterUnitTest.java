@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class DynamicIgnoreJsonFilterUnitTest {
 
     @Test
-    void whenWritingWithoutFilter_idIsPresent() throws JsonProcessingException {
+    void whenWritingWithoutFilter_thenIdIsPresent() throws JsonProcessingException {
         UserFilter user = new UserFilter(1000L, "John");
 
         SimpleFilterProvider filterProvider = new SimpleFilterProvider();
@@ -27,7 +27,7 @@ class DynamicIgnoreJsonFilterUnitTest {
     }
 
     @Test
-    void whenWritingWithFilter_idIsIgnored() throws JsonProcessingException {
+    void whenWritingWithFilter_thenIdIsIgnored() throws JsonProcessingException {
         UserFilter user = new UserFilter(1000L, "John");
 
         SimpleFilterProvider filterProvider = new SimpleFilterProvider();
@@ -41,7 +41,7 @@ class DynamicIgnoreJsonFilterUnitTest {
     }
 
     @Test
-    void whenReadingWithoutFilter_idIsPresent() throws JsonProcessingException {
+    void whenReadingWithoutFilter_thenIdIsPresent() throws JsonProcessingException {
         String json = "{\"id\":1000,\"name\":\"John\"}";
 
         SimpleFilterProvider filterProvider = new SimpleFilterProvider();
@@ -55,7 +55,7 @@ class DynamicIgnoreJsonFilterUnitTest {
     }
 
     @Test
-    void whenReadingWithFilter_idIsStillPresent() throws JsonProcessingException {
+    void whenReadingWithFilter_thenIdIsStillPresent() throws JsonProcessingException {
         String json = "{\"id\":1000,\"name\":\"John\"}";
 
         SimpleFilterProvider filterProvider = new SimpleFilterProvider();

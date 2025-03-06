@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 class DynamicIgnoreJsonMixinUnitTest {
 
     @Test
-    void whenWritingWithoutMixin_idIsPresent() throws JsonProcessingException {
+    void whenWritingWithoutMixin_thenIdIsPresent() throws JsonProcessingException {
         UserMixin user = new UserMixin(1000L, "John");
         String result = new ObjectMapper().writeValueAsString(user);
         assertThat(result).contains("John");
@@ -20,7 +20,7 @@ class DynamicIgnoreJsonMixinUnitTest {
     }
 
     @Test
-    void whenWritingWithPublicMixin_idIsIgnored() throws JsonProcessingException {
+    void whenWritingWithPublicMixin_thenIdIsIgnored() throws JsonProcessingException {
         UserMixin user = new UserMixin(1000L, "John");
         ObjectMapper objectMapper = new ObjectMapper().addMixIn(UserMixin.class, UserMixin.PublicMixIn.class);
         String result = objectMapper.writeValueAsString(user);
@@ -29,7 +29,7 @@ class DynamicIgnoreJsonMixinUnitTest {
     }
 
     @Test
-    void whenReadingWithoutMixin_idIsPresent() throws JsonProcessingException {
+    void whenReadingWithoutMixin_thenIdIsPresent() throws JsonProcessingException {
         String json = "{\"id\":1000,\"name\":\"John\"}";
         UserMixin user = new ObjectMapper().readValue(json, UserMixin.class);
         assertEquals(1000L, user.getId());
@@ -37,7 +37,7 @@ class DynamicIgnoreJsonMixinUnitTest {
     }
 
     @Test
-    void whenReadingWithPublicMixin_idIsIgnored() throws JsonProcessingException {
+    void whenReadingWithPublicMixin_thenIdIsIgnored() throws JsonProcessingException {
         String json = "{\"id\":1000,\"name\":\"John\"}";
         ObjectMapper objectMapper = new ObjectMapper().addMixIn(UserMixin.class, UserMixin.PublicMixIn.class);
         UserMixin user = objectMapper.readValue(json, UserMixin.class);

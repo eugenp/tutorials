@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 class DynamicIgnoreJsonViewUnitTest {
 
     @Test
-    void whenWritingWithPublicView_idIsIgnored() throws JsonProcessingException {
+    void whenWritingWithPublicView_thenIdIsIgnored() throws JsonProcessingException {
         UserView user = new UserView(1000L, "John");
         ObjectWriter objectWriter = new ObjectMapper().writerWithView(UserView.PublicView.class);
         String result = objectWriter.writeValueAsString(user);
@@ -23,7 +23,7 @@ class DynamicIgnoreJsonViewUnitTest {
     }
 
     @Test
-    void whenWritingWithInternalView_idIsPresent() throws JsonProcessingException {
+    void whenWritingWithInternalView_thenIdIsPresent() throws JsonProcessingException {
         UserView user = new UserView(1000L, "John");
         ObjectWriter objectWriter = new ObjectMapper().writerWithView(UserView.InternalView.class);
         String result = objectWriter.writeValueAsString(user);
@@ -32,7 +32,7 @@ class DynamicIgnoreJsonViewUnitTest {
     }
 
     @Test
-    void whenReadingWithPublicView_idIsIgnored() throws JsonProcessingException {
+    void whenReadingWithPublicView_thenIdIsIgnored() throws JsonProcessingException {
         String json = "{\"id\":1000,\"name\":\"John\"}";
         ObjectReader objectReader = new ObjectMapper().readerWithView(UserView.PublicView.class)
             .forType(UserView.class);
@@ -42,7 +42,7 @@ class DynamicIgnoreJsonViewUnitTest {
     }
 
     @Test
-    void whenReadingWithInternalView_idIsPresent() throws JsonProcessingException {
+    void whenReadingWithInternalView_thenIdIsPresent() throws JsonProcessingException {
         String json = "{\"id\":1000,\"name\":\"John\"}";
         ObjectReader objectReader = new ObjectMapper().readerWithView(UserView.InternalView.class)
             .forType(UserView.class);
