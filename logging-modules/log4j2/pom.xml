@@ -13,6 +13,17 @@
     </parent>
 
     <dependencies>
+        <!--log4j dependencies -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>apache-log4j-extras</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
         <!-- This is the needed core component. -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
