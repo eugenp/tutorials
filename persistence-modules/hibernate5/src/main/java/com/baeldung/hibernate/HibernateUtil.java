@@ -13,6 +13,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 
 import com.baeldung.hibernate.entities.DeptEmployee;
+import com.baeldung.hibernate.pojo.BaseballPlayer;
 import com.baeldung.hibernate.pojo.Course;
 import com.baeldung.hibernate.pojo.Employee;
 import com.baeldung.hibernate.pojo.EntityDescription;
@@ -25,6 +26,7 @@ import com.baeldung.hibernate.pojo.PolygonEntity;
 import com.baeldung.hibernate.pojo.Post;
 import com.baeldung.hibernate.pojo.Product;
 import com.baeldung.hibernate.pojo.Student;
+import com.baeldung.hibernate.pojo.TennisPlayer;
 import com.baeldung.hibernate.pojo.TemporalValues;
 import com.baeldung.hibernate.pojo.User;
 import com.baeldung.hibernate.pojo.UserProfile;
@@ -86,6 +88,8 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(DeptEmployee.class);
         metadataSources.addAnnotatedClass(com.baeldung.hibernate.entities.Department.class);
         metadataSources.addAnnotatedClass(Post.class);
+        metadataSources.addAnnotatedClass(TennisPlayer.class);
+        metadataSources.addAnnotatedClass(BaseballPlayer.class);
 
         Metadata metadata = metadataSources.getMetadataBuilder()
                 .build();
