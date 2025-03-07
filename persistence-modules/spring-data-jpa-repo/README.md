@@ -7,6 +7,7 @@ This module contains articles about repositories in Spring Data JPA
 - [How to Access EntityManager with Spring Data](https://www.baeldung.com/spring-data-entitymanager)
 - [LIKE Queries in Spring JPA Repositories](https://www.baeldung.com/spring-jpa-like-queries)
 - [Performance Difference Between save() and saveAll() in Spring Data](https://www.baeldung.com/spring-data-save-saveall)
+- [Calling Stored Procedures from Spring Data JPA Repositories](https://www.baeldung.com/spring-data-jpa-stored-procedures)
 
 - More articles: [[--> next]](../spring-data-jpa-repo-2)
 
