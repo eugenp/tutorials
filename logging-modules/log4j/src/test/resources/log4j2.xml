@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns:xi="http://www.w3.org/2001/XInclude"
+    packages="com.baeldung" status="WARN">
+    <Appenders>
+        <Console name="ConsoleJSONAppender" target="SYSTEM_OUT">
+            <JsonTemplateLayout eventTemplateUri="classpath:JsonLayout.json">
+                <EventTemplateAdditionalField key="myCustomField" value="myCustomValue"/>
+            </JsonTemplateLayout>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="CONSOLE_JSON_APPENDER" level="TRACE"
+            additivity="false">
+            <AppenderRef ref="ConsoleJSONAppender"/>
+        </Logger>
+    </Loggers>
+</Configuration>

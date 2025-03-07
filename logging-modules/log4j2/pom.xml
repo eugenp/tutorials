@@ -36,12 +36,6 @@
             <artifactId>log4j-api</artifactId>
             <version>${log4j-core.version}</version>
         </dependency>
-        <!-- This is used by JSONLayout. -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
         <!-- This is used by XMLLayout. -->
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
