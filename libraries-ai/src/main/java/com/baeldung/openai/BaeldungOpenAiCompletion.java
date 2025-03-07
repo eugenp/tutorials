@@ -1,4 +1,4 @@
-package openai;
+package com.baeldung.openai;
 
 import java.util.Scanner;
 
