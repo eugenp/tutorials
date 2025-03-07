@@ -9,6 +9,5 @@
 - [Log4j 2 Plugins](https://www.baeldung.com/log4j2-plugins)
 - [Printing Thread Info in Log File Using Log4j2](https://www.baeldung.com/log4j2-print-thread-info)
 - [Log4j2 – Logging to Both File and Console](https://www.baeldung.com/java-log4j2-file-and-console)
-- [Log4j 2 Configuration Using a Properties File](https://www.baeldung.com/java-log4j2-config-with-prop-file)
 - [Log4j Warning: “No Appenders Could Be Found for Logger”](https://www.baeldung.com/log4j-no-appenders-found)
 - [Logging Exceptions Using SLF4J](https://www.baeldung.com/slf4j-log-exceptions)
