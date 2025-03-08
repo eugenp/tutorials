@@ -13,7 +13,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.baeldung.hibernate.HibernateUtil;
 import com.baeldung.hibernate.booleanconverters.model.Question;
 
 public class HibernateBooleanConverterIntegrationTest {

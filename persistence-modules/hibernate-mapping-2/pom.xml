@@ -14,29 +14,11 @@
     </parent>
 
     <dependencies>
-        <!-- Spring -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        <!-- persistence -->
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>${org.springframework.data.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-dbcp</artifactId>
-            <version>${tomcat-dbcp.version}</version>
-        </dependency>
-        <!-- validation -->
         <!-- utils -->
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -44,12 +26,6 @@
             <version>${guava.version}</version>
         </dependency>
         <!-- test scoped -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${org.springframework.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -94,11 +70,6 @@
     </dependencies>
 
     <properties>
-        <!-- Spring -->
-        <org.springframework.version>6.0.6</org.springframework.version>
-        <org.springframework.data.version>3.0.3</org.springframework.data.version>
-        <!-- persistence -->
-        <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
         <com.sun.xml.version>4.0.2</com.sun.xml.version>
         <h2.version>2.1.214</h2.version>
         <money-api.version>1.1</money-api.version>

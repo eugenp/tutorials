@@ -17,8 +17,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.baeldung.hibernate.HibernateUtil;
-import com.baeldung.hibernate.HibernateUtil2;
 import com.baeldung.hibernate.Strategy;
 import com.baeldung.hibernate.persistmaps.mapkeyjoincolumn.Item;
 import com.baeldung.hibernate.persistmaps.mapkeyjoincolumn.Order;
@@ -31,7 +29,7 @@ public class MapKeyJoinColumnIntegrationTest {
 
     @BeforeClass
     public static void beforeTests() {
-        sessionFactory = HibernateUtil2.getSessionFactory(Strategy.MAP_KEY_JOIN_COLUMN_BASED);
+        sessionFactory = HibernateUtil.getSessionFactory(Strategy.MAP_KEY_JOIN_COLUMN_BASED);
     }
 
     @Before

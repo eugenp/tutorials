@@ -10,8 +10,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.baeldung.hibernate.HibernateUtil;
-import com.baeldung.hibernate.HibernateUtil2;
+import com.baeldung.hibernate.persistmaps.HibernateUtil;
 import com.baeldung.hibernate.Strategy;
 import com.baeldung.hibernate.persistmaps.mapkey.User;
 
@@ -32,7 +31,7 @@ public class UserValidationUnitTest {
     public static void before() {
         ValidatorFactory config = Validation.buildDefaultValidatorFactory();
         validator = config.getValidator();
-        sessionFactory = HibernateUtil2.getSessionFactory(Strategy.MAP_KEY_BASED);
+        sessionFactory = HibernateUtil.getSessionFactory(Strategy.MAP_KEY_BASED);
     }
 
     @Before

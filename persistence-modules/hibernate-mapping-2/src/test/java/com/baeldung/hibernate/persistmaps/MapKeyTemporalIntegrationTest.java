@@ -17,8 +17,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.baeldung.hibernate.HibernateUtil;
-import com.baeldung.hibernate.HibernateUtil2;
 import com.baeldung.hibernate.Strategy;
 import com.baeldung.hibernate.persistmaps.mapkey.Item;
 import com.baeldung.hibernate.persistmaps.mapkeytemporal.Order;
@@ -30,7 +28,7 @@ public class MapKeyTemporalIntegrationTest {
 
     @BeforeClass
     public static void beforeTests() {
-        sessionFactory = HibernateUtil2.getSessionFactory(Strategy.MAP_KEY_TEMPORAL_BASED);
+        sessionFactory = HibernateUtil.getSessionFactory(Strategy.MAP_KEY_TEMPORAL_BASED);
     }
 
     @Before

@@ -1,4 +1,4 @@
-package com.baeldung.hibernate;
+package com.baeldung.hibernate.persistmaps;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,15 +12,11 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 
-import com.baeldung.hibernate.entities.DeptEmployee;
-import com.baeldung.hibernate.pojo.Employee;
-import com.baeldung.hibernate.pojo.EntityDescription;
-import com.baeldung.hibernate.pojo.Phone;
+import com.baeldung.hibernate.Strategy;
 
-public class HibernateUtil3 {
-
+public class HibernateUtil {
     private static String PROPERTY_FILE_NAME;
-    private HibernateUtil3() {
+    private HibernateUtil() {
     }
 
     public static SessionFactory getSessionFactory() throws IOException {
@@ -62,11 +58,7 @@ public class HibernateUtil3 {
         MetadataSources metadataSources = new MetadataSources(serviceRegistry);
 
         metadataSources.addPackage("com.baeldung.hibernate.pojo");
-        metadataSources.addAnnotatedClass(Employee.class);
-        metadataSources.addAnnotatedClass(Phone.class);
-        metadataSources.addAnnotatedClass(EntityDescription.class);
-        metadataSources.addAnnotatedClass(DeptEmployee.class);
-        metadataSources.addAnnotatedClass(com.baeldung.hibernate.entities.Department.class);
+
 
         Metadata metadata = metadataSources.getMetadataBuilder()
             .build();
@@ -94,4 +86,3 @@ public class HibernateUtil3 {
         return properties;
     }
 }
-

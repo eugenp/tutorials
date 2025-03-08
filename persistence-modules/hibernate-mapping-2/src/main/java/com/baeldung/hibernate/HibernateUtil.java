@@ -1,46 +1,97 @@
 package com.baeldung.hibernate;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Properties;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import com.baeldung.hibernate.booleanconverters.model.Question;
-
+import com.baeldung.hibernate.entities.DeptEmployee;
+import com.baeldung.hibernate.pojo.Employee;
+import com.baeldung.hibernate.pojo.EntityDescription;
+import com.baeldung.hibernate.pojo.Phone;
 
 public class HibernateUtil {
 
-    private static final String DEFAULT_RESOURCE = "manytomany.cfg.xml";
-    private static final Logger LOGGER = LoggerFactory.getLogger(HibernateUtil.class);
+    private static String PROPERTY_FILE_NAME;
+    private HibernateUtil() {
+    }
 
-    private static SessionFactory buildSessionFactory(String resource) {
+    public static SessionFactory getSessionFactory() throws IOException {
+        return getSessionFactory("");
+    }
+
+    public static SessionFactory getSessionFactory(String propertyFileName) throws IOException {
+        if(propertyFileName.equals("")) propertyFileName = null;
+        PROPERTY_FILE_NAME = propertyFileName;
+        ServiceRegistry serviceRegistry = configureServiceRegistry();
+        return makeSessionFactory(serviceRegistry);
+    }
+
+    public static SessionFactory getSessionFactory(Strategy strategy) {
+        return buildSessionFactory(strategy);
+    }
+
+    private static SessionFactory buildSessionFactory(Strategy strategy) {
         try {
-            // Create the SessionFactory from hibernate-annotation.cfg.xml
-            Configuration configuration = new Configuration();
-            configuration.addAnnotatedClass(Question.class);
-            configuration.addPackage(Question.class.getPackageName());
-            configuration.configure(resource);
-            LOGGER.debug("Hibernate Annotation Configuration loaded");
+            ServiceRegistry serviceRegistry = configureServiceRegistry();
 
-            ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties())
-                    .build();
-            LOGGER.debug("Hibernate Annotation serviceRegistry created");
+            MetadataSources metadataSources = new MetadataSources(serviceRegistry);
 
-            return configuration.buildSessionFactory(serviceRegistry);
-        } catch (Throwable ex) {
-            LOGGER.error("Initial SessionFactory creation failed.", ex);
+            for (Class<?> entityClass : strategy.getEntityClasses()) {
+                metadataSources.addAnnotatedClass(entityClass);
+            }
+
+            Metadata metadata = metadataSources.getMetadataBuilder()
+                .build();
+
+            return metadata.getSessionFactoryBuilder()
+                .build();
+        } catch (IOException ex) {
             throw new ExceptionInInitializerError(ex);
         }
     }
 
-    public static SessionFactory getSessionFactory() {
-        return buildSessionFactory(DEFAULT_RESOURCE);
+    private static SessionFactory makeSessionFactory(ServiceRegistry serviceRegistry) {
+        MetadataSources metadataSources = new MetadataSources(serviceRegistry);
+
+        metadataSources.addPackage("com.baeldung.hibernate.pojo");
+        metadataSources.addAnnotatedClass(Employee.class);
+        metadataSources.addAnnotatedClass(Phone.class);
+        metadataSources.addAnnotatedClass(EntityDescription.class);
+        metadataSources.addAnnotatedClass(DeptEmployee.class);
+        metadataSources.addAnnotatedClass(com.baeldung.hibernate.entities.Department.class);
+
+        Metadata metadata = metadataSources.getMetadataBuilder()
+            .build();
+
+        return metadata.getSessionFactoryBuilder()
+            .build();
+
     }
 
-    public static SessionFactory getSessionFactory(String resource) {
-        return buildSessionFactory(resource);
+
+    private static ServiceRegistry configureServiceRegistry() throws IOException {
+        Properties properties = getProperties();
+        return new StandardServiceRegistryBuilder().applySettings(properties)
+            .build();
+    }
+
+    private static Properties getProperties() throws IOException {
+        Properties properties = new Properties();
+        URL propertiesURL = Thread.currentThread()
+            .getContextClassLoader()
+            .getResource(StringUtils.defaultString(PROPERTY_FILE_NAME, "hibernate.properties"));
+        try (FileInputStream inputStream = new FileInputStream(propertiesURL.getFile())) {
+            properties.load(inputStream);
+        }
+        return properties;
     }
 }
+

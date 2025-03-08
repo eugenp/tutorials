@@ -17,6 +17,7 @@ import org.junit.Test;
 import org.junit.jupiter.api.Disabled;
 
 import com.baeldung.hibernate.HibernateUtil;
+import com.baeldung.hibernate.HibernateUtil1;
 import com.baeldung.hibernate.manytomany.model.Employee;
 import com.baeldung.hibernate.manytomany.model.Project;
 
@@ -31,7 +32,7 @@ public class HibernateManyToManyAnnotationMainIntegrationTest {
 
 	@BeforeClass
 	public static void beforeTests() {
-		sessionFactory = HibernateUtil.getSessionFactory();
+		sessionFactory = HibernateUtil1.getSessionFactory();
 	}
 
 	@Before

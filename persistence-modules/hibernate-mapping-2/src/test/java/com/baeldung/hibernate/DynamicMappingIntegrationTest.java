@@ -23,7 +23,7 @@ public class DynamicMappingIntegrationTest {
 
     @Before
     public void setUp() throws IOException {
-        session = HibernateUtil3.getSessionFactory().openSession();
+        session = HibernateUtil.getSessionFactory().openSession();
         transaction = session.beginTransaction();
 
         session.createNativeQuery("delete from phone").executeUpdate();

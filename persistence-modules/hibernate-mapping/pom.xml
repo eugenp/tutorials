@@ -13,6 +13,25 @@
     </parent>
 
     <dependencies>
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+        <!-- persistence -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${org.springframework.data.version}</version>
+        </dependency>
+        <!-- test scoped -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${org.springframework.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -56,14 +75,27 @@
             <artifactId>jackson-module-jakarta-xmlbind-annotations</artifactId>
             <version>${jackson-module-jakarta-xmlbind-annotation}</version>
         </dependency>
-
+        <!-- utils -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-dbcp</artifactId>
+            <version>${tomcat-dbcp.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
+        <!-- Spring -->
+        <org.springframework.version>6.0.6</org.springframework.version>
+        <org.springframework.data.version>3.0.3</org.springframework.data.version>
         <h2.version>2.1.214</h2.version> <!-- needs to be specified as it fails with parent's 1.4.200 -->
         <hibernate-types.version>2.21.1</hibernate-types.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
-
+        <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
         <jackson-module-jakarta-xmlbind-annotation>2.16.0</jackson-module-jakarta-xmlbind-annotation>
     </properties>
 
