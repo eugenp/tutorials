@@ -5,11 +5,12 @@ import java.util.function.Function;
 import java.util.stream.IntStream;
 
 import org.apache.commons.lang3.time.StopWatch;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class MultipleFiltersVsComplexConditionFilterPerformanceIntegrationTest {
 
-//    this test is slow, avoid running it on pipeline
+    @Ignore("this test is slow, avoid running it on pipeline")
     @Test
     public void measureProcessingTimeForEachSolution() {
 

@@ -15,6 +15,8 @@ import org.sirix.api.visitor.VisitResultType;
 import org.sirix.axis.temporal.PastAxis;
 import org.sirix.axis.visitor.VisitorDescendantAxis;
 import org.sirix.node.immutable.json.ImmutableObjectKeyNode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -23,6 +25,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public final class CreateVersionedJsonResourceAndQueryIntegrationTest {
+
+    private static Logger log = LoggerFactory.getLogger(CreateVersionedJsonResourceAndQueryIntegrationTest.class);
 
     @Rule
     public TemporaryFolder tempDirectory = new TemporaryFolder();
@@ -68,7 +72,7 @@ public final class CreateVersionedJsonResourceAndQueryIntegrationTest {
 
         @Override
         public VisitResult visit(ImmutableObjectKeyNode node) {
-            System.out.println("Object key node (most recent revision " + trx.getRevisionNumber() + "): " + node.getName());
+            log.info("Object key node (most recent revision " + trx.getRevisionNumber() + "): " + node.getName());
 
             if (node.getNodeKey() == 24L) {
                 final var pastAxis = new PastAxis<>(manager, trx);
@@ -86,7 +90,7 @@ public final class CreateVersionedJsonResourceAndQueryIntegrationTest {
             // Axis to iterate over the node in past revisions (if the node existed back then).
             final var pastAxis = new PastAxis<>(manager, trx);
             pastAxis.forEachRemaining((trx) ->
-                System.out.println("Object key node in the past (revision " + trx.getRevisionNumber() + "): " + trx.getName()));
+                log.info("Object key node in the past (revision " + trx.getRevisionNumber() + "): " + trx.getName()));
 
             return VisitResultType.CONTINUE;
         }

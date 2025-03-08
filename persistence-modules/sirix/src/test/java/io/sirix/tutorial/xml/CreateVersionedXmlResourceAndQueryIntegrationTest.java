@@ -17,6 +17,8 @@ import org.sirix.axis.temporal.PastAxis;
 import org.sirix.axis.visitor.VisitorDescendantAxis;
 import org.sirix.node.immutable.xdm.ImmutableElement;
 import org.sirix.node.immutable.xdm.ImmutableText;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -25,6 +27,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public final class CreateVersionedXmlResourceAndQueryIntegrationTest {
+
+    private static Logger log = LoggerFactory.getLogger(CreateVersionedXmlResourceAndQueryIntegrationTest.class);
 
     @Rule
     public TemporaryFolder tempDirectory = new TemporaryFolder();
@@ -71,7 +75,7 @@ public final class CreateVersionedXmlResourceAndQueryIntegrationTest {
 
         @Override
         public VisitResult visit(ImmutableElement node) {
-            System.out.println("Element (most recent revision " + trx.getRevisionNumber() + "): " + node.getName());
+            log.info("Element (most recent revision " + trx.getRevisionNumber() + "): " + node.getName());
 
             if (node.getNodeKey() == 14L) {
                 final var pastAxis = new PastAxis<>(manager, trx);
@@ -89,18 +93,18 @@ public final class CreateVersionedXmlResourceAndQueryIntegrationTest {
             // Axis to iterate over the node in past revisions (if the node existed back then).
             final var pastAxis = new PastAxis<>(manager, trx);
             pastAxis.forEachRemaining((trx) ->
-                System.out.println("Element in the past (revision " + trx.getRevisionNumber() + "): " + trx.getName()));
+                log.info("Element in the past (revision " + trx.getRevisionNumber() + "): " + trx.getName()));
 
             for (int i = 0, attributes = trx.getAttributeCount(); i < attributes; i++) {
                 trx.moveToAttribute(i);
 
-                System.out.println("Attribute (most recent revision " + trx.getRevisionNumber() + "):"
+                log.info("Attribute (most recent revision " + trx.getRevisionNumber() + "):"
                                    + trx.getName() + " ='" + trx.getValue() + "'");
 
                 // Axis to iterate over the node in past revisions (if the node existed back then).
                 final var pastAttributeAxis = new PastAxis<>(manager, trx);
                 pastAttributeAxis.forEachRemaining((trx) ->
-                    System.out.println("Attribute in the past (revision " + trx.getRevisionNumber() + "): "
+                    log.info("Attribute in the past (revision " + trx.getRevisionNumber() + "): "
                                        + trx.getName() + " ='" + trx.getValue() + "'"));
 
                 trx.moveToParent();
@@ -111,12 +115,12 @@ public final class CreateVersionedXmlResourceAndQueryIntegrationTest {
 
         @Override
         public VisitResult visit(ImmutableText node) {
-            System.out.println("Text (most recent revision " + trx.getRevisionNumber() + "): " + node.getValue());
+            log.info("Text (most recent revision " + trx.getRevisionNumber() + "): " + node.getValue());
 
             // Axis to iterate over the node in past revisions (if the node existed back then).
             final var pastAxis = new PastAxis<>(manager, trx);
             pastAxis.forEachRemaining((trx) ->
-                System.out.println("Text in the past (revision " + trx.getRevisionNumber() + "): " + trx.getValue()));
+                log.info("Text in the past (revision " + trx.getRevisionNumber() + "): " + trx.getValue()));
 
             return VisitResultType.CONTINUE;
         }
