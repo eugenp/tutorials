@@ -19,7 +19,7 @@ public class CustomersService {
         this.dataSource = dataSource;
     }
 
-    public List<Customer> customersEligibleForOffers() {
+    public List<Customer> customersEligibleForOffers() throws SQLException {
         try (Connection conn = dataSource.getConnection(); Statement stmt = conn.createStatement()) {
             ResultSet resultSet = stmt.executeQuery("SELECT * FROM customers");
             List<Customer> customers = new ArrayList<>();
@@ -31,8 +31,6 @@ public class CustomersService {
                 }
             }
             return customers;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
     }
 

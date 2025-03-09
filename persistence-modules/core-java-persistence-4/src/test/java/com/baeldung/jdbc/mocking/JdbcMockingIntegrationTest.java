@@ -2,6 +2,7 @@ package com.baeldung.jdbc.mocking;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.h2.jdbcx.JdbcDataSource;
@@ -23,7 +24,7 @@ class JdbcMockingIntegrationTest {
     }
 
     @Test
-    void whenFetchingCustomersEligibleForOffers_thenTheyHaveActiveOrLoyalStatus() {
+    void whenFetchingCustomersEligibleForOffers_thenTheyHaveActiveOrLoyalStatus() throws SQLException {
         CustomersService customersService = new CustomersService(dataSource);
 
         List<Customer> customers = customersService.customersEligibleForOffers();

@@ -3,59 +3,75 @@ package com.baeldung.jdbc.mocking;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.mockito.Mockito.when;
 
-import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.sql.DataSource;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.baeldung.jdbc.mocking.Customer.Status;
+import com.baeldung.jdbc.mocking.v2.CustomersServiceV2;
 
 @ExtendWith(MockitoExtension.class)
 class JdbcMockingUnitTest {
-
     @Mock
-    DataSource ds;
+    DataSource dataSource;
     @Mock
     Connection conn;
     @Mock
     Statement stmt;
     @Mock
-    ResultSet rs;
+    ResultSet resultSet;
 
-    @BeforeEach
-    void setUp() throws Exception {
-        when(ds.getConnection()).thenReturn(conn);
+    @Test
+    void whenFetchingEligibleCustomers_thenTheyHaveCorrectStatus() throws Exception {
+        //given
+        CustomersService customersService = new CustomersService(dataSource);
+
+        when(dataSource.getConnection()).thenReturn(conn);
         when(conn.createStatement()).thenReturn(stmt);
-        when(stmt.executeQuery("SELECT * FROM customers")).thenReturn(rs);
+        when(stmt.executeQuery("SELECT * FROM customers")).thenReturn(resultSet);
+
+        when(resultSet.next()).thenReturn(true, true, true, false);
+        when(resultSet.getInt("id")).thenReturn(1, 2, 3);
+        when(resultSet.getString("name")).thenReturn("Alice", "Bob", "John");
+        when(resultSet.getString("status")).thenReturn("LOYAL", "ACTIVE", "INACTIVE");
+
+        // when
+        List<Customer> eligibleCustomers = customersService.customersEligibleForOffers();
+
+        // then
+        assertThat(eligibleCustomers).containsExactlyInAnyOrder(
+            new Customer(1, "Alice", Status.LOYAL),
+            new Customer(2, "Bob", Status.ACTIVE)
+        );
     }
 
     @Test
-    void whenFetchingCustomersEligibleForOffer_thenTheyHaveActiveOrLoyalStatus() throws Exception {
-        when(rs.next()).thenReturn(true, true, false);
-        when(rs.getInt("id")).thenReturn(1, 2);
-        when(rs.getString("name")).thenReturn("Alice", "Bob");
-        when(rs.getString("status")).thenReturn("LOYAL", "ACTIVE");
+    void givenRefactoredService_whenFetchingEligibleCustomers_thenTheyHaveCorrectStatus() {
+        // given
+        List<Customer> allCustomers = List.of(
+            new Customer(1, "Alice", Status.LOYAL),
+            new Customer(2, "Bob", Status.ACTIVE),
+            new Customer(3, "John", Status.INACTIVE)
+        );
 
-        CustomersService customersService = new CustomersService(ds);
+        CustomersServiceV2 service = new CustomersServiceV2(() -> allCustomers);
 
-        List<Customer> customers = customersService.customersEligibleForOffers();
+        // when
+        List<Customer> eligibleCustomers = service.customersEligibleForOffers();
 
-        assertThat(customers)
-            .containsExactlyInAnyOrder(
-                new Customer(1, "Alice", Status.LOYAL),
-                new Customer(2, "Bob", Status.ACTIVE)
-            );
+        // then
+        assertThat(eligibleCustomers).containsExactlyInAnyOrder(
+            new Customer(1, "Alice", Status.LOYAL),
+            new Customer(2, "Bob", Status.ACTIVE)
+        );
     }
 
 }
