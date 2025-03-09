@@ -126,6 +126,7 @@
         <module>spring-boot-openapi</module>
         <module>spring-boot-brave</module>
         <module>spring-boot-simple</module>
+        <module>spring-boot-http2</module>
     </modules>
 
     <build>
