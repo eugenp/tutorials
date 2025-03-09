@@ -1,0 +1,20 @@
+body {
+    background-color: #cefb56;
+	color: black;
+	font-family: Calibri, Arial, sans-serif;
+}
+
+.deleteButton {
+	margin-left: 1rem;
+}
+
+.errorMessage {
+    display: block;
+    width: fit-content;
+    color: darkred;
+    background-color: white;
+    border-radius: 1rem;
+    border: 1px solid #f5c6cb;
+    padding: 0.2rem;
+    margin: 0.5rem 0;
+}

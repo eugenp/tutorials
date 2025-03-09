@@ -1,0 +1,40 @@
+@startuml
+actor User
+participant "UI Elements" as UI
+participant MyJ2CLApp
+participant Server
+
+== Application Load ==
+User -> MyJ2CLApp : onModuleLoad()
+MyJ2CLApp -> MyJ2CLApp : Check for uuid in URL
+alt uuid exists
+    MyJ2CLApp -> Server : GET /objects/{uuid}
+    Server --> MyJ2CLApp : JSON tasks response
+    MyJ2CLApp -> UI : Display tasks (addTaskToUI)
+else uuid does not exist
+    note right: No tasks are fetched because\nno uuid is provided.
+end
+
+== Adding a Task ==
+User -> UI : Enter task text\nClick "Add Task"
+UI -> MyJ2CLApp : sendTask(taskText)
+MyJ2CLApp -> MyJ2CLApp : Add task to tasksArray
+alt uuid is null
+    MyJ2CLApp -> Server : POST /objects\n(with tasksArray)
+    Server --> MyJ2CLApp : Returns new uuid
+    MyJ2CLApp -> MyJ2CLApp : Set uuid and rewrite URL
+    MyJ2CLApp -> Server : PUT /objects/{uuid}\n(with updated tasksArray)
+else uuid exists
+    MyJ2CLApp -> Server : PUT /objects/{uuid}\n(with updated tasksArray)
+end
+Server --> MyJ2CLApp : Confirmation
+MyJ2CLApp -> UI : Display new task (addTaskToUI)
+
+== Deleting a Task ==
+User -> UI : Click "Delete" button on task
+UI -> MyJ2CLApp : Delete task event
+MyJ2CLApp -> MyJ2CLApp : Remove task from tasksArray
+MyJ2CLApp -> Server : PUT /objects/{uuid}\n(with updated tasksArray)
+Server --> MyJ2CLApp : Confirmation
+MyJ2CLApp -> UI : Remove task from UI
+@enduml
