@@ -23,12 +23,9 @@ public class MyJ2CLApp {
     // We'll store all tasks in a single array in memory
     private static JsArray<String> tasksArray = new JsArray<>();
 
-    private static final HTMLInputElement taskInput =
-            (HTMLInputElement) DomGlobal.document.getElementById("taskInput");
-    private static final HTMLButtonElement addTaskButton =
-            (HTMLButtonElement) DomGlobal.document.getElementById("addTask");
-    private static final HTMLUListElement taskList =
-            (HTMLUListElement) DomGlobal.document.getElementById("taskList");
+    private static final HTMLInputElement taskInput = (HTMLInputElement) DomGlobal.document.getElementById("taskInput");
+    private static final HTMLButtonElement addTaskButton = (HTMLButtonElement) DomGlobal.document.getElementById("addTask");
+    private static final HTMLUListElement taskList = (HTMLUListElement) DomGlobal.document.getElementById("taskList");
 
     public void onModuleLoad() {
         // Only fetch existing tasks if we already have a uuid in the URL
@@ -72,7 +69,8 @@ public class MyJ2CLApp {
                         // We expect an array of strings, so cast accordingly
                         JsArray<Object> arr = (JsArray<Object>) storedData;
                         for (int i = 0; i < arr.length; i++) {
-                            String taskText = arr.getAt(i).toString();
+                            String taskText = arr.getAt(i)
+                                .toString();
                             tasksArray.push(taskText);
                             addTaskToUI(taskText);
                         }
@@ -105,11 +103,10 @@ public class MyJ2CLApp {
 
         // If we don't have an ID yet, create the object first
         if (uuid == null) {
-            createObjectOnServer()
-                .then(ignore -> {
-                    // Now we have a uuid, let's do a PUT to keep it consistent
-                    return updateTasksOnServer();
-                })
+            createObjectOnServer().then(ignore -> {
+                // Now we have a uuid, let's do a PUT to keep it consistent
+                return updateTasksOnServer();
+            })
                 .then(ignore -> {
                     // All good, add to UI
                     addTaskToUI(taskText);
@@ -128,11 +125,10 @@ public class MyJ2CLApp {
                 });
         } else {
             // We already have a uuid, so just PUT the entire array
-            updateTasksOnServer()
-                .then(ignore -> {
-                    addTaskToUI(taskText);
-                    return null;
-                })
+            updateTasksOnServer().then(ignore -> {
+                addTaskToUI(taskText);
+                return null;
+            })
                 .catch_(error -> {
                     // Revert local addition if server call fails
                     tasksArray.splice(tasksArray.length - 1, 1);
@@ -156,7 +152,7 @@ public class MyJ2CLApp {
         // We'll use "data" = tasksArray so we don't lose the first insertion.
         JsPropertyMap<Object> jsonBody = JsPropertyMap.of();
         jsonBody.set("name", "MyTasks"); // Arbitrary "name"
-        jsonBody.set("data", tasksArray); 
+        jsonBody.set("data", tasksArray);
         String jsonData = jsonStringify(jsonBody);
 
         RequestInit requestInit = RequestInit.create();
@@ -171,9 +167,10 @@ public class MyJ2CLApp {
             .then(response -> {
                 if (!response.ok) {
                     // read body for debugging
-                    return response.text().then(bodyText -> {
-                        throw new Error("POST error " + response.status + ": " + bodyText);
-                    });
+                    return response.text()
+                        .then(bodyText -> {
+                            throw new Error("POST error " + response.status + ": " + bodyText);
+                        });
                 }
                 // otherwise parse the JSON
                 return response.json();
@@ -215,7 +212,7 @@ public class MyJ2CLApp {
         String jsonData = jsonStringify(jsonBody);
 
         RequestInit requestInit = RequestInit.create();
-        requestInit.setMethod("PUT"); 
+        requestInit.setMethod("PUT");
         requestInit.setBody(jsonData);
 
         Headers headers = new Headers();
@@ -243,8 +240,7 @@ public class MyJ2CLApp {
         HTMLLIElement taskItem = (HTMLLIElement) DomGlobal.document.createElement("li");
         taskItem.textContent = taskText;
 
-        HTMLButtonElement deleteButton =
-                (HTMLButtonElement) DomGlobal.document.createElement("button");
+        HTMLButtonElement deleteButton = (HTMLButtonElement) DomGlobal.document.createElement("button");
         deleteButton.textContent = "Delete";
         deleteButton.classList.add("deleteButton");
 
@@ -252,18 +248,18 @@ public class MyJ2CLApp {
         deleteButton.addEventListener("click", e -> {
             // Find index of this task in the array
             for (int i = 0; i < tasksArray.length; i++) {
-                if (tasksArray.getAt(i).equals(taskText)) {
+                if (tasksArray.getAt(i)
+                    .equals(taskText)) {
                     tasksArray.splice(i, 1); // remove 1 item at index i
                     break;
                 }
             }
 
-            updateTasksOnServer()
-                .then(ignore -> {
-                    // If success, remove from UI
-                    taskItem.remove();
-                    return null;
-                })
+            updateTasksOnServer().then(ignore -> {
+                // If success, remove from UI
+                taskItem.remove();
+                return null;
+            })
                 .catch_(error -> {
                     // Revert local removal if failed
                     tasksArray.push(taskText);
@@ -278,8 +274,7 @@ public class MyJ2CLApp {
     }
 
     private void showErrorMessage(String message) {
-        HTMLDivElement errorDiv =
-                (HTMLDivElement) DomGlobal.document.createElement("div");
+        HTMLDivElement errorDiv = (HTMLDivElement) DomGlobal.document.createElement("div");
         errorDiv.textContent = message;
         errorDiv.classList.add("errorMessage");
         addTaskButton.parentNode.insertBefore(errorDiv, taskList);
@@ -308,9 +303,7 @@ public class MyJ2CLApp {
         params.set("uuid", newUUID);
 
         // If original had ?... we replace; otherwise append ?uuid=...
-        String baseUrl = url.contains("?") 
-                ? url.substring(0, url.indexOf("?")) 
-                : url;
+        String baseUrl = url.contains("?") ? url.substring(0, url.indexOf("?")) : url;
         String newUrl = baseUrl + "?" + params.toString();
 
         DomGlobal.window.history.replaceState(null, "", newUrl);
