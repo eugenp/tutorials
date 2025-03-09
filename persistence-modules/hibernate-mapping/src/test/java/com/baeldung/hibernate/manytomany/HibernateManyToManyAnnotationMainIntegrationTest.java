@@ -14,17 +14,13 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.jupiter.api.Disabled;
 
-import com.baeldung.hibernate.HibernateUtil;
-import com.baeldung.hibernate.HibernateUtil1;
 import com.baeldung.hibernate.manytomany.model.Employee;
 import com.baeldung.hibernate.manytomany.model.Project;
 
 /**
  * Configured in: manytomany.cfg.xml
  */
-@Disabled
 public class HibernateManyToManyAnnotationMainIntegrationTest {
 	private static SessionFactory sessionFactory;
 
@@ -32,7 +28,7 @@ public class HibernateManyToManyAnnotationMainIntegrationTest {
 
 	@BeforeClass
 	public static void beforeTests() {
-		sessionFactory = HibernateUtil1.getSessionFactory();
+		sessionFactory = HibernateUtil.getSessionFactory();
 	}
 
 	@Before

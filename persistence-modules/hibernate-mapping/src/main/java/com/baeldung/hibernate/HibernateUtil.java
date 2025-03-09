@@ -12,6 +12,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 
+import com.baeldung.hibernate.pojo.TemporalValues;
 import com.baeldung.hibernate.pojo.inheritance.Animal;
 import com.baeldung.hibernate.pojo.inheritance.Bag;
 import com.baeldung.hibernate.pojo.inheritance.Book;
@@ -77,6 +78,7 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(Pen.class);
         metadataSources.addAnnotatedClass(Pet.class);
         metadataSources.addAnnotatedClass(Vehicle.class);
+        metadataSources.addAnnotatedClass(TemporalValues.class);
 
         Metadata metadata = metadataSources.getMetadataBuilder()
             .build();

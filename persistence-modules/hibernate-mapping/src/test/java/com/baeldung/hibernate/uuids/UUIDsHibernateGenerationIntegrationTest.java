@@ -10,8 +10,7 @@ import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.baeldung.hibernate.HibernateUtil;
-import com.baeldung.hibernate.HibernateUtil1;
+import com.baeldung.hibernate.manytomany.HibernateUtil;
 
 public class UUIDsHibernateGenerationIntegrationTest {
 
@@ -21,7 +20,7 @@ public class UUIDsHibernateGenerationIntegrationTest {
 
     @Before
     public void setUp() throws IOException {
-        sessionFactory = HibernateUtil1.getSessionFactory();
+        sessionFactory = HibernateUtil.getSessionFactory();
         session = sessionFactory.openSession();
     }
 
