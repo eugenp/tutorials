@@ -39,6 +39,16 @@
             <artifactId>jackson-databind-nullable</artifactId>
             <version>${jackson-databind-nullable}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.kongchen</groupId>
+            <artifactId>swagger-maven-plugin</artifactId>
+            <version>${swagger-maven-plugin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.ws.rs</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
+            <version>${jakarta.ws.rs-api.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -64,30 +74,6 @@
                             </configOptions>
                         </configuration>
                     </execution>
-                    <execution>
-                        <id>dates</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/static/event.yaml</inputSpec>
-                            <language>spring</language>
-                            <configOptions>
-                                <java8>true</java8>
-                                <dateLibrary>custom</dateLibrary>
-                                <jakarta>true</jakarta>
-                                <useSpringBoot3>true</useSpringBoot3>
-                            </configOptions>
-                            <typeMappings>
-                                <typeMapping>DateTime=Instant</typeMapping>
-                                <typeMapping>Date=Date</typeMapping>
-                            </typeMappings>
-                            <importMappings>
-                                <importMapping>Instant=java.time.Instant</importMapping>
-                                <importMapping>Date=java.util.Date</importMapping>
-                            </importMappings>
-                        </configuration>
-                    </execution>
                 </executions>
             </plugin>
             <plugin>
@@ -101,7 +87,6 @@
                         </goals>
                         <configuration>
                             <skipValidateSpec>true</skipValidateSpec>
-                            <inputSpec>${project.basedir}/src/main/resources/static/event.yaml</inputSpec>
                             <inputSpec>${project.basedir}/src/main/resources/static/account_api_description.yaml</inputSpec>
                             <generatorName>spring</generatorName>
                             <configOptions>
@@ -125,6 +110,44 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>com.github.kongchen</groupId>
+                <artifactId>swagger-maven-plugin</artifactId>
+                <version>${swagger-maven-plugin.version}</version>
+                <configuration>
+                    <apiSources>
+                        <apiSource>
+                            <springmvc>false</springmvc>
+                            <locations>com.baeldung.swaggerenums.controller</locations>
+                            <schemes>http,https</schemes>
+                            <host>baeldung.com</host>
+                            <basePath>/api</basePath>
+                            <info>
+                                <title>Baeldung - Document Enum</title>
+                                <version>v1</version>
+                                <description>This is a Baeldung Document Enum Sample Code</description>
+                                <contact>
+                                    <email>pmurria@baeldung.com</email>
+                                    <name>Parikshit Murria</name>
+                                </contact>
+                                <license>
+                                    <url>https://www.apache.org/licenses/LICENSE-2.0.html</url>
+                                    <name>Apache 2.0</name>
+                                </license>
+                            </info>
+                            <swaggerDirectory>${basedir}/target/swagger-ui</swaggerDirectory>
+                        </apiSource>
+                    </apiSources>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
@@ -140,6 +163,9 @@
         <swagger-codegen-maven-plugin.version>3.0.67</swagger-codegen-maven-plugin.version>
         <springdoc.version>1.8.0</springdoc.version>
         <swagger-annotations.version>2.2.28</swagger-annotations.version>
+        <swagger-maven-plugin.version>3.1.1</swagger-maven-plugin.version>
+        <springdoc.version>1.7.0</springdoc.version>
+        <jakarta.ws.rs-api.version>3.1.0</jakarta.ws.rs-api.version>
         <start-class>com.baeldung.tworesponses.Application</start-class>
     </properties>
 

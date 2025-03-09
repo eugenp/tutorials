@@ -1,9 +1,10 @@
 package com.baeldung.swaggerenums.controller;
 
-import com.baeldung.swaggerenums.model.Employee;
-import com.baeldung.swaggerenums.model.Role;
 import org.junit.Assert;
 import org.junit.Test;
+
+import com.baeldung.swaggerenums.model.Employee;
+import com.baeldung.swaggerenums.model.Role;
 
 public class HireControllerUnitTest {
 

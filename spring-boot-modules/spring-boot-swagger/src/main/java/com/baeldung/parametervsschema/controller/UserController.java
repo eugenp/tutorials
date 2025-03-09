@@ -1,4 +1,4 @@
-package com.baeldung.swagger2bootmvc.controller;
+package com.baeldung.parametervsschema.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.baeldung.swagger2bootmvc.model.User;
+import com.baeldung.parametervsschema.model.User;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
