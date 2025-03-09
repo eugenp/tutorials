@@ -13,6 +13,17 @@
     </parent>
 
     <dependencies>
+        <!--log4j dependencies -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>apache-log4j-extras</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
         <!-- This is the needed core component. -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -25,28 +36,11 @@
             <artifactId>log4j-api</artifactId>
             <version>${log4j-core.version}</version>
         </dependency>
-        <!-- This is used by JSONLayout. -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
         <!-- This is used by XMLLayout. -->
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
             <version>${jackson.version}</version>
-        </dependency>
-        <!-- This is used by JDBC Appender. -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-dbcp2</artifactId>
-            <version>${commons-dbcp2.version}</version>
         </dependency>
         <!-- This is used for testing only. -->
         <dependency>
@@ -62,7 +56,6 @@
             <artifactId>log4j-layout-template-json</artifactId>
             <version>${log4j-core-json-template.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -89,7 +82,6 @@
     </build>
 
     <properties>
-        <commons-dbcp2.version>2.9.0</commons-dbcp2.version>
         <log4j-core.version>2.19.0</log4j-core.version>
         <log4j-core-json-template.version>2.24.3</log4j-core-json-template.version>
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>

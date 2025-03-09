@@ -1,8 +1,10 @@
-package com.baeldung.logging.log4j2.tests;
+package com.baeldung.logging.log4j2;
 
-import com.baeldung.logging.log4j2.Log4j2BaseIntegrationTest;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static org.junit.Assert.assertTrue;
+
+import java.io.CharArrayWriter;
+import java.io.Writer;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.Appender;
@@ -12,10 +14,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.CharArrayWriter;
-import java.io.Writer;
-
-import static org.junit.Assert.assertTrue;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JSONLayoutIntegrationTest extends Log4j2BaseIntegrationTest {
 

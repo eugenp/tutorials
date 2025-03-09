@@ -1,4 +1,4 @@
-package com.baeldung.logging.log4j2.tests;
+package com.baeldung.logging.log4j2;
 
 import static org.junit.Assert.assertTrue;
 
@@ -17,7 +17,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.baeldung.logging.log4j2.tests.jdbc.ConnectionFactory;
+import com.baeldung.logging.log4j2.jdbc.ConnectionFactory;
 
 @RunWith(JUnit4.class)
 public class CustomLoggingIntegrationTest {

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns:xi="http://www.w3.org/2001/XInclude"
+    packages="com.baeldung" status="WARN">
+    <Appenders>
+        <Console name="ConsoleJSONAppender" target="SYSTEM_OUT">
+            <JsonTemplateLayout eventTemplateUri="classpath:JsonLayout.json">
+                <EventTemplateAdditionalField key="myCustomField" value="myCustomValue"/>
+            </JsonTemplateLayout>
+        </Console>
+        <!-- <Syslog name="Syslog" format="RFC5424" host="localhost" port="514"
+    protocol="TCP" facility="local3" connectTimeoutMillis="10000" reconnectionDelayMillis="5000"
+    mdcId="mdc" includeMDC="true" /> <Failover name="FailoverAppender" primary="Syslog">
+    <Failovers> <AppenderRef ref="ConsoleAppender" /> </Failovers> </Failover> -->
+        <JDBC name="JDBCAppender" tableName="logs">
+            <ConnectionFactory
+                    class="com.baeldung.logging.log4j2.tests.jdbc.ConnectionFactory"
+                    method="getConnection"/>
+            <Column name="when" isEventTimestamp="true"/>
+            <Column name="logger" pattern="%logger"/>
+            <Column name="level" pattern="%level"/>
+            <Column name="message" pattern="%message"/>
+            <Column name="throwable" pattern="%ex{full}"/>
+        </JDBC>
+    </Appenders>
+    <RollingFile name="XMLRollingfileAppender" fileName="target/logfile.xml"
+                 filePattern="target/logfile-%d{yyyy-MM-dd}-%i.log.gz">
+        <XMLLayout/>
+        <Policies>
+            <SizeBasedTriggeringPolicy
+                    size="17 kB"/>
+        </Policies>
+    </RollingFile>
+    <Loggers>
+        <!-- <Logger name="FAIL_OVER_SYSLOG_APPENDER" level="INFO" additivity="false">
+    <AppenderRef ref="FailoverAppender" /> </Logger> -->
+        <Logger name="CONSOLE_JSON_APPENDER" level="TRACE"
+            additivity="false">
+            <AppenderRef ref="ConsoleJSONAppender"/>
+        </Logger>
+        <Logger name="XML_ROLLING_FILE_APPENDER" level="INFO"
+                additivity="false">
+            <AppenderRef ref="XMLRollingfileAppender"/>
+        </Logger>
+    </Loggers>
+</Configuration>
