@@ -126,7 +126,6 @@
         <module>spring-boot-openapi</module>
         <module>spring-boot-brave</module>
         <module>spring-boot-simple</module>
-        <module>newrelic</module>
     </modules>
 
     <build>
