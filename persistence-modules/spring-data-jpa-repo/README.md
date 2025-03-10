@@ -9,6 +9,7 @@ This module contains articles about repositories in Spring Data JPA
 - [Spring Data Composable Repositories](https://www.baeldung.com/spring-data-composable-repositories)
 - [Spring Data JPA Repository Populators](https://www.baeldung.com/spring-data-jpa-repository-populators)
 - [LIKE Queries in Spring JPA Repositories](https://www.baeldung.com/spring-jpa-like-queries)
+- [Storing PostgreSQL JSONB Using Spring Boot and JPA](https://www.baeldung.com/spring-boot-jpa-storing-postgresql-jsonb)
 
 - More articles: [[--> next]](../spring-data-jpa-repo-2)
 
