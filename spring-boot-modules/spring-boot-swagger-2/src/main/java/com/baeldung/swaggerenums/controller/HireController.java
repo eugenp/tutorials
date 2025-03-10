@@ -1,10 +1,10 @@
 package com.baeldung.swaggerenums.controller;
 
 import com.baeldung.swaggerenums.model.Employee;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
