@@ -53,6 +53,16 @@
             <artifactId>jakarta.xml.bind-api</artifactId>
             <version>4.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.hypersistence</groupId>
+            <artifactId>hypersistence-utils-hibernate-60</artifactId>
+            <version>${hypersistance-utils-hibernate-60.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -77,6 +87,8 @@
 
     <properties>
         <spring-oxm.version>6.1.4</spring-oxm.version>
+        <hypersistance-utils-hibernate-60.version>3.9.0</hypersistance-utils-hibernate-60.version>
+        <lombok.version>1.18.36</lombok.version>
     </properties>
 
 </project>
