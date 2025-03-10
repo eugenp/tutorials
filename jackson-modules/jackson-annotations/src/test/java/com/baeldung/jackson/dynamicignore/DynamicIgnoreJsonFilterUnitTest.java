@@ -14,7 +14,7 @@ class DynamicIgnoreJsonFilterUnitTest {
 
     @Test
     void whenWritingWithoutFilter_thenIdIsPresent() throws JsonProcessingException {
-        UserFilter user = new UserFilter(1000L, "John");
+        UserWithFilter user = new UserWithFilter(1000L, "John");
 
         SimpleFilterProvider filterProvider = new SimpleFilterProvider();
         filterProvider.addFilter("publicFilter", SimpleBeanPropertyFilter.serializeAll());
@@ -28,7 +28,7 @@ class DynamicIgnoreJsonFilterUnitTest {
 
     @Test
     void whenWritingWithFilter_thenIdIsIgnored() throws JsonProcessingException {
-        UserFilter user = new UserFilter(1000L, "John");
+        UserWithFilter user = new UserWithFilter(1000L, "John");
 
         SimpleFilterProvider filterProvider = new SimpleFilterProvider();
         filterProvider.addFilter("publicFilter", SimpleBeanPropertyFilter.serializeAllExcept("id"));
@@ -48,7 +48,7 @@ class DynamicIgnoreJsonFilterUnitTest {
         filterProvider.addFilter("publicFilter", SimpleBeanPropertyFilter.serializeAll());
 
         ObjectMapper objectMapper = new ObjectMapper().setFilterProvider(filterProvider);
-        UserFilter result = objectMapper.readValue(json, UserFilter.class);
+        UserWithFilter result = objectMapper.readValue(json, UserWithFilter.class);
 
         assertEquals(1000L, result.getId());
         assertEquals("John", result.getName());
@@ -62,7 +62,7 @@ class DynamicIgnoreJsonFilterUnitTest {
         filterProvider.addFilter("publicFilter", SimpleBeanPropertyFilter.serializeAllExcept("id"));
 
         ObjectMapper objectMapper = new ObjectMapper().setFilterProvider(filterProvider);
-        UserFilter result = objectMapper.readValue(json, UserFilter.class);
+        UserWithFilter result = objectMapper.readValue(json, UserWithFilter.class);
 
         assertEquals(1000L, result.getId());
         assertEquals("John", result.getName());

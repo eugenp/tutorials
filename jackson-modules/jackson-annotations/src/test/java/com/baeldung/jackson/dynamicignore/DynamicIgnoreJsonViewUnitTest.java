@@ -15,8 +15,8 @@ class DynamicIgnoreJsonViewUnitTest {
 
     @Test
     void whenWritingWithPublicView_thenIdIsIgnored() throws JsonProcessingException {
-        UserView user = new UserView(1000L, "John");
-        ObjectWriter objectWriter = new ObjectMapper().writerWithView(UserView.PublicView.class);
+        UserWithView user = new UserWithView(1000L, "John");
+        ObjectWriter objectWriter = new ObjectMapper().writerWithView(UserWithView.PublicView.class);
         String result = objectWriter.writeValueAsString(user);
         assertThat(result).contains("John");
         assertThat(result).doesNotContain("1000");
@@ -24,8 +24,8 @@ class DynamicIgnoreJsonViewUnitTest {
 
     @Test
     void whenWritingWithInternalView_thenIdIsPresent() throws JsonProcessingException {
-        UserView user = new UserView(1000L, "John");
-        ObjectWriter objectWriter = new ObjectMapper().writerWithView(UserView.InternalView.class);
+        UserWithView user = new UserWithView(1000L, "John");
+        ObjectWriter objectWriter = new ObjectMapper().writerWithView(UserWithView.InternalView.class);
         String result = objectWriter.writeValueAsString(user);
         assertThat(result).contains("John");
         assertThat(result).contains("1000");
@@ -34,9 +34,9 @@ class DynamicIgnoreJsonViewUnitTest {
     @Test
     void whenReadingWithPublicView_thenIdIsIgnored() throws JsonProcessingException {
         String json = "{\"id\":1000,\"name\":\"John\"}";
-        ObjectReader objectReader = new ObjectMapper().readerWithView(UserView.PublicView.class)
-            .forType(UserView.class);
-        UserView user = objectReader.readValue(json);
+        ObjectReader objectReader = new ObjectMapper().readerWithView(UserWithView.PublicView.class)
+            .forType(UserWithView.class);
+        UserWithView user = objectReader.readValue(json);
         assertEquals("John", user.getName());
         assertNull(user.getId());
     }
@@ -44,9 +44,9 @@ class DynamicIgnoreJsonViewUnitTest {
     @Test
     void whenReadingWithInternalView_thenIdIsPresent() throws JsonProcessingException {
         String json = "{\"id\":1000,\"name\":\"John\"}";
-        ObjectReader objectReader = new ObjectMapper().readerWithView(UserView.InternalView.class)
-            .forType(UserView.class);
-        UserView user = objectReader.readValue(json);
+        ObjectReader objectReader = new ObjectMapper().readerWithView(UserWithView.InternalView.class)
+            .forType(UserWithView.class);
+        UserWithView user = objectReader.readValue(json);
         assertEquals("John", user.getName());
         assertEquals(1000L, user.getId());
     }

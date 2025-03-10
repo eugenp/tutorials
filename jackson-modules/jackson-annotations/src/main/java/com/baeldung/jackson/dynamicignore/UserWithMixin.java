@@ -2,18 +2,18 @@ package com.baeldung.jackson.dynamicignore;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class UserMixin {
+public class UserWithMixin {
 
     private Long id;
 
     private String name;
 
-    public UserMixin(Long id, String name) {
+    public UserWithMixin(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public UserMixin() {
+    public UserWithMixin() {
     }
 
     public String getName() {
@@ -27,7 +27,7 @@ public class UserMixin {
     /**
      * Mixin interface that is used to hide sensitive information
      */
-    public interface PublicMixIn {
+    public interface PublicMixin {
 
         @JsonIgnore
         Long getId();

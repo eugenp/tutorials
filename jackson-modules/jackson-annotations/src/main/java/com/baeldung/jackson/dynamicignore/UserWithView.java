@@ -2,7 +2,7 @@ package com.baeldung.jackson.dynamicignore;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-public class UserView {
+public class UserWithView {
 
     @JsonView(InternalView.class)
     private Long id;
@@ -10,12 +10,12 @@ public class UserView {
     @JsonView(PublicView.class)
     private String name;
 
-    public UserView(Long id, String name) {
+    public UserWithView(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public UserView() {
+    public UserWithView() {
     }
 
     public String getName() {
