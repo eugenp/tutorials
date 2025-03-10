@@ -16,7 +16,7 @@ class InvokePrivateMethodsUnitTest {
         Method indexOfMethod = LongArrayUtil.class.getDeclaredMethod("indexOf", long[].class, long.class, int.class, int.class);
         indexOfMethod.setAccessible(true);
 
-        assertEquals(2, indexOfMethod.invoke(LongArrayUtil.class, someLongArray, 1L, 1, someLongArray.length), "The index should be 2.");
+        assertEquals(2, indexOfMethod.invoke(null, someLongArray, 1L, 1, someLongArray.length), "The index should be 2.");
     }
 
     @Test
