@@ -16,6 +16,7 @@
     <modules>
         <module>json</module>
         <module>json-2</module>
+        <module>json-3</module>
         <module>json-arrays</module>
         <module>json-conversion</module>
         <module>json-operations</module>
@@ -37,6 +38,9 @@
 
     <properties>
         <json.version>20240303</json.version>
+        <gson.version>2.11.0</gson.version>
+        <javax.version>1.1.2</javax.version>
+        <jsonschema2pojo-core.version>1.1.1</jsonschema2pojo-core.version>
     </properties>
 
 </project>

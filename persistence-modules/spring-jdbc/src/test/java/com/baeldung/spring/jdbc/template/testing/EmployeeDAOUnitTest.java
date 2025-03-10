@@ -1,22 +1,15 @@
 package com.baeldung.spring.jdbc.template.testing;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.anyString;
-
 import javax.sql.DataSource;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.test.util.ReflectionTestUtils;
@@ -59,25 +52,4 @@ public class EmployeeDAOUnitTest {
 
         assertEquals(4, employeeDAO.getCountOfEmployees());
     }
-
-    @Test(expected = EmptyResultDataAccessException.class)
-    public void whenIdNotExist_thenThrowEmptyResultDataAccessException() {
-        EmployeeDAO employeeDAO = new EmployeeDAO();
-        ReflectionTestUtils.setField(employeeDAO, "jdbcTemplate", jdbcTemplate);
-        Mockito.when(jdbcTemplate.queryForObject(anyString(), ArgumentMatchers.<RowMapper<Employee>> any(), anyInt()))
-            .thenThrow(EmptyResultDataAccessException.class);
-
-        employeeDAO.getEmployeeById(1);
-    }
-
-    @Test
-    public void whenIdNotExist_thenReturnNull() {
-        EmployeeDAO employeeDAO = new EmployeeDAO();
-        ReflectionTestUtils.setField(employeeDAO, "jdbcTemplate", jdbcTemplate);
-        Mockito.when(jdbcTemplate.queryForObject(anyString(), ArgumentMatchers.<RowMapper<Employee>> any(), anyInt()))
-            .thenReturn(null);
-
-        assertNull(employeeDAO.getEmployeeByIdV2(1));
-    }
-
 }

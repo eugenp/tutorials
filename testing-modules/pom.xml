@@ -38,11 +38,13 @@
         <module>junit-5</module>
         <module>junit5-annotations</module>
         <module>junit5-migration</module>
+        <module>k6</module>
         <module>load-testing-comparison</module>
         <module>mockito</module>
         <module>mockito-simple</module>
-        <!-- <module>mocks</module>--> <!-- failing after upgrading to jdk17 -->
+        <module>mocks</module>
         <module>mocks-2</module>
+        <module>mocks-3</module>
         <module>mockserver</module>
         <module>parallel-tests-junit</module>
         <module>powermock</module>
@@ -51,21 +53,24 @@
         <module>selenide</module>
         <module>selenium</module>
         <module>selenium-2</module>
+        <module>selenium-3</module>
         <module>selenium-testng</module>
         <module>spring-mockito</module>
         <module>spring-testing-2</module>
         <module>spring-testing</module>
         <module>testing-assertions</module>
         <module>test-containers</module>
-        <module>testing-libraries-2</module>
         <module>testing-libraries</module>
+        <module>testing-libraries-2</module>
+        <module>testing-libraries-3</module>
         <module>testng</module>
+        <module>testng-2</module>
         <module>testng-command-line</module>
         <module>xmlunit-2</module>
         <module>zerocode</module>
         <module>mockito-2</module>
         <module>mockito-3</module>
-        <module>testing-techniques</module>
+        <module>mockito-4</module>
         <module>gatling-java</module>
     </modules>
 

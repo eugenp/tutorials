@@ -14,4 +14,6 @@ public class ClientWebConfig implements WebMvcConfigurer {
         super();
     }
 
+    // API
+
 }

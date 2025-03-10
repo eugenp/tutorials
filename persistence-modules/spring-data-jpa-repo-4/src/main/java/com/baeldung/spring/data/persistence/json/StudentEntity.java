@@ -1,11 +1,12 @@
 package com.baeldung.spring.data.persistence.json;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import io.hypersistence.utils.hibernate.type.json.JsonBinaryType;
 import lombok.*;
+import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
+import org.hibernate.type.SqlTypes;
 
 @Entity
 @Table(name = "student")
@@ -14,7 +15,6 @@ import org.hibernate.annotations.TypeDef;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = {"id"})
-@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 public class StudentEntity {
 
     @Id
@@ -24,7 +24,8 @@ public class StudentEntity {
     @Column(name = "admit_year", length = 4)
     private String admitYear;
 
-    @Type(type = "jsonb")
+    @Type(JsonBinaryType.class)
+    @JdbcTypeCode(SqlTypes.JSON)
     @Column(name = "address", columnDefinition = "jsonb")
     private Address address;
 

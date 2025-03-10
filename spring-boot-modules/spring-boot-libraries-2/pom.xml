@@ -141,6 +141,7 @@
                             <configOptions>
                                 <delegatePattern>false</delegatePattern>
                                 <useJakartaEe>true</useJakartaEe>
+                                <!--useSpringBoot3>true</useSpringBoot3--> <!--we can uncomment this option if the project uses Spring Boot 3 and above-->
                             </configOptions>
                         </configuration>
                     </execution>
@@ -183,7 +184,7 @@
         <wiremock-jre8.version>2.34.0</wiremock-jre8.version>
         <jandex-maven-plugin.version>1.2.3</jandex-maven-plugin.version>
         <springdoc.version>1.7.0</springdoc.version>
-        <start-class>com.baeldung.OpenApiApplication</start-class>
+        <start-class>com.baeldung.openapi.OpenApiApplication</start-class>
         <spring-boot.version>3.2.2</spring-boot.version>
     </properties>
 

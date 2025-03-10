@@ -17,7 +17,9 @@
     <modules>
         <module>animal-sniffer-mvn-plugin</module>
         <module>compiler-plugin-java-9</module>
+        <module>dependency-check</module>
         <module>dependency-ordering</module>
+        <!-- <module>dependencygraph</module> --> <!-- JAVA-42057 -->
         <module>dependency-exclusion</module>
         <module>host-maven-repo-example</module>
         <module>jacoco-coverage-aggregation</module>
@@ -28,7 +30,7 @@
         <module>maven-classifier</module>
         <module>maven-copy-files</module>
         <module>maven-custom-plugin</module>
-<!--        <module>maven-exec-plugin</module>--> <!-- failing after upgrading to jdk17-->
+<!--        <module>maven-exec-plugin</module>--> <!-- failing after upgrading to jdk17--> <!-- JAVA-42059 -->
         <module>maven-generate-war</module>
         <module>maven-integration-test</module>
         <module>maven-jvm-args</module>

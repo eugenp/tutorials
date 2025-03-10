@@ -9,4 +9,8 @@ This module contains articles about performance of Java applications
 - [Shutting Down on OutOfMemoryError in Java](https://www.baeldung.com/java-shutting-down-outofmemoryerror)
 - [Programmatic Usage of NetBeans Profiler](https://www.baeldung.com/java-netbeans-use-profiler-programmatically)
 - [Reduce Memory Footprint in Java](https://www.baeldung.com/java-reduce-memory-footprint)
+- [Verbose Garbage Collection in Java](https://www.baeldung.com/java-verbose-gc)
+- [Branch Prediction in Java](https://www.baeldung.com/java-branch-prediction)
+- [JMX Ports](https://www.baeldung.com/jmx-ports)
+- [Calling JMX MBean Method From a Shell Script](https://www.baeldung.com/jmx-mbean-shell-access)
 

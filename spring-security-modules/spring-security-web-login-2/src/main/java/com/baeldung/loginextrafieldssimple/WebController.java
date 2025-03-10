@@ -27,9 +27,7 @@ public class WebController {
 
     @RequestMapping("/user/index")
     public String userIndex(Model model) {
-        getDomain().ifPresent(d -> {
-            model.addAttribute("domain", d);
-        });
+        getDomain().ifPresent(d -> model.addAttribute("domain", d));
         return "user/index";
     }
 

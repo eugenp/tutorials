@@ -21,6 +21,21 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr</artifactId>
+            <version>${vavr.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -32,5 +47,11 @@
             </resource>
         </resources>
     </build>
+    
+    <properties>
+        <vavr.version>0.9.0</vavr.version>
+        <commons-lang.version>3.14.0</commons-lang.version>
+        <javafx.version>19</javafx.version>
+    </properties>
 
 </project>

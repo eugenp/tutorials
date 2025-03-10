@@ -1,0 +1,5 @@
+Greeting message: ${greeting}
+-----------------------------
+Username is ${my.name}
+His hobbies are ${my.hobbies}
+He came in and said: "${my.signature}"

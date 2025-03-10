@@ -13,7 +13,6 @@ import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.TypeDescription;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
-import org.yaml.snakeyaml.inspector.TagInspector;
 
 public class YAMLToJavaDeserialisationUnitTest {
 
@@ -44,9 +43,6 @@ public class YAMLToJavaDeserialisationUnitTest {
     @Test
     public void whenLoadYAMLDocumentWithAssumedClass_thenLoadCorrectJavaObject() {
         LoaderOptions loaderoptions = new LoaderOptions();
-        TagInspector taginspector = tag -> tag.getClassName()
-            .equals(Customer.class.getName());
-        loaderoptions.setTagInspector(taginspector);
         Yaml yaml = new Yaml(new Constructor(Customer.class, loaderoptions));
         InputStream inputStream = this.getClass()
             .getClassLoader()

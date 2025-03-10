@@ -20,36 +20,65 @@ server:
     guest:
       username: guest
       password: guestpass
----
-application:
+
+
+spring:
   profiles:
-    - dev
-    - test
-    - prod
-    - 1
-    - 2
-  props: 
-    -
-      name: YamlList
-      url: http://yamllist.dev
-      description: Mapping list in Yaml to list of objects in Spring Boot
-    -
-      ip: 10.10.10.10
-      port: 8091
-    -
-      email: support@yamllist.dev
-      contact: http://yamllist.dev/contact
-  users:
-    -
-      username: admin
-      password: admin@10@
-      roles:
-        - READ
-        - WRITE
-        - VIEW
-        - DELETE
-    -
-      username: guest
-      password: guest@01
-      roles:
-        - VIEW
+    active:
+      - test
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: test
+name: test-YAML
+environment: testing
+servers:
+  - www.abc.test.com
+  - www.xyz.test.com
+
+external: [ www.abc.test.com, www.xyz.test.com ]
+
+map:
+  firstkey: key1
+  secondkey: key2
+
+component:
+  idm:
+    url: myurl
+    user: user
+    password: password
+    description: >
+      this should be a long
+      description
+  service:
+    url: myurlservice
+    token: token
+    description: >
+      this should be another long
+      description
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+name: prod-YAML
+environment: production
+servers:
+  - www.abc.com
+  - www.xyz.com
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+name: ${DEV_NAME:dev-YAML}
+environment: development
+servers:
+  - www.abc.dev.com
+  - www.xyz.dev.com

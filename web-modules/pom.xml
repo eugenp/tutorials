@@ -27,6 +27,7 @@
         <module>jakarta-servlets-2</module>
         <module>jee-7</module>
         <module>jersey</module>
+        <module>jersey-2</module>
         <module>jooby</module>
         <module>jsf</module>
         <module>linkrest</module>

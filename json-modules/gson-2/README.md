@@ -9,3 +9,5 @@ This module contains articles about Gson
 - [Using Static Methods Instead of Deprecated JsonParser](https://www.baeldung.com/java-static-methods-jsonparser-replacement)
 - [Gson TypeToken With Dynamic List Item Type](https://www.baeldung.com/gson-typetoken-dynamic-list-item-type)
 - [Polymorphism with Gson](https://www.baeldung.com/gson-polymorphism)
+- [Gson Deserialization Cookbook](https://www.baeldung.com/gson-deserialization-guide)
+- [Working with Primitive Values in Gson](https://www.baeldung.com/java-gson-primitives)

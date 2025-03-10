@@ -18,10 +18,16 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.ahocorasick</groupId>
+            <artifactId>ahocorasick</artifactId>
+            <version>${ahocorasick.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <commons-lang.version>3.14.0</commons-lang.version>
+        <ahocorasick.version>0.4.0</ahocorasick.version>
     </properties>
 
 </project>

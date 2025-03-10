@@ -1,0 +1,52 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide empty attributes
+skinparam Handwritten false
+skinparam ClassBorderColor black
+skinparam BackgroundColor #fffce8/#f8f9fa
+skinparam class {
+ ArrowColor SeaGreen
+ BackgroundColor #fffce8
+}
+
+interface ChatModel {
+  +call(Prompt):ChatResponse
+}
+class OpenAIChatModel {
+  +call(Prompt):ChatResponse
+}
+class ChatResponse {
+}
+
+class OmAiAssistantConfiguration {
+  +createOrderFn(OrderManagementService):Function<CreateOrderRequest, Long>
+  +getUserOrdersFn(OrderManagementService):Function<GetOrderRequest, List<OrderInfo>>
+}
+
+class OrderManagementAIAssistant {
+  +callChatClient(Set<String>, String):ChatResponse
+}
+
+class OrderManagementService {
+  +createOrderFn(OrderInfo):Long
+  +getAllUserOrders(String):String
+}
+
+interface Function {
+}
+
+note left of OmAiAssistantConfiguration::createOrderFn
+ <b>@Bean</b>
+end note
+note left of OmAiAssistantConfiguration::getUserOrdersFn
+ <b>@Bean</b>
+end note
+
+OmAiAssistantConfiguration --> OrderManagementService: uses
+OmAiAssistantConfiguration --> Function:uses
+OpenAIChatModel -left|> ChatModel:implements
+OrderManagementAIAssistant --> ChatModel:uses
+ChatModel -left-> ChatResponse:uses
+ChatModel -[hidden]-> OmAiAssistantConfiguration
+
+@enduml

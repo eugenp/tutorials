@@ -60,10 +60,7 @@
 
     <properties>
         <networknt.json.schema.version>1.4.0</networknt.json.schema.version>
-        <gson.version>2.11.0</gson.version>
-        <javax.version>1.1.2</javax.version>
         <json-unit-assertj.version>2.28.0</json-unit-assertj.version>
-        <jsonschema2pojo-core.version>1.1.1</jsonschema2pojo-core.version>
     </properties>
 
 </project>

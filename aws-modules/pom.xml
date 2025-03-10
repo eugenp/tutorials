@@ -23,6 +23,8 @@
         <module>aws-reactive</module>
         <module>aws-rest</module>
         <module>aws-s3</module>
+        <module>aws-s3-2</module>
+        <module>s3proxy</module>
     </modules>
 
     <dependencies>

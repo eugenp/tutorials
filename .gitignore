@@ -144,8 +144,11 @@ persistence-modules/neo4j/data/**
 /libraries-io/src/main/resources/application4.csv
 /persistence-modules/hibernate6/finalRecordingTestMvn.jfr
 /core-java-modules/core-java-io-conversions-3/src/test/resources/xlsxToCsv_output.csv
+/core-java-modules/core-java-io-5/output.txt
+/core-java-modules/core-java-io-apis-2/sample.txt
 /persistence-modules/core-java-persistence-3/test.mv.db
-/apache-libraries/src/main/java/com/baeldung/avro/
+/apache-libraries/src/main/java/com/baeldung/apache/avro/
+/apache-libraries-2/cars.avro
 
 #spring-cloud
 /spring-cloud-modules/spring-cloud-bootstrap/gateway/src/main/resources/static/home/3rdpartylicenses.txt

@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:passkey
+  sql:
+    init:
+      mode: always
+  security:
+    webauthn:
+      rpName: "WebAuthn Demo"
+      # Replace with the domainname of your application
+      rpId:  localhost
+      allowedOrigins:
+        # Replace with the URL of your application. Notice: this _MUST_ be an HTTPS URL with a valid certificate
+        - "http://localhost:8080"
+

@@ -1,6 +1,5 @@
 package com.baeldung.embeddable;
 
-import com.baeldung.Application;
 import com.baeldung.embeddable.model.Company;
 import com.baeldung.embeddable.model.ContactPerson;
 import com.baeldung.embeddable.repositories.CompanyRepository;

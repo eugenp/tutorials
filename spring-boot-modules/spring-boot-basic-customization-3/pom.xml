@@ -29,6 +29,15 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>failureanalyzer</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.failureanalyzer.FailureAnalyzerApplication</spring.boot.mainclass>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>

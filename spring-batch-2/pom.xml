@@ -18,6 +18,20 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-core</artifactId>
+            <version>${spring.batch.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-infrastructure</artifactId>
+            <version>${spring.batch.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-batch</artifactId>
         </dependency>
@@ -70,6 +84,16 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
             <version>${spring-oxm.version}</version>
@@ -96,8 +120,9 @@
         <http-client.version>4.5.14</http-client.version>
         <jaxb.version>4.0.2</jaxb.version>
         <jettison.version>1.5.4</jettison.version>
-        <spring.batch.version>5.1.2</spring.batch.version>
+        <spring.batch.version>5.2.0</spring.batch.version>
         <awaitility.version>4.2.1</awaitility.version>
+        <assertj.version>3.24.2</assertj.version>
         <start-class>com.baeldung.batch.SpringBootBatchProcessingApplication</start-class>
     </properties>
 
