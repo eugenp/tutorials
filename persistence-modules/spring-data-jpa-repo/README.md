@@ -8,6 +8,7 @@ This module contains articles about repositories in Spring Data JPA
 - [LIKE Queries in Spring JPA Repositories](https://www.baeldung.com/spring-jpa-like-queries)
 - [Performance Difference Between save() and saveAll() in Spring Data](https://www.baeldung.com/spring-data-save-saveall)
 - [Calling Stored Procedures from Spring Data JPA Repositories](https://www.baeldung.com/spring-data-jpa-stored-procedures)
+- [Correct Use of flush() in JPA](https://www.baeldung.com/spring-jpa-flush)
 
 - More articles: [[--> next]](../spring-data-jpa-repo-2)
 
