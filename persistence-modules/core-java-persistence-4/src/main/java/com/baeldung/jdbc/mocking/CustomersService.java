@@ -15,7 +15,7 @@ public class CustomersService {
 
     private final DataSource dataSource;
 
-    CustomersService(DataSource dataSource) {
+    public CustomersService(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
