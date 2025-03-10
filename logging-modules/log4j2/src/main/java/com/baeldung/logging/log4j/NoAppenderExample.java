@@ -1,4 +1,4 @@
-package com.baeldung.log4j;
+package com.baeldung.logging.log4j;
 
 import org.apache.log4j.Logger;
 
