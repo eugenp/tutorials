@@ -34,7 +34,7 @@ public class AllCustomers implements Supplier<List<Customer>> {
         this.dataSource = dataSource;
     }
 
-    private static Customer mapCustomer(ResultSet resultSet) throws SQLException {
+    private Customer mapCustomer(ResultSet resultSet) throws SQLException {
         return new Customer(resultSet.getInt("id"), resultSet.getString("name"), Customer.Status.valueOf(resultSet.getString("status")));
     }
 
