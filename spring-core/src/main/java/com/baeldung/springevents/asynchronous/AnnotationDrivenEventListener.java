@@ -19,7 +19,7 @@ public class AnnotationDrivenEventListener {
     }
 
     @Async
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = REQUIRES_NEW)
     @TransactionalEventListener
     void handleCustom(CustomSpringEvent event) { 
         /* … */ 
