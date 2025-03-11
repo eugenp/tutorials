@@ -16,8 +16,8 @@ class InterceptingClientHttpRequestTest {
 
     @Test
     void updateRequestAttribute() throws Exception {
-        final String attrName = "attr1";
-	final String attrValue = "value1";
+        String attrName = "attr1";
+	String attrValue = "value1";
 
 	assertDoesNotThrow(() -> { 
 	  ClientHttpRequestInterceptor interceptor = (request, body, execution) -> {
