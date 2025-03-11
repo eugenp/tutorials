@@ -18,8 +18,8 @@ import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.client.ClientHttpRequest;
 import org.springframework.http.client.InterceptingClientHttpRequestFactory;
 import org.springframework.http.client.support.HttpRequestWrapper;
-import org.springframework.web.testfixture.http.client.MockClientHttpRequest;
-import org.springframework.web.testfixture.http.client.MockClientHttpResponse;
+import org.springframework.mock.http.client.MockClientHttpRequest;
+import org.springframework.mock.http.client.MockClientHttpResponse;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
