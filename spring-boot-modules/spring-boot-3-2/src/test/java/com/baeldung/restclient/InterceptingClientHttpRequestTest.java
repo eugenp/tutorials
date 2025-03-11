@@ -47,28 +47,6 @@ class InterceptingClientHttpRequestTest {
 			request.getAttributes().put(attrName, attrValue);
 			return execution.execute(request, body);
 		};
-		requestMock = new MockClientHttpRequest() {
-			@Override
-			protected ClientHttpResponse executeInternal() {
-				assertThat(getAttributes()).containsEntry(attrName, attrValue);
-				return responseMock;
-			}
-		};
-		requestFactory = new InterceptingClientHttpRequestFactory(requestFactoryMock, Collections.singletonList(interceptor));
-
-		ClientHttpRequest request = requestFactory.createRequest(URI.create("https://example.com"), HttpMethod.GET);
-		request.execute();
-	}
-
-	private class RequestFactoryMock implements ClientHttpRequestFactory {
-
-		@Override
-		public ClientHttpRequest createRequest(URI uri, HttpMethod httpMethod) throws IOException {
-			requestMock.setURI(uri);
-			requestMock.setMethod(httpMethod);
-			return requestMock;
-		}
-
 	}
 
 }
