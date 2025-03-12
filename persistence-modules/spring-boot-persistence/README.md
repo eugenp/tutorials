@@ -7,4 +7,6 @@
 - [Spring Boot with Hibernate](https://www.baeldung.com/spring-boot-hibernate)
 - [Oracle Connection Pooling With Spring](https://www.baeldung.com/spring-oracle-connection-pooling)
 - [Count the Number of Rows in Spring Data JPA](https://www.baeldung.com/spring-data-jpa-row-count)
+- [Configuring a Hikari Connection Pool with Spring Boot](https://www.baeldung.com/spring-boot-hikari)
+
 - More articles: [[more -->]](../spring-boot-persistence-2)
