@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.baeldung.j2cl.taskmanager</groupId>
+    <artifactId>j2cl-task-manager</artifactId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <j2cl.maven.plugin.version>0.22.0</j2cl.maven.plugin.version>
+        <elemental2.version>1.1.0</elemental2.version>
+
+        <jsinterop.base.version>1.0.0</jsinterop.base.version>
+        <j2cl.version>v20230718-1</j2cl.version>
+
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+
+        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+        <maven.jetty.plugin.version>9.4.44.v20210927</maven.jetty.plugin.version>
+        <maven.war.plugin.version>3.3.2</maven.war.plugin.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.elemental2</groupId>
+            <artifactId>elemental2-dom</artifactId>
+            <version>${elemental2.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.jsinterop</groupId>
+            <artifactId>base</artifactId>
+            <version>${jsinterop.base.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.vertispan.j2cl</groupId>
+            <artifactId>junit-annotations</artifactId>
+            <version>${j2cl.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.vertispan.j2cl</groupId>
+            <artifactId>junit-emul</artifactId>
+            <version>${j2cl.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.vertispan.j2cl</groupId>
+            <artifactId>junit-emul</artifactId>
+            <version>${j2cl.version}</version>
+            <classifier>sources</classifier>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven.war.plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>com.vertispan.j2cl</groupId>
+                <artifactId>j2cl-maven-plugin</artifactId>
+                <version>${j2cl.maven.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>test-js</id>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <!-- In order to use htmlunit, we must compile to
+                            remove es6 classes -->
+                            <compilationLevel>ADVANCED</compilationLevel>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <tests>
+                        <test>com.baeldung.j2cl.taskmanager.MyJ2CLAppTest</test>
+                    </tests>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${maven.jetty.plugin.version}</version>
+                <configuration>
+                    <webApp>
+                        <_initParams>
+                            <org.eclipse.jetty.servlet.Default.useFileMappedBuffer>
+                                false</org.eclipse.jetty.servlet.Default.useFileMappedBuffer>
+                        </_initParams>
+                        <resourceBases>
+                            <!-- Serve static content without copying from
+                            src/main/webapp -->
+                            <resourceBase>src/main/webapp</resourceBase>
+                            <!-- Serve compiled JS built by J2CL -->
+                            <resourceBase>
+                                ${project.build.directory}/${project.build.finalName}</resourceBase>
+                        </resourceBases>
+                    </webApp>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

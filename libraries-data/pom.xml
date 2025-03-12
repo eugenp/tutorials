@@ -173,8 +173,6 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <argLine>
-                        --add-opens java.base/java.nio=ALL-UNNAMED
-                        --add-opens java.base/java.lang=ALL-UNNAMED
                         --add-opens java.base/java.util=ALL-UNNAMED
                     </argLine>
                 </configuration>
@@ -183,13 +181,11 @@
     </build>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
         <httpclient.version>3.1</httpclient.version>
         <kafka.version>3.3.1</kafka.version>
         <gson.version>2.11.0</gson.version>
         <cache.version>1.1.1</cache.version>
-        <flink.version>1.19.1</flink.version>
+        <flink.version>1.20.0</flink.version>
         <hazelcast.version>5.2.0</hazelcast.version>
         <javassist.version>3.29.2-GA</javassist.version>
         <caffeine.version>3.1.8</caffeine.version>

@@ -26,8 +26,10 @@ class SemanticSearchLiveTest {
     @ValueSource(strings = {"Love and Romance", "Time and Mortality", "Jealousy and Betrayal"})
     void whenSearchingShakespeareTheme_thenRelevantPoemsReturned(String theme) {
         SearchRequest searchRequest = SearchRequest
+            .builder()
             .query(theme)
-            .withTopK(MAX_RESULTS);
+            .topK(MAX_RESULTS)
+            .build();
         List<Document> documents = vectorStore.similaritySearch(searchRequest);
 
         assertThat(documents)

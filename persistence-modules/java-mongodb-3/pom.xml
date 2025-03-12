@@ -19,10 +19,16 @@
             <artifactId>mongo-java-driver</artifactId>
             <version>${mongo.version}</version>
         </dependency>
+        <dependency>
+            <groupId>dev.morphia.morphia</groupId>
+            <artifactId>morphia-core</artifactId>
+            <version>${morphia.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <mongo.version>3.12.11</mongo.version>
+        <morphia.version>2.0.0</morphia.version>
     </properties>
 
 </project>
