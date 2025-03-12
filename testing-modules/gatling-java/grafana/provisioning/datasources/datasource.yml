@@ -19,9 +19,16 @@ datasources:
       graphiteVersion: "1.1"
       tlsAuth: false
       tlsAuthWithCACert: false
-    secureJsonData:
-      tlsCACert: "..."
-      tlsClientCert: "..."
-      tlsClientKey: "..."
+    version: 1
+    editable: true
+  - name: InfluxDB
+    type: influxdb
+    uid: P951FEA4DE68E13C5
+    isDefault: false
+    access: proxy
+    url: http://influxdb:8086
+    basicAuth: false
+    jsonData:
+      dbName: "graphite"
     version: 1
     editable: true
