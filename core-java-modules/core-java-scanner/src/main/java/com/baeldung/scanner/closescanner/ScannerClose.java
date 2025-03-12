@@ -1,7 +1,7 @@
 package com.baeldung.closescanner;
 import java.util.Scanner;
 
-public class ScannerExample {
+public class ScannerClose {
     public String getGreetingMessage(Scanner scanner) {
         System.out.print("Enter your name: ");
         String name = scanner.nextLine();
@@ -11,7 +11,7 @@ public class ScannerExample {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         try {
-            ScannerExample example = new ScannerExample();
+            ScannerClose example = new ScannerClose();
             String message = example.getGreetingMessage(scanner);
             System.out.println(message);
         } finally {
