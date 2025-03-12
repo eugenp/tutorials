@@ -1,4 +1,4 @@
-package com.baeldung.closescanner;
+package com.baeldung.scanner.closescanner;
 import java.util.Scanner;
 
 public class ScannerTryWithResources {
