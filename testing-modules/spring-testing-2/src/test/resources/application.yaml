@@ -4,3 +4,7 @@ spring:
 profile:
   property:
     value: This the application.yaml file
+
+wiremock:
+  server:
+    baseUrl: http://localhost:8080
