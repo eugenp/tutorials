@@ -10,10 +10,10 @@ public class SlowEndpointSimulation extends Simulation {
 
     public SlowEndpointSimulation() {
         setUp(SimulationUtils.buildScenario("getSlowResponses", SimulationUtils.simpleGetRequest("request_slow_endpoint", "/api/slow-response", 200), 120, 30,
-            300)).assertions(details("request_slow_endpoint").successfulRequests()
-            .percent()
-            .gt(95.00), details("request_slow_endpoint").responseTime()
-            .max()
-            .lte(10000));
+          300)).assertions(details("request_slow_endpoint").successfulRequests()
+          .percent()
+          .gt(95.00), details("request_slow_endpoint").responseTime()
+          .max()
+          .lte(10000));
     }
 }
