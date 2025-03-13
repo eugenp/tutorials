@@ -1,6 +1,7 @@
 package com.baeldung.socketchannel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -18,13 +19,36 @@ import org.junit.jupiter.api.Test;
 public class SocketChannelUnitTest {
 
     @Test
+    void givenServerStarted_whenClientConnects_thenConnectionIsSuccessful() throws Exception {
+        try (ServerSocketChannel server = ServerSocketChannel.open()
+            .bind(new InetSocketAddress(6000))) {
+            int port = ((InetSocketAddress) server.getLocalAddress()).getPort();
+            ExecutorService executor = Executors.newSingleThreadExecutor();
+            Future<Boolean> future = executor.submit(() -> {
+                try (SocketChannel client = server.accept()) {
+                    return client.isConnected();
+                }
+            });
+            try (SocketChannel client = SocketChannel.open()) {
+                client.configureBlocking(true);
+                client.connect(new InetSocketAddress("localhost", 6000));
+                while (!client.finishConnect()) {
+                    Thread.sleep(10);
+                }
+            }
+            assertTrue(future.get(2, TimeUnit.SECONDS));
+            executor.shutdown();
+        }
+    }
+
+    @Test
     void givenClientSendsObject_whenServerReceives_thenDataMatches() throws Exception {
-        try (ServerSocketChannel server = ServerSocketChannel.open().bind(new InetSocketAddress(6000))) {
+        try (ServerSocketChannel server = ServerSocketChannel.open()
+            .bind(new InetSocketAddress(6000))) {
             int port = ((InetSocketAddress) server.getLocalAddress()).getPort();
             ExecutorService executor = Executors.newSingleThreadExecutor();
             Future<MyObject> future = executor.submit(() -> {
-                try (SocketChannel client = server.accept();
-                     ObjectInputStream objIn = new ObjectInputStream(Channels.newInputStream(client))) {
+                try (SocketChannel client = server.accept(); ObjectInputStream objIn = new ObjectInputStream(Channels.newInputStream(client))) {
                     return (MyObject) objIn.readObject();
                 }
             });
