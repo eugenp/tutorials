@@ -54,7 +54,7 @@ class JdbcMockingUnitTest {
     }
 
     @Test
-    void givenRefactoredService_whenFetchingEligibleCustomers_thenTheyHaveCorrectStatus() {
+    void whenFetchingEligibleCustomersFromV2_thenTheyHaveCorrectStatus() {
         // given
         List<Customer> allCustomers = List.of(
             new Customer(1, "Alice", Status.LOYAL),
