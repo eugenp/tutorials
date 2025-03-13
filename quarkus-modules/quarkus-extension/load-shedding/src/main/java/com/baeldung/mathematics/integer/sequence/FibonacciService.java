@@ -1,20 +1,14 @@
 package com.baeldung.mathematics.integer.sequence;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 
 import java.util.ArrayList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.baeldung.mathematics.TenantContext;
-
 @ApplicationScoped
 public class FibonacciService {
     private static final Logger logger = LoggerFactory.getLogger(FibonacciService.class);
-
-    @Inject
-    TenantContext tenantContext;
 
     public ArrayList<Integer> generateSequence(int nthNumber) {
         int firstInteger = 0, secondInteger = 1;

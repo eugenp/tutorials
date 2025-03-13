@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.baeldung.mathematics.integer.sequence.FibonacciService;
+
 @Path("/fibonacci")
 public class FibonacciResource {
     private static final Logger logger = LoggerFactory.getLogger(FibonacciResource.class);
