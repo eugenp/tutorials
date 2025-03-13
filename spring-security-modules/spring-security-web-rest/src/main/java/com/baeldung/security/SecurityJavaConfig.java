@@ -55,10 +55,18 @@ public class SecurityJavaConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests (authorizeRequests -> authorizeRequests.requestMatchers("/api/csrfAttacker*").permitAll()
+        http.authorizeHttpRequests (authorizeRequests -> authorizeRequests
+            .requestMatchers("/login").anonymous()
+            .requestMatchers("/dashboard").authenticated()
+            .requestMatchers("/settings").fullyAuthenticated()
+            .requestMatchers("/api/csrfAttacker*").permitAll()
             .requestMatchers("/api/customer/**").permitAll()
             .requestMatchers("/api/foos/**").authenticated()
             .requestMatchers("/api/async/**").permitAll()
+            .requestMatchers("/public/**").permitAll()
+            .requestMatchers("/private/**").denyAll()
+            .requestMatchers("/auth/admin/*").hasAuthority("ADMIN")
+            .requestMatchers("/auth/*").hasAnyAuthority("ADMIN", "USER")
             .requestMatchers("/api/admin/**").hasRole("ADMIN"))
             .formLogin(formLogin -> formLogin.successHandler(mySuccessHandler).failureHandler(myFailureHandler))
             .httpBasic(withDefaults())
