@@ -12,9 +12,9 @@ public class CustomersServiceV2 {
 
     public List<Customer> customersEligibleForOffers() {
         return findAllCustomers.get()
-            .stream()
-            .filter(customer -> customer.status() == Status.ACTIVE || customer.status() == Status.LOYAL)
-            .toList();
+          .stream()
+          .filter(customer -> customer.status() == Status.ACTIVE || customer.status() == Status.LOYAL)
+          .toList();
     }
 
     public CustomersServiceV2(Supplier<List<Customer>> findAllCustomers) {

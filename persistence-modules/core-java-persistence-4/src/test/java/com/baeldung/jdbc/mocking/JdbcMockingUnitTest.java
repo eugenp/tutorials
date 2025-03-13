@@ -20,6 +20,7 @@ import com.baeldung.jdbc.mocking.v2.CustomersServiceV2;
 
 @ExtendWith(MockitoExtension.class)
 class JdbcMockingUnitTest {
+
     @Mock
     DataSource dataSource;
     @Mock
@@ -34,33 +35,34 @@ class JdbcMockingUnitTest {
         //given
         CustomersService customersService = new CustomersService(dataSource);
 
-        when(dataSource.getConnection()).thenReturn(conn);
-        when(conn.createStatement()).thenReturn(stmt);
-        when(stmt.executeQuery("SELECT * FROM customers")).thenReturn(resultSet);
+        when(dataSource.getConnection())
+          .thenReturn(conn);
+        when(conn.createStatement())
+          .thenReturn(stmt);
+        when(stmt.executeQuery("SELECT * FROM customers"))
+           .thenReturn(resultSet);
 
-        when(resultSet.next()).thenReturn(true, true, true, false);
-        when(resultSet.getInt("id")).thenReturn(1, 2, 3);
-        when(resultSet.getString("name")).thenReturn("Alice", "Bob", "John");
-        when(resultSet.getString("status")).thenReturn("LOYAL", "ACTIVE", "INACTIVE");
+        when(resultSet.next())
+          .thenReturn(true, true, true, false);
+        when(resultSet.getInt("id"))
+          .thenReturn(1, 2, 3);
+        when(resultSet.getString("name"))
+          .thenReturn("Alice", "Bob", "John");
+        when(resultSet.getString("status"))
+          .thenReturn("LOYAL", "ACTIVE", "INACTIVE");
 
         // when
         List<Customer> eligibleCustomers = customersService.customersEligibleForOffers();
 
         // then
-        assertThat(eligibleCustomers).containsExactlyInAnyOrder(
-            new Customer(1, "Alice", Status.LOYAL),
-            new Customer(2, "Bob", Status.ACTIVE)
-        );
+        assertThat(eligibleCustomers).containsExactlyInAnyOrder(new Customer(1, "Alice", Status.LOYAL), new Customer(2, "Bob", Status.ACTIVE));
     }
 
     @Test
     void whenFetchingEligibleCustomersFromV2_thenTheyHaveCorrectStatus() {
         // given
-        List<Customer> allCustomers = List.of(
-            new Customer(1, "Alice", Status.LOYAL),
-            new Customer(2, "Bob", Status.ACTIVE),
-            new Customer(3, "John", Status.INACTIVE)
-        );
+        List<Customer> allCustomers = List.of(new Customer(1, "Alice", Status.LOYAL), new Customer(2, "Bob", Status.ACTIVE),
+            new Customer(3, "John", Status.INACTIVE));
 
         CustomersServiceV2 service = new CustomersServiceV2(() -> allCustomers);
 
@@ -68,10 +70,7 @@ class JdbcMockingUnitTest {
         List<Customer> eligibleCustomers = service.customersEligibleForOffers();
 
         // then
-        assertThat(eligibleCustomers).containsExactlyInAnyOrder(
-            new Customer(1, "Alice", Status.LOYAL),
-            new Customer(2, "Bob", Status.ACTIVE)
-        );
+        assertThat(eligibleCustomers).containsExactlyInAnyOrder(new Customer(1, "Alice", Status.LOYAL), new Customer(2, "Bob", Status.ACTIVE));
     }
 
 }

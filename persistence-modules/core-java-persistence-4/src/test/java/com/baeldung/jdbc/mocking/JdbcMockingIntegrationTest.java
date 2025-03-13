@@ -29,8 +29,7 @@ class JdbcMockingIntegrationTest {
 
         List<Customer> customers = customersService.customersEligibleForOffers();
 
-        assertThat(customers)
-            .extracting(Customer::status)
+        assertThat(customers).extracting(Customer::status)
             .containsOnly(Status.ACTIVE, Status.LOYAL);
     }
 
