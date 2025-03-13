@@ -33,7 +33,7 @@
     </dependencies>
 
     <build>
-        <finalName>core-java-date-operations-1</finalName>
+        <finalName>core-java-date-operations</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
