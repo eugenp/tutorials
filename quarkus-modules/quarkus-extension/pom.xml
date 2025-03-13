@@ -18,6 +18,7 @@
     <modules>
         <module>quarkus-liquibase</module>
         <module>quarkus-app</module>
+        <module>load-shedding</module>
     </modules>
 
 </project>
