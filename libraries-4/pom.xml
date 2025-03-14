@@ -103,6 +103,11 @@
             <artifactId>aeron-all</artifactId>
             <version>${aeron.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.oshi</groupId>
+            <artifactId>oshi-core</artifactId>
+            <version>6.4.2</version>
+        </dependency>
 
     </dependencies>
 
