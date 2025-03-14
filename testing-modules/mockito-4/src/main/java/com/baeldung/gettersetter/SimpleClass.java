@@ -1,6 +1,6 @@
 package com.baeldung.gettersetter;
 
-public class SimpleClass implements IdAndName {
+public class SimpleClass {
 
     private Long id;
 
@@ -14,7 +14,6 @@ public class SimpleClass implements IdAndName {
     public SimpleClass() {
     }
 
-    @Override
     public Long getId() {
         return id;
     }
@@ -23,7 +22,6 @@ public class SimpleClass implements IdAndName {
         this.id = id;
     }
 
-    @Override
     public String getName() {
         return name;
     }
