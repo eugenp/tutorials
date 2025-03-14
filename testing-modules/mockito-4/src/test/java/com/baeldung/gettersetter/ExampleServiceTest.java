@@ -1,40 +1,61 @@
 package com.baeldung.gettersetter;
 
+import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
-import org.mockito.ArgumentCaptor;
-import org.mockito.ArgumentMatchers;
-import org.mockito.Mockito;
-import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
-
-import net.bytebuddy.asm.Advice;
 
 public class ExampleServiceTest {
 
-    private final ExampleService testee = new ExampleService();
-
     @Test
-    public void givenSimpleClass_whenInvokingGetId_thenReturnId() {
-        SimpleClass simple = new SimpleClass(1L, "Jack");
-        Assertions.assertEquals(testee.getId(simple), simple.getId());
+    public void givenMockedSimpleClass_whenInvokingSettersGetters_thenInvokeMockedSettersGetters() {
+        Long mockId = 12L;
+        String mockName = "I'm 12";
+        SimpleClass simpleMock = mock(SimpleClass.class);
+        when(simpleMock.getId()).thenReturn(mockId);
+        when(simpleMock.getName()).thenReturn(mockName);
+        doNothing().when(simpleMock)
+            .setId(anyLong());
+        doNothing().when(simpleMock)
+            .setName(anyString());
+        ExampleService srv = new ExampleService();
+        srv.setField(simpleMock::setId, 11L);
+        srv.setField(simpleMock::setName, "I'm 11");
+        assertEquals(srv.getField(simpleMock::getId), mockId);
+        assertEquals(srv.getField(simpleMock::getName), mockName);
+        verify(simpleMock).getId();
+        verify(simpleMock).getName();
+        verify(simpleMock).setId(eq(11L));
+        verify(simpleMock).setName(eq("I'm 11"));
     }
 
     @Test
-    public void givenSimpleClass_whenInvokingGetName_thenReturnName() {
-        SimpleClass simple = new SimpleClass(1L, "Alex");
-        Assertions.assertEquals(testee.getName(simple), simple.getName());
+    public void givenActualSimpleClass_whenInvokingSettersGetters_thenInvokeActualSettersGetters() {
+        Long id = 1L;
+        String name = "I'm 1";
+        SimpleClass simple = new SimpleClass(id, name);
+        ExampleService srv = new ExampleService();
+        srv.setField(simple::setId, 2L);
+        srv.setField(simple::setName, "I'm 2");
+        assertEquals(srv.getField(simple::getId), simple.getId());
+        assertEquals(srv.getField(simple::getName), simple.getName());
     }
 
     @Test
     public void givenNonSimpleClass_whenInvokingGetName_thenReturnMockedName() {
-        NonSimpleClass nonSimple = Mockito.mock(NonSimpleClass.class);
+        NonSimpleClass nonSimple = mock(NonSimpleClass.class);
         when(nonSimple.getName()).thenReturn("Meredith");
-        Assertions.assertEquals(testee.getName(nonSimple), "Meredith");
+        ExampleService srv = new ExampleService();
+        assertEquals(srv.getField(nonSimple::getName), "Meredith");
+        verify(nonSimple).getName();
     }
 
     static class Wrapper<T> {
@@ -62,17 +83,18 @@ public class ExampleServiceTest {
     @Test
     public void givenNonSimpleClass_whenInvokingGetName_thenReturnTheLatestNameSet() {
         Wrapper<String> nameWrapper = new Wrapper<>(String.class);
-        NonSimpleClass nonSimple = Mockito.mock(NonSimpleClass.class);
+        NonSimpleClass nonSimple = mock(NonSimpleClass.class);
         when(nonSimple.getName()).thenAnswer((Answer<String>) invocationOnMock -> nameWrapper.get());
         doAnswer(invocation -> {
             nameWrapper.set(invocation.getArgument(0));
             return null;
         }).when(nonSimple)
-            .setName(ArgumentMatchers.anyString());
-        nonSimple.setName("John");
-        Assertions.assertEquals(testee.getName(nonSimple), "John");
-        nonSimple.setName("Nick");
-        Assertions.assertEquals(testee.getName(nonSimple), "Nick");
+            .setName(anyString());
+        ExampleService srv = new ExampleService();
+        srv.setField(nonSimple::setName, "John");
+        assertEquals(srv.getField(nonSimple::getName), "John");
+        srv.setField(nonSimple::setName, "Nick");
+        assertEquals(srv.getField(nonSimple::getName), "Nick");
     }
 
 }

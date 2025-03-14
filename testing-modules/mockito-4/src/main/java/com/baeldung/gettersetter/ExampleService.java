@@ -1,17 +1,16 @@
 package com.baeldung.gettersetter;
 
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+
 public class ExampleService {
 
-    public Long getId(IdAndName idAndName) {
-        return idAndName.getId();
+    public <T> T getField(Supplier<T> getter) {
+        return getter.get();
     }
 
-    public String getName(IdAndName idAndName) {
-        return idAndName.getName();
-    }
-
-    public String getSuperComplicatedField(NonSimpleClass nonSimpleClass) {
-        return nonSimpleClass.getSuperComplicatedField();
+    public <T> void setField(Consumer<T> setter, T value) {
+        setter.accept(value);
     }
 
 }

@@ -1,6 +1,6 @@
 package com.baeldung.gettersetter;
 
-public class NonSimpleClass implements IdAndName {
+public class NonSimpleClass {
 
     private Long id;
     private String name;
@@ -15,7 +15,6 @@ public class NonSimpleClass implements IdAndName {
     public NonSimpleClass() {
     }
 
-    @Override
     public Long getId() {
         return id;
     }
@@ -24,7 +23,6 @@ public class NonSimpleClass implements IdAndName {
         this.id = id;
     }
 
-    @Override
     public String getName() {
         return name;
     }
