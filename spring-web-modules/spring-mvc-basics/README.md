@@ -6,12 +6,13 @@ their own module.
 ### The Course
 The "REST With Spring" Classes: https://bit.ly/restwithspring
 
-### Relevant Articles: 
-- [Spring MVC Tutorial](https://www.baeldung.com/spring-mvc-tutorial)
-- [An Intro to the Spring DispatcherServlet](https://www.baeldung.com/spring-dispatcherservlet)
+### Relevant Articles:
 - [The Spring @Controller and @RestController Annotations](https://www.baeldung.com/spring-controller-vs-restcontroller)
-- [A Guide to the ViewResolver in Spring MVC](https://www.baeldung.com/spring-mvc-view-resolver-tutorial)
-- [Guide to Spring Handler Mappings](https://www.baeldung.com/spring-handler-mappings)
-- [Spring MVC Content Negotiation](https://www.baeldung.com/spring-mvc-content-negotiation-json-xml)
-- [Spring @RequestMapping New Shortcut Annotations](https://www.baeldung.com/spring-new-requestmapping-shortcuts)
+- [Spring MVC Custom Validation](https://www.baeldung.com/spring-mvc-custom-validator)
+- [How to Read HTTP Headers in Spring REST Controllers](https://www.baeldung.com/spring-rest-http-headers)
+- [Spring @RequestParam vs @PathVariable Annotations](https://www.baeldung.com/spring-requestparam-vs-pathvariable)
+- [Spring @RequestParam Annotation](https://www.baeldung.com/spring-request-param)
+- [Spring MVC and the @ModelAttribute Annotation](https://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation)
+- [Quick Guide to Spring Controllers](https://www.baeldung.com/spring-controllers)
+- [Guide to Spring Email](https://www.baeldung.com/spring-email)
 - More articles: [[more -->]](../spring-mvc-basics-2)

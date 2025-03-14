@@ -5,6 +5,7 @@ import static org.mockito.Mockito.mock;
 
 import java.security.Permission;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,11 @@ class TaskServiceSecurityManagerUnitTest {
     @BeforeEach
     void setUp() {
         System.setSecurityManager(new NoExitSecurityManager());
+    }
+
+    @AfterEach
+    void tearDown() {
+        System.setSecurityManager(null);
     }
 
     @Test
@@ -36,7 +42,6 @@ class TaskServiceSecurityManagerUnitTest {
 
         @Override
         public void checkExit(int status) {
-            super.checkExit(status);
             throw new RuntimeException(String.valueOf(status));
         }
     }

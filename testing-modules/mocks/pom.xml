@@ -39,10 +39,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
-                    <argLine>
-                        --add-opens java.base/java.lang=ALL-UNNAMED
-                        -Djdk.attach.allowAttachSelf
-                    </argLine>
                     <disableXmlReport>true</disableXmlReport>
                     <excludes>
                         <exclude>**/testsuite/**/*UnitTest.java</exclude>
@@ -54,7 +50,7 @@
 
     <properties>
         <javafaker.version>0.15</javafaker.version>
-        <easymock.version>3.5.1</easymock.version>
+        <easymock.version>5.5.0</easymock.version>
         <spring-test.version>5.3.25</spring-test.version>
     </properties>
 

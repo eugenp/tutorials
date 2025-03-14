@@ -334,9 +334,7 @@
                 <module>core-java-modules/core-java-8-datetime</module>
                 <module>core-java-modules/core-java-8-datetime-2</module>
                 <module>core-java-modules/core-java-sun</module>
-                <module>core-java-modules/core-java-security</module>
                 <module>core-java-modules/core-java-lang</module>
-                <module>core-java-modules/core-java-lang-math-3</module>
                 <module>core-java-modules/core-java-streams-2</module>
                 <module>libraries-jdk8</module>
                 <module>lombok-modules/lombok-custom</module>
@@ -447,9 +445,7 @@
                 <module>core-java-modules/core-java-8-datetime</module>
                 <module>core-java-modules/core-java-8-datetime-2</module>
                 <module>core-java-modules/core-java-sun</module>
-                <module>core-java-modules/core-java-security</module>
                 <module>core-java-modules/core-java-lang</module>
-                <module>core-java-modules/core-java-lang-math-3</module>
                 <module>core-java-modules/core-java-streams-2</module>
                 <module>libraries-jdk8</module>
                 <module>lombok-modules/lombok-custom</module>
@@ -683,6 +679,7 @@
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
+                <module>jmonkeyengine</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
@@ -816,8 +813,6 @@
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
-                <module>spring-webflux</module>
-                <module>spring-webflux-2</module>
                 <module>spring-websockets</module>
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
@@ -1071,6 +1066,7 @@
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
+                <module>jmonkeyengine</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
@@ -1205,8 +1201,6 @@
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
-                <module>spring-webflux</module>
-                <module>spring-webflux-2</module>
                 <module>spring-websockets</module>
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
@@ -1346,6 +1340,8 @@
                 <module>spring-reactive-modules/spring-reactive-oauth</module>
                 <module>spring-reactive-modules/spring-reactive-security</module>
                 <module>spring-reactive-modules/spring-reactive</module>
+                <module>spring-reactive-modules/spring-webflux</module>
+                <module>spring-reactive-modules/spring-webflux-2</module>
                 <module>spring-reactive-modules/spring-webflux-amqp</module>
                 <module>spring-web-modules/spring-rest-http</module>
                 <module>web-modules/jee-7</module>
@@ -1411,12 +1407,9 @@
                 <module>persistence-modules/spring-data-cassandra</module>   <!-- failing after upgrading to jdk17. JDK 17 compatibility in progress CASSANDRA-16895 --> <!-- JAVA-42047 -->
                 <module>language-interop</module>
                 <module>spring-scheduling</module> <!-- BAEL-8382 -->
-                <module>spring-security-modules/spring-security-web-login</module> <!-- JAVA-42041 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb</module> <!-- JAVA-42144 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb-2</module> <!-- JAVA-42371 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb-4</module> <!-- JAVA-42372 -->
-                <module>persistence-modules/spring-boot-persistence-4</module> <!-- JAVA-42045 -->
-                <module>persistence-modules/spring-boot-persistence-5</module> <!-- JAVA-42046 -->
                 <module>persistence-modules/spring-data-elasticsearch</module> <!-- JAVA-42359 -->
                 <module>persistence-modules/spring-data-mongodb-2</module> <!-- JAVA-42145 -->
                 <module>quarkus-modules/mongo-db</module> <!-- JAVA-42048 -->
@@ -1424,7 +1417,6 @@
                 <module>quarkus-modules/consume-rest-api/consume-api</module>
                 <module>maven-modules/maven-exec-plugin</module> <!-- JAVA-42059 -->
                 <module>maven-modules/dependencygraph</module> <!-- JAVA-42057 -->
-                <module>spring-boot-modules/spring-boot-swagger-2</module> <!-- JAVA-42060 -->
                 <module>spring-boot-modules/spring-boot-groovy</module> <!-- JAVA-42052 -->
                 <module>spring-boot-modules/spring-boot-data-3</module> <!-- JAVA-42051 -->
                 <module>spring-reactive-modules/spring-reactive-performance</module> <!-- JAVA-42050 -->
@@ -1485,12 +1477,9 @@
                 <module>persistence-modules/spring-data-cassandra</module>   <!-- failing after upgrading to jdk17. JDK 17 compatibility in progress CASSANDRA-16895 --> <!-- JAVA-42047 -->
                 <module>language-interop</module>
                 <module>spring-scheduling</module> <!-- BAEL-8382 -->
-                <module>spring-security-modules/spring-security-web-login</module> <!-- JAVA-42041 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb</module> <!-- JAVA-42144 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb-2</module> <!-- JAVA-42371 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb-4</module> <!-- JAVA-42372 -->
-                <module>persistence-modules/spring-boot-persistence-4</module> <!-- JAVA-42045 -->
-                <module>persistence-modules/spring-boot-persistence-5</module> <!-- JAVA-42046 -->
                 <module>persistence-modules/spring-data-elasticsearch</module> <!-- JAVA-42359 -->
                 <module>persistence-modules/spring-data-mongodb-2</module> <!-- JAVA-42145 -->
                 <module>quarkus-modules/mongo-db</module> <!-- JAVA-42048 -->
@@ -1498,7 +1487,6 @@
                 <module>quarkus-modules/consume-rest-api/consume-api</module>
                 <module>maven-modules/maven-exec-plugin</module> <!-- JAVA-42059 -->
                 <module>maven-modules/dependencygraph</module> <!-- JAVA-42057 -->
-                <module>spring-boot-modules/spring-boot-swagger-2</module> <!-- JAVA-42060 -->
                 <module>spring-boot-modules/spring-boot-groovy</module> <!-- JAVA-42052 -->
                 <module>spring-boot-modules/spring-boot-data-3</module> <!-- JAVA-42051 -->
                 <module>spring-reactive-modules/spring-reactive-performance</module> <!-- JAVA-42050 -->

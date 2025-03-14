@@ -16,7 +16,6 @@ import org.springframework.test.context.jdbc.Sql;
 
 @SpringBootTest
 @ActiveProfiles("aiassistant")
-
 @Sql(scripts = "classpath:/order_mgmt.sql", executionPhase = BEFORE_TEST_CLASS)
 public class AiOrderManagementLiveTest {
 
@@ -34,7 +33,7 @@ public class AiOrderManagementLiveTest {
     void whenOrderInfoProvided_thenSaveInDB(String promptString) {
        ChatResponse response = this.orderManagementAIAssistant
            .callChatClient(Set.of("createOrderFn"), promptString);
-        String resultContent = response.getResult().getOutput().getContent();
+        String resultContent = response.getResult().getOutput().getText();
         logger.info("The response from the LLM service: {}", resultContent);
     }
 
@@ -46,7 +45,7 @@ public class AiOrderManagementLiveTest {
             .callChatClient(Set.of("getUserOrdersFn"), promptString);
         String resultContent = response.getResult()
             .getOutput()
-            .getContent();
+            .getText();
         logger.info("The response from the LLM service: {}", resultContent);
     }
 
@@ -64,7 +63,7 @@ public class AiOrderManagementLiveTest {
             .callChatClient(Set.of("getUserOrdersFn", "createOrderFn"), promptString);
         String resultContent = response.getResult()
             .getOutput()
-            .getContent();
+            .getText();
         logger.info("The response from the LLM service: {}", resultContent);
     }
 
@@ -75,7 +74,7 @@ public class AiOrderManagementLiveTest {
             .callChatClient(Set.of("createOrderFn"), promptString);
         String resultContent = response.getResult()
             .getOutput()
-            .getContent();
+            .getText();
         logger.info("The response from the LLM service: {}", resultContent);
     }
 }

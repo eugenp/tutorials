@@ -1,9 +1,8 @@
 package com.baeldung.quartz;
 
-import org.quartz.Job;
-import org.quartz.JobDataMap;
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
+import org.quartz.*;
+
+import java.util.Date;
 
 public class SimpleJob implements Job {
 
@@ -14,5 +13,10 @@ public class SimpleJob implements Job {
         float myFloatValue = dataMap.getFloat("myFloatValue");
 
         System.out.println("Job says: " + jobSays + ", and val is: " + myFloatValue);
+
+        // Access the Trigger to get the next fire time
+        Trigger trigger = context.getTrigger();
+        Date nextFireTime = trigger.getNextFireTime();
+        System.out.println("Next execution: " + nextFireTime);
     }
 }
