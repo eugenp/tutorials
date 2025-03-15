@@ -8,6 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.baeldung.persistence.model.Foo;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PostFilter;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PreFilter;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -45,5 +50,32 @@ public class FooController {
     @ResponseBody
     public Foo create(@RequestBody final Foo foo) {
         return foo;
+    }
+
+    @PreAuthorize("hasPermission(#article, 'isEditor')")
+    public void acceptArticle(Foo foo) {
+        // logic here
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    public void deleteUser(Foo foo) {
+        // logic here
+    }
+
+    @PostAuthorize("returnObject.owner == authentication.name")
+    public User getUser(Long id) {
+        // get user logic here
+        return null;
+    }
+
+    @PreFilter("filterObject.owner == authentication.name")
+    public void updatePosts(List<Foo> posts) {
+        // logic here
+    }
+
+    @PostFilter("filterObject.owner == authentication.name")
+    public List<Foo> getPosts() {
+        // logic here
+        return null;
     }
 }
