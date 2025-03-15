@@ -9,8 +9,8 @@ import java.util.UUID;
 @Component
 class NotificationDispatchListener {
 
+    @SendTo
     @KafkaListener(topics = "${com.baeldung.kafka.synchronous.request-topic}")
-    @SendTo(value = "${com.baeldung.kafka.synchronous.reply-topic}")
     NotificationDispatchResponse listen(NotificationDispatchRequest notificationDispatchRequest) {
         // ... processing logic
         UUID notificationId = UUID.randomUUID();
