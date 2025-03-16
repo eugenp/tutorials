@@ -101,6 +101,16 @@ public class DateDiffUnitTest {
     }
 
     @Test
+    public void givenTwoZonedDateTimesInJava8_whenFindingNumberOfWeeksBetweenThem_thenWeGetAccurateDifference() {
+        ZonedDateTime startDateTime = ZonedDateTime.parse("2022-02-01T00:00:00Z[UTC]");
+	ZonedDateTime endDateTime = ZonedDateTime.parse("2022-10-31T23:59:59Z[UTC]");
+
+	long weeksDiff = ChronoUnit.WEEKS.between(startDateTime, endDateTime);  
+
+        assertEquals(38, weeksDiff);
+    }	
+
+    @Test
     public void givenTwoDateTimesInJava8_whenDifferencingInSecondsUsingUntil_thenWeGetTen() {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime tenSecondsLater = now.plusSeconds(10);
