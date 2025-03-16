@@ -4,7 +4,7 @@ This module contains articles about the Scanner.
 
 ### Relevant Articles:
 - [Java Scanner](https://www.baeldung.com/java-scanner)
-- [Scanner nextLine() Method](https://www.baeldung.com/java-scanner-nextline)
+- [Java Scanner nextLine() Method](https://www.baeldung.com/java-scanner-nextline)
 - [Java Scanner hasNext() vs. hasNextLine()](https://www.baeldung.com/java-scanner-hasnext-vs-hasnextline)
 - [Read Date in Java Using Scanner](https://www.baeldung.com/java-scanner-read-date)
 - [Java Scanner Taking a Character Input](https://www.baeldung.com/java-scanner-character-input)

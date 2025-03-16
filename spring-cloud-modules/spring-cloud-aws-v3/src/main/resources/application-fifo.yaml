@@ -1,0 +1,6 @@
+events:
+  queues:
+    fifo:
+      transactions-queue: "transactions-queue.fifo"
+      slow-queue: "slow-queue.fifo"
+      failure-queue: "failure-queue.fifo"

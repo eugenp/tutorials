@@ -13,8 +13,6 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 
 import com.baeldung.hibernate.customtypes.LocalDateStringType;
-import com.baeldung.hibernate.distinct.entities.Post;
-import com.baeldung.hibernate.distinct.entities.Comment;
 import com.baeldung.hibernate.entities.DeptEmployee;
 import com.baeldung.hibernate.pojo.Item;
 import com.baeldung.hibernate.pojo.Student;
@@ -44,8 +42,6 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(Student.class);
         metadataSources.addAnnotatedClass(DeptEmployee.class);
         metadataSources.addAnnotatedClass(com.baeldung.hibernate.entities.Department.class);
-        metadataSources.addAnnotatedClass(Comment.class);
-        metadataSources.addAnnotatedClass(Post.class);
         metadataSources.addAnnotatedClass(Item.class);
 
         Metadata metadata = metadataSources.getMetadataBuilder()

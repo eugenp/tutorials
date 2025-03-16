@@ -12,7 +12,7 @@ public class GlobalControllerExceptionHandler {
 
     @ExceptionHandler(ConversionFailedException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseEntity<String> handleConnversion(RuntimeException ex) {
+    public ResponseEntity<String> handleConversion(RuntimeException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 

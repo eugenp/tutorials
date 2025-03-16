@@ -3,7 +3,10 @@ package com.baeldung.bootstrap;
 import com.baeldung.bootstrap.persistence.model.Book;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
@@ -11,12 +14,21 @@ import java.util.List;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SpringBootBootstrapLiveTest {
 
-    private static final String API_ROOT = "http://localhost:8080/api/books";
+    @LocalServerPort
+    private int port;
+    private String API_ROOT;
+
+    @BeforeEach
+    public void setUp() {
+        API_ROOT = "http://localhost:" + port + "/api/books";
+        RestAssured.port = port;
+    }
 
     @Test
     public void whenGetAllBooks_thenOK() {
@@ -52,7 +64,6 @@ public class SpringBootBootstrapLiveTest {
         assertEquals(HttpStatus.NOT_FOUND.value(), response.getStatusCode());
     }
 
-    // POST
     @Test
     public void whenCreateNewBook_thenCreated() {
         final Book book = createRandomBook();
@@ -108,8 +119,6 @@ public class SpringBootBootstrapLiveTest {
         assertEquals(HttpStatus.NOT_FOUND.value(), response.getStatusCode());
     }
 
-    // ===============================
-
     private Book createRandomBook() {
         final Book book = new Book();
         book.setTitle(randomAlphabetic(10));
@@ -119,11 +128,10 @@ public class SpringBootBootstrapLiveTest {
 
     private String createBookAsUri(Book book) {
         final Response response = RestAssured.given()
-            .contentType(MediaType.APPLICATION_JSON_VALUE)
-            .body(book)
-            .post(API_ROOT);
-        return API_ROOT + "/" + response.jsonPath()
-            .get("id");
+          .contentType(MediaType.APPLICATION_JSON_VALUE)
+          .body(book)
+          .post(API_ROOT);
+        return API_ROOT + "/" + response.jsonPath().get("id");
     }
 
 }

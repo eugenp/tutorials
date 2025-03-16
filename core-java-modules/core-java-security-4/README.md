@@ -10,4 +10,5 @@ This module contains articles about core Java Security
 - [Enable Java SSL Debug Logging](https://www.baeldung.com/java-ssl-debug-logging)
 - [Resolving Security Exception: java.security.UnrecoverableKeyException: Cannot Recover Key](https://www.baeldung.com/java-security-unrecoverablekeyexception-resolve)
 - [List Private Keys From a Keystore](https://www.baeldung.com/java-keystore-jks-list-private-keys)
+- [Introduction to SSL in Java](http://www.baeldung.com/java-ssl)
 - More articles: [[<-- prev]](/core-java-modules/core-java-security-3)
