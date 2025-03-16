@@ -70,6 +70,16 @@ public class DateDiffUnitTest {
     }
 
     @Test
+    public void givenTwoLocalDatesInJava8_whenFindingNumberOfWeeksBetweenThem_thenWeGetAccurateDifference() {
+        LocalDate startLocalDate = LocalDate.of(2024, 01, 10);
+	LocalDate endLocalDate = LocalDate.of(2024, 11, 15);   
+
+	long weeksDiff = ChronoUnit.WEEKS.between(startLocalDate, endLocalDate);  
+
+        assertEquals(44, weeksDiff);
+    }		
+
+    @Test
     public void givenTwoDateTimesInJava8_whenDifferencing_thenWeGetSix() {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime sixMinutesBehind = now.minusMinutes(6);
