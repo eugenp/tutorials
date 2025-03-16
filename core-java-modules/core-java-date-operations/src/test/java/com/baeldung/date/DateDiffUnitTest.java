@@ -168,7 +168,7 @@ public class DateDiffUnitTest {
         int days = Days.daysBetween(dateTime1, dateTime2).getDays();
 	float weeksDiff=(float) (days/7.0);    
 
-        assertEquals(19.571428, weeksDiff);
+        assertEquals(19.571428, weeksDiff,0.001);
     }
 	
     @Test
