@@ -1,7 +1,10 @@
 package com.baeldung.date;
 
+import org.joda.time.DateTime;
+import org.joda.time.Weeks;
 import org.joda.time.Days;
 import org.joda.time.Minutes;
+
 import org.junit.Test;
 
 import java.text.ParseException;
@@ -17,7 +20,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
-
+ 
 import static org.junit.Assert.*;
 
 public class DateDiffUnitTest {
