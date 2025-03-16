@@ -93,10 +93,10 @@ public class JavaCompilerUtils {
 
 
         JavaCompiler.CompilationTask task = compiler.getTask(
-                null,                       // Writer for compiler output
+                null,                   // Writer for compiler output
                 standardFileManager,        // File manager
                 diagnostics,                // Diagnostic listener
-                null,                    // Compiler options
+                null,                       // Compiler options
                 null,                       // Classes to be processed by annotation processors
                 compilationUnits            // Compilation units
         );
@@ -111,8 +111,9 @@ public class JavaCompilerUtils {
         return success;
     }
 
+// Add this method to JavaCompilerUtils
     /**
-     * Loads and executes the main method of a compiled class.
+     * Loads and executes the main method of a compiled class, capturing and returning the output.
      *
      * @param className The fully qualified name of the class to run
      * @param args Arguments to pass to the main method
