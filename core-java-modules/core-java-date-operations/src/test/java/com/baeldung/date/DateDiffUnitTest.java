@@ -26,7 +26,7 @@ import static org.junit.Assert.*;
 public class DateDiffUnitTest {
 
     @Test
-    public void givenTwoDatesBeforeJava8_whenDifferentiating_thenWeGetSix() throws ParseException {
+    public void givenTwoDatesBeforeJava8_whenDifferencing_thenWeGetSix() throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
         Date firstDate = sdf.parse("06/24/2017");
         Date secondDate = sdf.parse("06/30/2017");
@@ -70,7 +70,7 @@ public class DateDiffUnitTest {
     }
 
     @Test
-    public void givenTwoDateTimesInJava8_whenDifferentiating_thenWeGetSix() {
+    public void givenTwoDateTimesInJava8_whenDifferencing_thenWeGetSix() {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime sixMinutesBehind = now.minusMinutes(6);
 
@@ -81,7 +81,7 @@ public class DateDiffUnitTest {
     }
 
     @Test
-    public void givenTwoDateTimesInJava8_whenDifferentiatingInSeconds_thenWeGetTen() {
+    public void givenTwoDateTimesInJava8_whenDifferencingInSeconds_thenWeGetTen() {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime tenSecondsLater = now.plusSeconds(10);
 
@@ -91,7 +91,7 @@ public class DateDiffUnitTest {
     }
 
     @Test
-    public void givenTwoZonedDateTimesInJava8_whenDifferentiating_thenWeGetSix() {
+    public void givenTwoZonedDateTimesInJava8_whenDifferencing_thenWeGetSix() {
         LocalDateTime ldt = LocalDateTime.now();
         ZonedDateTime now = ldt.atZone(ZoneId.of("America/Montreal"));
         ZonedDateTime sixDaysBehind = now.withZoneSameInstant(ZoneId.of("Asia/Singapore"))
@@ -101,7 +101,7 @@ public class DateDiffUnitTest {
     }
 
     @Test
-    public void givenTwoDateTimesInJava8_whenDifferentiatingInSecondsUsingUntil_thenWeGetTen() {
+    public void givenTwoDateTimesInJava8_whenDifferencingInSecondsUsingUntil_thenWeGetTen() {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime tenSecondsLater = now.plusSeconds(10);
 
@@ -111,7 +111,7 @@ public class DateDiffUnitTest {
     }
 
     @Test
-    public void givenTwoDatesInJodaTime_whenDifferentiating_thenWeGetSix() {
+    public void givenTwoDatesInJodaTime_whenDifferencing_thenWeGetSix() {
         org.joda.time.LocalDate now = org.joda.time.LocalDate.now();
         org.joda.time.LocalDate sixDaysBehind = now.minusDays(6);
 
@@ -121,7 +121,7 @@ public class DateDiffUnitTest {
     }
 
     @Test
-    public void givenTwoDateTimesInJodaTime_whenDifferentiating_thenWeGetSix() {
+    public void givenTwoDateTimesInJodaTime_whenDifferencing_thenWeGetSix() {
         org.joda.time.LocalDateTime now = org.joda.time.LocalDateTime.now();
         org.joda.time.LocalDateTime sixMinutesBehind = now.minusMinutes(6);
 
@@ -131,7 +131,7 @@ public class DateDiffUnitTest {
     }
 
     @Test
-    public void givenTwoDatesInDate4j_whenDifferentiating_thenWeGetSix() {
+    public void givenTwoDatesInDate4j_whenDifferencing_thenWeGetSix() {
         hirondelle.date4j.DateTime now = hirondelle.date4j.DateTime.now(TimeZone.getDefault());
         hirondelle.date4j.DateTime sixDaysBehind = now.minusDays(6);
 
