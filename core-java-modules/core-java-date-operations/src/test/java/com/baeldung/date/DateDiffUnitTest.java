@@ -131,6 +131,15 @@ public class DateDiffUnitTest {
     }
 
     @Test
+    public void givenTwoDateTimesInJodaTime_whenFindingNumberOfWeeksBetweenThem_thenWeGetAccurateDifference() {
+        DateTime dateTime1 = new DateTime(2024, 1, 17, 15, 50, 30);
+	       DateTime dateTime2 = new DateTime(2024, 6, 3, 10, 20, 55);
+
+        int weeksDiff = Weeks.weeksBetween(dateTime1, dateTime2).getWeeks();
+
+        assertEquals(19, weeksDiff);
+    }
+    @Test
     public void givenTwoDatesInDate4j_whenDifferencing_thenWeGetSix() {
         hirondelle.date4j.DateTime now = hirondelle.date4j.DateTime.now(TimeZone.getDefault());
         hirondelle.date4j.DateTime sixDaysBehind = now.minusDays(6);
