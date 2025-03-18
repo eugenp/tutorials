@@ -247,7 +247,7 @@ The <em>AuthoritiesConverter</em> interface is a tip for the bean factory becaus
 As we configured Keycloak as an OpenID Provider by providing just its <em>issuer-uri</em>, what we get as input in the <em>GrantedAuthoritiesMapper</em> are <em>OidcUserAuthority</em> instances:
 <pre><code class="language-java">@Bean
 GrantedAuthoritiesMapper authenticationConverter(
-        Converter&lt;Map&lt;String, Object&gt;, Collection&lt;GrantedAuthority&gt;&gt; realmRolesAuthoritiesConverter) {
+        AuthoritiesConverter realmRolesAuthoritiesConverter) {
     return (authorities) -&gt; authorities.stream().filter(authority -&gt; authority instanceof OidcUserAuthority)
             .map(OidcUserAuthority.class::cast).map(OidcUserAuthority::getIdToken).map(OidcIdToken::getClaims)
             .map(realmRolesAuthoritiesConverter::convert)
