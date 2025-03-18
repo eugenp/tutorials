@@ -1,6 +1,6 @@
 package com.baeldung.dependency.ordering;
 
-class DependencyOrderingUnitTest {
+class OutputVersionNumberUnitTest {
 
     /*
     @Test
