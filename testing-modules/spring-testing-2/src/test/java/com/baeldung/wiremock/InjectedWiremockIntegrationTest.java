@@ -17,12 +17,12 @@ import org.wiremock.spring.InjectWireMock;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 
-@SpringBootTest(classes = SimpleWiremockTest.AppConfiguration.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = SimpleWiremockIntegrationTest.AppConfiguration.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @EnableWireMock({
   @ConfigureWireMock(name = "user-service", port = 8081),
   @ConfigureWireMock(name = "product-service", port = 8082)
 })
-public class InjectedWiremockTest {
+public class InjectedWiremockIntegrationTest {
 
     @InjectWireMock("user-service")
     WireMockServer mockUserService;

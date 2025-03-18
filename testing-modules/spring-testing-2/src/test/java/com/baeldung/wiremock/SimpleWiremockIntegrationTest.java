@@ -17,9 +17,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.wiremock.spring.EnableWireMock;
 
-@SpringBootTest(classes = SimpleWiremockTest.AppConfiguration.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = SimpleWiremockIntegrationTest.AppConfiguration.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @EnableWireMock
-class SimpleWiremockTest {
+class SimpleWiremockIntegrationTest {
 
     @Value("${wiremock.server.baseUrl}")
     private String wireMockUrl;
