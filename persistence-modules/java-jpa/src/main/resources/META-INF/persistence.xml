@@ -40,21 +40,6 @@
 		</properties>
 	</persistence-unit>
 
-	<persistence-unit name="jpa-db">
-		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>com.baeldung.jpa.model.Car</class>
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
-		<properties>
-			<property name="jakarta.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/baeldung" />
-			<property name="jakarta.persistence.jdbc.user" value="baeldung" />
-			<property name="jakarta.persistence.jdbc.password" value="YourPassword" />
-			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
-			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.proc.param_null_passing" value="true" />
-		</properties>
-	</persistence-unit>
-
 	<persistence-unit name="entity-graph-pu" transaction-type="RESOURCE_LOCAL">
 		<class>com.baeldung.jpa.entitygraph.model.Post</class>
 		<class>com.baeldung.jpa.entitygraph.model.User</class>
