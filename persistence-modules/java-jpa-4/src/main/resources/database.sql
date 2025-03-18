@@ -1,0 +1,4 @@
+
+CREATE TABLE COURSE
+(id BIGINT,
+ name VARCHAR(10));

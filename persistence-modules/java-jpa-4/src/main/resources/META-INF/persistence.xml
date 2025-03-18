@@ -194,4 +194,20 @@
 			<property name="hibernate.proc.param_null_passing" value="true" />
 		</properties>
 	</persistence-unit>
+	
+	<persistence-unit name="java-jpa-scheduled-day">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<class>com.baeldung.jpa.basicannotation.Course</class>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<properties>
+			<property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver" />
+			<property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:test;MODE=LEGACY;INIT=RUNSCRIPT FROM 'classpath:database.sql'" />
+			<property name="jakarta.persistence.jdbc.user" value="sa" />
+			<property name="jakarta.persistence.jdbc.password" value="" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+			<!--<property name="hibernate.hbm2ddl.auto" value="create-drop" /> -->
+			<property name="show_sql" value="true" />
+			<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
+		</properties>
+	</persistence-unit>
 </persistence>
