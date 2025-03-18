@@ -1,0 +1,23 @@
+<restrict>
+    <remote>
+        <host>0:0:0:0:0:0:0:1</host>
+    </remote>
+    <commands>
+        <command>read</command>
+        <command>list</command>
+    </commands>
+    <allow>
+        <mbean>
+            <name>java.lang:type=Memory</name>
+            <operation>gc</operation>
+        </mbean>
+    </allow>
+
+    <deny>
+        <mbean>
+            <name>jdk.management.jfr:type=FlightRecorder</name>
+            <attribute>*</attribute>
+            <operation>*</operation>
+        </mbean>
+    </deny>
+</restrict>
