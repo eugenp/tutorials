@@ -11,7 +11,7 @@ class TestcontainersConfiguration {
     @Bean
     @ServiceConnection
     KafkaContainer kafkaContainer() {
-        return new KafkaContainer("apache/kafka:3.7.2");
+        return new KafkaContainer("apache/kafka:4.0.0");
     }
 
 }
