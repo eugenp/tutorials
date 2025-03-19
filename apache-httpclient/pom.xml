@@ -88,7 +88,7 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <systemPropertyVariables>
-                        <mockserver.logLevel>OFF</mockserver.logLevel>
+                        <mockserver.logLevel>ERROR</mockserver.logLevel>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>

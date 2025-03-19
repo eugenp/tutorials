@@ -2,6 +2,8 @@ package com.baeldung.httpclient.readresponsebodystring;
 
 
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,7 +16,7 @@ import java.net.URISyntaxException;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class HttpUrlConnectionUnitTest {
-
+    private final Logger logger = LoggerFactory.getLogger(getClass());
     public static final String DUMMY_URL = "https://postman-echo.com/get";
 
     @Test
@@ -32,6 +34,6 @@ public class HttpUrlConnectionUnitTest {
 
         in.close();
         assertNotNull(response.toString());
-        System.out.println("Response -> " + response.toString());
+        logger.debug("Response -> {}", response.toString());
     }
 }

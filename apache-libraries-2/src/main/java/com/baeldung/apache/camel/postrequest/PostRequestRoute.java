@@ -16,9 +16,9 @@ public class PostRequestRoute extends RouteBuilder {
             .setHeader(Exchange.HTTP_METHOD, constant("POST"))
             .setHeader(Exchange.CONTENT_TYPE, constant("application/json"))
             .to("https://jsonplaceholder.typicode.com/posts")
-            .process(exchange -> log.info("The HTTP response code is: {}", exchange.getIn()
+            .process(exchange -> log.debug("The HTTP response code is: {}", exchange.getIn()
                 .getHeader(Exchange.HTTP_RESPONSE_CODE)))
-            .process(exchange -> log.info("The response body is: {}", exchange.getIn()
+            .process(exchange -> log.debug("The response body is: {}", exchange.getIn()
                 .getBody(String.class)))
             .to("mock:result");
 
