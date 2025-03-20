@@ -7,7 +7,6 @@ This module contains articles about the Java Persistence API (JPA) in Java.
 - [A Guide to SqlResultSetMapping](https://www.baeldung.com/jpa-sql-resultset-mapping)
 - [JPA Entity Graph](https://www.baeldung.com/jpa-entity-graph)
 - [JPA Support for java.time Types](https://www.baeldung.com/jpa-java-time)
-- [Converting Between LocalDate and SQL Date](https://www.baeldung.com/java-convert-localdate-sql-date)
 - [Composite Primary Keys in JPA](https://www.baeldung.com/jpa-composite-primary-keys)
 - [Defining JPA Entities](https://www.baeldung.com/jpa-entities)
 - [Persisting Enums in JPA](https://www.baeldung.com/jpa-persisting-enums-in-jpa)
