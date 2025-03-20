@@ -70,7 +70,7 @@ public class DateDiffUnitTest {
     }
 
     @Test
-    public void givenTwoLocalDatesInJava8_whenFindingNumberOfWeeksBetweenThem_thenWeGetAccurateDifference() {
+    public void givenTwoLocalDatesInJava8_whenUsingChonoUnitWeeksBetween_thenFindIntegerWeeks() {
         LocalDate startLocalDate = LocalDate.of(2024, 01, 10);
 	LocalDate endLocalDate = LocalDate.of(2024, 11, 15);   
 
@@ -111,7 +111,7 @@ public class DateDiffUnitTest {
     }
 
     @Test
-    public void givenTwoZonedDateTimesInJava8_whenFindingNumberOfWeeksBetweenThem_thenWeGetAccurateDifference() {
+    public void givenTwoZonedDateTimesInJava8_whenUsingChonoUnitWeeksBetween_thenFindIntegerWeeks() {
         ZonedDateTime startDateTime = ZonedDateTime.parse("2022-02-01T00:00:00Z[UTC]");
 	ZonedDateTime endDateTime = ZonedDateTime.parse("2022-10-31T23:59:59Z[UTC]");
 
@@ -151,7 +151,7 @@ public class DateDiffUnitTest {
     }
 
     @Test
-    public void givenTwoDateTimesInJodaTime_whenFindingNumberOfWeeksBetweenThem_thenWeGetAccurateDifference() {
+    public void givenTwoDateTimesInJodaTime_whenComputingDistanceInWeeks_thenFindIntegerWeeks() {
         DateTime dateTime1 = new DateTime(2024, 1, 17, 15, 50, 30);
 	DateTime dateTime2 = new DateTime(2024, 6, 3, 10, 20, 55);
 
@@ -161,7 +161,7 @@ public class DateDiffUnitTest {
     }
 
     @Test
-    public void givenTwoDateTimesInJodaTime_whenFindingDecimalNumberOfWeeksBetweenThem_thenWeGetAccurateDifference() {
+    public void givenTwoDateTimesInJodaTime_whenComputingDistanceInDecimalWeeks_thenFindDecimalWeeks() {
         DateTime dateTime1 = new DateTime(2024, 1, 17, 15, 50, 30);
 	DateTime dateTime2 = new DateTime(2024, 6, 3, 10, 20, 55);
 
