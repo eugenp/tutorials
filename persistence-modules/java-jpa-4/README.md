@@ -10,3 +10,4 @@ This module contains articles about the Java Persistence API (JPA) in Java.
 - [How to Clone a JPA Entity](https://www.baeldung.com/java-jpa-clone-entity)
 - [A Guide to Stored Procedures with JPA](https://www.baeldung.com/jpa-stored-procedures)
 - [JPA @Basic Annotation](https://www.baeldung.com/jpa-basic-annotation)
+- [Fixing the JPA error “java.lang.String cannot be cast to Ljava.lang.String;”](https://www.baeldung.com/jpa-error-java-lang-string-cannot-be-cast)
