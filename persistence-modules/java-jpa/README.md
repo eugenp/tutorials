@@ -11,3 +11,4 @@ This module contains articles about the Java Persistence API (JPA) in Java.
 - [Persisting Enums in JPA](https://www.baeldung.com/jpa-persisting-enums-in-jpa)
 - More articles: [[next -->]](/persistence-modules/java-jpa-2)
 - [JPA Query Parameters Usage](https://www.baeldung.com/jpa-query-parameters)
+- [Default Column Values in JPA](https://www.baeldung.com/jpa-default-column-values)
