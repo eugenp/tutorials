@@ -12,3 +12,4 @@ This module contains articles about the Java Persistence API (JPA) in Java.
 - More articles: [[next -->]](/persistence-modules/java-jpa-2)
 - [JPA Query Parameters Usage](https://www.baeldung.com/jpa-query-parameters)
 - [Default Column Values in JPA](https://www.baeldung.com/jpa-default-column-values)
+- [Returning an Auto-Generated Id with JPA](https://www.baeldung.com/jpa-get-auto-generated-id)
