@@ -91,9 +91,8 @@ public class JavaCompilerUtils {
     private boolean compile(Iterable<? extends JavaFileObject> compilationUnits) {
         DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<>();
 
-
         JavaCompiler.CompilationTask task = compiler.getTask(
-                null,                   // Writer for compiler output
+                null,                    // Writer for compiler output
                 standardFileManager,        // File manager
                 diagnostics,                // Diagnostic listener
                 null,                       // Compiler options
@@ -110,8 +109,6 @@ public class JavaCompilerUtils {
 
         return success;
     }
-
-// Add this method to JavaCompilerUtils
     /**
      * Loads and executes the main method of a compiled class, capturing and returning the output.
      *
@@ -125,7 +122,6 @@ public class JavaCompilerUtils {
             loadedClass.getMethod("main", String[].class).invoke(null, (Object) args);
         }
     }
-
 
     /**
      * Returns the output directory where compiled classes are stored.
