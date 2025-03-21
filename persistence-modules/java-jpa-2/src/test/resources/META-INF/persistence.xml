@@ -4,45 +4,10 @@
              version="3.0"
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
 
-	<persistence-unit name="jpa-h2-queryparams"
-		transaction-type="RESOURCE_LOCAL">
-		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>com.baeldung.jpa.queryparams.Employee</class>
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
-		<properties>
-			<property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver" />
-			<property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:test" />
-			<property name="jakarta.persistence.jdbc.user" value="sa" />
-			<property name="jakarta.persistence.jdbc.password" value="" />
-			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
-			<property name="show_sql" value="false" />
-			<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
-			<property name="jakarta.persistence.sql-load-script-source" value="queryparams.sql" />
-		</properties>
-	</persistence-unit>
-
 
 	<persistence-unit name="jpa-h2-text">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>com.baeldung.jpa.text.Exam</class>
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
-		<properties>
-			<property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver" />
-			<property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:test" />
-			<property name="jakarta.persistence.jdbc.user" value="sa" />
-			<property name="jakarta.persistence.jdbc.password" value="" />
-			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
-			<property name="show_sql" value="false" />
-			<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
-		</properties>
-	</persistence-unit>
-
-	<persistence-unit name="entity-default-values">
-		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>com.baeldung.jpa.defaultvalues.User</class>
-		<class>com.baeldung.jpa.defaultvalues.UserEntity</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver" />
