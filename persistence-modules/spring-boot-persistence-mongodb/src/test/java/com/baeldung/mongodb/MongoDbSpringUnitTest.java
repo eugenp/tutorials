@@ -20,7 +20,7 @@ import com.mongodb.DBObject;
 @DataMongoTest
 @ExtendWith(SpringExtension.class)
 @DirtiesContext
-public class MongoDbSpringIntegrationTest {
+public class MongoDbSpringUnitTest {
     @DisplayName("Given object When save object using MongoDB template Then object can be found")
     @Test
     public void test(@Autowired MongoTemplate mongoTemplate) {
