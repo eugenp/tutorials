@@ -42,7 +42,7 @@
     </build>
 
     <properties>
-        <pmdVersion>6.53.0</pmdVersion>
+        <pmdVersion>7.7.0</pmdVersion>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
