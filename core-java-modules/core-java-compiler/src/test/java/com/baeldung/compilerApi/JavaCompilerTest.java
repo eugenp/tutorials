@@ -31,8 +31,7 @@ public class JavaCompilerTest {
     }
 
     @Test
-    void given_simpleHelloWorldClass_when_compiledFromString_then_compilationSucceeds() {
-        // Simple "Hello World" class
+    void givenSimpleHelloWorldClass_whenCompiledFromString_thenCompilationSucceeds() {
         String className = "HelloWorld";
         String sourceCode = "public class HelloWorld {\n" +
                 "    public static void main(String[] args) {\n" +
@@ -44,14 +43,12 @@ public class JavaCompilerTest {
 
         assertTrue(result, "Compilation should succeed");
 
-        // Check if the class file was created
         Path classFile = compilerUtil.getOutputDirectory().resolve(className + ".class");
         assertTrue(Files.exists(classFile), "Class file should be created");
     }
 
     @Test
-    void given_classWithPackage_when_compiledFromString_then_compilationSucceedsInPackageDirectory() {
-        // Class with a package
+    void givenClassWithPackage_whenCompiledFromString_thenCompilationSucceedsInPackageDirectory() {
         String className = "com.example.PackagedClass";
         String sourceCode = "package com.example;\n\n" +
                 "public class PackagedClass {\n" +
@@ -64,34 +61,29 @@ public class JavaCompilerTest {
 
         assertTrue(result, "Compilation should succeed");
 
-        // Check if the class file was created in the correct package directory
         Path classFile = compilerUtil.getOutputDirectory().resolve(
                 Paths.get("com", "example", "PackagedClass.class"));
         assertTrue(Files.exists(classFile), "Class file should be created in the package directory");
     }
 
     @Test
-    void given_classWithSyntaxError_when_compiledFromString_then_compilationFails() {
-        // Class with syntax error (missing semicolon)
+    void givenClassWithSyntaxError_whenCompiledFromString_thenCompilationFails() {
         String className = "ErrorClass";
         String sourceCode = "public class ErrorClass {\n" +
                 "    public static void main(String[] args) {\n" +
-                "        System.out.println(\"This has an error\")\n" + // Missing semicolon
+                "        System.out.println(\"This has an error\")\n" +
                 "    }\n" +
                 "}";
 
-        // Just verify compilation fails and no class file is created
         boolean result = compilerUtil.compileFromString(className, sourceCode);
         assertFalse(result, "Compilation should fail due to syntax error");
 
-        // Check that no class file was created
         Path classFile = compilerUtil.getOutputDirectory().resolve(className + ".class");
         assertFalse(Files.exists(classFile), "No class file should be created for failed compilation");
     }
 
     @Test
-    void given_javaSourceFile_when_compiled_then_compilationSucceeds() throws Exception {
-        // Create a temporary Java file
+    void givenJavaSourceFile_whenCompiled_thenCompilationSucceeds() throws Exception {
         String className = "FileTest";
         String sourceCode = "public class FileTest {\n" +
                 "    public static void main(String[] args) {\n" +
@@ -106,14 +98,12 @@ public class JavaCompilerTest {
 
         assertTrue(result, "Compilation should succeed");
 
-        // Check if the class file was created
         Path classFile = compilerUtil.getOutputDirectory().resolve(className + ".class");
         assertTrue(Files.exists(classFile), "Class file should be created");
     }
 
     @Test
-    void given_compiledClass_when_runWithArguments_then_outputsExpectedResult() throws Exception {
-        // Compile a simple class
+    void givenCompiledClass_whenRunWithArguments_thenOutputsExpectedResult() throws Exception {
         String className = "Runner";
         String sourceCode = "public class Runner {\n" +
                 "    public static void main(String[] args) {\n" +
@@ -124,17 +114,15 @@ public class JavaCompilerTest {
         boolean result = compilerUtil.compileFromString(className, sourceCode);
         assertTrue(result, "Compilation should succeed");
 
-        // Use system-lambda to capture the output
         String output = tapSystemOut(() -> {
             compilerUtil.runClass(className, "arg1", "arg2");
         });
 
-        // Check the output
         assertEquals("Running: arg1, arg2", output.trim());
     }
 
     @Test
-    void when_compilingNonExistentFile_then_throwsIllegalArgumentException() {
+    void whenCompilingNonExistentFile_thenThrowsIllegalArgumentException() {
         Path nonExistentFile = tempDir.resolve("NonExistent.java");
 
         assertThrows(IllegalArgumentException.class, () -> {
