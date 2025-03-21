@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.crypto.SealedObject;
 import javax.crypto.SecretKey;
+import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -27,12 +28,12 @@ class AESUtilUnitTest implements WithAssertions {
         // given
         String input = "baeldung";
         SecretKey key = AESUtil.generateKey(128);
-        IvParameterSpec ivParameterSpec = AESUtil.generateIv();
-        String algorithm = "AES/CBC/PKCS5Padding";
+        GCMParameterSpec gcmParameterSpec = AESUtil.generateIv();
+        String algorithm = "AES/GCM/NoPadding";
 
         // when
-        String cipherText = AESUtil.encrypt(algorithm, input, key, ivParameterSpec);
-        String plainText = AESUtil.decrypt(algorithm, cipherText, key, ivParameterSpec);
+        String cipherText = AESUtil.encrypt(algorithm, input, key, gcmParameterSpec);
+        String plainText = AESUtil.decrypt(algorithm, cipherText, key, gcmParameterSpec);
 
         // then
         Assertions.assertEquals(input, plainText);
@@ -44,16 +45,16 @@ class AESUtilUnitTest implements WithAssertions {
         BadPaddingException, InvalidAlgorithmParameterException, NoSuchPaddingException {
         // given
         SecretKey key = AESUtil.generateKey(128);
-        String algorithm = "AES/CBC/PKCS5Padding";
-        IvParameterSpec ivParameterSpec = AESUtil.generateIv();
+        String algorithm = "AES/GCM/NoPadding";
+        GCMParameterSpec gcmParameterSpec = AESUtil.generateIv();
         File inputFile = Paths.get("src/test/resources/baeldung.txt")
             .toFile();
         File encryptedFile = new File("baeldung.encrypted");
         File decryptedFile = new File("document.decrypted");
 
         // when
-        AESUtil.encryptFile(algorithm, key, ivParameterSpec, inputFile, encryptedFile);
-        AESUtil.decryptFile(algorithm, key, ivParameterSpec, encryptedFile, decryptedFile);
+        AESUtil.encryptFile(algorithm, key, gcmParameterSpec, inputFile, encryptedFile);
+        AESUtil.decryptFile(algorithm, key, gcmParameterSpec, encryptedFile, decryptedFile);
 
         // then
         assertThat(inputFile).hasSameTextualContentAs(decryptedFile);
@@ -69,12 +70,12 @@ class AESUtilUnitTest implements WithAssertions {
         // given
         Student student = new Student("Baeldung", 20);
         SecretKey key = AESUtil.generateKey(128);
-        IvParameterSpec ivParameterSpec = AESUtil.generateIv();
-        String algorithm = "AES/CBC/PKCS5Padding";
+        GCMParameterSpec gcmParameterSpec = AESUtil.generateIv();
+        String algorithm = "AES/GCM/NoPadding";
 
         // when
-        SealedObject sealedObject = AESUtil.encryptObject(algorithm, student, key, ivParameterSpec);
-        Student object = (Student) AESUtil.decryptObject(algorithm, sealedObject, key, ivParameterSpec);
+        SealedObject sealedObject = AESUtil.encryptObject(algorithm, student, key, gcmParameterSpec);
+        Student object = (Student) AESUtil.decryptObject(algorithm, sealedObject, key, gcmParameterSpec);
 
         // then
         assertThat(student).isEqualTo(object);
@@ -88,12 +89,12 @@ class AESUtilUnitTest implements WithAssertions {
         String plainText = "www.baeldung.com";
         String password = "baeldung";
         String salt = "12345678";
-        IvParameterSpec ivParameterSpec = AESUtil.generateIv();
+        GCMParameterSpec gcmParameterSpec = AESUtil.generateIv();
         SecretKey key = AESUtil.getKeyFromPassword(password, salt);
 
         // when
-        String cipherText = AESUtil.encryptPasswordBased(plainText, key, ivParameterSpec);
-        String decryptedCipherText = AESUtil.decryptPasswordBased(cipherText, key, ivParameterSpec);
+        String cipherText = AESUtil.encryptPasswordBased(plainText, key, gcmParameterSpec);
+        String decryptedCipherText = AESUtil.decryptPasswordBased(cipherText, key, gcmParameterSpec);
 
         // then
         Assertions.assertEquals(plainText, decryptedCipherText);
