@@ -22,11 +22,9 @@ public class JavaCompilerTest {
 
     @BeforeEach
     void setUp() throws Exception {
-        // Create a specific output directory for compiled classes
         Path outputDir = tempDir.resolve("classes");
         Files.createDirectories(outputDir);
 
-        // Initialize the compiler util with the output directory
         compilerUtil = new JavaCompilerUtils(outputDir);
     }
 
