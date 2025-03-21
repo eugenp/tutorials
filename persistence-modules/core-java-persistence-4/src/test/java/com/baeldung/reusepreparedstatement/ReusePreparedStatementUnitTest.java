@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import com.baeldung.resusepreparedstatement.ReusePreparedStatement;
 
-class ReusePreparedStatementTest {
+class ReusePreparedStatementUnitTest {
 
     @Test
     void whenCallingInefficientPreparedStatementMethod_thenRowsAreCreatedAsExpected() throws SQLException {
