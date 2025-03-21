@@ -19,7 +19,7 @@ import org.springframework.util.SocketUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ManualEmbeddedMongoDbIntegrationTest {
+class ManualEmbeddedMongoDbUnitTest {
 
     private static final String CONNECTION_STRING = "mongodb://%s:%d";
 
