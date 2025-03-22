@@ -129,7 +129,7 @@
         <javaparser.version>3.25.10</javaparser.version>
         <dev.failsafe.version>3.3.2</dev.failsafe.version>
         <aeron.version>1.44.1</aeron.version>
-        <oshi.version>6.4.2</oshi.version>
+        <oshi.version>6.7.1</oshi.version>
     </properties>
 
 </project>
