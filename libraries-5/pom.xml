@@ -225,7 +225,7 @@
         <sootup.version>1.3.0</sootup.version>
         <resilience4j.version>2.1.0</resilience4j.version>
         <jline.version>3.28.0</jline.version>
-        <githubApi.version>1.327</githubApi.version>
+        <github-api.version>1.327</github-api.version>
     </properties>
 
 </project>
