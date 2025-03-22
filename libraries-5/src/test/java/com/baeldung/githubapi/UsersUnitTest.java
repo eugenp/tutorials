@@ -23,7 +23,7 @@ public class UsersUnitTest {
     }
 
     @Test
-    void whenWeAccessAnotherUser_WeCanQueryUserDetails() throws IOException {
+    void whenWeAccessAnotherUser_thenWeCanQueryUserDetails() throws IOException {
         GitHub gitHub = GitHub.connectAnonymously();
 
         GHUser user = gitHub.getUser("eugenp");
