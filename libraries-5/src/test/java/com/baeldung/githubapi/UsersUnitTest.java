@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class UsersUnitTest {
     @Test
     @Disabled
-    void whenWeAccessMyself_WeCanQueryUserDetails() throws IOException {
+    void whenWeAccessMyself_thenWeCanQueryUserDetails() throws IOException {
         GitHub gitHub = GitHub.connect();
 
         GHMyself myself = gitHub.getMyself();
