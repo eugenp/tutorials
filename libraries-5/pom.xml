@@ -201,7 +201,7 @@
         <dependency>
             <groupId>org.kohsuke</groupId>
             <artifactId>github-api</artifactId>
-            <version>${githubApi.version}</version>
+            <version>${github-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
