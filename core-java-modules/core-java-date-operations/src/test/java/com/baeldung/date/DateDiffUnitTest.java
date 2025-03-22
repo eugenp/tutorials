@@ -70,7 +70,7 @@ public class DateDiffUnitTest {
     }
 
     @Test
-    public void givenTwoLocalDatesInJava8_whenUsingChonoUnitWeeksBetween_thenFindIntegerWeeks() {
+    public void givenTwoLocalDatesInJava8_whenUsingChronoUnitWeeksBetween_thenFindIntegerWeeks() {
         LocalDate startLocalDate = LocalDate.of(2024, 01, 10);
 	LocalDate endLocalDate = LocalDate.of(2024, 11, 15);   
 
@@ -111,7 +111,7 @@ public class DateDiffUnitTest {
     }
 
     @Test
-    public void givenTwoZonedDateTimesInJava8_whenUsingChonoUnitWeeksBetween_thenFindIntegerWeeks() {
+    public void givenTwoZonedDateTimesInJava8_whenUsingChronoUnitWeeksBetween_thenFindIntegerWeeks() {
         ZonedDateTime startDateTime = ZonedDateTime.parse("2022-02-01T00:00:00Z[UTC]");
 	ZonedDateTime endDateTime = ZonedDateTime.parse("2022-10-31T23:59:59Z[UTC]");
 
