@@ -2,6 +2,8 @@ package com.baeldung.httpclient.readresponsebodystring;
 
 
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.URI;
@@ -10,6 +12,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 class HttpClientUnitTest {
+    private final Logger logger = LoggerFactory.getLogger(getClass());
     public static final String DUMMY_URL = "https://postman-echo.com/get";
 
     @Test
@@ -19,12 +22,12 @@ class HttpClientUnitTest {
 
         // synchronous response
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.body());
+        logger.debug(response.body());
 
         // asynchronous response
         client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
             .thenApply(HttpResponse::body)
-            .thenAccept(System.out::println)
+            .thenAccept(logger::debug)
             .join();
     }
 }
