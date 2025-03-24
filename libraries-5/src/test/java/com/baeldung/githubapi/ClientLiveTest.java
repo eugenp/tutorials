@@ -1,6 +1,5 @@
 package com.baeldung.githubapi;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.kohsuke.github.GitHub;
 import org.kohsuke.github.GitHubBuilder;
@@ -9,7 +8,7 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ClientUnitTest {
+public class ClientLiveTest {
 
     @Test
     void whenWeCreateAnAnonynousClient_thenWeCanAccessTheGithubApi() throws IOException {
@@ -20,7 +19,7 @@ public class ClientUnitTest {
     }
 
     @Test
-    @Disabled // Needs credentials configuring
+    // Needs credentials configuring in environment variables or ~/.github.
     void whenWeCreateADefaultClient_thenWeCanAccessTheGithubApi() throws IOException {
         GitHub gitHub = GitHub.connect();
 
@@ -29,7 +28,7 @@ public class ClientUnitTest {
     }
 
     @Test
-    @Disabled // Needs credentials configuring
+    // Needs credentials configuring
     void whenWeCreateAClientWithProvidedCredentials_thenWeCanAccessTheGithubApi() throws IOException {
         GitHub gitHub = new GitHubBuilder().withPassword("my_user", "my_password").build();
 

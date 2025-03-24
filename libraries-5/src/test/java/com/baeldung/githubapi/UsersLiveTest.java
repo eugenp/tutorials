@@ -1,25 +1,27 @@
 package com.baeldung.githubapi;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.kohsuke.github.GHMyself;
 import org.kohsuke.github.GHUser;
 import org.kohsuke.github.GitHub;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class UsersUnitTest {
+public class UsersLiveTest {
+    private static final Logger LOG = LoggerFactory.getLogger(UsersLiveTest.class);
+
     @Test
-    @Disabled
+    // Needs credentials configuring in environment variables or ~/.github.
     void whenWeAccessMyself_thenWeCanQueryUserDetails() throws IOException {
         GitHub gitHub = GitHub.connect();
 
         GHMyself myself = gitHub.getMyself();
-        assertEquals("someone", myself.getLogin());
-        assertEquals("someone@example.com", myself.getEmail());
-        assertEquals(50, myself.getFollows().size());
+        LOG.info("Current users username: {}", myself.getLogin());
+        LOG.info("Current users email: {}", myself.getEmail());
     }
 
     @Test

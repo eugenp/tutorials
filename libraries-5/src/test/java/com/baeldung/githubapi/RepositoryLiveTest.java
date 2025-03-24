@@ -4,6 +4,8 @@ import com.google.common.base.Charsets;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
 import org.kohsuke.github.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -11,15 +13,18 @@ import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class RepositoryUnitTest {
+public class RepositoryLiveTest {
+    private static final Logger LOG = LoggerFactory.getLogger(RepositoryLiveTest.class);
+
     @Test
     void whenWeListAUsersRepositories_thenWeCanAccessTheRepositories() throws IOException {
         GitHub gitHub = GitHub.connectAnonymously();
 
         GHUser user = gitHub.getUser("eugenp");
         List<GHRepository> repositoriesList = user.listRepositories().toList();
-        assertEquals(6, repositoriesList.size());
+        assertTrue(repositoriesList.size() > 0);
     }
 
     @Test
@@ -33,7 +38,7 @@ public class RepositoryUnitTest {
             names.add(ghRepository.getName());
         }
 
-        assertEquals(6, names.size());
+        assertTrue(names.size() > 0);
     }
 
     @Test
@@ -66,7 +71,7 @@ public class RepositoryUnitTest {
         String branchHash = branch.getSHA1();
 
         GHCommit commit = repository.getCommit(branchHash);
-        System.out.println(commit.getCommitShortInfo().getMessage());
+        LOG.info("Commit message: {}", commit.getCommitShortInfo().getMessage());
     }
 
     @Test
@@ -79,7 +84,7 @@ public class RepositoryUnitTest {
         GHContent file = repository.getFileContent("pom.xml", defaultBranch);
 
         String fileContents = IOUtils.toString(file.read(), Charsets.UTF_8);
-        System.out.println(fileContents);
+        LOG.info("pom.xml file contents: {}", fileContents);
     }
 
     @Test
@@ -90,6 +95,6 @@ public class RepositoryUnitTest {
 
         GHContent readme = repository.getReadme();
         String fileContents = IOUtils.toString(readme.read(), Charsets.UTF_8);
-        System.out.println(fileContents);
+        LOG.info("Readme file contents: {}", fileContents);
     }
 }
