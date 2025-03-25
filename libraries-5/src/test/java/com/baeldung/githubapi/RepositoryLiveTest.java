@@ -12,8 +12,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RepositoryLiveTest {
     private static final Logger LOG = LoggerFactory.getLogger(RepositoryLiveTest.class);
@@ -24,7 +24,7 @@ public class RepositoryLiveTest {
 
         GHUser user = gitHub.getUser("eugenp");
         List<GHRepository> repositoriesList = user.listRepositories().toList();
-        assertTrue(repositoriesList.size() > 0);
+        assertThat(repositoriesList).isNotEmpty();
     }
 
     @Test
@@ -38,7 +38,7 @@ public class RepositoryLiveTest {
             names.add(ghRepository.getName());
         }
 
-        assertTrue(names.size() > 0);
+        assertThat(names).isNotEmpty();
     }
 
     @Test
