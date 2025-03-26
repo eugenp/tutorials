@@ -12,3 +12,4 @@ This module contains articles about the Java Persistence API (JPA) in Java.
 - [How to Convert a Hibernate Proxy to a Real Entity Object](https://www.baeldung.com/hibernate-proxy-to-real-entity-object)
 - [How to Return Multiple Entities in JPA Query](https://www.baeldung.com/jpa-return-multiple-entities)
 - [Connecting to a Specific Schema in JDBC](https://www.baeldung.com/jdbc-connect-to-schema)
+- More articles: [[<-- prev]](/persistence-modules/java-jpa-2) [[next -->]](/persistence-modules/java-jpa-4)

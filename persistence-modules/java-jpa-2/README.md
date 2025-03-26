@@ -12,4 +12,4 @@ This module contains articles about the Java Persistence API (JPA) in Java.
 - [Mapping a Single Entity to Multiple Tables in JPA](https://www.baeldung.com/jpa-mapping-single-entity-to-multiple-tables)
 - [Constructing a JPA Query Between Unrelated Entities](https://www.baeldung.com/jpa-query-unrelated-entities)
 - [When Does JPA Set the Primary Key](https://www.baeldung.com/jpa-strategies-when-set-primary-key)
-- More articles: [[<-- prev]](/java-jpa)
+- More articles: [[<-- prev]](/persistence-modules/java-jpa) [[next -->]](/persistence-modules/java-jpa-2)

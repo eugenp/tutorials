@@ -14,3 +14,4 @@ This module contains articles about the Java Persistence API (JPA) in Java.
 - [Converting Between LocalDate and SQL Date](https://www.baeldung.com/java-convert-localdate-sql-date)
 - [JPA Support for java.time Types](https://www.baeldung.com/jpa-java-time)
 - [A Guide to SqlResultSetMapping](https://www.baeldung.com/jpa-sql-resultset-mapping)
+- More articles: [[<-- prev]](/persistence-modules/java-jpa-3)
