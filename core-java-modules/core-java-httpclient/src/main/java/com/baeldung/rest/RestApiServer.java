@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RestApiServer implements HttpHandler {
+
     private final List<String> users = new ArrayList<>();
 
     @Override
