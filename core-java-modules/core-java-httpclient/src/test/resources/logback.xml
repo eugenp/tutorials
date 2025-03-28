@@ -13,4 +13,20 @@
 
     <logger name="org.eclipse.jetty.server.handler" level="WARN"/>
     <logger name="org.mockserver.log" level="WARN"/>
+
+    <appender name="FILE-HttpConnection" class="ch.qos.logback.core.FileAppender">
+        <file>logback-HttpConnection.log</file>
+        <append>false</append>
+        <immediateFlush>true</immediateFlush>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="org.eclipse.jetty.server" level="WARN"/>
+    <logger name="com.baeldung.httpclient.JavaHttpClientExceptionHandlingUnitTest" level="DEBUG">
+        <appender-ref ref="FILE-HttpConnection" />
+    </logger>
+    <logger name="org.eclipse.jetty.server.HttpConnection" level="DEBUG">
+        <appender-ref ref="FILE-HttpConnection" />
+    </logger>
 </configuration>
