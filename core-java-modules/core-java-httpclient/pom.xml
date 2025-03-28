@@ -57,9 +57,12 @@
                             <logback.configurationFile>${logback.configurationFileName}</logback.configurationFile>
                         </systemPropertyVariables>
                         <excludes>
-                            <exclude>**/*UnitTest.java</exclude>
+                            <exclude>**/HttpClientConnectionManagementUnitTest.java</exclude>
+                            <exclude>**/JavaHttpClientExceptionHandlingUnitTest.java</exclude>
                         </excludes>
                         <includes>
+                            <include>**/*PostUnitTest.java</include>
+                            <include>**/*ServerUnitTest.java</include>
                             <include>**/*TestSuite.java</include>
                         </includes>
                     </configuration>
