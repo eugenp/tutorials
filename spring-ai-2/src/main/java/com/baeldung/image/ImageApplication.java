@@ -9,7 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /*
- * Exclude the libraries that are from the shared codebase
+ * Exclude the configurations that are from the shared codebase
 */
 @SpringBootApplication(
     exclude = {

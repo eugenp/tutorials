@@ -35,7 +35,7 @@ public class ImageControllerLiveTest {
     }
 
     @Test
-    void testGetCarCounts() throws Exception {
+    void whenProvideColorAndImage_thenReturnStructuredOutput() throws Exception {
         // Prepare test data
         String colors = "blue,yellow,green";
 
