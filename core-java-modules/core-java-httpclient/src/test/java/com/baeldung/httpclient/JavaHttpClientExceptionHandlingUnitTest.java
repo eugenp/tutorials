@@ -6,6 +6,7 @@ import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
 import com.github.tomakehurst.wiremock.http.Fault;
 import com.github.tomakehurst.wiremock.stubbing.ServeEvent;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,8 +18,10 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpTimeoutException;
+import java.text.MessageFormat;
 import java.time.Duration;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -40,14 +43,21 @@ public class JavaHttpClientExceptionHandlingUnitTest {
 
     private final static byte READ_TIMEOUT_SECONDS = 30;
     private final static int READ_TIMEOUT_DELAY_MS = 60000;
-    private final static String CONNECTION_READ_TIMEOUT_CONFIG_MSG = "WireMock pre-configured for TIMEOUT.";
+    private final static String CONNECTION_READ_TIMEOUT_CONFIG_MSG = MessageFormat.format(
+            "WireMock pre-configured for TIMEOUT ({0} seconds).", READ_TIMEOUT_SECONDS);
     private final static String CONNECTION_READ_TIMEOUT_DONE_MSG = "Making assertions & exiting from TIMEOUT test.";
+    private final static long WIRE_MOCK_CONCURRENT_LOGGING_AVOIDANCE_DELAY = 4;
 
     private final WireMockConfiguration mockConfiguration = WireMockConfiguration.options().dynamicPort();
     private final WireMockServer mockServer = new WireMockServer(mockConfiguration);
     private HttpRequest getRequest;
     private final HttpClient client = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(30)).build();
     private byte minimumConnectionsExpected;
+
+    @BeforeAll
+    public static void ensureSequentialWireMockTestExecution() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(4);
+    }
 
     @BeforeEach
     public void setup() {
