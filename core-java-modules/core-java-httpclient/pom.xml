@@ -37,20 +37,52 @@
             <version>${wiremock.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
+            <version>${junit.suite.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                    <configuration>
+                        <systemPropertyVariables>
+                            <logback.configurationFile>${logback.configurationFileName}</logback.configurationFile>
+                        </systemPropertyVariables>
+                        <excludes>
+                            <exclude>**/*UnitTest.java</exclude>
+                        </excludes>
+                        <includes>
+                            <include>**/*TestSuite.java</include>
+                        </includes>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
 
     <properties>
         <mockserver.version>5.11.2</mockserver.version>
-        <wiremock.version>3.9.1</wiremock.version>
+        <wiremock.version>3.12.1</wiremock.version>
+        <junit.suite.version>1.11.4</junit.suite.version>
+        <logback.configurationFileName>logback.xml</logback.configurationFileName>
     </properties>
 
 </project>
