@@ -18,6 +18,8 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpTimeoutException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.MessageFormat;
 import java.time.Duration;
 import java.util.List;
@@ -46,7 +48,8 @@ public class JavaHttpClientExceptionHandlingUnitTest {
     private final static String CONNECTION_READ_TIMEOUT_CONFIG_MSG = MessageFormat.format(
             "WireMock pre-configured for TIMEOUT ({0} seconds).", READ_TIMEOUT_SECONDS);
     private final static String CONNECTION_READ_TIMEOUT_DONE_MSG = "Making assertions & exiting from TIMEOUT test.";
-    private final static long WIRE_MOCK_CONCURRENT_LOGGING_AVOIDANCE_DELAY = 4;
+    private final static long WIRE_MOCK_CONCURRENT_LOGGING_AVOIDANCE_DELAY_STEP = 1;
+    private final static long WIRE_MOCK_CONCURRENT_LOGGING_AVOIDANCE_SIZE_THRESHOLD = 600;
 
     private final WireMockConfiguration mockConfiguration = WireMockConfiguration.options().dynamicPort();
     private final WireMockServer mockServer = new WireMockServer(mockConfiguration);
@@ -54,9 +57,20 @@ public class JavaHttpClientExceptionHandlingUnitTest {
     private final HttpClient client = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(30)).build();
     private byte minimumConnectionsExpected;
 
+    /**
+     * Lets {@link HttpClientConnectionManagementUnitTest} log first, to avoid message overwriting issues.
+     * @throws InterruptedException if sleeping is interrupted externally
+     * @throws IOException  in case of external IO issue
+     */
     @BeforeAll
-    public static void ensureSequentialWireMockTestExecution() throws InterruptedException {
-        TimeUnit.SECONDS.sleep(4);
+    public static void ensureReliableWireMockLogging() throws IOException, InterruptedException {
+        Path logPath = Path.of(LOG_FILEPATH);
+        long size;
+        do {
+            size = Files.size(logPath);
+            logger.debug("Sleeping 1s 4 reliable logging (file size: {})", size);
+            TimeUnit.SECONDS.sleep(WIRE_MOCK_CONCURRENT_LOGGING_AVOIDANCE_DELAY_STEP);
+        } while (size < WIRE_MOCK_CONCURRENT_LOGGING_AVOIDANCE_SIZE_THRESHOLD);
     }
 
     @BeforeEach
