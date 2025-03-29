@@ -12,8 +12,6 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-import org.jetbrains.annotations.NotNull;
-
 public class FindFolder {
 
     public static long numberOfFilesIn_classic(String path) {
