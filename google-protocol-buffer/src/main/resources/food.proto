@@ -1,0 +1,9 @@
+syntax="proto3";
+
+message Menu {
+  map<string, float> items = 1;
+}
+
+message FoodDelivery{
+  map<string, Menu> restaurants = 1;
+}
