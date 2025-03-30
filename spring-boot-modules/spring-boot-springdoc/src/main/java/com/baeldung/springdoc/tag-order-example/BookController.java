@@ -1,8 +1,8 @@
-package sample;
+package com.baeldung.springdoc.tag-order-example;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+ 
 
  
 import jakarta.validation.constraints.NotBlank;
