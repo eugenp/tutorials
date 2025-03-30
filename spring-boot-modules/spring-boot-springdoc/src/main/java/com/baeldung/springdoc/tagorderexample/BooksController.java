@@ -32,7 +32,7 @@ import io.swagger.v3.oas.annotations.OpenAPIDefinition;
      @Tag(name = "updateBook", description = "Update book in inventory")
 })**/
 @Tag(name = "books", description = "Books related tag")
-public class BookController {
+public class BooksController {
 
     @Tag(name = "create")
     @Tag(name = "books")
