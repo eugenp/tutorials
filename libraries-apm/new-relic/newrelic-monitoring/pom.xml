@@ -21,7 +21,7 @@
         <dependency>
             <groupId>com.newrelic.agent.java</groupId>
             <artifactId>newrelic-java</artifactId>
-            <version>8.18.0</version>
+            <version>${newrelic-java.version}</version>
             <scope>provided</scope>
             <type>zip</type>
         </dependency>
@@ -61,6 +61,7 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <newrelic-java.version>8.18.0</newrelic-java.version>
     </properties>
 
 </project>
