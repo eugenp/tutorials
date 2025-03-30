@@ -1,4 +1,4 @@
-package com.baeldung.springdoc.tag-order-example;
+package com.baeldung.springdoc.tagorderexample;
 
 import java.util.ArrayList;
 import java.util.List;
