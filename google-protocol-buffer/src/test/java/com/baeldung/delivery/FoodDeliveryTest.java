@@ -1,6 +1,5 @@
 package com.baeldung.delivery;
 
-import com.baeldung.delivery.FoodDelivery;
 import com.baeldung.generated.Food;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;

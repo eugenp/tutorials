@@ -1,13 +1,13 @@
 package com.baeldung.delivery;
 
+import com.baeldung.generated.Food;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Map;
 import java.util.logging.Logger;
-import com.baeldung.generated.Food;
-
 public class FoodDelivery {
     private static final Logger logger = Logger.getLogger(FoodDelivery.class.getName());
     private final String FILE_PATH = "src/main/resources/foodfile.bin";
@@ -55,7 +55,7 @@ public class FoodDelivery {
     }
 
     public void displayRestaurants(Food.FoodDelivery delivery) {
-        var restaurants = delivery.getRestaurantsMap();
+        Map<String, Food.Menu> restaurants = delivery.getRestaurantsMap();
         for(Map.Entry<String, Food.Menu> restaurant : restaurants.entrySet()) {
             System.out.println("Restaurant: "+restaurant.getKey());
             restaurant.getValue()
