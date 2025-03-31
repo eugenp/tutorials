@@ -6,7 +6,7 @@ class CurrencyLocaleUtilTest {
     private final CurrencyLocaleUtil currencyLocale = new CurrencyLocaleUtil();
 
     @Test
-    void testGetSymbolForLocale() {
+    void givenLocale_whenGetSymbolForLocale_thenReturnsLocalizedSymbol() {
         assertEquals("$", currencyLocale.getSymbolForLocale(Locale.US));
         assertEquals("€", currencyLocale.getSymbolForLocale(Locale.FRANCE));
     }

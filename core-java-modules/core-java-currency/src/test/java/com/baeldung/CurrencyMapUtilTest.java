@@ -3,10 +3,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CurrencyMapUtilTest {
     @Test
-    void testGetSymbol() {
+    void givenValidCurrencyCode_whenGetSymbol_thenReturnsCorrectSymbol() {
         assertEquals("$", CurrencyMapUtil.getSymbol("USD"));
         assertEquals("€", CurrencyMapUtil.getSymbol("EUR"));
         assertEquals("₹", CurrencyMapUtil.getSymbol("INR"));
-        assertEquals("Unknown", CurrencyMapUtil.getSymbol("ABC"));
+    }
+
+    @Test
+    void givenInvalidCurrencyCode_whenGetSymbol_thenReturnsUnknown() {
+        assertEquals("Unknown", CurrencyMapUtil.getSymbol("XYZ"));
     }
 }

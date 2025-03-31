@@ -3,13 +3,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CurrencyUtilTest {
     @Test
-    void testGetSymbol() {
+    void givenValidCurrencyCode_whenGetSymbol_thenReturnsCorrectSymbol() {
         assertEquals("$", CurrencyUtil.getSymbol("USD"));
         assertEquals("€", CurrencyUtil.getSymbol("EUR"));
     }
 
     @Test
-    void testInvalidCurrencyCode() {
+    void givenInvalidCurrencyCode_whenGetSymbol_thenThrowsException() {
         assertThrows(IllegalArgumentException.class, () -> CurrencyUtil.getSymbol("INVALID"));
     }
 }
