@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Map;
 import java.util.logging.Logger;
+import com.baeldung.generated.Food;
 
 public class FoodDelivery {
     private static final Logger logger = Logger.getLogger(FoodDelivery.class.getName());

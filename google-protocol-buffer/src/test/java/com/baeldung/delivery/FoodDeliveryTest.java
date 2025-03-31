@@ -1,7 +1,7 @@
 package com.baeldung.delivery;
 
-import io.github.venkat1701.delivery.FoodDelivery;
-import io.github.venkat1701.generated.Food;
+import com.baeldung.delivery.FoodDelivery;
+import com.baeldung.generated.Food;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
