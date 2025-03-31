@@ -1,7 +1,9 @@
-package com.baeldung.mathematics.integer.sequence;
+package com.baeldung.quarkus;
 
 import jakarta.enterprise.context.ApplicationScoped;
+
 import java.util.ArrayList;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,10 +12,10 @@ import org.slf4j.LoggerFactory;
 public class FactorialService {
     private static final Logger logger = LoggerFactory.getLogger(FactorialService.class);
 
-    public ArrayList<Long> generateSequence(int iterations) {
+    public List<Long> generateSequence(int iterations) {
         long factorial = 1;
 
-        ArrayList<Long> generatedSequence = new ArrayList<>();
+        List<Long> generatedSequence = new ArrayList<>();
         generatedSequence.add(factorial);
         for (int i = 1; i <= iterations; i++) {
             factorial *= i;

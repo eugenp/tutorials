@@ -1,4 +1,4 @@
-package com.baeldung.mathematics.api;
+package com.baeldung.quarkus;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.ws.rs.GET;
@@ -7,12 +7,10 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.baeldung.mathematics.integer.sequence.FibonacciService;
 
 @Path("/fibonacci")
 public class FibonacciResource {
@@ -31,7 +29,7 @@ public class FibonacciResource {
             iterations = 10; //default value
         }
         logger.info("Received request with iterations: " + iterations);
-        ArrayList<Integer> fibSequence = fibonacciService.generateSequence(iterations);
+        List<Integer> fibSequence = fibonacciService.generateSequence(iterations);
         return fibSequence.toString();
     }
 

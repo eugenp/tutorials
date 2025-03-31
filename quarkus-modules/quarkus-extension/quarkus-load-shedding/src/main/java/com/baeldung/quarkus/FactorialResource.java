@@ -1,4 +1,4 @@
-package com.baeldung.mathematics.api;
+package com.baeldung.quarkus;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -6,12 +6,10 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.baeldung.mathematics.integer.sequence.FactorialService;
 
 @Path("/factorial")
 public class FactorialResource {
@@ -30,7 +28,7 @@ public class FactorialResource {
             iterations = 10;
         }
         logger.info("Generating factorial sequence with [" + iterations + "] iterations.");
-        ArrayList<Long> factorialSequence = factorialService.generateSequence(iterations);
+        List<Long> factorialSequence = factorialService.generateSequence(iterations);
         return factorialSequence.toString();
     }
 }

@@ -1,8 +1,10 @@
-package com.baeldung.mathematics.integer.sequence;
+package com.baeldung.quarkus;
 
 import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,10 +12,10 @@ import org.slf4j.LoggerFactory;
 public class FibonacciService {
     private static final Logger logger = LoggerFactory.getLogger(FibonacciService.class);
 
-    public ArrayList<Integer> generateSequence(int nthNumber) {
+    public List<Integer> generateSequence(int nthNumber) {
         int firstInteger = 0, secondInteger = 1;
         
-        ArrayList<Integer> generatedSequence = new ArrayList<>();
+        List<Integer> generatedSequence = new ArrayList<>();
         generatedSequence.add(firstInteger);
         generatedSequence.add(secondInteger);
         for (int i = 2; i <= nthNumber; i++) {

@@ -1,4 +1,4 @@
-package com.baeldung.mathematics;
+package com.baeldung.quarkus;
 
 import jakarta.ws.rs.ext.Provider;
 import io.quarkus.load.shedding.RequestPrioritizer;
