@@ -1,3 +1,5 @@
+package com.baeldung.currency.utils;
+
 import java.util.Map;
 
 public class CurrencyMapUtil {

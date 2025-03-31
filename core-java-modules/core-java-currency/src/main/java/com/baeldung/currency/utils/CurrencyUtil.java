@@ -1,3 +1,5 @@
+package com.baeldung.currency.utils;
+
 import java.util.Currency;
 
 public class CurrencyUtil {
