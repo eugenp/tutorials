@@ -21,6 +21,13 @@
             <Column name="message" pattern="%message"/>
             <Column name="throwable" pattern="%ex{full}"/>
         </JDBC>
+        <File name="JSONLogfileAppender" fileName="target/logfile.json">
+            <JSONLayout compact="true" eventEol="true"/>
+            <BurstFilter level="INFO" rate="2" maxBurst="10"/>
+        </File>
+        <Async name="AsyncAppender" bufferSize="80">
+            <AppenderRef ref="JSONLogfileAppender"/>
+        </Async>
     </Appenders>
     <RollingFile name="XMLRollingfileAppender" fileName="target/logfile.xml"
                  filePattern="target/logfile-%d{yyyy-MM-dd}-%i.log.gz">
