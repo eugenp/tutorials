@@ -44,7 +44,7 @@
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>8.0.1.Final</version>
+            <version>${hibernate-validator.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.money</groupId>
@@ -60,12 +60,12 @@
         <dependency>
             <groupId>org.openjdk.nashorn</groupId>
             <artifactId>nashorn-core</artifactId>
-            <version>15.4</version>
+            <version>${nashorn-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.expressly</groupId>
             <artifactId>expressly</artifactId>
-            <version>5.0.0</version>
+            <version>${expressly.version}</version>
         </dependency>
     </dependencies>
 
@@ -74,6 +74,9 @@
         <h2.version>2.1.214</h2.version>
         <money-api.version>1.1</money-api.version>
         <moneta.version>1.4.2</moneta.version>
+        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
+        <nashorn-core.version>15.4</nashorn-core.version>
+        <expressly.version>5.0.0</expressly.version>
     </properties>
 
 </project>
