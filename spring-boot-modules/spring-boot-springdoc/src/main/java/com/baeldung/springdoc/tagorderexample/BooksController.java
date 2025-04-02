@@ -23,12 +23,12 @@ import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 /**@OpenAPIDefinition(tags = {
      @Tag(name = "books", description = "Books related tag"),
      @Tag(name = "create", description = "Add book to inventory"),
-     @Tag(name = "createBook", description = "Add book to inventory"),
      @Tag(name = "delete", description = "Delete book from inventory"),
-     @Tag(name = "deleteBook", description = "Delete book from inventory"),
      @Tag(name = "find", description = "Find book from inventory"),
-     @Tag(name = "findBook", description = "Find book from inventory"),
      @Tag(name = "update", description = "Update book in inventory"),
+     @Tag(name = "createBook", description = "Add book to inventory"),
+     @Tag(name = "deleteBook", description = "Delete book from inventory"),
+     @Tag(name = "findBook", description = "Find book from inventory"),
      @Tag(name = "updateBook", description = "Update book in inventory")
 })**/
 @Tag(name = "books", description = "Books related tag")
