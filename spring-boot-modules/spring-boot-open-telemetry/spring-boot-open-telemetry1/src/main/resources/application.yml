@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: product-service
+server:
+  port: '8080'
+
+priceClient:
+  baseUrl: http://price-service:8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  tracing:
+    resource-attributes:
+      service.name: "product-service"
+    enabled: 'true'
+    sampling:
+      probability: '1.0'
+  otlp:
+    tracing:
+      endpoint: http://jaeger:4318/v1/traces
+otel:
+  exporter:
+    otlp:
+      timeout: 10000
+
+logging:
+  level:
+    root: DEBUG

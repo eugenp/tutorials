@@ -1,0 +1,21 @@
+services:
+  product-service:
+    platform: linux/x86_64
+    build: spring-boot-open-telemetry1/
+    ports:
+      - "8080:8080"
+    depends_on:
+      - jaeger
+
+  price-service:
+    platform: linux/x86_64
+    build: spring-boot-open-telemetry2/
+    ports:
+      - "8081"
+    depends_on:
+      - jaeger
+
+  jaeger:
+    image: jaegertracing/jaeger:latest
+    ports:
+      - "16686:16686"
