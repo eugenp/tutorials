@@ -777,6 +777,8 @@
                 <module>spring-cloud-modules/spring-cloud-security</module>
                 <module>spring-cloud-modules/spring-cloud-task</module>
                 <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
+                <module>spring-cloud-modules/spring-cloud-gateway-2</module>
+                <module>spring-cloud-modules/spring-cloud-gateway</module>
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
@@ -1165,6 +1167,8 @@
                 <module>spring-cloud-modules/spring-cloud-security</module>
                 <module>spring-cloud-modules/spring-cloud-task</module>
                 <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
+                <module>spring-cloud-modules/spring-cloud-gateway-2</module>
+                <module>spring-cloud-modules/spring-cloud-gateway</module>
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
