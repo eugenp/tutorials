@@ -710,6 +710,7 @@
 	            <module>libraries-http-3</module>
                 <module>libraries-io</module>
                 <module>libraries-llms</module>
+                <module>libraries-llms-2</module>
                 <module>libraries-open-telemetry</module>
                 <module>libraries-primitive</module>
                 <module>libraries-reporting</module>
@@ -1425,7 +1426,6 @@
                 <module>spring-boot-modules/spring-boot-graphql-2</module> <!-- JAVA-42053 -->
                 <module>spring-remoting-modules/remoting-hessian-burlap</module> <!-- cannot upgrade logback due to usage of old spring boot 1 version -->
                 <module>spring-security-modules/spring-security-saml</module> <!-- This module wasn't able to update to spring boot 3 because Jakarta clashes with javax -->
-                <module>spring-security-modules/spring-security-web-boot-3</module> <!-- JAVA-42146 -->
                 <module>web-modules/ninja</module> <!-- JAVA-24584 -->
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
@@ -1495,7 +1495,6 @@
                 <module>spring-boot-modules/spring-boot-graphql-2</module> <!-- JAVA-42053 -->
                 <module>spring-remoting-modules/remoting-hessian-burlap</module> <!-- cannot upgrade logback due to usage of old spring boot 1 version -->
                 <module>spring-security-modules/spring-security-saml</module> <!-- This module wasn't able to update to spring boot 3 because Jakarta clashes with javax -->
-                <module>spring-security-modules/spring-security-web-boot-3</module> <!-- JAVA-42146 -->
                 <module>web-modules/ninja</module> <!-- JAVA-24584 -->
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->

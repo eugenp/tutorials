@@ -51,7 +51,7 @@
         </dependency>
         <dependency>
             <groupId>de.flapdoodle.embed</groupId>
-            <artifactId>de.flapdoodle.embed.mongo.spring30x</artifactId>
+            <artifactId>de.flapdoodle.embed.mongo.spring3x</artifactId>
             <version>${de.flapdoodle.emeded.mongo.version}</version>
         </dependency>
         <dependency>
@@ -116,7 +116,7 @@
         <bootstrap.version>5.1.1</bootstrap.version>
         <jquery.version>3.6.0</jquery.version>
         <start-class>com.baeldung.cors.basicauth.SpringBootSecurityApplication</start-class>
-        <de.flapdoodle.emeded.mongo.version>4.11.0</de.flapdoodle.emeded.mongo.version>
+        <de.flapdoodle.emeded.mongo.version>4.20.0</de.flapdoodle.emeded.mongo.version>
     </properties>
 
 </project>
