@@ -34,7 +34,7 @@ class ScrubResponseGatewayFilterFactoryUnitTest {
         Config config = new Config();
         config.setFields("ssn|account");
         config.setReplacement("*");
-        Scrubber scrubber = new Scrubber(config);
+        Scrubber scrubber = new ScrubResponseGatewayFilterFactory.Scrubber(config);
         
         JsonNode scrubbed = Mono.from(scrubber.apply(null, root)).block();
         assertNotNull(scrubbed);
@@ -51,7 +51,7 @@ class ScrubResponseGatewayFilterFactoryUnitTest {
         Config config = new Config();
         config.setFields("xxxx");
         config.setReplacement("*");
-        Scrubber scrubber = new Scrubber(config);
+        Scrubber scrubber = new ScrubResponseGatewayFilterFactory.Scrubber(config);
         
         JsonNode scrubbed = Mono.from(scrubber.apply(null, root)).block();
         assertNotNull(scrubbed);
