@@ -6,12 +6,11 @@
     <session-factory>
         <property name="hibernate.connection.driver_class">org.h2.Driver</property>
         <property name="hibernate.connection.password"></property>
-        <property name="hibernate.connection.url">jdbc:h2:mem:spring_hibernate_one_to_many</property>
+        <property name="hibernate.connection.url">jdbc:h2:mem:spring_hibernate_many_to_many;MODE=LEGACY</property>
         <property name="hibernate.connection.username">sa</property>
         <property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
-        <property name="hbm2ddl.auto">create</property>
         <property name="hibernate.current_session_context_class">thread</property>
-        <property name="hibernate.show_sql">true</property>
-
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.hbm2ddl.auto">create-drop</property>
     </session-factory>
 </hibernate-configuration>
