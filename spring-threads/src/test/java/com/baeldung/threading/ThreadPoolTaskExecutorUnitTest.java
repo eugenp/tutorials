@@ -13,12 +13,10 @@ public class ThreadPoolTaskExecutorUnitTest {
         for (int i = 0; i < numThreads; i++) {
             taskExecutor.execute(() -> {
                 try {
-                    Thread.sleep(100L * ThreadLocalRandom.current()
-                        .nextLong(1, 10));
+                    Thread.sleep(100L * ThreadLocalRandom.current().nextLong(1, 10));
                     countDownLatch.countDown();
                 } catch (InterruptedException e) {
-                    Thread.currentThread()
-                        .interrupt();
+                    Thread.currentThread().interrupt();
                 }
             });
         }
