@@ -670,7 +670,7 @@
                 <module>java-blockchain</module>
                 <module>java-jdi</module>
                 <module>java-panama</module>
-                <module>java-socket</module>
+                <module>java-sockets</module>
                 <module>javafx</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
@@ -1059,7 +1059,7 @@
                 <module>java-blockchain</module>
                 <module>java-jdi</module>
                 <module>java-panama</module>
-                <module>java-socket</module>
+                <module>java-sockets</module>
                 <module>javafx</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
