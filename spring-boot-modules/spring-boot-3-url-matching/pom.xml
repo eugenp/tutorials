@@ -54,12 +54,10 @@
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
-            <version>${reactor-core.version}</version>
         </dependency>
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
-            <version>${reactor-core.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -87,9 +85,7 @@
 
     <properties>
         <spring-boot.version>3.4.0</spring-boot.version>
-        <reactor-core.version>3.6.0</reactor-core.version>
-        <reactor-test.version>3.6.0></reactor-test.version>
-        <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
+        <logback.version>1.5.12</logback.version>
     </properties>
 
 </project>
