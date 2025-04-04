@@ -1,7 +1,10 @@
 package com.baeldung.date;
 
+import org.joda.time.DateTime;
+import org.joda.time.Weeks;
 import org.joda.time.Days;
 import org.joda.time.Minutes;
+
 import org.junit.Test;
 
 import java.text.ParseException;
@@ -17,7 +20,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
-
+ 
 import static org.junit.Assert.*;
 
 public class DateDiffUnitTest {
@@ -67,6 +70,16 @@ public class DateDiffUnitTest {
     }
 
     @Test
+    public void givenTwoLocalDatesInJava8_whenUsingChronoUnitWeeksBetween_thenFindIntegerWeeks() {
+        LocalDate startLocalDate = LocalDate.of(2024, 01, 10);
+	LocalDate endLocalDate = LocalDate.of(2024, 11, 15);   
+
+	long weeksDiff = ChronoUnit.WEEKS.between(startLocalDate, endLocalDate);  
+
+        assertEquals(44, weeksDiff);
+    }		
+
+    @Test
     public void givenTwoDateTimesInJava8_whenDifferentiating_thenWeGetSix() {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime sixMinutesBehind = now.minusMinutes(6);
@@ -98,6 +111,16 @@ public class DateDiffUnitTest {
     }
 
     @Test
+    public void givenTwoZonedDateTimesInJava8_whenUsingChronoUnitWeeksBetween_thenFindIntegerWeeks() {
+        ZonedDateTime startDateTime = ZonedDateTime.parse("2022-02-01T00:00:00Z[UTC]");
+	ZonedDateTime endDateTime = ZonedDateTime.parse("2022-10-31T23:59:59Z[UTC]");
+
+	long weeksDiff = ChronoUnit.WEEKS.between(startDateTime, endDateTime);  
+
+        assertEquals(38, weeksDiff);
+    }	
+
+    @Test
     public void givenTwoDateTimesInJava8_whenDifferentiatingInSecondsUsingUntil_thenWeGetTen() {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime tenSecondsLater = now.plusSeconds(10);
@@ -127,6 +150,27 @@ public class DateDiffUnitTest {
 
     }
 
+    @Test
+    public void givenTwoDateTimesInJodaTime_whenComputingDistanceInWeeks_thenFindIntegerWeeks() {
+        DateTime dateTime1 = new DateTime(2024, 1, 17, 15, 50, 30);
+	DateTime dateTime2 = new DateTime(2024, 6, 3, 10, 20, 55);
+
+        int weeksDiff = Weeks.weeksBetween(dateTime1, dateTime2).getWeeks();
+
+        assertEquals(19, weeksDiff);
+    }
+
+    @Test
+    public void givenTwoDateTimesInJodaTime_whenComputingDistanceInDecimalWeeks_thenFindDecimalWeeks() {
+        DateTime dateTime1 = new DateTime(2024, 1, 17, 15, 50, 30);
+	DateTime dateTime2 = new DateTime(2024, 6, 3, 10, 20, 55);
+
+        int days = Days.daysBetween(dateTime1, dateTime2).getDays();
+	float weeksDiff=(float) (days/7.0);    
+
+        assertEquals(19.571428, weeksDiff,0.001);
+    }
+	
     @Test
     public void givenTwoDatesInDate4j_whenDifferentiating_thenWeGetSix() {
         hirondelle.date4j.DateTime now = hirondelle.date4j.DateTime.now(TimeZone.getDefault());
