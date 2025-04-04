@@ -6,10 +6,12 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-/**
- * Class to handle each client connection in a separate thread
- */
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class ConnectionHandler extends Thread {
+
+    private static final Logger logger = LoggerFactory.getLogger(ConnectionHandler.class);
 
     private final Socket socket;
 
@@ -25,12 +27,12 @@ public class ConnectionHandler extends Thread {
             String request;
             while ((request = reader.readLine()) != null) {
                 Thread.sleep(1000);
-                System.out.println("Processing request: " + request);
+                logger.info("Processing request: {}", request);
                 writer.println("HTTP/1.1 200 OK - Processed request: " + request);
-                System.out.println("Processed request: " + request);
+                logger.info("Processed request: {}", request);
             }
         } catch (Exception e) {
-            System.err.println("Error processing request: " + e.getMessage());
+            logger.error("Error processing request: {}", e.getMessage());
         } finally {
             try {
                 socket.close();

@@ -4,24 +4,29 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class ThreadPerConnectionServer {
+
+    private static final Logger logger = LoggerFactory.getLogger(ThreadPerConnectionServer.class);
 
     private static final int PORT = 8080;
 
     public static void main(String[] args) {
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
-            System.out.println("Server started on port " + PORT);
+            logger.info("Server started on port {}", PORT);
             while (!serverSocket.isClosed()) {
                 try {
                     Socket clientSocket = serverSocket.accept();
-                    System.out.println("New client connected: " + clientSocket.getInetAddress());
+                    logger.info("New client connected: {}", clientSocket.getInetAddress());
                     new ConnectionHandler(clientSocket).start();
                 } catch (IOException e) {
-                    System.err.println("Error accepting connection: " + e.getMessage());
+                    logger.error("Error accepting connection: {}", e.getMessage());
                 }
             }
         } catch (IOException e) {
-            System.err.println("Error starting server: " + e.getMessage());
+            logger.error("Error starting server: {}", e.getMessage());
         }
     }
 }

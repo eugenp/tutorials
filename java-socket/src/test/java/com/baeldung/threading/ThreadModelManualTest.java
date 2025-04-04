@@ -15,20 +15,21 @@ class ThreadModelManualTest {
     private static final int PORT = 8080;
 
     @Test
-    void whenSendingRequestWithDifferentConnections_responseReceived() throws IOException {
+    void whenSendingRequestWithDifferentConnections_thenTesponseReceived() throws IOException {
         for (int i = 1; i <= 3; i++) {
             Socket socket = new Socket(HOST, PORT);
             PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             writer.println("Request " + i);
             String response = reader.readLine();
+
             Assertions.assertNotNull(response);
             socket.close();
         }
     }
 
     @Test
-    void whenSendingRequestWithSameConnection_responseReceived() throws IOException, InterruptedException {
+    void whenSendingRequestWithSameConnection_thenResponseReceived() throws IOException, InterruptedException {
         Socket socket = new Socket(HOST, PORT);
         PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
         BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -36,6 +37,7 @@ class ThreadModelManualTest {
             writer.println((String) null);
             Thread.sleep(2000);
             String response = reader.readLine();
+
             Assertions.assertNotNull(response);
         }
         socket.close();

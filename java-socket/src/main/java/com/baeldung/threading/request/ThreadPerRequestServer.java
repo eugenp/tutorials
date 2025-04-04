@@ -10,7 +10,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class ThreadPerRequestServer {
+
+    private static final Logger logger = LoggerFactory.getLogger(ThreadPerRequestServer.class);
 
     private static final int PORT = 8080;
 
@@ -18,7 +23,7 @@ public class ThreadPerRequestServer {
         List<Socket> clientSockets = new ArrayList<>();
 
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
-            System.out.println("Server started on port " + PORT);
+            logger.info("Server started on port {}", PORT);
 
             while (!serverSocket.isClosed()) {
                 acceptNewConnections(serverSocket, clientSockets);
@@ -27,7 +32,7 @@ public class ThreadPerRequestServer {
                 while (iterator.hasNext()) {
                     Socket clientSocket = iterator.next();
                     if (clientSocket.isClosed()) {
-                        System.out.println("Client disconnected: " + clientSocket.getInetAddress());
+                        logger.info("Client disconnected: {}", clientSocket.getInetAddress());
                         iterator.remove();
                         continue;
                     }
@@ -35,21 +40,20 @@ public class ThreadPerRequestServer {
                 }
             }
         } catch (IOException e) {
-            System.err.println("Server error: " + e.getMessage());
+            logger.error("Server error: {}", e.getMessage());
         } finally {
             closeClientSockets(clientSockets);
         }
     }
 
     private static void acceptNewConnections(ServerSocket serverSocket, List<Socket> clientSockets) throws SocketException {
-        // Small timeout for non-blocking accept
         serverSocket.setSoTimeout(100);
         try {
             Socket newClient = serverSocket.accept();
             clientSockets.add(newClient);
-            System.out.println("New client connected: " + newClient.getInetAddress());
+            logger.info("New client connected: {}", newClient.getInetAddress());
         } catch (IOException ignored) {
-            // No new connection, continue to process existing ones
+            // ignored
         }
     }
 
@@ -68,7 +72,7 @@ public class ThreadPerRequestServer {
                     socket.close();
                 }
             } catch (IOException e) {
-                System.err.println("Error closing client socket: " + e.getMessage());
+                logger.error("Error closing client socket: {}", e.getMessage());
             }
         }
     }
