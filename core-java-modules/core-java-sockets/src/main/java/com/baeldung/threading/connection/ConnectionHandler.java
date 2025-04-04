@@ -26,7 +26,7 @@ public class ConnectionHandler extends Thread {
             PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
             String request;
             while ((request = reader.readLine()) != null) {
-                Thread.sleep(1000);
+                Thread.sleep(1000); // simulate server doing work
                 logger.info("Processing request: {}", request);
                 writer.println("HTTP/1.1 200 OK - Processed request: " + request);
                 logger.info("Processed request: {}", request);

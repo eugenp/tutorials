@@ -9,21 +9,23 @@ import java.net.Socket;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+//ThreadPerConnectionServer or ThreadPerRequestServer needs to be started externally in order to execute this test.
 class ThreadModelManualTest {
 
     private static final String HOST = "localhost";
     private static final int PORT = 8080;
 
     @Test
-    void whenSendingRequestWithDifferentConnections_thenTesponseReceived() throws IOException {
+    void whenSendingRequestWithDifferentConnections_thenResponseReceived() throws IOException {
         for (int i = 1; i <= 3; i++) {
             Socket socket = new Socket(HOST, PORT);
             PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            writer.println("Request " + i);
+            String request = "Request " + i;
+            writer.println(request);
             String response = reader.readLine();
 
-            Assertions.assertNotNull(response);
+            Assertions.assertEquals("HTTP/1.1 200 OK - Processed request: " + request, response);
             socket.close();
         }
     }
@@ -34,11 +36,12 @@ class ThreadModelManualTest {
         PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
         BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         for (int i = 1; i <= 3; i++) {
-            writer.println((String) null);
-            Thread.sleep(2000);
+            String request = "Request " + i;
+            writer.println(request);
+            Thread.sleep(2000); // simulate gap between client requests
             String response = reader.readLine();
 
-            Assertions.assertNotNull(response);
+            Assertions.assertEquals("HTTP/1.1 200 OK - Processed request: " + request, response);
         }
         socket.close();
     }
