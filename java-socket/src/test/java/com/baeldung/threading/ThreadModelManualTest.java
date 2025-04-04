@@ -33,8 +33,8 @@ class ThreadModelManualTest {
         PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
         BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         for (int i = 1; i <= 3; i++) {
-            writer.println("Request " + i);
-            Thread.sleep(1000);
+            writer.println((String) null);
+            Thread.sleep(2000);
             String response = reader.readLine();
             Assertions.assertNotNull(response);
         }
