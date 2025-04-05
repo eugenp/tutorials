@@ -21,12 +21,13 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.13.0-M2</version>
+            <version>${junit.jupiter.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
         <protobuf.version>4.30.2</protobuf.version>
+        <junit.jupiter.version>5.13.0-M2</junit.jupiter.version>
     </properties>
 
 </project>
