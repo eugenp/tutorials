@@ -9,7 +9,7 @@ import java.net.Socket;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-//ThreadPerConnectionServer or ThreadPerRequestServer needs to be started externally in order to execute this test.
+// Note: ThreadPerConnectionServer or ThreadPerRequestServer needs to be started externally in order to execute this test.
 class ThreadModelManualTest {
 
     private static final String HOST = "localhost";
