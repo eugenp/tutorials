@@ -18,31 +18,31 @@ class ThreadModelManualTest {
     @Test
     void whenSendingRequestWithDifferentConnections_thenResponseReceived() throws IOException {
         for (int i = 1; i <= 3; i++) {
-            Socket socket = new Socket(HOST, PORT);
-            PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            String request = "Request " + i;
-            writer.println(request);
-            String response = reader.readLine();
+            try (Socket socket = new Socket(HOST, PORT)) {
+                PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                String request = "Request " + i;
+                writer.println(request);
+                String response = reader.readLine();
 
-            Assertions.assertEquals("HTTP/1.1 200 OK - Processed request: " + request, response);
-            socket.close();
+                Assertions.assertEquals("HTTP/1.1 200 OK - Processed request: " + request, response);
+            }
         }
     }
 
     @Test
     void whenSendingRequestWithSameConnection_thenResponseReceived() throws IOException, InterruptedException {
-        Socket socket = new Socket(HOST, PORT);
-        PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        for (int i = 1; i <= 3; i++) {
-            String request = "Request " + i;
-            writer.println(request);
-            Thread.sleep(2000); // simulate gap between client requests
-            String response = reader.readLine();
+        try (Socket socket = new Socket(HOST, PORT)) {
+            PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            for (int i = 1; i <= 3; i++) {
+                String request = "Request " + i;
+                writer.println(request);
+                Thread.sleep(2000); // simulate gap between client requests
+                String response = reader.readLine();
 
-            Assertions.assertEquals("HTTP/1.1 200 OK - Processed request: " + request, response);
+                Assertions.assertEquals("HTTP/1.1 200 OK - Processed request: " + request, response);
+            }
         }
-        socket.close();
     }
 }
