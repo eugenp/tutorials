@@ -1,4 +1,4 @@
-package com.baeldung.delivery;
+package com.baeldung.mapinprotobuf;
 
 import com.baeldung.generated.Food;
 
@@ -56,13 +56,15 @@ public class FoodDelivery {
 
     public void displayRestaurants(Food.FoodDelivery delivery) {
         Map<String, Food.Menu> restaurants = delivery.getRestaurantsMap();
-        for(Map.Entry<String, Food.Menu> restaurant : restaurants.entrySet()) {
-            System.out.println("Restaurant: "+restaurant.getKey());
+        for (Map.Entry<String, Food.Menu> restaurant : restaurants.entrySet()) {
+            logger.info(String.format("Restaurant: %s", restaurant.getKey()));
             restaurant.getValue()
                     .getItemsMap()
-                    .forEach((menuItem, price) -> System.out.println(String.format(" - %s costs $ %f", menuItem, price)));
+                    .forEach((menuItem, price) ->
+                            logger.info(String.format(" - %s costs $ %.2f", menuItem, price)));
         }
     }
+
 
 
 }
