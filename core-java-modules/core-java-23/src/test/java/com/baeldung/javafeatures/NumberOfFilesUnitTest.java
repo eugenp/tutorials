@@ -8,7 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class NumberOfFilesTest {
+public class NumberOfFilesUnitTest {
 
     private final String resourcePath = this.getClass()
         .getResource("/filesToBeFound")
