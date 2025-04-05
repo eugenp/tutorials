@@ -24,7 +24,7 @@ import org.springframework.test.context.ActiveProfiles;
  * This test requires
  */
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("customroutes")
+@ActiveProfiles({ "nosecurity","customroutes"})
 public class CustomPredicatesApplicationLiveTest {
 
     @LocalServerPort

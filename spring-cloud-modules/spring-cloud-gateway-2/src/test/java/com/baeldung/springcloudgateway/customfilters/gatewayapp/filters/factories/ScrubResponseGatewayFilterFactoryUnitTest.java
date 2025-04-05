@@ -1,6 +1,8 @@
 package com.baeldung.springcloudgateway.customfilters.gatewayapp.filters.factories;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 
@@ -8,8 +10,6 @@ import com.baeldung.springcloudgateway.customfilters.gatewayapp.filters.factorie
 import com.baeldung.springcloudgateway.customfilters.gatewayapp.filters.factories.ScrubResponseGatewayFilterFactory.Scrubber;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.ObjectCodec;
-import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
