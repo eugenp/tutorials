@@ -1,4 +1,4 @@
-package com.baeldung.delivery;
+package com.baeldung.mapinprotobuf;
 
 import com.baeldung.generated.Food;
 import org.junit.jupiter.api.AfterAll;
@@ -6,14 +6,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
+
 import org.junit.jupiter.api.TestInstance;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class FoodDeliveryTest {
+class FoodDeliveryUnitTest {
     private static final String FILE_PATH = "src/main/resources/foodfile.bin";
     private final FoodDelivery foodDelivery = new FoodDelivery();
     private Food.FoodDelivery testData;
@@ -47,18 +52,19 @@ class FoodDeliveryTest {
     }
 
     @Test
-    void givenDeserializedObject_whenDisplayRestaurants_thenShouldPrintCorrectOutput() {
+    void givenDeserializedObject_whenDisplayRestaurants_thenShouldLogCorrectOutput() {
         foodDelivery.serializeToFile(testData);
         Food.FoodDelivery deserializedData = foodDelivery.deserializeFromFile(testData);
-
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputStream));
-
+        Logger logger = Logger.getLogger(FoodDelivery.class.getName());
+        TestLogHandler testHandler = new TestLogHandler();
+        logger.addHandler(testHandler);
+        logger.setUseParentHandlers(false);
         foodDelivery.displayRestaurants(deserializedData);
-        String consoleOutput = outputStream.toString().trim();
-
-        assertTrue(consoleOutput.contains("Restaurant: Pizza Place"), "Output should contain 'restaurant: Pizza Place'");
-        assertTrue(consoleOutput.contains("Margherita costs $ 12.990000"), "Output should contain 'Margherita costs $ 12.990'");
+        List<String> logs = testHandler.getLogs();
+        assertTrue(logs.stream().anyMatch(log -> log.contains("Restaurant: Pizza Place")),
+                "Log should contain 'Restaurant: Pizza Place'");
+        assertTrue(logs.stream().anyMatch(log -> log.contains("Margherita costs $ 12.99")),
+                "Log should contain 'Margherita costs $ 12.99'");
     }
 
     @AfterAll
@@ -66,6 +72,22 @@ class FoodDeliveryTest {
         File file = new File(FILE_PATH);
         if (file.exists()) {
             file.delete();
+        }
+    }
+
+    static class TestLogHandler extends Handler {
+        private final List<String> logMessages = new ArrayList<>();
+        @Override
+        public void publish(LogRecord record) {
+            if (record.getLevel().intValue() >= Level.INFO.intValue()) {
+                logMessages.add(record.getMessage());
+            }
+        }
+        @Override public void flush() {}
+        @Override public void close() throws SecurityException {}
+
+        public List<String> getLogs() {
+            return logMessages;
         }
     }
 }
