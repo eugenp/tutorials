@@ -1,0 +1,12 @@
+spring:
+  ai:
+    openai:
+      api-key: "<YOUR-API-KEY>"
+      chat:
+        options:
+          model: "gpt-4o"
+
+  # Avoid starting docker from the shared codebase
+  docker:
+    compose:
+      enabled: false
