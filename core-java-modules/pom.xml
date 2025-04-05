@@ -223,6 +223,7 @@
         <module>core-java-security-5</module>
         <module>core-java-security-algorithms</module>
         <module>core-java-serialization</module>
+        <module>core-java-sockets</module>
         <module>core-java-streams</module>
         <module>core-java-streams-simple</module>
         <module>core-java-streams-3</module>
