@@ -34,17 +34,17 @@ public class BooksController_2 {
 
 	@Tag(name = "create")
 	@Tag(name = "createBook")
-	@PostMapping(path = "/book")
+	@PostMapping(path = "/addBook")
 	@io.swagger.v3.oas.annotations.parameters.RequestBody(required = true)
-	public Book book(@Valid @RequestBody Book book) {
+	public Book addBook(@Valid @RequestBody Book book) {
 
 		return book;
 	}
 
 	@Tag(name = "find")
 	@Tag(name = "findBook")
-	@GetMapping(path = "/findBookById")
-	public List<Book> findById(@RequestParam(name = "id", required = true) @NotNull @NotBlank @Size(max = 10) long id) {
+	@GetMapping(path = "/findABookById")
+	public List<Book> findABookById(@RequestParam(name = "id", required = true) @NotNull @NotBlank @Size(max = 10) long id) {
 		List<Book> bookList = new ArrayList<>();
 		Book book = new Book();
 
@@ -55,16 +55,16 @@ public class BooksController_2 {
 
 	@Tag(name = "delete")
 	@Tag(name = "deleteBook")
-	@DeleteMapping(path = "/deleteBookById")
-	public long deleteById(@RequestParam(name = "id", required = true) @NotNull @NotBlank @Size(max = 10) long id) {
+	@DeleteMapping(path = "/deleteABookById")
+	public long deleteABookById(@RequestParam(name = "id", required = true) @NotNull @NotBlank @Size(max = 10) long id) {
 
 		return id;
 	}
 
 	@Tag(name = "update")
 	@Tag(name = "updateBook")
-	@PutMapping(path = "/updateBookById")
-	public long updateById(@RequestParam(name = "id", required = true) @NotNull @NotBlank @Size(max = 10) long id) {
+	@PutMapping(path = "/updateABookById")
+	public long updateABookById(@RequestParam(name = "id", required = true) @NotNull @NotBlank @Size(max = 10) long id) {
 		return id;
 	}
 }
