@@ -27,22 +27,30 @@ public class ThreadPerRequestServer {
 
             while (!serverSocket.isClosed()) {
                 acceptNewConnections(serverSocket, clientSockets);
-
-                Iterator<Socket> iterator = clientSockets.iterator();
-                while (iterator.hasNext()) {
-                    Socket clientSocket = iterator.next();
-                    if (clientSocket.isClosed()) {
-                        logger.info("Client disconnected: {}", clientSocket.getInetAddress());
-                        iterator.remove();
-                        continue;
-                    }
-                    createRequestHandler(clientSocket);
-                }
+                handleRequests(clientSockets);
             }
+
         } catch (IOException e) {
             logger.error("Server error: {}", e.getMessage());
         } finally {
             closeClientSockets(clientSockets);
+        }
+    }
+
+    private static void handleRequests(List<Socket> clientSockets) throws IOException {
+        Iterator<Socket> iterator = clientSockets.iterator();
+        while (iterator.hasNext()) {
+            Socket clientSocket = iterator.next();
+            if (clientSocket.isClosed()) {
+                logger.info("Client disconnected: {}", clientSocket.getInetAddress());
+                iterator.remove();
+                continue;
+            }
+            BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            String request;
+            if ((reader.ready()) && (request = reader.readLine()) != null) {
+                new RequestHandler(clientSocket, request).start();
+            }
         }
     }
 
@@ -54,14 +62,6 @@ public class ThreadPerRequestServer {
             logger.info("New client connected: {}", newClient.getInetAddress());
         } catch (IOException ignored) {
             // ignored
-        }
-    }
-
-    private static void createRequestHandler(Socket clientSocket) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-        String request;
-        if ((reader.ready()) && (request = reader.readLine()) != null) {
-            new RequestHandler(clientSocket, request).start();
         }
     }
 
