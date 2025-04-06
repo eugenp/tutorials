@@ -40,7 +40,7 @@ public class BooksController {
     @GetMapping(path = "/findBookById")
     public List findById(@RequestParam(name = "id", required = true) 
       @NotNull @NotBlank @Size(max = 10) long id) {
-        List bookList = new ArrayList&lt;&gt;();
+        List bookList = new ArrayList<>();
 	Book book = new Book();
 
 	book.setId(1);
