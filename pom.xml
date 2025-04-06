@@ -673,7 +673,6 @@
                 <module>javaxval</module>
                 <module>javaxval-2</module>
                 <module>jaxb</module>
-                <module>jdbc-cp</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
@@ -1059,7 +1058,6 @@
                 <module>javaxval</module>
                 <module>javaxval-2</module>
                 <module>jaxb</module>
-                <module>jdbc-cp</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
