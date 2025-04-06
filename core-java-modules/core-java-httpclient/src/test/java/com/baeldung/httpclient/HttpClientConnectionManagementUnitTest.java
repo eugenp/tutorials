@@ -1,4 +1,4 @@
-package com.baeldung.httpclient.conn;
+package com.baeldung.httpclient;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
@@ -27,11 +27,9 @@ public class HttpClientConnectionManagementUnitTest {
       .dynamicPort();
     WireMockServer firstServer = new WireMockServer(firstConfiguration);
     WireMockServer secondServer = new WireMockServer(secondConfiguration);
-    private String firstUrl;
-    private String secondUrl;
 
-    private HttpClient client = HttpClient.newHttpClient();
-    private HttpClient secondClient = HttpClient.newHttpClient();
+    private final HttpClient client = HttpClient.newHttpClient();
+    private final HttpClient secondClient = HttpClient.newHttpClient();
 
     private HttpRequest getRequest;
     private HttpRequest secondGet;
@@ -53,8 +51,8 @@ public class HttpClientConnectionManagementUnitTest {
             .aResponse()
             .withStatus(200)));
 
-        firstUrl = "http://localhost:" + firstServer.port() + "/first";
-        secondUrl = "http://localhost:" + secondServer.port() + "/second";
+        String firstUrl = "http://localhost:" + firstServer.port() + "/first";
+        String secondUrl = "http://localhost:" + secondServer.port() + "/second";
 
         getRequest = HttpRequest
           .newBuilder()
