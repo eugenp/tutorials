@@ -5,6 +5,8 @@ import java.util.Objects;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
+import org.springframework.data.mongodb.core.mapping.Field;
+
 
 @Document(collection = "book")
 public class Book {
@@ -12,8 +14,10 @@ public class Book {
     @MongoId
     private ObjectId id;
 
+    @Field("bookName")
     private String bookName;
 
+    @Field("authorName")
     private String authorName;
 
     public ObjectId getId() {
