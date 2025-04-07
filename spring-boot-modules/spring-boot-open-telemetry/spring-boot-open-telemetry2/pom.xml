@@ -4,10 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-open-telemetry2</artifactId>
-    <groupId>com.baeldung.spring.boot</groupId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>spring-boot-open-telemetry2</name>
+
+    <parent>
+        <groupId>com.baeldung.spring.boot</groupId>
+        <artifactId>spring-boot-open-telemetry</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
     <dependencyManagement>
         <dependencies>
@@ -29,43 +34,31 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-tracing</artifactId>
-            <version>1.4.4</version>
+            <version>${micrometer-tracing-version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-tracing-bridge-otel</artifactId>
-            <version>1.4.4</version>
+            <version>${micrometer-tracing-version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-exporter-otlp</artifactId>
-            <version>1.39.0</version>
+            <version>${otel-exporter-otlp.version}</version>
         </dependency>
 
-        <!-- JUnit 5 API -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- JUnit 5 Engine (Required for running tests) -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.4.2</version>
             <scope>test</scope>
         </dependency>
 
@@ -89,7 +82,9 @@
 
     <properties>
         <spring-boot-dependencies.version>3.4.0</spring-boot-dependencies.version>
-        <otel-exporter-otlp.version>1.23.1</otel-exporter-otlp.version>
+        <micrometer-tracing-version>1.5.0-M3</micrometer-tracing-version>
+        <otel-exporter-otlp.version>1.39.0</otel-exporter-otlp.version>
+        <logback.version>1.5.16</logback.version>
     </properties>
 
 </project>

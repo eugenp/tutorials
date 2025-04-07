@@ -26,9 +26,6 @@ public class PriceController {
 
     @GetMapping(path = "/price/{id}")
     public Price getPrice(@PathVariable("id") long productId, HttpServletRequest request) {
-        Collections.list(request.getHeaderNames()).forEach(header ->
-                LOGGER.info("Header: {} = {}", header, request.getHeader(header))
-        );
         LOGGER.info("Getting Price details for Product Id {}", productId);
         return priceRepository.getPrice(productId);
   }
