@@ -19,6 +19,6 @@ public abstract class TradeMapperWithContextService {
         return Mappers.getMapper(TradeMapperWithContextService.class);
     }
 
-    @Mapping(target="securityIdentifier", expression = "java(securityService.getSecurityIsin(trade.getSecurityID()))")
+    @Mapping(target="securityIdentifier", expression = "java(securityService.getSecurityOfTypeIsin(trade.getSecurityID()))")
     protected abstract TradeDto toTradeDto(Trade trade, @Context SecurityService securityService);
 }
