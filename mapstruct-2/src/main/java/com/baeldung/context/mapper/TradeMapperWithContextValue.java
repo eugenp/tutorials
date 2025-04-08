@@ -26,6 +26,7 @@ public abstract class TradeMapperWithContextValue {
     protected void initialize() {
         securityService = new SecurityService();
     }
+
     @Mapping(target="securityIdentifier", expression = "java(securityService.getSecurityIdentifierOfType(trade.getSecurityID(), identifierType))")
     protected abstract TradeDto toTradeDto(Trade trade, @Context String identifierType);
 }

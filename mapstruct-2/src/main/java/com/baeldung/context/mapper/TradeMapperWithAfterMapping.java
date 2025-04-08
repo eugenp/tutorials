@@ -16,11 +16,11 @@ import com.baeldung.context.service.SecurityService;
 public abstract class TradeMapperWithAfterMapping {
     final Logger logger = LoggerFactory.getLogger(TradeMapperWithAfterMapping.class);
 
-    protected abstract TradeDto toTradeDto(Trade trade, @Context String identifierType);
-
     public static TradeMapperWithAfterMapping getInstance() {
         return Mappers.getMapper(TradeMapperWithAfterMapping.class);
     }
+
+    protected abstract TradeDto toTradeDto(Trade trade, @Context String identifierType);
 
     @AfterMapping
     protected TradeDto convertToIdentifier(Trade trade, @MappingTarget TradeDto tradeDto, @Context String identifierType) {

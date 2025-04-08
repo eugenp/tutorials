@@ -44,7 +44,7 @@ public class MapperContextUnitTest {
         Trade trade = createTradeObject();
 
         TradeDto tradeDto = TradeMapperUsingObjectFactory.getInstance()
-            .toTradeDtoWithSecurityTypeContext(trade, "SEDOL");
+            .toTradeDto(trade, "SEDOL");
 
         assertEquals("B1Y8QX7", tradeDto.getSecurityIdentifier());
     }

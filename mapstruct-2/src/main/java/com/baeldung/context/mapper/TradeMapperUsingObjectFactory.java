@@ -12,12 +12,11 @@ import com.baeldung.context.service.TradeFactory;
 
 @Mapper(uses = TradeFactory.class)
 public abstract class TradeMapperUsingObjectFactory {
+    final Logger logger = LoggerFactory.getLogger(TradeMapperUsingObjectFactory.class);
+
     public static TradeMapperUsingObjectFactory getInstance() {
         return Mappers.getMapper(TradeMapperUsingObjectFactory.class);
     }
 
-    final Logger logger = LoggerFactory.getLogger(TradeMapperUsingObjectFactory.class);
-
-    protected abstract TradeDto toTradeDtoWithSecurityTypeContext(Trade trade, @Context String identifierType);
-
+    protected abstract TradeDto toTradeDto(Trade trade, @Context String identifierType);
 }
