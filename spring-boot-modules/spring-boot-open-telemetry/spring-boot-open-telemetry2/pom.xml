@@ -81,8 +81,8 @@
     </build>
 
     <properties>
-        <spring-boot-dependencies.version>3.4.0</spring-boot-dependencies.version>
-        <micrometer-tracing-version>1.5.0-M3</micrometer-tracing-version>
+        <spring-boot-dependencies.version>3.4.4</spring-boot-dependencies.version>
+        <micrometer-tracing-version>1.4.4</micrometer-tracing-version>
         <otel-exporter-otlp.version>1.39.0</otel-exporter-otlp.version>
         <logback.version>1.5.16</logback.version>
     </properties>

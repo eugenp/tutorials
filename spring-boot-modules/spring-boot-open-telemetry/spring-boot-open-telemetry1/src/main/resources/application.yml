@@ -8,10 +8,6 @@ priceClient:
   baseUrl: http://price-service:8081
 
 management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
   tracing:
     sampling:
       probability: '1.0'
