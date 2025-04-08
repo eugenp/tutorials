@@ -58,7 +58,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.4.2</version>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -85,6 +85,7 @@
         <micrometer-tracing-version>1.4.4</micrometer-tracing-version>
         <otel-exporter-otlp.version>1.39.0</otel-exporter-otlp.version>
         <logback.version>1.5.16</logback.version>
+        <junit-jupiter.version>5.4.2</junit-jupiter.version>
     </properties>
 
 </project>
