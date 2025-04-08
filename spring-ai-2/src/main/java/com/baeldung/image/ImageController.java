@@ -12,7 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.io.InputStream;
 
-
 @RestController
 @RequestMapping("/image")
 public class ImageController {
@@ -21,14 +20,14 @@ public class ImageController {
     private CarCountService carCountService;
 
     @PostMapping("/car-count")
-    public ResponseEntity<?> getCarCounts(@RequestParam("colors") String colors,
-                                          @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<?> getCarCounts(@RequestParam("colors") String colors, @RequestParam("file") MultipartFile file) {
 
         try (InputStream inputStream = file.getInputStream()) {
             var carCount = carCountService.getCarCount(inputStream, file.getContentType(), colors);
             return ResponseEntity.ok(carCount);
         } catch (IOException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error uploading image");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body("Error uploading image");
         }
     }
 

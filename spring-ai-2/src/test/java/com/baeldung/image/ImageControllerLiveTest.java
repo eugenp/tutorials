@@ -17,7 +17,6 @@ import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("image")
 public class ImageControllerLiveTest {
@@ -30,8 +29,8 @@ public class ImageControllerLiveTest {
     @BeforeEach
     void setup() {
         restClient = RestClient.builder()
-                .baseUrl(String.format("http://localhost:%d", port))
-                .build();
+            .baseUrl(String.format("http://localhost:%d", port))
+            .build();
     }
 
     @Test
@@ -49,16 +48,17 @@ public class ImageControllerLiveTest {
         body.add("colors", colors);
 
         CarCount carCount = restClient.post()
-                .uri(uriBuilder -> uriBuilder.path("/image/car-count")
-                        .queryParam("colors", colors)
-                        .build())
-                .contentType(MediaType.MULTIPART_FORM_DATA)
-                .body(body)
-                .retrieve()
-                .body(CarCount.class);
+            .uri(uriBuilder -> uriBuilder.path("/image/car-count")
+                .queryParam("colors", colors)
+                .build())
+            .contentType(MediaType.MULTIPART_FORM_DATA)
+            .body(body)
+            .retrieve()
+            .body(CarCount.class);
 
         assertTrue(carCount.getTotalCount() >= 0);
-        assertTrue(carCount.getCarColorCounts().size() >= 0);
+        assertTrue(carCount.getCarColorCounts()
+            .size() >= 0);
     }
 
 }

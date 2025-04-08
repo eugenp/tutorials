@@ -10,16 +10,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /*
  * Exclude the configurations that are from the shared codebase
-*/
-@SpringBootApplication(
-    exclude = {
-        AnthropicAutoConfiguration.class,
-        BedrockConverseProxyChatAutoConfiguration.class,
-        ChromaVectorStoreAutoConfiguration.class,
-        OllamaAutoConfiguration.class,
-        PgVectorStoreAutoConfiguration.class
-    }
-)
+ */
+@SpringBootApplication(exclude = { AnthropicAutoConfiguration.class, BedrockConverseProxyChatAutoConfiguration.class, ChromaVectorStoreAutoConfiguration.class,
+    OllamaAutoConfiguration.class, PgVectorStoreAutoConfiguration.class })
 public class ImageApplication {
 
     public static void main(String[] args) {
