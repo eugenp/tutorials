@@ -9,8 +9,11 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.logging.Logger;
 public class FoodDelivery {
+
     private static final Logger logger = Logger.getLogger(FoodDelivery.class.getName());
+
     private final String FILE_PATH = "src/main/resources/foodfile.bin";
+
     public FoodDelivery() {
 
     }
@@ -18,14 +21,14 @@ public class FoodDelivery {
     public Food.FoodDelivery buildData() {
         Food.FoodDelivery.Builder foodData = Food.FoodDelivery.newBuilder();
         Food.Menu pizzaMenu = Food.Menu.newBuilder()
-                .putItems("Margherita", 12.99f)
-                .putItems("Pepperoni", 14.99f)
-                .build();
+            .putItems("Margherita", 12.99f)
+            .putItems("Pepperoni", 14.99f)
+            .build();
 
         Food.Menu sushiMenu = Food.Menu.newBuilder()
-                .putItems("Salmon Roll", 10.50f)
-                .putItems("Tuna Roll", 12.33f)
-                .build();
+            .putItems("Salmon Roll", 10.50f)
+            .putItems("Tuna Roll", 12.33f)
+            .build();
 
         foodData.putRestaurants("Pizza Place", pizzaMenu);
         foodData.putRestaurants("Sushi Place", sushiMenu);
@@ -59,12 +62,8 @@ public class FoodDelivery {
         for (Map.Entry<String, Food.Menu> restaurant : restaurants.entrySet()) {
             logger.info(String.format("Restaurant: %s", restaurant.getKey()));
             restaurant.getValue()
-                    .getItemsMap()
-                    .forEach((menuItem, price) ->
-                            logger.info(String.format(" - %s costs $ %.2f", menuItem, price)));
+                .getItemsMap()
+                .forEach((menuItem, price) -> logger.info(String.format(" - %s costs $ %.2f", menuItem, price)));
         }
     }
-
-
-
 }

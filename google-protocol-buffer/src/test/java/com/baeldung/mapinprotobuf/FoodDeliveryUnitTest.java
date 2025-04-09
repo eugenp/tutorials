@@ -19,8 +19,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class FoodDeliveryUnitTest {
+
     private static final String FILE_PATH = "src/main/resources/foodfile.bin";
+
     private final FoodDelivery foodDelivery = new FoodDelivery();
+
     private Food.FoodDelivery testData;
 
     @BeforeEach
@@ -30,9 +33,17 @@ class FoodDeliveryUnitTest {
 
     @Test
     void givenValidData_whenBuildData_thenShouldContainExpectedValues() {
-        assertTrue(testData.getRestaurantsMap().containsKey("Pizza Place"), "Should contain 'Pizza Place'");
-        assertTrue(testData.getRestaurantsMap().containsKey("Sushi Place"), "Should contain 'Sushi Place'");
-        assertEquals(12.99f, testData.getRestaurantsMap().get("Pizza Place").getItemsMap().get("Margherita"),
+        assertTrue(testData
+                .getRestaurantsMap()
+                .containsKey("Pizza Place"), "Should contain 'Pizza Place'");
+        assertTrue(testData
+                .getRestaurantsMap()
+                .containsKey("Sushi Place"), "Should contain 'Sushi Place'");
+        assertEquals(12.99f, testData
+                 .getRestaurantsMap()
+                 .get("Pizza Place")
+                 .getItemsMap()
+                 .get("Margherita"),
                 "Margherita price should be 12.99");
 
     }
@@ -48,7 +59,10 @@ class FoodDeliveryUnitTest {
     void givenSerializedFile_whenDeserialize_thenShouldMatchOriginalData() {
         foodDelivery.serializeToFile(testData);
         Food.FoodDelivery deserializedData = foodDelivery.deserializeFromFile(testData);
-        assertEquals(testData.getRestaurantsMap(), deserializedData.getRestaurantsMap(), "Deserialized data should match the original data");
+        assertEquals(testData
+            .getRestaurantsMap(),
+            deserializedData.getRestaurantsMap(),
+            "Deserialized data should match the original data");
     }
 
     @Test
@@ -61,9 +75,11 @@ class FoodDeliveryUnitTest {
         logger.setUseParentHandlers(false);
         foodDelivery.displayRestaurants(deserializedData);
         List<String> logs = testHandler.getLogs();
-        assertTrue(logs.stream().anyMatch(log -> log.contains("Restaurant: Pizza Place")),
+        assertTrue(logs.stream()
+                        .anyMatch(log -> log.contains("Restaurant: Pizza Place")),
                 "Log should contain 'Restaurant: Pizza Place'");
-        assertTrue(logs.stream().anyMatch(log -> log.contains("Margherita costs $ 12.99")),
+        assertTrue(logs.stream()
+                        .anyMatch(log -> log.contains("Margherita costs $ 12.99")),
                 "Log should contain 'Margherita costs $ 12.99'");
     }
 
