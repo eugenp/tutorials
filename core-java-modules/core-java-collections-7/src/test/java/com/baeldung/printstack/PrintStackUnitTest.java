@@ -67,45 +67,46 @@ class PrintStackUnitTest {
     @Test
     void givenStack_whenUsingIterator_thenPrintStack() {
         Stack<String> stack = new Stack<>();
-        stack.push("A");
-        stack.push("B");
-        stack.push("C");
+        stack.push("10");
+        stack.push("20");
+        stack.push("30");
 
         Iterator<String> iterator = stack.iterator();
         List<String> result = new ArrayList<>();
         while (iterator.hasNext()) {
             result.add(iterator.next());
         }
-        assertEquals(Arrays.asList("A", "B", "C"), result);
+        assertEquals(Arrays.asList("10", "20", "30"), result);
     }
 
     @Test
     void givenStack_whenUsingListIteratorReverseOrder_thenPrintStack() {
         Stack<Integer> stack = new Stack<>();
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
 
         ListIterator<Integer> iterator = stack.listIterator(stack.size());
         List<Integer> result = new ArrayList<>();
         while (iterator.hasPrevious()) {
             result.add(iterator.previous());
         }
-        assertEquals(Arrays.asList(3, 2, 1), result);
+        assertEquals(Arrays.asList(30, 20, 10), result);
     }
 
     @Test
     void givenStack_whenUsingDeque_thenPrintStack() {
         Deque<Integer> stack = new ArrayDeque<>();
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
 
         StringBuilder result = new StringBuilder();
         stack.forEach(value -> result.append(value)
             .append(" "));
 
-        assertEquals("3 2 1", result.toString()
+        System.out.print(result.toString().trim());
+        assertEquals("30 20 10", result.toString()
             .trim());
     }
 }
