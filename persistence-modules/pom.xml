@@ -144,6 +144,7 @@
         <module>hibernate-reactive</module>
         <module>my-sql</module>
         <module>spring-data-envers</module>
+        <module>jdbc-cp</module>
     </modules>
 
     <properties>
