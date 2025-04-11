@@ -1,112 +1,53 @@
 package com.baeldung.printstack;
 
+import static com.github.stefanbirkner.systemlambda.SystemLambda.tapSystemOut;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import com.baeldung.PrintStack;
 
 class PrintStackUnitTest {
 
     @Test
-    void givenStack_whenUsingToString_thenPrintStack() {
-        Stack<Integer> stack = new Stack<>();
-        stack.push(10);
-        stack.push(20);
-        stack.push(30);
-        assertEquals("[10, 20, 30]", stack.toString());
+    void givenStack_whenUsingToString_thenPrintStack() throws Exception {
+        String output = tapSystemOut(() -> PrintStack.givenStack_whenUsingToString_thenPrintStack());
+        assertEquals("[10, 20, 30]", output);
     }
 
     @Test
-    void givenStack_whenUsingForEach_thenPrintStack() {
-        Stack<Integer> stack = new Stack<>();
-        stack.push(10);
-        stack.push(20);
-        stack.push(30);
-
-        List<Integer> result = new ArrayList<>();
-        for (Integer value : stack) {
-            result.add(value);
-        }
-        assertEquals(Arrays.asList(10, 20, 30), result);
+    void givenStack_whenUsingForEach_thenPrintStack() throws Exception {
+        String output = tapSystemOut(() -> PrintStack.givenStack_whenUsingForEach_thenPrintStack());
+        assertEquals("10 20 30 ", output);
     }
 
     @Test
-    void givenStack_whenUsingDirectForEach_thenPrintStack() {
-        Stack<Integer> stack = new Stack<>();
-        stack.push(10);
-        stack.push(20);
-        stack.push(30);
-
-        StringBuilder result = new StringBuilder();
-        stack.forEach(element -> result.append(element)
-            .append("\n"));
-
-        String expectedOutput = "10\n20\n30";
-        assertEquals(expectedOutput, result.toString()
-            .trim());
+    void givenStack_whenUsingDirectForEach_thenPrintStack() throws Exception {
+        String output = tapSystemOut(() -> PrintStack.givenStack_whenUsingDirectForEach_thenPrintStack());
+        assertEquals("10\n20\n30\n", output.replace("\r\n", "\n"));
     }
 
     @Test
-    void givenStack_whenUsingStreamReverse_thenPrintStack() {
-        Stack<Integer> stack = new Stack<>();
-        stack.push(10);
-        stack.push(20);
-        stack.push(30);
-
-        String result = stack.stream()
-            .sorted(Comparator.reverseOrder())
-            .map(String::valueOf)
-            .collect(Collectors.joining("\n"));
-
-        String expectedOutput = "30\n20\n10";
-        assertEquals(expectedOutput, result);
+    void givenStack_whenUsingStreamReverse_thenPrintStack() throws Exception {
+        String output = tapSystemOut(() -> PrintStack.givenStack_whenUsingStreamReverse_thenPrintStack());
+        assertEquals("30\n20\n10\n", output.replace("\r\n", "\n"));
     }
 
     @Test
-    void givenStack_whenUsingIterator_thenPrintStack() {
-        Stack<String> stack = new Stack<>();
-        stack.push("10");
-        stack.push("20");
-        stack.push("30");
-
-        Iterator<String> iterator = stack.iterator();
-        List<String> result = new ArrayList<>();
-        while (iterator.hasNext()) {
-            result.add(iterator.next());
-        }
-        assertEquals(Arrays.asList("10", "20", "30"), result);
+    void givenStack_whenUsingIterator_thenPrintStack() throws Exception {
+        String output = tapSystemOut(() -> PrintStack.givenStack_whenUsingIterator_thenPrintStack());
+        assertEquals("10 20 30 ", output);
     }
 
     @Test
-    void givenStack_whenUsingListIteratorReverseOrder_thenPrintStack() {
-        Stack<Integer> stack = new Stack<>();
-        stack.push(10);
-        stack.push(20);
-        stack.push(30);
-
-        ListIterator<Integer> iterator = stack.listIterator(stack.size());
-        List<Integer> result = new ArrayList<>();
-        while (iterator.hasPrevious()) {
-            result.add(iterator.previous());
-        }
-        assertEquals(Arrays.asList(30, 20, 10), result);
+    void givenStack_whenUsingListIteratorReverseOrder_thenPrintStack() throws Exception {
+        String output = tapSystemOut(() -> PrintStack.givenStack_whenUsingListIteratorReverseOrder_thenPrintStack());
+        assertEquals("30 20 10 ", output);
     }
 
     @Test
-    void givenStack_whenUsingDeque_thenPrintStack() {
-        Deque<Integer> stack = new ArrayDeque<>();
-        stack.push(10);
-        stack.push(20);
-        stack.push(30);
-
-        StringBuilder result = new StringBuilder();
-        stack.forEach(value -> result.append(value)
-            .append(" "));
-
-        System.out.print(result.toString().trim());
-        assertEquals("30 20 10", result.toString()
-            .trim());
+    void givenStack_whenUsingDeque_thenPrintStack() throws Exception {
+        String output = tapSystemOut(() -> PrintStack.givenStack_whenUsingDeque_thenPrintStack());
+        assertEquals("30 20 10 ", output);
     }
 }
