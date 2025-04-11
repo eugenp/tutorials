@@ -13,7 +13,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-class BacktrackingTest {
+class BacktrackingUnitTest {
 
     private static Stream<Arguments> equationsWithNoSolutions() {
         return Stream.of(Arguments.of("3456237490", 9191), Arguments.of("5", 0));
@@ -27,8 +27,11 @@ class BacktrackingTest {
     }
 
     private static Stream<Arguments> equationsWithValidSolutions() {
-        return Stream.of(Arguments.of("123", 6, Arrays.asList("1+2+3", "1*2*3")), Arguments.of("232", 8, Arrays.asList("2*3+2", "2+3*2")),
-            Arguments.of("1010", 20, Collections.singletonList("10+10")));
+        return Stream.of(Arguments.of("1", 1, Collections.singletonList("1")), Arguments.of("00", 0, Arrays.asList("0+0", "0-0", "0*0")),
+            Arguments.of("123", 6, Arrays.asList("1+2+3", "1*2*3")), Arguments.of("232", 8, Arrays.asList("2*3+2", "2+3*2")),
+            Arguments.of("534", -7, Collections.singletonList("5-3*4")), Arguments.of("1010", 20, Collections.singletonList("10+10")),
+            Arguments.of("1234", 10, Arrays.asList("1+2+3+4", "1*2*3+4")), Arguments.of("1234", -10, Collections.singletonList("1*2-3*4")),
+            Arguments.of("12345", 15, Arrays.asList("1+2+3+4+5", "1*2*3+4+5", "1-2*3+4*5", "1+23-4-5")));
     }
 
     @ParameterizedTest
