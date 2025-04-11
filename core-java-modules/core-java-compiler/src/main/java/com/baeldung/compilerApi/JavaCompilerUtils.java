@@ -12,10 +12,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 
-/**
- * A utility class for compiling Java source code using the Java Compiler API.
- * This class provides methods to compile Java code from strings or files.
- */
 public class JavaCompilerUtils {
 
     private final JavaCompiler compiler;
@@ -24,12 +20,6 @@ public class JavaCompilerUtils {
 
     private static final Logger logger = LoggerFactory.getLogger(JavaCompilerUtils.class);
 
-    /**
-     * Constructs a new JavaCompilerUtil instance.
-     *
-     * @param outputDirectory The directory where compiled classes will be stored
-     * @throws IOException If there's an error creating the output directory
-     */
     public JavaCompilerUtils(Path outputDirectory) throws IOException {
         this.outputDirectory = outputDirectory;
         this.compiler = ToolProvider.getSystemJavaCompiler();
@@ -40,21 +30,13 @@ public class JavaCompilerUtils {
 
         this.standardFileManager = compiler.getStandardFileManager(null, null, StandardCharsets.UTF_8);
 
-        // Create output directory if it doesn't exist
         if (!Files.exists(outputDirectory)) {
             Files.createDirectories(outputDirectory);
         }
 
-        // Set output directory for compiled classes
         standardFileManager.setLocation(StandardLocation.CLASS_OUTPUT, Collections.singleton(outputDirectory.toFile()));
     }
 
-    /**
-     * Compiles a Java source file.
-     *
-     * @param sourceFile The Java source file to compile
-     * @return true if compilation was successful, false otherwise
-     */
     public boolean compileFile(Path sourceFile) {
         if (!Files.exists(sourceFile)) {
             throw new IllegalArgumentException("Source file does not exist: " + sourceFile);
@@ -70,52 +52,32 @@ public class JavaCompilerUtils {
         }
     }
 
-    /**
-     * Compiles Java source code from a string.
-     *
-     * @param className The name of the class (including package if any)
-     * @param sourceCode The Java source code as a string
-     * @return true if compilation was successful, false otherwise
-     */
     public boolean compileFromString(String className, String sourceCode) {
         JavaFileObject sourceObject = new InMemoryJavaFile(className, sourceCode);
         return compile(Collections.singletonList(sourceObject));
     }
 
-    /**
-     * Common compilation method used by both compileFile and compileFromString.
-     *
-     * @param compilationUnits The compilation units to compile
-     * @return true if compilation was successful, false otherwise
-     */
     private boolean compile(Iterable<? extends JavaFileObject> compilationUnits) {
         DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<>();
 
         JavaCompiler.CompilationTask task = compiler.getTask(
-                null,                    // Writer for compiler output
-                standardFileManager,        // File manager
-                diagnostics,                // Diagnostic listener
-                null,                       // Compiler options
-                null,                       // Classes to be processed by annotation processors
-                compilationUnits            // Compilation units
+                null,
+                standardFileManager,
+                diagnostics,
+                null,
+                null,
+                compilationUnits
         );
 
         boolean success = task.call();
 
-        // Print compilation diagnostics
         for (Diagnostic<? extends JavaFileObject> diagnostic : diagnostics.getDiagnostics()) {
             logger.debug(diagnostic.getMessage(null));
         }
 
         return success;
     }
-    /**
-     * Loads and executes the main method of a compiled class, capturing and returning the output.
-     *
-     * @param className The fully qualified name of the class to run
-     * @param args Arguments to pass to the main method
-     * @throws Exception If there's an error loading or executing the class
-     */
+
     public void runClass(String className, String... args) throws Exception {
         try (URLClassLoader classLoader = new URLClassLoader(new URL[]{outputDirectory.toUri().toURL()})) {
             Class<?> loadedClass = classLoader.loadClass(className);
@@ -123,11 +85,6 @@ public class JavaCompilerUtils {
         }
     }
 
-    /**
-     * Returns the output directory where compiled classes are stored.
-     *
-     * @return The output directory path
-     */
     public Path getOutputDirectory() {
         return outputDirectory;
     }
