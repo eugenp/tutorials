@@ -9,7 +9,7 @@ import org.objenesis.ObjenesisHelper;
 import org.objenesis.ObjenesisSerializer;
 import org.objenesis.ObjenesisStd;
 
-public class ObjenesisTest {
+public class ObjenesisUnitTest {
 
     @Test
     void givenObjenesisStd_whenCreatingUser_thenObjectIsCreatedWithoutConstructor() {
