@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: product-service
+server:
+  port: '8080'
+
+priceClient:
+  baseUrl: http://price-service:8081
+
+management:
+  tracing:
+    sampling:
+      probability: '1.0'
+  otlp:
+    tracing:
+      endpoint: http://collector:4318/v1/traces
