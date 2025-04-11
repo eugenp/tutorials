@@ -28,13 +28,13 @@
         <dependency>
             <groupId>com.github.stefanbirkner</groupId>
             <artifactId>system-lambda</artifactId>
-            <version>${system.lambda.version}</version>
+            <version>${system-lambda-version}</version>
         </dependency>
     </dependencies>
 
     <properties>
         <gdata.version>1.47.1</gdata.version>
-        <system.lambda.version>1.2.1</system.lambda.version>
+        <system-lambda-version>1.2.1</system-lambda-version>
     </properties>
 
 </project>
