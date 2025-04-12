@@ -19,9 +19,9 @@ public class ConnectionHandler extends Thread {
 
     @Override
     public void run() {
-        try {
+        try (ClientConnection client = this.clientConnection) {
             String request;
-            while ((request = clientConnection.getReader()
+            while ((request = client.getReader()
                 .readLine()) != null) {
                 Thread.sleep(1000); // simulate server doing work
                 logger.info("Processing request: {}", request);
@@ -31,14 +31,6 @@ public class ConnectionHandler extends Thread {
             }
         } catch (Exception e) {
             logger.error("Error processing request", e);
-        } finally {
-            try {
-                clientConnection.close();
-                logger.info("Client disconnected: " + clientConnection.getSocket()
-                    .getInetAddress());
-            } catch (IOException e) {
-                logger.error("Error closing client socket", e);
-            }
         }
     }
 }
