@@ -32,7 +32,7 @@ public class ConnectionHandler extends Thread {
                 logger.info("Processed request: {}", request);
             }
         } catch (Exception e) {
-            logger.error("Error processing request: {}", e.getMessage());
+            logger.error("Error processing request: {}", e);
         } finally {
             try {
                 socket.close();
