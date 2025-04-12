@@ -7,6 +7,8 @@ import java.net.Socket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.baeldung.threading.ClientConnection;
+
 public class ThreadPerConnectionServer {
 
     private static final Logger logger = LoggerFactory.getLogger(ThreadPerConnectionServer.class);
@@ -18,15 +20,16 @@ public class ThreadPerConnectionServer {
             logger.info("Server started on port {}", PORT);
             while (!serverSocket.isClosed()) {
                 try {
-                    Socket clientSocket = serverSocket.accept();
-                    logger.info("New client connected: {}", clientSocket.getInetAddress());
-                    new ConnectionHandler(clientSocket).start();
+                    Socket newClient = serverSocket.accept();
+                    logger.info("New client connected: {}", newClient.getInetAddress());
+                    ClientConnection clientConnection = new ClientConnection(newClient);
+                    new ConnectionHandler(clientConnection).start();
                 } catch (IOException e) {
-                    logger.error("Error accepting connection: {}", e.getMessage());
+                    logger.error("Error accepting connection", e);
                 }
             }
         } catch (IOException e) {
-            logger.error("Error starting server: {}", e.getMessage());
+            logger.error("Error starting server", e);
         }
     }
 }

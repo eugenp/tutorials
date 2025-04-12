@@ -2,7 +2,6 @@ package com.baeldung.threading.request;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
@@ -13,66 +12,76 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.baeldung.threading.ClientConnection;
+
 public class ThreadPerRequestServer {
 
     private static final Logger logger = LoggerFactory.getLogger(ThreadPerRequestServer.class);
-
     private static final int PORT = 8080;
 
     public static void main(String[] args) {
-        List<Socket> clientSockets = new ArrayList<>();
+        List<ClientConnection> clientConnections = new ArrayList<>();
 
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             logger.info("Server started on port {}", PORT);
 
             while (!serverSocket.isClosed()) {
-                acceptNewConnections(serverSocket, clientSockets);
-                handleRequests(clientSockets);
+                acceptNewConnections(serverSocket, clientConnections);
+                handleRequests(clientConnections);
             }
 
         } catch (IOException e) {
-            logger.error("Server error: {}", e.getMessage());
+            logger.error("Server error", e);
         } finally {
-            closeClientSockets(clientSockets);
+            closeClientConnection(clientConnections);
         }
     }
 
-    private static void handleRequests(List<Socket> clientSockets) throws IOException {
-        Iterator<Socket> iterator = clientSockets.iterator();
-        while (iterator.hasNext()) {
-            Socket clientSocket = iterator.next();
-            if (clientSocket.isClosed()) {
-                logger.info("Client disconnected: {}", clientSocket.getInetAddress());
-                iterator.remove();
-                continue;
-            }
-            BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            String request;
-            if ((reader.ready()) && (request = reader.readLine()) != null) {
-                new RequestHandler(clientSocket, request).start();
-            }
-        }
-    }
-
-    private static void acceptNewConnections(ServerSocket serverSocket, List<Socket> clientSockets) throws SocketException {
+    private static void acceptNewConnections(ServerSocket serverSocket, List<ClientConnection> clientConnections) throws SocketException {
         serverSocket.setSoTimeout(100);
         try {
             Socket newClient = serverSocket.accept();
-            clientSockets.add(newClient);
+            ClientConnection clientConnection = new ClientConnection(newClient);
+            clientConnections.add(clientConnection);
             logger.info("New client connected: {}", newClient.getInetAddress());
         } catch (IOException ignored) {
-            // ignored
         }
     }
 
-    private static void closeClientSockets(List<Socket> clientSockets) {
-        for (Socket socket : clientSockets) {
+    private static void handleRequests(List<ClientConnection> clientConnections) {
+        Iterator<ClientConnection> iterator = clientConnections.iterator();
+        while (iterator.hasNext()) {
+            ClientConnection client = iterator.next();
+
+            if (client.getSocket()
+                .isClosed()) {
+                logger.info("Client disconnected: {}", client.getSocket()
+                    .getInetAddress());
+                iterator.remove();
+                continue;
+            }
+
             try {
-                if (!socket.isClosed()) {
-                    socket.close();
+                BufferedReader reader = client.getReader();
+                if (reader.ready()) {
+                    String request = reader.readLine();
+                    if (request != null) {
+                        new RequestHandler(client.getWriter(), request).start();
+                    }
                 }
             } catch (IOException e) {
-                logger.error("Error closing client socket: {}", e.getMessage());
+                logger.error("Error reading from client {}", client.getSocket()
+                    .getInetAddress(), e);
+            }
+        }
+    }
+
+    private static void closeClientConnection(List<ClientConnection> clientConnections) {
+        for (ClientConnection client : clientConnections) {
+            try {
+                client.close();
+            } catch (IOException e) {
+                logger.error("Error closing client connection", e);
             }
         }
     }
