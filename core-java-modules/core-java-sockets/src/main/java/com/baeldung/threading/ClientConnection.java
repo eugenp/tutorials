@@ -5,6 +5,8 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.io.Reader;
+import java.io.Writer;
 import java.net.Socket;
 
 public class ClientConnection implements Closeable {
@@ -33,8 +35,8 @@ public class ClientConnection implements Closeable {
 
     @Override
     public void close() throws IOException {
-        this.writer.close();
-        this.reader.close();
-        this.socket.close();
+        try (Writer writer = this.writer; Reader reader = this.reader; Socket socket = this.socket) {
+            // resources all closed when this block exits
+        }
     }
 }

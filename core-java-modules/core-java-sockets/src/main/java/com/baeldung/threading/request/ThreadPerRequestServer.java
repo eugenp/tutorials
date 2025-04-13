@@ -45,6 +45,7 @@ public class ThreadPerRequestServer {
             clientConnections.add(clientConnection);
             logger.info("New client connected: {}", newClient.getInetAddress());
         } catch (IOException ignored) {
+            // ignore expected socket timeout
         }
     }
 
@@ -66,7 +67,7 @@ public class ThreadPerRequestServer {
                 if (reader.ready()) {
                     String request = reader.readLine();
                     if (request != null) {
-                        new RequestHandler(client.getWriter(), request).start();
+                        new ThreadPerRequest(client.getWriter(), request).start();
                     }
                 }
             } catch (IOException e) {

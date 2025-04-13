@@ -23,7 +23,7 @@ public class ThreadPerConnectionServer {
                     Socket newClient = serverSocket.accept();
                     logger.info("New client connected: {}", newClient.getInetAddress());
                     ClientConnection clientConnection = new ClientConnection(newClient);
-                    new ConnectionHandler(clientConnection).start();
+                    new ThreadPerConnection(clientConnection).start();
                 } catch (IOException e) {
                     logger.error("Error accepting connection", e);
                 }

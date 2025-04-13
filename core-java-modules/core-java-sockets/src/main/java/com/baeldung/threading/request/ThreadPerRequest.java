@@ -5,14 +5,14 @@ import java.io.PrintWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class RequestHandler extends Thread {
+public class ThreadPerRequest extends Thread {
 
-    private static final Logger logger = LoggerFactory.getLogger(RequestHandler.class);
+    private static final Logger logger = LoggerFactory.getLogger(ThreadPerRequest.class);
 
     private final PrintWriter writer;
     private final String request;
 
-    public RequestHandler(PrintWriter writer, String request) {
+    public ThreadPerRequest(PrintWriter writer, String request) {
         this.writer = writer;
         this.request = request;
     }

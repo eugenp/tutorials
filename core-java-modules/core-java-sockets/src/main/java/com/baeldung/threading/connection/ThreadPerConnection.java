@@ -1,19 +1,17 @@
 package com.baeldung.threading.connection;
 
-import java.io.IOException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.baeldung.threading.ClientConnection;
 
-public class ConnectionHandler extends Thread {
+public class ThreadPerConnection extends Thread {
 
-    private static final Logger logger = LoggerFactory.getLogger(ConnectionHandler.class);
+    private static final Logger logger = LoggerFactory.getLogger(ThreadPerConnection.class);
 
     private final ClientConnection clientConnection;
 
-    public ConnectionHandler(ClientConnection clientConnection) {
+    public ThreadPerConnection(ClientConnection clientConnection) {
         this.clientConnection = clientConnection;
     }
 
