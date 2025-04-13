@@ -20,18 +20,18 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable()) // Disable CSRF protection completely
-            .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers(new AntPathRequestMatcher("/auth/**")).permitAll()
-                .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
-                .requestMatchers(HttpMethod.GET, "/posts/mine").hasRole("USER")
-                .requestMatchers(HttpMethod.POST, "/posts/create").hasRole("USER")
-                .requestMatchers(HttpMethod.PUT, "/posts/**").hasRole("USER")
-                .requestMatchers(HttpMethod.DELETE, "/posts/**").hasAnyRole("USER", "ADMIN")
-                .anyRequest().authenticated()
-            )
-            .httpBasic(Customizer.withDefaults());
+          .csrf(csrf -> csrf.disable()) // Disable CSRF protection completely
+          .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
+          .authorizeHttpRequests(auth -> auth
+            .requestMatchers(new AntPathRequestMatcher("/auth/**")).permitAll()
+            .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
+            .requestMatchers(HttpMethod.GET, "/posts/mine").hasRole("USER")
+            .requestMatchers(HttpMethod.POST, "/posts/create").hasRole("USER")
+            .requestMatchers(HttpMethod.PUT, "/posts/**").hasRole("USER")
+            .requestMatchers(HttpMethod.DELETE, "/posts/**").hasAnyRole("USER", "ADMIN")
+            .anyRequest().authenticated()
+          )
+        .httpBasic(Customizer.withDefaults());
 
         return http.build();
     }
