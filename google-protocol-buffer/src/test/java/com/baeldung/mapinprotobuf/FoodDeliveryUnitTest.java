@@ -1,6 +1,5 @@
 package com.baeldung.mapinprotobuf;
 
-import com.baeldung.generated.Food;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,8 +13,12 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 import org.junit.jupiter.api.TestInstance;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import com.baeldung.generated.Food;
+import com.baeldung.mapinprotobuf.FoodDelivery;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class FoodDeliveryUnitTest {
@@ -33,18 +36,14 @@ class FoodDeliveryUnitTest {
 
     @Test
     void givenValidData_whenBuildData_thenShouldContainExpectedValues() {
-        assertTrue(testData
-                .getRestaurantsMap()
-                .containsKey("Pizza Place"), "Should contain 'Pizza Place'");
-        assertTrue(testData
-                .getRestaurantsMap()
-                .containsKey("Sushi Place"), "Should contain 'Sushi Place'");
-        assertEquals(12.99f, testData
-                 .getRestaurantsMap()
-                 .get("Pizza Place")
-                 .getItemsMap()
-                 .get("Margherita"),
-                "Margherita price should be 12.99");
+        assertTrue(testData.getRestaurantsMap()
+            .containsKey("Pizza Place"), "Should contain 'Pizza Place'");
+        assertTrue(testData.getRestaurantsMap()
+            .containsKey("Sushi Place"), "Should contain 'Sushi Place'");
+        assertEquals(12.99f, testData.getRestaurantsMap()
+            .get("Pizza Place")
+            .getItemsMap()
+            .get("Margherita"), "Margherita price should be 12.99");
 
     }
 
@@ -59,10 +58,7 @@ class FoodDeliveryUnitTest {
     void givenSerializedFile_whenDeserialize_thenShouldMatchOriginalData() {
         foodDelivery.serializeToFile(testData);
         Food.FoodDelivery deserializedData = foodDelivery.deserializeFromFile(testData);
-        assertEquals(testData
-            .getRestaurantsMap(),
-            deserializedData.getRestaurantsMap(),
-            "Deserialized data should match the original data");
+        assertEquals(testData.getRestaurantsMap(), deserializedData.getRestaurantsMap(), "Deserialized data should match the original data");
     }
 
     @Test
@@ -76,11 +72,9 @@ class FoodDeliveryUnitTest {
         foodDelivery.displayRestaurants(deserializedData);
         List<String> logs = testHandler.getLogs();
         assertTrue(logs.stream()
-                        .anyMatch(log -> log.contains("Restaurant: Pizza Place")),
-                "Log should contain 'Restaurant: Pizza Place'");
+            .anyMatch(log -> log.contains("Restaurant: Pizza Place")), "Log should contain 'Restaurant: Pizza Place'");
         assertTrue(logs.stream()
-                        .anyMatch(log -> log.contains("Margherita costs $ 12.99")),
-                "Log should contain 'Margherita costs $ 12.99'");
+            .anyMatch(log -> log.contains("Margherita costs $ 12.99")), "Log should contain 'Margherita costs $ 12.99'");
     }
 
     @AfterAll
@@ -92,15 +86,24 @@ class FoodDeliveryUnitTest {
     }
 
     static class TestLogHandler extends Handler {
+
         private final List<String> logMessages = new ArrayList<>();
+
         @Override
         public void publish(LogRecord record) {
-            if (record.getLevel().intValue() >= Level.INFO.intValue()) {
+            if (record.getLevel()
+                .intValue() >= Level.INFO.intValue()) {
                 logMessages.add(record.getMessage());
             }
         }
-        @Override public void flush() {}
-        @Override public void close() throws SecurityException {}
+
+        @Override
+        public void flush() {
+        }
+
+        @Override
+        public void close() throws SecurityException {
+        }
 
         public List<String> getLogs() {
             return logMessages;

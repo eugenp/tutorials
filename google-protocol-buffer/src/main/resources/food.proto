@@ -8,6 +8,6 @@ message Menu {
   map<string, float> items = 1;
 }
 
-message FoodDelivery {
+message FoodDelivery{
   map<string, Menu> restaurants = 1;
 }
