@@ -1,4 +1,4 @@
-package com.baeldung.monitoring;
+package com.baeldung.kafka.monitoring;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;

@@ -1,4 +1,4 @@
-package com.baeldung.monitoring;
+package com.baeldung.kafka.monitoring;
 
 import java.util.logging.Logger;
 
@@ -10,7 +10,10 @@ public class ArticleCommentsListener {
 
     private static final Logger log = Logger.getLogger(ArticleCommentsListener.class.getName());
 
-    @KafkaListener(topics = "baeldung.article-comment.added")
+    @KafkaListener(
+        topics = "baeldung.article-comment.added",
+        containerFactory = "customKafkaListenerContainerFactory"
+    )
     public void onArticleComment(ArticleCommentAddedEvent event) {
         log.info("Comment added: " + event);
         // some logic here...
