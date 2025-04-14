@@ -13,7 +13,7 @@ import io.dapr.spring.messaging.DaprMessagingTemplate;
 public class DaprPublisherConfig {
 
     @Bean
-    public DaprMessagingTemplate<Order> messagingTemplate(DaprClient daprClient,
+    public DaprMessagingTemplate<RideRequest> messagingTemplate(DaprClient daprClient,
             DaprPubSubProperties daprPubSubProperties) {
         return new DaprMessagingTemplate<>(daprClient, daprPubSubProperties.getName(), false);
     }

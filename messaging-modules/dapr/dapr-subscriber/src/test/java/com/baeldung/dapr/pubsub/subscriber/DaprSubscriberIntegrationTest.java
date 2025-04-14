@@ -21,19 +21,17 @@ import io.dapr.testcontainers.DaprContainer;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 
-@SpringBootTest(classes = { DaprSubscriberTestApp.class, DaprTestContainersConfig.class,
-        DaprSubscriberTestConfig.class,
-        DaprAutoConfiguration.class }, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@SpringBootTest(classes = { DaprSubscriberTestApp.class, DaprTestContainersConfig.class, DaprSubscriberTestConfig.class, DaprAutoConfiguration.class }, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 class DaprSubscriberIntegrationTest {
 
     private static final Logger logger = LoggerFactory.getLogger(DaprSubscriberIntegrationTest.class);
     private static final String SUBSCRIPTION_MESSAGE_PATTERN = ".*app is subscribed to the following topics.*";
 
     @Autowired
-    private DaprMessagingTemplate<Order> messaging;
+    private DaprMessagingTemplate<RideRequest> messaging;
 
     @Autowired
-    private SubscriberRestController subscriberRestController;
+    private DriverRestController controller;
 
     @Autowired
     private DaprContainer daprContainer;
@@ -56,15 +54,16 @@ class DaprSubscriberIntegrationTest {
 
     @Test
     void testMessageConsumer() {
-        messaging.send("topic", new Order("abc-123", "the mars volta LP", 1));
+        RideRequest ride = new RideRequest("abc-123", "Point A", "Point East Side B");
+        messaging.send(DriverRestController.RIDE_REQUESTS_TOPIC, ride);
 
         given().contentType(ContentType.JSON)
-                .when()
-                .get("/events")
-                .then()
-                .statusCode(200);
+            .when()
+            .get("/driver/accepted-rides")
+            .then()
+            .statusCode(200);
 
-        await().atMost(Duration.ofSeconds(10))
-                .until(subscriberRestController.getAllEvents()::size, equalTo(1));
+        await().atMost(Duration.ofSeconds(5))
+            .until(controller::getDrivesAccepted, equalTo(1));
     }
 }

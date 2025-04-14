@@ -2,8 +2,9 @@ package com.baeldung.dapr.pubsub.publisher;
 
 import static io.restassured.RestAssured.given;
 import static org.awaitility.Awaitility.await;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThanOrEqualTo;
+import static org.hamcrest.Matchers.is;
 
 import java.time.Duration;
 
@@ -28,13 +29,16 @@ class DaprPublisherIntegrationTest {
     private static final String SUBSCRIPTION_MESSAGE_PATTERN = ".*app is subscribed to the following topics.*";
 
     @Autowired
-    private TestSubscriberRestController controller;
+    private DriverRestController controller;
 
     @Autowired
     private DaprContainer daprContainer;
 
     @Value("${server.port}")
     public int serverPort;
+
+    @Value("${driver.acceptance.criteria}")
+    public String driverAcceptanceCriteria;
 
     @BeforeEach
     void setUp() {
@@ -48,54 +52,59 @@ class DaprPublisherIntegrationTest {
     }
 
     @Test
-    void testOrdersEndpointAndMessaging() {
+    void test0() {
         given().contentType(ContentType.JSON)
-            .body("{ \"id\": \"abc-123\",\"item\": \"the mars volta LP\",\"amount\": 1}")
+            .body("""
+                {
+                    "passengerId": "abc-123",
+                    "location": "Point A",
+                    "destination": "Fuck Point B"
+                }
+                """)
             .when()
-            .post("/orders")
+            .post("/passenger/request-ride")
             .then()
             .statusCode(200);
 
-        await().atMost(Duration.ofSeconds(15))
-            .until(controller.getAllEvents()::size, equalTo(1));
+        await().atMost(Duration.ofSeconds(5))
+            .until(controller::getDrivesAccepted, is(equalTo(1)));
+    }
 
+    @Test
+    void test1() {
         given().contentType(ContentType.JSON)
+            .body("""
+                {
+                "passengerId": "abc-123",
+                "location": "Point A",
+                "destination": "%s Point B"
+                }
+                """.formatted(driverAcceptanceCriteria))
             .when()
-            .get("/orders")
+            .post("/passenger/request-ride")
             .then()
-            .statusCode(200)
-            .body("size()", is(1));
+            .statusCode(200);
 
-        given().contentType(ContentType.JSON)
-            .when()
-            .queryParam("item", "the mars volta LP")
-            .get("/orders/byItem/")
-            .then()
-            .statusCode(200)
-            .body("size()", is(1));
+        await().atMost(Duration.ofSeconds(5))
+            .until(controller::getDrivesAccepted, is(greaterThanOrEqualTo(0)));
+    }
 
+    @Test
+    void test2() {
         given().contentType(ContentType.JSON)
+            .body("""
+                {
+                "passengerId": "abc-123",
+                "location": "Point A",
+                "destination": "No Point B"
+                }
+                """.formatted(driverAcceptanceCriteria))
             .when()
-            .queryParam("item", "other")
-            .get("/orders/byItem/")
+            .post("/passenger/request-ride")
             .then()
-            .statusCode(200)
-            .body("size()", is(0));
+            .statusCode(200);
 
-        given().contentType(ContentType.JSON)
-            .when()
-            .queryParam("amount", 1)
-            .get("/orders/byAmount/")
-            .then()
-            .statusCode(200)
-            .body("size()", is(1));
-
-        given().contentType(ContentType.JSON)
-            .when()
-            .queryParam("amount", 2)
-            .get("/orders/byAmount/")
-            .then()
-            .statusCode(200)
-            .body("size()", is(0));
+        await().atMost(Duration.ofSeconds(5))
+            .until(controller::getDrivesAccepted, is(greaterThanOrEqualTo(0)));
     }
 }
