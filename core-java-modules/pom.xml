@@ -256,7 +256,7 @@
         <module>core-java-9-jigsaw</module>
         <!--<module>core-java-20</module>--> <!--JAVA-29040-->
         <module>core-java-21</module>
-        <!--<module>core-java-conditionals</module>--> <!-- JAVA-42035 -->
+        <module>core-java-conditionals</module>
         <module>core-java-collections-set</module>
         <module>core-java-datetime-conversion</module>
         <module>core-java-datetime-conversion-2</module>
