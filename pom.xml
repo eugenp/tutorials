@@ -570,7 +570,7 @@
                 <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
                 <module>spring-di-2</module>
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
-                <module>spring-reactive-modules/spring-reactive-kafka-stream-binder</module>              
+                <module>spring-reactive-modules/spring-reactive-kafka-stream-binder</module>
             </modules>
 
             <properties>
@@ -648,7 +648,6 @@
                 <module>disruptor</module>
                 <module>docker-modules</module>
                 <module>drools</module>
-                <module>dubbo</module>
                 <module>feign</module>
                 <module>gcp-firebase</module>
                 <module>geotools</module>
@@ -660,7 +659,6 @@
                 <module>guava-modules</module>
                 <module>hazelcast</module>
                 <module>heroku</module>
-                <module>hilla</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>image-compressing</module>
@@ -675,7 +673,6 @@
                 <module>javaxval</module>
                 <module>javaxval-2</module>
                 <module>jaxb</module>
-                <module>jdbc-cp</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
@@ -1038,7 +1035,6 @@
                 <module>disruptor</module>
                 <module>docker-modules</module>
                 <module>drools</module>
-                <module>dubbo</module>
                 <module>feign</module>
                 <module>gcp-firebase</module>
                 <module>geotools</module>
@@ -1050,7 +1046,6 @@
                 <module>guava-modules</module>
                 <module>hazelcast</module>
                 <module>heroku</module>
-                <module>hilla</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>image-compressing</module>
@@ -1065,7 +1060,6 @@
                 <module>javaxval</module>
                 <module>javaxval-2</module>
                 <module>jaxb</module>
-                <module>jdbc-cp</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
