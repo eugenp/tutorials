@@ -5,11 +5,15 @@ public class TradeDto {
     private int quantity;
     private double price;
 
+    public TradeDto() {
+    }
+
     public TradeDto(String securityIdentifier, int quantity, double price) {
         this.securityIdentifier = securityIdentifier;
         this.quantity = quantity;
         this.price = price;
     }
+
     public TradeDto(String SecurityIdentifier) {
         this.securityIdentifier = SecurityIdentifier;
     }
