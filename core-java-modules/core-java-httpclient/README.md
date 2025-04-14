@@ -6,3 +6,4 @@ This module contains articles about Java HttpClient
 - [Posting with Java HttpClient](https://www.baeldung.com/java-httpclient-post)
 - [Custom HTTP Header With the Java HttpClient](https://www.baeldung.com/java-http-client-custom-header)
 - [Java HttpClient Connection Management](https://www.baeldung.com/java-httpclient-connection-management)
+- [Java HttpClient Exception-handling Demo](https://github.com/haqer1/java-http-client-demo)
