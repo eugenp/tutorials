@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-networking</artifactId>
     <packaging>jar</packaging>
@@ -74,7 +74,6 @@
         <springframework.spring-web.version>4.3.4.RELEASE</springframework.spring-web.version>
         <apache.httpclient.version>4.5.14</apache.httpclient.version>
         <greenmail.version>2.0.0-alpha-3</greenmail.version>
-        <apache.httpclient5.version>5.3.1</apache.httpclient5.version>
         <async-http-client.version>2.4.5</async-http-client.version>
         <jakarta.bind.version>2.3.3</jakarta.bind.version>
         <apache.httpclient5.version>5.4.2</apache.httpclient5.version>
