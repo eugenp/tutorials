@@ -39,13 +39,15 @@ public class PostRestClientIntegrationTest {
     @BeforeAll
     static void setup() {
         // Start WireMock server
-        wireMockServer = new WireMockServer(WireMockConfiguration.wireMockConfig()
-          .port(8080));
+        wireMockServer = new WireMockServer(WireMockConfiguration.options().dynamicPort());
         wireMockServer.start();
 
         // Configure WireMock to respond to the API endpoint
         wireMockServer.stubFor(get(urlEqualTo("/posts")).willReturn(aResponse().withHeader("Content-Type", "application/json")
           .withBody("[{\"id\":1,\"title\":\"Post Title 1\",\"description\":\"Post description 1\"}]")));
+
+        // Set system property
+        System.setProperty("quarkus.rest-client.post-api.url", wireMockServer.baseUrl());
     }
 
     @AfterAll

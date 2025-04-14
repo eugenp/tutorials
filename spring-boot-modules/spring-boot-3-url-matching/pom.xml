@@ -15,12 +15,6 @@
     </parent>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>6.2.0</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -60,12 +54,10 @@
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
-            <version>${reactor-core.version}</version>
         </dependency>
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
-            <version>${reactor-core.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -92,9 +84,8 @@
     </build>
 
     <properties>
-        <reactor-core.version>3.6.0</reactor-core.version>
-        <reactor-test.version>3.6.0></reactor-test.version>
-        <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
+        <spring-boot.version>3.4.0</spring-boot.version>
+        <logback.version>1.5.12</logback.version>
     </properties>
 
 </project>

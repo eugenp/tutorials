@@ -4,9 +4,7 @@ This module contains articles about the Java Persistence API (JPA) in Java.
 
 ### Relevant Articles
 
-- [JPA Query Parameters Usage](https://www.baeldung.com/jpa-query-parameters)
 - [Mapping Entity Class Names to SQL Table Names with JPA](https://www.baeldung.com/jpa-entity-table-names)
-- [Default Column Values in JPA](https://www.baeldung.com/jpa-default-column-values)
 - [Types of JPA Queries](https://www.baeldung.com/jpa-queries)
 - [JPA/Hibernate Projections](https://www.baeldung.com/jpa-hibernate-projections)
 - [Combining JPA And/Or Criteria Predicates](https://www.baeldung.com/jpa-and-or-criteria-predicates)
@@ -14,4 +12,4 @@ This module contains articles about the Java Persistence API (JPA) in Java.
 - [Mapping a Single Entity to Multiple Tables in JPA](https://www.baeldung.com/jpa-mapping-single-entity-to-multiple-tables)
 - [Constructing a JPA Query Between Unrelated Entities](https://www.baeldung.com/jpa-query-unrelated-entities)
 - [When Does JPA Set the Primary Key](https://www.baeldung.com/jpa-strategies-when-set-primary-key)
-- More articles: [[<-- prev]](/java-jpa)
+- More articles: [[<-- prev]](/persistence-modules/java-jpa) [[next -->]](/persistence-modules/java-jpa-2)
