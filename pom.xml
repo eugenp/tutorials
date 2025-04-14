@@ -1428,7 +1428,6 @@
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
                 <module>core-java-modules/core-java-classloader</module> <!-- JAVA-42033 -->
-                <module>core-java-modules/core-java-conditionals</module> <!-- JAVA-42035 -->
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
                 <module>spring-boot-modules/spring-boot-3</module> <!-- JAVA-42049 -->
             </modules>
@@ -1497,7 +1496,6 @@
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
                 <module>core-java-modules/core-java-classloader</module> <!-- JAVA-42033 -->
-                <module>core-java-modules/core-java-conditionals</module> <!-- JAVA-42035 -->
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
                 <module>spring-boot-modules/spring-boot-3</module> <!-- JAVA-42049 -->
             </modules>
