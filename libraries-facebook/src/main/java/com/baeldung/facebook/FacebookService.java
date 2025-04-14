@@ -19,6 +19,8 @@ import org.springframework.stereotype.Service;
 import java.io.InputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Service
 public class FacebookService {
@@ -29,16 +31,19 @@ public class FacebookService {
     @Value("${facebook.app.secret}")
     private String appSecret;
 
+    private static final Logger logger = Logger.getLogger(FacebookService.class.getName());
+
+
     public User getUserProfile() {
         try {
             return facebookClient.fetchObject("me", User.class, Parameter.with("fields", "id,name,email"));
         } catch (FacebookOAuthException e) {
             // Handle expired/invalid token
-            System.err.println("Authentication failed: " + e.getMessage());
+            logger.log(Level.SEVERE,"Authentication failed: " + e.getMessage());
             return null;
         } catch (FacebookResponseContentException e) {
             // General API errors
-            System.err.println("API error: " + e.getMessage());
+            logger.log(Level.SEVERE,"API error: " + e.getMessage());
             return null;
         }
     }
@@ -48,7 +53,8 @@ public class FacebookService {
             Connection<User> friendsConnection = facebookClient.fetchConnection("me/friends", User.class);
             return friendsConnection.getData();
         } catch (Exception e) {
-            System.err.println("Error fetching friends list: " + e.getMessage());
+
+            logger.log(Level.SEVERE,"Error fetching friends list: " + e.getMessage());
             return null;
         }
     }
@@ -58,7 +64,7 @@ public class FacebookService {
             FacebookType response = facebookClient.publish("me/feed", FacebookType.class, Parameter.with("message", message));
             return "Post ID: " + response.getId();
         } catch (Exception e) {
-            System.err.println("Failed to post status: " + e.getMessage());
+            logger.log(Level.SEVERE,"Failed to post status: " + e.getMessage());
             return null;
         }
     }
@@ -67,9 +73,9 @@ public class FacebookService {
         try (InputStream imageStream = getClass().getResourceAsStream("/static/image.jpg")) {
             FacebookType response = facebookClient.publish("me/photos", FacebookType.class, BinaryAttachment.with("image.jpg", imageStream),
                 Parameter.with("message", "Uploaded with RestFB"));
-            System.out.println("Photo uploaded. ID: " + response.getId());
+            logger.log(Level.INFO,"Photo uploaded. ID: " + response.getId());
         } catch (IOException e) {
-            System.err.println("Failed to read image file: " + e.getMessage());
+            logger.log(Level.SEVERE,"Failed to read image file: " + e.getMessage());
         }
     }
 
@@ -83,7 +89,7 @@ public class FacebookService {
 
             return "Page Post ID: " + response.getId();
         } catch (Exception e) {
-            System.err.println("Failed to post to page: " + e.getMessage());
+            logger.log(Level.SEVERE,"Failed to post to page: " + e.getMessage());
             return null;
         }
     }
