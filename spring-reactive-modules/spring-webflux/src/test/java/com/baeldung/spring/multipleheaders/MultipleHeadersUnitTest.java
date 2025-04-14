@@ -21,7 +21,7 @@ import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
 
-public class MultipleHeadersTest {
+public class MultipleHeadersUnitTest {
 
     private static final String RANDOM_UUID = UUID.randomUUID().toString();
 
