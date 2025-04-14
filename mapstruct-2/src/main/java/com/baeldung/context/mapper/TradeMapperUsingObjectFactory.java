@@ -2,15 +2,16 @@ package com.baeldung.context.mapper;
 
 import org.mapstruct.Context;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.baeldung.context.entity.Trade;
 import com.baeldung.context.entity.TradeDto;
-import com.baeldung.context.service.TradeFactory;
+import com.baeldung.context.service.TradeDtoFactory;
 
-@Mapper(uses = TradeFactory.class)
+@Mapper(uses = TradeDtoFactory.class)
 public abstract class TradeMapperUsingObjectFactory {
     final Logger logger = LoggerFactory.getLogger(TradeMapperUsingObjectFactory.class);
 

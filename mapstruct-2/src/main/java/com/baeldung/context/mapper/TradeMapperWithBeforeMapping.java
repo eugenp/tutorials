@@ -13,20 +13,22 @@ import com.baeldung.context.entity.TradeDto;
 import com.baeldung.context.service.SecurityService;
 
 @Mapper
-public abstract class TradeMapperWithContextValue {
-    final Logger logger = LoggerFactory.getLogger(TradeMapperWithContextValue.class);
+public abstract class TradeMapperWithBeforeMapping {
+    final Logger logger = LoggerFactory.getLogger(TradeMapperWithBeforeMapping.class);
 
     protected SecurityService securityService;
 
-    public static TradeMapperWithContextValue getInstance() {
-        return Mappers.getMapper(TradeMapperWithContextValue.class);
+    public static TradeMapperWithBeforeMapping getInstance() {
+        return Mappers.getMapper(TradeMapperWithBeforeMapping.class);
     }
 
     @BeforeMapping
-    protected void initialize() {
-        securityService = new SecurityService();
+    protected void initialize(@Context Integer exchangeCode) {
+        logger.info("initialize(): Initializing SecurityService with identifier type: {}", exchangeCode);
+        securityService = new SecurityService(exchangeCode);
     }
 
     @Mapping(target="securityIdentifier", expression = "java(securityService.getSecurityIdentifierOfType(trade.getSecurityID(), identifierType))")
-    protected abstract TradeDto toTradeDto(Trade trade, @Context String identifierType);
+    protected abstract TradeDto toTradeDto(Trade trade, @Context String identifierType, @Context Integer exchangeCode);
+
 }

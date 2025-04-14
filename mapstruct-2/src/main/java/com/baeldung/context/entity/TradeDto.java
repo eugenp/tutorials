@@ -10,6 +10,9 @@ public class TradeDto {
         this.quantity = quantity;
         this.price = price;
     }
+    public TradeDto(String SecurityIdentifier) {
+        this.securityIdentifier = SecurityIdentifier;
+    }
 
     public String getSecurityIdentifier() {
         return securityIdentifier;

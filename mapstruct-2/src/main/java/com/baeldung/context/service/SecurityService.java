@@ -7,10 +7,14 @@ public class SecurityService {
 
     private final Logger logger = LoggerFactory.getLogger(SecurityService.class);
 
-    public String getSecurityOfTypeIsin(String securityID) {
-        // Simulate fetching security details from a database or external service
-        logger.info("Fetching ISIN for security ID: {}", securityID);
-        return "US0378331005";
+    private Integer exchangeCode;
+
+    public SecurityService() {
+
+    }
+
+    public SecurityService(Integer exchangeCode) {
+        logger.info("SecurityService initialized with identifier type: {}", exchangeCode);
     }
 
     public String getSecurityIdentifierOfType(String securityID, String identifierType) {
@@ -24,5 +28,4 @@ public class SecurityService {
             default -> null;
         };
     }
-
 }
