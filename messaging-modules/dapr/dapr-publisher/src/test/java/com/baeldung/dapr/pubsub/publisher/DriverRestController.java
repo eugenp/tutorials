@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.baeldung.dapr.pubsub.model.RideRequest;
+
 import io.dapr.Topic;
 import io.dapr.client.domain.CloudEvent;
 

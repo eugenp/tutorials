@@ -13,8 +13,8 @@ public class DaprSubscriberTestApp {
 
     public static void main(String[] args) {
         Running app = SpringApplication.from(DaprSubscriberApp::main)
-                .with(DaprTestContainersConfig.class)
-                .run(args);
+            .with(DaprTestContainersConfig.class)
+            .run(args);
 
         int port = app.getApplicationContext()
             .getEnvironment()

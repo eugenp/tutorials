@@ -1,6 +1,5 @@
 package com.baeldung.dapr.pubsub.subscriber;
 
-import static io.restassured.RestAssured.given;
 import static org.awaitility.Awaitility.await;
 import static org.hamcrest.CoreMatchers.equalTo;
 
@@ -15,12 +14,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.testcontainers.containers.wait.strategy.Wait;
 
+import com.baeldung.dapr.pubsub.model.RideRequest;
+
 import io.dapr.spring.messaging.DaprMessagingTemplate;
 import io.dapr.springboot.DaprAutoConfiguration;
 import io.dapr.testcontainers.DaprContainer;
 import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
-
 @SpringBootTest(classes = { DaprSubscriberTestApp.class, DaprTestContainersConfig.class, DaprSubscriberTestConfig.class, DaprAutoConfiguration.class }, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 class DaprSubscriberIntegrationTest {
 
@@ -53,17 +52,24 @@ class DaprSubscriberIntegrationTest {
     }
 
     @Test
-    void testMessageConsumer() {
+    void testAcceptDrive() {
+        int drivesAccepted = controller.getDrivesAccepted();
+
         RideRequest ride = new RideRequest("abc-123", "Point A", "Point East Side B");
         messaging.send(DriverRestController.RIDE_REQUESTS_TOPIC, ride);
 
-        given().contentType(ContentType.JSON)
-            .when()
-            .get("/driver/accepted-rides")
-            .then()
-            .statusCode(200);
+        await().atMost(Duration.ofSeconds(5))
+            .until(controller::getDrivesAccepted, equalTo(drivesAccepted + 1));
+    }
+
+    @Test
+    void testRejectDrive() {
+        int drivesAccepted = controller.getDrivesAccepted();
+
+        RideRequest ride = new RideRequest("abc-123", "Point A", "Point West Side B");
+        messaging.send(DriverRestController.RIDE_REQUESTS_TOPIC, ride);
 
         await().atMost(Duration.ofSeconds(5))
-            .until(controller::getDrivesAccepted, equalTo(1));
+            .until(controller::getDrivesAccepted, equalTo(drivesAccepted));
     }
 }

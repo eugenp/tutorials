@@ -1,4 +1,4 @@
-package com.baeldung.dapr.pubsub.publisher;
+package com.baeldung.dapr.pubsub.model;
 
 public class RideRequest {
     private String passengerId;

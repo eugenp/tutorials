@@ -1,4 +1,4 @@
-package com.baeldung.dapr.pubsub.subscriber;
+package com.baeldung.dapr.pubsub.model;
 
 public class RideRequest {
 

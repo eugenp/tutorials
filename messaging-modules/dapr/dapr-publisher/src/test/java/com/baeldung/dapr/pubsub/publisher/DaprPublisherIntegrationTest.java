@@ -3,7 +3,6 @@ package com.baeldung.dapr.pubsub.publisher;
 import static io.restassured.RestAssured.given;
 import static org.awaitility.Awaitility.await;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.is;
 
 import java.time.Duration;
@@ -52,26 +51,9 @@ class DaprPublisherIntegrationTest {
     }
 
     @Test
-    void test0() {
-        given().contentType(ContentType.JSON)
-            .body("""
-                {
-                    "passengerId": "abc-123",
-                    "location": "Point A",
-                    "destination": "Fuck Point B"
-                }
-                """)
-            .when()
-            .post("/passenger/request-ride")
-            .then()
-            .statusCode(200);
+    void testAcceptDrive() {
+        int drivesAccepted = controller.getDrivesAccepted();
 
-        await().atMost(Duration.ofSeconds(5))
-            .until(controller::getDrivesAccepted, is(equalTo(1)));
-    }
-
-    @Test
-    void test1() {
         given().contentType(ContentType.JSON)
             .body("""
                 {
@@ -86,11 +68,13 @@ class DaprPublisherIntegrationTest {
             .statusCode(200);
 
         await().atMost(Duration.ofSeconds(5))
-            .until(controller::getDrivesAccepted, is(greaterThanOrEqualTo(0)));
+            .until(controller::getDrivesAccepted, is(equalTo(drivesAccepted + 1)));
     }
 
     @Test
-    void test2() {
+    void testRejectDrive() {
+        int drivesAccepted = controller.getDrivesAccepted();
+
         given().contentType(ContentType.JSON)
             .body("""
                 {
@@ -105,6 +89,6 @@ class DaprPublisherIntegrationTest {
             .statusCode(200);
 
         await().atMost(Duration.ofSeconds(5))
-            .until(controller::getDrivesAccepted, is(greaterThanOrEqualTo(0)));
+            .until(controller::getDrivesAccepted, is(equalTo(drivesAccepted)));
     }
 }
