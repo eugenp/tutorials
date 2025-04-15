@@ -197,6 +197,11 @@
             <groupId>org.jline</groupId>
             <artifactId>jline-terminal-jansi</artifactId>
             <version>${jline.version}</version>
+       </dependency>
+       <dependency>
+            <groupId>org.kohsuke</groupId>
+            <artifactId>github-api</artifactId>
+            <version>${github-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.objenesis</groupId>
@@ -225,6 +230,7 @@
         <sootup.version>1.3.0</sootup.version>
         <resilience4j.version>2.1.0</resilience4j.version>
         <jline.version>3.28.0</jline.version>
+        <github-api.version>1.327</github-api.version>
         <objenesis.version>3.4</objenesis.version>
     </properties>
 

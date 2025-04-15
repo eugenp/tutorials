@@ -570,7 +570,7 @@
                 <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
                 <module>spring-di-2</module>
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
-                <module>spring-reactive-modules/spring-reactive-kafka-stream-binder</module>              
+                <module>spring-reactive-modules/spring-reactive-kafka-stream-binder</module>
             </modules>
 
             <properties>
@@ -648,7 +648,6 @@
                 <module>disruptor</module>
                 <module>docker-modules</module>
                 <module>drools</module>
-                <module>dubbo</module>
                 <module>feign</module>
                 <module>gcp-firebase</module>
                 <module>geotools</module>
@@ -660,7 +659,6 @@
                 <module>guava-modules</module>
                 <module>hazelcast</module>
                 <module>heroku</module>
-                <module>hilla</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>image-compressing</module>
@@ -675,7 +673,6 @@
                 <module>javaxval</module>
                 <module>javaxval-2</module>
                 <module>jaxb</module>
-                <module>jdbc-cp</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
@@ -778,6 +775,8 @@
                 <module>spring-cloud-modules/spring-cloud-security</module>
                 <module>spring-cloud-modules/spring-cloud-task</module>
                 <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
+                <module>spring-cloud-modules/spring-cloud-gateway-2</module>
+                <module>spring-cloud-modules/spring-cloud-gateway</module>
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
@@ -1036,7 +1035,6 @@
                 <module>disruptor</module>
                 <module>docker-modules</module>
                 <module>drools</module>
-                <module>dubbo</module>
                 <module>feign</module>
                 <module>gcp-firebase</module>
                 <module>geotools</module>
@@ -1048,7 +1046,6 @@
                 <module>guava-modules</module>
                 <module>hazelcast</module>
                 <module>heroku</module>
-                <module>hilla</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>image-compressing</module>
@@ -1063,7 +1060,6 @@
                 <module>javaxval</module>
                 <module>javaxval-2</module>
                 <module>jaxb</module>
-                <module>jdbc-cp</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
@@ -1166,6 +1162,8 @@
                 <module>spring-cloud-modules/spring-cloud-security</module>
                 <module>spring-cloud-modules/spring-cloud-task</module>
                 <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
+                <module>spring-cloud-modules/spring-cloud-gateway-2</module>
+                <module>spring-cloud-modules/spring-cloud-gateway</module>
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
@@ -1426,12 +1424,10 @@
                 <module>spring-boot-modules/spring-boot-graphql-2</module> <!-- JAVA-42053 -->
                 <module>spring-remoting-modules/remoting-hessian-burlap</module> <!-- cannot upgrade logback due to usage of old spring boot 1 version -->
                 <module>spring-security-modules/spring-security-saml</module> <!-- This module wasn't able to update to spring boot 3 because Jakarta clashes with javax -->
-                <module>spring-security-modules/spring-security-web-boot-3</module> <!-- JAVA-42146 -->
                 <module>web-modules/ninja</module> <!-- JAVA-24584 -->
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
                 <module>core-java-modules/core-java-classloader</module> <!-- JAVA-42033 -->
-                <module>core-java-modules/core-java-conditionals</module> <!-- JAVA-42035 -->
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
                 <module>spring-boot-modules/spring-boot-3</module> <!-- JAVA-42049 -->
             </modules>
@@ -1496,12 +1492,10 @@
                 <module>spring-boot-modules/spring-boot-graphql-2</module> <!-- JAVA-42053 -->
                 <module>spring-remoting-modules/remoting-hessian-burlap</module> <!-- cannot upgrade logback due to usage of old spring boot 1 version -->
                 <module>spring-security-modules/spring-security-saml</module> <!-- This module wasn't able to update to spring boot 3 because Jakarta clashes with javax -->
-                <module>spring-security-modules/spring-security-web-boot-3</module> <!-- JAVA-42146 -->
                 <module>web-modules/ninja</module> <!-- JAVA-24584 -->
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
                 <module>core-java-modules/core-java-classloader</module> <!-- JAVA-42033 -->
-                <module>core-java-modules/core-java-conditionals</module> <!-- JAVA-42035 -->
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
                 <module>spring-boot-modules/spring-boot-3</module> <!-- JAVA-42049 -->
             </modules>
