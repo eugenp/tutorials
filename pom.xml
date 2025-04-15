@@ -704,7 +704,6 @@
                 <module>libraries-data-db</module>
                 <module>libraries-data-io-2</module>
                 <module>libraries-data-mariadb4j</module>
-                <module>libraries-facebook</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
 		        <module>libraries-http-2</module>
