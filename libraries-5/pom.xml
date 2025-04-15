@@ -197,8 +197,8 @@
             <groupId>org.jline</groupId>
             <artifactId>jline-terminal-jansi</artifactId>
             <version>${jline.version}</version>
-       </dependency>
-       <dependency>
+        </dependency>
+        <dependency>
             <groupId>org.kohsuke</groupId>
             <artifactId>github-api</artifactId>
             <version>${github-api.version}</version>
