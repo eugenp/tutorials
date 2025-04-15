@@ -78,6 +78,7 @@
         <module>spring-boot-runtime-2</module>
         <module>spring-boot-security</module>
         <module>spring-boot-security-2</module>
+        <module>spring-boot-ssl</module>
         <module>spring-boot-ssl-bundles</module>
         <module>spring-boot-telegram</module>
         <module>spring-boot-springdoc</module>
