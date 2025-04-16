@@ -15,7 +15,7 @@ public interface EmptyStringToNullConditionSourceProperty {
 
     @Condition
     default boolean isNotEmpty(String value, @TargetPropertyName String targetPropertyName, @SourcePropertyName String sourcePropertyName) {
-        if( targetPropertyName.equals("lastName")) {
+        if( sourcePropertyName.equals("lastName")) {
             return value != null && !value.isEmpty();
         }
         return true;
