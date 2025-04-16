@@ -49,7 +49,7 @@
     </build>
 
     <properties>
-        <joda-time.version>2.12.5</joda-time.version>
+        <joda-time.version>2.13.1</joda-time.version>
         <hirondelle-date4j.version>RELEASE</hirondelle-date4j.version>
     </properties>
 
