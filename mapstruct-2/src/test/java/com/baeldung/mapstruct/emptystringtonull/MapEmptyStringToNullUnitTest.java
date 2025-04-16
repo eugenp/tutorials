@@ -34,4 +34,13 @@ class MapEmptyStringToNullUnitTest {
         assertNull(teacher.lastName);
     }
 
+    @Test
+    void givenAMapperUsingConditionBasedNullHandlingWithPropertyNames_whenConvertingEmptyString_thenOutputNull() {
+        EmptyStringToNullConditionSourceProperty expressionMapper = EmptyStringToNullConditionSourceProperty.INSTANCE;
+        Student student = new Student("Steve", "");
+        Teacher teacher = expressionMapper.toTeacher(student);
+        assertEquals("Steve", teacher.firstName);
+        assertNull(teacher.lastName);
+    }
+
 }
