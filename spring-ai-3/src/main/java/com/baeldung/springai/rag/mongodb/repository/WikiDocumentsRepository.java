@@ -33,16 +33,16 @@ public class WikiDocumentsRepository {
     public List<WikiDocument> findSimilarDocuments(String searchText) {
 
         return vectorStore
-          .similaritySearch(SearchRequest
+          .similaritySearch(SearchRequest.builder()
             .query(searchText)
-            .withSimilarityThreshold(0.87)
-            .withTopK(10))
+            .similarityThreshold(0.87)
+            .topK(10).build())
           .stream()
           .map(document -> {
               WikiDocument wikiDocument = new WikiDocument();
               wikiDocument.setFilePath((String) document
                 .getMetadata().get("filePath"));
-              wikiDocument.setContent(document.getContent());
+              wikiDocument.setContent(document.getText());
 
               return wikiDocument;
           })
