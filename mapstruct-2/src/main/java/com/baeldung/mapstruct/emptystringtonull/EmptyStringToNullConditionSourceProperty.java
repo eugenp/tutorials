@@ -2,8 +2,8 @@ package com.baeldung.mapstruct.emptystringtonull;
 
 import org.mapstruct.Condition;
 import org.mapstruct.Mapper;
-import org.mapstruct.SourcePropertyName;
 import org.mapstruct.TargetPropertyName;
+import org.mapstruct.SourcePropertyName;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
