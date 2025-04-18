@@ -1,0 +1,20 @@
+services:
+  product-service:
+    build: spring-boot-open-telemetry1/
+    ports:
+      - "8080:8080"
+    depends_on:
+      - collector
+
+  price-service:
+    build: spring-boot-open-telemetry2/
+    ports:
+      - "8081"
+    depends_on:
+      - collector
+
+  collector:
+    image: jaegertracing/jaeger:2.5.0
+    ports:
+      - "16686:16686"
+      - "4318:4318"
