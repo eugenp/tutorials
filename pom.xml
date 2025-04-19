@@ -141,6 +141,7 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>
@@ -156,12 +157,10 @@
                 </dependencies>
                 <configuration>
                     <failurePriority>5</failurePriority>
-                    <aggregate>false</aggregate>
                     <failOnViolation>true</failOnViolation>
                     <verbose>true</verbose>
                     <linkXRef>true</linkXRef>
                     <includeTests>true</includeTests>
-                    <sourceEncoding>UTF-8</sourceEncoding>
                     <targetJdk>${java.version}</targetJdk>
                     <rulesets>
                         <ruleset>${tutorialsproject.basedir}/baeldung-pmd-rules.xml</ruleset>
@@ -178,6 +177,7 @@
                         <phase>compile</phase>
                         <goals>
                             <goal>check</goal>
+                            <goal>pmd</goal>
                         </goals>
                     </execution>
                 </executions>
