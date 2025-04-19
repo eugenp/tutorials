@@ -663,6 +663,7 @@
                 <module>hystrix</module>
                 <module>image-compressing</module>
                 <module>image-processing</module>
+                <module>j2cl</module>
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
@@ -1052,6 +1053,7 @@
                 <module>image-processing</module>
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
+                <module>j2cl</module>
                 <module>java-blockchain</module>
                 <module>java-jdi</module>
                 <module>java-panama</module>
