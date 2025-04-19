@@ -59,11 +59,6 @@
             <artifactId>jakarta.xml.bind-api</artifactId>
             <version>${jakarta.bind.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents.client5</groupId>
-            <artifactId>httpclient5</artifactId>
-            <version>${apache.httpclient5.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
