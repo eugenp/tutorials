@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'application'
 }
 
 repositories {
@@ -64,11 +63,11 @@ tasks.register('generateProperties') {
     }
 }
 
-compileJava.dependsOn generateBuildConfig
-processResources.dependsOn generateProperties
-processTestResources.dependsOn generateProperties
-
 test {
     systemProperty "MY_VERSION", "${myVersion}"
     environment "MY_VERSION", "${myVersion}"
 }
+
+compileJava.dependsOn generateBuildConfig
+processResources.dependsOn generateProperties
+processTestResources.dependsOn generateProperties

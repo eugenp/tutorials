@@ -25,12 +25,12 @@ class GradleVarInJavaUnitTest {
     }
 
     @Test
-    void whenUsingJvmArg_thenValueReadCorrectly() {
+    void whenUsingJvmArg_thenValueIsReadCorrectly() {
         assertEquals("1.2.3", System.getProperty("MY_VERSION"));
     }
 
     @Test
-    void whenUsingEmvArg_thenValueReadCorrectly() {
+    void whenUsingEnvArg_thenValueIsReadCorrectly() {
         assertEquals("1.2.3", System.getenv("MY_VERSION"));
     }
 
