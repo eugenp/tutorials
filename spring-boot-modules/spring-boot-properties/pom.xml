@@ -127,7 +127,7 @@
         <commons-configuration.version>1.10</commons-configuration.version>
         <resource.delimiter>@</resource.delimiter>
         <start-class>com.baeldung.yaml.MyApplication</start-class>
-        <spring-boot.version>3.2.0</spring-boot.version>
+        <spring-boot.version>3.2.2</spring-boot.version>
     </properties>
 
 </project>
