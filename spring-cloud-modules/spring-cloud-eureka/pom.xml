@@ -22,6 +22,8 @@
         <module>spring-cloud-eureka-feign-client</module>
         <module>spring-cloud-eureka-feign-client-integration-test</module>
         <module>spring-cloud-eureka-server</module>
+        <module>spring-cloud-eureka-server2</module>
+        <module>spring-cloud-eureka-client2</module>
     </modules>
 
     <properties>

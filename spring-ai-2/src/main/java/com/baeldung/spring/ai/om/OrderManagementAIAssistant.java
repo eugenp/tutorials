@@ -16,7 +16,7 @@ public class OrderManagementAIAssistant {
     public ChatResponse callChatClient(Set<String> functionNames, String promptString) {
         Prompt prompt  = new Prompt(promptString, OpenAiChatOptions
             .builder()
-            .withFunctions(functionNames)
+            .functions(functionNames)
             .build()
         );
         return chatClient.call(prompt);

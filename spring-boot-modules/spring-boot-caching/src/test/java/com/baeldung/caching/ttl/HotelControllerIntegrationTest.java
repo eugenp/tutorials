@@ -18,7 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.baeldung.caching.ttl.repository.HotelRepository;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:data-hotel.sql")
 @SlowTest

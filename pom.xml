@@ -141,6 +141,7 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>
@@ -156,12 +157,10 @@
                 </dependencies>
                 <configuration>
                     <failurePriority>5</failurePriority>
-                    <aggregate>false</aggregate>
                     <failOnViolation>true</failOnViolation>
                     <verbose>true</verbose>
                     <linkXRef>true</linkXRef>
                     <includeTests>true</includeTests>
-                    <sourceEncoding>UTF-8</sourceEncoding>
                     <targetJdk>${java.version}</targetJdk>
                     <rulesets>
                         <ruleset>${tutorialsproject.basedir}/baeldung-pmd-rules.xml</ruleset>
@@ -178,6 +177,7 @@
                         <phase>compile</phase>
                         <goals>
                             <goal>check</goal>
+                            <goal>pmd</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -334,9 +334,7 @@
                 <module>core-java-modules/core-java-8-datetime</module>
                 <module>core-java-modules/core-java-8-datetime-2</module>
                 <module>core-java-modules/core-java-sun</module>
-                <module>core-java-modules/core-java-security</module>
                 <module>core-java-modules/core-java-lang</module>
-                <module>core-java-modules/core-java-lang-math-3</module>
                 <module>core-java-modules/core-java-streams-2</module>
                 <module>libraries-jdk8</module>
                 <module>lombok-modules/lombok-custom</module>
@@ -447,9 +445,7 @@
                 <module>core-java-modules/core-java-8-datetime</module>
                 <module>core-java-modules/core-java-8-datetime-2</module>
                 <module>core-java-modules/core-java-sun</module>
-                <module>core-java-modules/core-java-security</module>
                 <module>core-java-modules/core-java-lang</module>
-                <module>core-java-modules/core-java-lang-math-3</module>
                 <module>core-java-modules/core-java-streams-2</module>
                 <module>libraries-jdk8</module>
                 <module>lombok-modules/lombok-custom</module>
@@ -574,7 +570,7 @@
                 <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
                 <module>spring-di-2</module>
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
-                <module>spring-reactive-modules/spring-reactive-kafka-stream-binder</module>              
+                <module>spring-reactive-modules/spring-reactive-kafka-stream-binder</module>
             </modules>
 
             <properties>
@@ -652,7 +648,6 @@
                 <module>disruptor</module>
                 <module>docker-modules</module>
                 <module>drools</module>
-                <module>dubbo</module>
                 <module>feign</module>
                 <module>gcp-firebase</module>
                 <module>geotools</module>
@@ -664,7 +659,6 @@
                 <module>guava-modules</module>
                 <module>hazelcast</module>
                 <module>heroku</module>
-                <module>hilla</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>image-compressing</module>
@@ -679,10 +673,10 @@
                 <module>javaxval</module>
                 <module>javaxval-2</module>
                 <module>jaxb</module>
-                <module>jdbc-cp</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
+                <module>jmonkeyengine</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
@@ -713,10 +707,12 @@
 	            <module>libraries-http-3</module>
                 <module>libraries-io</module>
                 <module>libraries-llms</module>
+                <module>libraries-llms-2</module>
                 <module>libraries-open-telemetry</module>
                 <module>libraries-primitive</module>
                 <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
+                <module>libraries-security</module>
                 <module>libraries-security-2</module>
                 <module>libraries-server</module>
                 <module>libraries-server-2</module>
@@ -745,7 +741,7 @@
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
                 <module>podman</module>
-                <module>protobuffer</module>
+                <module>google-protocol-buffer</module>
                 <module>quarkus-modules</module>
                 <module>reactive-systems</module>
                 <module>reactor-core</module>
@@ -779,6 +775,8 @@
                 <module>spring-cloud-modules/spring-cloud-security</module>
                 <module>spring-cloud-modules/spring-cloud-task</module>
                 <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
+                <module>spring-cloud-modules/spring-cloud-gateway-2</module>
+                <module>spring-cloud-modules/spring-cloud-gateway</module>
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
@@ -815,8 +813,6 @@
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
-                <module>spring-webflux</module>
-                <module>spring-webflux-2</module>
                 <module>spring-websockets</module>
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
@@ -843,7 +839,7 @@
         </profile>
 
         <profile>
-            <id>profile-jdk22</id>
+            <id>default-jdk22</id>
             <build>
                 <plugins>
                     <plugin>
@@ -855,13 +851,15 @@
                             <includes>
                                 <include>SpringContextTest</include>
                                 <include>**/*UnitTest</include>
-                                <include>**/*IntegrationTest.java</include>
-                                <include>**/*IntTest.java</include>
-                                <include>**/*LongRunningUnitTest.java</include>
-                                <include>**/*ManualTest.java</include>
-                                <include>**/JdbcTest.java</include>
-                                <include>**/*LiveTest.java</include>
                             </includes>
+                            <excludes>
+                                <exclude>**/*IntegrationTest.java</exclude>
+                                <exclude>**/*IntTest.java</exclude>
+                                <exclude>**/*LongRunningUnitTest.java</exclude>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/JdbcTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -882,7 +880,7 @@
         </profile>
 
         <profile>
-            <id>profile-jdk23</id>
+            <id>default-jdk23</id>
             <build>
                 <plugins>
                     <plugin>
@@ -894,13 +892,15 @@
                             <includes>
                                 <include>SpringContextTest</include>
                                 <include>**/*UnitTest</include>
-                                <include>**/*IntegrationTest.java</include>
-                                <include>**/*IntTest.java</include>
-                                <include>**/*LongRunningUnitTest.java</include>
-                                <include>**/*ManualTest.java</include>
-                                <include>**/JdbcTest.java</include>
-                                <include>**/*LiveTest.java</include>
                             </includes>
+                            <excludes>
+                                <exclude>**/*IntegrationTest.java</exclude>
+                                <exclude>**/*IntTest.java</exclude>
+                                <exclude>**/*LongRunningUnitTest.java</exclude>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/JdbcTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -1035,7 +1035,6 @@
                 <module>disruptor</module>
                 <module>docker-modules</module>
                 <module>drools</module>
-                <module>dubbo</module>
                 <module>feign</module>
                 <module>gcp-firebase</module>
                 <module>geotools</module>
@@ -1047,7 +1046,6 @@
                 <module>guava-modules</module>
                 <module>hazelcast</module>
                 <module>heroku</module>
-                <module>hilla</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>image-compressing</module>
@@ -1062,10 +1060,10 @@
                 <module>javaxval</module>
                 <module>javaxval-2</module>
                 <module>jaxb</module>
-                <module>jdbc-cp</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
+                <module>jmonkeyengine</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
@@ -1081,6 +1079,7 @@
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
+                <module>libraries-apm</module>
                 <module>libraries-bytecode</module>
                 <module>libraries-cli</module>
                 <module>libraries-concurrency</module>
@@ -1096,10 +1095,12 @@
                 <module>libraries-http-3</module>
                 <module>libraries-io</module>
                 <module>libraries-llms</module>
+                <module>libraries-llms-2</module>
                 <module>libraries-open-telemetry</module>
                 <module>libraries-primitive</module>
                 <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
+                <module>libraries-security</module>
                 <module>libraries-security-2</module>
                 <module>libraries-server</module>
                 <module>libraries-server-2</module>
@@ -1128,7 +1129,7 @@
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
                 <module>podman</module>
-                <module>protobuffer</module>
+                <module>google-protocol-buffer</module>
                 <module>quarkus-modules</module>
                 <module>reactive-systems</module>
                 <module>reactor-core</module>
@@ -1162,6 +1163,8 @@
                 <module>spring-cloud-modules/spring-cloud-security</module>
                 <module>spring-cloud-modules/spring-cloud-task</module>
                 <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
+                <module>spring-cloud-modules/spring-cloud-gateway-2</module>
+                <module>spring-cloud-modules/spring-cloud-gateway</module>
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
@@ -1198,8 +1201,6 @@
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
-                <module>spring-webflux</module>
-                <module>spring-webflux-2</module>
                 <module>spring-websockets</module>
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
@@ -1221,6 +1222,78 @@
                 <java.version>21</java.version>
                 <maven.compiler.source>21</maven.compiler.source>
                 <maven.compiler.target>21</maven.compiler.target>
+            </properties>
+
+        </profile>
+
+        <profile>
+            <id>integration-jdk22</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*IntegrationTest.java</include>
+                                <include>**/*IntTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>core-java-modules/core-java-22</module>
+                <module>core-java-modules/core-java-concurrency-advanced-6</module>
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>22</java.version>
+                <maven.compiler.source>22</maven.compiler.source>
+                <maven.compiler.target>22</maven.compiler.target>
+            </properties>
+
+        </profile>
+
+        <profile>
+            <id>integration-jdk23</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*IntegrationTest.java</include>
+                                <include>**/*IntTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>core-java-modules/core-java-23</module>
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>23</java.version>
+                <maven.compiler.source>23</maven.compiler.source>
+                <maven.compiler.target>23</maven.compiler.target>
+                <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
             </properties>
 
         </profile>
@@ -1267,6 +1340,8 @@
                 <module>spring-reactive-modules/spring-reactive-oauth</module>
                 <module>spring-reactive-modules/spring-reactive-security</module>
                 <module>spring-reactive-modules/spring-reactive</module>
+                <module>spring-reactive-modules/spring-webflux</module>
+                <module>spring-reactive-modules/spring-webflux-2</module>
                 <module>spring-reactive-modules/spring-webflux-amqp</module>
                 <module>spring-web-modules/spring-rest-http</module>
                 <module>web-modules/jee-7</module>
@@ -1320,8 +1395,7 @@
                 <module>spring-cloud-cli</module> <!-- Not a maven project -->
                 <module>spring-roo</module> <!-- Not supported JAVA-17327 -->
                 <module>apache-spark</module> <!-- JAVA-42030 -->
-                <module>jhipster-modules/jhipster-uaa</module><!-- failing after upgrading to jdk17-->
-                <module>libraries-security</module> <!-- JAVA-40889 -->
+                <module>jhipster-modules</module><!-- failing after upgrading to jdk17-->
                 <module>persistence-modules/java-harperdb</module> <!-- This module requires a library to download manually --> <!-- JAVA-42044 -->
                 <module>spring-cloud-modules/spring-cloud-data-flow</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42054 -->
                 <module>spring-cloud-modules/spring-cloud-stream-starters</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42055 -->
@@ -1333,12 +1407,9 @@
                 <module>persistence-modules/spring-data-cassandra</module>   <!-- failing after upgrading to jdk17. JDK 17 compatibility in progress CASSANDRA-16895 --> <!-- JAVA-42047 -->
                 <module>language-interop</module>
                 <module>spring-scheduling</module> <!-- BAEL-8382 -->
-                <module>spring-security-modules/spring-security-web-login</module> <!-- JAVA-42041 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb</module> <!-- JAVA-42144 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb-2</module> <!-- JAVA-42371 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb-4</module> <!-- JAVA-42372 -->
-                <module>persistence-modules/spring-boot-persistence-4</module> <!-- JAVA-42045 -->
-                <module>persistence-modules/spring-boot-persistence-5</module> <!-- JAVA-42046 -->
                 <module>persistence-modules/spring-data-elasticsearch</module> <!-- JAVA-42359 -->
                 <module>persistence-modules/spring-data-mongodb-2</module> <!-- JAVA-42145 -->
                 <module>quarkus-modules/mongo-db</module> <!-- JAVA-42048 -->
@@ -1346,7 +1417,6 @@
                 <module>quarkus-modules/consume-rest-api/consume-api</module>
                 <module>maven-modules/maven-exec-plugin</module> <!-- JAVA-42059 -->
                 <module>maven-modules/dependencygraph</module> <!-- JAVA-42057 -->
-                <module>spring-boot-modules/spring-boot-swagger-2</module> <!-- JAVA-42060 -->
                 <module>spring-boot-modules/spring-boot-groovy</module> <!-- JAVA-42052 -->
                 <module>spring-boot-modules/spring-boot-data-3</module> <!-- JAVA-42051 -->
                 <module>spring-reactive-modules/spring-reactive-performance</module> <!-- JAVA-42050 -->
@@ -1355,12 +1425,10 @@
                 <module>spring-boot-modules/spring-boot-graphql-2</module> <!-- JAVA-42053 -->
                 <module>spring-remoting-modules/remoting-hessian-burlap</module> <!-- cannot upgrade logback due to usage of old spring boot 1 version -->
                 <module>spring-security-modules/spring-security-saml</module> <!-- This module wasn't able to update to spring boot 3 because Jakarta clashes with javax -->
-                <module>spring-security-modules/spring-security-web-boot-3</module> <!-- JAVA-42146 -->
                 <module>web-modules/ninja</module> <!-- JAVA-24584 -->
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
                 <module>core-java-modules/core-java-classloader</module> <!-- JAVA-42033 -->
-                <module>core-java-modules/core-java-conditionals</module> <!-- JAVA-42035 -->
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
                 <module>spring-boot-modules/spring-boot-3</module> <!-- JAVA-42049 -->
             </modules>
@@ -1395,8 +1463,7 @@
                 <module>spring-cloud-cli</module> <!-- Not a maven project -->
                 <module>spring-roo</module> <!-- Not supported JAVA-17327 -->
                 <module>apache-spark</module> <!-- JAVA-42030 -->
-                <module>jhipster-modules/jhipster-uaa</module><!-- failing after upgrading to jdk17-->
-                <module>libraries-security</module> <!-- JAVA-40889 -->
+                <module>jhipster-modules</module><!-- failing after upgrading to jdk17-->
                 <module>persistence-modules/java-harperdb</module> <!-- This module requires a library to download manually --> <!-- JAVA-42044 -->
                 <module>spring-cloud-modules/spring-cloud-data-flow</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42054 -->
                 <module>spring-cloud-modules/spring-cloud-stream-starters</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42055 -->
@@ -1408,12 +1475,9 @@
                 <module>persistence-modules/spring-data-cassandra</module>   <!-- failing after upgrading to jdk17. JDK 17 compatibility in progress CASSANDRA-16895 --> <!-- JAVA-42047 -->
                 <module>language-interop</module>
                 <module>spring-scheduling</module> <!-- BAEL-8382 -->
-                <module>spring-security-modules/spring-security-web-login</module> <!-- JAVA-42041 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb</module> <!-- JAVA-42144 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb-2</module> <!-- JAVA-42371 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb-4</module> <!-- JAVA-42372 -->
-                <module>persistence-modules/spring-boot-persistence-4</module> <!-- JAVA-42045 -->
-                <module>persistence-modules/spring-boot-persistence-5</module> <!-- JAVA-42046 -->
                 <module>persistence-modules/spring-data-elasticsearch</module> <!-- JAVA-42359 -->
                 <module>persistence-modules/spring-data-mongodb-2</module> <!-- JAVA-42145 -->
                 <module>quarkus-modules/mongo-db</module> <!-- JAVA-42048 -->
@@ -1421,7 +1485,6 @@
                 <module>quarkus-modules/consume-rest-api/consume-api</module>
                 <module>maven-modules/maven-exec-plugin</module> <!-- JAVA-42059 -->
                 <module>maven-modules/dependencygraph</module> <!-- JAVA-42057 -->
-                <module>spring-boot-modules/spring-boot-swagger-2</module> <!-- JAVA-42060 -->
                 <module>spring-boot-modules/spring-boot-groovy</module> <!-- JAVA-42052 -->
                 <module>spring-boot-modules/spring-boot-data-3</module> <!-- JAVA-42051 -->
                 <module>spring-reactive-modules/spring-reactive-performance</module> <!-- JAVA-42050 -->
@@ -1430,12 +1493,10 @@
                 <module>spring-boot-modules/spring-boot-graphql-2</module> <!-- JAVA-42053 -->
                 <module>spring-remoting-modules/remoting-hessian-burlap</module> <!-- cannot upgrade logback due to usage of old spring boot 1 version -->
                 <module>spring-security-modules/spring-security-saml</module> <!-- This module wasn't able to update to spring boot 3 because Jakarta clashes with javax -->
-                <module>spring-security-modules/spring-security-web-boot-3</module> <!-- JAVA-42146 -->
                 <module>web-modules/ninja</module> <!-- JAVA-24584 -->
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
                 <module>core-java-modules/core-java-classloader</module> <!-- JAVA-42033 -->
-                <module>core-java-modules/core-java-conditionals</module> <!-- JAVA-42035 -->
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
                 <module>spring-boot-modules/spring-boot-3</module> <!-- JAVA-42049 -->
             </modules>
@@ -1505,8 +1566,8 @@
         <custom-pmd.version>0.0.1</custom-pmd.version>
         <maven-jxr-plugin.version>3.4.0</maven-jxr-plugin.version>
         <gitflow-incremental-builder.version>4.5.4</gitflow-incremental-builder.version>
-        <maven-pmd-plugin.version>3.23.0</maven-pmd-plugin.version>
-        <lombok.version>1.18.32</lombok.version>
+        <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
+        <lombok.version>1.18.36</lombok.version>
         <h2.version>2.2.224</h2.version>
         <guava.version>33.2.1-jre</guava.version>
         <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>

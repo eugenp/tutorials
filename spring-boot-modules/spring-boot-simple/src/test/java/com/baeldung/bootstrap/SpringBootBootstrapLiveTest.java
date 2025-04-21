@@ -64,7 +64,6 @@ public class SpringBootBootstrapLiveTest {
         assertEquals(HttpStatus.NOT_FOUND.value(), response.getStatusCode());
     }
 
-    // POST
     @Test
     public void whenCreateNewBook_thenCreated() {
         final Book book = createRandomBook();
@@ -120,8 +119,6 @@ public class SpringBootBootstrapLiveTest {
         assertEquals(HttpStatus.NOT_FOUND.value(), response.getStatusCode());
     }
 
-    // ===============================
-
     private Book createRandomBook() {
         final Book book = new Book();
         book.setTitle(randomAlphabetic(10));
@@ -131,11 +128,10 @@ public class SpringBootBootstrapLiveTest {
 
     private String createBookAsUri(Book book) {
         final Response response = RestAssured.given()
-            .contentType(MediaType.APPLICATION_JSON_VALUE)
-            .body(book)
-            .post(API_ROOT);
-        return API_ROOT + "/" + response.jsonPath()
-            .get("id");
+          .contentType(MediaType.APPLICATION_JSON_VALUE)
+          .body(book)
+          .post(API_ROOT);
+        return API_ROOT + "/" + response.jsonPath().get("id");
     }
 
 }

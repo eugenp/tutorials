@@ -55,7 +55,7 @@ public class HibernateOperations {
     public Movie queryForMovieById() {
         EntityManager em = HibernateOperations.getEntityManager();
         Movie movie = (Movie) em.createQuery("SELECT movie from Movie movie where movie.id = ?1")
-            .setParameter(1, new Long(1L))
+            .setParameter(1, Long.valueOf(1L))
             .getSingleResult();
         return movie;
     }
@@ -79,7 +79,7 @@ public class HibernateOperations {
      */
     public Movie getMovie(Long movieId) {
         EntityManager em = HibernateOperations.getEntityManager();
-        Movie movie = em.find(Movie.class, new Long(movieId));
+        Movie movie = em.find(Movie.class, Long.valueOf(movieId));
         return movie;
     }
 
@@ -105,7 +105,7 @@ public class HibernateOperations {
         EntityManager em = HibernateOperations.getEntityManager();
         em.getTransaction()
             .begin();
-        Movie movie = em.find(Movie.class, new Long(1L));
+        Movie movie = em.find(Movie.class, Long.valueOf(1L));
         em.remove(movie);
         em.getTransaction()
             .commit();

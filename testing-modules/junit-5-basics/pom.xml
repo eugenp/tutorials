@@ -66,11 +66,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <argLine>
-                        --add-opens java.base/java.lang=ALL-UNNAMED
-                    </argLine>
-                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -137,8 +132,8 @@
     </profiles>
 
     <properties>
-        <spring.version>5.0.6.RELEASE</spring.version>
-        <h2.version>1.4.197</h2.version> <!-- needs to be specified to be compatible with spring.version 5.0.6.RELEASE -->
+        <spring.version>6.2.2</spring.version>
+        <h2.version>1.4.197</h2.version>
     </properties>
 
 </project>

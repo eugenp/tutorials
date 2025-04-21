@@ -124,7 +124,7 @@
 
     <properties>
         <jackson.version>2.15.4</jackson.version> <!-- Upgrading to version >= 2.16 breaks tests -->
-        <kafka.version>3.4.0</kafka.version>
+        <kafka.version>3.9.0</kafka.version>
         <testcontainers-kafka.version>1.19.3</testcontainers-kafka.version>
         <testcontainers-jupiter.version>1.15.3</testcontainers-jupiter.version>
         <org.apache.spark.spark-core.version>2.4.8</org.apache.spark.spark-core.version>

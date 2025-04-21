@@ -300,7 +300,7 @@ public class OrikaUnitTest {
     public void givenSrcAndDest_whenCustomMapperWorks_thenCorrect() {
         mapperFactory.classMap(Personne3.class, Person3.class).customize(customMapper).register();
         MapperFacade mapper = mapperFactory.getMapperFacade();
-        long timestamp = new Long("1182882159000");
+        long timestamp = Long.valueOf("1182882159000");
         Personne3 personne3 = new Personne3("Leornardo", timestamp);
         Person3 person3 = mapper.map(personne3, Person3.class);
 
@@ -317,7 +317,7 @@ public class OrikaUnitTest {
         MapperFacade mapper = mapperFactory.getMapperFacade();
 
         String dateTime = "2007-06-26T21:22:39Z";
-        long timestamp = new Long("1182882159000");
+        long timestamp = Long.valueOf("1182882159000");
         Person3 person3 = new Person3("Leornardo", dateTime);
         Personne3 personne3 = mapper.map(person3, Personne3.class);
         long timestampToTest = personne3.getDtob();

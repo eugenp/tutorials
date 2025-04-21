@@ -13,6 +13,8 @@
 
     <logger name="org.apache.zookeeper" level="WARN"/>
 
+    <logger name="org.apache.camel.component.mock.MockEndpoint" level="WARN"/>
+
     <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
