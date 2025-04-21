@@ -52,12 +52,12 @@ public class PrintStack {
     }
 
     public static void givenStack_whenUsingIterator_thenPrintStack() {
-        Stack<String> stack = new Stack<>();
-        stack.push("10");
-        stack.push("20");
-        stack.push("30");
+        Stack<Integer> stack = new Stack<>();
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
 
-        Iterator<String> iterator = stack.iterator();
+        Iterator<Integer> iterator = stack.iterator();
         while (iterator.hasNext()) {
             System.out.print(iterator.next() + " ");
         }
