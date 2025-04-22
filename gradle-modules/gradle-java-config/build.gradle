@@ -47,8 +47,9 @@ tasks.register('generateBuildConfig') {
         file.text = """
             package com.baeldung.gradle.config;
 
-            public class BuildConfig {
+            public final class BuildConfig {
                 public static final String MY_VERSION = "${myVersion}";
+                private BuildConfig() {}
             }
         """.stripIndent()
     }
@@ -69,5 +70,4 @@ test {
 }
 
 compileJava.dependsOn generateBuildConfig
-processResources.dependsOn generateProperties
-processTestResources.dependsOn generateProperties
+compileJava.dependsOn generateProperties
