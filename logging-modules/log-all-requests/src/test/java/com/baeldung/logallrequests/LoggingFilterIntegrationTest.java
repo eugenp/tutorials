@@ -28,6 +28,7 @@ public class LoggingFilterIntegrationTest {
           .andReturn();
 
         assertThat(output.getAll()).contains("Incoming Request: [GET] /api/hello");
+        assertThat(output.getAll()).contains("Response Body: Hello, World!");
     }
 
     @Test

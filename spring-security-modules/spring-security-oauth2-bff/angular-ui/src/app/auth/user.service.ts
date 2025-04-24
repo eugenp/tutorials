@@ -63,11 +63,16 @@ export class UserService {
               : User.ANONYMOUS
           );
         }
-        if (!!user.exp) {
+        if (typeof user.exp === "number" && user.exp > 0 && user.exp < Number.MAX_SAFE_INTEGER / 1000) {
           const now = Date.now();
-          const delay = (1000 * user.exp - now) * 0.8;
-          if (delay > 2000) {
-            this.refreshSub = interval(delay).subscribe(() => this.refresh());
+          const expMs = user.exp * 1000; // Convert expiration time to milliseconds safely
+
+          if (expMs > now) { // Ensure expiration is in the future
+            const delay = (expMs - now) * 0.8;
+
+            if (delay > 2000 && delay < Number.MAX_SAFE_INTEGER) {
+              this.refreshSub = interval(delay).subscribe(() => this.refresh());
+            }
           }
         }
       },

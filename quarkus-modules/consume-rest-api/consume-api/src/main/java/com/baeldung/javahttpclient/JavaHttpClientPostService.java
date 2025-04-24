@@ -19,15 +19,17 @@ public class JavaHttpClientPostService {
 
     private final HttpClient httpClient;
     private final ObjectMapper objectMapper;
+    private final String baseUrl;
 
     public JavaHttpClientPostService() {
         this.httpClient = HttpClient.newHttpClient();
         this.objectMapper = new ObjectMapper();
+        this.baseUrl = System.getProperty("quarkus.rest-client.post-rest-client.url", "http://localhost:8080"); // default if not overridden
     }
 
     public List<Post> getPosts() {
         HttpRequest request = HttpRequest.newBuilder()
-          .uri(URI.create("http://localhost:8080/posts"))
+          .uri(URI.create(baseUrl + "/posts"))
           .GET()
           .build();
 
