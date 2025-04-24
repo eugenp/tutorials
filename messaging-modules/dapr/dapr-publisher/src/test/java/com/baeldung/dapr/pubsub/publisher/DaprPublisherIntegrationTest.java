@@ -3,6 +3,7 @@ package com.baeldung.dapr.pubsub.publisher;
 import static io.restassured.RestAssured.given;
 import static org.awaitility.Awaitility.await;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
 
 import java.time.Duration;
@@ -14,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.testcontainers.Testcontainers;
 import org.testcontainers.containers.wait.strategy.Wait;
 
 import io.dapr.springboot.DaprAutoConfiguration;
@@ -25,43 +27,45 @@ import io.restassured.http.ContentType;
 class DaprPublisherIntegrationTest {
 
     private static final Logger logger = LoggerFactory.getLogger(DaprPublisherIntegrationTest.class);
-    private static final String SUBSCRIPTION_MESSAGE_PATTERN = ".*app is subscribed to the following topics.*";
+    private static final String READY_MESSAGE_PATTERN = ".*app is subscribed to the following topics.*";
 
     @Autowired
-    private DriverRestController controller;
+    DriverRestController controller;
 
     @Autowired
-    private DaprContainer daprContainer;
+    DaprContainer daprContainer;
 
     @Value("${server.port}")
-    public int serverPort;
+    int serverPort;
 
     @Value("${driver.acceptance.criteria}")
-    public String driverAcceptanceCriteria;
+    String criteria;
 
     @BeforeEach
     void setUp() {
+        logger.info("[bael] test setup");
+
         RestAssured.baseURI = "http://localhost:" + serverPort;
-        org.testcontainers.Testcontainers.exposeHostPorts(serverPort);
+        Testcontainers.exposeHostPorts(serverPort);
 
         logger.info("[bael] waiting for ready...");
-        Wait.forLogMessage(SUBSCRIPTION_MESSAGE_PATTERN, 1)
+        Wait.forLogMessage(READY_MESSAGE_PATTERN, 1)
             .waitUntilReady(daprContainer);
         logger.info("[bael] ready.");
     }
 
     @Test
-    void testAcceptDrive() {
+    void whenDriveUnacceptable_thenDrivesAcceptedIncrease() {
         int drivesAccepted = controller.getDrivesAccepted();
 
         given().contentType(ContentType.JSON)
             .body("""
                 {
-                "passengerId": "abc-123",
+                "passengerId": "1",
                 "location": "Point A",
                 "destination": "%s Point B"
                 }
-                """.formatted(driverAcceptanceCriteria))
+                """.formatted(criteria))
             .when()
             .post("/passenger/request-ride")
             .then()
@@ -72,23 +76,23 @@ class DaprPublisherIntegrationTest {
     }
 
     @Test
-    void testRejectDrive() {
-        int drivesAccepted = controller.getDrivesAccepted();
+    void whenDriveAcceptable_thenDrivesRejectedIncrease() {
+        int drivesRejected = controller.getDrivesRejected();
 
         given().contentType(ContentType.JSON)
             .body("""
                 {
-                "passengerId": "abc-123",
-                "location": "Point A",
-                "destination": "No Point B"
+                "passengerId": "2",
+                "location": "Point B",
+                "destination": "West Side A"
                 }
-                """.formatted(driverAcceptanceCriteria))
+                """)
             .when()
             .post("/passenger/request-ride")
             .then()
             .statusCode(200);
 
         await().atMost(Duration.ofSeconds(5))
-            .until(controller::getDrivesAccepted, is(equalTo(drivesAccepted)));
+            .until(controller::getDrivesRejected, greaterThan(drivesRejected));
     }
 }

@@ -9,6 +9,7 @@ import org.junit.runners.model.Statement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Bean;
@@ -19,18 +20,23 @@ import org.testcontainers.containers.Network.NetworkImpl;
 import org.testcontainers.containers.RabbitMQContainer;
 import org.testcontainers.utility.DockerImageName;
 
+import io.dapr.spring.boot.autoconfigure.pubsub.DaprPubSubProperties;
 import io.dapr.testcontainers.Component;
 import io.dapr.testcontainers.DaprContainer;
 import io.dapr.testcontainers.DaprLogLevel;
 
 @TestConfiguration(proxyBeanMethods = false)
+@EnableConfigurationProperties({ DaprPubSubProperties.class })
 public class DaprTestContainersConfig {
 
     private static final Logger logger = LoggerFactory.getLogger(DaprTestContainersConfig.class);
     private static final String SHARED_NETWORK = "dapr-network";
 
     @Value("${server.port}")
-    public int serverPort;
+    int serverPort;
+
+    @Value("${spring.application.name}")
+    String applicationName;
 
     @Bean
     public Network daprNetwork(Environment env) {
@@ -80,17 +86,18 @@ public class DaprTestContainersConfig {
 
     @Bean
     @ServiceConnection
-    public DaprContainer daprContainer(Network daprNetwork, RabbitMQContainer rabbitMQ, Environment env) {
+    public DaprContainer daprContainer(Network daprNetwork, RabbitMQContainer rabbitMQ, Environment env, DaprPubSubProperties pubSub) {
         boolean reuse = env.getProperty("reuse", Boolean.class, false);
 
         Map<String, String> rabbitMqConfig = new HashMap<>();
         rabbitMqConfig.put("connectionString", "amqp://guest:guest@rabbitmq:5672");
         rabbitMqConfig.put("user", "guest");
         rabbitMqConfig.put("password", "guest");
+        rabbitMqConfig.put("requeueInFailure", "true");
 
-        return new DaprContainer("daprio/daprd:1.14.4").withAppName("dapr-publisher")
+        return new DaprContainer("daprio/daprd:1.14.4").withAppName(applicationName)
             .withNetwork(daprNetwork)
-            .withComponent(new Component("pubsub", "pubsub.rabbitmq", "v1", rabbitMqConfig))
+            .withComponent(new Component(pubSub.getName(), "pubsub.rabbitmq", "v1", rabbitMqConfig))
             .withDaprLogLevel(DaprLogLevel.INFO)
             .withLogConsumer(outputFrame -> logger.info(outputFrame.getUtf8String()))
             .withAppPort(serverPort)

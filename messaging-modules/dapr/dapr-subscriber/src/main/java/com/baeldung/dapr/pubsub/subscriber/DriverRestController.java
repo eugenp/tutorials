@@ -22,21 +22,23 @@ public class DriverRestController {
     public static final String RIDE_REQUESTS_TOPIC = "ride-requests";
 
     private int drivesAccepted = 0;
+    private int drivesRejected = 0;
 
     @Value("${driver.acceptance.criteria}")
-    public String driverAcceptanceCriteria;
+    public String criteria;
 
-    @PostMapping("subscribe")
-    @Topic(pubsubName = "pubsub", name = RIDE_REQUESTS_TOPIC)
-    public void subscribe(@RequestBody CloudEvent<RideRequest> cloudEvent) {
-        RideRequest request = cloudEvent.getData();
+    @PostMapping("ride-request")
+    @Topic(pubsubName = "ride-hailing", name = RIDE_REQUESTS_TOPIC)
+    public void onRideRequest(@RequestBody CloudEvent<RideRequest> event) {
+        RideRequest request = event.getData();
         logger.info("[bael] Event Received: {}", request);
 
         if (request.getDestination()
-            .contains(driverAcceptanceCriteria)) {
+            .contains(criteria)) {
             drivesAccepted++;
         } else {
             logger.info("[bael] rejecting Event");
+            drivesRejected++;
             throw new UnsupportedOperationException("drive rejected");
         }
     }
@@ -44,5 +46,10 @@ public class DriverRestController {
     @GetMapping("accepted-rides")
     public int getDrivesAccepted() {
         return drivesAccepted;
+    }
+
+    @GetMapping("rejected-rides")
+    public int getDrivesRejected() {
+        return drivesRejected;
     }
 }

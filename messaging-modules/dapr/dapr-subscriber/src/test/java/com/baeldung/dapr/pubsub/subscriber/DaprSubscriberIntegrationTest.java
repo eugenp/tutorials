@@ -2,6 +2,7 @@ package com.baeldung.dapr.pubsub.subscriber;
 
 import static org.awaitility.Awaitility.await;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
 
 import java.time.Duration;
 
@@ -12,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.testcontainers.Testcontainers;
 import org.testcontainers.containers.wait.strategy.Wait;
 
 import com.baeldung.dapr.pubsub.model.RideRequest;
@@ -19,43 +21,44 @@ import com.baeldung.dapr.pubsub.model.RideRequest;
 import io.dapr.spring.messaging.DaprMessagingTemplate;
 import io.dapr.springboot.DaprAutoConfiguration;
 import io.dapr.testcontainers.DaprContainer;
-import io.restassured.RestAssured;
-@SpringBootTest(classes = { DaprSubscriberTestApp.class, DaprTestContainersConfig.class, DaprSubscriberTestConfig.class, DaprAutoConfiguration.class }, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+
+@SpringBootTest(classes = { DaprSubscriberTestApp.class, DaprTestContainersConfig.class, DaprMessagingConfig.class, DaprAutoConfiguration.class }, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 class DaprSubscriberIntegrationTest {
 
     private static final Logger logger = LoggerFactory.getLogger(DaprSubscriberIntegrationTest.class);
-    private static final String SUBSCRIPTION_MESSAGE_PATTERN = ".*app is subscribed to the following topics.*";
+    private static final String READY_MESSAGE_PATTERN = ".*app is subscribed to the following topics.*";
 
     @Autowired
-    private DaprMessagingTemplate<RideRequest> messaging;
+    DaprMessagingTemplate<RideRequest> messaging;
 
     @Autowired
-    private DriverRestController controller;
+    DriverRestController controller;
 
     @Autowired
-    private DaprContainer daprContainer;
+    DaprContainer daprContainer;
 
     @Value("${server.port}")
-    public int serverPort;
+    int serverPort;
+
+    @Value("${driver.acceptance.criteria}")
+    String criteria;
 
     @BeforeEach
     void setUp() {
         logger.info("[bael] test setup");
-        org.testcontainers.Testcontainers.exposeHostPorts(serverPort);
-
-        RestAssured.baseURI = "http://localhost:" + serverPort;
+        Testcontainers.exposeHostPorts(serverPort);
 
         logger.info("[bael] waiting for ready...");
-        Wait.forLogMessage(SUBSCRIPTION_MESSAGE_PATTERN, 1)
+        Wait.forLogMessage(READY_MESSAGE_PATTERN, 1)
             .waitUntilReady(daprContainer);
         logger.info("[bael] ready.");
     }
 
     @Test
-    void testAcceptDrive() {
+    void whenDriveAcceptable_thenDrivesAcceptedIncrease() {
         int drivesAccepted = controller.getDrivesAccepted();
 
-        RideRequest ride = new RideRequest("abc-123", "Point A", "Point East Side B");
+        RideRequest ride = new RideRequest("1", "Point A", String.format("%s Point B", criteria));
         messaging.send(DriverRestController.RIDE_REQUESTS_TOPIC, ride);
 
         await().atMost(Duration.ofSeconds(5))
@@ -63,13 +66,13 @@ class DaprSubscriberIntegrationTest {
     }
 
     @Test
-    void testRejectDrive() {
-        int drivesAccepted = controller.getDrivesAccepted();
+    void whenDriveUnacceptable_thenDrivesRejectedIncrease() {
+        int drivesRejected = controller.getDrivesRejected();
 
-        RideRequest ride = new RideRequest("abc-123", "Point A", "Point West Side B");
-        messaging.send(DriverRestController.RIDE_REQUESTS_TOPIC, ride);
+        RideRequest request = new RideRequest("2", "Point B", "West Side Point A");
+        messaging.send(DriverRestController.RIDE_REQUESTS_TOPIC, request);
 
         await().atMost(Duration.ofSeconds(5))
-            .until(controller::getDrivesAccepted, equalTo(drivesAccepted));
+            .until(controller::getDrivesRejected, greaterThan(drivesRejected));
     }
 }

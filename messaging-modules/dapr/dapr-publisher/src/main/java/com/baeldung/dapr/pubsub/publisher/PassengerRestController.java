@@ -20,8 +20,8 @@ public class PassengerRestController {
 
     private DaprMessagingTemplate<RideRequest> messaging;
     
-    public PassengerRestController(DaprMessagingTemplate<RideRequest> messagingTemplate) {
-        this.messaging = messagingTemplate;
+    public PassengerRestController(DaprMessagingTemplate<RideRequest> messaging) {
+        this.messaging = messaging;
     }
 
     @PostMapping("/request-ride")
@@ -29,6 +29,6 @@ public class PassengerRestController {
         messaging.send(RIDE_REQUESTS_TOPIC, request);
 
         logger.info("[bael] message sent: {}", request);
-        return "looking for drivers";
+        return "waiting for drivers";
     }
 }

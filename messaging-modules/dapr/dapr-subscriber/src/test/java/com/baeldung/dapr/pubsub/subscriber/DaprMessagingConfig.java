@@ -12,7 +12,7 @@ import io.dapr.spring.messaging.DaprMessagingTemplate;
 
 @Configuration
 @EnableConfigurationProperties({ DaprPubSubProperties.class })
-public class DaprSubscriberTestConfig {
+public class DaprMessagingConfig {
 
     @Bean
     public DaprMessagingTemplate<RideRequest> messagingTemplate(DaprClient client, DaprPubSubProperties config) {

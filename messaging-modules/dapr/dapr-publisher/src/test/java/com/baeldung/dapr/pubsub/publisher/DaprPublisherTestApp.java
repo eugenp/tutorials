@@ -3,6 +3,7 @@ package com.baeldung.dapr.pubsub.publisher;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.SpringApplication.Running;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.testcontainers.Testcontainers;
 
 @SpringBootApplication
 public class DaprPublisherTestApp {
@@ -15,6 +16,6 @@ public class DaprPublisherTestApp {
         int port = app.getApplicationContext()
             .getEnvironment()
             .getProperty("server.port", Integer.class);
-        org.testcontainers.Testcontainers.exposeHostPorts(port);
+        Testcontainers.exposeHostPorts(port);
     }
 }
