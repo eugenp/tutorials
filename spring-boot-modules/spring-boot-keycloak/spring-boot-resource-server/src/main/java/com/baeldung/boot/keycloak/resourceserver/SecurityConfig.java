@@ -42,8 +42,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    JwtAuthenticationConverter authenticationConverter(
-            Converter<Map<String, Object>, Collection<GrantedAuthority>> authoritiesConverter) {
+    JwtAuthenticationConverter authenticationConverter(AuthoritiesConverter authoritiesConverter) {
         JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
         jwtAuthenticationConverter
                 .setJwtGrantedAuthoritiesConverter(jwt -> authoritiesConverter.convert(jwt.getClaims()));
