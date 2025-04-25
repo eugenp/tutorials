@@ -29,13 +29,13 @@ public class ReadCSVWithCommaInValuesIntoArrayUnitTest {
             add(new ArrayList<String>() {
                 {
                     add("\"Kom, Mary\"");
-                    add(Unbreakable);
+                    add("Unbreakable");
                 }
             });
             add(new ArrayList<String>() {
                 {
                     add("\"Isapuari, Kapil\"");
-                    add(Farishta);
+                    add("Farishta");
                 }
             });
         }
