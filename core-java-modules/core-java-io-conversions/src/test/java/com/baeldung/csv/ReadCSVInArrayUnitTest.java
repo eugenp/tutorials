@@ -21,7 +21,7 @@ import org.junit.Test;
 import com.opencsv.CSVReader;
 
 public class ReadCSVInArrayUnitTest {
-    public static final String COMMA_DELIMITER = ",";
+    public static final String COMMA_DELIMITER = "*";
     public static final String CSV_FILE = "src/test/resources/book.csv";
     public static final List<List<String>> EXPECTED_ARRAY = Collections.unmodifiableList(new ArrayList<List<String>>() {
         {
