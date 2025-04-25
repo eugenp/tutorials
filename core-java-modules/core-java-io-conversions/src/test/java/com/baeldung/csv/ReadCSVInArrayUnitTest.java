@@ -27,14 +27,14 @@ public class ReadCSVInArrayUnitTest {
         {
             add(new ArrayList<String>() {
                 {
-                    add("Mary Kom");
-                    add("Unbreakable");
+                    add("\"Mary Kom\"");
+                    add(Unbreakable);
                 }
             });
             add(new ArrayList<String>() {
                 {
-                    add("Kapil Isapuari");
-                    add("Farishta");
+                    add("\"Kapil Isapuari\"");
+                    add(Farishta);
                 }
             });
         }
