@@ -48,7 +48,7 @@
     </build>
 
     <properties>
-        <de.flapdoodle.embed.mongo.version>4.13.0</de.flapdoodle.embed.mongo.version>
+        <de.flapdoodle.embed.mongo.version>4.20.0</de.flapdoodle.embed.mongo.version>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
