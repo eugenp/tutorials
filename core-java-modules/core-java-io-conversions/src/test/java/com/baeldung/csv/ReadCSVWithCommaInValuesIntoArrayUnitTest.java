@@ -42,7 +42,7 @@ public class ReadCSVWithCommaInValuesIntoArrayUnitTest {
     });
 
     @Test
-    public void givenCSVFile_whenBufferedReader_thenContentsAsExpected() throws IOException {
+    public void givenCSVFileWithCommaInValues_whenBufferedReader_thenContentsAsExpected() throws IOException {
         List<List<String>> records = new ArrayList<List<String>>();
         try (BufferedReader br = new BufferedReader(new FileReader(CSV_FILE))) {
             String line = "";
@@ -53,8 +53,8 @@ public class ReadCSVWithCommaInValuesIntoArrayUnitTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        for (int i = 0; i < EXPECTED_ARRAY_2.size(); i++) {
-            Assert.assertArrayEquals(EXPECTED_ARRAY_2.get(i)
+        for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
+            Assert.assertArrayEquals(EXPECTED_ARRAY.get(i)
                 .toArray(),
                 records.get(i)
                     .toArray());
@@ -62,7 +62,7 @@ public class ReadCSVWithCommaInValuesIntoArrayUnitTest {
     }
 
     @Test
-    public void givenCSVFile_whenScanner_thenContentsAsExpected() throws IOException {
+    public void givenCSVFileWithCommaInValues_whenScanner_thenContentsAsExpected() throws IOException {
         List<List<String>> records = new ArrayList<List<String>>();
         try (Scanner scanner = new Scanner(new File(CSV_FILE));) {
             while (scanner.hasNextLine()) {
@@ -71,8 +71,8 @@ public class ReadCSVWithCommaInValuesIntoArrayUnitTest {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        for (int i = 0; i < EXPECTED_ARRAY_2.size(); i++) {
-            Assert.assertArrayEquals(EXPECTED_ARRAY_2.get(i)
+        for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
+            Assert.assertArrayEquals(EXPECTED_ARRAY.get(i)
                 .toArray(),
                 records.get(i)
                     .toArray());
@@ -89,6 +89,4 @@ public class ReadCSVWithCommaInValuesIntoArrayUnitTest {
         }
         return values;
     }
-
-    
 }
