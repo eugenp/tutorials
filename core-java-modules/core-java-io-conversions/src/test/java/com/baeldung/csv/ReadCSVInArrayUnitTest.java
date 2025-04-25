@@ -69,7 +69,7 @@ public class ReadCSVInArrayUnitTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
+        for (int i = 0; i < EXPECTED_ARRAY_2.size(); i++) {
             Assert.assertArrayEquals(EXPECTED_ARRAY_2.get(i)
                 .toArray(),
                 records.get(i)
@@ -87,7 +87,7 @@ public class ReadCSVInArrayUnitTest {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
+        for (int i = 0; i < EXPECTED_ARRAY_2.size(); i++) {
             Assert.assertArrayEquals(EXPECTED_ARRAY_2.get(i)
                 .toArray(),
                 records.get(i)
@@ -117,7 +117,7 @@ public class ReadCSVInArrayUnitTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
+        for (int i = 0; i < EXPECTED_ARRAY_2.size(); i++) {
             Assert.assertArrayEquals(EXPECTED_ARRAY_2.get(i)
                 .toArray(),
                 records.get(i)
@@ -132,7 +132,7 @@ public class ReadCSVInArrayUnitTest {
           .map(line -> Arrays.asList(line.split(COMMA_DELIMITER)))
           .collect(Collectors.toList());
 
-        for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
+        for (int i = 0; i < EXPECTED_ARRAY_2.size(); i++) {
             Assert.assertArrayEquals(EXPECTED_ARRAY_2.get(i)
                 .toArray(),
                 records.get(i)
@@ -147,7 +147,7 @@ public class ReadCSVInArrayUnitTest {
               .map(line -> Arrays.asList(line.split(COMMA_DELIMITER)))
               .collect(Collectors.toList());
 
-            for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
+            for (int i = 0; i < EXPECTED_ARRAY_2.size(); i++) {
                 Assert.assertArrayEquals(EXPECTED_ARRAY_2.get(i)
                     .toArray(),
                     records.get(i)
@@ -162,7 +162,7 @@ public class ReadCSVInArrayUnitTest {
             List<List<String>> records = lines.map(line -> Arrays.asList(line.split(COMMA_DELIMITER)))
               .collect(Collectors.toList());
 
-            for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
+            for (int i = 0; i < EXPECTED_ARRAY_2.size(); i++) {
                 Assert.assertArrayEquals(EXPECTED_ARRAY_2.get(i)
                     .toArray(),
                     records.get(i)
