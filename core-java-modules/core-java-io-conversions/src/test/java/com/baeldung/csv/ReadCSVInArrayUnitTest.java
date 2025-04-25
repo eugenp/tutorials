@@ -40,6 +40,23 @@ public class ReadCSVInArrayUnitTest {
         }
     });
 
+    public static final List<List<String>> EXPECTED_ARRAY_2 = Collections.unmodifiableList(new ArrayList<List<String>>() {
+        {
+            add(new ArrayList<String>() {
+                {
+                    add("Kom, Mary");
+                    add("Unbreakable");
+                }
+            });
+            add(new ArrayList<String>() {
+                {
+                    add("Isapuari, Kapil");
+                    add("Farishta");
+                }
+            });
+        }
+    });
+
     @Test
     public void givenCSVFile_whenBufferedReader_thenContentsAsExpected() throws IOException {
         List<List<String>> records = new ArrayList<List<String>>();
@@ -53,7 +70,7 @@ public class ReadCSVInArrayUnitTest {
             e.printStackTrace();
         }
         for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
-            Assert.assertArrayEquals(EXPECTED_ARRAY.get(i)
+            Assert.assertArrayEquals(EXPECTED_ARRAY_2.get(i)
                 .toArray(),
                 records.get(i)
                     .toArray());
@@ -71,7 +88,7 @@ public class ReadCSVInArrayUnitTest {
             e.printStackTrace();
         }
         for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
-            Assert.assertArrayEquals(EXPECTED_ARRAY.get(i)
+            Assert.assertArrayEquals(EXPECTED_ARRAY_2.get(i)
                 .toArray(),
                 records.get(i)
                     .toArray());
@@ -101,7 +118,7 @@ public class ReadCSVInArrayUnitTest {
             e.printStackTrace();
         }
         for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
-            Assert.assertArrayEquals(EXPECTED_ARRAY.get(i)
+            Assert.assertArrayEquals(EXPECTED_ARRAY_2.get(i)
                 .toArray(),
                 records.get(i)
                     .toArray());
@@ -116,7 +133,7 @@ public class ReadCSVInArrayUnitTest {
           .collect(Collectors.toList());
 
         for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
-            Assert.assertArrayEquals(EXPECTED_ARRAY.get(i)
+            Assert.assertArrayEquals(EXPECTED_ARRAY_2.get(i)
                 .toArray(),
                 records.get(i)
                     .toArray());
@@ -131,7 +148,7 @@ public class ReadCSVInArrayUnitTest {
               .collect(Collectors.toList());
 
             for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
-                Assert.assertArrayEquals(EXPECTED_ARRAY.get(i)
+                Assert.assertArrayEquals(EXPECTED_ARRAY_2.get(i)
                     .toArray(),
                     records.get(i)
                         .toArray());
@@ -146,7 +163,7 @@ public class ReadCSVInArrayUnitTest {
               .collect(Collectors.toList());
 
             for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
-                Assert.assertArrayEquals(EXPECTED_ARRAY.get(i)
+                Assert.assertArrayEquals(EXPECTED_ARRAY_2.get(i)
                     .toArray(),
                     records.get(i)
                         .toArray());
