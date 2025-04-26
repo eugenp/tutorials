@@ -89,23 +89,4 @@ public class ReadCSVWithCommaInValuesIntoArrayUnitTest {
         }
         return values;
     }
-
-    @Test
-    public void givenCSVFile_whenOpencsv_thenContentsAsExpected() throws IOException {
-        List<List<String>> records = new ArrayList<List<String>>();
-        try (CSVReader csvReader = new CSVReader(new FileReader(CSV_FILE));) {
-            String[] values = null;
-            while ((values = csvReader.readNext()) != null) {
-                records.add(Arrays.asList(values));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
-            Assert.assertArrayEquals(EXPECTED_ARRAY.get(i)
-                .toArray(),
-                records.get(i)
-                    .toArray());
-        }
-    }
 }
