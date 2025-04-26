@@ -41,6 +41,7 @@
         <module>struts-2</module>
         <module>vraptor</module>
         <module>wicket</module>
+        <module>hilla</module>
     </modules>
 
     <build>

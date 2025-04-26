@@ -3,22 +3,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.pulumi</groupId>
-    <artifactId>pulumi-example</artifactId>
+    <artifactId>pulumi</artifactId>
     <version>1.0-SNAPSHOT</version>
-
-    <properties>
-        <encoding>UTF-8</encoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <maven.compiler.release>17</maven.compiler.release>
-        <pulumi.version>(,1.0]</pulumi.version>
-        <pulumi.aws.version>(6.0.2,6.99]</pulumi.aws.version>
-        <junit.jupiter.version>5.7.0</junit.jupiter.version>
-        <mainClass>myproject.WebserverInfra</mainClass>
-        <mainArgs/>
-    </properties>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -117,4 +104,16 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <encoding>UTF-8</encoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.release>17</maven.compiler.release>
+        <pulumi.version>(,1.0]</pulumi.version>
+        <pulumi.aws.version>(6.0.2,6.99]</pulumi.aws.version>
+        <junit.jupiter.version>5.7.0</junit.jupiter.version>
+        <mainClass>myproject.WebserverInfra</mainClass>
+        <mainArgs/>
+    </properties>
 </project>
