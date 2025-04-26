@@ -1574,6 +1574,8 @@
         <mockito-inline.version>5.2.0</mockito-inline.version>
         <mockito-junit-jupiter.version>5.12.0</mockito-junit-jupiter.version>
         <logback.configurationFileName>logback-config-global.xml</logback.configurationFileName>
+        <jsoup.version>1.17.2</jsoup.version>
+        <jaxb-runtime.version>4.0.3</jaxb-runtime.version>
     </properties>
 
 </project>
