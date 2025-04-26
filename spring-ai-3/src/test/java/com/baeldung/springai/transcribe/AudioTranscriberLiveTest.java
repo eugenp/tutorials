@@ -31,7 +31,10 @@ class AudioTranscriberLiveTest {
                 .getInputStream()
         );
 
-        TranscriptionResponse response = audioTranscriber.transcribe(audioFile);
+        String context = "Short description about Baeldung.";
+        TranscriptionRequest transcriptionRequest = new TranscriptionRequest(audioFile, context);
+        TranscriptionResponse response = audioTranscriber.transcribe(transcriptionRequest);
+
         assertThat(response)
             .isNotNull()
             .hasNoNullFieldsOrProperties();
@@ -39,7 +42,7 @@ class AudioTranscriberLiveTest {
             .isEqualToIgnoringWhitespace("""
                 Baeldung is a top-notch educational platform that specializes in Java, Spring, and related technologies.
                 It offers a wealth of tutorials, articles, and courses that help developers master programming concepts.
-                Known for its clear examples and practical guides, Baeldung is a go-to resource for developers looking 
+                Known for its clear examples and practical guides, Baeldung is a go-to resource for developers looking
                 to level up their skills.
                 """);
     }

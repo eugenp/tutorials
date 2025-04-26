@@ -1,8 +1,10 @@
 package com.baeldung.springai.transcribe;
 
+import org.springframework.ai.audio.transcription.AudioTranscriptionPrompt;
+import org.springframework.ai.audio.transcription.AudioTranscriptionResponse;
 import org.springframework.ai.openai.OpenAiAudioTranscriptionModel;
+import org.springframework.ai.openai.OpenAiAudioTranscriptionOptions;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 @Service
 class AudioTranscriber {
@@ -13,9 +15,16 @@ class AudioTranscriber {
         this.openAiAudioTranscriptionModel = openAiAudioTranscriptionModel;
     }
 
-    TranscriptionResponse transcribe(MultipartFile audioFile) {
-        String transcription = openAiAudioTranscriptionModel.call(audioFile.getResource());
-        return new TranscriptionResponse(transcription);
+    TranscriptionResponse transcribe(TranscriptionRequest transcriptionRequest) {
+        AudioTranscriptionPrompt prompt = new AudioTranscriptionPrompt(
+            transcriptionRequest.audioFile().getResource(),
+            OpenAiAudioTranscriptionOptions
+                .builder()
+                .prompt(transcriptionRequest.context())
+                .build()
+        );
+        AudioTranscriptionResponse response = openAiAudioTranscriptionModel.call(prompt);
+        return new TranscriptionResponse(response.getResult().getOutput());
     }
 
 }
