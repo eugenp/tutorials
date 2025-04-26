@@ -1,4 +1,4 @@
-package com.baeldung.compilerApi;
+package com.baeldung.compilerapi;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

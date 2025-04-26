@@ -1,4 +1,4 @@
-package com.baeldung.compilerApi;
+package com.baeldung.compilerapi;
 
 import javax.tools.SimpleJavaFileObject;
 import java.net.URI;

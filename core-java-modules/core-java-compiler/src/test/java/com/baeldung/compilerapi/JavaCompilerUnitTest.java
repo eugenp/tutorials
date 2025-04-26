@@ -1,10 +1,8 @@
-package com.baeldung.compilerApi;
+package com.baeldung.compilerapi;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.io.TempDir;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
