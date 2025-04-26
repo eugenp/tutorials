@@ -1,6 +1,7 @@
 package com.baeldung.examples.guice.provider;
 
 import com.google.inject.Provider;
+import java.util.logging.Logger;
 
 public class EmailNotifier implements Notifier, Provider<Notifier> {
 
@@ -8,6 +9,7 @@ public class EmailNotifier implements Notifier, Provider<Notifier> {
     private String user;
     private String password;
     private EmailNotifier emailNotifier;
+    Logger log = Logger.getLogger(EmailNotifier.class.getName());
 
     @Override
     public Notifier get() {
@@ -19,6 +21,6 @@ public class EmailNotifier implements Notifier, Provider<Notifier> {
 
     @Override
     public void sendNotification(String message) {
-        System.out.println("Sending email notification: " + message);
+        log.info("Sending email notification: " + message);
     }
 }

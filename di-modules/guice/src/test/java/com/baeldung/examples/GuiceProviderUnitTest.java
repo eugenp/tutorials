@@ -10,7 +10,7 @@ import com.baeldung.examples.guice.provider.Logger;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
-public class GuiceProviderTester {
+public class GuiceProviderUnitTest {
     @Test
     public void givenGuiceProvider_whenInjecting_thenShouldReturnEmailNotifier() {
         // Create a Guice injector with the NotifierModule
