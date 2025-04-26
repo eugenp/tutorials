@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.baeldung</groupId>
     <artifactId>gatling-java</artifactId>
@@ -39,7 +39,7 @@
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
-            <version>1.12.2</version>
+            <version>${micrometer-registry-prometheus.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -87,6 +87,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.version}</version>
                 <configuration>
                     <mainClass>org.baeldung.Application</mainClass>
                     <finalName>gatling-java</finalName>
@@ -114,6 +115,7 @@
         <gatling-maven-plugin.version>4.3.0</gatling-maven-plugin.version>
         <faker.version>1.0.2</faker.version>
         <spring.version>2.7.18</spring.version>
+        <micrometer-registry-prometheus.version>1.12.2</micrometer-registry-prometheus.version>
         <logback-classic.version>1.3.10</logback-classic.version>
     </properties>
 </project>
