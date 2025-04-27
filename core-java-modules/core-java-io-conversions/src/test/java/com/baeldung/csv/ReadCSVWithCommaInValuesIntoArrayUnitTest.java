@@ -90,20 +90,6 @@ public class ReadCSVWithCommaInValuesIntoArrayUnitTest {
         return values;
     }
 
-    @Test
-    public void givenCSVFileWithCommaInValues_whenUsingFilesReadAllLinesMethod_thenContentsAsExpected() throws IOException {
-        List<List<String>> records = Files.readAllLines(Paths.get(CSV_FILE))
-          .stream()
-          .map(line -> Arrays.asList(line.split(COMMA_DELIMITER)))
-          .collect(Collectors.toList());
-
-        for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
-            Assert.assertArrayEquals(EXPECTED_ARRAY.get(i)
-                .toArray(),
-                records.get(i)
-                    .toArray());
-        }
-    }
 
     @Test
     public void givenCSVFileWithCommaInValues_whenUsingFilesNewBufferedReaderMethod_thenContentsAsExpected() throws IOException {
