@@ -89,4 +89,69 @@ public class ReadCSVWithCommaInValuesIntoArrayUnitTest {
         }
         return values;
     }
+
+     @Test
+    public void givenCSVFileWithCommaInValues_whenOpencsv_thenContentsAsExpected() throws IOException {
+        List<List<String>> records = new ArrayList<List<String>>();
+        try (CSVReader csvReader = new CSVReader(new FileReader(CSV_FILE));) {
+            String[] values = null;
+            while ((values = csvReader.readNext()) != null) {
+                records.add(Arrays.asList(values));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
+            Assert.assertArrayEquals(EXPECTED_ARRAY.get(i)
+                .toArray(),
+                records.get(i)
+                    .toArray());
+        }
+    }
+
+    @Test
+    public void givenCSVFileWithCommaInValues_whenUsingFilesReadAllLinesMethod_thenContentsAsExpected() throws IOException {
+        List<List<String>> records = Files.readAllLines(Paths.get(CSV_FILE))
+          .stream()
+          .map(line -> Arrays.asList(line.split(COMMA_DELIMITER)))
+          .collect(Collectors.toList());
+
+        for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
+            Assert.assertArrayEquals(EXPECTED_ARRAY.get(i)
+                .toArray(),
+                records.get(i)
+                    .toArray());
+        }
+    }
+
+    @Test
+    public void givenCSVFileWithCommaInValues_whenUsingFilesNewBufferedReaderMethod_thenContentsAsExpected() throws IOException {
+        try (BufferedReader reader = Files.newBufferedReader(Paths.get(CSV_FILE))) {
+            List<List<String>> records = reader.lines()
+              .map(line -> Arrays.asList(line.split(COMMA_DELIMITER)))
+              .collect(Collectors.toList());
+
+            for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
+                Assert.assertArrayEquals(EXPECTED_ARRAY.get(i)
+                    .toArray(),
+                    records.get(i)
+                        .toArray());
+            }
+        }
+    }
+
+    @Test
+    public void givenCSVFileWithCommaInValues_whenUsingFilesLinesMethod_thenContentsAsExpected() throws IOException {
+        try (Stream<String> lines = Files.lines(Paths.get(CSV_FILE))) {
+            List<List<String>> records = lines.map(line -> Arrays.asList(line.split(COMMA_DELIMITER)))
+              .collect(Collectors.toList());
+
+            for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
+                Assert.assertArrayEquals(EXPECTED_ARRAY.get(i)
+                    .toArray(),
+                    records.get(i)
+                        .toArray());
+            }
+        }
+    }
 }
