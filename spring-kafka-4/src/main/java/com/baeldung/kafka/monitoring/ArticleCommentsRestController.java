@@ -1,7 +1,7 @@
 package com.baeldung.kafka.monitoring;
 
-import java.util.logging.Logger;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class ArticleCommentsRestController {
 
-    private static final Logger log = Logger.getLogger(ArticleCommentsRestController.class.getName());
+    private static final Logger log = LoggerFactory.getLogger(ArticleCommentsRestController.class);
 
     private final KafkaTemplate<String, ArticleCommentAddedEvent> articleCommentsKafkaTemplate;
 
@@ -24,8 +24,12 @@ public class ArticleCommentsRestController {
     }
 
     @PostMapping("/articles/{articleSlug}/comments")
-    Response addArticleComment(@PathVariable("articleSlug") String articleSlug, @RequestBody ArticleCommentAddedDto dto) {
-        log.info("Comment added: " + dto);
+    Response addArticleComment(
+        @PathVariable("articleSlug") String articleSlug,
+        @RequestBody ArticleCommentAddedDto dto
+    ) {
+
+        log.info("HTTP Request received to save article comment: " + dto);
         // some logic here (eg: save to DB)
 
         var event = new ArticleCommentAddedEvent(articleSlug, dto.articleAuthor(), dto.comment(), dto.commentAuthor());

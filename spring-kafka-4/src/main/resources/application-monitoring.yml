@@ -4,6 +4,8 @@ management:
   endpoint.health.show-details: always
 
 spring:
+  application:
+    name: kafka-monitoring
   kafka:
     bootstrap-servers: localhost:9092
     consumer:

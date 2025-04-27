@@ -1,6 +1,7 @@
 package com.baeldung.kafka.monitoring;
 
-import java.util.Collections;
+import static java.util.Collections.singletonList;
+
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -26,15 +27,14 @@ class KafkaConfig {
     @Bean
     ConsumerFactory<String, String> consumerFactory(KafkaProperties kafkaProperties, MeterRegistry meterRegistry) {
         DefaultKafkaConsumerFactory<String, String> cf = new DefaultKafkaConsumerFactory<>(kafkaProperties.buildConsumerProperties());
-        cf.addListener(new MicrometerConsumerListener<>(meterRegistry, Collections.singletonList(new ImmutableTag("app-name", "article-comments-app"))));
+        cf.addListener(new MicrometerConsumerListener<>(meterRegistry, singletonList(new ImmutableTag("app-name", "article-comments-app"))));
         return cf;
     }
 
     @Bean
     ProducerFactory<String, ArticleCommentAddedEvent> producerFactory(KafkaProperties kafkaProperties, MeterRegistry meterRegistry) {
-        ProducerFactory pf = new DefaultKafkaProducerFactory<>(kafkaProperties.buildProducerProperties());
-        pf.addListener(
-            new MicrometerProducerListener<String, String>(meterRegistry, Collections.singletonList(new ImmutableTag("app-name", "article-comments-app"))));
+        ProducerFactory<String, ArticleCommentAddedEvent> pf = new DefaultKafkaProducerFactory<>(kafkaProperties.buildProducerProperties());
+        pf.addListener(new MicrometerProducerListener<>(meterRegistry, singletonList(new ImmutableTag("app-name", "article-comments-app"))));
         return pf;
     }
 
@@ -43,6 +43,7 @@ class KafkaConfig {
     KafkaTemplate<String, ArticleCommentAddedEvent> articleCommentsKafkaTemplate(ProducerFactory<String, ArticleCommentAddedEvent> producerFactory) {
         var template = new KafkaTemplate<>(producerFactory);
 
+        template.setObservationEnabled(true);
         template.setMicrometerTags(Map.of("topic", "baeldung.article-comment.added"));
         template.setMicrometerTagsProvider(record -> Map.of("article-slug", record.key()
             .toString()));
@@ -57,9 +58,11 @@ class KafkaConfig {
         factory.setConsumerFactory(consumerFactory);
 
         ContainerProperties containerProps = factory.getContainerProperties();
+        containerProps.setObservationEnabled(true);
         containerProps.setMicrometerTags(Map.of("app-name", "article-comments-app"));
         containerProps.setMicrometerTagsProvider(record -> Map.of("article-slug", record.key()
             .toString()));
+
         return factory;
     }
 

@@ -7,7 +7,8 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 class KafkaMonitoringApplication {
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder().profiles("monitoring")
+        new SpringApplicationBuilder()
+            .profiles("monitoring")
             .sources(KafkaMonitoringApplication.class)
             .run(args);
     }
