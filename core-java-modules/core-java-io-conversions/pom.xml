@@ -38,7 +38,7 @@
     </build>
 
     <properties>
-        <opencsv.version>5.8</opencsv.version>
+        <opencsv.version>5.9</opencsv.version>
     </properties>
 
 </project>
