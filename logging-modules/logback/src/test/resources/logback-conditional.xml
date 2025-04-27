@@ -1,0 +1,63 @@
+<configuration debug="true">
+
+	<if condition='property("ENVIRONMENT").contains("PROD")'>
+		<then>
+			<appender name="FILE_APPENDER" class="ch.qos.logback.core.FileAppender">
+				<file>conditional.log</file>
+				<encoder>
+					<pattern>%d %-5level %logger{35} -%kvp- %msg %n</pattern>
+				</encoder>
+			</appender>
+		</then>
+	</if>
+
+	<if condition='isNull("ENVIRONMENT")'>
+		<then>
+			<appender name="CONSOLE_APPENDER" class="ch.qos.logback.core.ConsoleAppender">
+				<encoder>
+					<pattern>%d %-5level %logger{35} -%kvp- %msg %n</pattern>
+				</encoder>
+			</appender>
+		</then>
+	</if>
+
+	<if condition='isDefined("LOG_STASH_URL")'>
+		<then>
+			<appender name="LOG_STASH_APPENDER" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+				<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+					<level>ERROR</level>
+				</filter>
+				<destination>${LOG_STASH_URL}</destination>
+				<encoder class="net.logstash.logback.encoder.LogstashEncoder">
+					<customFields>{"app_name": "TestApp"}</customFields>
+				</encoder>
+			</appender>
+		</then>
+	</if>
+
+	<appender name="FILTER_APPENDER" class="ch.qos.logback.core.FileAppender">
+		<file>filtered.log</file>
+		<filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+			<evaluator>
+				<expression>return message.contains("billing");</expression>
+			</evaluator>
+			<OnMatch>DENY</OnMatch>
+			<OnMismatch>NEUTRAL</OnMismatch>
+		</filter>
+		<encoder>
+			<pattern>%d %-4relative [%thread] %-5level %logger -%kvp -%msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="CONSOLE_APPENDER" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d %-5level %logger{35} -%kvp- %msg %n</pattern>
+		</encoder>
+	</appender>
+	
+	<root level="DEBUG">
+		<appender-ref ref="FILE_APPENDER" />
+		<appender-ref ref="FILTER_APPENDER" />
+		<appender-ref ref="CONSOLE_APPENDER" />
+	</root>
+</configuration>

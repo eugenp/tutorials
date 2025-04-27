@@ -76,8 +76,17 @@
             <scope>provided</scope>
             <version>${lombok.version}</version>
         </dependency>
+        <dependency>
+			<groupId>org.codehaus.janino</groupId>
+			<artifactId>janino</artifactId>
+			<version>${janino.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.logstash.logback</groupId>
+			<artifactId>logstash-logback-encoder</artifactId>
+			<version>${logstash.version}</version>
+		</dependency>
     </dependencies>
-
 
     <build>
         <plugins>
@@ -102,6 +111,8 @@
         <angus.activation.version>2.0.0</angus.activation.version>
         <logback.version>1.5.6</logback.version>
         <slf4j.version>2.1.0-alpha1</slf4j.version>
+        <janino.version>3.1.12</janino.version>
+        <logstash.version>8.0</logstash.version>
     </properties>
 
 </project>
