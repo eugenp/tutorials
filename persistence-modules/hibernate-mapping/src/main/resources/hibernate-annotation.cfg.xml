@@ -12,10 +12,6 @@
         <property name="hbm2ddl.auto">create</property>
         <property name="hibernate.current_session_context_class">thread</property>
         <property name="hibernate.show_sql">true</property>
-        
-        <mapping class="com.baeldung.hibernate.oneToMany.model.Cart"/>
-        <mapping class="com.baeldung.hibernate.oneToMany.model.Items"/>
-        <mapping class="com.baeldung.hibernate.oneToMany.model.CartOIO"/>
-        <mapping class="com.baeldung.hibernate.oneToMany.model.ItemsOIO"/>
+
     </session-factory>
 </hibernate-configuration>

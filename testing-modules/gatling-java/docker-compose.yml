@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  influxdb:
+    build: influxDb
+    container_name: influxdb
+    ports:
+      - '8086:8086'
+      - '2003:2003'
+    environment:
+      - INFLUX_USER=admin
+      - INFLUX_PASSWORD=admin
+      - INFLUX_DB=influx
+    volumes:
+      - influxdb_data:/var/lib/influxdb
+
+  prometheus:
+    build: prometheus
+    container_name: prometheus
+    depends_on:
+      - service
+    ports:
+      - "9090:9090"
+    volumes:
+      - prometheus_data:/prometheus
+
+  grafana:
+    build: grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+
+  service:
+    build: .
+    container_name: service
+    ports:
+      - "8080:8080"
+
+volumes:
+  influxdb_data: {}
+  grafana_data: {}
+  prometheus_data: {}
