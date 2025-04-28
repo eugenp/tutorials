@@ -12,9 +12,27 @@ public class StringMinusOperationsUnitTest {
 
         var result = StringMinusOperations.removeLastCharBySubstring(original);
 
-        assertThat(result)
-            .doesNotContain("!")
+        assertThat(result).doesNotContain("!")
             .isEqualTo("Don't give up"); // no '!' at the end
+    }
+
+    @Test
+    public void givenNotBlankString_whenRemovingLastString_thenReturnOriginalWithoutLastString() {
+        var original = "Don't give up!";
+
+        var result = StringMinusOperations.removeTrailingStringBySubstring(original, "up!");
+
+        assertThat(result).doesNotContain("up!")
+            .isEqualTo("Don't give "); // no 'up!' at the end
+    }
+
+    @Test
+    public void givenNotBlankString_whenRemovingLastStringThatDoesNotMatch_thenReturnOriginalString() {
+        var original = "Don't give up!";
+
+        var result = StringMinusOperations.removeTrailingStringBySubstring(original, "foo");
+
+        assertThat(result).isEqualTo(original);
     }
 
     @Test
@@ -24,8 +42,7 @@ public class StringMinusOperationsUnitTest {
 
         var result = StringMinusOperations.minusByReplace(original, toRemove);
 
-        assertThat(result)
-            .doesNotContain(String.valueOf(toRemove))
+        assertThat(result).doesNotContain(String.valueOf(toRemove))
             .isEqualTo("Don' give up!"); // no 't'
     }
 
@@ -36,8 +53,7 @@ public class StringMinusOperationsUnitTest {
 
         var result = StringMinusOperations.minusByReplace(original, toRemove);
 
-        assertThat(result)
-            .doesNotContain(toRemove)
+        assertThat(result).doesNotContain(toRemove)
             .isEqualTo(" give up!"); // no 'Don't'
     }
 
@@ -48,8 +64,7 @@ public class StringMinusOperationsUnitTest {
 
         var result = StringMinusOperations.minusByStream(original, toRemove);
 
-        assertThat(result)
-            .doesNotContain(String.valueOf(toRemove))
+        assertThat(result).doesNotContain(String.valueOf(toRemove))
             .isEqualTo("Don'tgiveup!"); // no blanks
     }
 }
