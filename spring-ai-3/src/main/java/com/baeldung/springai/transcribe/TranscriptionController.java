@@ -16,7 +16,7 @@ class TranscriptionController {
     }
 
     @PostMapping("/transcribe")
-    ResponseEntity<TranscriptionResponse> chat(
+    ResponseEntity<TranscriptionResponse> transcribe(
         @RequestParam("audioFile") MultipartFile audioFile,
         @RequestParam("context") String context
     ) {
