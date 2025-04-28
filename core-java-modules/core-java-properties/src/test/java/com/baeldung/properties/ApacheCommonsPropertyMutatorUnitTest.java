@@ -7,20 +7,21 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.apache.commons.configuration2.ex.ConfigurationException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.baeldung.core.java.properties.FileStreamsPropertyMutator;
+import com.baeldung.core.java.properties.ApacheCommonsPropertyMutator;
 import com.baeldung.core.java.properties.PropertyLoader;
 
-public class FileStreamsPropertyMutatorUnitTest {
+public class ApacheCommonsPropertyMutatorUnitTest {
 
     private static final String PROPERTY_FILE_NAME = "app.properties";
     private final PropertyLoader propertyLoader = new PropertyLoader();
     private Properties initialProperties;
 
-    private final FileStreamsPropertyMutator propertyMutator = new FileStreamsPropertyMutator(PROPERTY_FILE_NAME, propertyLoader);
+    private final ApacheCommonsPropertyMutator propertyMutator = new ApacheCommonsPropertyMutator(PROPERTY_FILE_NAME);
 
     @BeforeEach
     public void loadInitialPropertiesFromFile() throws IOException {
@@ -35,9 +36,9 @@ public class FileStreamsPropertyMutatorUnitTest {
     }
 
     @Test
-    public void addProperty_whenUsingFileStreams_thenReturnsNewPropertyWithoutAffectingOtherProperties() throws IOException {
-        assertEquals("TestApp", propertyMutator.getProperty("name"));
+    public void addProperty_whenApacheCommonsIsUsed_thenReturnsNewPropertyWithoutAffectingOtherProperties() throws ConfigurationException {
         assertNull(propertyMutator.getProperty("new.property"));
+        assertEquals("TestApp", propertyMutator.getProperty("name"));
 
         propertyMutator.addProperty("new.property", "new-value");
 
@@ -46,7 +47,7 @@ public class FileStreamsPropertyMutatorUnitTest {
     }
 
     @Test
-    public void updateProperty_whenUsingFileStreams_thenReturnsUpdatedPropertyWithoutAffectingOtherProperties() throws IOException {
+    public void updateProperty_whenApacheCommonsIsUsed_thenReturnsUpdatedPropertyWithoutAffectingOtherProperties() throws ConfigurationException {
         assertEquals("1.0", propertyMutator.getProperty("version"));
         assertEquals("TestApp", propertyMutator.getProperty("name"));
 
