@@ -11,8 +11,8 @@
         <relativePath>../../parent-spring-6</relativePath>
     </parent>
 
-    <artifactId>api-gateway</artifactId>
-    <name>api-gateway</name>
+    <artifactId>gateway-exception-management</artifactId>
+    <name>gateway-exception-management</name>
     <packaging>jar</packaging>
     <version>1.0.0-SNAPSHOT</version>
 
