@@ -86,7 +86,6 @@
         <module>spring-data-cassandra-test</module>
         <module>spring-data-cosmosdb</module>
         <module>spring-data-couchbase-2</module>
-        <module>spring-data-dynamodb</module>
         <module>spring-data-eclipselink</module>
         <!-- <module>spring-data-elasticsearch</module> --> <!-- JAVA-42359 -->
         <!-- <module>spring-data-gemfire</module> Won't Fix in JAVA-14499, The dependencies used are -->
