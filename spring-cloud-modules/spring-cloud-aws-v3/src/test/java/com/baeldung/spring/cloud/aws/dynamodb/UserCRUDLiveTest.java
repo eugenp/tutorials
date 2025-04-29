@@ -25,7 +25,7 @@ class UserCRUDLiveTest {
     private DynamoDbTemplate dynamoDbTemplate;
 
     @Test
-    void whenUserSaved_thenRecordCreatedInDynamoDB() {
+    void whenUserSaved_thenItemCreatedInDynamoDB() {
         User user = Instancio.create(User.class);
 
         dynamoDbTemplate.save(user);
@@ -39,7 +39,7 @@ class UserCRUDLiveTest {
     }
 
     @Test
-    void whenUserUpdated_thenRecordUpdatedInDynamoDB() {
+    void whenUserUpdated_thenItemUpdatedInDynamoDB() {
         User user = Instancio.create(User.class);
         dynamoDbTemplate.save(user);
 
@@ -60,7 +60,7 @@ class UserCRUDLiveTest {
     }
 
     @Test
-    void whenUserDeleted_thenRecordRemovedFromDynamoDB() {
+    void whenUserDeleted_thenItemRemovedFromDynamoDB() {
         User user = Instancio.create(User.class);
         dynamoDbTemplate.save(user);
 
@@ -74,7 +74,7 @@ class UserCRUDLiveTest {
 
     @Test
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
-    void whenUserEntityScanned_thenAllSavedRecordsReturned() {
+    void whenUserEntityScanned_thenAllSavedItemsReturned() {
         int numberOfUsers = 10;
         for (int i = 0; i < numberOfUsers; i++) {
             User user = Instancio.create(User.class);
@@ -92,7 +92,7 @@ class UserCRUDLiveTest {
     }
 
     @Test
-    void whenUserQueriedByEmail_thenCorrectRecordReturned() {
+    void whenUserQueriedByEmail_thenCorrectItemReturned() {
         User user = Instancio.create(User.class);
         dynamoDbTemplate.save(user);
 
