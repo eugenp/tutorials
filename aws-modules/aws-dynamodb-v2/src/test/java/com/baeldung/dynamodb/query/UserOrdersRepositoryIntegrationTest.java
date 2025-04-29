@@ -108,6 +108,19 @@ public class UserOrdersRepositoryIntegrationTest {
         assertEquals(List.of("Mouse", "Keyboard"), names);
     }
 
+    @Test
+    void givenUserId_whenGetAllOrdersPaginated_thenReturnAllUserOrders() {
+        List<Map<String, AttributeValue>> items = repository.getAllOrdersPaginated("user1");
+
+        assertEquals(4, items.size());
+
+        List<String> itemNames = items.stream()
+          .map(item -> item.get("item").s())
+          .collect(Collectors.toList());
+
+        assertTrue(itemNames.containsAll(List.of("Laptop", "Monitor", "Mouse", "Keyboard")));
+    }
+
     @AfterAll
     void tearDown() {
         if (localstack != null) {

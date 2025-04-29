@@ -22,7 +22,15 @@ public class UserOrdersRepository {
           ))
           .build();
 
-        return dynamoDb.query(request).items();
+        QueryResponse response = dynamoDb.query(request);
+
+        List<Map<String, AttributeValue>> items = response.items();
+
+        for (Map<String, AttributeValue> item : items) {
+            System.out.println("Order item: " + item.get("item").s());
+        }
+
+        return response.items();
     }
 
     public List<Map<String, AttributeValue>> getOrdersAfterDate(String userId, String startDate) {
@@ -63,5 +71,29 @@ public class UserOrdersRepository {
           .build();
 
         return dynamoDb.query(request).items();
+    }
+
+    public List<Map<String, AttributeValue>> getAllOrdersPaginated(String userId) {
+        List<Map<String, AttributeValue>> allItems = new ArrayList<>();
+        Map<String, AttributeValue> lastKey = null;
+
+        do {
+            QueryRequest.Builder requestBuilder = QueryRequest.builder()
+              .tableName("UserOrders")
+              .keyConditionExpression("userId = :uid")
+              .expressionAttributeValues(Map.of(
+                ":uid", AttributeValue.fromS(userId)
+              ));
+
+            if (lastKey != null) {
+                requestBuilder.exclusiveStartKey(lastKey);
+            }
+
+            QueryResponse response = dynamoDb.query(requestBuilder.build());
+            allItems.addAll(response.items());
+            lastKey = response.lastEvaluatedKey();
+        } while (lastKey != null && !lastKey.isEmpty());
+
+        return allItems;
     }
 }
