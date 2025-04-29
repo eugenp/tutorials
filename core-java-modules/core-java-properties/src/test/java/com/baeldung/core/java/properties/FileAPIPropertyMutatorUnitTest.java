@@ -1,22 +1,14 @@
-package com.baeldung.properties;
+package com.baeldung.core.java.properties;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import com.baeldung.core.java.properties.FileAPIPropertyMutator;
-import com.baeldung.core.java.properties.PropertyLoader;
 
 public class FileAPIPropertyMutatorUnitTest {
 

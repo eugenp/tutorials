@@ -1,4 +1,4 @@
-package com.baeldung.properties;
+package com.baeldung.core.java.properties;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -11,9 +11,6 @@ import org.apache.commons.configuration2.ex.ConfigurationException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import com.baeldung.core.java.properties.ApacheCommonsPropertyMutator;
-import com.baeldung.core.java.properties.PropertyLoader;
 
 public class ApacheCommonsPropertyMutatorUnitTest {
 

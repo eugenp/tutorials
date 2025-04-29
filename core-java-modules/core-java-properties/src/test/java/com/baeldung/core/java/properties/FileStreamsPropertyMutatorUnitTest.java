@@ -1,4 +1,4 @@
-package com.baeldung.properties;
+package com.baeldung.core.java.properties;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -10,9 +10,6 @@ import java.util.Properties;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import com.baeldung.core.java.properties.FileStreamsPropertyMutator;
-import com.baeldung.core.java.properties.PropertyLoader;
 
 public class FileStreamsPropertyMutatorUnitTest {
 
