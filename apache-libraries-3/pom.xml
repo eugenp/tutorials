@@ -59,11 +59,6 @@
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
-            <artifactId>camel-jackson</artifactId>
-            <version>${camel.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
             <artifactId>camel-jetty</artifactId>
             <version>${camel.version}</version>
         </dependency>
@@ -77,11 +72,7 @@
             <artifactId>camel-graphql</artifactId>
             <version>${camel.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson-databind.version}</version>
-        </dependency>
+
     </dependencies>
 
     <properties>
@@ -92,7 +83,6 @@
         <json-unit-assertj.version>3.5.0</json-unit-assertj.version>
         <graphql.version>23.1</graphql.version>
         <camel.version>4.11.0</camel.version>
-        <jackson-databind.version>2.18.0</jackson-databind.version>
     </properties>
 
 </project>
