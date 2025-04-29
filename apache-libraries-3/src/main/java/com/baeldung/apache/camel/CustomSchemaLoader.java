@@ -11,23 +11,27 @@ import graphql.schema.idl.SchemaParser;
 import graphql.schema.idl.TypeDefinitionRegistry;
 
 public class CustomSchemaLoader {
+
     private static final Logger logger = LoggerFactory.getLogger(CustomSchemaLoader.class);
     private final BookService bookService = new BookService();
 
     public GraphQLSchema loadSchema() {
+        logger.debug("Attempting to load schema...........");
+        System.out.println("-----------------------loadSchema----------------------- ");
         try (InputStream schemaStream = getClass().getClassLoader().getResourceAsStream("books.graphql")) {
             if (schemaStream == null) {
                 throw new RuntimeException("GraphQL schema file 'books.graphql' not found in classpath");
             }
-
+            logger.debug("Schema file found. Parsing...");
             TypeDefinitionRegistry registry = new SchemaParser()
                 .parse(new InputStreamReader(schemaStream));
 
             RuntimeWiring wiring = buildRuntimeWiring();
+
             return new SchemaGenerator().makeExecutableSchema(registry, wiring);
 
         } catch (Exception e) {
-            logger.error("Failed to load GraphQL schema", e);
+            logger.error("---------------------------------Failed to load GraphQL schema", e);
             throw new RuntimeException("GraphQL schema initialization failed", e);
         }
     }

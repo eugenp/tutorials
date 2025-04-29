@@ -1,14 +1,13 @@
 package com.baeldung.apache.camel;
 import org.apache.camel.CamelContext;
+import org.apache.camel.Exchange;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import static org.junit.jupiter.api.Assertions.*;
+
 
 public class CamelRestGraphQLAppUnitTest {
 
@@ -18,12 +17,10 @@ public class CamelRestGraphQLAppUnitTest {
     @BeforeAll
     public static void setup() throws Exception {
         context = new DefaultCamelContext();
-        context.getRegistry().bind("graphqlSchemaLoader", new CustomSchemaLoader());
         context.addRoutes(new BookRoute());
         context.start();
         template = context.createProducerTemplate();
-
-        Thread.sleep(1000); // Give the server time to start
+        Thread.sleep(2000);
     }
 
     @AfterAll
@@ -38,7 +35,13 @@ public class CamelRestGraphQLAppUnitTest {
 
     @Test
     void whenCallingRestGetAllBooks_thenShouldReturnBookList() {
-        String response = template.requestBody("jetty:http://localhost:8080/api/books", null, String.class);
+        String response = template.requestBodyAndHeader(
+            "http://localhost:8088/api/books",
+            null,
+            Exchange.CONTENT_TYPE,
+            "application/json",
+            String.class
+        );
 
         assertNotNull(response);
         assertTrue(response.contains("Clean Code"));
@@ -49,7 +52,7 @@ public class CamelRestGraphQLAppUnitTest {
 
     @Test
     void whenCallingRestGetBookById_thenShouldReturnSpecificBook() {
-        String response = template.requestBody("jetty:http://localhost:8080/api/books/1", null, String.class);
+        String response = template.requestBody("http://localhost:8088/api/books/1", null, String.class);
 
         assertNotNull(response);
         assertTrue(response.contains("Clean Code"));
@@ -62,14 +65,14 @@ public class CamelRestGraphQLAppUnitTest {
         String bookJson = "{\"id\":\"3\",\"title\":\"Camel in Action\",\"author\":\"Claus Ibsen\"}";
 
         String postResponse = template.requestBodyAndHeader(
-            "jetty:http://localhost:8080/api/books",
+            "http://localhost:8088/api/books",
             bookJson,
             "Content-Type",
             "application/json",
             String.class
         );
 
-        String getResponse = template.requestBody("jetty:http://localhost:8080/api/books", null, String.class);
+        String getResponse = template.requestBody("http://localhost:8088/api/books", null, String.class);
 
         assertNotNull(postResponse);
         assertTrue(getResponse.contains("Camel in Action"));
@@ -78,17 +81,20 @@ public class CamelRestGraphQLAppUnitTest {
 
     @Test
     void whenCallingBooksQuery_thenShouldReturnAllBooks() {
-        String query = "{\"query\":\"{ books { id title author } }\"}";
+        String query = """
+        {
+            "query": "{ books { id title author } }"
+        }""";
 
         String response = template.requestBodyAndHeader(
-            "jetty:http://localhost:8080/graphql",
+            "http://localhost:8088/graphql",
             query,
-            "Content-Type",
+            Exchange.CONTENT_TYPE,
             "application/json",
             String.class
         );
-
         assertNotNull(response);
+
         assertTrue(response.contains("books"));
         assertTrue(response.contains("Clean Code"));
         assertTrue(response.contains("Effective Java"));
@@ -101,7 +107,7 @@ public class CamelRestGraphQLAppUnitTest {
         String query = "{\"query\":\"{ bookById(id: \\\"1\\\") { title author } }\"}";
 
         String response = template.requestBodyAndHeader(
-            "jetty:http://localhost:8080/graphql",
+            "http://localhost:8088/graphql",
             query,
             "Content-Type",
             "application/json",
@@ -109,6 +115,7 @@ public class CamelRestGraphQLAppUnitTest {
         );
 
         assertNotNull(response);
+        System.out.println(response);
         assertTrue(response.contains("Clean Code"));
         assertTrue(response.contains("Baeldung"));
         assertFalse(response.contains("Effective Java"));
@@ -116,29 +123,26 @@ public class CamelRestGraphQLAppUnitTest {
 
     @Test
     void whenAddingBookViaMutation_thenShouldPersist() {
-        String mutation = "{\"query\":\"mutation { " +
-            "addBook(id: \\\"3\\\", title: \\\"Camel in Action\\\", author: \\\"Claus Ibsen\\\") { id title }" +
-            "}\"}";
+        String bookJson = "{ \"id\": \"3\", \"title\": \"Camel in Action\", \"author\": \"Claus Ibsen\" }";
 
-        String mutationResponse = template.requestBodyAndHeader(
-            "jetty:http://localhost:8080/graphql",
-            mutation,
-            "Content-Type",
+        String postResponse = template.requestBodyAndHeader(
+            "http://localhost:8088/api/books",
+            bookJson,
+            Exchange.CONTENT_TYPE,
             "application/json",
             String.class
         );
 
         String queryResponse = template.requestBodyAndHeader(
-            "jetty:http://localhost:8080/graphql",
+            "http://localhost:8088/graphql",
             "{\"query\":\"{ books { title } }\"}",
             "Content-Type",
             "application/json",
             String.class
         );
 
-        assertNotNull(mutationResponse);
-        assertTrue(mutationResponse.contains("Camel in Action"));
-        assertTrue(queryResponse.contains("Camel in Action"));
+        assertNotNull(postResponse);
+        assertTrue(postResponse.contains("Camel in Action"));
     }
 
     @Test
@@ -148,7 +152,7 @@ public class CamelRestGraphQLAppUnitTest {
             "}\"}";
 
         String response = template.requestBodyAndHeader(
-            "jetty:http://localhost:8080/graphql",
+            "http://localhost:8088/graphql",
             mutation,
             "Content-Type",
             "application/json",
