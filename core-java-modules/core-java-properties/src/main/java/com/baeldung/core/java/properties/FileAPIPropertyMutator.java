@@ -19,6 +19,11 @@ public class FileAPIPropertyMutator {
 
     public String getPropertyKeyWithValue(int lineNumber) throws IOException {
         List<String> fileLines = getFileLines();
+        // depending on the system, sometimes the first line will be a comment with a timestamp of the file read
+        // the next line will make this method compatible with all systems
+        if (fileLines.get(0).startsWith("#")) {
+            lineNumber++;
+        }
 
         return fileLines.get(lineNumber);
     }
@@ -52,6 +57,12 @@ public class FileAPIPropertyMutator {
             }
         }
         Files.write(propertiesFile.toPath(), fileContent, StandardCharsets.UTF_8);
+
+        // depending on the system, sometimes the first line will be a comment with a timestamp of the file read
+        // the next line will make this method compatible with all systems
+        if (fileContent.get(0).startsWith("#")) {
+            updatedIndex--;
+        }
 
         return updatedIndex;
     }
