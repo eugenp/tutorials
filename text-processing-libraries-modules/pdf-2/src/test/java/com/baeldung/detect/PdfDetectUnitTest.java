@@ -15,7 +15,7 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 
 
-public class PdfDetectTest {
+public class PdfDetectUnitTest {
 
     private static final File PDF_FILE = new File("src/test/resources/input.pdf");
 
