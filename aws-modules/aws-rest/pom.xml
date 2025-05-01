@@ -94,6 +94,15 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
+
     <properties>
         <maven.compiler.target>21</maven.compiler.target>
         <maven.compiler.source>21</maven.compiler.source>
@@ -102,6 +111,8 @@
         <lombok.version>1.18.32</lombok.version>
         <junit-jupiter.version>5.5.2</junit-jupiter.version>
         <commons-io.version>2.16.1</commons-io.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
 </project>

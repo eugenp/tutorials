@@ -26,6 +26,7 @@
         <module>event-driven-microservice</module>
         <module>micronaut-docker</module>
         <module>pulumi</module>
+        <module>dubbo</module>
     </modules>
 
 </project>

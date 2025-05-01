@@ -18,6 +18,7 @@
         <module>amazon-textract</module>
         <module>aws-app-sync</module>
         <module>aws-dynamodb</module>
+        <module>aws-dynamodb-v2</module>
         <module>aws-lambda-modules</module>
         <module>aws-miscellaneous</module>
         <module>aws-reactive</module>
