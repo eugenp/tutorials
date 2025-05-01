@@ -141,6 +141,7 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>
@@ -156,12 +157,10 @@
                 </dependencies>
                 <configuration>
                     <failurePriority>5</failurePriority>
-                    <aggregate>false</aggregate>
                     <failOnViolation>true</failOnViolation>
                     <verbose>true</verbose>
                     <linkXRef>true</linkXRef>
                     <includeTests>true</includeTests>
-                    <sourceEncoding>UTF-8</sourceEncoding>
                     <targetJdk>${java.version}</targetJdk>
                     <rulesets>
                         <ruleset>${tutorialsproject.basedir}/baeldung-pmd-rules.xml</ruleset>
@@ -178,6 +177,7 @@
                         <phase>compile</phase>
                         <goals>
                             <goal>check</goal>
+                            <goal>pmd</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -692,6 +692,7 @@
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
+                <module>libraries-apm</module>
                 <module>libraries-bytecode</module>
                 <module>libraries-cli</module>
                 <module>libraries-concurrency</module>
@@ -760,6 +761,7 @@
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
                 <module>spring-ai-2</module>
+		<module>spring-ai-3</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>spring-batch</module>
@@ -1095,6 +1097,7 @@
                 <module>libraries-http-3</module>
                 <module>libraries-io</module>
                 <module>libraries-llms</module>
+                <module>libraries-llms-2</module>
                 <module>libraries-open-telemetry</module>
                 <module>libraries-primitive</module>
                 <module>libraries-reporting</module>
@@ -1147,6 +1150,7 @@
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
                 <module>spring-ai-2</module>
+		<module>spring-ai-3</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>spring-batch</module>
@@ -1428,7 +1432,6 @@
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
                 <module>core-java-modules/core-java-classloader</module> <!-- JAVA-42033 -->
-                <module>core-java-modules/core-java-conditionals</module> <!-- JAVA-42035 -->
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
                 <module>spring-boot-modules/spring-boot-3</module> <!-- JAVA-42049 -->
             </modules>
@@ -1497,7 +1500,6 @@
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
                 <module>core-java-modules/core-java-classloader</module> <!-- JAVA-42033 -->
-                <module>core-java-modules/core-java-conditionals</module> <!-- JAVA-42035 -->
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
                 <module>spring-boot-modules/spring-boot-3</module> <!-- JAVA-42049 -->
             </modules>

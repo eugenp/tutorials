@@ -6,6 +6,9 @@ import java.time.LocalDate;
 public class AddSubtractDaysSkippingWeekendsUtils {
 
     public static LocalDate addDaysSkippingWeekends(LocalDate date, int days) {
+        if (days < 1) {
+            return date;
+        }
         LocalDate result = date;
         int addedDays = 0;
         while (addedDays < days) {
@@ -18,6 +21,9 @@ public class AddSubtractDaysSkippingWeekendsUtils {
     }
 
     public static LocalDate subtractDaysSkippingWeekends(LocalDate date, int days) {
+        if (days < 1) {
+            return date;
+        }
         LocalDate result = date;
         int subtractedDays = 0;
         while (subtractedDays < days) {
