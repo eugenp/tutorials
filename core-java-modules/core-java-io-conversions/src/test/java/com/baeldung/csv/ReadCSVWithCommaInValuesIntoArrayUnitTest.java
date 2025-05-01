@@ -21,7 +21,7 @@ import org.junit.Test;
 import com.opencsv.CSVReader;
 
 public class ReadCSVWithCommaInValuesIntoArrayUnitTest {
-    public static final String COMMA_DELIMITER = "'|'";
+    public static final String COMMA_DELIMITER = "\\|";
     public static final String CSV_FILE = "src/test/resources/book2.csv";
     public static final String CSV_FILE_OpenCSV = "src/test/resources/book3.csv";
 
