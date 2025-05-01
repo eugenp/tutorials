@@ -45,8 +45,7 @@ public class CustomCSVParserUnitTest {
         try (BufferedReader br = new BufferedReader(new FileReader(CSV_FILE))) {
             String line = "";
             while ((line = br.readLine()) != null) {
-                String[] values = line.split(COMMA_DELIMITER);
-                records.add(Arrays.asList(values));
+                records.add(parseLine(line));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -59,14 +58,22 @@ public class CustomCSVParserUnitTest {
         }
     }
 
-    private List<String> getRecordFromLine(String line) {
-        List<String> values = new ArrayList<String>();
-        try (Scanner rowScanner = new Scanner(line)) {
-            rowScanner.useDelimiter(COMMA_DELIMITER);
-            while (rowScanner.hasNext()) {
-                values.add(rowScanner.next());
+    private static List<String> parseLine(String line) {
+        List<String> values = new ArrayList<>();
+        boolean inQuotes = false;
+        StringBuilder currentValue = new StringBuilder();
+
+        for (char c : line.toCharArray()) {
+            if (c == '"') {
+                inQuotes = !inQuotes;
+            } else if (c == ',' && !inQuotes) {
+                values.add(currentValue.toString());
+                currentValue = new StringBuilder();
+            } else {
+                currentValue.append(c);
             }
         }
+        values.add(currentValue.toString());
         return values;
     }
 }
