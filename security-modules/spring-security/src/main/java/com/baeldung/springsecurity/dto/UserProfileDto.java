@@ -1,6 +1,6 @@
-package com.baeldung.spring_security.dto;
+package com.baeldung.springsecurity.dto;
 
-import com.baeldung.spring_security.utils.Role;
+import com.baeldung.springsecurity.utils.Role;
 
 public class UserProfileDto {
     private String username;

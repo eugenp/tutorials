@@ -1,4 +1,4 @@
-package com.baeldung.spring_security.utils;
+package com.baeldung.springsecurity.utils;
 
 public enum Role {
     USER, ADMIN

@@ -1,4 +1,4 @@
-package com.baeldung.spring_security.service;
+package com.baeldung.springsecurity.service;
 
 import com.baeldung.springsecurity.dto.request.RegisterRequestDto;
 import com.baeldung.springsecurity.dto.UserProfileDto;

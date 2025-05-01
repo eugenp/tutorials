@@ -1,4 +1,4 @@
-package com.baeldung.spring_security.service;
+package com.baeldung.springsecurity.service;
 
 import com.baeldung.springsecurity.entity.User;
 import com.baeldung.springsecurity.repository.UserRepository;

@@ -1,6 +1,6 @@
-package com.baeldung.spring_security.entity;
+package com.baeldung.springsecurity.entity;
 
-import com.baeldung.spring_security.utils.Role;
+import com.baeldung.springsecurity.utils.Role;
 import jakarta.persistence.*;
 
 @Entity

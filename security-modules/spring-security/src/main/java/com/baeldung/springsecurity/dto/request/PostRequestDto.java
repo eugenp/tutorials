@@ -1,4 +1,4 @@
-package com.baeldung.spring_security.dto.request;
+package com.baeldung.springsecurity.dto.request;
 
 public class PostRequestDto {
     private String title;

@@ -1,4 +1,4 @@
-package com.baeldung.spring_security.dto.response;
+package com.baeldung.springsecurity.dto.response;
 
 public class PostResponseDto {
     private Long id;

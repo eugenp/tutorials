@@ -1,4 +1,4 @@
-package com.baeldung.spring_security.controller;
+package com.baeldung.springsecurity.controller;
 
 import com.baeldung.springsecurity.dto.request.RegisterRequestDto;
 import com.baeldung.springsecurity.dto.UserProfileDto;
