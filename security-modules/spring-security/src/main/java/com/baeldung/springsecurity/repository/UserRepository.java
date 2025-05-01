@@ -1,6 +1,6 @@
-package com.baeldung.spring_security.repository;
+package com.baeldung.springsecurity.repository;
 
-import com.baeldung.spring_security.entity.User;
+import com.baeldung.springsecurity.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

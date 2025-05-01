@@ -1,8 +1,8 @@
 package com.baeldung.spring_security.controller;
 
-import com.baeldung.spring_security.dto.request.RegisterRequestDto;
-import com.baeldung.spring_security.dto.UserProfileDto;
-import com.baeldung.spring_security.service.IAuthService;
+import com.baeldung.springsecurity.dto.request.RegisterRequestDto;
+import com.baeldung.springsecurity.dto.UserProfileDto;
+import com.baeldung.springsecurity.service.AuthService;
 import org.springframework.http.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("auth")
 public class AuthController {
-    private final IAuthService authService;
+    private final AuthService authService;
 
-    public AuthController(IAuthService authService) {
+    public AuthController(AuthService authService) {
         this.authService = authService;
     }
 

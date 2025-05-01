@@ -1,8 +1,8 @@
 package com.baeldung.spring_security.controller;
 
-import com.baeldung.spring_security.dto.request.PostRequestDto;
-import com.baeldung.spring_security.dto.response.PostResponseDto;
-import com.baeldung.spring_security.service.IPostService;
+import com.baeldung.springsecurity.dto.request.PostRequestDto;
+import com.baeldung.springsecurity.dto.response.PostResponseDto;
+import com.baeldung.springsecurity.service.PostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
@@ -16,9 +16,9 @@ import java.util.NoSuchElementException;
 @RestController
 @RequestMapping("posts")
 public class PostController {
-    private final IPostService postService;
+    private final PostService postService;
 
-    public PostController(IPostService postService) {
+    public PostController(PostService postService) {
         this.postService = postService;
     }
 
