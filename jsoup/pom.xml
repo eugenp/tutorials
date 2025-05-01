@@ -21,4 +21,8 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <jsoup.version>1.17.2</jsoup.version>
+    </properties>
+
 </project>
