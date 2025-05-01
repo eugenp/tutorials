@@ -26,13 +26,13 @@ public class CustomCSVParserUnitTest {
         {
             add(new ArrayList<String>() {
                 {
-                    add("\"Kom, Mary\"");
+                    add("Kom, Mary");
                     add("Unbreakable");
                 }
             });
             add(new ArrayList<String>() {
                 {
-                    add("\"Isapuari, Kapil\"");
+                    add("Isapuari, Kapil");
                     add("Farishta");
                 }
             });
