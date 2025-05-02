@@ -761,6 +761,7 @@
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
                 <module>spring-ai-2</module>
+		<module>spring-ai-3</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>spring-batch</module>
@@ -1149,6 +1150,7 @@
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
                 <module>spring-ai-2</module>
+		<module>spring-ai-3</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>spring-batch</module>
