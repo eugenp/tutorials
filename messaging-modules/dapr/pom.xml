@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung.dapr</groupId>
+    <artifactId>dapr</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>messaging-modules</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <modules>
+        <module>dapr-publisher</module>
+        <module>dapr-subscriber</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.dapr.spring</groupId>
+                <artifactId>dapr-spring-boot-starter</artifactId>
+                <version>${dapr.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.dapr.spring</groupId>
+                <artifactId>dapr-spring-boot-starter-test</artifactId>
+                <version>${dapr.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>rabbitmq</artifactId>
+                <version>${testcontainers.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.rest-assured</groupId>
+                <artifactId>rest-assured</artifactId>
+                <version>${rest-assured.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <properties>
+        <dapr.version>0.14.0-rc-9</dapr.version>
+        <testcontainers.version>1.20.6</testcontainers.version>
+        <rest-assured.version>5.5.1</rest-assured.version>
+    </properties>
+
+</project>

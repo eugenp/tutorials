@@ -26,6 +26,7 @@
         <module>spring-jms</module>
         <module>postgres-notify</module>
         <module>ibm-mq</module>
+        <module>dapr</module>
     </modules>
 
 </project>
