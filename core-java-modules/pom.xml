@@ -254,7 +254,7 @@
         <module>core-java-regex-2</module>
         <module>core-java-regex-3</module>
         <module>core-java-regex-4</module>
-        <module>core-java-uuid</module>
+        <module>core-java-uuid-generation</module>
         <module>core-java-records</module>
         <module>core-java-9-jigsaw</module>
         <!--<module>core-java-20</module>--> <!--JAVA-29040-->
