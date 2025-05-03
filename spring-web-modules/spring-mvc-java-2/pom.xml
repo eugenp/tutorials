@@ -99,7 +99,6 @@
     </build>
 
     <properties>
-        <jaxb-runtime.version>4.0.1</jaxb-runtime.version>
         <htmlunit.version>2.32</htmlunit.version>
         <poi.version>3.16-beta1</poi.version>
         <javax.el.version>3.0.1-b09</javax.el.version>
