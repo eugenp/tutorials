@@ -7,7 +7,7 @@ public class CourseWelcome {
     }
 
     public static String staticWelcome(String courseName) {
-        return String.format("Welcome to Bealdung's %s course", courseName);
+        return String.format("Welcome to Baeldung's %s course", courseName);
     }
 
 }
