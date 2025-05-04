@@ -12,7 +12,19 @@
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
+    
+   <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.linecorp.armeria</groupId>
+                <artifactId>armeria-bom</artifactId>
+                <version>${armeria.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    
     <dependencies>
         <dependency>
             <groupId>com.twitter</groupId>
@@ -24,11 +36,33 @@
             <artifactId>finagle-http_2.13</artifactId>
             <version>${finagle.http.version}</version>
         </dependency>
+         <dependency>
+            <groupId>com.linecorp.armeria</groupId>
+            <artifactId>armeria</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.linecorp.armeria</groupId>
+            <artifactId>armeria-graphql</artifactId>
+        </dependency>
+
+	    <dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.9.9</version>
+	    </dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.module</groupId>
+		    <artifactId>jackson-module-scala_2.12</artifactId>
+		    <version>2.9.10</version>
+		</dependency>
+
     </dependencies>
 
     <properties>
         <finagle.core.version>20.4.0</finagle.core.version>
         <finagle.http.version>20.4.0</finagle.http.version>
+        <armeria.version>1.29.2</armeria.version>
+        <jackson-databind>2.9.9</jackson-databind>
     </properties>
 
 </project>
