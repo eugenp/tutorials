@@ -22,4 +22,8 @@
         <module>jib</module>
     </modules>
 
+    <properties>
+        <spring-boot.version>3.3.2</spring-boot.version>
+    </properties>
+
 </project>

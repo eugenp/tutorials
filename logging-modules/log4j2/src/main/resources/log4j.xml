@@ -1,0 +1,18 @@
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+<log4j:configuration debug="false">
+
+    <!--Console appender -->
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %p %m%n"/>
+        </layout>
+    </appender>
+
+    <logger name="com.baeldung.logging.log4j.NoAppenderExample"/>
+
+    <root>
+        <level value="DEBUG"/>
+        <appender-ref ref="stdout"/>
+    </root>
+
+</log4j:configuration>

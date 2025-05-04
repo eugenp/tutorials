@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <artifactId>spring-ai-3</artifactId>
+   <version>0.0.1</version>
+   <packaging>jar</packaging>
+   <name>spring-ai-3</name>
+
+   <parent>
+       <groupId>com.baeldung</groupId>
+       <artifactId>parent-boot-3</artifactId>
+       <version>0.0.1-SNAPSHOT</version>
+       <relativePath>../parent-boot-3</relativePath>
+   </parent>
+
+   <repositories>
+       <repository>
+           <id>spring-milestones</id>
+           <name>Spring Milestones</name>
+           <url>https://repo.spring.io/milestone</url>
+           <snapshots>
+               <enabled>false</enabled>
+           </snapshots>
+       </repository>
+   </repositories>
+
+   <dependencies>
+       <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-web</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-starter-model-openai</artifactId>
+           <version>${spring-ai.version}</version>
+       </dependency>
+
+       <!-- Test dependencies -->
+       <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-test</artifactId>
+           <scope>test</scope>
+       </dependency>
+   </dependencies>
+
+    <profiles>
+        <profile>
+            <id>transcribe</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.transcribe.Application</spring.boot.mainclass>
+            </properties>
+        </profile>
+    </profiles>
+
+   <build>
+       <plugins>
+           <plugin>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-maven-plugin</artifactId>
+               <configuration>
+                   <mainClass>${spring.boot.mainclass}</mainClass>
+               </configuration>
+           </plugin>
+           <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-compiler-plugin</artifactId>
+               <configuration>
+                   <release>21</release>
+               </configuration>
+           </plugin>
+       </plugins>
+   </build>
+
+   <properties>
+       <spring-boot.version>3.4.5</spring-boot.version>
+       <spring-ai.version>1.0.0-M7</spring-ai.version>
+   </properties>
+
+</project>

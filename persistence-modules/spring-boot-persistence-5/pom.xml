@@ -50,6 +50,19 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.ibm.db2</groupId>
+            <artifactId>jcc</artifactId>
+            <version>${db2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -69,6 +82,7 @@
         <hikari.version>6.2.1</hikari.version>
         <instancio.version>5.2.1</instancio.version>
         <spring-boot.version>3.4.1</spring-boot.version>
+        <db2.version>12.1.0.0</db2.version>
     </properties>
 
 </project>
