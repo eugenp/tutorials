@@ -55,6 +55,27 @@
 		    <artifactId>jackson-module-scala_2.12</artifactId>
 		    <version>2.9.10</version>
 		</dependency>
+        <dependency>
+            <groupId>io.activej</groupId>
+            <artifactId>activej-http</artifactId>
+            <version>${activej.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.activej</groupId>
+            <artifactId>activej-inject</artifactId>
+            <version>${activej.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.activej</groupId>
+            <artifactId>activej-promise</artifactId>
+            <version>${activej.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.activej</groupId>
+            <artifactId>activej-test</artifactId>
+            <version>${activej.version}</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
@@ -63,6 +84,7 @@
         <finagle.http.version>20.4.0</finagle.http.version>
         <armeria.version>1.29.2</armeria.version>
         <jackson-databind>2.9.9</jackson-databind>
+        <activej.version>6.0-rc2</activej.version>
     </properties>
 
 </project>
