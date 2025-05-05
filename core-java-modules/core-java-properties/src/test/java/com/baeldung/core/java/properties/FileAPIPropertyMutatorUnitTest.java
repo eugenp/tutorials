@@ -31,7 +31,7 @@ public class FileAPIPropertyMutatorUnitTest {
     }
 
     @Test
-    public void addProperty_whenFilesIsUsed_thenReturnsNewPropertyKeyWithValueWithoutAffectingOtherProperties() throws IOException {
+    public void givenFilesAPI_whenAddNonExistingProperty_thenNewPropertyWithoutAffectingOtherProperties() throws IOException {
         assertEquals("name=TestApp", propertyMutator.getPropertyKeyWithValue(1));
 
         propertyMutator.addPropertyKeyWithValue("new.property=new-value");
@@ -41,7 +41,7 @@ public class FileAPIPropertyMutatorUnitTest {
     }
 
     @Test
-    public void updateProperty_whenFilesIsUsed_thenReturnsNewPropertyWithoutAffectingOtherProperties() throws IOException {
+    public void givenFilesAPI_whenUpdateExistingProperty_thenUpdatedPropertyWithoutAffectingOtherProperties() throws IOException {
         assertEquals("name=TestApp", propertyMutator.getPropertyKeyWithValue(1));
 
         int updatedPropertyIndex = propertyMutator.updateProperty("version=1.0", "version=2.0");

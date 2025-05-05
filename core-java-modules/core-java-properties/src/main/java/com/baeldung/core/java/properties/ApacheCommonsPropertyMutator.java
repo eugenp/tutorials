@@ -24,16 +24,7 @@ public class ApacheCommonsPropertyMutator implements PropertyMutator {
     }
 
     @Override
-    public void addProperty(String key, String value) throws ConfigurationException {
-        FileBasedConfigurationBuilder<FileBasedConfiguration> builder = getAppPropertiesConfigBuilder();
-        Configuration configuration = builder.getConfiguration();
-
-        configuration.setProperty(key, value);
-        builder.save();
-    }
-
-    @Override
-    public void updateProperty(String key, String value) throws ConfigurationException {
+    public void addOrUpdateProperty(String key, String value) throws ConfigurationException {
         FileBasedConfigurationBuilder<FileBasedConfiguration> builder = getAppPropertiesConfigBuilder();
         Configuration configuration = builder.getConfiguration();
 

@@ -36,22 +36,22 @@ public class XMLFilePropertyMutatorUnitTest {
     }
 
     @Test
-    public void addProperty_whenXMLPropertyFile_thenReturnsNewPropertyWithoutAffectingOtherProperties() throws IOException {
+    public void givenXMLPropertyFile_whenAddNonExistingProperty_thenNewPropertyWithoutAffectingOtherProperties() throws IOException {
         assertEquals("icon1.jpg", propertyMutator.getProperty("fileIcon"));
         assertNull(propertyMutator.getProperty("new.property"));
 
-        propertyMutator.addProperty("new.property", "new-value");
+        propertyMutator.addOrUpdateProperty("new.property", "new-value");
 
         assertEquals("new-value", propertyMutator.getProperty("new.property"));
         assertEquals("icon1.jpg", propertyMutator.getProperty("fileIcon"));
     }
 
     @Test
-    public void updateProperty_whenXMLPropertyFile_thenReturnsUpdatedPropertyWithoutAffectingOtherProperties() throws IOException {
+    public void givenXMLPropertyFile_whenUpdateExistingProperty_thenUpdatedPropertyWithoutAffectingOtherProperties() throws IOException {
         assertEquals("icon1.jpg", propertyMutator.getProperty("fileIcon"));
         assertEquals("icon2.jpg", propertyMutator.getProperty("imageIcon"));
 
-        propertyMutator.updateProperty("fileIcon", "icon5.jpg");
+        propertyMutator.addOrUpdateProperty("fileIcon", "icon5.jpg");
 
         assertEquals("icon5.jpg", propertyMutator.getProperty("fileIcon"));
         assertEquals("icon2.jpg", propertyMutator.getProperty("imageIcon"));

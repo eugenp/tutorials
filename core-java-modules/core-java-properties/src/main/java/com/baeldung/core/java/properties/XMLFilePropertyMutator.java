@@ -25,18 +25,7 @@ public class XMLFilePropertyMutator implements PropertyMutator {
     }
 
     @Override
-    public void addProperty(String key, String value) throws IOException {
-        String filePath = getXMLAppPropertiesWithFileStreamFilePath();
-        Properties properties = loadProperties(filePath);
-
-        try (OutputStream os = Files.newOutputStream(Paths.get(filePath))) {
-            properties.setProperty(key, value);
-            properties.storeToXML(os, null);
-        }
-    }
-
-    @Override
-    public void updateProperty(String key, String value) throws IOException {
+    public void addOrUpdateProperty(String key, String value) throws IOException {
         String filePath = getXMLAppPropertiesWithFileStreamFilePath();
         Properties properties = loadProperties(filePath);
 

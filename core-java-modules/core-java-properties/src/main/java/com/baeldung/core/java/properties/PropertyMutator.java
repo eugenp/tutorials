@@ -8,7 +8,5 @@ public interface PropertyMutator {
 
     String getProperty(String key) throws IOException, ConfigurationException;
 
-    void addProperty(String key, String value) throws IOException, ConfigurationException;
-
-    void updateProperty(String key, String value) throws IOException, ConfigurationException;
+    void addOrUpdateProperty(String key, String value) throws IOException, ConfigurationException;
 }

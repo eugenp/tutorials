@@ -32,22 +32,22 @@ public class FileStreamsPropertyMutatorUnitTest {
     }
 
     @Test
-    public void addProperty_whenUsingFileStreams_thenReturnsNewPropertyWithoutAffectingOtherProperties() throws IOException {
+    public void givenFileStreams_whenAddNonExistingProperty_thenNewPropertyWithoutAffectingOtherProperties() throws IOException {
         assertEquals("TestApp", propertyMutator.getProperty("name"));
         assertNull(propertyMutator.getProperty("new.property"));
 
-        propertyMutator.addProperty("new.property", "new-value");
+        propertyMutator.addOrUpdateProperty("new.property", "new-value");
 
         assertEquals("new-value", propertyMutator.getProperty("new.property"));
         assertEquals("TestApp", propertyMutator.getProperty("name"));
     }
 
     @Test
-    public void updateProperty_whenUsingFileStreams_thenReturnsUpdatedPropertyWithoutAffectingOtherProperties() throws IOException {
+    public void givenFileStreams_whenUpdateExistingProperty_thenUpdatedPropertyWithoutAffectingOtherProperties() throws IOException {
         assertEquals("1.0", propertyMutator.getProperty("version"));
         assertEquals("TestApp", propertyMutator.getProperty("name"));
 
-        propertyMutator.updateProperty("version", "2.0");
+        propertyMutator.addOrUpdateProperty("version", "2.0");
 
         assertEquals("2.0", propertyMutator.getProperty("version"));
         assertEquals("TestApp", propertyMutator.getProperty("name"));

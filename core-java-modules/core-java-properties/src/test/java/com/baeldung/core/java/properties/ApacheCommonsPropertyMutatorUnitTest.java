@@ -33,22 +33,22 @@ public class ApacheCommonsPropertyMutatorUnitTest {
     }
 
     @Test
-    public void addProperty_whenApacheCommonsIsUsed_thenReturnsNewPropertyWithoutAffectingOtherProperties() throws ConfigurationException {
+    public void givenApacheCommons_whenAddNonExistingProperty_thenNewPropertyWithoutAffectingOtherProperties() throws ConfigurationException {
         assertNull(propertyMutator.getProperty("new.property"));
         assertEquals("TestApp", propertyMutator.getProperty("name"));
 
-        propertyMutator.addProperty("new.property", "new-value");
+        propertyMutator.addOrUpdateProperty("new.property", "new-value");
 
         assertEquals("new-value", propertyMutator.getProperty("new.property"));
         assertEquals("TestApp", propertyMutator.getProperty("name"));
     }
 
     @Test
-    public void updateProperty_whenApacheCommonsIsUsed_thenReturnsUpdatedPropertyWithoutAffectingOtherProperties() throws ConfigurationException {
+    public void givenApacheCommons_whenUpdateExistingProperty_thenUpdatedPropertyWithoutAffectingOtherProperties() throws ConfigurationException {
         assertEquals("1.0", propertyMutator.getProperty("version"));
         assertEquals("TestApp", propertyMutator.getProperty("name"));
 
-        propertyMutator.updateProperty("version", "2.0");
+        propertyMutator.addOrUpdateProperty("version", "2.0");
 
         assertEquals("2.0", propertyMutator.getProperty("version"));
         assertEquals("TestApp", propertyMutator.getProperty("name"));

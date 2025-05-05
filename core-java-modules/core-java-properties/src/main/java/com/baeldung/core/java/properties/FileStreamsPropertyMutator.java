@@ -22,17 +22,7 @@ public class FileStreamsPropertyMutator implements PropertyMutator {
     }
 
     @Override
-    public void addProperty(String key, String value) throws IOException {
-        Properties properties = propertyLoader.fromFile(propertyFileName);
-        properties.setProperty(key, value);
-
-        FileOutputStream out = new FileOutputStream(propertyLoader.getFilePathFromResources(propertyFileName));
-        properties.store(out, null);
-        out.close();
-    }
-
-    @Override
-    public void updateProperty(String key, String value) throws IOException {
+    public void addOrUpdateProperty(String key, String value) throws IOException {
         Properties properties = propertyLoader.fromFile(propertyFileName);
         properties.setProperty(key, value);
 
