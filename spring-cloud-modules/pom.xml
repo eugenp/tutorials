@@ -17,7 +17,7 @@
     </parent>
 
     <modules>
-        <module>api-gateway</module>
+        <module>gateway-exception-management</module>
         <module>spring-cloud-loadbalancer</module>
         <module>spring-cloud-config</module>
         <!--Please uncomment when spring-cloud-modules is moved to JDK9+ profile-->
@@ -60,7 +60,6 @@
         <module>spring-cloud-bus</module>
         <!--        <module>spring-cloud-data-flow</module>-->
         <module>spring-cloud-sleuth</module>
-        <module>spring-cloud-open-telemetry</module>
         <!-- <module>spring-cloud-azure</module> migrating under jdk9 and above profile-->
         <module>spring-cloud-openfeign-2</module>
     </modules>

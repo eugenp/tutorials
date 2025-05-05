@@ -53,8 +53,4 @@
         </plugins>
     </build>
 
-    <properties>
-        <jaxb-runtime.version>4.0.0</jaxb-runtime.version>
-    </properties>
-
 </project>

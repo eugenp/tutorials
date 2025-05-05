@@ -134,7 +134,6 @@
         <mustache.version>0.9.6</mustache.version>
         <!-- maven plugins -->
         <jakarta.xml.bind-api.version>4.0.2</jakarta.xml.bind-api.version>
-        <jaxb-runtime.version>4.0.3</jaxb-runtime.version>
         <json.version>20240303</json.version>
         <underscore.version>1.89</underscore.version>
         <xmlbeans.version>5.0.2</xmlbeans.version>
