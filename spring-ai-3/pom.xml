@@ -90,7 +90,7 @@
        </dependency>
        <dependency>
            <artifactId>spring-ai-starter-model-openai</artifactId>
-           <version>${spring-ai.version}</version>
+           <version>${spring-ai-start-model-openai.version}</version>
        </dependency>
 
        <!-- Test dependencies -->
@@ -223,6 +223,7 @@
        <spring-boot-docker-compose.version>3.1.1</spring-boot-docker-compose.version>
        <spring-boot.version>3.4.5</spring-boot.version>
        <spring-ai.version>1.0.0-M6</spring-ai.version>
+       <spring-ai-start-model-openai.version>1.0.0-M7</spring-ai-start-model-openai.version>
    </properties>
 
 </project>
