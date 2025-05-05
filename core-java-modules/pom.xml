@@ -124,6 +124,7 @@
         <module>core-java-concurrency-collections</module>
         <module>core-java-concurrency-collections-2</module>
         <module>core-java-console</module>
+        <module>core-java-currency</module>
         <module>core-java-datetime-string-2</module>
         <module>core-java-date-operations</module>
         <module>core-java-date-operations-2</module>
@@ -216,6 +217,7 @@
         <module>core-java-reflection-2</module>
         <module>core-java-reflection-3</module>
         <module>core-java-scanner</module>
+        <module>core-java-scanner-2</module>
         <module>core-java-security</module>
         <module>core-java-security-2</module>
         <module>core-java-security-3</module>
@@ -223,6 +225,7 @@
         <module>core-java-security-5</module>
         <module>core-java-security-algorithms</module>
         <module>core-java-serialization</module>
+        <module>core-java-sockets</module>
         <module>core-java-streams</module>
         <module>core-java-streams-simple</module>
         <module>core-java-streams-3</module>
@@ -251,12 +254,12 @@
         <module>core-java-regex-2</module>
         <module>core-java-regex-3</module>
         <module>core-java-regex-4</module>
-        <module>core-java-uuid</module>
+        <module>core-java-uuid-generation</module>
         <module>core-java-records</module>
         <module>core-java-9-jigsaw</module>
         <!--<module>core-java-20</module>--> <!--JAVA-29040-->
         <module>core-java-21</module>
-        <!--<module>core-java-conditionals</module>--> <!-- JAVA-42035 -->
+        <module>core-java-conditionals</module>
         <module>core-java-collections-set</module>
         <module>core-java-datetime-conversion</module>
         <module>core-java-datetime-conversion-2</module>

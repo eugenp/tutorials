@@ -91,7 +91,6 @@
 
     <properties>
         <json-path.version>2.9.0</json-path.version>
-        <jaxb-runtime.version>2.3.5</jaxb-runtime.version>
         <jakarta.servlet.jsp.jstl>2.0.0</jakarta.servlet.jsp.jstl>
         <rest-assured.version>5.5.0</rest-assured.version>
     </properties>

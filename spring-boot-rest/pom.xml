@@ -174,7 +174,6 @@
         <xstream.version>1.4.11.1</xstream.version>
         <modelmapper.version>3.2.0</modelmapper.version>
         <rest-assured.version>5.5.0</rest-assured.version>
-        <jaxb-runtime.version>4.0.1</jaxb-runtime.version>
         <spring-oxm.version>6.2.3</spring-oxm.version>
         <spring-boot.version>3.4.3</spring-boot.version>
         <!-- https://github.com/qos-ch/logback/issues/853 -->
