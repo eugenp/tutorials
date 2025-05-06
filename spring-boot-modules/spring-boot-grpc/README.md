@@ -1,13 +1,5 @@
-## Spring Boot Graphql
-
-This module contains articles about Spring Boot Graphql
-
 ### The Course
 The "REST With Spring" Classes: http://bit.ly/restwithspring
-
-### Relevant Articles:
-
-- [REST vs. GraphQL vs. gRPC – Which API to Choose?](https://www.baeldung.com/rest-vs-graphql-vs-grpc)
 
 ### GraphQL sample queries
 

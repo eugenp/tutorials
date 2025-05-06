@@ -1,10 +1,5 @@
 ## Spring Data Couchbase Tutorial Project
 
-### Relevant Articles:
-- [Intro to Spring Data Couchbase](https://www.baeldung.com/spring-data-couchbase)
-- [Entity Validation, Optimistic Locking, and Query Consistency in Spring Data Couchbase](https://www.baeldung.com/entity-validation-locking-and-query-consistency-in-spring-data-couchbase)
-- [Multiple Buckets and Spatial View Queries in Spring Data Couchbase](https://www.baeldung.com/spring-data-couchbase-buckets-and-spatial-view-queries)
-
 ### Overview
 This Maven project contains the Java code for Spring Data Couchbase
 entities, repositories, and template-based services
