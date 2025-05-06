@@ -18,7 +18,7 @@ import com.baeldung.jimmer.introduction.Application;
 import com.baeldung.jimmer.introduction.dto.BookView;
 
 @SpringBootTest(classes = Application.class)
-class BookRepositoryUnitTest {
+class BookRepositoryLiveTest {
 
     @Autowired
     private BookRepository bookRepository;

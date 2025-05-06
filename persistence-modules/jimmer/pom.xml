@@ -5,7 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>jimmer</artifactId>
   <properties>
-    <jimmer.version>0.9.37</jimmer.version>
+    <jimmer.version>0.9.81</jimmer.version>
+    <spring.boot.version>3.4.1</spring.boot.version>
+    <maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
+    <lombok.version>1.18.36</lombok.version>
   </properties>
 
   <parent>
@@ -19,7 +22,7 @@
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
-        <version>3.4.1</version>
+        <version>${spring.boot.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -74,14 +77,14 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.13.0</version>
+        <version>${maven.compiler.plugin.version}</version>
         <configuration>
           <release>17</release>
           <annotationProcessorPaths>
             <annotationProcessorPath>
               <groupId>org.projectlombok</groupId>
               <artifactId>lombok</artifactId>
-              <version>1.18.36</version>
+              <version>${lombok.version}</version>
             </annotationProcessorPath>
             <annotationProcessorPath>
               <groupId>org.babyfish.jimmer</groupId>

@@ -30,5 +30,4 @@ public interface Book {
 
     @OneToMany(mappedBy = "book")
     List<Page> pages();
-    // equals and hashcode implementation
 }
