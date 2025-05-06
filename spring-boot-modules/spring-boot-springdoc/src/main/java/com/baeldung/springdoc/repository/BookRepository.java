@@ -8,12 +8,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-import static java.util.stream.Collectors.toList;
-
 @Repository
 public class BookRepository {
 
-    private Map<Long, Book> books = new HashMap<>();
+    private final Map<Long, Book> books = new HashMap<>();
 
     public Optional<Book> findById(long id) {
         return Optional.ofNullable(books.get(id));
@@ -29,7 +27,7 @@ public class BookRepository {
 
     public Page<Book> getBooks(Pageable pageable) {
         int toSkip = pageable.getPageSize() * pageable.getPageNumber();
-        List<Book> result = books.values().stream().skip(toSkip).limit(pageable.getPageSize()).collect(toList());
+        List<Book> result = books.values().stream().skip(toSkip).limit(pageable.getPageSize()).toList();
 
         return new PageImpl<>(result, pageable, books.size());
     }

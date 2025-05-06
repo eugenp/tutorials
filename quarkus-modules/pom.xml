@@ -14,6 +14,8 @@
     </parent>
 
     <modules>
+        <module>jfr</module>
+        <!-- <module>mongo-db</module> --> <!-- JAVA-42048 -->
         <module>quarkus</module>
         <module>quarkus-citrus</module>
         <module>quarkus-clientbasicauth</module>
@@ -27,7 +29,9 @@
         <module>quarkus-virtual-threads</module>
         <!--<module>quarkus-hibernate-reactive</module>--> <!--moved to heavy profile-->
         <module>quarkus-langchain4j</module>
+        <!-- <module>quarkus-rbac</module> --> <!-- JAVA-42048 -->
         <module>quarkus-websockets-next</module>
+        <module>quarkus-management-interface</module>
     </modules>
 
 </project>

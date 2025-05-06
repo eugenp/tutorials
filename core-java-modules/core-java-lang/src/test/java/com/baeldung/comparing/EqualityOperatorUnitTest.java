@@ -27,7 +27,7 @@ class EqualityOperatorUnitTest {
     @Test
     void givenTwoIntsWithSameValuesOneWrapped_whenEqualityOperators_thenConsideredSame() {
         int a = 1;
-        Integer b = new Integer(1);
+        Integer b = Integer.valueOf(1);
 
         assertThat(a == b).isTrue();
         assertThat(a != b).isFalse();
@@ -36,7 +36,7 @@ class EqualityOperatorUnitTest {
     @Test
     void givenTwoIntsWithDifferentValuesOneWrapped_whenEqualityOperators_thenNotConsideredSame() {
         int a = 1;
-        Integer b = new Integer(2);
+        Integer b = Integer.valueOf(2);
 
         assertThat(a == b).isFalse();
         assertThat(a != b).isTrue();
@@ -62,7 +62,7 @@ class EqualityOperatorUnitTest {
 
     @Test
     void givenTwoIntegersWithSameReference_whenEqualityOperators_thenConsideredSame() {
-        Integer a = new Integer(1);
+        Integer a = Integer.valueOf(1);
         Integer b = a;
 
         assertThat(a == b).isTrue();

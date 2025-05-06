@@ -25,7 +25,6 @@
             <artifactId>apache-log4j-extras</artifactId>
             <version>${log4j.version}</version>
         </dependency>
-
         <!--log4j2 dependencies -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -42,20 +41,59 @@
             <artifactId>log4j-slf4j2-impl</artifactId>
             <version>${log4j-slf4j.version}</version>
         </dependency>
-
         <!--disruptor for log4j2 async logging -->
         <dependency>
             <groupId>com.lmax</groupId>
             <artifactId>disruptor</artifactId>
             <version>${disruptor.version}</version>
         </dependency>
+        <!-- This is used by JSONLayout. -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <!-- This is used by JDBC Appender. -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>${commons-dbcp2.version}</version>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <proc>none</proc>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <test.mime>json</test.mime>
+                        <logging.folder.path>target/logfile.json</logging.folder.path>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <log4j-core.version>2.23.1</log4j-core.version>
         <log4j-api.version>2.23.1</log4j-api.version>
         <log4j-slf4j.version>2.23.1</log4j-slf4j.version>
-
+        <commons-dbcp2.version>2.9.0</commons-dbcp2.version>
         <disruptor.version>3.3.6</disruptor.version>
     </properties>
 

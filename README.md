@@ -44,19 +44,21 @@ We also have a parents profile to build only parent modules.
 
 Therefore, we have a total of 9 profiles:
 
-| Profile            | Includes                    | Type of test enabled         |
-|--------------------|-----------------------------|------------------------------|
-| default            | JDK21 projects              | *UnitTest                    |
-| integration        | JDK21 projects              | *IntegrationTest             |
-| default-jdk17      | JDK17 projects              | *UnitTest                    |
-| integration-jdk17  | JDK17 projects              | *IntegrationTest             |
-| profile-jdk22      | JDK22 projects              | *UnitTest & *IntegrationTest |
-| profile-jdk23      | JDK23 projects              | *UnitTest & *IntegrationTest |
-| default-heavy      | Heavy/long running projects | *UnitTest                    |
-| integration-heavy  | Heavy/long running projects | *IntegrationTest             |
-| default-jdk8       | JDK8  projects              | *UnitTest                    |
-| integration-jdk8   | JDK8  projects              | *IntegrationTest             |
-| parents            | Set of parent modules       | None                         |
+| Profile           | Includes                    | Type of test enabled |
+|-------------------|-----------------------------|----------------------|
+| default           | JDK21 projects              | *UnitTest            |
+| integration       | JDK21 projects              | *IntegrationTest     |
+| default-jdk17     | JDK17 projects              | *UnitTest            |
+| integration-jdk17 | JDK17 projects              | *IntegrationTest     |
+| default-jdk22     | JDK22 projects              | *UnitTest            |
+| integration-jdk22 | JDK22 projects              | *IntegrationTest     |
+| default-jdk23     | JDK23 projects              | *UnitTest            |
+| integration-jdk23 | JDK23 projects              | *IntegrationTest     |
+| default-heavy     | Heavy/long running projects | *UnitTest            |
+| integration-heavy | Heavy/long running projects | *IntegrationTest     |
+| default-jdk8      | JDK8  projects              | *UnitTest            |
+| integration-jdk8  | JDK8  projects              | *IntegrationTest     |
+| parents           | Set of parent modules       | None                 |
 
 Building the project
 ====================

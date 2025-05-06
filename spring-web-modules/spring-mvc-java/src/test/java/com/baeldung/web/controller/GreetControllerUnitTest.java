@@ -17,42 +17,63 @@ public class GreetControllerUnitTest {
 
     @BeforeEach
     void setUp() {
-        this.mockMvc = MockMvcBuilders.standaloneSetup(new GreetController()).build();
+        this.mockMvc = MockMvcBuilders.standaloneSetup(new GreetController())
+            .build();
     }
 
     @Test
     public void givenHomePageURI_whenMockMVC_thenReturnsIndexJSPViewName() throws Exception {
-        this.mockMvc.perform(get("/homePage")).andExpect(view().name("index"));
+        this.mockMvc.perform(get("/homePage"))
+            .andExpect(view().name("index"));
     }
 
     @Test
     public void givenGreetURI_whenMockMVC_thenVerifyResponse() throws Exception {
-        this.mockMvc.perform(get("/greet")).andExpect(status().isOk()).andExpect(content().contentType(CONTENT_TYPE)).andExpect(jsonPath("$.message").value("Hello World!!!"));
+        this.mockMvc.perform(get("/greet"))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(CONTENT_TYPE))
+            .andExpect(jsonPath("$.message").value("Hello World!!!"));
     }
 
     @Test
     public void givenGreetURIWithPathVariable_whenMockMVC_thenVerifyResponse() throws Exception {
-        this.mockMvc.perform(get("/greetWithPathVariable/John")).andExpect(status().isOk()).andExpect(content().contentType(CONTENT_TYPE)).andExpect(jsonPath("$.message").value("Hello World John!!!"));
+        this.mockMvc.perform(get("/greetWithPathVariable/John"))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(CONTENT_TYPE))
+            .andExpect(jsonPath("$.message").value("Hello World John!!!"));
     }
 
     @Test
     public void givenGreetURIWithPathVariable_2_whenMockMVC_thenVerifyResponse() throws Exception {
-        this.mockMvc.perform(get("/greetWithPathVariable/{name}", "Doe")).andExpect(status().isOk()).andExpect(content().contentType(CONTENT_TYPE)).andExpect(jsonPath("$.message").value("Hello World Doe!!!"));
+        this.mockMvc.perform(get("/greetWithPathVariable/{name}", "Doe"))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(CONTENT_TYPE))
+            .andExpect(jsonPath("$.message").value("Hello World Doe!!!"));
     }
 
     @Test
     public void givenGreetURIWithQueryParameter_whenMockMVC_thenVerifyResponse() throws Exception {
-        this.mockMvc.perform(get("/greetWithQueryVariable").param("name", "John Doe")).andDo(print()).andExpect(status().isOk()).andExpect(content().contentType(CONTENT_TYPE)).andExpect(jsonPath("$.message").value("Hello World John Doe!!!"));
+        this.mockMvc.perform(get("/greetWithQueryVariable").param("name", "John Doe"))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(CONTENT_TYPE))
+            .andExpect(jsonPath("$.message").value("Hello World John Doe!!!"));
     }
 
     @Test
     public void givenGreetURIWithPost_whenMockMVC_thenVerifyResponse() throws Exception {
-        this.mockMvc.perform(post("/greetWithPost")).andDo(print()).andExpect(status().isOk()).andExpect(content().contentType(CONTENT_TYPE)).andExpect(jsonPath("$.message").value("Hello World!!!"));
+        this.mockMvc.perform(post("/greetWithPost"))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(CONTENT_TYPE))
+            .andExpect(jsonPath("$.message").value("Hello World!!!"));
     }
 
     @Test
     public void givenGreetURIWithPostAndFormData_whenMockMVC_thenVerifyResponse() throws Exception {
-        this.mockMvc.perform(post("/greetWithPostAndFormData").param("id", "1").param("name", "John Doe")).andDo(print()).andExpect(status().isOk()).andExpect(content().contentType(CONTENT_TYPE))
-                .andExpect(jsonPath("$.message").value("Hello World John Doe!!!")).andExpect(jsonPath("$.id").value(1));
+        this.mockMvc.perform(post("/greetWithPostAndFormData").param("id", "1")
+                .param("name", "John Doe"))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(CONTENT_TYPE))
+            .andExpect(jsonPath("$.message").value("Hello World John Doe!!!"))
+            .andExpect(jsonPath("$.id").value(1));
     }
 }

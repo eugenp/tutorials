@@ -5,7 +5,7 @@
     <artifactId>trivia-service</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Word Trivia Service</name>
+    <name>trivia-service</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

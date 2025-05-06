@@ -125,7 +125,7 @@
         <dependency>
             <groupId>com.thoughtworks.xstream</groupId>
             <artifactId>xstream</artifactId>
-            <version>1.4.16</version>
+            <version>${xstream.version}</version>
         </dependency>
     </dependencies>
 
@@ -137,8 +137,6 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <argLine>
-                        --add-opens java.base/java.util=ALL-UNNAMED
-                        --add-opens java.base/java.nio=ALL-UNNAMED
                         --add-opens java.base/java.lang=ALL-UNNAMED
                     </argLine>
                 </configuration>
@@ -161,6 +159,7 @@
         <ignite.version>2.16.0</ignite.version>
         <gson.version>2.11.0</gson.version>
         <jmapper.version>1.6.0.1</jmapper.version>
+        <xstream.version>1.4.16</xstream.version>
     </properties>
 
 </project>

@@ -20,7 +20,7 @@ public class XmlToJsonUnitTest {
 
         assertEquals(poppy.getName(), "Poppy");
         assertEquals(poppy.getColor(), Color.RED);
-        assertEquals(poppy.getPetals(), new Integer(9));
+        assertEquals(poppy.getPetals(), Integer.valueOf(9));
 
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(poppy);
