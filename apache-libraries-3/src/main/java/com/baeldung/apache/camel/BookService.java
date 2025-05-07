@@ -8,7 +8,7 @@ public class BookService {
     private final List<Book> books = new ArrayList<>();
 
     BookService() {
-        books.add(new Book("1", "Clean Code", "Baeldung"));
+        books.add(new Book("1", "Clean Code", "Alvin"));
         books.add(new Book("2", "Effective Java", "Joshua"));
     }
 
