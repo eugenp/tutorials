@@ -16,8 +16,7 @@ public class CustomSchemaLoader {
     private final BookService bookService = new BookService();
 
     public GraphQLSchema loadSchema() {
-        logger.debug("Attempting to load schema...........");
-        System.out.println("-----------------------loadSchema----------------------- ");
+        logger.debug("Attempting to load schema");
         try (InputStream schemaStream = getClass().getClassLoader().getResourceAsStream("books.graphql")) {
             if (schemaStream == null) {
                 throw new RuntimeException("GraphQL schema file 'books.graphql' not found in classpath");
@@ -31,7 +30,7 @@ public class CustomSchemaLoader {
             return new SchemaGenerator().makeExecutableSchema(registry, wiring);
 
         } catch (Exception e) {
-            logger.error("---------------------------------Failed to load GraphQL schema", e);
+            logger.error("Failed to load GraphQL schema", e);
             throw new RuntimeException("GraphQL schema initialization failed", e);
         }
     }

@@ -115,7 +115,6 @@ public class CamelRestGraphQLAppUnitTest {
         );
 
         assertNotNull(response);
-        System.out.println(response);
         assertTrue(response.contains("Clean Code"));
         assertTrue(response.contains("Baeldung"));
         assertFalse(response.contains("Effective Java"));
