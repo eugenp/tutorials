@@ -1,6 +1,6 @@
 ## HTTPClient Ebook
 
-This module contains articles about HTTPClient that are part of the HTTPClient Ebook.
+This module contains code about HTTPClient that are part of the HTTPClient Ebook.
 
 ### Running the Tests
 To run the live tests, use the command: mvn clean install -Plive
