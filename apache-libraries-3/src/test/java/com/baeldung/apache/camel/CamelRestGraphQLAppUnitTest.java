@@ -46,7 +46,7 @@ public class CamelRestGraphQLAppUnitTest {
         assertNotNull(response);
         assertTrue(response.contains("Clean Code"));
         assertTrue(response.contains("Effective Java"));
-        assertTrue(response.contains("Baeldung"));
+        assertTrue(response.contains("Alvin"));
         assertTrue(response.contains("Joshua"));
     }
 
@@ -56,7 +56,7 @@ public class CamelRestGraphQLAppUnitTest {
 
         assertNotNull(response);
         assertTrue(response.contains("Clean Code"));
-        assertTrue(response.contains("Baeldung"));
+        assertTrue(response.contains("Alvin"));
         assertFalse(response.contains("Effective Java"));
     }
 
@@ -98,7 +98,7 @@ public class CamelRestGraphQLAppUnitTest {
         assertTrue(response.contains("books"));
         assertTrue(response.contains("Clean Code"));
         assertTrue(response.contains("Effective Java"));
-        assertTrue(response.contains("Baeldung"));
+        assertTrue(response.contains("Alvin"));
         assertTrue(response.contains("Joshua"));
     }
 
@@ -116,7 +116,7 @@ public class CamelRestGraphQLAppUnitTest {
 
         assertNotNull(response);
         assertTrue(response.contains("Clean Code"));
-        assertTrue(response.contains("Baeldung"));
+        assertTrue(response.contains("Alvin"));
         assertFalse(response.contains("Effective Java"));
     }
 
