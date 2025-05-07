@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package com.baeldung;
+
+option java_package = "com.baeldung.generated";
+
+message Menu {
+  map<string, float> items = 1;
+}
+
+message FoodDelivery{
+  map<string, Menu> restaurants = 1;
+}
