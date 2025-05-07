@@ -1,7 +1,3 @@
-## Couchbase
-
-This module contains articles about Couchbase
-
 ### Overview
 This Maven project contains the Java code for the Couchbase entities and Spring services
 as described in the tutorials, as well as a unit/integration test

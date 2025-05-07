@@ -1,6 +1,4 @@
-## OSGi
-
-This module contains articles about OSGi.
+This module contains code about OSGi.
 
 Info
 ---

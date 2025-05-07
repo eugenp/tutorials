@@ -1,6 +1,6 @@
 ### Spring Data JPA Articles that are also part of the e-book
 
-This module contains articles about Spring Data JPA that are also part of an Ebook.
+This module contains code about Spring Data JPA that are also part of an Ebook.
 
 
 ### NOTE: 

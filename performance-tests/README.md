@@ -1,6 +1,4 @@
-## Performance Tests
-
-This module contains articles about performance testing.
+This module contains code about performance testing.
 
 ### Running
 
