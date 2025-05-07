@@ -34,7 +34,7 @@ public class CamelRestGraphQLAppUnitTest {
     }
 
     @Test
-    void whenCallingRestGetAllBooks_thenShouldReturnBookList() {
+    void whenCallingRestGetAllBooks_thenReturnBookList() {
         String response = template.requestBodyAndHeader(
             "http://localhost:8088/api/books",
             null,
@@ -51,7 +51,7 @@ public class CamelRestGraphQLAppUnitTest {
     }
 
     @Test
-    void whenCallingRestGetBookById_thenShouldReturnSpecificBook() {
+    void whenCallingRestGetBookById_thenReturnSpecificBook() {
         String response = template.requestBody("http://localhost:8088/api/books/1", null, String.class);
 
         assertNotNull(response);
@@ -61,7 +61,7 @@ public class CamelRestGraphQLAppUnitTest {
     }
 
     @Test
-    void whenPostingNewBook_thenShouldAddToCollection() {
+    void whenPostingNewBook_thenAddToCollection() {
         String bookJson = "{\"id\":\"3\",\"title\":\"Camel in Action\",\"author\":\"Claus Ibsen\"}";
 
         String postResponse = template.requestBodyAndHeader(
@@ -80,7 +80,7 @@ public class CamelRestGraphQLAppUnitTest {
     }
 
     @Test
-    void whenCallingBooksQuery_thenShouldReturnAllBooks() {
+    void whenCallingBooksQuery_thenReturnAllBooks() {
         String query = """
         {
             "query": "{ books { id title author } }"
@@ -103,7 +103,7 @@ public class CamelRestGraphQLAppUnitTest {
     }
 
     @Test
-    void whenCallingBookByIdQuery_thenShouldReturnSpecificBook() {
+    void whenCallingBookByIdQuery_thenReturnSpecificBook() {
         String query = "{\"query\":\"{ bookById(id: \\\"1\\\") { title author } }\"}";
 
         String response = template.requestBodyAndHeader(
@@ -121,7 +121,7 @@ public class CamelRestGraphQLAppUnitTest {
     }
 
     @Test
-    void whenAddingBookViaMutation_thenShouldPersist() {
+    void whenAddingBookViaMutation_thenPersist() {
         String bookJson = "{ \"id\": \"3\", \"title\": \"Camel in Action\", \"author\": \"Claus Ibsen\" }";
 
         String postResponse = template.requestBodyAndHeader(
@@ -145,7 +145,7 @@ public class CamelRestGraphQLAppUnitTest {
     }
 
     @Test
-    void whenAddingInvalidBook_thenShouldReturnError() {
+    void whenAddingInvalidBook_thenReturnError() {
         String mutation = "{\"query\":\"mutation { " +
             "addBook(id: \\\"4\\\", title: \\\"\\\", author: \\\"Test\\\") { id title }" +
             "}\"}";
