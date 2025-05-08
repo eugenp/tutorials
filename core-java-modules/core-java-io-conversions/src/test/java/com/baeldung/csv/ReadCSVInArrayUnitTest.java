@@ -40,6 +40,7 @@ public class ReadCSVInArrayUnitTest {
         }
     });
 
+
     @Test
     public void givenCSVFile_whenBufferedReader_thenContentsAsExpected() throws IOException {
         List<List<String>> records = new ArrayList<List<String>>();

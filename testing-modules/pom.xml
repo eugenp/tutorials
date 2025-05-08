@@ -57,6 +57,7 @@
         <module>selenium-testng</module>
         <module>spring-mockito</module>
         <module>spring-testing-2</module>
+        <module>spring-testing-3</module>
         <module>spring-testing</module>
         <module>testing-assertions</module>
         <module>test-containers</module>
