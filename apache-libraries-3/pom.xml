@@ -6,8 +6,6 @@
     <artifactId>apache-libraries-3</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>apache-libraries-3</name>
-
-
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
@@ -44,6 +42,36 @@
             <artifactId>jackson-dataformat-avro</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jackson</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphql-java</artifactId>
+            <version>${graphql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jetty</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-http</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-graphql</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
 
     </dependencies>
 
@@ -53,6 +81,8 @@
         <maven.compiler.target>17</maven.compiler.target>
         <avro.version>1.11.3</avro.version>
         <json-unit-assertj.version>3.5.0</json-unit-assertj.version>
+        <graphql.version>23.1</graphql.version>
+        <camel.version>4.11.0</camel.version>
     </properties>
 
 </project>
