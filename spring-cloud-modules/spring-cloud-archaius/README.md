@@ -1,5 +1,7 @@
 # Spring Cloud Archaius
 
+This module contains code about Spring Cloud with Netflix Archaius
+
 #### Basic Config
 This service has the basic, out-of-the-box Spring Cloud Netflix Archaius configuration.
 

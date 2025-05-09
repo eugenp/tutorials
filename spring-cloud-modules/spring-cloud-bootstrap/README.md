@@ -1,5 +1,7 @@
 ## Guide to Microservices: with Spring Boot and Spring Cloud Ebook
 
+This module contains code about bootstrapping Spring Cloud applications that are part of the Guide to Microservices: with Spring Boot and Spring Cloud Ebook.
+
 ### Running the Project
 
 - First, you need a redis server running on the default port

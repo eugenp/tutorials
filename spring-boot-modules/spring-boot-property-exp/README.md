@@ -1,5 +1,7 @@
 ## Spring Boot Property Expansion
 
+This module contains code about Spring Boot Property Expansion
+
 ## SubModules 
  
 ### property-exp-default-config

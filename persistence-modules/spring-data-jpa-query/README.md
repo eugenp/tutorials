@@ -1,3 +1,5 @@
+## Spring Data JPA - Query
+
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  
 "No persistence xml file found in project"

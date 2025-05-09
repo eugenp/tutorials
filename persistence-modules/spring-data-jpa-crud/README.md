@@ -1,3 +1,7 @@
+## Spring Data JPA - CRUD
+
+This module contains code about CRUD operations in Spring Data JPA
+
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  
 "No persistence xml file found in project"

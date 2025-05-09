@@ -1,6 +1,5 @@
 ## Spring Data Couchbase Tutorial Project
 
-### Overview
 This Maven project contains the Java code for Spring Data Couchbase
 entities, repositories, and template-based services
 as described in the tutorials, as well as a unit/integration test

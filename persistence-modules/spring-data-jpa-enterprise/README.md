@@ -1,3 +1,6 @@
+## Spring Data JPA - Enterprise
+This module contains code about Spring Data JPA used in enterprise applications such as transactions, sessions, naming conventions and more
+
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  
 "No persistence xml file found in project"
