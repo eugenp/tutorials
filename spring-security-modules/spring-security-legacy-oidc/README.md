@@ -1,12 +1,6 @@
 ## Spring Security OpenID
 
-This module contains articles about OpenID with Spring Security
-
-### Relevant articles
-
-- [Spring Security and OpenID Connect (Legacy)](https://www.baeldung.com/spring-security-openid-connect-legacy)
-
-### OpenID Connect with Spring Security
+This module contains code about OpenID with Spring Security
 
 ### Run the Project
 
