@@ -2,6 +2,7 @@ package com.baeldung.examples.guice.provider;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
+import com.google.inject.name.Names;
 
 public class MyGuiceModule extends AbstractModule {
     /**
@@ -11,7 +12,11 @@ public class MyGuiceModule extends AbstractModule {
 
     @Override
     protected void configure() {
-        bind(Notifier.class).to(EmailNotifier.class);
+        bind(Notifier.class).annotatedWith(Names.named("Email"))
+          .toProvider(EmailNotifier.class);
+
+        bind(Notifier.class).annotatedWith(Names.named("Phone"))
+          .toProvider(PhoneNotifier.class);
     }
 
     @Provides

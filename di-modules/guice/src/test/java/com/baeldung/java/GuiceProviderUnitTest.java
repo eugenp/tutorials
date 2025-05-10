@@ -1,4 +1,4 @@
-package com.baeldung.examples;
+package com.baeldung.java;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -7,6 +7,7 @@ import com.baeldung.examples.guice.provider.Notifier;
 import com.baeldung.examples.guice.provider.EmailNotifier;
 import com.baeldung.examples.guice.provider.Logger;
 
+import com.baeldung.examples.guice.provider.PhoneNotifier;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
@@ -16,10 +17,13 @@ public class GuiceProviderUnitTest {
         // Create a Guice injector with the NotifierModule
         Injector injector = Guice.createInjector(new MyGuiceModule());
         // Get an instance of Notifier from the injector
-        Notifier notifier = injector.getInstance(Notifier.class);
+        Notifier emailNotifier = injector.getInstance(EmailNotifier.class);
+        Notifier phoneNotifier = injector.getInstance(PhoneNotifier.class);
         // Assert that notifier is of type EmailNotifier
-        assert notifier != null;
-        assert notifier instanceof EmailNotifier;
+        assert emailNotifier != null;
+
+        assert emailNotifier instanceof EmailNotifier;
+        assert phoneNotifier instanceof PhoneNotifier;
     }
 
     @Test
