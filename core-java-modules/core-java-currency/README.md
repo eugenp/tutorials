@@ -1,1 +1,0 @@
-#core-java-currency
