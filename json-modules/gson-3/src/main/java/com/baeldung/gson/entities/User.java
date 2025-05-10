@@ -1,3 +1,5 @@
+package com.baeldung.gson.entities;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

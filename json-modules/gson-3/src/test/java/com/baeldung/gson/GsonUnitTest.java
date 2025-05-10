@@ -1,8 +1,11 @@
+package com.baeldung.gson;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 
+import com.baeldung.gson.entities.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

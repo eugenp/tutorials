@@ -13,13 +13,14 @@
 
     <properties>
         <gson-version>2.12.1</gson-version>
+        <junit-version>4.13.1</junit-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.1</version>
+            <version>${junit-version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
