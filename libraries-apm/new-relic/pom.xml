@@ -16,6 +16,7 @@
 
     <modules>
         <module>currency-converter</module>
+        <module>newrelic-monitoring</module>
     </modules>
 
 </project>
