@@ -27,7 +27,3 @@ The Wire Tap processor, by default, makes a shallow copy of the Camel Exchange i
 To solve this, we need to create a deep copy of the object before passing it to the wire tap destination. Wire Tap EIP provides us with a mechanism to perform a “deep” copy of the message, by implementing the org.apache.camel.Processor class. This needs to be be called using onPrepare statement right after wireTap.
 For more details, check out the AmqApplicationUnitTest.class.
 
-### Relevant Articles:
-
-- [Wire Tap Enterprise Integration Pattern](https://www.baeldung.com/wiretap-pattern)
-

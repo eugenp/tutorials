@@ -23,6 +23,3 @@ Before launching unit tests:
 - Install OrientDB
 - Create BaeldungDB, BaeldungDBTwo and BaeldungDBThree databases
 - Uncomment annotations on the test files
-
-### Relevant Articles:
-- [Introduction to the OrientDB Java APIs](http://www.baeldung.com/java-orientdb)

@@ -1,9 +1,4 @@
-## OSGi
-
-This module contains articles about OSGi.
-
-### Relevant articles:
- - [Introduction to OSGi](https://www.baeldung.com/osgi)
+This module contains code about OSGi.
 
 Info
 ---

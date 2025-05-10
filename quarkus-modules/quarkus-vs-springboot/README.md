@@ -129,7 +129,3 @@ Optionally, we can extract a html report from it, by running:
 ```
 report --destination=/tmp/reports
 ```
-
-### Relevant Articles:
-
-- [Spring Boot vs Quarkus](https://www.baeldung.com/spring-boot-vs-quarkus)

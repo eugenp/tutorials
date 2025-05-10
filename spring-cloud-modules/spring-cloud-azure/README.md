@@ -1,7 +1,5 @@
 # Spring Cloud Azure
 
-# Relevant Articles
-- [A Guide to Spring Cloud Azure Key Vault](https://www.baeldung.com/spring-cloud-azure-key-vault)
 # Azure KeyVault: 
 In order to create the secrets, follow these steps: 
 - create an Azure account 
