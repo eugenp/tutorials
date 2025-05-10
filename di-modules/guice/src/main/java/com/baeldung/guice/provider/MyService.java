@@ -1,4 +1,4 @@
-package com.baeldung.examples.guice.provider;
+package com.baeldung.guice.provider;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;

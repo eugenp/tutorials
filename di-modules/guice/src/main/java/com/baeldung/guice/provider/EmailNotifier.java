@@ -1,4 +1,4 @@
-package com.baeldung.examples.guice.provider;
+package com.baeldung.guice.provider;
 
 import com.google.inject.Provider;
 import java.util.logging.Logger;

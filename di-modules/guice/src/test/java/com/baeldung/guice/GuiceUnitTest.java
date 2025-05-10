@@ -1,4 +1,4 @@
-package com.baeldung.java;
+package com.baeldung.guice;
 
 import static org.junit.Assert.assertNotNull;
 

@@ -1,4 +1,4 @@
-package com.baeldung.examples.guice.provider;
+package com.baeldung.guice.provider;
 
 
 public interface Logger {

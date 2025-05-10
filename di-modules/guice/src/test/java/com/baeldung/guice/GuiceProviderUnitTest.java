@@ -1,13 +1,13 @@
-package com.baeldung.java;
+package com.baeldung.guice;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import com.baeldung.examples.guice.provider.MyGuiceModule;
-import com.baeldung.examples.guice.provider.Notifier;
-import com.baeldung.examples.guice.provider.EmailNotifier;
-import com.baeldung.examples.guice.provider.Logger;
+import com.baeldung.guice.provider.MyGuiceModule;
+import com.baeldung.guice.provider.Notifier;
+import com.baeldung.guice.provider.EmailNotifier;
+import com.baeldung.guice.provider.Logger;
 
-import com.baeldung.examples.guice.provider.PhoneNotifier;
+import com.baeldung.guice.provider.PhoneNotifier;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
