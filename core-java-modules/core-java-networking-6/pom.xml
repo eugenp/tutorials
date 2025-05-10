@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-networking-6</artifactId>
     <packaging>jar</packaging>
-    <name>core-java-networking</name>
+    <name>core-java-networking-6</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -63,7 +63,7 @@
     </dependencies>
 
     <build>
-        <finalName>core-java-networking</finalName>
+        <finalName>core-java-networking-6</finalName>
     </build>
 
     <properties>
