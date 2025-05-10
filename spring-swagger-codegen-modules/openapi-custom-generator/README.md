@@ -1,8 +1,3 @@
-### Relevant Articles: 
-- [OpenAPI Custom Generator](https://www.baeldung.com/java-openapi-custom-generator)
-
-# OpenAPI Generator for the java-camel-client library
-
 ## Overview
 This is a boiler-plate project to generate your own project derived from an OpenAPI specification.
 Its goal is to get you started with the basic plumbing so you can put in your own logic.

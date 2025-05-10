@@ -1,6 +1,6 @@
 ## JMeter
 
-This module contains articles about JMeter.
+This module contains code about JMeter.
 It contains the code of a simple API for some CRUD operations built using Spring Boot.
 
 ### Requirements
@@ -36,7 +36,3 @@ $ curl localhost:8080/api/uuid
 Now with default configurations it will be available at: [http://localhost:8080](http://localhost:8080)
 
 Enjoy it :)
-
-### Relevant Articles:
-
-- 
