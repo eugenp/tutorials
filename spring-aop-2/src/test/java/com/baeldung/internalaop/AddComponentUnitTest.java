@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.baeldung.Application;
 
 @SpringBootTest(classes = Application.class)
-class AddComponentIntegrationTest {
+class AddComponentUnitTest {
 
     @Resource
     private AddComponent addComponent;

@@ -10,17 +10,20 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.baeldung.Application;
 
 @SpringBootTest(classes = Application.class)
-class SelfInjectionIntegrationTest {
+class AddOneAndDoubleComponentUnitTest {
 
     @Resource
-    private SelfInjection selfInjection;
+    private AddOneAndDoubleComponent addOneAndDoubleComponent;
+
+    @Resource
+    private AddComponent addComponent;
 
     @Test
     void whenCallingFromExternalClass_thenAopProxyIsUsed() {
-        selfInjection.resetCache();
+        addComponent.resetCache();
 
-        selfInjection.addOneAndDouble(0);
+        addOneAndDoubleComponent.addOneAndDouble(0);
 
-        assertThat(selfInjection.getCounter()).isEqualTo(1);
+        assertThat(addComponent.getCounter()).isEqualTo(1);
     }
 }
