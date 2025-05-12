@@ -5,11 +5,6 @@ spring:
       chat.enabled: true
       embedding.enabled: true
       chat.options.model: gpt-4o
-    ollama:
-      base-url: http://localhost:11434
-      chat:
-        options:
-          model: llama3
     mistralai:
       api-key: ${MISTRAL_AI_API_KEY}
       chat:
