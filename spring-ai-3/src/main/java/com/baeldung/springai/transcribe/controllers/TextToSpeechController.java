@@ -29,7 +29,7 @@ public class TextToSpeechController {
     public ResponseEntity<byte[]> generateSpeechForTextCustomized(@RequestParam("text") String text, @RequestParam Map<String, String> params) {
         OpenAiAudioSpeechOptions speechOptions = OpenAiAudioSpeechOptions.builder()
           .model(params.get("model"))
-          .voice(params.get("voice"))
+          .voice(OpenAiAudioApi.SpeechRequest.Voice.valueOf(params.get("voice")))
           .responseFormat(OpenAiAudioApi.SpeechRequest.AudioResponseFormat.valueOf(params.get("responseFormat")))
           .speed(Float.parseFloat(params.get("speed")))
           .build();

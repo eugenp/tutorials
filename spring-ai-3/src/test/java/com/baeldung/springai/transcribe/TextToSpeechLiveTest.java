@@ -52,7 +52,7 @@ class TextToSpeechLiveTest {
         byte[] audioContent = mockMvc.perform(get("/text-to-speech-customized")
           .param("text", "Hello from Baeldung")
           .param("model", "tts-1")
-          .param("voice", "nova")
+          .param("voice", "NOVA")
           .param("responseFormat", "MP3")
           .param("speed", "1.0"))
           .andExpect(status().isOk())
