@@ -83,7 +83,7 @@ class TextToSpeechLiveTest {
               waitUntilResponseIsReady();
               byte[] response = result.getResponse().getContentAsByteArray();
               assertNotNull(response);
-              assertTrue( response.length > 0);
+              assertTrue(response.length > 0);
           });
     }
 
