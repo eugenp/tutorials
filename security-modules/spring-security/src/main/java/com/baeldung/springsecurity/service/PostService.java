@@ -47,8 +47,8 @@ public class PostService {
         postRepository.delete(post);
     }
 
-    public List<PostResponseDto> myPosts(Authentication auth) {
-        User user = authService.getUser(auth);
+    public List<PostResponseDto> myPosts(String username) {
+        User user = authService.getUser(username);
         return postRepository.findByUser(user).stream().map(this::toDto).toList();
     }
 
