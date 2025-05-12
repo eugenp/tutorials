@@ -25,14 +25,14 @@ public class PostController {
     @PostMapping("create")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<PostResponseDto> create(@RequestBody PostRequestDto dto, Authentication auth) {
-        PostResponseDto result = postService.create(dto, auth);
+        PostResponseDto result = postService.create(dto, auth.getName());
         return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
 
     @GetMapping("mine")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<List<PostResponseDto>> myPosts(Authentication auth) {
-        List<PostResponseDto> result = postService.myPosts(auth);
+        List<PostResponseDto> result = postService.myPosts(auth.getName());
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
@@ -40,7 +40,7 @@ public class PostController {
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<String> update(@PathVariable Long id, @RequestBody PostRequestDto req, Authentication auth) {
         try {
-            postService.update(id, req, auth);
+            postService.update(id, req, auth.getName());
             return new ResponseEntity<>("updated", HttpStatus.OK);
         } catch (AccessDeniedException ade) {
             return new ResponseEntity<>(ade.getMessage(), HttpStatus.FORBIDDEN);
@@ -51,7 +51,8 @@ public class PostController {
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<?> delete(@PathVariable Long id, Authentication auth) {
         try {
-            postService.delete(id, auth);
+            boolean isAdmin = auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
+            postService.delete(id, isAdmin, auth.getName());
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (AccessDeniedException ade) {
             return new ResponseEntity<>(ade.getMessage(), HttpStatus.FORBIDDEN);

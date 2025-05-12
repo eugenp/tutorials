@@ -6,7 +6,6 @@ import com.baeldung.springsecurity.entity.Post;
 import com.baeldung.springsecurity.entity.User;
 import com.baeldung.springsecurity.repository.PostRepository;
 import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,8 +20,8 @@ public class PostService {
         this.authService = authService;
     }
 
-    public PostResponseDto create(PostRequestDto req, Authentication auth) {
-        User user = authService.getUser(auth);
+    public PostResponseDto create(PostRequestDto req, String username) {
+        User user = authService.getUser(username);
         Post post = new Post();
         post.setTitle(req.getTitle());
         post.setContent(req.getContent());
@@ -30,9 +29,9 @@ public class PostService {
         return toDto(postRepository.save(post));
     }
 
-    public void update(Long id, PostRequestDto dto, Authentication auth) {
+    public void update(Long id, PostRequestDto dto, String username) {
         Post post = postRepository.findById(id).orElseThrow();
-        if (!post.getUser().getUsername().equals(auth.getName())) {
+        if (!post.getUser().getUsername().equals(username)) {
             throw new AccessDeniedException("You can only edit your own posts");
         }
         post.setTitle(dto.getTitle());
@@ -40,11 +39,9 @@ public class PostService {
         postRepository.save(post);
     }
 
-    public void delete(Long id, Authentication auth) {
-        boolean isAdmin = auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
-
+    public void delete(Long id, boolean isAdmin, String username) {
         Post post = postRepository.findById(id).orElseThrow();
-        if (!isAdmin && !post.getUser().getUsername().equals(auth.getName())) {
+        if (!isAdmin && !post.getUser().getUsername().equals(username)) {
             throw new AccessDeniedException("You can only delete your own posts");
         }
         postRepository.delete(post);

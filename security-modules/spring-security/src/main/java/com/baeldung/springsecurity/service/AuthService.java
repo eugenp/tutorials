@@ -4,7 +4,6 @@ import com.baeldung.springsecurity.dto.request.RegisterRequestDto;
 import com.baeldung.springsecurity.dto.UserProfileDto;
 import com.baeldung.springsecurity.entity.User;
 import com.baeldung.springsecurity.repository.UserRepository;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -35,13 +34,13 @@ public class AuthService {
         return "User registered successfully";
     }
 
-    public UserProfileDto profile(Authentication authentication) {
-        Optional<User> user = userRepository.findByUsername(authentication.getName());
+    public UserProfileDto profile(String username) {
+        Optional<User> user = userRepository.findByUsername(username);
         return user.map(value -> new UserProfileDto(value.getUsername(), value.getEmail(), value.getRole())).orElseThrow();
     }
 
-    public User getUser(Authentication authentication) {
-        Optional<User> user = userRepository.findByUsername(authentication.getName());
+    public User getUser(String username) {
+        Optional<User> user = userRepository.findByUsername(username);
         return user.orElse(null);
     }
 }

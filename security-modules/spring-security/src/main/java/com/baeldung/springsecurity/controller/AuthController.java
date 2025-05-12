@@ -19,13 +19,12 @@ public class AuthController {
     @PostMapping("register")
     public ResponseEntity<String> register(@RequestBody RegisterRequestDto request) {
         String result = authService.register(request);
-
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @GetMapping("profile")
     public ResponseEntity<UserProfileDto> profile(Authentication authentication) {
-        UserProfileDto userProfileDto = authService.profile(authentication);
+        UserProfileDto userProfileDto = authService.profile(authentication.getName());
         return new ResponseEntity<>(userProfileDto, HttpStatus.OK);
     }
 }
