@@ -11,6 +11,6 @@ public class AdvisorConfiguration {
 
     @Bean
     public QuestionAnswerAdvisor questionAnswerAdvisor(VectorStore vectorStore) {
-        return new QuestionAnswerAdvisor(vectorStore, SearchRequest.defaults());
+        return new QuestionAnswerAdvisor(vectorStore, SearchRequest.builder().build());
     }
 }
