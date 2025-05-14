@@ -1,0 +1,12 @@
+export com.baeldung.jimmer.introduction.models.Book
+    -> package com.baeldung.jimmer.introduction.dto
+
+BookView {
+   #allScalars(Book)
+   author {
+     id
+   }
+   pages {
+    #allScalars(Page)
+   }
+}

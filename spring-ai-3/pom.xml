@@ -26,6 +26,18 @@
        </repository>
    </repositories>
 
+   <dependencyManagement>
+       <dependencies>
+           <dependency>
+               <groupId>org.springframework.ai</groupId>
+               <artifactId>spring-ai-bom</artifactId>
+               <version>${spring-ai.version}</version>
+               <type>pom</type>
+               <scope>import</scope>
+           </dependency>
+       </dependencies>
+   </dependencyManagement>
+
    <dependencies>
        <dependency>
            <groupId>org.springframework.boot</groupId>
@@ -33,8 +45,53 @@
        </dependency>
        <dependency>
            <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-markdown-document-reader</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-mcp-client-spring-boot-starter</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-mcp-server-webmvc-spring-boot-starter</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-chroma-store-spring-boot-starter</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-anthropic-spring-boot-starter</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-bedrock-converse-spring-boot-starter</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-data-jpa</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-openai-spring-boot-starter</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.hsqldb</groupId>
+           <artifactId>hsqldb</artifactId>
+           <scope>runtime</scope>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-pgvector-store-spring-boot-starter</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.ai</groupId>
            <artifactId>spring-ai-starter-model-openai</artifactId>
-           <version>${spring-ai.version}</version>
+           <version>${spring-ai-start-model-openai.version}</version>
        </dependency>
 
        <!-- Test dependencies -->
@@ -43,14 +100,99 @@
            <artifactId>spring-boot-starter-test</artifactId>
            <scope>test</scope>
        </dependency>
+       <dependency>
+           <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-spring-boot-testcontainers</artifactId>
+           <scope>test</scope>
+       </dependency>
+       <dependency>
+           <groupId>org.testcontainers</groupId>
+           <artifactId>chromadb</artifactId>
+           <scope>test</scope>
+       </dependency>
+       <dependency>
+           <groupId>org.testcontainers</groupId>
+           <artifactId>ollama</artifactId>
+           <scope>test</scope>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-docker-compose</artifactId>
+           <version>${spring-boot-docker-compose.version}</version>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-starter-vector-store-mongodb-atlas</artifactId>	
+           <version>${spring-ai-mongodb-atlas.version}</version>
+       </dependency>
    </dependencies>
 
     <profiles>
         <profile>
-            <id>transcribe</id>
+            <id>chromadb</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.chromadb.Application</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>assistant</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.spring.ai.om.OrderManagementApplication</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>anthropic</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.anthropic.Application</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>deepseek</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.deepseek.Application</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>evaluator</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.evaluator.Application</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>hugging-face</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.huggingface.Application</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>mcp-server</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.mcp.server.ServerApplication</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>mcp-client</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.mcp.client.ClientApplication</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>amazon-nova</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.nova.Application</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>pgvector</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.semanticsearch.Application</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>transcribe</id>
             <properties>
                 <spring.boot.mainclass>com.baeldung.springai.transcribe.Application</spring.boot.mainclass>
             </properties>
@@ -77,8 +219,12 @@
    </build>
 
    <properties>
+       <spring-ai-mongodb-atlas.version>1.0.0-M7</spring-ai-mongodb-atlas.version>
+       <junit-jupiter.version>5.9.0</junit-jupiter.version>
+       <spring-boot-docker-compose.version>3.1.1</spring-boot-docker-compose.version>
        <spring-boot.version>3.4.5</spring-boot.version>
-       <spring-ai.version>1.0.0-M7</spring-ai.version>
+       <spring-ai.version>1.0.0-M6</spring-ai.version>
+       <spring-ai-start-model-openai.version>1.0.0-M7</spring-ai-start-model-openai.version>
    </properties>
 
 </project>

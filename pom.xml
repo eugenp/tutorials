@@ -663,6 +663,7 @@
                 <module>hystrix</module>
                 <module>image-compressing</module>
                 <module>image-processing</module>
+                <module>j2cl</module>
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
@@ -761,7 +762,7 @@
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
                 <module>spring-ai-2</module>
-		<module>spring-ai-3</module>
+        				<module>spring-ai-3</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>spring-batch</module>
@@ -1054,6 +1055,7 @@
                 <module>image-processing</module>
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
+                <module>j2cl</module>
                 <module>java-blockchain</module>
                 <module>java-jdi</module>
                 <module>java-panama</module>
@@ -1150,7 +1152,7 @@
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
                 <module>spring-ai-2</module>
-		<module>spring-ai-3</module>
+				        <module>spring-ai-3</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>spring-batch</module>
@@ -1577,6 +1579,8 @@
         <mockito-inline.version>5.2.0</mockito-inline.version>
         <mockito-junit-jupiter.version>5.12.0</mockito-junit-jupiter.version>
         <logback.configurationFileName>logback-config-global.xml</logback.configurationFileName>
+        <jsoup.version>1.17.2</jsoup.version>
+        <jaxb-runtime.version>4.0.3</jaxb-runtime.version>
     </properties>
 
 </project>

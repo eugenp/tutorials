@@ -368,7 +368,6 @@
         <jibx-version>1.2.4.5</jibx-version>
         <bcel.version>6.7.0</bcel.version>
         <maven-jibx-plugin.version>1.3.1</maven-jibx-plugin.version>
-        <commons-lang3.version>3.14.0</commons-lang3.version>
         <xmlunit-assertj.version>2.6.3</xmlunit-assertj.version>
         <joox.version>1.6.2</joox.version>
         <jaxen.version>1.2.0</jaxen.version>
@@ -377,10 +376,8 @@
         <mustache.version>0.9.6</mustache.version>
         <jaxb-core.version>2.3.0.1</jaxb-core.version>
         <jaxb-impl.version>4.0.4</jaxb-impl.version>
-        <jaxb-runtime.version>4.0.3</jaxb-runtime.version>
         <jericho.version>3.4</jericho.version>
         <htmlcleaner.version>2.25</htmlcleaner.version>
-        <jsoup.version>1.17.2</jsoup.version>
     </properties>
 
 </project>
