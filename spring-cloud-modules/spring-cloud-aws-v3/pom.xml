@@ -40,6 +40,10 @@
             <artifactId>spring-cloud-aws-starter-sqs</artifactId>
         </dependency>
         <dependency>
+            <groupId>io.awspring.cloud</groupId>
+            <artifactId>spring-cloud-aws-starter-dynamodb</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
@@ -47,6 +51,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-testcontainers</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.awspring.cloud</groupId>
+            <artifactId>spring-cloud-aws-testcontainers</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.testcontainers</groupId>
@@ -68,6 +77,12 @@
             <artifactId>assertj-core</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.instancio</groupId>
+            <artifactId>instancio-junit</artifactId>
+            <version>${instancio.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -82,6 +97,7 @@
     <properties>
         <start-class>com.baeldung.spring.cloud.aws.sqs.SpringCloudAwsApplication</start-class>
         <spring-cloud-aws.version>3.2.0</spring-cloud-aws.version>
+        <instancio.version>5.3.0</instancio.version>
         <maven.surefire.version>3.1.0</maven.surefire.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>

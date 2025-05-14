@@ -6,6 +6,7 @@
     <artifactId>spring-boot-3-4</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>spring-boot-3-4</name>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -13,15 +14,19 @@
             <version>${spring-boot.version}</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
             </plugin>
         </plugins>
     </build>
+
     <properties>
         <spring-boot.version>3.4.0</spring-boot.version>
     </properties>
+
 </project>

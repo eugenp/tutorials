@@ -8,6 +8,7 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.SealedObject;
+import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
@@ -26,7 +27,7 @@ import java.util.Base64;
 
 public class AESUtil {
 
-    public static String encrypt(String algorithm, String input, SecretKey key, IvParameterSpec iv)
+    public static String encrypt(String algorithm, String input, SecretKey key, GCMParameterSpec iv)
         throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException,
         InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
         Cipher cipher = Cipher.getInstance(algorithm);
@@ -36,7 +37,7 @@ public class AESUtil {
             .encodeToString(cipherText);
     }
 
-    public static String decrypt(String algorithm, String cipherText, SecretKey key, IvParameterSpec iv)
+    public static String decrypt(String algorithm, String cipherText, SecretKey key, GCMParameterSpec iv)
         throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException,
         InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
         Cipher cipher = Cipher.getInstance(algorithm);
@@ -62,13 +63,13 @@ public class AESUtil {
         return secret;
     }
 
-    public static IvParameterSpec generateIv() {
-        byte[] iv = new byte[16];
+    public static GCMParameterSpec generateIv() {
+        byte[] iv = new byte[12];
         new SecureRandom().nextBytes(iv);
-        return new IvParameterSpec(iv);
+        return new GCMParameterSpec(128, iv);
     }
 
-    public static void encryptFile(String algorithm, SecretKey key, IvParameterSpec iv,
+    public static void encryptFile(String algorithm, SecretKey key, GCMParameterSpec iv,
         File inputFile, File outputFile) throws IOException, NoSuchPaddingException,
         NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException,
         BadPaddingException, IllegalBlockSizeException {
@@ -92,7 +93,7 @@ public class AESUtil {
         outputStream.close();
     }
 
-    public static void decryptFile(String algorithm, SecretKey key, IvParameterSpec iv,
+    public static void decryptFile(String algorithm, SecretKey key, GCMParameterSpec iv,
         File encryptedFile, File decryptedFile) throws IOException, NoSuchPaddingException,
         NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException,
         BadPaddingException, IllegalBlockSizeException {
@@ -117,7 +118,7 @@ public class AESUtil {
     }
 
     public static SealedObject encryptObject(String algorithm, Serializable object, SecretKey key,
-        IvParameterSpec iv) throws NoSuchPaddingException, NoSuchAlgorithmException,
+        GCMParameterSpec iv) throws NoSuchPaddingException, NoSuchAlgorithmException,
         InvalidAlgorithmParameterException, InvalidKeyException, IOException, IllegalBlockSizeException {
         Cipher cipher = Cipher.getInstance(algorithm);
         cipher.init(Cipher.ENCRYPT_MODE, key, iv);
@@ -126,7 +127,7 @@ public class AESUtil {
     }
 
     public static Serializable decryptObject(String algorithm, SealedObject sealedObject, SecretKey key,
-        IvParameterSpec iv) throws NoSuchPaddingException, NoSuchAlgorithmException,
+        GCMParameterSpec iv) throws NoSuchPaddingException, NoSuchAlgorithmException,
         InvalidAlgorithmParameterException, InvalidKeyException, ClassNotFoundException,
         BadPaddingException, IllegalBlockSizeException, IOException {
         Cipher cipher = Cipher.getInstance(algorithm);
@@ -135,19 +136,19 @@ public class AESUtil {
         return unsealObject;
     }
 
-    public static String encryptPasswordBased(String plainText, SecretKey key, IvParameterSpec iv)
+    public static String encryptPasswordBased(String plainText, SecretKey key, GCMParameterSpec iv)
         throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException,
         InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
-        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
         cipher.init(Cipher.ENCRYPT_MODE, key, iv);
         return Base64.getEncoder()
             .encodeToString(cipher.doFinal(plainText.getBytes()));
     }
 
-    public static String decryptPasswordBased(String cipherText, SecretKey key, IvParameterSpec iv)
+    public static String decryptPasswordBased(String cipherText, SecretKey key, GCMParameterSpec iv)
         throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException,
         InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
-        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+        Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
         cipher.init(Cipher.DECRYPT_MODE, key, iv);
         return new String(cipher.doFinal(Base64.getDecoder()
             .decode(cipherText)));

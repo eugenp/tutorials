@@ -26,3 +26,8 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         hbm2ddl.auto: create
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: jolokia

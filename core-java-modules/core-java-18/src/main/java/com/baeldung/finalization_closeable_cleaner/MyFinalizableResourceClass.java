@@ -15,10 +15,4 @@ public class MyFinalizableResourceClass {
         System.out.println("Some operation");
         return this.fis.readAllBytes().length;
     }
-
-    @Override
-    protected void finalize() throws Throwable {
-        System.out.println("Finalized object");
-        this.fis.close();
-    }
 }

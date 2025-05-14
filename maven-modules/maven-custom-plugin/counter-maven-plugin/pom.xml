@@ -55,15 +55,8 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-plugin-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>report</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
+                <artifactId>maven-plugin-report-plugin</artifactId>
+                <version>${maven-plugin-report-plugin.version}</version>
             </plugin>
         </plugins>
     </reporting>
@@ -76,6 +69,7 @@
         <maven-plugin-annotations.version>3.6.0</maven-plugin-annotations.version>
         <maven-project.version>2.2.1</maven-project.version>
         <maven-plugin-plugin.version>3.11.0</maven-plugin-plugin.version>
+        <maven-plugin-report-plugin.version>3.15.1</maven-plugin-report-plugin.version>
         <maven-site-plugin.version>3.8.2</maven-site-plugin.version>
     </properties>
 

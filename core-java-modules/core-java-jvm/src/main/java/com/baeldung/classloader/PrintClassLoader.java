@@ -8,9 +8,19 @@ public class PrintClassLoader {
 
     public void printClassLoaders() throws ClassNotFoundException {
 
-        System.out.println("Classloader of this class:" + PrintClassLoader.class.getClassLoader());
-        System.out.println("Classloader of DriverManager:" + DriverManager.class.getClassLoader());
-        System.out.println("Classloader of ArrayList:" + ArrayList.class.getClassLoader());
+        System.out.println("Platform Classloader:" 
+          + ClassLoader.getPlatformClassLoader()); 
 
+        System.out.println("System Classloader:" 
+          + ClassLoader.getSystemClassLoader());
+
+        System.out.println("Classloader of this class:"
+          + PrintClassLoader.class.getClassLoader());
+
+        System.out.println("Classloader of DriverManager:"
+          + DriverManager.class.getClassLoader());
+
+        System.out.println("Classloader of ArrayList:"
+          + ArrayList.class.getClassLoader());
     }
 }
