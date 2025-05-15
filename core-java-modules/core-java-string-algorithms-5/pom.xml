@@ -5,6 +5,18 @@
     <artifactId>core-java-string-algorithms-5</artifactId>
     <packaging>jar</packaging>
     <name>core-java-string-algorithms-5</name>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>16</source>
+                    <target>16</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -13,6 +25,12 @@
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>net.jqwik</groupId>
+            <artifactId>jqwik</artifactId>
+            <version>1.9.2</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>com.vdurmont</groupId>
             <artifactId>emoji-java</artifactId>
@@ -23,5 +41,7 @@
     <properties>
         <emoji-java.version>4.0.0</emoji-java.version>
     </properties>
+
+
 
 </project>
