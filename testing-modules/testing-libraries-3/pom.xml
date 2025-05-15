@@ -60,6 +60,24 @@
             <version>${system-lambda.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>uk.org.webcompere</groupId>
+            <artifactId>test-gadgets-jupiter</artifactId>
+            <version>1.0.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>uk.org.webcompere</groupId>
+            <artifactId>test-gadgets-junit4</artifactId>
+            <version>1.0.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>uk.org.webcompere</groupId>
+            <artifactId>test-gadgets-core</artifactId>
+            <version>1.0.2</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -94,6 +112,7 @@
         <cucumber.version>4.8.0</cucumber.version>
         <system-lambda.version>1.0.0</system-lambda.version>
         <system-rules.version>1.19.0</system-rules.version>
+        <java.version>11</java.version>
     </properties>
 
 </project>
