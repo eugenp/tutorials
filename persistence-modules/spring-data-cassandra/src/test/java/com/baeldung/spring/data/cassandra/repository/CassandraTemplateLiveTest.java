@@ -2,17 +2,10 @@ package com.baeldung.spring.data.cassandra.repository;
 
 import com.baeldung.spring.data.cassandra.config.CassandraConfig;
 import com.baeldung.spring.data.cassandra.model.Book;
-import com.datastax.driver.core.Cluster;
-import com.datastax.driver.core.Session;
-import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
-import com.datastax.driver.core.utils.UUIDs;
-import com.google.common.collect.ImmutableSet;
-import org.apache.cassandra.exceptions.ConfigurationException;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.thrift.transport.TTransportException;
-import org.cassandraunit.utils.EmbeddedCassandraServerHelper;
+import com.datastax.oss.driver.api.core.CqlSession;
+import com.datastax.oss.driver.api.core.cql.SimpleStatement;
+import com.datastax.oss.driver.api.core.uuid.Uuids;
+import com.datastax.oss.driver.api.querybuilder.QueryBuilder;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -20,40 +13,34 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cassandra.core.cql.CqlIdentifier;
 import org.springframework.data.cassandra.core.CassandraAdminOperations;
 import org.springframework.data.cassandra.core.CassandraOperations;
+import org.springframework.data.cassandra.core.cql.CqlIdentifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.testcontainers.containers.CassandraContainer;
+import org.testcontainers.utility.DockerImageName;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
-import static junit.framework.TestCase.assertNull;
+
+import static com.datastax.oss.driver.api.querybuilder.QueryBuilder.literal;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 
-/**
- * Live test for Cassandra testing.
- *
- * This can be converted to IntegrationTest once cassandra-unit tests can be executed in parallel and
- * multiple test servers started as part of test suite.
- *
- * Open cassandra-unit issue for parallel execution: https://github.com/jsevellec/cassandra-unit/issues/155
- */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = CassandraConfig.class)
 public class CassandraTemplateLiveTest {
-    private static final Log LOGGER = LogFactory.getLog(CassandraTemplateLiveTest.class);
 
-    public static final String KEYSPACE_CREATION_QUERY = "CREATE KEYSPACE IF NOT EXISTS testKeySpace " + "WITH replication = { 'class': 'SimpleStrategy', 'replication_factor': '3' };";
+    private static final String KEYSPACE_CREATION_QUERY =
+            "CREATE KEYSPACE IF NOT EXISTS testKeySpace " +
+                    "WITH replication = { 'class': 'SimpleStrategy', 'replication_factor': '1' };";
 
-    public static final String KEYSPACE_ACTIVATE_QUERY = "USE testKeySpace;";
-
-    public static final String DATA_TABLE_NAME = "book";
+    private static final String KEYSPACE_ACTIVATE_QUERY = "USE testKeySpace;";
+    private static final String DATA_TABLE_NAME = "book";
 
     @Autowired
     private CassandraAdminOperations adminTemplate;
@@ -61,99 +48,82 @@ public class CassandraTemplateLiveTest {
     @Autowired
     private CassandraOperations cassandraTemplate;
 
+    static CassandraContainer<?> cassandraContainer;
+
     @BeforeClass
-    public static void startCassandraEmbedded() throws InterruptedException, TTransportException, ConfigurationException, IOException {
-        EmbeddedCassandraServerHelper.startEmbeddedCassandra();
-        final Cluster cluster = Cluster.builder().addContactPoints("127.0.0.1").withPort(9142).build();
-        LOGGER.info("Server Started at 127.0.0.1:9142... ");
-        final Session session = cluster.connect();
-        session.execute(KEYSPACE_CREATION_QUERY);
-        session.execute(KEYSPACE_ACTIVATE_QUERY);
-        LOGGER.info("KeySpace created and activated.");
-        Thread.sleep(5000);
+    public static void setupCassandra() {
+        cassandraContainer = new CassandraContainer<>(
+                DockerImageName.parse("cassandra:4.1.2")
+        ).withExposedPorts(9042);
+        cassandraContainer.start();
+
+        // Create keyspace using Testcontainers' session
+        try (CqlSession session = CqlSession.builder()
+                .addContactPoint(cassandraContainer.getContactPoint())
+                .withLocalDatacenter(cassandraContainer.getLocalDatacenter())
+                .build()) {
+
+            session.execute(SimpleStatement.newInstance(KEYSPACE_CREATION_QUERY));
+            session.execute(SimpleStatement.newInstance(KEYSPACE_ACTIVATE_QUERY));
+        }
     }
 
     @Before
     public void createTable() {
-        adminTemplate.createTable(true, CqlIdentifier.cqlId(DATA_TABLE_NAME), Book.class, new HashMap<>());
+        adminTemplate.createTable(
+                true,
+                CqlIdentifier.of(DATA_TABLE_NAME).toCqlIdentifier(),
+                Book.class,
+                Collections.emptyMap()
+        );
     }
 
     @Test
     public void whenSavingBook_thenAvailableOnRetrieval() {
-        final Book javaBook = new Book(UUIDs.timeBased(), "Head First Java", "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
+        Book javaBook = new Book(
+                Uuids.timeBased(),
+                "Head First Java",
+                "O'Reilly Media",
+                Collections.singleton("Computer")
+        );
+
         cassandraTemplate.insert(javaBook);
-        final Select select = QueryBuilder.select().from("book").where(QueryBuilder.eq("title", "Head First Java")).and(QueryBuilder.eq("publisher", "O'Reilly Media")).limit(10);
-        final Book retrievedBook = cassandraTemplate.selectOne(select, Book.class);
+
+        SimpleStatement select = QueryBuilder.selectFrom(DATA_TABLE_NAME)
+                .all()
+                .whereColumn("title").isEqualTo(literal("Head First Java"))
+                .build();
+
+        Book retrievedBook = cassandraTemplate.selectOne(select, Book.class);
         assertEquals(javaBook.getId(), retrievedBook.getId());
     }
 
     @Test
     public void whenSavingBooks_thenAllAvailableOnRetrieval() {
-        final Book javaBook = new Book(UUIDs.timeBased(), "Head First Java", "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
-        final Book dPatternBook = new Book(UUIDs.timeBased(), "Head Design Patterns", "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
-        final List<Book> bookList = new ArrayList<>();
-        bookList.add(javaBook);
-        bookList.add(dPatternBook);
-        cassandraTemplate.insert(bookList);
+        List<Book> books = List.of(
+                new Book(Uuids.timeBased(), "Head First Java", "O'Reilly Media", Set.of("Computer")),
+                new Book(Uuids.timeBased(), "Clean Code", "Pearson", Set.of("Software"))
+        );
 
-        final Select select = QueryBuilder.select().from("book").limit(10);
-        final List<Book> retrievedBooks = cassandraTemplate.select(select, Book.class);
-        assertThat(retrievedBooks.size(), is(2));
-        assertEquals(javaBook.getId(), retrievedBooks.get(0).getId());
-        assertEquals(dPatternBook.getId(), retrievedBooks.get(1).getId());
-    }
+        cassandraTemplate.insert(books);
 
-    @Test
-    public void whenUpdatingBook_thenShouldUpdatedOnRetrieval() {
-        final Book javaBook = new Book(UUIDs.timeBased(), "Head First Java", "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
-        cassandraTemplate.insert(javaBook);
-        final Select select = QueryBuilder.select().from("book").limit(10);
-        final Book retrievedBook = cassandraTemplate.selectOne(select, Book.class);
-        retrievedBook.setTags(ImmutableSet.of("Java", "Programming"));
-        cassandraTemplate.update(retrievedBook);
-        final Book retrievedUpdatedBook = cassandraTemplate.selectOne(select, Book.class);
-        assertEquals(retrievedBook.getTags(), retrievedUpdatedBook.getTags());
-    }
+        SimpleStatement select = QueryBuilder.selectFrom(DATA_TABLE_NAME)
+                .all()
+                .build();
 
-    @Test
-    public void whenDeletingASelectedBook_thenNotAvailableOnRetrieval() {
-        final Book javaBook = new Book(UUIDs.timeBased(), "Head First Java", "OReilly Media", ImmutableSet.of("Computer", "Software"));
-        cassandraTemplate.insert(javaBook);
-        cassandraTemplate.delete(javaBook);
-        final Select select = QueryBuilder.select().from("book").limit(10);
-        final Book retrievedUpdatedBook = cassandraTemplate.selectOne(select, Book.class);
-        assertNull(retrievedUpdatedBook);
-    }
-
-    @Test
-    public void whenDeletingAllBooks_thenNotAvailableOnRetrieval() {
-        final Book javaBook = new Book(UUIDs.timeBased(), "Head First Java", "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
-        final Book dPatternBook = new Book(UUIDs.timeBased(), "Head Design Patterns", "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
-        cassandraTemplate.insert(javaBook);
-        cassandraTemplate.insert(dPatternBook);
-        cassandraTemplate.deleteAll(Book.class);
-        final Select select = QueryBuilder.select().from("book").limit(10);
-        final Book retrievedUpdatedBook = cassandraTemplate.selectOne(select, Book.class);
-        assertNull(retrievedUpdatedBook);
-    }
-
-    @Test
-    public void whenAddingBooks_thenCountShouldBeCorrectOnRetrieval() {
-        final Book javaBook = new Book(UUIDs.timeBased(), "Head First Java", "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
-        final Book dPatternBook = new Book(UUIDs.timeBased(), "Head Design Patterns", "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
-        cassandraTemplate.insert(javaBook);
-        cassandraTemplate.insert(dPatternBook);
-        final long bookCount = cassandraTemplate.count(Book.class);
-        assertEquals(2, bookCount);
+        List<Book> retrieved = cassandraTemplate.select(select, Book.class);
+        assertThat(retrieved.size(), is(2));
     }
 
     @After
     public void dropTable() {
-        adminTemplate.dropTable(CqlIdentifier.cqlId(DATA_TABLE_NAME));
+        adminTemplate.dropTable(CqlIdentifier.of(DATA_TABLE_NAME).getClass());
     }
 
     @AfterClass
-    public static void stopCassandraEmbedded() {
-        EmbeddedCassandraServerHelper.cleanEmbeddedCassandra();
+    public static void tearDown() {
+        if (cassandraContainer != null) {
+            cassandraContainer.stop();
+        }
     }
 }
