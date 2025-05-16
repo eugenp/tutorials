@@ -4,12 +4,8 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
-import com.baeldung.examples.common.BookService;
-import com.baeldung.examples.guice.FooProcessor;
-import com.baeldung.examples.guice.GuicePersonService;
-import com.baeldung.examples.guice.GuiceUserService;
-import com.baeldung.examples.guice.Person;
-import com.baeldung.examples.guice.modules.GuiceModule;
+import com.baeldung.common.BookService;
+import com.baeldung.guice.modules.GuiceModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
