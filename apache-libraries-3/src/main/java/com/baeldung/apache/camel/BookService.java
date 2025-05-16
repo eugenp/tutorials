@@ -7,16 +7,16 @@ public class BookService {
 
     private final List<Book> books = new ArrayList<>();
 
-    BookService() {
-        books.add(new Book("1", "Clean Code", "Alvin"));
+    public BookService() {
+        books.add(new Book("1", "Clean Code", "Robert"));
         books.add(new Book("2", "Effective Java", "Joshua"));
     }
 
-    List<Book> getBooks() {
+    public List<Book> getBooks() {
         return books;
     }
 
-    Book getBookById(String id) {
+    public Book getBookById(String id) {
         return books.stream()
             .filter(b -> b.getId()
                 .equals(id))
@@ -24,7 +24,7 @@ public class BookService {
             .orElse(null);
     }
 
-    Book addBook(Book book) {
+    public Book addBook(Book book) {
         books.add(book);
         return book;
     }
