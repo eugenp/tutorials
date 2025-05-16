@@ -1,0 +1,22 @@
+
+management:
+  endpoints.web.exposure.include: '*'
+  endpoint.health.show-details: always
+
+spring:
+  application:
+    name: kafka-monitoring
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: baeldung-app-1
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.value.default.type: com.baeldung.kafka.monitoring.ArticleCommentAddedEvent
+        spring.json.trusted.packages: com.baeldung.kafka.monitoring
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
