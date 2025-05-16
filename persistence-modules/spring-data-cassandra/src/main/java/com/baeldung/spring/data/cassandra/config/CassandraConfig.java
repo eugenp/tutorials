@@ -1,45 +1,71 @@
 package com.baeldung.spring.data.cassandra.config;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.datastax.oss.driver.api.core.CqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
-import org.springframework.data.cassandra.config.CassandraClusterFactoryBean;
-import org.springframework.data.cassandra.config.java.AbstractCassandraConfiguration;
-import org.springframework.data.cassandra.mapping.BasicCassandraMappingContext;
-import org.springframework.data.cassandra.mapping.CassandraMappingContext;
+import org.springframework.data.cassandra.SessionFactory;
+import org.springframework.data.cassandra.config.CqlSessionFactoryBean;
+import org.springframework.data.cassandra.config.SchemaAction;
+import org.springframework.data.cassandra.config.SessionFactoryFactoryBean;
+import org.springframework.data.cassandra.core.CassandraTemplate;
+import org.springframework.data.cassandra.core.convert.CassandraConverter;
+import org.springframework.data.cassandra.core.convert.MappingCassandraConverter;
+import org.springframework.data.cassandra.core.mapping.CassandraMappingContext;
 import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
 
+import java.net.InetSocketAddress;
+
 @Configuration
-@PropertySource(value = { "classpath:cassandra.properties" })
+@PropertySource("classpath:cassandra.properties")
 @EnableCassandraRepositories(basePackages = "com.baeldung.spring.data.cassandra.repository")
-public class CassandraConfig extends AbstractCassandraConfiguration {
-    private static final Log LOGGER = LogFactory.getLog(CassandraConfig.class);
+public class CassandraConfig {
 
-    @Autowired
-    private Environment environment;
+    private static final Logger LOG = LoggerFactory.getLogger(CassandraConfig.class);
 
-    @Override
-    protected String getKeyspaceName() {
-        return environment.getProperty("cassandra.keyspace");
+    @Value("${cassandra.contactpoints}")
+    private String contactPoints;
+
+    @Value("${cassandra.port}")
+    private int port;
+
+    @Value("${cassandra.keyspace}")
+    private String keyspace;
+
+    @Value("${cassandra.localdatacenter}")
+    private String localDatacenter;
+
+    @Bean
+    public CqlSession cqlSession() {
+        LOG.info("Creating CqlSession with contact points [{}] & port [{}]", contactPoints, port);
+
+        return CqlSession.builder()
+                .addContactPoint(new InetSocketAddress(contactPoints, port))
+                .withLocalDatacenter(localDatacenter)
+                .withKeyspace(keyspace)
+                .build();
     }
 
-    @Override
+//    @Bean
+//    public SessionFactory sessionFactory(CqlSession session, CassandraConverter converter) {
+//        return new SessionFactory(session, converter);
+//    }
+//
+//    @Bean
+//    public CassandraTemplate cassandraTemplate(SessionFactory sessionFactory) {
+//        return new CassandraTemplate(sessionFactory);
+//    }
+
     @Bean
-    public CassandraClusterFactoryBean cluster() {
-        final CassandraClusterFactoryBean cluster = new CassandraClusterFactoryBean();
-        cluster.setContactPoints(environment.getProperty("cassandra.contactpoints"));
-        cluster.setPort(Integer.parseInt(environment.getProperty("cassandra.port")));
-        LOGGER.info("Cluster created with contact points [" + environment.getProperty("cassandra.contactpoints") + "] " + "& port [" + Integer.parseInt(environment.getProperty("cassandra.port")) + "].");
-        return cluster;
+    public CassandraMappingContext cassandraMapping() {
+        return new CassandraMappingContext();
     }
 
-    @Override
     @Bean
-    public CassandraMappingContext cassandraMapping() throws ClassNotFoundException {
-        return new BasicCassandraMappingContext();
+    public CassandraConverter converter(CassandraMappingContext mappingContext) {
+        return new MappingCassandraConverter(mappingContext);
     }
 }
