@@ -54,7 +54,6 @@
         <module>core-java-jpms</module>
         <module>core-java-lang-oop-constructors-2</module>
         <module>core-java-methods</module>
-        <module>core-java-networking-3</module>
         <module>core-java-os</module>
         <module>core-java-os-2</module>
         <module>core-java-perf-2</module>
@@ -194,8 +193,10 @@
         <module>core-java-loops</module>
         <module>core-java-networking</module>
         <module>core-java-networking-2</module>
+        <module>core-java-networking-3</module>
         <module>core-java-networking-4</module>
         <!--<module>core-java-networking-5</module>--> <!--moved to heavy profile-->
+        <module>core-java-networking-6</module>
         <module>core-java-nio</module>
         <module>core-java-nio-2</module>
         <module>core-java-nio-3</module>
@@ -274,6 +275,7 @@
         <module>core-java-8-datetime-4</module>
         <!--<module>core-java-22</module>--> <!-- Migrated to default-jdk22 profile -->
         <!--<module>core-java-23</module>--> <!-- Migrated to default-jdk23 profile -->
+        <!--<module>core-java-24</module>--> <!-- Migrated to default-jdk24 profile -->
     </modules>
 
     <dependencies>

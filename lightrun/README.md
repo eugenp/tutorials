@@ -34,7 +34,3 @@ example:
 ```
 $ java -jar ./target/tasks-service-0.0.1-SNAPSHOT.jar
 ```
-
-### Relevant Articles"
-
-- [Introduction to Lightrun with Java](https://www.baeldung.com/java-lightrun)
