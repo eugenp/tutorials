@@ -8,10 +8,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 public class SwaggerymlApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SwaggerymlApplication.class, args);
-//		new SpringApplicationBuilder(SwaggerymlApplication.class)
-//			.properties("spring.config.name=application-yml")
-//			.run(args);
+		new SpringApplicationBuilder(SwaggerymlApplication.class)
+		    .properties("spring.config.name=application-yml")
+		    .run(args);
 	}
 
 }
