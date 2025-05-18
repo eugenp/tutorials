@@ -1,0 +1,15 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          wiremock:
+            client-id: my-client
+            client-secret: my-secret
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            authorization-grant-type: authorization_code
+            scope: openid
+            provider: wiremock
+        provider:
+          wiremock:
+            issuer-uri: http://localhost:8080/realms/my-realm
