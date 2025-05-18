@@ -12,4 +12,4 @@ spring:
             redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
         provider:
           keycloak:
-            issuer-uri: http://localhost:8080/realms/my-realm
+            issuer-uri: http://localhost:8787/realms/my-realm

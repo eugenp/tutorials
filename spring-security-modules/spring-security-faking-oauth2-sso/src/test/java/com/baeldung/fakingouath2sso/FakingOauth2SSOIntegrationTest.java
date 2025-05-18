@@ -27,7 +27,7 @@ class FakingOauth2SsoApplicationTests {
     MockMvc mockMvc;
 
     @Test
-    void testLoginWithMockedKeycloak() throws Exception {
+    void whenBypssingTheOAuthWithSpringConfig_thenItShouldBeAbleToLogin() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/")
                 .with(oauth2Login()))
             .andExpect(status().isOk());
@@ -37,19 +37,19 @@ class FakingOauth2SsoApplicationTests {
 
     @BeforeAll
     static void setup() {
-        wireMockServer = new WireMockServer(8080);
-        configureFor(8080);
+        wireMockServer = new WireMockServer(8787);
+        configureFor(8787);
         wireMockServer.start();
 
         stubFor(get(urlEqualTo("/realms/my-realm/.well-known/openid-configuration")).willReturn(aResponse().withHeader("Content-Type", "application/json")
             .withBody("""
                 
                  {
-                  "issuer": "http://localhost:8080/realms/my-realm",
-                  "authorization_endpoint": "http://localhost:8080/realms/my-realm/oauth/authorize",
-                  "token_endpoint": "http://localhost:8080/realms/my-realm/oauth/token",
-                  "userinfo_endpoint": "http://localhost:8080/realms/my-realm/userinfo",
-                  "jwks_uri": "http://localhost:8080/realms/my-realm/.well-known/jwks.json",
+                  "issuer": "http://localhost:8787/realms/my-realm",
+                  "authorization_endpoint": "http://localhost:8787/realms/my-realm/oauth/authorize",
+                  "token_endpoint": "http://localhost:8787/realms/my-realm/oauth/token",
+                  "userinfo_endpoint": "http://localhost:8787/realms/my-realm/userinfo",
+                  "jwks_uri": "http://localhost:8787/realms/my-realm/.well-known/jwks.json",
                   "response_types_supported": [
                     "code",
                     "token",
@@ -82,7 +82,7 @@ class FakingOauth2SsoApplicationTests {
     }
 
     @Test
-    void testLoginWithMockedKeycloak1() throws Exception {
+    void whenAuthServerIsMocked_thenItShouldBeAbleToLogin() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/")
                 .with(oauth2Login()))
             .andExpect(status().isOk());

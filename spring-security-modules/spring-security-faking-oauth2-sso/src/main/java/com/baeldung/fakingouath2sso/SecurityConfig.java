@@ -29,5 +29,4 @@ public class SecurityConfig {
         handler.setDefaultTargetUrl("/");
         return handler;
     }
-
 }
