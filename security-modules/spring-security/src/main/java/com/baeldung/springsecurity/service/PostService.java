@@ -13,15 +13,15 @@ import java.util.List;
 @Service
 public class PostService {
     private final PostRepository postRepository;
-    private final AuthService authService;
+    private final UserService userService;
 
-    public PostService(PostRepository postRepository, AuthService authService) {
+    public PostService(PostRepository postRepository, UserService userService) {
         this.postRepository = postRepository;
-        this.authService = authService;
+        this.userService = userService;
     }
 
     public PostResponseDto create(PostRequestDto req, String username) {
-        User user = authService.getUser(username);
+        User user = userService.getUser(username);
         Post post = new Post();
         post.setTitle(req.getTitle());
         post.setContent(req.getContent());
@@ -48,7 +48,7 @@ public class PostService {
     }
 
     public List<PostResponseDto> myPosts(String username) {
-        User user = authService.getUser(username);
+        User user = userService.getUser(username);
         return postRepository.findByUser(user).stream().map(this::toDto).toList();
     }
 
