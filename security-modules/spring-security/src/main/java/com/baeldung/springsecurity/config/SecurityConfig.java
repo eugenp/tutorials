@@ -23,7 +23,7 @@ public class SecurityConfig {
           .csrf(csrf -> csrf.disable()) // Disable CSRF protection completely
           .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
           .authorizeHttpRequests(auth -> auth
-            .requestMatchers(new AntPathRequestMatcher("/auth/**")).permitAll()
+            .requestMatchers(new AntPathRequestMatcher("/users/**")).permitAll()
             .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
             .requestMatchers(HttpMethod.GET, "/posts/mine").hasRole("USER")
             .requestMatchers(HttpMethod.POST, "/posts/create").hasRole("USER")
