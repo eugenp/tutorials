@@ -1,10 +1,6 @@
 ## Wicket
 
-This module contains articles about Wicket
-
-### Relevant Articles
-
-- [Introduction to the Wicket Framework](https://www.baeldung.com/intro-to-the-wicket-framework)
+This module contains code about Wicket
 
 ### Execution
 
