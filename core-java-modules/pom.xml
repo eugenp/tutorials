@@ -60,7 +60,7 @@
         <module>core-java-streams-4</module>
         <module>core-java-streams-5</module>
         <module>core-java-streams-6</module>
-        <module>core-java-streams-7</module>
+        <!-- <module>core-java-streams-7</module> requires JDK 24-->
         <module>core-java-streams-collect</module>
         <module>core-java-streams-maps</module>
         <module>core-java-string-operations-3</module>

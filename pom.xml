@@ -951,6 +951,7 @@
             </build>
 
             <modules>
+                <module>core-java-modules/core-java-streams-7</module>
                 <module>core-java-modules/core-java-24</module>
             </modules>
 
@@ -1367,6 +1368,7 @@
             </build>
 
             <modules>
+                <module>core-java-modules/core-java-streams-7</module>
                 <module>core-java-modules/core-java-24</module>
             </modules>
 
