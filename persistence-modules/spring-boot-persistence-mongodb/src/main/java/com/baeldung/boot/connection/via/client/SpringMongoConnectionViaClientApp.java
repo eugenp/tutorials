@@ -7,11 +7,10 @@ import org.bson.Document;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
 
-@SpringBootApplication(exclude={EmbeddedMongoAutoConfiguration.class})
+@SpringBootApplication
 public class SpringMongoConnectionViaClientApp extends AbstractMongoClientConfiguration {
 
     public static void main(String... args) {

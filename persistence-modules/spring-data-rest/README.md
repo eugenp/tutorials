@@ -1,15 +1,5 @@
 ## Spring Data REST
 
-This module contains articles about Spring Data REST
-
-### Relevant Articles:
-- [Introduction to Spring Data REST](https://www.baeldung.com/spring-data-rest-intro)
-- [Working with Relationships in Spring Data REST](https://www.baeldung.com/spring-data-rest-relationships)
-- [Spring Boot With SQLite](https://www.baeldung.com/spring-boot-sqlite)
-- [Spring Data Web Support](https://www.baeldung.com/spring-data-web-support)
-- [Consuming Page Entity Response From RestTemplate](https://www.baeldung.com/resttemplate-page-entity-response)
-
-
 ### The Course
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 

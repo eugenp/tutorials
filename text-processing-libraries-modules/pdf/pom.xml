@@ -133,7 +133,6 @@
         <flying-saucer-pdf.version>9.5.1</flying-saucer-pdf.version>
         <open-html-pdfbox.version>1.0.6</open-html-pdfbox.version>
         <open-html-pdf-core.version>1.0.10</open-html-pdf-core.version>
-        <jsoup.version>1.17.2</jsoup.version>
         <pdfbox.version>2.0.31</pdfbox.version>
         <itext.version>5.5.13.3</itext.version>
         <itextpdf.layput.version>7.2.5</itextpdf.layput.version>

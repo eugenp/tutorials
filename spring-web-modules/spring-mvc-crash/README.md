@@ -1,10 +1,6 @@
 ## Spring MVC XML
 
-This module contains articles about Spring MVC with XML configuration
-
-### Relevant Articles: 
-
-- [Getting Started with CRaSH](https://www.baeldung.com/jvm-crash-shell)
+This module contains code about Spring MVC with XML configuration
 
 ## Spring MVC with XML Configuration Example Project
 

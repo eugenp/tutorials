@@ -61,9 +61,12 @@ public class GlobalExceptionHandlerIntegrationTest {
         when(service.findAll())
                 .thenThrow(new CustomException4("TEST"));
         this.mockMvc
-                .perform(get("/foos").accept(MediaType.TEXT_PLAIN))
+                .perform(
+                        get("/foos")
+                                .accept(MediaType.APPLICATION_JSON)
+                )
                 .andExpect(status().isBadRequest())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_PLAIN));
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
     }
 
 }
