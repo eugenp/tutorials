@@ -1,4 +1,4 @@
-package com.baeldung.mockito.whenvsdomethods;
+package com.baeldung.whenvsdomethods;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
