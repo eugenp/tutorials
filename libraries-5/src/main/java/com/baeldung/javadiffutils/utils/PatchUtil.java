@@ -1,4 +1,4 @@
-package com.example.diff;
+package com.baeldung.javadiffutils.Utils;
 
 import com.github.difflib.DiffUtils;
 import com.github.difflib.patch.PatchFailedException;

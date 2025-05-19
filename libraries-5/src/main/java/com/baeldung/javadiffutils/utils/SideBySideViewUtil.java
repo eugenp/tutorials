@@ -1,4 +1,4 @@
-package com.example.diff;
+package com.baeldung.javadiffutils.Utils;
 
 import com.github.difflib.DiffUtils;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.diff;
+package com.baeldung.javadiffutils.Utils;
 
 import org.junit.Test;
 
