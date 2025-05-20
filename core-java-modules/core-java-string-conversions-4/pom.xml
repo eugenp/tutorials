@@ -24,18 +24,6 @@
             <artifactId>commons-text</artifactId>
             <version>${commons-text.version}</version>
         </dependency>
-        <dependency>
-            <groupId>jakarta.xml.soap</groupId>
-            <artifactId>jakarta.xml.soap-api</artifactId>
-            <version>${xml-soap.version}</version>
-        </dependency>
-
-        <!-- SAAJ Implementation -->
-        <dependency>
-            <groupId>com.sun.xml.messaging.saaj</groupId>
-            <artifactId>saaj-impl</artifactId>
-            <version>${xml-soap.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -52,7 +40,6 @@
         <icu4j.version>61.1</icu4j.version>
         <argLine>-Djava.locale.providers=COMPAT</argLine>
         <commons-text.version>1.9</commons-text.version>
-        <xml-soap.version>3.0.1</xml-soap.version>
     </properties>
 
 </project>
