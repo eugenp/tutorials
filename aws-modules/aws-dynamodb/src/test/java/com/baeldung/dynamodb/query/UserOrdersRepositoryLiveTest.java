@@ -14,8 +14,9 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// This live test needs a Docker instance running so that DynamoDB container can be created
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class UserOrdersRepositoryIntegrationTest {
+public class UserOrdersRepositoryLiveTest {
 
     private static final String TABLE_NAME = "UserOrders";
     private DynamoDbClient dynamoDb;
