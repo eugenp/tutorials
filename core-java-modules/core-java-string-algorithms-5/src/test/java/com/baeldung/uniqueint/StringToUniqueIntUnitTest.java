@@ -14,11 +14,11 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import net.jqwik.api.Arbitraries;
 
-class StringToUniqueIntTest {
+class StringToUniqueIntUnitTest {
 
     @ParameterizedTest
     @MethodSource("implementations")
-    public void shouldEnsureLowLevelUniqueness_1k_elements(Function<String, Integer> implementation) {
+    public void given1kElements_shouldMapToListOfInt_withNoDuplicates(Function<String, Integer> implementation) {
         Stream<String> strings = uniqueStringsOfSize(1_000);
 
         List<Integer> integers = strings.map(implementation)
@@ -29,7 +29,7 @@ class StringToUniqueIntTest {
 
     @ParameterizedTest
     @MethodSource("implementations")
-    public void shouldEnsureMidLevelUniqueness_10k_elements(Function<String, Integer> implementation) {
+    public void given50kElements_shouldMapToListOfInt_withNoDuplicates(Function<String, Integer> implementation) {
         Stream<String> strings = uniqueStringsOfSize(50_000);
 
         List<Integer> integers = strings.map(implementation)
@@ -41,7 +41,7 @@ class StringToUniqueIntTest {
     @ParameterizedTest
     @MethodSource("implementations")
     @Disabled
-    public void shouldEnsureHighLevelUniqueness_500k_elements(Function<String, Integer> implementation) {
+    public void given500kElements_shouldMapToListOfInt_withNoDuplicates(Function<String, Integer> implementation) {
         Stream<String> strings = uniqueStringsOfSize(500_000);
 
         List<Integer> integers = strings.map(implementation)
