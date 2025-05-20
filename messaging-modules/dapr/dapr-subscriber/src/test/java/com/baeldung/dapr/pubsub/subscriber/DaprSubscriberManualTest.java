@@ -23,9 +23,9 @@ import io.dapr.springboot.DaprAutoConfiguration;
 import io.dapr.testcontainers.DaprContainer;
 
 @SpringBootTest(classes = { DaprSubscriberTestApp.class, DaprTestContainersConfig.class, DaprMessagingConfig.class, DaprAutoConfiguration.class }, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
-class DaprSubscriberIntegrationTest {
+class DaprSubscriberManualTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(DaprSubscriberIntegrationTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(DaprSubscriberManualTest.class);
     private static final String READY_MESSAGE_PATTERN = ".*app is subscribed to the following topics.*";
 
     @Autowired
