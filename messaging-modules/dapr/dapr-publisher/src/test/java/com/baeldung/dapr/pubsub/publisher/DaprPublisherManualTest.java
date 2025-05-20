@@ -24,9 +24,9 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 
 @SpringBootTest(classes = { DaprPublisherTestApp.class, DaprTestContainersConfig.class, DaprAutoConfiguration.class }, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
-class DaprPublisherIntegrationTest {
+class DaprPublisherManualTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(DaprPublisherIntegrationTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(DaprPublisherManualTest.class);
     private static final String READY_MESSAGE_PATTERN = ".*app is subscribed to the following topics.*";
 
     @Autowired
