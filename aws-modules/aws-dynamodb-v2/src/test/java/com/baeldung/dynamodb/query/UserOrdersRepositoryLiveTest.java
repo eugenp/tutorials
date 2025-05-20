@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class UserOrdersRepositoryIntegrationTest {
+public class UserOrdersRepositoryLiveTest {
 
     private static final String TABLE_NAME = "UserOrders";
     private DynamoDbClient dynamoDb;
