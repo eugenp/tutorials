@@ -22,10 +22,7 @@ public class ReplaceWordInFileUnitTest {
 
     private static final String FILE_PATH = "src/test/resources/data.txt";
     private static final String FILE_OUTPUT_PATH = "src/test/resources/data_output.txt";
-    private static final String OUTPUT_TO_VERIFY = """
-        This is a test file.
-        This is a test file.
-        This is a test file.""";
+    private static final String OUTPUT_TO_VERIFY = "This is a test file."+System.lineSeparator()+"This is a test file."+System.lineSeparator()+"This is a test file.";
 
     @Test
     public void givenFile_whenUsingBufferedReader_thenReplacedWordCorrect() throws IOException {
@@ -33,12 +30,12 @@ public class ReplaceWordInFileUnitTest {
         try (BufferedReader br = Files.newBufferedReader(Paths.get(FILE_PATH))) {
             String line;
             while ((line = br.readLine()) != null){
-                fileContent.append(line).append("\n");
+                fileContent.append(line).append(System.lineSeparator());
             }
             String replacedContent = fileContent.toString().replace("sample","test").trim();
-            FileWriter fw = new FileWriter(FILE_OUTPUT_PATH);
-            fw.write(replacedContent);
-            fw.close();
+            try (FileWriter fw = new FileWriter(FILE_OUTPUT_PATH)) {
+                fw.write(replacedContent);
+            }
 
             assertEquals(OUTPUT_TO_VERIFY,replacedContent);
         }
@@ -49,12 +46,12 @@ public class ReplaceWordInFileUnitTest {
         StringBuilder fileContent = new StringBuilder();
         try (Scanner scanner = new Scanner(new File(FILE_PATH))) {
             while (scanner.hasNextLine()){
-                fileContent.append(scanner.nextLine()).append("\n");
+                fileContent.append(scanner.nextLine()).append(System.lineSeparator());
             }
             String replacedContent = fileContent.toString().replace("sample","test").trim();
-            FileWriter fw = new FileWriter(FILE_OUTPUT_PATH);
-            fw.write(replacedContent);
-            fw.close();
+            try (FileWriter fw = new FileWriter(FILE_OUTPUT_PATH)) {
+                fw.write(replacedContent);
+            }
 
             assertEquals(OUTPUT_TO_VERIFY,replacedContent);
         }
@@ -67,7 +64,7 @@ public class ReplaceWordInFileUnitTest {
               .collect(Collectors.toList());
             Files.write(Paths.get(FILE_OUTPUT_PATH), list, StandardCharsets.UTF_8);
 
-            assertEquals(OUTPUT_TO_VERIFY,String.join("\n", list));
+            assertEquals(OUTPUT_TO_VERIFY,String.join(System.lineSeparator(), list));
         }
     }
 
@@ -75,11 +72,11 @@ public class ReplaceWordInFileUnitTest {
     public void givenFile_whenUsingFileUtils_thenReplacedWordCorrect() throws IOException{
         StringBuilder fileContent = new StringBuilder();
         List<String> lines = FileUtils.readLines(new File(FILE_PATH), "UTF-8");
-        lines.forEach(line -> fileContent.append(line).append("\n"));
+        lines.forEach(line -> fileContent.append(line).append(System.lineSeparator()));
         String replacedContent = fileContent.toString().replace("sample","test").trim();
-        FileWriter fw = new FileWriter(FILE_OUTPUT_PATH);
-        fw.write(replacedContent);
-        fw.close();
+        try (FileWriter fw = new FileWriter(FILE_OUTPUT_PATH)) {
+            fw.write(replacedContent);
+        }
 
         assertEquals(OUTPUT_TO_VERIFY,replacedContent);
     }
@@ -89,7 +86,7 @@ public class ReplaceWordInFileUnitTest {
         try (Stream<String> lines = Files.lines(Paths.get(FILE_PATH))) {
             Files.writeString(Paths.get(FILE_OUTPUT_PATH), "",StandardCharsets.UTF_8, StandardOpenOption.CREATE,StandardOpenOption.TRUNCATE_EXISTING);
             lines.forEach(line -> {
-                line = line.replace("sample", "test") + "\n";
+                line = line.replace("sample", "test") + System.lineSeparator();
                 try {
                     Files.writeString(Paths.get(FILE_OUTPUT_PATH),line,StandardCharsets.UTF_8, StandardOpenOption.APPEND);
                 } catch (IOException e) {
