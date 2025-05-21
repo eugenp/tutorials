@@ -13,5 +13,3 @@ The server starts at https://localhost:8443. `casuser`/`Mellon` are the username
 
 2. `cas-secured-app` - A Maven based Springboot Application
 
-### Relevant Articles: 
-
