@@ -1,17 +1,12 @@
 ## Spring REST Testing
 
-This module contains articles about testing REST APIs with Spring
+This module contains code about testing REST APIs with Spring
 
 ### Courses
 
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
-
-### Relevant Articles: 
-
-- [Integration Testing With the Maven Cargo Plugin](https://www.baeldung.com/integration-testing-with-the-maven-cargo-plugin)
-- [Testing Exceptions with Spring MockMvc](https://www.baeldung.com/spring-mvc-test-exceptions)
 
 ### Build the Project
 ```
