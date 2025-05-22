@@ -8,12 +8,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.cassandra.SessionFactory;
-import org.springframework.data.cassandra.config.CqlSessionFactoryBean;
-import org.springframework.data.cassandra.config.SchemaAction;
-import org.springframework.data.cassandra.config.SessionFactoryFactoryBean;
+import org.springframework.data.cassandra.core.CassandraAdminTemplate;
 import org.springframework.data.cassandra.core.CassandraTemplate;
 import org.springframework.data.cassandra.core.convert.CassandraConverter;
 import org.springframework.data.cassandra.core.convert.MappingCassandraConverter;
+import org.springframework.data.cassandra.core.cql.session.DefaultSessionFactory;
 import org.springframework.data.cassandra.core.mapping.CassandraMappingContext;
 import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
 
@@ -49,23 +48,28 @@ public class CassandraConfig {
                 .build();
     }
 
-//    @Bean
-//    public SessionFactory sessionFactory(CqlSession session, CassandraConverter converter) {
-//        return new SessionFactory(session, converter);
-//    }
-//
-//    @Bean
-//    public CassandraTemplate cassandraTemplate(SessionFactory sessionFactory) {
-//        return new CassandraTemplate(sessionFactory);
-//    }
+    @Bean
+    public SessionFactory sessionFactory(CqlSession cqlSession, CassandraConverter converter) {
+        return new DefaultSessionFactory(cqlSession);
+    }
 
     @Bean
-    public CassandraMappingContext cassandraMapping() {
+    public CassandraMappingContext cassandraMappingContext() {
         return new CassandraMappingContext();
     }
 
     @Bean
-    public CassandraConverter converter(CassandraMappingContext mappingContext) {
+    public CassandraConverter cassandraConverter(CassandraMappingContext mappingContext) {
         return new MappingCassandraConverter(mappingContext);
+    }
+
+    @Bean
+    public CassandraAdminTemplate cassandraAdminOperations(SessionFactory sessionFactory, CassandraConverter converter) {
+        return new CassandraAdminTemplate(sessionFactory, converter);
+    }
+
+    @Bean
+    public CassandraTemplate adminTemplate(SessionFactory sessionFactory, CassandraConverter converter) {
+        return new CassandraTemplate(sessionFactory, converter);
     }
 }

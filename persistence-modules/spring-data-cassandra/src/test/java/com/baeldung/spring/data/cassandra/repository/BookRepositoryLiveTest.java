@@ -44,7 +44,7 @@ public class BookRepositoryLiveTest {
     @BeforeClass
     public static void setupCassandra() {
         cassandraContainer = new CassandraContainer<>(
-                DockerImageName.parse("cassandra:4.1.9")
+                DockerImageName.parse("cassandra:4.1.8")
         ).withExposedPorts(9042);
         cassandraContainer.start();
 

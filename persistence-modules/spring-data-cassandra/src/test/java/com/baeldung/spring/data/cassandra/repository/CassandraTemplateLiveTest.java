@@ -11,62 +11,62 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.cassandra.core.CassandraAdminOperations;
 import org.springframework.data.cassandra.core.CassandraOperations;
 import org.springframework.data.cassandra.core.cql.CqlIdentifier;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.CassandraContainer;
+import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-
 import static com.datastax.oss.driver.api.querybuilder.QueryBuilder.literal;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@Testcontainers
+@SpringBootTest
 @ContextConfiguration(classes = CassandraConfig.class)
 public class CassandraTemplateLiveTest {
 
-    private static final String KEYSPACE_CREATION_QUERY =
-            "CREATE KEYSPACE IF NOT EXISTS testKeySpace " +
-                    "WITH replication = { 'class': 'SimpleStrategy', 'replication_factor': '1' };";
-
-    private static final String KEYSPACE_ACTIVATE_QUERY = "USE testKeySpace;";
     private static final String DATA_TABLE_NAME = "book";
 
-    @Autowired
-    private CassandraAdminOperations adminTemplate;
+    static CassandraContainer<?> cassandraContainer =
+            new CassandraContainer<>("cassandra:4.1.8").withExposedPorts(9042);
 
-    @Autowired
-    private CassandraOperations cassandraTemplate;
-
-    static CassandraContainer<?> cassandraContainer;
+    @DynamicPropertySource
+    static void cassandraProperties(DynamicPropertyRegistry registry) {
+        registry.add("cassandra.contactpoints", () -> cassandraContainer.getHost());
+        registry.add("cassandra.port", () -> cassandraContainer.getMappedPort(9042));
+        registry.add("cassandra.keyspace", () -> "testKeySpace");
+        registry.add("cassandra.localdatacenter", () -> cassandraContainer.getLocalDatacenter());
+    }
 
     @BeforeClass
-    public static void setupCassandra() {
-        cassandraContainer = new CassandraContainer<>(
-                DockerImageName.parse("cassandra:4.1.2")
-        ).withExposedPorts(9042);
+    public static void startContainerAndCreateKeyspace() {
         cassandraContainer.start();
-
-        // Create keyspace using Testcontainers' session
         try (CqlSession session = CqlSession.builder()
                 .addContactPoint(cassandraContainer.getContactPoint())
                 .withLocalDatacenter(cassandraContainer.getLocalDatacenter())
                 .build()) {
-
-            session.execute(SimpleStatement.newInstance(KEYSPACE_CREATION_QUERY));
-            session.execute(SimpleStatement.newInstance(KEYSPACE_ACTIVATE_QUERY));
+            session.execute("CREATE KEYSPACE IF NOT EXISTS testKeySpace WITH replication = { 'class': 'SimpleStrategy', 'replication_factor': 1 };");
         }
     }
+
+    @Autowired
+    private CassandraOperations cassandraTemplate;
+
+    @Autowired
+    private CassandraAdminOperations adminTemplate;
 
     @Before
     public void createTable() {
