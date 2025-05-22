@@ -19,10 +19,16 @@
             <artifactId>jsoup</artifactId>
             <version>${jsoup.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
+            <artifactId>owasp-java-html-sanitizer</artifactId>
+            <version>${owasp.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <jsoup.version>1.17.2</jsoup.version>
+        <owasp.version>20240325.1</owasp.version>
     </properties>
 
 </project>
