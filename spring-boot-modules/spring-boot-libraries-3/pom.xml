@@ -4,6 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-libraries-3</artifactId>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>16</source>
+                    <target>16</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
@@ -17,6 +29,11 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
@@ -25,6 +42,17 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.eventuate.tram.core</groupId>
+            <artifactId>eventuate-tram-spring-jdbc-kafka</artifactId>
+            <version>${eventuate.tram.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.eventuate.tram.core</groupId>
+            <artifactId>eventuate-tram-spring-events</artifactId>
+            <version>${eventuate.tram.version}</version>
         </dependency>
 
         <dependency>
@@ -112,7 +140,24 @@
         <postgresql.version>42.3.1</postgresql.version>
         <h2.version>2.2.224</h2.version>
         <jolokia-support-spring.version>2.2.1</jolokia-support-spring.version>
+        <eventuate.tram.version>0.36.0.RELEASE</eventuate.tram.version>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+        <repository>
+            <id>jcenter</id>
+            <url>https://jcenter.bintray.com/</url>
+        </repository>
+        <!-- You may dynamically parse eventuateMavenRepoUrl if needed -->
+        <repository>
+            <id>eventuate</id>
+            <url>https://dl.bintray.com/eventuateio-oss/eventuate-maven-release</url>
+        </repository>
+    </repositories>
 
 </project>
 
