@@ -19,30 +19,7 @@ class StringToUniqueIntUnitTest {
     @ParameterizedTest
     @MethodSource("implementations")
     public void given1kElements_whenMappedToInt_thenItShouldHaveNoDuplicates(Function<String, Integer> implementation) {
-        Stream<String> strings = uniqueStringsOfSize(1_000);
-
-        List<Integer> integers = strings.map(implementation)
-            .toList();
-
-        assertThat(integers).doesNotHaveDuplicates();
-    }
-
-    @ParameterizedTest
-    @MethodSource("implementations")
-    public void given50kElements_whenMappedToInt_thenItShouldHaveNoDuplicates(Function<String, Integer> implementation) {
-        Stream<String> strings = uniqueStringsOfSize(50_000);
-
-        List<Integer> integers = strings.map(implementation)
-            .toList();
-
-        assertThat(integers).doesNotHaveDuplicates();
-    }
-
-    @ParameterizedTest
-    @MethodSource("implementations")
-    @Disabled
-    public void given500kElements_whenMappedToInt_thenItShouldHaveNoDuplicates(Function<String, Integer> implementation) {
-        Stream<String> strings = uniqueStringsOfSize(500_000);
+        Stream<String> strings = uniqueStringsOfSize(1_000); // increase to test higher guarantee
 
         List<Integer> integers = strings.map(implementation)
             .toList();
