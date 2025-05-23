@@ -7,7 +7,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = KafkaSaslApplication.class)
-class SpringContextTest {
+class SprintContextTest {
 
     @Test
     void whenSpringContextIsBootstrapped_thenNoExceptions() {
