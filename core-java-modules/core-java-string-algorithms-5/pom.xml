@@ -28,6 +28,7 @@
 
     <properties>
         <emoji-java.version>4.0.0</emoji-java.version>
+        <jqwik.version>1.7.4</jqwik.version>
     </properties>
 
 </project>
