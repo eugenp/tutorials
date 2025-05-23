@@ -18,7 +18,7 @@ class StringToUniqueIntUnitTest {
 
     @ParameterizedTest
     @MethodSource("implementations")
-    public void given1kElements_shouldMapToListOfInt_withNoDuplicates(Function<String, Integer> implementation) {
+    public void given1kElements_whenMappedToInt_thenItShouldHaveNoDuplicates(Function<String, Integer> implementation) {
         Stream<String> strings = uniqueStringsOfSize(1_000);
 
         List<Integer> integers = strings.map(implementation)
@@ -29,7 +29,7 @@ class StringToUniqueIntUnitTest {
 
     @ParameterizedTest
     @MethodSource("implementations")
-    public void given50kElements_shouldMapToListOfInt_withNoDuplicates(Function<String, Integer> implementation) {
+    public void given50kElements_whenMappedToInt_thenItShouldHaveNoDuplicates(Function<String, Integer> implementation) {
         Stream<String> strings = uniqueStringsOfSize(50_000);
 
         List<Integer> integers = strings.map(implementation)
@@ -41,7 +41,7 @@ class StringToUniqueIntUnitTest {
     @ParameterizedTest
     @MethodSource("implementations")
     @Disabled
-    public void given500kElements_shouldMapToListOfInt_withNoDuplicates(Function<String, Integer> implementation) {
+    public void given500kElements_whenMappedToInt_thenItShouldHaveNoDuplicates(Function<String, Integer> implementation) {
         Stream<String> strings = uniqueStringsOfSize(500_000);
 
         List<Integer> integers = strings.map(implementation)
