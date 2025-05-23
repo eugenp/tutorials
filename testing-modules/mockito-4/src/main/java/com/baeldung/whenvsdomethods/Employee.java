@@ -1,4 +1,4 @@
-package com.baeldung.mockito.whenvsdomethods;
+package com.baeldung.whenvsdomethods;
 
 import java.time.DayOfWeek;
 
