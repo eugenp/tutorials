@@ -42,23 +42,18 @@ public class WineQualityRegression {
     public static void main(String[] args) throws Exception {
         WineQualityRegression wineQualityRegression = new WineQualityRegression();
 
-        wineQualityRegression.createTrainer();
         wineQualityRegression.createDatasets();
-        wineQualityRegression.trainAndEvaluate();
+        wineQualityRegression.createTrainer();
+        wineQualityRegression.evaluateModels();
         wineQualityRegression.saveModel();
     }
 
     private void createTrainer() {
-        CARTRegressionTrainer subsamplingTree = new CARTRegressionTrainer(
-          Integer.MAX_VALUE,
-          AbstractCARTTrainer.MIN_EXAMPLES,
-          0.001f,
-          0.7f,
-          new MeanSquaredError(),
-          Trainer.DEFAULT_SEED
-        );
+        CARTRegressionTrainer subsamplingTree = new CARTRegressionTrainer(Integer.MAX_VALUE, AbstractCARTTrainer.MIN_EXAMPLES, 0.001f, 0.7f,
+            new MeanSquaredError(), Trainer.DEFAULT_SEED);
 
         trainer = new RandomForestTrainer<>(subsamplingTree, new AveragingCombiner(), 10);
+        model = trainer.train(trainSet);
     }
 
     public void createDatasets() throws Exception {
@@ -77,10 +72,8 @@ public class WineQualityRegression {
             .size()));
     }
 
-    public void trainAndEvaluate() throws Exception {
+    public void evaluateModels() throws Exception {
         log.info("Training model");
-
-        model = trainer.train(trainSet);
         evaluate(model, "trainSet", trainSet);
 
         log.info("Testing model");
@@ -96,7 +89,6 @@ public class WineQualityRegression {
 
     private void evaluate(Model<Regressor> model, String datasetName, Dataset<Regressor> dataset) {
         log.info("Results for " + datasetName + "---------------------");
-
         RegressionEvaluator evaluator = new RegressionEvaluator();
         RegressionEvaluation evaluation = evaluator.evaluate(model, dataset);
 

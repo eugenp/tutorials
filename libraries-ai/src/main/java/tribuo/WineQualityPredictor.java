@@ -26,8 +26,8 @@ public class WineQualityPredictor {
 
         ArrayExample<Regressor> wineAttribute = new ArrayExample<Regressor>(new Regressor("quality", Double.NaN));
         wineAttribute.add("fixed acidity", 7.4f);
-        wineAttribute.add("volatile acidity", 100.7f);
-        wineAttribute.add("citric acid", 0.0f);
+        wineAttribute.add("volatile acidity", 0.7f);
+        wineAttribute.add("citric acid", 0.47f);
         wineAttribute.add("residual sugar", 1.9f);
         wineAttribute.add("chlorides", 0.076f);
         wineAttribute.add("free sulfur dioxide", 11.0f);
