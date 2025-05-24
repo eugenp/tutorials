@@ -643,6 +643,7 @@
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
+                <module>data-structures-2</module>
                 <module>deeplearning4j</module>
                 <module>di-modules</module>
                 <module>disruptor</module>
@@ -673,7 +674,6 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
-                <module>jaxb</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
@@ -762,7 +762,7 @@
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
                 <module>spring-ai-2</module>
-        				<module>spring-ai-3</module>
+        		<module>spring-ai-3</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>spring-batch</module>
@@ -826,10 +826,7 @@
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
-                <module>xml</module>
-                <module>xml-2</module>
-                <module>xml-3</module>
-                <module>xstream</module>
+                <module>xml-modules</module>
             </modules>
 
             <properties>
@@ -951,6 +948,7 @@
             </build>
 
             <modules>
+                <module>core-java-modules/core-java-streams-7</module>
                 <module>core-java-modules/core-java-24</module>
             </modules>
 
@@ -1074,6 +1072,7 @@
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
+                <module>data-structures-2</module>
                 <module>deeplearning4j</module>
                 <module>di-modules</module>
                 <module>disruptor</module>
@@ -1104,7 +1103,6 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
-                <module>jaxb</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
@@ -1193,7 +1191,7 @@
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
                 <module>spring-ai-2</module>
-				        <module>spring-ai-3</module>
+				<module>spring-ai-3</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>spring-batch</module>
@@ -1257,10 +1255,7 @@
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
-                <module>xml</module>
-                <module>xml-2</module>
-                <module>xml-3</module>
-                <module>xstream</module>
+                <module>xml-modules</module>
             </modules>
 
             <properties>
@@ -1367,6 +1362,7 @@
             </build>
 
             <modules>
+                <module>core-java-modules/core-java-streams-7</module>
                 <module>core-java-modules/core-java-24</module>
             </modules>
 
