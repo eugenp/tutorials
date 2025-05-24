@@ -3,13 +3,22 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>data-structures</artifactId>
-    <name>data-structures</name>
+    <artifactId>xml-modules</artifactId>
+    <packaging>pom</packaging>
+    <name>xml-modules</name>
 
     <parent>
-        <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
+        <groupId>com.baeldung</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+
+    <modules>
+        <module>jaxb</module>
+        <module>xml</module>
+        <module>xml-2</module>
+        <module>xml-3</module>
+        <module>xstream</module>
+    </modules>
 
 </project>
