@@ -1,0 +1,82 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide empty attributes
+!theme mars
+!pragma layout smetana
+/'skinparam Handwritten false
+skinparam ClassBorderColor black
+skinparam BackgroundColor #fffce8/#f8f9fa
+skinparam class {
+ ArrowColor SeaGreen
+ BackgroundColor #fffce8
+}/'/
+ skinparam PackageBorderThickness 1
+ skinparam PackageBorderColor SeaGreen
+ skinparam PackageTitleAlignment center
+
+
+package "Source Entity" <<Rectangle>> #fff {
+    class Order {
+      -customer: Customer
+      -product: Product
+      __
+      +getCustomer(): Customer
+      +setCustomer(Customer): void
+      +getProduct(): Product
+      +setProduct(Product): void
+    }
+
+    class Customer {
+      -name: String
+      -address: Address
+      __
+      +getName(): String
+      +setName(String): void
+      +getAddress(): Address
+      +setAddress(Address): void
+    }
+
+    class Address {
+      -city: String
+      __
+      +getCity(): String
+      +setCity(String): void
+    }
+
+    class Product {
+      -name: String
+      -price: double
+      __
+      +getName(): String
+      +setName(String): void
+      +getPrice(): double
+      +setPrice(double): void
+    }
+}
+package "Target Entity" <<Rectangle>> #fff {
+    class OrderDto {
+      -customerName: String
+      -customerCity: String
+      -productName: String
+      -productPrice: double
+      __
+      +getCustomerName(): String
+      +setCustomerName(String): void
+      +getCustomerCity(): String
+      +setCustomerCity(String): void
+      +getProductName(): String
+      +setProductName(String): void
+      +getProductPrice(): double
+      +setProductPrice(double): void
+    }
+}
+
+
+
+
+Order  *--  Customer
+Order  *--  Product
+Customer  *--  Address
+Order ..right.. OrderDto:1\t\t1
+
+@enduml
