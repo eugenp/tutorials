@@ -643,6 +643,7 @@
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
+                <module>data-structures-2</module>
                 <module>deeplearning4j</module>
                 <module>di-modules</module>
                 <module>disruptor</module>
@@ -1071,6 +1072,7 @@
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
+                <module>data-structures-2</module>
                 <module>deeplearning4j</module>
                 <module>di-modules</module>
                 <module>disruptor</module>
