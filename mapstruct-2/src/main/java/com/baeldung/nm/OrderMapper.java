@@ -15,6 +15,6 @@ public interface OrderMapper {
     @Mapping(source = "product.name", target = "productName")
     @Mapping(source = "product.price", target = "productPrice")
     @Mapping(source = "customer.address.city", target = "customerCity")
-    @Mapping(source = "customer.address.zipCode", target = "customerZipCode")
+    @Mapping(expression = "java(order.getCustomer().getAddress().getZipCode())", target = "customerZipCode")
     OrderDto orderToOrderDto(Order order);
 }
