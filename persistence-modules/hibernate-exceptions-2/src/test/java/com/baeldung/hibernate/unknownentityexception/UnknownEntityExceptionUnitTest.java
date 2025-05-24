@@ -1,8 +1,7 @@
 package com.baeldung.hibernate.unknownentityexception;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
+import com.baeldung.hibernate.exception.persistentobject.HibernateUtil;
+import com.baeldung.hibernate.namedparameternotbound.Person;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.hibernate.query.sqm.UnknownEntityException;
@@ -10,8 +9,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.baeldung.hibernate.exception.persistentobject.HibernateUtil;
-import com.baeldung.hibernate.namedparameternotbound.Person;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class UnknownEntityExceptionUnitTest {
 
@@ -32,8 +31,8 @@ class UnknownEntityExceptionUnitTest {
     @Test
     void whenUsingUnknownEntity_thenThrowUnknownEntityException() {
         assertThatThrownBy(() -> session.createQuery("FROM PERSON", Person.class))
-          .hasRootCauseInstanceOf(UnknownEntityException.class)
-          .hasRootCauseMessage("Could not resolve root entity 'PERSON'");
+                .hasRootCauseInstanceOf(UnknownEntityException.class)
+                .hasRootCauseMessage("Could not resolve root entity 'PERSON'");
     }
 
     @Test

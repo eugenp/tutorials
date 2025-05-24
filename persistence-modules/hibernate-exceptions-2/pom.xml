@@ -24,10 +24,16 @@
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <h2.version>2.3.232</h2.version>
+        <hsqldb.version>2.7.1</hsqldb.version>
     </properties>
 
 </project>
