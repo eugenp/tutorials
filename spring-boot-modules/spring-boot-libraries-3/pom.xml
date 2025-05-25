@@ -143,21 +143,5 @@
         <eventuate.tram.version>0.36.0.RELEASE</eventuate.tram.version>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>central</id>
-            <url>https://repo.maven.apache.org/maven2</url>
-        </repository>
-        <repository>
-            <id>jcenter</id>
-            <url>https://jcenter.bintray.com/</url>
-        </repository>
-        <!-- You may dynamically parse eventuateMavenRepoUrl if needed -->
-        <repository>
-            <id>eventuate</id>
-            <url>https://dl.bintray.com/eventuateio-oss/eventuate-maven-release</url>
-        </repository>
-    </repositories>
-
 </project>
 

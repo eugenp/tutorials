@@ -16,12 +16,11 @@ public class CommentService {
     private static final Logger log = LoggerFactory.getLogger(CommentService.class);
 
     private final CommentRepository comments;
-    @Autowired
-    DomainEventPublisher domainEvents;
+    private final DomainEventPublisher domainEvents;
 
-    public CommentService(CommentRepository commentRepository
-    ) {
+    public CommentService(CommentRepository commentRepository, DomainEventPublisher domainEvents) {
         this.comments = commentRepository;
+        this.domainEvents = domainEvents;
     }
 
     @Transactional
@@ -29,11 +28,11 @@ public class CommentService {
         Comment saved = this.comments.save(comment);
         log.info("Comment created: {}", saved);
 
-        CommentAddedEvent articleSaved = new CommentAddedEvent(saved.getId(), saved.getArticleSlug());
+        CommentAddedEvent commentAdded = new CommentAddedEvent(saved.getId(), saved.getArticleSlug());
         domainEvents.publish(
             Comment.class,
             saved.getId(),
-            singletonList(articleSaved)
+            singletonList(commentAdded)
         );
 
         return saved.getId();

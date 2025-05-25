@@ -18,7 +18,7 @@ import io.eventuate.tram.spring.messaging.producer.jdbc.TramMessageProducerJdbcC
     TramMessageProducerJdbcConfiguration.class,
     NoopDuplicateMessageDetector.class
 })
-public class MyConfig {
+public class EventuateConfig {
 
     @Bean
     KafkaOperations<?, ?> kafkaOperations(KafkaProperties kafkaProperties) {
