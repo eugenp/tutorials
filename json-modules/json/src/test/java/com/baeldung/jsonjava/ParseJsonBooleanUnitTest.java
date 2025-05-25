@@ -19,6 +19,15 @@ public class ParseJsonBooleanUnitTest {
     }
 
     @Test
+    void givenJSONWithBooleanAs0Or1_whenParsed_correctBooleanValueReturned() {
+         String jsonString = "{\"name\":\"lorem ipsum\",\"active\":1,\"id\":1}";
+        JSONObject jsonObject = new JSONObject(jsonString);
+        int activeInt = jsonObject.getInt("active");
+        boolean isActive = (activeInt == 1);
+        assertTrue(active);
+    }
+
+    @Test
     void givenJSONString_whenParsedWithGoogleJson_correctBooleanValueReturned() {
         String jsonString = "{\"name\":\"lorem ipsum\",\"active\":true,\"id\":1}";
         JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
