@@ -28,6 +28,21 @@ public class ParseJsonBooleanUnitTest {
     }
 
     @Test
+    void givenJSONWithMixedRepresentationForBoolean_whenParsed_correctBooleanValueReturned() {
+        String jsonString = "{\"name\":\"lorem ipsum\",\"active\": 0,\"id\":1}";
+        JSONObject jsonObject = new JSONObject(jsonString);
+        Object activeObject = jsonObject.get("active");
+        boolean active;
+        if (activeObject instanceof Integer) {
+            active = ((Integer) activeObject) == 1;
+        } else if (activeObject instanceof Boolean) {
+            active = (Boolean) activeObject;
+        } else {
+            active = false;  
+        }
+    }
+    
+    @Test
     void givenJSONString_whenParsedWithGoogleJson_correctBooleanValueReturned() {
         String jsonString = "{\"name\":\"lorem ipsum\",\"active\":true,\"id\":1}";
         JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
