@@ -1,0 +1,37 @@
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mydb
+    username: sa
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    generate-ddl: true
+    properties:
+      hibernate:
+        hbm2ddl.auto: create
+
+  kafka:
+    bootstrap-servers: localhost:29092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+#eventuatelocal:
+#  cdc:
+#    reader:
+#      name: MySqlReader
+#  kafka:
+#    bootstrap.servers: localhost:29092
+#  zookeeper:
+#    connection.string: localhost:2181
+
+logging:
+  level:
+    root: info
+    io.eventuate: DEBUG
+
+# not needed for this article:
+spring.modulith:
+  republish-outstanding-events-on-restart: false
+  events.jdbc.schema-initialization.enabled: false
