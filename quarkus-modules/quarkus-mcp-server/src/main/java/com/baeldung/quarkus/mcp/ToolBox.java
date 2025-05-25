@@ -24,8 +24,8 @@ public class ToolBox {
         }
     }
 
-    @Tool(description = "Provides system information such as available processors, free memory, total memory, and max memory.")
-    public String getSystemInfo() {
+    @Tool(description = "Provides JVM system information such as available processors, free memory, total memory, and max memory.")
+    public String getJVMInfo() {
         StringBuilder systemInfo = new StringBuilder();
 
         // Get available processors

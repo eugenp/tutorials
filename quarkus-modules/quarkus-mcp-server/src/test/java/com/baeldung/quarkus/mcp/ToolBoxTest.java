@@ -1,6 +1,9 @@
 package com.baeldung.quarkus.mcp;
 
 import org.junit.jupiter.api.Test;
+
+import com.baeldung.quarkus.mcp.ToolBox;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.ZoneId;
@@ -29,7 +32,7 @@ public class ToolBoxTest {
 
     @Test
     void testGetSystemInfo_containsExpectedFields() {
-        String result = toolBox.getSystemInfo();
+        String result = toolBox.getJVMInfo();
         assertTrue(result.contains("Available processors"));
         assertTrue(result.contains("Free memory"));
         assertTrue(result.contains("Total memory"));
