@@ -40,6 +40,7 @@ public class ParseJsonBooleanUnitTest {
         } else {
             active = false;  
         }
+        assertFalse(active);
     }
     
     @Test
