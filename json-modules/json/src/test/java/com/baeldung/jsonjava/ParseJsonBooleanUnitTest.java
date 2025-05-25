@@ -55,8 +55,8 @@ public class ParseJsonBooleanUnitTest {
     void givenJSONWithNestedBoolean_whenParsed_correctBooleanValueReturned() {
         String geoJsonString = "{\"type\": \"Feature\", \"geometry\": {\"type\": \"Point\", \"coordinates\": [1.0, 10.0]}, \"properties\": {\"isValid\": true, \"name\": \"Sample Point\"}}";
         JSONObject jsonObject = new JSONObject(geoJsonString);
-            JSONObject properties = jsonObject.getJSONObject("properties");
-            boolean isValid = properties.getBoolean("isValid");
-            assertTrue(isValid);
+        JSONObject properties = jsonObject.getJSONObject("properties");
+        boolean isValid = properties.getBoolean("isValid");
+        assertTrue(isValid);
     }
 }
