@@ -1,8 +1,8 @@
 package com.baeldung.jsonjava;
 
-import org.junit.jupiter.api.*;
-import static org.junit.jupiter.api.Assertions.*;
-import java.util.List;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import org.json.JSONObject;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
