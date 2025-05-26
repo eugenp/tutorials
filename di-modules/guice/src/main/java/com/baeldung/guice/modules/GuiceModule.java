@@ -1,11 +1,11 @@
 package com.baeldung.guice.modules;
 
-import com.baeldung.common.AccountService;
-import com.baeldung.common.AccountServiceImpl;
-import com.baeldung.common.BookService;
-import com.baeldung.common.BookServiceImpl;
-import com.baeldung.common.PersonDao;
-import com.baeldung.common.PersonDaoImpl;
+import com.baeldung.guice.common.AccountService;
+import com.baeldung.guice.common.AccountServiceImpl;
+import com.baeldung.guice.common.BookService;
+import com.baeldung.guice.common.BookServiceImpl;
+import com.baeldung.guice.common.PersonDao;
+import com.baeldung.guice.common.PersonDaoImpl;
 import com.baeldung.guice.Foo;
 import com.baeldung.guice.Person;
 import com.google.inject.AbstractModule;

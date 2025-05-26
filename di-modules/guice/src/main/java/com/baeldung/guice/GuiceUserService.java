@@ -1,6 +1,6 @@
 package com.baeldung.guice;
 
-import com.baeldung.common.AccountService;
+import com.baeldung.guice.common.AccountService;
 import com.google.inject.Inject;
 
 public class GuiceUserService {

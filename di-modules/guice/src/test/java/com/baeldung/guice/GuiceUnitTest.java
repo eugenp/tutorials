@@ -4,7 +4,7 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
-import com.baeldung.common.BookService;
+import com.baeldung.guice.common.BookService;
 import com.baeldung.guice.modules.GuiceModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;

@@ -1,4 +1,4 @@
-package com.baeldung.common;
+package com.baeldung.guice.common;
 
 public interface AccountService {
 
