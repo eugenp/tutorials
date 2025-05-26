@@ -1,0 +1,19 @@
+type SimpleMessage {
+    message: String!
+}
+
+type UserProfile {
+    id: ID!
+    name: String!
+    status: String!
+}
+
+union AnyDataResponse = SimpleMessage | UserProfile
+
+type Mutation {
+    updateProfile(name: String!, type: String!): AnyDataResponse
+}
+
+type Query {
+    _: Boolean
+}
