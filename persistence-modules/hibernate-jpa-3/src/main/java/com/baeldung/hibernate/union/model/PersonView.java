@@ -1,4 +1,4 @@
-package com.baeldung.hibernate.union.dto;
+package com.baeldung.hibernate.union.model;
 
 public interface PersonView {
 

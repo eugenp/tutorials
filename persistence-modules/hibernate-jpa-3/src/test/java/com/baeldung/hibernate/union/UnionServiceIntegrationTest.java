@@ -12,9 +12,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 
 import com.baeldung.hibernate.union.dto.PersonDto;
-import com.baeldung.hibernate.union.dto.PersonView;
 import com.baeldung.hibernate.union.model.Contractor;
 import com.baeldung.hibernate.union.model.Employer;
+import com.baeldung.hibernate.union.model.PersonView;
 import com.baeldung.hibernate.union.repository.ContractorRepository;
 import com.baeldung.hibernate.union.repository.EmployerRepository;
 import com.baeldung.hibernate.union.service.UnionService;
@@ -48,35 +48,35 @@ class UnionServiceIntegrationTest {
     }
 
     @Test
-    void givenEmployersAndContractors_whenUnionQuery_thenUnifiedResult() {
+    void whenUnionQuery_thenUnifiedResult() {
         List<PersonDto> result = unionService.fetch();
 
         assertEquals(COUNT_UNION, result.size());
     }
 
     @Test
-    void givenEmployersAndContractors_whenUnionAllQuery_thenUnifiedResult() {
+    void whenUnionAllQuery_thenUnifiedResult() {
         List<PersonDto> result = unionService.fetchAll();
 
         assertEquals(COUNT_UNION_ALL, result.size());
     }
 
     @Test
-    void givenEmployersAndContractors_whenUnionWithDiscriminatorColumnQuery_thenUnifiedResult() {
+    void whenUnionWithDiscriminatorColumnQuery_thenUnifiedResult() {
         List<PersonDto> result = unionService.fetchWithDiscriminator();
 
         assertEquals(COUNT_UNION_ALL, result.size());
     }
 
     @Test
-    void givenSeparateQueries_whenMergedInMemoryList_thenUnifiedResult() {
+    void whenMergedInMemoryList_thenUnifiedResult() {
         List<PersonDto> result = unionService.fetchManually();
 
         assertEquals(COUNT_UNION_ALL, result.size());
     }
 
     @Test
-    void givenSeparateQueries_whenMergedInMemorySet_thenUnifiedResult() {
+    void whenMergedInMemorySet_thenUnifiedResult() {
         Set<PersonDto> result = unionService.fetchSetManually();
 
         assertEquals(COUNT_UNION, result.size());
@@ -84,20 +84,21 @@ class UnionServiceIntegrationTest {
 
     @Test
     void givenView_whenFetchAll_thenUnifiedResult() {
-
-        @SuppressWarnings("unchecked")
-        List<PersonDto> results = em.createNativeQuery("""
-            select e.id, e.name, e.entity from person_view e
-            """, PersonDto.class)
-            .getResultList();
+        List<PersonDto> results = unionService.fetchView();
 
         assertEquals(COUNT_UNION_ALL, results.size());
     }
 
     @Test
     void givenView_whenFetchWithInterface_thenUnifiedResult() {
-
         List<PersonView> results = employerRepository.findPersonView();
+
+        assertEquals(COUNT_UNION_ALL, results.size());
+    }
+
+    @Test
+    void whenFetchWithCriteria_thenReturnAllPeople() {
+        List<PersonDto> results = unionService.fetchWithCriteria();
 
         assertEquals(COUNT_UNION_ALL, results.size());
     }
