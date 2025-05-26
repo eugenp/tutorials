@@ -53,7 +53,12 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
             <version>${logback-core.version}</version>
-        </dependency>        
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -61,7 +66,8 @@
         <poi-ooxml-schemas.version>4.1.2</poi-ooxml-schemas.version>
         <xmlbeans.version>5.2.0</xmlbeans.version>
         <logback-classic.version>1.5.6</logback-classic.version>
-        <logback-core.version>1.5.6</logback-core.version>        
+        <logback-core.version>1.5.6</logback-core.version>
+        <log4j.version>2.23.1</log4j.version>
     </properties>
 
 </project>

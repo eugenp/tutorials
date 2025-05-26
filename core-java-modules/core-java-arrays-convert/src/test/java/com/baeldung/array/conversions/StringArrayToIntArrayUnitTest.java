@@ -30,7 +30,7 @@ public class StringArrayToIntArrayUnitTest {
             try {
                 return Integer.parseInt(s);
             } catch (NumberFormatException ex) {
-                logger.warn("Invalid number format detected: {}, use Int.MinValue as the fallback", s);
+                logger.debug("Invalid number format detected: {}, use Int.MinValue as the fallback", s);
                 return Integer.MIN_VALUE;
             }
         }).toArray();
@@ -53,7 +53,7 @@ public class StringArrayToIntArrayUnitTest {
             try {
                 result[i] = Integer.parseInt(stringArrayWithInvalidNum[i]);
             } catch (NumberFormatException exception) {
-                logger.warn("Invalid number format detected: [{}], use Int.MinValue as the fallback", stringArrayWithInvalidNum[i]);
+                logger.debug("Invalid number format detected: [{}], use Int.MinValue as the fallback", stringArrayWithInvalidNum[i]);
                 result[i] = Integer.MIN_VALUE;
             }
         }
