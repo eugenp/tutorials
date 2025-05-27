@@ -1,17 +1,16 @@
 package com.baeldung.hibernate.exception.persistentobject;
 
-import static java.util.Arrays.asList;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
+import com.baeldung.hibernate.exception.persistentobject.entity.Article;
+import com.baeldung.hibernate.exception.persistentobject.entity.Author;
+import com.baeldung.hibernate.exception.persistentobject.entity.Book;
 import org.hibernate.PropertyValueException;
 import org.hibernate.Session;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.baeldung.hibernate.exception.persistentobject.entity.Article;
-import com.baeldung.hibernate.exception.persistentobject.entity.Author;
-import com.baeldung.hibernate.exception.persistentobject.entity.Book;
+import static java.util.Arrays.asList;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class HibernatePersistentObjectUnitTest {
 

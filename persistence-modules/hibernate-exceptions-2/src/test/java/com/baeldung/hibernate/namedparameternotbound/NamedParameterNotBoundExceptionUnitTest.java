@@ -1,9 +1,6 @@
 package com.baeldung.hibernate.namedparameternotbound;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import com.baeldung.hibernate.exception.persistentobject.HibernateUtil;
 import org.hibernate.QueryException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -11,7 +8,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.baeldung.hibernate.exception.persistentobject.HibernateUtil;
+import static org.junit.jupiter.api.Assertions.*;
 
 class NamedParameterNotBoundExceptionUnitTest {
 

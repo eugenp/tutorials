@@ -1,13 +1,13 @@
 package com.baeldung.hibernate.entitynotfoundexception;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.Persistence;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 import java.io.IOException;
 
 public class EntityNotFoundExceptionIntegrationTest {
