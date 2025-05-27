@@ -1,17 +1,16 @@
 package com.baeldung.hibernate.exception.persistentobject;
 
-import java.util.Properties;
-
+import com.baeldung.hibernate.exception.persistentobject.entity.Article;
+import com.baeldung.hibernate.exception.persistentobject.entity.Author;
+import com.baeldung.hibernate.exception.persistentobject.entity.Book;
+import com.baeldung.hibernate.namedparameternotbound.Person;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
-import com.baeldung.hibernate.exception.persistentobject.entity.Article;
-import com.baeldung.hibernate.exception.persistentobject.entity.Author;
-import com.baeldung.hibernate.exception.persistentobject.entity.Book;
-import com.baeldung.hibernate.namedparameternotbound.Person;
+import java.util.Properties;
 
 public class HibernateUtil {
     private static SessionFactory sessionFactory;

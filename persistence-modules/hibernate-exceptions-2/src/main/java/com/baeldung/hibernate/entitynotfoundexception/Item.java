@@ -1,20 +1,19 @@
 package com.baeldung.hibernate.entitynotfoundexception;
 
 import jakarta.persistence.*;
+
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-public class Category implements Serializable {
+public class Item implements Serializable {
 
     @Id
     @Column(unique = true, nullable = false)
     private long id;
     private String name;
-    @OneToMany
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
-    private List<Item> items = new ArrayList<>();
+    private Category category;
 
     public long getId() {
         return id;
@@ -32,11 +31,11 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public List<Item> getItems() {
-        return items;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
