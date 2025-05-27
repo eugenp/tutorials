@@ -32,6 +32,7 @@ public class PDFSampleMain {
             addTableHeader(table);
             setAbsoluteColumnWidths(table);
             //setAbsoluteColumnWidthsInTableWidth(table);
+            //setRelativeColumnWidths(table);
             addRows(table);
             addCustomRows(table);
 
