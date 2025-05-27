@@ -30,6 +30,7 @@ public class PDFSampleMain {
 
             PdfPTable table = new PdfPTable(3);
             addTableHeader(table);
+            setAbsoluteColumnWidths(table);
             addRows(table);
             addCustomRows(table);
 
@@ -52,6 +53,13 @@ public class PDFSampleMain {
         });
     }
 
+    private static void setAbsoluteColumnWidths(PdfPTable table) {
+       table.setTotalWidth(500); // Sets total table width to 500 points
+       table.setLockedWidth(true);
+       float[] columnWidths = {100f, 200f, 200f}; // Defines three columns with absolute widths
+       table.setWidths(columnWidths);
+    }
+    
     private static void addRows(PdfPTable table) {
         table.addCell("row 1, col 1");
         table.addCell("row 1, col 2");
