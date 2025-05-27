@@ -113,6 +113,12 @@
         </dependency>
 
         <dependency>
+            <groupId>net.javacrumbs.json-unit</groupId>
+            <artifactId>json-unit-assertj</artifactId>
+            <version>${json-unit-assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.awaitility</groupId>
             <artifactId>awaitility</artifactId>
             <version>${awaitility.version}</version>
@@ -141,6 +147,7 @@
         <h2.version>2.2.224</h2.version>
         <jolokia-support-spring.version>2.2.1</jolokia-support-spring.version>
         <eventuate.tram.version>0.36.0.RELEASE</eventuate.tram.version>
+        <json-unit-assertj.version>3.5.0</json-unit-assertj.version>
     </properties>
 
 </project>

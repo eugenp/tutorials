@@ -1,4 +1,3 @@
-
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/mydb
@@ -10,21 +9,16 @@ spring:
     properties:
       hibernate:
         hbm2ddl.auto: create
-
   kafka:
-    bootstrap-servers: localhost:29092
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: test-group-id
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
-
-#eventuatelocal:
-#  cdc:
-#    reader:
-#      name: MySqlReader
-#  kafka:
-#    bootstrap.servers: localhost:29092
-#  zookeeper:
-#    connection.string: localhost:2181
 
 logging:
   level:

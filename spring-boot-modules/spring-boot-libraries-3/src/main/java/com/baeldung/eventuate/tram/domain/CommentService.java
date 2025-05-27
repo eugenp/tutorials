@@ -4,7 +4,7 @@ import static java.util.Collections.singletonList;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import io.eventuate.tram.events.publisher.DomainEventPublisher;
@@ -17,10 +17,12 @@ public class CommentService {
 
     private final CommentRepository comments;
     private final DomainEventPublisher domainEvents;
+    private final KafkaTemplate<Long, CommentAddedEvent> kafkaTemplate;
 
-    public CommentService(CommentRepository commentRepository, DomainEventPublisher domainEvents) {
+    public CommentService(CommentRepository commentRepository, DomainEventPublisher domainEvents, KafkaTemplate<Long, CommentAddedEvent> kafkaTemplate) {
         this.comments = commentRepository;
         this.domainEvents = domainEvents;
+        this.kafkaTemplate = kafkaTemplate;
     }
 
     @Transactional
@@ -30,11 +32,11 @@ public class CommentService {
 
         CommentAddedEvent commentAdded = new CommentAddedEvent(saved.getId(), saved.getArticleSlug());
         domainEvents.publish(
-            Comment.class,
+            "baeldung.comment.added",
             saved.getId(),
             singletonList(commentAdded)
         );
-
         return saved.getId();
     }
+
 }
