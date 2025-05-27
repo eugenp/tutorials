@@ -5,10 +5,6 @@ spring.kafka:
     key-serializer: org.apache.kafka.common.serialization.StringSerializer
     value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     type-mapping: com.baeldung.annotation.events.externalization.producer.ArticlePublished
-  consumer:
-    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    auto-offset-reset: earliest
 
 spring.modulith:
   republish-outstanding-events-on-restart: true

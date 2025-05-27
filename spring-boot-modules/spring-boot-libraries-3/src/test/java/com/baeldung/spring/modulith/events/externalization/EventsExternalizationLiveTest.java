@@ -25,7 +25,7 @@ import static org.testcontainers.shaded.org.awaitility.Awaitility.await;
 
 @Testcontainers
 @SpringBootTest(classes = { Application.class, TestKafkaListenerConfig.class })
-@ActiveProfiles("modulith")
+@ActiveProfiles({ "modulith", "test-listeners" })
 class EventsExternalizationLiveTest {
 
     @Autowired

@@ -11,18 +11,10 @@ spring:
         hbm2ddl.auto: create
   kafka:
     bootstrap-servers: localhost:9092
-    consumer:
-      group-id: test-group-id
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
 logging:
   level:
-    root: info
+    root: INFO
     io.eventuate: DEBUG
 
 # not needed for this article:

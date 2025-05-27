@@ -8,12 +8,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.modulith.test.ApplicationModuleTest;
 import org.springframework.modulith.test.Scenario;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.time.Instant;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ApplicationModuleTest
+@ActiveProfiles({ "modulith", "h2" })
 class SpringModulithScenarioApiUnitTest {
 
 	@Autowired

@@ -30,7 +30,7 @@ import com.baeldung.listener.TestListener;
 @Testcontainers
 @AutoConfigureMockMvc
 @SpringBootTest(classes = { Application.class, TestKafkaListenerConfig.class })
-@ActiveProfiles("eventuate")
+@ActiveProfiles({ "modulith", "test-listeners"})
 class EventuateTramLiveTest {
 
     @Container
