@@ -21,7 +21,7 @@ public class GraphQLConfig {
         SchemaGenerator schemaGenerator = new SchemaGenerator();
 
         TypeDefinitionRegistry typeRegistry = schemaParser.parse(
-            new InputStreamReader(getClass().getResourceAsStream("/anydataschema.graphqls"))
+            new InputStreamReader(getClass().getResourceAsStream("/schema.graphqls"))
         );
 
         RuntimeWiring runtimeWiring = RuntimeWiring.newRuntimeWiring()
