@@ -868,6 +868,7 @@
             <modules>
                 <module>core-java-modules/core-java-22</module>
                 <module>core-java-modules/core-java-concurrency-advanced-6</module>
+                <module>core-java-modules/core-java-classloader</module>
             </modules>
 
             <properties>
@@ -1292,6 +1293,7 @@
             <modules>
                 <module>core-java-modules/core-java-22</module>
                 <module>core-java-modules/core-java-concurrency-advanced-6</module>
+                <module>core-java-modules/core-java-classloader</module>
             </modules>
 
             <properties>
@@ -1506,7 +1508,6 @@
                 <module>web-modules/ninja</module> <!-- JAVA-24584 -->
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
-                <module>core-java-modules/core-java-classloader</module> <!-- JAVA-42033 -->
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
             </modules>
         </profile>
@@ -1573,7 +1574,6 @@
                 <module>web-modules/ninja</module> <!-- JAVA-24584 -->
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
-                <module>core-java-modules/core-java-classloader</module> <!-- JAVA-42033 -->
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
             </modules>
         </profile>

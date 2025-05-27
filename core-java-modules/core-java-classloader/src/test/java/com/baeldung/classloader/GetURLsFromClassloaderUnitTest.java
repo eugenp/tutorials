@@ -20,7 +20,7 @@ import com.baeldung.classloader.internal.BasicClasspathResolver;
 import com.baeldung.classloader.internal.InternalClasspathResolver;
 import com.baeldung.classloader.internal.InternalJdkSupport;
 
-class GetURLsFromClassloaderTest {
+class GetURLsFromClassloaderUnitTest {
 
     final Logger log = LoggerFactory.getLogger(getClass());
 
