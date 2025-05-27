@@ -7,9 +7,7 @@ import io.eventuate.tram.spring.events.publisher.TramEventsPublisherConfiguratio
 import io.eventuate.tram.spring.messaging.producer.jdbc.TramMessageProducerJdbcConfiguration;
 
 @Configuration
-@Import({
-    TramEventsPublisherConfiguration.class,
-    TramMessageProducerJdbcConfiguration.class
-})
+@Import({ TramEventsPublisherConfiguration.class, TramMessageProducerJdbcConfiguration.class })
 class EventuateConfig {
+
 }
