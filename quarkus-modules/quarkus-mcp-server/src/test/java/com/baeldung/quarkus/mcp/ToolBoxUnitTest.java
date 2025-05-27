@@ -10,12 +10,12 @@ import java.time.ZoneId;
 import java.time.format.TextStyle;
 import java.util.Locale;
 
-public class ToolBoxTest {
+public class ToolBoxUnitTest {
 
     private final ToolBox toolBox = new ToolBox();
 
     @Test
-    void testGetTimeInTimezone_validTimezone() {
+    void givenValidTimezone_whenGetTimeInTimezone_thenContainsFormattedDate() {
         String timezoneId = "America/Los_Angeles";
         String result = toolBox.getTimeInTimezone(timezoneId);
         // Should contain the timezone's display name or a recognizable part of the formatted date
@@ -24,14 +24,14 @@ public class ToolBoxTest {
     }
 
     @Test
-    void testGetTimeInTimezone_invalidTimezone() {
+    void givenInvalidTimezone_whenGetTimeInTimezone_thenReturnsInvalidTimezoneMessage() {
         String timezoneId = "Invalid/Timezone";
         String result = toolBox.getTimeInTimezone(timezoneId);
         assertTrue(result.startsWith("Invalid timezone ID"));
     }
 
     @Test
-    void testGetSystemInfo_containsExpectedFields() {
+    void givenJVM_whenGetSystemInfo_thenContainsExpectedFields() {
         String result = toolBox.getJVMInfo();
         assertTrue(result.contains("Available processors"));
         assertTrue(result.contains("Free memory"));
