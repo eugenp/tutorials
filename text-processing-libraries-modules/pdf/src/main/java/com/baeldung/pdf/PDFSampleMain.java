@@ -55,7 +55,7 @@ public class PDFSampleMain {
 
     private static void setAbsoluteColumnWidths(PdfPTable table) {
        table.setTotalWidth(500); // Sets total table width to 500 points
-       //table.setTotalWidth(new float[]{72, 216}); // First column 1 inch, second 3 inches 
+       //table.setTotalWidth(new float[]{72, 144, 216}); // First column 1 inch, second 2 inches, third 3 inches 
        table.setLockedWidth(true);
        float[] columnWidths = {100f, 200f, 200f}; // Defines three columns with absolute widths
        table.setWidths(columnWidths);
