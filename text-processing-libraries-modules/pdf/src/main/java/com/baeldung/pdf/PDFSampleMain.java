@@ -31,6 +31,7 @@ public class PDFSampleMain {
             PdfPTable table = new PdfPTable(3);
             addTableHeader(table);
             setAbsoluteColumnWidths(table);
+            //setAbsoluteColumnWidthsInTableWidth(table);
             addRows(table);
             addCustomRows(table);
 
@@ -55,10 +56,20 @@ public class PDFSampleMain {
 
     private static void setAbsoluteColumnWidths(PdfPTable table) {
        table.setTotalWidth(500); // Sets total table width to 500 points
-       //table.setTotalWidth(new float[]{72, 144, 216}); // First column 1 inch, second 2 inches, third 3 inches 
        table.setLockedWidth(true);
        float[] columnWidths = {100f, 200f, 200f}; // Defines three columns with absolute widths
        table.setWidths(columnWidths);
+    }
+
+    private static void setAbsoluteColumnWidthsInTableWidth(PdfPTable table) {
+       table.setTotalWidth(new float[]{72, 144, 216}); // First column 1 inch, second 2 inches, third 3 inches 
+       table.setLockedWidth(true);
+    }
+
+    private static void setRelativeColumnWidths(PdfPTable table) {
+        // Set column widths (relative)
+        table.setWidths(new float[]{1, 2, 1});
+        table.setWidthPercentage(80); // Table width as 80% of page width
     }
     
     private static void addRows(PdfPTable table) {
