@@ -23,6 +23,7 @@ public class UserController {
     }
 
     @GetMapping("profile")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<UserProfileDto> profile(Authentication authentication) {
         UserProfileDto userProfileDto = userService.profile(authentication.getName());
         return new ResponseEntity<>(userProfileDto, HttpStatus.OK);
