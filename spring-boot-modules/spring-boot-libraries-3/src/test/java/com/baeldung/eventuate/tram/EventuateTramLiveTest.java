@@ -30,7 +30,7 @@ import com.baeldung.listener.TestListener;
 @Testcontainers
 @AutoConfigureMockMvc
 @SpringBootTest(classes = { Application.class, TestKafkaListenerConfig.class })
-@ActiveProfiles({ "modulith", "test-listeners"})
+@ActiveProfiles({ "eventuate", "test-listeners"})
 class EventuateTramLiveTest {
 
     @Container
@@ -57,7 +57,7 @@ class EventuateTramLiveTest {
                     {
                         "articleAuthor": "Andrey the Author",
                         "commentAuthor": "Richard the Reader",
-                        "comment": "Great article!"
+                        "text": "Great article!"
                     }
                     """))
             .andExpect(status().is(201))
@@ -68,7 +68,7 @@ class EventuateTramLiveTest {
         await().atMost(ofSeconds(30))
             .until(() -> testListener.getCommentsAdded().size() == 1);
 
-        String eventJson = testListener.getCommentsAdded().get(0);
+        String eventJson = testListener.getCommentsAdded().getFirst();
         assertThatJson(eventJson)
             .inPath("payload").asString()
             .isEqualToIgnoringWhitespace("""
