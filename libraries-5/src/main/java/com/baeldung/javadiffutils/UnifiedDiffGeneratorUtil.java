@@ -1,4 +1,4 @@
-package com.baeldung.javadiffutils.Utils;
+package com.baeldung.javadiffutils;
 
 import com.github.difflib.DiffUtils;
 import com.github.difflib.UnifiedDiffUtils;
