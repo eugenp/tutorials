@@ -28,7 +28,7 @@ public class GraphQLConfig {
             .type("Mutation", builder ->
                 builder.dataFetcher("updateProfile", new MutationResolver().updateProfile())
             )
-            .type("AnyDataResponse", typeWiring ->
+            .type("AnydataResponse", typeWiring ->
                 typeWiring.typeResolver(env -> {
                     Object javaObject = env.getObject();
                     if (javaObject instanceof SimpleMessage) {
