@@ -3,9 +3,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>core-java-lang-oop-patterns</artifactId>
+    <artifactId>core-java-lang-oop-patterns-2</artifactId>
     <packaging>jar</packaging>
-    <name>core-java-lang-oop-patterns</name>
+    <name>core-java-lang-oop-patterns-2</name>
 
     <parent>
         <artifactId>core-java-modules</artifactId>
@@ -24,15 +24,6 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>${gson.version}</version>
-        </dependency>
     </dependencies>
-
-    <properties>
-        <gson.version>2.11.0</gson.version>
-    </properties>
 
 </project>
