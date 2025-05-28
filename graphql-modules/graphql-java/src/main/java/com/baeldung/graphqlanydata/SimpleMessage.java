@@ -1,6 +1,6 @@
 package com.baeldung.graphqlanydata;
 
-public class SimpleMessage implements AnyDataResponse {
+public class SimpleMessage implements AnydataResponse {
     private String message;
 
     public SimpleMessage(String message) {

@@ -1,6 +1,6 @@
 package com.baeldung.graphqlanydata;
 
-public class UserProfile implements AnyDataResponse {
+public class UserProfile implements AnydataResponse {
 
     private String id;
     private String name;
