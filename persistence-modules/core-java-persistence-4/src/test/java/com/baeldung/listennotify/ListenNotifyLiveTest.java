@@ -7,6 +7,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.*;
+import java.util.HashSet;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ListenNotifyLiveTest {
     private static final Logger LOG = LoggerFactory.getLogger(ListenNotifyLiveTest.class);
@@ -16,8 +20,7 @@ public class ListenNotifyLiveTest {
     private static final String USERNAME = "postgres";
     private static final String PASSWORD = "mysecretpassword";
 
-    @Test
-    void whenTriggeringNotifications_thenNotificationsAreSent() throws SQLException{
+    private void sendNotifications() throws SQLException{
         try (Connection connection = DriverManager.getConnection(POSTGRES_URL, USERNAME, PASSWORD)) {
             try (Statement statement = connection.createStatement()) {
                 statement.execute("NOTIFY my_channel, 'Hello, NOTIFY!'");
@@ -38,8 +41,12 @@ public class ListenNotifyLiveTest {
                 statement.execute("LISTEN my_channel");
             }
 
+            sendNotifications();
+
             var pgConnection = connection.unwrap(org.postgresql.PGConnection.class);
-            while (!Thread.currentThread().isInterrupted()) {
+            Set<String> receivedNotifications = new HashSet<>();
+
+            while (receivedNotifications.size() < 2) {
                 PGNotification[] notifications = pgConnection.getNotifications();
                 if (notifications != null) {
                     LOG.info("Received {} notifications", notifications.length);
@@ -48,11 +55,14 @@ public class ListenNotifyLiveTest {
                                 notification.getName(),
                                 notification.getParameter(),
                                 notification.getPID());
+                        receivedNotifications.add(notification.getParameter());
                     }
                 }
-                
+
                 Thread.sleep(100);
             }
+
+            assertEquals(Set.of("Hello, NOTIFY!", "Hello, pg_notify!"), receivedNotifications);
         }
     }
 
@@ -64,17 +74,29 @@ public class ListenNotifyLiveTest {
             }
 
             var pgConnection = connection.unwrap(com.impossibl.postgres.api.jdbc.PGConnection.class);
-            pgConnection.addNotificationListener(new Listener());
 
-            Thread.sleep(10000);
+            Listener pgNotificationListener = new Listener();
+            pgConnection.addNotificationListener(pgNotificationListener);
+
+            sendNotifications();
+
+            while (pgNotificationListener.receivedNotifications.size() < 2) {
+                Thread.sleep(100);
+            }
+
+            assertEquals(Set.of("Hello, NOTIFY!", "Hello, pg_notify!"), pgNotificationListener.receivedNotifications);
+
         }
     }
 
     private static class Listener implements PGNotificationListener {
+        Set<String> receivedNotifications = new HashSet<>();
+
         @Override
         public void notification(int processId, String channelName, String payload) {
             LOG.info("Received notification: Channel='{}', Payload='{}', PID={}",
                     channelName, payload, processId);
+            receivedNotifications.add(payload);
         }
     }
 }
