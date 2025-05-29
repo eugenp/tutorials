@@ -1497,7 +1497,6 @@
                 <module>maven-modules/dependencygraph</module> <!-- JAVA-42057 -->
                 <module>spring-boot-modules/spring-boot-groovy</module> <!-- JAVA-42052 -->
                 <module>spring-boot-modules/spring-boot-data-3</module> <!-- JAVA-42051 -->
-                <module>spring-reactive-modules/spring-reactive-performance</module> <!-- JAVA-42050 -->
                 <module>spring-boot-modules/spring-boot-3-3</module> <!-- JAVA-42049 -->
                 <module>spring-boot-modules/spring-boot-cli</module> <!-- Not a maven project -->
                 <module>spring-boot-modules/spring-boot-graphql-2</module> <!-- JAVA-42053 -->
@@ -1564,7 +1563,6 @@
                 <module>maven-modules/dependencygraph</module> <!-- JAVA-42057 -->
                 <module>spring-boot-modules/spring-boot-groovy</module> <!-- JAVA-42052 -->
                 <module>spring-boot-modules/spring-boot-data-3</module> <!-- JAVA-42051 -->
-                <module>spring-reactive-modules/spring-reactive-performance</module> <!-- JAVA-42050 -->
                 <module>spring-boot-modules/spring-boot-3-3</module> <!-- JAVA-42049 -->
                 <module>spring-boot-modules/spring-boot-cli</module> <!-- Not a maven project -->
                 <module>spring-boot-modules/spring-boot-graphql-2</module> <!-- JAVA-42053 -->
