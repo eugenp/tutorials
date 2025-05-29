@@ -159,6 +159,7 @@
         <module>core-java-jvm-2</module>
         <module>core-java-jvm-3</module>
         <module>core-java-lambdas</module>
+        <module>core-java-lambdas-2</module>
         <module>core-java-lang</module>
         <module>core-java-lang-2</module>
         <module>core-java-lang-3</module>
