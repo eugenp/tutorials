@@ -21,6 +21,7 @@ public class ParseJsonBooleanUnitTest {
 
     @Test
     void givenJSONWithBooleanAs0Or1_whenParsed_correctBooleanValueReturned() {
+        String json = "{\"name\":\"lorem ipsum\",\"active\":1,\"id\":1}";
         JSONObject jsonObject = new JSONObject(json);
         assertThat((jsonObject.getInt("active"))==1);
     }
