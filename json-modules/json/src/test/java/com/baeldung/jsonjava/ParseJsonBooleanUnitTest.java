@@ -32,15 +32,11 @@ public class ParseJsonBooleanUnitTest {
         String jsonString = "{\"name\":\"lorem ipsum\",\"active\": 0,\"id\":1}";
         JSONObject jsonObject = new JSONObject(jsonString);
         Object activeObject = jsonObject.get("active");
-        boolean active;
-        if (activeObject instanceof Integer) {
-            active = ((Integer) activeObject) == 1;
-        } else if (activeObject instanceof Boolean) {
-            active = (Boolean) activeObject;
-        } else {
-            active = false;  
-        }
-        assertFalse(active);
+        if (activeObject instanceof Integer value) {
+            assertFalse(value == 1);
+        } else if (activeObject instanceof Boolean value) {
+              assertFalse(value);
+          }
     }
     
     @Test
