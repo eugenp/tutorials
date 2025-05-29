@@ -1,4 +1,4 @@
-package com.baeldung.spring.modulith.externalization.listener;
+package com.baeldung.listener;
 
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
@@ -28,4 +28,8 @@ public class TestKafkaListenerConfig {
         return new DefaultKafkaConsumerFactory<>(kafkaProperties.buildConsumerProperties());
     }
 
+    @Bean
+    TestListener testListener() {
+        return new TestListener();
+    }
 }

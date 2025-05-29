@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.KafkaContainer;
@@ -24,6 +25,7 @@ import static org.testcontainers.shaded.org.awaitility.Awaitility.await;
 
 @Testcontainers
 @SpringBootTest(classes = { Application.class, TestKafkaListenerConfig.class })
+@ActiveProfiles({ "modulith", "test-listeners" })
 class EventsExternalizationLiveTest {
 
     @Autowired
@@ -66,7 +68,7 @@ class EventsExternalizationLiveTest {
         baeldung.createArticle(article);
 
         await().untilAsserted(() ->
-            assertThat(listener.getEvents())
+            assertThat(listener.getArticlePublishedEvents())
                 .hasSize(1)
                 .first().asString()
                 .contains("\"slug\":\"introduction-to-spring-boot\"")
@@ -85,7 +87,7 @@ class EventsExternalizationLiveTest {
 
         baeldung.createArticle(article);
 
-        assertThat(listener.getEvents())
+        assertThat(listener.getArticlePublishedEvents())
             .isEmpty();
 
         assertThat(repository.findAll())
