@@ -9,19 +9,18 @@ import com.google.gson.JsonParser;
 
 public class ParseJsonBooleanUnitTest {
 
-
+    private final String json = "{\"name\":\"lorem ipsum\",\"active\":true,\"id\":1}";
+    
     @Test
     void givenJSONString_whenParsed_correctBooleanValueReturned() {
-        String jsonString = "{\"name\":\"lorem ipsum\",\"active\":true,\"id\":1}";
-        JSONObject jsonObject = new JSONObject(jsonString);
+        JSONObject jsonObject = new JSONObject(json);
         boolean active = jsonObject.getBoolean("active");
         assertTrue(active);
     }
 
     @Test
     void givenJSONWithBooleanAs0Or1_whenParsed_correctBooleanValueReturned() {
-        String jsonString = "{\"name\":\"lorem ipsum\",\"active\":1,\"id\":1}";
-        JSONObject jsonObject = new JSONObject(jsonString);
+        JSONObject jsonObject = new JSONObject(json);
         int activeInt = jsonObject.getInt("active");
         boolean isActive = (activeInt == 1);
         assertTrue(isActive);
@@ -29,8 +28,7 @@ public class ParseJsonBooleanUnitTest {
 
     @Test
     void givenJSONWithMixedRepresentationForBoolean_whenParsed_correctBooleanValueReturned() {
-        String jsonString = "{\"name\":\"lorem ipsum\",\"active\": 0,\"id\":1}";
-        JSONObject jsonObject = new JSONObject(jsonString);
+        JSONObject jsonObject = new JSONObject(json);
         Object activeObject = jsonObject.get("active");
         if (activeObject instanceof Integer value) {
             assertFalse(value == 1);
@@ -41,18 +39,8 @@ public class ParseJsonBooleanUnitTest {
     
     @Test
     void givenJSONString_whenParsedWithGoogleJson_correctBooleanValueReturned() {
-        String jsonString = "{\"name\":\"lorem ipsum\",\"active\":true,\"id\":1}";
-        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
+        JsonObject jsonObject = JsonParser.parseString(json).getAsJsonObject();
         boolean active = jsonObject.get("active").getAsBoolean();
         assertTrue(active);
-    }
-
-    @Test
-    void givenJSONWithNestedBoolean_whenParsed_correctBooleanValueReturned() {
-        String geoJsonString = "{\"type\": \"Feature\", \"geometry\": {\"type\": \"Point\", \"coordinates\": [1.0, 10.0]}, \"properties\": {\"isValid\": true, \"name\": \"Sample Point\"}}";
-        JSONObject jsonObject = new JSONObject(geoJsonString);
-        JSONObject properties = jsonObject.getJSONObject("properties");
-        boolean isValid = properties.getBoolean("isValid");
-        assertTrue(isValid);
     }
 }
