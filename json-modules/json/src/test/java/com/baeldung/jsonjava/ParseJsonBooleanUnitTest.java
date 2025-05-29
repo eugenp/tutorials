@@ -22,7 +22,7 @@ public class ParseJsonBooleanUnitTest {
     @Test
     void givenJSONWithBooleanAs0Or1_whenParsed_correctBooleanValueReturned() {
         JSONObject jsonObject = new JSONObject(json);
-        assertThat(jsonObject.getInt("active").isEqualTo(1));
+        assertThat((jsonObject.getInt("active"))==1);
     }
 
     @Test
