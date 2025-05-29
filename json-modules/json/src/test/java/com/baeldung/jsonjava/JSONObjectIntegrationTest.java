@@ -22,6 +22,19 @@ public class JSONObjectIntegrationTest {
     }
 
     @Test
+    void givenJSON_whenParsed_correctValueReturned() {
+        String jsonString = "{\"type\": \"Feature\", \"geometry\": \"Point\", \"properties\": {\"isValid\": true, \"name\": \"Sample Point\"}}";
+        JSONObject jsonObject = new JSONObject(jsonString);
+        String type = jsonObject.getString("type");
+        String geometry = jsonObject.getString("geometry");
+        JSONObject properties = jsonObject.getJSONObject("properties");
+        boolean isValid = properties.getBoolean("isValid");
+        assertEquals(type,"Feature");
+        assertEquals(geometry,"Point");
+        assertTrue(isValid);
+    }
+
+    @Test
     public void givenMapObject_thenCreateJSONObject() {
         Map<String, String> map = new HashMap<>();
         map.put("name", "jon doe");
