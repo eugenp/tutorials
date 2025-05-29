@@ -2,7 +2,8 @@ package com.baeldung.jsonjava;
 
 import org.json.JSONObject;
 import org.junit.Test;
-
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.HashMap;
 import java.util.Map;
 
