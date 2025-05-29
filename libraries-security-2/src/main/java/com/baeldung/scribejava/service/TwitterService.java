@@ -3,9 +3,8 @@ package com.baeldung.scribejava.service;
 import com.github.scribejava.apis.TwitterApi;
 import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.oauth.OAuth10aService;
-import org.springframework.stereotype.Component;
-
 import jakarta.annotation.PostConstruct;
+import org.springframework.stereotype.Component;
 
 @Component
 public class TwitterService {

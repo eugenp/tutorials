@@ -7,9 +7,7 @@ import org.jasypt.util.text.BasicTextEncryptor;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertNotSame;
-import static junit.framework.Assert.assertTrue;
+import static junit.framework.Assert.*;
 import static junit.framework.TestCase.assertEquals;
 
 public class JasyptUnitTest {

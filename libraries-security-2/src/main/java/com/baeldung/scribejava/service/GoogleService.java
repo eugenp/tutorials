@@ -3,9 +3,8 @@ package com.baeldung.scribejava.service;
 import com.github.scribejava.apis.GoogleApi20;
 import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.oauth.OAuth20Service;
-import org.springframework.stereotype.Component;
-
 import jakarta.annotation.PostConstruct;
+import org.springframework.stereotype.Component;
 @Component
 public class GoogleService {
 

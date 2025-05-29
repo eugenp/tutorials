@@ -1,18 +1,10 @@
 package com.baeldung.passay;
 
 import org.junit.Test;
-import org.passay.AllowedCharacterRule;
-import org.passay.AllowedRegexRule;
-import org.passay.CharacterCharacteristicsRule;
-import org.passay.CharacterRule;
-import org.passay.EnglishCharacterData;
-import org.passay.LengthComplexityRule;
-import org.passay.LengthRule;
-import org.passay.PasswordData;
-import org.passay.PasswordValidator;
-import org.passay.RuleResult;
+import org.passay.*;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class PositiveMatchingRulesUnitTest {
 

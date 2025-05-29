@@ -2,15 +2,7 @@ package com.baeldung.passay;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.passay.LengthRule;
-import org.passay.MessageResolver;
-import org.passay.PasswordData;
-import org.passay.PasswordValidator;
-import org.passay.PropertiesMessageResolver;
-import org.passay.RuleResult;
-import org.passay.RuleResultDetail;
-import org.passay.RuleResultMetadata;
-import org.passay.WhitespaceRule;
+import org.passay.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;
