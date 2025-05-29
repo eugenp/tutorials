@@ -3,6 +3,7 @@ package com.baeldung.jsonjava;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.json.JSONObject;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -21,9 +22,7 @@ public class ParseJsonBooleanUnitTest {
     @Test
     void givenJSONWithBooleanAs0Or1_whenParsed_correctBooleanValueReturned() {
         JSONObject jsonObject = new JSONObject(json);
-        int activeInt = jsonObject.getInt("active");
-        boolean isActive = (activeInt == 1);
-        assertTrue(isActive);
+        assertThat(jsonObject.getInt("active").isEqualTo(1);
     }
 
     @Test
@@ -34,9 +33,7 @@ public class ParseJsonBooleanUnitTest {
             assertTrue(value == 1);
         } else if (activeObject instanceof Boolean value) {
               assertTrue(value);
-          } else {
-                assertFalse(value);
-            }  
+          }  
     }
     
     @Test
