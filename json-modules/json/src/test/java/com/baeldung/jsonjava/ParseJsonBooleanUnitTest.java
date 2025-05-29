@@ -31,10 +31,12 @@ public class ParseJsonBooleanUnitTest {
         JSONObject jsonObject = new JSONObject(json);
         Object activeObject = jsonObject.get("active");
         if (activeObject instanceof Integer value) {
-            assertFalse(value == 1);
+            assertTrue(value == 1);
         } else if (activeObject instanceof Boolean value) {
-              assertFalse(value);
-          }
+              assertTrue(value);
+          } else {
+                assertFalse(value);
+            }  
     }
     
     @Test
