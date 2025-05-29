@@ -63,13 +63,13 @@ public class PDFSampleMain {
     }
 
     private static void setAbsoluteColumnWidthsInTableWidth(PdfPTable table) {
-       table.setTotalWidth(new float[]{72, 144, 216}); // First column 1 inch, second 2 inches, third 3 inches 
+       table.setTotalWidth(new float[] {72f, 144f, 216f}); // First column 1 inch, second 2 inches, third 3 inches 
        table.setLockedWidth(true);
     }
 
     private static void setRelativeColumnWidths(PdfPTable table) {
         // Set column widths (relative)
-        table.setWidths(new float[]{1, 2, 1});
+        table.setWidths(new float[] {1, 2, 1});
         table.setWidthPercentage(80); // Table width as 80% of page width
     }
     
