@@ -1,8 +1,8 @@
 package com.baeldung.spring.modulith.externalization;
 
-import com.baeldung.spring.modulith.Application;
-import com.baeldung.spring.modulith.externalization.listener.TestKafkaListenerConfig;
-import com.baeldung.spring.modulith.externalization.listener.TestListener;
+import com.baeldung.Application;
+import com.baeldung.listener.TestKafkaListenerConfig;
+import com.baeldung.listener.TestListener;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

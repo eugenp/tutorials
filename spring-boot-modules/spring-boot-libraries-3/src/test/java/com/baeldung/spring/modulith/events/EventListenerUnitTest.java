@@ -8,11 +8,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.test.context.ActiveProfiles;
 
 import com.baeldung.spring.modulith.events.orders.OrderCompletedEvent;
 import com.baeldung.spring.modulith.events.rewards.LoyalCustomersRepository;
 
 @SpringBootTest
+@ActiveProfiles({ "modulith", "h2" })
 class EventListenerUnitTest {
 
     @Autowired

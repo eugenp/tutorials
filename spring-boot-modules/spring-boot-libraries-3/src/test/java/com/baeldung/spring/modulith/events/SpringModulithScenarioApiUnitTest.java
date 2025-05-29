@@ -1,21 +1,21 @@
 package com.baeldung.spring.modulith.events;
 
-import com.baeldung.spring.modulith.events.orders.OrderCompletedEvent;
-import com.baeldung.spring.modulith.events.orders.OrderService;
-import com.baeldung.spring.modulith.events.rewards.LoyalCustomersRepository;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.time.Instant;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.modulith.test.ApplicationModuleTest;
-import org.springframework.modulith.test.ApplicationModuleTest.BootstrapMode;
 import org.springframework.modulith.test.Scenario;
+import org.springframework.test.context.ActiveProfiles;
 
-import java.time.Duration;
-import java.time.Instant;
-
-import static java.time.Duration.ofMillis;
-import static org.assertj.core.api.Assertions.assertThat;
+import com.baeldung.spring.modulith.events.orders.OrderCompletedEvent;
+import com.baeldung.spring.modulith.events.orders.OrderService;
+import com.baeldung.spring.modulith.events.rewards.LoyalCustomersRepository;
 
 @ApplicationModuleTest
+@ActiveProfiles({ "modulith", "h2" })
 class SpringModulithScenarioApiUnitTest {
 
 	@Autowired
