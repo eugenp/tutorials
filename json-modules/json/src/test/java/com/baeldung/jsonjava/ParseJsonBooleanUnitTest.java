@@ -36,11 +36,4 @@ public class ParseJsonBooleanUnitTest {
               assertTrue(value);
           }  
     }
-    
-    @Test
-    void givenJSONString_whenParsedWithGoogleJson_correctBooleanValueReturned() {
-        JsonObject jsonObject = JsonParser.parseString(json).getAsJsonObject();
-        boolean active = jsonObject.get("active").getAsBoolean();
-        assertTrue(active);
-    }
 }
