@@ -57,5 +57,4 @@ public class JavaCollectionConversionUnitTest {
         final int[] primitiveTargetArray = ArrayUtils.toPrimitive(targetArray);
     }
 
-
 }
