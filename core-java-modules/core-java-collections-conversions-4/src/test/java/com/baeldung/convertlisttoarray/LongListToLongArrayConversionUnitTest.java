@@ -1,14 +1,13 @@
 package com.baeldung.convertlisttoarray;
 
-import static org.junit.Assert.assertTrue;
+import com.google.common.primitives.Longs;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import com.google.common.primitives.Longs;
+import static org.junit.Assert.assertTrue;
 
 public class LongListToLongArrayConversionUnitTest {
 
