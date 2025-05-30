@@ -1,16 +1,14 @@
-package com.bealdung.nm;
+package com.baeldung.nested;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import com.baeldung.nm.AbstractOrderMapper;
-import com.baeldung.nm.OrderMapper;
-import com.baeldung.nm.entity.Address;
-import com.baeldung.nm.entity.Customer;
-import com.baeldung.nm.entity.Order;
-import com.baeldung.nm.entity.OrderDto;
-import com.baeldung.nm.entity.Product;
+import com.baeldung.nested.entity.Address;
+import com.baeldung.nested.entity.Customer;
+import com.baeldung.nested.entity.Order;
+import com.baeldung.nested.entity.OrderDto;
+import com.baeldung.nested.entity.Product;
 
 public class OrderNestedMapperUnitTest {
      @Test

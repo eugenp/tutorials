@@ -1,4 +1,4 @@
-package com.baeldung.nm.entity;
+package com.baeldung.nested.entity;
 
 public class Address {
     private String city;

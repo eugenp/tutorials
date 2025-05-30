@@ -1,11 +1,11 @@
-package com.baeldung.nm;
+package com.baeldung.nested;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
-import com.baeldung.nm.entity.Order;
-import com.baeldung.nm.entity.OrderDto;
+import com.baeldung.nested.entity.Order;
+import com.baeldung.nested.entity.OrderDto;
 
 @Mapper
 public interface OrderMapper {
