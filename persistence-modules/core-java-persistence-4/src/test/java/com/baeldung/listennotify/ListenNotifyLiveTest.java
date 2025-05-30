@@ -7,9 +7,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.*;
+import java.time.Duration;
 import java.util.HashSet;
 import java.util.Set;
 
+import static org.awaitility.Awaitility.await;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ListenNotifyLiveTest {
@@ -80,9 +82,9 @@ public class ListenNotifyLiveTest {
 
             sendNotifications();
 
-            while (pgNotificationListener.receivedNotifications.size() < 2) {
-                Thread.sleep(100);
-            }
+            await()
+                .atMost(Duration.ofSeconds(5))
+                .until(() -> pgNotificationListener.receivedNotifications.size() == 2);
 
             assertEquals(Set.of("Hello, NOTIFY!", "Hello, pg_notify!"), pgNotificationListener.receivedNotifications);
 

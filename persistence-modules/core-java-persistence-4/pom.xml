@@ -64,6 +64,12 @@
             <version>5.16.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${awaitility.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -80,6 +86,7 @@
     </build>
 
     <properties>
+        <awaitility.version>4.3.0</awaitility.version>
         <h2.version>2.3.230</h2.version>
         <postgresql.version>42.7.3</postgresql.version>
         <pgjdbc-ng.version>0.8.9</pgjdbc-ng.version>
