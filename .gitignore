@@ -29,6 +29,9 @@ out/
 # Mac
 .DS_Store
 
+# Quarkus
+.quarkus/
+
 # Maven
 log/*
 target/

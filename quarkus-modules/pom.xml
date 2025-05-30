@@ -33,6 +33,8 @@
         <!-- <module>quarkus-rbac</module> --> <!-- JAVA-42048 -->
         <module>quarkus-websockets-next</module>
         <module>quarkus-management-interface</module>
+        <module>quarkus-mcp-server</module>
+        <module>quarkus-mcp-client</module>
     </modules>
 
 </project>
