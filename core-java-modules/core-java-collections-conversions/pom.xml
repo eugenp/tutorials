@@ -44,4 +44,5 @@
     <properties>
         <vavr.version>0.10.3</vavr.version>
     </properties>
+
 </project>
