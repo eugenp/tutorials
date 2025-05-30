@@ -1,13 +1,13 @@
 package com.baeldung.hashmaptoarraylist;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Maps.EntryTransformer;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Maps.EntryTransformer;
 
 public class HashMapToArrayListConverterUtils {
 

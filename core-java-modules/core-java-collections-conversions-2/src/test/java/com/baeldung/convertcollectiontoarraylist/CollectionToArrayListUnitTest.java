@@ -1,13 +1,11 @@
 package com.baeldung.convertcollectiontoarraylist;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Iterator;
-import static java.util.stream.Collectors.toCollection;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import java.util.*;
+
+import static java.util.stream.Collectors.toCollection;
 import static org.junit.Assert.*;
 
 /**
