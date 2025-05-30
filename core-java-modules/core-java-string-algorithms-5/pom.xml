@@ -14,6 +14,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>net.jqwik</groupId>
+            <artifactId>jqwik</artifactId>
+            <version>${jqwik.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>com.vdurmont</groupId>
             <artifactId>emoji-java</artifactId>
             <version>${emoji-java.version}</version>
@@ -22,6 +28,7 @@
 
     <properties>
         <emoji-java.version>4.0.0</emoji-java.version>
+        <jqwik.version>1.7.4</jqwik.version>
     </properties>
 
 </project>
