@@ -4,12 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
+        <artifactId>spring-security-authorization</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
-    <artifactId>spring-security</artifactId>
+    <artifactId>spring-security-url-http-method-auth</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-security</name>
     <description>Demo project for Spring Security to secure URLs and HTTP-Method</description>
