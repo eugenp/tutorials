@@ -49,6 +49,7 @@
         <module>parallel-tests-junit</module>
         <module>powermock</module>
         <module>rest-assured</module>
+        <module>rest-assured-2</module>
         <module>rest-testing</module>
         <module>selenide</module>
         <module>selenium</module>

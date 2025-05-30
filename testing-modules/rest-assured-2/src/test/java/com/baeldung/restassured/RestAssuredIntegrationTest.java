@@ -1,21 +1,19 @@
 package com.baeldung.restassured;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
-import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
-import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
-import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
-import static io.restassured.RestAssured.get;
-
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasItems;
-
+import com.github.fge.jsonschema.SchemaVersion;
+import com.github.fge.jsonschema.cfg.ValidationConfiguration;
+import com.github.fge.jsonschema.main.JsonSchemaFactory;
+import com.github.tomakehurst.wiremock.WireMockServer;
+import io.restassured.RestAssured;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.github.tomakehurst.wiremock.WireMockServer;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static io.restassured.RestAssured.get;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import static io.restassured.module.jsv.JsonSchemaValidatorSettings.settings;
 
-import io.restassured.RestAssured;
 
 public class RestAssuredIntegrationTest {
     private static WireMockServer wireMockServer;
@@ -38,27 +36,35 @@ public class RestAssuredIntegrationTest {
             .withBody(GAME_ODDS)));
     }
 
+
     @Test
-    public void givenUrl_whenCheckingFloatValuePasses_thenCorrect() {
+    public void givenUrl_whenJsonResponseConformsToSchema_thenCorrect() {
+
         get("/events?id=390").then()
           .assertThat()
-          .body("odd.ck", equalTo(12.2f));
+          .body(matchesJsonSchemaInClasspath("event_0.json"));
     }
 
     @Test
-    public void givenUrl_whenSuccessOnGetsResponseAndJsonHasRequiredKV_thenCorrect() {
+    public void givenUrl_whenValidatesResponseWithInstanceSettings_thenCorrect() {
+        JsonSchemaFactory jsonSchemaFactory = JsonSchemaFactory.newBuilder()
+          .setValidationConfiguration(ValidationConfiguration.newBuilder()
+            .setDefaultVersion(SchemaVersion.DRAFTV4)
+            .freeze())
+          .freeze();
 
         get("/events?id=390").then()
-          .statusCode(200)
           .assertThat()
-          .body("id", equalTo("390"));
+          .body(matchesJsonSchemaInClasspath("event_0.json").using(jsonSchemaFactory));
     }
 
     @Test
-    public void givenUrl_whenJsonResponseHasArrayWithGivenValuesUnderKey_thenCorrect() {
+    public void givenUrl_whenValidatesResponseWithStaticSettings_thenCorrect() {
+
         get("/events?id=390").then()
           .assertThat()
-          .body("odds.price", hasItems("1.30", "5.25", "2.70", "1.20"));
+          .body(matchesJsonSchemaInClasspath("event_0.json").using(settings().with()
+            .checkedValidation(false)));
     }
 
     @AfterClass
