@@ -139,18 +139,6 @@
         </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>
-            <artifactId>spring-mock-mvc</artifactId>
-            <version>${rest-assured.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>json-schema-validator</artifactId>
-            <version>${rest-assured.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.rest-assured</groupId>
             <artifactId>xml-path</artifactId>
             <version>${rest-assured.version}</version>
             <scope>test</scope>
