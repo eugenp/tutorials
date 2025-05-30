@@ -58,6 +58,7 @@
         <module>java-mongodb-2</module> <!-- long running -->
         <module>java-mongodb-3</module> <!-- long running -->
         <module>java-mongodb-queries</module> <!-- long running -->
+        <module>jimmer</module>
         <module>jnosql</module> <!-- long running -->
         <module>jooq</module>
         <module>jpa-hibernate-cascade-type</module>
