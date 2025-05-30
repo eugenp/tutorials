@@ -10,7 +10,12 @@ import com.google.gson.JsonParser;
 
 public class ParseJsonBooleanUnitTest {
 
-    private final String json = "{\"name\":\"lorem ipsum\",\"active\":true,\"id\":1}";
+   private final String json = """
+    { 
+        "name": "lorem ipsum",
+        "active": true,
+        "id": 1
+    }""";
     
     @Test
     void givenJSONString_whenParsed_correctBooleanValueReturned() {
