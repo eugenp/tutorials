@@ -24,11 +24,6 @@
             <artifactId>modelmapper</artifactId>
             <version>${modelmapper.version}</version>
         </dependency>
-        <dependency>
-            <groupId>io.vavr</groupId>
-            <artifactId>vavr</artifactId>
-            <version>${vavr.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -42,7 +37,7 @@
     </build>
 
     <properties>
-        <vavr.version>0.10.3</vavr.version>
         <modelmapper.version>3.2.0</modelmapper.version>
     </properties>
+
 </project>
