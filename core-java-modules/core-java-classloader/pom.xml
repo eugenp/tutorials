@@ -11,6 +11,15 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
+	<dependencies>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -35,12 +44,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<properties>
-		<maven.compiler.source>22</maven.compiler.source>
-		<maven.compiler.target>22</maven.compiler.target>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>22</java.version>
-	</properties>
 
 </project>

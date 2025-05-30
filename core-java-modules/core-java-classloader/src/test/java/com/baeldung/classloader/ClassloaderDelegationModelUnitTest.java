@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 import com.baeldung.classloader.internal.InternalClasspathResolver;
 import com.baeldung.classloader.internal.InternalJdkSupport;
 
-class ClassloaderDelegationModelTest {
+class ClassloaderDelegationModelUnitTest {
 
     private static final String CLASS_TO_LOAD = "com.google.common.base.Function";
 
