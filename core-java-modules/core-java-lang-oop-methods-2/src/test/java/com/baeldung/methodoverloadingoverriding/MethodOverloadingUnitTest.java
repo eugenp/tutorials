@@ -3,7 +3,8 @@ package com.baeldung.methodoverloadingoverriding;
 import com.baeldung.methodoverloadingoverriding.util.Multiplier;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.assertj.core.api.Assertions.*;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class MethodOverloadingUnitTest {
     
