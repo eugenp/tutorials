@@ -77,6 +77,11 @@
             <artifactId>teavm-tooling</artifactId>
             <version>${teavm.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.objenesis</groupId>
+            <artifactId>objenesis</artifactId>
+            <version>${objenesis.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -112,6 +117,7 @@
         <javaassist.version>3.29.2-GA</javaassist.version>
         <asm.version>5.2</asm.version>
         <teavm.version>0.10.1</teavm.version>
+        <objenesis.version>3.4</objenesis.version>
     </properties>
 
 </project>
