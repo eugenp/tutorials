@@ -92,10 +92,6 @@
        </dependency>
        <dependency>
            <groupId>org.springframework.ai</groupId>
-           <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
-       </dependency>
-       <dependency>
-           <groupId>org.springframework.ai</groupId>
            <artifactId>spring-ai-pgvector-store-spring-boot-starter</artifactId>
        </dependency>
        <dependency>
@@ -107,6 +103,38 @@
            <artifactId>spring-ai-bedrock-converse-spring-boot-starter</artifactId>
        </dependency>
     </dependencies>
+
+
+    <profiles>
+        <profile>
+            <id>deepseek</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.deepseek.Application</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>mcp-server</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.mcp.server.ServerApplication</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>mcp-client</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.mcp.client.ClientApplication</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>pgvector</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.semanticsearch.Application</spring.boot.mainclass>
+            </properties>
+        </profile>
+    </profiles>
+
 
     <build>
         <plugins>
@@ -133,7 +161,6 @@
     </build>
 
     <properties>
-        <spring-boot.version>3.3.2</spring-boot.version>
         <spring-ai.version>1.0.0-M6</spring-ai.version>
         <junit-jupiter.version>5.9.0</junit-jupiter.version>
     </properties>

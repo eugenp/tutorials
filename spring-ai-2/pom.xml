@@ -105,6 +105,7 @@
        <dependency>
            <groupId>org.springframework.boot</groupId>
            <artifactId>spring-boot-docker-compose</artifactId>
+           <version>${spring-boot-docker-compose.version}</version>           
        </dependency>
        <dependency>
             <groupId>org.springframework.ai</groupId>
@@ -139,12 +140,6 @@
             </properties>
         </profile>
         <profile>
-            <id>deepseek</id>
-            <properties>
-                <spring.boot.mainclass>com.baeldung.springai.deepseek.Application</spring.boot.mainclass>
-            </properties>
-        </profile>
-        <profile>
             <id>evaluator</id>
             <properties>
                 <spring.boot.mainclass>com.baeldung.springai.evaluator.Application</spring.boot.mainclass>
@@ -157,27 +152,9 @@
             </properties>
         </profile>
         <profile>
-            <id>mcp-server</id>
-            <properties>
-                <spring.boot.mainclass>com.baeldung.springai.mcp.server.ServerApplication</spring.boot.mainclass>
-            </properties>
-        </profile>
-        <profile>
-            <id>mcp-client</id>
-            <properties>
-                <spring.boot.mainclass>com.baeldung.springai.mcp.client.ClientApplication</spring.boot.mainclass>
-            </properties>
-        </profile>
-        <profile>
             <id>amazon-nova</id>
             <properties>
                 <spring.boot.mainclass>com.baeldung.springai.nova.Application</spring.boot.mainclass>
-            </properties>
-        </profile>
-        <profile>
-            <id>pgvector</id>
-            <properties>
-                <spring.boot.mainclass>com.baeldung.springai.semanticsearch.Application</spring.boot.mainclass>
             </properties>
         </profile>
     </profiles>

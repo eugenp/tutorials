@@ -34,7 +34,7 @@ public class MistralAIFunctionCallingManualTest {
     @Test
     void givenMistralAiChatClient_whenAskChatAPIAboutPatientHealthStatus_thenExpectedHealthStatusIsPresentInResponse() {
         var options = MistralAiChatOptions.builder()
-          .withFunction("retrievePatientHealthStatus")
+          .toolNames("retrievePatientHealthStatus")
           .build();
 
         ChatResponse paymentStatusResponse = chatClient.call(
@@ -50,7 +50,7 @@ public class MistralAIFunctionCallingManualTest {
     @Test
     void givenMistralAiChatClient_whenAskChatAPIAboutPatientHealthStatusAndWhenThisStatusWasChanged_thenExpectedInformationInResponse() {
         var options = MistralAiChatOptions.builder()
-          .withFunctions(
+          .toolNames(
             Set.of("retrievePatientHealthStatus",
               "retrievePatientHealthStatusChangeDate"))
           .build();
@@ -72,7 +72,7 @@ public class MistralAIFunctionCallingManualTest {
              "When health status of the patient with id P005 was changed?",
              options));
 
-        String changeDateResponseContent = changeDateResponse.getResult().getOutput().getContent();
+        String changeDateResponseContent = changeDateResponse.getResult().getOutput().getText();
         logger.info(changeDateResponseContent);
 
         Assertions.assertThat(paymentStatusResponseContent)
