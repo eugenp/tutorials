@@ -40,7 +40,7 @@ public class MistralAIFunctionCallingManualTest {
         ChatResponse paymentStatusResponse = chatClient.call(
           new Prompt("What's the health status of the patient with id P004?",  options));
 
-        String responseContent = paymentStatusResponse.getResult().getOutput().getContent();
+        String responseContent = paymentStatusResponse.getResult().getOutput().getText();
         logger.info(responseContent);
 
         Assertions.assertThat(responseContent)
@@ -61,7 +61,7 @@ public class MistralAIFunctionCallingManualTest {
             options));
 
         String paymentStatusResponseContent = paymentStatusResponse.getResult()
-          .getOutput().getContent();
+          .getOutput().getText();
         logger.info(paymentStatusResponseContent);
 
         Assertions.assertThat(paymentStatusResponseContent)
