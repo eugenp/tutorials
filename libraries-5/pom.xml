@@ -204,11 +204,6 @@
             <version>${github-api.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.objenesis</groupId>
-            <artifactId>objenesis</artifactId>
-            <version>${objenesis.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${spring-boot.version}</version>
@@ -237,7 +232,6 @@
         <jline.version>3.28.0</jline.version>
         <github-api.version>1.327</github-api.version>
         <com.restfb.version>2025.6.0</com.restfb.version>
-        <objenesis.version>3.4</objenesis.version>
     </properties>
 
 </project>
