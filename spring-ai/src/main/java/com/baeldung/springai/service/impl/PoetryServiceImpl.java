@@ -43,6 +43,6 @@ public class PoetryServiceImpl implements PoetryService {
         promptTemplate.add("format", outputConverter.getFormat());
 
         ChatResponse response = aiClient.call(promptTemplate.create());
-        return outputConverter.convert(response.getResult().getOutput().getContent());
+        return outputConverter.convert(response.getResult().getOutput().getText());
     }
 }

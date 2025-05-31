@@ -28,7 +28,7 @@ public class BlogsController {
 
     public BlogsController(ChatClient.Builder chatClientBuilder, EmbeddingModel embeddingModel) throws IOException {
         this.chatClient = chatClientBuilder.build();
-        this.vectorStore = new SimpleVectorStore(embeddingModel);
+        this.vectorStore = SimpleVectorStore.builder(embeddingModel).build();
         initContext();
     }
 
@@ -63,7 +63,7 @@ public class BlogsController {
     @GetMapping("v3")
     List<Article> askQuestionWithContext(@RequestParam(name = "question") String question) {
         return chatClient.prompt()
-            .advisors(new QuestionAnswerAdvisor(vectorStore, SearchRequest.defaults()))
+            .advisors(new QuestionAnswerAdvisor(vectorStore, SearchRequest.builder().build()))
             .user(question)
             .call()
             .entity(new ParameterizedTypeReference<List<Article>>() {});

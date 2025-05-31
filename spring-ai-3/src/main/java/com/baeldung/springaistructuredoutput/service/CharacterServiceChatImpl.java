@@ -1,6 +1,5 @@
 package com.baeldung.springaistructuredoutput.service;
 
-import com.baeldung.springaistructuredoutput.converters.GenericMapOutputConverter;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.Generation;
@@ -14,6 +13,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.convert.support.DefaultConversionService;
 import org.springframework.stereotype.Service;
+
+import com.baeldung.springaistructuredoutput.converters.GenericMapOutputConverter;
 
 import java.util.List;
 import java.util.Map;
@@ -43,7 +44,7 @@ public class CharacterServiceChatImpl implements CharacterService {
         Prompt prompt = new Prompt(promptTemplate.createMessage());
         Generation generation = chatModel.call(prompt).getResult();
 
-        return beanOutputConverter.convert(generation.getOutput().getContent());
+        return beanOutputConverter.convert(generation.getOutput().getText());
     }
 
     @Override
@@ -78,7 +79,7 @@ public class CharacterServiceChatImpl implements CharacterService {
 
         Generation generation = chatModel.call(prompt).getResult();
 
-        return outputConverter.convert(generation.getOutput().getContent());
+        return outputConverter.convert(generation.getOutput().getText());
     }
 
     @Override
@@ -101,7 +102,7 @@ public class CharacterServiceChatImpl implements CharacterService {
         Prompt prompt = new Prompt(new PromptTemplate(template, Map.of("amount", String.valueOf(amount), "format", format)).createMessage());
         Generation generation = chatModel.call(prompt).getResult();
 
-        return outputConverter.convert(generation.getOutput().getContent());
+        return outputConverter.convert(generation.getOutput().getText());
     }
 
     @Override
@@ -125,7 +126,7 @@ public class CharacterServiceChatImpl implements CharacterService {
           Map.of("amount", amount, "format", format));
         Prompt prompt = new Prompt(promptTemplate.createMessage());
         Generation generation = chatModel.call(prompt).getResult();
-        return listOutputConverter.convert(generation.getOutput().getContent());
+        return listOutputConverter.convert(generation.getOutput().getText());
     }
 
     @Override
@@ -139,7 +140,7 @@ public class CharacterServiceChatImpl implements CharacterService {
         Prompt prompt = new Prompt(new PromptTemplate(template, Map.of("amount", String.valueOf(amount), "format", format)).createMessage());
         Generation generation = chatModel.call(prompt).getResult();
 
-        return outputConverter.convert(generation.getOutput().getContent());
+        return outputConverter.convert(generation.getOutput().getText());
     }
 
     @Override

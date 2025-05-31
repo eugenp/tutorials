@@ -1439,6 +1439,7 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-3</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
             </modules>

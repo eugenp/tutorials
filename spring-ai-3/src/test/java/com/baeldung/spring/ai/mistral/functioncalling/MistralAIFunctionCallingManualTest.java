@@ -34,13 +34,13 @@ public class MistralAIFunctionCallingManualTest {
     @Test
     void givenMistralAiChatClient_whenAskChatAPIAboutPatientHealthStatus_thenExpectedHealthStatusIsPresentInResponse() {
         var options = MistralAiChatOptions.builder()
-          .withFunction("retrievePatientHealthStatus")
+          .toolNames("retrievePatientHealthStatus")
           .build();
 
         ChatResponse paymentStatusResponse = chatClient.call(
           new Prompt("What's the health status of the patient with id P004?",  options));
 
-        String responseContent = paymentStatusResponse.getResult().getOutput().getContent();
+        String responseContent = paymentStatusResponse.getResult().getOutput().getText();
         logger.info(responseContent);
 
         Assertions.assertThat(responseContent)
@@ -50,7 +50,7 @@ public class MistralAIFunctionCallingManualTest {
     @Test
     void givenMistralAiChatClient_whenAskChatAPIAboutPatientHealthStatusAndWhenThisStatusWasChanged_thenExpectedInformationInResponse() {
         var options = MistralAiChatOptions.builder()
-          .withFunctions(
+          .toolNames(
             Set.of("retrievePatientHealthStatus",
               "retrievePatientHealthStatusChangeDate"))
           .build();
@@ -61,7 +61,7 @@ public class MistralAIFunctionCallingManualTest {
             options));
 
         String paymentStatusResponseContent = paymentStatusResponse.getResult()
-          .getOutput().getContent();
+          .getOutput().getText();
         logger.info(paymentStatusResponseContent);
 
         Assertions.assertThat(paymentStatusResponseContent)
@@ -72,7 +72,7 @@ public class MistralAIFunctionCallingManualTest {
              "When health status of the patient with id P005 was changed?",
              options));
 
-        String changeDateResponseContent = changeDateResponse.getResult().getOutput().getContent();
+        String changeDateResponseContent = changeDateResponse.getResult().getOutput().getText();
         logger.info(changeDateResponseContent);
 
         Assertions.assertThat(paymentStatusResponseContent)

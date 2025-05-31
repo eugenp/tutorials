@@ -1,0 +1,7 @@
+spring:
+  ai:
+    mistralai:
+      api-key: ${MISTRAL_AI_API_KEY}
+      chat:
+        options:
+          model: mistral-small-latest

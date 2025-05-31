@@ -26,7 +26,7 @@ public class CustomLoggingAdvisor implements CallAroundAdvisor {
         logger.info(advisedResponse.response()
           .getResult()
           .getOutput()
-          .getContent());
+          .getText());
 
     }
 

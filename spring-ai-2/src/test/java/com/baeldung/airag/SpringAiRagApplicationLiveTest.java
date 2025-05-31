@@ -45,7 +45,7 @@ class SpringAiRagApplicationLiveTest {
 		List<Document> documents = dataRetrievalService.searchData(query);
 		logger.info("The number of documents fetched: {}", documents.size());
 		logger.info("Search data: ");
-		documents.forEach(e -> logger.info(e.getContent()));
+		documents.forEach(e -> logger.info(e.getText()));
 		assertTrue(documents.size() > 1);
 	}
 
