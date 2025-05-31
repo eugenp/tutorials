@@ -44,34 +44,6 @@
            <artifactId>spring-boot-starter-web</artifactId>
        </dependency>
        <dependency>
-           <groupId>org.springframework.ai</groupId>
-           <artifactId>spring-ai-markdown-document-reader</artifactId>
-       </dependency>
-       <dependency>
-           <groupId>org.springframework.ai</groupId>
-           <artifactId>spring-ai-mcp-client-spring-boot-starter</artifactId>
-       </dependency>
-       <dependency>
-           <groupId>org.springframework.ai</groupId>
-           <artifactId>spring-ai-mcp-server-webmvc-spring-boot-starter</artifactId>
-       </dependency>
-       <dependency>
-           <groupId>org.springframework.ai</groupId>
-           <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
-       </dependency>
-       <dependency>
-           <groupId>org.springframework.ai</groupId>
-           <artifactId>spring-ai-chroma-store-spring-boot-starter</artifactId>
-       </dependency>
-       <dependency>
-           <groupId>org.springframework.ai</groupId>
-           <artifactId>spring-ai-anthropic-spring-boot-starter</artifactId>
-       </dependency>
-       <dependency>
-           <groupId>org.springframework.ai</groupId>
-           <artifactId>spring-ai-bedrock-converse-spring-boot-starter</artifactId>
-       </dependency>
-       <dependency>
            <groupId>org.springframework.boot</groupId>
            <artifactId>spring-boot-starter-data-jpa</artifactId>
        </dependency>
@@ -83,10 +55,6 @@
            <groupId>org.hsqldb</groupId>
            <artifactId>hsqldb</artifactId>
            <scope>runtime</scope>
-       </dependency>
-       <dependency>
-           <groupId>org.springframework.ai</groupId>
-           <artifactId>spring-ai-pgvector-store-spring-boot-starter</artifactId>
        </dependency>
        <dependency>
            <groupId>org.springframework.ai</groupId>
@@ -122,7 +90,7 @@
        </dependency>
        <dependency>
            <groupId>org.springframework.ai</groupId>
-           <artifactId>spring-ai-starter-vector-store-mongodb-atlas</artifactId>	
+           <artifactId>spring-ai-starter-vector-store-mongodb-atlas</artifactId>
            <version>${spring-ai-mongodb-atlas.version}</version>
        </dependency>
        <dependency>
@@ -146,6 +114,9 @@
             <properties>
                 <spring.boot.mainclass>com.baeldung.springai.transcribe.Application</spring.boot.mainclass>
             </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
         </profile>
     </profiles>
 

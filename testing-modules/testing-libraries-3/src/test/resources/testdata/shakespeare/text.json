@@ -1,0 +1,40 @@
+{
+  "paragraphs": [
+    {
+      "style": "HEADING",
+      "sentences": [
+        {
+          "tokens": [
+            "ACT",
+            "I"
+          ]
+        }
+      ]
+    },
+    {
+      "style": "HEADING",
+      "sentences": [
+        {
+          "tokens": [
+            "PROLOGUE"
+          ]
+        }
+      ]
+    },
+    {
+      "style": "NORMAL",
+      "sentences": [
+        {
+          "tokens": [
+            "Two",
+            "households,",
+            "both",
+            "alike",
+            "in",
+            "dignity,"
+          ]
+        }
+      ]
+    }
+  ]
+}

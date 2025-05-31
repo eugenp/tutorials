@@ -59,7 +59,7 @@
 
     <properties>
         <spring-cloud.version>4.0.3</spring-cloud.version>
-        <spring-cloud-contract.version>4.0.4</spring-cloud-contract.version>
+        <spring-cloud-contract.version>4.2.1</spring-cloud-contract.version>
         <spring-boot.version>2.7.11</spring-boot.version>
         <groovy.version>2.5.6</groovy.version>
     </properties>

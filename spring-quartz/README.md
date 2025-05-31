@@ -1,10 +1,6 @@
 ## Spring Quartz
 
-This module contains articles about Spring with Quartz
-
-### Relevant Articles: 
-- [Scheduling in Spring with Quartz](https://www.baeldung.com/spring-quartz-schedule)
-    
+This module contains code about Spring with Quartz
 
 ## #Scheduling in Spring with Quartz Example Project
 This is the first example where we configure a basic scheduler.
