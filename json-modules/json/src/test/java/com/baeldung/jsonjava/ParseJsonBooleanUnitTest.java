@@ -35,7 +35,7 @@ public class ParseJsonBooleanUnitTest {
         }
         """;
         JSONObject jsonObject = new JSONObject(json);
-        assertThat(jsonObject.getInt("active") == 2) 
+        assertThat(jsonObject.getInt("active") == 2); 
         //assertThat(jsonObject.getInt("active")).isEqualTo(1);
     }
 
