@@ -10,7 +10,9 @@ public class PatchUtilTest {
     public void givenPatch_whenApplied_thenMatchesRevised() throws PatchFailedException {
         var original = List.of("alpha", "beta", "gamma");
         var revised = List.of("alpha", "beta-updated", "gamma");
-        var result = new PatchUtil().apply(original, revised);
+
+        var result = PatchUtil.apply(original, revised);
+
         assertEquals(revised, result);
     }
 }
