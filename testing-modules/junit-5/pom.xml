@@ -3,7 +3,6 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <!-- NOT NEEDED - JSP <groupId>com.baeldung</groupId> -->
     <artifactId>junit-5</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>junit-5</name>
@@ -75,7 +74,16 @@
                     <groupId>junit</groupId>
                     <artifactId>junit</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>org.javassist</groupId>
+                    <artifactId>javassist</artifactId>
+                </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>${javassist.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
@@ -126,6 +134,8 @@
                     <argLine>
                         --add-opens java.base/java.lang=ALL-UNNAMED
                         --add-opens java.base/java.time=ALL-UNNAMED
+                        --add-opens java.base/java.time.format=ALL-UNNAMED
+                        --add-opens java.base/java.util=ALL-UNNAMED
                     </argLine>
                 </configuration>
             </plugin>
@@ -137,6 +147,7 @@
         <powermock.version>2.0.9</powermock.version>
         <spring.version>5.0.1.RELEASE</spring.version>
         <mockito.version>3.3.0</mockito.version> <!--Cannot upgrade to the latest version as powermock doesn't support that-->
+        <javassist.version>3.30.2-GA</javassist.version> <!--Cannot upgrade to the latest version as powermock doesn't support that-->
     </properties>
 
 </project>

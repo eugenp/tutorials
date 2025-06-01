@@ -30,11 +30,12 @@
         <module>spring-reactive</module>
         <module>spring-reactive-exceptions</module>
         <module>spring-reactor</module>
+        <module>spring-webflux</module>
+        <module>spring-webflux-2</module>
         <module>spring-webflux-amqp</module>
         <module>spring-reactive-kafka-stream-binder</module>
-
-        <!--    the following submodules are commented out as a workaround in order to use java 19+ and SB 3.2.x -->
-        <!--    <module>spring-reactive-performance</module>--> <!-- JAVA-42050 -->
+        <module>spring-reactive-kafka</module>
+        <module>spring-reactive-performance</module>
     </modules>
 
     <dependencyManagement>

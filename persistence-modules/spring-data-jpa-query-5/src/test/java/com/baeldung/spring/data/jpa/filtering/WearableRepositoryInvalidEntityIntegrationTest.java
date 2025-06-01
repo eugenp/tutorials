@@ -1,5 +1,6 @@
 package com.baeldung.spring.data.jpa.filtering;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -21,6 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
         type = FilterType.ASSIGNABLE_TYPE,
         value = WearableValidEntity.class
 ))
+@Disabled("Disabled due to ApplicationContext failure caused by an invalid entity. Enable the test and view the logs.")
 public class WearableRepositoryInvalidEntityIntegrationTest {
 
     @Autowired

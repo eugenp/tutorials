@@ -30,7 +30,6 @@
             <artifactId>commons-codec</artifactId>
             <version>${commons-codec.version}</version>
         </dependency>
-
         <!-- Test dependencies -->
         <dependency>
             <groupId>software.amazon.awssdk</groupId>

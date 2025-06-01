@@ -77,7 +77,7 @@
         <module>spring-boot-persistence</module>
         <module>spring-boot-persistence-h2</module>
         <module>spring-boot-persistence-h2-2</module>
-        <!-- <module>spring-boot-persistence-mongodb</module> --> <!-- JAVA-42144 -->
+        <module>spring-boot-persistence-mongodb</module>
         <!-- <module>spring-boot-persistence-mongodb-2</module> --> <!-- JAVA-42371 -->
         <module>spring-boot-persistence-mongodb-3</module>
         <!-- <module>spring-boot-persistence-mongodb-4</module> --> <!-- JAVA-42372 -->
@@ -86,7 +86,6 @@
         <module>spring-data-cassandra-test</module>
         <module>spring-data-cosmosdb</module>
         <module>spring-data-couchbase-2</module>
-        <module>spring-data-dynamodb</module>
         <module>spring-data-eclipselink</module>
         <!-- <module>spring-data-elasticsearch</module> --> <!-- JAVA-42359 -->
         <!-- <module>spring-data-gemfire</module> Won't Fix in JAVA-14499, The dependencies used are -->
@@ -138,12 +137,13 @@
         <module>scylladb</module>
         <module>spring-data-cassandra-2</module>
         <module>spring-data-jpa-repo-3</module>
-        <!--<module>spring-boot-persistence-4</module>--> <!-- failing after spring boot upgrade to 3.3.2 --> <!-- JAVA-42045 -->
-        <!--<module>spring-boot-persistence-5</module>--> <!-- failing after spring boot upgrade to 3.3.2 --> <!-- JAVA-42046 -->
+        <module>spring-boot-persistence-4</module>
+        <module>spring-boot-persistence-5</module>
         <module>hibernate-annotations-2</module>
         <module>hibernate-reactive</module>
         <module>my-sql</module>
         <module>spring-data-envers</module>
+        <module>jdbc-cp</module>
     </modules>
 
     <properties>

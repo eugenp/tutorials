@@ -1,0 +1,20 @@
+{
+    "name": "dlq-elasticsearch-sink",
+    "config": {
+        "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
+        "tasks.max": "1",
+        "topics": "failing-topic",
+        "connection.url": "http://elasticsearch:9200",
+        "key.ignore": "true",
+        "schema.ignore": "true",
+        
+        "behavior.on.malformed.documents": "ignore",
+        "errors.tolerance": "all",
+        "errors.log.enable": "true",
+        "errors.log.include.messages": "true",
+        
+        "errors.deadletterqueue.topic.name": "dlq-logs",
+        "errors.deadletterqueue.topic.replication.factor": "1",
+        "errors.deadletterqueue.context.headers.enable": "true"
+    }
+}

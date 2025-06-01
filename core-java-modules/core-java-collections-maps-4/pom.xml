@@ -17,7 +17,7 @@
         <dependency>
             <groupId>jakarta.ws.rs</groupId>
             <artifactId>jakarta.ws.rs-api</artifactId>
-            <version>3.1.0</version>
+            <version>${jakarta.ws.rs-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -53,5 +53,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <jakarta.ws.rs-api.version>3.1.0</jakarta.ws.rs-api.version>
+    </properties>
 
 </project>

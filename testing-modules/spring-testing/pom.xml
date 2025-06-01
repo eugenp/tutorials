@@ -111,6 +111,18 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${testcontainers.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${testcontainers.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
             <version>${junit-jupiter.version}</version>
@@ -142,6 +154,7 @@
         <javax.persistence.version>2.1.1</javax.persistence.version>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
         <spring-boot.version>3.2.2</spring-boot.version>
+        <testcontainers.version>1.19.6</testcontainers.version>
     </properties>
 
 </project>

@@ -33,11 +33,11 @@
         <module>spring-security-web-angular</module>
         <module>spring-security-web-boot-1</module>
         <module>spring-security-web-boot-2</module>
-        <!-- <module>spring-security-web-boot-3</module> --> <!-- JAVA-42146 -->
+         <module>spring-security-web-boot-3</module>
         <module>spring-security-web-boot-4</module>
         <module>spring-security-web-boot-5</module>
         <module>spring-security-web-digest-auth</module>
-        <!-- <module>spring-security-web-login</module> --> <!-- This module wasn't able to update to spring boot 3 because of a bug see JAVA-29310 -->
+        <module>spring-security-web-login</module>
         <module>spring-security-web-login-2</module>
         <module>spring-security-web-mvc-custom</module>
         <module>spring-security-web-mvc</module>
@@ -59,8 +59,10 @@
         <module>spring-security-pkce-spa</module>
         <module>spring-security-compromised-password</module>
         <module>spring-security-authorization</module>
+        <module>spring-disable-security</module>
         <module>spring-security-dynamic-registration</module>
         <module>spring-security-ott</module>
+        <module>spring-security-passkey</module>
     </modules>
 
     <build>

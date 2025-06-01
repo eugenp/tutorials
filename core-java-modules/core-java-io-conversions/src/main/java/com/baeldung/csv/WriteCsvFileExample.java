@@ -17,9 +17,9 @@ public class WriteCsvFileExample {
         }
         
         String escapedData = data.replaceAll("\\R", " ");
-        if (data.contains(",") || data.contains("\"") || data.contains("'")) {
-            data = data.replace("\"", "\"\"");
-            escapedData = "\"" + data + "\"";
+        if (escapedData.contains(",") || escapedData.contains("\"") || escapedData.contains("'")) {
+            escapedData = escapedData.replace("\"", "\"\"");
+            escapedData = "\"" + escapedData + "\"";
         }
         return escapedData;
     }

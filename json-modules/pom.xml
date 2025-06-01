@@ -23,6 +23,7 @@
         <module>json-path</module>
         <module>gson</module>
         <module>gson-2</module>
+        <module>gson-3</module>
     </modules>
 
     <build>
@@ -40,6 +41,7 @@
         <json.version>20240303</json.version>
         <gson.version>2.11.0</gson.version>
         <javax.version>1.1.2</javax.version>
+        <jsonschema2pojo-core.version>1.1.1</jsonschema2pojo-core.version>
     </properties>
 
 </project>

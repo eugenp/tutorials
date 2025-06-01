@@ -36,15 +36,9 @@
             <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-collections4</artifactId>
-            <version>${commons-collections4.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.7.0</version>
+            <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -59,5 +53,6 @@
     </build>
     <properties>
         <gson.version>2.11.0</gson.version>
+        <testng.version>7.7.0</testng.version>
     </properties>
 </project>

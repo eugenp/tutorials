@@ -53,6 +53,32 @@
 
     <dependencies>
         <dependency>
+            <groupId>io.activej</groupId>
+            <artifactId>activej-http</artifactId>
+            <version>${activej.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.activej</groupId>
+            <artifactId>activej-inject</artifactId>
+            <version>${activej.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.activej</groupId>
+            <artifactId>activej-promise</artifactId>
+            <version>${activej.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.activej</groupId>
+            <artifactId>activej-test</artifactId>
+            <version>${activej.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>com.alicp.jetcache</groupId>
             <artifactId>jetcache-core</artifactId>
             <version>${jetcache.version}</version>
@@ -173,10 +199,25 @@
             <version>${jline.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.kohsuke</groupId>
+            <artifactId>github-api</artifactId>
+            <version>${github-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.objenesis</groupId>
+            <artifactId>objenesis</artifactId>
+            <version>${objenesis.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${spring-boot.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.restfb</groupId>
+            <artifactId>restfb</artifactId>
+            <version>${com.restfb.version}</version>
         </dependency>
     </dependencies>
 
@@ -189,9 +230,14 @@
         <armeria.version>1.29.2</armeria.version>
         <yauaa.version>7.28.1</yauaa.version>
         <yavi.version>0.14.1</yavi.version>
+        <activej.version>6.0-rc2</activej.version>
+        <jackson-databind.version>2.17.0</jackson-databind.version>
         <sootup.version>1.3.0</sootup.version>
         <resilience4j.version>2.1.0</resilience4j.version>
         <jline.version>3.28.0</jline.version>
+        <github-api.version>1.327</github-api.version>
+        <com.restfb.version>2025.6.0</com.restfb.version>
+        <objenesis.version>3.4</objenesis.version>
     </properties>
 
 </project>
