@@ -49,7 +49,7 @@ public class ListenNotifyLiveTest {
             Set<String> receivedNotifications = new HashSet<>();
 
             while (receivedNotifications.size() < 2) {
-                PGNotification[] notifications = pgConnection.getNotifications();
+                PGNotification[] notifications = pgConnection.getNotifications(0);
                 if (notifications != null) {
                     LOG.info("Received {} notifications", notifications.length);
                     for (PGNotification notification : notifications) {
@@ -60,8 +60,6 @@ public class ListenNotifyLiveTest {
                         receivedNotifications.add(notification.getParameter());
                     }
                 }
-
-                Thread.sleep(100);
             }
 
             assertEquals(Set.of("Hello, NOTIFY!", "Hello, pg_notify!"), receivedNotifications);
