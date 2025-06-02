@@ -12,18 +12,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 
 import com.baeldung.hibernate.union.dto.PersonDto;
-import com.baeldung.hibernate.union.model.Contractor;
-import com.baeldung.hibernate.union.model.Employer;
+import com.baeldung.hibernate.union.model.Lecturer;
 import com.baeldung.hibernate.union.model.PersonView;
-import com.baeldung.hibernate.union.repository.ContractorRepository;
-import com.baeldung.hibernate.union.repository.EmployerRepository;
+import com.baeldung.hibernate.union.model.Researcher;
+import com.baeldung.hibernate.union.repository.LecturerRepository;
+import com.baeldung.hibernate.union.repository.ResearcherRepository;
 import com.baeldung.hibernate.union.service.UnionService;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
 @SpringBootTest
-@Sql(statements = { "CREATE VIEW IF NOT EXISTS person_view AS SELECT id, name, 'EMPLOYER' AS entity FROM Employer UNION SELECT id, name, 'CONTRACTOR' AS entity FROM Contractor" })
+@Sql(statements = { "CREATE VIEW IF NOT EXISTS person_view AS SELECT id, name, 'LECTURER' AS role FROM Lecturer UNION SELECT id, name, 'RESEARCHER' AS role FROM Researcher" })
 class UnionServiceIntegrationTest {
 
     private static final int COUNT_UNION = 5;
@@ -33,18 +33,18 @@ class UnionServiceIntegrationTest {
     private EntityManager em;
 
     @Autowired
-    private EmployerRepository employerRepository;
+    private LecturerRepository lecturerRepository;
 
     @Autowired
-    private ContractorRepository contractorRepository;
+    private ResearcherRepository researcherRepository;
 
     @Autowired
     private UnionService unionService;
 
     @BeforeEach
     void setUp() {
-        employerRepository.saveAll(List.of(new Employer(1l, "Alice"), new Employer(2l, "Bob"), new Employer(3l, "Candace")));
-        contractorRepository.saveAll(List.of(new Contractor(3l, "Candace"), new Contractor(4l, "Diana"), new Contractor(5l, "Elena")));
+        lecturerRepository.saveAll(List.of(new Lecturer(1l, "Alice"), new Lecturer(2l, "Bob"), new Lecturer(3l, "Candace")));
+        researcherRepository.saveAll(List.of(new Researcher(3l, "Candace"), new Researcher(4l, "Diana"), new Researcher(5l, "Elena")));
     }
 
     @Test
@@ -91,7 +91,7 @@ class UnionServiceIntegrationTest {
 
     @Test
     void givenView_whenFetchWithInterface_thenUnifiedResult() {
-        List<PersonView> results = employerRepository.findPersonView();
+        List<PersonView> results = lecturerRepository.findPersonView();
 
         assertEquals(COUNT_UNION_ALL, results.size());
     }

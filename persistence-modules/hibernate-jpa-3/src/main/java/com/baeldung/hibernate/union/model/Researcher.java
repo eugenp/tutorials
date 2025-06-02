@@ -4,17 +4,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class Employer {
+public class Researcher {
 
     @Id
     private Long id;
     private String name;
-    private Integer department;
+    private boolean active;
 
-    public Employer() {
+    public Researcher() {
     }
 
-    public Employer(Long id, String name) {
+    public Researcher(Long id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -35,11 +35,11 @@ public class Employer {
         this.name = name;
     }
 
-    public Integer getDepartment() {
-        return department;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setDepartment(Integer department) {
-        this.department = department;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

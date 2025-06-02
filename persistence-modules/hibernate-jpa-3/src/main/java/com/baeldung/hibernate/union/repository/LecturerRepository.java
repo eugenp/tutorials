@@ -6,12 +6,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.baeldung.hibernate.union.model.Employer;
+import com.baeldung.hibernate.union.model.Lecturer;
 import com.baeldung.hibernate.union.model.PersonView;
 
 @Repository
-public interface EmployerRepository extends JpaRepository<Employer, Long> {
+public interface LecturerRepository extends JpaRepository<Lecturer, Long> {
 
-    @Query(value = "select e.id, e.name, e.entity from person_view e", nativeQuery = true)
+    @Query(value = "select e.id, e.name, e.role from person_view e", nativeQuery = true)
     List<PersonView> findPersonView();
 }

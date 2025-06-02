@@ -9,10 +9,10 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Service;
 
 import com.baeldung.hibernate.union.dto.PersonDto;
-import com.baeldung.hibernate.union.model.Contractor;
-import com.baeldung.hibernate.union.model.Employer;
-import com.baeldung.hibernate.union.repository.ContractorRepository;
-import com.baeldung.hibernate.union.repository.EmployerRepository;
+import com.baeldung.hibernate.union.model.Lecturer;
+import com.baeldung.hibernate.union.model.Researcher;
+import com.baeldung.hibernate.union.repository.LecturerRepository;
+import com.baeldung.hibernate.union.repository.ResearcherRepository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -25,67 +25,67 @@ public class UnionService {
     @PersistenceContext
     private EntityManager em;
 
-    private EmployerRepository employerRepository;
+    private LecturerRepository lecturerRepository;
 
-    private ContractorRepository contractorRepository;
+    private ResearcherRepository researcherRepository;
 
-    public UnionService(EmployerRepository employerRepository, ContractorRepository contractorRepository) {
-        this.employerRepository = employerRepository;
-        this.contractorRepository = contractorRepository;
+    public UnionService(LecturerRepository lecturerRepository, ResearcherRepository researcherRepository) {
+        this.lecturerRepository = lecturerRepository;
+        this.researcherRepository = researcherRepository;
     }
 
     public List<PersonDto> fetch() {
         return em.createQuery("""
-            select new PersonDto(e.id, e.name) from Employer e
+            select new PersonDto(l.id, l.name) from Lecturer l
             union
-            select new PersonDto(c.id, c.name) from Contractor c
+            select new PersonDto(r.id, r.name) from Researcher r
             """, PersonDto.class)
             .getResultList();
     }
 
     public List<PersonDto> fetchAll() {
         return em.createQuery("""
-            select new PersonDto(e.id, e.name) from Employer e
+            select new PersonDto(l.id, l.name) from Lecturer l
             union all
-            select new PersonDto(c.id, c.name) from Contractor c
+            select new PersonDto(r.id, r.name) from Researcher r
             """, PersonDto.class)
             .getResultList();
     }
 
     public List<PersonDto> fetchWithDiscriminator() {
         return em.createQuery("""
-            select new PersonDto(e.id, e.name, 'EMPLOYER') from Employer e
+            select new PersonDto(l.id, l.name, 'LECTURER') from Lecturer l
             union
-            select new PersonDto(c.id, c.name, 'CONTRACTOR') from Contractor c
+            select new PersonDto(r.id, r.name, 'RESEARCHER') from Researcher r
             """, PersonDto.class)
             .getResultList();
     }
 
     public List<PersonDto> fetchManually() {
-        List<Employer> employers = employerRepository.findAll();
-        List<Contractor> contractors = contractorRepository.findAll();
+        List<Lecturer> lecturers = lecturerRepository.findAll();
+        List<Researcher> researchers = researcherRepository.findAll();
 
-        return Stream.concat(employers.stream()
+        return Stream.concat(lecturers.stream()
             .map(e -> new PersonDto(e.getId(), e.getName())),
-            contractors.stream()
+            researchers.stream()
                 .map(c -> new PersonDto(c.getId(), c.getName())))
             .toList();
     }
 
     public Set<PersonDto> fetchSetManually() {
-        List<Employer> employers = employerRepository.findAll();
-        List<Contractor> contractors = contractorRepository.findAll();
+        List<Lecturer> lecturers = lecturerRepository.findAll();
+        List<Researcher> researchers = researcherRepository.findAll();
 
-        return Stream.concat(employers.stream()
+        return Stream.concat(lecturers.stream()
             .map(e -> new PersonDto(e.getId(), e.getName())),
-            contractors.stream()
+            researchers.stream()
                 .map(c -> new PersonDto(c.getId(), c.getName())))
             .collect(Collectors.toSet());
     }
 
     @SuppressWarnings("unchecked")
     public List<PersonDto> fetchView() {
-        return em.createNativeQuery("select e.id, e.name, e.entity from person_view e", PersonDto.class)
+        return em.createNativeQuery("select e.id, e.name, e.role from person_view e", PersonDto.class)
             .getResultList();
     }
 
@@ -93,15 +93,15 @@ public class UnionService {
         var session = em.unwrap(Session.class);
         var builder = session.getCriteriaBuilder();
 
-        CriteriaQuery<PersonDto> employerQuery = builder.createQuery(PersonDto.class);
-        Root<Employer> employer = employerQuery.from(Employer.class);
-        employerQuery.select(builder.construct(PersonDto.class, employer.get("id"), employer.get("name"), builder.literal("EMPLOYER")));
+        CriteriaQuery<PersonDto> lecturerQuery = builder.createQuery(PersonDto.class);
+        Root<Lecturer> lecturer = lecturerQuery.from(Lecturer.class);
+        lecturerQuery.select(builder.construct(PersonDto.class, lecturer.get("id"), lecturer.get("name"), builder.literal("LECTURER")));
 
-        CriteriaQuery<PersonDto> contractorQuery = builder.createQuery(PersonDto.class);
-        Root<Contractor> contractor = contractorQuery.from(Contractor.class);
-        contractorQuery.select(builder.construct(PersonDto.class, contractor.get("id"), contractor.get("name"), builder.literal("CONTRACTOR")));
+        CriteriaQuery<PersonDto> researcherQuery = builder.createQuery(PersonDto.class);
+        Root<Researcher> researcher = researcherQuery.from(Researcher.class);
+        researcherQuery.select(builder.construct(PersonDto.class, researcher.get("id"), researcher.get("name"), builder.literal("RESEARCHER")));
 
-        var unionQuery = builder.unionAll(employerQuery, contractorQuery);
+        var unionQuery = builder.unionAll(lecturerQuery, researcherQuery);
 
         return session.createQuery(unionQuery)
             .getResultList();

@@ -6,5 +6,5 @@ public interface PersonView {
 
     String getName();
 
-    String getEntity();
+    String getRole();
 }

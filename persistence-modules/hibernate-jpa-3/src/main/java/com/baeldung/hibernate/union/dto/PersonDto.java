@@ -6,16 +6,16 @@ public class PersonDto {
 
     private Long id;
     private String name;
-    private String entity;
+    private String role;
 
     public PersonDto(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public PersonDto(Long id, String name, String entity) {
+    public PersonDto(Long id, String name, String role) {
         this(id, name);
-        this.entity = entity;
+        this.role = role;
     }
 
     public Long getId() {
@@ -34,17 +34,12 @@ public class PersonDto {
         this.name = name;
     }
 
-    public String getEntity() {
-        return entity;
+    public String getRole() {
+        return role;
     }
 
-    public void setEntity(String entity) {
-        this.entity = entity;
-    }
-
-    @Override
-    public String toString() {
-        return "PersonDto {id: " + id + ", name: " + name + ", entity: " + entity + "}";
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override

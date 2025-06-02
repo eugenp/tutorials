@@ -4,17 +4,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class Contractor {
+public class Lecturer {
 
     @Id
     private Long id;
     private String name;
-    private boolean enabled;
+    private Integer facultyId;
 
-    public Contractor() {
+    public Lecturer() {
     }
 
-    public Contractor(Long id, String name) {
+    public Lecturer(Long id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -35,11 +35,11 @@ public class Contractor {
         this.name = name;
     }
 
-    public boolean isEnabled() {
-        return enabled;
+    public Integer getFacultyId() {
+        return facultyId;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public void setFacultyId(Integer facultyId) {
+        this.facultyId = facultyId;
     }
 }
