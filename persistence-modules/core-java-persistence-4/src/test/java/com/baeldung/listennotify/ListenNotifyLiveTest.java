@@ -89,6 +89,59 @@ public class ListenNotifyLiveTest {
         }
     }
 
+    @Test
+    void whenUsingTriggers_thenNotificationsAreSent() throws SQLException {
+        try (Connection connection = DriverManager.getConnection(POSTGRES_URL, USERNAME, PASSWORD)) {
+            // First set up the database state
+            try (Statement statement = connection.createStatement()) {
+                statement.execute("CREATE TABLE IF NOT EXISTS listen_notify_trigger(id INT PRIMARY KEY)");
+                statement.execute("TRUNCATE listen_notify_trigger");
+
+                statement.execute("""
+                        CREATE OR REPLACE FUNCTION notify_table_change() RETURNS TRIGGER AS $$ 
+                            BEGIN 
+                                PERFORM pg_notify('table_change', TG_TABLE_NAME); 
+                                RETURN NEW; 
+                            END; 
+                        $$ LANGUAGE plpgsql;
+                        """);
+
+                statement.execute("""
+                        CREATE OR REPLACE TRIGGER table_change 
+                            AFTER INSERT OR UPDATE OR DELETE ON listen_notify_trigger
+                            FOR EACH ROW EXECUTE PROCEDURE notify_table_change();
+                        """);
+            }
+
+            try (Statement statement = connection.createStatement()) {
+                statement.execute("LISTEN table_change");
+            }
+
+            try (Statement statement = connection.createStatement()) {
+                statement.execute("INSERT INTO listen_notify_trigger(id) VALUES (1)");
+            }
+
+            var pgConnection = connection.unwrap(org.postgresql.PGConnection.class);
+            Set<String> receivedNotifications = new HashSet<>();
+
+            while (receivedNotifications.isEmpty()) {
+                PGNotification[] notifications = pgConnection.getNotifications(0);
+                if (notifications != null) {
+                    LOG.info("Received {} notifications", notifications.length);
+                    for (PGNotification notification : notifications) {
+                        LOG.info("Received notification: Channel='{}', Payload='{}', PID={}",
+                                notification.getName(),
+                                notification.getParameter(),
+                                notification.getPID());
+                        receivedNotifications.add(notification.getName() + " - " + notification.getParameter());
+                    }
+                }
+            }
+
+            assertEquals(Set.of("table_change - listen_notify_trigger"), receivedNotifications);
+        }
+    }
+
     private static class Listener implements PGNotificationListener {
         Set<String> receivedNotifications = new HashSet<>();
 
