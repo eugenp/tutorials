@@ -93,9 +93,22 @@
            <artifactId>spring-ai-starter-vector-store-mongodb-atlas</artifactId>
            <version>${spring-ai-mongodb-atlas.version}</version>
        </dependency>
+       <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-mistral-ai-spring-boot-starter</artifactId>
+        </dependency>
    </dependencies>
 
     <profiles>
+        <profile>
+            <id>amazon-nova</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.nova.Application</spring.boot.mainclass>
+            </properties>
+        </profile>
         <profile>
             <id>transcribe</id>
             <properties>
