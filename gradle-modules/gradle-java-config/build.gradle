@@ -1,0 +1,73 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+ext {
+    myVersion = '1.2.3'
+}
+
+def generatedDir = "$buildDir/generated-src"
+def generatedResourcesDir = "$buildDir/generated-resources"
+
+sourceSets {
+    main {
+        java {
+            srcDirs += "$generatedDir"
+        }
+        resources {
+            srcDirs += "$generatedResourcesDir/main"
+        }
+    }
+}
+
+tasks.register('generateBuildConfig') {
+    doLast {
+        def outputDir = file("$generatedDir/com/baeldung/gradle/config")
+        outputDir.mkdirs()
+        def file = new File(outputDir, "BuildConfig.java")
+        file.text = """
+            package com.baeldung.gradle.config;
+
+            public final class BuildConfig {
+                public static final String MY_VERSION = "${myVersion}";
+                private BuildConfig() {}
+            }
+        """.stripIndent()
+    }
+}
+
+tasks.register('generateProperties') {
+    doLast {
+        def mainResourcesDir = file("$generatedResourcesDir/main")
+        mainResourcesDir.mkdirs()
+        def mainFile = file("$mainResourcesDir/version.properties")
+        mainFile.text = "MY_VERSION=${myVersion}"
+    }
+}
+
+test {
+    systemProperty "MY_VERSION", "${myVersion}"
+    environment "MY_VERSION", "${myVersion}"
+}
+
+compileJava.dependsOn generateBuildConfig
+compileJava.dependsOn generateProperties

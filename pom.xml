@@ -643,6 +643,7 @@
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
+                <module>data-structures-2</module>
                 <module>deeplearning4j</module>
                 <module>di-modules</module>
                 <module>disruptor</module>
@@ -663,6 +664,7 @@
                 <module>hystrix</module>
                 <module>image-compressing</module>
                 <module>image-processing</module>
+                <module>j2cl</module>
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
@@ -672,7 +674,6 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
-                <module>jaxb</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
@@ -761,7 +762,7 @@
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
                 <module>spring-ai-2</module>
-		<module>spring-ai-3</module>
+        		<module>spring-ai-3</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>spring-batch</module>
@@ -825,10 +826,7 @@
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
-                <module>xml</module>
-                <module>xml-2</module>
-                <module>xml-3</module>
-                <module>xstream</module>
+                <module>xml-modules</module>
             </modules>
 
             <properties>
@@ -917,6 +915,48 @@
                 <java.version>23</java.version>
                 <maven.compiler.source>23</maven.compiler.source>
                 <maven.compiler.target>23</maven.compiler.target>
+                <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
+            </properties>
+
+        </profile>
+
+        <profile>
+            <id>default-jdk24</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <includes>
+                                <include>SpringContextTest</include>
+                                <include>**/*UnitTest</include>
+                            </includes>
+                            <excludes>
+                                <exclude>**/*IntegrationTest.java</exclude>
+                                <exclude>**/*IntTest.java</exclude>
+                                <exclude>**/*LongRunningUnitTest.java</exclude>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/JdbcTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>core-java-modules/core-java-streams-7</module>
+                <module>core-java-modules/core-java-24</module>
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>24</java.version>
+                <maven.compiler.source>24</maven.compiler.source>
+                <maven.compiler.target>24</maven.compiler.target>
                 <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
             </properties>
 
@@ -1032,6 +1072,7 @@
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
+                <module>data-structures-2</module>
                 <module>deeplearning4j</module>
                 <module>di-modules</module>
                 <module>disruptor</module>
@@ -1054,6 +1095,7 @@
                 <module>image-processing</module>
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
+                <module>j2cl</module>
                 <module>java-blockchain</module>
                 <module>java-jdi</module>
                 <module>java-panama</module>
@@ -1061,7 +1103,6 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
-                <module>jaxb</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
@@ -1150,7 +1191,7 @@
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
                 <module>spring-ai-2</module>
-		<module>spring-ai-3</module>
+				<module>spring-ai-3</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>spring-batch</module>
@@ -1214,10 +1255,7 @@
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
-                <module>xml</module>
-                <module>xml-2</module>
-                <module>xml-3</module>
-                <module>xstream</module>
+                <module>xml-modules</module>
             </modules>
 
             <properties>
@@ -1302,6 +1340,43 @@
         </profile>
 
         <profile>
+            <id>integration-jdk24</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*IntegrationTest.java</include>
+                                <include>**/*IntTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>core-java-modules/core-java-streams-7</module>
+                <module>core-java-modules/core-java-24</module>
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>24</java.version>
+                <maven.compiler.source>24</maven.compiler.source>
+                <maven.compiler.target>24</maven.compiler.target>
+                <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
+            </properties>
+
+        </profile>
+
+        <profile>
             <id>live-all</id>
             <build>
                 <plugins>
@@ -1364,6 +1439,7 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-3</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
             </modules>
@@ -1422,7 +1498,6 @@
                 <module>maven-modules/dependencygraph</module> <!-- JAVA-42057 -->
                 <module>spring-boot-modules/spring-boot-groovy</module> <!-- JAVA-42052 -->
                 <module>spring-boot-modules/spring-boot-data-3</module> <!-- JAVA-42051 -->
-                <module>spring-reactive-modules/spring-reactive-performance</module> <!-- JAVA-42050 -->
                 <module>spring-boot-modules/spring-boot-3-3</module> <!-- JAVA-42049 -->
                 <module>spring-boot-modules/spring-boot-cli</module> <!-- Not a maven project -->
                 <module>spring-boot-modules/spring-boot-graphql-2</module> <!-- JAVA-42053 -->
@@ -1433,7 +1508,6 @@
                 <module>aspectj</module> <!-- JAVA-42031 -->
                 <module>core-java-modules/core-java-classloader</module> <!-- JAVA-42033 -->
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
-                <module>spring-boot-modules/spring-boot-3</module> <!-- JAVA-42049 -->
             </modules>
         </profile>
 
@@ -1490,7 +1564,6 @@
                 <module>maven-modules/dependencygraph</module> <!-- JAVA-42057 -->
                 <module>spring-boot-modules/spring-boot-groovy</module> <!-- JAVA-42052 -->
                 <module>spring-boot-modules/spring-boot-data-3</module> <!-- JAVA-42051 -->
-                <module>spring-reactive-modules/spring-reactive-performance</module> <!-- JAVA-42050 -->
                 <module>spring-boot-modules/spring-boot-3-3</module> <!-- JAVA-42049 -->
                 <module>spring-boot-modules/spring-boot-cli</module> <!-- Not a maven project -->
                 <module>spring-boot-modules/spring-boot-graphql-2</module> <!-- JAVA-42053 -->
@@ -1501,7 +1574,6 @@
                 <module>aspectj</module> <!-- JAVA-42031 -->
                 <module>core-java-modules/core-java-classloader</module> <!-- JAVA-42033 -->
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
-                <module>spring-boot-modules/spring-boot-3</module> <!-- JAVA-42049 -->
             </modules>
         </profile>
 
@@ -1577,6 +1649,8 @@
         <mockito-inline.version>5.2.0</mockito-inline.version>
         <mockito-junit-jupiter.version>5.12.0</mockito-junit-jupiter.version>
         <logback.configurationFileName>logback-config-global.xml</logback.configurationFileName>
+        <jsoup.version>1.17.2</jsoup.version>
+        <jaxb-runtime.version>4.0.3</jaxb-runtime.version>
     </properties>
 
 </project>

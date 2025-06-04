@@ -46,6 +46,7 @@
         <module>maven-simple</module>
         <module>maven-surefire-plugin</module>
         <module>maven-unused-dependencies</module>
+        <module>maven-version-number</module>
         <module>maven-war-plugin</module>
         <module>spring-bom</module>
         <module>optional-dependencies</module>
@@ -56,6 +57,7 @@
         <module>multimodulemavenproject</module>
         <module>resume-from</module>
         <module>maven-multiple-repositories</module>
+        <module>maven-version-number</module>
     </modules>
 
     <dependencyManagement>

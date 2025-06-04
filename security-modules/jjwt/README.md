@@ -41,9 +41,3 @@ Available commands (assumes httpie - https://github.com/jkbrzt/httpie):
   http http://localhost:8080/parser-enforce?jwt=<jwt>
 	Parse passed in JWT enforcing the 'iss' registered claim and the 'hasMotorcycle' custom claim
 ```
-
-
-## Relevant articles:
-
-- [Supercharge Java Authentication with JSON Web Tokens (JWTs)](https://www.baeldung.com/java-json-web-tokens-jjwt)
-- [Decode a JWT Token in Java](https://www.baeldung.com/java-jwt-token-decode)

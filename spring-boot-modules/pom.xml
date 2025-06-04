@@ -120,6 +120,7 @@
         <module>spring-boot-keycloak-adapters</module>
         <module>spring-boot-mvc-legacy</module>
         <module>spring-boot-springdoc-2</module>
+        <module>spring-boot-ssl</module>
         <module>spring-boot-documentation</module>
         <module>spring-boot-3-url-matching</module>
         <module>spring-boot-graalvm-docker</module>
@@ -128,6 +129,7 @@
         <module>spring-boot-brave</module>
         <module>spring-boot-simple</module>
         <module>spring-boot-http2</module>
+        <module>spring-boot-ssl</module>
     </modules>
 
     <build>

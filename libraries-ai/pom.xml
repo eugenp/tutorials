@@ -3,6 +3,18 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-ai</artifactId>
     <name>libraries-ai</name>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>21</source>
+                    <target>21</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -90,6 +102,22 @@
             <artifactId>openai-java</artifactId>
             <version>${openai.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.tribuo</groupId>
+            <artifactId>tribuo-all</artifactId>
+            <version>${tribuo-all.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${common-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>${opencsv.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -99,6 +127,9 @@
         <theokanning.gpt>0.18.2</theokanning.gpt>
         <h2o-genmodel.version>3.46.0.6</h2o-genmodel.version>
         <openai.version>0.22.0</openai.version>
+        <tribuo-all.version>4.3.2</tribuo-all.version>
+        <common-lang3.version>3.17.0</common-lang3.version>
+        <opencsv.version>5.11</opencsv.version>
     </properties>
 
 </project>
