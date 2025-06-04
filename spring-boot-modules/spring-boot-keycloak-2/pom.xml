@@ -16,20 +16,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-<!--
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.keycloak.bom</groupId>
-                <artifactId>keycloak-adapter-bom</artifactId>
-                <version>${keycloak-adapter-bom.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
--->
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
