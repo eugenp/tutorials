@@ -12,9 +12,9 @@ public class ParseJsonBooleanUnitTest {
 
    private final String json = """
                                { 
-                                "name": "lorem ipsum",
-                                "active": true,
-                                "id": 1
+                                   "name": "lorem ipsum",
+                                   "active": true,
+                                   "id": 1
                                }
                                """;
     
@@ -28,12 +28,12 @@ public class ParseJsonBooleanUnitTest {
     @Test
     void givenJSONWithBooleanAs0Or1_whenParsed_correctBooleanValueReturned() {
         String json = """
-        { 
-        "name": "lorem ipsum",
-        "active": 1,
-        "id": 1
-        }
-        """;
+                      {
+                          "name": "lorem ipsum",
+                          "active": 1,
+                          "id": 1
+                      }
+                      """;
         JSONObject jsonObject = new JSONObject(json);
         assertThat(jsonObject.getInt("active")).isEqualTo(1);
     }
