@@ -56,7 +56,7 @@ public class PDFSampleMain {
         });
     }
 
-    private static void setAbsoluteColumnWidths(PdfPTable table) {
+    private static void setAbsoluteColumnWidths(PdfPTable table) throws URISyntaxException {
        try {
                table.setTotalWidth(500); // Sets total table width to 500 points
                table.setLockedWidth(true);
@@ -68,7 +68,7 @@ public class PDFSampleMain {
          }  
     }    
 
-    private static void setAbsoluteColumnWidthsInTableWidth(PdfPTable table) {
+    private static void setAbsoluteColumnWidthsInTableWidth(PdfPTable table) throws URISyntaxException {
         try {
                 table.setTotalWidth(new float[] {72f, 144f, 216f}); // First column 1 inch, second 2 inches, third 3 inches 
                 table.setLockedWidth(true);
@@ -78,7 +78,7 @@ public class PDFSampleMain {
           }  
     }
 
-    private static void setRelativeColumnWidths(PdfPTable table) {
+    private static void setRelativeColumnWidths(PdfPTable table) throws URISyntaxException {
         try {
                 // Set column widths (relative)
                 table.setWidths(new float[] {1, 2, 1});
