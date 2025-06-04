@@ -19,14 +19,14 @@ public class ParseJsonBooleanUnitTest {
                                """;
     
     @Test
-    void givenJSONString_whenParsed_correctBooleanValueReturned() {
+    void givenJSONString_whenParsed_thenCorrectBooleanValueReturned() {
         JSONObject jsonObject = new JSONObject(json);
         boolean active = jsonObject.getBoolean("active");
         assertTrue(active);
     }
 
     @Test
-    void givenJSONWithBooleanAs0Or1_whenParsed_correctBooleanValueReturned() {
+    void givenJSONWithBooleanAs0Or1_whenParsed_thenCorrectBooleanValueReturned() {
         String json = """
                       {
                           "name": "lorem ipsum",
@@ -39,7 +39,7 @@ public class ParseJsonBooleanUnitTest {
     }
 
     @Test
-    void givenJSONWithMixedRepresentationForBoolean_whenParsed_correctBooleanValueReturned() {
+    void givenJSONWithMixedRepresentationForBoolean_whenParsed_thenCorrectBooleanValueReturned() {
         JSONObject jsonObject = new JSONObject(json);
         Object activeObject = jsonObject.get("active");
         if (activeObject instanceof Integer value) {
