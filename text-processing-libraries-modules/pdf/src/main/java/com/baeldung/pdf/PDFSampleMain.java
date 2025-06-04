@@ -63,7 +63,7 @@ public class PDFSampleMain {
                float[] columnWidths = {100f, 200f, 200f}; // Defines three columns with absolute widths
                table.setWidths(columnWidths);
            
-       } catch (DocumentException e) {
+       } catch (Exception e) {
              e.printStackTrace();  
          }  
     }    
@@ -73,7 +73,7 @@ public class PDFSampleMain {
                 table.setTotalWidth(new float[] {72f, 144f, 216f}); // First column 1 inch, second 2 inches, third 3 inches 
                 table.setLockedWidth(true);
            
-        } catch (DocumentException e) {
+        } catch (Exception e) {
               e.printStackTrace();  
           }  
     }
@@ -84,7 +84,7 @@ public class PDFSampleMain {
                 table.setWidths(new float[] {1, 2, 1});
                 table.setWidthPercentage(80); // Table width as 80% of page width
            
-         } catch (DocumentException e) {
+         } catch (Exception e) {
                e.printStackTrace();  
            }  
     }
