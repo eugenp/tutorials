@@ -12,7 +12,7 @@ import static net.javacrumbs.jsonunit.assertj.JsonAssertions.assertThatJson;
 public class JSONObjectIntegrationTest {
 
     @Test
-    public void givenJSONJava_thenCreateNewJSONObject() {
+    public void givenJSONJava_whenCreatingNewJSONObject_thenCorrectNewJSONObjectCreated() {
         JSONObject jo = new JSONObject();
         jo.put("name", "jon doe");
         jo.put("age", "22");
@@ -23,7 +23,7 @@ public class JSONObjectIntegrationTest {
     }
 
     @Test
-    void givenJSON_whenParsed_correctValueReturned() {
+    void givenJSON_whenParsed_thenCorrectValueReturned() {
         String jsonString = """
                             {
                                 "type": "Feature", 
@@ -45,7 +45,7 @@ public class JSONObjectIntegrationTest {
     }
 
     @Test
-    public void givenMapObject_thenCreateJSONObject() {
+    public void givenMapObject_whenCreatingNewJSONObject_thenCorrectNewJSONObjectCreated() {
         Map<String, String> map = new HashMap<>();
         map.put("name", "jon doe");
         map.put("age", "22");
@@ -57,7 +57,7 @@ public class JSONObjectIntegrationTest {
     }
 
     @Test
-    public void givenJsonString_thenCreateJSONObject() {
+    public void givenJSONString_whenCreatingNewJSONObject_thenCorrectNewJSONObjectCreated() {
         JSONObject jo = new JSONObject(
           "{\"city\":\"chicago\",\"name\":\"jon doe\",\"age\":\"22\"}"
         );
