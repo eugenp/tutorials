@@ -24,7 +24,16 @@ public class JSONObjectIntegrationTest {
 
     @Test
     void givenJSON_whenParsed_correctValueReturned() {
-        String jsonString = "{\"type\": \"Feature\", \"geometry\": \"Point\", \"properties\": {\"isValid\": true, \"name\": \"Sample Point\"}}";
+        String jsonString = """
+                            {
+                                "type": "Feature", 
+                                "geometry": "Point",                          
+                                "properties": {
+                                                  "isValid": true, 
+                                                  "name": "Sample Point"
+                                              }
+                            }
+                            """;
         JSONObject jsonObject = new JSONObject(jsonString);
         String type = jsonObject.getString("type");
         String geometry = jsonObject.getString("geometry");
