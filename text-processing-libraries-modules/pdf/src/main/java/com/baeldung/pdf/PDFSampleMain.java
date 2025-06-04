@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
@@ -23,25 +24,23 @@ public class PDFSampleMain {
         
         try {
             
-            Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream("iTextTable.pdf"));
+                Document document = new Document();
+                PdfWriter.getInstance(document, new FileOutputStream("iTextTable.pdf"));
 
-            document.open();
+                document.open();
 
-            PdfPTable table = new PdfPTable(3);
-            addTableHeader(table);
-            setAbsoluteColumnWidths(table);
-            //setAbsoluteColumnWidthsInTableWidth(table);
-            //setRelativeColumnWidths(table);
-            addRows(table);
-            addCustomRows(table);
+                PdfPTable table = new PdfPTable(3);
+                addTableHeader(table);
+                
+                addRows(table);
+                addCustomRows(table);
 
-            document.add(table);
-            document.close();
+                document.add(table);
+                document.close();
             
         } catch (Exception e) {
-            e.printStackTrace();
-        }
+              e.printStackTrace();
+          }
     }
 
     private static void addTableHeader(PdfPTable table) {
@@ -53,24 +52,6 @@ public class PDFSampleMain {
             header.setPhrase(new Phrase(columnTitle));
             table.addCell(header);
         });
-    }
-
-    private static void setAbsoluteColumnWidths(PdfPTable table) {
-       table.setTotalWidth(500); // Sets total table width to 500 points
-       table.setLockedWidth(true);
-       float[] columnWidths = {100f, 200f, 200f}; // Defines three columns with absolute widths
-       table.setWidths(columnWidths);
-    }
-
-    private static void setAbsoluteColumnWidthsInTableWidth(PdfPTable table) {
-       table.setTotalWidth(new float[] {72f, 144f, 216f}); // First column 1 inch, second 2 inches, third 3 inches 
-       table.setLockedWidth(true);
-    }
-
-    private static void setRelativeColumnWidths(PdfPTable table) {
-        // Set column widths (relative)
-        table.setWidths(new float[] {1, 2, 1});
-        table.setWidthPercentage(80); // Table width as 80% of page width
     }
     
     private static void addRows(PdfPTable table) {
