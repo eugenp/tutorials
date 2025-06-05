@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class HTTPIntegrationTest {
     @Test
-    public void givenJSONObject_thenConvertToHTTPHeader() {
+    public void givenJSONObject_whenConvertingToHTTPHeader_thenCorrectHTTPHeaderCreated() {
         JSONObject jo = new JSONObject();
         jo.put("Method", "POST");
         jo.put("Request-URI", "http://www.example.com/");
@@ -20,7 +20,7 @@ public class HTTPIntegrationTest {
     }
 
     @Test
-    public void givenHTTPHeader_thenConvertToJSONObject() {
+    public void givenHTTPHeader_whenConvertingToJSONObject_thenCorrectJSONObjectCreated() {
         JSONObject obj = HTTP.toJSONObject("POST \"http://www.example.com/\" HTTP/1.1");
 
         assertThatJson(obj)
