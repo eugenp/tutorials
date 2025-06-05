@@ -29,9 +29,9 @@ class HttpAmbassadorControllerIntegrationTest {
     @Test
     void whenGetNames_thenReturnSuccessfully() throws Exception {
         String expectedResponse = "{'name': 'Baeldung'}";
-        when(restTemplate.getForObject(eq("https://domain.com/users/api"), eq(String.class))).thenReturn(expectedResponse);
+        when(restTemplate.getForObject(eq("https://domain.com/names/api"), eq(String.class))).thenReturn(expectedResponse);
 
-        mockMvc.perform(get("/v1/http-ambassador/names/get"))
+        mockMvc.perform(get("/v1/http-ambassador/names"))
             .andExpect(status().isOk())
             .andExpect(content().string(expectedResponse));
     }

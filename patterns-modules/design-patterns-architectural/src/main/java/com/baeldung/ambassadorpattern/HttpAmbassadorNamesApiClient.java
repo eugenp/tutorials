@@ -22,13 +22,11 @@ public class HttpAmbassadorNamesApiClient {
     }
 
     @Cacheable(value = "httpResponses", key = "#root.target.apiUrl", unless = "#result == null")
-    @Retryable(value = { HttpServerErrorException.class, HttpClientErrorException.class }, maxAttempts = 5, backoff = @Backoff(delay = 1000))
+    @Retryable(value = { HttpServerErrorException.class }, maxAttempts = 5, backoff = @Backoff(delay = 1000))
     public String getResponse() {
-        long start = System.currentTimeMillis();
         try {
             String result = restTemplate.getForObject(apiUrl, String.class);
-            long duration = System.currentTimeMillis() - start;
-            System.out.printf("HTTP call completed successfully to url=%s duration=%s%n", apiUrl, duration);
+            System.out.printf("HTTP call completed successfully to url=%s", apiUrl);
             return result;
         } catch (HttpClientErrorException e) {
             System.err.printf("HTTP Client Error error_code=%s message=%s", e.getStatusCode(), e.getMessage());

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/v1/http-ambassador")
+@RequestMapping("/v1/http-ambassador/names")
 public class HttpAmbassadorController {
 
     private final HttpAmbassadorNamesApiClient httpAmbassadorNamesApiClient;
@@ -14,7 +14,7 @@ public class HttpAmbassadorController {
         this.httpAmbassadorNamesApiClient = httpAmbassadorNamesApiClient;
     }
 
-    @GetMapping("/names/get")
+    @GetMapping
     public String get() {
         return httpAmbassadorNamesApiClient.getResponse();
     }
