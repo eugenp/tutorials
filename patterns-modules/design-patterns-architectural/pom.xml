@@ -61,7 +61,6 @@
             <artifactId>camel-test-junit5</artifactId>
             <version>${camel-test-junit5.version}</version>
         </dependency>
-
     </dependencies>
 
     <properties>
