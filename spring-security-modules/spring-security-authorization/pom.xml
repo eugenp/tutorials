@@ -15,6 +15,7 @@
     <modules>
         <module>spring-security-annotation-template-parameter</module>
         <module>spring-security-secure-domain-object</module>
+        <module>spring-security-url-http-method-auth</module>
     </modules>
 
     <dependencies>
