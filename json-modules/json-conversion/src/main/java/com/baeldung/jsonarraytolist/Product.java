@@ -1,4 +1,4 @@
-package entities;
+package com.baeldung.jsonarraytolist;
 
 public class Product {
 
