@@ -1,4 +1,4 @@
-package com.baeldung.generics.classtype;
+package com.baeldung.classtype;
 
 public class ContainerTypeFromTypeParameter<T> {
     private Class<T> clazz;
