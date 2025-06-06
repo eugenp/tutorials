@@ -2,8 +2,9 @@ package com.baeldung.pipeline;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.baeldung.pipeline.pipes.Pipe;
 import org.junit.jupiter.api.Test;
+
+import com.baeldung.pipeline.pipes.Pipe;
 
 class PipeUnitTest {
 
