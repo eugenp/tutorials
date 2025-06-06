@@ -29,6 +29,7 @@
         <module>design-patterns-functional</module>
         <module>design-patterns-singleton</module>
         <module>design-patterns-structural</module>
+        <module>design-patterns-structural-2</module>
         <module>dependency-inversion</module>
         <module>enterprise-patterns</module>
         <module>front-controller</module>

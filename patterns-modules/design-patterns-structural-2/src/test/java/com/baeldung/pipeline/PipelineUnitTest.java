@@ -2,9 +2,10 @@ package com.baeldung.pipeline;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.Test;
+
 import com.baeldung.pipeline.immutable.Pipe;
 import com.baeldung.pipeline.immutable.Pipeline;
-import org.junit.jupiter.api.Test;
 
 class PipelineUnitTest {
 
