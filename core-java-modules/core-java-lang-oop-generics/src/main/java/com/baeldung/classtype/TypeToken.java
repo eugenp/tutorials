@@ -1,4 +1,4 @@
-package com.baeldung.generics.classtype;
+package com.baeldung.classtype;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
