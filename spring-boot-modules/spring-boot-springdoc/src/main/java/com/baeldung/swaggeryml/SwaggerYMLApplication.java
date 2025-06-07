@@ -9,8 +9,8 @@ public class SwaggerYMLApplication {
 
 	public static void main(String[] args) {
 		new SpringApplicationBuilder(SwaggerYMLApplication.class)
-		    .properties("spring.config.name=application-yml")
-		    .run(args);
+		  .properties("spring.config.name=application-yml")
+		  .run(args);
 	}
 
 }
