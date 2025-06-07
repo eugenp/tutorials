@@ -66,9 +66,9 @@ public class UnionService {
         List<Researcher> researchers = researcherRepository.findAll();
 
         return Stream.concat(lecturers.stream()
-            .map(e -> new PersonDto(e.getId(), e.getName())),
+            .map(l -> new PersonDto(l.getId(), l.getName(), "LECTURER")),
             researchers.stream()
-                .map(c -> new PersonDto(c.getId(), c.getName())))
+                .map(r -> new PersonDto(r.getId(), r.getName(), "RESEARCHER")))
             .toList();
     }
 
@@ -77,9 +77,9 @@ public class UnionService {
         List<Researcher> researchers = researcherRepository.findAll();
 
         return Stream.concat(lecturers.stream()
-            .map(e -> new PersonDto(e.getId(), e.getName())),
+            .map(l -> new PersonDto(l.getId(), l.getName(), "LECTURER")),
             researchers.stream()
-                .map(c -> new PersonDto(c.getId(), c.getName())))
+                .map(r -> new PersonDto(r.getId(), r.getName(), "RESEARCHER")))
             .collect(Collectors.toSet());
     }
 
