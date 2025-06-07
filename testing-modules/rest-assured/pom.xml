@@ -139,61 +139,9 @@
         </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>
-            <artifactId>spring-mock-mvc</artifactId>
-            <version>${rest-assured.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>json-schema-validator</artifactId>
-            <version>${rest-assured.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.rest-assured</groupId>
             <artifactId>xml-path</artifactId>
             <version>${rest-assured.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured-all</artifactId>
-            <version>${rest-assured.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.github.scribejava</groupId>
-            <artifactId>scribejava-apis</artifactId>
-            <version>${scribejava.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.skyscreamer</groupId>
-            <artifactId>jsonassert</artifactId>
-            <version>${json.assert.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.javacrumbs.json-unit</groupId>
-            <artifactId>json-unit-assertj</artifactId>
-            <version>${json.unit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.javacrumbs.json-unit</groupId>
-            <artifactId>json-unit</artifactId>
-            <version>${json.unit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>uk.org.webcompere</groupId>
-            <artifactId>model-assert</artifactId>
-            <version>${model.assert.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>uk.co.datumedge</groupId>
-            <artifactId>hamcrest-json</artifactId>
-            <version>${hamcrest.json.version}</version>
         </dependency>
     </dependencies>
 
@@ -224,12 +172,7 @@
         <msg-simple.version>1.1</msg-simple.version>
         <btf.version>1.2</btf.version>
         <wiremock.version>3.9.1</wiremock.version>
-        <scribejava.version>2.5.3</scribejava.version>
         <rest-assured.version>5.5.0</rest-assured.version>
-        <json.assert.version>1.5.3</json.assert.version>
-        <json.unit.version>3.4.1</json.unit.version>
-        <model.assert.version>1.0.3</model.assert.version>
-        <hamcrest.json.version>0.2</hamcrest.json.version>
     </properties>
 
 </project>

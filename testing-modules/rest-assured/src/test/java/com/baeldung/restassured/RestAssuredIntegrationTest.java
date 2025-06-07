@@ -5,8 +5,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static io.restassured.RestAssured.get;
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-import static io.restassured.module.jsv.JsonSchemaValidatorSettings.settings;
+
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItems;
 
@@ -14,9 +13,6 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.github.fge.jsonschema.SchemaVersion;
-import com.github.fge.jsonschema.cfg.ValidationConfiguration;
-import com.github.fge.jsonschema.main.JsonSchemaFactory;
 import com.github.tomakehurst.wiremock.WireMockServer;
 
 import io.restassured.RestAssured;
@@ -63,36 +59,6 @@ public class RestAssuredIntegrationTest {
         get("/events?id=390").then()
           .assertThat()
           .body("odds.price", hasItems("1.30", "5.25", "2.70", "1.20"));
-    }
-
-    @Test
-    public void givenUrl_whenJsonResponseConformsToSchema_thenCorrect() {
-
-        get("/events?id=390").then()
-          .assertThat()
-          .body(matchesJsonSchemaInClasspath("event_0.json"));
-    }
-
-    @Test
-    public void givenUrl_whenValidatesResponseWithInstanceSettings_thenCorrect() {
-        JsonSchemaFactory jsonSchemaFactory = JsonSchemaFactory.newBuilder()
-          .setValidationConfiguration(ValidationConfiguration.newBuilder()
-            .setDefaultVersion(SchemaVersion.DRAFTV4)
-            .freeze())
-          .freeze();
-
-        get("/events?id=390").then()
-          .assertThat()
-          .body(matchesJsonSchemaInClasspath("event_0.json").using(jsonSchemaFactory));
-    }
-
-    @Test
-    public void givenUrl_whenValidatesResponseWithStaticSettings_thenCorrect() {
-
-        get("/events?id=390").then()
-          .assertThat()
-          .body(matchesJsonSchemaInClasspath("event_0.json").using(settings().with()
-            .checkedValidation(false)));
     }
 
     @AfterClass

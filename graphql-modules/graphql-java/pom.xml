@@ -17,6 +17,12 @@
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java-annotations</artifactId>
             <version>${graphql-java-annotations.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.graphql-java</groupId>
+                    <artifactId>graphql-java</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>io.ratpack</groupId>
@@ -37,16 +43,34 @@
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java-tools</artifactId>
             <version>${graphql-java-tools.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.graphql-java</groupId>
+                    <artifactId>graphql-java</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java-servlet</artifactId>
             <version>${graphql-java-servlet.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.graphql-java</groupId>
+                    <artifactId>graphql-java</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.graphql-java-generator</groupId>
             <artifactId>graphql-java-runtime</artifactId>
             <version>${graphql.java.generator.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.graphql-java</groupId>
+                    <artifactId>graphql-java</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -85,6 +109,12 @@
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java-extended-scalars</artifactId>
             <version>${graphql-java-extended-scalars.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.graphql-java</groupId>
+                    <artifactId>graphql-java</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>javax.ws.rs</groupId>

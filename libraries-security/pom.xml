@@ -9,34 +9,11 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-3</relativePath>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.scribejava</groupId>
-            <artifactId>scribejava-apis</artifactId>
-            <version>${scribejava.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.crypto.tink</groupId>
-            <artifactId>tink</artifactId>
-            <version>${tink.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
@@ -53,21 +30,6 @@
             <version>${bouncycastle.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.passay</groupId>
-            <artifactId>passay</artifactId>
-            <version>${passay.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.cryptacular</groupId>
-            <artifactId>cryptacular</artifactId>
-            <version>${cryptacular.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jasypt</groupId>
-            <artifactId>jasypt</artifactId>
-            <version>${jasypt.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.github.mwiede</groupId>
             <artifactId>jsch</artifactId>
             <version>${jsch.version}</version>
@@ -75,24 +37,20 @@
         <dependency>
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-core</artifactId>
-            <version>2.3.0.1</version>
+            <version>${jaxb-core.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
-            <version>2.3.1</version>
+            <version>${jaxb-api.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-impl</artifactId>
-            <version>2.3.1</version>
+            <version>${jaxb-api.version}</version>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-oauth2-authorization-server</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.sshd</groupId>
@@ -121,10 +79,6 @@
                     <artifactId>slf4j-log4j12</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jaxb</groupId>
-            <artifactId>jaxb-runtime</artifactId>
         </dependency>
         <dependency>
             <groupId>com.hierynomus</groupId>
@@ -159,11 +113,7 @@
     </build>
 
     <properties>
-        <scribejava.version>8.3.3</scribejava.version>
-        <passay.version>1.3.1</passay.version>
-        <tink.version>1.2.2</tink.version>
-        <cryptacular.version>1.2.2</cryptacular.version>
-        <jasypt.version>1.9.2</jasypt.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip> <!--Skip repackaging for multiple main classes-->
         <bouncycastle.version>1.68</bouncycastle.version>
         <jsch.version>0.2.18</jsch.version>
         <apache-mina.version>2.12.1</apache-mina.version>
@@ -171,6 +121,8 @@
         <apache-scp.version>2.12.1</apache-scp.version>
         <xacml4j.version>1.4.0</xacml4j.version>
         <sshj.version>0.38.0</sshj.version>
+        <jaxb-core.version>2.3.0.1</jaxb-core.version>
+        <jaxb-api.version>2.3.1</jaxb-api.version>
     </properties>
 
 </project>
