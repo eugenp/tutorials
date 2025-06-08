@@ -11,7 +11,7 @@ public class FakingOauth2SsoApplication {
 
     @GetMapping("/")
     public String get() {
-        return "Login Success!";
+        return "Login Success";
     }
 
     public static void main(String[] args) {

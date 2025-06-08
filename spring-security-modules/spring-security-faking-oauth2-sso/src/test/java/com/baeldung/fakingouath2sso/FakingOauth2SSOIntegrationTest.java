@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ActiveProfiles("test")
 @AutoConfigureMockMvc
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
-class FakingOauth2SsoApplicationTests {
+class FakingOauth2SsoApplicationTest {
 
     @Autowired
     MockMvc mockMvc;
