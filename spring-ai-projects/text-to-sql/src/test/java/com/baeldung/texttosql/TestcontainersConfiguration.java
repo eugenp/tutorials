@@ -10,7 +10,7 @@ class TestcontainersConfiguration {
 
     @Bean
     @ServiceConnection
-    public MySQLContainer mySQLContainer() {
+    MySQLContainer mySQLContainer() {
         return new MySQLContainer("mysql:9.3.0");
     }
 
