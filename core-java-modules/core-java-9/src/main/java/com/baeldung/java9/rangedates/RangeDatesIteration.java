@@ -4,7 +4,11 @@ import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class RangeDatesIteration {
+    private static final Logger log = LoggerFactory.getLogger(RangeDatesIteration.class);
 
     public void iterateBetweenDatesJava9(LocalDate startDate, LocalDate endDate) {
 
@@ -34,10 +38,10 @@ public class RangeDatesIteration {
     }
 
     private void processDate(LocalDate date) {
-        System.out.println(date);
+        log.debug(date.toString());
     }
 
     private void processDate(Date date) {
-        System.out.println(date);
+        log.debug(date.toString());
     }
 }

@@ -219,6 +219,11 @@
             <artifactId>restfb</artifactId>
             <version>${com.restfb.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.github.java-diff-utils</groupId>
+            <artifactId>java-diff-utils</artifactId>
+            <version>${java-diff-utils.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -238,6 +243,7 @@
         <github-api.version>1.327</github-api.version>
         <com.restfb.version>2025.6.0</com.restfb.version>
         <objenesis.version>3.4</objenesis.version>
+        <java-diff-utils.version>4.12</java-diff-utils.version>
     </properties>
 
 </project>
