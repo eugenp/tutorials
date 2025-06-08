@@ -39,8 +39,8 @@ public class JSONObjectIntegrationTest {
         String geometry = jsonObject.getString("geometry");
         JSONObject properties = jsonObject.getJSONObject("properties");
         boolean isValid = properties.getBoolean("isValid");
-        assertEquals(type,"Feature");
-        assertEquals(geometry,"Point");
+        assertEquals("Feature",type);
+        assertEquals("Point",geometry);
         assertTrue(isValid);
     }
 
