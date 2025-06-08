@@ -5,8 +5,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 class InvalidQueryException extends ResponseStatusException {
 
-	InvalidQueryException(String reason) {
-		super(HttpStatus.BAD_REQUEST, reason);
-	}
+    InvalidQueryException(String reason) {
+        super(HttpStatus.BAD_REQUEST, reason);
+    }
 
 }

@@ -5,8 +5,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 class EmptyResultException extends ResponseStatusException {
 
-	EmptyResultException(String reason) {
-		super(HttpStatus.NOT_FOUND, reason);
-	}
+    EmptyResultException(String reason) {
+        super(HttpStatus.NOT_FOUND, reason);
+    }
 
 }

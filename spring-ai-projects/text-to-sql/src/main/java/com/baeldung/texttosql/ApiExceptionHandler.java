@@ -9,9 +9,9 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestControllerAdvice
 class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
-	@ExceptionHandler(ResponseStatusException.class)
-	ProblemDetail handle(ResponseStatusException exception) {
-		return ProblemDetail.forStatusAndDetail(exception.getStatusCode(), exception.getReason());
-	}
+    @ExceptionHandler(ResponseStatusException.class)
+    ProblemDetail handle(ResponseStatusException exception) {
+        return ProblemDetail.forStatusAndDetail(exception.getStatusCode(), exception.getReason());
+    }
 
 }
