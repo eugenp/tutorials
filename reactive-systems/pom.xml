@@ -21,8 +21,4 @@
         <module>order-service</module>
     </modules>
 
-<!--    <properties>-->
-<!--        <spring-kafka.version>3.1.2</spring-kafka.version>-->
-<!--    </properties>-->
-
 </project>
