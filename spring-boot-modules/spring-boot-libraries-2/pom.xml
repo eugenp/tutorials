@@ -79,18 +79,6 @@
             <artifactId>jandex</artifactId>
             <version>${jandex.version}</version>
         </dependency>
-        <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-spring-boot2</artifactId>
-            <version>${resilience4j-spring-boot2.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.tomakehurst/wiremock-jre8 -->
-        <dependency>
-            <groupId>com.github.tomakehurst</groupId>
-            <artifactId>wiremock-jre8</artifactId>
-            <version>${wiremock-jre8.version}</version>
-            <scope>test</scope>
-        </dependency>
         <!-- Problem Spring Web -->
         <dependency>
             <groupId>org.zalando</groupId>
@@ -197,12 +185,9 @@
         <jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
         <reflections.version>0.10.2</reflections.version>
         <jandex.version>2.4.3.Final</jandex.version>
-        <resilience4j-spring-boot2.version>2.0.2</resilience4j-spring-boot2.version>
-        <wiremock-jre8.version>2.34.0</wiremock-jre8.version>
         <jandex-maven-plugin.version>1.2.3</jandex-maven-plugin.version>
         <springdoc.version>1.7.0</springdoc.version>
         <start-class>com.baeldung.openapi.OpenApiApplication</start-class>
-<!--        <spring-boot.version>3.2.2</spring-boot.version>-->
         <problem-spring-web.version>0.29.1</problem-spring-web.version>
         <jackson-datatype-problem.version>0.27.1</jackson-datatype-problem.version>
         <togglz.version>4.4.0</togglz.version>

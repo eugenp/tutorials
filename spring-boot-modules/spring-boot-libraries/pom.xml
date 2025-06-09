@@ -142,6 +142,18 @@
             <artifactId>qrcodegen</artifactId>
             <version>${qrcodegen.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-spring-boot2</artifactId>
+            <version>${resilience4j-spring-boot2.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.tomakehurst/wiremock-jre8 -->
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock-jre8</artifactId>
+            <version>${wiremock-jre8.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -249,6 +261,8 @@
         <caffeine.version>3.1.8</caffeine.version>
         <okapi.version>0.4.6</okapi.version>
         <qrcodegen.version>1.8.0</qrcodegen.version>
+        <resilience4j-spring-boot2.version>2.0.2</resilience4j-spring-boot2.version>
+        <wiremock-jre8.version>2.34.0</wiremock-jre8.version>
     </properties>
 
 </project>
