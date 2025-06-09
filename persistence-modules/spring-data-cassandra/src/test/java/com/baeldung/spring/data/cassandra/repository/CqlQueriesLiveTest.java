@@ -1,6 +1,5 @@
 package com.baeldung.spring.data.cassandra.repository;
 
-import com.baeldung.spring.data.cassandra.config.CassandraConfig;
 import com.baeldung.spring.data.cassandra.model.Book;
 import com.datastax.driver.core.querybuilder.Insert;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
@@ -23,7 +22,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.cassandra.core.cql.CqlIdentifier;
 import org.springframework.data.cassandra.core.CassandraAdminOperations;
 import org.springframework.data.cassandra.core.CassandraOperations;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.testcontainers.containers.CassandraContainer;
 import org.testcontainers.utility.DockerImageName;
@@ -40,7 +38,6 @@ import static junit.framework.TestCase.assertEquals;
  * Live test for Cassandra testing.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = CassandraConfig.class)
 public class CqlQueriesLiveTest {
     private static final Logger LOG = LoggerFactory.getLogger(CqlQueriesLiveTest.class);
     private static final String KEYSPACE_CREATION_QUERY =

@@ -1,9 +1,12 @@
 package com.baeldung.spring.data.cassandra.repository;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.util.NoSuchElementException;
 
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +35,11 @@ class BookRepositoryLiveTest {
 
     @Autowired
     private BookRepository bookRepository;
+
+    @AfterEach
+    void cleanUpDatabase() {
+        bookRepository.deleteAll();
+    }
 
     @BeforeAll
     static void setupCassandraConnectionProperties() {
@@ -80,15 +88,15 @@ class BookRepositoryLiveTest {
             .getTitle());
     }
 
-    // @Test(expected = java.util.NoSuchElementException.class)
+    @Test
     void whenDeletingExistingBooks_thenNotAvailableOnRetrieval() {
         final Book javaBook = new Book(UUIDs.timeBased(), "Head First Java", "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
         bookRepository.save(javaBook);
         bookRepository.delete(javaBook);
         final Iterable<Book> books = bookRepository.findByTitleAndPublisher("Head First Java", "O'Reilly Media");
-        assertNotEquals(javaBook.getId(), books.iterator()
-            .next()
-            .getId());
+        assertThrows(NoSuchElementException.class, () -> {
+            books.iterator().next();
+        });
     }
 
     @Test

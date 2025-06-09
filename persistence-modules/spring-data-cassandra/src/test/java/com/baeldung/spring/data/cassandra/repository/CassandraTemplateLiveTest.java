@@ -1,6 +1,5 @@
 package com.baeldung.spring.data.cassandra.repository;
 
-import com.baeldung.spring.data.cassandra.config.CassandraConfig;
 import com.baeldung.spring.data.cassandra.model.Book;
 import com.datastax.oss.driver.api.core.CqlSession;
 import com.datastax.oss.driver.api.core.cql.SimpleStatement;
@@ -35,7 +34,6 @@ import static org.junit.Assert.assertEquals;
 
 @Testcontainers
 @SpringBootTest
-@ContextConfiguration(classes = CassandraConfig.class)
 public class CassandraTemplateLiveTest {
 
     private static final String DATA_TABLE_NAME = "book";
