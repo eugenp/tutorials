@@ -30,7 +30,7 @@
     <configuration>
         <sort>clustered</sort>
         <inlinePrefix>https?://</inlinePrefix>
-<!--                    <common>full</common>-->
+        <common>full</common>
 <!--                    <whitespace>section</whitespace>-->
 
     </configuration>
