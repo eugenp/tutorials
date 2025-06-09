@@ -127,6 +127,30 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+        <!-- togglez -->
+        <dependency>
+            <groupId>org.togglz</groupId>
+            <artifactId>togglz-spring-boot-starter</artifactId>
+            <version>${togglz.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.togglz</groupId>
+            <artifactId>togglz-spring-security</artifactId>
+            <version>${togglz.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -200,9 +224,10 @@
         <jandex-maven-plugin.version>1.2.3</jandex-maven-plugin.version>
         <springdoc.version>1.7.0</springdoc.version>
         <start-class>com.baeldung.openapi.OpenApiApplication</start-class>
-        <spring-boot.version>3.2.2</spring-boot.version>
+<!--        <spring-boot.version>3.2.2</spring-boot.version>-->
         <problem-spring-web.version>0.29.1</problem-spring-web.version>
         <jackson-datatype-problem.version>0.27.1</jackson-datatype-problem.version>
+        <togglz.version>4.4.0</togglz.version>
     </properties>
 
 </project>

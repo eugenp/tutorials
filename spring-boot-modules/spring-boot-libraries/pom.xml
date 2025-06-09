@@ -39,17 +39,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- togglez -->
-        <dependency>
-            <groupId>org.togglz</groupId>
-            <artifactId>togglz-spring-boot-starter</artifactId>
-            <version>${togglz.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.togglz</groupId>
-            <artifactId>togglz-spring-security</artifactId>
-            <version>${togglz.version}</version>
-        </dependency>
         <!-- ShedLock -->
         <dependency>
             <groupId>net.javacrumbs.shedlock</groupId>
@@ -222,7 +211,6 @@
     <properties>
         <!-- The main class to start by executing java -jar -->
         <start-class>com.baeldung.graphql.DemoApplication</start-class>
-        <togglz.version>4.4.0</togglz.version>
         <rome.version>1.9.0</rome.version>
         <graphql-java-tools.version>5.2.4</graphql-java-tools.version>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
