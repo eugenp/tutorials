@@ -154,6 +154,26 @@
             <version>${wiremock-jre8.version}</version>
             <scope>test</scope>
         </dependency>
+<!--        &lt;!&ndash; openapi &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.openapitools</groupId>-->
+<!--            <artifactId>openapi-generator</artifactId>-->
+<!--            <version>${openapi-generator.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.openapitools</groupId>-->
+<!--            <artifactId>jackson-databind-nullable</artifactId>-->
+<!--            <version>${jackson-databind-nullable.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.springdoc</groupId>-->
+<!--            <artifactId>springdoc-openapi-ui</artifactId>-->
+<!--            <version>${springdoc.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>ch.qos.logback</groupId>-->
+<!--            <artifactId>logback-classic</artifactId>-->
+<!--        </dependency>-->
     </dependencies>
 
     <repositories>
@@ -201,6 +221,37 @@
                     <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
                 </configuration>
             </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.openapitools</groupId>-->
+<!--                <artifactId>openapi-generator-maven-plugin</artifactId>-->
+<!--                <version>${openapi-generator.version}</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>generate</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <inputSpec>-->
+<!--                                ${project.basedir}/src/main/resources/petstore.yml-->
+<!--                            </inputSpec>-->
+<!--                            <generatorName>spring</generatorName>-->
+<!--                            <apiPackage>com.baeldung.openapi.api</apiPackage>-->
+<!--                            <modelPackage>com.baeldung.openapi.model</modelPackage>-->
+<!--                            <generateApis>true</generateApis>-->
+<!--                            <generateModels>true</generateModels>-->
+<!--                            <generateSupportingFiles>true</generateSupportingFiles>-->
+<!--                            <supportingFilesToGenerate>-->
+<!--                                ApiUtil.java-->
+<!--                            </supportingFilesToGenerate>-->
+<!--                            <configOptions>-->
+<!--                                <delegatePattern>false</delegatePattern>-->
+<!--                                <useJakartaEe>true</useJakartaEe>-->
+<!--                                &lt;!&ndash;useSpringBoot3>true</useSpringBoot3&ndash;&gt; &lt;!&ndash;we can uncomment this option if the project uses Spring Boot 3 and above&ndash;&gt;-->
+<!--                            </configOptions>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 
@@ -246,7 +297,7 @@
         <spring-modulith-bom.version>1.2.2</spring-modulith-bom.version>
 
         <!-- The main class to start by executing java -jar -->
-        <start-class>com.baeldung.graphql.DemoApplication</start-class>
+        <start-class>com.baeldung.openapi.OpenApiApplication</start-class>
         <rome.version>1.9.0</rome.version>
         <graphql-java-tools.version>5.2.4</graphql-java-tools.version>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
@@ -263,6 +314,9 @@
         <qrcodegen.version>1.8.0</qrcodegen.version>
         <resilience4j-spring-boot2.version>2.0.2</resilience4j-spring-boot2.version>
         <wiremock-jre8.version>2.34.0</wiremock-jre8.version>
+        <openapi-generator.version>7.8.0</openapi-generator.version>
+        <springdoc.version>1.7.0</springdoc.version>
+        <jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
     </properties>
 
 </project>

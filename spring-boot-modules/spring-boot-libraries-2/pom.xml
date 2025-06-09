@@ -25,10 +25,6 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
         </dependency>
@@ -41,22 +37,6 @@
             <groupId>org.jobrunr</groupId>
             <artifactId>jobrunr-spring-boot-starter</artifactId>
             <version>${jobrunr-spring-boot-starter.version}</version>
-        </dependency>
-        <!-- openapi -->
-        <dependency>
-            <groupId>org.openapitools</groupId>
-            <artifactId>openapi-generator</artifactId>
-            <version>${openapi-generator.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openapitools</groupId>
-            <artifactId>jackson-databind-nullable</artifactId>
-            <version>${jackson-databind-nullable.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <version>${springdoc.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -123,37 +103,6 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.openapitools</groupId>
-                <artifactId>openapi-generator-maven-plugin</artifactId>
-                <version>${openapi-generator.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <inputSpec>
-                                ${project.basedir}/src/main/resources/petstore.yml
-                            </inputSpec>
-                            <generatorName>spring</generatorName>
-                            <apiPackage>com.baeldung.openapi.api</apiPackage>
-                            <modelPackage>com.baeldung.openapi.model</modelPackage>
-                            <generateApis>true</generateApis>
-                            <generateModels>true</generateModels>
-                            <generateSupportingFiles>true</generateSupportingFiles>
-                            <supportingFilesToGenerate>
-                                ApiUtil.java
-                            </supportingFilesToGenerate>
-                            <configOptions>
-                                <delegatePattern>false</delegatePattern>
-                                <useJakartaEe>true</useJakartaEe>
-                                <!--useSpringBoot3>true</useSpringBoot3--> <!--we can uncomment this option if the project uses Spring Boot 3 and above-->
-                            </configOptions>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.jboss.jandex</groupId>
                 <artifactId>jandex-maven-plugin</artifactId>
                 <version>${jandex-maven-plugin.version}</version>
@@ -180,14 +129,10 @@
     <properties>
         <jobrunr-spring-boot-starter.version>5.1.7</jobrunr-spring-boot-starter.version>
         <awaitility.version>4.0.3</awaitility.version>
-        <openapi-generator.version>7.8.0</openapi-generator.version>
-        <spring.data.version>2.4.5</spring.data.version>
-        <jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
         <reflections.version>0.10.2</reflections.version>
         <jandex.version>2.4.3.Final</jandex.version>
         <jandex-maven-plugin.version>1.2.3</jandex-maven-plugin.version>
-        <springdoc.version>1.7.0</springdoc.version>
-        <start-class>com.baeldung.openapi.OpenApiApplication</start-class>
+        <start-class>com.baeldung.kong.StockApp</start-class>
         <problem-spring-web.version>0.29.1</problem-spring-web.version>
         <jackson-datatype-problem.version>0.27.1</jackson-datatype-problem.version>
         <togglz.version>4.4.0</togglz.version>
