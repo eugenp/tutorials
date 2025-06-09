@@ -8,9 +8,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import com.baeldung.generics.classtype.ContainerTypeFromReflection;
-import com.baeldung.generics.classtype.ContainerTypeFromTypeParameter;
-import com.baeldung.generics.classtype.TypeToken;
 
 public class GenericClassTypeUnitTest {
 
