@@ -16,25 +16,26 @@
 
     <build>
         <plugins>
-<plugin>
-    <groupId>uk.org.webcompere</groupId>
-    <artifactId>spring-properties-cleaner-plugin</artifactId>
-    <version>1.0.3</version>
-    <executions>
-        <execution>
-            <goals>
-                <goal>scan</goal>
-            </goals>
-        </execution>
-    </executions>
-    <configuration>
-        <sort>clustered</sort>
-        <inlinePrefix>https?://</inlinePrefix>
-        <common>full</common>
-<!--                    <whitespace>section</whitespace>-->
-
-    </configuration>
-</plugin>
+            <plugin>
+                <groupId>uk.org.webcompere</groupId>
+                <artifactId>spring-properties-cleaner-plugin</artifactId>
+                <version>1.0.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>scan</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- final configuration that protects these properties files - comment these all out and bring in the properties
+                    from "original-unfixed" to follow the steps from the example -->
+                    <sort>clustered</sort>
+                    <inlinePrefix>https?://</inlinePrefix>
+                    <common>full</common>
+                    <whitespace>section</whitespace>
+                </configuration>
+            </plugin>
 
             <!-- the configuration below in not needed for this tutorial or for Spotless,
                 but we need it when building all the modules in our Jenkins CI  -->
