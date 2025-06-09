@@ -1,110 +1,110 @@
 package com.baeldung.spring.data.cassandra.repository;
 
-import com.baeldung.spring.data.cassandra.config.CassandraConfig;
-import com.baeldung.spring.data.cassandra.model.Book;
-import com.datastax.driver.core.Cluster;
-import com.datastax.driver.core.Session;
-import com.datastax.driver.core.utils.UUIDs;
-import com.google.common.collect.ImmutableSet;
-import org.apache.cassandra.exceptions.ConfigurationException;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.thrift.transport.TTransportException;
-import org.cassandraunit.utils.EmbeddedCassandraServerHelper;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.util.NoSuchElementException;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cassandra.core.cql.CqlIdentifier;
-import org.springframework.data.cassandra.core.CassandraAdminOperations;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.testcontainers.containers.CassandraContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
-import java.io.IOException;
-import java.util.HashMap;
+import com.baeldung.spring.data.cassandra.model.Book;
+import com.datastax.driver.core.utils.UUIDs;
+import com.datastax.oss.driver.api.core.CqlSession;
+import com.google.common.collect.ImmutableSet;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+@Testcontainers
+@SpringBootTest
+class BookRepositoryLiveTest {
 
-/**
- * Live test for Cassandra testing.
- *
- * This can be converted to IntegrationTest once cassandra-unit tests can be executed in parallel and
- * multiple test servers started as part of test suite.
- *
- * Open cassandra-unit issue for parallel execution: https://github.com/jsevellec/cassandra-unit/issues/155
- */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = CassandraConfig.class)
-public class BookRepositoryLiveTest {
-    private static final Log LOGGER = LogFactory.getLog(BookRepositoryLiveTest.class);
+    private static final String KEYSPACE_NAME = "testKeySpace";
+    private static final String KEYSPACE_CREATION_QUERY = "CREATE KEYSPACE IF NOT EXISTS testKeySpace " + "WITH replication = { 'class': 'SimpleStrategy', 'replication_factor': '1' };";
 
-    public static final String KEYSPACE_CREATION_QUERY = "CREATE KEYSPACE IF NOT EXISTS testKeySpace WITH replication = { 'class': 'SimpleStrategy', 'replication_factor': '3' };";
+    private static final String KEYSPACE_ACTIVATE_QUERY = "USE " + KEYSPACE_NAME + ";";
+    private static final String TABLE_NAME = "book";
 
-    public static final String KEYSPACE_ACTIVATE_QUERY = "USE testKeySpace;";
-
-    public static final String DATA_TABLE_NAME = "book";
+    @Container
+    private static final CassandraContainer<?> cassandraContainer = new CassandraContainer<>("cassandra:4.1.8").withExposedPorts(9042);
 
     @Autowired
     private BookRepository bookRepository;
 
-    @Autowired
-    private CassandraAdminOperations adminTemplate;
-
-    @BeforeClass
-    public static void startCassandraEmbedded() throws InterruptedException, TTransportException, ConfigurationException, IOException {
-        EmbeddedCassandraServerHelper.startEmbeddedCassandra();
-        final Cluster cluster = Cluster.builder().addContactPoints("127.0.0.1").withPort(9142).build();
-        LOGGER.info("Server Started at 127.0.0.1:9142... ");
-        final Session session = cluster.connect();
-        session.execute(KEYSPACE_CREATION_QUERY);
-        session.execute(KEYSPACE_ACTIVATE_QUERY);
-        LOGGER.info("KeySpace created and activated.");
-        Thread.sleep(5000);
+    @AfterEach
+    void cleanUpDatabase() {
+        bookRepository.deleteAll();
     }
 
-    @Before
-    public void createTable() {
-        adminTemplate.createTable(true, CqlIdentifier.cqlId(DATA_TABLE_NAME), Book.class, new HashMap<>());
+    @BeforeAll
+    static void setupCassandraConnectionProperties() {
+        System.setProperty("spring.cassandra.keyspace-name", KEYSPACE_NAME);
+        System.setProperty("spring.cassandra.contact-points", cassandraContainer.getContainerIpAddress());
+        System.setProperty("spring.cassandra.port", String.valueOf(cassandraContainer.getMappedPort(9042)));
+
+        try (CqlSession session = CqlSession.builder()
+            .addContactPoint(cassandraContainer.getContactPoint())
+            .withLocalDatacenter(cassandraContainer.getLocalDatacenter())
+            .build()) {
+
+            session.execute(KEYSPACE_CREATION_QUERY);
+            session.execute(KEYSPACE_ACTIVATE_QUERY);
+        }
+    }
+
+    @AfterAll
+    static void tearDown() {
+        if (cassandraContainer != null) {
+            cassandraContainer.stop();
+        }
     }
 
     @Test
-    public void whenSavingBook_thenAvailableOnRetrieval() {
+    void whenSavingBook_thenAvailableOnRetrieval() {
         final Book javaBook = new Book(UUIDs.timeBased(), "Head First Java", "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
-        bookRepository.save(ImmutableSet.of(javaBook));
+        bookRepository.save(javaBook);
+
         final Iterable<Book> books = bookRepository.findByTitleAndPublisher("Head First Java", "O'Reilly Media");
-        assertEquals(javaBook.getId(), books.iterator().next().getId());
+        assertEquals(javaBook.getId(), books.iterator()
+            .next()
+            .getId());
     }
 
     @Test
-    public void whenUpdatingBooks_thenAvailableOnRetrieval() {
+    void whenUpdatingBooks_thenAvailableOnRetrieval() {
         final Book javaBook = new Book(UUIDs.timeBased(), "Head First Java", "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
-        bookRepository.save(ImmutableSet.of(javaBook));
+        bookRepository.save(javaBook);
         final Iterable<Book> books = bookRepository.findByTitleAndPublisher("Head First Java", "O'Reilly Media");
         javaBook.setTitle("Head First Java Second Edition");
-        bookRepository.save(ImmutableSet.of(javaBook));
+        bookRepository.save(javaBook);
         final Iterable<Book> updateBooks = bookRepository.findByTitleAndPublisher("Head First Java Second Edition", "O'Reilly Media");
-        assertEquals(javaBook.getTitle(), updateBooks.iterator().next().getTitle());
-    }
-
-    @Test(expected = java.util.NoSuchElementException.class)
-    public void whenDeletingExistingBooks_thenNotAvailableOnRetrieval() {
-        final Book javaBook = new Book(UUIDs.timeBased(), "Head First Java", "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
-        bookRepository.save(ImmutableSet.of(javaBook));
-        bookRepository.delete(javaBook);
-        final Iterable<Book> books = bookRepository.findByTitleAndPublisher("Head First Java", "O'Reilly Media");
-        assertNotEquals(javaBook.getId(), books.iterator().next().getId());
+        assertEquals(javaBook.getTitle(), updateBooks.iterator()
+            .next()
+            .getTitle());
     }
 
     @Test
-    public void whenSavingBooks_thenAllShouldAvailableOnRetrieval() {
+    void whenDeletingExistingBooks_thenNotAvailableOnRetrieval() {
+        final Book javaBook = new Book(UUIDs.timeBased(), "Head First Java", "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
+        bookRepository.save(javaBook);
+        bookRepository.delete(javaBook);
+        final Iterable<Book> books = bookRepository.findByTitleAndPublisher("Head First Java", "O'Reilly Media");
+        assertThrows(NoSuchElementException.class, () -> {
+            books.iterator().next();
+        });
+    }
+
+    @Test
+    void whenSavingBooks_thenAllShouldAvailableOnRetrieval() {
         final Book javaBook = new Book(UUIDs.timeBased(), "Head First Java", "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
         final Book dPatternBook = new Book(UUIDs.timeBased(), "Head Design Patterns", "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
-        bookRepository.save(ImmutableSet.of(javaBook));
-        bookRepository.save(ImmutableSet.of(dPatternBook));
+        bookRepository.save(javaBook);
+        bookRepository.save(dPatternBook);
         final Iterable<Book> books = bookRepository.findAll();
         int bookCount = 0;
         for (final Book book : books) {
@@ -112,15 +112,4 @@ public class BookRepositoryLiveTest {
         }
         assertEquals(bookCount, 2);
     }
-
-    @After
-    public void dropTable() {
-        adminTemplate.dropTable(CqlIdentifier.cqlId(DATA_TABLE_NAME));
-    }
-
-    @AfterClass
-    public static void stopCassandraEmbedded() {
-        EmbeddedCassandraServerHelper.cleanEmbeddedCassandra();
-    }
-
 }
