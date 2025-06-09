@@ -26,6 +26,7 @@
         <!--<module>core-java-sun</module> -->
         <module>core-java-collections-conversions-2</module>
         <module>core-java-collections-conversions-3</module>
+        <module>core-java-collections-conversions-4</module>
         <!--<module>core-java-concurrency-advanced-5</module>--> <!-- Migrated to heavy profile -->
         <module>core-java-9-new-features</module>
         <!--<module>core-java-14</module> --> <!-- failing after upgrade to jdk21 -->

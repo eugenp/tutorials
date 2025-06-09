@@ -1,16 +1,15 @@
 package com.baeldung.strlisttointlist;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import com.google.common.base.Function;
+import com.google.common.collect.Lists;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.jupiter.api.Test;
-
-import com.google.common.base.Function;
-import com.google.common.collect.Lists;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StringListToIntListUnitTest {
     private final static List<String> STRING_LIST = Arrays.asList("1", "2", "3", "4", "5", "6", "7");
