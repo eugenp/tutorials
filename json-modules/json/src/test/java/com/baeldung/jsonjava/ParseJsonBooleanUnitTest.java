@@ -45,7 +45,7 @@ public class ParseJsonBooleanUnitTest {
         if (activeObject instanceof Integer value) {
             assertTrue(value == 1);
         } else if (activeObject instanceof Boolean value) {
-              assertTrue(value);
+            assertTrue(value);
           }  
     }
 }
