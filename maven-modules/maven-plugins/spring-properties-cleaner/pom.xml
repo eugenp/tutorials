@@ -28,10 +28,11 @@
         </execution>
     </executions>
     <configuration>
-<!--                    <sort>clustered</sort>-->
+        <sort>clustered</sort>
+<!--                    <inlinePrefix>https?://</inlinePrefix>-->
 <!--                    <common>full</common>-->
 <!--                    <whitespace>section</whitespace>-->
-<!--                    <inlinePrefix>https?://</inlinePrefix>-->
+
     </configuration>
 </plugin>
 
