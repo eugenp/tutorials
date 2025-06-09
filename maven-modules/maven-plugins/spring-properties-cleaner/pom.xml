@@ -29,7 +29,7 @@
     </executions>
     <configuration>
         <sort>clustered</sort>
-<!--                    <inlinePrefix>https?://</inlinePrefix>-->
+        <inlinePrefix>https?://</inlinePrefix>
 <!--                    <common>full</common>-->
 <!--                    <whitespace>section</whitespace>-->
 
