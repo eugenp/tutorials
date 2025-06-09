@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>spring-properties-cleaner</artifactId>
+
+    <parent>
+        <artifactId>maven-plugins</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>uk.org.webcompere</groupId>
+                <artifactId>spring-properties-cleaner-plugin</artifactId>
+                <version>1.0.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>scan</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+<!--                    &lt;!&ndash; Default: none, Options: clustered, sorted &ndash;&gt;-->
+<!--                    <sort>clustered</sort>-->
+
+<!--                    &lt;!&ndash; Default: none, Options: consistent, multiple, full &ndash;&gt;-->
+<!--                    <common>consistent</common>-->
+
+<!--                    &lt;!&ndash; Default: preserve, Options: remove, section &ndash;&gt;-->
+<!--                    <whitespace>preserve</whitespace>-->
+
+<!--                    &lt;!&ndash; If we want to inline into a property a prefix that matches the regex that always appears before it &ndash;&gt;-->
+<!--                    <inlinePrefix>https?://</inlinePrefix>-->
+                </configuration>
+            </plugin>
+
+            <!-- the configuration below in not needed for this tutorial or for Spotless,
+                but we need it when building all the modules in our Jenkins CI  -->
+            <plugin>
+                <artifactId>maven-verifier-plugin</artifactId>
+                <version>${maven.verifier.version}</version>
+                <configuration>
+                    <verificationFile>../input-resources/verifications.xml</verificationFile>
+                    <failOnError>false</failOnError>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <!-- in a spring project it will default to src/main/resources -->
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+            </resource>
+        </resources>
+    </build>
+
+    <properties>
+    </properties>
+
+</project>
