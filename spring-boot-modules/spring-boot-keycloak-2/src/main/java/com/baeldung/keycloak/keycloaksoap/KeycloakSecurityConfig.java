@@ -1,5 +1,6 @@
 package com.baeldung.keycloak.keycloaksoap;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +16,10 @@ import org.springframework.security.web.SecurityFilterChain;
 @ConditionalOnProperty(name = "keycloak.enabled", havingValue = "true")
 @EnableMethodSecurity(jsr250Enabled = true)
 public class KeycloakSecurityConfig {
+
+    @Value("${client.id}")
+    private String clientId;
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
@@ -29,7 +34,7 @@ public class KeycloakSecurityConfig {
     @Bean
     public JwtAuthenticationConverter jwtAuthenticationConverter() {
         JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
-        converter.setJwtGrantedAuthoritiesConverter(new KeycloakRoleConverter());
+        converter.setJwtGrantedAuthoritiesConverter(new KeycloakRoleConverter(clientId));
         return converter;
     }
 }

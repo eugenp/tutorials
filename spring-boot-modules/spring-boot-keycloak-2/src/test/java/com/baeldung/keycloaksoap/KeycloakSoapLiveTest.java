@@ -98,7 +98,7 @@ class KeycloakSoapLiveTest {
     }
 
     /**
-     * Happy flow to test <i>deleteProduct</i> operation. Test the <i>jhondoe</i> user.
+     * Happy flow to test <i>deleteProduct</i> operation. Test the <i>johndoe</i> user.
      * This user should be configured in Keycloak server with a role <i>user</i>
      */
     @Test
@@ -106,7 +106,7 @@ class KeycloakSoapLiveTest {
     void givenAccessToken_whenDeleteProduct_thenReturnSuccess() {
         HttpHeaders headers = new HttpHeaders();
         headers.set("content-type", "text/xml");
-        headers.set("Authorization", "Bearer " + generateToken("jhondoe", "password"));
+        headers.set("Authorization", "Bearer " + generateToken("johndoe", "password"));
         HttpEntity<String> request = new HttpEntity<>(Utility.getDeleteProductsRequest(), headers);
         ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://localhost:" + port + "/ws/api/v1/", request, String.class);
 
@@ -126,7 +126,7 @@ class KeycloakSoapLiveTest {
     void givenUnauthorizedAccessToken_whenDeleteProduct_thenReturnUnauthorized() {
         HttpHeaders headers = new HttpHeaders();
         headers.set("content-type", "text/xml");
-        headers.set("Authorization", "Bearer " + generateToken("johndoe", "password"));
+        headers.set("Authorization", "Bearer " + generateToken("janedoe", "password"));
         HttpEntity<String> request = new HttpEntity<>(Utility.getDeleteProductsRequest(), headers);
         ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://localhost:" + port + "/ws/api/v1/", request, String.class);
 
