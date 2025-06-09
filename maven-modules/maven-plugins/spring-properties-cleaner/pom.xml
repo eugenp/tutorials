@@ -16,31 +16,24 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>uk.org.webcompere</groupId>
-                <artifactId>spring-properties-cleaner-plugin</artifactId>
-                <version>1.0.3</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>scan</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-<!--                    &lt;!&ndash; Default: none, Options: clustered, sorted &ndash;&gt;-->
+<plugin>
+    <groupId>uk.org.webcompere</groupId>
+    <artifactId>spring-properties-cleaner-plugin</artifactId>
+    <version>1.0.3</version>
+    <executions>
+        <execution>
+            <goals>
+                <goal>scan</goal>
+            </goals>
+        </execution>
+    </executions>
+    <configuration>
 <!--                    <sort>clustered</sort>-->
-
-<!--                    &lt;!&ndash; Default: none, Options: consistent, multiple, full &ndash;&gt;-->
-<!--                    <common>consistent</common>-->
-
-<!--                    &lt;!&ndash; Default: preserve, Options: remove, section &ndash;&gt;-->
-<!--                    <whitespace>preserve</whitespace>-->
-
-<!--                    &lt;!&ndash; If we want to inline into a property a prefix that matches the regex that always appears before it &ndash;&gt;-->
+<!--                    <common>full</common>-->
+<!--                    <whitespace>section</whitespace>-->
 <!--                    <inlinePrefix>https?://</inlinePrefix>-->
-                </configuration>
-            </plugin>
+    </configuration>
+</plugin>
 
             <!-- the configuration below in not needed for this tutorial or for Spotless,
                 but we need it when building all the modules in our Jenkins CI  -->
