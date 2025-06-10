@@ -9,6 +9,8 @@ import java.lang.ProcessBuilder.Redirect;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Objects;
@@ -24,27 +26,26 @@ import org.slf4j.LoggerFactory;
 import com.baeldung.classloader.internal.InternalJdkSupport;
 import com.baeldung.classloader.spi.ClasspathResolver;
 
-class ScopedClassLoadingTest {
+class ScopedClassLoadingUnitTest {
 
     final Logger log = LoggerFactory.getLogger(getClass());
 
     /**
      * Some ides may treat test-classes as a dynamic module-path.
-     *
      */
     private void ammendTestClasspath(Set<URL> classpath) {
         var testCp = classpath.stream()
-            .filter(url -> Objects.equals(url.getProtocol(), "file") && url.getPath()
-                .contains("test-classes"))
-            .findFirst()
-            .orElse(null);
+                .filter(url -> Objects.equals(url.getProtocol(), "file") && url.getPath()
+                        .contains("test-classes"))
+                .findFirst()
+                .orElse(null);
 
         if (testCp == null) {
             log.info("Amending test classpath for Eclipse");
 
             var loc = getClass().getProtectionDomain()
-                .getCodeSource()
-                .getLocation();
+                    .getCodeSource()
+                    .getLocation();
 
             testCp = toURL(loc.toString());
 
@@ -60,15 +61,15 @@ class ScopedClassLoadingTest {
         var loader = getClass().getClassLoader();
 
         var full = ClasspathResolver.get()
-            .getFullClasspath(loader);
+                .getFullClasspath(loader);
 
         ammendTestClasspath(full);
 
         mergeClasspathWithModulePath(full, filter);
 
         var classpath = full.stream()
-            .filter(filter)
-            .collect(Collectors.toCollection(HashSet::new));
+                .filter(filter)
+                .collect(Collectors.toCollection(HashSet::new));
 
         log.info("Narrowed Classpath: \n[\n{}\n]", classpath);
 
@@ -80,14 +81,14 @@ class ScopedClassLoadingTest {
         var scope = Pattern.compile("(test-classes|slf|logback)");
 
         var classpath = createNarrowClasspath(url -> scope.matcher(url.toString())
-            .find()).stream()
-            .map(URL::toString)
-            .collect(Collectors.joining(":"));
+                .find()).stream()
+                .map(URL::toString)
+                .collect(Collectors.joining(":"));
 
         var executable = ProcessHandle.current()
-            .info()
-            .command()
-            .orElse("java");
+                .info()
+                .command()
+                .orElse("java");
 
         var pb = new ProcessBuilder(executable, "-cp");
         var command = pb.command();
@@ -99,7 +100,7 @@ class ScopedClassLoadingTest {
         pb.redirectError(Redirect.INHERIT);
 
         log.info("VM at PID {} will fork another JVM with narrowed classpath", ProcessHandle.current()
-            .pid());
+                .pid());
 
         var process = pb.start();
 
@@ -110,7 +111,7 @@ class ScopedClassLoadingTest {
 
     @Test
     void givenScopedClassLoader_whenClasspathIsNarrowed_thenAccessWillBeLimitedToItsScope() throws InterruptedException, IOException,
-    ReflectiveOperationException {
+            ReflectiveOperationException {
         var thread = Thread.currentThread();
         var current = thread.getContextClassLoader();
 
@@ -119,7 +120,7 @@ class ScopedClassLoadingTest {
         var scope = Pattern.compile("(test-classes|slf|logback)");
 
         var classpath = createNarrowClasspath(url -> scope.matcher(url.toString())
-            .find()).toArray(URL[]::new);
+                .find()).toArray(URL[]::new);
 
         var loader = new CustomClassLoader(classpath);
 
@@ -127,12 +128,12 @@ class ScopedClassLoadingTest {
 
         try {
             var service = Class.forName(ForkedService.class.getName(), true, Thread.currentThread()
-                .getContextClassLoader());
+                    .getContextClassLoader());
 
             assertEquals(loader, service.getClassLoader());
 
             ((Runnable) service.getConstructor()
-                .newInstance()).run();
+                    .newInstance()).run();
         } finally {
             thread.setContextClassLoader(current);
         }
@@ -144,22 +145,27 @@ class ScopedClassLoadingTest {
         if (modules != null && !modules.isBlank()) {
             log.info("Converting module-path ({}) to classpath", modules);
 
-            Arrays.stream(modules.split(":"))
-            .map(this::toURL)
-            .filter(filter)
-            .forEach(files::add);
+            String pathSeparator = System.getProperty("path.separator");
+
+            Arrays.stream(modules.split(Pattern.quote(pathSeparator)))
+                    .map(this::toURL)
+                    .filter(filter)
+                    .forEach(files::add);
         } else {
             log.info("No module path");
         }
     }
 
     private URL toURL(String name) {
-        if (!name.startsWith("file:")) {
-            name = "file://" + name;
-        }
         try {
-            return URI.create(name)
-                .toURL();
+            // If it's already a valid URL, use it as-is
+            if (name.startsWith("file:")) {
+                return URI.create(name).toURL();
+            }
+
+            Path path = Paths.get(name);
+            return path.toUri().toURL();
+
         } catch (MalformedURLException e) {
             throw new UncheckedIOException(e);
         }
