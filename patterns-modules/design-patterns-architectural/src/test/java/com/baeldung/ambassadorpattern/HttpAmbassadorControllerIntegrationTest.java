@@ -27,7 +27,7 @@ class HttpAmbassadorControllerIntegrationTest {
     private RestTemplate restTemplate;
 
     @Test
-    void whenGetNames_thenReturnSuccessfully() throws Exception {
+    void givenExternalCallMock_whenGetNames_thenReturnExpectedName() throws Exception {
         String expectedResponse = "{'name': 'Baeldung'}";
         when(restTemplate.getForObject(eq("https://domain.com/names/api"), eq(String.class))).thenReturn(expectedResponse);
 
