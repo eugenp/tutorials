@@ -39,18 +39,6 @@
         </plugins>
     </build>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.linecorp.armeria</groupId>
-                <artifactId>armeria-bom</artifactId>
-                <version>${armeria.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <dependency>
             <groupId>io.activej</groupId>
@@ -136,14 +124,6 @@
             <version>${manifold.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.linecorp.armeria</groupId>
-            <artifactId>armeria</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.linecorp.armeria</groupId>
-            <artifactId>armeria-graphql</artifactId>
-        </dependency>
-        <dependency>
             <groupId>nl.basjes.parse.useragent</groupId>
             <artifactId>yauaa</artifactId>
             <version>${yauaa.version}</version>
@@ -227,7 +207,6 @@
         <spring.version>6.1.8</spring.version>
         <lanterna.version>3.1.2</lanterna.version>
         <manifold.version>2024.1.20</manifold.version>
-        <armeria.version>1.29.2</armeria.version>
         <yauaa.version>7.28.1</yauaa.version>
         <yavi.version>0.14.1</yavi.version>
         <activej.version>6.0-rc2</activej.version>
