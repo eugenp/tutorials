@@ -1,1 +1,0 @@
-Upload files will be stored here. This is home directory for apache min server
