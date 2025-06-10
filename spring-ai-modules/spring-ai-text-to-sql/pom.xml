@@ -5,15 +5,15 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>spring-ai-projects</artifactId>
+        <artifactId>spring-ai-modules</artifactId>
         <version>0.0.1</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>com.baeldung</groupId>
-    <artifactId>text-to-sql</artifactId>
+    <artifactId>spring-ai-text-to-sql</artifactId>
     <version>0.0.1</version>
-    <name>text-to-sql</name>
+    <name>spring-ai-text-to-sql</name>
 
     <dependencies>
         <!-- Core dependencies -->
