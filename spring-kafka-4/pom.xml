@@ -33,6 +33,11 @@
             <artifactId>avro</artifactId>
             <version>${apache.avro.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.confluent</groupId>
+            <artifactId>kafka-avro-serializer</artifactId>
+            <version>${kafka-avro-serializer.version}</version>
+        </dependency>
         <!-- test dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -67,6 +72,9 @@
                 <groupId>org.apache.avro</groupId>
                 <artifactId>avro-maven-plugin</artifactId>
                 <version>${apache.avro.version}</version>
+                <configuration>
+                    <stringType>String</stringType>
+                </configuration>
                 <executions>
                     <execution>
                         <phase>generate-sources</phase>
@@ -116,6 +124,14 @@
         <java.version>21</java.version>
         <spring-boot.version>3.4.4</spring-boot.version>
         <apache.avro.version>1.12.0</apache.avro.version>
+        <kafka-avro-serializer.version>7.9.1</kafka-avro-serializer.version>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>confluent</id>
+            <url>https://packages.confluent.io/maven/</url>
+        </repository>
+    </repositories>
 
 </project>
