@@ -2,6 +2,7 @@ package com.baeldung;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Deque;
 import java.util.Iterator;
@@ -42,13 +43,12 @@ public class PrintStack {
 
     public static void givenStack_whenUsingStreamReverse_thenPrintStack() {
         Stack<Integer> stack = new Stack<>();
-        stack.push(10);
         stack.push(20);
+        stack.push(10);
         stack.push(30);
 
-        stack.stream()
-            .sorted(Comparator.reverseOrder())
-            .forEach(System.out::println);
+        Collections.reverse(stack);
+        stack.forEach(System.out::println);
     }
 
     public static void givenStack_whenUsingIterator_thenPrintStack() {

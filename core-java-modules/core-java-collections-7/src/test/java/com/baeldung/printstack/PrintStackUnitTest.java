@@ -30,7 +30,7 @@ class PrintStackUnitTest {
     @Test
     void givenStack_whenUsingStreamReverse_thenPrintStack() throws Exception {
         String output = tapSystemOut(() -> PrintStack.givenStack_whenUsingStreamReverse_thenPrintStack());
-        assertEquals("30\n20\n10\n", output.replace("\r\n", "\n"));
+        assertEquals("30\n10\n20\n", output.replace("\r\n", "\n"));
     }
 
     @Test

@@ -868,6 +868,7 @@
             <modules>
                 <module>core-java-modules/core-java-22</module>
                 <module>core-java-modules/core-java-concurrency-advanced-6</module>
+                <module>core-java-modules/core-java-classloader</module>
             </modules>
 
             <properties>
@@ -1292,6 +1293,7 @@
             <modules>
                 <module>core-java-modules/core-java-22</module>
                 <module>core-java-modules/core-java-concurrency-advanced-6</module>
+                <module>core-java-modules/core-java-classloader</module>
             </modules>
 
             <properties>
@@ -1439,6 +1441,7 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-3</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
             </modules>
@@ -1497,7 +1500,6 @@
                 <module>maven-modules/dependencygraph</module> <!-- JAVA-42057 -->
                 <module>spring-boot-modules/spring-boot-groovy</module> <!-- JAVA-42052 -->
                 <module>spring-boot-modules/spring-boot-data-3</module> <!-- JAVA-42051 -->
-                <module>spring-reactive-modules/spring-reactive-performance</module> <!-- JAVA-42050 -->
                 <module>spring-boot-modules/spring-boot-3-3</module> <!-- JAVA-42049 -->
                 <module>spring-boot-modules/spring-boot-cli</module> <!-- Not a maven project -->
                 <module>spring-boot-modules/spring-boot-graphql-2</module> <!-- JAVA-42053 -->
@@ -1506,7 +1508,6 @@
                 <module>web-modules/ninja</module> <!-- JAVA-24584 -->
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
-                <module>core-java-modules/core-java-classloader</module> <!-- JAVA-42033 -->
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
             </modules>
         </profile>
@@ -1564,7 +1565,6 @@
                 <module>maven-modules/dependencygraph</module> <!-- JAVA-42057 -->
                 <module>spring-boot-modules/spring-boot-groovy</module> <!-- JAVA-42052 -->
                 <module>spring-boot-modules/spring-boot-data-3</module> <!-- JAVA-42051 -->
-                <module>spring-reactive-modules/spring-reactive-performance</module> <!-- JAVA-42050 -->
                 <module>spring-boot-modules/spring-boot-3-3</module> <!-- JAVA-42049 -->
                 <module>spring-boot-modules/spring-boot-cli</module> <!-- Not a maven project -->
                 <module>spring-boot-modules/spring-boot-graphql-2</module> <!-- JAVA-42053 -->
@@ -1573,7 +1573,6 @@
                 <module>web-modules/ninja</module> <!-- JAVA-24584 -->
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
-                <module>core-java-modules/core-java-classloader</module> <!-- JAVA-42033 -->
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
             </modules>
         </profile>
