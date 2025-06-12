@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @QuarkusTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class ArticleTest {
+public class ArticleUnitTest {
 
     @BeforeEach
     @Transactional
@@ -21,7 +21,7 @@ public class ArticleTest {
     @Test
     @Transactional
     @Order(1)
-    public void testCreateArticle() {
+    public void givenNewArticle_whenPersisted_thenItShouldHaveIdAndBeCounted() {
         Article article = new Article("Quarkus Panache", "Content of the article", "Published");
         article.persist();
 
@@ -32,7 +32,7 @@ public class ArticleTest {
     @Test
     @Transactional
     @Order(2)
-    public void testFindArticleByTitle() {
+    public void givenMultipleArticles_whenSearchedByTitle_thenMatchingArticlesShouldBeReturned() {
         Article.persist(new Article("Quarkus Panache", "Quarkus Panache is an extension for Hibernate", "Draft"));
         Article.persist(new Article("Postgresql with Quarkus ", "Integrate Quarkus with Postgresql", "Draft"));
 
@@ -43,7 +43,7 @@ public class ArticleTest {
 
     @Test
     @Order(3)
-    public void testDeleteArticle() {
+    public void givenPersistedArticle_whenDeleted_thenItShouldBeRemovedFromCount() {
         Article article = new Article("Delete Me", "Soon gone", "Draft");
         article.persist();
 
@@ -54,4 +54,3 @@ public class ArticleTest {
         assertEquals(0, Article.count());
     }
 }
-
