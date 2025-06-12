@@ -1,6 +1,5 @@
 package com.baeldung.libraries.flexypool;
 
-import com.baeldung.libraries.hikaricp.Employee;
 import com.vladmihalcea.flexypool.FlexyPoolDataSource;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.boot.SpringApplication;
