@@ -15,19 +15,20 @@ import java.nio.charset.Charset;
 class ChatbotConfiguration {
 
     @Bean
-    PromptTemplate promptTemplate(
-        @Value("classpath:prompt.st") Resource promptTemplate,
+    PromptTemplate systemPrompt(
+        @Value("classpath:system-prompt.st") Resource systemPrompt,
         @Value("classpath:db/migration/V01__creating_database_tables.sql") Resource ddlSchema
     ) throws IOException {
-        PromptTemplate template = new PromptTemplate(promptTemplate);
+        PromptTemplate template = new PromptTemplate(systemPrompt);
         template.add("ddl", ddlSchema.getContentAsString(Charset.defaultCharset()));
         return template;
     }
 
     @Bean
-    ChatClient chatClient(ChatModel chatModel) {
+    ChatClient chatClient(ChatModel chatModel, PromptTemplate systemPrompt) {
         return ChatClient
             .builder(chatModel)
+            .defaultSystem(systemPrompt.render())
             .build();
     }
 

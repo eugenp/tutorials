@@ -1,27 +1,20 @@
 package com.baeldung.texttosql;
 
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.stereotype.Service;
-
-import java.util.Map;
 
 @Service
 class SqlGenerator {
 
     private final ChatClient chatClient;
-    private final PromptTemplate promptTemplate;
 
-    SqlGenerator(ChatClient chatClient, PromptTemplate promptTemplate) {
+    SqlGenerator(ChatClient chatClient) {
         this.chatClient = chatClient;
-        this.promptTemplate = promptTemplate;
     }
 
     String generate(String question) {
-        Prompt prompt = promptTemplate.create(Map.of("question", question));
         String response = chatClient
-            .prompt(prompt)
+            .prompt(question)
             .call()
             .content();
 
