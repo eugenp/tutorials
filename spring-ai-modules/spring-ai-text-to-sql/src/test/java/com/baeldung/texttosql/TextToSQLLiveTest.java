@@ -142,4 +142,20 @@ class TextToSQLLiveTest {
             .andExpect(jsonPath("$.result[*][1]", everyItem(notNullValue())));
     }
 
+    @Test
+    void whenAggregationQueryAsked_thenCorrectAnswerReturned() throws Exception {
+        String question = "Which house has the lowest percentage of quidditch players?";
+        String requestBody = String.format(REQUEST_BODY_TEMPLATE, question);
+
+        mockMvc
+            .perform(
+                post(API_PATH)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(requestBody))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.result").isArray())
+            .andExpect(jsonPath("$.result", hasSize(1)))
+            .andExpect(jsonPath("$.result[0][0]").value("Ravenclaw"));
+    }
+
 }
