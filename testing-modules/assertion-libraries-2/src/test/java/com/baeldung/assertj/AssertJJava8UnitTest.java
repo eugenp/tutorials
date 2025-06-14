@@ -1,6 +1,8 @@
 package com.baeldung.assertj;
 
-import org.junit.Test;
+import static java.time.LocalDate.ofYearDay;
+import static java.util.Arrays.asList;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -10,9 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-import static java.time.LocalDate.ofYearDay;
-import static java.util.Arrays.asList;
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Test;
 
 public class AssertJJava8UnitTest {
 
