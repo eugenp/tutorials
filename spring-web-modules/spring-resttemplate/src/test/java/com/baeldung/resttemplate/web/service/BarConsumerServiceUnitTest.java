@@ -7,17 +7,21 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class BarConsumerServiceUnitTest {
+
+    @Mock
+    private RestTemplateBuilder restTemplateBuilder;
 
     @Mock
     private RestTemplate restTemplate;
@@ -26,7 +30,10 @@ public class BarConsumerServiceUnitTest {
 
     @BeforeEach
     public void setup() {
-        barConsumerService = new BarConsumerService(restTemplate);
+        when(restTemplateBuilder.errorHandler(any())).thenReturn(restTemplateBuilder);
+        when(restTemplateBuilder.build()).thenReturn(restTemplate);
+
+        barConsumerService = new BarConsumerService(restTemplateBuilder);
     }
 
     @Test
@@ -35,8 +42,7 @@ public class BarConsumerServiceUnitTest {
         expectedBar.setId("123");
         expectedBar.setName("Test Bar");
 
-        when(restTemplate.getForObject(anyString(), eq(Bar.class)))
-                .thenReturn(expectedBar);
+        when(restTemplate.getForObject(any(String.class), eq(Bar.class))).thenReturn(expectedBar);
 
         Bar result = barConsumerService.fetchBarById("123");
         assertEquals(expectedBar, result);
@@ -44,7 +50,6 @@ public class BarConsumerServiceUnitTest {
 
     @Test
     public void givenUnauthorizedResponse_whenFetchingBar_thenThrowsUnauthorizedException() {
-        // Arrange
         String errorBody = "{\"error\": \"Invalid token\"}";
         HttpClientErrorException exception = HttpClientErrorException.create(
                 HttpStatus.UNAUTHORIZED,
@@ -54,8 +59,7 @@ public class BarConsumerServiceUnitTest {
                 null
         );
 
-        when(restTemplate.getForObject(anyString(), eq(Bar.class)))
-                .thenThrow(exception);
+        when(restTemplate.getForObject(any(String.class), eq(Bar.class))).thenThrow(exception);
 
         UnauthorizedException thrown = assertThrows(
                 UnauthorizedException.class,
