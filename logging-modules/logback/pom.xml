@@ -86,6 +86,12 @@
             <artifactId>logstash-logback-encoder</artifactId>
             <version>${logstash.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.tukaani/xz -->
+        <dependency>
+            <groupId>org.tukaani</groupId>
+            <artifactId>xz</artifactId>
+            <version>1.10</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -109,7 +115,7 @@
         <docx4j.version>3.3.5</docx4j.version>
         <angus.mail.version>2.0.1</angus.mail.version>
         <angus.activation.version>2.0.0</angus.activation.version>
-        <logback.version>1.5.6</logback.version>
+        <logback.version>1.5.18</logback.version>
         <slf4j.version>2.1.0-alpha1</slf4j.version>
         <janino.version>3.1.12</janino.version>
         <logstash.version>8.0</logstash.version>
