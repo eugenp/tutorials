@@ -3,7 +3,6 @@ info:
   title: Student API
   description: Following documentation explain the API's supported by the [student server](http://localhost:8080).
   version: 1.1.9
-
 servers:
   - url: http://localhost:8080/v1
     description: Prod server
@@ -15,7 +14,6 @@ servers:
           - us-east
   - url: http://localhost:8080/test
     description: Test server
-
 paths:
   /students:
     get:
@@ -31,8 +29,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: './components/schemas/Student.yml'
-
+                  $ref: './components/schemas/Student.yml'
   /students/{id}:
     get:
       tags:
