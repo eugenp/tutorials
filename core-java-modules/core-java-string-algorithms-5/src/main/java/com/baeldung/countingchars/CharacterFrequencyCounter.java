@@ -2,10 +2,12 @@ package com.baeldung.countingchars;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class CharacterFrequencyCounter {
 
-    public static Map<Character, Integer> countCharacters(String input) {
+    public static Map<Character, Integer> countCharactersWithLoop(String input) {
         Map<Character, Integer> characterCountMap = new HashMap<>();
 
         for (char ch : input.toCharArray()) {
@@ -14,4 +16,11 @@ public class CharacterFrequencyCounter {
 
         return characterCountMap;
     }
+
+    public static Map<Character, Long> countCharactersWithStreams(String input) {
+        return input.chars()
+                .mapToObj(c -> (char) c)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+    }
+
 }
