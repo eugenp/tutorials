@@ -17,10 +17,13 @@ public class CharacterFrequencyCounter {
         return characterCountMap;
     }
 
-    public static Map<Character, Long> countCharactersWithStreams(String input) {
+    public static Map<Character, Integer> countCharactersWithStreams(String input) {
         return input.chars()
-                .mapToObj(c -> (char) c)
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+            .mapToObj(c -> (char) c)
+            .collect(Collectors.groupingBy(
+                Function.identity(),
+                Collectors.collectingAndThen(Collectors.counting(), Long::intValue)
+            ));
     }
 
 }
