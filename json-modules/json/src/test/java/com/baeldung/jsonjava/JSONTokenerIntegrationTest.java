@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class JSONTokenerIntegrationTest {
 
     @Test
-    public void givenString_convertItToJSONTokens() {
+    public void givenString_whenConvertingToJSONTokens_thenCorrectlyConvertedToJSONTokens() {
         String str = "Sample String";
         JSONTokener jt = new JSONTokener(str);
 

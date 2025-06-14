@@ -10,7 +10,7 @@ import org.junit.Test;
 public class CookieIntegrationTest {
 
     @Test
-    public void givenCookieString_thenConvertToJSONObject() {
+    public void givenCookieString_whenConvertingToJSONObject_thenCorrectJSONObjectCreated() {
         String cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
         JSONObject cookieJO = Cookie.toJSONObject(cookie);
 
@@ -19,7 +19,7 @@ public class CookieIntegrationTest {
     }
 
     @Test
-    public void givenJSONObject_thenConvertToCookieString() {
+    public void givenJSONObject_whenConvertingToCookieString_thenCorrectCookieStringCreated() {
         JSONObject cookieJO = new JSONObject();
         cookieJO.put("name", "username");
         cookieJO.put("value", "John Doe");

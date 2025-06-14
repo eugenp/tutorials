@@ -8,7 +8,7 @@ import static net.javacrumbs.jsonunit.assertj.JsonAssertions.assertThatJson;
 public class ObjectToFromJSONIntegrationTest {
 
     @Test
-    public void givenDemoBean_thenCreateJSONObject() {
+    public void givenDemoBean_whenCreatingJSONObject_thenCreatedJSONObjectCorrectly() {
         DemoBean demo = new DemoBean();
         demo.setId(1);
         demo.setName("lorem ipsum");
