@@ -2,6 +2,7 @@ package com.baeldung.activej.service;
 
 import com.baeldung.activej.model.VerifiedPerson;
 import com.baeldung.activej.repository.PersonRepository;
+
 import io.activej.promise.Promise;
 
 public class PersonService {

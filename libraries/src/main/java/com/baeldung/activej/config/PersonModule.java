@@ -1,17 +1,19 @@
 package com.baeldung.activej.config;
 
-import com.baeldung.activej.controller.PersonController;
-import com.baeldung.activej.repository.PersonRepository;
-import com.baeldung.activej.service.PersonService;
-import io.activej.inject.annotation.Provides;
-import io.activej.inject.module.AbstractModule;
-
-import javax.sql.DataSource;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
 import java.util.logging.Logger;
+
+import javax.sql.DataSource;
+
+import com.baeldung.activej.controller.PersonController;
+import com.baeldung.activej.repository.PersonRepository;
+import com.baeldung.activej.service.PersonService;
+
+import io.activej.inject.annotation.Provides;
+import io.activej.inject.module.AbstractModule;
 
 public class PersonModule extends AbstractModule {
 

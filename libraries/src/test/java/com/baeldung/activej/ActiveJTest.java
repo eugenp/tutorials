@@ -3,8 +3,10 @@ package com.baeldung.activej;
 import com.baeldung.activej.config.PersonModule;
 import com.baeldung.activej.repository.PersonRepository;
 import com.baeldung.activej.service.PersonService;
+
 import io.activej.eventloop.Eventloop;
 import io.activej.inject.Injector;
+
 import org.junit.jupiter.api.Test;
 
 import javax.sql.DataSource;
@@ -18,7 +20,8 @@ public class ActiveJTest {
     void givenPersonModule_whenGetTheServiceBean_thenAllTheDependenciesShouldBePresent() {
         PersonModule personModule = new PersonModule();
 
-        PersonService personService = Injector.of(personModule).getInstance(PersonService.class);
+        PersonService personService = Injector.of(personModule)
+            .getInstance(PersonService.class);
         assertNotNull(personService);
         PersonRepository personRepository = personService.getPersonRepository();
         assertNotNull(personRepository);
@@ -30,11 +33,12 @@ public class ActiveJTest {
     void givenEventloop_whenCallFindAndVerifyPerson_thenExpectedVerificationResultShouldBePresent() {
         PersonModule personModule = new PersonModule();
 
-        PersonService personService = Injector.of(personModule).getInstance(PersonService.class);
+        PersonService personService = Injector.of(personModule)
+            .getInstance(PersonService.class);
 
         Eventloop eventloop = Eventloop.create();
         eventloop.run();
         personService.findAndVerifyPerson("Good person")
-          .whenResult(verifiedPerson -> assertEquals("SUCCESS", verifiedPerson.result()));
+            .whenResult(verifiedPerson -> assertEquals("SUCCESS", verifiedPerson.result()));
     }
 }

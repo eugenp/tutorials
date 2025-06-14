@@ -14,11 +14,9 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.net.InetAddress;
-import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public class ActiveJIntegrationTest {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();

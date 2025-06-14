@@ -1,11 +1,13 @@
 package com.baeldung.activej.repository;
 
-import com.baeldung.activej.model.Person;
-import io.activej.promise.Promise;
-import io.activej.promise.Promises;
+import java.time.Duration;
 
 import javax.sql.DataSource;
-import java.time.Duration;
+
+import com.baeldung.activej.model.Person;
+
+import io.activej.promise.Promise;
+import io.activej.promise.Promises;
 
 public class PersonRepository {
     private final DataSource dataSource;

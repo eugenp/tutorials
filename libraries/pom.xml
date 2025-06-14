@@ -181,6 +181,32 @@
             <artifactId>agrona</artifactId>
             <version>${agrona.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.activej</groupId>
+            <artifactId>activej-inject</artifactId>
+            <version>${activej.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.activej</groupId>
+            <artifactId>activej-promise</artifactId>
+            <version>${activej.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.activej</groupId>
+            <artifactId>activej-test</artifactId>
+            <version>${activej.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.activej</groupId>
+            <artifactId>activej-http</artifactId>
+            <version>${activej.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -387,6 +413,8 @@
         <agrona.version>1.17.1</agrona.version>
         <sbe-tool.version>1.27.0</sbe-tool.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
+        <activej.version>6.0-rc2</activej.version>
+        <jackson-databind.version>2.17.0</jackson-databind.version>
     </properties>
 
 </project>
