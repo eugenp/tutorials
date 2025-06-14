@@ -1,5 +1,11 @@
 package com.baeldung.javers;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import org.javers.common.collections.Lists;
 import org.javers.core.Javers;
 import org.javers.core.JaversBuilder;
@@ -9,12 +15,6 @@ import org.javers.core.diff.changetype.ObjectRemoved;
 import org.javers.core.diff.changetype.ValueChange;
 import org.javers.core.diff.changetype.container.ListChange;
 import org.junit.Test;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class JaversUnitTest {
 
