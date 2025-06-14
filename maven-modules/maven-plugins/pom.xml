@@ -21,6 +21,7 @@
         <module>jaxws</module>
         <module>spotless</module>
         <module>external-properties-file</module>
+        <module>spring-properties-cleaner</module>
     </modules>
 
     <build>
