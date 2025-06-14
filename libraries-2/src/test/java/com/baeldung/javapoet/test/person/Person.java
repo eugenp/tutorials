@@ -1,7 +1,5 @@
 package com.baeldung.javapoet.test.person;
 
-import java.lang.String;
-
 public interface Person {
     String DEFAULT_NAME = "Alice";
 
