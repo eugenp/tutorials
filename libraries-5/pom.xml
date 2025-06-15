@@ -4,18 +4,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-5</artifactId>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>11</source>
-                    <target>11</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
     <parent>
         <artifactId>parent-modules</artifactId>
@@ -60,11 +48,6 @@
             <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
-            <groupId>nl.basjes.parse.useragent</groupId>
-            <artifactId>yauaa</artifactId>
-            <version>${yauaa.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.jline</groupId>
             <artifactId>jline</artifactId>
             <version>${jline.version}</version>
@@ -107,11 +90,23 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <jetcache.version>2.7.6</jetcache.version>
         <spring-boot.version>3.3.0</spring-boot.version>
         <spring.version>6.1.8</spring.version>
-        <yauaa.version>7.28.1</yauaa.version>
         <jline.version>3.28.0</jline.version>
         <com.restfb.version>2025.6.0</com.restfb.version>
         <jool.version>0.9.12</jool.version>
