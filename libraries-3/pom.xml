@@ -86,11 +86,6 @@
             <version>${fugue.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.jooq</groupId>
-            <artifactId>jool</artifactId>
-            <version>${jool.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.javers</groupId>
             <artifactId>javers-core</artifactId>
             <version>${javers.version}</version>
@@ -230,7 +225,6 @@
         <structurizr.version>1.0.0</structurizr.version>
         <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
         <fugue.version>4.5.1</fugue.version>
-        <jool.version>0.9.12</jool.version>
         <javers.version>3.1.0</javers.version>
         <sbe-tool.version>1.27.0</sbe-tool.version>
         <agrona.version>1.17.1</agrona.version>
