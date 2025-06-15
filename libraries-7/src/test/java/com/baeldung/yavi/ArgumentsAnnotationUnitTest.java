@@ -1,14 +1,15 @@
 package com.baeldung.yavi;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.NoSuchElementException;
+
+import org.junit.jupiter.api.Test;
+
 import am.ik.yavi.arguments.Arguments2Validator;
 import am.ik.yavi.builder.ArgumentsValidatorBuilder;
 import am.ik.yavi.core.Validated;
 import am.ik.yavi.meta.ConstraintArguments;
-import org.junit.jupiter.api.Test;
-
-import java.util.NoSuchElementException;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class ArgumentsAnnotationUnitTest {
     record Person(String name, int age) {

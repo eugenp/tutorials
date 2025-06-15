@@ -1,15 +1,13 @@
 package com.baeldung.yavi;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
 import am.ik.yavi.builder.ValidatorBuilder;
 import am.ik.yavi.core.ConstraintViolations;
 import am.ik.yavi.core.CustomConstraint;
 import am.ik.yavi.core.Validator;
-import org.junit.jupiter.api.Test;
-
-import java.net.Inet4Address;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CustomConstraintUnitTest {
     record Data(String palindrome) {}

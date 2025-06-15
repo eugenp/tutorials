@@ -1,13 +1,13 @@
 package com.baeldung.yavi;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
 import am.ik.yavi.builder.ValidatorBuilder;
 import am.ik.yavi.core.ConstraintViolations;
 import am.ik.yavi.core.Validator;
 import am.ik.yavi.meta.ConstraintTarget;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TargetAnnotationUnitTest {
     record Person(@ConstraintTarget String name, @ConstraintTarget int age) {}

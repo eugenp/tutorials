@@ -1,15 +1,15 @@
 package com.baeldung.yavi;
 
+import static org.junit.jupiter.api.Assertions.*;
+import java.util.NoSuchElementException;
+
+import org.junit.jupiter.api.Test;
+
 import am.ik.yavi.arguments.Arguments1;
 import am.ik.yavi.arguments.Arguments2;
 import am.ik.yavi.arguments.Arguments2Validator;
 import am.ik.yavi.builder.ArgumentsValidatorBuilder;
 import am.ik.yavi.core.Validated;
-import org.junit.jupiter.api.Test;
-
-import java.util.NoSuchElementException;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class ArgumentsValidatorUnitTest {
     record Person(String name, int age) {

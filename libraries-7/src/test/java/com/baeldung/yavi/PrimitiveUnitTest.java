@@ -1,13 +1,14 @@
 package com.baeldung.yavi;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
 import am.ik.yavi.arguments.IntegerValidator;
 import am.ik.yavi.arguments.StringValidator;
 import am.ik.yavi.builder.IntegerValidatorBuilder;
 import am.ik.yavi.builder.StringValidatorBuilder;
 import am.ik.yavi.core.Validated;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class PrimitiveUnitTest {
     @Test
