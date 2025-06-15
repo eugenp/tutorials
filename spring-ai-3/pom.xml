@@ -52,6 +52,10 @@
            <artifactId>spring-ai-openai-spring-boot-starter</artifactId>
        </dependency>
        <dependency>
+           <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-mcp-server-webmvc-spring-boot-starter</artifactId>
+       </dependency>
+       <dependency>
            <groupId>org.hsqldb</groupId>
            <artifactId>hsqldb</artifactId>
            <scope>runtime</scope>
@@ -60,6 +64,16 @@
            <groupId>org.springframework.ai</groupId>
            <artifactId>spring-ai-starter-model-openai</artifactId>
            <version>${spring-ai-start-model-openai.version}</version>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+           <version>${oauth2-resource-server.version}</version>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-oauth2-authorization-server</artifactId>
+           <version>${oauth2-authorization-server.version}</version>
        </dependency>
 
        <!-- Test dependencies -->
@@ -146,6 +160,8 @@
        <spring-boot.version>3.4.5</spring-boot.version>
        <spring-ai.version>1.0.0-M6</spring-ai.version>
        <spring-ai-start-model-openai.version>1.0.0-M7</spring-ai-start-model-openai.version>
+       <oauth2-resource-server.version>3.4.2</oauth2-resource-server.version>
+       <oauth2-authorization-server.version>3.3.3</oauth2-authorization-server.version>
    </properties>
 
 </project>
