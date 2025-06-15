@@ -1,19 +1,19 @@
 package com.baeldung.sootup;
 
-import org.junit.jupiter.api.Test;
-import sootup.core.inputlocation.AnalysisInputLocation;
-import sootup.java.bytecode.inputlocation.JavaClassPathAnalysisInputLocation;
-import sootup.java.bytecode.inputlocation.JrtFileSystemAnalysisInputLocation;
-import sootup.java.bytecode.inputlocation.OTFCompileAnalysisInputLocation;
-import sootup.java.core.views.JavaView;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+
+import sootup.core.inputlocation.AnalysisInputLocation;
+import sootup.java.bytecode.inputlocation.JavaClassPathAnalysisInputLocation;
+import sootup.java.bytecode.inputlocation.JrtFileSystemAnalysisInputLocation;
+import sootup.java.bytecode.inputlocation.OTFCompileAnalysisInputLocation;
+import sootup.java.core.views.JavaView;
 
 public class AnalyzeUnitTest {
     @Test
