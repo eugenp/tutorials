@@ -1,12 +1,19 @@
 package com.baeldung.classgraph;
 
-import io.github.classgraph.*;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
 import java.util.function.Consumer;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Test;
+
+import io.github.classgraph.AnnotationInfo;
+import io.github.classgraph.ClassGraph;
+import io.github.classgraph.ClassInfo;
+import io.github.classgraph.ClassInfoList;
+import io.github.classgraph.Resource;
+import io.github.classgraph.ResourceList;
+import io.github.classgraph.ScanResult;
 
 public class ClassGraphUnitTest {
 

@@ -14,11 +14,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>io.github.classgraph</groupId>
-            <artifactId>classgraph</artifactId>
-            <version>${classgraph.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.jbpm</groupId>
             <artifactId>jbpm-test</artifactId>
             <version>${jbpm.version}</version>
@@ -28,17 +23,6 @@
                 <exclusion>
                     <groupId>junit</groupId>
                     <artifactId>junit</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>edu.uci.ics</groupId>
-            <artifactId>crawler4j</artifactId>
-            <version>${crawler4j.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.sleepycat</groupId>
-                    <artifactId>je</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -56,11 +40,6 @@
             <groupId>com.sleepycat</groupId>
             <artifactId>je</artifactId>
             <version>${sleepycat-je.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mapdb</groupId>
-            <artifactId>mapdb</artifactId>
-            <version>${mapdb.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
@@ -150,10 +129,7 @@
     </build>
 
     <properties>
-        <mapdb.version>3.0.8</mapdb.version>
-        <classgraph.version>4.8.153</classgraph.version>
         <jbpm.version>7.20.0.Final</jbpm.version>
-        <crawler4j.version>4.4.0</crawler4j.version>
         <handlebars.version>4.3.1</handlebars.version>
         <hsqldb.version>2.7.1</hsqldb.version>
         <mvel2.version>2.5.2.Final</mvel2.version>

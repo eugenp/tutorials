@@ -83,6 +83,27 @@
             <artifactId>oshi-core</artifactId>
             <version>${oshi.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.github.classgraph</groupId>
+            <artifactId>classgraph</artifactId>
+            <version>${classgraph.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapdb</groupId>
+            <artifactId>mapdb</artifactId>
+            <version>${mapdb.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>edu.uci.ics</groupId>
+            <artifactId>crawler4j</artifactId>
+            <version>${crawler4j.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.sleepycat</groupId>
+                    <artifactId>je</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -99,6 +120,9 @@
         <olap4j.version>1.2.0</olap4j.version>
         <aeron.version>1.44.1</aeron.version>
         <oshi.version>6.7.1</oshi.version>
+        <mapdb.version>3.0.8</mapdb.version>
+        <classgraph.version>4.8.153</classgraph.version>
+        <crawler4j.version>4.4.0</crawler4j.version>
     </properties>
 
 </project>
