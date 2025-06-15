@@ -47,11 +47,27 @@
             <artifactId>spring-boot-starter</artifactId>
             <version>${springframework.boot.spring-boot-starter.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.impossibl.pgjdbc-ng</groupId>
+            <artifactId>pgjdbc-ng</artifactId>
+            <version>${pgjdbc-ng.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
             <version>5.16.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${awaitility.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -70,8 +86,10 @@
     </build>
 
     <properties>
+        <awaitility.version>4.3.0</awaitility.version>
         <h2.version>2.3.230</h2.version>
         <postgresql.version>42.7.3</postgresql.version>
+        <pgjdbc-ng.version>0.8.9</pgjdbc-ng.version>
         <jdbc-stream.version>0.1.1</jdbc-stream.version>
         <junit-bom.version>5.11.1</junit-bom.version>
         <mysql-connecter-j.version>8.0.33</mysql-connecter-j.version>

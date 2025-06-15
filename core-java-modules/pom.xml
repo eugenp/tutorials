@@ -26,6 +26,7 @@
         <!--<module>core-java-sun</module> -->
         <module>core-java-collections-conversions-2</module>
         <module>core-java-collections-conversions-3</module>
+        <module>core-java-collections-conversions-4</module>
         <!--<module>core-java-concurrency-advanced-5</module>--> <!-- Migrated to heavy profile -->
         <module>core-java-9-new-features</module>
         <!--<module>core-java-14</module> --> <!-- failing after upgrade to jdk21 -->
@@ -83,7 +84,7 @@
         <module>core-java-arrays-operations-advanced-3</module>
         <module>core-java-booleans</module>
         <module>core-java-char</module>
-        <!-- <module>core-java-classloader</module> --> <!-- JAVA-42033 -->
+        <!-- <module>core-java-classloader</module> --> <!-- Migrated to default-jdk22 profile -->
         <module>core-java-collections</module>
         <module>core-java-collections-2</module>
         <module>core-java-collections-3</module>
@@ -179,6 +180,7 @@
         <module>core-java-lang-oop-patterns-2</module>
         <module>core-java-lang-oop-generics</module>
         <module>core-java-lang-oop-modifiers</module>
+        <module>core-java-lang-oop-modifiers-2</module>
         <module>core-java-lang-oop-types</module>
         <module>core-java-lang-oop-types-2</module>
         <module>core-java-lang-oop-types-3</module>
