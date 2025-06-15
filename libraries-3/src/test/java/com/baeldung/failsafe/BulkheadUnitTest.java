@@ -1,15 +1,16 @@
 package com.baeldung.failsafe;
 
-import dev.failsafe.Bulkhead;
-import dev.failsafe.BulkheadFullException;
-import dev.failsafe.Failsafe;
-import org.junit.jupiter.api.Test;
-
-import java.time.Duration;
-
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.time.Duration;
+
+import org.junit.jupiter.api.Test;
+
+import dev.failsafe.Bulkhead;
+import dev.failsafe.BulkheadFullException;
+import dev.failsafe.Failsafe;
 
 public class BulkheadUnitTest {
     @Test

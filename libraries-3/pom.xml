@@ -111,6 +111,16 @@
             <version>${awaitility.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>${jfreechart.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.failsafe</groupId>
+            <artifactId>failsafe</artifactId>
+            <version>${dev.failsafe.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -227,6 +237,8 @@
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
         <jnats.version>2.17.3</jnats.version>
         <awaitility.version>4.2.1</awaitility.version>
+        <jfreechart.version>1.5.4</jfreechart.version>
+        <dev.failsafe.version>3.3.2</dev.failsafe.version>
     </properties>
 
 </project>

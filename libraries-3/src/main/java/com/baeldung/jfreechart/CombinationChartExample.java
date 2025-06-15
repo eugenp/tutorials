@@ -1,8 +1,6 @@
 package com.baeldung.jfreechart;
 
-import java.awt.Font;
-
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;

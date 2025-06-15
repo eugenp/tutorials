@@ -1,11 +1,12 @@
 package com.baeldung.failsafe;
 
+import java.time.Duration;
+
+import org.junit.jupiter.api.Test;
+
 import dev.failsafe.CircuitBreaker;
 import dev.failsafe.Failsafe;
 import dev.failsafe.FailsafeExecutor;
-import org.junit.jupiter.api.Test;
-
-import java.time.Duration;
 
 public class CircuitBreakerUnitTest {
     @Test

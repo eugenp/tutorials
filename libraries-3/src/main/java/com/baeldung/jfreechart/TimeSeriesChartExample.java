@@ -1,27 +1,34 @@
 package com.baeldung.jfreechart;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.time.Month;
+import org.jfree.data.time.TimeSeries;
+import org.jfree.data.time.TimeSeriesCollection;
 
-public class PieChartExample {
+public class TimeSeriesChartExample {
 
     public static void main(String[] args) {
         // Create a dataset
-        DefaultPieDataset<String> dataset = new DefaultPieDataset<>();
-        dataset.setValue("January", 200);
-        dataset.setValue("February", 150);
-        dataset.setValue("March", 180);
+        TimeSeries series = new TimeSeries("Monthly Sales");
+        series.add(new Month(1, 2024), 200);
+        series.add(new Month(2, 2024), 150);
+        series.add(new Month(3, 2024), 180);
+
+        TimeSeriesCollection dataset = new TimeSeriesCollection();
+        dataset.addSeries(series);
 
         // Create a chart using the dataset
-        JFreeChart chart = ChartFactory.createPieChart(
+        JFreeChart chart = ChartFactory.createTimeSeriesChart(
             "Monthly Sales", // Chart title
+            "Date",  // X-axis label
+            "Sales", // Y-axis label
             dataset, // data
-            true,    // include legend
-            true,    // generate tool tips
+            true,    // legend
+            false,   // tooltips
             false);  // no URLs
 
         // Display the chart

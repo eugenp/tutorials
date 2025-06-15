@@ -1,13 +1,13 @@
 package com.baeldung.jfreechart;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.category.DefaultCategoryDataset;
 
-public class LineChartExample {
+public class BarChartExample {
 
     public static void main(String[] args) {
         // Create a dataset
@@ -19,7 +19,7 @@ public class LineChartExample {
         dataset.addValue(300, "Sales", "May");
 
         // Create a chart using the dataset
-        JFreeChart chart = ChartFactory.createLineChart(
+        JFreeChart chart = ChartFactory.createBarChart(
             "Monthly Sales", // Chart title
             "Month", // X-axis label
             "Sales", // Y-axis label

@@ -1,12 +1,16 @@
 package com.baeldung.failsafe;
 
-import dev.failsafe.*;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.Duration;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.Test;
+
+import dev.failsafe.Failsafe;
+import dev.failsafe.FailsafeExecutor;
+import dev.failsafe.RateLimitExceededException;
+import dev.failsafe.RateLimiter;
 
 public class RateLimiterUnitTest {
     @Test
