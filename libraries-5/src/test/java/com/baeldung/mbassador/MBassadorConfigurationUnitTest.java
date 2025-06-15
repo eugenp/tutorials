@@ -1,16 +1,18 @@
 package com.baeldung.mbassador;
 
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
+import java.util.LinkedList;
+
+import org.junit.Before;
+import org.junit.Test;
+
 import net.engio.mbassy.bus.MBassador;
 import net.engio.mbassy.bus.error.IPublicationErrorHandler;
 import net.engio.mbassy.bus.error.PublicationError;
 import net.engio.mbassy.listener.Handler;
-import org.junit.Before;
-import org.junit.Test;
-
-import java.util.*;
-
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.*;
 
 public class MBassadorConfigurationUnitTest implements IPublicationErrorHandler {
 

@@ -1,18 +1,19 @@
 package com.baeldung.mbassador;
 
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
+import org.junit.Before;
+import org.junit.Test;
+
 import net.engio.mbassy.bus.MBassador;
 import net.engio.mbassy.bus.common.DeadMessage;
 import net.engio.mbassy.bus.common.FilteredMessage;
 import net.engio.mbassy.listener.Filter;
 import net.engio.mbassy.listener.Filters;
 import net.engio.mbassy.listener.Handler;
-import org.junit.Before;
-import org.junit.Test;
-
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 public class MBassadorFilterUnitTest {
 

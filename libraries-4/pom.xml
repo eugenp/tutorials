@@ -18,11 +18,6 @@
             <version>${olap4j.version}</version>
         </dependency>
         <dependency>
-            <groupId>net.engio</groupId>
-            <artifactId>mbassador</artifactId>
-            <version>${mbassador.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
@@ -47,16 +42,6 @@
             <groupId>one.util</groupId>
             <artifactId>streamex</artifactId>
             <version>${streamex.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.el</groupId>
-            <artifactId>javax.el-api</artifactId>
-            <version>${javax.el.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.web</groupId>
-            <artifactId>javax.el</artifactId>
-            <version>${glassfish.web.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -119,14 +104,11 @@
     <properties>
         <jackson-annotations.version>2.14.2</jackson-annotations.version>
         <jackson-core.version>2.14.2</jackson-core.version>
-        <mbassador.version>1.3.1</mbassador.version>
         <spring.version>4.3.8.RELEASE</spring.version>
         <javax.servlet.version>2.5</javax.servlet.version>
         <javax.jdo.version>3.2.0-m7</javax.jdo.version>
         <awaitility.version>3.0.0</awaitility.version>
         <streamex.version>0.6.5</streamex.version>
-        <javax.el.version>3.0.0</javax.el.version>
-        <glassfish.web.version>2.2.4</glassfish.web.version>
         <olap4j.version>1.2.0</olap4j.version>
         <aeron.version>1.44.1</aeron.version>
         <oshi.version>6.7.1</oshi.version>
