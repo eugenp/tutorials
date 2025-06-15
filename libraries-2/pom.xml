@@ -112,6 +112,11 @@
             <artifactId>libphonenumber</artifactId>
             <version>${libphonenumber.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.javaparser</groupId>
+            <artifactId>javaparser-core</artifactId>
+            <version>${javaparser.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -138,6 +143,7 @@
         <mutabilitydetector.version>0.9.6</mutabilitydetector.version>
         <javapoet.version>1.10.0</javapoet.version>
         <libphonenumber.version>8.12.9</libphonenumber.version>
+        <javaparser.version>3.25.10</javaparser.version>
     </properties>
 
 </project>
