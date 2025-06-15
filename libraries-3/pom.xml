@@ -19,17 +19,6 @@
             <version>${lombok.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.jcabi</groupId>
-            <artifactId>jcabi-aspects</artifactId>
-            <version>${jcabi-aspects.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
-            <version>${aspectjrt.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity-engine-core</artifactId>
             <version>${velocity-engine-core.version}</version>
@@ -81,11 +70,6 @@
             <version>${javax.annotation-api.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.atlassian.fugue</groupId>
-            <artifactId>fugue</artifactId>
-            <version>${fugue.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.javers</groupId>
             <artifactId>javers-core</artifactId>
             <version>${javers.version}</version>
@@ -121,30 +105,6 @@
     <build>
         <finalName>libraries-3</finalName>
         <plugins>
-            <plugin>
-                <groupId>com.jcabi</groupId>
-                <artifactId>jcabi-maven-plugin</artifactId>
-                <version>${jcabi-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>ajc</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjtools</artifactId>
-                        <version>${aspectjtools.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectjweaver.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -213,18 +173,12 @@
     </build>
 
     <properties>
-        <jcabi-aspects.version>0.26.0</jcabi-aspects.version>
-        <aspectjrt.version>1.9.20.1</aspectjrt.version>
-        <jcabi-maven-plugin.version>0.14.1</jcabi-maven-plugin.version>
-        <aspectjtools.version>1.9.20.1</aspectjtools.version>
-        <aspectjweaver.version>1.9.20.1</aspectjweaver.version>
         <velocity-engine-core.version>2.2</velocity-engine-core.version>
         <nullaway.version>0.3.0</nullaway.version>
         <plexus-compiler.version>2.8</plexus-compiler.version>
         <errorprone.version>2.1.3</errorprone.version>
         <structurizr.version>1.0.0</structurizr.version>
         <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
-        <fugue.version>4.5.1</fugue.version>
         <javers.version>3.1.0</javers.version>
         <sbe-tool.version>1.27.0</sbe-tool.version>
         <agrona.version>1.17.1</agrona.version>

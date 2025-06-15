@@ -1,8 +1,8 @@
 package com.baeldung.arthas;
 
-import java.io.IOException;
-
 import static java.lang.String.format;
+
+import java.io.IOException;
 
 public class FibonacciGenerator {
 

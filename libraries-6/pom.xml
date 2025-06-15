@@ -22,11 +22,62 @@
             <artifactId>noexception</artifactId>
             <version>${noexception.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.atlassian.fugue</groupId>
+            <artifactId>fugue</artifactId>
+            <version>${fugue.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jcabi</groupId>
+            <artifactId>jcabi-aspects</artifactId>
+            <version>${jcabi-aspects.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${aspectjrt.version}</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.jcabi</groupId>
+                <artifactId>jcabi-maven-plugin</artifactId>
+                <version>${jcabi-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>ajc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjtools</artifactId>
+                        <version>${aspectjtools.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectjweaver.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <jdeferred.version>1.2.6</jdeferred.version>
         <noexception.version>1.1.0</noexception.version>
+        <fugue.version>4.5.1</fugue.version>
+        <jcabi-aspects.version>0.26.0</jcabi-aspects.version>
+        <aspectjrt.version>1.9.20.1</aspectjrt.version>
+        <jcabi-maven-plugin.version>0.14.1</jcabi-maven-plugin.version>
+        <aspectjtools.version>1.9.20.1</aspectjtools.version>
+        <aspectjweaver.version>1.9.20.1</aspectjweaver.version>
     </properties>
 
 </project>

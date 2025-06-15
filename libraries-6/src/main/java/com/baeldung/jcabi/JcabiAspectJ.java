@@ -1,12 +1,13 @@
 package com.baeldung.jcabi;
 
-
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.*;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
@@ -92,7 +93,7 @@ public class JcabiAspectJ {
         int x = 1/0;
     }
 
-    @RetryOnFailure(attempts = 2, types = {java.lang.NumberFormatException.class})
+    @RetryOnFailure(attempts = 2, types = { NumberFormatException.class})
     @Quietly
     public static void divideByZeroQuietly() {
         int x = 1/0;

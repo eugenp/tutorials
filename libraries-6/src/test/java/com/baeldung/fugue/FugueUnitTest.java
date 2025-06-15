@@ -17,7 +17,14 @@ import java.util.function.Function;
 import org.junit.Assert;
 import org.junit.Test;
 
-import io.atlassian.fugue.*;
+import io.atlassian.fugue.Checked;
+import io.atlassian.fugue.Either;
+import io.atlassian.fugue.Iterables;
+import io.atlassian.fugue.Option;
+import io.atlassian.fugue.Options;
+import io.atlassian.fugue.Pair;
+import io.atlassian.fugue.Try;
+import io.atlassian.fugue.Unit;
 
 public class FugueUnitTest {
 
