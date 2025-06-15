@@ -19,8 +19,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.awaitility.Awaitility.await;
 
 @Slf4j
-@ActiveProfiles("sasl-plaintext")
 @Testcontainers
+@ActiveProfiles("sasl-plaintext")
 @SpringBootTest(classes = KafkaSaslPlaintextApplication.class)
 class KafkaSaslPlaintextApplicationLiveTest {
 
@@ -40,15 +40,11 @@ class KafkaSaslPlaintextApplicationLiveTest {
     private KafkaConsumer kafkaConsumer;
 
     @Test
-    void givenSslIsConfigured_whenProducerSendsMessageOverSsl_thenConsumerReceivesOverSsl() {
-        String message = generateSampleMessage();
+    void givenSaslIsConfigured_whenProducerSendsMessageOverSasl_thenConsumerReceivesOverSasl() {
+        String message = UUID.randomUUID().toString();
         kafkaProducer.sendMessage(message, TOPIC);
 
         await().atMost(Duration.ofMinutes(2))
           .untilAsserted(() -> assertThat(kafkaConsumer.messages).containsExactly(message));
-    }
-
-    private static String generateSampleMessage() {
-        return UUID.randomUUID().toString();
     }
 }
