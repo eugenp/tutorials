@@ -1,0 +1,10 @@
+{
+  "type": "record",
+  "name": "Article",
+  "namespace": "com.baeldung.avro.deserialization.exception.avro",
+  "fields": [
+    { "name": "title", "type": "string" },
+    { "name": "author", "type": "string" },
+    { "name": "tags", "type": { "type": "array", "items": "string" } }
+  ]
+}
