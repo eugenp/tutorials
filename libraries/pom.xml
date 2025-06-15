@@ -65,7 +65,6 @@
             <artifactId>datanucleus-jdo-query</artifactId>
             <version>${datanucleus-jdo-query.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
@@ -137,21 +136,6 @@
             <version>${resilience4j.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.rosuda.REngine</groupId>
-            <artifactId>Rserve</artifactId>
-            <version>${rserve.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.jbytecode</groupId>
-            <artifactId>RCaller</artifactId>
-            <version>${rcaller.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.renjin</groupId>
-            <artifactId>renjin-script-engine</artifactId>
-            <version>${renjin.version}</version>
-        </dependency>
-        <dependency>
             <groupId>io.activej</groupId>
             <artifactId>activej-inject</artifactId>
             <version>${activej.version}</version>
@@ -178,21 +162,6 @@
             <version>${jackson-databind.version}</version>
         </dependency>
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>nm-repo</id>
-            <name>Numerical Method's Maven Repository</name>
-            <url>http://repo.numericalmethod.com/maven/</url>
-            <layout>default</layout>
-        </repository>
-        <!-- Needed for Renjin -->
-        <repository>
-            <id>bedatadriven</id>
-            <name>BeDataDriven repository</name>
-            <url>https://nexus.bedatadriven.com/content/groups/public/</url>
-        </repository>
-    </repositories>
 
     <build>
         <plugins>
@@ -278,19 +247,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <!-- Excludes FastR classes from compilations since they require GraalVM -->
-                    <excludes>
-                        <exclude>com/baeldung/r/FastRMean.java</exclude>
-                    </excludes>
-                    <testExcludes>
-                        <exclude>com/baeldung/r/FastRMeanUnitTest.java</exclude>
-                    </testExcludes>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
@@ -318,9 +274,6 @@
         <quartz.version>2.3.0</quartz.version>
         <commons-net.version>3.6</commons-net.version>
         <resilience4j.version>2.1.0</resilience4j.version>
-        <renjin.version>3.5-beta72</renjin.version>
-        <rcaller.version>3.0</rcaller.version>
-        <rserve.version>1.8.1</rserve.version>
         <activej.version>6.0-rc2</activej.version>
         <jackson-databind.version>2.17.0</jackson-databind.version>
     </properties>

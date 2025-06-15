@@ -88,6 +88,21 @@
             <artifactId>javax.el</artifactId>
             <version>${glassfish.web.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.rosuda.REngine</groupId>
+            <artifactId>Rserve</artifactId>
+            <version>${rserve.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jbytecode</groupId>
+            <artifactId>RCaller</artifactId>
+            <version>${rcaller.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.renjin</groupId>
+            <artifactId>renjin-script-engine</artifactId>
+            <version>${renjin.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -96,12 +111,32 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <!-- Excludes FastR classes from compilations since they require GraalVM -->
+                    <excludes>
+                        <exclude>com/baeldung/r/FastRMean.java</exclude>
+                    </excludes>
+                    <testExcludes>
+                        <exclude>com/baeldung/r/FastRMeanUnitTest.java</exclude>
+                    </testExcludes>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>nm-repo</id>
+            <name>Numerical Method's Maven Repository</name>
+            <url>http://repo.numericalmethod.com/maven/</url>
+            <layout>default</layout>
+        </repository>
+        <!-- Needed for Renjin -->
+        <repository>
+            <id>bedatadriven</id>
+            <name>BeDataDriven repository</name>
+            <url>https://nexus.bedatadriven.com/content/groups/public/</url>
+        </repository>
+    </repositories>
 
     <properties>
         <jetcache.version>2.7.6</jetcache.version>
@@ -113,6 +148,9 @@
         <mbassador.version>1.3.1</mbassador.version>
         <javax.el.version>3.0.0</javax.el.version>
         <glassfish.web.version>2.2.4</glassfish.web.version>
+        <renjin.version>3.5-beta72</renjin.version>
+        <rcaller.version>3.0</rcaller.version>
+        <rserve.version>1.8.1</rserve.version>
     </properties>
 
 </project>
