@@ -1,19 +1,25 @@
 package com.baeldung.githubapi;
 
-import com.google.common.base.Charsets;
-import org.apache.commons.io.IOUtils;
-import org.junit.jupiter.api.Test;
-import org.kohsuke.github.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.apache.commons.io.IOUtils;
+import org.junit.jupiter.api.Test;
+import org.kohsuke.github.GHBranch;
+import org.kohsuke.github.GHCommit;
+import org.kohsuke.github.GHContent;
+import org.kohsuke.github.GHRepository;
+import org.kohsuke.github.GHUser;
+import org.kohsuke.github.GitHub;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.common.base.Charsets;
 
 public class RepositoryLiveTest {
     private static final Logger LOG = LoggerFactory.getLogger(RepositoryLiveTest.class);

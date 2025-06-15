@@ -1,5 +1,7 @@
 package com.baeldung.lanterna;
 
+import org.junit.jupiter.api.Test;
+
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.TextColor;
@@ -7,7 +9,6 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
-import org.junit.jupiter.api.Test;
 
 public class ScreenLiveTest {
     @Test

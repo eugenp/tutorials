@@ -1,8 +1,9 @@
 package com.baeldung.lanterna;
 
+import org.junit.jupiter.api.Test;
+
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
-import org.junit.jupiter.api.Test;
 
 public class TerminalLiveTest {
     @Test

@@ -1,15 +1,15 @@
 package com.baeldung.githubapi;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.io.IOException;
+
 import org.junit.jupiter.api.Test;
 import org.kohsuke.github.GHMyself;
 import org.kohsuke.github.GHUser;
 import org.kohsuke.github.GitHub;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UsersLiveTest {
     private static final Logger LOG = LoggerFactory.getLogger(UsersLiveTest.class);

@@ -1,12 +1,12 @@
 package com.baeldung.githubapi;
 
-import org.junit.jupiter.api.Test;
-import org.kohsuke.github.GitHub;
-import org.kohsuke.github.GitHubBuilder;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import org.kohsuke.github.GitHub;
+import org.kohsuke.github.GitHubBuilder;
 
 public class ClientLiveTest {
 

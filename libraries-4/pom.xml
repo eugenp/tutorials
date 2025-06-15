@@ -104,6 +104,16 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>com.googlecode.lanterna</groupId>
+            <artifactId>lanterna</artifactId>
+            <version>${lanterna.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.kohsuke</groupId>
+            <artifactId>github-api</artifactId>
+            <version>${github-api.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -123,6 +133,8 @@
         <mapdb.version>3.0.8</mapdb.version>
         <classgraph.version>4.8.153</classgraph.version>
         <crawler4j.version>4.4.0</crawler4j.version>
+        <lanterna.version>3.1.2</lanterna.version>
+        <github-api.version>1.327</github-api.version>
     </properties>
 
 </project>

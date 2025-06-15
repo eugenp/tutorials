@@ -53,11 +53,6 @@
             <version>${yauaa.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.googlecode.lanterna</groupId>
-            <artifactId>lanterna</artifactId>
-            <version>${lanterna.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.jline</groupId>
             <artifactId>jline</artifactId>
             <version>${jline.version}</version>
@@ -66,11 +61,6 @@
             <groupId>org.jline</groupId>
             <artifactId>jline-terminal-jansi</artifactId>
             <version>${jline.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.kohsuke</groupId>
-            <artifactId>github-api</artifactId>
-            <version>${github-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -89,10 +79,8 @@
         <jetcache.version>2.7.6</jetcache.version>
         <spring-boot.version>3.3.0</spring-boot.version>
         <spring.version>6.1.8</spring.version>
-        <lanterna.version>3.1.2</lanterna.version>
         <yauaa.version>7.28.1</yauaa.version>
         <jline.version>3.28.0</jline.version>
-        <github-api.version>1.327</github-api.version>
         <com.restfb.version>2025.6.0</com.restfb.version>
     </properties>
 
