@@ -7,9 +7,11 @@ import static org.apache.kafka.clients.producer.ProducerConfig.VALUE_SERIALIZER_
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.testcontainers.shaded.org.awaitility.Awaitility.await;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,8 +53,7 @@ class AvroMagicByteLiveTest {
         stringKafkaTemplate().send("baeldung.article.published", "not a valid avro message!")
             .get();
 
-        var dlqRecord = KafkaTestUtils.getOneRecord(kafka.getBootstrapServers(), "test-group-id", "baeldung.article.published-dlt", 0, false, true,
-            ofSeconds(5L));
+        var dlqRecord = listenForOneMessage("baeldung.article.published-dlt", ofSeconds(5L));
 
         assertThat(dlqRecord.value()).isEqualTo("not a valid avro message!");
     }
@@ -69,6 +70,10 @@ class AvroMagicByteLiveTest {
         return new DefaultKafkaProducerFactory<>(
             Map.of(BOOTSTRAP_SERVERS_CONFIG, kafka.getBootstrapServers(), KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName(),
                 VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class.getName(), "schema.registry.url", "mock://test"));
+    }
+
+    private static ConsumerRecord<?, ?> listenForOneMessage(String topic, Duration timeout) {
+        return KafkaTestUtils.getOneRecord(kafka.getBootstrapServers(), "test-group-id", topic, 0, false, true, timeout);
     }
 
     private static Article aTestArticle(String title) {
