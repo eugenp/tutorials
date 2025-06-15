@@ -1,12 +1,13 @@
 package com.baeldung.lsh;
 
-import info.debatty.java.lsh.LSHMinHash;
-import org.junit.Ignore;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Ignore;
+import org.junit.Test;
+
+import info.debatty.java.lsh.LSHMinHash;
 
 public class LocalSensitiveHashingUnitTest {
 

@@ -38,6 +38,16 @@
             <version>${aspectjrt.version}</version>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>info.debatty</groupId>
+            <artifactId>java-lsh</artifactId>
+            <version>${java-lsh.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.functionaljava</groupId>
+            <artifactId>functionaljava-java8</artifactId>
+            <version>${functionaljava.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -78,6 +88,8 @@
         <jcabi-maven-plugin.version>0.14.1</jcabi-maven-plugin.version>
         <aspectjtools.version>1.9.20.1</aspectjtools.version>
         <aspectjweaver.version>1.9.20.1</aspectjweaver.version>
+        <java-lsh.version>0.10</java-lsh.version>
+        <functionaljava.version>4.8.1</functionaljava.version>
     </properties>
 
 </project>

@@ -95,11 +95,6 @@
             <version>${quartz.version}</version>
         </dependency>
         <dependency>
-            <groupId>info.debatty</groupId>
-            <artifactId>java-lsh</artifactId>
-            <version>${java-lsh.version}</version>
-        </dependency>
-        <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
@@ -120,11 +115,6 @@
             <groupId>com.google.oauth-client</groupId>
             <artifactId>google-oauth-client-jetty</artifactId>
             <version>${google-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.functionaljava</groupId>
-            <artifactId>functionaljava-java8</artifactId>
-            <version>${functionaljava.version}</version>
         </dependency>
         <dependency>
             <groupId>io.github.resilience4j</groupId>
@@ -312,7 +302,6 @@
         <serenity.jira.version>1.9.0</serenity.jira.version>
         <serenity.plugin.version>1.9.27</serenity.plugin.version>
         <jUnitParams.version>1.1.0</jUnitParams.version>
-        <java-lsh.version>0.10</java-lsh.version>
         <pact.version>3.5.0</pact.version>
         <org.hamcrest.java-hamcrest.version>2.0.0.0</org.hamcrest.java-hamcrest.version>
         <protonpack.version>1.15</protonpack.version>
@@ -328,7 +317,6 @@
         <spring-mock-mvc.version>3.0.3</spring-mock-mvc.version>
         <quartz.version>2.3.0</quartz.version>
         <commons-net.version>3.6</commons-net.version>
-        <functionaljava.version>4.8.1</functionaljava.version>
         <resilience4j.version>2.1.0</resilience4j.version>
         <renjin.version>3.5-beta72</renjin.version>
         <rcaller.version>3.0</rcaller.version>
