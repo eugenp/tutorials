@@ -1,4 +1,4 @@
-package com.baeldung.test;
+package com.baeldung.sbe.test;
 
 import java.math.BigDecimal;
 import java.nio.ByteBuffer;
