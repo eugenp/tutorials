@@ -100,6 +100,17 @@
             <artifactId>agrona</artifactId>
             <version>${agrona.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.nats</groupId>
+            <artifactId>jnats</artifactId>
+            <version>${jnats.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${awaitility.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -214,6 +225,8 @@
         <sbe-tool.version>1.27.0</sbe-tool.version>
         <agrona.version>1.17.1</agrona.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
+        <jnats.version>2.17.3</jnats.version>
+        <awaitility.version>4.2.1</awaitility.version>
     </properties>
 
 </project>

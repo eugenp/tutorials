@@ -97,20 +97,9 @@
             <version>${immutables.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.nats</groupId>
-            <artifactId>jnats</artifactId>
-            <version>${jnats.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.mutabilitydetector</groupId>
             <artifactId>MutabilityDetector</artifactId>
             <version>${mutabilitydetector.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.awaitility</groupId>
-            <artifactId>awaitility</artifactId>
-            <version>${awaitility.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -146,9 +135,7 @@
         <sleepycat-je.version>18.3.12</sleepycat-je.version>
         <docker.version>3.0.14</docker.version>
         <immutables.version>2.5.6</immutables.version>
-        <jnats.version>2.17.3</jnats.version>
         <mutabilitydetector.version>0.9.6</mutabilitydetector.version>
-        <awaitility.version>4.2.1</awaitility.version>
         <javapoet.version>1.10.0</javapoet.version>
         <libphonenumber.version>8.12.9</libphonenumber.version>
     </properties>
