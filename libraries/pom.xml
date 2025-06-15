@@ -299,8 +299,6 @@
                     <testExcludes>
                         <exclude>com/baeldung/r/FastRMeanUnitTest.java</exclude>
                     </testExcludes>
-                    <source>16</source>
-                    <target>16</target>
                 </configuration>
             </plugin>
         </plugins>
