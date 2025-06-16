@@ -176,6 +176,7 @@ public class PersonGenerator {
     private void writeToOutputFile(String packageName, TypeSpec typeSpec) throws IOException {
         JavaFile javaFile = JavaFile
           .builder(packageName, typeSpec)
+          .skipJavaLangImports(true)
           .indent(FOUR_WHITESPACES)
           .build();
         javaFile.writeTo(outputFile);
