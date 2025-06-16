@@ -116,6 +116,11 @@
             <artifactId>sootup.java.bytecode</artifactId>
             <version>${sootup.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
