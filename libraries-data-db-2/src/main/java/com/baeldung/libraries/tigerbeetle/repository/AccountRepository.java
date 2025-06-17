@@ -3,8 +3,6 @@ package com.baeldung.libraries.tigerbeetle.repository;
 import com.baeldung.libraries.tigerbeetle.domain.*;
 import com.tigerbeetle.*;
 import lombok.RequiredArgsConstructor;
-import org.checkerframework.checker.guieffect.qual.UI;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;

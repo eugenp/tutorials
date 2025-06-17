@@ -1,6 +1,6 @@
 package com.baeldung.resilience4j;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.reset;
@@ -11,8 +11,8 @@ import static org.mockito.Mockito.when;
 import java.util.concurrent.Callable;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
@@ -29,7 +29,7 @@ public class CircuitBreakerVsRetryUnitTest {
 
     private PaymentService paymentService;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         paymentService = mock(PaymentService.class);
     }

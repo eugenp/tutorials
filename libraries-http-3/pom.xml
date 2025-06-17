@@ -13,13 +13,6 @@
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-         
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <okhttp.version>4.12.0</okhttp.version>
-        <apache.httpclient.version>5.3.1</apache.httpclient.version>
-        <spring.web.version>6.1.5</spring.web.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -33,6 +26,16 @@
             <artifactId>httpclient5</artifactId>
             <version>${apache.httpclient.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.restfb</groupId>
+            <artifactId>restfb</artifactId>
+            <version>${com.restfb.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -40,5 +43,14 @@
             <version>${spring.web.version}</version>
         </dependency>
     </dependencies>
-
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <okhttp.version>4.12.0</okhttp.version>
+        <apache.httpclient.version>5.3.1</apache.httpclient.version>
+        <spring.web.version>6.1.5</spring.web.version>
+        <com.restfb.version>2025.6.0</com.restfb.version>
+        <spring.version>6.1.8</spring.version>
+    </properties>
+    
 </project>
