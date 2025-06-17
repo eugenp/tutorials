@@ -19,7 +19,7 @@
             <plugin>
                 <groupId>uk.org.webcompere</groupId>
                 <artifactId>spring-properties-cleaner-plugin</artifactId>
-                <version>1.0.3</version>
+                <version>1.0.6</version>
                 <executions>
                     <execution>
                         <goals>
