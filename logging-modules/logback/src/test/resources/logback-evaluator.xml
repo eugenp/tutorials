@@ -6,7 +6,7 @@
     </appender>
 
     <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
-        <evaluator class="com.example.MyCustomEvaluator"/>
+        <evaluator class="com.baeldung.logback.MyCustomEvaluator"/>
         <onMatch>ACCEPT</onMatch>
         <onMismatch>DENY</onMismatch>
     </filter>
