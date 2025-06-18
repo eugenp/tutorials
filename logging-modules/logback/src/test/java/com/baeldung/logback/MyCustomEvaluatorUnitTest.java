@@ -31,7 +31,7 @@ public class MyCustomEvaluatorUnitTest {
     public void testEvaluate_containsBilling() {
         MyCustomEvaluator evaluator = new MyCustomEvaluator();
         logger = (Logger) LoggerFactory.getLogger(MyCustomEvaluatorUnitTest.class);
-        LoggingEvent event = new LoggingEvent("fqcn", null, Level.INFO, "This message contains billing information.", null, null);
+        LoggingEvent event = new LoggingEvent("fqcn", logger, Level.INFO, "This message contains billing information.", null, null);
         assertTrue(evaluator.evaluate(event));
     }
 
@@ -39,7 +39,7 @@ public class MyCustomEvaluatorUnitTest {
     public void testEvaluate_doesNotContainBilling() {
         MyCustomEvaluator evaluator = new MyCustomEvaluator();
         logger = (Logger) LoggerFactory.getLogger(MyCustomEvaluatorUnitTest.class);
-        LoggingEvent event = new LoggingEvent("fqcn", null, Level.INFO, "This message does not.", null, null);
+        LoggingEvent event = new LoggingEvent("fqcn", logger, Level.INFO, "This message does not.", null, null);
         assertFalse(evaluator.evaluate(event));
     }
 }
