@@ -1,0 +1,143 @@
+-- Insert wizards from Gryffindor
+SET @gryffindor_house_id = (SELECT id FROM hogwarts_houses WHERE name = 'Gryffindor');
+
+INSERT INTO wizards (name, gender, quidditch_position, blood_status, house_id)
+VALUES
+    ('Harry Potter', 'Male', 'Seeker', 'Half blood', @gryffindor_house_id),
+    ('Hermione Granger', 'Female', NULL, 'Muggle', @gryffindor_house_id),
+    ('Ron Weasley', 'Male', 'Keeper', 'Pure Blood', @gryffindor_house_id),
+    ('Neville Longbottom', 'Male', NULL, 'Pure Blood', @gryffindor_house_id),
+    ('Ginny Weasley', 'Female', 'Chaser', 'Pure Blood', @gryffindor_house_id),
+    ('Fred Weasley', 'Male', 'Beater', 'Pure Blood', @gryffindor_house_id),
+    ('George Weasley', 'Male', 'Beater', 'Pure Blood', @gryffindor_house_id),
+    ('Dean Thomas', 'Male', NULL, 'Muggle', @gryffindor_house_id),
+    ('Seamus Finnigan', 'Male', NULL, 'Half blood', @gryffindor_house_id),
+    ('Parvati Patil', 'Female', NULL, 'Pure Blood', @gryffindor_house_id),
+    ('Lavender Brown', 'Female', NULL, 'Pure Blood', @gryffindor_house_id),
+    ('Colin Creevey', 'Male', NULL, 'Muggle', @gryffindor_house_id),
+    ('Alicia Spinnet', 'Female', 'Chaser', 'Half blood', @gryffindor_house_id),
+    ('Angelina Johnson', 'Female', 'Chaser', 'Pure Blood', @gryffindor_house_id),
+    ('Katie Bell', 'Female', 'Chaser', 'Half blood', @gryffindor_house_id),
+    ('Lee Jordan', 'Male', NULL, 'Pure Blood', @gryffindor_house_id),
+    ('Oliver Wood', 'Male', 'Keeper', 'Pure Blood', @gryffindor_house_id),
+    ('Percy Weasley', 'Male', NULL, 'Pure Blood', @gryffindor_house_id),
+    ('Cormac McLaggen', 'Male', 'Keeper', 'Pure Blood', @gryffindor_house_id),
+    ('Demelza Robins', 'Female', 'Chaser', 'Half blood', @gryffindor_house_id),
+    ('Romilda Vane', 'Female', NULL, 'Pure Blood', @gryffindor_house_id),
+    ('Jimmy Peakes', 'Male', 'Beater', 'Muggle', @gryffindor_house_id),
+    ('Ritchie Coote', 'Male', 'Beater', 'Pure Blood', @gryffindor_house_id),
+    ('Natalie McDonald', 'Female', NULL, 'Muggle', @gryffindor_house_id),
+    ('Euan Abercrombie', 'Male', NULL, 'Half blood', @gryffindor_house_id),
+    ('Jack Sloper', 'Male', 'Beater', 'Half blood', @gryffindor_house_id),
+    ('Andrew Kirke', 'Male', 'Beater', 'Pure Blood', @gryffindor_house_id),
+    ('Fay Dunbar', 'Female', NULL, 'Pure Blood', @gryffindor_house_id),
+    ('Nigel Wolpert', 'Male', NULL, 'Muggle', @gryffindor_house_id),
+    ('Mary Macdonald', 'Female', NULL, 'Muggle', @gryffindor_house_id);
+
+-- Insert wizards from Hufflepuff
+SET @hufflepuff_house_id = (SELECT id FROM hogwarts_houses WHERE name = 'Hufflepuff');
+
+INSERT INTO wizards (name, gender, quidditch_position, blood_status, house_id)
+VALUES
+    ('Cedric Diggory', 'Male', 'Seeker', 'Pure Blood', @hufflepuff_house_id),
+    ('Nymphadora Tonks', 'Female', NULL, 'Half blood', @hufflepuff_house_id),
+    ('Susan Bones', 'Female', NULL, 'Half blood', @hufflepuff_house_id),
+    ('Hannah Abbott', 'Female', NULL, 'Half blood', @hufflepuff_house_id),
+    ('Justin Finch-Fletchley', 'Male', NULL, 'Muggle', @hufflepuff_house_id),
+    ('Ernie Macmillan', 'Male', NULL, 'Pure Blood', @hufflepuff_house_id),
+    ('Zacharias Smith', 'Male', 'Chaser', 'Pure Blood', @hufflepuff_house_id),
+    ('Leanne', 'Female', NULL, 'Muggle', @hufflepuff_house_id),
+    ('Megan Jones', 'Female', NULL, 'Muggle', @hufflepuff_house_id),
+    ('Wayne Hopkins', 'Male', NULL, 'Half blood', @hufflepuff_house_id),
+    ('Heidi Macavoy', 'Female', 'Chaser', 'Half blood', @hufflepuff_house_id),
+    ('Tamsin Applebee', 'Female', 'Chaser', 'Pure Blood', @hufflepuff_house_id),
+    ('Herbert Fleet', 'Male', 'Keeper', 'Muggle', @hufflepuff_house_id),
+    ('Maxine O''Flaherty', 'Female', 'Beater', 'Half blood', @hufflepuff_house_id),
+    ('Anthony Rickett', 'Male', 'Beater', 'Half blood', @hufflepuff_house_id),
+    ('Malcolm Preece', 'Male', NULL, 'Pure Blood', @hufflepuff_house_id),
+    ('Heather Woodhead', 'Female', NULL, 'Muggle', @hufflepuff_house_id),
+    ('Eloise Midgen', 'Female', NULL, 'Half blood', @hufflepuff_house_id),
+    ('Owen Cauldwell', 'Male', NULL, 'Half blood', @hufflepuff_house_id),
+    ('Laura Madley', 'Female', NULL, 'Muggle', @hufflepuff_house_id),
+    ('Eleanor Branstone', 'Female', NULL, 'Muggle', @hufflepuff_house_id),
+    ('Kevin Whitby', 'Male', NULL, 'Muggle', @hufflepuff_house_id),
+    ('Rose Zeller', 'Female', NULL, 'Half blood', @hufflepuff_house_id),
+    ('Cadwallader', 'Male', 'Chaser', 'Pure Blood', @hufflepuff_house_id),
+    ('Summerby', 'Male', 'Seeker', 'Half blood', @hufflepuff_house_id),
+    ('Stebbins', 'Male', NULL, 'Half blood', @hufflepuff_house_id),
+    ('Sally-Anne Perks', 'Female', NULL, 'Muggle', @hufflepuff_house_id),
+    ('Luca Caruso', 'Male', 'Beater', 'Pure Blood', @hufflepuff_house_id),
+    ('Alice Tolipan', 'Female', NULL, 'Muggle', @hufflepuff_house_id),
+    ('Gabriel Truman', 'Male', NULL, 'Half blood', @hufflepuff_house_id);
+
+-- Insert wizards from Ravenclaw
+SET @ravenclaw_house_id = (SELECT id FROM hogwarts_houses WHERE name = 'Ravenclaw');
+
+INSERT INTO wizards (name, gender, quidditch_position, blood_status, house_id)
+VALUES
+    ('Luna Lovegood', 'Female', NULL, 'Pure Blood', @ravenclaw_house_id),
+    ('Cho Chang', 'Female', 'Seeker', 'Pure Blood', @ravenclaw_house_id),
+    ('Padma Patil', 'Female', NULL, 'Pure Blood', @ravenclaw_house_id),
+    ('Michael Corner', 'Male', NULL, 'Half blood', @ravenclaw_house_id),
+    ('Terry Boot', 'Male', NULL, 'Pure Blood', @ravenclaw_house_id),
+    ('Anthony Goldstein', 'Male', NULL, 'Half blood', @ravenclaw_house_id),
+    ('Marcus Belby', 'Male', NULL, 'Pure Blood', @ravenclaw_house_id),
+    ('Roger Davies', 'Male', 'Chaser', 'Half blood', @ravenclaw_house_id),
+    ('Penelope Clearwater', 'Female', NULL, 'Muggle', @ravenclaw_house_id),
+    ('Marietta Edgecombe', 'Female', NULL, 'Pure Blood', @ravenclaw_house_id),
+    ('Mandy Brocklehurst', 'Female', NULL, 'Half blood', @ravenclaw_house_id),
+    ('Lisa Turpin', 'Female', NULL, 'Muggle', @ravenclaw_house_id),
+    ('Morag MacDougal', 'Female', NULL, 'Pure Blood', @ravenclaw_house_id),
+    ('Stephen Cornfoot', 'Male', NULL, 'Half blood', @ravenclaw_house_id),
+    ('Kevin Entwhistle', 'Male', NULL, 'Muggle', @ravenclaw_house_id),
+    ('Sue Li', 'Female', NULL, 'Pure Blood', @ravenclaw_house_id),
+    ('Isobel MacDougal', 'Female', NULL, 'Pure Blood', @ravenclaw_house_id),
+    ('Grant Page', 'Male', NULL, 'Half blood', @ravenclaw_house_id),
+    ('Nanette Desford', 'Female', NULL, 'Muggle', @ravenclaw_house_id),
+    ('Orla Quirke', 'Female', NULL, 'Half blood', @ravenclaw_house_id),
+    ('Stewart Ackerley', 'Male', NULL, 'Muggle', @ravenclaw_house_id),
+    ('Robert Hilliard', 'Male', NULL, 'Pure Blood', @ravenclaw_house_id),
+    ('Duncan Inglebee', 'Male', 'Beater', 'Pure Blood', @ravenclaw_house_id),
+    ('Jason Samuels', 'Male', 'Beater', 'Half blood', @ravenclaw_house_id),
+    ('Jeremy Stretton', 'Male', 'Chaser', 'Half blood', @ravenclaw_house_id),
+    ('Eddie Carmichael', 'Male', NULL, 'Half blood', @ravenclaw_house_id),
+    ('Rebecca Fortescue', 'Female', NULL, 'Pure Blood', @ravenclaw_house_id),
+    ('Latisha Randle', 'Female', NULL, 'Muggle', @ravenclaw_house_id),
+    ('Usman Hussain', 'Male', NULL, 'Muggle', @ravenclaw_house_id),
+    ('Sasha Elrington', 'Female', NULL, 'Half blood', @ravenclaw_house_id);
+
+-- Insert wizards from Slytherin
+SET @slytherin_house_id = (SELECT id FROM hogwarts_houses WHERE name = 'Slytherin');
+
+INSERT INTO wizards (name, gender, quidditch_position, blood_status, house_id)
+VALUES
+    ('Draco Malfoy', 'Male', 'Seeker', 'Pure Blood', @slytherin_house_id),
+    ('Tom Riddle', 'Male', NULL, 'Half blood', @slytherin_house_id),
+    ('Bellatrix Lestrange', 'Female', NULL, 'Pure Blood', @slytherin_house_id),
+    ('Severus Snape', 'Male', NULL, 'Half blood', @slytherin_house_id),
+    ('Horace Slughorn', 'Male', NULL, 'Pure Blood', @slytherin_house_id),
+    ('Regulus Black', 'Male', 'Seeker', 'Pure Blood', @slytherin_house_id),
+    ('Andromeda Tonks', 'Female', NULL, 'Pure Blood', @slytherin_house_id),
+    ('Lucius Malfoy', 'Male', NULL, 'Pure Blood', @slytherin_house_id),
+    ('Narcissa Malfoy', 'Female', NULL, 'Pure Blood', @slytherin_house_id),
+    ('Vincent Crabbe', 'Male', NULL, 'Pure Blood', @slytherin_house_id),
+    ('Gregory Goyle', 'Male', NULL, 'Pure Blood', @slytherin_house_id),
+    ('Pansy Parkinson', 'Female', NULL, 'Pure Blood', @slytherin_house_id),
+    ('Blaise Zabini', 'Male', NULL, 'Pure Blood', @slytherin_house_id),
+    ('Theodore Nott', 'Male', NULL, 'Pure Blood', @slytherin_house_id),
+    ('Millicent Bulstrode', 'Female', NULL, 'Half blood', @slytherin_house_id),
+    ('Daphne Greengrass', 'Female', NULL, 'Pure Blood', @slytherin_house_id),
+    ('Tracey Davis', 'Female', NULL, 'Half blood', @slytherin_house_id),
+    ('Adrian Pucey', 'Male', 'Chaser', 'Pure Blood', @slytherin_house_id),
+    ('Marcus Flint', 'Male', 'Chaser', 'Pure Blood', @slytherin_house_id),
+    ('Graham Montague', 'Male', 'Chaser', 'Pure Blood', @slytherin_house_id),
+    ('Cassius Warrington', 'Male', 'Chaser', 'Pure Blood', @slytherin_house_id),
+    ('Miles Bletchley', 'Male', 'Keeper', 'Pure Blood', @slytherin_house_id),
+    ('Lucian Bole', 'Male', 'Beater', 'Pure Blood', @slytherin_house_id),
+    ('Peregrine Derrick', 'Male', 'Beater', 'Pure Blood', @slytherin_house_id),
+    ('Terence Higgs', 'Male', 'Seeker', 'Pure Blood', @slytherin_house_id),
+    ('Harper', 'Male', 'Seeker', 'Pure Blood', @slytherin_house_id),
+    ('Vaisey', 'Male', 'Chaser', 'Pure Blood', @slytherin_house_id),
+    ('Urquhart', 'Male', 'Chaser', 'Pure Blood', @slytherin_house_id),
+    ('Flora Carrow', 'Female', NULL, 'Pure Blood', @slytherin_house_id),
+    ('Hestia Carrow', 'Female', NULL, 'Pure Blood', @slytherin_house_id);
