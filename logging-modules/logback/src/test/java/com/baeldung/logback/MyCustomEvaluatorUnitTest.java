@@ -38,6 +38,7 @@ public class MyCustomEvaluatorUnitTest {
     @Test
     public void testEvaluate_doesNotContainBilling() {
         MyCustomEvaluator evaluator = new MyCustomEvaluator();
+        logger = (Logger) LoggerFactory.getLogger(MyCustomEvaluatorUnitTest.class);
         LoggingEvent event = new LoggingEvent("fqcn", null, Level.INFO, "This message does not.", null, null);
         assertFalse(evaluator.evaluate(event));
     }
