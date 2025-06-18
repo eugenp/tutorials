@@ -1,5 +1,7 @@
 package com.baeldung.ambassadorpattern;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.retry.annotation.Backoff;
@@ -14,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 public class HttpAmbassadorNamesApiClient {
 
     private final RestTemplate restTemplate;
+    private final Logger logger = LoggerFactory.getLogger(HttpAmbassadorNamesApiClient.class);
     public final String apiUrl;
 
     public HttpAmbassadorNamesApiClient(RestTemplate restTemplate, @Value("${names-api-url}") String apiUrl) {
@@ -26,10 +29,10 @@ public class HttpAmbassadorNamesApiClient {
     public String getResponse() {
         try {
             String result = restTemplate.getForObject(apiUrl, String.class);
-            System.out.printf("HTTP call completed successfully to url=%s", apiUrl);
+            logger.info("HTTP call completed successfully to url={}", apiUrl);
             return result;
         } catch (HttpClientErrorException e) {
-            System.err.printf("HTTP Client Error error_code=%s message=%s", e.getStatusCode(), e.getMessage());
+            logger.error("HTTP Client Error error_code={} message={}", e.getStatusCode(), e.getMessage());
             throw e;
         }
     }
@@ -37,7 +40,7 @@ public class HttpAmbassadorNamesApiClient {
     @Recover
     public String recover(Exception e) {
         final String defaultResponse = "default";
-        System.err.printf("Too many retry attempts. Falling back to default. error=%s default=%s", e.getMessage(), defaultResponse);
+        logger.error("Too many retry attempts. Falling back to default. error={} default={}", e.getMessage(), defaultResponse);
         return defaultResponse;
     }
 }
