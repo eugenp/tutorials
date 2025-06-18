@@ -19,7 +19,7 @@ public class MyCustomEvaluatorUnitTest {
     }
     
     @Test
-    public void testEvaluate_containsBilling() {
+    public void givenCustomEvaluatorFilter_whenEvaluatingContainsBillingInformation_thenEvaluationSuccessful() {
         MyCustomEvaluator evaluator = new MyCustomEvaluator();
         logger = (Logger) LoggerFactory.getLogger(MyCustomEvaluatorUnitTest.class);
         LoggingEvent event = new LoggingEvent("fqcn", logger, Level.INFO, "This message contains billing information.", null, null);
@@ -27,7 +27,7 @@ public class MyCustomEvaluatorUnitTest {
     }
 
     @Test
-    public void testEvaluate_doesNotContainBilling() {
+    public void givenCustomEvaluatorFilter_whenEvaluatingDoesNotContainBillingInformation_thenEvaluationSuccessful() {
         MyCustomEvaluator evaluator = new MyCustomEvaluator();
         logger = (Logger) LoggerFactory.getLogger(MyCustomEvaluatorUnitTest.class);
         LoggingEvent event = new LoggingEvent("fqcn", logger, Level.INFO, "This message does not.", null, null);
