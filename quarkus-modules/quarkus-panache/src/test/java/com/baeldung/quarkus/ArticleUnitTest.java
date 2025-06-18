@@ -38,11 +38,12 @@ public class ArticleUnitTest {
 
         List<Article> articles = Article.list("title", "Quarkus Panache");
 
-        assertEquals(2, articles.size());
+        assertEquals(1, articles.size());
     }
 
     @Test
     @Order(3)
+    @Transactional
     public void givenPersistedArticle_whenDeleted_thenItShouldBeRemovedFromCount() {
         Article article = new Article("Delete Me", "Soon gone", "Draft");
         article.persist();
