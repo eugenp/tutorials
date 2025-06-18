@@ -34,15 +34,10 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-hibernate-orm-rest-data-panache</artifactId>
         </dependency>
+
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-arc</artifactId>
-        </dependency>
-
-        <!-- PostgreSQL JDBC Driver -->
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-jdbc-postgresql</artifactId>
         </dependency>
 
         <!-- Quarkus test dependency -->
