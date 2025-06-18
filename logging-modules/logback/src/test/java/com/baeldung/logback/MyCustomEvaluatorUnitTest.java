@@ -6,25 +6,16 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintStream;
-
-import org.apache.commons.io.FileUtils;
 import org.slf4j.LoggerFactory;
 import ch.qos.logback.classic.Logger;
 
 public class MyCustomEvaluatorUnitTest {
 
     private static Logger logger;
-    private static ByteArrayOutputStream consoleOutput = new ByteArrayOutputStream();
-    private static PrintStream printStream = new PrintStream(consoleOutput);
     
     @BeforeAll
     public static void setUp() {
         System.setProperty("logback.configurationFile", "src/test/resources/logback-evaluator.xml");
-        System.setOut(printStream);
     }
     
     @Test
