@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 
-public class MyCustomEvaluatorTest {
+public class MyCustomEvaluatorUnitTest {
 
     @BeforeAll
     public static void setUp() {
