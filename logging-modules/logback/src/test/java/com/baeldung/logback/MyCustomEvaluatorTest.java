@@ -7,6 +7,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MyCustomEvaluatorTest {
 
+    @BeforeAll
+    public static void setUp() {
+        System.setProperty("logback.configurationFile", "src/test/resources/logback-evaluator.xml");
+    }
+    
     @Test
     public void testEvaluate_containsBilling() {
         MyCustomEvaluator evaluator = new MyCustomEvaluator();
