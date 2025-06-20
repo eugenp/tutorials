@@ -33,6 +33,4 @@ public interface EmailService {
                                             Map<String, Object> templateModel)
             throws IOException, TemplateException, MessagingException;
 
-    void sendMessageWithInputStreamAttachment(
-        String to, String subject, String text, String attachmentName, InputStream inputStream);
 }

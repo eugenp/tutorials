@@ -1,10 +1,12 @@
 package com.baeldung.spring.mail;
 
 import java.io.File;
+import java.io.InputStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -66,5 +68,26 @@ public class EmailServiceImpl implements EmailService {
         }
     }
 
+    @Override
+    public void sendMessageWithInputStreamAttachment(
+        String to, String subject, String text, String attachmentName, InputStream attachmentStream) {
+
+        try {
+            MimeMessage message = emailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+
+            helper.setFrom(NOREPLY_ADDRESS);
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(text);
+
+            // Add the attachment from InputStream
+            helper.addAttachment(attachmentName, new InputStreamResource(attachmentStream));
+
+            emailSender.send(message);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

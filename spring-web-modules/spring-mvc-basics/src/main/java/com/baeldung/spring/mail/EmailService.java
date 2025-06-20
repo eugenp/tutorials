@@ -1,6 +1,7 @@
 package com.baeldung.spring.mail;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
 
 import jakarta.mail.MessagingException;
@@ -17,4 +18,7 @@ public interface EmailService {
         String subject,
         String text,
         String pathToAttachment);
+
+    void sendMessageWithInputStreamAttachment(
+        String to, String subject, String text, String attachmentName, InputStream inputStream);
 }
