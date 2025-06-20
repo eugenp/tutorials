@@ -1,6 +1,6 @@
 services:
   zookeeper:
-    image: confluentinc/cp-zookeeper:7.1.0
+    image: confluentinc/cp-zookeeper:7.6.6
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
@@ -11,7 +11,7 @@ services:
       - 2181
 
   kafka:
-    image: confluentinc/cp-kafka:7.1.0
+    image: confluentinc/cp-kafka:7.6.6
     depends_on:
       - zookeeper
     environment:

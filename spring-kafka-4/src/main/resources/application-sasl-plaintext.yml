@@ -8,7 +8,7 @@ spring:
         username="user1"
         password="user1-secret";
     security:
-      protocol: "SASL_PLAINTEXT"
+      protocol: SASL_PLAINTEXT
     consumer:
       group-id: test-group
       auto-offset-reset: earliest
