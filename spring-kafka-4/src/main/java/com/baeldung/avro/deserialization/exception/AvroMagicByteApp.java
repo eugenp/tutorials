@@ -17,7 +17,7 @@ class AvroMagicByteApp {
 
     private static final Logger LOG = LoggerFactory.getLogger(AvroMagicByteApp.class);
 
-    final List<String> blog = new ArrayList<>();
+    private final List<String> blog = new ArrayList<>();
 
     public static void main(String[] args) {
         new SpringApplicationBuilder().sources(AvroMagicByteApp.class)
@@ -31,4 +31,7 @@ class AvroMagicByteApp {
         blog.add(article.getTitle());
     }
 
+    public List<String> getBlog() {
+        return blog;
+    }
 }

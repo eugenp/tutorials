@@ -45,7 +45,7 @@ class AvroMagicByteLiveTest {
         avroKafkaTemplate().send("baeldung.article.published", aTestArticle("Avro Magic Byte"))
             .get();
 
-        await().untilAsserted(() -> assertThat(listener.blog).containsExactly("Avro Magic Byte"));
+        await().untilAsserted(() -> assertThat(listener.getBlog()).containsExactly("Avro Magic Byte"));
     }
 
     @Test
