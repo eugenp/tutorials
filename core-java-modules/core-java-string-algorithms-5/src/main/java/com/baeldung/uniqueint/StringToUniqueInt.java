@@ -38,12 +38,12 @@ class StringToUniqueInt {
     }
 
     public static int toIntByLookup(String value) {
-        var found = lookupMap.get(value);
+        Integer found = lookupMap.get(value);
         if (found != null) {
             return found;
         }
 
-        var intValue = counter.incrementAndGet();
+        Integer intValue = counter.incrementAndGet();
         lookupMap.put(value, intValue);
         return intValue;
     }
