@@ -1,0 +1,58 @@
+openapi: 3.1.0
+info:
+  title: Student API
+  description: Following documentation explain the API's supported by the [student server](http://localhost:8080).
+  version: 1.1.9
+servers:
+  - url: http://localhost:8080/v1
+    description: Prod server
+    variables:
+      region:
+        default: us-west
+        enum:
+          - us-west
+          - us-east
+  - url: http://localhost:8080/test
+    description: Test server
+paths:
+  /students:
+    get:
+      tags:
+        - Students
+      summary: Returns all the students.
+      description: Following path gives all the data related to students
+      responses:
+        "200":
+          description: A JSON array of student objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: './components/schemas/Student.yml'
+  /students/{id}:
+    get:
+      tags:
+        - Students
+      summary: Gets a student by ID.
+      description: >
+        Gives the details of specific student based on **ID**
+      operationId: getStudentById
+      parameters:
+        - name: id
+          in: path
+          description: Student ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: './components/schemas/Student.yml'
+externalDocs:
+  description: Learn more about student operations provided by this API.
+  url: http://localhost:8080/swagger-ui/index.html
