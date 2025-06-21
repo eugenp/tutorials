@@ -1,0 +1,16 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    properties:
+      sasl.mechanism: PLAIN
+      sasl.jaas.config: >
+        org.apache.kafka.common.security.plain.PlainLoginModule required
+        username="user1"
+        password="user1-secret";
+    security:
+      protocol: SASL_PLAINTEXT
+    consumer:
+      group-id: test-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
