@@ -1,6 +1,5 @@
 package com.baeldung.saslplaintext;
 
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,7 +17,6 @@ import static com.baeldung.saslplaintext.KafkaConsumer.TOPIC;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.awaitility.Awaitility.await;
 
-@Slf4j
 @Testcontainers
 @ActiveProfiles("sasl-plaintext")
 @SpringBootTest(classes = KafkaSaslPlaintextApplication.class)
