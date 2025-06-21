@@ -1,4 +1,4 @@
-package com.baeldung.generics.classtype;
+package com.baeldung.classtype;
 
 public class ContainerTypeFromReflection<T> {
     private T content;
