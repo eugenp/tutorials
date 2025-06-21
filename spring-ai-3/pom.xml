@@ -102,6 +102,18 @@
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-mistral-ai-spring-boot-starter</artifactId>
         </dependency>
+       <dependency>
+           <groupId>com.github.docker-java</groupId>
+           <artifactId>docker-java-api</artifactId>
+           <version>3.5.1</version>
+           <scope>test</scope>
+       </dependency>
+       <dependency>
+           <groupId>com.github.docker-java</groupId>
+           <artifactId>docker-java-transport-zerodep</artifactId>
+           <version>3.5.1</version>
+           <scope>test</scope>
+       </dependency>
    </dependencies>
 
     <profiles>
