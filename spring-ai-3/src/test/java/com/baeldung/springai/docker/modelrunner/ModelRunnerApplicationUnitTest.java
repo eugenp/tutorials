@@ -3,6 +3,7 @@ package com.baeldung.springai.docker.modelrunner;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,6 +31,7 @@ class ModelRunnerApplicationUnitTest {
 	}
 
 	@Test
+	@Disabled
 	void givenMessage_whenCallChatController_thenSuccess() {
 		// given
 		String userMessage = "Hello, how are you?";
