@@ -19,6 +19,7 @@
         <module>json-3</module>
         <module>json-arrays</module>
         <module>json-conversion</module>
+        <module>json-conversion-2</module>
         <module>json-operations</module>
         <module>json-path</module>
         <module>gson</module>
