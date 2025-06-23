@@ -11,8 +11,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
-import entities.Product;
-
 public class ConvertJsonArrayToListUnitTest {
 
     private static ObjectMapper objectMapper;

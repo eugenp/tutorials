@@ -1,6 +1,2 @@
-### Relevant Articles:
-- [Intro to Gatling](http://www.baeldung.com/introduction-to-gatling)
-- [Run Gatling Tests From Jenkins](https://www.baeldung.com/ops/jenkins-run-gatling-tests)
-
-### Running a simualtion
+### Running a simulation
 - To run a simulation use "simulation" profile, command - `mvn install -Psimulation -Dgib.enabled=false`

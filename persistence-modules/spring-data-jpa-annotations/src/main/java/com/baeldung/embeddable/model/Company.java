@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.EmbeddedColumnNaming;
+
 @Entity
 public class Company {
 
@@ -27,6 +29,7 @@ public class Company {
         @AttributeOverride( name = "lastName", column = @Column(name = "contact_last_name")),
         @AttributeOverride( name = "phone", column = @Column(name = "contact_phone"))
     })
+    //@EmbeddedColumnNaming("contact_")
     private ContactPerson contactPerson;
 
     public Integer getId() {

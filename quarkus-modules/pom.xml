@@ -24,6 +24,7 @@
         <module>quarkus-jandex</module>
         <module>quarkus-vs-springboot</module>
         <module>quarkus-funqy</module>
+        <module>quarkus-kogito</module>
         <module>quarkus-testcontainers</module>
         <module>consume-rest-api</module>
         <module>quarkus-virtual-threads</module>
@@ -32,6 +33,7 @@
         <!-- <module>quarkus-rbac</module> --> <!-- JAVA-42048 -->
         <module>quarkus-websockets-next</module>
         <module>quarkus-management-interface</module>
+        <module>quarkus-panache</module>
     </modules>
 
 </project>
