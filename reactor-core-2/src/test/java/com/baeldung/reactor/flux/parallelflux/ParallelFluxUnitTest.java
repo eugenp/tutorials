@@ -1,6 +1,5 @@
 package com.baeldung.reactor.flux.parallelflux;
 
-import com.baeldung.reactor.fluxvsparallelflux.Fibonacci;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import reactor.core.publisher.Flux;
@@ -9,35 +8,40 @@ import reactor.core.scheduler.Schedulers;
 import reactor.test.StepVerifier;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.Set;
 
 @Slf4j
 public class ParallelFluxUnitTest {
 
     @Test
     public void givenFibonacciIndices_whenComputingWithParallelFlux_thenCorrectResults() {
-        AtomicLong timeTakenForCompletion = new AtomicLong();
 
         ParallelFlux<Long> parallelFluxFibonacci = Flux.just(43, 44, 45, 47, 48)
                 .parallel(3)
-                .doOnSubscribe(subscription -> timeTakenForCompletion.set(-1 * System.nanoTime()))
                 .runOn(Schedulers.parallel())
                 .map(Fibonacci::fibonacci);
 
-        Flux<Long> sequencialParallelFlux = parallelFluxFibonacci.sequential()
-                .doFinally(consumer -> timeTakenForCompletion.addAndGet(System.nanoTime()));
+        Flux<Long> sequencialParallelFlux = parallelFluxFibonacci.sequential();
+
+        Set<Long> expectedSet = new HashSet<>(Set.of(433494437L, 701408733L, 1134903170L, 2971215073L, 4807526976L));
+
+        long startTime = System.nanoTime();
 
         StepVerifier.create(sequencialParallelFlux)
-                .expectNextMatches(n -> List.of(433494437L, 701408733L, 1134903170L, 2971215073L, 4807526976L).contains(n))
-                .expectNextMatches(n -> List.of(433494437L, 701408733L, 1134903170L, 2971215073L, 4807526976L).contains(n))
-                .expectNextMatches(n -> List.of(433494437L, 701408733L, 1134903170L, 2971215073L, 4807526976L).contains(n))
-                .expectNextMatches(n -> List.of(433494437L, 701408733L, 1134903170L, 2971215073L, 4807526976L).contains(n))
-                .expectNextMatches(n -> List.of(433494437L, 701408733L, 1134903170L, 2971215073L, 4807526976L).contains(n))
+                .expectNextMatches(expectedSet::remove)
+                .expectNextMatches(expectedSet::remove)
+                .expectNextMatches(expectedSet::remove)
+                .expectNextMatches(expectedSet::remove)
+                .expectNextMatches(expectedSet::remove)
                 .verifyComplete();
 
+        long endTime = System.nanoTime();
+        Duration duration = Duration.ofNanos(endTime - startTime);
 
-        log.info("Total time taken for Parallel Flux pipeline processing Fibonacci indices 43, 44, 45, 47, 48: {} ms", Duration.ofNanos(timeTakenForCompletion.get()).toMillis());
+        log.info("Total time taken for Parallel Flux pipeline processing Fibonacci indices 43, 44, 45, 47, 48: {} ms", duration);
     }
 
     @Test
@@ -47,10 +51,12 @@ public class ParallelFluxUnitTest {
                 .runOn(Schedulers.parallel())
                 .map(String::toUpperCase);
 
+        List<String> expectedIds = new ArrayList<>(List.of("ID1", "ID2", "ID3"));
+
         StepVerifier.create(parallelFlux.sequential())
-                .expectNextMatches(id -> List.of("ID1", "ID2", "ID3").contains(id))
-                .expectNextMatches(id -> List.of("ID1", "ID2", "ID3").contains(id))
-                .expectNextMatches(id -> List.of("ID1", "ID2", "ID3").contains(id))
+                .expectNextMatches(expectedIds::remove)
+                .expectNextMatches(expectedIds::remove)
+                .expectNextMatches(expectedIds::remove)
                 .verifyComplete();
     }
 }

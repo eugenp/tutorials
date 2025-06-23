@@ -1,4 +1,4 @@
-package com.baeldung.reactor.fluxvsparallelflux;
+package com.baeldung.reactor.flux.parallelflux;
 
 public class Fibonacci {
     public static long fibonacci(int n) {
