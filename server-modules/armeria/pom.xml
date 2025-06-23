@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>armeria</artifactId>
+    <name>armeria</name>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>server-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.linecorp.armeria</groupId>
+                <artifactId>armeria-bom</artifactId>
+                <version>${armeria.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.linecorp.armeria</groupId>
+            <artifactId>armeria</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.linecorp.armeria</groupId>
+            <artifactId>armeria-graphql</artifactId>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <armeria.version>1.29.2</armeria.version>
+    </properties>
+
+</project>
