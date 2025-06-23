@@ -94,7 +94,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>${build-helper-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>add-source</id>
@@ -125,6 +125,7 @@
         <spring-boot.version>3.4.4</spring-boot.version>
         <apache.avro.version>1.12.0</apache.avro.version>
         <kafka-avro-serializer.version>7.9.1</kafka-avro-serializer.version>
+        <build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
     </properties>
 
     <repositories>
