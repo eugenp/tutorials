@@ -2,13 +2,7 @@ package com.baeldung.quarkus.mcp;
 
 import org.junit.jupiter.api.Test;
 
-import com.baeldung.quarkus.mcp.ToolBox;
-
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.time.ZoneId;
-import java.time.format.TextStyle;
-import java.util.Locale;
 
 public class ToolBoxUnitTest {
 

@@ -28,8 +28,7 @@
         <module>quarkus-kogito</module>
         <module>quarkus-langchain4j</module>
         <module>quarkus-management-interface</module>
-        <module>quarkus-mcp-client</module>
-        <module>quarkus-mcp-server</module>
+        <module>quarkus-mcp-langchain</module>
         <module>quarkus-panache</module>
         <!-- <module>quarkus-rbac</module> --> <!-- JAVA-42048 -->
         <module>quarkus-testcontainers</module>
