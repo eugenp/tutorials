@@ -1,12 +1,13 @@
 package com.baeldung.modulith.product;
 
-import com.baeldung.modulith.notification.NotificationDTO;
-import com.baeldung.modulith.notification.NotificationService;
-import com.baeldung.modulith.product.internal.Product;
+import java.util.Date;
+
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import com.baeldung.modulith.notification.NotificationDTO;
+import com.baeldung.modulith.notification.NotificationService;
+import com.baeldung.modulith.product.internal.Product;
 
 @Service
 public class ProductService {
