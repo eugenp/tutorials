@@ -23,7 +23,7 @@ public class JSONObjectIntegrationTest {
     }
 
     @Test
-    void givenJSON_whenParsed_thenCorrectValueReturned() {
+    public void givenJSON_whenParsed_thenCorrectValueReturned() {
         String jsonString = """
                             {
                                 "type": "Feature", 
