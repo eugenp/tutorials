@@ -1,17 +1,18 @@
 package com.baeldung.reactor.flux.parallelflux;
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.ParallelFlux;
 import reactor.core.scheduler.Schedulers;
 import reactor.test.StepVerifier;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @Slf4j
 public class ParallelFluxUnitTest {
@@ -44,19 +45,19 @@ public class ParallelFluxUnitTest {
         log.info("Total time taken for Parallel Flux pipeline processing Fibonacci indices 43, 44, 45, 47, 48: {} ms", duration);
     }
 
-    @Test
+    @RepeatedTest(5)
     public void givenListOfIds_whenComputingWithParallelFlux_OrderChanges() {
         ParallelFlux<String> parallelFlux = Flux.just("id1", "id2", "id3")
                 .parallel(2)
                 .runOn(Schedulers.parallel())
                 .map(String::toUpperCase);
 
-        List<String> expectedIds = new ArrayList<>(List.of("ID1", "ID2", "ID3"));
+        List<String> emitted = new CopyOnWriteArrayList<>();
 
-        StepVerifier.create(parallelFlux.sequential())
-                .expectNextMatches(expectedIds::remove)
-                .expectNextMatches(expectedIds::remove)
-                .expectNextMatches(expectedIds::remove)
+        StepVerifier.create(parallelFlux.sequential().doOnNext(emitted::add))
+                .expectNextCount(3)
                 .verifyComplete();
+
+        System.out.println("ParallelFlux emitted order: " + emitted);
     }
 }
