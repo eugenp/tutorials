@@ -1,5 +1,15 @@
 package com.baeldung.assertj;
 
+import static org.assertj.guava.api.Assertions.assertThat;
+import static org.assertj.guava.api.Assertions.entry;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.HashSet;
+
+import org.assertj.guava.data.MapEntry;
+import org.junit.Test;
+
 import com.google.common.base.Optional;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.HashBasedTable;
@@ -9,15 +19,6 @@ import com.google.common.collect.Range;
 import com.google.common.collect.Table;
 import com.google.common.collect.TreeRangeMap;
 import com.google.common.io.Files;
-import org.assertj.guava.data.MapEntry;
-import org.junit.Test;
-
-import java.io.File;
-import java.util.HashMap;
-import java.util.HashSet;
-
-import static org.assertj.guava.api.Assertions.assertThat;
-import static org.assertj.guava.api.Assertions.entry;
 
 public class AssertJGuavaUnitTest {
 
