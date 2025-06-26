@@ -1,6 +1,7 @@
 package com.baeldung.reactor.flux.parallelflux;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
@@ -17,6 +18,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 @Slf4j
 public class ParallelFluxUnitTest {
 
+    @Disabled("Manual test - takes time due to heavy computation")
     @Test
     public void givenFibonacciIndices_whenComputingWithParallelFlux_thenCorrectResults() {
 
