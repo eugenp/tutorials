@@ -10,6 +10,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -83,7 +85,14 @@ public class BatchJobIntegrationTest {
     @BeforeEach
     public void setup() throws IOException {
         try (Connection connection = dataSource.getConnection()) {
-            ScriptUtils.executeSqlScript(connection, new ClassPathResource("org/springframework/batch/core/schema-h2.sql"));
+            DatabaseMetaData metaData = connection.getMetaData();
+            try (ResultSet rs = metaData.getTables(null, null, "BATCH_JOB_INSTANCE", null)) {
+                if (!rs.next()) {
+                    ScriptUtils.executeSqlScript(connection, new ClassPathResource("org/springframework/batch/core/schema-h2.sql"));
+                } else {
+                    System.out.println("Spring Batch tables already exist. Skipping schema creation.");
+                }
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
