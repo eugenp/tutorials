@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mydb
+    username: sa
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    generate-ddl: true
+    properties:
+      hibernate:
+        hbm2ddl.auto: create
+  kafka:
+    bootstrap-servers: localhost:9092
+
+logging:
+  level:
+    root: INFO
+    io.eventuate: DEBUG
+
+# not needed for this article:
+spring.modulith:
+  republish-outstanding-events-on-restart: false
+  events.jdbc.schema-initialization.enabled: false

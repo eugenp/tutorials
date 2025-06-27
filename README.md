@@ -36,13 +36,13 @@ Profile-based segregation
 
 We use Maven build profiles to segregate the huge list of individual projects in our repository.
 
-The projects are broadly divided into 4 lists: default, default-jdk17, default-jdk8 and default-heavy. 
+The projects are broadly divided into 6 lists: default, default-jdk17, default-jdk22, default-jdk23, default-jdk8 and default-heavy. 
 
 Next, they are segregated further based on the tests that we want to execute.
 
 We also have a parents profile to build only parent modules.
 
-Therefore, we have a total of 9 profiles:
+Therefore, we have a total of 13 profiles:
 
 | Profile           | Includes                    | Type of test enabled |
 |-------------------|-----------------------------|----------------------|
