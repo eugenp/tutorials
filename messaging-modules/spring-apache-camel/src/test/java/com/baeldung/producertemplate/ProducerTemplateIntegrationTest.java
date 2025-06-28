@@ -9,9 +9,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import org.apache.camel.CamelContext;
-import org.apache.camel.ProducerTemplate;
-import org.apache.camel.test.spring.junit5.CamelSpringBootTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,19 +18,12 @@ import org.springframework.test.annotation.DirtiesContext;
 import com.baeldung.camel.producertemplate.ProducerTemplateApplication;
 import com.baeldung.camel.producertemplate.ProducerTemplateController;
 
-@CamelSpringBootTest
 @SpringBootTest(classes = ProducerTemplateApplication.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class ProducerTemplateIntegrationTest {
 
     @Autowired
     private ProducerTemplateController producerTemplateController;
-
-    @Autowired
-    private ProducerTemplate producerTemplate;
-
-    @Autowired
-    private CamelContext camelContext;
 
     private static final String TEST_MESSAGE = "TestMessage";
     private static final Path OUTPUT_FILE = Paths.get("output/output.txt");
