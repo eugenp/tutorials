@@ -1,7 +1,6 @@
 package com.baeldung.reactor.flux.parallelflux;
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
@@ -16,12 +15,10 @@ import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 @Slf4j
-public class ParallelFluxUnitTest {
+public class ParallelFluxManualTest {
 
-    @Disabled("Manual test - takes time due to heavy computation")
     @Test
     public void givenFibonacciIndices_whenComputingWithParallelFlux_thenCorrectResults() {
-
         ParallelFlux<Long> parallelFluxFibonacci = Flux.just(43, 44, 45, 47, 48)
                 .parallel(3)
                 .runOn(Schedulers.parallel())
@@ -48,7 +45,7 @@ public class ParallelFluxUnitTest {
     }
 
     @RepeatedTest(5)
-    public void givenListOfIds_whenComputingWithParallelFlux_OrderChanges() {
+    public void givenListOfIds_whenComputingWithParallelFlux_thenOrderChanges() {
         ParallelFlux<String> parallelFlux = Flux.just("id1", "id2", "id3")
                 .parallel(2)
                 .runOn(Schedulers.parallel())
@@ -60,6 +57,6 @@ public class ParallelFluxUnitTest {
                 .expectNextCount(3)
                 .verifyComplete();
 
-        System.out.println("ParallelFlux emitted order: " + emitted);
+        log.info("ParallelFlux emitted order: {}", emitted);
     }
 }

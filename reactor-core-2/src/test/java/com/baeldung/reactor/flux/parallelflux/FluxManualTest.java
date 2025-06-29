@@ -1,7 +1,6 @@
 package com.baeldung.reactor.flux.parallelflux;
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
@@ -10,12 +9,10 @@ import reactor.test.StepVerifier;
 import java.time.Duration;
 
 @Slf4j
-public class FluxUnitTest {
+public class FluxManualTest {
 
-    @Disabled("Manual test - takes time due to heavy computation")
     @Test
     public void givenFibonacciIndices_whenComputingWithFlux_thenCorrectResults() {
-
         Flux<Long> fluxFibonacci = Flux.just(43, 44, 45, 47, 48)
                 .publishOn(Schedulers.boundedElastic())
                 .map(Fibonacci::fibonacci);
