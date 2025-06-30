@@ -60,6 +60,11 @@
             <version>${okhttp.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>${commons-net.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -76,6 +81,7 @@
         <apache.httpclient5.version>5.4.2</apache.httpclient5.version>
         <okhttp.version>4.12.0</okhttp.version>
         <webflux.version>3.4.3</webflux.version>
+        <commons-net.version>3.8.0</commons-net.version>
     </properties>
 
 </project>
