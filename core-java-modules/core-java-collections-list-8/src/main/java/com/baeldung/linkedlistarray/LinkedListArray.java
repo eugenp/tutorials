@@ -1,89 +1,57 @@
 package com.baeldung.linkedlistarray;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.*;
+import java.util.stream.*;
 
 public class LinkedListArray {
 
-    public static LinkedList<Integer>[] groupNumbersUsingRawArray(int[] numbers) {
-        @SuppressWarnings("unchecked") LinkedList<Integer>[] groupListArray = new LinkedList[3];
-
-        for (int i = 0; i < groupListArray.length; i++) {
-            groupListArray[i] = new LinkedList<>();
-        }
-
-        for (int num : numbers) {
-            if (num < 10) {
-                groupListArray[0].add(num);
-            } else if (num < 20) {
-                groupListArray[1].add(num);
-            } else {
-                groupListArray[2].add(num);
-            }
-        }
-        return groupListArray;
+    public static int getGroupIndex(int num) {
+        return num < 10 ? 0 : num < 20 ? 1 : 2;
     }
 
-    public static List<LinkedList<Integer>> groupNumbersUsingListOfLinkedList(int[] numbers) {
-        List<LinkedList<Integer>> groupListArray = new ArrayList<>();
-
-        for (int i = 0; i < 3; i++) {
-            groupListArray.add(new LinkedList<>());
-        }
-
-        for (int num : numbers) {
-            if (num < 10) {
-                groupListArray.get(0)
-                    .add(num);
-            } else if (num < 20) {
-                groupListArray.get(1)
-                    .add(num);
-            } else {
-                groupListArray.get(2)
-                    .add(num);
-            }
-        }
-        return groupListArray;
+    public static LinkedList<Integer>[] createLinkedListArray(int size) {
+        @SuppressWarnings("unchecked") LinkedList<Integer>[] array = new LinkedList[size];
+        Arrays.setAll(array, i -> new LinkedList<>());
+        return array;
     }
 
-    public static List<LinkedList<Integer>> groupNumbersUsingStreams(int[] numbers) {
-        List<LinkedList<Integer>> groupListArray = IntStream.range(0, 3)
+    public static List<LinkedList<Integer>> createLinkedListList(int size) {
+        return IntStream.range(0, size)
             .mapToObj(i -> new LinkedList<Integer>())
             .collect(Collectors.toList());
+    }
 
+    public static LinkedList<Integer>[] groupUsingRawArray(int[] numbers) {
+        LinkedList<Integer>[] groupListArray = createLinkedListArray(3);
         for (int num : numbers) {
-            if (num < 10) {
-                groupListArray.get(0)
-                    .add(num);
-            } else if (num < 20) {
-                groupListArray.get(1)
-                    .add(num);
-            } else {
-                groupListArray.get(2)
-                    .add(num);
-            }
+            groupListArray[getGroupIndex(num)].add(num);
         }
         return groupListArray;
     }
 
-    public static LinkedList<Integer>[] groupNumbersUsingSetAll(int[] numbers) {
-        @SuppressWarnings("unchecked") LinkedList<Integer>[] groupListArray = new LinkedList[3];
-        Arrays.setAll(groupListArray, i -> new LinkedList<>());
-
+    public static List<LinkedList<Integer>> groupUsingList(int[] numbers) {
+        List<LinkedList<Integer>> groupList = createLinkedListList(3);
         for (int num : numbers) {
-            if (num < 10) {
-                groupListArray[0].add(num);
-            } else if (num < 20) {
-                groupListArray[1].add(num);
-            } else {
-                groupListArray[2].add(num);
-            }
+            groupList.get(getGroupIndex(num))
+                .add(num);
         }
+        return groupList;
+    }
+
+    public static List<LinkedList<Integer>> groupUsingStreams(int[] numbers) {
+        List<LinkedList<Integer>> groupList = createLinkedListList(3);
+        Arrays.stream(numbers)
+            .forEach(num -> groupList.get(getGroupIndex(num))
+                .add(num));
+        return groupList;
+    }
+
+    public static LinkedList<Integer>[] groupUsingSetAll(int[] numbers) {
+        LinkedList<Integer>[] groupListArray = createLinkedListArray(3);
+        Arrays.stream(numbers)
+            .forEach(num -> groupListArray[getGroupIndex(num)].add(num));
         return groupListArray;
     }
 }
+
 

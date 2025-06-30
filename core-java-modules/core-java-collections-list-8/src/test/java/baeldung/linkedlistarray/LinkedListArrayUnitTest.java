@@ -15,7 +15,7 @@ public class LinkedListArrayUnitTest {
     @Test
     void givenNumbers_whenGroupedUsingRawArray_thenGroupsAreCorrect() {
         int[] input = { 3, 11, 21, 9, 19, 22 };
-        LinkedList<Integer>[] arrayOfLists = LinkedListArray.groupNumbersUsingRawArray(input);
+        LinkedList<Integer>[] arrayOfLists = LinkedListArray.groupUsingRawArray(input);
 
         assertEquals(2, arrayOfLists[0].size());
         assertTrue(arrayOfLists[0].contains(3));
@@ -25,7 +25,7 @@ public class LinkedListArrayUnitTest {
     @Test
     void givenNumbers_whenGroupedUsingLinkedList_thenGroupsAreCorrect() {
         int[] input = { 3, 11, 21, 9, 19, 22 };
-        List<LinkedList<Integer>> arrayOfLists = LinkedListArray.groupNumbersUsingListOfLinkedList(input);
+        List<LinkedList<Integer>> arrayOfLists = LinkedListArray.groupUsingList(input);
 
         assertEquals(2, arrayOfLists.get(1)
             .size());
@@ -38,7 +38,7 @@ public class LinkedListArrayUnitTest {
     @Test
     void givenNumbers_whenGroupedUsingStreams_thenGroupsAreCorrect() {
         int[] input = { 3, 11, 21, 9, 19, 22 };
-        List<LinkedList<Integer>> arrayOfLists = LinkedListArray.groupNumbersUsingStreams(input);
+        List<LinkedList<Integer>> arrayOfLists = LinkedListArray.groupUsingStreams(input);
 
         assertEquals(2, arrayOfLists.get(0)
             .size());
@@ -51,7 +51,7 @@ public class LinkedListArrayUnitTest {
     @Test
     void givenNumbers_whenGroupedUsingSetAll_thenGroupsAreCorrect() {
         int[] input = { 3, 11, 21, 9, 19, 22 };
-        LinkedList<Integer>[] arrayOfLists = LinkedListArray.groupNumbersUsingSetAll(input);
+        LinkedList<Integer>[] arrayOfLists = LinkedListArray.groupUsingSetAll(input);
 
         assertEquals(2, arrayOfLists[2].size());
         assertTrue(arrayOfLists[2].contains(21));
