@@ -1,9 +1,9 @@
-package com.baeldung.partitioningstrategy;
+package com.baeldung.spring.kafka.partitioningstrategy;
+
+import java.util.Map;
 
 import org.apache.kafka.clients.producer.Partitioner;
 import org.apache.kafka.common.Cluster;
-
-import java.util.Map;
 
 public class CustomPartitioner implements Partitioner {
     private static final int PREMIUM_PARTITION = 0;

@@ -1,4 +1,4 @@
-package com.baeldung.sasl;
+package com.baeldung.spring.kafka.sasl;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
