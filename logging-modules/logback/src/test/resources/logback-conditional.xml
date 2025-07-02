@@ -38,17 +38,15 @@
     <appender name="FILTER_APPENDER" class="ch.qos.logback.core.FileAppender">
         <file>filtered.log</file>
         <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
-            <evaluator>
-                <expression>return message.contains("billing");</expression>
-            </evaluator>
+            <evaluator class="com.baeldung.logback.MyCustomEvaluator"/>
             <OnMatch>DENY</OnMatch>
             <OnMismatch>NEUTRAL</OnMismatch>
         </filter>
-        <encoder>
-            <pattern>%d %-4relative [%thread] %-5level %logger -%kvp -%msg%n</pattern>
-        </encoder>
+        <layout>
+      <pattern>%d [%thread] %-5level %logger{36} -%kvp- %msg%n</pattern>
+    </layout>
     </appender>
-
+    
     <appender name="CONSOLE_APPENDER" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%d %-5level %logger{35} -%kvp- %msg %n</pattern>

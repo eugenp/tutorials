@@ -1,7 +1,7 @@
 package com.baeldung.logback;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -13,7 +13,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.slf4j.LoggerFactory;
 
+import ch.qos.logback.classic.spi.LoggingEvent;
+import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
+
+import ch.qos.logback.core.boolex.EvaluationException;
 
 public class ConditionalLoggingUnitTest {
 
@@ -62,5 +66,4 @@ public class ConditionalLoggingUnitTest {
         assertTrue(filteredLog.contains("test prod log"));
         assertFalse(filteredLog.contains("billing details: XXXX"));
     }
-
 }
