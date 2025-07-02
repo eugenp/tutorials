@@ -1,7 +1,7 @@
 package com.baeldung.logback;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -13,6 +13,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.slf4j.LoggerFactory;
 
+import ch.qos.logback.classic.spi.LoggingEvent;
+import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
 
 public class ConditionalLoggingUnitTest {
@@ -49,18 +51,18 @@ public class ConditionalLoggingUnitTest {
     }
 
     @Test
-    public void whenMatchedWithEvaluatorFilter_thenReturnFilteredLogs() throws IOException {
+    public void givenCustomEvaluatorFilter_whenEvaluatingContainsBillingInformation_thenEvaluationSuccessful() {
+        MyCustomEvaluator evaluator = new MyCustomEvaluator();
         logger = (Logger) LoggerFactory.getLogger(ConditionalLoggingUnitTest.class);
-        
-        logger.info("normal log");
-        logger.info("billing details: XXXX");
-        String normalLog = FileUtils.readFileToString(new File("conditional.log"));
-        assertTrue(normalLog.contains("normal log"));
-        assertTrue(normalLog.contains("billing details: XXXX"));
-        
-        String filteredLog = FileUtils.readFileToString(new File("filtered.log"));
-        assertTrue(filteredLog.contains("test prod log"));
-        assertFalse(filteredLog.contains("billing details: XXXX"));
+        LoggingEvent event = new LoggingEvent("fqcn", logger, Level.INFO, "This message contains billing information.", null, null);
+        assertTrue(evaluator.evaluate(event));
     }
 
+    @Test
+    public void givenCustomEvaluatorFilter_whenEvaluatingDoesNotContainBillingInformation_thenEvaluationSuccessful() {
+        MyCustomEvaluator evaluator = new MyCustomEvaluator();
+        logger = (Logger) LoggerFactory.getLogger(ConditionalLoggingUnitTest.class);
+        LoggingEvent event = new LoggingEvent("fqcn", logger, Level.INFO, "This message does not.", null, null);
+        assertFalse(evaluator.evaluate(event));
+    }
 }
