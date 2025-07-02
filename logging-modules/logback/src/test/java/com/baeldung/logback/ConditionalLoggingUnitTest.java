@@ -17,6 +17,8 @@ import ch.qos.logback.classic.spi.LoggingEvent;
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
 
+import ch.qos.logback.core.boolex.EvaluationException;
+
 public class ConditionalLoggingUnitTest {
 
     private static Logger logger;
@@ -51,7 +53,7 @@ public class ConditionalLoggingUnitTest {
     }
 
     @Test
-    public void givenCustomEvaluatorFilter_whenEvaluatingContainsBillingInformation_thenEvaluationSuccessful() {
+    public void givenCustomEvaluatorFilter_whenEvaluatingContainsBillingInformation_thenEvaluationSuccessful() throws EvaluationException{
         MyCustomEvaluator evaluator = new MyCustomEvaluator();
         logger = (Logger) LoggerFactory.getLogger(ConditionalLoggingUnitTest.class);
         LoggingEvent event = new LoggingEvent("fqcn", logger, Level.INFO, "This message contains billing information.", null, null);
@@ -59,7 +61,7 @@ public class ConditionalLoggingUnitTest {
     }
 
     @Test
-    public void givenCustomEvaluatorFilter_whenEvaluatingDoesNotContainBillingInformation_thenEvaluationSuccessful() {
+    public void givenCustomEvaluatorFilter_whenEvaluatingDoesNotContainBillingInformation_thenEvaluationSuccessful() throws EvaluationException{
         MyCustomEvaluator evaluator = new MyCustomEvaluator();
         logger = (Logger) LoggerFactory.getLogger(ConditionalLoggingUnitTest.class);
         LoggingEvent event = new LoggingEvent("fqcn", logger, Level.INFO, "This message does not.", null, null);
