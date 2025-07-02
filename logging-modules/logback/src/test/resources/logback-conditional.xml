@@ -35,12 +35,21 @@
         </then>
     </if>
 
-    <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
-        <evaluator class="com.baeldung.logback.MyCustomEvaluator"/>
-        <onMatch>ACCEPT</onMatch>
-        <onMismatch>DENY</onMismatch>
-    </filter>
-
+    <appender name="FILTER_APPENDER" class="ch.qos.logback.core.FileAppender">
+        <file>filtered.log</file>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator class="com.baeldung.logback.MyCustomEvaluator">
+         <!‐‐ Note that like all logback components, this custom evaluator can also
+         be parameterized ‐‐>
+            </evaluator>
+            <OnMatch>DENY</OnMatch>
+            <OnMismatch>NEUTRAL</OnMismatch>
+        </filter>
+        <encoder>
+            <pattern>%d %-4relative [%thread] %-5level %logger -%kvp -%msg%n</pattern>
+        </encoder>
+    </appender>
+    
     <appender name="CONSOLE_APPENDER" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%d %-5level %logger{35} -%kvp- %msg %n</pattern>
