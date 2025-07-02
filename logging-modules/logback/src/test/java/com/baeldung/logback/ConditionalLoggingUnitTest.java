@@ -55,6 +55,7 @@ public class ConditionalLoggingUnitTest {
     @Test
     public void givenCustomEvaluatorFilter_whenEvaluatingContainsBillingInformation_thenEvaluationSuccessful() throws EvaluationException{
         MyCustomEvaluator evaluator = new MyCustomEvaluator();
+        System.clearProperty("ENVIRONMENT");
         logger = (Logger) LoggerFactory.getLogger(ConditionalLoggingUnitTest.class);
         LoggingEvent event = new LoggingEvent("fqcn", logger, Level.INFO, "This message contains billing information.", null, null);
         assertTrue(evaluator.evaluate(event));
@@ -63,6 +64,7 @@ public class ConditionalLoggingUnitTest {
     @Test
     public void givenCustomEvaluatorFilter_whenEvaluatingDoesNotContainBillingInformation_thenEvaluationSuccessful() throws EvaluationException{
         MyCustomEvaluator evaluator = new MyCustomEvaluator();
+        System.clearProperty("ENVIRONMENT");
         logger = (Logger) LoggerFactory.getLogger(ConditionalLoggingUnitTest.class);
         LoggingEvent event = new LoggingEvent("fqcn", logger, Level.INFO, "This message does not.", null, null);
         assertFalse(evaluator.evaluate(event));
