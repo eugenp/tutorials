@@ -688,6 +688,8 @@
                 <module>libraries-3</module>
                 <module>libraries-4</module>
                 <module>libraries-5</module>
+                <module>libraries-6</module>
+                <module>libraries-7</module>
                 <module>libraries-ai</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-2</module>
@@ -794,6 +796,7 @@
                 <module>spring-drools</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
+                <module>spring-grpc</module>
                 <module>spring-jersey</module>
                 <module>spring-kafka</module>
                 <module>spring-kafka-2</module>
@@ -1120,6 +1123,8 @@
                 <module>libraries-3</module>
                 <module>libraries-4</module>
                 <module>libraries-5</module>
+                <module>libraries-6</module>
+                <module>libraries-7</module>
                 <module>libraries-ai</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-2</module>
@@ -1226,6 +1231,7 @@
                 <module>spring-drools</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
+                <module>spring-grpc</module>
                 <module>spring-jersey</module>
                 <module>spring-kafka</module>
                 <module>spring-kafka-2</module>
