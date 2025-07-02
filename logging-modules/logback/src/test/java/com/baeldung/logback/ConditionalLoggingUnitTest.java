@@ -53,20 +53,17 @@ public class ConditionalLoggingUnitTest {
     }
 
     @Test
-    public void givenCustomEvaluatorFilter_whenEvaluatingContainsBillingInformation_thenEvaluationSuccessful() throws EvaluationException{
-        MyCustomEvaluator evaluator = new MyCustomEvaluator();
-        System.clearProperty("ENVIRONMENT", "PROD");
+    public void whenMatchedWithEvaluatorFilter_thenReturnFilteredLogs() throws IOException {
         logger = (Logger) LoggerFactory.getLogger(ConditionalLoggingUnitTest.class);
-        LoggingEvent event = new LoggingEvent("fqcn", logger, Level.INFO, "This message contains billing information.", null, null);
-        assertTrue(evaluator.evaluate(event));
-    }
-
-    @Test
-    public void givenCustomEvaluatorFilter_whenEvaluatingDoesNotContainBillingInformation_thenEvaluationSuccessful() throws EvaluationException{
-        MyCustomEvaluator evaluator = new MyCustomEvaluator();
-        System.clearProperty("ENVIRONMENT", "PROD");
-        logger = (Logger) LoggerFactory.getLogger(ConditionalLoggingUnitTest.class);
-        LoggingEvent event = new LoggingEvent("fqcn", logger, Level.INFO, "This message does not.", null, null);
-        assertFalse(evaluator.evaluate(event));
+        
+        logger.info("normal log");
+        logger.info("billing details: XXXX");
+        String normalLog = FileUtils.readFileToString(new File("conditional.log"));
+        assertTrue(normalLog.contains("normal log"));
+        assertTrue(normalLog.contains("billing details: XXXX"));
+        
+        String filteredLog = FileUtils.readFileToString(new File("filtered.log"));
+        assertTrue(filteredLog.contains("test prod log"));
+        assertFalse(filteredLog.contains("billing details: XXXX"));
     }
 }
