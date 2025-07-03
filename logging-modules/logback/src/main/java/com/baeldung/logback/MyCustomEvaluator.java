@@ -8,6 +8,6 @@ public class BillingMessageEvaluator extends EventEvaluatorBase<ILoggingEvent> {
     @Override
     public boolean evaluate(ILoggingEvent event) throws NullPointerException, EvaluationException {
         String message = event.getMessage();
-        return message != null && message.contains("billing");
+        return message.contains("billing");
     }
 }
