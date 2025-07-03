@@ -3,7 +3,7 @@ import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.boolex.EventEvaluatorBase;
 import ch.qos.logback.core.boolex.EvaluationException;
 
-public class MyCustomEvaluator extends EventEvaluatorBase<ILoggingEvent> {
+public class BillingMessageEvaluator extends EventEvaluatorBase<ILoggingEvent> {
 
     @Override
     public boolean evaluate(ILoggingEvent event) throws NullPointerException, EvaluationException {
