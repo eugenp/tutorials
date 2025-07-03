@@ -48,6 +48,36 @@
             <artifactId>functionaljava-java8</artifactId>
             <version>${functionaljava.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.structurizr</groupId>
+            <artifactId>structurizr-core</artifactId>
+            <version>${structurizr.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.structurizr</groupId>
+            <artifactId>structurizr-spring</artifactId>
+            <version>${structurizr.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.structurizr</groupId>
+            <artifactId>structurizr-client</artifactId>
+            <version>${structurizr.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.structurizr</groupId>
+            <artifactId>structurizr-analysis</artifactId>
+            <version>${structurizr.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.structurizr</groupId>
+            <artifactId>structurizr-plantuml</artifactId>
+            <version>${structurizr.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>${javax.annotation-api.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -90,6 +120,8 @@
         <aspectjweaver.version>1.9.20.1</aspectjweaver.version>
         <java-lsh.version>0.10</java-lsh.version>
         <functionaljava.version>4.8.1</functionaljava.version>
+        <structurizr.version>1.0.0</structurizr.version>
+        <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
     </properties>
 
 </project>
