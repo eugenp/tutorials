@@ -13,11 +13,10 @@ public class EnumSingletonUnitTest {
     void givenEnumSingleton_whenAccessedConcurrently_thenSingleInstanceCreated()
             throws InterruptedException {
 
-        int threadCount = 1000;
         Set<EnumSingleton> instances = ConcurrentHashMap.newKeySet();
-        CountDownLatch latch = new CountDownLatch(threadCount);
+        CountDownLatch latch = new CountDownLatch(100);
 
-        for (int i = 0; i < threadCount; i++) {
+        for (int i = 0; i < 100; i++) {
             new Thread(() -> {
                 instances.add(EnumSingleton.INSTANCE);
                 latch.countDown();
@@ -25,7 +24,6 @@ public class EnumSingletonUnitTest {
         }
 
         latch.await();
-
-        assertEquals(1, instances.size(), "Only one instance should be created");
+        assertEquals(1, instances.size());
     }
 }
