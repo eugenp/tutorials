@@ -38,7 +38,7 @@
     <appender name="FILTER_APPENDER" class="ch.qos.logback.core.FileAppender">
         <file>filtered.log</file>
         <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
-            <evaluator class="com.baeldung.logback.MyCustomEvaluator"/>
+            <evaluator class="com.baeldung.logback.BillingMessageEvaluator"/>
             <OnMatch>DENY</OnMatch>
             <OnMismatch>NEUTRAL</OnMismatch>
         </filter>
