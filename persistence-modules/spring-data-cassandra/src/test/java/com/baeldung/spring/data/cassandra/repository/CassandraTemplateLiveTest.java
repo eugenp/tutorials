@@ -1,125 +1,110 @@
 package com.baeldung.spring.data.cassandra.repository;
 
-import com.baeldung.spring.data.cassandra.model.Book;
-import com.datastax.oss.driver.api.core.CqlSession;
-import com.datastax.oss.driver.api.core.cql.SimpleStatement;
-import com.datastax.oss.driver.api.core.uuid.Uuids;
-import com.datastax.oss.driver.api.querybuilder.QueryBuilder;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.cassandra.core.CassandraAdminOperations;
-import org.springframework.data.cassandra.core.CassandraOperations;
-import org.springframework.data.cassandra.core.cql.CqlIdentifier;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.DynamicPropertyRegistry;
-import org.springframework.test.context.DynamicPropertySource;
-import org.testcontainers.containers.CassandraContainer;
-import org.testcontainers.junit.jupiter.Testcontainers;
-import org.testcontainers.utility.DockerImageName;
+import static com.datastax.oss.driver.api.querybuilder.QueryBuilder.literal;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-import static com.datastax.oss.driver.api.querybuilder.QueryBuilder.literal;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.cassandra.core.CassandraAdminOperations;
+import org.testcontainers.containers.CassandraContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
+
+import com.baeldung.spring.data.cassandra.model.Book;
+import com.datastax.oss.driver.api.core.CqlIdentifier;
+import com.datastax.oss.driver.api.core.CqlSession;
+import com.datastax.oss.driver.api.core.cql.SimpleStatement;
+import com.datastax.oss.driver.api.core.uuid.Uuids;
+import com.datastax.oss.driver.api.querybuilder.QueryBuilder;
 
 @Testcontainers
-@SpringBootTest
-public class CassandraTemplateLiveTest {
+@SpringBootTest(classes = CassandraTestConfiguration.class)
+class CassandraTemplateLiveTest {
+
+    private static final String KEYSPACE_NAME = "testKeySpace";
+    private static final String KEYSPACE_CREATION_QUERY = "CREATE KEYSPACE IF NOT EXISTS testKeySpace " + "WITH replication = { 'class': 'SimpleStrategy', 'replication_factor': '1' };";
+    private static final String KEYSPACE_ACTIVATE_QUERY = "USE " + KEYSPACE_NAME + ";";
 
     private static final String DATA_TABLE_NAME = "book";
 
-    static CassandraContainer<?> cassandraContainer =
-            new CassandraContainer<>("cassandra:4.1.8").withExposedPorts(9042);
+    @Container
+    private static final CassandraContainer<?> cassandraContainer = new CassandraContainer<>("cassandra:4.1.8").withExposedPorts(9042);
 
-    @DynamicPropertySource
-    static void cassandraProperties(DynamicPropertyRegistry registry) {
-        registry.add("cassandra.contactpoints", () -> cassandraContainer.getHost());
-        registry.add("cassandra.port", () -> cassandraContainer.getMappedPort(9042));
-        registry.add("cassandra.keyspace", () -> "testKeySpace");
-        registry.add("cassandra.localdatacenter", () -> cassandraContainer.getLocalDatacenter());
-    }
+    @BeforeAll
+    static void setupCassandraConnectionProperties() {
+        System.setProperty("spring.cassandra.keyspace-name", KEYSPACE_NAME);
+        System.setProperty("spring.cassandra.contact-points", cassandraContainer.getContainerIpAddress());
+        System.setProperty("spring.cassandra.port", String.valueOf(cassandraContainer.getMappedPort(9042)));
 
-    @BeforeClass
-    public static void startContainerAndCreateKeyspace() {
-        cassandraContainer.start();
         try (CqlSession session = CqlSession.builder()
-                .addContactPoint(cassandraContainer.getContactPoint())
-                .withLocalDatacenter(cassandraContainer.getLocalDatacenter())
-                .build()) {
-            session.execute("CREATE KEYSPACE IF NOT EXISTS testKeySpace WITH replication = { 'class': 'SimpleStrategy', 'replication_factor': 1 };");
+            .addContactPoint(cassandraContainer.getContactPoint())
+            .withLocalDatacenter(cassandraContainer.getLocalDatacenter())
+            .build()) {
+
+            session.execute(KEYSPACE_CREATION_QUERY);
+            session.execute(KEYSPACE_ACTIVATE_QUERY);
         }
     }
 
     @Autowired
-    private CassandraOperations cassandraTemplate;
+    private CassandraAdminOperations cassandraTemplate;
 
-    @Autowired
-    private CassandraAdminOperations adminTemplate;
-
-    @Before
-    public void createTable() {
-        adminTemplate.createTable(
-                true,
-                CqlIdentifier.of(DATA_TABLE_NAME).toCqlIdentifier(),
-                Book.class,
-                Collections.emptyMap()
-        );
+    @BeforeEach
+    void createTable() {
+        cassandraTemplate.createTable(true, CqlIdentifier.fromCql(DATA_TABLE_NAME), Book.class, Collections.emptyMap());
     }
 
     @Test
-    public void whenSavingBook_thenAvailableOnRetrieval() {
-        Book javaBook = new Book(
-                Uuids.timeBased(),
-                "Head First Java",
-                "O'Reilly Media",
-                Collections.singleton("Computer")
-        );
+    void whenSavingBook_thenAvailableOnRetrieval() {
+        Book javaBook = new Book(Uuids.timeBased(), "Head First Java", "O'Reilly Media", Collections.singleton("Computer"));
 
         cassandraTemplate.insert(javaBook);
 
         SimpleStatement select = QueryBuilder.selectFrom(DATA_TABLE_NAME)
-                .all()
-                .whereColumn("title").isEqualTo(literal("Head First Java"))
-                .build();
+            .all()
+            .whereColumn("title")
+            .isEqualTo(literal("Head First Java"))
+            .allowFiltering()
+            .build();
 
         Book retrievedBook = cassandraTemplate.selectOne(select, Book.class);
         assertEquals(javaBook.getId(), retrievedBook.getId());
     }
 
     @Test
-    public void whenSavingBooks_thenAllAvailableOnRetrieval() {
-        List<Book> books = List.of(
-                new Book(Uuids.timeBased(), "Head First Java", "O'Reilly Media", Set.of("Computer")),
-                new Book(Uuids.timeBased(), "Clean Code", "Pearson", Set.of("Software"))
-        );
+    void whenSavingBooks_thenAllAvailableOnRetrieval() {
+        List<Book> books = List.of(new Book(Uuids.timeBased(), "Head First Java", "O'Reilly Media", Set.of("Computer")), new Book(Uuids.timeBased(), "Clean Code", "Pearson", Set.of("Software")));
 
-        cassandraTemplate.insert(books);
+        for (Book book : books) {
+            cassandraTemplate.insert(book);
+        }
 
         SimpleStatement select = QueryBuilder.selectFrom(DATA_TABLE_NAME)
-                .all()
-                .build();
+            .all()
+            .build();
 
         List<Book> retrieved = cassandraTemplate.select(select, Book.class);
         assertThat(retrieved.size(), is(2));
     }
 
-    @After
-    public void dropTable() {
-        adminTemplate.dropTable(CqlIdentifier.of(DATA_TABLE_NAME).getClass());
+    @AfterEach
+    void dropTable() {
+        cassandraTemplate.dropTable(Book.class);
     }
 
-    @AfterClass
-    public static void tearDown() {
+    @AfterAll
+    static void tearDown() {
         if (cassandraContainer != null) {
             cassandraContainer.stop();
         }
