@@ -21,30 +21,30 @@ public class RestTemplateConfiguration {
         try {
             // Timeout configurations
             SocketConfig socketConfig = SocketConfig.custom()
-                    .setSoTimeout(Timeout.ofSeconds(30))  // Read timeout
-                    .build();
+              .setSoTimeout(Timeout.ofSeconds(30))  // Read timeout
+              .build();
 
             ConnectionConfig connectionConfig = ConnectionConfig.custom()
-                    .setConnectTimeout(Timeout.ofSeconds(30))  // Connect timeout
-                    .build();
+              .setConnectTimeout(Timeout.ofSeconds(30))  // Connect timeout
+              .build();
 
             RequestConfig requestConfig = RequestConfig.custom()
-                    .setConnectionRequestTimeout(Timeout.ofSeconds(30))  // Pool wait timeout
-                    .build();
+              .setConnectionRequestTimeout(Timeout.ofSeconds(30))  // Pool wait timeout
+              .build();
 
             // Connection pool configuration
             PoolingHttpClientConnectionManager connectionManager =
-                    PoolingHttpClientConnectionManagerBuilder.create()
-                            .setMaxConnPerRoute(20)
-                            .setMaxConnTotal(100)
-                            .setDefaultSocketConfig(socketConfig)
-                            .setDefaultConnectionConfig(connectionConfig)
-                            .build();
+              PoolingHttpClientConnectionManagerBuilder.create()
+                .setMaxConnPerRoute(20)
+                .setMaxConnTotal(100)
+                .setDefaultSocketConfig(socketConfig)
+                .setDefaultConnectionConfig(connectionConfig)
+                .build();
 
             CloseableHttpClient httpClient = HttpClients.custom()
-                    .setConnectionManager(connectionManager)
-                    .setDefaultRequestConfig(requestConfig)
-                    .build();
+              .setConnectionManager(connectionManager)
+              .setDefaultRequestConfig(requestConfig)
+              .build();
 
             return new RestTemplate(new HttpComponentsClientHttpRequestFactory(httpClient));
 
