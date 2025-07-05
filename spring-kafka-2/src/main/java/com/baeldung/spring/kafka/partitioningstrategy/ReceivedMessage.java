@@ -1,4 +1,4 @@
-package com.baeldung.partitioningstrategy;
+package com.baeldung.spring.kafka.partitioningstrategy;
 
 public class ReceivedMessage {
     private final String key;
