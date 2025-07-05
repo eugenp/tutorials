@@ -42,6 +42,11 @@
             <artifactId>manifold-yaml-rt</artifactId>
             <version>${manifold.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.soabase.record-builder</groupId>
+            <artifactId>record-builder-core</artifactId>
+            <version>${record-builder.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -66,6 +71,11 @@
                             <artifactId>yavi</artifactId>
                             <version>${yavi.version}</version>
                         </path>
+                        <path>
+                            <groupId>io.soabase.record-builder</groupId>
+                            <artifactId>record-builder-processor</artifactId>
+                            <version>${record-builder.version}</version>
+                        </path>
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
@@ -76,6 +86,7 @@
         <java-diff-utils.version>4.12</java-diff-utils.version>
         <yavi.version>0.14.1</yavi.version>
         <manifold.version>2024.1.20</manifold.version>
+        <record-builder.version>47</record-builder.version>
     </properties>
 
 </project>
