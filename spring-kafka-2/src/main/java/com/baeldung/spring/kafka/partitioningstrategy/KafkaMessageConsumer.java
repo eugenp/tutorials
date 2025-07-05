@@ -1,14 +1,16 @@
-package com.baeldung.partitioningstrategy;
+package com.baeldung.spring.kafka.partitioningstrategy;
 
-import jakarta.annotation.Nullable;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+
+import jakarta.annotation.Nullable;
 
 @Service
 public class KafkaMessageConsumer {
