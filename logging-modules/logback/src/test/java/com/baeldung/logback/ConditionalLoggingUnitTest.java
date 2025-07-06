@@ -52,6 +52,7 @@ public class ConditionalLoggingUnitTest {
     public void whenMatchedWithEvaluatorFilter_thenReturnFilteredLogs() throws IOException {
         logger = (Logger) LoggerFactory.getLogger(ConditionalLoggingUnitTest.class);
         logger.info("billing details: XXXX");
+        logger.info("test prod log");
         
         String filteredLog = FileUtils.readFileToString(new File("filtered.log"));
         assertTrue(filteredLog.contains("test prod log"));
