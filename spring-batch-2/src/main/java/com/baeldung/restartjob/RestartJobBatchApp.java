@@ -41,8 +41,10 @@ public class RestartJobBatchApp {
                   if (lastExecution.getStatus() == BatchStatus.FAILED) {
                       System.out.println("Restarting failed job execution with ID: " + lastExecution.getId());
 
-                      final Long restartId = jobOperator.restart(lastExecution.getId());
-                      final JobExecution restartedExecution = jobExplorer.getJobExecution(restartId);
+                      JobExecution restartedExecution = jobLauncher.run(job, jobParameters);
+
+                      // final Long restartId = jobOperator.restart(lastExecution.getId());
+                      // final JobExecution restartedExecution = jobExplorer.getJobExecution(restartedExecution);
 
                       System.out.println("Restarted job status: " + restartedExecution.getStatus());
                       return;
