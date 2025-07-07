@@ -43,19 +43,19 @@ import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
  */
 class MultipleCertificatesManualTest {
 
-    static final String BASEDIR = System.getProperty("store.dir");
-    static final String PASSWORD = System.getProperty("store.password");
+    static final String CERTS_DIR = System.getProperty("certs.dir");
+    static final String PASSWORD = System.getProperty("certs.password");
 
     static WireMockServer api1;
     static WireMockServer api2;
 
     @BeforeAll
     static void setup() {
-        api1 = mockHttpsServer("api.service1", 10443, BASEDIR + "/api.service1.p12", PASSWORD);
+        api1 = mockHttpsServer("api.service1", 10443);
         stubTest(api1, "ok from server 1");
         api1.start();
 
-        api2 = mockHttpsServer("api.service2", 20443, BASEDIR + "/api.service2.p12", PASSWORD);
+        api2 = mockHttpsServer("api.service2", 20443);
         stubTest(api2, "ok from server 2");
         api2.start();
     }
@@ -68,7 +68,7 @@ class MultipleCertificatesManualTest {
 
     @Test
     void whenBuildingSeparateContexts_thenCorrectCertificateUsed() throws KeyManagementException, UnrecoverableKeyException, NoSuchAlgorithmException, KeyStoreException, CertificateException, IOException {
-        CloseableHttpClient client1 = httpsClient(BASEDIR + "/api.service1.p12", PASSWORD);
+        CloseableHttpClient client1 = httpsClient("api.service1");
 
         HttpGet api1Get = new HttpGet(testUrl(api1));
         client1.execute(api1Get, response -> {
@@ -76,7 +76,7 @@ class MultipleCertificatesManualTest {
             return response;
         });
 
-        CloseableHttpClient client2 = httpsClient(BASEDIR + "/api.service2.p12", PASSWORD);
+        CloseableHttpClient client2 = httpsClient("api.service2");
 
         HttpGet api2Get = new HttpGet(testUrl(api2));
         client2.execute(api2Get, response -> {
@@ -88,8 +88,8 @@ class MultipleCertificatesManualTest {
     @Test
     void whenBuildingCustomSslContext_thenCorrectCertificateUsedForEachConnection() throws Exception {
         SSLContext context = RoutingSslContextBuilder.create()
-            .trust("api.service1", Paths.get(BASEDIR, "api.service1.p12"), PASSWORD)
-            .trust("api.service2", Paths.get(BASEDIR, "api.service2.p12"), PASSWORD)
+            .trust("api.service1", CERTS_DIR, PASSWORD)
+            .trust("api.service2", CERTS_DIR, PASSWORD)
             .build();
 
         HttpClient client = HttpClient.newBuilder()
@@ -117,12 +117,12 @@ class MultipleCertificatesManualTest {
         assertEquals("ok from server 2", response.body());
     }
 
-    private CloseableHttpClient httpsClient(String keystorePath, String passwordString) throws NoSuchAlgorithmException, KeyManagementException, KeyStoreException, UnrecoverableKeyException, CertificateException, IOException {
-        char[] password = passwordString.toCharArray();
+    private CloseableHttpClient httpsClient(String host) throws NoSuchAlgorithmException, KeyManagementException, KeyStoreException, UnrecoverableKeyException, CertificateException, IOException {
+        char[] password = PASSWORD.toCharArray();
 
         SSLContext context = SSLContexts.custom()
-            .loadTrustMaterial(Paths.get(keystorePath), password)
-            .loadKeyMaterial(Paths.get(keystorePath), password, password)
+            .loadTrustMaterial(Paths.get(CERTS_DIR + "/trust." + host + ".p12"), password)
+            .loadKeyMaterial(Paths.get(CERTS_DIR + "/client." + host + ".p12"), password, password)
             .build();
 
         PoolingHttpClientConnectionManager manager = PoolingHttpClientConnectionManagerBuilder.create()
@@ -134,16 +134,16 @@ class MultipleCertificatesManualTest {
             .build();
     }
 
-    private static WireMockServer mockHttpsServer(String hostname, int port, String keystorePath, String password) {
+    private static WireMockServer mockHttpsServer(String host, int port) {
         return new WireMockServer(WireMockConfiguration.options()
-            .bindAddress(hostname)
+            .bindAddress(host)
             .dynamicPort()
             .httpsPort(port)
-            .keystorePath(keystorePath)
-            .keystorePassword(password)
-            .keyManagerPassword(password)
-            .trustStorePath(keystorePath)
-            .trustStorePassword(password)
+            .trustStorePath(CERTS_DIR + "/trust." + host + ".p12")
+            .trustStorePassword(PASSWORD)
+            .keystorePath(CERTS_DIR + "/server." + host + ".p12")
+            .keystorePassword(PASSWORD)
+            .keyManagerPassword(PASSWORD)
             .needClientAuth(true));
     }
 

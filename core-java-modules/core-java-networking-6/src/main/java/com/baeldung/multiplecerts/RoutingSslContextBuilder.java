@@ -1,7 +1,7 @@
 package com.baeldung.multiplecerts;
 
 import java.io.IOException;
-import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
@@ -26,9 +26,9 @@ public class RoutingSslContextBuilder {
         return new RoutingSslContextBuilder();
     }
 
-    public RoutingSslContextBuilder trust(String host, Path certificate, String password) throws UnrecoverableKeyException, KeyStoreException, NoSuchAlgorithmException, CertificateException, IOException {
-        routingKeyManager.put(host, CertUtils.loadKeyManager(certificate, password));
-        routingTrustManager.put(host, CertUtils.loadTrustManager(certificate, password));
+    public RoutingSslContextBuilder trust(String host, String certsDir, String password) throws UnrecoverableKeyException, KeyStoreException, NoSuchAlgorithmException, CertificateException, IOException {
+        routingTrustManager.put(host, CertUtils.loadTrustManager(Paths.get(certsDir, "trust." + host + ".p12"), password));
+        routingKeyManager.put(host, CertUtils.loadKeyManager(Paths.get(certsDir, "client." + host + ".p12"), password));
         return this;
     }
 

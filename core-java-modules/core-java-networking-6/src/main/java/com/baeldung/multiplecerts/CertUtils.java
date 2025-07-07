@@ -9,7 +9,7 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
-import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.TrustManagerFactory;
@@ -29,23 +29,16 @@ public class CertUtils {
         return store;
     }
 
-    private static <M> M filter(M[] arr, Predicate<M> predicate) {
-        for (M manager : arr) {
-            if (predicate.test(manager)) {
-                return manager;
-            }
-        }
-
-        throw new IllegalStateException("no appropriate manager found");
-    }
-
     public static X509KeyManager loadKeyManager(Path path, String password) throws KeyStoreException, IOException, NoSuchAlgorithmException, CertificateException, UnrecoverableKeyException {
         KeyStore store = loadKeyStore(path, password);
 
         KeyManagerFactory factory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
         factory.init(store, password.toCharArray());
 
-        return (X509KeyManager) filter(factory.getKeyManagers(), X509KeyManager.class::isInstance);
+        return (X509KeyManager) Stream.of(factory.getKeyManagers())
+            .filter(X509KeyManager.class::isInstance)
+            .findAny()
+            .orElseThrow(() -> new IllegalStateException("no appropriate manager found"));
     }
 
     public static X509TrustManager loadTrustManager(Path path, String password) throws IOException, NoSuchAlgorithmException, CertificateException, KeyStoreException {
@@ -54,6 +47,9 @@ public class CertUtils {
         TrustManagerFactory factory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
         factory.init(store);
 
-        return (X509TrustManager) filter(factory.getTrustManagers(), X509TrustManager.class::isInstance);
+        return (X509TrustManager) Stream.of(factory.getTrustManagers())
+            .filter(X509TrustManager.class::isInstance)
+            .findAny()
+            .orElseThrow(() -> new IllegalStateException("no appropriate manager found"));
     }
 }
