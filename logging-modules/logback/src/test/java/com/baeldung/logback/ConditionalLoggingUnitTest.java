@@ -50,6 +50,7 @@ public class ConditionalLoggingUnitTest {
 
     @Test
     public void whenMatchedWithEvaluatorFilter_thenReturnFilteredLogs() throws IOException {
+        System.setProperty("ENVIRONMENT", "PROD");
         logger = (Logger) LoggerFactory.getLogger(ConditionalLoggingUnitTest.class);
         logger.info("billing details: XXXX");
         logger.info("test prod log");
