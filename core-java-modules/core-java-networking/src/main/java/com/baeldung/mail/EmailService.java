@@ -30,6 +30,10 @@ public class EmailService {
         prop.put("mail.smtp.port", port);
         prop.put("mail.smtp.ssl.trust", host);
 
+        prop.put("mail.smtp.connectiontimeout", "10000");
+        prop.put("mail.smtp.timeout", "10000");
+        prop.put("mail.smtp.writetimeout", "10000");
+
         this.username = username;
         this.password = password;
     }
