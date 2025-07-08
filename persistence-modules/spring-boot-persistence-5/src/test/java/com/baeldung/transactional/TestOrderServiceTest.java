@@ -18,6 +18,7 @@ class TestOrderServiceTest {
     @Autowired
     private TestOrderRepository testOrderRepository;
 
+
     @Service
     static class TestOrderService2 {
 
