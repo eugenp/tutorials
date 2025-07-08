@@ -13,8 +13,8 @@ import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
 @ActiveProfiles("groq")
-public class GroqChatLiveTest {
-    final Logger logger = LoggerFactory.getLogger(GroqChatLiveTest.class);
+public class GroqAutoconfiguredChatClientLiveTest {
+    final Logger logger = LoggerFactory.getLogger(GroqAutoconfiguredChatClientLiveTest.class);
     @Autowired
     private GroqChatService groqChatService;
 
@@ -34,7 +34,6 @@ public class GroqChatLiveTest {
             the user is experiencing with their 'XYZ Wireless Mouse'?;
             """;
         String response = groqChatService.chat(prompt);
-        logger.info("Response from Groq:{}", response);
 
         assertThat(response.toLowerCase()).isNotNull()
             .isNotEmpty()
@@ -47,6 +46,7 @@ public class GroqChatLiveTest {
         assertThat(openAiChatOptions).isInstanceOf(OpenAiChatOptions.class);
         assertThat(model).isEqualTo("llama-3.3-70b-versatile");
         assertThat(temperature).isEqualTo(Double.valueOf(0.7));
+        logger.info("Response from Groq:{}", response);
     }
 
 }

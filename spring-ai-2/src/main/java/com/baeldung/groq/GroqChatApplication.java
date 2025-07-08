@@ -8,7 +8,6 @@ import org.springframework.ai.autoconfigure.vectorstore.pgvector.PgVectorStoreAu
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
-import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication(exclude = {
     OllamaAutoConfiguration.class,
@@ -18,7 +17,6 @@ import org.springframework.context.annotation.PropertySource;
     BedrockConverseProxyChatAutoConfiguration.class,
     RedisAutoConfiguration.class
 })
-@PropertySource("classpath:application-groq.properties")
 public class GroqChatApplication {
     public static void main(String[] args) {
         SpringApplication.run(GroqChatApplication.class, args);
