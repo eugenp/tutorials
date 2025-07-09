@@ -80,7 +80,7 @@ public class StructurizrSimple {
     private static void findComponents(Container jvm) throws Exception {
         ComponentFinder componentFinder = new ComponentFinder(
                 jvm,
-                "com.baeldung.structurizr",
+                "com.baeldung.structurizr.spring",
                 new SpringComponentFinderStrategy(
                         new ReferencedTypesSupportingTypesStrategy()
                 ),
