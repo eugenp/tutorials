@@ -1,0 +1,13 @@
+Generate exactly 5 multiple choice quizzes based on the following blog content:
+
+Blog Title: %s
+Blog Content: %s
+
+Requirements:
+- Create exactly 5 questions
+- Each question must have exactly 4 options
+- Each question must have only one correct answer
+- The difficulty level of the questions should be intermediate
+- Questions should test understanding of key concepts from the blog
+- Make the incorrect options plausible but clearly wrong
+- Questions should be clear and unambiguous
