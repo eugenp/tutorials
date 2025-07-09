@@ -9,12 +9,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableAgentShell
 @SpringBootApplication
 @EnableAgents(mcpServers = {
-	McpServers.DOCKER_DESKTOP
+    McpServers.DOCKER_DESKTOP
 })
 class Application {
 
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
 
 }
