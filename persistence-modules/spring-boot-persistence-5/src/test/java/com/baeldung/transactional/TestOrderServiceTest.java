@@ -3,24 +3,25 @@ package com.baeldung.transactional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@SpringBootTest(classes = { Application.class, TestOrderServiceTest.TestOrderService2.class, TestOrderRepository.class })
+@SpringBootTest(classes = { Application.class, TestOrderServiceTest.TestOrderService.class, TestOrderRepository.class })
 class TestOrderServiceTest {
 
     @Autowired
-    private TestOrderService2 underTest;
+    private TestOrderService underTest;
 
     @Autowired
     private TestOrderRepository testOrderRepository;
 
-
     @Service
-    static class TestOrderService2 {
+    static class TestOrderService {
 
         @Autowired
         private TestOrderRepository repository;
@@ -54,6 +55,11 @@ class TestOrderServiceTest {
         }
     }
 
+    @AfterEach
+    void afterEach() {
+        testOrderRepository.deleteAll();
+    }
+
     @Test
     void givenPublicTransactionalMethod_whenCallingIt_thenShouldRollbackOnException() {
         assertThat(testOrderRepository.findAll()).isEmpty();
@@ -85,7 +91,7 @@ class TestOrderServiceTest {
     void givenPrivateTransactionalMethod_whenCallingIt_thenShouldNotRollbackOnException() {
         assertThat(testOrderRepository.findAll()).isEmpty();
 
-        assertThatThrownBy(() -> underTest.createOrderPrivate(new TestOrder())).isNotNull();
+        assertThatThrownBy(() -> underTest.callPrivate(new TestOrder())).isNotNull();
 
         assertThat(testOrderRepository.findAll()).hasSize(1);
     }
