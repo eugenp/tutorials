@@ -22,12 +22,12 @@ class PatternSyntaxExceptionUnitTest {
     // 3.2 Nested Quantifiers Without Grouping
     @Test
     void givenNestedQuantifiersWithoutGrouping_whenCompiled_thenThrowsPatternSyntaxException() {
-        assertThrows(PatternSyntaxException.class, () -> Pattern.compile("\\d**"));
+        assertThrows(PatternSyntaxException.class, () -> Pattern.compile("\\d+\\.?\\d+*"));
     }
 
     @Test
     void givenGroupedNestedQuantifiers_whenCompiled_thenCompilesSuccessfully() {
-        Pattern.compile("(\\d*)*"); // Fix: grouping allows stacking quantifiers
+        Pattern.compile("\\d+(\\.\\d+)*"); // Fix: grouping allows stacking quantifiers
     }
 
     // 3.3 Unclosed or Malformed Curly Braces
@@ -44,12 +44,12 @@ class PatternSyntaxExceptionUnitTest {
     // 3.4 Quantifying Unrepeatable or Improper Elements
     @Test
     void givenImproperQuantifierStacking_whenCompiled_thenThrowsPatternSyntaxException() {
-        assertThrows(PatternSyntaxException.class, () -> Pattern.compile("\\w+*"));
+        assertThrows(PatternSyntaxException.class, () -> Pattern.compile("\\w+\\s+*"));
     }
 
     @Test
     void givenProperlyGroupedQuantifier_whenCompiled_thenCompilesSuccessfully() {
-        Pattern.compile("(\\w+)*"); // Fix: quantifier applied to group
+        Pattern.compile("(\\w+\\s+)*"); // Fix: quantifier applied to group
     }
 
     // 3.5 Escaping Literal Quantifier Characters
