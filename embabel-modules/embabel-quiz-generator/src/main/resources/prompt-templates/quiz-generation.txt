@@ -1,7 +1,7 @@
-Generate exactly 5 multiple choice quizzes based on the following blog content:
+Generate multiple choice questions based on the following blog content:
 
-Blog Title: %s
-Blog Content: %s
+Blog title: %s
+Blog content: %s
 
 Requirements:
 - Create exactly 5 questions
