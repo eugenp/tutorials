@@ -9,9 +9,6 @@ spring:
               client-secret: "{noop}secret"
               client-authentication-methods: client_secret_basic
               authorization-grant-types: client_credentials
-
-
-
   # Avoid starting docker from the shared codebase
   docker:
     compose:
