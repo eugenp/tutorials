@@ -15,7 +15,7 @@ import java.nio.charset.Charset;
 
 @Agent(
     name = "quizzard",
-    description = "Generate multiple choice quizzes from documents"
+    description = "Generate multiple choice quizzes from blogs"
 )
 class QuizGeneratorAgent {
 
