@@ -2,7 +2,16 @@ package com.baeldung.mail;
 
 import java.io.File;
 import java.net.URI;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.Properties;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import jakarta.mail.Authenticator;
 import jakarta.mail.Message;
@@ -39,6 +48,33 @@ public class EmailService {
         prop.put("mail.smtp.host", host);
         prop.put("mail.smtp.port", port);
     }
+
+    public EmailService(String host, int port, boolean bypassServerCertError) throws NoSuchAlgorithmException, KeyManagementException {
+        prop = new Properties();
+        prop.put("mail.smtp.host", host);
+        prop.put("mail.smtp.port", port);
+        if (bypassServerCertError) {
+
+            prop.put("mail.smtp.ssl.trust", "*");
+            prop.put("mail.smtp.ssl.checkserveridentity", false);
+
+            // use this when SMTPS protocol
+            // SSLContext sslContext = SSLContext.getInstance("TLS");
+            // sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+            // SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
+            // prop.put("mail.smtp.ssl.enable", "true");
+            // prop.put("mail.smtp.ssl.socketFactory", sslSocketFactory);
+            // prop.put("mail.smtp.ssl.trust", "*");
+        }
+    }
+
+    TrustManager[] trustAllCerts = new TrustManager[] {
+        new X509TrustManager() {
+            public void checkClientTrusted(X509Certificate[] certs, String authType) throws CertificateException{}
+            public void checkServerTrusted(X509Certificate[] certs, String authType) throws CertificateException{}
+            public X509Certificate[] getAcceptedIssuers() { return new X509Certificate[0];}
+        }
+    };
 
     public static void main(String... args) {
         try {
