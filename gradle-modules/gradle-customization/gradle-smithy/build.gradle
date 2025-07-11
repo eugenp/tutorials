@@ -1,0 +1,45 @@
+plugins {
+    id 'java-library'
+    id 'application'
+    // Executes smithy-build process to generate client code
+    id 'software.amazon.smithy.gradle.smithy-base'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+def smithyJavaVersion = project.property('smithyJavaVersion')
+
+// === Code generators ===
+dependencies {
+    smithyBuild "software.amazon.smithy.java.codegen:plugins:${smithyJavaVersion}"
+
+    // === Client Dependencies ===
+    implementation "software.amazon.smithy.java:aws-client-restjson:${smithyJavaVersion}"
+
+    // === Server Dependencies ===
+    implementation "software.amazon.smithy.java:server-netty:${smithyJavaVersion}"
+    implementation "software.amazon.smithy.java:aws-server-restjson:${smithyJavaVersion}"
+}
+
+// Add generated client source code to the main sourceSet
+afterEvaluate {
+    def clientPath = smithy.getPluginProjectionPath(smithy.sourceProjection.get(), "java-client-codegen")
+    sourceSets.main.java.srcDir clientPath
+}
+
+// Add generated server source code to the main sourceSet
+afterEvaluate {
+    def serverPath = smithy.getPluginProjectionPath(smithy.sourceProjection.get(), "java-server-codegen")
+    sourceSets.main.java.srcDir serverPath
+}
+
+tasks.named('compileJava') {
+    dependsOn 'smithyBuild'
+}
+
+application {
+    mainClass = "com.baeldung.smithy.books.server.Main"
+}

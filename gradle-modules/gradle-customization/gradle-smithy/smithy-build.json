@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "sources": [
+      "./smithy/"
+  ],
+  "plugins": {
+    "java-client-codegen": {
+      "service": "com.baeldung.smithy.books#BookManagementService",
+      "namespace": "com.baeldung.smithy.books.client"
+    },
+    "java-server-codegen": {
+      "service": "com.baeldung.smithy.books#BookManagementService",
+      "namespace": "com.baeldung.smithy.books.server"
+    }
+  }
+}
