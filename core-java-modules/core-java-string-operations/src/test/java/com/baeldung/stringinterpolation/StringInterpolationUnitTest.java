@@ -50,7 +50,15 @@ public class StringInterpolationUnitTest {
     public void givenTwoString_thenInterpolateWithStringBuilder() {
         String first = "Interpolation";
         String second = "Java";
-        String result = "String " + first + " in " + second + " with some " + second + " examples.";
+        StringBuilder builder = new StringBuilder();
+        builder.append("String ")
+            .append(first)
+            .append(" in ")
+            .append(second)
+            .append(" with some ")
+            .append(second)
+            .append(" examples.");
+        String result = builder.toString();
         assertEquals(EXPECTED_STRING, result);
     }
 
