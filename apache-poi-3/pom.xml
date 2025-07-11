@@ -89,6 +89,11 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -102,6 +107,7 @@
         <logback-classic.version>1.5.6</logback-classic.version>
         <logback-core.version>1.5.6</logback-core.version>
         <jmh.version>1.37</jmh.version>
+        <log4j.version>2.23.1</log4j.version>
     </properties>
 
 </project>

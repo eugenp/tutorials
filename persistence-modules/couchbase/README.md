@@ -1,14 +1,3 @@
-## Couchbase
-
-This module contains articles about Couchbase
-
-### Relevant Articles:
-- [Introduction to Couchbase SDK for Java](https://www.baeldung.com/java-couchbase-sdk)
-- [Using Couchbase in a Spring Application](https://www.baeldung.com/couchbase-sdk-spring)
-- [Asynchronous Batch Operations in Couchbase](https://www.baeldung.com/async-batch-operations-in-couchbase)
-- [Querying Couchbase with MapReduce Views](https://www.baeldung.com/couchbase-query-mapreduce-view)
-- [Querying Couchbase with N1QL](https://www.baeldung.com/n1ql-couchbase)
-
 ### Overview
 This Maven project contains the Java code for the Couchbase entities and Spring services
 as described in the tutorials, as well as a unit/integration test

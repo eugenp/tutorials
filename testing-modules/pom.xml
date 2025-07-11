@@ -49,6 +49,7 @@
         <module>parallel-tests-junit</module>
         <module>powermock</module>
         <module>rest-assured</module>
+        <module>rest-assured-2</module>
         <module>rest-testing</module>
         <module>selenide</module>
         <module>selenium</module>
@@ -57,6 +58,7 @@
         <module>selenium-testng</module>
         <module>spring-mockito</module>
         <module>spring-testing-2</module>
+        <module>spring-testing-3</module>
         <module>spring-testing</module>
         <module>testing-assertions</module>
         <module>test-containers</module>

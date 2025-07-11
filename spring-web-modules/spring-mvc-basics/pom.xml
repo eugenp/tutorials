@@ -86,7 +86,6 @@
     </build>
 
     <properties>
-        <jaxb-runtime.version>4.0.1</jaxb-runtime.version>
         <rest-assured.version>5.5.0</rest-assured.version>
         <jstl-version>1.2</jstl-version>
         <jakarta.servlet.jsp.jstl.version>2.0.0</jakarta.servlet.jsp.jstl.version>

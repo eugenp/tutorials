@@ -141,6 +141,7 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>
@@ -156,12 +157,10 @@
                 </dependencies>
                 <configuration>
                     <failurePriority>5</failurePriority>
-                    <aggregate>false</aggregate>
                     <failOnViolation>true</failOnViolation>
                     <verbose>true</verbose>
                     <linkXRef>true</linkXRef>
                     <includeTests>true</includeTests>
-                    <sourceEncoding>UTF-8</sourceEncoding>
                     <targetJdk>${java.version}</targetJdk>
                     <rulesets>
                         <ruleset>${tutorialsproject.basedir}/baeldung-pmd-rules.xml</ruleset>
@@ -178,6 +177,7 @@
                         <phase>compile</phase>
                         <goals>
                             <goal>check</goal>
+                            <goal>pmd</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -570,7 +570,7 @@
                 <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
                 <module>spring-di-2</module>
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
-                <module>spring-reactive-modules/spring-reactive-kafka-stream-binder</module>              
+                <module>spring-reactive-modules/spring-reactive-kafka-stream-binder</module>
             </modules>
 
             <properties>
@@ -643,12 +643,12 @@
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
+                <module>data-structures-2</module>
                 <module>deeplearning4j</module>
                 <module>di-modules</module>
                 <module>disruptor</module>
                 <module>docker-modules</module>
                 <module>drools</module>
-                <module>dubbo</module>
                 <module>feign</module>
                 <module>gcp-firebase</module>
                 <module>geotools</module>
@@ -660,11 +660,11 @@
                 <module>guava-modules</module>
                 <module>hazelcast</module>
                 <module>heroku</module>
-                <module>hilla</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>image-compressing</module>
                 <module>image-processing</module>
+                <module>j2cl</module>
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
@@ -674,8 +674,6 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
-                <module>jaxb</module>
-                <module>jdbc-cp</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
@@ -690,11 +688,14 @@
                 <module>libraries-3</module>
                 <module>libraries-4</module>
                 <module>libraries-5</module>
+                <module>libraries-6</module>
+                <module>libraries-7</module>
                 <module>libraries-ai</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
+                <module>libraries-apm</module>
                 <module>libraries-bytecode</module>
                 <module>libraries-cli</module>
                 <module>libraries-concurrency</module>
@@ -702,6 +703,7 @@
                 <module>libraries-data-2</module>
                 <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
+                <module>libraries-data-db-2</module>
                 <module>libraries-data-io-2</module>
                 <module>libraries-data-mariadb4j</module>
                 <module>libraries-files</module>
@@ -763,6 +765,9 @@
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
                 <module>spring-ai-2</module>
+        		<module>spring-ai-3</module>
+                <module>spring-ai-4</module>
+                <module>spring-ai-modules</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>spring-batch</module>
@@ -778,6 +783,8 @@
                 <module>spring-cloud-modules/spring-cloud-security</module>
                 <module>spring-cloud-modules/spring-cloud-task</module>
                 <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
+                <module>spring-cloud-modules/spring-cloud-gateway-2</module>
+                <module>spring-cloud-modules/spring-cloud-gateway</module>
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
@@ -790,6 +797,7 @@
                 <module>spring-drools</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
+                <module>spring-grpc</module>
                 <module>spring-jersey</module>
                 <module>spring-kafka</module>
                 <module>spring-kafka-2</module>
@@ -824,10 +832,7 @@
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
-                <module>xml</module>
-                <module>xml-2</module>
-                <module>xml-3</module>
-                <module>xstream</module>
+                <module>xml-modules</module>
             </modules>
 
             <properties>
@@ -869,6 +874,7 @@
             <modules>
                 <module>core-java-modules/core-java-22</module>
                 <module>core-java-modules/core-java-concurrency-advanced-6</module>
+                <module>core-java-modules/core-java-classloader</module>
             </modules>
 
             <properties>
@@ -916,6 +922,48 @@
                 <java.version>23</java.version>
                 <maven.compiler.source>23</maven.compiler.source>
                 <maven.compiler.target>23</maven.compiler.target>
+                <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
+            </properties>
+
+        </profile>
+
+        <profile>
+            <id>default-jdk24</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <includes>
+                                <include>SpringContextTest</include>
+                                <include>**/*UnitTest</include>
+                            </includes>
+                            <excludes>
+                                <exclude>**/*IntegrationTest.java</exclude>
+                                <exclude>**/*IntTest.java</exclude>
+                                <exclude>**/*LongRunningUnitTest.java</exclude>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/JdbcTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>core-java-modules/core-java-streams-7</module>
+                <module>core-java-modules/core-java-24</module>
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>24</java.version>
+                <maven.compiler.source>24</maven.compiler.source>
+                <maven.compiler.target>24</maven.compiler.target>
                 <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
             </properties>
 
@@ -1031,12 +1079,12 @@
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
+                <module>data-structures-2</module>
                 <module>deeplearning4j</module>
                 <module>di-modules</module>
                 <module>disruptor</module>
                 <module>docker-modules</module>
                 <module>drools</module>
-                <module>dubbo</module>
                 <module>feign</module>
                 <module>gcp-firebase</module>
                 <module>geotools</module>
@@ -1048,13 +1096,13 @@
                 <module>guava-modules</module>
                 <module>hazelcast</module>
                 <module>heroku</module>
-                <module>hilla</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>image-compressing</module>
                 <module>image-processing</module>
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
+                <module>j2cl</module>
                 <module>java-blockchain</module>
                 <module>java-jdi</module>
                 <module>java-panama</module>
@@ -1062,8 +1110,6 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
-                <module>jaxb</module>
-                <module>jdbc-cp</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
@@ -1078,6 +1124,8 @@
                 <module>libraries-3</module>
                 <module>libraries-4</module>
                 <module>libraries-5</module>
+                <module>libraries-6</module>
+                <module>libraries-7</module>
                 <module>libraries-ai</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-2</module>
@@ -1091,6 +1139,7 @@
                 <module>libraries-data-2</module>
                 <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
+                <module>libraries-data-db-2</module>
                 <module>libraries-data-io-2</module>
                 <module>libraries-data-mariadb4j</module>
                 <module>libraries-files</module>
@@ -1099,6 +1148,7 @@
                 <module>libraries-http-3</module>
                 <module>libraries-io</module>
                 <module>libraries-llms</module>
+                <module>libraries-llms-2</module>
                 <module>libraries-open-telemetry</module>
                 <module>libraries-primitive</module>
                 <module>libraries-reporting</module>
@@ -1151,6 +1201,9 @@
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
                 <module>spring-ai-2</module>
+				<module>spring-ai-3</module>
+                <module>spring-ai-4</module>
+                <module>spring-ai-modules</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>spring-batch</module>
@@ -1166,6 +1219,8 @@
                 <module>spring-cloud-modules/spring-cloud-security</module>
                 <module>spring-cloud-modules/spring-cloud-task</module>
                 <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
+                <module>spring-cloud-modules/spring-cloud-gateway-2</module>
+                <module>spring-cloud-modules/spring-cloud-gateway</module>
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
@@ -1178,6 +1233,7 @@
                 <module>spring-drools</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
+                <module>spring-grpc</module>
                 <module>spring-jersey</module>
                 <module>spring-kafka</module>
                 <module>spring-kafka-2</module>
@@ -1212,10 +1268,7 @@
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
-                <module>xml</module>
-                <module>xml-2</module>
-                <module>xml-3</module>
-                <module>xstream</module>
+                <module>xml-modules</module>
             </modules>
 
             <properties>
@@ -1252,6 +1305,7 @@
             <modules>
                 <module>core-java-modules/core-java-22</module>
                 <module>core-java-modules/core-java-concurrency-advanced-6</module>
+                <module>core-java-modules/core-java-classloader</module>
             </modules>
 
             <properties>
@@ -1294,6 +1348,43 @@
                 <java.version>23</java.version>
                 <maven.compiler.source>23</maven.compiler.source>
                 <maven.compiler.target>23</maven.compiler.target>
+                <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
+            </properties>
+
+        </profile>
+
+        <profile>
+            <id>integration-jdk24</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*IntegrationTest.java</include>
+                                <include>**/*IntTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>core-java-modules/core-java-streams-7</module>
+                <module>core-java-modules/core-java-24</module>
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>24</java.version>
+                <maven.compiler.source>24</maven.compiler.source>
+                <maven.compiler.target>24</maven.compiler.target>
                 <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
             </properties>
 
@@ -1362,6 +1453,7 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-3</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
             </modules>
@@ -1420,7 +1512,6 @@
                 <module>maven-modules/dependencygraph</module> <!-- JAVA-42057 -->
                 <module>spring-boot-modules/spring-boot-groovy</module> <!-- JAVA-42052 -->
                 <module>spring-boot-modules/spring-boot-data-3</module> <!-- JAVA-42051 -->
-                <module>spring-reactive-modules/spring-reactive-performance</module> <!-- JAVA-42050 -->
                 <module>spring-boot-modules/spring-boot-3-3</module> <!-- JAVA-42049 -->
                 <module>spring-boot-modules/spring-boot-cli</module> <!-- Not a maven project -->
                 <module>spring-boot-modules/spring-boot-graphql-2</module> <!-- JAVA-42053 -->
@@ -1429,10 +1520,7 @@
                 <module>web-modules/ninja</module> <!-- JAVA-24584 -->
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
-                <module>core-java-modules/core-java-classloader</module> <!-- JAVA-42033 -->
-                <module>core-java-modules/core-java-conditionals</module> <!-- JAVA-42035 -->
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
-                <module>spring-boot-modules/spring-boot-3</module> <!-- JAVA-42049 -->
             </modules>
         </profile>
 
@@ -1489,7 +1577,6 @@
                 <module>maven-modules/dependencygraph</module> <!-- JAVA-42057 -->
                 <module>spring-boot-modules/spring-boot-groovy</module> <!-- JAVA-42052 -->
                 <module>spring-boot-modules/spring-boot-data-3</module> <!-- JAVA-42051 -->
-                <module>spring-reactive-modules/spring-reactive-performance</module> <!-- JAVA-42050 -->
                 <module>spring-boot-modules/spring-boot-3-3</module> <!-- JAVA-42049 -->
                 <module>spring-boot-modules/spring-boot-cli</module> <!-- Not a maven project -->
                 <module>spring-boot-modules/spring-boot-graphql-2</module> <!-- JAVA-42053 -->
@@ -1498,10 +1585,7 @@
                 <module>web-modules/ninja</module> <!-- JAVA-24584 -->
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
-                <module>core-java-modules/core-java-classloader</module> <!-- JAVA-42033 -->
-                <module>core-java-modules/core-java-conditionals</module> <!-- JAVA-42035 -->
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
-                <module>spring-boot-modules/spring-boot-3</module> <!-- JAVA-42049 -->
             </modules>
         </profile>
 
@@ -1577,6 +1661,8 @@
         <mockito-inline.version>5.2.0</mockito-inline.version>
         <mockito-junit-jupiter.version>5.12.0</mockito-junit-jupiter.version>
         <logback.configurationFileName>logback-config-global.xml</logback.configurationFileName>
+        <jsoup.version>1.17.2</jsoup.version>
+        <jaxb-runtime.version>4.0.3</jaxb-runtime.version>
     </properties>
 
 </project>

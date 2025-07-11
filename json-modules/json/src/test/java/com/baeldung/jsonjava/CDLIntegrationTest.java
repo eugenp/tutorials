@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CDLIntegrationTest {
 
     @Test
-    public void givenCommaDelimitedText_thenConvertToJSONArray() {
+    public void givenCommaDelimitedText_whenConvertingToJSONArray_thenCorrectJSONArrayCreated() {
         JSONArray ja = CDL.rowToJSONArray(new JSONTokener("England, USA, Canada"));
 
         assertThatJson(ja)
@@ -19,7 +19,7 @@ public class CDLIntegrationTest {
     }
 
     @Test
-    public void givenJSONArray_thenConvertToCommaDelimitedText() {
+    public void givenJSONArray_whenConvertingToCommaDelimitedText_thenCorrectCommaDelimitedTextCreated() {
         JSONArray ja = new JSONArray("[\"England\",\"USA\",\"Canada\"]");
 
         String cdt = CDL.rowToString(ja);
@@ -28,7 +28,7 @@ public class CDLIntegrationTest {
     }
 
     @Test
-    public void givenCommaDelimitedText_thenGetJSONArrayOfJSONObjects() {
+    public void givenCommaDelimitedText_whenConvertingToArrayOfJSONObjects_thenCorrectArrayOfJSONObjectsCreated() {
         String string =
           "name, city, age \n" +
           "john, chicago, 22 \n" +
@@ -42,7 +42,7 @@ public class CDLIntegrationTest {
     }
 
     @Test
-    public void givenCommaDelimitedText_thenGetJSONArrayOfJSONObjects2() {
+    public void givenCommaDelimitedText_whenConvertingToArrayOfJSONObjects2_thenCorrectArrayOfJSONObjects2Created() {
         JSONArray ja = new JSONArray();
         ja.put("name");
         ja.put("city");
