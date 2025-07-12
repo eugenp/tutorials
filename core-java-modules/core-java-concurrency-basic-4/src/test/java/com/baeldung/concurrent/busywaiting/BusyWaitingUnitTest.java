@@ -1,7 +1,7 @@
 package com.baeldung.concurrent.busywaiting;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -31,7 +31,7 @@ public class BusyWaitingUnitTest {
         }
 
         logger.info("Counter: {}", counter);
-        assertTrue(counter != 1);
+        assertNotEquals(1, counter);
     }
 
     @Test
