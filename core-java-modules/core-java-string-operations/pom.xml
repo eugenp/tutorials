@@ -69,18 +69,11 @@
                     <release>21</release>
                     <!-- Needed due to a bug with JDK 21, described here: https://issues.apache.org/jira/browse/MCOMPILER-546?page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel&focusedCommentId=17767513 -->
                     <debug>false</debug>
-                    <compilerArgs>
-                        <arg>--enable-preview</arg>
-                    </compilerArgs>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <forkCount>0</forkCount>
-                    <argLine>--enable-preview</argLine>
-                </configuration>
             </plugin>
         </plugins>
     </build>
