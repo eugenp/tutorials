@@ -37,11 +37,6 @@
             <version>${jsoup.version}</version>
         </dependency>
         <dependency>
-            <groupId>commons-net</groupId>
-            <artifactId>commons-net</artifactId>
-            <version>${net.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>${httpclient.version}</version>
@@ -71,7 +66,6 @@
 
     <properties>
         <commons-validator.version>1.7</commons-validator.version>
-        <net.version>3.8.0</net.version>
         <httpclient.version>4.5.2</httpclient.version>
         <javax.ws.rs-api.version>2.1.1</javax.ws.rs-api.version>
         <jersey-common.version>2.22.2</jersey-common.version>
