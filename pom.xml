@@ -823,6 +823,7 @@
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
                 <module>spring-websockets</module>
+                <module>static-analysis-modules</module>
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
                 <module>timefold-solver</module>
@@ -1259,6 +1260,7 @@
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
                 <module>spring-websockets</module>
+                <module>static-analysis-modules</module>
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
                 <module>timefold-solver</module>
@@ -1493,7 +1495,6 @@
                 <module>spring-cloud-modules/spring-cloud-data-flow</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42054 -->
                 <module>spring-cloud-modules/spring-cloud-stream-starters</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42055 -->
                 <module>spring-jinq</module> <!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
-                <module>static-analysis-modules</module> <!-- requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <module>tablesaw</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42037 -->
                 <module>spring-swagger-codegen-modules/openapi-custom-generator</module>
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> <!-- cannot add the individual modules here because the order is not guaranteed -->
@@ -1558,7 +1559,6 @@
                 <module>spring-cloud-modules/spring-cloud-data-flow</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42054 -->
                 <module>spring-cloud-modules/spring-cloud-stream-starters</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42055 -->
                 <module>spring-jinq</module> <!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
-                <module>static-analysis-modules</module> <!-- requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <module>tablesaw</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42037 -->
                 <module>spring-swagger-codegen-modules/openapi-custom-generator</module>
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> <!-- cannot add the individual modules here because the order is not guaranteed -->
