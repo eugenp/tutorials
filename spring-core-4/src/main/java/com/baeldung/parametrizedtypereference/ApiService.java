@@ -80,20 +80,4 @@ public class ApiService {
 
         return response.getBody();
     }
-
-    public List<User> fetchUsersWithErrorHandling() {
-        try {
-            ResponseEntity<List<User>> response = restTemplate.exchange(
-                    baseUrl + "/api/users",
-                    HttpMethod.GET,
-                    null,
-                    TypeReferences.USER_LIST
-            );
-            return response.getBody();
-        } catch (HttpClientErrorException | HttpServerErrorException e) {
-            throw new ApiException("HTTP error: " + e.getMessage(), e);
-        } catch (ResourceAccessException e) {
-            throw new ApiException("Network error: " + e.getMessage(), e);
-        }
-    }
 }

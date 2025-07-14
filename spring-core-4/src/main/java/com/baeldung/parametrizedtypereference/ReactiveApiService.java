@@ -40,14 +40,4 @@ public class ReactiveApiService {
                 .bodyToMono(typeRef);
     }
 
-    public Mono<List<User>> fetchUsersReactive() {
-        return webClient.get()
-                .uri("/users")
-                .retrieve()
-                .onStatus(HttpStatusCode::isError, response ->
-                        Mono.error(new ApiException("API error")))
-                .bodyToMono(TypeReferences.USER_LIST)
-                .onErrorResume(WebClientException.class, ex ->
-                        Mono.just(Collections.emptyList()));
-    }
 }
