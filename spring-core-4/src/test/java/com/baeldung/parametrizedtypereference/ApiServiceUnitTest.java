@@ -1,116 +1,81 @@
 package com.baeldung.parametrizedtypereference;
 
+import com.github.tomakehurst.wiremock.WireMockServer;
+import com.github.tomakehurst.wiremock.client.WireMock;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
 import java.util.List;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.ArgumentMatchers.isNull;
-import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)
 class ApiServiceUnitTest {
 
-    @Mock
-    private RestTemplate restTemplate;
-
+    private WireMockServer wireMockServer;
     private ApiService apiService;
+    private String baseUrl;
 
     @BeforeEach
     void setUp() {
-        apiService = new ApiService(restTemplate);
+        wireMockServer = new WireMockServer(8089);
+        wireMockServer.start();
+        WireMock.configureFor("localhost", 8089);
+
+        baseUrl = "http://localhost:8089";
+        apiService = new ApiService(new RestTemplate(), baseUrl);
+    }
+
+    @AfterEach
+    void tearDown() {
+        wireMockServer.stop();
     }
 
     @Test
     void whenFetchingUserList_thenReturnsCorrectType() {
         // given
-        List<User> expectedUsers = Arrays.asList(
-                new User(1L, "John Doe", "john@example.com", "Engineering"),
-                new User(2L, "Jane Smith", "jane@example.com", "Marketing")
-        );
-        ResponseEntity<List<User>> responseEntity = new ResponseEntity<>(expectedUsers, HttpStatus.OK);
-
-        when(restTemplate.exchange(
-                eq("/api/users"),
-                eq(HttpMethod.GET),
-                isNull(),
-                any(ParameterizedTypeReference.class)
-        )).thenReturn(responseEntity);
+        wireMockServer.stubFor(get(urlEqualTo("/api/users"))
+                .willReturn(aResponse()
+                        .withStatus(200)
+                        .withHeader("Content-Type", "application/json")
+                        .withBody("""
+                                [
+                                    {"id": 1, "name": "John Doe", "email": "john@example.com", "department": "Engineering"},
+                                    {"id": 2, "name": "Jane Smith", "email": "jane@example.com", "department": "Marketing"}
+                                ]
+                                """)));
 
         // when
         List<User> result = apiService.fetchUserList();
 
         // then
+        assertEquals(2, result.size());
         assertEquals("John Doe", result.get(0).getName());
         assertEquals("jane@example.com", result.get(1).getEmail());
-    }
-
-    @Test
-    void whenCreatingUsers_thenReturnsCreatedUsers() {
-        // given
-        List<User> inputUsers = Arrays.asList(
-                new User(null, "John Doe", "john@example.com", "Engineering"),
-                new User(null, "Jane Smith", "jane@example.com", "Marketing")
-        );
-
-        List<User> expectedUsers = Arrays.asList(
-                new User(1L, "John Doe", "john@example.com", "Engineering"),
-                new User(2L, "Jane Smith", "jane@example.com", "Marketing")
-        );
-
-        ResponseEntity<List<User>> responseEntity =
-                new ResponseEntity<>(expectedUsers, HttpStatus.CREATED);
-
-        when(restTemplate.exchange(
-                eq("/api/users/batch"),
-                eq(HttpMethod.POST),
-                any(HttpEntity.class),
-                any(ParameterizedTypeReference.class)
-        )).thenReturn(responseEntity);
-
-        // when
-        List<User> result = apiService.createUsers(inputUsers);
-
-        // then
-        assertNotNull(result.get(0).getId());
-        assertNotNull(result.get(1).getId());
-        assertEquals("John Doe", result.get(0).getName());
-        assertEquals("Jane Smith", result.get(1).getName());
+        assertEquals("Engineering", result.get(0).getDepartment());
+        assertEquals("Marketing", result.get(1).getDepartment());
     }
 
     @Test
     void whenFetchingUsersCorrectApproach_thenReturnsTypedList() {
         // given
-        List<User> expectedUsers = Arrays.asList(
-                new User(1L, "John Doe", "john@example.com", "Engineering")
-        );
-        ResponseEntity<List<User>> responseEntity = new ResponseEntity<>(expectedUsers, HttpStatus.OK);
-
-        when(restTemplate.exchange(
-                eq("/api/users"),
-                eq(HttpMethod.GET),
-                isNull(),
-                any(ParameterizedTypeReference.class)
-        )).thenReturn(responseEntity);
+        wireMockServer.stubFor(get(urlEqualTo("/api/users"))
+                .willReturn(aResponse()
+                        .withStatus(200)
+                        .withHeader("Content-Type", "application/json")
+                        .withBody("""
+                                [
+                                    {"id": 1, "name": "John Doe", "email": "john@example.com", "department": "Engineering"}
+                                ]
+                                """)));
 
         // when
         List<User> result = apiService.fetchUsersCorrectApproach();
 
         // then
+        assertEquals(1, result.size());
         assertEquals("John Doe", result.get(0).getName());
         assertEquals("Engineering", result.get(0).getDepartment());
     }
@@ -118,10 +83,13 @@ class ApiServiceUnitTest {
     @Test
     void whenFetchingSingleUser_thenReturnsUser() {
         // given
-        User expectedUser = new User(1L, "John Doe", "john@example.com", "Engineering");
-
-        when(restTemplate.getForObject("/api/users/1", User.class))
-                .thenReturn(expectedUser);
+        wireMockServer.stubFor(get(urlEqualTo("/api/users/1"))
+                .willReturn(aResponse()
+                        .withStatus(200)
+                        .withHeader("Content-Type", "application/json")
+                        .withBody("""
+                                {"id": 1, "name": "John Doe", "email": "john@example.com", "department": "Engineering"}
+                                """)));
 
         // when
         User result = apiService.fetchUser(1L);
@@ -129,18 +97,22 @@ class ApiServiceUnitTest {
         // then
         assertEquals("John Doe", result.getName());
         assertEquals("john@example.com", result.getEmail());
+        assertEquals("Engineering", result.getDepartment());
     }
 
     @Test
     void whenFetchingUsersArray_thenReturnsArray() {
         // given
-        User[] expectedUsers = {
-                new User(1L, "John Doe", "john@example.com", "Engineering"),
-                new User(2L, "Jane Smith", "jane@example.com", "Marketing")
-        };
-
-        when(restTemplate.getForObject("/api/users", User[].class))
-                .thenReturn(expectedUsers);
+        wireMockServer.stubFor(get(urlEqualTo("/api/users"))
+                .willReturn(aResponse()
+                        .withStatus(200)
+                        .withHeader("Content-Type", "application/json")
+                        .withBody("""
+                                [
+                                    {"id": 1, "name": "John Doe", "email": "john@example.com", "department": "Engineering"},
+                                    {"id": 2, "name": "Jane Smith", "email": "jane@example.com", "department": "Marketing"}
+                                ]
+                                """)));
 
         // when
         User[] result = apiService.fetchUsersArray();
@@ -149,5 +121,33 @@ class ApiServiceUnitTest {
         assertEquals(2, result.length);
         assertEquals("John Doe", result[0].getName());
         assertEquals("Jane Smith", result[1].getName());
+    }
+
+    @Test
+    void whenFetchingUsersList_thenReturnsTypedList() {
+        // given
+        wireMockServer.stubFor(get(urlEqualTo("/api/users"))
+                .willReturn(aResponse()
+                        .withStatus(200)
+                        .withHeader("Content-Type", "application/json")
+                        .withBody("""
+                                [
+                                    {"id": 1, "name": "John Doe", "email": "john@example.com", "department": "Engineering"},
+                                    {"id": 2, "name": "Jane Smith", "email": "jane@example.com", "department": "Marketing"}
+                                ]
+                                """)));
+
+        // when
+        List<User> result = apiService.fetchUsersList();
+
+        // then
+        assertEquals(2, result.size());
+        assertEquals("John Doe", result.get(0).getName());
+        assertEquals("Jane Smith", result.get(1).getName());
+
+        // Verify that we actually get a typed List<User>, not List<Object>
+        // This test would fail with ClassCastException if ParameterizedTypeReference wasn't working
+        User firstUser = result.get(0);
+        assertEquals(Long.valueOf(1L), firstUser.getId());
     }
 }

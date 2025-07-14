@@ -99,6 +99,27 @@
             <version>${reactor.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock-jre8-standalone</artifactId>
+            <version>${wiremock.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -109,6 +130,8 @@
         <spring-webflux.version>7.0.0-M6</spring-webflux.version>
         <mockito.version>5.18.0</mockito.version>
         <reactor.version>3.8.0-M4</reactor.version>
+        <wiremock.version>2.35.0</wiremock.version>
+        <jackson.version>2.19.1</jackson.version>
     </properties>
 
 </project>

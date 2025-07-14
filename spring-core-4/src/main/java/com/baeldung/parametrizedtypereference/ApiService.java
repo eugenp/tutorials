@@ -1,10 +1,7 @@
 package com.baeldung.parametrizedtypereference;
 
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
@@ -18,9 +15,11 @@ import java.util.List;
 public class ApiService {
 
     private final RestTemplate restTemplate;
+    private final String baseUrl;
 
-    public ApiService(RestTemplate restTemplate) {
+    public ApiService(RestTemplate restTemplate, String baseUrl) {
         this.restTemplate = restTemplate;
+        this.baseUrl = baseUrl;
     }
 
     public List<User> fetchUserList() {
@@ -28,7 +27,7 @@ public class ApiService {
                 new ParameterizedTypeReference<List<User>>() {};
 
         ResponseEntity<List<User>> response = restTemplate.exchange(
-                "/api/users",
+                baseUrl + "/api/users",
                 HttpMethod.GET,
                 null,
                 typeRef
@@ -37,27 +36,9 @@ public class ApiService {
         return response.getBody();
     }
 
-    public List<User> createUsers(List<User> users) {
-        ParameterizedTypeReference<List<User>> typeRef =
-                new ParameterizedTypeReference<List<User>>() {};
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<List<User>> requestEntity = new HttpEntity<>(users, headers);
-
-        ResponseEntity<List<User>> response = restTemplate.exchange(
-                "/api/users/batch",
-                HttpMethod.POST,
-                requestEntity,
-                typeRef
-        );
-
-        return response.getBody();
-    }
-
     public List<User> fetchUsersWrongApproach() {
         ResponseEntity<List> response = restTemplate.getForEntity(
-                "/api/users",
+                baseUrl + "/api/users",
                 List.class
         );
 
@@ -69,7 +50,7 @@ public class ApiService {
                 new ParameterizedTypeReference<List<User>>() {};
 
         ResponseEntity<List<User>> response = restTemplate.exchange(
-                "/api/users",
+                baseUrl + "/api/users",
                 HttpMethod.GET,
                 null,
                 typeRef
@@ -79,11 +60,11 @@ public class ApiService {
     }
 
     public User fetchUser(Long id) {
-        return restTemplate.getForObject("/api/users/" + id, User.class);
+        return restTemplate.getForObject(baseUrl + "/api/users/" + id, User.class);
     }
 
     public User[] fetchUsersArray() {
-        return restTemplate.getForObject("/api/users", User[].class);
+        return restTemplate.getForObject(baseUrl + "/api/users", User[].class);
     }
 
     public List<User> fetchUsersList() {
@@ -91,7 +72,7 @@ public class ApiService {
                 new ParameterizedTypeReference<List<User>>() {};
 
         ResponseEntity<List<User>> response = restTemplate.exchange(
-                "/api/users",
+                baseUrl + "/api/users",
                 HttpMethod.GET,
                 null,
                 typeRef
@@ -103,7 +84,7 @@ public class ApiService {
     public List<User> fetchUsersWithErrorHandling() {
         try {
             ResponseEntity<List<User>> response = restTemplate.exchange(
-                    "/api/users",
+                    baseUrl + "/api/users",
                     HttpMethod.GET,
                     null,
                     TypeReferences.USER_LIST

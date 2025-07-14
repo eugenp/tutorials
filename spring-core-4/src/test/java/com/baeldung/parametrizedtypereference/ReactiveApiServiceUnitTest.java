@@ -1,82 +1,57 @@
 package com.baeldung.parametrizedtypereference;
 
+import com.github.tomakehurst.wiremock.WireMockServer;
+import com.github.tomakehurst.wiremock.client.WireMock;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)
 class ReactiveApiServiceUnitTest {
 
-    @Mock
-    private WebClient webClient;
-
-    @Mock
-    private WebClient.RequestHeadersUriSpec requestHeadersUriSpec;
-
-    @Mock
-    private WebClient.RequestHeadersSpec requestHeadersSpec;
-
-    @Mock
-    private WebClient.ResponseSpec responseSpec;
-
+    private WireMockServer wireMockServer;
     private ReactiveApiService reactiveApiService;
+    private String baseUrl;
 
     @BeforeEach
     void setUp() {
+        wireMockServer = new WireMockServer(8090);
+        wireMockServer.start();
+        WireMock.configureFor("localhost", 8090);
 
-        reactiveApiService = new ReactiveApiService(WebClient.builder()) {
-            @Override
-            public Mono<Map<String, List<User>>> fetchUsersByDepartment() {
-                ParameterizedTypeReference<Map<String, List<User>>> typeRef =
-                        new ParameterizedTypeReference<Map<String, List<User>>>() {};
+        baseUrl = "http://localhost:8090";
+        reactiveApiService = new ReactiveApiService(baseUrl);
+    }
 
-                return webClient.get()
-                        .uri("/users/by-department")
-                        .retrieve()
-                        .bodyToMono(typeRef);
-            }
-
-            @Override
-            public Mono<ApiResponse<List<User>>> fetchUsersWithWrapper() {
-                ParameterizedTypeReference<ApiResponse<List<User>>> typeRef =
-                        new ParameterizedTypeReference<ApiResponse<List<User>>>() {};
-
-                return webClient.get()
-                        .uri("/users/wrapped")
-                        .retrieve()
-                        .bodyToMono(typeRef);
-            }
-        };
+    @AfterEach
+    void tearDown() {
+        wireMockServer.stop();
     }
 
     @Test
     void whenFetchingUsersByDepartment_thenReturnsCorrectMap() {
         // given
-        Map<String, List<User>> expectedMap = new HashMap<>();
-        expectedMap.put("Engineering", Arrays.asList(
-                new User(1L, "John Doe", "john@example.com", "Engineering")
-        ));
-
-        when(webClient.get()).thenReturn(requestHeadersUriSpec);
-        when(requestHeadersUriSpec.uri("/users/by-department")).thenReturn(requestHeadersSpec);
-        when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
-        when(responseSpec.bodyToMono(any(ParameterizedTypeReference.class)))
-                .thenReturn(Mono.just(expectedMap));
+        wireMockServer.stubFor(get(urlEqualTo("/users/by-department"))
+                .willReturn(aResponse()
+                        .withStatus(200)
+                        .withHeader("Content-Type", "application/json")
+                        .withBody("""
+                                {
+                                    "Engineering": [
+                                        {"id": 1, "name": "John Doe", "email": "john@example.com", "department": "Engineering"}
+                                    ],
+                                    "Marketing": [
+                                        {"id": 2, "name": "Jane Smith", "email": "jane@example.com", "department": "Marketing"}
+                                    ]
+                                }
+                                """)));
 
         // when
         Mono<Map<String, List<User>>> result = reactiveApiService.fetchUsersByDepartment();
@@ -85,7 +60,14 @@ class ReactiveApiServiceUnitTest {
         StepVerifier.create(result)
                 .assertNext(map -> {
                     assertTrue(map.containsKey("Engineering"));
+                    assertTrue(map.containsKey("Marketing"));
                     assertEquals("John Doe", map.get("Engineering").get(0).getName());
+                    assertEquals("Jane Smith", map.get("Marketing").get(0).getName());
+
+                    // Verify proper typing - this would fail if ParameterizedTypeReference didn't work
+                    List<User> engineeringUsers = map.get("Engineering");
+                    User firstUser = engineeringUsers.get(0);
+                    assertEquals(Long.valueOf(1L), firstUser.getId());
                 })
                 .verifyComplete();
     }
@@ -93,17 +75,20 @@ class ReactiveApiServiceUnitTest {
     @Test
     void whenFetchingUsersWithWrapper_thenReturnsApiResponse() {
         // given
-        List<User> users = Arrays.asList(
-                new User(1L, "John Doe", "john@example.com", "Engineering"),
-                new User(2L, "Jane Smith", "jane@example.com", "Marketing")
-        );
-        ApiResponse<List<User>> expectedResponse = new ApiResponse<>(true, "Success", users);
-
-        when(webClient.get()).thenReturn(requestHeadersUriSpec);
-        when(requestHeadersUriSpec.uri("/users/wrapped")).thenReturn(requestHeadersSpec);
-        when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
-        when(responseSpec.bodyToMono(any(ParameterizedTypeReference.class)))
-                .thenReturn(Mono.just(expectedResponse));
+        wireMockServer.stubFor(get(urlEqualTo("/users/wrapped"))
+                .willReturn(aResponse()
+                        .withStatus(200)
+                        .withHeader("Content-Type", "application/json")
+                        .withBody("""
+                                {
+                                    "success": true,
+                                    "message": "Success",
+                                    "data": [
+                                        {"id": 1, "name": "John Doe", "email": "john@example.com", "department": "Engineering"},
+                                        {"id": 2, "name": "Jane Smith", "email": "jane@example.com", "department": "Marketing"}
+                                    ]
+                                }
+                                """)));
 
         // when
         Mono<ApiResponse<List<User>>> result = reactiveApiService.fetchUsersWithWrapper();
@@ -115,6 +100,53 @@ class ReactiveApiServiceUnitTest {
                     assertEquals("Success", response.message());
                     assertEquals(2, response.data().size());
                     assertEquals("John Doe", response.data().get(0).getName());
+                    assertEquals("Jane Smith", response.data().get(1).getName());
+
+                    // Verify proper generic typing - this ensures ParameterizedTypeReference worked
+                    List<User> users = response.data();
+                    User firstUser = users.get(0);
+                    assertEquals(Long.valueOf(1L), firstUser.getId());
+                    assertEquals("Engineering", firstUser.getDepartment());
+                })
+                .verifyComplete();
+    }
+
+    @Test
+    void whenApiReturnsError_thenHandlesGracefully() {
+        // given
+        wireMockServer.stubFor(get(urlEqualTo("/users/by-department"))
+                .willReturn(aResponse()
+                        .withStatus(500)
+                        .withHeader("Content-Type", "application/json")
+                        .withBody("""
+                                {"error": "Internal server error"}
+                                """)));
+
+        // when
+        Mono<Map<String, List<User>>> result = reactiveApiService.fetchUsersByDepartment();
+
+        // then
+        StepVerifier.create(result)
+                .expectError()
+                .verify();
+    }
+
+    @Test
+    void whenEmptyResponse_thenHandlesCorrectly() {
+        // given
+        wireMockServer.stubFor(get(urlEqualTo("/users/by-department"))
+                .willReturn(aResponse()
+                        .withStatus(200)
+                        .withHeader("Content-Type", "application/json")
+                        .withBody("{}")));
+
+        // when
+        Mono<Map<String, List<User>>> result = reactiveApiService.fetchUsersByDepartment();
+
+        // then
+        StepVerifier.create(result)
+                .assertNext(map -> {
+                    assertTrue(map.isEmpty());
                 })
                 .verifyComplete();
     }

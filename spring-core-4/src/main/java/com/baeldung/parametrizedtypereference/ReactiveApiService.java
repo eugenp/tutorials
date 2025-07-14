@@ -1,7 +1,6 @@
 package com.baeldung.parametrizedtypereference;
 
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -17,8 +16,8 @@ public class ReactiveApiService {
 
     private final WebClient webClient;
 
-    public ReactiveApiService(WebClient.Builder webClientBuilder) {
-        this.webClient = webClientBuilder.baseUrl("http://api.example.com").build();
+    public ReactiveApiService(String baseUrl) {
+        this.webClient = WebClient.builder().baseUrl(baseUrl).build();
     }
 
     public Mono<Map<String, List<User>>> fetchUsersByDepartment() {
