@@ -107,9 +107,6 @@
                             <goal>yarn</goal>
                         </goals>
                         <phase>compile</phase>
-                        <configuration>
-                            <arguments>build</arguments>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -125,8 +122,8 @@
         <maven.compiler.target>11</maven.compiler.target>
         <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
         <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
-        <node.version>v14.18.0</node.version>
-        <yarn.version>v1.12.1</yarn.version>
+        <node.version>v20.0.0</node.version>
+        <yarn.version>v1.22.22</yarn.version>
         <javafaker.version>1.0.2</javafaker.version>
     </properties>
 
