@@ -1,25 +1,29 @@
 package com.baeldung.starter;
 
-import jakarta.mail.MessagingException;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasSize;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import jakarta.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+
 import org.subethamail.wiser.Wiser;
 import org.subethamail.wiser.WiserMessage;
 
 import java.io.IOException;
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 @SpringBootTest(classes = Application.class)
 public class SpringBootMailIntegrationTest {
+
     @Autowired
     private JavaMailSender javaMailSender;
 
@@ -57,11 +61,15 @@ public class SpringBootMailIntegrationTest {
     }
 
     private String getMessage(WiserMessage wiserMessage) throws MessagingException, IOException {
-        return wiserMessage.getMimeMessage().getContent().toString().trim();
+        return wiserMessage.getMimeMessage()
+            .getContent()
+            .toString()
+            .trim();
     }
 
     private String getSubject(WiserMessage wiserMessage) throws MessagingException {
-        return wiserMessage.getMimeMessage().getSubject();
+        return wiserMessage.getMimeMessage()
+            .getSubject();
     }
 
     private SimpleMailMessage composeEmailMessage() {
