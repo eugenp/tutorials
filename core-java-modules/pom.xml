@@ -179,6 +179,7 @@
         <module>core-java-lang-oop-patterns</module>
         <module>core-java-lang-oop-patterns-2</module>
         <module>core-java-lang-oop-generics</module>
+        <module>core-java-lang-oop-generics-2</module>
         <module>core-java-lang-oop-modifiers</module>
         <module>core-java-lang-oop-modifiers-2</module>
         <module>core-java-lang-oop-types</module>
@@ -279,6 +280,7 @@
         <module>java-websocket</module>
         <module>core-java-8-datetime-3</module>
         <module>core-java-8-datetime-4</module>
+        <module>core-java-collections-list-8</module>
         <!--<module>core-java-22</module>--> <!-- Migrated to default-jdk22 profile -->
         <!--<module>core-java-23</module>--> <!-- Migrated to default-jdk23 profile -->
         <!--<module>core-java-24</module>--> <!-- Migrated to default-jdk24 profile -->

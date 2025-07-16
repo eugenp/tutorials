@@ -9,8 +9,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 
 @EnableWebSecurity
 @PropertySource("classpath:/application-extrafields.properties")
@@ -46,6 +48,8 @@ public class SecurityConfig extends AbstractHttpConfigurer<SecurityConfig, HttpS
         SimpleAuthenticationFilter filter = new SimpleAuthenticationFilter();
         filter.setAuthenticationManager(authenticationManager);
         filter.setAuthenticationFailureHandler(failureHandler());
+        filter.setAuthenticationSuccessHandler(new SavedRequestAwareAuthenticationSuccessHandler());
+        filter.setSecurityContextRepository(new HttpSessionSecurityContextRepository());
         return filter;
     }
 
