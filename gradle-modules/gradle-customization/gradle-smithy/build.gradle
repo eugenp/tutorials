@@ -1,5 +1,6 @@
 plugins {
     id 'java-library'
+    id 'java-test-fixtures'
     id 'application'
     // Executes smithy-build process to generate client code
     id 'software.amazon.smithy.gradle.smithy-base'
@@ -22,6 +23,10 @@ dependencies {
     // === Server Dependencies ===
     implementation "software.amazon.smithy.java:server-netty:${smithyJavaVersion}"
     implementation "software.amazon.smithy.java:aws-server-restjson:${smithyJavaVersion}"
+
+    // === Test Fixtures ===
+    testFixturesApi("org.junit.jupiter:junit-jupiter-api:5.5.2")
+    testFixturesImplementation("org.junit.jupiter:junit-jupiter-engine:5.5.2")
 }
 
 // Add generated client source code to the main sourceSet
@@ -42,4 +47,8 @@ tasks.named('compileJava') {
 
 application {
     mainClass = "com.baeldung.smithy.books.server.Main"
+}
+
+tasks.test {
+    useJUnitPlatform()
 }

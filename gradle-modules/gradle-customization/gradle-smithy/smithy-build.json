@@ -6,7 +6,8 @@
   "plugins": {
     "java-client-codegen": {
       "service": "com.baeldung.smithy.books#BookManagementService",
-      "namespace": "com.baeldung.smithy.books.client"
+      "namespace": "com.baeldung.smithy.books.client",
+      "protocol": "aws.protocols#restJson1"
     },
     "java-server-codegen": {
       "service": "com.baeldung.smithy.books#BookManagementService",

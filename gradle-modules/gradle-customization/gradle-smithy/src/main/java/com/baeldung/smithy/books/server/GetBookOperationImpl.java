@@ -3,6 +3,7 @@ package com.baeldung.smithy.books.server;
 import com.baeldung.smithy.books.server.model.GetBookInput;
 import com.baeldung.smithy.books.server.model.GetBookOutput;
 import com.baeldung.smithy.books.server.service.GetBookOperation;
+
 import software.amazon.smithy.java.server.RequestContext;
 
 class GetBookOperationImpl implements GetBookOperation {
