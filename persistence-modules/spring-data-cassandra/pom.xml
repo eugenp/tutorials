@@ -46,7 +46,7 @@
         <dependency>
             <groupId>com.datastax.oss</groupId>
             <artifactId>java-driver-mapper-runtime</artifactId>
-            <version>4.17.0</version>
+            <version>${java-driver-mapper-runtime.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -67,6 +67,7 @@
         <testcontainers.version>1.19.5</testcontainers.version>
         <system.stubs.version>2.1.5</system.stubs.version>
         <hector-core.version>2.0-0</hector-core.version>
+        <java-driver-mapper-runtime.version>4.17.0</java-driver-mapper-runtime.version>
     </properties>
 
 </project>

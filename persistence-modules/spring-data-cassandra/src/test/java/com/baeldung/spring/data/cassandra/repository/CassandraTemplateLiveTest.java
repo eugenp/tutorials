@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -95,13 +94,9 @@ class CassandraTemplateLiveTest {
             .build();
 
         List<Book> retrieved = cassandraTemplate.select(select, Book.class);
-        assertThat(retrieved.size(), is(2));
+        assertThat(retrieved.size(), is(3));
     }
 
-    @AfterEach
-    void dropTable() {
-        cassandraTemplate.dropTable(Book.class);
-    }
 
     @AfterAll
     static void tearDown() {

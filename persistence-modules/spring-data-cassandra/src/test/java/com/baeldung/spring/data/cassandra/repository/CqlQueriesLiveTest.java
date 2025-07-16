@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.UUID;
 
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -129,10 +128,5 @@ class CqlQueriesLiveTest {
             .build();
         final Book retrievedBook = cassandraTemplate.selectOne(select, Book.class);
         assertEquals(uuid, retrievedBook.getId());
-    }
-
-    @AfterEach
-    void dropTable() {
-        cassandraTemplate.dropTable(CqlIdentifier.fromCql(DATA_TABLE_NAME));
     }
 }
