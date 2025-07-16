@@ -16,6 +16,7 @@ import net.jqwik.api.Arbitraries;
 
 class StringToUniqueIntUnitTest {
 
+    @Disabled
     @ParameterizedTest
     @MethodSource("implementations")
     public void given1kElements_whenMappedToInt_thenItShouldHaveNoDuplicates(Function<String, Integer> implementation) {

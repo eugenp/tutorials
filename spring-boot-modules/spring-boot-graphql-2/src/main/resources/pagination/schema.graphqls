@@ -1,0 +1,33 @@
+type Book {
+    id: ID!
+    title: String
+    author: String
+}
+
+type BookPage {
+    content: [Book]
+    totalPages: Int
+    totalElements: Int
+    number: Int
+    size: Int
+}
+
+type BookEdge {
+    node: Book
+    cursor: String
+}
+
+type PageInfo {
+    hasNextPage: Boolean
+    endCursor: String
+}
+
+type BookConnection {
+    edges: [BookEdge]
+    pageInfo: PageInfo
+}
+
+type Query {
+    books(page: Int, size: Int): BookPage
+    booksByCursor(cursor: ID, limit: Int!): BookConnection
+}

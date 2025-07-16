@@ -59,6 +59,7 @@
     </dependencies>
 
     <properties>
+        <java.version>17</java.version>
         <networknt.json.schema.version>1.4.0</networknt.json.schema.version>
         <json-unit-assertj.version>2.28.0</json-unit-assertj.version>
     </properties>

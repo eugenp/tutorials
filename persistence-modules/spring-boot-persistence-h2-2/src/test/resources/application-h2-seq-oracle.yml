@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:seqdb;MODE=Oracle
+    username: sa
+    password:
