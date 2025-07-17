@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.web.configurers.CsrfConfig
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-public class WebSecurityConfiguration {
+public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
