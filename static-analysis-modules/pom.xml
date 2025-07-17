@@ -17,6 +17,7 @@
     <modules>
         <!-- <module>error-prone-library</module> --> <!-- requires additional configuration to be compiled due to the JVM strong encapsulation -->
         <module>infer</module>
+		<module>jspecify-nullsafety</module>
     </modules>
 
     <properties>
