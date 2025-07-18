@@ -10,9 +10,9 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class BusyWaitingUnitTest {
+public class BusyWaitingManualTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(BusyWaitingUnitTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(BusyWaitingManualTest.class);
 
     @Test
     void givenWorkerThread_whenBusyWaiting_thenAssertExecutedMultipleTimes() {
@@ -37,24 +37,24 @@ public class BusyWaitingUnitTest {
     @Test
     void givenWorkerThread_whenUsingWaitNotify_thenWaitEfficientlyOnce() {
         AtomicBoolean taskDone = new AtomicBoolean(false);
-        final Object lock = new Object();
+        final Object monitor = new Object();
         long counter = 0;
 
         Thread worker = new Thread(() -> {
             simulateThreadWork();
-            synchronized (lock) {
+            synchronized (monitor) {
                 taskDone.set(true);
-                lock.notify();
+                monitor.notify();
             }
         });
 
         worker.start();
 
-        synchronized (lock) {
+        synchronized (monitor) {
             while (!taskDone.get()) {
                 counter++;
                 try {
-                    lock.wait();
+                    monitor.wait();
                 } catch (InterruptedException e) {
                     Thread.currentThread()
                         .interrupt();
