@@ -1,4 +1,4 @@
-package com.baeldung.spring.data.cassandra.repository;
+package org.baeldung.spring.data.cassandra;
 
 import static com.datastax.oss.driver.api.querybuilder.QueryBuilder.literal;
 import static org.hamcrest.CoreMatchers.is;
@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+import org.baeldung.spring.data.cassandra.model.Book;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +21,6 @@ import org.testcontainers.containers.CassandraContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import com.baeldung.spring.data.cassandra.model.Book;
 import com.datastax.oss.driver.api.core.CqlIdentifier;
 import com.datastax.oss.driver.api.core.CqlSession;
 import com.datastax.oss.driver.api.core.cql.SimpleStatement;
