@@ -129,6 +129,7 @@
         <module>spring-boot-brave</module>
         <module>spring-boot-simple</module>
         <module>spring-boot-http2</module>
+        <module>spring-boot-4</module>
     </modules>
 
     <build>
