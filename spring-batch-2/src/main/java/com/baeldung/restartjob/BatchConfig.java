@@ -48,16 +48,8 @@ public class BatchConfig {
     }
 
     @Bean
-    public ItemProcessor<String, String> itemProcessor() {
-        return item -> {
-          System.out.println("Processing: " + item);
-
-          if (item.equals("Item3")) {
-              throw new RuntimeException("Simulated failure on Item3");
-          }
-
-          return "PROCESSED " + item;
-        };
+    public RestartItemProcessor itemProcessor() {
+        return new RestartItemProcessor();
     }
 
     @Bean
@@ -68,5 +60,22 @@ public class BatchConfig {
               System.out.println("- " + item);
           }
         };
+    }
+
+    static class RestartItemProcessor implements ItemProcessor<String, String> {
+        private boolean failOnItem3 = true;
+
+        public void setFailOnItem3(boolean failOnItem3) {
+            this.failOnItem3 = failOnItem3;
+        }
+
+        @Override
+        public String process(String item) throws Exception {
+            System.out.println("Processing: " + item + " (failOnItem3=" + failOnItem3 + ")");
+            if (failOnItem3 && item.equals("Item3")) {
+                throw new RuntimeException("Simulated failure on Item3");
+            }
+            return "PROCESSED " + item;
+        }
     }
 }

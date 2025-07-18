@@ -14,6 +14,7 @@ import org.springframework.batch.core.launch.JobOperator;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
@@ -26,7 +27,9 @@ public class RestartJobBatchApp {
     }
 
     @Bean
-    CommandLineRunner run(JobLauncher jobLauncher, Job job, JobExplorer jobExplorer, JobOperator jobOperator) {
+    @ConditionalOnProperty(prefix = "job.autorun", name = "enabled", havingValue = "true", matchIfMissing = true)
+    CommandLineRunner run(JobLauncher jobLauncher, Job job, JobExplorer jobExplorer,
+        JobOperator jobOperator, BatchConfig.RestartItemProcessor itemProcessor) {
         return args -> {
           JobParameters jobParameters = new JobParametersBuilder()
               .addString("jobId", "test-job-" + System.currentTimeMillis())
@@ -40,6 +43,7 @@ public class RestartJobBatchApp {
                   JobExecution lastExecution = executions.get(0);
                   if (lastExecution.getStatus() == BatchStatus.FAILED) {
                       System.out.println("Restarting failed job execution with ID: " + lastExecution.getId());
+                      itemProcessor.setFailOnItem3(false);
 
                       JobExecution restartedExecution = jobLauncher.run(job, jobParameters);
 
