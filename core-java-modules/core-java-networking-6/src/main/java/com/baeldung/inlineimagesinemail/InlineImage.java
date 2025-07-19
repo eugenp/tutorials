@@ -94,7 +94,7 @@ public class InlineImage {
              <img src='cid:image1'></img>
              <p> Explore and learn. </p>
             """;
-        String imagePath = "java.png";
+        String imagePath = "src/main/resources/image/java.png";
 
         inlineImage.sendEmail(session, to, subject, body, imagePath);
     }
