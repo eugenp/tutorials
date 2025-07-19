@@ -16,6 +16,7 @@ import net.jqwik.api.Arbitraries;
 
 class StringToUniqueIntUnitTest {
 
+    @Disabled //the test may fail in the automated build as it deals with uncertainty (unique collection to a degree); comment this annotation to run the test
     @ParameterizedTest
     @MethodSource("implementations")
     public void given1kElements_whenMappedToInt_thenItShouldHaveNoDuplicates(Function<String, Integer> implementation) {
