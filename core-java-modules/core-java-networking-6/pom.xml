@@ -15,16 +15,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${springframework.spring-web.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>${webflux.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
             <version>${webflux.version}</version>
@@ -45,11 +35,6 @@
             <version>${async-http-client.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
             <version>${okhttp.version}</version>
@@ -60,22 +45,48 @@
             <version>${okhttp.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>${commons-net.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.angus</groupId>
+            <artifactId>angus-mail</artifactId>
+            <version>${angus-mail.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.icegreen</groupId>
+            <artifactId>greenmail</artifactId>
+            <version>${greenmail.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
         <finalName>core-java-networking-6</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>16</source>
+                    <target>16</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
     <properties>
-        <springframework.spring-web.version>4.3.4.RELEASE</springframework.spring-web.version>
         <apache.httpclient.version>4.5.14</apache.httpclient.version>
-        <greenmail.version>2.0.0-alpha-3</greenmail.version>
         <apache.httpclient5.version>5.3.1</apache.httpclient5.version>
         <async-http-client.version>2.4.5</async-http-client.version>
         <jakarta.bind.version>2.3.3</jakarta.bind.version>
         <apache.httpclient5.version>5.4.2</apache.httpclient5.version>
         <okhttp.version>4.12.0</okhttp.version>
         <webflux.version>3.4.3</webflux.version>
+        <commons-net.version>3.8.0</commons-net.version>
+        <angus-mail.version>2.0.3</angus-mail.version>
+        <greenmail.version>2.1.3</greenmail.version>
     </properties>
 
 </project>
