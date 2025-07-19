@@ -25,6 +25,7 @@
         <module>splunk-with-log4j2</module>
         <module>jul-to-slf4j</module>
         <module>log-all-requests</module>
+        <module>customloglevel</module>
     </modules>
 
 </project>
