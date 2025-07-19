@@ -14,10 +14,6 @@
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
-    <properties>
-        <testcontainers.version>1.18.3</testcontainers.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -56,5 +52,9 @@
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
     </dependencies>
+
+    <properties>
+        <testcontainers.version>1.18.3</testcontainers.version>
+    </properties>
 
 </project>
