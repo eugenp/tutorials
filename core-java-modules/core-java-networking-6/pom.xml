@@ -65,6 +65,12 @@
             <artifactId>commons-net</artifactId>
             <version>${commons-net.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.wiremock</groupId>
+            <artifactId>wiremock</artifactId>
+            <version>${wiremock.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -82,6 +88,7 @@
         <okhttp.version>4.12.0</okhttp.version>
         <webflux.version>3.4.3</webflux.version>
         <commons-net.version>3.8.0</commons-net.version>
+        <wiremock.version>3.13.0</wiremock.version>
     </properties>
 
 </project>
