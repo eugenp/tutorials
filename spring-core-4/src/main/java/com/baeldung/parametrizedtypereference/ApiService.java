@@ -1,15 +1,12 @@
 package com.baeldung.parametrizedtypereference;
 
+import java.util.List;
+
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.HttpServerErrorException;
-import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.List;
 
 @Service
 public class ApiService {
@@ -23,38 +20,25 @@ public class ApiService {
     }
 
     public List<User> fetchUserList() {
-        ParameterizedTypeReference<List<User>> typeRef =
-                new ParameterizedTypeReference<List<User>>() {};
+        ParameterizedTypeReference<List<User>> typeRef = new ParameterizedTypeReference<List<User>>() {
+        };
 
-        ResponseEntity<List<User>> response = restTemplate.exchange(
-                baseUrl + "/api/users",
-                HttpMethod.GET,
-                null,
-                typeRef
-        );
+        ResponseEntity<List<User>> response = restTemplate.exchange(baseUrl + "/api/users", HttpMethod.GET, null, typeRef);
 
         return response.getBody();
     }
 
     public List<User> fetchUsersWrongApproach() {
-        ResponseEntity<List> response = restTemplate.getForEntity(
-                baseUrl + "/api/users",
-                List.class
-        );
+        ResponseEntity<List> response = restTemplate.getForEntity(baseUrl + "/api/users", List.class);
 
         return (List<User>) response.getBody();
     }
 
     public List<User> fetchUsersCorrectApproach() {
-        ParameterizedTypeReference<List<User>> typeRef =
-                new ParameterizedTypeReference<List<User>>() {};
+        ParameterizedTypeReference<List<User>> typeRef = new ParameterizedTypeReference<List<User>>() {
+        };
 
-        ResponseEntity<List<User>> response = restTemplate.exchange(
-                baseUrl + "/api/users",
-                HttpMethod.GET,
-                null,
-                typeRef
-        );
+        ResponseEntity<List<User>> response = restTemplate.exchange(baseUrl + "/api/users", HttpMethod.GET, null, typeRef);
 
         return response.getBody();
     }
@@ -68,15 +52,10 @@ public class ApiService {
     }
 
     public List<User> fetchUsersList() {
-        ParameterizedTypeReference<List<User>> typeRef =
-                new ParameterizedTypeReference<List<User>>() {};
+        ParameterizedTypeReference<List<User>> typeRef = new ParameterizedTypeReference<List<User>>() {
+        };
 
-        ResponseEntity<List<User>> response = restTemplate.exchange(
-                baseUrl + "/api/users",
-                HttpMethod.GET,
-                null,
-                typeRef
-        );
+        ResponseEntity<List<User>> response = restTemplate.exchange(baseUrl + "/api/users", HttpMethod.GET, null, typeRef);
 
         return response.getBody();
     }
