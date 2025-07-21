@@ -1,0 +1,7 @@
+package com.baeldung.spring.modulith.cqrs.ticket.booking.api;
+
+import org.jmolecules.architecture.cqrs.Command;
+
+@Command
+public record BookTicket(Long movieId, String seat) {
+}

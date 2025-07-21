@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * use the appropriate profile: eventuate|modulith
+ * use the appropriate profile: eventuate|modulith|cqrs
  */
 @SpringBootApplication
 public class Application {
