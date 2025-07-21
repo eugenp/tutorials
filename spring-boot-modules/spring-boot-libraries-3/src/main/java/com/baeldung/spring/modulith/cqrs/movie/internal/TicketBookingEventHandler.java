@@ -1,4 +1,4 @@
-package com.baeldung.spring.modulith.cqrs.movie.seating.internal;
+package com.baeldung.spring.modulith.cqrs.movie.internal;
 
 import static java.time.temporal.ChronoUnit.HOURS;
 
@@ -12,22 +12,22 @@ import org.springframework.context.event.EventListener;
 import org.springframework.modulith.events.ApplicationModuleListener;
 import org.springframework.stereotype.Component;
 
-import com.baeldung.spring.modulith.cqrs.ticket.booking.api.BookingCancelled;
-import com.baeldung.spring.modulith.cqrs.ticket.booking.api.BookingCreated;
+import com.baeldung.spring.modulith.cqrs.ticket.BookingCancelled;
+import com.baeldung.spring.modulith.cqrs.ticket.BookingCreated;
 
 @Component
 class TicketBookingEventHandler {
 
-    private final ScreenRoomRepository screenRooms;
+    private final MovieRepository screenRooms;
 
-    TicketBookingEventHandler(ScreenRoomRepository screenRooms) {
+    TicketBookingEventHandler(MovieRepository screenRooms) {
         this.screenRooms = screenRooms;
     }
 
     @DomainEventHandler
     @ApplicationModuleListener
     void handleTicketBooked(BookingCreated booking) {
-        ScreenRoom room = screenRooms.findByMovieId(booking.movieId())
+        Movie room = screenRooms.findById(booking.movieId())
             .orElseThrow();
 
         room.occupySeat(booking.seatNumber());
@@ -37,7 +37,7 @@ class TicketBookingEventHandler {
     @DomainEventHandler
     @ApplicationModuleListener
     void handleTicketCancelled(BookingCancelled cancellation) {
-        ScreenRoom room = screenRooms.findByMovieId(cancellation.movieId())
+        Movie room = screenRooms.findById(cancellation.movieId())
             .orElseThrow();
 
         room.freeSeat(cancellation.seatNumber());
@@ -46,9 +46,9 @@ class TicketBookingEventHandler {
 
     @EventListener(ApplicationReadyEvent.class)
     void insertDummyMovies() {
-        List<ScreenRoom> dummyMovies = LongStream.range(1, 30)
-            .mapToObj(nr ->
-                new ScreenRoom(nr, "Dummy movie #" + nr, Instant.now().plus(nr, HOURS)))
+        List<Movie> dummyMovies = LongStream.range(1, 30)
+            .mapToObj(nr -> new Movie("Dummy movie #" + nr, "Screen #" + nr % 5, Instant.now()
+                .plus(nr, HOURS)))
             .toList();
         screenRooms.saveAll(dummyMovies);
     }

@@ -1,4 +1,4 @@
-package com.baeldung.spring.modulith.cqrs.movie.seating.internal;
+package com.baeldung.spring.modulith.cqrs.movie.internal;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -14,13 +14,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 
 @Entity
-class ScreenRoom {
-
+class Movie {
     @Id
     @GeneratedValue
-    private Long roomId;
-    private Long movieId;
-    private String movieName;
+    private Long id;
+    private String title;
+    private String screenRoom;
     private Instant startTime;
 
     @ElementCollection
@@ -33,9 +32,9 @@ class ScreenRoom {
     @Column(name = "seat_number")
     private List<String> occupiedSeats = new ArrayList<>();
 
-    public ScreenRoom(Long movieId, String movieName, Instant startTime) {
-        this.movieId = movieId;
-        this.movieName = movieName;
+    public Movie(String movieName, String screenRoom, Instant startTime) {
+        this.title = movieName;
+        this.screenRoom = screenRoom;
         this.startTime = startTime;
     }
 
@@ -58,7 +57,7 @@ class ScreenRoom {
     }
 
     static List<String> allSeats() {
-        List<Integer> rows = IntStream.range(0, 20)
+        List<Integer> rows = IntStream.range(1, 20)
             .boxed()
             .toList();
 
@@ -70,23 +69,27 @@ class ScreenRoom {
             .toList();
     }
 
-    protected ScreenRoom() {
+    protected Movie() {
         // Default constructor for JPA
     }
 
-    public Instant getStartTime() {
+    public Instant startTime() {
         return startTime;
     }
 
-    public String getMovieName() {
-        return movieName;
+    public String title() {
+        return title;
     }
 
-    public Long getMovieId() {
-        return movieId;
+    public String screenRoom() {
+        return screenRoom;
     }
 
-    public List<String> getFreeSeats() {
+    public List<String> freeSeats() {
+        return List.copyOf(freeSeats);
+    }
+
+    public List<String> occupiedSeatsSeats() {
         return List.copyOf(freeSeats);
     }
 }

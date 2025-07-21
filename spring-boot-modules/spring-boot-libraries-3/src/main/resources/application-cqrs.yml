@@ -2,6 +2,10 @@ spring.modulith:
   republish-outstanding-events-on-restart: true
   events.jdbc.schema-initialization.enabled: true
 
+logging:
+  level:
+    org.apache.kafka: ERROR
+
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver

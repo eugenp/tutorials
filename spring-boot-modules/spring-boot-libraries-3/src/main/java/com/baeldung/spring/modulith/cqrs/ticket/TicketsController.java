@@ -1,4 +1,4 @@
-package com.baeldung.spring.modulith.cqrs.ticket.booking;
+package com.baeldung.spring.modulith.cqrs.ticket;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.spring.modulith.cqrs.ticket.booking.api.BookTicket;
-import com.baeldung.spring.modulith.cqrs.ticket.booking.api.CancelTicket;
+import com.baeldung.spring.modulith.cqrs.ticket.internal.BookedTicketsCommandHandler;
 
 @RestController
 @RequestMapping("api/ticket-booking")
@@ -25,7 +24,7 @@ class TicketsController {
     /*
        curl -X POST http://localhost:8080/api/ticket-booking ^
          -H "Content-Type: application/json" ^
-         -d "{\"movieId\": 1, \"seat\": \"A1\"}"
+         -d "{\"id\": 1, \"seat\": \"A1\"}"
      */
     @PostMapping
     BookingResponse bookTicket(@RequestBody BookTicket request) {
@@ -41,13 +40,12 @@ class TicketsController {
       curl -X DELETE http://localhost:8080/api/ticket-booking/1
     */
     @DeleteMapping("/{movieId}")
-    CancelResponse cancelBooking(@PathVariable Long movieId) {
+    CancellationResponse cancelBooking(@PathVariable Long movieId) {
         long id = bookedTicketsCommandHandler.cancelTicket(new CancelTicket(movieId));
-        return new CancelResponse(id);
+        return new CancellationResponse(id);
     }
 
-    record CancelResponse(Long cancellationId) {
-
+    record CancellationResponse(Long cancellationId) {
     }
 
     @ExceptionHandler

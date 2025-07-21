@@ -1,12 +1,10 @@
-package com.baeldung.spring.modulith.cqrs.ticket.booking.internal;
+package com.baeldung.spring.modulith.cqrs.ticket.internal;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 import java.time.Instant;
-
-import org.springframework.data.annotation.CreatedDate;
 
 @Entity
 class BookedTicket {

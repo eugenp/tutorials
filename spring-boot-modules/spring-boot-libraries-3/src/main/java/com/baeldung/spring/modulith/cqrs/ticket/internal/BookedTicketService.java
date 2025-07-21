@@ -1,4 +1,4 @@
-package com.baeldung.spring.modulith.cqrs.ticket.booking.internal;
+package com.baeldung.spring.modulith.cqrs.ticket.internal;
 
 import org.jmolecules.architecture.cqrs.CommandHandler;
 import org.slf4j.Logger;
@@ -6,11 +6,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
-import com.baeldung.spring.modulith.cqrs.ticket.booking.BookedTicketsCommandHandler;
-import com.baeldung.spring.modulith.cqrs.ticket.booking.api.BookTicket;
-import com.baeldung.spring.modulith.cqrs.ticket.booking.api.BookingCancelled;
-import com.baeldung.spring.modulith.cqrs.ticket.booking.api.BookingCreated;
-import com.baeldung.spring.modulith.cqrs.ticket.booking.api.CancelTicket;
+import com.baeldung.spring.modulith.cqrs.ticket.BookTicket;
+import com.baeldung.spring.modulith.cqrs.ticket.BookingCancelled;
+import com.baeldung.spring.modulith.cqrs.ticket.BookingCreated;
+import com.baeldung.spring.modulith.cqrs.ticket.CancelTicket;
 
 import jakarta.transaction.Transactional;
 

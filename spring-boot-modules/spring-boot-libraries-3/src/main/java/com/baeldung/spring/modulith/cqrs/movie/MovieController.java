@@ -1,4 +1,4 @@
-package com.baeldung.spring.modulith.cqrs.movie.seating;
+package com.baeldung.spring.modulith.cqrs.movie;
 
 import static java.time.Instant.now;
 import static java.time.temporal.ChronoUnit.DAYS;
@@ -13,16 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.spring.modulith.cqrs.movie.seating.api.AvailableSeats;
-import com.baeldung.spring.modulith.cqrs.movie.seating.api.UpcomingMovies;
+import com.baeldung.spring.modulith.cqrs.movie.internal.MovieQueries;
 
 @RestController
 @RequestMapping("api/movies")
-class SeatingController {
+class MovieController {
 
-    private final ScreenRoomQueries screenRooms;
+    private final MovieQueries screenRooms;
 
-    SeatingController(ScreenRoomQueries screenRooms) {
+    MovieController(MovieQueries screenRooms) {
         this.screenRooms = screenRooms;
     }
 
@@ -37,7 +36,7 @@ class SeatingController {
             case "month" -> now().plus(30, DAYS);
             default -> throw new IllegalArgumentException("Invalid range: " + range);
         };
-        return screenRooms.findByStartTimeBetweenOrderByStartTime(now(), endTime.truncatedTo(DAYS));
+        return screenRooms.findUpcomingMoviesByStartTimeBetween(now(), endTime.truncatedTo(DAYS));
     }
 
     /*

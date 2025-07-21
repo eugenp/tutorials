@@ -1,4 +1,4 @@
-package com.baeldung.spring.modulith.cqrs.ticket.booking.internal;
+package com.baeldung.spring.modulith.cqrs.ticket.internal;
 
 import java.util.Optional;
 
@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 interface BookedTicketRepository extends CrudRepository<BookedTicket, Long> {
-
     @Query("""
             SELECT b FROM BookedTicket b
             WHERE b.movieId = :movieId

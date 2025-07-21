@@ -1,4 +1,4 @@
-package com.baeldung.spring.modulith.cqrs.ticket.booking;
+package com.baeldung.spring.modulith.cqrs.ticket;
 
 import static java.time.Duration.ofMillis;
 import static java.time.Duration.ofSeconds;
@@ -10,21 +10,19 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.time.Duration;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.modulith.core.ApplicationModules;
+import org.springframework.modulith.docs.Documenter;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import com.baeldung.spring.modulith.cqrs.movie.seating.api.AvailableSeats;
-import com.baeldung.spring.modulith.cqrs.ticket.booking.TicketsController.BookingResponse;
-import com.baeldung.spring.modulith.cqrs.ticket.booking.TicketsController.CancelResponse;
+import com.baeldung.spring.modulith.cqrs.movie.AvailableSeats;
+import com.baeldung.spring.modulith.cqrs.ticket.TicketsController.BookingResponse;
+import com.baeldung.spring.modulith.cqrs.ticket.TicketsController.CancellationResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ActiveProfiles({ "cqrs", "h2" })
@@ -40,6 +38,16 @@ class IntegrationLiveTest {
     MockMvc mockMvc;
 
     @Test
+    void whenWeVerifyModuleStructure_thenThereAreNoUnwantedDependencies() {
+        var modules = ApplicationModules.of("com.baeldung.spring.modulith.cqrs")
+            .verify();
+
+        new Documenter(modules)
+            .writeModulesAsPlantUml()
+            .writeIndividualModulesAsPlantUml();
+    }
+
+    @Test
     void givenABookedTicket_whenTheBookingIsCancelled_thenTheSeatIsFree() throws Exception {
         long testMovieId = 1L;
         String testSeat = "A1";
@@ -53,7 +61,12 @@ class IntegrationLiveTest {
 
     private Long sendBookTicketRequest(Long movieId, String seat) throws Exception {
         String json = mockMvc.perform(post("/api/ticket-booking").contentType(APPLICATION_JSON)
-                .content("{\"movieId\": " + movieId + ", \"seat\": \"" + seat + "\"}"))
+                .content("""
+                    {
+                        "movieId": %s,
+                        "seat": "%s"
+                    }
+                    """.formatted(movieId, seat)))
             .andExpect(status().isOk())
             .andReturn()
             .getResponse()
@@ -70,12 +83,12 @@ class IntegrationLiveTest {
             .getResponse()
             .getContentAsString();
 
-        return objectMapper.readValue(json, CancelResponse.class)
+        return objectMapper.readValue(json, CancellationResponse.class)
             .cancellationId();
     }
 
     private AvailableSeats findAvailableSeats(Long movieId) throws Exception {
-        String json = mockMvc.perform(get("/api/movies/" + movieId + "/seats").contentType(APPLICATION_JSON))
+        String json = mockMvc.perform(get("/api/movies/%s/seats".formatted(movieId)))
             .andExpect(status().isOk())
             .andReturn()
             .getResponse()
@@ -85,15 +98,13 @@ class IntegrationLiveTest {
     }
 
     private void theSeatShouldEventuallyBeFree(long testMovieId, String testSeat) {
-        await()
-            .atMost(ofSeconds(5))
+        await().atMost(ofSeconds(5))
             .pollInterval(ofMillis(200))
             .untilAsserted(() -> assertThat(findAvailableSeats(testMovieId).freeSeats()).contains(testSeat));
     }
 
     private void theSeatShouldEventuallyBeOccupied(long testMovieId, String testSeat) {
-        await()
-            .atMost(ofSeconds(5))
+        await().atMost(ofSeconds(5))
             .pollInterval(ofMillis(200))
             .untilAsserted(() -> assertThat(findAvailableSeats(testMovieId).freeSeats()).doesNotContain(testSeat));
     }

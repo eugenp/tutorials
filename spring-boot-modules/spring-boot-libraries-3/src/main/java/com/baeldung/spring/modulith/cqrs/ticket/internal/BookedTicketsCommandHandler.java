@@ -1,9 +1,9 @@
-package com.baeldung.spring.modulith.cqrs.ticket.booking;
+package com.baeldung.spring.modulith.cqrs.ticket.internal;
 
 import org.jmolecules.architecture.cqrs.CommandHandler;
 
-import com.baeldung.spring.modulith.cqrs.ticket.booking.api.BookTicket;
-import com.baeldung.spring.modulith.cqrs.ticket.booking.api.CancelTicket;
+import com.baeldung.spring.modulith.cqrs.ticket.BookTicket;
+import com.baeldung.spring.modulith.cqrs.ticket.CancelTicket;
 
 public interface BookedTicketsCommandHandler {
     @CommandHandler

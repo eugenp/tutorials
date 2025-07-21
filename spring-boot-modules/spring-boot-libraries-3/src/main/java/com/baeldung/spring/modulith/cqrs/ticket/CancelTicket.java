@@ -1,4 +1,4 @@
-package com.baeldung.spring.modulith.cqrs.ticket.booking.api;
+package com.baeldung.spring.modulith.cqrs.ticket;
 
 import org.jmolecules.architecture.cqrs.Command;
 
