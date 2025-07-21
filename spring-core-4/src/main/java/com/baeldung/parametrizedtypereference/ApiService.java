@@ -1,5 +1,7 @@
 package com.baeldung.parametrizedtypereference;
 
+import static com.baeldung.parametrizedtypereference.TypeReferences.USER_LIST;
+
 import java.util.List;
 
 import org.springframework.core.ParameterizedTypeReference;
@@ -56,6 +58,12 @@ public class ApiService {
         };
 
         ResponseEntity<List<User>> response = restTemplate.exchange(baseUrl + "/api/users", HttpMethod.GET, null, typeRef);
+
+        return response.getBody();
+    }
+
+    public List<User> fetchUsersListWithExistingReference() {
+        ResponseEntity<List<User>> response = restTemplate.exchange(baseUrl + "/api/users", HttpMethod.GET, null, USER_LIST);
 
         return response.getBody();
     }
