@@ -127,9 +127,9 @@
         <jakarta-servlet.version>6.1.0</jakarta-servlet.version>
         <jakarta-annotation.version>3.0.0</jakarta-annotation.version>
         <commons-text.version>1.10.0</commons-text.version>
-        <spring-webflux.version>7.0.0-M6</spring-webflux.version>
+        <spring-webflux.version>6.2.9</spring-webflux.version>
         <mockito.version>5.18.0</mockito.version>
-        <reactor.version>3.8.0-M4</reactor.version>
+        <reactor.version>3.7.8</reactor.version>
         <wiremock.version>2.35.0</wiremock.version>
         <jackson.version>2.19.1</jackson.version>
     </properties>
