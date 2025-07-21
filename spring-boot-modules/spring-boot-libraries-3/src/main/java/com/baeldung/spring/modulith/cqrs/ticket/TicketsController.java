@@ -13,7 +13,7 @@ import com.baeldung.spring.modulith.cqrs.ticket.internal.BookedTicketsCommandHan
 
 @RestController
 @RequestMapping("api/ticket-booking")
-class TicketsController {
+public class TicketsController {
 
     private final BookedTicketsCommandHandler bookedTicketsCommandHandler;
 
@@ -32,7 +32,7 @@ class TicketsController {
         return new BookingResponse(id);
     }
 
-    record BookingResponse(Long bookingId) {
+    public record BookingResponse(Long bookingId) {
 
     }
 
@@ -45,7 +45,8 @@ class TicketsController {
         return new CancellationResponse(id);
     }
 
-    record CancellationResponse(Long cancellationId) {
+    public record CancellationResponse(Long cancellationId) {
+
     }
 
     @ExceptionHandler
@@ -54,7 +55,7 @@ class TicketsController {
             .body(new ErrorResponse(e.getMessage()));
     }
 
-    record ErrorResponse(String error) {
+    public record ErrorResponse(String error) {
 
     }
 

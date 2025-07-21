@@ -17,7 +17,7 @@ import com.baeldung.spring.modulith.cqrs.movie.internal.MovieQueries;
 
 @RestController
 @RequestMapping("api/movies")
-class MovieController {
+public class MovieController {
 
     private final MovieQueries screenRooms;
 
@@ -43,7 +43,7 @@ class MovieController {
         curl -X GET http://localhost:8080/api/movies/1/seats
     */
     @GetMapping("/{movieId}/seats")
-    ResponseEntity<AvailableSeats> movieSeating(@PathVariable Long movieId) {
+    ResponseEntity<AvailableMovieSeats> movieSeating(@PathVariable Long movieId) {
         return ResponseEntity.of(screenRooms.findAvailableSeatsByMovieId(movieId));
     }
 

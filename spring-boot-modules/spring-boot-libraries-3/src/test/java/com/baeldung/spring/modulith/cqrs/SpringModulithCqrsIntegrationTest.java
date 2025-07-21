@@ -1,4 +1,4 @@
-package com.baeldung.spring.modulith.cqrs.ticket;
+package com.baeldung.spring.modulith.cqrs;
 
 import static java.time.Duration.ofMillis;
 import static java.time.Duration.ofSeconds;
@@ -18,18 +18,16 @@ import org.springframework.modulith.core.ApplicationModules;
 import org.springframework.modulith.docs.Documenter;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
-import com.baeldung.spring.modulith.cqrs.movie.AvailableSeats;
+import com.baeldung.spring.modulith.cqrs.movie.AvailableMovieSeats;
 import com.baeldung.spring.modulith.cqrs.ticket.TicketsController.BookingResponse;
 import com.baeldung.spring.modulith.cqrs.ticket.TicketsController.CancellationResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@ActiveProfiles({ "cqrs", "h2" })
 @SpringBootTest
-@Testcontainers
 @AutoConfigureMockMvc
-class IntegrationLiveTest {
+@ActiveProfiles({ "cqrs", "h2" })
+class SpringModulithCqrsIntegrationTest {
 
     @Autowired
     ObjectMapper objectMapper;
@@ -42,8 +40,7 @@ class IntegrationLiveTest {
         var modules = ApplicationModules.of("com.baeldung.spring.modulith.cqrs")
             .verify();
 
-        new Documenter(modules)
-            .writeModulesAsPlantUml()
+        new Documenter(modules).writeModulesAsPlantUml()
             .writeIndividualModulesAsPlantUml();
     }
 
@@ -87,14 +84,14 @@ class IntegrationLiveTest {
             .cancellationId();
     }
 
-    private AvailableSeats findAvailableSeats(Long movieId) throws Exception {
+    private AvailableMovieSeats findAvailableSeats(Long movieId) throws Exception {
         String json = mockMvc.perform(get("/api/movies/%s/seats".formatted(movieId)))
             .andExpect(status().isOk())
             .andReturn()
             .getResponse()
             .getContentAsString();
 
-        return objectMapper.readValue(json, AvailableSeats.class);
+        return objectMapper.readValue(json, AvailableMovieSeats.class);
     }
 
     private void theSeatShouldEventuallyBeFree(long testMovieId, String testSeat) {
