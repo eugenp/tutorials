@@ -649,6 +649,7 @@
                 <module>disruptor</module>
                 <module>docker-modules</module>
                 <module>drools</module>
+                <module>embabel-modules</module>
                 <module>feign</module>
                 <module>gcp-firebase</module>
                 <module>geotools</module>
@@ -1086,6 +1087,7 @@
                 <module>disruptor</module>
                 <module>docker-modules</module>
                 <module>drools</module>
+                <module>embabel-modules</module>
                 <module>feign</module>
                 <module>gcp-firebase</module>
                 <module>geotools</module>
