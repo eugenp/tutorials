@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.spring.modulith.cqrs.movie.domain.MovieQueries;
+import com.baeldung.spring.modulith.cqrs.movie.domain.MovieRepository;
 
 @RestController
 @RequestMapping("api/movies")
 public class MovieController {
 
-    private final MovieQueries screenRooms;
+    private final MovieRepository movieScreens;
 
-    MovieController(MovieQueries screenRooms) {
-        this.screenRooms = screenRooms;
+    MovieController(MovieRepository screenRooms) {
+        this.movieScreens = screenRooms;
     }
 
     /*
@@ -36,7 +36,7 @@ public class MovieController {
             case "month" -> now().plus(30, DAYS);
             default -> throw new IllegalArgumentException("Invalid range: " + range);
         };
-        return screenRooms.findUpcomingMoviesByStartTimeBetween(now(), endTime.truncatedTo(DAYS));
+        return movieScreens.findUpcomingMoviesByStartTimeBetween(now(), endTime.truncatedTo(DAYS));
     }
 
     /*
@@ -44,7 +44,7 @@ public class MovieController {
     */
     @GetMapping("/{movieId}/seats")
     ResponseEntity<AvailableMovieSeats> movieSeating(@PathVariable Long movieId) {
-        return ResponseEntity.of(screenRooms.findAvailableSeatsByMovieId(movieId));
+        return ResponseEntity.of(movieScreens.findAvailableSeatsByMovieId(movieId));
     }
 
 }
