@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.modulith.core.ApplicationModules;
-import org.springframework.modulith.docs.Documenter;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -39,8 +38,6 @@ class SpringModulithCqrsIntegrationTest {
     void whenWeVerifyModuleStructure_thenThereAreNoUnwantedDependencies() {
         ApplicationModules modules = ApplicationModules.of("com.baeldung.spring.modulith.cqrs")
             .verify();
-
-        modules.forEach(System.out::println);
     }
 
     @Test
