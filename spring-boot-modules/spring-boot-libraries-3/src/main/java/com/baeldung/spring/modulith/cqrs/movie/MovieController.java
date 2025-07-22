@@ -30,12 +30,7 @@ public class MovieController {
     */
     @GetMapping
     List<UpcomingMovies> moviesToday(@RequestParam String range) {
-        Instant endTime = switch (range) {
-            case "day" -> now().plus(1, DAYS);
-            case "week" -> now().plus(7, DAYS);
-            case "month" -> now().plus(30, DAYS);
-            default -> throw new IllegalArgumentException("Invalid range: " + range);
-        };
+        Instant endTime = endTime(range);
         return movieScreens.findUpcomingMoviesByStartTimeBetween(now(), endTime.truncatedTo(DAYS));
     }
 
@@ -47,4 +42,12 @@ public class MovieController {
         return ResponseEntity.of(movieScreens.findAvailableSeatsByMovieId(movieId));
     }
 
+    private static Instant endTime(String range) {
+        return switch (range) {
+            case "day" -> now().plus(1, DAYS);
+            case "week" -> now().plus(7, DAYS);
+            case "month" -> now().plus(30, DAYS);
+            default -> throw new IllegalArgumentException("Invalid range: " + range);
+        };
+    }
 }
