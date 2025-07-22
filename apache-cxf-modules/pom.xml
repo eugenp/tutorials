@@ -8,7 +8,6 @@
     <packaging>pom</packaging>
     <name>apache-cxf-modules</name>
 
-
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>

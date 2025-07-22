@@ -13,9 +13,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <dependencies>
-    </dependencies>
-
     <build>
         <finalName>core-java-regex-4</finalName>
         <resources>

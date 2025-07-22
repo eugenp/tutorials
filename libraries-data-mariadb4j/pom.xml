@@ -25,7 +25,6 @@
             <version>${mariadb.version}</version>
             <scope>runtime</scope>
         </dependency>
-
     </dependencies>
 
     <properties>

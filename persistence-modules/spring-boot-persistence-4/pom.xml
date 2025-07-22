@@ -7,7 +7,7 @@
     <artifactId>spring-boot-persistence-4</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-boot-persistence-4</name>
-    
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-3</artifactId>
