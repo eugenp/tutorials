@@ -18,7 +18,7 @@ import java.util.concurrent.Future;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-class ObjectMapperThreadSafetyTest {
+class ObjectMapperThreadSafetyUnitTest {
 
     private static final ObjectMapper GLOBAL_MAPPER = new ObjectMapper();
 
