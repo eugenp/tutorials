@@ -73,7 +73,7 @@
         <dependency>
             <groupId>org.jmolecules</groupId>
             <artifactId>jmolecules-cqrs-architecture</artifactId>
-            <version>1.10.0</version>
+            <version>${jmolecules-cqrs-architecture.version}</version>
         </dependency>
 
         <dependency>
@@ -147,6 +147,7 @@
         <jolokia-support-spring.version>2.2.1</jolokia-support-spring.version>
         <eventuate.tram.version>0.36.0.RELEASE</eventuate.tram.version>
         <json-unit-assertj.version>3.5.0</json-unit-assertj.version>
+        <jmolecules-cqrs-architecture.version>1.10.0</jmolecules-cqrs-architecture.version>
     </properties>
 
     <build>
