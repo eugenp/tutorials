@@ -1,4 +1,4 @@
-package com.baeldung.spring.modulith.cqrs.movie.internal;
+package com.baeldung.spring.modulith.cqrs.movie.domain;
 
 import java.util.Optional;
 

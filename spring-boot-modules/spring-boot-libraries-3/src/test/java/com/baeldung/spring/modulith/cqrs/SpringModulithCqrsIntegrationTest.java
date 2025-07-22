@@ -20,8 +20,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.baeldung.spring.modulith.cqrs.movie.AvailableMovieSeats;
-import com.baeldung.spring.modulith.cqrs.ticket.TicketsController.BookingResponse;
-import com.baeldung.spring.modulith.cqrs.ticket.TicketsController.CancellationResponse;
+import com.baeldung.spring.modulith.cqrs.ticket.BookingTicketsController.BookingResponse;
+import com.baeldung.spring.modulith.cqrs.ticket.BookingTicketsController.CancellationResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
@@ -37,11 +37,10 @@ class SpringModulithCqrsIntegrationTest {
 
     @Test
     void whenWeVerifyModuleStructure_thenThereAreNoUnwantedDependencies() {
-        var modules = ApplicationModules.of("com.baeldung.spring.modulith.cqrs")
+        ApplicationModules modules = ApplicationModules.of("com.baeldung.spring.modulith.cqrs")
             .verify();
 
-        new Documenter(modules).writeModulesAsPlantUml()
-            .writeIndividualModulesAsPlantUml();
+        modules.forEach(System.out::println);
     }
 
     @Test

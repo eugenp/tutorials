@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.spring.modulith.cqrs.ticket.internal.BookedTicketsCommandHandler;
+import com.baeldung.spring.modulith.cqrs.ticket.domain.BookedTicketsCommandHandler;
 
 @RestController
 @RequestMapping("api/ticket-booking")
-public class TicketsController {
+public class BookingTicketsController {
 
     private final BookedTicketsCommandHandler bookedTicketsCommandHandler;
 
-    TicketsController(BookedTicketsCommandHandler bookedTicketService) {
+    BookingTicketsController(BookedTicketsCommandHandler bookedTicketService) {
         this.bookedTicketsCommandHandler = bookedTicketService;
     }
 

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.spring.modulith.cqrs.movie.internal.MovieQueries;
+import com.baeldung.spring.modulith.cqrs.movie.domain.MovieQueries;
 
 @RestController
 @RequestMapping("api/movies")

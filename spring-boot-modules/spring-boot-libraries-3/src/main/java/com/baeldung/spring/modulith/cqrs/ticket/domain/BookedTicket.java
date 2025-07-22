@@ -1,4 +1,4 @@
-package com.baeldung.spring.modulith.cqrs.ticket.internal;
+package com.baeldung.spring.modulith.cqrs.ticket.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
