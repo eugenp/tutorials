@@ -1,15 +1,14 @@
 package com.baeldung.spring.modulith.cqrs.ticket.domain;
 
+import java.time.Instant;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-import java.time.Instant;
 
 @Entity
-@Table(schema = "write_storage")
 class BookedTicket {
+
     @Id
     @GeneratedValue
     private Long id;

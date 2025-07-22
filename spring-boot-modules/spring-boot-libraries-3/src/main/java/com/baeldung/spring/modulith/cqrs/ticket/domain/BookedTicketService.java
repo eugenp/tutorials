@@ -11,7 +11,6 @@ import com.baeldung.spring.modulith.cqrs.ticket.BookingCreated;
 import jakarta.transaction.Transactional;
 
 @Service
-@Transactional
 class BookedTicketService implements BookingTickets {
 
     private static final Logger log = LoggerFactory.getLogger(BookedTicketService.class);
@@ -24,6 +23,7 @@ class BookedTicketService implements BookingTickets {
     }
 
     @Override
+    @Transactional
     public Long bookTicket(BookTicket booking) {
         log.info("Received booking command for movie ID: {}, seat: {}. checking availability...", booking.movieId(), booking.seat());
 
@@ -47,6 +47,7 @@ class BookedTicketService implements BookingTickets {
     }
 
     @Override
+    @Transactional
     public Long cancelTicket(CancelTicket cancellation) {
         log.info("Received cancellation command for bookingId: {}. Validating the Booking", cancellation.bookingId());
 
