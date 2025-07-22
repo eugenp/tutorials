@@ -1,21 +1,18 @@
 package com.baeldung.spring.modulith.cqrs.ticket.domain;
 
-import org.jmolecules.architecture.cqrs.CommandHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
-import com.baeldung.spring.modulith.cqrs.ticket.BookTicket;
 import com.baeldung.spring.modulith.cqrs.ticket.BookingCancelled;
 import com.baeldung.spring.modulith.cqrs.ticket.BookingCreated;
-import com.baeldung.spring.modulith.cqrs.ticket.CancelTicket;
 
 import jakarta.transaction.Transactional;
 
 @Service
 @Transactional
-class BookedTicketService implements BookedTicketsCommandHandler {
+class BookedTicketService implements BookingTickets {
 
     private static final Logger log = LoggerFactory.getLogger(BookedTicketService.class);
     private final BookedTicketRepository bookedTickets;
@@ -26,7 +23,7 @@ class BookedTicketService implements BookedTicketsCommandHandler {
         this.eventPublisher = eventPublisher;
     }
 
-    @CommandHandler
+    @Override
     public Long bookTicket(BookTicket booking) {
         log.info("Received booking command for movie ID: {}, seat: {}. checking availability...", booking.movieId(), booking.seat());
 
@@ -44,11 +41,12 @@ class BookedTicketService implements BookedTicketsCommandHandler {
         BookedTicket bookedTicket = new BookedTicket(booking.movieId(), booking.seat());
         bookedTicket = bookedTickets.save(bookedTicket);
 
-        eventPublisher.publishEvent(new BookingCreated(bookedTicket.getMovieId(), bookedTicket.getSeatNumber()));
-
+        eventPublisher.publishEvent(
+            new BookingCreated(bookedTicket.getMovieId(), bookedTicket.getSeatNumber()));
         return bookedTicket.getId();
     }
 
+    @Override
     public Long cancelTicket(CancelTicket cancellation) {
         log.info("Received cancellation command for bookingId: {}. Validating the Booking", cancellation.bookingId());
 
@@ -64,8 +62,8 @@ class BookedTicketService implements BookedTicketsCommandHandler {
         BookedTicket cancelledTicket = booking.cancelledBooking();
         bookedTickets.save(cancelledTicket);
 
-        eventPublisher.publishEvent(new BookingCancelled(cancelledTicket.getMovieId(), cancelledTicket.getSeatNumber()));
-
+        eventPublisher.publishEvent(
+            new BookingCancelled(cancelledTicket.getMovieId(), cancelledTicket.getSeatNumber()));
         return cancelledTicket.getId();
     }
 
