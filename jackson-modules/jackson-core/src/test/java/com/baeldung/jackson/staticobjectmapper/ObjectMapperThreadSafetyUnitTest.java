@@ -2,12 +2,15 @@ package com.baeldung.jackson.staticobjectmapper;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.Callable;
@@ -15,6 +18,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import static java.util.Collections.singletonMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -28,11 +32,24 @@ class ObjectMapperThreadSafetyUnitTest {
     private static final ExecutorService POOL = Executors.newFixedThreadPool(2);
 
     @Test
+    void whenRegisteringDateFormatGlobally_thenAffectsAllConsumers() throws Exception {
+        Map<String, Date> payload = singletonMap("today", Date.from(LocalDate.of(1998, 2, 9).atTime(12, 0).toInstant(ZoneOffset.UTC)));
+
+        String before = GLOBAL_MAPPER.writeValueAsString(payload);
+        assertEquals("{\"today\":887025600000}", before);
+
+        GLOBAL_MAPPER.setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));
+
+        String after = GLOBAL_MAPPER.writeValueAsString(payload);
+        assertEquals("{\"today\":\"1998-02-09\"}", after);
+    }
+    
+    @Test
     void whenSimpleDateFormatChanges_thenConflictHappens() throws Exception {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         GLOBAL_MAPPER.setDateFormat(format);
 
-        Callable<String> task = () -> GLOBAL_MAPPER.writeValueAsString(Map.of("key", Date.from(LocalDate.of(1998, 2, 9).atTime(12, 0).toInstant(ZoneOffset.UTC))));
+        Callable<String> task = () -> GLOBAL_MAPPER.writeValueAsString(singletonMap("key", Date.from(LocalDate.of(1998, 2, 9).atTime(12, 0).toInstant(ZoneOffset.UTC))));
         Callable<Void> mutator = () -> {
             format.applyPattern("dd-MM-yyyy");
             return null;
@@ -48,8 +65,8 @@ class ObjectMapperThreadSafetyUnitTest {
     @Test
     void whenUsingCopyScopedMapper_thenNoInterference() throws Exception {
         ObjectMapper localCopy = GLOBAL_MAPPER.copy().enable(SerializationFeature.INDENT_OUTPUT);
-        assertEquals("{\n  \"key\" : \"value\"\n}", localCopy.writeValueAsString(Map.of("key", "value")));
-        assertEquals("{\"key\":\"value\"}", GLOBAL_MAPPER.writeValueAsString(Map.of("key", "value")));
+        assertEquals("{\n  \"key\" : \"value\"\n}", localCopy.writeValueAsString(singletonMap("key", "value")));
+        assertEquals("{\"key\":\"value\"}", GLOBAL_MAPPER.writeValueAsString(singletonMap("key", "value")));
     }
 
     @AfterAll
