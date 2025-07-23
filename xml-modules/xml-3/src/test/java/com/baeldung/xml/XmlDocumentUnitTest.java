@@ -69,18 +69,21 @@ public class XmlDocumentUnitTest {
         }
         String xmlString = xmlContentBuilder.toString();
         // Remove tabs
-        String oneLine = xmlString.replaceAll("\\t", "");
+        String oneLineXml = xmlString.replaceAll("\\t", "");
 
         // Replace multiple spaces with a single space
-        oneLine = oneLine.replaceAll(" +", " ");
+        oneLineXml = oneLineXml.replaceAll(" +", " ");
 
         // Remove spaces before/after tags (e.g., "> <" becomes "><")
         // This is important to ensure truly minimal whitespace
-        oneLine = oneLine.replaceAll(">\\s+<", "><");
+        oneLineXml = oneLineXml.replaceAll(">\\s+<", "><");
 
         // Trim leading/trailing whitespace from the entire string
-        oneLine = oneLine.trim();
-        assertEquals("<?xml version="1.0" encoding="UTF-8"?><posts><post postId="1"><title>Parsing XML as a String in Java</title><author>John Doe</author></post></posts>", oneLine);
+        oneLineXml = oneLineXml.trim();
+        String expectedXml = """
+            <?xml version="1.0" encoding="UTF-8"?><posts><post postId="1"><title>Parsing XML as a String in Java</title><author>John Doe</author></post></posts>
+            """;
+        assertEquals(expectedXml, oneLineXml);
     }
 
     @Test
