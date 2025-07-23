@@ -58,6 +58,32 @@ public class XmlDocumentUnitTest {
     }
 
     @Test
+    public void givenXmlFile_whenConvertToOneLineString_thenSuccess() throws IOException {
+        String filePath = "posts.xml";
+        StringBuilder xmlContentBuilder = new StringBuilder();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                xmlContentBuilder.append(line);
+            }
+        }
+        String xmlString = xmlContentBuilder.toString();
+        // Remove tabs
+        String oneLine = xmlString.replaceAll("\\t", "");
+
+        // Replace multiple spaces with a single space
+        oneLine = oneLine.replaceAll(" +", " ");
+
+        // Remove spaces before/after tags (e.g., "> <" becomes "><")
+        // This is important to ensure truly minimal whitespace
+        oneLine = oneLine.replaceAll(">\\s+<", "><");
+
+        // Trim leading/trailing whitespace from the entire string
+        oneLine = oneLine.trim();
+        assertEquals("<?xml version="1.0" encoding="UTF-8"?><posts><post postId="1"><title>Parsing XML as a String in Java</title><author>John Doe</author></post></posts>", oneLine);
+    }
+
+    @Test
     public void givenInvalidXmlString_whenConvertToDocument_thenThrowException() throws ParserConfigurationException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
