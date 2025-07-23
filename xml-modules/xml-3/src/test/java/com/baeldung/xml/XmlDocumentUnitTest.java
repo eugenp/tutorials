@@ -64,7 +64,7 @@ public class XmlDocumentUnitTest {
 
     @Test
     public void givenXmlFile_whenConvertToOneLineString_thenSuccess() throws IOException {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+       
         String filePath = "posts.xml";
         ClassLoader classLoader = getClass().getClassLoader();
         FileReader fileReader = new FileReader(classLoader
@@ -90,13 +90,13 @@ public class XmlDocumentUnitTest {
 
         // Trim leading/trailing whitespace from the entire string
         oneLineXml = oneLineXml.trim();
-        System.out.println(oneLineXml);
+         
         String expectedXml = """
             <?xml version="1.0" encoding="UTF-8"?><posts><post postId="1"><title>Parsing XML as a String in Java</title><author>John Doe</author></post></posts>
             """;
         // Capture and verify the output
         String expectedOutput = expectedXml + System.lineSeparator();
-        assertEquals(expectedOutput, outputStream.toString());
+        assertEquals(expectedOutput, oneLineXml);
     }
 
     @Test
