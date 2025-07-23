@@ -10,7 +10,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.StringReader;
 
@@ -95,8 +94,8 @@ public class XmlDocumentUnitTest {
         String expectedXml = """
             <?xml version="1.0" encoding="UTF-8"?><posts><post postId="1"><title>Parsing XML as a String in Java</title><author>John Doe</author></post></posts>
             """;
+        
         assertThat(actualXml).and(expectedXml).areIdentical();
-        //assertEquals(expectedOutput, oneLineXml);
     }
 
     @Test
