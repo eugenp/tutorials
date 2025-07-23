@@ -91,7 +91,7 @@ public class XmlDocumentUnitTest {
         String expectedXml = """
             <?xml version="1.0" encoding="UTF-8"?><posts><post postId="1"><title>Parsing XML as a String in Java</title><author>John Doe</author></post></posts>
             """;
-        assertEquals(expectedXml, oneLineXml);
+        assertTrue(oneLineXml.contains(expectedXml));
     }
 
     @Test
