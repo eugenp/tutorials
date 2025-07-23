@@ -20,6 +20,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.nio.charset.StandardCharsets;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.xmlunit.assertj.XmlAssert.assertThat;
 
 public class XmlDocumentUnitTest {
 
@@ -89,14 +90,13 @@ public class XmlDocumentUnitTest {
            oneLineXml = oneLineXml.replaceAll(">\\s+<", "><");
 
         // Trim leading/trailing whitespace from the entire string
-        oneLineXml = oneLineXml.trim();
+        String actualXml = oneLineXml.trim();
          
         String expectedXml = """
             <?xml version="1.0" encoding="UTF-8"?><posts><post postId="1"><title>Parsing XML as a String in Java</title><author>John Doe</author></post></posts>
             """;
-        // Capture and verify the output
-        String expectedOutput = expectedXml + System.lineSeparator();
-        assertEquals(expectedOutput, oneLineXml);
+        assertThat(actualXml).and(expectedXml).areIdentical();
+        //assertEquals(expectedOutput, oneLineXml);
     }
 
     @Test
