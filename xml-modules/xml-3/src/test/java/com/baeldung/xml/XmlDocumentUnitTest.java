@@ -64,7 +64,7 @@ public class XmlDocumentUnitTest {
 
     @Test
     public void givenXmlFile_whenConvertToOneLineString_thenSuccess() throws IOException {
-        private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         String filePath = "posts.xml";
         ClassLoader classLoader = getClass().getClassLoader();
         FileReader fileReader = new FileReader(classLoader
