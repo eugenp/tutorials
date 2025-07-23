@@ -84,7 +84,7 @@ public class XmlDocumentUnitTest {
 
         // Remove spaces before/after tags (e.g., "> <" becomes "><")
         // This is important to ensure truly minimal whitespace
-       // oneLineXml = oneLineXml.replaceAll(">\\s+<", "><");
+           oneLineXml = oneLineXml.replaceAll(">\\s+<", "><");
 
         // Trim leading/trailing whitespace from the entire string
         oneLineXml = oneLineXml.trim();
