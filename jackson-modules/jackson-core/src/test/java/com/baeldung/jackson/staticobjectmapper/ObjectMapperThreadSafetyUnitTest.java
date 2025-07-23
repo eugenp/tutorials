@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.text.DateFormat;
@@ -24,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ObjectMapperThreadSafetyUnitTest {
 
-    private static final ObjectMapper GLOBAL_MAPPER = new ObjectMapper();
+    private ObjectMapper GLOBAL_MAPPER = new ObjectMapper();
 
     /**
      * two real threads, created once and reused for every repetition
@@ -69,6 +70,11 @@ class ObjectMapperThreadSafetyUnitTest {
         assertEquals("{\"key\":\"value\"}", GLOBAL_MAPPER.writeValueAsString(singletonMap("key", "value")));
     }
 
+    @BeforeEach
+    void setup() {
+        GLOBAL_MAPPER = new ObjectMapper();
+    }
+    
     @AfterAll
     static void shutdownPool() {
         POOL.shutdownNow();
