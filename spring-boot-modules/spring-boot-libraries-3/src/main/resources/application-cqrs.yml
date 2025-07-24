@@ -1,0 +1,19 @@
+spring.modulith:
+  republish-outstanding-events-on-restart: true
+  events.jdbc.schema-initialization.enabled: true
+
+logging:
+  level:
+    org.apache.kafka: ERROR
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/cqrs_db
+    username: test_user
+    password: test_pass
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        hbm2ddl.auto: create
