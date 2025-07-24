@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.baeldung.spring.modulith.cqrs.movie.domain.MovieRepository;
 
 @RestController
-@RequestMapping("api/movies")
+@RequestMapping("/api/movies")
 public class MovieController {
 
     private final MovieRepository movieScreens;

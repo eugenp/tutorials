@@ -15,7 +15,7 @@ import com.baeldung.spring.modulith.cqrs.ticket.domain.BookingTickets;
 import com.baeldung.spring.modulith.cqrs.ticket.domain.BookingTickets.BookTicket;
 
 @RestController
-@RequestMapping("api/ticket-booking")
+@RequestMapping("/api/ticket-booking")
 public class BookingTicketsController {
 
     private final BookingTickets bookedTicketsCommandHandler;
