@@ -1,4 +1,4 @@
-package com.baeldung.mockito.exceptions;
+package com.baeldung.exceptions;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -8,8 +8,6 @@ import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import com.baeldung.mockito.MyDictionary;
 
 class MockitoExceptionUnitTest {
 

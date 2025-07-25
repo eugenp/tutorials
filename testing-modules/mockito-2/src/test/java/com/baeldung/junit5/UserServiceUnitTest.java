@@ -1,4 +1,4 @@
-package com.baeldung.mockito.junit5;
+package com.baeldung.junit5;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -18,12 +18,12 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.stubbing.Answer;
 
-import com.baeldung.mockito.junit5.repository.MailClient;
-import com.baeldung.mockito.junit5.repository.SettingRepository;
-import com.baeldung.mockito.junit5.repository.UserRepository;
-import com.baeldung.mockito.junit5.service.DefaultUserService;
-import com.baeldung.mockito.junit5.service.Errors;
-import com.baeldung.mockito.junit5.service.UserService;
+import com.baeldung.junit5.repository.MailClient;
+import com.baeldung.junit5.repository.SettingRepository;
+import com.baeldung.junit5.repository.UserRepository;
+import com.baeldung.junit5.service.DefaultUserService;
+import com.baeldung.junit5.service.Errors;
+import com.baeldung.junit5.service.UserService;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceUnitTest {
