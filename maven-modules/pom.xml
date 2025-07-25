@@ -37,6 +37,7 @@
         <module>maven-multi-source</module>
         <module>maven-parent-pom-resolution</module>
         <module>maven-plugins</module>
+        <module>maven-plugin-management</module>
         <module>maven-polyglot</module>
         <module>maven-printing-plugins</module>
         <module>maven-properties</module>
