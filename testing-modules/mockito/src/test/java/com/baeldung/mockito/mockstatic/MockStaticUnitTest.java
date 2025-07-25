@@ -1,14 +1,14 @@
 package com.baeldung.mockito.mockstatic;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mockStatic;
+
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 
 import com.baeldung.mockito.mockedstatic.StaticUtils;
-
-import static org.assertj.core.api.Assertions.*;
-import static org.mockito.Mockito.mockStatic;
-
-import java.util.Arrays;
 
 class MockStaticUnitTest {
 
