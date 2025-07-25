@@ -46,7 +46,21 @@ public class MultiDimensionalArrayUnitTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
         obj.printElements(multiDimensionalArr);
-        assertEquals("[1, 2][3, 4, 5][6, 7, 8, 9]", outContent.toString().replace("\r", "").replace("\n", ""));
+        assertEquals("[1, 2][3, 4, 5][6, 7, 8, 9]", outContent.toString()
+            .replace("\r", "")
+            .replace("\n", ""));
+        System.setOut(System.out);
+    }
+
+    @Test
+    public void givenMultiDimensionalArray_whenUsingNestedForLoopToPrint_thenVerifyPrintedElements() {
+        int[][] multiDimensionalArr = { { 1, 2 }, { 3, 4, 5 }, { 6, 7, 8, 9 } };
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        obj.printElementsUsingNestedForLoop(multiDimensionalArr);
+        assertEquals("1 2 3 4 5 6 7 8 9 ", outContent.toString()
+            .replace("\r", "")
+            .replace("\n", ""));
         System.setOut(System.out);
     }
 
@@ -57,27 +71,27 @@ public class MultiDimensionalArrayUnitTest {
         multiDimensionalArr[1] = new int[3];
         multiDimensionalArr[2] = new int[4];
         obj.initialize2DArray(multiDimensionalArr);
-        assertArrayEquals(new int[][] {{7,7}, {7,7,7}, {7,7,7,7}}, multiDimensionalArr);
+        assertArrayEquals(new int[][] { { 7, 7 }, { 7, 7, 7 }, { 7, 7, 7, 7 } }, multiDimensionalArr);
     }
-    
+
     @Test
     public void givenMultiDimensionalArray_whenUsingIteration_thenVerifyFindLengthOfElements() {
         int[][] multiDimensionalArr = { { 1, 2 }, { 3, 4, 5 }, { 6, 7, 8, 9 } };
-        assertArrayEquals(new int[]{2,3,4}, obj.findLengthOfElements(multiDimensionalArr));
+        assertArrayEquals(new int[] { 2, 3, 4 }, obj.findLengthOfElements(multiDimensionalArr));
     }
-    
+
     @Test
     public void givenMultiDimensionalArray_whenUsingArraysStream_thenVerifyFindLengthOfElements() {
         Integer[][] multiDimensionalArr = { { 1, 2 }, { 3, 4, 5 }, { 6, 7, 8, 9 } };
-        assertArrayEquals(new Integer[]{2,3,4}, obj.findLengthOfElements(multiDimensionalArr));
+        assertArrayEquals(new Integer[] { 2, 3, 4 }, obj.findLengthOfElements(multiDimensionalArr));
     }
-    
+
     @Test
     public void givenMultiDimensionalArray_whenUsingArraysCopyOf_thenVerifyCopy2DArray() {
         int[][] multiDimensionalArr = { { 1, 2 }, { 3, 4, 5 }, { 6, 7, 8, 9 } };
         assertArrayEquals(multiDimensionalArr, obj.copy2DArray(multiDimensionalArr));
     }
-    
+
     @Test
     public void givenMultiDimensionalArray_whenUsingArraysStream_thenVerifyCopy2DArray() {
         Integer[][] multiDimensionalArr = { { 1, 2 }, { 3, 4, 5 }, { 6, 7, 8, 9 } };
