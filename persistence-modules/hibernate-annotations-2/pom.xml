@@ -3,7 +3,6 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>hibernate-annotations-2</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>hibernate-annotations-2</name>
@@ -32,7 +31,7 @@
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
-         <dependency>
+        <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>${hsqldb.version}</version>
@@ -88,7 +87,7 @@
         <lombok.version>1.18.30</lombok.version>
         <liquibase-core.version>4.24.0</liquibase-core.version>
         <logback-core.version>1.5.8</logback-core.version>
-         <hypersistance-utils-hibernate-60.version>3.3.1</hypersistance-utils-hibernate-60.version>
+        <hypersistance-utils-hibernate-60.version>3.3.1</hypersistance-utils-hibernate-60.version>
     </properties>
 
 </project>

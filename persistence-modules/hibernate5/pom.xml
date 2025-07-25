@@ -59,7 +59,6 @@
             <artifactId>hypersistence-utils-hibernate-55</artifactId>
             <version>${hypersistence-utils.version}</version>
         </dependency>
-
     </dependencies>
 
     <properties>

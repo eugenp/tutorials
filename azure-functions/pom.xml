@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>azure-functions</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -12,20 +14,12 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <azure.functions.maven.plugin.version>1.24.0</azure.functions.maven.plugin.version>
-        <azure.functions.java.library.version>3.0.0</azure.functions.java.library.version>
-        <functionAppName>azure-functions-1722835137455</functionAppName>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.microsoft.azure.functions</groupId>
             <artifactId>azure-functions-java-library</artifactId>
             <version>${azure.functions.java.library.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -109,4 +103,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <azure.functions.maven.plugin.version>1.24.0</azure.functions.maven.plugin.version>
+        <azure.functions.java.library.version>3.0.0</azure.functions.java.library.version>
+        <functionAppName>azure-functions-1722835137455</functionAppName>
+    </properties>
+
 </project>

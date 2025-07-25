@@ -19,7 +19,6 @@
             <artifactId>resilience4j-retry</artifactId>
             <version>${resilience4j-retry.version}</version>
         </dependency>
-
     </dependencies>
 
     <properties>
