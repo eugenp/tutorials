@@ -106,6 +106,7 @@
                                 <!-- Exclude module-info.class -->
                                 <exclude>**/module-info.class</exclude>
                                 <!-- Exclude overlapping META-INF files -->
+                                <exclude>META-INF/MANIFEST.MF</exclude>
                                 <exclude>META-INF/LICENSE</exclude>
                                 <exclude>META-INF/NOTICE</exclude>
                                 <exclude>META-INF/LICENSE.txt</exclude>
