@@ -46,10 +46,16 @@
             <version>${testcontainers-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
-        <kafka.version>3.8.0</kafka.version>
+        <kafka.version>3.9.1</kafka.version>
+        <slf4j.version>2.0.9</slf4j.version>
         <jackson.databind.version>2.15.2</jackson.databind.version>
         <testcontainers-kafka.version>1.19.3</testcontainers-kafka.version>
         <testcontainers-jupiter.version>1.19.3</testcontainers-jupiter.version>
