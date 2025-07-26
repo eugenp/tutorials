@@ -1,0 +1,15 @@
+pluginManagement {
+    plugins {
+        id 'software.amazon.smithy.gradle.smithy-jar' version settings.ext.smithyGradleVersion
+        id 'software.amazon.smithy.gradle.smithy-base' version settings.ext.smithyGradleVersion
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'baeldung-smithy-codegen'
+
