@@ -8,7 +8,7 @@ import java.util.concurrent.CountDownLatch;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class SimpleSingletonUnitTest {
+public class SimpleSingletonManualTest {
     @Test
     void givenUnsafeSingleton_whenAccessedConcurrently_thenMultipleInstancesCreated() throws InterruptedException {
         int threadCount = 1000;
