@@ -19,7 +19,6 @@ public class UserServerUnitTest extends JUnitRouteTest {
 
   TestRoute appRoute = testRoute(new UserServer(userActorRef).routes());
 
-  @Ignore
   @Test
   public void whenRequest_thenActorResponds() {
 
