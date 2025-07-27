@@ -1,5 +1,6 @@
 package com.baeldung.jspecify;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -41,7 +42,7 @@ public class JspecifyNullSafetyTest {
     @Test
     void givenUnknownUserId_whenFindNicknameOrNull_thenReturnsNull() {
         String nickname = findNicknameOrNull("unknownUser");
-        assertTrue(nickname == null);
+        assertNull(nickname);
     }
 
     @Test
