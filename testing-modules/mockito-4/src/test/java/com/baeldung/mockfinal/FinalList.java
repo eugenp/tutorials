@@ -1,4 +1,4 @@
-package com.baeldung.mockito;
+package com.baeldung.mockfinal;
 
 public final class FinalList extends MyList {
 

@@ -1,9 +1,9 @@
-package com.baeldung.mockito.junit5.service;
+package com.baeldung.junit5.service;
 
-import com.baeldung.mockito.junit5.User;
-import com.baeldung.mockito.junit5.repository.MailClient;
-import com.baeldung.mockito.junit5.repository.SettingRepository;
-import com.baeldung.mockito.junit5.repository.UserRepository;
+import com.baeldung.junit5.User;
+import com.baeldung.junit5.repository.MailClient;
+import com.baeldung.junit5.repository.SettingRepository;
+import com.baeldung.junit5.repository.UserRepository;
 
 public class DefaultUserService implements UserService {
 
