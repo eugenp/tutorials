@@ -12,6 +12,7 @@ import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
@@ -29,6 +30,8 @@ public class PDFSampleMain {
 
             document.open();
 
+            addParagraphInCenter(document);
+            
             PdfPTable table = new PdfPTable(3);
             addTableHeader(table);
             setAbsoluteColumnWidths(table);
@@ -45,6 +48,12 @@ public class PDFSampleMain {
         }
     }
 
+    private static void addParagraphInCenter(Document document) throws IOException, DocumentException {
+        Paragraph paragraph = new Paragraph("This paragraph will be horizontally centered.");
+        paragraph.setAlignment(Element.ALIGN_CENTER);  
+        document.add(paragraph);
+    }
+    
     private static void addTableHeader(PdfPTable table) {
         Stream.of("column header 1", "column header 2", "column header 3")
         .forEach(columnTitle -> {
