@@ -15,7 +15,6 @@
     </parent>
 
     <modules>
-        <module>maven-profiles</module>
         <module>parent-project</module>
     </modules>
 

@@ -41,6 +41,7 @@
         <module>maven-plugin-management</module>
         <module>maven-polyglot</module>
         <module>maven-printing-plugins</module>
+        <module>maven-profiles</module>
         <module>maven-properties</module>
         <!-- <module>maven-proxy</module> --> <!-- Not a maven project -->
         <module>maven-reactor</module>
