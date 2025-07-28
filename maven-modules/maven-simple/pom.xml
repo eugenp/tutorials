@@ -16,7 +16,6 @@
 
     <modules>
         <module>maven-profiles</module>
-        <module>maven-dependency</module>
         <module>parent-project</module>
     </modules>
 
