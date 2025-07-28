@@ -35,9 +35,7 @@ public class CustomerDtoMapperUnitTest {
         customer.setLastName(" powers ");
         MappingContext context = new MappingContext();
         CustomerDto dto = customerDtoMapper.from(customer, context);
-        assert dto.getForename()
-            .equals("MAX");
-        assert dto.getSurname()
-            .equals("POWERS");
+        assertEquals("MAX", dto.getForename());
+        assertEquals("POWERS", dto.getSurname());
     }
 }
