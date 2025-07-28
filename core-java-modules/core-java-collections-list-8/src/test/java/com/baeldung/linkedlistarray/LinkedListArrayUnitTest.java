@@ -1,4 +1,4 @@
-package baeldung.linkedlistarray;
+package com.baeldung.linkedlistarray;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
