@@ -21,13 +21,13 @@ class VectorStoreInitializer implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) {
         List<Document> documents = QuoteFetcher
-          .fetch()
-          .stream()
-          .map(quote -> {
-              Map<String, Object> metadata = Map.of("author", quote.author());
-              return new Document(quote.quote(), metadata);
-          })
-          .toList();
+            .fetch()
+            .stream()
+            .map(quote -> {
+                Map<String, Object> metadata = Map.of("author", quote.author());
+                return new Document(quote.quote(), metadata);
+            })
+            .toList();
         vectorStore.add(documents);
     }
 
