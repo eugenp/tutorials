@@ -1,0 +1,7 @@
+spring:
+  ai:
+    vectorstore:
+      oracle:
+        initialize-schema: true
+    openai:
+      api-key: ${OPENAI_API_KEY}
