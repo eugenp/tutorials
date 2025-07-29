@@ -1,4 +1,4 @@
-package com.baeldung.spring.modulith.cqrs.ticket.domain;
+package com.baeldung.spring.modulith.cqrs.ticket;
 
 import java.time.Instant;
 

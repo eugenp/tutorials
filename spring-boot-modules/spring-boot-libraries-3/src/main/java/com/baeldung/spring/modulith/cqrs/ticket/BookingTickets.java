@@ -1,9 +1,9 @@
-package com.baeldung.spring.modulith.cqrs.ticket.domain;
+package com.baeldung.spring.modulith.cqrs.ticket;
 
 import org.jmolecules.architecture.cqrs.Command;
 import org.jmolecules.architecture.cqrs.CommandHandler;
 
-public interface BookingTickets {
+interface BookingTickets {
 
     @CommandHandler
     Long bookTicket(BookTicket bookTicket);

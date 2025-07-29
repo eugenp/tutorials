@@ -1,4 +1,4 @@
-package com.baeldung.spring.modulith.cqrs.movie.domain;
+package com.baeldung.spring.modulith.cqrs.movie;
 
 import java.time.Instant;
 import java.util.List;
@@ -6,10 +6,7 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.baeldung.spring.modulith.cqrs.movie.AvailableMovieSeats;
-import com.baeldung.spring.modulith.cqrs.movie.UpcomingMovies;
-
-public interface MovieRepository extends JpaRepository<Movie, Long> {
+interface MovieRepository extends JpaRepository<Movie, Long> {
 
     List<UpcomingMovies> findUpcomingMoviesByStartTimeBetween(Instant start, Instant end);
 

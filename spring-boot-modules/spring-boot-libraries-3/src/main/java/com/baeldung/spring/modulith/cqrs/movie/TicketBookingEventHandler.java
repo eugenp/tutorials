@@ -1,4 +1,4 @@
-package com.baeldung.spring.modulith.cqrs.movie.domain;
+package com.baeldung.spring.modulith.cqrs.movie;
 
 import static java.time.temporal.ChronoUnit.HOURS;
 

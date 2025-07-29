@@ -6,6 +6,6 @@ import java.util.List;
 import org.jmolecules.architecture.cqrs.QueryModel;
 
 @QueryModel
-public record AvailableMovieSeats(String title, String screenRoom, Instant startTime, List<String> freeSeats) {
+record AvailableMovieSeats(String title, String screenRoom, Instant startTime, List<String> freeSeats) {
 
 }

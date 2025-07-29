@@ -5,5 +5,5 @@ import java.time.Instant;
 import org.jmolecules.architecture.cqrs.QueryModel;
 
 @QueryModel
-public record UpcomingMovies(Long id, String title, Instant startTime) {
+record UpcomingMovies(Long id, String title, Instant startTime) {
 }

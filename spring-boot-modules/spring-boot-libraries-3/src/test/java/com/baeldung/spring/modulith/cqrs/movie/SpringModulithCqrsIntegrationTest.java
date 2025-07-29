@@ -1,4 +1,4 @@
-package com.baeldung.spring.modulith.cqrs;
+package com.baeldung.spring.modulith.cqrs.movie;
 
 import static java.time.Duration.ofMillis;
 import static java.time.Duration.ofSeconds;
@@ -18,9 +18,6 @@ import org.springframework.modulith.core.ApplicationModules;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.baeldung.spring.modulith.cqrs.movie.AvailableMovieSeats;
-import com.baeldung.spring.modulith.cqrs.ticket.BookingTicketsController.BookingResponse;
-import com.baeldung.spring.modulith.cqrs.ticket.BookingTicketsController.CancellationResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
@@ -65,8 +62,9 @@ class SpringModulithCqrsIntegrationTest {
             .getResponse()
             .getContentAsString();
 
-        return objectMapper.readValue(json, BookingResponse.class)
-            .bookingId();
+        return objectMapper.readTree(json)
+            .get("bookingId")
+            .asLong();
     }
 
     private Long sendCancelTicketRequest(Long bookingId) throws Exception {
@@ -76,8 +74,9 @@ class SpringModulithCqrsIntegrationTest {
             .getResponse()
             .getContentAsString();
 
-        return objectMapper.readValue(json, CancellationResponse.class)
-            .cancellationId();
+        return objectMapper.readTree(json)
+            .get("cancellationId")
+            .asLong();
     }
 
     private AvailableMovieSeats findAvailableSeats(Long movieId) throws Exception {

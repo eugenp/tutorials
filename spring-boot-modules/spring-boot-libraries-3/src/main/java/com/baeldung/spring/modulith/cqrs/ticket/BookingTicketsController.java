@@ -1,6 +1,6 @@
 package com.baeldung.spring.modulith.cqrs.ticket;
 
-import static com.baeldung.spring.modulith.cqrs.ticket.domain.BookingTickets.*;
+import static com.baeldung.spring.modulith.cqrs.ticket.BookingTickets.*;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,12 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.spring.modulith.cqrs.ticket.domain.BookingTickets;
-import com.baeldung.spring.modulith.cqrs.ticket.domain.BookingTickets.BookTicket;
+import com.baeldung.spring.modulith.cqrs.ticket.BookingTickets.BookTicket;
 
 @RestController
 @RequestMapping("/api/ticket-booking")
-public class BookingTicketsController {
+class BookingTicketsController {
 
     private final BookingTickets bookedTicketsCommandHandler;
 
