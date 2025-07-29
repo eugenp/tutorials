@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 @Testcontainers
 @EnabledIfEnvironmentVariable(named = "OPENAI_API_KEY", matches = ".*")
-class SemanticSearchLiveTest {
+class SimilaritySearchLiveTest {
 
     @Container
     private static OracleContainer oracleContainer = new OracleContainer("gvenzl/oracle-free:23-slim");
