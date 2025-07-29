@@ -8,3 +8,6 @@ spring:
       embedding:
         options:
           model: text-embedding-3-large
+      chat:
+        options:
+          model: gpt-4o
