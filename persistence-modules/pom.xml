@@ -146,7 +146,6 @@
         <module>hibernate-annotations-2</module>
         <module>hibernate-reactive</module>
         <module>spring-data-envers</module>
-        <module>jdbc-cp</module>
     </modules>
 
     <properties>
