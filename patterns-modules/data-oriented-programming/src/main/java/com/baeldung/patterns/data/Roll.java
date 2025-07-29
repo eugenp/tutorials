@@ -9,7 +9,6 @@ public record Roll(List<Integer> dice, int rollCount) {
 			throw new IllegalArgumentException("A Roll needs to have exactly 5 dice.");
 		if (dice.stream().anyMatch(die -> die < 1 || die > 6))
 			throw new IllegalArgumentException("Dice values should be between 1 and 6.");
-
-		dice = Collections.unmodifiableList(dice);
+		dice = List.copyOf(dice);
 	}
 }
