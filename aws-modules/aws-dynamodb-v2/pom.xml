@@ -91,6 +91,7 @@
                 <configuration>
                     <source>9</source>
                     <target>9</target>
+                    <release>9</release>
                 </configuration>
             </plugin>
         </plugins>
