@@ -22,9 +22,9 @@ class RAGChatbotConfiguration {
 
     @Bean
     PromptTemplate promptTemplate(
-        @Value("classpath:system-prompt.st") Resource systemPrompt
+        @Value("classpath:prompt-template.st") Resource promptTemplate
     ) throws IOException {
-        String template = systemPrompt.getContentAsString(StandardCharsets.UTF_8);
+        String template = promptTemplate.getContentAsString(StandardCharsets.UTF_8);
         return PromptTemplate
             .builder()
             .renderer(StTemplateRenderer
