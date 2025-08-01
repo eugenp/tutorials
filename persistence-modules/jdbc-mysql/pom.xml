@@ -42,13 +42,13 @@
         </plugins>
     </build>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
-		
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
+
         <jsch.version>0.2.20</jsch.version>
         <mysql-connector-java.version>8.0.32</mysql-connector-java.version>
-	</properties>
+    </properties>
 
 </project>
