@@ -58,6 +58,9 @@
         <module>java-mongodb-2</module> <!-- long running -->
         <module>java-mongodb-3</module> <!-- long running -->
         <module>java-mongodb-queries</module> <!-- long running -->
+        <module>jdbc</module>
+        <module>jdbc-cp</module>
+        <module>jdbc-mysql</module>
         <module>jimmer</module>
         <module>jnosql</module> <!-- long running -->
         <module>jooq</module>
@@ -142,9 +145,7 @@
         <module>spring-boot-persistence-5</module>
         <module>hibernate-annotations-2</module>
         <module>hibernate-reactive</module>
-        <module>my-sql</module>
         <module>spring-data-envers</module>
-        <module>jdbc-cp</module>
     </modules>
 
     <properties>
