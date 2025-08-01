@@ -1,0 +1,13 @@
+spring:
+  ai:
+    vectorstore:
+      oracle:
+        initialize-schema: true
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      embedding:
+        options:
+          model: text-embedding-3-large
+      chat:
+        options:
+          model: gpt-4o
