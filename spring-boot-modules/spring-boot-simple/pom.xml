@@ -12,7 +12,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.0-M1</version>
+        <version>3.5.4</version>
         <relativePath/>
     </parent>
 
@@ -110,7 +110,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>3.3.2</version>
             </plugin>
         </plugins>
     </build>
@@ -118,14 +117,7 @@
     <properties>
         <start-class>com.baeldung.bootstrap.Application</start-class>
         <subethasmtp.version>7.0.2</subethasmtp.version>
+        <spring-boot-maven-plugin.version>3.5.4</spring-boot-maven-plugin.version>
     </properties>
-
-    <repositories>
-        <repository>
-            <id>repository.spring.milestones</id>
-            <name>Spring Milestones Repository</name>
-            <url>https://repo.spring.io/milestone/</url>
-        </repository>
-    </repositories>
 
 </project>

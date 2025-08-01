@@ -1,8 +1,15 @@
 package com.baeldung.bootstrap;
 
+import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import com.baeldung.bootstrap.persistence.model.Book;
+
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,11 +18,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
 import java.util.List;
-
-import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
-import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SpringBootBootstrapLiveTest {
@@ -128,10 +130,11 @@ public class SpringBootBootstrapLiveTest {
 
     private String createBookAsUri(Book book) {
         final Response response = RestAssured.given()
-          .contentType(MediaType.APPLICATION_JSON_VALUE)
-          .body(book)
-          .post(API_ROOT);
-        return API_ROOT + "/" + response.jsonPath().get("id");
+            .contentType(MediaType.APPLICATION_JSON_VALUE)
+            .body(book)
+            .post(API_ROOT);
+        return API_ROOT + "/" + response.jsonPath()
+            .get("id");
     }
 
 }
