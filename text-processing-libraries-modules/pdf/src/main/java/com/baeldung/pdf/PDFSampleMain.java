@@ -30,12 +30,12 @@ public class PDFSampleMain {
 
             document.open();
 
-            Document document_paragraph = new Document();
-            PdfWriter.getInstance(document_paragraph, new FileOutputStream("iTextParagraph.pdf"));
+            Document documentParagraph = new Document();
+            PdfWriter.getInstance(documentParagraph, new FileOutputStream("iTextParagraph.pdf"));
 
-            document_paragraph.open();
+            documentParagraph.open();
             
-            addParagraphInCenter(document_paragraph);
+            addParagraphInCenter(documentParagraph);
             
             PdfPTable table = new PdfPTable(3);
             addTableHeader(table);
