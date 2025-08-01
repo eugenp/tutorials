@@ -3,23 +3,22 @@ package com.baeldung.spring.modulith.cqrs.ticket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import jakarta.transaction.Transactional;
 
-@Service
-class BookedTicketService implements BookingTickets {
+@Component
+class TicketBookingCommandHandler {
 
-    private static final Logger log = LoggerFactory.getLogger(BookedTicketService.class);
+    private static final Logger log = LoggerFactory.getLogger(TicketBookingCommandHandler.class);
     private final BookedTicketRepository bookedTickets;
     private final ApplicationEventPublisher eventPublisher;
 
-    BookedTicketService(BookedTicketRepository tickets, ApplicationEventPublisher eventPublisher) {
+    TicketBookingCommandHandler(BookedTicketRepository tickets, ApplicationEventPublisher eventPublisher) {
         this.bookedTickets = tickets;
         this.eventPublisher = eventPublisher;
     }
 
-    @Override
     @Transactional
     public Long bookTicket(BookTicket booking) {
         log.info("Received booking command for movie ID: {}, seat: {}. checking availability...", booking.movieId(), booking.seat());
@@ -43,7 +42,6 @@ class BookedTicketService implements BookingTickets {
         return bookedTicket.getId();
     }
 
-    @Override
     @Transactional
     public Long cancelTicket(CancelTicket cancellation) {
         log.info("Received cancellation command for bookingId: {}. Validating the Booking", cancellation.bookingId());
