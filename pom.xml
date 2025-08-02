@@ -571,6 +571,7 @@
                 <module>spring-di-2</module>
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
                 <module>spring-reactive-modules/spring-reactive-kafka-stream-binder</module>
+                <module>jts</module>
             </modules>
 
             <properties>
