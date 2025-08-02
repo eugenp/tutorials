@@ -17,7 +17,7 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>1.36</version>
+            <version>${jmh-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -57,6 +57,5 @@
 
     <properties>
         <jmh.version>1.21</jmh.version>
-        <gson.version>2.11.0</gson.version>
     </properties>
 </project>

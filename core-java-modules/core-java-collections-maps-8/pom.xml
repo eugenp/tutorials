@@ -42,7 +42,6 @@
     </build>
 
     <properties>
-        <gson.version>2.11.0</gson.version>
         <beanutils.version>1.9.4</beanutils.version>
     </properties>
 

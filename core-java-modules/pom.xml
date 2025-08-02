@@ -308,6 +308,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <org.json.version>20240303</org.json.version>
+        <gson.version>2.11.0</gson.version>
     </properties>
 
     <dependencyManagement>

@@ -16,7 +16,7 @@
         <dependency>
             <groupId>org.choco-solver</groupId>
             <artifactId>choco-solver</artifactId>
-            <version>4.10.14</version>
+            <version>${choco-solver.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -26,10 +26,8 @@
     </dependencies>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <slf4-simple.version>1.7.21</slf4-simple.version>
+        <choco-solver.version>4.10.14</choco-solver.version>
     </properties>
 
 </project>
