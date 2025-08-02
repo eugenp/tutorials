@@ -44,7 +44,6 @@
 
     <properties>
         <commons-validator.version>1.7</commons-validator.version>
-        <jsoup.version>1.17.2</jsoup.version>
         <httpclient.version>4.5.2</httpclient.version>
         <javax.ws.rs-api.version>2.1.1</javax.ws.rs-api.version>
         <jersey-common.version>3.1.7</jersey-common.version>

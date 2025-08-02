@@ -8,9 +8,8 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -70,10 +69,23 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
         </dependency>
         <dependency>
             <groupId>net.bytebuddy</groupId>
@@ -88,11 +100,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
-                    <configuration>
-                        <systemPropertyVariables>
-                            <pact.rootDir>target/mypacts</pact.rootDir>
-                        </systemPropertyVariables>
-                    </configuration>
+                <configuration>
+                    <systemPropertyVariables>
+                        <pact.rootDir>target/mypacts</pact.rootDir>
+                    </systemPropertyVariables>
+                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -104,6 +116,11 @@
         <archunit.version>0.23.1</archunit.version>
         <modelassert.version>1.0.0</modelassert.version>
         <pact.version>3.6.3</pact.version>
+        <spring-boot.version>2.7.11</spring-boot.version>
+        <spring.version>5.3.27</spring.version>
+        <rest-assured.version>3.3.0</rest-assured.version>
+        <org.slf4j.version>1.7.32</org.slf4j.version>
+        <logback.version>1.2.7</logback.version>
     </properties>
 
 </project>

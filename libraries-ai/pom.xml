@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-ai</artifactId>
     <name>libraries-ai</name>
@@ -90,7 +92,36 @@
             <artifactId>openai-java</artifactId>
             <version>${openai.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.tribuo</groupId>
+            <artifactId>tribuo-all</artifactId>
+            <version>${tribuo-all.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${common-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>${opencsv.version}</version>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>21</source>
+                    <target>21</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <stanford-corenlp.version>4.5.3</stanford-corenlp.version>
@@ -99,6 +130,9 @@
         <theokanning.gpt>0.18.2</theokanning.gpt>
         <h2o-genmodel.version>3.46.0.6</h2o-genmodel.version>
         <openai.version>0.22.0</openai.version>
+        <tribuo-all.version>4.3.2</tribuo-all.version>
+        <common-lang3.version>3.17.0</common-lang3.version>
+        <opencsv.version>5.11</opencsv.version>
     </properties>
 
 </project>

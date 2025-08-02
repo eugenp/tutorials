@@ -1,0 +1,3 @@
+server.port: 8081
+spring.kafka.bootstrap-servers: localhost:9092
+long.message.topic.name: longMessage

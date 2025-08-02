@@ -22,7 +22,7 @@
                     <arguments>
                         <argument>-XstartOnFirstThread</argument>
                         <argument>-classpath</argument>
-                        <classpath />
+                        <classpath/>
                         <argument>com.baeldung.jmonkeyengine.FirstApplication</argument>
                     </arguments>
                 </configuration>
@@ -51,6 +51,5 @@
     <properties>
         <jmonkeyengine.version>3.7.0-stable</jmonkeyengine.version>
     </properties>
-
 
 </project>

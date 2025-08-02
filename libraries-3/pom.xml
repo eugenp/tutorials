@@ -14,20 +14,40 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>nl.basjes.parse.useragent</groupId>
+            <artifactId>yauaa</artifactId>
+            <version>${yauaa.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.jcabi</groupId>
-            <artifactId>jcabi-aspects</artifactId>
-            <version>${jcabi-aspects.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
-            <version>${aspectjrt.version}</version>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.velocity</groupId>
@@ -81,14 +101,35 @@
             <version>${javax.annotation-api.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.atlassian.fugue</groupId>
-            <artifactId>fugue</artifactId>
-            <version>${fugue.version}</version>
+            <groupId>org.javers</groupId>
+            <artifactId>javers-core</artifactId>
+            <version>${javers.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.jooq</groupId>
-            <artifactId>jool</artifactId>
-            <version>${jool.version}</version>
+            <groupId>org.agrona</groupId>
+            <artifactId>agrona</artifactId>
+            <version>${agrona.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.nats</groupId>
+            <artifactId>jnats</artifactId>
+            <version>${jnats.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${awaitility.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>${jfreechart.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.failsafe</groupId>
+            <artifactId>failsafe</artifactId>
+            <version>${dev.failsafe.version}</version>
         </dependency>
     </dependencies>
 
@@ -96,32 +137,62 @@
         <finalName>libraries-3</finalName>
         <plugins>
             <plugin>
-                <groupId>com.jcabi</groupId>
-                <artifactId>jcabi-maven-plugin</artifactId>
-                <version>${jcabi-maven-plugin.version}</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>${exec-maven-plugin.version}</version>
                 <executions>
                     <execution>
+                        <phase>generate-sources</phase>
                         <goals>
-                            <goal>ajc</goal>
+                            <goal>java</goal>
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <includeProjectDependencies>false</includeProjectDependencies>
+                    <includePluginDependencies>true</includePluginDependencies>
+                    <mainClass>uk.co.real_logic.sbe.SbeTool</mainClass>
+                    <systemProperties>
+                        <systemProperty>
+                            <key>sbe.output.dir</key>
+                            <value>${project.build.directory}/generated-sources/java</value>
+                        </systemProperty>
+                    </systemProperties>
+                    <arguments>
+                        <argument>${project.basedir}/src/main/resources/schema.xml</argument>
+                    </arguments>
+                    <workingDirectory>${project.build.directory}/generated-sources/java</workingDirectory>
+                </configuration>
                 <dependencies>
                     <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjtools</artifactId>
-                        <version>${aspectjtools.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectjweaver.version}</version>
+                        <groupId>uk.co.real-logic</groupId>
+                        <artifactId>sbe-tool</artifactId>
+                        <version>${sbe-tool.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>${build-helper-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.build.directory}/generated-sources/java/</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
         <resources>
@@ -133,19 +204,23 @@
     </build>
 
     <properties>
-        <jcabi-aspects.version>0.26.0</jcabi-aspects.version>
-        <aspectjrt.version>1.9.20.1</aspectjrt.version>
-        <jcabi-maven-plugin.version>0.14.1</jcabi-maven-plugin.version>
-        <aspectjtools.version>1.9.20.1</aspectjtools.version>
-        <aspectjweaver.version>1.9.20.1</aspectjweaver.version>
         <velocity-engine-core.version>2.2</velocity-engine-core.version>
         <nullaway.version>0.3.0</nullaway.version>
         <plexus-compiler.version>2.8</plexus-compiler.version>
         <errorprone.version>2.1.3</errorprone.version>
         <structurizr.version>1.0.0</structurizr.version>
         <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
-        <fugue.version>4.5.1</fugue.version>
-        <jool.version>0.9.12</jool.version>
+        <javers.version>3.1.0</javers.version>
+        <sbe-tool.version>1.27.0</sbe-tool.version>
+        <agrona.version>1.17.1</agrona.version>
+        <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
+        <jnats.version>2.17.3</jnats.version>
+        <awaitility.version>4.2.1</awaitility.version>
+        <jfreechart.version>1.5.4</jfreechart.version>
+        <dev.failsafe.version>3.3.2</dev.failsafe.version>
+        <spring-boot.version>3.3.0</spring-boot.version>
+        <spring.version>6.1.8</spring.version>
+        <yauaa.version>7.28.1</yauaa.version>
     </properties>
 
 </project>

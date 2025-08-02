@@ -25,6 +25,12 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.stefanbirkner</groupId>
+            <artifactId>system-lambda</artifactId>
+            <version>${stefanbirkner.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -42,6 +48,7 @@
 
     <properties>
         <junit.version>5.9.2</junit.version>
+        <stefanbirkner.version>1.2.1</stefanbirkner.version>
     </properties>
 
 </project>

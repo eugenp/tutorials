@@ -30,7 +30,6 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
@@ -55,11 +54,17 @@
             <artifactId>byte-buddy</artifactId>
             <version>${byte-buddy.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.orm.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <start-class>com.baeldung.boot.Application</start-class>
         <testcontainers.version>1.19.6</testcontainers.version>
+        <hibernate.orm.version>7.0.0.Final</hibernate.orm.version>
     </properties>
 
 </project>

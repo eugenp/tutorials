@@ -18,6 +18,7 @@
         <module>netty</module>
         <module>undertow</module>
         <module>wildfly</module>
+        <module>armeria</module>
     </modules>
 
 </project>

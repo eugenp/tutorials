@@ -1,0 +1,8 @@
+CREATE TABLE TASK_TABLE
+(
+    ID   INT PRIMARY KEY,
+    NAME VARCHAR(255)
+);
+
+INSERT INTO TASK_TABLE (ID, NAME) VALUES (1, 'Start the application');
+INSERT INTO TASK_TABLE (ID, NAME) VALUES (2, 'Check if data table is filled');

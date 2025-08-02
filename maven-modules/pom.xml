@@ -30,22 +30,26 @@
         <module>maven-classifier</module>
         <module>maven-copy-files</module>
         <module>maven-custom-plugin</module>
+        <module>maven-dependency</module>
 <!--        <module>maven-exec-plugin</module>--> <!-- failing after upgrading to jdk17--> <!-- JAVA-42059 -->
         <module>maven-generate-war</module>
         <module>maven-integration-test</module>
         <module>maven-jvm-args</module>
+        <module>maven-multi-module</module>
         <module>maven-multi-source</module>
         <module>maven-parent-pom-resolution</module>
         <module>maven-plugins</module>
+        <module>maven-plugin-management</module>
         <module>maven-polyglot</module>
         <module>maven-printing-plugins</module>
+        <module>maven-profiles</module>
         <module>maven-properties</module>
         <!-- <module>maven-proxy</module> --> <!-- Not a maven project -->
         <module>maven-reactor</module>
         <module>maven-repositories</module>
-        <module>maven-simple</module>
         <module>maven-surefire-plugin</module>
         <module>maven-unused-dependencies</module>
+        <module>maven-version-number</module>
         <module>maven-war-plugin</module>
         <module>spring-bom</module>
         <module>optional-dependencies</module>

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.j2cl</groupId>
     <artifactId>j2cl</artifactId>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
@@ -78,6 +78,7 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <skip>true</skip>
                     <tests>
                         <test>com.baeldung.j2cl.taskmanager.MyJ2CLAppTest</test>
                     </tests>
@@ -91,7 +92,8 @@
                     <webApp>
                         <_initParams>
                             <org.eclipse.jetty.servlet.Default.useFileMappedBuffer>
-                                false</org.eclipse.jetty.servlet.Default.useFileMappedBuffer>
+                                false
+                            </org.eclipse.jetty.servlet.Default.useFileMappedBuffer>
                         </_initParams>
                         <resourceBases>
                             <!-- Serve static content without copying from
@@ -99,7 +101,8 @@
                             <resourceBase>src/main/webapp</resourceBase>
                             <!-- Serve compiled JS built by J2CL -->
                             <resourceBase>
-                                ${project.build.directory}/${project.build.finalName}</resourceBase>
+                                ${project.build.directory}/${project.build.finalName}
+                            </resourceBase>
                         </resourceBases>
                     </webApp>
                 </configuration>

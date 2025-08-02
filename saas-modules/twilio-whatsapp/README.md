@@ -1,1 +1,0 @@
--  [Sending WhatsApp Messages in Spring Boot Using Twilio](https://www.baeldung.com/spring-boot-twilio-whatsapp)

@@ -1,0 +1,38 @@
+{
+  "paragraphs": [
+    {
+      "style": "NORMAL",
+      "sentences": [
+        {
+          "tokens": [
+            "Paragraph",
+            "one",
+            "starts",
+            "here."
+          ]
+        }
+      ]
+    },
+    {
+      "style": "NORMAL",
+      "sentences": [
+        {
+          "tokens": [
+            "Then",
+            "paragraph",
+            "two",
+            "follows."
+          ]
+        },
+        {
+          "tokens": [
+            "It",
+            "has",
+            "two",
+            "sentences."
+          ]
+        }
+      ]
+    }
+  ]
+}

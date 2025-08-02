@@ -1,0 +1,52 @@
+package com.baeldung.kogito.rules
+
+unit LoanApplicationUnit
+
+import com.baeldung.kogito.rules.model.LoanApplication
+import com.baeldung.kogito.rules.model.Person
+import com.baeldung.kogito.rules.model.Conditions
+import com.baeldung.kogito.rules.model.Decision
+
+rule "only-adults"
+  salience 10
+  when
+    $application: /applications[
+      person.age < 18
+    ]
+  then
+    modify($application){
+      setDecision(Decision.REJECTED_UNDERAGE)
+    }
+end
+
+rule "Good Credit Score And High Income"
+  when
+    $application: /applications[
+      person.age >= 18,
+      conditions.creditScore >= 700,
+      conditions.income > 2*conditions.debt
+    ]
+  then
+    modify($application){
+      setDecision(Decision.APPROVED)
+    }
+end
+
+rule "Low Credit Score Or High Debt"
+  when
+    $application: /applications[
+      person.age >= 18,
+      (
+        conditions.creditScore < 700 ||
+        conditions.income <= 2*conditions.debt
+      )
+    ]
+  then
+    modify($application){
+      setDecision(Decision.REJECTED_NOT_CREDITWORTHY)
+    }
+end
+
+query applications
+  $result: /applications
+end

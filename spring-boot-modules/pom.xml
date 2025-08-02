@@ -69,6 +69,7 @@
         <module>spring-boot-mvc-birt</module>
         <module>spring-boot-mvc-jersey</module>
         <module>spring-boot-nashorn</module>
+        <module>spring-boot-open-telemetry</module>
         <module>spring-boot-parent</module>
         <module>spring-boot-performance</module>
         <module>spring-boot-pkl</module>
@@ -119,6 +120,7 @@
         <module>spring-boot-keycloak-adapters</module>
         <module>spring-boot-mvc-legacy</module>
         <module>spring-boot-springdoc-2</module>
+        <module>spring-boot-ssl</module>
         <module>spring-boot-documentation</module>
         <module>spring-boot-3-url-matching</module>
         <module>spring-boot-graalvm-docker</module>
