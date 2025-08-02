@@ -17,5 +17,6 @@
         <module>quarkus-liquibase</module>
         <module>quarkus-app</module>
         <module>quarkus-load-shedding</module>
+        <module>quarkus-infinispan</module>
     </modules>
 </project>

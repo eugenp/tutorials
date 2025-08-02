@@ -4,6 +4,13 @@
     <groupId>com.baeldung</groupId>
     <artifactId>quarkus-infinispan</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <name>quarkus-infinispan</name>
+
+    <parent>
+        <groupId>com.baeldung.quarkus.extension</groupId>
+        <artifactId>quarkus-extension</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
     <dependencyManagement>
         <dependencies>
