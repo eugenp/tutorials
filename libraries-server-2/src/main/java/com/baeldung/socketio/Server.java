@@ -1,17 +1,15 @@
 package com.baeldung.socketio;
 
-import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.corundumstudio.socketio.Configuration;
 import com.corundumstudio.socketio.SocketIOServer;
 
-public class ServerLiveTest {
-    private static final Logger LOG = LoggerFactory.getLogger(ServerLiveTest.class);
+public class Server {
+    private static final Logger LOG = LoggerFactory.getLogger(Server.class);
 
-    @Test
-    void startServer() throws Exception {
+    public static void main(String[] args) throws Exception {
         Configuration config = new Configuration();
         config.setHostname("localhost");
         config.setPort(8081);
