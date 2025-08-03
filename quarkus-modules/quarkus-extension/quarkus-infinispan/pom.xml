@@ -28,15 +28,21 @@
         <dependency>
             <groupId>io.quarkiverse.infinispan</groupId>
             <artifactId>quarkus-infinispan-embedded</artifactId>
-            <version>${quarkus.infinispan}</version>
+            <version>${quarkus.infinispan.version}</version>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-arc</artifactId>
         </dependency>
+		<dependency>
+		    <groupId>io.quarkus</groupId>
+		    <artifactId>quarkus-junit5</artifactId>
+		    <scope>test</scope>
+		</dependency>
+        <!-- Junit vintage versions listed explicitly due to conflict with Parent project-->
         <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-junit5</artifactId>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -120,10 +126,12 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-        <quarkus.infinispan>1.0.2</quarkus.infinispan>
+        <quarkus.infinispan.version>1.0.2</quarkus.infinispan.version>
+        <org.junit.jupiter.version>5.13.4</org.junit.jupiter.version>
         <quarkus.platform.version>3.25.0</quarkus.platform.version>
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.5.3</surefire-plugin.version>
+        
     </properties>
 
 </project>
