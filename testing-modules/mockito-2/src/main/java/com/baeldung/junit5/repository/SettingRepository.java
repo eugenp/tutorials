@@ -1,4 +1,4 @@
-package com.baeldung.mockito.junit5.repository;
+package com.baeldung.junit5.repository;
 
 public interface SettingRepository {
 

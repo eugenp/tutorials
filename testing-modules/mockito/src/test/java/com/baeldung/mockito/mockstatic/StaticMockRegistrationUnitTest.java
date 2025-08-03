@@ -1,14 +1,15 @@
 package com.baeldung.mockito.mockstatic;
 
-import com.baeldung.mockito.mockedstatic.StaticUtils;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mockStatic;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mockStatic;
+import com.baeldung.mockito.mockedstatic.StaticUtils;
 
 public class StaticMockRegistrationUnitTest {
 

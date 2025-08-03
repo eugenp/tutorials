@@ -1,6 +1,6 @@
-package com.baeldung.mockito.junit5.repository;
+package com.baeldung.junit5.repository;
 
-import com.baeldung.mockito.junit5.User;
+import com.baeldung.junit5.User;
 
 public interface UserRepository {
 
