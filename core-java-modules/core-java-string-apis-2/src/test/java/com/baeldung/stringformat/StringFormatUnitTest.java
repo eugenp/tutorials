@@ -105,22 +105,14 @@ public class StringFormatUnitTest {
     }
 
     private String padIntegerWithZeros(int number, int width) {
-        // The format specifier:
-        // % : Introduces a format specifier.
-        // 0 : The '0' flag indicates that the output should be padded with leading zeros.
-        // <width> : The minimum number of characters to be written to the output.
-        // d : The conversion character for a decimal integer.
+       
         return String.format("%0" + width + "d", number);
     }
 
     @Test
-    public void givenAnInteger_whenPaddingWithZeroes_thanIntegerGetsPadded() {
-        // Test case 1: Positive number
+    public void givenAnInteger_whenPaddingWithZeros_thanIntegerGetsPadded() {
+       
         assertEquals("00000001", padIntegerWithZeros(1, 8));
-
-        // Test case 5: Negative number
-        // Note: For negative numbers, the sign will still be present,
-        // and padding occurs after the sign.
         assertEquals("-0000001", padIntegerWithZeros(-1, 8));
     }
 }
