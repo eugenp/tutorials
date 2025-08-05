@@ -1,4 +1,4 @@
-package com.baeldung.mtls.httpclient;
+package com.baeldung.mtls.calls;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -35,8 +35,8 @@ public class SslContextBuilder {
         final Properties props = System.getProperties();
         props.setProperty("jdk.internal.httpclient.disableHostnameVerification", Boolean.TRUE.toString());
 
-        String privateKeyPath = "/etc/certs/client.key.pkcs8";
-        String publicKeyPath = "/etc/certs/client.crt";
+        String privateKeyPath = "src/main/resources/keys/client.key.pkcs8";
+        String publicKeyPath = "src/main/resources/keys/client.crt";
 
         final byte[] publicData = Files.readAllBytes(Path.of(publicKeyPath));
         final byte[] privateData = Files.readAllBytes(Path.of(privateKeyPath));

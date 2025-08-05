@@ -1,4 +1,4 @@
-package com.baeldung.mtls.httpclient;
+package com.baeldung.mtls.calls;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,24 +11,26 @@ import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
 import java.security.spec.InvalidKeySpecException;
 
-import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 
-public class HttpURLConnectionExample {
+import org.assertj.core.api.Assertions;
+import org.junit.Test;
 
-    public static void main(String[] args)
-        throws IOException, CertificateException, NoSuchAlgorithmException, KeyStoreException, UnrecoverableKeyException, InvalidKeySpecException,
+public class MutualTLSCallWithHttpURLConnectionLiveTest {
+
+    @Test
+    public void whenWeExecuteMutualTLSCallToNginxServerWithHttpURLConnection_thenItShouldReturnNonNullResponse()
+        throws UnrecoverableKeyException, CertificateException, IOException, InvalidKeySpecException, NoSuchAlgorithmException, KeyStoreException,
                KeyManagementException {
         SSLContext sslContext = SslContextBuilder.buildSslContext();
-
-        HostnameVerifier allHostsValid = (hostname, session) -> true;
         HttpsURLConnection httpsURLConnection = (HttpsURLConnection) new URL("https://127.0.0.1/ping").openConnection();
         httpsURLConnection.setSSLSocketFactory(sslContext.getSocketFactory());
-        httpsURLConnection.setHostnameVerifier(allHostsValid);
-
+        httpsURLConnection.setHostnameVerifier(HostNameVerifierBuilder.getAllHostsValid());
         InputStream inputStream = httpsURLConnection.getInputStream();
         String response = new String(inputStream.readAllBytes(), Charset.defaultCharset());
+        Assertions.assertThat(response)
+            .isNotNull();
     }
 
 }

@@ -1,4 +1,4 @@
-package com.baeldung.mtls.httpclient;
+package com.baeldung.mtls.calls;
 
 import java.io.IOException;
 import java.net.URI;
@@ -14,10 +14,14 @@ import java.security.spec.InvalidKeySpecException;
 
 import javax.net.ssl.SSLContext;
 
-public class HttpClientExample {
+import org.assertj.core.api.Assertions;
+import org.junit.Test;
 
-    public static void main(String[] args)
-        throws IOException, CertificateException, NoSuchAlgorithmException, KeyStoreException, UnrecoverableKeyException, InvalidKeySpecException,
+public class MutualTLSCallWithHttpClientLiveTest {
+
+    @Test
+    public void whenWeExecuteMutualTLSCallToNginxServerWithHttpClient_thenItShouldReturnStatusOK()
+        throws UnrecoverableKeyException, CertificateException, IOException, InvalidKeySpecException, NoSuchAlgorithmException, KeyStoreException,
                KeyManagementException {
         SSLContext sslContext = SslContextBuilder.buildSslContext();
         HttpClient client = HttpClient.newBuilder()
@@ -31,7 +35,10 @@ public class HttpClientExample {
 
         HttpResponse<String> response = client.sendAsync(exactRequest, HttpResponse.BodyHandlers.ofString())
             .join();
-
+        Assertions.assertThat(response)
+            .isNotNull();
+        Assertions.assertThat(response.statusCode())
+            .isEqualTo(200);
     }
 
 }
