@@ -62,7 +62,6 @@
     </build>
 
     <properties>
-        <gson.version>2.11.0</gson.version>
         <csv.version>1.5</csv.version>
         <jmh.version>1.37</jmh.version>
     </properties>
