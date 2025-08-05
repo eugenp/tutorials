@@ -355,6 +355,7 @@
                 <module>spring-swagger-codegen-modules</module>
                 <module>video-tutorials</module>
                 <module>jhipster-6</module>
+                <module>mcp-spring</module>
             </modules>
 
             <properties>
