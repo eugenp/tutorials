@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.spring-boot-modules</groupId>
     <artifactId>spring-boot-modules</artifactId>
@@ -107,9 +107,11 @@
         <module>spring-boot-3-observation</module>
         <module>spring-boot-3-test-pitfalls</module>
         <module>spring-boot-3-testcontainers</module>
+        <module>spring-boot-3-url-matching</module>
         <module>spring-boot-3-2</module>
         <!-- <module>spring-boot-3-3</module> --> <!-- JAVA-42049 -->
         <module>spring-boot-3-4</module>
+        <module>spring-boot-4</module>
         <module>spring-boot-resilience4j</module>
         <module>spring-boot-properties</module>
         <module>spring-boot-properties-2</module>
@@ -122,7 +124,6 @@
         <module>spring-boot-springdoc-2</module>
         <module>spring-boot-ssl</module>
         <module>spring-boot-documentation</module>
-        <module>spring-boot-3-url-matching</module>
         <module>spring-boot-graalvm-docker</module>
         <module>spring-boot-validations</module>
         <module>spring-boot-openapi</module>
