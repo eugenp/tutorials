@@ -819,6 +819,7 @@
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
                 <module>spring-static-resources</module>
+                <module>spring-structurizr</module>
                 <module>spring-swagger-codegen-modules/custom-validations-opeanpi-codegen</module>
                 <module>spring-threads</module>
                 <module>spring-vault</module>
@@ -1257,6 +1258,7 @@
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
                 <module>spring-static-resources</module>
+                <module>spring-structurizr</module>
                 <module>spring-swagger-codegen-modules/custom-validations-opeanpi-codegen</module>
                 <module>spring-threads</module>
                 <module>spring-vault</module>
