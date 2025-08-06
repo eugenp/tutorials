@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 public class JTSOperationUtils {
     private static final Logger log = LoggerFactory.getLogger(JTSOperationUtils.class);
 
-    public static boolean isContainment(Geometry point, Geometry polygon) {
+    public static boolean checkContainment(Geometry point, Geometry polygon) {
         boolean isInside = polygon.contains(point);
         log.info("Is the point inside polygon? {}", isInside);
         return isInside;
