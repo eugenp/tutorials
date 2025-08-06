@@ -17,8 +17,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>22</source>
-                    <target>22</target>
+                    <source>${maven.compiler.source.version}</source>
+                    <target>${maven.compiler.source.version}</target>
                     <compilerArgs>--enable-preview</compilerArgs>
                 </configuration>
             </plugin>
@@ -32,4 +32,8 @@
         </plugins>
     </build>
 
+    <properties>
+        <maven.compiler.source.version>22</maven.compiler.source.version>
+        <maven.compiler.target.version>22</maven.compiler.target.version>
+    </properties>
 </project>
