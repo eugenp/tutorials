@@ -17,47 +17,47 @@ class BookedTicket {
     private Instant createdAt = Instant.now();
     private Status status = Status.BOOKED;
 
-    public BookedTicket cancelledBooking() {
+    BookedTicket cancelledBooking() {
         BookedTicket cancelled = new BookedTicket(movieId, seatNumber);
         cancelled.status = Status.BOOKING_CANCELLED;
         return cancelled;
     }
 
-    public enum Status {
+    enum Status {
         BOOKED,
         BOOKING_CANCELLED
     }
 
-    public boolean isBooked() {
+    boolean isBooked() {
         return status == Status.BOOKED;
     }
 
-    public boolean isCancelled() {
+    boolean isCancelled() {
         return status == Status.BOOKING_CANCELLED;
     }
 
-    public BookedTicket(Long movieId, String seatNumber) {
+    BookedTicket(Long movieId, String seatNumber) {
         this.movieId = movieId;
         this.seatNumber = seatNumber;
     }
 
-    public Long getId() {
+    Long id() {
         return id;
     }
 
-    public Long getMovieId() {
+    Long movieId() {
         return movieId;
     }
 
-    public String getSeatNumber() {
+    String seatNumber() {
         return seatNumber;
     }
 
-    public Instant getCreatedAt() {
+    Instant createdAt() {
         return createdAt;
     }
 
-    public Status getStatus() {
+    Status status() {
         return status;
     }
 

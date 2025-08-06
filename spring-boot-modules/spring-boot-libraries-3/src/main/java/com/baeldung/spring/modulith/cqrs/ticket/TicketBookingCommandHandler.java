@@ -38,8 +38,8 @@ class TicketBookingCommandHandler {
         bookedTicket = bookedTickets.save(bookedTicket);
 
         eventPublisher.publishEvent(
-            new BookingCreated(bookedTicket.getMovieId(), bookedTicket.getSeatNumber()));
-        return bookedTicket.getId();
+            new BookingCreated(bookedTicket.movieId(), bookedTicket.seatNumber()));
+        return bookedTicket.id();
     }
 
     @Transactional
@@ -59,8 +59,8 @@ class TicketBookingCommandHandler {
         bookedTickets.save(cancelledTicket);
 
         eventPublisher.publishEvent(
-            new BookingCancelled(cancelledTicket.getMovieId(), cancelledTicket.getSeatNumber()));
-        return cancelledTicket.getId();
+            new BookingCancelled(cancelledTicket.movieId(), cancelledTicket.seatNumber()));
+        return cancelledTicket.id();
     }
 
     private static void validateSeatNumber(String seat) {

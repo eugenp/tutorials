@@ -30,7 +30,7 @@ class BookingTicketsController {
         return new BookingResponse(id);
     }
 
-    public record BookingResponse(Long bookingId) {
+    record BookingResponse(Long bookingId) {
 
     }
 
@@ -43,7 +43,7 @@ class BookingTicketsController {
         return new CancellationResponse(id);
     }
 
-    public record CancellationResponse(Long cancellationId) {
+    record CancellationResponse(Long cancellationId) {
 
     }
 

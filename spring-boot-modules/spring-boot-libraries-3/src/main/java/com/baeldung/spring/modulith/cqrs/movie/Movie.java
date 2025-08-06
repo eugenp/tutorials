@@ -33,7 +33,7 @@ class Movie {
     @Column(name = "seat_number")
     private List<String> occupiedSeats = new ArrayList<>();
 
-    public Movie(String movieName, String screenRoom, Instant startTime) {
+    Movie(String movieName, String screenRoom, Instant startTime) {
         this.title = movieName;
         this.screenRoom = screenRoom;
         this.startTime = startTime;
@@ -74,23 +74,23 @@ class Movie {
         // Default constructor for JPA
     }
 
-    public Instant startTime() {
+    Instant startTime() {
         return startTime;
     }
 
-    public String title() {
+    String title() {
         return title;
     }
 
-    public String screenRoom() {
+    String screenRoom() {
         return screenRoom;
     }
 
-    public List<String> freeSeats() {
+    List<String> freeSeats() {
         return List.copyOf(freeSeats);
     }
 
-    public List<String> occupiedSeatsSeats() {
+    List<String> occupiedSeatsSeats() {
         return List.copyOf(freeSeats);
     }
 }
