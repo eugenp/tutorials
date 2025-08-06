@@ -49,7 +49,7 @@ public class JtsApplicationUnitTest {
     }
 
     @Test
-    public void givenBaseRectangle_whenAnotherRectangleOverlapping_GetTheDifferenceRectangle() throws Exception {
+    public void givenBaseRectangle_whenAnotherRectangleOverlapping_thenGetTheDifferenceRectangle() throws Exception {
         Geometry base = GeometryFactoryUtil.readWKT("POLYGON ((0 0, 0 10, 10 10, 10 0, 0 0))");
         Geometry cut = GeometryFactoryUtil.readWKT("POLYGON ((5 0, 5 10, 10 10, 10 0, 5 0))");
 
