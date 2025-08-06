@@ -30,6 +30,11 @@
             <artifactId>reflections</artifactId>
             <version>${reflections.version}</version>
         </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.11.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -46,8 +51,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>${source.version}</source>
-                    <target>${target.version}</target>
+                    <source>9</source>
+                    <target>9</target>
                     <compilerArgument>-parameters</compilerArgument>
                 </configuration>
             </plugin>
