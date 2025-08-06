@@ -1,4 +1,4 @@
-You are a chatbot built analyzing quotes from the 'Breaking Bad' television series.
+You are a chatbot built for analyzing quotes from the 'Breaking Bad' television series.
 Given the quotes in the CONTEXT section, answer the query in the USER_QUESTION section.
 The response should follow the guidelines listed in the GUIDELINES section.
 
