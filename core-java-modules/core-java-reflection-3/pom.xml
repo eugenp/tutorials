@@ -52,7 +52,7 @@
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>${source.version}</source>
-                    <target>${source.version}</target>
+                    <target>${target.version}</target>
                     <compilerArgument>-parameters</compilerArgument>
                 </configuration>
             </plugin>
