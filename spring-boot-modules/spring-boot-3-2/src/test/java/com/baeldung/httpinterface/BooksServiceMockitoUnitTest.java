@@ -25,8 +25,11 @@ class BooksServiceMockitoUnitTest {
     @Mock(answer = Answers.RETURNS_DEEP_STUBS)
     private WebClient webClient;
 
-    @InjectMocks
+    //@InjectMocks
     private BooksClient booksClient;
+    
+    @InjectMocks
+    private BooksService booksService;
 
     @Test
     void givenMockedWebClientReturnsTwoBooks_whenGetBooksServiceMethodIsCalled_thenListOfTwoBooksIsReturned() {
@@ -38,7 +41,7 @@ class BooksServiceMockitoUnitTest {
             new Book(1,"Book_1", "Author_1", 1998),
             new Book(2, "Book_2", "Author_2", 1999)
           )));
-        BooksService booksService = booksClient.getBooksService();
+        // BooksService booksService = booksClient.getBooksService();
         List<Book> books = booksService.getBooks();
         assertEquals(2, books.size());
     }
@@ -51,7 +54,7 @@ class BooksServiceMockitoUnitTest {
           .bodyToMono(new ParameterizedTypeReference<Book>(){}))
           .willReturn(Mono.just(new Book(1,"Book_1", "Author_1", 1998)));
 
-        BooksService booksService = booksClient.getBooksService();
+        //BooksService booksService = booksClient.getBooksService();
         Book book = booksService.getBook(1);
         assertEquals("Book_1", book.title());
     }
@@ -64,7 +67,7 @@ class BooksServiceMockitoUnitTest {
           .bodyToMono(new ParameterizedTypeReference<Book>(){}))
           .willReturn(Mono.just(new Book(3, "Book_3", "Author_3", 2000)));
 
-        BooksService booksService = booksClient.getBooksService();
+        //BooksService booksService = booksClient.getBooksService();
         Book book = booksService.saveBook(new Book(3, "Book_3", "Author_3", 2000));
         assertEquals("Book_3", book.title());
     }
@@ -79,7 +82,7 @@ class BooksServiceMockitoUnitTest {
           .getStatusCode())
           .willReturn(HttpStatusCode.valueOf(200));
 
-        BooksService booksService = booksClient.getBooksService();
+        //BooksService booksService = booksClient.getBooksService();
         ResponseEntity<Void> response = booksService.deleteBook(3);
         assertEquals(HttpStatusCode.valueOf(200), response.getStatusCode());
     }
