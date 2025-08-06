@@ -3,6 +3,7 @@ package com.baeldung.dataloaderbatchprocessing;
 import org.dataloader.BatchLoader;
 import org.dataloader.DataLoader;
 import org.dataloader.DataLoaderFactory;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -10,6 +11,7 @@ import java.util.stream.Collectors;
 import com.baeldung.dataloaderbatchprocessing.entity.User;
 import com.baeldung.dataloaderbatchprocessing.service.UserService;
 
+@Component
 public class UserDataLoader {
 
     private final UserService userService;

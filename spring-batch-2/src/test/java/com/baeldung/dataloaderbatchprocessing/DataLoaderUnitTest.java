@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -43,8 +42,6 @@ public class DataLoaderUnitTest {
         CompletableFuture<User> future3 = userLoader.load("103");
 
         userLoader.dispatch();
-
-        Thread.sleep(1000);
 
         assertEquals("User_101", future1.get()
             .getName());
