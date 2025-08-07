@@ -819,6 +819,7 @@
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
                 <module>spring-static-resources</module>
+                <module>spring-structurizr</module>
                 <module>spring-swagger-codegen-modules/custom-validations-opeanpi-codegen</module>
                 <module>spring-threads</module>
                 <module>spring-vault</module>
@@ -1257,6 +1258,7 @@
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
                 <module>spring-static-resources</module>
+                <module>spring-structurizr</module>
                 <module>spring-swagger-codegen-modules/custom-validations-opeanpi-codegen</module>
                 <module>spring-threads</module>
                 <module>spring-vault</module>
@@ -1520,6 +1522,7 @@
                 <module>spring-boot-modules/spring-boot-graphql-2</module> <!-- JAVA-42053 -->
                 <module>spring-remoting-modules/remoting-hessian-burlap</module> <!-- cannot upgrade logback due to usage of old spring boot 1 version -->
                 <module>spring-security-modules/spring-security-saml</module> <!-- This module wasn't able to update to spring boot 3 because Jakarta clashes with javax -->
+                <module>static-analysis-modules/error-prone-library</module> <!-- requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <module>web-modules/ninja</module> <!-- JAVA-24584 -->
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
@@ -1584,6 +1587,7 @@
                 <module>spring-boot-modules/spring-boot-graphql-2</module> <!-- JAVA-42053 -->
                 <module>spring-remoting-modules/remoting-hessian-burlap</module> <!-- cannot upgrade logback due to usage of old spring boot 1 version -->
                 <module>spring-security-modules/spring-security-saml</module> <!-- This module wasn't able to update to spring boot 3 because Jakarta clashes with javax -->
+                <module>static-analysis-modules/error-prone-library</module> <!-- requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <module>web-modules/ninja</module> <!-- JAVA-24584 -->
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->

@@ -1,17 +1,14 @@
 package com.baeldung.boot.testing;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@ExtendWith(SpringExtension.class)
 @DataJpaTest
 public class EmployeeRepositoryIntegrationTest {
 
@@ -41,13 +38,15 @@ public class EmployeeRepositoryIntegrationTest {
         Employee emp = new Employee("test");
         entityManager.persistAndFlush(emp);
 
-        Employee fromDb = employeeRepository.findById(emp.getId()).orElse(null);
+        Employee fromDb = employeeRepository.findById(emp.getId())
+            .orElse(null);
         assertThat(fromDb.getName()).isEqualTo(emp.getName());
     }
 
     @Test
     public void whenInvalidId_thenReturnNull() {
-        Employee fromDb = employeeRepository.findById(-11l).orElse(null);
+        Employee fromDb = employeeRepository.findById(-11l)
+            .orElse(null);
         assertThat(fromDb).isNull();
     }
 
@@ -64,6 +63,8 @@ public class EmployeeRepositoryIntegrationTest {
 
         List<Employee> allEmployees = employeeRepository.findAll();
 
-        assertThat(allEmployees).hasSize(3).extracting(Employee::getName).containsOnly(alex.getName(), ron.getName(), bob.getName());
+        assertThat(allEmployees).hasSize(3)
+            .extracting(Employee::getName)
+            .containsOnly(alex.getName(), ron.getName(), bob.getName());
     }
 }
