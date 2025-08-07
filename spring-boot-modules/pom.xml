@@ -17,6 +17,7 @@
     </parent>
 
     <modules>
+        <module>flyway-multidb-springboot</module>
         <module>spring-boot-admin</module>
         <module>spring-boot-angular</module>
         <module>spring-boot-annotations</module>
