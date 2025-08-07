@@ -18,7 +18,7 @@ spring:
   jpa:
     defer-datasource-initialization: false
     hibernate:
-      ddl-auto: validate
+      ddl-auto: none
   main:
     allow-circular-references: true
   h2:
