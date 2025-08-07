@@ -2,7 +2,6 @@ package com.baeldung.boot.testing;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
@@ -10,7 +9,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.io.IOException;
@@ -25,10 +23,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = Application.class)
-@AutoConfigureMockMvc 
-@EnableAutoConfiguration(exclude=SecurityAutoConfiguration.class)
+@AutoConfigureMockMvc
+@EnableAutoConfiguration(exclude = SecurityAutoConfiguration.class)
 @TestPropertySource(locations = "classpath:application-integrationtest.properties")
 public class EmployeeRestControllerIntegrationTest {
 
@@ -46,10 +43,12 @@ public class EmployeeRestControllerIntegrationTest {
     @Test
     public void whenValidInput_thenCreateEmployee() throws IOException, Exception {
         Employee bob = new Employee("bob");
-        mvc.perform(post("/api/employees").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJson(bob)));
+        mvc.perform(post("/api/employees").contentType(MediaType.APPLICATION_JSON)
+            .content(JsonUtil.toJson(bob)));
 
         List<Employee> found = repository.findAll();
-        assertThat(found).extracting(Employee::getName).containsOnly("bob");
+        assertThat(found).extracting(Employee::getName)
+            .containsOnly("bob");
     }
 
     @Test

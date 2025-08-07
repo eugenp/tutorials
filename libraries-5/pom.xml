@@ -11,73 +11,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>17</source>
-                    <target>17</target>
-                    <compilerArgs>
-                        <arg>-Xplugin:Manifold</arg>
-                    </compilerArgs>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>systems.manifold</groupId>
-                            <artifactId>manifold-json</artifactId>
-                            <version>${manifold.version}</version>
-                        </path>
-                        <path>
-                            <groupId>am.ik.yavi</groupId>
-                            <artifactId>yavi</artifactId>
-                            <version>${yavi.version}</version>
-                        </path>
-                    </annotationProcessorPaths>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.linecorp.armeria</groupId>
-                <artifactId>armeria-bom</artifactId>
-                <version>${armeria.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
-        <dependency>
-            <groupId>io.activej</groupId>
-            <artifactId>activej-http</artifactId>
-            <version>${activej.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson-databind.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.activej</groupId>
-            <artifactId>activej-inject</artifactId>
-            <version>${activej.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.activej</groupId>
-            <artifactId>activej-promise</artifactId>
-            <version>${activej.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.activej</groupId>
-            <artifactId>activej-test</artifactId>
-            <version>${activej.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>com.alicp.jetcache</groupId>
             <artifactId>jetcache-core</artifactId>
@@ -93,7 +27,6 @@
             <artifactId>jetcache-autoconfigure</artifactId>
             <version>${jetcache.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -114,80 +47,6 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
             <version>${spring-boot.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>systems.manifold</groupId>
-            <artifactId>manifold-json-rt</artifactId>
-            <version>${manifold.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>systems.manifold</groupId>
-            <artifactId>manifold-csv-rt</artifactId>
-            <version>${manifold.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>systems.manifold</groupId>
-            <artifactId>manifold-xml-rt</artifactId>
-            <version>${manifold.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>systems.manifold</groupId>
-            <artifactId>manifold-yaml-rt</artifactId>
-            <version>${manifold.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.linecorp.armeria</groupId>
-            <artifactId>armeria</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.linecorp.armeria</groupId>
-            <artifactId>armeria-graphql</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>nl.basjes.parse.useragent</groupId>
-            <artifactId>yauaa</artifactId>
-            <version>${yauaa.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>am.ik.yavi</groupId>
-            <artifactId>yavi</artifactId>
-            <version>${yavi.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.googlecode.lanterna</groupId>
-            <artifactId>lanterna</artifactId>
-            <version>${lanterna.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.soot-oss</groupId>
-            <artifactId>sootup.core</artifactId>
-            <version>${sootup.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.soot-oss</groupId>
-            <artifactId>sootup.java.core</artifactId>
-            <version>${sootup.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.soot-oss</groupId>
-            <artifactId>sootup.java.sourcecode</artifactId>
-            <version>${sootup.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.soot-oss</groupId>
-            <artifactId>sootup.java.bytecode</artifactId>
-            <version>${sootup.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-retry</artifactId>
-            <version>${resilience4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-circuitbreaker</artifactId>
-            <version>${resilience4j.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.jline</groupId>
             <artifactId>jline</artifactId>
@@ -197,16 +56,6 @@
             <groupId>org.jline</groupId>
             <artifactId>jline-terminal-jansi</artifactId>
             <version>${jline.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.kohsuke</groupId>
-            <artifactId>github-api</artifactId>
-            <version>${github-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.objenesis</groupId>
-            <artifactId>objenesis</artifactId>
-            <version>${objenesis.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -219,25 +68,89 @@
             <artifactId>restfb</artifactId>
             <version>${com.restfb.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jool</artifactId>
+            <version>${jool.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.engio</groupId>
+            <artifactId>mbassador</artifactId>
+            <version>${mbassador.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>${javax.el.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>${glassfish.web.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.rosuda.REngine</groupId>
+            <artifactId>Rserve</artifactId>
+            <version>${rserve.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jbytecode</groupId>
+            <artifactId>RCaller</artifactId>
+            <version>${rcaller.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.renjin</groupId>
+            <artifactId>renjin-script-engine</artifactId>
+            <version>${renjin.version}</version>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <!-- Excludes FastR classes from compilations since they require GraalVM -->
+                    <excludes>
+                        <exclude>com/baeldung/r/FastRMean.java</exclude>
+                    </excludes>
+                    <testExcludes>
+                        <exclude>com/baeldung/r/FastRMeanUnitTest.java</exclude>
+                    </testExcludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>nm-repo</id>
+            <name>Numerical Method's Maven Repository</name>
+            <url>http://repo.numericalmethod.com/maven/</url>
+            <layout>default</layout>
+        </repository>
+        <!-- Needed for Renjin -->
+        <repository>
+            <id>bedatadriven</id>
+            <name>BeDataDriven repository</name>
+            <url>https://nexus.bedatadriven.com/content/groups/public/</url>
+        </repository>
+    </repositories>
 
     <properties>
         <jetcache.version>2.7.6</jetcache.version>
         <spring-boot.version>3.3.0</spring-boot.version>
         <spring.version>6.1.8</spring.version>
-        <lanterna.version>3.1.2</lanterna.version>
-        <manifold.version>2024.1.20</manifold.version>
-        <armeria.version>1.29.2</armeria.version>
-        <yauaa.version>7.28.1</yauaa.version>
-        <yavi.version>0.14.1</yavi.version>
-        <activej.version>6.0-rc2</activej.version>
-        <jackson-databind.version>2.17.0</jackson-databind.version>
-        <sootup.version>1.3.0</sootup.version>
-        <resilience4j.version>2.1.0</resilience4j.version>
         <jline.version>3.28.0</jline.version>
-        <github-api.version>1.327</github-api.version>
         <com.restfb.version>2025.6.0</com.restfb.version>
-        <objenesis.version>3.4</objenesis.version>
+        <jool.version>0.9.12</jool.version>
+        <mbassador.version>1.3.1</mbassador.version>
+        <javax.el.version>3.0.0</javax.el.version>
+        <glassfish.web.version>2.2.4</glassfish.web.version>
+        <renjin.version>3.5-beta72</renjin.version>
+        <rcaller.version>3.0</rcaller.version>
+        <rserve.version>1.8.1</rserve.version>
     </properties>
 
 </project>

@@ -92,7 +92,8 @@
                     <webApp>
                         <_initParams>
                             <org.eclipse.jetty.servlet.Default.useFileMappedBuffer>
-                                false</org.eclipse.jetty.servlet.Default.useFileMappedBuffer>
+                                false
+                            </org.eclipse.jetty.servlet.Default.useFileMappedBuffer>
                         </_initParams>
                         <resourceBases>
                             <!-- Serve static content without copying from
@@ -100,7 +101,8 @@
                             <resourceBase>src/main/webapp</resourceBase>
                             <!-- Serve compiled JS built by J2CL -->
                             <resourceBase>
-                                ${project.build.directory}/${project.build.finalName}</resourceBase>
+                                ${project.build.directory}/${project.build.finalName}
+                            </resourceBase>
                         </resourceBases>
                     </webApp>
                 </configuration>

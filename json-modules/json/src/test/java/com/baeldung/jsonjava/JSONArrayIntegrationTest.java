@@ -12,7 +12,7 @@ import static net.javacrumbs.jsonunit.assertj.JsonAssertions.assertThatJson;
 public class JSONArrayIntegrationTest {
 
     @Test
-    public void givenJSONJava_thenCreateNewJSONArrayFromScratch() {
+    public void givenJSONJava_whenCreatingNewJSONArrayFromScratch_thenCorrectNewJSONArrayCreated() {
         JSONArray ja = new JSONArray();
         ja.put(Boolean.TRUE);
         ja.put("lorem ipsum");
@@ -30,7 +30,7 @@ public class JSONArrayIntegrationTest {
     }
 
     @Test
-    public void givenJsonString_thenCreateNewJSONArray() {
+    public void givenJsonString_whenCreatingNewJSONArray_thenCorrectNewJSONArrayCreated() {
         JSONArray ja = new JSONArray("[true, \"lorem ipsum\", 215]");
 
         assertThatJson(ja)
@@ -38,7 +38,7 @@ public class JSONArrayIntegrationTest {
     }
 
     @Test
-    public void givenListObject_thenConvertItToJSONArray() {
+    public void givenListObject_whenCreatingNewJSONArray_thenCorrectJSONArrayCreated() {
         List<String> list = new ArrayList<>();
         list.add("California");
         list.add("Texas");

@@ -1,0 +1,19 @@
+spring:
+  security:
+    oauth2:
+      authorizationserver:
+        client:
+          oidc-client:
+            registration:
+              client-id: mcp-client
+              client-secret: "{noop}secret"
+              client-authentication-methods: client_secret_basic
+              authorization-grant-types: client_credentials
+  # Avoid starting docker from the shared codebase
+  docker:
+    compose:
+      enabled: false
+
+logging:
+  level:
+    org.springframework.ai.mcp: DEBUG    

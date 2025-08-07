@@ -2,17 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
     <artifactId>assertion-libraries-2</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>assertion-libraries-2</name>
-
-    <properties>
-        <json-unit.version>3.5.0</json-unit.version>
-        <jackson-databind.version>2.18.1</jackson-databind.version>
-    </properties>
-
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -27,20 +20,50 @@
             <version>${json-unit.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson-databind.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-guava</artifactId>
+            <version>${assertj-guava.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-assertions-generator-maven-plugin</artifactId>
+                <version>${assertj-generator.version}</version>
+                <configuration>
+                    <classes>
+                        <param>com.baeldung.assertj.custom.Person</param>
+                    </classes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <json-unit.version>3.5.0</json-unit.version>
+        <jackson-databind.version>2.18.1</jackson-databind.version>
+        <assertj-guava.version>3.4.0</assertj-guava.version>
+        <assertj-generator.version>2.1.0</assertj-generator.version>
+    </properties>
 
 </project>

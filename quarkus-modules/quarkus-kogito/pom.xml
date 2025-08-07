@@ -175,6 +175,7 @@
         <mapstruct.version>1.6.3</mapstruct.version>
         <!-- currently, the only version supporting Quarkus 3 -->
         <kogito.version>2.44.0.Alpha</kogito.version>
+        <maven.compiler.release>17</maven.compiler.release>
     </properties>
 
 </project>
