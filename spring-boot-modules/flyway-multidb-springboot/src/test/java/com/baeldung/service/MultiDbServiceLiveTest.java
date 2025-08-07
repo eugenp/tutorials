@@ -13,7 +13,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class MultiDbServiceTest {
+class MultiDbServiceLiveTest {
 
     @Autowired
     private UserService userService;
@@ -25,19 +25,21 @@ class MultiDbServiceTest {
     @Test
     void givenUsersAndProducts_whenSaved_thenFoundById() {
         User user = new User();
-        user.setId(1L);
         user.setName("Alice");
 
         Product product = new Product();
-        product.setId(100L);
         product.setName("Laptop");
 
-        productService.save(product);
-        userService.save(user);
+        // Save and capture returned entities to get generated IDs
+        Product savedProduct = productService.save(product);
+        User savedUser = userService.save(user);
 
-        Optional<User> retrievedUser = userService.findById(1L);
-        Optional<Product> retrievedProduct = productService.findById(100L);
 
+        // Use the generated IDs for retrieval
+        Optional<User> retrievedUser = userService.findById(savedUser.getId());
+        Optional<Product> retrievedProduct = productService.findById(savedProduct.getId());
+
+        // Assertions
         assertTrue(retrievedUser.isPresent());
         assertEquals("Alice", retrievedUser.get().getName());
 

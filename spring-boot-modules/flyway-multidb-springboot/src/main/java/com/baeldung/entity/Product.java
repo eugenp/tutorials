@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 public class Product {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_seq")
     private Long id;
 
     private String name;

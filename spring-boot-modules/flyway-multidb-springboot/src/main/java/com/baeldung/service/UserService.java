@@ -3,6 +3,7 @@ package com.baeldung.service;
 import com.baeldung.entity.User;
 import com.baeldung.repository.user.UserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -15,8 +16,9 @@ public class UserService {
         this.repo = repo;
     }
 
-    public void save(User user) {
-        repo.save(user);
+    @Transactional("userTransactionManager")
+    public User save(User user) {
+        return repo.save(user);
     }
 
     public Optional<User> findById(Long id) {

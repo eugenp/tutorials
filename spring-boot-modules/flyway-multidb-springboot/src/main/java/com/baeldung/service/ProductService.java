@@ -17,8 +17,8 @@ public class ProductService {
     }
 
     @Transactional("productTransactionManager")
-    public void save(Product product) {
-        repo.save(product);
+    public Product save(Product product) {
+        return repo.save(product);
     }
 
     public Optional<Product> findById(Long id) {

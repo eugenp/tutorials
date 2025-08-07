@@ -52,13 +52,11 @@ public class ProductDbConfig {
     }
 
     @PostConstruct
-    public Flyway migrateProductDb() {
-        Flyway flyway = Flyway.configure()
+    public void migrateProductDb() {
+        Flyway.configure()
                 .dataSource(productDataSource())
                 .locations("classpath:db/migration/productdb")
-                .load();
-        flyway.migrate();
-
-        return flyway;
+                .load()
+                .migrate();
     }
 }
