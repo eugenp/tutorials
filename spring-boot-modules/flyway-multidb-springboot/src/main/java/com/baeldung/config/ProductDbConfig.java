@@ -40,7 +40,7 @@ public class ProductDbConfig {
                 .dataSource(productDataSource())
                 .packages("com.baeldung.entity")
                 .persistenceUnit("productPU")
-                .properties(Map.of("hibernate.hbm2ddl.auto", "create"))
+                .properties(Map.of("hibernate.hbm2ddl.auto", "none"))
                 .build();
     }
 

@@ -46,7 +46,7 @@ public class UserDbConfig {
                 .dataSource(userDataSource())
                 .packages("com.baeldung.entity")
                 .persistenceUnit("userPU")
-                .properties(Map.of("hibernate.hbm2ddl.auto", "create"))
+                .properties(Map.of("hibernate.hbm2ddl.auto", "none"))
                 .build();
     }
 
