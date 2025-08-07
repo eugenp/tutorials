@@ -25,11 +25,19 @@
     </dependencyManagement>
 
     <dependencies>
+		<dependency>
+		    <groupId>io.quarkus</groupId>
+		    <artifactId>quarkus-infinispan-cache</artifactId>
+		</dependency>    
         <dependency>
             <groupId>io.quarkiverse.infinispan</groupId>
             <artifactId>quarkus-infinispan-embedded</artifactId>
             <version>${quarkus.infinispan.version}</version>
         </dependency>
+		<dependency>
+		    <groupId>io.quarkus</groupId>
+		    <artifactId>quarkus-cache</artifactId>
+		</dependency>        
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-arc</artifactId>
@@ -127,7 +135,6 @@
         <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
         <quarkus.infinispan.version>1.0.2</quarkus.infinispan.version>
-        <org.junit.jupiter.version>5.13.4</org.junit.jupiter.version>
         <quarkus.platform.version>3.25.0</quarkus.platform.version>
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.5.3</surefire-plugin.version>

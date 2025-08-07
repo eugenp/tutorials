@@ -1,15 +1,19 @@
 package com.baeldung.quarkus.infinispan;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import jakarta.inject.Inject;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.jupiter.api.*;
-
+import io.quarkus.cache.Cache;
+import io.quarkus.cache.CacheName;
 import io.quarkus.test.junit.QuarkusTest;
+import jakarta.inject.Inject;
 
 @QuarkusTest
 class InfinispanCacheServiceTest {
@@ -17,11 +21,16 @@ class InfinispanCacheServiceTest {
     @Inject
     InfinispanCacheService cacheService;
 
+    @CacheName(InfinispanCacheService.ANOTHER_CACHE)
+    @Inject
+    Cache anotherCache;
+    
     @BeforeEach
     void clearCache() {
         cacheService.clear();
     }
 
+    
     @Test
     void givenNewCache_whenPutEntries_thenTheyAreStored() {
         // Given
@@ -40,7 +49,7 @@ class InfinispanCacheServiceTest {
         cacheService.put("expireKey", "expireValue");
 
         // When
-        Thread.sleep(65 * 1000); // Wait past the 60-second TTL
+        Thread.sleep(1000); // Wait past the 600-ms TTL
 
         // Then
         assertNull(cacheService.get("expireKey"));
@@ -56,13 +65,28 @@ class InfinispanCacheServiceTest {
 
         // When
         cacheService.bulkPut(bulkEntries);
-
         // Then
-        assertTrue(cacheService.size() <= 100);
+        assertTrue(cacheService.size() <= 10);
     }
 
     @Test
     void givenCacheConfig_whenChecked_thenPassivationIsEnabled() {
         assertTrue(cacheService.isPassivationEnabled(), "Passivation should be enabled");
     }
+    
+    @Test
+    void givenCacheWithStorage_whenQuarkusAnnotatedMethodCalled_thenTheyAreStoredInCache() {
+    	
+    	// TODO check that this indeed Infispan cache
+		// Given
+		for (int i = 0; i < 10; i++) {
+			cacheService.getValueFromCache("storedKey" + i);
+		}
+		
+//		System.out.println(demoCache instanceof io.quarkus.cache.infinispan.runtime.InfinispanCacheImpl);
+		
+		String storedValue5 = (String) anotherCache.get("storedKey5", null).await().indefinitely();
+		// Then
+		assertEquals("storedKey5Value",storedValue5);
+	}
 }

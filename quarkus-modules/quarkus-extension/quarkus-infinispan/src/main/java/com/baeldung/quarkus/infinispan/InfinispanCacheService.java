@@ -11,56 +11,63 @@ import org.infinispan.configuration.cache.Configuration;
 import org.infinispan.configuration.cache.ConfigurationBuilder;
 import org.infinispan.manager.EmbeddedCacheManager;
 
+import io.quarkus.cache.CacheResult;
 import jakarta.inject.Inject;
 
 @ApplicationScoped
 public class InfinispanCacheService {
 
-    private static final String CACHE_NAME = "demoCache";
+	public static final String CACHE_NAME = "demoCache";
+	
+	public static final String ANOTHER_CACHE = "anotherCache";
+	
+	@Inject
+	EmbeddedCacheManager cacheManager;
 
-    @Inject
-    EmbeddedCacheManager cacheManager;
+	private Cache<String, String> demoCache;
+	
 
-    private Cache<String, String> demoCache;
+	@PostConstruct
+	void init() {
+		Configuration cacheConfig = new ConfigurationBuilder().clustering().cacheMode(CacheMode.LOCAL).memory()
+				.maxCount(10).expiration().lifespan(600, TimeUnit.MILLISECONDS).persistence().passivation(true)
+				.build();
 
-    @PostConstruct
-    void init() {
-        Configuration cacheConfig = new ConfigurationBuilder()
-            .clustering().cacheMode(CacheMode.LOCAL)
-            .memory().maxCount(100)
-            .expiration().lifespan(60, TimeUnit.SECONDS)
-            .persistence().passivation(true)
-            .build();
+		cacheManager.defineConfiguration(CACHE_NAME, cacheConfig);
+		demoCache = cacheManager.getCache(CACHE_NAME);
+	}
 
-        cacheManager.defineConfiguration(CACHE_NAME, cacheConfig);
-        demoCache = cacheManager.getCache(CACHE_NAME);
-    }
+	
+	public void put(String key, String value) {
+		demoCache.put(key, value);
+	}
 
-    public void put(String key, String value) {
-        demoCache.put(key, value);
-    }
+	public String get(String key) {
+		return demoCache.get(key);
+	}
 
-    public String get(String key) {
-        return demoCache.get(key);
-    }
+    @CacheResult(cacheName = ANOTHER_CACHE)
+    String getValueFromCache(String key) {
+		return key + "Value";
+	}
 
-    public void bulkPut(Map<String, String> entries) {
-        demoCache.putAll(entries);
-    }
+	public void bulkPut(Map<String, String> entries) {
+		demoCache.putAll(entries);
+	}
 
-    public int size() {
-        return demoCache.size();
-    }
+	public int size() {
+		return demoCache.size();
+	}
 
-    public void clear() {
-        demoCache.clear();
-    }
+	public void clear() {
+		demoCache.clear();
+	}
 
-    public boolean isPassivationEnabled() {
-        return cacheManager.getCacheConfiguration(CACHE_NAME).persistence().passivation();
-    }
-
-    public void stop() {
-        cacheManager.stop();
-    }
+	public boolean isPassivationEnabled() {
+		return cacheManager.getCacheConfiguration(CACHE_NAME).persistence().passivation();
+	}
+	
+	public void stop() {
+		cacheManager.stop();
+	}
 }
