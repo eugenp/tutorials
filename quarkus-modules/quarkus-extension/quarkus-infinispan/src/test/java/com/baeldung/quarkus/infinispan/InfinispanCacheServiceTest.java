@@ -75,15 +75,16 @@ class InfinispanCacheServiceTest {
     }
     
     @Test
-    void givenCacheWithStorage_whenQuarkusAnnotatedMethodCalled_thenTheyAreStoredInCache() {
-    	
-    	// TODO check that this indeed Infispan cache
-		// Given
+    void givenCacheAnnotation_whenInstanceChecked_thenItIsInfinispanCache() {
+		assertTrue(anotherCache instanceof io.quarkus.cache.infinispan.runtime.InfinispanCacheImpl);
+	}
+    
+    @Test
+    void givenCache_whenQuarkusAnnotatedMethodCalled_thenTheyAreStoredInCache() {
+    	// Given
 		for (int i = 0; i < 10; i++) {
 			cacheService.getValueFromCache("storedKey" + i);
 		}
-		
-//		System.out.println(demoCache instanceof io.quarkus.cache.infinispan.runtime.InfinispanCacheImpl);
 		
 		String storedValue5 = (String) anotherCache.get("storedKey5", null).await().indefinitely();
 		// Then
