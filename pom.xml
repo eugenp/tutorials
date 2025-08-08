@@ -571,7 +571,6 @@
                 <module>spring-di-2</module>
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
                 <module>spring-reactive-modules/spring-reactive-kafka-stream-binder</module>
-                <module>jts</module>
             </modules>
 
             <properties>
@@ -682,6 +681,7 @@
                 <module>jmonkeyengine</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
+                <module>jts</module>
                 <module>jws</module>
                 <module>ksqldb</module>
                 <module>kubernetes-modules</module>
