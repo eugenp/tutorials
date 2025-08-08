@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket.IO Client</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"></script>
+</head>
+<body>
+    <h1>Socket.IO Client</h1>
+    
+    <div>
+        <label for="serverUrl">Server URL:</label>
+        <input type="text" id="serverUrl" placeholder="ws://localhost:8001" value="ws://localhost:8001">
+        <button onclick="connectToServer()">Connect</button>
+        <button onclick="disconnectFromServer()">Disconnect</button>
+    </div>
+    
+    <div>
+        <input type="text" id="messageInput" placeholder="Enter message">
+        <button onclick="sendMessage()">Send Message</button>
+    </div>
+    
+    <div>
+        <h3>Connection Status: <span id="status">Disconnected</span></h3>
+    </div>
+    
+    <div>
+        <h3>Messages:</h3>
+        <ul id="messageList"></ul>
+    </div>
+
+    <script>
+        let socket = null;
+        const messageList = document.getElementById('messageList');
+        const statusElement = document.getElementById('status');
+        const messageInput = document.getElementById('messageInput');
+
+        function addMessage(message, type = 'info') {
+            const li = document.createElement('li');
+            const timestamp = new Date().toLocaleTimeString();
+            li.textContent = `[${timestamp}] ${type.toUpperCase()}: ${message}`;
+            messageList.appendChild(li);
+            messageList.scrollTop = messageList.scrollHeight;
+        }
+
+        function updateStatus(status) {
+            statusElement.textContent = status;
+        }
+
+        function connectToServer() {
+            const serverUrl = document.getElementById('serverUrl').value;
+            
+            if (socket) {
+                socket.disconnect();
+            }
+
+            try {
+                socket = io(serverUrl);
+                
+                socket.on('connect', () => {
+                    updateStatus('Connected');
+                    addMessage(`Connected to ${serverUrl}`, 'success');
+                });
+
+                socket.on('disconnect', () => {
+                    updateStatus('Disconnected');
+                    addMessage('Disconnected from server', 'warning');
+                });
+
+                socket.on('connect_error', (error) => {
+                    updateStatus('Connection Error');
+                    addMessage(`Connection error: ${error.message}`, 'error');
+                });
+
+                // Listen for any incoming messages
+                socket.onAny((eventName, ...args) => {
+                    if (eventName !== 'connect' && eventName !== 'disconnect' && eventName !== 'connect_error') {
+                        addMessage(`Event '${eventName}': ${JSON.stringify(args)}`, 'received');
+                    }
+                });
+
+            } catch (error) {
+                addMessage(`Failed to connect: ${error.message}`, 'error');
+            }
+        }
+
+        function disconnectFromServer() {
+            if (socket) {
+                socket.disconnect();
+                socket = null;
+                updateStatus('Disconnected');
+                addMessage('Manually disconnected', 'info');
+            }
+        }
+
+        function sendMessage() {
+            const message = messageInput.value.trim();
+            
+            if (!message) {
+                addMessage('Cannot send empty message', 'error');
+                return;
+            }
+
+            if (!socket || !socket.connected) {
+                addMessage('Not connected to server', 'error');
+                return;
+            }
+
+            // Send message with 'message' event
+            socket.emit('message', message);
+            addMessage(`Sent: ${message}`, 'sent');
+            messageInput.value = '';
+        }
+
+        // Allow sending message with Enter key
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Initial message
+        addMessage('Enter server URL and click Connect to start', 'info');
+    </script>
+</body>
+</html>
