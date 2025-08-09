@@ -103,4 +103,16 @@ public class StringFormatUnitTest {
         String frenchFormatted = frenchCurrencyFormat.format(1000);
         assertEquals("1 000,00 €", frenchFormatted);
     }
+
+    private String padIntegerWithZeros(int number, int width) {
+       
+        return String.format("%0" + width + "d", number);
+    }
+
+    @Test
+    public void givenAnInteger_whenPaddingWithZeros_thanIntegerGetsPadded() {
+       
+        assertEquals("00000001", padIntegerWithZeros(1, 8));
+        assertEquals("-0000001", padIntegerWithZeros(-1, 8));
+    }
 }
