@@ -1,4 +1,4 @@
-package com.baeldung.config;
+package com.baeldung.controller.parameterized;
 
 import javax.servlet.ServletContext;
 
