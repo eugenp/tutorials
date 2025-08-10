@@ -7,9 +7,9 @@
     <name>mcp-spring</name>
 
     <parent>
-        <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
-        <version>1.0.0-SNAPSHOT</version>
+        <artifactId>spring-ai-mcp</artifactId>
+        <version>0.0.1</version>
     </parent>
 
     <modules>
