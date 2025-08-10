@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
-    <artifactId>quarkus-infinispan</artifactId>
+    <artifactId>quarkus-infinispan-embedded</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>quarkus-infinispan</name>
+    <name>quarkus-infinispan-embedded</name>
 
     <parent>
         <groupId>com.baeldung.quarkus.extension</groupId>
@@ -25,10 +26,6 @@
     </dependencyManagement>
 
     <dependencies>
-		<dependency>
-		    <groupId>io.quarkus</groupId>
-		    <artifactId>quarkus-infinispan-cache</artifactId>
-		</dependency>    
         <dependency>
             <groupId>io.quarkiverse.infinispan</groupId>
             <artifactId>quarkus-infinispan-embedded</artifactId>
