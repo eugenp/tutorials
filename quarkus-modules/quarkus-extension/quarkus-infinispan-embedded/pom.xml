@@ -31,6 +31,10 @@
             <artifactId>quarkus-infinispan-embedded</artifactId>
             <version>${quarkus.infinispan.version}</version>
         </dependency>
+		<dependency>
+		    <groupId>io.quarkus</groupId>
+		    <artifactId>quarkus-infinispan-cache</artifactId>
+		</dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-arc</artifactId>

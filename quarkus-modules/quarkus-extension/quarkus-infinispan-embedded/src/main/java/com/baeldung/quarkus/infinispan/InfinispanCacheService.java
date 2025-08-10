@@ -12,7 +12,6 @@ import org.infinispan.configuration.cache.Configuration;
 import org.infinispan.configuration.cache.ConfigurationBuilder;
 import org.infinispan.manager.EmbeddedCacheManager;
 
-//import io.quarkus.cache.CacheResult;
 import jakarta.inject.Inject;
 
 @ApplicationScoped
@@ -33,7 +32,6 @@ public class InfinispanCacheService {
 
 		demoCache = cacheManager.administration().withFlags(CacheContainerAdmin.AdminFlag.VOLATILE)
 				.getOrCreateCache(CACHE_NAME, cacheConfig);
-//		demoCache = cacheManager.getCache(CACHE_NAME);
 	}
 
 	
@@ -44,11 +42,6 @@ public class InfinispanCacheService {
 	public String get(String key) {
 		return demoCache.get(key);
 	}
-//
-//    @CacheResult(cacheName = CACHE_NAME)
-//    String getValueFromCache(String key) {
-//		return key + "Value";
-//	}
 
 	public void bulkPut(Map<String, String> entries) {
 		demoCache.putAll(entries);

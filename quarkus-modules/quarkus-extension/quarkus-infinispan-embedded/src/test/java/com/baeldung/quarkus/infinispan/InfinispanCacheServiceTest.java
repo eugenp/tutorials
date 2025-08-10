@@ -7,11 +7,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.infinispan.Cache;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-// import io.quarkiverse.infinispan.embedded.Embedded;
 
+import io.quarkus.cache.Cache;
+import io.quarkus.cache.CacheName;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 
@@ -20,10 +20,13 @@ class InfinispanCacheServiceTest {
 
     @Inject
     InfinispanCacheService cacheService;
+    
+    @Inject
+    InfinispanAnnotatedCacheService annotatedCacheService;
 
-//    @Embedded(InfinispanCacheService.CACHE_NAME)
-//    @Inject
-//    Cache<String,String> anotherCache;
+	@CacheName(InfinispanAnnotatedCacheService.CACHE_NAME)
+	@Inject
+    Cache anotherCache;
     
     @BeforeEach
     void clearCache() {
@@ -74,16 +77,21 @@ class InfinispanCacheServiceTest {
         assertTrue(cacheService.isPassivationEnabled(), "Passivation should be enabled");
     }
     
-
-//    @Test
-//    void givenCache_whenQuarkusAnnotatedMethodCalled_thenTheyAreStoredInCache() {
-//    	// Given
-//		for (int i = 0; i < 10; i++) {
-//			cacheService.getValueFromCache("storedKey" + i);
-//		}
-//		
-//		String storedValue5 = (String) anotherCache.get("storedKey5");
-//		// Then
-//		assertEquals("storedKey5Value",storedValue5);
-//	}
+    @Test
+    void givenCacheAnnotation_whenInstanceChecked_thenItIsInfinispanCache() {
+		assertTrue(anotherCache instanceof io.quarkus.cache.infinispan.runtime.InfinispanCacheImpl);
+	}
+    
+    @Test
+    void givenCache_whenQuarkusAnnotatedMethodCalled_thenTheyAreStoredInCache() {
+    	// Given
+		for (int i = 0; i < 10; i++) {
+			annotatedCacheService.getValueFromCache("storedKey" + i);
+		}
+		
+		String storedValue5 = (String)anotherCache.get("storedKey5", null).await().indefinitely();
+		// Then
+		assertEquals("storedKey5Value",storedValue5);
+	}
+    
 }
