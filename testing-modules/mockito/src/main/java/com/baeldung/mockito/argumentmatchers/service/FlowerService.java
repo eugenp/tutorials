@@ -1,9 +1,9 @@
 package com.baeldung.mockito.argumentmatchers.service;
 
-import org.springframework.stereotype.Service;
-
 import java.util.Arrays;
 import java.util.List;
+
+import org.springframework.stereotype.Service;
 
 @Service
 public class FlowerService {

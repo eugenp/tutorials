@@ -1,4 +1,4 @@
-package com.baeldung.mockito.junit5;
+package com.baeldung.junit5;
 
 public class User {
 

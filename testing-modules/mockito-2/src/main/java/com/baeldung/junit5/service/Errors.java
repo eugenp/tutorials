@@ -1,4 +1,4 @@
-package com.baeldung.mockito.junit5.service;
+package com.baeldung.junit5.service;
 
 public class Errors {
 

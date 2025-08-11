@@ -1,5 +1,9 @@
 package com.baeldung.mockito.argumentmatchers.controller;
 
+import java.time.Instant;
+import java.util.Date;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,10 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.baeldung.mockito.argumentmatchers.Message;
 import com.baeldung.mockito.argumentmatchers.MessageDTO;
 import com.baeldung.mockito.argumentmatchers.service.MessageService;
-
-import java.time.Instant;
-import java.util.Date;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/message")
