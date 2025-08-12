@@ -95,25 +95,6 @@
     </dependencies>
 
 
-    <profiles>
-        <profile>
-            <id>deepseek</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <spring.boot.mainclass>com.baeldung.springai.deepseek.Application</spring.boot.mainclass>
-            </properties>
-        </profile>
-        <profile>
-            <id>pgvector</id>
-            <properties>
-                <spring.boot.mainclass>com.baeldung.springai.semanticsearch.Application</spring.boot.mainclass>
-            </properties>
-        </profile>
-    </profiles>
-
-
     <build>
         <plugins>
             <plugin>
