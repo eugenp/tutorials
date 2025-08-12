@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-ai-modules</artifactId>
     <version>0.0.1</version>
@@ -16,8 +16,13 @@
     </parent>
 
     <modules>
-        <module>spring-ai-mcp</module>
-        <module>spring-ai-text-to-sql</module>
+        <module>spring-ai-advanced-features</module>
+        <module>spring-ai-chat-models</module>
+        <module>spring-ai-conversational</module>
+        <module>spring-ai-core</module>
+        <module>spring-ai-infrastructure</module>
+        <module>spring-ai-multimodal</module>
+        <module>spring-ai-vector-rag</module>
         <module>spring-ai-vector-stores</module>
     </modules>
 
