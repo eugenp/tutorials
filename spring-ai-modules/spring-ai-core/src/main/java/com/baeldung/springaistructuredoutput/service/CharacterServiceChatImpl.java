@@ -1,5 +1,8 @@
 package com.baeldung.springaistructuredoutput.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.Generation;
@@ -15,9 +18,6 @@ import org.springframework.core.convert.support.DefaultConversionService;
 import org.springframework.stereotype.Service;
 
 import com.baeldung.springaistructuredoutput.converters.GenericMapOutputConverter;
-
-import java.util.List;
-import java.util.Map;
 
 @Service
 public class CharacterServiceChatImpl implements CharacterService {

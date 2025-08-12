@@ -77,26 +77,71 @@
             <artifactId>spring-ai-transformers-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-           <groupId>org.springframework.ai</groupId>
-           <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
-       </dependency>
-       <dependency>
-           <groupId>org.springframework.ai</groupId>
-           <artifactId>spring-ai-pgvector-store-spring-boot-starter</artifactId>
-       </dependency>
-       <dependency>
-           <groupId>org.springframework.boot</groupId>
-           <artifactId>spring-boot-docker-compose</artifactId>
-       </dependency>
-       <dependency>
-           <groupId>org.springframework.ai</groupId>
-           <artifactId>spring-ai-bedrock-converse-spring-boot-starter</artifactId>
-       </dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-pgvector-store-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-docker-compose</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-bedrock-converse-spring-boot-starter</artifactId>
+        </dependency>
     </dependencies>
+
+
+    <profiles>
+        <profile>
+            <id>deepseek</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.deepseek.Application</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>pgvector</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.semanticsearch.Application</spring.boot.mainclass>
+            </properties>
+        </profile>
+    </profiles>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.baeldung.spring.ai.SpringAIProjectApplication</mainClass>
+                    <layout>JAR</layout>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                    <excludes>
+                        <exclude>**/*ManualTest.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <spring-ai.version>1.0.0-M6</spring-ai.version>
         <junit-jupiter.version>5.9.0</junit-jupiter.version>
     </properties>
+
 
 </project>

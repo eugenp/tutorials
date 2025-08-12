@@ -1,5 +1,11 @@
 package com.baeldung.springaistructuredoutput.converters;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.ai.converter.StructuredOutputConverter;
+import org.springframework.lang.NonNull;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.core.util.DefaultIndenter;
@@ -9,13 +15,12 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.github.victools.jsonschema.generator.*;
+import com.github.victools.jsonschema.generator.OptionPreset;
+import com.github.victools.jsonschema.generator.SchemaGenerator;
+import com.github.victools.jsonschema.generator.SchemaGeneratorConfig;
+import com.github.victools.jsonschema.generator.SchemaGeneratorConfigBuilder;
+import com.github.victools.jsonschema.generator.SchemaVersion;
 import com.github.victools.jsonschema.module.jackson.JacksonModule;
-import org.springframework.ai.converter.StructuredOutputConverter;
-import org.springframework.lang.NonNull;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class GenericMapOutputConverter<V> implements StructuredOutputConverter<Map<String, V>> {
 

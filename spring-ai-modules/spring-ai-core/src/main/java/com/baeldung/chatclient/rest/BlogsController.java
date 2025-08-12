@@ -1,4 +1,4 @@
-package com.baeldung.springai.chatclient.rest;
+package com.baeldung.chatclient.rest;
 
 import java.io.IOException;
 import java.nio.file.Files;
