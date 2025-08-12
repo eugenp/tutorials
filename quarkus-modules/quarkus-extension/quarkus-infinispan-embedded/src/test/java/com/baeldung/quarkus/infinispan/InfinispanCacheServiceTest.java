@@ -10,8 +10,7 @@ import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import io.quarkus.cache.Cache;
-import io.quarkus.cache.CacheName;
+import io.quarkiverse.infinispan.embedded.runtime.cache.InfinispanCacheImpl;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 
@@ -24,10 +23,6 @@ class InfinispanCacheServiceTest {
     @Inject
     InfinispanAnnotatedCacheService annotatedCacheService;
 
-	@CacheName(InfinispanAnnotatedCacheService.CACHE_NAME)
-	@Inject
-    Cache anotherCache;
-    
     @BeforeEach
     void clearCache() {
         cacheService.clear();
@@ -79,9 +74,14 @@ class InfinispanCacheServiceTest {
     
     @Test
     void givenCacheAnnotation_whenInstanceChecked_thenItIsInfinispanCache() {
-		assertTrue(anotherCache instanceof io.quarkus.cache.infinispan.runtime.InfinispanCacheImpl);
+		assertTrue(annotatedCacheService.getQuarkusCache() instanceof InfinispanCacheImpl);
 	}
-    
+
+    @Test
+    void givenEmbeddedCache_whenInstanceChecked_thenItIsInfinispanCache() {
+    	assertTrue(annotatedCacheService.getEmbeddedCache() instanceof org.infinispan.Cache);
+    }
+
     @Test
     void givenCache_whenQuarkusAnnotatedMethodCalled_thenTheyAreStoredInCache() {
     	// Given
@@ -89,9 +89,33 @@ class InfinispanCacheServiceTest {
 			annotatedCacheService.getValueFromCache("storedKey" + i);
 		}
 		
-		String storedValue5 = (String)anotherCache.get("storedKey5", null).await().indefinitely();
+		String storedValue5 = (String)annotatedCacheService.getQuarkusCache().get("storedKey5", null).await().indefinitely();
 		// Then
 		assertEquals("storedKey5Value",storedValue5);
+		
+		String embeddedValue9 = annotatedCacheService.getEmbeddedCache().get("storedKey9");
+		// Then
+		assertEquals("storedKey9Value",embeddedValue9);		
 	}
+    
+    @Test
+    void givenCache_whenInvalidated_thenValueIsCleared() {
+		for (int i = 0; i < 10; i++) {
+			annotatedCacheService.getValueFromCache("storedKey" + i);
+		}
+		
+		annotatedCacheService.clear("storedKey5");
+		String storedValue5 = annotatedCacheService.getEmbeddedCache().get("storedKey5");
+		// Then
+		assertNull(storedValue5);
+		
+		annotatedCacheService.clearAll();
+		String embeddedValue9 = annotatedCacheService.getEmbeddedCache().get("storedKey9");
+		// Then
+		assertEquals(annotatedCacheService.getEmbeddedCache().size(), 0);
+		assertNull(embeddedValue9);		
+		
+    }
+    
     
 }
