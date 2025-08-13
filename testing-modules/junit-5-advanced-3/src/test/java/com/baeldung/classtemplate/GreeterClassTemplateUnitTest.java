@@ -2,6 +2,9 @@ package com.baeldung.classtemplate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import static java.lang.System.Logger;
+import static java.lang.System.Logger.Level;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.ClassTemplate;
 import org.junit.jupiter.api.Test;
@@ -11,6 +14,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 @ExtendWith(GreeterClassTemplateInvocationContextProvider.class)
 class GreeterClassTemplateUnitTest {
 
+    private static final Logger LOG =
+        System.getLogger("GreeterClassTemplateUnitTest");
+
     private final String language;
 
     GreeterClassTemplateUnitTest(String language) {
@@ -19,7 +25,7 @@ class GreeterClassTemplateUnitTest {
 
     @BeforeEach
     void logContext() {
-        System.out.println(">> Context: Language-" + language);
+        LOG.log(Level.INFO, () -> ">> Context: Language-" + language);
     }
 
     @Test
