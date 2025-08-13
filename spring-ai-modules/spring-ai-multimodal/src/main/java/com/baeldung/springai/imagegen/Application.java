@@ -1,4 +1,4 @@
-package com.baeldung.imagegen;
+package com.baeldung.springai.imagegen;
 
 import org.springframework.ai.autoconfigure.vectorstore.mongo.MongoDBAtlasVectorStoreAutoConfiguration;
 import org.springframework.ai.autoconfigure.vectorstore.redis.RedisVectorStoreAutoConfiguration;

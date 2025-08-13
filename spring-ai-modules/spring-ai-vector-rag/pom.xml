@@ -88,6 +88,11 @@
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-pdf-document-reader</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-vector-store-mongodb-atlas</artifactId>
+            <version>${spring-ai-mongodb-atlas.version}</version>
+        </dependency>
         <!-- Test dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -114,6 +119,7 @@
     <properties>
         <spring-ai.version>1.0.0-M6</spring-ai.version>
         <junit-jupiter.version>5.9.0</junit-jupiter.version>
+        <spring-ai-mongodb-atlas.version>1.0.0-M7</spring-ai-mongodb-atlas.version>
     </properties>
 
 </project>

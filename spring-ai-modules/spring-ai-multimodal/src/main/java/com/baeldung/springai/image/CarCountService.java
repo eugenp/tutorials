@@ -1,11 +1,11 @@
-package com.baeldung.image;
+package com.baeldung.springai.image;
+
+import java.io.InputStream;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.MimeTypeUtils;
-
-import java.io.InputStream;
 
 @Service
 public class CarCountService {

@@ -108,11 +108,6 @@
            <version>${spring-boot-docker-compose.version}</version>
        </dependency>
        <dependency>
-           <groupId>org.springframework.ai</groupId>
-           <artifactId>spring-ai-starter-vector-store-mongodb-atlas</artifactId>
-           <version>${spring-ai-mongodb-atlas.version}</version>
-       </dependency>
-       <dependency>
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-mistral-ai-spring-boot-starter</artifactId>
         </dependency>
@@ -159,7 +154,6 @@
    </build>
 
    <properties>
-       <spring-ai-mongodb-atlas.version>1.0.0-M7</spring-ai-mongodb-atlas.version>
        <junit-jupiter.version>5.9.0</junit-jupiter.version>
        <spring-boot-docker-compose.version>3.1.1</spring-boot-docker-compose.version>
        <spring-boot.version>3.5.0</spring-boot.version>

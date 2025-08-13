@@ -1,4 +1,4 @@
-package com.baeldung.imagegen;
+package com.baeldung.springai.imagegen;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest(
-    classes = Application.class, 
+    classes = Application.class,
     properties = "spring.ai.openai.image.options.response-format=b64_json"
 )
 class ImageGeneratorLiveTest {

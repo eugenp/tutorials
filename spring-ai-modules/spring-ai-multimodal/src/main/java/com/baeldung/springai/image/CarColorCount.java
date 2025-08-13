@@ -1,4 +1,4 @@
-package com.baeldung.image;
+package com.baeldung.springai.image;
 
 public class CarColorCount {
 

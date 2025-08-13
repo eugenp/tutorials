@@ -1,4 +1,4 @@
-package com.baeldung.image;
+package com.baeldung.springai.image;
 
 import org.springframework.ai.autoconfigure.anthropic.AnthropicAutoConfiguration;
 import org.springframework.ai.autoconfigure.bedrock.converse.BedrockConverseProxyChatAutoConfiguration;

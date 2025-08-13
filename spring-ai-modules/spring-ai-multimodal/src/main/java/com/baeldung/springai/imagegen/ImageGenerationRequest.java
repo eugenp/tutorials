@@ -1,4 +1,4 @@
-package com.baeldung.imagegen;
+package com.baeldung.springai.imagegen;
 
 record ImageGenerationRequest(
     String prompt,
