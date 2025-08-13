@@ -125,6 +125,7 @@
         <spring-ai.version>1.0.0-M6</spring-ai.version>
         <junit-jupiter.version>5.9.0</junit-jupiter.version>
         <spring-boot-docker-compose.version>3.1.1</spring-boot-docker-compose.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
 </project>

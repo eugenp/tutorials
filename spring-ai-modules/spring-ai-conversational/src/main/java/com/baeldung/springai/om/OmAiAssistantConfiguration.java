@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;
 import org.springframework.context.annotation.Profile;
 
+import com.baeldung.springai.om.OrderInfo;
+import com.baeldung.springai.om.OrderManagementService;
+
 @Configuration
 @Profile("aiassistant")
 public class OmAiAssistantConfiguration {

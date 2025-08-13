@@ -3,7 +3,6 @@ package com.baeldung.springai.mcp.oauth2;
 import org.springframework.ai.autoconfigure.chat.client.ChatClientAutoConfiguration;
 import org.springframework.ai.autoconfigure.mistralai.MistralAiAutoConfiguration;
 import org.springframework.ai.autoconfigure.openai.OpenAiAutoConfiguration;
-import org.springframework.ai.model.openai.autoconfigure.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration;

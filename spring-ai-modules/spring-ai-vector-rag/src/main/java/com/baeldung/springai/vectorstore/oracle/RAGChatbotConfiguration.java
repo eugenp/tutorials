@@ -25,15 +25,16 @@ class RAGChatbotConfiguration {
         @Value("classpath:prompt-template.st") Resource promptTemplate
     ) throws IOException {
         String template = promptTemplate.getContentAsString(StandardCharsets.UTF_8);
-        return PromptTemplate
-            .builder()
-            .renderer(StTemplateRenderer
-                .builder()
-                .startDelimiterToken('<')
-                .endDelimiterToken('>')
-                .build())
-            .template(template)
-            .build();
+//        return PromptTemplate
+//            .builder()
+//            .renderer(StTemplateRenderer
+//                .builder()
+//                .startDelimiterToken('<')
+//                .endDelimiterToken('>')
+//                .build())
+//            .template(template)
+//            .build();
+        return null;
     }
 
     @Bean

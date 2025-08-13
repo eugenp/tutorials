@@ -13,7 +13,7 @@ class ChatbotConfiguration {
     ChatClient chatClient(ChatModel chatModel, SyncMcpToolCallbackProvider toolCallbackProvider) {
         return ChatClient
             .builder(chatModel)
-            .defaultToolCallbacks(toolCallbackProvider.getToolCallbacks())
+            .defaultTools(toolCallbackProvider.getToolCallbacks())
             .build();
     }
 
