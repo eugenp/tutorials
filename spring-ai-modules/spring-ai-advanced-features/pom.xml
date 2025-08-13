@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-ai-advanced-features</artifactId>
     <name>spring-ai-advanced-features</name>
@@ -81,21 +81,21 @@
             <artifactId>spring-ai-transformers-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-           <groupId>org.springframework.ai</groupId>
-           <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
-       </dependency>
-       <dependency>
-           <groupId>org.springframework.ai</groupId>
-           <artifactId>spring-ai-pgvector-store-spring-boot-starter</artifactId>
-       </dependency>
-       <dependency>
-           <groupId>org.springframework.boot</groupId>
-           <artifactId>spring-boot-docker-compose</artifactId>
-       </dependency>
-       <dependency>
-           <groupId>org.springframework.ai</groupId>
-           <artifactId>spring-ai-bedrock-converse-spring-boot-starter</artifactId>
-       </dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-pgvector-store-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-docker-compose</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-bedrock-converse-spring-boot-starter</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-starter-mcp-client</artifactId>
@@ -126,17 +126,17 @@
         <!-- Test dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-testcontainers</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>mysql</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>ollama</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>

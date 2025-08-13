@@ -1,4 +1,4 @@
-package com.baeldung.springai.chatclient;
+package com.baeldung.chatclient;
 
 import org.springframework.ai.autoconfigure.mistralai.MistralAiAutoConfiguration;
 import org.springframework.ai.autoconfigure.vectorstore.mongo.MongoDBAtlasVectorStoreAutoConfiguration;
