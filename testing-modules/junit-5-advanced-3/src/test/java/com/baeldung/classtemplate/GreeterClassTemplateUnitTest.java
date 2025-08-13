@@ -9,11 +9,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 @ClassTemplate
 @ExtendWith(GreeterClassTemplateInvocationContextProvider.class)
-class GreeterClassTemplateTest {
+class GreeterClassTemplateUnitTest {
 
     private final String language;
 
-    GreeterClassTemplateTest(String language) {
+    GreeterClassTemplateUnitTest(String language) {
         this.language = language;
     }
 
