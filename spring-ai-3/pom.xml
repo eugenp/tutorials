@@ -113,27 +113,6 @@
         </dependency>
    </dependencies>
 
-    <profiles>
-        <profile>
-            <id>amazon-nova</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <spring.boot.mainclass>com.baeldung.springai.nova.Application</spring.boot.mainclass>
-            </properties>
-        </profile>
-        <profile>
-            <id>transcribe</id>
-            <properties>
-                <spring.boot.mainclass>com.baeldung.springai.transcribe.Application</spring.boot.mainclass>
-            </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-    </profiles>
-
    <build>
        <plugins>
            <plugin>
