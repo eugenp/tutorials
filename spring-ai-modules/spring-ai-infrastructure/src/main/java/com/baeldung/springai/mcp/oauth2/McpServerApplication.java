@@ -15,14 +15,8 @@ import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
     MistralAiAutoConfiguration.class,
     MongoDataAutoConfiguration.class,
     org.springframework.ai.autoconfigure.vectorstore.mongo.MongoDBAtlasVectorStoreAutoConfiguration.class,
-    org.springframework.ai.vectorstore.mongodb.autoconfigure.MongoDBAtlasVectorStoreAutoConfiguration.class,
-    OpenAiAudioSpeechAutoConfiguration.class,
     OpenAiAutoConfiguration.class,
-    OpenAiAudioTranscriptionAutoConfiguration.class,
-    OpenAiChatAutoConfiguration.class,
-    OpenAiEmbeddingAutoConfiguration.class,
-    OpenAiImageAutoConfiguration.class,
-    OpenAiModerationAutoConfiguration.class})
+})
 class McpServerApplication {
 
     public static void main(String[] args) {
