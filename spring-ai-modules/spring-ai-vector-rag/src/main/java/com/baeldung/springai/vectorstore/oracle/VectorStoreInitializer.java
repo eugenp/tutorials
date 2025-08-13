@@ -1,13 +1,13 @@
 package com.baeldung.springai.vectorstore.oracle;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.ai.document.Document;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.Map;
 
 @Component
 class VectorStoreInitializer implements ApplicationRunner {

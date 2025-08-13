@@ -23,7 +23,6 @@
         <module>spring-ai-infrastructure</module>
         <module>spring-ai-multimodal</module>
         <module>spring-ai-vector-rag</module>
-        <module>spring-ai-vector-stores</module>
     </modules>
 
 </project>

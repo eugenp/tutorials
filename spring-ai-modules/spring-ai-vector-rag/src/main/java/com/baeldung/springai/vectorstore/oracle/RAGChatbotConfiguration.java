@@ -1,5 +1,8 @@
 package com.baeldung.springai.vectorstore.oracle;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
 import org.springframework.ai.chat.model.ChatModel;
@@ -11,9 +14,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
-
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 
 @Configuration
 class RAGChatbotConfiguration {

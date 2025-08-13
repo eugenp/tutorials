@@ -1,10 +1,10 @@
 package com.baeldung.springai.vectorstore.oracle;
 
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.web.client.RestClient;
-
 import java.net.URI;
 import java.util.List;
+
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.web.client.RestClient;
 
 class QuoteFetcher {
 
