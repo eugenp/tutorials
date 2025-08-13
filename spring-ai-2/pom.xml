@@ -117,47 +117,7 @@
         </dependency>
    </dependencies>
 
-    <profiles>
-        <profile>
-            <id>chromadb</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <spring.boot.mainclass>com.baeldung.springai.chromadb.Application</spring.boot.mainclass>
-            </properties>
-        </profile>
-        <profile>
-            <id>assistant</id>
-            <properties>
-                <spring.boot.mainclass>com.baeldung.spring.ai.om.OrderManagementApplication</spring.boot.mainclass>
-            </properties>
-        </profile>
-        <profile>
-            <id>anthropic</id>
-            <properties>
-                <spring.boot.mainclass>com.baeldung.springai.anthropic.Application</spring.boot.mainclass>
-            </properties>
-        </profile>
-        <profile>
-            <id>evaluator</id>
-            <properties>
-                <spring.boot.mainclass>com.baeldung.springai.evaluator.Application</spring.boot.mainclass>
-            </properties>
-        </profile>
-        <profile>
-            <id>hugging-face</id>
-            <properties>
-                <spring.boot.mainclass>com.baeldung.springai.huggingface.Application</spring.boot.mainclass>
-            </properties>
-        </profile>
-        <profile>
-            <id>amazon-nova</id>
-            <properties>
-                <spring.boot.mainclass>com.baeldung.springai.nova.Application</spring.boot.mainclass>
-            </properties>
-        </profile>
-    </profiles>
+
 
    <build>
        <plugins>

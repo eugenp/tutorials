@@ -87,6 +87,18 @@
                 <spring.boot.mainclass>com.baeldung.springai.anthropic.Application</spring.boot.mainclass>
             </properties>
         </profile>
+        <profile>
+            <id>hugging-face</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.huggingface.Application</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>amazon-nova</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.nova.Application</spring.boot.mainclass>
+            </properties>
+        </profile>
     </profiles>
 
     <build>
