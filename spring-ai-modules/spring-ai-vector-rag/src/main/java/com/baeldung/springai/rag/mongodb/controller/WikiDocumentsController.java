@@ -1,16 +1,20 @@
 package com.baeldung.springai.rag.mongodb.controller;
 
-import com.baeldung.springai.rag.mongodb.dto.WikiDocument;
-import com.baeldung.springai.rag.mongodb.service.WikiDocumentsServiceImpl;
+import java.util.List;
+
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.QuestionAnswerAdvisor;
 import org.springframework.ai.chat.model.ChatModel;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import com.baeldung.springai.rag.mongodb.dto.WikiDocument;
+import com.baeldung.springai.rag.mongodb.service.WikiDocumentsServiceImpl;
 
 @RestController
 @RequestMapping("/wiki")

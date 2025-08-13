@@ -1,16 +1,16 @@
 package com.baeldung.springai.rag.mongodb.repository;
 
-import com.baeldung.springai.rag.mongodb.dto.WikiDocument;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.ai.document.Document;
 import org.springframework.ai.transformer.splitter.TokenTextSplitter;
 import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.VectorStore;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.baeldung.springai.rag.mongodb.dto.WikiDocument;
 
 @Component
 public class WikiDocumentsRepository {

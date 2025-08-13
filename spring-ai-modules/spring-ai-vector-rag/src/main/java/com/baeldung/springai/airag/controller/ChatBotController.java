@@ -1,4 +1,4 @@
-package com.baeldung.airag.controller;
+package com.baeldung.springai.airag.controller;
 
 import java.util.Map;
 
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.airag.service.ChatBotService;
+import com.baeldung.springai.airag.service.ChatBotService;
 
 @RestController
 public class ChatBotController {

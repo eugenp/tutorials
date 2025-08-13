@@ -1,4 +1,4 @@
-package com.baeldung.airag.service;
+package com.baeldung.springai.airag.service;
 
 import java.util.List;
 
