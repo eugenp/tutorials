@@ -62,9 +62,9 @@
 
     <properties>
         <httpcore.version>4.4.16</httpcore.version>
-        <drools.version>9.44.0.Final</drools.version>
-        <poi.version>5.2.3</poi.version>
-        <optaplanner-core.version>8.32.0.Final</optaplanner-core.version>
+        <drools.version>10.1.0</drools.version>
+        <poi.version>5.4.1</poi.version>
+        <optaplanner-core.version>9.44.0.Final</optaplanner-core.version>
     </properties>
 
 </project>
