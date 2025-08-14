@@ -6,6 +6,7 @@ import com.baeldung.dataloaderbatchprocessing.service.UserService;
 import org.dataloader.DataLoader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.concurrent.CompletableFuture;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+@SpringBootTest(classes = DataLoaderApp.class)
 public class DataLoaderUnitTest {
 
     private UserService userService;
