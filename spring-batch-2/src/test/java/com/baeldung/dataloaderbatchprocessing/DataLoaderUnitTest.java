@@ -28,7 +28,7 @@ public class DataLoaderUnitTest {
     }
 
     @Test
-    void testBatchLoadThreeUsers() throws Exception {
+    void givenThreeUsers_whenUsingDataLoader_thenLoadUsersInSingleDBCall() throws Exception {
         User user1 = new User("101", "User_101");
         User user2 = new User("102", "User_102");
         User user3 = new User("103", "User_103");
