@@ -1,0 +1,28 @@
+server:
+  port: 9000
+
+spring:
+  security:
+    user:
+      name: user
+      password: password
+    oauth2:
+      authorizationserver:
+        client:
+          oidc-client:
+            registration:
+              client-id: "mcp-client"
+              client-secret: "{noop}mcp-secret"
+              client-authentication-methods:
+                - "client_secret_basic"
+              authorization-grant-types:
+                - "authorization_code"
+                - "client_credentials"
+                - "refresh_token"
+              redirect-uris:
+                - "http://localhost:8080/authorize/oauth2/code/authserver"
+              scopes:
+                - "openid"
+                - "profile"
+                - "calc.read"
+                - "calc.write"
