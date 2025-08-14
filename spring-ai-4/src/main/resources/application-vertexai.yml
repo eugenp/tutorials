@@ -1,0 +1,14 @@
+spring:
+  ai:
+    vertex:
+      ai:
+        gemini:
+          project-id: "c1-lumion"
+          location: "europe-west1"
+          model: "gemini-2.0-flash-lite"
+        embedding:
+          project-id: "c1-lumion"
+          location: "europe-west1"
+          text:
+            options:
+              model: "gemini-embedding-001"
