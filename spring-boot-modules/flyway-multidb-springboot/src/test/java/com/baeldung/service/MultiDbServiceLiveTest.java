@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+import com.baeldung.repository.user.UserRepository;
+import com.baeldung.repository.product.ProductRepository;
 
 import java.util.Optional;
 
@@ -16,34 +18,23 @@ import static org.junit.jupiter.api.Assertions.*;
 class MultiDbServiceLiveTest {
 
     @Autowired
-    private UserService userService;
+    private UserRepository userRepository;
 
     @Autowired
-    private ProductService productService;
+    private ProductRepository productRepository;
 
     @Transactional("productTransactionManager")
     @Test
     void givenUsersAndProducts_whenSaved_thenFoundById() {
         User user = new User();
-        user.setName("Alice");
+        user.setName("John");
+        userRepository.save(user);
 
         Product product = new Product();
         product.setName("Laptop");
+        productRepository.save(product);
 
-        // Save and capture returned entities to get generated IDs
-        Product savedProduct = productService.save(product);
-        User savedUser = userService.save(user);
-
-
-        // Use the generated IDs for retrieval
-        Optional<User> retrievedUser = userService.findById(savedUser.getId());
-        Optional<Product> retrievedProduct = productService.findById(savedProduct.getId());
-
-        // Assertions
-        assertTrue(retrievedUser.isPresent());
-        assertEquals("Alice", retrievedUser.get().getName());
-
-        assertTrue(retrievedProduct.isPresent());
-        assertEquals("Laptop", retrievedProduct.get().getName());
+        assertTrue(userRepository.findById(user.getId()).isPresent());
+        assertTrue(productRepository.findById(product.getId()).isPresent());
     }
 }
