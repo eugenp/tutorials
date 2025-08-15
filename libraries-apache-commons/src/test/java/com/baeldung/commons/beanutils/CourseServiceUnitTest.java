@@ -15,6 +15,8 @@ import org.junit.Test;
 
 public class CourseServiceUnitTest {
 
+	private static final String STUDENT_ID = "01";
+
     @Test
     public void givenCourse_whenGettingSimplePropertyValueUsingPropertyUtil_thenValueReturned() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
         Course course = new Course();
@@ -50,10 +52,10 @@ public class CourseServiceUnitTest {
 		// 1. Create and set a Student
         Student student = new Student();
         student.setName("John Doe");
-		CourseService.setMappedValue(course, "ST-1", student);
-		// Use getMappedProperty to retrieve the value associated with the key 'ST-1'
+		CourseService.setMappedValue(course, STUDENT_ID, student);
+		// Use getMappedProperty to retrieve the value associated with the key '01'
         // from the 'enrolledStudent' map
-        Student enrolledStudent = (Student) PropertyUtils.getMappedProperty(course, "enrolledStudent(" + ST-1 + ")");
+        Student enrolledStudent = (Student) PropertyUtils.getMappedProperty(course, "enrolledStudent(" + STUDENT_ID + ")");
     
         assertEquals("John Doe", enrolledStudent.getName());
     }
