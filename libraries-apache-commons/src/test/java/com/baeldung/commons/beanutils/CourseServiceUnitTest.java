@@ -3,6 +3,7 @@ package com.baeldung.commons.beanutils;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.apache.commons.beanutils.PropertyUtils;
 import java.lang.reflect.InvocationTargetException;
@@ -14,50 +15,47 @@ import org.junit.Test;
 
 public class CourseServiceUnitTest {
 
-	private Course course;
-    private static final String STUDENT_ID = "01";
-    private static final String STUDENT_NAME = "John Doe";
-    private static final String COURSE_NAME = "Introduction to Java";
-
-    @BeforeEach
-    void setUp() {
-        // 1. Create a Student
-        Student student = new Student();
-        student.setName(STUDENT_NAME);
-
-        // 2. Create a Course and populate its properties
-        course = new Course();
-        course.setName(COURSE_NAME);
-        course.setCodes(Arrays.asList("CS101", "CS102"));
-        course.setEnrolledStudent(STUDENT_ID, student);
-    }
-
     @Test
     public void givenCourse_whenGettingSimplePropertyValueUsingPropertyUtil_thenValueReturned() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-        // Use getSimpleProperty to retrieve the 'name' property from the course bean
+        Course course = new Course();
+        String name = "Computer Science";
+        List<String> codes = Arrays.asList("CS101","CS102");
+        CourseService.setValues(course, name, codes);
+
+		// Use getSimpleProperty to retrieve the 'name' property from the course bean
         String courseName = (String) PropertyUtils.getSimpleProperty(course, "name");
 
-        assertNotNull(courseName);
-        assertEquals(COURSE_NAME, courseName);
+        assertEquals("Computer Science", courseName);
     }
 
     @Test
     public void givenCourse_whenGettingIndexedPropertyValueUsingPropertyUtil_thenValueReturned() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-        // Use getIndexedProperty to retrieve the element at index 1 from the 'codes' list
+        Course course = new Course();
+        String name = "Computer Science";
+        List<String> codes = Arrays.asList("CS101","CS102");
+        CourseService.setValues(course, name, codes);
+		// Use getIndexedProperty to retrieve the element at index 1 from the 'codes' list
         String secondCode = (String) PropertyUtils.getIndexedProperty(course, "codes[1]");
-
-        assertNotNull(secondCode);
+		
         assertEquals("CS102", secondCode);
     }
 
     @Test
     public void givenCourse_whenGettingMappedPropertyValueUsingPropertyUtil_thenValueReturned() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-        // Use getMappedProperty to retrieve the value associated with the key '01'
-        // from the 'enrolledStudent' map
-        Student enrolledStudent = (Student) PropertyUtils.getMappedProperty(course, "enrolledStudent(" + STUDENT_ID + ")");
+        Course course = new Course();
+        String name = "Computer Science";
+        List<String> codes = Arrays.asList("CS101","CS102");
+        CourseService.setValues(course, name, codes);
 
-        assertNotNull(enrolledStudent);
-        assertEquals(STUDENT_NAME, enrolledStudent.getName());
+		// 1. Create and set a Student
+        Student student = new Student();
+        student.setName("John Doe");
+		CourseService.setMappedValue(course, "ST-1", student);
+		// Use getMappedProperty to retrieve the value associated with the key 'ST-1'
+        // from the 'enrolledStudent' map
+        Student enrolledStudent = (Student) PropertyUtils.getMappedProperty(course, "enrolledStudent(" + ST-1 + ")");
+    
+        assertEquals("John Doe", enrolledStudent.getName());
     }
 
     @Test
@@ -96,7 +94,7 @@ public class CourseServiceUnitTest {
 
         CourseService.copyProperties(course, courseEntity);
         Assert.assertNotNull(course.getName());
-	Assert.assertNotNull(courseEntity.getName());
+	    Assert.assertNotNull(courseEntity.getName());
         Assert.assertEquals(course.getName(), courseEntity.getName());
         Assert.assertEquals(course.getCodes(), courseEntity.getCodes());
         Assert.assertNull(courseEntity.getStudent("ST-1"));
