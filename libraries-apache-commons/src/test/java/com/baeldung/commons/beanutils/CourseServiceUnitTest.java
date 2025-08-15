@@ -33,7 +33,7 @@ public class CourseServiceUnitTest {
     }
 
     @Test
-    void givenCourse_whenGettingSimplePropertyValueUsingPropertyUtil_thenValueReturned() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+    public void givenCourse_whenGettingSimplePropertyValueUsingPropertyUtil_thenValueReturned() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
         // Use getSimpleProperty to retrieve the 'name' property from the course bean
         String courseName = (String) PropertyUtils.getSimpleProperty(course, "name");
 
@@ -42,7 +42,7 @@ public class CourseServiceUnitTest {
     }
 
     @Test
-    void givenCourse_whenGettingIndexedPropertyValueUsingPropertyUtil_thenValueReturned() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+    public void givenCourse_whenGettingIndexedPropertyValueUsingPropertyUtil_thenValueReturned() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
         // Use getIndexedProperty to retrieve the element at index 1 from the 'codes' list
         String secondCode = (String) PropertyUtils.getIndexedProperty(course, "codes[1]");
 
@@ -51,7 +51,7 @@ public class CourseServiceUnitTest {
     }
 
     @Test
-    void givenCourse_whenGettingMappedPropertyValueUsingPropertyUtil_thenValueReturned() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+    public void givenCourse_whenGettingMappedPropertyValueUsingPropertyUtil_thenValueReturned() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
         // Use getMappedProperty to retrieve the value associated with the key '01'
         // from the 'enrolledStudent' map
         Student enrolledStudent = (Student) PropertyUtils.getMappedProperty(course, "enrolledStudent(" + STUDENT_ID + ")");
