@@ -6,15 +6,20 @@ import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXParseException;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.StringReader;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import java.nio.charset.StandardCharsets;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.xmlunit.assertj.XmlAssert.assertThat;
 
 public class XmlDocumentUnitTest {
 
@@ -55,6 +60,42 @@ public class XmlDocumentUnitTest {
         assertNotNull(existingDocument);
         assertEquals(1, existingDocument.getDocumentElement().getChildNodes().getLength());
         assertEquals("child", existingDocument.getDocumentElement().getChildNodes().item(0).getNodeName());
+    }
+
+    @Test
+    public void givenXmlFile_whenConvertToOneLineString_thenSuccess() throws IOException {
+       
+        String filePath = "posts.xml";
+        ClassLoader classLoader = getClass().getClassLoader();
+        FileReader fileReader = new FileReader(classLoader
+          .getResource(filePath)
+          .getFile());
+        StringBuilder xmlContentBuilder = new StringBuilder();
+        try (BufferedReader reader = new BufferedReader(fileReader)) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                xmlContentBuilder.append(line);
+            }
+        }
+        String xmlString = xmlContentBuilder.toString();
+        // Remove tabs
+        xmlString = xmlString.replaceAll("\\t", "");
+
+        // Replace multiple spaces with a single space
+        xmlString = xmlString.replaceAll(" +", " ");
+
+        // Remove spaces before/after tags (e.g., "> <" becomes "><")
+        // This is important to ensure truly minimal whitespace
+        xmlString = xmlString.replaceAll(">\\s+<", "><");
+
+        // Trim leading/trailing whitespace from the entire string
+        String oneLineXml = xmlString.trim();
+         
+        String expectedXml = """
+            <?xml version="1.0" encoding="UTF-8"?><posts><post postId="1"><title>Parsing XML as a String in Java</title><author>John Doe</author></post></posts>
+            """;
+        
+        assertThat(oneLineXml).and(expectedXml).areIdentical();
     }
 
     @Test
