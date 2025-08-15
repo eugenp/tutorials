@@ -24,6 +24,13 @@ public class InfinispanAnnotatedCacheService {
 			
     @CacheResult(cacheName = CACHE_NAME)
     String getValueFromCache(String key) {
+    	// simulate a long running computation
+    	try {
+    		System.out.println("getting value for "+ key);
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace(System.err);
+		}
 		return key + "Value";
 	}
     
