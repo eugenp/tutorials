@@ -35,8 +35,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>${jstl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
             <version>${jstl.version}</version>
         </dependency>
         <dependency>
@@ -101,7 +106,7 @@
     </build>
 
     <properties>
-        <jstl.version>1.2</jstl.version>
+        <jstl.version>2.0.0</jstl.version>
         <spring-boot.version>3.2.2</spring-boot.version>
         <commons-text.version>1.10.0</commons-text.version>
     </properties>
