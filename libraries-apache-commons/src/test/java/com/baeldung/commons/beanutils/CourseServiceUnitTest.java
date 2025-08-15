@@ -2,15 +2,63 @@ package com.baeldung.commons.beanutils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.BeforeEach;
+import org.apache.commons.beanutils.PropertyUtils;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.List;
-
+ 
 import org.junit.Assert;
 import org.junit.Test;
 
 public class CourseServiceUnitTest {
+
+	private Course course;
+    private static final String STUDENT_ID = "01";
+    private static final String STUDENT_NAME = "John Doe";
+    private static final String COURSE_NAME = "Introduction to Java";
+
+    @BeforeEach
+    void setUp() {
+        // 1. Create a Student
+        Student student = new Student();
+        student.setName(STUDENT_NAME);
+
+        // 2. Create a Course and populate its properties
+        course = new Course();
+        course.setName(COURSE_NAME);
+        course.setCodes(Arrays.asList("CS101", "CS102"));
+        course.setEnrolledStudent(STUDENT_ID, student);
+    }
+
+    @Test
+    void givenCourse_whenGettingSimplePropertyValueUsingPropertyUtil_thenValueReturned() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+        // Use getSimpleProperty to retrieve the 'name' property from the course bean
+        String courseName = (String) PropertyUtils.getSimpleProperty(course, "name");
+
+        assertNotNull(courseName);
+        assertEquals(COURSE_NAME, courseName);
+    }
+
+    @Test
+    void givenCourse_whenGettingIndexedPropertyValueUsingPropertyUtil_thenValueReturned() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+        // Use getIndexedProperty to retrieve the element at index 1 from the 'codes' list
+        String secondCode = (String) PropertyUtils.getIndexedProperty(course, "codes[1]");
+
+        assertNotNull(secondCode);
+        assertEquals("CS102", secondCode);
+    }
+
+    @Test
+    void givenCourse_whenGettingMappedPropertyValueUsingPropertyUtil_thenValueReturned() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+        // Use getMappedProperty to retrieve the value associated with the key '01'
+        // from the 'enrolledStudent' map
+        Student enrolledStudent = (Student) PropertyUtils.getMappedProperty(course, "enrolledStudent(" + STUDENT_ID + ")");
+
+        assertNotNull(enrolledStudent);
+        assertEquals(STUDENT_NAME, enrolledStudent.getName());
+    }
 
     @Test
     public void givenCourse_whenSetValuesUsingPropertyUtil_thenReturnSetValues() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
