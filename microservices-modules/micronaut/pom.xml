@@ -131,13 +131,11 @@
                     <!-- <useIncrementalCompilation>false</useIncrementalCompilation> -->
 
                     <annotationProcessorPaths combine.self="append">
-
                         <path>
                             <groupId>io.micronaut</groupId>
                             <artifactId>micronaut-inject-java</artifactId>
                             <version>${micronaut.version}</version>
                         </path>
-
                         <path>
                             <groupId>io.micronaut</groupId>
                             <artifactId>micronaut-http-validation</artifactId>

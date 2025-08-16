@@ -61,6 +61,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.rometools</groupId>
+            <artifactId>rome</artifactId>
+            <version>${rome.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -83,6 +88,8 @@
         <spring-cloud.version>2023.0.0</spring-cloud.version>
         <commons-configuration.version>1.10</commons-configuration.version>
         <maven.compiler.release>17</maven.compiler.release>
+        <!-- ROME for RSS -->
+        <rome.version>1.10.0</rome.version>
     </properties>
 
 </project>

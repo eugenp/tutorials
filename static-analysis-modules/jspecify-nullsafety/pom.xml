@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jspecify-nullsafety</artifactId>
     <packaging>jar</packaging>
-    <name>core-java-8-datetime-3</name>
+    <name>jspecify-nullsafety</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -17,8 +17,12 @@
 		<dependency>
 			<groupId>org.jspecify</groupId>
 			<artifactId>jspecify</artifactId>
-			<version>0.3.0</version>
+			<version>${jspecify.version}</version>
 		</dependency>
     </dependencies>
+
+    <properties>
+        <jspecify.version>0.3.0</jspecify.version>
+    </properties>
 
 </project>
