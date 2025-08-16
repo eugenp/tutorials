@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  triton-server:
+    build: ./triton-server
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    ports:
+      - "8000:8000"  # HTTP
+      - "8001:8001"  # gRPC
+      - "8002:8002"  # Metrics
+  sentiment-service:
+    build: ./sentiment-service
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
