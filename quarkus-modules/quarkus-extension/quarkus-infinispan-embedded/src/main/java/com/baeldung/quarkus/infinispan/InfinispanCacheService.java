@@ -18,23 +18,24 @@ import jakarta.inject.Inject;
 public class InfinispanCacheService {
 
 	public static final String CACHE_NAME = "demoCache";
-	
+
 	@Inject
 	EmbeddedCacheManager cacheManager;
 
 	private Cache<String, String> demoCache;
-	
 
 	@PostConstruct
 	void init() {
-		Configuration cacheConfig = new ConfigurationBuilder().clustering().cacheMode(CacheMode.LOCAL).memory()
-				.maxCount(10).expiration().lifespan(600, TimeUnit.MILLISECONDS).persistence().passivation(true).build();
+		Configuration cacheConfig = new ConfigurationBuilder()
+				.clustering().cacheMode(CacheMode.LOCAL)
+				.memory().maxCount(10)
+				.expiration().lifespan(600, TimeUnit.MILLISECONDS)
+				.persistence().passivation(true).build();
 
 		demoCache = cacheManager.administration().withFlags(CacheContainerAdmin.AdminFlag.VOLATILE)
 				.getOrCreateCache(CACHE_NAME, cacheConfig);
 	}
 
-	
 	public void put(String key, String value) {
 		demoCache.put(key, value);
 	}
@@ -58,7 +59,7 @@ public class InfinispanCacheService {
 	public boolean isPassivationEnabled() {
 		return cacheManager.getCacheConfiguration(CACHE_NAME).persistence().passivation();
 	}
-	
+
 	public void stop() {
 		cacheManager.stop();
 	}

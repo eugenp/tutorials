@@ -44,6 +44,14 @@ public class InfinispanAnnotatedCacheService {
     
     @CacheInvalidateAll(cacheName = CACHE_NAME)
     public void clearAll() {
+     	// simulate a long running computation
+    	try {
+        	System.out.println("clearing cache " + CACHE_NAME);
+    		Thread.sleep(200);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
     
