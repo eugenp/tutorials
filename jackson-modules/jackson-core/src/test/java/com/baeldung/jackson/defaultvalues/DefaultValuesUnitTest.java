@@ -26,6 +26,15 @@ public class DefaultValuesUnitTest {
     }
 
     @Test
+    public void givenAClassWithASetter_whenReadingJsonWithNullOptionalValue_thenEmptyStringInResult() throws JsonProcessingException {
+        String nullOptionalField = "{\"required\": \"value\", \"optional\": null}";
+        ObjectMapper objectMapper = new ObjectMapper();
+        SetterDefaultValue createdObject = objectMapper.readValue(nullOptionalField, SetterDefaultValueAsEmptyString.class);
+        assert(createdObject.getRequired()).equals("value");
+        assert(createdObject.getOptional()).equals("");
+    }
+
+    @Test
     public void givenAClassWithAJsonSetterNullsSkip_whenReadingJsonWithNullOptionalValue_thenExpectDefaultValueInResult() throws JsonProcessingException {
         String nullOptionalField = "{\"required\": \"value\", \"optional\": null}";
         ObjectMapper objectMapper = new ObjectMapper();
