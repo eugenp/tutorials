@@ -30,9 +30,7 @@ class DummyRestController {
     @Timed(value = "dummy.endpoint.time", description = "Time taken to return dummy response") // works ok
     @Counted(value = "dummy.endpoint.count", description = "Counting dummy requests") // doesn't pick up the tag
     public String dummy(
-        @RequestHeader("User-Agent")
-        @MeterTag(value = "user_agent")
-        String userAgent
+        @RequestHeader("User-Agent") @MeterTag(value = "user_agent") String userAgent
     ) {
         LOG.info("[{}] GET /api/dummy", userAgent);
         return doStuff();
@@ -40,9 +38,7 @@ class DummyRestController {
 
     @GetMapping("/api/foo")
     public String foo(
-        @RequestHeader("User-Agent")
-        @MeterTag(value = "user_agent_type")
-        String userAgent
+        @RequestHeader("User-Agent") String userAgent
     ) {
         LOG.info("[{}] GET /api/foo", userAgent);
 
