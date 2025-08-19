@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.baeldung.web.hateoas.event.ResourceCreatedEvent;
+import com.baeldung.hateoas.event.ResourceCreatedEvent;
 import com.google.common.base.Preconditions;
 
 import jakarta.servlet.http.HttpServletResponse;

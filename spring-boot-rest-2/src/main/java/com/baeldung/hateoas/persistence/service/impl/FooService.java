@@ -9,10 +9,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.baeldung.persistence.dao.IFooDao;
-import com.baeldung.persistence.model.Foo;
-import com.baeldung.persistence.service.IFooService;
-import com.baeldung.persistence.service.common.AbstractService;
+import com.baeldung.hateoas.persistence.dao.IFooDao;
+import com.baeldung.hateoas.persistence.model.Foo;
+import com.baeldung.hateoas.persistence.service.IFooService;
+import com.baeldung.hateoas.persistence.service.common.AbstractService;
 import com.google.common.collect.Lists;
 
 @Service

@@ -8,7 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.baeldung.persistence.IOperations;
+import com.baeldung.hateoas.persistence.IOperations;
 import com.google.common.collect.Lists;
 
 @Transactional
@@ -28,11 +28,6 @@ public abstract class AbstractService<T extends Serializable> implements IOperat
     @Transactional(readOnly = true)
     public List<T> findAll() {
         return Lists.newArrayList(getDao().findAll());
-    }
-
-    @Override
-    public Page<T> findPaginated(final int page, final int size) {
-        return getDao().findAll(PageRequest.of(page, size));
     }
 
     // write

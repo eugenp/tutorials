@@ -2,7 +2,7 @@ package com.baeldung.hateoas.util;
 
 import org.springframework.http.HttpStatus;
 
-import com.baeldung.web.exception.MyResourceNotFoundException;
+import com.baeldung.hateoas.web.exception.MyResourceNotFoundException;
 
 /**
  * Simple static methods to be called at the start of your own methods to verify correct arguments and state. If the Precondition fails, an {@link HttpStatus} code is thrown
