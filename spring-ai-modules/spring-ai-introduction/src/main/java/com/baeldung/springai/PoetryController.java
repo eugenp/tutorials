@@ -14,7 +14,7 @@ class PoetryController {
         this.poetryService = poetryService;
     }
 
-    @PostMapping("/poem/generate")
+    @PostMapping("/poems")
     ResponseEntity<Poem> generate(@RequestBody PoemGenerationRequest request) {
         Poem response = poetryService.generate(request.genre, request.theme);
         return ResponseEntity.ok(response);
