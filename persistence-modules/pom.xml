@@ -146,6 +146,7 @@
         <module>hibernate-annotations-2</module>
         <module>hibernate-reactive</module>
         <module>spring-data-envers</module>
+        <module>spring-persistence-simple</module>
     </modules>
 
     <properties>
