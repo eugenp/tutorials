@@ -1,4 +1,4 @@
-package com.baeldung.jpa.simple.model;
+package com.baeldung.spring.simple.model;
 
 import java.io.Serializable;
 

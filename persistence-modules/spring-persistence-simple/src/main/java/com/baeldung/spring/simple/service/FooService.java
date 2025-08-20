@@ -1,10 +1,10 @@
-package com.baeldung.jpa.simple.service;
+package com.baeldung.spring.simple.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.baeldung.jpa.simple.model.Foo;
-import com.baeldung.jpa.simple.repository.IFooDAO;
+import com.baeldung.spring.simple.model.Foo;
+import com.baeldung.spring.simple.repository.IFooDAO;
 
 @Service
 public class FooService implements IFooService {
