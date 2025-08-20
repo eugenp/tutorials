@@ -1,9 +1,11 @@
 package com.baeldung.spring.jpa.guide.repository;
 
-import com.baeldung.spring.jpa.guide.model.Publishers;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import java.util.List;
+
+import com.baeldung.spring.jpa.guide.model.Publishers;
 
 public interface PublisherRepository extends JpaRepository<Publishers, Integer> {
 
