@@ -6,8 +6,10 @@ import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -18,7 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JacksonBidirectionRelationUnitTest {
 
-    @Test (expected = JsonMappingException.class)
+    @Test(expected = JsonMappingException.class)
     public void givenBidirectionRelation_whenSerializing_thenException() throws JsonProcessingException {
         final User user = new User(1, "John");
         final Item item = new Item(2, "book", user);
@@ -149,4 +151,39 @@ public class JacksonBidirectionRelationUnitTest {
             .writeValueAsString(item);
     }
 
+    @Test
+    public void givenMultipleBackReferencesOnWishlist_whenNoNamedReference_thenThrowsException() throws JsonProcessingException {
+        User user = new User();
+        user.id = 1;
+        user.name = "Alice";
+
+        Item item1 = new Item();
+        item1.id = 101;
+        item1.itemName = "Book";
+        item1.wishlistOwner = user;
+
+        Item item2 = new Item();
+        item2.id = 102;
+        item2.itemName = "Pen";
+        item2.wishlistOwner = user;
+
+        user.wishlist = List.of(item1, item2);
+
+        Item item3 = new Item();
+        item3.id = 201;
+        item3.itemName = "Laptop";
+        item3.soldOwner = user;
+
+        Item item4 = new Item();
+        item4.id = 202;
+        item4.itemName = "Phone";
+        item4.soldOwner = user;
+
+        user.soldItems = List.of(item3, item4);
+
+        String json = new ObjectMapper().writeValueAsString(user);
+        assertThat(json, containsString("Alice"));
+        assertThat(json, containsString("Book"));
+        assertThat(json, containsString("Pen"));
+    }
 }
