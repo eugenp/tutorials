@@ -17,21 +17,35 @@
     <version>1.0.0</version>
     <name>mcp-server-oauth2</name>
 
+    <properties>
+        <classmate.version>1.7.0</classmate.version>
+        <spring-ai.version>1.0.0-M7</spring-ai.version>
+        <java.version>17</java.version>
+        <spring-ai.version>1.0.0</spring-ai.version>
+        <junit-version>5.10.2</junit-version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.fasterxml</groupId>
             <artifactId>classmate</artifactId>
-            <version>1.7.0</version>
+            <version>${classmate.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-starter-mcp-server-webmvc</artifactId>
-            <version>1.0.0-M7</version>
+            <version>${spring-ai.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit-version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -44,8 +58,4 @@
         </plugins>
     </build>
 
-    <properties>
-        <java.version>17</java.version>
-        <spring-ai.version>1.0.0</spring-ai.version>
-    </properties>
 </project>

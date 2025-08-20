@@ -17,6 +17,7 @@
     <properties>
         <java.version>17</java.version>
         <spring-ai.version>1.0.0</spring-ai.version>
+        <spring-boot.starter.test>3.5.4</spring-boot.starter.test>
     </properties>
 
     <dependencies>
@@ -31,7 +32,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>3.5.4</version>
+            <version>${spring-boot.starter.test}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
