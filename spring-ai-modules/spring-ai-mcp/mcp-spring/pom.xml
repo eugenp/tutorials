@@ -10,6 +10,7 @@
         <groupId>com.baeldung</groupId>
         <artifactId>spring-ai-mcp</artifactId>
         <version>0.0.1</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <modules>
