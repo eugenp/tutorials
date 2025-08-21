@@ -41,6 +41,19 @@ void givenTwoRecordsWithSameCoordinates_whenComparedForEquality_thenShouldBeEqua
     assertEquals(point1, point2, "Records with same coordinates should be equal");
 }
     
+@Test
+void givenAnAWTPoint_whenAccessingItsFieldsAndGetters_thenReturnsCoordinatesCorrectly() {
+    // Given an AWT Point
+    java.awt.Point point = new java.awt.Point(50, 60);
+
+    // Then its public fields should hold the correct values
+    assertEquals(50, point.x);
+    assertEquals(60, point.y);
+
+    // And its getters should also work
+    assertEquals(50.0, point.getX());
+    assertEquals(60.0, point.getY());
+}
 
     
 
