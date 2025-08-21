@@ -57,6 +57,20 @@ class XYCoordinatesUnitTest {
     }
 
     @Test
+    void givenAnAWTPointForIntegerCoordinates_whenAccessingItsFieldsAndGetters_thenReturnsCoordinatesCorrectly() {
+        // Given an AWT Point
+        java.awt.Point point = new java.awt.Point(50, 60);
+
+        // Then its public fields should hold the correct values
+        assertEquals(50, point.x);
+        assertEquals(60, point.y);
+
+        // And its getters should also work
+        assertEquals(50, point.getX());
+        assertEquals(60, point.getY());
+    }
+    
+    @Test
     void givenArrayOfCoordinates_whenAccessingArrayIndices_thenReturnsCoordinatesAtCorrectIndices() {
         // Given an array representing coordinates (15.0, 25.0)
         double[] coordinates = new double[2];
