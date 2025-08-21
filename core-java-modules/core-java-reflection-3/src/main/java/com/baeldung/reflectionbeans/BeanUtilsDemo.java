@@ -11,11 +11,7 @@ public class BeanUtilsDemo {
         BeanUtils.setProperty(post, "title", "Commons BeanUtils Rocks");
         String title = BeanUtils.getProperty(post, "title");
 
-        Map<String, Object> data = Map.of(
-                "title", "Map → Bean",
-                "author", "Baeldung Team"
-        );
-
+        Map<String, Object> data = Map.of("title", "Map → Bean", "author", "Baeldung Team");
         BeanUtils.populate(post, data);
         Post source = new Post();
         source.setTitle("Source");

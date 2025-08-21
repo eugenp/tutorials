@@ -13,7 +13,9 @@ public class PropertyDescriptorUnitTest {
         Post post = new Post();
         PropertyDescriptor pd = new PropertyDescriptor("author", Post.class);
 
-        pd.getWriteMethod().invoke(post, "Chris");
-        assertEquals("Chris", pd.getReadMethod().invoke(post));
+        pd.getWriteMethod()
+            .invoke(post, "Chris");
+        assertEquals("Chris", pd.getReadMethod()
+            .invoke(post));
     }
 }

@@ -20,7 +20,6 @@ public class PropertyDescriptorDemo {
         Method write = titlePd.getWriteMethod();
         Method read = titlePd.getReadMethod();
 
-
         write.invoke(post, "Reflections in Java");
         String value = (String) read.invoke(post);
 
