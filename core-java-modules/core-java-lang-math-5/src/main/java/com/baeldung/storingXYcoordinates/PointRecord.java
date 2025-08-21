@@ -1,3 +1,5 @@
 package com.baeldung.storingXYcoordinates;
 
-public record PointRecord(int x, int y) {}
+public record PointRecord(double x, double y) {
+}
+
