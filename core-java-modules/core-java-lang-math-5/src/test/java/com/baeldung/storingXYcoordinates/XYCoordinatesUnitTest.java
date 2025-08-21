@@ -17,8 +17,8 @@ class XYCoordinatesUnitTest {
   
     @Test
     void givenTwoPointsWithSameCoordinates_whenComparedForEquality_thenShouldBeEqual() {
-        Point point1 = new CustomPoint(5, -3);
-        Point point2 = new CustomPoint(5, -3);
+        Point point1 = new Point(5, -3);
+        Point point2 = new Point(5, -3);
         
         assertEquals(point1, point2, "Points with same coordinates should be equal");
     }
