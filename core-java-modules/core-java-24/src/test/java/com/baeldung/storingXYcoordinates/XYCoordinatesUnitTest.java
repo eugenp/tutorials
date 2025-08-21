@@ -22,6 +22,26 @@ void givenTwoPointsWithSameCoordinates_whenComparedForEquality_thenShouldBeEqual
         
     assertEquals(point1, point2, "Points with same coordinates should be equal");
 }
- 
+
+@Test
+void givenAPointRecord_whenUsingAccessorMethods_thenRecordReturnsCoordinatesCorrectly() {
+    // Given a record with coordinates (30, 40)
+    PointRecord point = new PointRecord(30, 40);
+
+    // Then its accessor methods should return the correct values
+    assertEquals(30, point.x(), "X coordinate should be 30");
+    assertEquals(40, point.y(), "Y coordinate should be 40");
+}
+
+@Test
+void givenTwoRecordsWithSameCoordinates_whenComparedForEquality_thenShouldBeEqual() {
+    PointRecord point1 = new PointRecord(7, 8);
+    PointRecord point2 = new PointRecord(7, 8);
+
+    assertEquals(point1, point2, "Records with same coordinates should be equal");
+}
+    
+
+    
 
 }
