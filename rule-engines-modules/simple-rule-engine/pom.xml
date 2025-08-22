@@ -7,18 +7,6 @@
     <artifactId>simple-rule-engine</artifactId>
     <version>1.0</version>
     <name>simple-rule-engine</name>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>9</source>
-                    <target>9</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -36,8 +24,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-expression</artifactId>
-            <version>7.0.0-M7</version>
+            <version>${spring-expression.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <spring-expression.version>7.0.0-M7</spring-expression.version>
+    </properties>
 
 </project>
