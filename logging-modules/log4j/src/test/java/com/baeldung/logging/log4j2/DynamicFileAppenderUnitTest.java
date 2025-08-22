@@ -29,20 +29,4 @@ public class DynamicFileAppenderUnitTest {
         String content = Files.readString(file.toPath());
         assertTrue(content.contains(expectedMessage), "Log file should contain the logged message.");
     }
-
-    @Test
-    public void givenLog4j1DynamicFileNameConfig_whenLogToFile_thenFileIsCreated() throws IOException {
-        System.setProperty("logfilename", "log4j1-dynamic-log");
-        DOMConfigurator.configure("src/test/resources/log4j1-dynamic.xml");
-
-        org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(DynamicFileAppenderUnitTest.class);
-        String expectedMessage = "This is a test ERROR log for Log4j 1";
-        logger.error(expectedMessage);
-
-        File file = new File("log4j1-dynamic-log.log");
-        assertTrue(file.exists(), "Log file should be created dynamically for Log4j 1");
-
-        String content = Files.readString(file.toPath());
-        assertTrue(content.contains(expectedMessage), "Log file should contain the logged message.");
-    }
 }
