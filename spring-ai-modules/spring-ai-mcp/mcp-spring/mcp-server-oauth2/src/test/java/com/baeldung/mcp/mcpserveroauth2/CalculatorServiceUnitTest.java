@@ -4,7 +4,7 @@ import com.baeldung.mcp.mcpserveroauth2.model.CalculationResult;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class CalculatorServiceTest {
+class CalculatorServiceUnitTest {
     private final CalculatorService calculatorService = new CalculatorService();
 
     @Test

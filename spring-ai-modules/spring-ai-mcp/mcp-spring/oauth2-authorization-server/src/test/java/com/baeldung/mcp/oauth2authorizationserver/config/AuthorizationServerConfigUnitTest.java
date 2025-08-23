@@ -13,7 +13,7 @@ import org.springframework.security.oauth2.server.authorization.settings.Authori
 import org.springframework.security.web.SecurityFilterChain;
 
 @SpringBootTest(classes = AuthorizationServerConfig.class)
-class AuthorizationServerConfigTest {
+class AuthorizationServerConfigUnitTest {
 
     private final ApplicationContext context;
 
@@ -21,7 +21,7 @@ class AuthorizationServerConfigTest {
 
     private final AuthorizationServerSettings authorizationServerSettings;
 
-    public AuthorizationServerConfigTest(ApplicationContext context, RegisteredClientRepository registeredClientRepository,
+    public AuthorizationServerConfigUnitTest(ApplicationContext context, RegisteredClientRepository registeredClientRepository,
         AuthorizationServerSettings authorizationServerSettings) {
         this.authorizationServerSettings = authorizationServerSettings;
         this.registeredClientRepository = registeredClientRepository;
