@@ -16,6 +16,7 @@
 
     <modules>
         <module>apache-camel</module>
+        <module>apache-camel-kserve</module>
         <module>apache-rocketmq</module>
         <module>automq</module>
         <module>jgroups</module>
