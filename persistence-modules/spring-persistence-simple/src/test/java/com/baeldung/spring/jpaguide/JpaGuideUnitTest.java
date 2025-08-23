@@ -1,24 +1,25 @@
-package com.baeldung.jpaguide;
-
-import com.baeldung.spring.jpa.guide.model.Publishers;
-import com.baeldung.spring.jpa.guide.repository.PublisherRepository;
-import com.baeldung.spring.jpa.guide.service.PublisherService;
-import org.junit.Test;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+package com.baeldung.spring.jpaguide;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.anyString;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+import org.junit.Test;
+
+import com.baeldung.spring.jpa.guide.model.Publishers;
+import com.baeldung.spring.jpa.guide.repository.PublisherRepository;
+import com.baeldung.spring.jpa.guide.service.PublisherService;
 
 public class JpaGuideUnitTest {
 

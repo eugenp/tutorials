@@ -1,10 +1,11 @@
 package com.baeldung.spring.jpa.guide.service;
 
-import com.baeldung.spring.jpa.guide.model.Publishers;
-import com.baeldung.spring.jpa.guide.repository.PublisherRepository;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.baeldung.spring.jpa.guide.model.Publishers;
+import com.baeldung.spring.jpa.guide.repository.PublisherRepository;
 
 @Service
 public class PublisherService {

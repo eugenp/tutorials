@@ -1,11 +1,12 @@
 package com.baeldung.spring.jpa.guide;
 
-import com.baeldung.spring.jpa.guide.model.Publishers;
-import com.baeldung.spring.jpa.guide.repository.PublisherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import com.baeldung.spring.jpa.guide.model.Publishers;
+import com.baeldung.spring.jpa.guide.repository.PublisherRepository;
 
 @SpringBootApplication
 public class JpaGuideApp {
