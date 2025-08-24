@@ -41,11 +41,13 @@
 		    <scope>test</scope>
 		</dependency>
         <!-- Junit vintage versions listed explicitly due to conflict with Parent project-->
+        <!--
         <dependency>
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
             <scope>test</scope>
         </dependency>
+        -->
     </dependencies>
 
     <build>
