@@ -14,8 +14,8 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>${quarkus.platform.group-id}</groupId>
-                <artifactId>${quarkus.platform.artifact-id}</artifactId>
+                <groupId>io.quarkus.platform</groupId>
+                <artifactId>quarkus-bom</artifactId>
                 <version>${quarkus.platform.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -32,8 +32,7 @@
 		<dependency>
 		    <groupId>org.infinispan</groupId>
 		    <artifactId>infinispan-commons</artifactId>
-		    <version>15.0.15.Final</version>
-		    <scope>compile</scope>
+		    <version>${infinispan.commons.version}</version>
 		</dependency>        
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -48,7 +47,7 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>${quarkus.platform.group-id}</groupId>
+                <groupId>io.quarkus.platform</groupId>
                 <artifactId>quarkus-maven-plugin</artifactId>
                 <version>${quarkus.platform.version}</version>
                 <extensions>true</extensions>
@@ -118,16 +117,13 @@
     </profiles>
 
     <properties>
-        <compiler-plugin.version>3.14.0</compiler-plugin.version>
         <maven.compiler.release>17</maven.compiler.release>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
-        <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-        <quarkus.infinispan.version>1.1.0</quarkus.infinispan.version>
+        <compiler-plugin.version>3.14.0</compiler-plugin.version>
         <quarkus.platform.version>3.22.3</quarkus.platform.version>
         <skipITs>true</skipITs>
-        <surefire-plugin.version>3.5.3</surefire-plugin.version>
+        <surefire-plugin.version>3.5.2</surefire-plugin.version>
+        <quarkus.infinispan.version>1.1.0</quarkus.infinispan.version>
+        <infinispan.commons.version>15.0.15.Final</infinispan.commons.version>
         <junit-jupiter.version>5.12.2</junit-jupiter.version>
     </properties>
 
