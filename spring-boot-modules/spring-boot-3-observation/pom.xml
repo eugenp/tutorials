@@ -117,7 +117,6 @@
     <properties>
         <start-class>com.baeldung.samples.SimpleObservationApplication</start-class>
         <p6spy-spring-boot-starter.version>1.9.0</p6spy-spring-boot-starter.version>
-<!--        <spring-boot.version></spring-boot.version>-->
     </properties>
 
 </project>
