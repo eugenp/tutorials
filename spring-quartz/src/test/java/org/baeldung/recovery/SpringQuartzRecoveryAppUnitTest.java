@@ -12,13 +12,11 @@ import org.quartz.TriggerKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
+import org.springframework.test.context.ActiveProfiles;
 
-@SpringBootTest
-class DemoQuartzApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
+@ActiveProfiles("recovery")
+@SpringBootTest(classes = SpringQuartzRecoveryApp.class)
+class SpringQuartzRecoveryAppUnitTest {
 
 	@Autowired
 	private ApplicationContext applicationContext;
@@ -27,40 +25,30 @@ class DemoQuartzApplicationTests {
 	private Scheduler scheduler;
 
 	@Test
-	void whenAppRestarts_thenSampleJobIsReloaded() throws Exception {
-		JobKey jobKey = new JobKey("sampleJob", "group1");   // same as in your config
+	void givenSampleJob_whenSchedulerRestart_thenSampleJobIsReloaded() throws Exception {
+		// Given
+		JobKey jobKey = new JobKey("sampleJob", "group1");
 		TriggerKey triggerKey = new TriggerKey("sampleTrigger", "group1");
 
-		// --- First check: job exists in running scheduler
 		JobDetail jobDetail = scheduler.getJobDetail(jobKey);
-		assertNotNull(jobDetail, "SampleJob should be scheduled by Spring Boot");
+		assertNotNull(jobDetail, "SampleJob exists in running scheduler");
 
 		Trigger trigger = scheduler.getTrigger(triggerKey);
-		assertNotNull(trigger, "Trigger should be scheduled by Spring Boot");
+		assertNotNull(trigger, "SampleTrigger exists in running scheduler");
 
-		// --- Simulate shutdown
+		// When
 		scheduler.standby();
-
-		// --- Simulate restart: create a new scheduler instance (normally Boot does this on startup)
-//		Scheduler restartedScheduler = StdSchedulerFactory.getDefaultScheduler();
-//		restartedScheduler.start();
-		/*SchedulerFactory factory = new StdSchedulerFactory("application-test.properties");
-		Scheduler restartedScheduler = factory.getScheduler();
-		restartedScheduler.start();*/
 		Scheduler restartedScheduler = applicationContext.getBean(Scheduler.class);
 		restartedScheduler.start();
-//		assertNotNull(restartedScheduler.getJobDetail(jobKey),
-//			"SampleJob should be reloaded from DB after restart");
 
-//		Scheduler restartedScheduler = context.getBean(Scheduler.class);
+		// Then
 		assertTrue(restartedScheduler.isStarted(), "Scheduler should be running after restart");
 
-
-		// --- Verify Quartz reloaded job and trigger from DB
 		JobDetail reloadedJob = restartedScheduler.getJobDetail(jobKey);
 		assertNotNull(reloadedJob, "SampleJob should be reloaded from DB after restart");
 
 		Trigger reloadedTrigger = restartedScheduler.getTrigger(triggerKey);
-		assertNotNull(reloadedTrigger, "Trigger should be reloaded from DB after restart");
+		assertNotNull(reloadedTrigger, "SampleTrigger should be reloaded from DB after restart");
 	}
+
 }
