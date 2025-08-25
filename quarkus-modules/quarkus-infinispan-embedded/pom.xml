@@ -51,7 +51,6 @@
                     <systemPropertyVariables>
                         <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
                         <maven.home>${maven.home}</maven.home>
-						<jdk.nio.zipfs.default.useTempFile>true</jdk.nio.zipfs.default.useTempFile>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>

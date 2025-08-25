@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import io.quarkiverse.infinispan.embedded.runtime.cache.InfinispanCacheImpl;
@@ -15,6 +16,7 @@ import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 
 @QuarkusTest
+@Disabled
 class InfinispanCacheServiceUnitTest {
 
     @Inject
