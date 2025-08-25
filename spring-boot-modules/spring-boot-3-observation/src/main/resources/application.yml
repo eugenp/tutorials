@@ -1,4 +1,7 @@
 management:
+  observations:
+    annotations:
+      enabled: true
   endpoints:
     web:
       exposure:
