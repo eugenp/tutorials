@@ -1,0 +1,194 @@
+{
+  "info": {
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "96734d66-13c4-4bdc-a62f-cb9d34a99d97",
+    "name": "Book API"
+  },
+  "item": [
+    {
+      "name": "default",
+      "item": [
+        {
+          "name": "The type Book controller.",
+          "item": [
+            {
+              "name": "Create book.",
+              "request": {
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 0,\n  \"author\": \"\",\n  \"title\": \"\",\n  \"price\": 0.0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:8080/api/v1/books",
+                  "path": [
+                    "api",
+                    "v1",
+                    "books"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Create book.",
+                "header": []
+              },
+              "description": "Create book."
+            },
+            {
+              "name": "Get all books.",
+              "request": {
+                "method": "GET",
+                "body": {
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:8080/api/v1/books",
+                  "path": [
+                    "api",
+                    "v1",
+                    "books"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Get all books.",
+                "header": []
+              },
+              "description": "Get all books."
+            },
+            {
+              "name": "Gets book by id.",
+              "request": {
+                "method": "GET",
+                "body": {
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:8080/api/v1/book/:id",
+                  "path": [
+                    "api",
+                    "v1",
+                    "book",
+                    ":id"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "1",
+                      "description": "the book id"
+                    }
+                  ]
+                },
+                "description": "Gets book by id.",
+                "header": []
+              },
+              "description": "Gets book by id."
+            },
+            {
+              "name": "Update book response entity.",
+              "request": {
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 0,\n  \"author\": \"\",\n  \"title\": \"\",\n  \"price\": 0.0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:8080/api/v1/books/:id",
+                  "path": [
+                    "api",
+                    "v1",
+                    "books",
+                    ":id"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "1",
+                      "description": "     the book id"
+                    }
+                  ]
+                },
+                "description": "Update book response entity.",
+                "header": []
+              },
+              "description": "Update book response entity."
+            },
+            {
+              "name": "Delete book.",
+              "request": {
+                "method": "DELETE",
+                "body": {
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:8080/api/v1/book/:id",
+                  "path": [
+                    "api",
+                    "v1",
+                    "book",
+                    ":id"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "1",
+                      "description": "the book id"
+                    }
+                  ]
+                },
+                "description": "Delete book.",
+                "header": []
+              },
+              "description": "Delete book."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

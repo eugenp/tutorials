@@ -1,0 +1,4 @@
+{
+  "outPath": "./src/main/resources/doc",
+  "serverUrl": "localhost:8080"
+}

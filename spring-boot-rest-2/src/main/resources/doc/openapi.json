@@ -1,0 +1,263 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Book API",
+    "version": "v1.0.0"
+  },
+  "servers": [
+    {
+      "url": "localhost:8080"
+    }
+  ],
+  "tags": [
+    {
+      "name": "BookController",
+      "description": "The type Book controller."
+    }
+  ],
+  "paths": {
+    "/api/v1/books": {
+      "post": {
+        "summary": "Create book.",
+        "deprecated": false,
+        "tags": [
+          "BookController"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/5d33d487e2ec7c29e2a7819f08a7c5f7"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"id\": 0,\n  \"author\": \"\",\n  \"title\": \"\",\n  \"price\": 0.0\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/5d33d487e2ec7c29e2a7819f08a7c5f7"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"id\": 0,\n  \"author\": \"\",\n  \"title\": \"\",\n  \"price\": 0.0\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "createBook",
+        "parameters": []
+      },
+      "get": {
+        "summary": "Get all books.",
+        "deprecated": false,
+        "tags": [
+          "BookController"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/5d33d487e2ec7c29e2a7819f08a7c5f7"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "[\n  {\n    \"id\": 0,\n    \"author\": \"\",\n    \"title\": \"\",\n    \"price\": 0.0\n  }\n]"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "getAllBooks",
+        "parameters": []
+      }
+    },
+    "/api/v1/book/{id}": {
+      "get": {
+        "summary": "Gets book by id.",
+        "deprecated": false,
+        "tags": [
+          "BookController"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/5d33d487e2ec7c29e2a7819f08a7c5f7"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"id\": 0,\n  \"author\": \"\",\n  \"title\": \"\",\n  \"price\": 0.0\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "getBookById",
+        "parameters": [
+          {
+            "schema": {
+              "format": "int64",
+              "type": "number"
+            },
+            "in": "path",
+            "description": "the book id",
+            "required": true,
+            "example": 1,
+            "name": "id"
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete book.",
+        "deprecated": false,
+        "tags": [
+          "BookController"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "boolean"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "true"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "deleteBook",
+        "parameters": [
+          {
+            "schema": {
+              "format": "int64",
+              "type": "number"
+            },
+            "in": "path",
+            "description": "the book id",
+            "required": true,
+            "example": 1,
+            "name": "id"
+          }
+        ]
+      }
+    },
+    "/api/v1/books/{id}": {
+      "put": {
+        "summary": "Update book response entity.",
+        "deprecated": false,
+        "tags": [
+          "BookController"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/5d33d487e2ec7c29e2a7819f08a7c5f7"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"id\": 0,\n  \"author\": \"\",\n  \"title\": \"\",\n  \"price\": 0.0\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/5d33d487e2ec7c29e2a7819f08a7c5f7"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"id\": 0,\n  \"author\": \"\",\n  \"title\": \"\",\n  \"price\": 0.0\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "updateBook",
+        "parameters": [
+          {
+            "schema": {
+              "format": "int64",
+              "type": "number"
+            },
+            "in": "path",
+            "description": "     the book id",
+            "required": true,
+            "example": 1,
+            "name": "id"
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "defaultPrimitive": {
+        "format": "string",
+        "type": "string"
+      },
+      "5d33d487e2ec7c29e2a7819f08a7c5f7": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "format": "int64",
+            "description": "Book ID",
+            "type": "number",
+            "example": 0
+          },
+          "author": {
+            "format": "string",
+            "description": "Author",
+            "type": "string"
+          },
+          "title": {
+            "format": "string",
+            "description": "Book Title",
+            "type": "string"
+          },
+          "price": {
+            "format": "double",
+            "description": "Book Price",
+            "type": "number",
+            "example": 0.0
+          }
+        }
+      },
+      "d751713988987e9331980363e24189ce": {}
+    }
+  }
+}

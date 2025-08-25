@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.hateoasvsswagger;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
