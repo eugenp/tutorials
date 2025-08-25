@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung</groupId>
     <artifactId>quarkus-infinispan-embedded</artifactId>
-    <name>quarkus-infinispan-embedded</name>
+    <version>1.0.0-SNAPSHOT</version>
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>quarkus-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+
+    <properties>
+        <compiler-plugin.version>3.14.0</compiler-plugin.version>
+        <quarkus.platform.version>3.25.0</quarkus.platform.version>
+        <skipITs>true</skipITs>
+        <junit-jupiter.version>5.13.4</junit-jupiter.version>
+    </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -23,24 +31,46 @@
 
     <dependencies>
         <dependency>
-            <groupId>io.quarkiverse.infinispan</groupId>
-            <artifactId>quarkus-infinispan-embedded</artifactId>
-            <version>${quarkus.infinispan.version}</version>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-rest</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-arc</artifactId>
         </dependency>
-		<dependency>
-		    <groupId>io.quarkus</groupId>
-		    <artifactId>quarkus-junit5</artifactId>
-		    <scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-junit5</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
+                <groupId>io.quarkus.platform</groupId>
+                <artifactId>quarkus-maven-plugin</artifactId>
+                <version>${quarkus.platform.version}</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>generate-code</goal>
+                            <goal>generate-code-tests</goal>
+                            <goal>native-image-agent</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${compiler-plugin.version}</version>
                 <configuration>
                     <parameters>true</parameters>
                 </configuration>
@@ -56,7 +86,6 @@
             </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>${maven-failsafe-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -67,6 +96,7 @@
                 </executions>
                 <configuration>
                     <systemPropertyVariables>
+                        <native.image.path>${project.build.directory}/${project.build.finalName}-runner</native.image.path>
                         <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
                         <maven.home>${maven.home}</maven.home>
                     </systemPropertyVariables>
@@ -74,11 +104,19 @@
             </plugin>
         </plugins>
     </build>
-    <properties>
-        <quarkus.platform.version>3.25.0</quarkus.platform.version>
-        <skipITs>true</skipITs>
-        <quarkus.infinispan.version>1.1.0</quarkus.infinispan.version>
-        <junit-jupiter.version>5.13.4</junit-jupiter.version>
-    </properties>
 
+    <profiles>
+        <profile>
+            <id>native</id>
+            <activation>
+                <property>
+                    <name>native</name>
+                </property>
+            </activation>
+            <properties>
+                <skipITs>false</skipITs>
+                <quarkus.native.enabled>true</quarkus.native.enabled>
+            </properties>
+        </profile>
+    </profiles>
 </project>

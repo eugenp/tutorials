@@ -7,11 +7,11 @@
 #
 # Then, build the image with:
 #
-# docker build -f src/main/docker/Dockerfile.native -t quarkus/quarkus-infinispan .
+# docker build -f src/main/docker/Dockerfile.native -t quarkus/quarkus-infinispan-embedded .
 #
 # Then run the container using:
 #
-# docker run -i --rm -p 8080:8080 quarkus/quarkus-infinispan
+# docker run -i --rm -p 8080:8080 quarkus/quarkus-infinispan-embedded
 #
 # The ` registry.access.redhat.com/ubi9/ubi-minimal:9.5` base image is based on UBI 9.
 # To use UBI 8, switch to `quay.io/ubi8/ubi-minimal:8.10`.
