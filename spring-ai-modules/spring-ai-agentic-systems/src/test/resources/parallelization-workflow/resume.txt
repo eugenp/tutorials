@@ -1,0 +1,18 @@
+John Doe - Senior Software Engineer
+
+Experience:
+- 8 years developing enterprise Java applications using Spring Boot and microservices
+- Led a team of 5 developers for 2 years, conducting code reviews and mentoring juniors
+- Architected and deployed cloud-native solutions on AWS (EC2, Lambda, RDS, S3)
+- Implemented CI/CD pipelines using Jenkins and GitLab CI
+- Strong experience with PostgreSQL, MongoDB, and Redis
+
+Education:
+- M.S. Computer Science, Stanford University
+- B.S. Computer Engineering, UC Berkeley
+
+Skills:
+- Languages: Java, Python, JavaScript, SQL
+- Frameworks: Spring Boot, React, Node.js
+- Cloud: AWS Certified Solutions Architect, Kubernetes, Docker
+- Soft Skills: Technical presentations, cross-functional collaboration, agile methodologies
