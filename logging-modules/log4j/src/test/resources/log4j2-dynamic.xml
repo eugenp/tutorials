@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <File name="DynamicFileAppender" fileName="${sys:logfilename}.log">
+            <PatternLayout pattern="%d [%t] %-5level %logger - %msg%n"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="DynamicFileAppender"/>
+        </Root>
+    </Loggers>
+</Configuration>
