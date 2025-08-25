@@ -18,6 +18,7 @@
         <module>evrete</module>
         <module>openl-tablets</module>
         <module>rulebook</module>
+        <module>simple-rule-engine</module>
         <!-- <module>jess</module> --> <!-- requires dependencies which are not publicly available -->
     </modules>
 
