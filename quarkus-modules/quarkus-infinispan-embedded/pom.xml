@@ -11,7 +11,6 @@
     </parent>
 
     <properties>
-        <compiler-plugin.version>3.14.0</compiler-plugin.version>
         <quarkus.platform.version>3.15.6</quarkus.platform.version>
         <quarkus.infinispan.version>1.1.0</quarkus.infinispan.version>
         <infinispan.commons.version>15.0.15.Final</infinispan.commons.version>
@@ -44,20 +43,11 @@
 		</dependency>        
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-rest</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
             <artifactId>quarkus-arc</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-junit5</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -81,7 +71,6 @@
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${compiler-plugin.version}</version>
                 <configuration>
                     <parameters>true</parameters>
                 </configuration>
