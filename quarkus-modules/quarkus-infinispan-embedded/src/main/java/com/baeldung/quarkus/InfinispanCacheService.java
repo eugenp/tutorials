@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.quarkus;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
