@@ -58,8 +58,8 @@ class DummyService {
         return response;
     }
 
-    @Timed(value = "buzz.time")
-    @Counted(value = "buzz.count")
+    @Timed("buzz.time")
+    @Counted("buzz.count")
     public String buzz(@MeterTag("device.type") String device) {
         log.info("buzz({})", device);
         return invokeSomeLogic();
