@@ -8,7 +8,7 @@ public class ExampleTest {
     @BeforeAll
     static void setup() {
         System.out.println("Execute: BeforeAll");
-        // Initialize class-specific resources, e.g., a mock database
+        // Initialize class-specific resources
     }
 
     @Test
