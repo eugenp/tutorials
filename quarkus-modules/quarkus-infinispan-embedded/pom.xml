@@ -12,10 +12,10 @@
 
     <properties>
         <compiler-plugin.version>3.14.0</compiler-plugin.version>
-        <quarkus.platform.version>3.25.0</quarkus.platform.version>
+        <quarkus.platform.version>3.12.3</quarkus.platform.version>
         <quarkus.infinispan.version>1.1.0</quarkus.infinispan.version>
         <skipITs>true</skipITs>
-        <junit-jupiter.version>5.13.4</junit-jupiter.version>
+        <junit-jupiter.version>5.10.2</junit-jupiter.version>
     </properties>
 
     <dependencyManagement>
@@ -31,11 +31,13 @@
     </dependencyManagement>
 
     <dependencies>
+    	<!--
         <dependency>
             <groupId>io.quarkiverse.infinispan</groupId>
             <artifactId>quarkus-infinispan-embedded</artifactId>
             <version>${quarkus.infinispan.version}</version>
         </dependency>
+        -->
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-rest</artifactId>
