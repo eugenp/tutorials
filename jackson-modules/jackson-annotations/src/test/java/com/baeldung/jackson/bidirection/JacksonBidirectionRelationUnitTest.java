@@ -152,7 +152,7 @@ public class JacksonBidirectionRelationUnitTest {
     }
 
     @Test
-    public void givenMultipleBackReferencesOnWishlist_whenNoNamedReference_thenThrowsException() throws JsonProcessingException {
+    public void givenMultipleBackReferencesOnWishlist_whenNamedReference_thenNoException() throws JsonProcessingException {
         User user = new User();
         user.id = 1;
         user.name = "Alice";
