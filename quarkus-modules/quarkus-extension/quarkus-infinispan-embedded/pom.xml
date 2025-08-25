@@ -117,14 +117,12 @@
     </profiles>
 
     <properties>
-        <maven.compiler.release>17</maven.compiler.release>
         <compiler-plugin.version>3.14.0</compiler-plugin.version>
         <quarkus.platform.version>3.22.3</quarkus.platform.version>
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.5.2</surefire-plugin.version>
         <quarkus.infinispan.version>1.1.0</quarkus.infinispan.version>
         <infinispan.commons.version>15.0.15.Final</infinispan.commons.version>
-        <junit-jupiter.version>5.12.2</junit-jupiter.version>
     </properties>
 
 </project>
