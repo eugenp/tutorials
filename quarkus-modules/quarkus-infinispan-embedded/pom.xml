@@ -111,9 +111,7 @@
         <quarkus.platform.version>3.25.0</quarkus.platform.version>
         <skipITs>true</skipITs>
         <quarkus.infinispan.version>1.1.0</quarkus.infinispan.version>
-        <!--
-        <junit-jupiter.version>5.12.2</junit-jupiter.version>
-        -->
+        <junit-jupiter.version>5.13.4</junit-jupiter.version>
     </properties>
 
 </project>
