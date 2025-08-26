@@ -22,7 +22,6 @@
 
   <modules>
     <module>milvus</module>
-    <module>jvector</module>
   </modules>
 
 </project>
