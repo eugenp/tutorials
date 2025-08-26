@@ -1,6 +1,6 @@
-package jvector;
+package com.baeldung.jvector;
 
-import static jvector.VectorSearch.persistIndex;
+import static com.baeldung.jvector.VectorSearch.persistIndex;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -12,12 +12,9 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -75,7 +72,7 @@ class VectorSearchTest {
 
     private Map<String, VectorFloat<?>> loadGlove6B50dDataSet(int limit) throws IOException {
         URL datasetResource = getClass().getClassLoader()
-            .getResource("glove.6B.50d.txt");
+            .getResource("jvector/glove.6B.50d.txt");
         assertNotNull(datasetResource);
 
         Map<String, VectorFloat<?>> vectors = new HashMap<>();

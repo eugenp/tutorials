@@ -1,4 +1,4 @@
-package jvector;
+package com.baeldung.jvector;
 
 import java.io.IOException;
 import java.nio.file.Path;
