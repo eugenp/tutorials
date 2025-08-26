@@ -1,4 +1,4 @@
-package com.baeldung.controllers;
+package com.baeldung.requestresponsebody.controllers;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
