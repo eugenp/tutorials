@@ -9,13 +9,8 @@ public class BeanUtilsDemo {
     public static void main(String[] args) throws Exception {
         Post post = new Post();
         BeanUtils.setProperty(post, "title", "Commons BeanUtils Rocks");
-        String title = BeanUtils.getProperty(post, "title");
 
-        Map<String, Object> data = Map.of(
-                "title", "Map → Bean",
-                "author", "Baeldung Team"
-        );
-
+        Map<String, Object> data = Map.of("title", "Map → Bean", "author", "Baeldung Team");
         BeanUtils.populate(post, data);
         Post source = new Post();
         source.setTitle("Source");
@@ -23,7 +18,13 @@ public class BeanUtilsDemo {
 
         Post target = new Post();
         BeanUtils.copyProperties(target, source);
-        System.out.println(title);
+        if (target.getMetadata() == null) {
+            target.setMetadata(new Post.Metadata());
+        }
+        BeanUtils.setProperty(target, "metadata.wordCount", 850);
+        System.out.println(target.getTitle());
+        System.out.println(target.getMetadata()
+            .getWordCount());
     }
 
     public static void safeCopy(Object target, Object source) {
