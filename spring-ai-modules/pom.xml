@@ -18,7 +18,7 @@
     <modules>
         <module>spring-ai-advanced-features</module>
         <module>spring-ai-chat-models</module>
-<!--        <module>spring-ai-conversational</module> --><!--Compilation issues -->
+        <module>spring-ai-conversational</module>
         <module>spring-ai-core</module>
         <module>spring-ai-infrastructure</module>
         <module>spring-ai-multimodal</module>
