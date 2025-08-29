@@ -27,7 +27,7 @@ class MovieController {
         curl -X GET "http://localhost:8080/api/seating/movies?range=week"
     */
     @GetMapping
-    List<UpcomingMovies> moviesToday(@RequestParam String range) {
+    List<UpcomingMovie> moviesToday(@RequestParam String range) {
         Instant endTime = endTime(range);
         return movieScreens.findUpcomingMoviesByStartTimeBetween(now(), endTime.truncatedTo(DAYS));
     }
