@@ -1,27 +1,3 @@
 spring:
-  datasource:
-    userdb:
-      url: jdbc:h2:mem:userdb
-      username: sa
-      password:
-      driver-class-name: org.h2.Driver
-    productdb:
-      url: jdbc:h2:mem:productdb
-      username: sa
-      password:
-      driver-class-name: org.h2.Driver
-    application:
-      name: flyway-multidb-springboot
-
-  flyway:
-    enabled: false
-  jpa:
-    defer-datasource-initialization: false
-    hibernate:
-      ddl-auto: none
   main:
     allow-circular-references: true
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
