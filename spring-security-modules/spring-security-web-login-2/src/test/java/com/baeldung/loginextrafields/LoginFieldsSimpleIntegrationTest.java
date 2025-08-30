@@ -52,7 +52,7 @@ public class LoginFieldsSimpleIntegrationTest extends AbstractExtraLoginFieldsIn
             .session(session)
             .with(csrf()))
             .andExpect(status().is3xxRedirection())
-            .andExpect(redirectedUrlPattern("**/user/index"))
+            .andExpect(redirectedUrlPattern("**/user/index?continue"))
             .andReturn();
 
         mockMvc.perform(securedResourceAccess.session(session))

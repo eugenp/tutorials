@@ -18,56 +18,49 @@
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>dynamodb</artifactId>
-            <version>2.31.23</version>
+            <version>${software.amazon.awssdk.version}</version>
         </dependency>
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>localstack</artifactId>
-            <version>1.20.6</version>
+            <version>${testcontainers.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>testcontainers</artifactId>
-            <version>1.20.6</version>
+            <version>${testcontainers.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>sdk-core</artifactId>
-            <version>2.31.23</version>
+            <version>${software.amazon.awssdk.version}</version>
         </dependency>
-
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>aws-core</artifactId>
-            <version>2.31.23</version>
+            <version>${software.amazon.awssdk.version}</version>
         </dependency>
-
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>netty-nio-client</artifactId>
-            <version>2.31.23</version>
+            <version>${software.amazon.awssdk.version}</version>
         </dependency>
-
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>utils</artifactId>
-            <version>2.31.23</version>
+            <version>${software.amazon.awssdk.version}</version>
         </dependency>
-
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>identity-spi</artifactId>
-            <version>2.31.23</version>
+            <version>${software.amazon.awssdk.version}</version>
         </dependency>
-
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>checksums</artifactId>
-            <version>2.31.23</version>
+            <version>${software.amazon.awssdk.version}</version>
         </dependency>
     </dependencies>
 
@@ -98,16 +91,16 @@
                 <configuration>
                     <source>9</source>
                     <target>9</target>
+                    <release>9</release>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
     <properties>
-        <aws-java-sdk.version>1.12.331</aws-java-sdk.version>
-        <gson.version>2.11.0</gson.version>
-        <dynamodblocal.version>1.21.1</dynamodblocal.version>
         <maven-plugins-version>3.1.1</maven-plugins-version>
+        <software.amazon.awssdk.version>2.31.23</software.amazon.awssdk.version>
+        <testcontainers.version>1.20.6</testcontainers.version>
     </properties>
 
 </project>

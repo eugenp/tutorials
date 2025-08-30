@@ -51,8 +51,8 @@
             </plugin>
         </plugins>
     </build>
+
     <properties>
-        <gson.version>2.11.0</gson.version>
         <testng.version>7.7.0</testng.version>
     </properties>
 </project>

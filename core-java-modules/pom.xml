@@ -280,6 +280,7 @@
         <module>java-websocket</module>
         <module>core-java-8-datetime-3</module>
         <module>core-java-8-datetime-4</module>
+        <module>core-java-collections-list-8</module>
         <!--<module>core-java-22</module>--> <!-- Migrated to default-jdk22 profile -->
         <!--<module>core-java-23</module>--> <!-- Migrated to default-jdk23 profile -->
         <!--<module>core-java-24</module>--> <!-- Migrated to default-jdk24 profile -->
@@ -307,6 +308,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <org.json.version>20240303</org.json.version>
+        <gson.version>2.11.0</gson.version>
     </properties>
 
     <dependencyManagement>

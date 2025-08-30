@@ -565,7 +565,7 @@
                 <module>core-java-modules/core-java-datetime-conversion</module>
                 <module>libraries-data-io</module>
                 <module>persistence-modules/spring-data-neo4j</module>
-                <module>persistence-modules/spring-persistence-simple</module>
+                <module>persistence-modules/spring-persistence</module>
                 <module>quarkus-modules/quarkus</module>
                 <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
                 <module>spring-di-2</module>
@@ -649,6 +649,7 @@
                 <module>disruptor</module>
                 <module>docker-modules</module>
                 <module>drools</module>
+                <module>embabel-modules</module>
                 <module>feign</module>
                 <module>gcp-firebase</module>
                 <module>geotools</module>
@@ -731,6 +732,7 @@
                 <module>lwjgl</module>
                 <module>mapstruct</module>
                 <module>mapstruct-2</module>
+                <module>mapstruct-3</module>
                 <module>maven-modules</module>
                 <module>messaging-modules</module>
                 <module>metrics</module>
@@ -818,11 +820,13 @@
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
                 <module>spring-static-resources</module>
+                <module>spring-structurizr</module>
                 <module>spring-swagger-codegen-modules/custom-validations-opeanpi-codegen</module>
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
                 <module>spring-websockets</module>
+                <module>static-analysis-modules</module>
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
                 <module>timefold-solver</module>
@@ -1007,7 +1011,7 @@
                 <module>core-java-modules/core-java-datetime-conversion</module>
                 <module>libraries-data-io</module>
                 <module>persistence-modules/spring-data-neo4j</module>
-                <module>persistence-modules/spring-persistence-simple</module>
+                <module>persistence-modules/spring-persistence</module>
                 <module>quarkus-modules/quarkus</module>
                 <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
                 <module>spring-di-2</module>
@@ -1085,6 +1089,7 @@
                 <module>disruptor</module>
                 <module>docker-modules</module>
                 <module>drools</module>
+                <module>embabel-modules</module>
                 <module>feign</module>
                 <module>gcp-firebase</module>
                 <module>geotools</module>
@@ -1167,6 +1172,7 @@
                 <module>lwjgl</module>
                 <module>mapstruct</module>
                 <module>mapstruct-2</module>
+                <module>mapstruct-3</module>
                 <module>maven-modules</module>
                 <module>messaging-modules</module>
                 <module>metrics</module>
@@ -1254,11 +1260,13 @@
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
                 <module>spring-static-resources</module>
+                <module>spring-structurizr</module>
                 <module>spring-swagger-codegen-modules/custom-validations-opeanpi-codegen</module>
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
                 <module>spring-websockets</module>
+                <module>static-analysis-modules</module>
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
                 <module>timefold-solver</module>
@@ -1493,7 +1501,6 @@
                 <module>spring-cloud-modules/spring-cloud-data-flow</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42054 -->
                 <module>spring-cloud-modules/spring-cloud-stream-starters</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42055 -->
                 <module>spring-jinq</module> <!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
-                <module>static-analysis-modules</module> <!-- requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <module>tablesaw</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42037 -->
                 <module>spring-swagger-codegen-modules/openapi-custom-generator</module>
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> <!-- cannot add the individual modules here because the order is not guaranteed -->
@@ -1517,6 +1524,7 @@
                 <module>spring-boot-modules/spring-boot-graphql-2</module> <!-- JAVA-42053 -->
                 <module>spring-remoting-modules/remoting-hessian-burlap</module> <!-- cannot upgrade logback due to usage of old spring boot 1 version -->
                 <module>spring-security-modules/spring-security-saml</module> <!-- This module wasn't able to update to spring boot 3 because Jakarta clashes with javax -->
+                <module>static-analysis-modules/error-prone-library</module> <!-- requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <module>web-modules/ninja</module> <!-- JAVA-24584 -->
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
@@ -1558,7 +1566,6 @@
                 <module>spring-cloud-modules/spring-cloud-data-flow</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42054 -->
                 <module>spring-cloud-modules/spring-cloud-stream-starters</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42055 -->
                 <module>spring-jinq</module> <!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
-                <module>static-analysis-modules</module> <!-- requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <module>tablesaw</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42037 -->
                 <module>spring-swagger-codegen-modules/openapi-custom-generator</module>
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> <!-- cannot add the individual modules here because the order is not guaranteed -->
@@ -1582,6 +1589,7 @@
                 <module>spring-boot-modules/spring-boot-graphql-2</module> <!-- JAVA-42053 -->
                 <module>spring-remoting-modules/remoting-hessian-burlap</module> <!-- cannot upgrade logback due to usage of old spring boot 1 version -->
                 <module>spring-security-modules/spring-security-saml</module> <!-- This module wasn't able to update to spring boot 3 because Jakarta clashes with javax -->
+                <module>static-analysis-modules/error-prone-library</module> <!-- requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <module>web-modules/ninja</module> <!-- JAVA-24584 -->
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
