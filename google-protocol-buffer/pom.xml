@@ -26,7 +26,7 @@
     </dependencies>
 
     <properties>
-        <protobuf.version>4.30.2</protobuf.version>
+        <protobuf.version>4.31.1</protobuf.version>
         <junit.jupiter.version>5.13.0-M2</junit.jupiter.version>
     </properties>
 

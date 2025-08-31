@@ -93,6 +93,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.baeldung.hateoasvsswagger.SpringBootRestApplication</mainClass>
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -104,11 +107,21 @@
                     <target>17</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.ly.smart-doc</groupId>
+                <artifactId>smart-doc-maven-plugin</artifactId>
+                <version>${smart-doc.version}</version>
+                <configuration>
+                    <configFile>./src/main/resources/smart-doc.json</configFile>
+                    <projectName>Book API</projectName>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
     <properties>
         <springdoc-openapi.version>2.5.0</springdoc-openapi.version>
         <xstream.version>1.4.11.1</xstream.version>
+        <smart-doc.version>3.1.1</smart-doc.version>
     </properties>
 </project>
