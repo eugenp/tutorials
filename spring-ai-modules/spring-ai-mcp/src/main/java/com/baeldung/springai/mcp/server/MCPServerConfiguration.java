@@ -43,6 +43,7 @@ class MCPServerConfiguration {
                 List<SyncToolSpecification> tools = McpToolUtils.toSyncToolSpecifications(toolCallbacks);
                 tools.forEach(tool -> {
                     mcpSyncServer.addTool(tool);
+                    mcpSyncServer.notifyToolsListChanged();
                 });
             }
         };
