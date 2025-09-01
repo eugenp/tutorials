@@ -46,13 +46,11 @@ class StatelessSessionIntegrationTest {
 
             Author author = new Author();
             author.setName(RandomString.make());
-
             statelessSession.insert(author);
 
             Article article = new Article();
             article.setTitle(RandomString.make());
             article.setAuthor(author);
-
             statelessSession.insert(article);
 
             statelessSession.getTransaction().commit();
@@ -90,7 +88,6 @@ class StatelessSessionIntegrationTest {
             Author author = statelessSession.get(Author.class, authorId);
             assertThat(author)
                 .hasNoNullFieldsOrProperties();
-
             assertThrows(LazyInitializationException.class, () -> {
                 author.getArticles().size();
             });
@@ -119,7 +116,8 @@ class StatelessSessionIntegrationTest {
         }
 
         try (StatelessSession statelessSession = sessionFactory.openStatelessSession()) {
-            Author author = statelessSession.createQuery(
+            Author author = statelessSession
+                .createQuery(
                     "SELECT a FROM Author a LEFT JOIN FETCH a.articles WHERE a.id = :id",
                     Author.class)
                 .setParameter("id", authorId)
@@ -127,7 +125,6 @@ class StatelessSessionIntegrationTest {
 
             assertThat(author)
                 .hasNoNullFieldsOrProperties();
-
             assertThat(author.getArticles())
                 .isNotNull()
                 .hasSize(1);
