@@ -155,4 +155,55 @@ class StatelessSessionIntegrationTest {
         }
     }
 
+    @Test
+    void whenEntityModifiedInStatelessSession_thenChangesNotAutomaticallyPersisted() {
+        SessionFactory sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
+        Long authorId;
+        String originalName = RandomString.make();
+        try (StatelessSession statelessSession = sessionFactory.openStatelessSession()) {
+            statelessSession.getTransaction().begin();
+
+            Author author = new Author();
+            author.setName(originalName);
+            statelessSession.insert(author);
+
+            author.setName(RandomString.make());
+
+            statelessSession.getTransaction().commit();
+            authorId = author.getId();
+        }
+
+        try (StatelessSession statelessSession = sessionFactory.openStatelessSession()) {
+            Author author = statelessSession.get(Author.class, authorId);
+            assertThat(author.getName())
+                .isEqualTo(originalName);
+        }
+    }
+
+    @Test
+    void whenEntityExplicitlyUpdated_thenChangesPersisted() {
+        SessionFactory sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
+        Long authorId;
+        String newName = RandomString.make();
+        try (StatelessSession statelessSession = sessionFactory.openStatelessSession()) {
+            statelessSession.getTransaction().begin();
+
+            Author author = new Author();
+            author.setName(RandomString.make());
+            statelessSession.insert(author);
+
+            author.setName(newName);
+            statelessSession.update(author);
+
+            statelessSession.getTransaction().commit();
+            authorId = author.getId();
+        }
+
+        try (StatelessSession statelessSession = sessionFactory.openStatelessSession()) {
+            Author author = statelessSession.get(Author.class, authorId);
+            assertThat(author.getName())
+                .isEqualTo(newName);
+        }
+    }
+
 }
