@@ -190,6 +190,12 @@
             <artifactId>javalite-common</artifactId>
             <version>${javalite.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.vmlens</groupId>
+            <artifactId>api</artifactId>
+            <version>${vmlens.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -218,6 +224,24 @@
                     </argLine>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.vmlens</groupId>
+                <artifactId>vmlens-maven-plugin</artifactId>
+                <version>${vmlens.version}</version>
+                <executions>
+                    <execution>
+                        <id>test</id>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <includes>
+                        <include>**/BankAccountTest.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -238,5 +262,6 @@
         <truth.version>0.32</truth.version>
         <jgotesting.version>0.12</jgotesting.version>
         <javalite.version>1.4.13</javalite.version>
+        <vmlens.version>1.2.10</vmlens.version>
     </properties>
 </project>

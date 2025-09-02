@@ -115,6 +115,12 @@
             <artifactId>jakarta.xml.bind-api</artifactId>
             <version>${jaxb-runtime.version}</version> <!-- Or the latest version -->
         </dependency>
+        <dependency>
+            <groupId>org.wiremock</groupId>
+            <artifactId>wiremock</artifactId>
+            <version>${wiremock.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -144,6 +150,7 @@
         <jaxb-runtime.version>3.0.1</jaxb-runtime.version>
         <junit.jupiter.version>5.8.2</junit.jupiter.version>
         <mockito-junit-jupiter.version>4.5.1</mockito-junit-jupiter.version>
+        <wiremock.version>3.13.0</wiremock.version>
     </properties>
 
 </project>
