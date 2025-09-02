@@ -24,6 +24,7 @@
         <module>quarkus-elasticsearch</module>
         <module>quarkus-funqy</module>
         <!--<module>quarkus-hibernate-reactive</module>--> <!--moved to heavy profile-->
+        <module>quarkus-infinispan-embedded</module> 
         <module>quarkus-jandex</module>
         <module>quarkus-kogito</module>
         <module>quarkus-langchain4j</module>
