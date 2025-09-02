@@ -660,7 +660,7 @@
                 <module>grpc</module>
                 <module>guava-modules</module>
                 <module>hazelcast</module>
-                <module>heroku</module>
+                <module>spring-boot-heroku-deployment</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>image-compressing</module>
@@ -1101,7 +1101,7 @@
                 <module>grpc</module>
                 <module>guava-modules</module>
                 <module>hazelcast</module>
-                <module>heroku</module>
+                <module>spring-boot-heroku-deployment</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>image-compressing</module>
