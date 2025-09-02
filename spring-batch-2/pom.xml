@@ -104,6 +104,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>java-dataloader</artifactId>
+            <version>${java-dataloader.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -123,6 +128,7 @@
         <spring.batch.version>5.2.0</spring.batch.version>
         <awaitility.version>4.2.1</awaitility.version>
         <assertj.version>3.24.2</assertj.version>
+        <java-dataloader.version>3.2.0</java-dataloader.version>
         <start-class>com.baeldung.batch.SpringBootBatchProcessingApplication</start-class>
     </properties>
 
