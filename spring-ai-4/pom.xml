@@ -63,6 +63,14 @@
        </dependency>
        <dependency>
            <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-starter-model-vertex-ai-gemini</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-starter-model-vertex-ai-embedding</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.ai</groupId>
            <artifactId>spring-ai-model-chat-memory-repository-jdbc</artifactId>
        </dependency>
        <dependency>
@@ -89,6 +97,12 @@
                 <spring.boot.mainclass>com.baeldung.springai.memory.Application</spring.boot.mainclass>
             </properties>
         </profile>
+        <profile>
+            <id>vertexai</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.vertexai.Application</spring.boot.mainclass>
+            </properties>
+        </profile>
     </profiles>
 
    <build>
@@ -113,7 +127,7 @@
    <properties>
        <junit-jupiter.version>5.9.0</junit-jupiter.version>
        <spring-boot.version>3.5.0</spring-boot.version>
-       <spring-ai.version>1.0.0</spring-ai.version>
+       <spring-ai.version>1.0.1</spring-ai.version>
    </properties>
 
 </project>

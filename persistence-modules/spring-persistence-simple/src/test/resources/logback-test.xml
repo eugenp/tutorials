@@ -6,8 +6,6 @@
         </encoder>
     </appender>
 
-    <logger name="com.atomikos.icatch.provider.imp" level="WARN"/>
-
     <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
