@@ -113,7 +113,17 @@
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
-            <version>${jaxb-runtime.version}</version> <!-- Or the latest version -->
+            <version>${jaxb-runtime.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.jakarta.rs</groupId>
+            <artifactId>jackson-jakarta-rs-json-provider</artifactId>
+            <version>${jaxrs.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson-datatype.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wiremock</groupId>
@@ -151,6 +161,8 @@
         <junit.jupiter.version>5.8.2</junit.jupiter.version>
         <mockito-junit-jupiter.version>4.5.1</mockito-junit-jupiter.version>
         <wiremock.version>3.13.0</wiremock.version>
+        <jaxrs.version>2.19.1</jaxrs.version>
+        <jackson-datatype.version>2.15.3</jackson-datatype.version>
     </properties>
 
 </project>
