@@ -1,5 +1,6 @@
 package com.baeldung.statelesssession;
 
+import jakarta.persistence.EntityGraph;
 import jakarta.persistence.EntityManagerFactory;
 import net.bytebuddy.utility.RandomString;
 import org.hibernate.LazyInitializationException;
@@ -121,6 +122,45 @@ class StatelessSessionIntegrationTest {
                     "SELECT a FROM Author a LEFT JOIN FETCH a.articles WHERE a.id = :id",
                     Author.class)
                 .setParameter("id", authorId)
+                .getSingleResult();
+
+            assertThat(author)
+                .hasNoNullFieldsOrProperties();
+            assertThat(author.getArticles())
+                .isNotNull()
+                .hasSize(1);
+        }
+    }
+
+    @Test
+    void whenRelatedEntityFetchedUsingEntityGraph_thenCollectionLoadedEagerly() {
+        SessionFactory sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
+        Long authorId;
+
+        try (StatelessSession statelessSession = sessionFactory.openStatelessSession()) {
+            statelessSession.getTransaction().begin();
+
+            Author author = new Author();
+            author.setName(RandomString.make());
+            statelessSession.insert(author);
+
+            Article article = new Article();
+            article.setTitle(RandomString.make());
+            article.setAuthor(author);
+            statelessSession.insert(article);
+
+            statelessSession.getTransaction().commit();
+            authorId = author.getId();
+        }
+
+        try (StatelessSession statelessSession = sessionFactory.openStatelessSession()) {
+            EntityGraph<Author> graph = statelessSession.createEntityGraph(Author.class);
+            graph.addAttributeNodes("articles");
+
+            Author author = statelessSession
+                .createQuery("SELECT a FROM Author a WHERE a.id = :id", Author.class)
+                .setParameter("id", authorId)
+                .setHint("jakarta.persistence.fetchgraph", graph)
                 .getSingleResult();
 
             assertThat(author)
