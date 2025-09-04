@@ -119,7 +119,7 @@
             <dependency>
                 <groupId>io.micrometer</groupId>
                 <artifactId>micrometer-bom</artifactId>
-                <version>1.15.3</version>
+                <version>${micrometer.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -129,6 +129,7 @@
     <properties>
         <start-class>com.baeldung.samples.SimpleObservationApplication</start-class>
         <p6spy-spring-boot-starter.version>1.9.0</p6spy-spring-boot-starter.version>
+        <micrometer.version>1.15.3</micrometer.version>
     </properties>
 
 </project>
