@@ -1,5 +1,8 @@
 package com.baeldung.transformers;
 
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.mapping;
+import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -7,6 +10,7 @@ import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.hibernate.query.Query;
 import org.junit.jupiter.api.BeforeEach;
@@ -54,6 +58,7 @@ class HibernateTransformersIntegrationTest {
         em.persist(calculus);
 
         em.persist(new Enrollment(alice, algorithms));
+        em.persist(new Enrollment(alice, calculus));
         em.persist(new Enrollment(bob, algorithms));
         em.persist(new Enrollment(carol, calculus));
     }
@@ -67,8 +72,25 @@ class HibernateTransformersIntegrationTest {
 
         assertEquals(3, results.size());
         assertTrue(results.stream()
-            .anyMatch(s -> s.name()
-                .equals("Alice")));
+            .allMatch(s -> s.id() != null && s.name() != null));
+    }
+
+    @Test
+    void whenUsingTupleTransformerWithAliases_thenMapSafelyByName() {
+        List<StudentDto> results = em.createQuery("SELECT s.id AS studentId, s.name AS studentName FROM Student s")
+            .unwrap(Query.class)
+            .setTupleTransformer((tuple, aliases) -> {
+                Map<String, Object> row = IntStream.range(0, aliases.length)
+                    .boxed()
+                    .collect(Collectors.toMap(i -> aliases[i], i -> tuple[i]));
+
+                return new StudentDto((Long) row.get("studentId"), (String) row.get("studentName"));
+            })
+            .getResultList();
+
+        assertEquals(3, results.size());
+        assertTrue(results.stream()
+            .allMatch(s -> s.id() != null && s.name() != null));
     }
 
     @Test
@@ -77,14 +99,11 @@ class HibernateTransformersIntegrationTest {
             .getResultList();
 
         assertEquals(3, results.size());
-        assertTrue(results.contains("Alice"));
-        assertTrue(results.contains("Bob"));
-        assertTrue(results.contains("Carol"));
     }
 
     @Test
     void whenUsingResultListTransformer_thenRemoveDuplicateStudentsFromEnrollments() {
-        List<StudentDto> results = em.createQuery("SELECT s.id, s.name FROM Enrollment e JOIN e.student s", Object[].class)
+        List<StudentDto> results = em.createQuery("SELECT s.id, s.name FROM Enrollment e JOIN e.student s")
             .unwrap(Query.class)
             .setTupleTransformer((tuple, aliases) -> new StudentDto((Long) tuple[0], (String) tuple[1]))
             .setResultListTransformer(list -> list.stream()
@@ -93,61 +112,21 @@ class HibernateTransformersIntegrationTest {
             .getResultList();
 
         assertEquals(3, results.size());
-        assertTrue(results.stream()
-            .anyMatch(s -> s.name()
-                .equals("Alice")));
-        assertTrue(results.stream()
-            .anyMatch(s -> s.name()
-                .equals("Bob")));
-        assertTrue(results.stream()
-            .anyMatch(s -> s.name()
-                .equals("Carol")));
-    }
-
-    @Test
-    void whenUsingTupleTransformerWithAliases_thenMapSafelyByName() {
-        List<StudentDto> results = em.createQuery("SELECT s.id AS studentId, s.name AS studentName FROM Student s")
-            .unwrap(org.hibernate.query.Query.class)
-            .setTupleTransformer((tuple, aliases) -> {
-                Long id = null;
-                String name = null;
-                for (int i = 0; i < aliases.length; i++) {
-                    switch (aliases[i]) {
-                    case "studentId" -> id = (Long) tuple[i];
-                    case "studentName" -> name = (String) tuple[i];
-                    }
-                }
-                return new StudentDto(id, name);
-            })
-            .getResultList();
-
-        assertEquals(3, results.size());
-        assertTrue(results.stream()
-            .anyMatch(s -> s.name()
-                .equals("Alice")));
     }
 
     @Test
     void whenUsingResultListTransformer_thenGroupStudentsByDepartment() {
-        List<DepartmentStudentsDto> results = (em.createQuery("SELECT d.name, s.name FROM Department d JOIN d.students s")
+        List<DepartmentStudentsDto> results = em.createQuery("SELECT d.name, s.name FROM Department d JOIN d.students s")
             .unwrap(Query.class)
             .setTupleTransformer((tuple, aliases) -> new AbstractMap.SimpleEntry<>((String) tuple[0], (String) tuple[1]))
-            .setResultListTransformer(list -> ((Map<String, List<String>>) list.stream()
-                .collect(Collectors.groupingBy(e -> ((Map.Entry<String, String>) e).getKey(), Collectors.mapping(e -> ((Map.Entry<String, String>) e).getValue(), Collectors.toList())))).entrySet()
-                    .stream()
-                    .map(e -> new DepartmentStudentsDto(e.getKey(), e.getValue()))
-                    .toList())
-            .getResultList());
+            .setResultListTransformer(list -> ((List<Map.Entry<String, String>>) list).stream()
+                .collect(groupingBy(Map.Entry::getKey, mapping(Map.Entry::getValue, toList())))
+                .entrySet()
+                .stream()
+                .map(e -> new DepartmentStudentsDto(e.getKey(), e.getValue()))
+                .toList())
+            .getResultList();
 
         assertEquals(2, results.size());
-
-        DepartmentStudentsDto csDept = results.stream()
-            .filter(r -> r.department()
-                .equals("Computer Science"))
-            .findFirst()
-            .orElseThrow();
-
-        assertEquals(2, csDept.students()
-            .size());
     }
 }

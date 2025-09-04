@@ -3,7 +3,6 @@ package com.baeldung.transformers.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -19,7 +18,7 @@ public class Department {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "department")
     private List<Student> students = new ArrayList<>();
 
     protected Department() {

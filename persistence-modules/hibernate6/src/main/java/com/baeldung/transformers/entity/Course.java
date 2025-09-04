@@ -13,7 +13,7 @@ public class Course {
     @Id
     @GeneratedValue
     private Long id;
-    private String title;
+    private String name;
 
     @ManyToOne
     private Department department;
@@ -21,8 +21,8 @@ public class Course {
     protected Course() {
     }
 
-    public Course(String title, Department department) {
-        this.title = title;
+    public Course(String name, Department department) {
+        this.name = name;
         this.department = department;
     }
 
@@ -34,12 +34,12 @@ public class Course {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Department getDepartment() {
