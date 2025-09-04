@@ -154,13 +154,13 @@ class StatelessSessionIntegrationTest {
         }
 
         try (StatelessSession statelessSession = sessionFactory.openStatelessSession()) {
-            EntityGraph<Author> graph = statelessSession.createEntityGraph(Author.class);
-            graph.addAttributeNodes("articles");
+            EntityGraph<Author> authorWithArticlesGraph = statelessSession.createEntityGraph(Author.class);
+            authorWithArticlesGraph.addAttributeNodes("articles");
 
             Author author = statelessSession
                 .createQuery("SELECT a FROM Author a WHERE a.id = :id", Author.class)
                 .setParameter("id", authorId)
-                .setHint("jakarta.persistence.fetchgraph", graph)
+                .setHint("jakarta.persistence.fetchgraph", authorWithArticlesGraph)
                 .getSingleResult();
 
             assertThat(author)
