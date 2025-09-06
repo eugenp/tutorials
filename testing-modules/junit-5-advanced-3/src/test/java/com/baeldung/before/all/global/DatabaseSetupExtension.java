@@ -1,4 +1,4 @@
-package com.baeldung.before_all_global;
+package com.baeldung.before.all.global;
 import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 
