@@ -1,8 +1,9 @@
 package com.baeldung.before.all.global;
+
 import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 
-public class DatabaseSetupExtension implements BeforeAllCallback, ExtensionContext.Store.CloseableResource {
+public class DatabaseSetupExtension implements BeforeAllCallback {
 
     private static boolean initialized = false;
 
@@ -14,12 +15,5 @@ public class DatabaseSetupExtension implements BeforeAllCallback, ExtensionConte
             System.out.println("Initializing global database connections...");
             // Example: DatabaseConnectionPool.initialize();
         }
-    }
-
-    @Override
-    public void close() throws Throwable {
-        // Global teardown: Clean up resources
-        System.out.println("Shutting down global database connections...");
-        // Example: DatabaseConnectionPool.shutdown();
     }
 }

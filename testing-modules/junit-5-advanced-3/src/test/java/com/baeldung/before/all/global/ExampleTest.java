@@ -13,13 +13,13 @@ public class ExampleTest {
 
     @Test
     void test1() {
-        System.out.println("ExampleTest2 - Execute test 1");
+        System.out.println("ExampleTest1 - Execute test 1");
         // Test logic
     }
 
     @Test
     void test2() {
-        System.out.println("ExampleTest2 - Execute test 2");
+        System.out.println("ExampleTest1 - Execute test 2");
         // Test logic
     }
 }
