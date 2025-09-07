@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package user;
+option java_multiple_files = true;
+option java_package = "com.baeldung.grpc.user";
+
+service UserService {
+  rpc GetUser(UserRequest) returns (UserResponse);
+}
+
+message User {
+  int32 id = 1;
+  string name = 2;
+  string email = 3;
+}
+
+message UserRequest {
+  int32 id = 1;
+}
+
+message UserResponse {
+  User user = 1;
+}
