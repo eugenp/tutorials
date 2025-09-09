@@ -29,7 +29,7 @@ public class SalesControllerUnitTest {
     private SalesRepository salesRepository;
 
     @Test
-    void validSalesObject_addingSales_persistsAndReturnsCorrectly() throws Exception {
+    void givenValidSalesObject_whenAddingSales_thenPersistsAndReturnsCorrectly() throws Exception {
         Sales sales = new Sales(104L, LocalDate.of(2024, 2, 1), BigDecimal.valueOf(8476.34d));
         when(salesRepository.save(ArgumentMatchers.any(Sales.class))).thenReturn(sales);
         mockMvc.perform(get("/add").contentType(MediaType.APPLICATION_JSON))
