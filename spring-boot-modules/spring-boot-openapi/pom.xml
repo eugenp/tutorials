@@ -50,6 +50,11 @@
             <artifactId>swagger-parser</artifactId>
             <version>${swagger-parser.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.20.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -60,6 +65,7 @@
                 <version>${openapi-generator.version}</version>
                 <executions>
                     <execution>
+                        <id>generate-quotes-api</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
@@ -82,6 +88,22 @@
                             </configOptions>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>generate-httpclients</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/api/httpclient.yaml</inputSpec>
+                            <generatorName>java</generatorName>
+                            <configOptions>
+                                <openApiNullable>false</openApiNullable>
+                                <dateLibrary>java8</dateLibrary>
+                                <library>resttemplate</library>
+                                <useJakartaEe>false</useJakartaEe>
+                            </configOptions>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>
@@ -94,7 +116,7 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <openapi-generator.version>7.7.0</openapi-generator.version>
+        <openapi-generator.version>7.15.0</openapi-generator.version>
         <swagger-annotations.version>2.2.20</swagger-annotations.version>
         <swagger-parser.version>2.1.22</swagger-parser.version>
     </properties>
