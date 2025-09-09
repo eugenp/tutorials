@@ -17,7 +17,7 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class UserServiceTest {
+public class UserServiceUnitTest {
 
     private Server inProcessServer;
     private ManagedChannel managedChannel;
@@ -75,6 +75,6 @@ public class UserServiceTest {
         assertNotNull(statusRuntimeException.getStatus());
         assertNotNull(statusRuntimeException.getStatus().getDescription());
         assertEquals(Status.NOT_FOUND.getCode(), statusRuntimeException.getStatus().getCode());
-        assertTrue(statusRuntimeException.getStatus().getDescription().contains("User with ID 3 not found"));
+        assertTrue(statusRuntimeException.getStatus().getDescription().contains("User not found with ID 3"));
     }
 }

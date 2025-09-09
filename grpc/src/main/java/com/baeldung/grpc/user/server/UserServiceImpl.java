@@ -1,6 +1,5 @@
 package com.baeldung.grpc.user.server;
 
-import com.baeldung.grpc.orderprocessing.orderprocessing.GlobalExceptionInterceptor;
 import com.baeldung.grpc.user.User;
 import com.baeldung.grpc.user.UserRequest;
 import com.baeldung.grpc.user.UserResponse;
@@ -15,17 +14,9 @@ import java.util.Map;
 public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
-    private final Map<Integer, User> userStore = Map.of(
-            1, User.newBuilder()
-            .setId(1)
-            .setName("user1")
-            .setEmail("user1@example.com")
-            .build(),
-            2, User.newBuilder()
-            .setId(2)
-            .setName("user2")
-            .setEmail("user2@example.com")
-            .build());
+    private final Map<Integer, User> userStore = Map.of(1,
+      User.newBuilder().setId(1).setName("user1").setEmail("user1@example.com").build(), 2,
+      User.newBuilder().setId(2).setName("user2").setEmail("user2@example.com").build());
 
     @Override
     public void getUser(UserRequest request, StreamObserver<UserResponse> responseObserver) {
@@ -33,29 +24,15 @@ public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
             if (!userStore.containsKey(request.getId())) {
                 throw new UserNotFoundException(request.getId());
             }
-            User user = userStore.get(request.getId());
-
-            UserResponse response = UserResponse.newBuilder()
-                    .setUser(user)
-                    .build();
+            UserResponse response = UserResponse.newBuilder().setUser(userStore.get(request.getId())).build();
 
             responseObserver.onNext(response);
             responseObserver.onCompleted();
-
             logger.info("Return User for id {}", request.getId());
         } catch (UserNotFoundException ex) {
-            responseObserver.onError(
-                    Status.NOT_FOUND
-                            .withDescription(ex.getMessage())
-                            .asRuntimeException()
-            );
+            responseObserver.onError(Status.NOT_FOUND.withDescription(ex.getMessage()).asRuntimeException());
         } catch (Exception ex) {
-            responseObserver.onError(
-                    Status.INTERNAL
-                            .withDescription("Internal server error")
-                            .withCause(ex)
-                            .asRuntimeException()
-            );
+            responseObserver.onError(Status.INTERNAL.withDescription(ex.getMessage()).withCause(ex).asRuntimeException());
         }
     }
 }
