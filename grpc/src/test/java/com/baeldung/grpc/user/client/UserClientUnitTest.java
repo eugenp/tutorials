@@ -55,7 +55,6 @@ public class UserClientUnitTest {
 
     @Test
     void givenUserIsNotPresent_whenGetUserIsCalled_ThenThrowRuntimeException(){
-
         StatusRuntimeException statusRuntimeException = assertThrows(StatusRuntimeException.class,
                 () -> userClient.getUser(1000));
 

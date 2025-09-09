@@ -18,30 +18,28 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserServiceUnitTest {
-
     private Server inProcessServer;
     private ManagedChannel managedChannel;
     private UserServiceGrpc.UserServiceBlockingStub userServiceBlockingStub;
 
     @BeforeEach
-    public void setup() throws IOException {
+    void setup() throws IOException {
         String serviceName = InProcessServerBuilder.generateName();
         inProcessServer = InProcessServerBuilder.forName(serviceName)
-                .directExecutor()
-                .addService(new UserServiceImpl())
-                .build()
-                .start();
-
+          .directExecutor()
+          .addService(new UserServiceImpl())
+          .build()
+          .start();
         managedChannel = InProcessChannelBuilder.forName(serviceName)
-                .directExecutor()
-                .usePlaintext()
-                .build();
+          .directExecutor()
+          .usePlaintext()
+          .build();
 
         userServiceBlockingStub = UserServiceGrpc.newBlockingStub(managedChannel);
     }
 
     @AfterEach
-    public void teardown(){
+    void teardown(){
         managedChannel.shutdown();
         inProcessServer.shutdown();
     }
@@ -49,8 +47,8 @@ public class UserServiceUnitTest {
     @Test
     void givenUserIsPresent_whenGetUserIsCalled_ThenReturnUser() {
         UserRequest userRequest = UserRequest.newBuilder()
-                .setId(1)
-                .build();
+          .setId(1)
+          .build();
 
         UserResponse userResponse = userServiceBlockingStub.getUser(userRequest);
 
@@ -63,13 +61,12 @@ public class UserServiceUnitTest {
 
     @Test
     void givenUserIsNotPresent_whenGetUserIsCalled_ThenThrowRuntimeException(){
-
         UserRequest userRequest = UserRequest.newBuilder()
-                .setId(3)
-                .build();
+          .setId(3)
+          .build();
 
         StatusRuntimeException statusRuntimeException = assertThrows(StatusRuntimeException.class,
-                () -> userServiceBlockingStub.getUser(userRequest));
+          () -> userServiceBlockingStub.getUser(userRequest));
 
         assertNotNull(statusRuntimeException);
         assertNotNull(statusRuntimeException.getStatus());
