@@ -8,8 +8,6 @@ import io.grpc.Server;
 import io.grpc.inprocess.InProcessChannelBuilder;
 import io.grpc.inprocess.InProcessServerBuilder;
 import io.grpc.stub.StreamObserver;
-import io.grpc.testing.GrpcCleanupRule;
-import org.junit.Rule;
 import org.junit.jupiter.api.*;
 import org.mockito.Mockito;
 
@@ -20,28 +18,32 @@ import static org.mockito.Mockito.spy;
 public class UserClientUnitTest {
     private UserClient userClient;
     private UserServiceGrpc.UserServiceImplBase mockUserService;
-    @Rule
-    public final GrpcCleanupRule grpcCleanup = new GrpcCleanupRule();
+    private Server inProcessServer;
+    private ManagedChannel managedChannel;
 
     @BeforeEach
     public void setup() throws Exception {
         String serverName = InProcessServerBuilder.generateName();
         mockUserService = spy(UserServiceGrpc.UserServiceImplBase.class);
 
-        Server inProcessServer = InProcessServerBuilder
+        inProcessServer = InProcessServerBuilder
             .forName(serverName)
             .directExecutor()
             .addService(mockUserService)
             .build()
             .start();
-        grpcCleanup.register(inProcessServer);
 
-        ManagedChannel managedChannel = InProcessChannelBuilder.forName(serverName)
+        managedChannel = InProcessChannelBuilder.forName(serverName)
             .directExecutor()
             .build();
-        grpcCleanup.register(managedChannel);
 
         userClient = new UserClient(managedChannel);
+    }
+
+    @AfterEach
+    void tearDown() {
+        managedChannel.shutdownNow();
+        inProcessServer.shutdownNow();
     }
 
     @Test

@@ -9,8 +9,7 @@ import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.inprocess.InProcessChannelBuilder;
 import io.grpc.inprocess.InProcessServerBuilder;
-import io.grpc.testing.GrpcCleanupRule;
-import org.junit.Rule;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,27 +19,31 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class UserServiceUnitTest {
     private UserServiceGrpc.UserServiceBlockingStub userServiceBlockingStub;
-    @Rule
-    public final GrpcCleanupRule grpcCleanup = new GrpcCleanupRule();
+    private Server inProcessServer;
+    private ManagedChannel managedChannel;
 
     @BeforeEach
     void setup() throws IOException {
         String serviceName = InProcessServerBuilder.generateName();
 
-        Server inProcessServer = InProcessServerBuilder.forName(serviceName)
+        inProcessServer = InProcessServerBuilder.forName(serviceName)
             .directExecutor()
             .addService(new UserServiceImpl())
             .build()
             .start();
-        grpcCleanup.register(inProcessServer);
 
-        ManagedChannel managedChannel = InProcessChannelBuilder.forName(serviceName)
+        managedChannel = InProcessChannelBuilder.forName(serviceName)
             .directExecutor()
             .usePlaintext()
             .build();
-        grpcCleanup.register(managedChannel);
 
         userServiceBlockingStub = UserServiceGrpc.newBlockingStub(managedChannel);
+    }
+
+    @AfterEach
+    void tearDown() {
+        managedChannel.shutdownNow();
+        inProcessServer.shutdownNow();
     }
 
     @Test
