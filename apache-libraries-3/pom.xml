@@ -70,6 +70,16 @@
             <artifactId>camel-graphql</artifactId>
             <version>${camel.version}</version>
         </dependency>
+        <dependency>
+	        <groupId>org.apache.parquet</groupId>
+	        <artifactId>parquet-avro</artifactId>
+	        <version>${parquet.version}</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.apache.parquet</groupId>
+	        <artifactId>parquet-hadoop</artifactId>
+	        <version>${parquet.version}</version>
+	    </dependency>
     </dependencies>
 
     <build>
@@ -93,6 +103,7 @@
         <json-unit-assertj.version>3.5.0</json-unit-assertj.version>
         <graphql.version>23.1</graphql.version>
         <camel.version>4.11.0</camel.version>
+        <parquet.version>1.16.0</parquet.version>
     </properties>
 
 </project>
