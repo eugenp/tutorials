@@ -16,20 +16,20 @@ public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
     private final Map<Integer, User> userRepositoryMap = Map.of(1, User.newBuilder()
-      .setId(1)
-      .setName("user1")
-      .setEmail("user1@example.com")
-      .build());
+        .setId(1)
+        .setName("user1")
+        .setEmail("user1@example.com")
+        .build());
 
     @Override
     public void getUser(UserRequest request, StreamObserver<UserResponse> responseObserver) {
         try {
             User user = Optional.ofNullable(userRepositoryMap.get(request.getId()))
-              .orElseThrow(() -> new UserNotFoundException(request.getId()));
+                .orElseThrow(() -> new UserNotFoundException(request.getId()));
 
             UserResponse response = UserResponse.newBuilder()
-              .setUser(user)
-              .build();
+                .setUser(user)
+                .build();
 
             responseObserver.onNext(response);
             responseObserver.onCompleted();

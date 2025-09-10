@@ -29,16 +29,16 @@ public class UserClientUnitTest {
         mockUserService = spy(UserServiceGrpc.UserServiceImplBase.class);
 
         Server inProcessServer = InProcessServerBuilder
-                .forName(serverName)
-                .directExecutor()
-                .addService(mockUserService)
-                .build()
-                .start();
+            .forName(serverName)
+            .directExecutor()
+            .addService(mockUserService)
+            .build()
+            .start();
         grpcCleanup.register(inProcessServer);
 
         ManagedChannel managedChannel = InProcessChannelBuilder.forName(serverName)
-                .directExecutor()
-                .build();
+            .directExecutor()
+            .build();
         grpcCleanup.register(managedChannel);
 
         userClient = new UserClient(managedChannel);
@@ -47,10 +47,10 @@ public class UserClientUnitTest {
     @Test
     void givenUserIsPresent_whenGetUserIsCalled_ThenReturnUser() {
         User expectedUser = User.newBuilder()
-          .setId(1)
-          .setName("user1")
-          .setEmail("user1@example.com")
-          .build();
+            .setId(1)
+            .setName("user1")
+            .setEmail("user1@example.com")
+            .build();
 
         mockGetUser(expectedUser);
 
@@ -62,8 +62,8 @@ public class UserClientUnitTest {
         Mockito.doAnswer(invocation -> {
             StreamObserver<UserResponse> observer = invocation.getArgument(1);
             UserResponse response = UserResponse.newBuilder()
-              .setUser(expectedUser)
-              .build();
+                .setUser(expectedUser)
+                .build();
 
             observer.onNext(response);
             observer.onCompleted();

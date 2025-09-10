@@ -28,16 +28,16 @@ public class UserServiceUnitTest {
         String serviceName = InProcessServerBuilder.generateName();
 
         Server inProcessServer = InProcessServerBuilder.forName(serviceName)
-                .directExecutor()
-                .addService(new UserServiceImpl())
-                .build()
-                .start();
+            .directExecutor()
+            .addService(new UserServiceImpl())
+            .build()
+            .start();
         grpcCleanup.register(inProcessServer);
 
         ManagedChannel managedChannel = InProcessChannelBuilder.forName(serviceName)
-                .directExecutor()
-                .usePlaintext()
-                .build();
+            .directExecutor()
+            .usePlaintext()
+            .build();
         grpcCleanup.register(managedChannel);
 
         userServiceBlockingStub = UserServiceGrpc.newBlockingStub(managedChannel);
@@ -46,8 +46,8 @@ public class UserServiceUnitTest {
     @Test
     void givenUserIsPresent_whenGetUserIsCalled_ThenReturnUser() {
         UserRequest userRequest = UserRequest.newBuilder()
-          .setId(1)
-          .build();
+            .setId(1)
+            .build();
 
         UserResponse userResponse = userServiceBlockingStub.getUser(userRequest);
 
@@ -61,11 +61,11 @@ public class UserServiceUnitTest {
     @Test
     void givenUserIsNotPresent_whenGetUserIsCalled_ThenThrowRuntimeException(){
         UserRequest userRequest = UserRequest.newBuilder()
-          .setId(3)
-          .build();
+            .setId(3)
+            .build();
 
         StatusRuntimeException statusRuntimeException = assertThrows(StatusRuntimeException.class,
-          () -> userServiceBlockingStub.getUser(userRequest));
+            () -> userServiceBlockingStub.getUser(userRequest));
 
         assertNotNull(statusRuntimeException);
         assertNotNull(statusRuntimeException.getStatus());
