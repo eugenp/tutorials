@@ -1,14 +1,11 @@
-package com.baeldung.grpc.user.client;
+package com.baeldung.grpc.userservice.client;
 
-import com.baeldung.grpc.user.User;
-import com.baeldung.grpc.user.UserRequest;
-import com.baeldung.grpc.user.UserServiceGrpc;
+import com.baeldung.grpc.userservice.User;
+import com.baeldung.grpc.userservice.UserRequest;
+import com.baeldung.grpc.userservice.UserServiceGrpc;
 import io.grpc.ManagedChannel;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class UserClient {
-    private static final Logger logger = LoggerFactory.getLogger(UserClient.class);
     private final UserServiceGrpc.UserServiceBlockingStub userServiceStub;
     private final ManagedChannel managedChannel;
 

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package user;
 option java_multiple_files = true;
-option java_package = "com.baeldung.grpc.user";
+option java_package = "com.baeldung.grpc.userservice";
 
 service UserService {
   rpc GetUser(UserRequest) returns (UserResponse);

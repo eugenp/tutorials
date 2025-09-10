@@ -1,4 +1,4 @@
-package com.baeldung.grpc.user.server;
+package com.baeldung.grpc.userservice.server;
 
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(int userId) {

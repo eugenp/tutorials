@@ -1,15 +1,16 @@
-package com.baeldung.grpc.user.server;
+package com.baeldung.grpc.userservice.server;
 
-import com.baeldung.grpc.user.UserRequest;
-import com.baeldung.grpc.user.UserResponse;
-import com.baeldung.grpc.user.UserServiceGrpc;
+import com.baeldung.grpc.userservice.UserRequest;
+import com.baeldung.grpc.userservice.UserResponse;
+import com.baeldung.grpc.userservice.UserServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.Server;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.inprocess.InProcessChannelBuilder;
 import io.grpc.inprocess.InProcessServerBuilder;
-import org.junit.jupiter.api.AfterEach;
+import io.grpc.testing.GrpcCleanupRule;
+import org.junit.Rule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,24 +19,28 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserServiceUnitTest {
-    private Server inProcessServer;
-    private ManagedChannel managedChannel;
-    private UserServiceGrpc.UserServiceBlockingStub userService;
+    private UserServiceGrpc.UserServiceBlockingStub userServiceBlockingStub;
+    @Rule
+    public final GrpcCleanupRule grpcCleanup = new GrpcCleanupRule();
 
     @BeforeEach
     void setup() throws IOException {
         String serviceName = InProcessServerBuilder.generateName();
-        inProcessServer = InProcessServerBuilder.forName(serviceName)
-          .directExecutor()
-          .addService(new UserServiceImpl())
-          .build()
-          .start();
-        managedChannel = InProcessChannelBuilder.forName(serviceName)
-          .directExecutor()
-          .usePlaintext()
-          .build();
 
-        userService = UserServiceGrpc.newBlockingStub(managedChannel);
+        Server inProcessServer = InProcessServerBuilder.forName(serviceName)
+                .directExecutor()
+                .addService(new UserServiceImpl())
+                .build()
+                .start();
+        grpcCleanup.register(inProcessServer);
+
+        ManagedChannel managedChannel = InProcessChannelBuilder.forName(serviceName)
+                .directExecutor()
+                .usePlaintext()
+                .build();
+        grpcCleanup.register(managedChannel);
+
+        userServiceBlockingStub = UserServiceGrpc.newBlockingStub(managedChannel);
     }
 
     @Test
@@ -44,7 +49,7 @@ public class UserServiceUnitTest {
           .setId(1)
           .build();
 
-        UserResponse userResponse = userService.getUser(userRequest);
+        UserResponse userResponse = userServiceBlockingStub.getUser(userRequest);
 
         assertNotNull(userResponse);
         assertNotNull(userResponse.getUser());
@@ -60,18 +65,11 @@ public class UserServiceUnitTest {
           .build();
 
         StatusRuntimeException statusRuntimeException = assertThrows(StatusRuntimeException.class,
-          () -> userService.getUser(userRequest));
+          () -> userServiceBlockingStub.getUser(userRequest));
 
         assertNotNull(statusRuntimeException);
         assertNotNull(statusRuntimeException.getStatus());
-        assertNotNull(statusRuntimeException.getStatus().getDescription());
         assertEquals(Status.NOT_FOUND.getCode(), statusRuntimeException.getStatus().getCode());
         assertEquals("User not found with ID 3", statusRuntimeException.getStatus().getDescription());
-    }
-
-    @AfterEach
-    void teardown(){
-        managedChannel.shutdown();
-        inProcessServer.shutdown();
     }
 }
