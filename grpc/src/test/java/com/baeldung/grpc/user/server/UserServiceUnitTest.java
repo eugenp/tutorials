@@ -38,12 +38,6 @@ public class UserServiceUnitTest {
         userService = UserServiceGrpc.newBlockingStub(managedChannel);
     }
 
-    @AfterEach
-    void teardown(){
-        managedChannel.shutdown();
-        inProcessServer.shutdown();
-    }
-
     @Test
     void givenUserIsPresent_whenGetUserIsCalled_ThenReturnUser() {
         UserRequest userRequest = UserRequest.newBuilder()
@@ -73,5 +67,11 @@ public class UserServiceUnitTest {
         assertNotNull(statusRuntimeException.getStatus().getDescription());
         assertEquals(Status.NOT_FOUND.getCode(), statusRuntimeException.getStatus().getCode());
         assertEquals("User not found with ID 3", statusRuntimeException.getStatus().getDescription());
+    }
+
+    @AfterEach
+    void teardown(){
+        managedChannel.shutdown();
+        inProcessServer.shutdown();
     }
 }
