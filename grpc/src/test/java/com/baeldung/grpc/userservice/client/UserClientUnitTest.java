@@ -31,7 +31,7 @@ public class UserClientUnitTest {
         Server inProcessServer = InProcessServerBuilder
                 .forName(serverName)
                 .directExecutor()
-                .addService(mockUserService.bindService())
+                .addService(mockUserService)
                 .build()
                 .start();
         grpcCleanup.register(inProcessServer);
