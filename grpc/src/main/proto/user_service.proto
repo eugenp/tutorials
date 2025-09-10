@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package user;
+package userservice;
 option java_multiple_files = true;
 option java_package = "com.baeldung.grpc.userservice";
 
