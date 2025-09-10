@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UserServiceUnitTest {
     private Server inProcessServer;
     private ManagedChannel managedChannel;
-    private UserServiceGrpc.UserServiceBlockingStub userServiceBlockingStub;
+    private UserServiceGrpc.UserServiceBlockingStub userService;
 
     @BeforeEach
     void setup() throws IOException {
@@ -35,7 +35,7 @@ public class UserServiceUnitTest {
           .usePlaintext()
           .build();
 
-        userServiceBlockingStub = UserServiceGrpc.newBlockingStub(managedChannel);
+        userService = UserServiceGrpc.newBlockingStub(managedChannel);
     }
 
     @AfterEach
@@ -50,7 +50,7 @@ public class UserServiceUnitTest {
           .setId(1)
           .build();
 
-        UserResponse userResponse = userServiceBlockingStub.getUser(userRequest);
+        UserResponse userResponse = userService.getUser(userRequest);
 
         assertNotNull(userResponse);
         assertNotNull(userResponse.getUser());
@@ -66,12 +66,12 @@ public class UserServiceUnitTest {
           .build();
 
         StatusRuntimeException statusRuntimeException = assertThrows(StatusRuntimeException.class,
-          () -> userServiceBlockingStub.getUser(userRequest));
+          () -> userService.getUser(userRequest));
 
         assertNotNull(statusRuntimeException);
         assertNotNull(statusRuntimeException.getStatus());
         assertNotNull(statusRuntimeException.getStatus().getDescription());
         assertEquals(Status.NOT_FOUND.getCode(), statusRuntimeException.getStatus().getCode());
-        assertTrue(statusRuntimeException.getStatus().getDescription().contains("User not found with ID 3"));
+        assertEquals("User not found with ID 3", statusRuntimeException.getStatus().getDescription());
     }
 }

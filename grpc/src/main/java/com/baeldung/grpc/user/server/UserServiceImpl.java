@@ -39,9 +39,7 @@ public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
             responseObserver.onCompleted();
             logger.info("Return User for id {}", request.getId());
         } catch (UserNotFoundException ex) {
-            responseObserver.onError(Status.NOT_FOUND.withDescription(ex.getMessage()).asRuntimeException());
-        } catch (Exception ex) {
-            responseObserver.onError(Status.INTERNAL.withDescription(ex.getMessage()).withCause(ex).asRuntimeException());
+              responseObserver.onError(Status.NOT_FOUND.withDescription(ex.getMessage()).asRuntimeException());
         }
     }
 }

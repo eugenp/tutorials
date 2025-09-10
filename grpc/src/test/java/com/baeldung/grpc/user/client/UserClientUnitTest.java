@@ -34,7 +34,7 @@ public class UserClientUnitTest {
                 .build();
 
         stub = UserServiceGrpc.newBlockingStub(channel);
-        userClient = new UserClient(channel, stub);
+        userClient = new UserClient(channel);
     }
 
     @AfterEach

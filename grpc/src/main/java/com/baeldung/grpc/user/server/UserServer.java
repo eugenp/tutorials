@@ -1,5 +1,8 @@
 package com.baeldung.grpc.user.server;
 
+import com.baeldung.grpc.user.client.UserClient;
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 
@@ -10,6 +13,9 @@ public class UserServer {
           .build();
 
         server.start();
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8080).usePlaintext().build();
+        UserClient userClient = new UserClient(channel);
+        System.out.println(userClient.getUser(1));
         server.awaitTermination();
     }
 }

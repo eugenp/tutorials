@@ -8,16 +8,16 @@ service UserService {
   rpc GetUser(UserRequest) returns (UserResponse);
 }
 
-message User {
-  int32 id = 1;
-  string name = 2;
-  string email = 3;
-}
-
 message UserRequest {
   int32 id = 1;
 }
 
 message UserResponse {
   User user = 1;
+}
+
+message User {
+  int32 id = 1;
+  string name = 2;
+  string email = 3;
 }
