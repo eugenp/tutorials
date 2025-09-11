@@ -35,6 +35,7 @@ public class UserClientUnitTest {
 
         managedChannel = InProcessChannelBuilder.forName(serverName)
             .directExecutor()
+            .usePlaintext()
             .build();
 
         userClient = new UserClient(managedChannel);
