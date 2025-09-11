@@ -3,10 +3,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-boot-azure-appservice</artifactId>
+    <artifactId>spring-boot-azure-deployment</artifactId>
     <version>0.1</version>
     <packaging>war</packaging>
-    <name>spring-boot-azure-appservice</name>
+    <name>spring-boot-azure-deployment</name>
     <description>Demo project for Spring Boot on Azure</description>
 
     <parent>

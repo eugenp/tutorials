@@ -635,7 +635,7 @@
                 <module>apache-velocity</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
-                <module>spring-boot-azure-appservice</module>
+                <module>spring-boot-azure-deployment</module>
                 <module>azure-functions</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
@@ -675,7 +675,7 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
-                <module>ide-jetbrains-annotations</module>
+                <module>jetbrains-annotations</module>
                 <module>jgit</module>
                 <module>jmh</module>
                 <module>jmonkeyengine</module>
@@ -1076,7 +1076,7 @@
                 <module>apache-velocity</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
-                <module>spring-boot-azure-appservice</module>
+                <module>spring-boot-azure-deployment</module>
                 <module>azure-functions</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
@@ -1116,7 +1116,7 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
-                <module>ide-jetbrains-annotations</module>
+                <module>jetbrains-annotations</module>
                 <module>jgit</module>
                 <module>jmh</module>
                 <module>jmonkeyengine</module>
