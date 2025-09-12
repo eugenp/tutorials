@@ -47,6 +47,12 @@
             <artifactId>record-builder-core</artifactId>
             <version>${record-builder.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.jena</groupId>
+            <artifactId>apache-jena-libs</artifactId>
+            <type>pom</type>
+            <version>${jena.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -87,6 +93,7 @@
         <yavi.version>0.14.1</yavi.version>
         <manifold.version>2024.1.20</manifold.version>
         <record-builder.version>47</record-builder.version>
+        <jena.version>5.5.0</jena.version>
     </properties>
 
 </project>
