@@ -1,5 +1,6 @@
 package com.baeldung.springdata.mongodb;
 
+import org.springframework.data.domain.Range;
 import org.springframework.data.domain.Score;
 import org.springframework.data.domain.SearchResults;
 import org.springframework.data.domain.Similarity;
@@ -15,5 +16,11 @@ public interface BookRepository extends CrudRepository<Book, String> {
         Similarity similarity);
 
     @VectorSearch(indexName = "book-vector-index", limit="10", numCandidates="200")
-    SearchResults<Book> searchByEmbeddingNear(Vector vector, Score similarity);
+    SearchResults<Book> searchByEmbeddingNear(Vector vector, Score score);
+
+    @VectorSearch(indexName = "book-vector-index", limit = "10", numCandidates="200")
+    SearchResults<Book> searchByYearPublishedAndEmbeddingNear(String yearPublished, Vector vector,
+        Score score);
+    @VectorSearch(indexName = "book-vector-index", limit = "10", numCandidates="200")
+    SearchResults<Book> searchByEmbeddingWithin(Vector vector, Range<Similarity> range);
 }

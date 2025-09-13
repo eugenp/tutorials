@@ -16,10 +16,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.domain.Range;
+import org.springframework.data.domain.Score;
 import org.springframework.data.domain.SearchResults;
 import org.springframework.data.domain.Similarity;
 import org.springframework.data.domain.Vector;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.index.SearchIndexStatus;
 import org.springframework.data.mongodb.core.index.VectorIndex;
 import org.springframework.test.context.ActiveProfiles;
 import org.testcontainers.mongodb.MongoDBAtlasLocalContainer;
@@ -35,6 +38,7 @@ import com.opencsv.exceptions.CsvValidationException;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ActiveProfiles("mongodb")
 public class MongoDBVectorUnitTest {
+
     Logger logger = LoggerFactory.getLogger(MongoDBVectorUnitTest.class);
 
     @Autowired
@@ -52,13 +56,15 @@ public class MongoDBVectorUnitTest {
         }
 
         mongoTemplate.createCollection(Book.class);
-        VectorIndex vectorIndex = new VectorIndex("book-vector-index")
-            .addVector("embedding", vector -> vector.dimensions(5).similarity(COSINE)); // 768 = vector size, or use yours
+        VectorIndex vectorIndex = new VectorIndex("book-vector-index").addVector("embedding",
+                vector -> vector.dimensions(5)
+                    .similarity(COSINE))
+            .addFilter("yearPublished"); // 768 = vector size, or use yours
 
-        mongoTemplate.searchIndexOps(Book.class).createIndex(vectorIndex);
+        mongoTemplate.searchIndexOps(Book.class)
+            .createIndex(vectorIndex);
 
-        try (InputStream is = getClass()
-            .getClassLoader()
+        try (InputStream is = getClass().getClassLoader()
             .getResourceAsStream("mongodb-data-setup.csv");
 
              CSVReader reader = new CSVReader(new InputStreamReader(is))) {
@@ -77,11 +83,30 @@ public class MongoDBVectorUnitTest {
                 Vector theVectorEmbedding = Vector.of(embedding);
                 //logger.info("inserting name: {}, yearPublished: {}, embedding: {}", content, yearPublished, embedding);
                 Book doc = new Book(generateRandomString(), content, yearPublished, theVectorEmbedding);
-//                mongoTemplate.insert(doc);
+                //                mongoTemplate.insert(doc);
                 bookRepository.save(doc);
             }
-
         }
+
+        try {
+            waitForIndexReady(mongoTemplate, Book.class, "book-vector-index");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    void waitForIndexReady(MongoTemplate mongoTemplate, Class<?> entityClass, String indexName) throws InterruptedException {
+        int MAX_ATTEMPTS = 30;
+        int SLEEP_MS = 2000;
+        for (int i = 0; i < MAX_ATTEMPTS; i++) {
+            SearchIndexStatus status = mongoTemplate.searchIndexOps(entityClass).status(indexName);
+            logger.info("Vector index status: {}", status);
+            if (status == SearchIndexStatus.READY) {
+                return;
+            }
+            Thread.sleep(SLEEP_MS); // Wait 2 seconds before checking again
+        }
+        throw new RuntimeException("Vector index did not become READY after waiting.");
     }
 
     private static String generateRandomString() {
@@ -102,27 +127,58 @@ public class MongoDBVectorUnitTest {
 
     @Test
     void testSearchByEmbeddingNear() {
-    //    String query = "Which document has the details about Django?";
-        Vector embedding = Vector.of( -0.34916985034942627f, 0.5338794589042664f, 0.43527376651763916f,
+        //    String query = "Which document has the details about Django?";
+        Vector embedding = Vector.of(-0.34916985034942627f, 0.5338794589042664f, 0.43527376651763916f,
             -0.6110032200813293f, -0.17396864295005798f);
         SearchResults<Book> results = bookRepository.searchByEmbeddingNear(embedding, Similarity.of(.9));
-        logger.info("Results found: {}", results.stream().count());
+        logger.info("Results found: {}", results.stream()
+            .count());
         results.getContent()
-            .forEach(book -> logger.info("Book: {}, yearPublished: {}", book.getContent().getName(),
-                book.getContent().getYearPublished()));
-     }
+            .forEach(book -> logger.info("Book: {}, yearPublished: {}", book.getContent()
+                .getName(), book.getContent()
+                .getYearPublished()));
+    }
 
-     @Test
-     void testSearchTop3ByEmbeddingNear() {
+    @Test
+    void testSearchTop3ByEmbeddingNear() {
         String query = "Which document has the details about Django?";
-        Vector embedding = Vector.of( -0.34916985034942627f, 0.5338794589042664f, 0.43527376651763916f,
+        Vector embedding = Vector.of(-0.34916985034942627f, 0.5338794589042664f, 0.43527376651763916f,
             -0.6110032200813293f, -0.17396864295005798f);
         SearchResults<Book> results = bookRepository.searchTop3ByEmbeddingNear(embedding, Similarity.of(.7));
-        logger.info("Results found: {}", results.stream().count());
+        logger.info("Results found: {}", results.stream()
+            .count());
         results.getContent()
-            .forEach(book -> logger.info("Book: {}, yearPublished: {}", book.getContent().getName(),
-                book.getContent().getYearPublished()));
-     }
+            .forEach(book -> logger.info("Book: {}, yearPublished: {}", book.getContent()
+                .getName(), book.getContent()
+                .getYearPublished()));
+    }
 
+    @Test
+    void testFindByYearPublishedAndEmbeddingNear() {
+        //String query = "Which document has the details about Django?";
+        Vector embedding = Vector.of(-0.34916985034942627f, 0.5338794589042664f, 0.43527376651763916f,
+            -0.6110032200813293f, -0.17396864295005798f);
 
+        var results = bookRepository.searchByYearPublishedAndEmbeddingNear("2022", embedding, Score.of(0.9));
+        results.getContent()
+            .forEach(content -> {
+                var book = content.getContent();
+                logger.info("Content: {}, Date: {}", book.getName(), book.getYearPublished());
+            });
+    }
+
+    @Test
+    void testSearchByEmbeddingWithin() {
+        //String query = "Which document has the details about Django?";
+        Vector embedding = Vector.of(-0.34916985034942627f, 0.5338794589042664f, 0.43527376651763916f,
+            -0.6110032200813293f, -0.17396864295005798f);
+        var results = bookRepository.searchByEmbeddingWithin(embedding, Range.closed(Similarity.of(0.7),
+            Similarity.of(0.9)));
+        logger.info("Results found: {}", results.stream()
+            .count());
+        results.getContent()
+            .forEach(book -> logger.info("Book: {}, yearPublished: {}", book.getContent()
+                .getName(), book.getContent()
+                .getYearPublished()));
+    }
 }
