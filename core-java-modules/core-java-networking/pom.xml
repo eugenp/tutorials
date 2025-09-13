@@ -20,6 +20,16 @@
             <version>${springframework.spring-web.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${webflux.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+            <version>${webflux.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>${apache.httpclient.version}</version>
@@ -59,9 +69,10 @@
         <springframework.spring-web.version>4.3.4.RELEASE</springframework.spring-web.version>
         <apache.httpclient.version>4.5.14</apache.httpclient.version>
         <greenmail.version>2.0.0-alpha-3</greenmail.version>
-        <apache.httpclient5.version>5.3.1</apache.httpclient5.version>
         <async-http-client.version>2.4.5</async-http-client.version>
         <jakarta.bind.version>2.3.3</jakarta.bind.version>
+        <apache.httpclient5.version>5.4.2</apache.httpclient5.version>
+        <webflux.version>3.4.3</webflux.version>
     </properties>
 
 </project>

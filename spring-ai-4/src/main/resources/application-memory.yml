@@ -1,0 +1,15 @@
+spring:
+  ai:
+    openai:
+      api-key: "<YOUR-API-KEY>"
+
+  datasource:
+    url: jdbc:hsqldb:mem:chatdb
+    driver-class-name: org.hsqldb.jdbc.JDBCDriver
+    username: sa
+    password:
+
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:org/springframework/ai/chat/memory/repository/jdbc/schema-hsqldb.sql

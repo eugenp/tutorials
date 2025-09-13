@@ -25,7 +25,6 @@
                     </includes>
                 </configuration>
             </plugin>
-
             <!-- Maven Failsafe Plugin for integration tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -1,20 +1,3 @@
-## Spring Kafka
-
-This module contains articles about Spring with Kafka
-
-### Relevant articles
-
-- [Intro to Apache Kafka with Spring](https://www.baeldung.com/spring-kafka)
-- [Testing Kafka and Spring Boot](https://www.baeldung.com/spring-boot-kafka-testing)
-- [Kafka Streams With Spring Boot](https://www.baeldung.com/spring-boot-kafka-streams)
-- [Implementing Retry in Kafka Consumer](https://www.baeldung.com/spring-retry-kafka-consumer)
-- [Understanding Kafka Topics and Partitions](https://www.baeldung.com/kafka-topics-partitions)
-- [Configuring Kafka SSL Using Spring Boot](https://www.baeldung.com/spring-boot-kafka-ssl)
-- [Dead Letter Queue for Kafka With Spring](https://www.baeldung.com/kafka-spring-dead-letter-queue)
-- [Sending Data to a Specific Partition in Kafka](https://www.baeldung.com/kafka-send-data-partition)
-
-### Intro
-
 This is a simple Spring Boot app to demonstrate sending and receiving of messages in Kafka using spring-kafka.
 
 As Kafka topics are not created automatically by default, this application requires that you create the following topics manually.

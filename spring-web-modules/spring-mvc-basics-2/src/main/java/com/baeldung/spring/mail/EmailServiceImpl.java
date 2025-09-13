@@ -132,26 +132,4 @@ public class EmailServiceImpl implements EmailService {
         emailSender.send(message);
     }
 
-    @Override
-    public void sendMessageWithInputStreamAttachment(
-        String to, String subject, String text, String attachmentName, InputStream attachmentStream) {
-
-        try {
-            MimeMessage message = emailSender.createMimeMessage();
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
-
-            helper.setFrom(NOREPLY_ADDRESS);
-            helper.setTo(to);
-            helper.setSubject(subject);
-            helper.setText(text);
-
-            // Add the attachment from InputStream
-            helper.addAttachment(attachmentName, new InputStreamResource(attachmentStream));
-
-            emailSender.send(message);
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-    }
-   
 }

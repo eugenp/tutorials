@@ -1,12 +1,14 @@
 package com.baeldung.logging;
 
-import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 public class GroupByAuthor {
 
-    @Id
+    @Field("_id")
     private String authorName;
     private int authCount;
+
+    public GroupByAuthor() {}
 
     public GroupByAuthor(String authorName, int authCount) {
         this.authorName = authorName;

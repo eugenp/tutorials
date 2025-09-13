@@ -13,7 +13,6 @@
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -92,7 +91,6 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
 
     <build>
         <plugins>

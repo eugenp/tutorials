@@ -80,6 +80,17 @@
                 <configuration>
                     <source>11</source>
                     <target>11</target>
+                    <release>11</release>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <mockserver.logLevel>ERROR</mockserver.logLevel>
+                    </systemPropertyVariables>
                 </configuration>
             </plugin>
         </plugins>
@@ -92,7 +103,7 @@
     </build>
 
     <properties>
-        <mockserver.version>5.6.1</mockserver.version>
+        <mockserver.version>5.11.2</mockserver.version>
         <wiremock.version>3.9.1</wiremock.version>
         <!-- http client & core 5 -->
         <httpcore5.version>5.2.5</httpcore5.version>

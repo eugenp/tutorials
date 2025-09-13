@@ -1,7 +1,3 @@
-### Relevant articles:
-
-- [Use Liquibase to Safely Evolve a Database Schema](https://www.baeldung.com/liquibase-refactor-schema-of-java-app)
- 
 # carsapp
 
 This application was generated using JHipster 8.4.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v8.4.0](https://www.jhipster.tech/documentation-archive/v8.4.0).

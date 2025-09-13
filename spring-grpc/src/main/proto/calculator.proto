@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.springframework.grpc.calculator.proto";
+option java_outer_classname = "CalculatorProto";
+
+service Calculator {
+  rpc Multiply(Request) returns (Response) {}
+}
+
+message Request {
+  int32 firstValue = 1;
+  int32 secondValue = 2;
+}
+
+message Response {
+  int32 result = 1;
+}

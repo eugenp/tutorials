@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-jar</artifactId>
     <packaging>jar</packaging>
@@ -36,11 +36,6 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.javamoney</groupId>
-            <artifactId>moneta</artifactId>
-            <version>${javamoney.moneta.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
@@ -127,7 +122,7 @@
                             <shadedArtifactAttached>true</shadedArtifactAttached>
                             <transformers>
                                 <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>com.baeldung.executable.ExecutableMavenJar</mainClass>
                                 </transformer>
                             </transformers>
@@ -350,7 +345,8 @@
                                     <shadedArtifactAttached>true</shadedArtifactAttached>
                                     <shadedClassifierName>main1</shadedClassifierName>
                                     <transformers>
-                                        <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                        <transformer
+                                            implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                             <mainClass>com.baeldung.multiplejar.Main1</mainClass>
                                         </transformer>
                                     </transformers>
@@ -367,7 +363,8 @@
                                     <shadedArtifactAttached>true</shadedArtifactAttached>
                                     <shadedClassifierName>main2</shadedClassifierName>
                                     <transformers>
-                                        <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                        <transformer
+                                            implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                             <mainClass>com.baeldung.multiplejar.Main2</mainClass>
                                         </transformer>
                                     </transformers>
@@ -386,7 +383,6 @@
         <unix4j.version>0.4</unix4j.version>
         <grep4j.version>1.8.7</grep4j.version>
         <!-- maven plugins -->
-        <javamoney.moneta.version>1.1</javamoney.moneta.version>
         <maven-javadoc-plugin.version>3.6.2</maven-javadoc-plugin.version>
         <onejar-maven-plugin.version>1.4.4</onejar-maven-plugin.version>
         <maven-shade-plugin.version>3.1.1</maven-shade-plugin.version>

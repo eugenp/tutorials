@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.spring-boot-modules</groupId>
     <artifactId>spring-boot-modules</artifactId>
@@ -17,6 +17,7 @@
     </parent>
 
     <modules>
+        <module>flyway-multidb-springboot</module>
         <module>spring-boot-admin</module>
         <module>spring-boot-angular</module>
         <module>spring-boot-annotations</module>
@@ -33,6 +34,7 @@
         <module>spring-boot-caching-2</module>
         <module>spring-boot-client</module>
         <module>spring-boot-config-jpa-error</module>
+        <module>spring-boot-core</module>
         <module>spring-boot-ctx-fluent</module>
         <module>spring-boot-deployment</module>
         <module>spring-boot-di</module>
@@ -69,6 +71,7 @@
         <module>spring-boot-mvc-birt</module>
         <module>spring-boot-mvc-jersey</module>
         <module>spring-boot-nashorn</module>
+        <module>spring-boot-open-telemetry</module>
         <module>spring-boot-parent</module>
         <module>spring-boot-performance</module>
         <module>spring-boot-pkl</module>
@@ -106,9 +109,11 @@
         <module>spring-boot-3-observation</module>
         <module>spring-boot-3-test-pitfalls</module>
         <module>spring-boot-3-testcontainers</module>
+        <module>spring-boot-3-url-matching</module>
         <module>spring-boot-3-2</module>
         <!-- <module>spring-boot-3-3</module> --> <!-- JAVA-42049 -->
         <module>spring-boot-3-4</module>
+        <module>spring-boot-4</module>
         <module>spring-boot-resilience4j</module>
         <module>spring-boot-properties</module>
         <module>spring-boot-properties-2</module>
@@ -119,13 +124,14 @@
         <module>spring-boot-keycloak-adapters</module>
         <module>spring-boot-mvc-legacy</module>
         <module>spring-boot-springdoc-2</module>
+        <module>spring-boot-ssl</module>
         <module>spring-boot-documentation</module>
-        <module>spring-boot-3-url-matching</module>
         <module>spring-boot-graalvm-docker</module>
         <module>spring-boot-validations</module>
         <module>spring-boot-openapi</module>
         <module>spring-boot-brave</module>
         <module>spring-boot-simple</module>
+        <module>spring-boot-http2</module>
     </modules>
 
     <build>

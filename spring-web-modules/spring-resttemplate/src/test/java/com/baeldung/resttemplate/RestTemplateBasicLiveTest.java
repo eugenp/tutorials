@@ -28,7 +28,13 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RequestCallback;
-import org.springframework.web.client.RestTemplate;
+import org.apache.hc.client5.http.config.RequestConfig;
+import org.apache.hc.core5.util.Timeout;
+import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
+import org.apache.hc.core5.http.io.SocketConfig;
+import org.apache.hc.client5.http.config.ConnectionConfig;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -187,6 +193,7 @@ public class RestTemplateBasicLiveTest {
             .getId();
         final HttpEntity<Foo> requestUpdate = new HttpEntity<>(updatedResource, headers);
         final ClientHttpRequestFactory requestFactory = getClientHttpRequestFactory();
+        final ClientHttpRequestFactory requestFactoryAlternate = getClientHttpRequestFactoryAlternate();
         final RestTemplate template = new RestTemplate(requestFactory);
         template.setMessageConverters(Arrays.asList(new MappingJackson2HttpMessageConverter()));
         template.patchForObject(resourceUrl, requestUpdate, Void.class);
@@ -262,9 +269,44 @@ public class RestTemplateBasicLiveTest {
 
     ClientHttpRequestFactory getClientHttpRequestFactory() {
         final int timeout = 5;
-        final HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();
-        clientHttpRequestFactory.setConnectTimeout(timeout * 1000);
+        final HttpComponentsClientHttpRequestFactory
+        clientHttpRequestFactory = new
+        HttpComponentsClientHttpRequestFactory();
+        clientHttpRequestFactory.setConnectionRequestTimeout(timeout * 1000);
+        clientHttpRequestFactory.setConnectTimeout(timeout * 2000);
+        //clientHttpRequestFactory.setReadTimeout(timeout * 3000);
         return clientHttpRequestFactory;
-    }
+        }
+    
+        // Alternate GET ClientHttpRequestFactory
+        ClientHttpRequestFactory getClientHttpRequestFactoryAlternate() {
+            long timeout = 5;
+            int readTimeout = 5;
+            // Connect timeout
+            ConnectionConfig connectionConfig = ConnectionConfig.custom()
+              .setConnectTimeout(Timeout.ofMilliseconds(timeout * 2000))
+              .build();
+            // Connection request timeout
+            RequestConfig requestConfig = RequestConfig.custom()
+              .setConnectionRequestTimeout(Timeout.ofMilliseconds(timeout * 1000))
+              .build();
+            // Socket timeout 
+            SocketConfig socketConfig = SocketConfig.custom()
+              .setSoTimeout(Timeout.ofMilliseconds(timeout * 1000)).build();
+            PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
+            connectionManager.setDefaultSocketConfig(socketConfig);
+            connectionManager.setDefaultConnectionConfig(connectionConfig);
+            CloseableHttpClient httpClient = HttpClientBuilder.create()
+              .setConnectionManager(connectionManager)
+              .setDefaultRequestConfig(requestConfig)
+              .build();
+            
+            /**final HttpComponentsClientHttpRequestFactory 
+            clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
+            clientHttpRequestFactory.setReadTimeout(readTimeout*3000);**/
+            //return clientHttpRequestFactory; 
+            
+            return new HttpComponentsClientHttpRequestFactory(httpClient);
+        }
 
 }

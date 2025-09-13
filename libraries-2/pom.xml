@@ -14,11 +14,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>io.github.classgraph</groupId>
-            <artifactId>classgraph</artifactId>
-            <version>${classgraph.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.jbpm</groupId>
             <artifactId>jbpm-test</artifactId>
             <version>${jbpm.version}</version>
@@ -28,17 +23,6 @@
                 <exclusion>
                     <groupId>junit</groupId>
                     <artifactId>junit</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>edu.uci.ics</groupId>
-            <artifactId>crawler4j</artifactId>
-            <version>${crawler4j.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.sleepycat</groupId>
-                    <artifactId>je</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -56,11 +40,6 @@
             <groupId>com.sleepycat</groupId>
             <artifactId>je</artifactId>
             <version>${sleepycat-je.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mapdb</groupId>
-            <artifactId>mapdb</artifactId>
-            <version>${mapdb.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
@@ -97,21 +76,50 @@
             <version>${immutables.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.nats</groupId>
-            <artifactId>jnats</artifactId>
-            <version>${jnats.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.mutabilitydetector</groupId>
             <artifactId>MutabilityDetector</artifactId>
             <version>${mutabilitydetector.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.awaitility</groupId>
-            <artifactId>awaitility</artifactId>
-            <version>${awaitility.version}</version>
-            <scope>test</scope>
+            <groupId>com.squareup</groupId>
+            <artifactId>javapoet</artifactId>
+            <version>${javapoet.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.libphonenumber</groupId>
+            <artifactId>libphonenumber</artifactId>
+            <version>${libphonenumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.javaparser</groupId>
+            <artifactId>javaparser-core</artifactId>
+            <version>${javaparser.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.soot-oss</groupId>
+            <artifactId>sootup.core</artifactId>
+            <version>${sootup.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.soot-oss</groupId>
+            <artifactId>sootup.java.core</artifactId>
+            <version>${sootup.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.soot-oss</groupId>
+            <artifactId>sootup.java.sourcecode</artifactId>
+            <version>${sootup.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.soot-oss</groupId>
+            <artifactId>sootup.java.bytecode</artifactId>
+            <version>${sootup.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
     </dependencies>
 
@@ -126,19 +134,18 @@
     </build>
 
     <properties>
-        <mapdb.version>3.0.8</mapdb.version>
-        <classgraph.version>4.8.153</classgraph.version>
         <jbpm.version>7.20.0.Final</jbpm.version>
-        <crawler4j.version>4.4.0</crawler4j.version>
         <handlebars.version>4.3.1</handlebars.version>
         <hsqldb.version>2.7.1</hsqldb.version>
         <mvel2.version>2.5.2.Final</mvel2.version>
         <sleepycat-je.version>18.3.12</sleepycat-je.version>
         <docker.version>3.0.14</docker.version>
         <immutables.version>2.5.6</immutables.version>
-        <jnats.version>2.17.3</jnats.version>
         <mutabilitydetector.version>0.9.6</mutabilitydetector.version>
-        <awaitility.version>4.2.1</awaitility.version>
+        <javapoet.version>1.10.0</javapoet.version>
+        <libphonenumber.version>8.12.9</libphonenumber.version>
+        <javaparser.version>3.25.10</javaparser.version>
+        <sootup.version>1.3.0</sootup.version>
     </properties>
 
 </project>

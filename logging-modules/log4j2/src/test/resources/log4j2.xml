@@ -28,28 +28,6 @@
         <Async name="AsyncAppender" bufferSize="80">
             <AppenderRef ref="JSONLogfileAppender"/>
         </Async>
-        <!-- <Syslog name="Syslog" format="RFC5424" host="localhost" port="514" 
-            protocol="TCP" facility="local3" connectTimeoutMillis="10000" reconnectionDelayMillis="5000" 
-            mdcId="mdc" includeMDC="true" /> <Failover name="FailoverAppender" primary="Syslog"> 
-            <Failovers> <AppenderRef ref="ConsoleAppender" /> </Failovers> </Failover> -->
-        <JDBC name="JDBCAppender" tableName="logs">
-            <ConnectionFactory
-                class="com.baeldung.logging.log4j2.tests.jdbc.ConnectionFactory"
-                method="getConnection"/>
-            <Column name="when" isEventTimestamp="true"/>
-            <Column name="logger" pattern="%logger"/>
-            <Column name="level" pattern="%level"/>
-            <Column name="message" pattern="%message"/>
-            <Column name="throwable" pattern="%ex{full}"/>
-        </JDBC>
-        <RollingFile name="XMLRollingfileAppender" fileName="target/logfile.xml"
-            filePattern="target/logfile-%d{yyyy-MM-dd}-%i.log.gz">
-            <XMLLayout/>
-            <Policies>
-                <SizeBasedTriggeringPolicy
-                    size="17 kB"/>
-            </Policies>
-        </RollingFile>
         <MapAppender name="MapAppender"/>
         <Console name="DockerConsoleLogger" target="SYSTEM_OUT">
             <PatternLayout pattern="%pid %docker"/>
@@ -74,14 +52,8 @@
             additivity="false">
             <AppenderRef ref="AsyncAppender"/>
         </Logger>
-        <!-- <Logger name="FAIL_OVER_SYSLOG_APPENDER" level="INFO" additivity="false"> 
-            <AppenderRef ref="FailoverAppender" /> </Logger> -->
         <Logger name="JDBC_APPENDER" level="INFO" additivity="false">
             <AppenderRef ref="JDBCAppender"/>
-        </Logger>
-        <Logger name="XML_ROLLING_FILE_APPENDER" level="INFO"
-            additivity="false">
-            <AppenderRef ref="XMLRollingfileAppender"/>
         </Logger>
         <Logger name="CONSOLE_JSON_APPENDER" level="TRACE"
             additivity="false">

@@ -1,0 +1,12 @@
+spring:
+  ai:
+    openai:
+      api-key: "<YOUR-API-KEY>"
+      embedding:
+        options:
+          model: "text-embedding-3-small"
+
+  # Avoid starting docker from the shared codebase
+  docker:
+    compose:
+      enabled: false

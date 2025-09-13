@@ -46,7 +46,6 @@
             <version>4.0.0</version>
             <scope>runtime</scope>
         </dependency>
-
         <!-- marshalling -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -117,7 +116,6 @@
             <version>${jstl.version}</version>
             <scope>runtime</scope>
         </dependency>
-
     </dependencies>
 
     <build>

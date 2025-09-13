@@ -21,17 +21,14 @@ public class JsonNodeIteratorUnitTest {
         "  number: 1\n" + 
         "- type: fish\n" + 
         "  number: 50";
-    
-@Test
-public void givenANodeTree_whenIteratingSubNodes_thenWeFindExpected() throws IOException {
-    final JsonNode rootNode = ExampleStructure.getExampleRoot();
-    
-    String yaml = onTest.toYaml(rootNode);
-    System.out.println(yaml.toString());
 
-    assertEquals(expectedYaml, yaml);
-    
-}
+    @Test
+    public void givenANodeTree_whenIteratingSubNodes_thenWeFindExpected() throws IOException {
+        final JsonNode rootNode = ExampleStructure.getExampleRoot();
 
+        String yaml = onTest.toYaml(rootNode);
+
+        assertEquals(expectedYaml, yaml);
+    }
 
 }

@@ -23,7 +23,6 @@
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
         </dependency>
-
         <!--Compile time JPA API -->
         <dependency>
             <groupId>jakarta.persistence</groupId>
@@ -50,6 +49,11 @@
             <artifactId>modelmapper</artifactId>
             <version>${modelmapper.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -74,6 +78,7 @@
         <fasterxml.jackson.version>2.17.0</fasterxml.jackson.version>
         <commons.beanutils.version>1.9.4</commons.beanutils.version>
         <modelmapper.version>3.2.1</modelmapper.version>
+        <mysql.version>8.4.0</mysql.version>
     </properties>
 
 </project>
