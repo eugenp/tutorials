@@ -1,4 +1,4 @@
-package com.baeldung.springdata.vector;
+package com.baeldung.springdata.pgvector;
 
 import java.util.List;
 

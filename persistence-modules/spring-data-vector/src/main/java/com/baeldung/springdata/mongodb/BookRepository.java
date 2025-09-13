@@ -21,6 +21,7 @@ public interface BookRepository extends CrudRepository<Book, String> {
     @VectorSearch(indexName = "book-vector-index", limit = "10", numCandidates="200")
     SearchResults<Book> searchByYearPublishedAndEmbeddingNear(String yearPublished, Vector vector,
         Score score);
+
     @VectorSearch(indexName = "book-vector-index", limit = "10", numCandidates="200")
     SearchResults<Book> searchByEmbeddingWithin(Vector vector, Range<Similarity> range);
 }

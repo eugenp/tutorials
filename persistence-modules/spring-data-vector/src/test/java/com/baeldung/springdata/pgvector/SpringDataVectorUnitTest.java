@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.domain.Range;
 import org.springframework.data.domain.Score;
 import org.springframework.data.domain.ScoringFunction;
@@ -20,10 +21,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.testcontainers.containers.PostgreSQLContainer;
 
-import com.baeldung.springdata.vector.Document;
-import com.baeldung.springdata.vector.DocumentRepository;
-
 @SpringBootTest
+@Import(PgVectorTestConfiguration.class)
 @ActiveProfiles("pgvector")
 @Sql(scripts = "/pgvector-data-setup.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_CLASS)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -41,27 +40,11 @@ public class SpringDataVectorUnitTest {
         pgVectorSQLContainer.stop();
     }
 
-/*
-    @Test
-    void whenSearchInVectorDocument_thenReturnResult() {
-        String query = "Which document has the details about Django?";
-        Vector embedding = Vector.of( -0.34916985034942627, 0.5338794589042664, 0.43527376651763916,
-            -0.6110032200813293, -0.17396864295005798);
-        List<Document> documents = documentRepository.findNearest(embedding);
-        assertThat(documents).isNotEmpty();
-        documents.forEach(document -> logger.info("Document: {}, Content: {}, published: {}",
-                document.getId(), document.getContent(), document.getYearPublished()));
-    }
-*/
-
     @Test
     void testFindByYearPublishedAndEmbeddingNear() {
         //String query = "Which document has the details about Django?";
         Vector embedding = Vector.of( -0.34916985034942627f, 0.5338794589042664f, 0.43527376651763916f,
             -0.6110032200813293f, -0.17396864295005798f);
-
-        Range<Similarity> range = Range.closed(Similarity.of(0.7), Similarity.of(1.0));
-
 
         var results = documentRepository.searchTop3ByYearPublishedAndTheEmbeddingNear("2022", embedding,
             Score.of(0.7, ScoringFunction.cosine()));
