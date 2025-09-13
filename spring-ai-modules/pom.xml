@@ -20,6 +20,6 @@
         <module>spring-ai-mcp</module>
         <module>spring-ai-text-to-sql</module>
         <module>spring-ai-vector-stores</module>
+        <module>spring-ai-agentic-patterns</module>
     </modules>
-
 </project>
