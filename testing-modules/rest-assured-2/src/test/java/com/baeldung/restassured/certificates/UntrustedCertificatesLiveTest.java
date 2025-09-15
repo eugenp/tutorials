@@ -19,9 +19,9 @@ class UntrustedCertificatesLiveTest {
     void whenCallingUntrustedCertificate_thenTheTestFails() {
         given()
             .baseUri(TEST_URL)
-            .when()
+        .when()
             .get("/")
-            .then()
+        .then()
             .statusCode(200);
     }
 
@@ -30,9 +30,9 @@ class UntrustedCertificatesLiveTest {
         given()
             .relaxedHTTPSValidation()
             .baseUri(TEST_URL)
-            .when()
+        .when()
             .get("/")
-            .then()
+        .then()
             .statusCode(200);
     }
 
@@ -43,9 +43,9 @@ class UntrustedCertificatesLiveTest {
                 .sslConfig(sslConfig()
                     .trustStore("/badssl.jks", "changeit")))
             .baseUri(TEST_URL)
-            .when()
+        .when()
             .get("/")
-            .then()
+        .then()
             .statusCode(200);
     }
 
@@ -60,9 +60,9 @@ class UntrustedCertificatesLiveTest {
 
             given()
                 .baseUri(TEST_URL)
-                .when()
+            .when()
                 .get("/")
-                .then()
+            .then()
                 .statusCode(200);
         } finally {
             RestAssured.config = oldConfig;
