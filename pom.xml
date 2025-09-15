@@ -829,6 +829,7 @@
                 <module>spring-web-modules</module>
                 <module>spring-websockets</module>
                 <module>static-analysis-modules</module>
+                <module>temporal</module>
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
                 <module>timefold-solver</module>
