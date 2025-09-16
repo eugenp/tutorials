@@ -839,7 +839,7 @@
                 <module>web-modules</module>
                 <module>webrtc</module>
                 <module>xml-modules</module>
-             </modules>
+            </modules>
 
             <properties>
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
