@@ -4,8 +4,9 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.collections4.IterableUtils;
-
+import org.apache.commons.collections4.CollectionUtils;
 import com.google.common.base.Predicate;
+import org.apache.commons.collections4.Predicate;
 import com.google.common.collect.Iterables;
 
 public class FindACustomerInGivenList {
@@ -74,4 +75,11 @@ public class FindACustomerInGivenList {
         });
     }
 
+    public boolean findUsingExists(String name, List<Customer> customers) {
+        return CollectionUtils.exists(customers, new Predicate<Customer>() {
+            public boolean evaluate(Customer customer) {
+                return customer.getName().equals(name);
+            }
+        });
+    }
 }
