@@ -1,6 +1,6 @@
 package com.baeldung.springai.agenticpatterns.workflows.chain;
 
-import static com.baeldung.springai.agenticpatterns.workflows.chain.ChainWorkflowUtils.DEV_PIPELINE_STEPS;
+import static com.baeldung.springai.agenticpatterns.aimodels.OpsClientPrompts.DEV_PIPELINE_STEPS;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;

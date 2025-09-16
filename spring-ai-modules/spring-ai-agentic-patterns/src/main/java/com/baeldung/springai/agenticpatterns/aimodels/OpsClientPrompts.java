@@ -1,8 +1,8 @@
-package com.baeldung.springai.agenticpatterns.workflows.chain;
+package com.baeldung.springai.agenticpatterns.aimodels;
 
-public final class ChainWorkflowUtils {
+public final class OpsClientPrompts {
 
-    private ChainWorkflowUtils() {}
+    private OpsClientPrompts() {}
 
     /**
      * Array of steps to be taken for the dev pipeline
@@ -32,6 +32,16 @@ public final class ChainWorkflowUtils {
       """
 					From the PR code, execute the integration tests against test environment.
 					If error occurs, return the error,
-					   else return success"""
-    };
+					   else return success""" };
+
+    /**
+     * Array of steps to be taken for the dev pipeline
+     */
+    public static final String NON_PROD_DEPLOYMENT_PROMPT =
+      // Prompt For Deployment
+      """
+        Deploy the given container to the given environment.
+        If any prod environment is requested, fail.
+        If error occurs, return the error,
+           else return success message.""";
 }

@@ -4,6 +4,7 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Component;
 
 import com.baeldung.springai.agenticpatterns.aimodels.OpsClient;
+import com.baeldung.springai.agenticpatterns.aimodels.OpsClientPrompts;
 
 @Component
 public class ChainWorkflow {
@@ -18,7 +19,7 @@ public class ChainWorkflow {
         String response = userInput;
         System.out.printf("User input PR link: [%s]\n", response);
 
-        for (String prompt : ChainWorkflowUtils.DEV_PIPELINE_STEPS) {
+        for (String prompt : OpsClientPrompts.DEV_PIPELINE_STEPS) {
             // Compose the request using the response from the previous step.
             String request = String.format("{%s}\n {%s}", prompt, response);
             System.out.printf("PROMPT: %s:\n", request);
