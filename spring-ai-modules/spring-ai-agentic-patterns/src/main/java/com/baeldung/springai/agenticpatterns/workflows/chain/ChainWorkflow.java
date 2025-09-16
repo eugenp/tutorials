@@ -17,7 +17,7 @@ public class ChainWorkflow {
 
     public String opsPipeline(String userInput) {
         String response = userInput;
-        System.out.printf("User input PR link: [%s]\n", response);
+        System.out.printf("User input: [%s]\n", response);
 
         for (String prompt : OpsClientPrompts.DEV_PIPELINE_STEPS) {
             // Compose the request using the response from the previous step.
