@@ -8,6 +8,7 @@ import io.temporal.client.WorkflowClient;
 import io.temporal.client.WorkflowOptions;
 import io.temporal.testing.TestWorkflowEnvironment;
 import io.temporal.worker.Worker;
+import io.temporal.workflow.Promise;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -66,6 +67,7 @@ class FlakySayHelloWorkerUnitTest {
 
         // Create a blocking workflow using tbe execution's workflow id
         var syncWorkflow = client.newWorkflowStub(HelloWorkflow.class,execution.getWorkflowId());
+
 
         // The sync workflow stub will block until it completes. Notice that the call argumento here is ignored!
         assertEquals("Hello, Baeldung", syncWorkflow.hello("ignored"));
