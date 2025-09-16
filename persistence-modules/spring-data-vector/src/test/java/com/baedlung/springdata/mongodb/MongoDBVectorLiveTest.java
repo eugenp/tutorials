@@ -37,8 +37,8 @@ import com.opencsv.exceptions.CsvValidationException;
 @Import(MongoDBTestConfiguration.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ActiveProfiles("mongodb")
-public class MongoDBVectorUnitTest {
-    Logger logger = LoggerFactory.getLogger(MongoDBVectorUnitTest.class);
+public class MongoDBVectorLiveTest {
+    Logger logger = LoggerFactory.getLogger(MongoDBVectorLiveTest.class);
 
     @Autowired
     MongoTemplate mongoTemplate;
@@ -171,8 +171,7 @@ public class MongoDBVectorUnitTest {
             0.43527376651763916f, -0.6110032200813293f, -0.17396864295005798f);
         var results = bookRepository.searchByEmbeddingWithin(embedding, Range.closed(Similarity.of(0.7),
             Similarity.of(0.9)));
-        logger.info("Results found: {}", results.stream()
-            .count());
+        logger.info("Results found: {}", results.stream().count());
         results.getContent()
             .forEach(book -> logger.info("Book: {}, yearPublished: {}", book.getContent()
                 .getName(), book.getContent()

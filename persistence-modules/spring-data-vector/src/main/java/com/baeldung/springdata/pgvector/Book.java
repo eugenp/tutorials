@@ -10,8 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity(name = "documents")
-public class Document {
+@Entity(name = "book")
+public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
@@ -23,8 +23,7 @@ public class Document {
 
     @JdbcTypeCode(SqlTypes.VECTOR)
     @Array(length = 5)
-    @Column(name = "the_embedding")
-    private float[] theEmbedding;
+    private float[] embedding;
 
     public String getId() {
         return id;
@@ -50,11 +49,11 @@ public class Document {
         this.yearPublished = yearPublished;
     }
 
-    public float[] getTheEmbedding() {
-        return theEmbedding;
+    public float[] getEmbedding() {
+        return embedding;
     }
 
-    public void setTheEmbedding(float[] theEmbedding) {
-        this.theEmbedding = theEmbedding;
+    public void setEmbedding(float[] embedding) {
+        this.embedding = embedding;
     }
 }

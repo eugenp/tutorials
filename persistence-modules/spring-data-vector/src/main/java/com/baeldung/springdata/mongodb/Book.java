@@ -1,13 +1,11 @@
 package com.baeldung.springdata.mongodb;
 
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.domain.Vector;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "books")
 public class Book {
-
     @Id
     private String id;
 
