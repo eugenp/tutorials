@@ -839,7 +839,6 @@
                 <module>web-modules</module>
                 <module>webrtc</module>
                 <module>xml-modules</module>
-                <module>temporal</module>
              </modules>
 
             <properties>

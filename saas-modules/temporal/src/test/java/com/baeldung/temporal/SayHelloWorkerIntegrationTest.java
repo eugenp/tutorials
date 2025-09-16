@@ -8,6 +8,7 @@ import io.temporal.client.WorkflowOptions;
 import io.temporal.serviceclient.WorkflowServiceStubs;
 import io.temporal.worker.Worker;
 import io.temporal.worker.WorkerFactory;
+import io.temporal.worker.WorkerFactoryOptions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,7 +32,10 @@ class SayHelloWorkerIntegrationTest {
         log.info("Creating worker...");
         WorkflowServiceStubs service = WorkflowServiceStubs.newLocalServiceStubs();
         WorkflowClient client = WorkflowClient.newInstance(service);
-        this.factory = WorkerFactory.newInstance(client);
+        this.factory = WorkerFactory.newInstance(client,
+          WorkerFactoryOptions.newBuilder()
+            .setUsingVirtualWorkflowThreads(true)
+            .build());
 
         Worker worker = factory.newWorker(QUEUE_NAME);
 
