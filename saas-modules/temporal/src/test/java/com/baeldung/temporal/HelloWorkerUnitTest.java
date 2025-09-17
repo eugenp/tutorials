@@ -1,15 +1,11 @@
 package com.baeldung.temporal;
 
 import com.baeldung.temporal.workflows.hello.HelloWorkflow;
-import com.baeldung.temporal.workflows.hello.SayHelloWorker;
+import com.baeldung.temporal.workflows.hello.HelloWorker;
 import io.temporal.client.WorkflowClient;
 import io.temporal.client.WorkflowOptions;
-import io.temporal.serviceclient.WorkflowServiceStubs;
 import io.temporal.testing.TestWorkflowEnvironment;
 import io.temporal.worker.Worker;
-import io.temporal.worker.WorkerFactory;
-import io.temporal.workflow.Async;
-import io.temporal.workflow.Workflow;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,12 +13,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.UUID;
-import java.util.concurrent.ForkJoinPool;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class SayHelloWorkerUnitTest {
-    private final Logger log = LoggerFactory.getLogger(SayHelloWorkerUnitTest.class);
+class HelloWorkerUnitTest {
+    private final Logger log = LoggerFactory.getLogger(HelloWorkerUnitTest.class);
     private static final String QUEUE_NAME = "say-hello-queue";
 
 
@@ -48,7 +43,7 @@ class SayHelloWorkerUnitTest {
     @Test
     void givenPerson_whenSayHello_thenSuccess() throws Exception {
 
-        var sayHelloWorker = new SayHelloWorker();
+        var sayHelloWorker = new HelloWorker();
         sayHelloWorker.init(worker);
 
         // We must register all activities/worklows before starting the test environment

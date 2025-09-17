@@ -4,7 +4,7 @@ import com.baeldung.temporal.worker.TemporalWorker;
 import com.baeldung.temporal.workflows.hello.activities.SayHelloActivityImpl;
 import io.temporal.worker.Worker;
 
-public class SayHelloWorker implements TemporalWorker {
+public class HelloWorker implements TemporalWorker {
 
     private Worker worker;
 

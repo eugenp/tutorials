@@ -1,14 +1,12 @@
 package com.baeldung.temporal;
 
-import com.baeldung.temporal.workflows.flakyhello.FlakyHelloWorkflow;
-import com.baeldung.temporal.workflows.flakyhello.FlakySayHelloWorker;
+import com.baeldung.temporal.workflows.hellov2.HelloWorkflowV2;
+import com.baeldung.temporal.workflows.hellov2.HelloV2Worker;
 import com.baeldung.temporal.workflows.hello.HelloWorkflow;
-import com.baeldung.temporal.workflows.hello.SayHelloWorker;
 import io.temporal.client.WorkflowClient;
 import io.temporal.client.WorkflowOptions;
 import io.temporal.testing.TestWorkflowEnvironment;
 import io.temporal.worker.Worker;
-import io.temporal.workflow.Promise;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,8 +17,8 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class FlakySayHelloWorkerUnitTest {
-    private final Logger log = LoggerFactory.getLogger(FlakySayHelloWorkerUnitTest.class);
+class HelloV2WorkerUnitTest {
+    private final Logger log = LoggerFactory.getLogger(HelloV2WorkerUnitTest.class);
     private static final String QUEUE_NAME = "say-hello-queue";
 
 
@@ -46,7 +44,7 @@ class FlakySayHelloWorkerUnitTest {
     @Test
     void givenPerson_whenSayHello_thenSuccess() throws Exception {
 
-        var sayHelloWorker = new FlakySayHelloWorker();
+        var sayHelloWorker = new HelloV2Worker();
         sayHelloWorker.init(worker);
 
         // We must register all activities/worklows before starting the test environment
@@ -55,7 +53,7 @@ class FlakySayHelloWorkerUnitTest {
         // Create workflow stub wich allow us to create workflow instances
         var wfid = UUID.randomUUID().toString();
         var workflow = client.newWorkflowStub(
-          FlakyHelloWorkflow.class,
+          HelloWorkflowV2.class,
           WorkflowOptions.newBuilder()
             .setTaskQueue(QUEUE_NAME)
             .setWorkflowId(wfid)
@@ -69,7 +67,7 @@ class FlakySayHelloWorkerUnitTest {
         var syncWorkflow = client.newWorkflowStub(HelloWorkflow.class,execution.getWorkflowId());
 
 
-        // The sync workflow stub will block until it completes. Notice that the call argumento here is ignored!
-        assertEquals("Hello, Baeldung", syncWorkflow.hello("ignored"));
+        // The sync workflow stub will block until it completes. Notice that the call argument here is ignored!
+        assertEquals("Workflow OK", syncWorkflow.hello("ignored"));
     }
 }
