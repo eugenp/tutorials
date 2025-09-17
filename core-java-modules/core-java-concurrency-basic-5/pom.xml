@@ -13,9 +13,17 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.wiremock</groupId>
+            <artifactId>wiremock</artifactId>
+            <version>${wiremock.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <properties>
-
+        <wiremock.version>3.1.0</wiremock.version>
     </properties>
 
 </project>
