@@ -24,11 +24,17 @@
             <artifactId>emoji-java</artifactId>
             <version>${emoji-java.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${common-lang3.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <emoji-java.version>4.0.0</emoji-java.version>
         <jqwik.version>1.7.4</jqwik.version>
+        <common-lang3.version>3.18.0</common-lang3.version>
     </properties>
 
 </project>
