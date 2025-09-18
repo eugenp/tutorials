@@ -10,9 +10,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository("documentRepository")
 public interface BookRepository extends JpaRepository<Book, String> {
-    SearchResults<Book> searchByYearPublishedAndEmbeddingNear(
-        String yearPublished, Vector vector, Score scoreThreshold
-    );
+    SearchResults<Book> searchByYearPublishedAndEmbeddingNear(String yearPublished, Vector vector, Score scoreThreshold);
 
     List<Book> searchTop3ByYearPublished(String yearPublished);
 }

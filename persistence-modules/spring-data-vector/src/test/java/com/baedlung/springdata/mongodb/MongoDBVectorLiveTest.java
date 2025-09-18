@@ -101,7 +101,7 @@ public class MongoDBVectorLiveTest {
             if (status == SearchIndexStatus.READY) {
                 return;
             }
-            Thread.sleep(SLEEP_MS); // Wait 2 seconds before checking again
+            Thread.sleep(SLEEP_MS);
         }
         throw new RuntimeException("Vector index did not become READY after waiting.");
     }

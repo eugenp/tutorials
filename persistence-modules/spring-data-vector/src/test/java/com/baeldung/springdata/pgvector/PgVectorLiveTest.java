@@ -14,6 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.domain.Score;
 import org.springframework.data.domain.ScoringFunction;
+import org.springframework.data.domain.SearchResult;
+import org.springframework.data.domain.SearchResults;
 import org.springframework.data.domain.Vector;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
@@ -40,21 +42,26 @@ public class PgVectorLiveTest {
 
     @Test
     void whenSearchByYearPublishedAndEmbeddingNear_thenResult() {
-        //String query = "Which document has the details about Django?";
-        Vector embedding = Vector.of(
-            -0.34916985034942627f, 0.5338794589042664f,
-            0.43527376651763916f, -0.6110032200813293f, -0.17396864295005798f
-        );
+        Vector embedding = getEmbedding("Which document has the details about Django?");
 
-        var results = bookRepository.searchByYearPublishedAndEmbeddingNear(
+        SearchResults<Book> results = bookRepository.searchByYearPublishedAndEmbeddingNear(
             "2022", embedding,
             Score.of(0.9, ScoringFunction.euclidean())
         );
         assertThat(results).isNotNull();
-        assertThat(results.getContent().size()).isGreaterThan(0);
 
-        results.getContent()
-            .forEach(book -> assertThat(book.getContent().getYearPublished()).isEqualTo("2022"));
+        List<SearchResult<Book>> resultList = results.getContent();
+
+        assertThat(resultList.size()).isGreaterThan(0);
+
+        resultList.forEach(book -> assertThat(book.getContent().getYearPublished()).isEqualTo("2022"));
+    }
+
+    private Vector getEmbedding(String query) {
+        return  Vector.of(
+            -0.34916985034942627f, 0.5338794589042664f,
+            0.43527376651763916f, -0.6110032200813293f, -0.17396864295005798f
+        );
     }
 
     @Test
