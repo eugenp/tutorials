@@ -24,13 +24,8 @@ public class CountSequenceInStringUnitTest {
 
     @Test
     void whenUsingIndexOf_thenCorrect() {
-        String seq = "string";
-        int count = countSeqByIndexOf(INPUT, seq);
-        assertEquals(3, count);
-
-        String seq2 = "string.";
-        int count2 = countSeqByIndexOf(INPUT, seq2);
-        assertEquals(2, count2);
+        assertEquals(3, countSeqByIndexOf(INPUT, "string"));
+        assertEquals(2, countSeqByIndexOf(INPUT, "string."));
     }
 
     int countSeqByRegexFind(String input, String seq) {
@@ -46,13 +41,8 @@ public class CountSequenceInStringUnitTest {
 
     @Test
     void whenUsingRegexFind_thenCorrect() {
-        String seq = "string";
-        int count = countSeqByRegexFind(INPUT, seq);
-        assertEquals(3, count);
-
-        String seq2 = "string.";
-        int count2 = countSeqByRegexFind(INPUT, seq2);
-        assertEquals(2, count2);
+        assertEquals(3, countSeqByRegexFind(INPUT, "string"));
+        assertEquals(2, countSeqByRegexFind(INPUT, "string."));
     }
 
     int countSeqByRegexSplit(String input, String seq) {
@@ -62,13 +52,8 @@ public class CountSequenceInStringUnitTest {
 
     @Test
     void whenUsingRegexSplit_thenCorrect() {
-        String seq = "string";
-        int count = countSeqByRegexSplit(INPUT, seq);
-        assertEquals(3, count);
-
-        String seq2 = "string.";
-        int count2 = countSeqByRegexSplit(INPUT, seq2);
-        assertEquals(2, count2);
+        assertEquals(3, countSeqByRegexSplit(INPUT, "string"));
+        assertEquals(2, countSeqByRegexSplit(INPUT, "string."));
     }
 
     int countSeqByStream(String input, String seq) {
@@ -81,23 +66,13 @@ public class CountSequenceInStringUnitTest {
 
     @Test
     void whenUsingStream_thenCorrect() {
-        String seq = "string";
-        int count = countSeqByStream(INPUT, seq);
-        assertEquals(3, count);
-
-        String seq2 = "string.";
-        int count2 = countSeqByStream(INPUT, seq2);
-        assertEquals(2, count2);
+        assertEquals(3, countSeqByStream(INPUT, "string"));
+        assertEquals(2, countSeqByStream(INPUT, "string."));
     }
 
     @Test
     void whenUsingApacheCommonsLangCountMatches_thenCorrect() {
-        String seq = "string";
-        int count = StringUtils.countMatches(INPUT, seq);
-        assertEquals(3, count);
-
-        String seq2 = "string.";
-        int count2 = StringUtils.countMatches(INPUT, seq2);
-        assertEquals(2, count2);
+        assertEquals(3, StringUtils.countMatches(INPUT, "string"));
+        assertEquals(2, StringUtils.countMatches(INPUT, "string."));
     }
 }

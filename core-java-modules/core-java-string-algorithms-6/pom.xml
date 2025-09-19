@@ -2,9 +2,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>core-java-string-algorithms-5</artifactId>
+    <artifactId>core-java-string-algorithms-6</artifactId>
     <packaging>jar</packaging>
-    <name>core-java-string-algorithms-5</name>
+    <name>core-java-string-algorithms-6</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -14,21 +14,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>net.jqwik</groupId>
-            <artifactId>jqwik</artifactId>
-            <version>${jqwik.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.vdurmont</groupId>
-            <artifactId>emoji-java</artifactId>
-            <version>${emoji-java.version}</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${common-lang3.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
-        <emoji-java.version>4.0.0</emoji-java.version>
-        <jqwik.version>1.7.4</jqwik.version>
+        <common-lang3.version>3.18.0</common-lang3.version>
     </properties>
 
 </project>
