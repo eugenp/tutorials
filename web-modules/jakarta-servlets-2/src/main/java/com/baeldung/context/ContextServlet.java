@@ -10,8 +10,15 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/context")
+@WebServlet(ContextServlet.PATH)
 public class ContextServlet extends HttpServlet {
+
+    protected static final String PATH = "/context";
+
+    protected static final String LABEL_FROM_HTTP_SERVLET = "1) From HttpServlet: ";
+    protected static final String LABEL_FROM_SERVLET_CONFIG = "2) From ServletConfig: ";
+    protected static final String LABEL_FROM_HTTP_SERVLET_REQUEST = "3) From HttpServletRequest: ";
+    protected static final String LABEL_FROM_HTTP_SESSION = "4) From HttpSession: ";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
@@ -21,7 +28,7 @@ public class ContextServlet extends HttpServlet {
         // 1. Direct Access From the Servlet
         ServletContext contextFromServlet = this.getServletContext();
         resp.getWriter()
-            .println("1) From HttpServlet: " + contextFromServlet);
+            .println(LABEL_FROM_HTTP_SERVLET + contextFromServlet);
 
         resp.getWriter()
             .println();
@@ -30,7 +37,7 @@ public class ContextServlet extends HttpServlet {
         ServletConfig config = this.getServletConfig();
         ServletContext contextFromConfig = config.getServletContext();
         resp.getWriter()
-            .println("2) From ServletConfig: " + contextFromConfig);
+            .println(LABEL_FROM_SERVLET_CONFIG + contextFromConfig);
 
         resp.getWriter()
             .println();
@@ -38,7 +45,7 @@ public class ContextServlet extends HttpServlet {
         // 3. Getting the Context From the HttpServletRequest (Servlet 3.0+)
         ServletContext contextFromRequest = req.getServletContext();
         resp.getWriter()
-            .println("3) From HttpServletRequest: " + contextFromRequest);
+            .println(LABEL_FROM_HTTP_SERVLET_REQUEST + contextFromRequest);
 
         resp.getWriter()
             .println();
@@ -47,6 +54,6 @@ public class ContextServlet extends HttpServlet {
         ServletContext contextFromSession = req.getSession()
             .getServletContext();
         resp.getWriter()
-            .println("4) From HttpSession: " + contextFromSession);
+            .println(LABEL_FROM_HTTP_SESSION + contextFromSession);
     }
 }
