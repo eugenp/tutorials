@@ -8,10 +8,7 @@ public class SayHelloActivityImpl implements SayHelloActivity {
     private static final Logger log = LoggerFactory.getLogger(SayHelloActivityImpl.class);
 
     public String sayHello(String person) {
-
-        var info = Activity.getExecutionContext().getInfo();
-        log.info("SayHelloActivityImpl sayHello({}): info={}", person, info);
-
+        log.info("Saying hello to {}", person);
         return "Hello, " + person;
     }
 }

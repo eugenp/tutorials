@@ -1,18 +1,20 @@
 package com.baeldung.temporal.workflows.hello;
 
-import com.baeldung.temporal.worker.TemporalWorker;
+import com.baeldung.temporal.worker.TemporalWorkerRegistrar;
 import com.baeldung.temporal.workflows.hello.activities.SayHelloActivityImpl;
 import io.temporal.worker.Worker;
 
-public class HelloWorker implements TemporalWorker {
+public class HelloWorkflowRegistrar implements TemporalWorkerRegistrar {
 
-    private Worker worker;
+    private HelloWorkflowRegistrar() {}
 
     @Override
-    public void init(Worker worker) {
-        this.worker = worker;
+    public void register(Worker worker) {
         worker.registerWorkflowImplementationTypes(HelloWorkflowImpl.class);
         worker.registerActivitiesImplementations(new SayHelloActivityImpl());
     }
 
+    public static HelloWorkflowRegistrar newInstance() {
+        return new HelloWorkflowRegistrar();
+    }
 }

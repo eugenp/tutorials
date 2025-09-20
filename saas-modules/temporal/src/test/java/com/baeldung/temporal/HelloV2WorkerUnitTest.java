@@ -1,7 +1,7 @@
 package com.baeldung.temporal;
 
 import com.baeldung.temporal.workflows.hellov2.HelloWorkflowV2;
-import com.baeldung.temporal.workflows.hellov2.HelloV2Worker;
+import com.baeldung.temporal.workflows.hellov2.HelloV2WorkerRegistrar;
 import com.baeldung.temporal.workflows.hello.HelloWorkflow;
 import io.temporal.client.WorkflowClient;
 import io.temporal.client.WorkflowOptions;
@@ -20,19 +20,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class HelloV2WorkerUnitTest {
     private final Logger log = LoggerFactory.getLogger(HelloV2WorkerUnitTest.class);
     private static final String QUEUE_NAME = "say-hello-queue";
-
-
     private TestWorkflowEnvironment testEnv;
     private Worker worker;
     private WorkflowClient client;
 
-
     @BeforeEach
     void startWorker() {
-
         log.info("Creating test environment...");
         testEnv = TestWorkflowEnvironment.newInstance();
         worker = testEnv.newWorker(QUEUE_NAME);
+        HelloV2WorkerRegistrar.newInstance().register(worker);
+
         client = testEnv.getWorkflowClient();
     }
 
@@ -43,9 +41,6 @@ class HelloV2WorkerUnitTest {
 
     @Test
     void givenPerson_whenSayHello_thenSuccess() throws Exception {
-
-        var sayHelloWorker = new HelloV2Worker();
-        sayHelloWorker.init(worker);
 
         // We must register all activities/worklows before starting the test environment
         testEnv.start();
@@ -66,8 +61,8 @@ class HelloV2WorkerUnitTest {
         // Create a blocking workflow using tbe execution's workflow id
         var syncWorkflow = client.newWorkflowStub(HelloWorkflow.class,execution.getWorkflowId());
 
-
         // The sync workflow stub will block until it completes. Notice that the call argument here is ignored!
         assertEquals("Workflow OK", syncWorkflow.hello("ignored"));
+        log.info("Test OK!");
     }
 }

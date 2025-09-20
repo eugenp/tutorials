@@ -1,7 +1,7 @@
 package com.baeldung.temporal;
 
 import com.baeldung.temporal.workflows.hello.HelloWorkflow;
-import com.baeldung.temporal.workflows.hello.HelloWorker;
+import com.baeldung.temporal.workflows.hello.HelloWorkflowRegistrar;
 import io.temporal.client.WorkflowClient;
 import io.temporal.client.WorkflowOptions;
 import io.temporal.testing.TestWorkflowEnvironment;
@@ -32,6 +32,7 @@ class HelloWorkerUnitTest {
         log.info("Creating test environment...");
         testEnv = TestWorkflowEnvironment.newInstance();
         worker = testEnv.newWorker(QUEUE_NAME);
+        HelloWorkflowRegistrar.newInstance().register(worker);
         client = testEnv.getWorkflowClient();
     }
 
@@ -42,9 +43,6 @@ class HelloWorkerUnitTest {
 
     @Test
     void givenPerson_whenSayHello_thenSuccess() throws Exception {
-
-        var sayHelloWorker = new HelloWorker();
-        sayHelloWorker.init(worker);
 
         // We must register all activities/worklows before starting the test environment
         testEnv.start();
