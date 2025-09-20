@@ -9,17 +9,11 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.VectorSearch;
 import org.springframework.stereotype.Repository;
 
-@Repository("bookRepository")
-public interface BookRepository extends MongoRepository<Book, String> {
-    @VectorSearch(indexName = "book-vector-index", numCandidates="200")
-    SearchResults<Book> searchTop3ByEmbeddingNear(Vector vector, Similarity similarity);
-
-    @VectorSearch(indexName = "book-vector-index", limit="10", numCandidates="200")
-    SearchResults<Book> searchByEmbeddingNear(Vector vector, Score score);
-
+@Repository("mongoDbBookRepository")
+public interface MongoDbBookRepository extends MongoRepository<Book, String> {
     @VectorSearch(indexName = "book-vector-index", limit = "10", numCandidates="200")
     SearchResults<Book> searchByYearPublishedAndEmbeddingNear(String yearPublished, Vector vector, Score score);
 
     @VectorSearch(indexName = "book-vector-index", limit = "10", numCandidates="200")
-    SearchResults<Book> searchByEmbeddingWithin(Vector vector, Range<Similarity> range);
+    SearchResults<Book> searchByYearPublishedAndEmbeddingWithin(String yearPublished, Vector vector, Range<Similarity> range);
 }

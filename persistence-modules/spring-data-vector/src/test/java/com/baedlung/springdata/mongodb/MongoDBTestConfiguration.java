@@ -1,5 +1,6 @@
 package com.baedlung.springdata.mongodb;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
@@ -9,6 +10,7 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.testcontainers.mongodb.MongoDBAtlasLocalContainer;
 
+import com.baeldung.springdata.mongodb.MongoDbBookRepository;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 
@@ -42,5 +44,12 @@ public class MongoDBTestConfiguration {
     @DependsOn("mongoClient")
     public MongoOperations mongoTemplate(MongoClient mongoClient) {
         return new MongoTemplate(mongoClient, "geospatial");
+    }
+
+    @Bean
+    @DependsOn({"mongoTemplate", "mongoDbBookRepository"})
+    public DatasetupService datasetupService(@Autowired MongoTemplate mongoTemplate,
+        @Autowired MongoDbBookRepository mongoDbBookRepository) {
+        return new DatasetupService(mongoTemplate, mongoDbBookRepository);
     }
 }

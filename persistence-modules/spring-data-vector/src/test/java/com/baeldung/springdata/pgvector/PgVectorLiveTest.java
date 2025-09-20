@@ -12,10 +12,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.domain.Limit;
+import org.springframework.data.domain.Range;
 import org.springframework.data.domain.Score;
 import org.springframework.data.domain.ScoringFunction;
 import org.springframework.data.domain.SearchResult;
 import org.springframework.data.domain.SearchResults;
+import org.springframework.data.domain.Similarity;
 import org.springframework.data.domain.Vector;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
@@ -30,7 +33,7 @@ public class PgVectorLiveTest {
     private static final Logger logger = LoggerFactory.getLogger(PgVectorLiveTest.class);
 
     @Autowired
-    BookRepository bookRepository;
+    PGvectorBookRepository pgvectorBookRepository;
 
     @Autowired
     private PostgreSQLContainer pgVectorSQLContainer;
@@ -44,7 +47,7 @@ public class PgVectorLiveTest {
     void whenSearchByYearPublishedAndEmbeddingNear_thenResult() {
         Vector embedding = getEmbedding("Which document has the details about Django?");
 
-        SearchResults<Book> results = bookRepository.searchByYearPublishedAndEmbeddingNear(
+        SearchResults<Book> results = pgvectorBookRepository.searchByYearPublishedAndEmbeddingNear(
             "2022", embedding,
             Score.of(0.9, ScoringFunction.euclidean())
         );
@@ -57,6 +60,29 @@ public class PgVectorLiveTest {
         resultList.forEach(book -> assertThat(book.getContent().getYearPublished()).isEqualTo("2022"));
     }
 
+    @Test
+    void whenSearchByYearPublishedAndEmbeddingWithin_thenResult() {
+        Vector embedding = getEmbedding("Which document has the details about Django?");
+
+        Range<Similarity> range = Range.closed(
+            Similarity.of(0.7, ScoringFunction.cosine()),
+            Similarity.of(0.9, ScoringFunction.cosine())
+        );
+        SearchResults<Book> results = pgvectorBookRepository.searchByYearPublishedAndEmbeddingWithin(
+            "2022", embedding, range, Limit.of(5)
+        );
+        assertThat(results).isNotNull();
+
+        List<SearchResult<Book>> resultList = results.getContent();
+
+        assertThat(resultList.size()).isGreaterThan(0).isLessThanOrEqualTo(5);
+
+        resultList.forEach(book -> {
+            assertThat(book.getContent().getYearPublished()).isEqualTo("2022");
+            assertThat(book.getScore().getValue()).isBetween(0.7, 0.9);
+        });
+    }
+
     private Vector getEmbedding(String query) {
         return  Vector.of(
             -0.34916985034942627f, 0.5338794589042664f,
@@ -64,13 +90,5 @@ public class PgVectorLiveTest {
         );
     }
 
-    @Test
-    void testSearchTop3ByYearPublished() {
-        List<Book> books = bookRepository.searchTop3ByYearPublished("2022");
-        assertThat(books).isNotEmpty().hasSizeGreaterThan(1);
-        books.forEach(
-            book -> assertThat(book.getYearPublished()).isEqualTo("2022")
-        );
-    }
 
 }
