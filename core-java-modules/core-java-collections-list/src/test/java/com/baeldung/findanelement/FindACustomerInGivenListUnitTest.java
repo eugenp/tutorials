@@ -1,7 +1,10 @@
 package com.baeldung.findanelement;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -153,6 +156,18 @@ public class FindACustomerInGivenListUnitTest {
         Customer john = findACustomerInGivenList.findUsingGuava("John", customers);
 
         assertNull(john);
+    }
+
+    @Test
+    public void givenName_whenCustomerWithNameFoundUsingExists_thenReturnTrue() {
+        boolean isJamesPresent = findACustomerInGivenList.findUsingExists("James", customers);
+        assertTrue(isJamesPresent);
+    }
+
+    @Test
+    public void givenName_whenCustomerWithNameNotFoundUsingExists_thenReturnFalse() {
+        boolean isJohnPresent = findACustomerInGivenList.findUsingExists("John", customers);
+        assertFalse(isJohnPresent);
     }
 
 }

@@ -635,7 +635,7 @@
                 <module>apache-velocity</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
-                <module>azure</module>
+                <module>spring-boot-azure-deployment</module>
                 <module>azure-functions</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
@@ -660,10 +660,10 @@
                 <module>grpc</module>
                 <module>guava-modules</module>
                 <module>hazelcast</module>
-                <module>heroku</module>
+                <module>spring-boot-heroku-deployment</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
-                <module>image-compressing</module>
+                <module>image-compression</module>
                 <module>image-processing</module>
                 <module>j2cl</module>
                 <module>jackson-modules</module>
@@ -675,7 +675,7 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
-                <module>jetbrains</module>
+                <module>jetbrains-annotations</module>
                 <module>jgit</module>
                 <module>jmh</module>
                 <module>jmonkeyengine</module>
@@ -1077,7 +1077,7 @@
                 <module>apache-velocity</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
-                <module>azure</module>
+                <module>spring-boot-azure-deployment</module>
                 <module>azure-functions</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
@@ -1102,10 +1102,10 @@
                 <module>grpc</module>
                 <module>guava-modules</module>
                 <module>hazelcast</module>
-                <module>heroku</module>
+                <module>spring-boot-heroku-deployment</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
-                <module>image-compressing</module>
+                <module>image-compression</module>
                 <module>image-processing</module>
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
@@ -1117,7 +1117,7 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
-                <module>jetbrains</module>
+                <module>jetbrains-annotations</module>
                 <module>jgit</module>
                 <module>jmh</module>
                 <module>jmonkeyengine</module>
