@@ -14,5 +14,4 @@ public interface PGvectorBookRepository extends JpaRepository<Book, String> {
     SearchResults<Book> searchByYearPublishedAndEmbeddingNear(String yearPublished, Vector vector, Score scoreThreshold);
 
     SearchResults<Book> searchByYearPublishedAndEmbeddingWithin(String yearPublished, Vector vector, Range<Similarity> range, Limit topK);
-
 }
