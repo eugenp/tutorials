@@ -2,10 +2,7 @@ package com.baeldung.jacksonlazyfields.model;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -19,9 +16,8 @@ public class Department {
 
     private String name;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
-    private List<Student> students;
+    @OneToMany(mappedBy = "department")
+    private List<Course> courses;
 
     public Long getId() {
         return id;
@@ -39,11 +35,11 @@ public class Department {
         this.name = name;
     }
 
-    public List<Student> getStudents() {
-        return students;
+    public List<Course> getCourses() {
+        return courses;
     }
 
-    public void setStudents(List<Student> students) {
-        this.students = students;
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 }
