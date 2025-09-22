@@ -186,9 +186,11 @@ public class ProcessBuilderUnitTest {
     }
 
     private List<String> getEchoCommandWithSpaces() {
-        return isWindows()
-          ? Arrays.asList("cmd.exe", "/c", "echo", "Hello World from Baeldung")
-          : Arrays.asList("/bin/sh", "-c", "echo", "Hello World from Baeldung");
+        if (isWindows()) {
+            return Arrays.asList("cmd.exe", "/c", "echo", "Hello World from Baeldung");
+        } else {
+            return Arrays.asList("/bin/bash", "-c", "echo 'Hello World from Baeldung'");
+        }
     }
 
     private boolean isWindows() {
