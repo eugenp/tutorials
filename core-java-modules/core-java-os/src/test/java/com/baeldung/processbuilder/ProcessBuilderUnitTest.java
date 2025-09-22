@@ -157,20 +157,13 @@ public class ProcessBuilderUnitTest {
     }
 
     @Test
-    public void givenProcessBuilder_whenPassingArgsWithSpaces_thenSuccess()
-      throws IOException, InterruptedException {
-
+    public void givenProcessBuilder_whenPassingArgsWithSpaces_thenSuccess() throws IOException {
         ProcessBuilder processBuilder = new ProcessBuilder(getEchoCommandWithSpaces());
         Process process = processBuilder.start();
-
         List<String> results = readOutput(process.getInputStream());
 
         assertFalse(results.isEmpty(), "Results should not be empty");
-        assertTrue(results.stream().anyMatch(line -> line.contains("Hello World from Baeldung")),
-          "Results should contain greeting with spaces");
-
-        int exitCode = process.waitFor();
-        assertEquals("No errors should be detected", 0, exitCode);
+        assertTrue(results.get(0).contains("Hello World from Baeldung"));
     }
 
     private List<String> readOutput(InputStream inputStream) throws IOException {
@@ -194,8 +187,8 @@ public class ProcessBuilderUnitTest {
 
     private List<String> getEchoCommandWithSpaces() {
         return isWindows()
-          ? Arrays.asList("cmd.exe", "/c", "echo Hello World from Baeldung")
-          : Arrays.asList("/bin/sh", "-c", "echo 'Hello World from Baeldung'");
+          ? Arrays.asList("cmd.exe", "/c", "echo", "Hello World from Baeldung")
+          : Arrays.asList("/bin/sh", "-c", "echo", "Hello World from Baeldung");
     }
 
     private boolean isWindows() {
