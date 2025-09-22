@@ -39,15 +39,6 @@ class HelloWorkerUnitTest {
         HelloWorkflowRegistrar.newInstance().register(worker);
         client = testEnv.getWorkflowClient();
 
-//        var serviceStubs = WorkflowServiceStubs.newServiceStubs(WorkflowServiceStubsOptions
-//          .newBuilder()
-//            .setTarget("localhost:7233")
-//            .setEnableKeepAlive(true)
-//            .setEnableHttps(false)
-//          .build());
-//
-//        client = WorkflowClient.newInstance(serviceStubs);
-
         testEnv.start();
     }
 
