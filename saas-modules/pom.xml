@@ -25,6 +25,7 @@
         <module>twilio</module>
         <module>twilio-whatsapp</module>
         <module>twitter4j</module>
+        <module>temporal</module>
     </modules>
 
     <build>
