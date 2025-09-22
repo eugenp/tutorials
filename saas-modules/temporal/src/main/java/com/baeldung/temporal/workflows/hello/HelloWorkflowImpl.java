@@ -15,10 +15,8 @@ public class HelloWorkflowImpl implements HelloWorkflow {
         .build()
     );
 
-
     @Override
     public String hello(String person) {
         return activity.sayHello(person);
     }
-
 }

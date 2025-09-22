@@ -12,20 +12,18 @@ public class HelloWorkflowApplication {
     private static final String QUEUE_NAME = "say-hello-queue";
     private static final Logger log = LoggerFactory.getLogger(HelloWorkflowApplication.class);
 
-
     public static void main(String[] args) {
 
         log.info("Creating worker...");
-        WorkflowServiceStubs service = WorkflowServiceStubs.newLocalServiceStubs();
-        WorkflowClient client = WorkflowClient.newInstance(service);
+        var service = WorkflowServiceStubs.newLocalServiceStubs();
+        var client = WorkflowClient.newInstance(service);
         var factory = WorkerFactory.newInstance(client);
-        Worker worker = factory.newWorker(QUEUE_NAME);
+        var worker = factory.newWorker(QUEUE_NAME);
 
         log.info("Registering workflows and activities...");
         HelloWorkflowRegistrar.newInstance().register(worker);
 
         log.info("Starting worker...");
         factory.start();
-
     }
 }
