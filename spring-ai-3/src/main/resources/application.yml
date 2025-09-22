@@ -5,3 +5,8 @@ spring:
       chat:
         options:
           model: mistral-small-latest
+    openai:
+      api-key: xxxx
+      chat.enabled: true
+      embedding.enabled: true
+      chat.options.model: gpt-4o
