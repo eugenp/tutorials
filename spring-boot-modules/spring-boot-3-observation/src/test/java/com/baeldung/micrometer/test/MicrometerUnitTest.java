@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
+import io.micrometer.core.tck.MeterRegistryAssert;
 
 class MicrometerUnitTest {
 
@@ -42,4 +43,13 @@ class MicrometerUnitTest {
         assertThat(ofMillis(totalTimeMs))
             .isBetween(ofMillis(30), ofMillis(400));
     }
+
+    @Test
+    void whenFooIsCalled_thenTimerIsRegistered() {
+        fooService.foo();
+
+        MeterRegistryAssert.assertThat(meterRegistry)
+            .hasTimerWithName("foo.time");
+    }
+
 }
