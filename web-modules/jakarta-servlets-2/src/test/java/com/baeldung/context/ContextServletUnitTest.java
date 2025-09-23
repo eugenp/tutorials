@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ContextServletTest extends BaseServletTest {
+class ContextServletUnitTest extends BaseServletTest {
 
     private static final List<String> CONTEXT_LABELS = List.of(ContextServlet.LABEL_FROM_HTTP_SERVLET, ContextServlet.LABEL_FROM_SERVLET_CONFIG,
         ContextServlet.LABEL_FROM_HTTP_SERVLET_REQUEST, ContextServlet.LABEL_FROM_HTTP_SESSION);
@@ -23,7 +23,7 @@ class ContextServletTest extends BaseServletTest {
     }
 
     @Test
-    void contextServlet_returnsAllSources_andSameInstance() throws Exception {
+    void givenContextServlet_whenGetRequest_thenResponseContainsSameContextInstance() throws Exception {
         ContentResponse response = httpClient.GET(URI.create(baseUri() + ContextServlet.PATH));
 
         assertEquals(HttpStatus.SC_OK, response.getStatus());
