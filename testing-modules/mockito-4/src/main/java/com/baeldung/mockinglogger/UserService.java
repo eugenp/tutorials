@@ -17,4 +17,10 @@ public class UserService {
             logger.error("You are not an admin");
         }
     }
+
+    public void processUser(String username) {
+        logger.info("Processing user: {}", username);
+        logger.warn("Please don't close your browser ...");
+        logger.info("Processing complete");
+    }
 }
