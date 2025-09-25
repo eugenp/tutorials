@@ -120,6 +120,7 @@
         <module>spring-data-rest-querydsl</module>
         <module>spring-data-solr</module>
         <module>spring-data-shardingsphere</module>
+        <!-- <module>spring-data-vector</module> --> <!-- preview feature -->
         <module>spring-hibernate-3</module>
         <module>spring-hibernate-5</module>
         <module>spring-hibernate-6</module>
