@@ -12,6 +12,10 @@
         <groupId>com.baeldung.core-java-modules</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+    
+    <properties>
+        <logback.configurationFileName>logback.xml</logback.configurationFileName>
+    </properties>
 
     <dependencies>
         <dependency>
