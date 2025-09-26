@@ -50,11 +50,6 @@
             <artifactId>swagger-parser</artifactId>
             <version>${swagger-parser.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>2.20.0</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -89,18 +84,22 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>generate-httpclients</id>
+                        <id>generate-weather-api</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/api/httpclient.yaml</inputSpec>
-                            <generatorName>java</generatorName>
+                            <inputSpec>${project.basedir}/src/main/resources/api/weatherapi.yaml</inputSpec>
+                            <generatorName>spring</generatorName>
                             <configOptions>
                                 <openApiNullable>false</openApiNullable>
-                                <dateLibrary>java8</dateLibrary>
-                                <library>resttemplate</library>
+                                <dateLibrary>java8-localdatetime</dateLibrary>
+<!--                                <library>resttemplate</library>-->
                                 <useJakartaEe>false</useJakartaEe>
+                                <generateClientAsBean>true</generateClientAsBean>
+                                <annotationLibrary>swagger2</annotationLibrary>
+                                <apiPackage>com.baeldung.tutorials.openapi.generatehttpclients.api</apiPackage>
+                                <modelPackage>com.baeldung.tutorials.openapi.generatehttpclients.api.model</modelPackage>
                             </configOptions>
                         </configuration>
                     </execution>

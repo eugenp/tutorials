@@ -10,5 +10,6 @@ public class GenerateHttpClientSpringApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(QuotesApplication.class, args);
+
     }
 }
