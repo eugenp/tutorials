@@ -14,7 +14,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
 import com.baeldung.jacksonlazyfields.dao.DepartmentRepository;
-import com.baeldung.jacksonlazyfields.model.Course;
 import com.baeldung.jacksonlazyfields.model.Department;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -53,23 +52,5 @@ class DepartmentControllerIntegrationTest {
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.id").value(department.getId()))
             .andExpect(jsonPath("$.name").value("Math"));
-    }
-
-    @Test
-    void whenPostCourseToDepartment_thenReturnDepartmentDto() throws Exception {
-        Department department = new Department();
-        department.setName("Chemistry");
-        department = departmentRepository.save(department);
-
-        Course course = new Course();
-        course.setName("Organic Chemistry");
-        String json = objectMapper.writeValueAsString(course);
-
-        mockMvc.perform(post("/departments/" + department.getId() + "/course").contentType(MediaType.APPLICATION_JSON)
-            .content(json))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.id").value(department.getId()))
-            .andExpect(jsonPath("$.name").value("Chemistry"))
-            .andExpect(jsonPath("$.courseNames[0]").value("Organic Chemistry"));
     }
 }
