@@ -107,7 +107,7 @@ public class AggregateExceptionHandlerUnitTest {
     }
 
     private static Object processReturnsExAndOutput(String input) {
-        logger.info("call a downstream method that returns an Integer");
+        logger.debug("call a downstream method that returns an Integer");
         try {
             return Integer.parseInt(input);
         } catch (Exception e) {
@@ -120,11 +120,11 @@ public class AggregateExceptionHandlerUnitTest {
     }
 
     private static void handleExceptionsAndOutputs(List<RuntimeException> exs, List<Integer> output) {
-        logger.info("number of exceptions " + exs.size() + " number of outputs " + output.size());
+        logger.debug("number of exceptions " + exs.size() + " number of outputs " + output.size());
     }
 
     private static String handleExAndResults(List<Throwable> ex, List<Integer> results ) {
-        logger.info("handle aggregated exceptions and results" + ex.size() + " " + results.size());
+        logger.debug("handle aggregated exceptions and results" + ex.size() + " " + results.size());
         return "Exceptions and Results Handled";
     }
 
