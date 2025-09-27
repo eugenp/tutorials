@@ -109,18 +109,17 @@ public class ParquetJavaUnitTest {
             Configuration conf = new Configuration();
 
             Schema writeSchema = new Schema.Parser().parse(PERSON_AVRO);
-            Path hPath = new Path(tmp.resolve("people-avro.parquet")
-                .toUri());
+            Path hPath = new Path(tmp.resolve("people-avro.parquet").toUri());
 
             try (ParquetWriter<GenericRecord> writer = AvroParquetWriter.<GenericRecord> builder(HadoopOutputFile.fromPath(hPath, conf))
                 .withSchema(writeSchema)
                 .withConf(conf)
                 .build()) {
-                GenericRecord r = new GenericData.Record(writeSchema);
-                r.put("name", "Alice");
-                r.put("age", 30);
-                r.put("city", null);
-                writer.write(r);
+                    GenericRecord r = new GenericData.Record(writeSchema);
+                    r.put("name", "Alice");
+                    r.put("age", 30);
+                    r.put("city", null);
+                    writer.write(r);
             }
 
             Schema projection = new Schema.Parser().parse(NAME_ONLY);
@@ -130,9 +129,9 @@ public class ParquetJavaUnitTest {
             try (ParquetReader<GenericRecord> reader = AvroParquetReader.<GenericRecord> builder(in)
                 .withConf(conf)
                 .build()) {
-                GenericRecord rec = reader.read();
-                assertNotNull(rec.get("name"));
-                assertNull(rec.get("age"));
+                    GenericRecord rec = reader.read();
+                    assertNotNull(rec.get("name"));
+                    assertNull(rec.get("age"));
             }
         }
     }
@@ -142,12 +141,17 @@ public class ParquetJavaUnitTest {
 
         @Test
         void givenSchema_whenWritingAndReadingWithExampleApi_thenRoundtripWorks(@TempDir java.nio.file.Path tmp) throws Exception {
-            String schemaString = "message person { " + "required binary name (UTF8); " + "required int32 age; " + "optional binary city (UTF8); " + "}";
+            String schemaString = """
+                message person {
+                  required binary name (UTF8);
+                  required int32 age;
+                  optional binary city (UTF8);
+                }
+                """;
             MessageType schema = MessageTypeParser.parseMessageType(schemaString);
             SimpleGroupFactory factory = new SimpleGroupFactory(schema);
             Configuration conf = new Configuration();
-            Path hPath = new Path(tmp.resolve("people-example.parquet")
-                .toUri());
+            Path hPath = new Path(tmp.resolve("people-example.parquet").toUri());
 
             try (ParquetWriter<Group> writer = ExampleParquetWriter.builder(HadoopOutputFile.fromPath(hPath, conf))
                 .withConf(conf)
@@ -166,11 +170,11 @@ public class ParquetJavaUnitTest {
             try (ParquetReader<Group> reader = ParquetReader.builder(new GroupReadSupport(), hPath)
                 .withConf(conf)
                 .build()) {
-                Group g;
-                while ((g = reader.read()) != null) {
-                    names.add(g.getBinary("name", 0)
-                        .toStringUsingUTF8());
-                }
+                    Group g;
+                    while ((g = reader.read()) != null) {
+                        names.add(g.getBinary("name", 0)
+                            .toStringUsingUTF8());
+                    }
             }
             assertEquals(List.of("Alice", "Bob"), names);
         }
@@ -188,8 +192,7 @@ public class ParquetJavaUnitTest {
                 .named("Person");
 
             GroupWriteSupport.setSchema(schema, conf);
-            Path hPath = new Path(tmp.resolve("people-example.parquet")
-                .toUri());
+            Path hPath = new Path(tmp.resolve("people-example.parquet").toUri());
 
             try (ParquetWriter<Group> writer = ExampleParquetWriter.builder(HadoopOutputFile.fromPath(hPath, conf))
                 .withConf(conf)
@@ -226,8 +229,7 @@ public class ParquetJavaUnitTest {
 
         @Test
         void givenWriterOptions_whenBuildingWriter_thenItUsesZstdAndDictionary(@TempDir java.nio.file.Path tmp) throws Exception {
-            Path hPath = new Path(tmp.resolve("opts.parquet")
-                .toUri());
+            Path hPath = new Path(tmp.resolve("opts.parquet").toUri());
             MessageType schema = MessageTypeParser.parseMessageType("message m { required binary name (UTF8); required int32 age; }");
             Configuration conf = new Configuration();
             OutputFile out = HadoopOutputFile.fromPath(hPath, conf);
@@ -241,14 +243,14 @@ public class ParquetJavaUnitTest {
                 .withDictionaryEncoding(true)
                 .withPageSize(ParquetProperties.DEFAULT_PAGE_SIZE)
                 .build()) {
-                String[] names = { "alice", "bob", "carol", "dave", "erin" };
-                int[] ages = { 30, 31, 32, 33, 34 };
-                for (int i = 0; i < 5000; i++) {
-                    String n = names[i % names.length];
-                    int a = ages[i % ages.length];
-                    writer.write(factory.newGroup()
-                        .append("name", n)
-                        .append("age", a));
+                    String[] names = { "alice", "bob", "carol", "dave", "erin" };
+                    int[] ages = { 30, 31, 32, 33, 34 };
+                    for (int i = 0; i < 5000; i++) {
+                        String n = names[i % names.length];
+                        int a = ages[i % ages.length];
+                        writer.write(factory.newGroup()
+                            .append("name", n)
+                            .append("age", a));
                 }
             }
 
@@ -257,18 +259,15 @@ public class ParquetJavaUnitTest {
                 meta = reader.getFooter();
             }
 
-            assertFalse(meta.getBlocks()
-                .isEmpty());
+            assertFalse(meta.getBlocks().isEmpty());
 
             boolean nameColumnUsedDictionary = false;
 
             for (BlockMetaData block : meta.getBlocks()) {
-                assertFalse(block.getColumns()
-                    .isEmpty());
+                assertFalse(block.getColumns().isEmpty());
                 for (ColumnChunkMetaData col : block.getColumns()) {
                     assertEquals(CompressionCodecName.ZSTD, col.getCodec());
-                    if ("name".equals(col.getPath()
-                        .toDotString())) {
+                    if ("name".equals(col.getPath().toDotString())) {
                         EncodingStats stats = col.getEncodingStats();
                         boolean dictByStats = stats != null && stats.hasDictionaryEncodedPages();
                         Set<Encoding> enc = col.getEncodings();
