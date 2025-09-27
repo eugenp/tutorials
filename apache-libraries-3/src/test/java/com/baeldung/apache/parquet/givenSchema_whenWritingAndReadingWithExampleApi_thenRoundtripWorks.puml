@@ -1,0 +1,131 @@
+@startuml
+title Parquet Example API Round-trip
+
+skinparam monochrome true
+skinparam activity {
+  BackgroundColor White
+  BorderColor Black
+}
+skinparam note {
+  BorderColor Black
+  BackgroundColor #F8F8F8
+}
+
+start
+
+partition "Setup" {
+  :Parse schema string -> MessageType
+    (MessageTypeParser.parseMessageType);
+  note right
+    Parquet schema in its own IDL:
+    - "message person" is the root record.
+    - required vs optional = nullability.
+    - binary (UTF8) = physical binary with
+      a logical 'string' annotation.
+    - int32 = 32-bit integer.
+    The schema governs both writer and reader.
+  end note
+
+  :Create SimpleGroupFactory(schema);
+  note right
+    Group = generic, untyped row container.
+    SimpleGroupFactory enforces the MessageType
+    when appending values. Repeated fields would
+    use positional indexes; here all fields are
+    non-repeated (index 0).
+  end note
+
+  :Create Hadoop Configuration;
+  :Resolve temp file Path (Hadoop Path);
+  note right
+    Hadoop Path + Configuration work on the local
+    filesystem in tests, but also abstract HDFS/S3/etc.
+  end note
+}
+
+partition "Write path" {
+  :Build ExampleParquetWriter
+    - HadoopOutputFile.fromPath(path, conf)
+    - withType(schema)
+    - withConf(conf);
+  note right
+    The writer binds to the schema and target file.
+    Options like compression (e.g., ZSTD/Snappy),
+    dictionary encoding, page/row-group sizes can be
+    set here in real projects.
+    try-with-resources guarantees the footer and
+    metadata are flushed.
+  end note
+
+  :Create Group #1
+    (name="Alice", age=34, city="Rome");
+  note right
+    Values must match the schema types and logical
+    annotations (UTF-8 for strings). Nullability: 'city'
+    is optional, so it may be present or absent.
+  end note
+
+  :Create Group #2
+    (name="Bob", age=29);
+  note right
+    Omitting 'city' is legal because it's optional.
+    If a field were required and missing, the writer
+    would fail validation.
+  end note
+
+  :writer.write(group1);
+  :writer.write(group2);
+
+  :Close writer (try-with-resources);
+}
+
+partition "Read path" {
+  :Build ParquetReader<Group>
+    - GroupReadSupport
+    - path + conf;
+  note right
+    GroupReadSupport reconstructs Group records.
+    We can configure projection (read subset of
+    columns) and filters to reduce I/O. Here we
+    read all columns for simplicity.
+  end note
+
+  :Initialize empty List<String> names;
+  :Declare Group g;
+  :g = reader.read();
+
+  while (g != null?)
+    :Extract name =
+      g.getBinary("name", 0)
+       .toStringUsingUTF8();
+    note right
+      Access by field name and index (0 for
+      non-repeated fields). 'getBinary' returns
+      the physical type; 'toStringUsingUTF8'
+      respects the logical string annotation.
+    end note
+    :names.add(name);
+    :g = reader.read();
+  endwhile
+  note right
+    reader.read() returns null at EOF (no exception).
+    The loop materializes rows one by one; with
+    projection enabled, non-requested columns
+    are never decoded.
+  end note
+
+  :Close reader;
+}
+
+partition "Assertion" {
+  :Assert names == ["Alice","Bob"];
+  note right
+    Simple round-trip check: what we wrote is exactly
+    what we read. Sequential readers return rows in the
+    original write order.
+  end note
+}
+
+stop
+@enduml
+
