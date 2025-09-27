@@ -64,7 +64,16 @@ public class ParquetJavaUnitTest {
             """;
 
         private static final String NAME_ONLY = """
-            {"type":"record","name":"OnlyName","fields":[{"name":"name","type":"string"}]}
+            {
+                "type":"record",
+                "name":"OnlyName",
+                "fields":[
+                    {
+                        "name":"name",
+                        "type":"string"
+                    }
+                ]
+            }
             """;
 
         @Test
@@ -78,18 +87,18 @@ public class ParquetJavaUnitTest {
                 .withSchema(schema)
                 .withConf(conf)
                 .build()) {
-                GenericRecord r1 = new GenericData.Record(schema);
-                r1.put("name", "Carla");
-                r1.put("age", 41);
-                r1.put("city", "Milan");
-
-                GenericRecord r2 = new GenericData.Record(schema);
-                r2.put("name", "Diego");
-                r2.put("age", 23);
-                r2.put("city", null);
-
-                writer.write(r1);
-                writer.write(r2);
+                    GenericRecord r1 = new GenericData.Record(schema);
+                    r1.put("name", "Carla");
+                    r1.put("age", 41);
+                    r1.put("city", "Milan");
+    
+                    GenericRecord r2 = new GenericData.Record(schema);
+                    r2.put("name", "Diego");
+                    r2.put("age", 23);
+                    r2.put("city", null);
+    
+                    writer.write(r1);
+                    writer.write(r2);
             }
 
             InputFile in = HadoopInputFile.fromPath(hPath, conf);
@@ -97,10 +106,9 @@ public class ParquetJavaUnitTest {
             try (ParquetReader<GenericRecord> reader = AvroParquetReader.<GenericRecord> builder(in)
                 .withConf(conf)
                 .build()) {
-                GenericRecord first = reader.read();
-                assertEquals("Carla", first.get("name")
-                    .toString());
-                assertEquals(41, first.get("age"));
+                    GenericRecord first = reader.read();
+                    assertEquals("Carla", first.get("name").toString());
+                    assertEquals(41, first.get("age"));
             }
         }
 
@@ -172,8 +180,7 @@ public class ParquetJavaUnitTest {
                 .build()) {
                     Group g;
                     while ((g = reader.read()) != null) {
-                        names.add(g.getBinary("name", 0)
-                            .toStringUsingUTF8());
+                        names.add(g.getBinary("name", 0).toStringUsingUTF8());
                     }
             }
             assertEquals(List.of("Alice", "Bob"), names);
@@ -197,13 +204,13 @@ public class ParquetJavaUnitTest {
             try (ParquetWriter<Group> writer = ExampleParquetWriter.builder(HadoopOutputFile.fromPath(hPath, conf))
                 .withConf(conf)
                 .build()) {
-                SimpleGroupFactory f = new SimpleGroupFactory(schema);
-                writer.write(f.newGroup()
-                    .append("name", "Alice")
-                    .append("age", 31));
-                writer.write(f.newGroup()
-                    .append("name", "Bob")
-                    .append("age", 25));
+                    SimpleGroupFactory f = new SimpleGroupFactory(schema);
+                    writer.write(f.newGroup()
+                        .append("name", "Alice")
+                        .append("age", 31));
+                    writer.write(f.newGroup()
+                        .append("name", "Bob")
+                        .append("age", 25));
             }
 
             FilterPredicate pred = FilterApi.gt(FilterApi.intColumn("age"), 30);
@@ -213,11 +220,11 @@ public class ParquetJavaUnitTest {
                 .withConf(conf)
                 .withFilter(FilterCompat.get(pred))
                 .build()) {
-                Group g;
-                while ((g = reader.read()) != null) {
-                    selected.add(g.getBinary("name", 0)
-                        .toStringUsingUTF8());
-                }
+                    Group g;
+                    while ((g = reader.read()) != null) {
+                        selected.add(g.getBinary("name", 0)
+                            .toStringUsingUTF8());
+                    }
             }
 
             assertEquals(List.of("Alice"), selected);
