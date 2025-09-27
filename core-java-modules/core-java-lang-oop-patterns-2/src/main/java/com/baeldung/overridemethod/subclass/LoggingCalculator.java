@@ -14,4 +14,12 @@ public class LoggingCalculator extends SimpleCalculator {
         log.debug("LOG: After addition. Result: {}", result);
         return result;
     }
+
+    @Override
+    public int subtract(int a, int b) {
+        log.debug("LOG: Before subtraction.");
+        int result = super.subtract(a, b);
+        log.debug("LOG: After subtraction. Result: {}", result);
+        return result;
+    }
 }
