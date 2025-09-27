@@ -39,9 +39,11 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -288,6 +290,69 @@ public class ParquetJavaUnitTest {
             }
 
             assertTrue(nameColumnUsedDictionary);
+        }
+        
+        @Test
+        void givenCompressionAndDictionary_whenComparingSizes_thenOptimizedIsSmaller(@TempDir java.nio.file.Path tmp) throws Exception {
+            MessageType schema = MessageTypeParser.parseMessageType("""
+                message m {
+                    required binary name (UTF8);
+                    required int32 age;
+                }
+            """);
+
+            Configuration conf = new Configuration();
+            SimpleGroupFactory factory = new SimpleGroupFactory(schema);
+
+            java.nio.file.Path baselineNio = tmp.resolve("people-baseline.parquet");
+            java.nio.file.Path optimizedNio = tmp.resolve("people-optimized.parquet");
+
+            Path baseline = new Path(baselineNio.toUri());
+            Path optimized = new Path(optimizedNio.toUri());
+
+            String[] names = { "alice", "bob", "carol", "dave", "erin" };
+            int[] ages = { 30, 31, 32, 33, 34 };
+            int rows = 5000;
+
+            try (ParquetWriter<Group> w = ExampleParquetWriter
+                .builder(HadoopOutputFile.fromPath(baseline, conf))
+                .withType(schema)
+                .withConf(conf)
+                .withCompressionCodec(CompressionCodecName.UNCOMPRESSED)
+                .withDictionaryEncoding(false)
+                .build()) {
+                    for (int i = 0; i < rows; i++) {
+                        w.write(factory.newGroup()
+                            .append("name", names[i % names.length])
+                            .append("age", ages[i % ages.length]));
+                    }
+                }
+
+            try (ParquetWriter<Group> w = ExampleParquetWriter
+                .builder(HadoopOutputFile.fromPath(optimized, conf))
+                .withType(schema)
+                .withConf(conf)
+                .withCompressionCodec(CompressionCodecName.ZSTD)
+                .withDictionaryEncoding(true)
+                .build()) {
+                    for (int i = 0; i < rows; i++) {
+                        w.write(factory.newGroup()
+                            .append("name", names[i % names.length])
+                            .append("age", ages[i % ages.length]));
+                    }
+                }
+
+            long baselineBytes = Files.size(baselineNio);
+            long optimizedBytes = Files.size(optimizedNio);
+
+            long saved = baselineBytes - optimizedBytes;
+            double pct = (baselineBytes == 0) ? 0.0 : (saved * 100.0) / baselineBytes;
+
+            Logger log = Logger.getLogger("parquet.tutorial");
+            log.info(String.format("Baseline: %,d bytes; Optimized: %,d bytes; Saved: %,d bytes (%.1f%%)",
+                baselineBytes, optimizedBytes, saved, pct));
+
+            assertTrue(optimizedBytes < baselineBytes, "Optimized file should be smaller than baseline");
         }
     }
 }
