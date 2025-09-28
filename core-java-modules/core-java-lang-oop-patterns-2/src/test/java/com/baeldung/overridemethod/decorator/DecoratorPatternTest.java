@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DecoratorPatternTest {
 
     @Test
-    void testDecoratorWrapping() {
+    void givenACalculator_whenUsingDecoratorWrappingToAddLogging_thenDecoratorWrappingCanBeUsed() {
         Calculator simpleCalc = new SimpleCalculator();
         Calculator decoratedCalc = new LoggingCalculatorDecorator(simpleCalc);
         assertEquals(15, decoratedCalc.add(10, 5));
