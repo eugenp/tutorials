@@ -10,6 +10,6 @@ public class SubclassingTest {
     void givenACalculatorClass_whenSubclassingToAddLogging_thenLoggingCalculatorCanBeUsed() {
         Calculator calculator = new LoggingCalculator();
         assertEquals(8, calculator.add(5, 3));
-        assertEquals(2, calculator.add(5, 3));
+        assertEquals(2, calculator.subtract(5, 3));
     }
 }
