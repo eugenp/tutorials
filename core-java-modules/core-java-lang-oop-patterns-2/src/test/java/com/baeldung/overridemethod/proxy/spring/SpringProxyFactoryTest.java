@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class SpringProxyFactoryTest {
 
     @Test
-    void testSpringProxyFactory() {
+    void givenACalculator_whenUsingSpringProxyFactory_thenSpringProxyFactoryCanBeUsed() {
         SimpleCalculator simpleCalc = new SimpleCalculator();
         ProxyFactory factory = new ProxyFactory();
         
@@ -18,6 +18,7 @@ public class SpringProxyFactoryTest {
 
         Calculator proxyCalc = (Calculator) factory.getProxy();
 
+        assertEquals(60, proxyCalc.add(50, 10));
         assertEquals(40, proxyCalc.subtract(50, 10));
     }
 }
