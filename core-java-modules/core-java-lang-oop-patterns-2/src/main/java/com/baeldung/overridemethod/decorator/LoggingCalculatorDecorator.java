@@ -22,7 +22,9 @@ public class LoggingCalculatorDecorator implements Calculator {
 
     @Override
     public int subtract(int a, int b) {
-        // Just delegate
-        return wrappedCalculator.subtract(a, b); 
+        log.debug("DECORATOR LOG: Entering subtract({}, {})", a, b);
+        int result = wrappedCalculator.subtract(a, b); // Delegation
+        log.debug("DECORATOR LOG: Exiting subtract. Result: {}", result);
+        return result; 
     }
 }
