@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DynamicProxyTest {
 
     @Test
-    void testJdkDynamicProxy() {
+    void givenACalculator_whenUsingJdkDynamicProxy_thenJdkDynamicProxyCanBeUsed() {
         Calculator simpleCalc = new SimpleCalculator();
         LoggingInvocationHandler handler = new LoggingInvocationHandler(simpleCalc);
 
@@ -20,6 +20,7 @@ public class DynamicProxyTest {
         );
 
         assertEquals(30, proxyCalc.add(20, 10));
+        assertEquals(10, proxyCalc.subtract(20, 10));
     }
 }
 
