@@ -7,8 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class SubclassingTest {
 
     @Test
-    void testLoggingSubclass() {
+    void givenACalculatorClass_whenSubclassingToAddLogging_thenLoggingCalculatorCanBeUsed() {
         Calculator calculator = new LoggingCalculator();
         assertEquals(8, calculator.add(5, 3));
+        assertEquals(2, calculator.add(5, 3));
     }
 }
