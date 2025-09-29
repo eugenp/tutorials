@@ -19,7 +19,7 @@ class ChatbotService {
     private final ChatClient tertiaryChatClient;
 
     ChatbotService(
-        @Qualifier("primaryChatClient") ChatClient primaryChatClient,
+        ChatClient primaryChatClient,
         @Qualifier("secondaryChatClient") ChatClient secondaryChatClient,
         @Qualifier("tertiaryChatClient") ChatClient tertiaryChatClient
     ) {
