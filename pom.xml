@@ -553,6 +553,7 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
+                <module>parent-boot-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>apache-kafka</module>
@@ -613,6 +614,7 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
+                <module>parent-boot-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>akka-modules</module>
@@ -1002,6 +1004,7 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
+                <module>parent-boot-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>apache-kafka</module>
@@ -1056,6 +1059,7 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
+                <module>parent-boot-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>akka-modules</module>
@@ -1466,6 +1470,7 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
+                <module>parent-boot-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
             </modules>
