@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
-
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
@@ -43,7 +41,7 @@ public class JsonDeserializerServiceUnitTest {
         assertEquals("John", result.get("name"));
         assertEquals(30, result.get("age"));
         assertEquals(true, result.get("isActive"));
-        assertEquals(50000.75, (Double) result.get("salary"), 0.0001);
+        assertEquals(50000.75, result.get("salary"));
         assertTrue(result.get("hobbies") instanceof ArrayList);
         assertTrue(result.get("address") instanceof Map);
 
@@ -83,7 +81,7 @@ public class JsonDeserializerServiceUnitTest {
         assertEquals("John", result.get("name"));
         assertEquals(30, result.get("age"));
         assertEquals(true, result.get("isActive"));
-        assertEquals(50000.75, ((Number) result.get("salary")).doubleValue());
+        assertEquals(BigDecimal.valueOf(50000.75), result.get("salary"));
         assertTrue(result.get("hobbies") instanceof List);
         assertTrue(result.get("address") instanceof Map);
 
