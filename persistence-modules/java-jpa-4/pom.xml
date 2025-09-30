@@ -23,7 +23,6 @@
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
         </dependency>
-
         <!--Compile time JPA API -->
         <dependency>
             <groupId>jakarta.persistence</groupId>

@@ -12,9 +12,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <dependencies>
-    </dependencies>
-
     <build>
         <finalName>core-java-numbers-10</finalName>
         <resources>
@@ -24,8 +21,5 @@
             </resource>
         </resources>
     </build>
-
-    <properties>
-    </properties>
 
 </project>

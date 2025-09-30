@@ -16,7 +16,11 @@
     </parent>
 
     <modules>
+        <module>spring-ai-chat-stream</module>
+        <module>spring-ai-introduction</module>
+        <module>spring-ai-mcp</module>
         <module>spring-ai-text-to-sql</module>
+        <module>spring-ai-vector-stores</module>
     </modules>
 
 </project>

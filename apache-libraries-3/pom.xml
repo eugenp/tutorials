@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>apache-libraries-3</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -19,13 +19,11 @@
             <artifactId>accumulo-core</artifactId>
             <version>${accumulo.core}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.avro</groupId>
             <artifactId>avro</artifactId>
             <version>${avro.version}</version>
         </dependency>
-
         <dependency>
             <groupId>net.javacrumbs.json-unit</groupId>
             <artifactId>json-unit-assertj</artifactId>
@@ -72,17 +70,40 @@
             <artifactId>camel-graphql</artifactId>
             <version>${camel.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.parquet</groupId>
+            <artifactId>parquet-avro</artifactId>
+            <version>${parquet.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.parquet</groupId>
+            <artifactId>parquet-hadoop</artifactId>
+            <version>${parquet.version}</version>
+        </dependency>
     </dependencies>
+
+    <build>
+      <plugins>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${maven.compiler.plugin}</version>
+          <configuration>
+            <release>${maven.compiler.source}</release>
+          </configuration>
+        </plugin>
+      </plugins>
+    </build>
 
     <properties>
         <accumulo.core>2.1.3</accumulo.core>
+        <maven.compiler.plugin>3.14.0</maven.compiler.plugin>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <avro.version>1.11.3</avro.version>
         <json-unit-assertj.version>3.5.0</json-unit-assertj.version>
         <graphql.version>23.1</graphql.version>
         <camel.version>4.11.0</camel.version>
+        <parquet.version>1.16.0</parquet.version>
     </properties>
 
 </project>

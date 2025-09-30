@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>vertical-slice-architecture</artifactId>
     <name>vertical-slice-architecture</name>
-
-    <properties>
-        <spring-boot.version>3.2.4</spring-boot.version> <!-- Requires at least spring framework version 6.1.X to work -->
-    </properties>
-
     <packaging>jar</packaging>
     <description>Vertical Slice Architecture Examples</description>
 
@@ -46,13 +40,11 @@
             <artifactId>spring-boot-starter-jdbc</artifactId>
             <version>${spring-boot.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -75,5 +67,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <spring-boot.version>3.2.4</spring-boot.version> <!-- Requires at least spring framework version 6.1.X to work -->
+    </properties>
 
 </project>

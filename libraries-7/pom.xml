@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-7</artifactId>
 
@@ -42,6 +42,17 @@
             <artifactId>manifold-yaml-rt</artifactId>
             <version>${manifold.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.soabase.record-builder</groupId>
+            <artifactId>record-builder-core</artifactId>
+            <version>${record-builder.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.jena</groupId>
+            <artifactId>apache-jena-libs</artifactId>
+            <type>pom</type>
+            <version>${jena.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -66,6 +77,11 @@
                             <artifactId>yavi</artifactId>
                             <version>${yavi.version}</version>
                         </path>
+                        <path>
+                            <groupId>io.soabase.record-builder</groupId>
+                            <artifactId>record-builder-processor</artifactId>
+                            <version>${record-builder.version}</version>
+                        </path>
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
@@ -76,6 +92,8 @@
         <java-diff-utils.version>4.12</java-diff-utils.version>
         <yavi.version>0.14.1</yavi.version>
         <manifold.version>2024.1.20</manifold.version>
+        <record-builder.version>47</record-builder.version>
+        <jena.version>5.5.0</jena.version>
     </properties>
 
 </project>
