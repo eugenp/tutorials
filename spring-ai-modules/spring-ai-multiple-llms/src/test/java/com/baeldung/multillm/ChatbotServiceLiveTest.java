@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.system.CapturedOutput;
 import org.springframework.boot.test.system.OutputCaptureExtension;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.TestPropertySource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -18,6 +19,9 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @EnabledIfEnvironmentVariables({
     @EnabledIfEnvironmentVariable(named = "OPENAI_API_KEY", matches = ".*"),
     @EnabledIfEnvironmentVariable(named = "ANTHROPIC_API_KEY", matches = ".*")
+})
+@TestPropertySource(properties = {
+    "logging.level.com.baeldung.multillm=DEBUG"
 })
 @ExtendWith(OutputCaptureExtension.class)
 class ChatbotServiceLiveTest {

@@ -12,7 +12,3 @@ spring:
         options:
           model: ${PRIMARY_LLM}
           temperature: 1
-
-logging:
-  level:
-    com.baeldung.multillm: DEBUG
