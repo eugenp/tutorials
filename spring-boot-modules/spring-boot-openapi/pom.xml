@@ -81,6 +81,9 @@
                                 <modelPackage>com.baeldung.tutorials.openapi.quotes.api.model</modelPackage>
                                 <documentationProvider>source</documentationProvider>
                             </configOptions>
+                            <generateApiTests>false</generateApiTests>
+                            <generateModelTests>false</generateModelTests>
+                            <supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
                         </configuration>
                     </execution>
                     <execution>
@@ -93,14 +96,15 @@
                             <generatorName>spring</generatorName>
                             <configOptions>
                                 <openApiNullable>false</openApiNullable>
-                                <dateLibrary>java8-localdatetime</dateLibrary>
-<!--                                <library>resttemplate</library>-->
                                 <useJakartaEe>false</useJakartaEe>
-                                <generateClientAsBean>true</generateClientAsBean>
-                                <annotationLibrary>swagger2</annotationLibrary>
+                                <annotationLibrary>none</annotationLibrary>
+                                <documentationProvider>none</documentationProvider>
                                 <apiPackage>com.baeldung.tutorials.openapi.generatehttpclients.api</apiPackage>
                                 <modelPackage>com.baeldung.tutorials.openapi.generatehttpclients.api.model</modelPackage>
                             </configOptions>
+                            <generateApiTests>false</generateApiTests>
+                            <generateModelTests>false</generateModelTests>
+                            <supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
                         </configuration>
                     </execution>
                 </executions>
@@ -115,7 +119,7 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <openapi-generator.version>7.15.0</openapi-generator.version>
+        <openapi-generator.version>7.7.0</openapi-generator.version>
         <swagger-annotations.version>2.2.20</swagger-annotations.version>
         <swagger-parser.version>2.1.22</swagger-parser.version>
     </properties>

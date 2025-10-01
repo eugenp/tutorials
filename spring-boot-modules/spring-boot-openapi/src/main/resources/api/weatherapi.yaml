@@ -2,12 +2,11 @@ openapi: 3.0.3
 info:
   title: Current Weather API
   description: |
-    Get real-time weather information for any city worldwide.
-    This API provides current temperature, humidity, wind speed, and weather conditions.
+    Get real-time weather information for cities worldwide.
   version: 1.0.0
 
 paths:
-  /weather/current:
+  /weather:
     get:
       summary: Get current weather data
       description: Retrieve current weather information for a specified city
