@@ -112,6 +112,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.baeldung.tutorials.openapi.generatehttpclients.GenerateHttpClientSpringApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>
