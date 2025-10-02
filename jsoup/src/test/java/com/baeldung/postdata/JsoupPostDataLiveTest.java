@@ -9,7 +9,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class JsoupPostDataUnitTest {
+public class JsoupPostDataLiveTest {
     private final JsoupPostData client = new JsoupPostData();
     @Test
     public void givenJSONData_whenUsingHttpBin_thenPostContent() throws Exception {
