@@ -36,7 +36,6 @@ class ChatbotServiceLiveTest {
     private static final String INCORRECT_PRIMARY_LLM = "gpt-100";
     private static final String INCORRECT_SECONDARY_LLM = "claude-opus-200";
 
-
     @Autowired
     private ChatbotService chatbotService;
 
