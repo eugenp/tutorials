@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class JsonKeyExtractorUnitTest {
 
     @Test
-    void testTopLevelKeys() {
+    void givenJson_whenTopLevelKeys_thenGetAllKeys() {
         String json = "{ \"name\":\"Henry\", \"email\":\"henry@example.com\", \"age\":25 }";
         JsonObject jsonObject = JsonParser.parseString(json).getAsJsonObject();
         List<String> keys = JsonKeyExtractor.getAllKeys(jsonObject);
@@ -23,7 +23,7 @@ public class JsonKeyExtractorUnitTest {
     }
 
     @Test
-    void testNestedKeys() {
+    void givenJson_whenNestedKeys_thenGetAllKeys() {
         String json = "{ \"address\": { \"city\":\"New York\", \"zip\":\"10001\" } }";
         JsonObject jsonObject = JsonParser.parseString(json).getAsJsonObject();
         List<String> keys = JsonKeyExtractor.getAllKeys(jsonObject);
@@ -35,7 +35,7 @@ public class JsonKeyExtractorUnitTest {
     }
 
     @Test
-    void testEmptyJson() {
+    void givenJson_whenEmpty_thenGetNoKeys() {
         String json = "{}";
         JsonObject jsonObject = JsonParser.parseString(json).getAsJsonObject();
         List<String> keys = JsonKeyExtractor.getAllKeys(jsonObject);
@@ -44,7 +44,7 @@ public class JsonKeyExtractorUnitTest {
     }
 
     @Test
-    void testDeeplyNestedJson() {
+    void givenJson_whenDeeplyNestedKeys_thenGetAllKeys() {
         String json = "{ \"user\": { \"profile\": { \"contacts\": { \"email\": \"test@test.com\" } } } }";
         JsonObject jsonObject = JsonParser.parseString(json).getAsJsonObject();
         List<String> keys = JsonKeyExtractor.getAllKeys(jsonObject);
