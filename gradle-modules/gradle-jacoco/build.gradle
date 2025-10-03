@@ -1,4 +1,3 @@
-
 plugins {
     id 'java'
     id 'jacoco'
@@ -6,7 +5,7 @@ plugins {
 
 ext {
     junitVersion = '5.7.2'
-    lombokVersion = '1.18.20'
+    lombokVersion = '1.18.32'
 }
 
 group 'com.com.baeldung'
@@ -17,8 +16,8 @@ repositories {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 dependencies {
@@ -50,5 +49,5 @@ jacocoTestReport {
 }
 
 jacoco {
-    toolVersion = "0.8.6"
+    toolVersion = "0.8.11"
 }
