@@ -4,11 +4,11 @@ import com.baeldung.overridemethod.Calculator;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MeteredCalculator implements Calculator {
+public class MeteredCalculatorDecorator implements Calculator {
     private final Calculator wrappedCalculator;
     private final Map<String, Integer> methodCalls;
 
-    public MeteredCalculator(Calculator calculator) {
+    public MeteredCalculatorDecorator(Calculator calculator) {
         this.wrappedCalculator = calculator;
         this.methodCalls = new HashMap<>();
         // Initialize counts for clarity
