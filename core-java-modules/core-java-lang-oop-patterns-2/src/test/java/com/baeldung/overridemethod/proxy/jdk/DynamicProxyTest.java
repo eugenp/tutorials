@@ -15,7 +15,7 @@ public class DynamicProxyTest {
 
         Calculator proxyCalc = (Calculator) Proxy.newProxyInstance(
             Calculator.class.getClassLoader(),
-            new Class<?>[]{Calculator.class},
+            new Class<?>[] { Calculator.class },
             handler
         );
 
