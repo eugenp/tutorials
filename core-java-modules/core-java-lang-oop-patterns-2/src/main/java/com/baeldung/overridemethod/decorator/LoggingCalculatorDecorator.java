@@ -1,30 +1,37 @@
 package com.baeldung.overridemethod.decorator;
 
 import com.baeldung.overridemethod.Calculator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.HashMap;
+import java.util.Map;
 
-public class LoggingCalculatorDecorator implements Calculator {
-    private static final Logger log = LoggerFactory.getLogger(LoggingCalculatorDecorator.class);
+public class MeteredCalculator implements Calculator {
     private final Calculator wrappedCalculator;
+    private final Map<String, Integer> methodCalls;
 
-    public LoggingCalculatorDecorator(Calculator calculator) {
+    public MeteredCalculator(Calculator calculator) {
         this.wrappedCalculator = calculator;
+        this.methodCalls = new HashMap<>();
+        // Initialize counts for clarity
+        methodCalls.put("add", 0);
+        methodCalls.put("subtract", 0);
     }
 
     @Override
     public int add(int a, int b) {
-        log.debug("DECORATOR LOG: Entering add({}, {})", a, b);
-        int result = wrappedCalculator.add(a, b); // Delegation
-        log.debug("DECORATOR LOG: Exiting add. Result: {}", result);
-        return result;
+        // Track the call count
+        methodCalls.merge("add", 1, Integer::sum);
+        return wrappedCalculator.add(a, b); // Delegation
     }
 
     @Override
     public int subtract(int a, int b) {
-        log.debug("DECORATOR LOG: Entering subtract({}, {})", a, b);
-        int result = wrappedCalculator.subtract(a, b); // Delegation
-        log.debug("DECORATOR LOG: Exiting subtract. Result: {}", result);
-        return result; 
+        // Track the call count
+        methodCalls.merge("subtract", 1, Integer::sum);
+        return wrappedCalculator.subtract(a, b); // Delegation
+    }
+
+    // Public method to expose the call counts for testing
+    public int getCallCount(String methodName) {
+        return methodCalls.getOrDefault(methodName, 0);
     }
 }
