@@ -12,8 +12,8 @@ public class DecoratorPatternTest {
         // ARRANGE
         Calculator simpleCalc = new SimpleCalculator();
         
-        // Use the MeteredCalculator decorator
-        MeteredCalculator decoratedCalc = new MeteredCalculator(simpleCalc);
+        // Use the MeteredCalculatorDecorator decorator
+        MeteredCalculatorDecorator decoratedCalc = new MeteredCalculatorDecorator(simpleCalc);
 
         // ACT
         // Call add twice
