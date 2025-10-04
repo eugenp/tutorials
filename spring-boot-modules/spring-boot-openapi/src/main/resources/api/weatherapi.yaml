@@ -1,0 +1,73 @@
+openapi: 3.0.3
+info:
+  title: Current Weather API
+  description: |
+    Get real-time weather information for cities worldwide.
+  version: 1.0.0
+
+paths:
+  /weather:
+    get:
+      summary: Get current weather data
+      description: Retrieve current weather information for a specified city
+      operationId: getCurrentWeather
+      parameters:
+        - name: city
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: units
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [ celsius, fahrenheit ]
+            default: celsius
+      responses:
+        '200':
+          description: Successful weather data retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeatherResponse'
+        '404':
+          description: City not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    WeatherResponse:
+      type: object
+      required:
+        - location
+      properties:
+        current:
+          type: object
+          required:
+            - temperature
+            - units
+          properties:
+            temperature:
+              type: number
+              format: double
+            units:
+              type: string
+              enum: [ celsius, fahrenheit ]
+            timestamp:
+              type: string
+              format: date-time
+
+    ErrorResponse:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+        message:
+          type: string
