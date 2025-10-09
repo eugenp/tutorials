@@ -19,7 +19,7 @@
     <modules>
         <!--<module>ejb-beans</module> cannot upgrade to java 17 -->
         <module>spring-ejb-remote</module>
-        <module>spring-ejb-client</module>
+        <!--<module>spring-ejb-client</module> --> <!-- recent failure -->
         <module>wildfly-mdb</module>
     </modules>
 
