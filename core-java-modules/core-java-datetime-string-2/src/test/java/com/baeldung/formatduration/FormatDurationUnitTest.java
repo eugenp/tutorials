@@ -24,19 +24,11 @@ public class FormatDurationUnitTest {
 
     @Test
     public void givenIntMinutes_WhenConvertUsingTimeUnit_formatHHMM() {
-        int totalMinutes = 155; // Example: 2 hours and 35 minutes
-
-        // 1. Calculate the total hours component
+        int totalMinutes = 155;  
         long hours = TimeUnit.MINUTES.toHours(totalMinutes); 
-
-        // 2. Calculate the remaining minutes (total minutes minus the minutes consumed by the hours)
         long remainingMinutes = totalMinutes - TimeUnit.HOURS.toMinutes(hours);
-
-        // 3. Format the result to "hh:mm", ensuring two-digit zero padding (%02d)
         String timeInHHMM = String.format("%02d:%02d", hours, remainingMinutes);
-
-        // Assertions for different scenarios
-        assertThat(timeInHHMM).isEqualTo("02:35"); // 155 minutes
+        assertThat(timeInHHMM).isEqualTo("02:35");  
     }
 
     @Test
