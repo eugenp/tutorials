@@ -18,10 +18,8 @@ public class SlidingWindowGatherer implements Gatherer<Integer, Deque<Integer>, 
             @Override
             public boolean integrate(Deque<Integer> state, Integer element, Downstream<? super List<Integer>> downstream) {
                 state.addLast(element);
-                if (state.size() == 3) {
-                    downstream.push(new ArrayList<>(state));
-                    state.removeFirst();
-                }
+                downstream.push(new ArrayList<>(state));
+                state.removeFirst();
                 return true;
             }
         };
