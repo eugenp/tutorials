@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
 class SimpleSerializationUnitTest {
     @Test
     void whenSerializingASerializableClass_thenItCanDeserializeCorrectly() throws Exception {
-        User user = new User("Graham", "/graham.png");
+        SerializableUser user = new SerializableUser("Graham", "/graham.png");
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ObjectOutputStream oos = new ObjectOutputStream(baos);
@@ -28,15 +28,15 @@ class SimpleSerializationUnitTest {
         ObjectInputStream ois = new ObjectInputStream(bais);
         Object read = ois.readObject();
 
-        assertTrue(read instanceof User);
-        User readUser = (User) read;
+        assertTrue(read instanceof SerializableUser);
+        SerializableUser readUser = (SerializableUser) read;
         assertEquals(user.name, readUser.name);
         assertEquals(user.profilePath, readUser.profilePath);
     }
 
     @Test
     void whenSerializingANonSerializableClass_thenItCanDeserializeCorrectly() throws Exception {
-        User2 user = new User2("Graham", "/graham.png");
+        NonSerializableUser user = new NonSerializableUser("Graham", "/graham.png");
         user.getProfile();
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -45,22 +45,22 @@ class SimpleSerializationUnitTest {
         assertThrows(NotSerializableException.class, () -> oos.writeObject(user));
     }
 
-    static class User implements Serializable {
+    static class SerializableUser implements Serializable {
         private String name;
         private String profilePath;
 
-        public User(String name, String profilePath) {
+        public SerializableUser(String name, String profilePath) {
             this.name = name;
             this.profilePath = profilePath;
         }
     }
 
-    static class User2 implements Serializable {
+    static class NonSerializableUser implements Serializable {
         private String name;
         private String profilePath;
         private Path profile;
 
-        public User2(String name, String profilePath) {
+        public NonSerializableUser(String name, String profilePath) {
             this.name = name;
             this.profilePath = profilePath;
         }

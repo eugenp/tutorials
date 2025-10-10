@@ -18,9 +18,8 @@ import org.junit.jupiter.api.Test;
 public class CustomSerializationUnitTest {
 
     @Test
-    void whenCustomSerializationExists_thenTheObjectCanBeSerialized() throws Exception {
-        User user = new User("Graham", "/graham.png");
-        user.getProfile();
+    void givenAClassWithCustomSerialization_whenSerializingTheClass_thenItSerializesCorrectly() throws Exception {
+        CustomSerializationUser user = new CustomSerializationUser("Graham", "/graham.png");
         assertNotNull(user.profile);
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -31,17 +30,15 @@ public class CustomSerializationUnitTest {
         ObjectInputStream ois = new ObjectInputStream(bais);
         Object read = ois.readObject();
 
-        assertTrue(read instanceof User);
-        User readUser = (User) read;
+        assertTrue(read instanceof CustomSerializationUser);
+        CustomSerializationUser readUser = (CustomSerializationUser) read;
         assertEquals(user.name, readUser.name);
-        assertEquals(user.profilePath, readUser.profilePath);
         assertEquals(user.profile, readUser.profile);
     }
 
     @Test
-    void whenReadResolveExists_thenTheObjectCanBeSerialized() throws Exception {
-        User2 user = new User2("Graham", "/graham.png");
-        user.getProfile();
+    void givenAClassWithReadResolve_whenDeserializingTheClass_thenItDeserializesCorrectly() throws Exception {
+        ReadResolveUser user = new ReadResolveUser("Graham", "/graham.png");
         assertNotNull(user.profile);
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -52,34 +49,25 @@ public class CustomSerializationUnitTest {
         ObjectInputStream ois = new ObjectInputStream(bais);
         Object read = ois.readObject();
 
-        assertTrue(read instanceof User2);
-        User2 readUser = (User2) read;
+        assertTrue(read instanceof ReadResolveUser);
+        ReadResolveUser readUser = (ReadResolveUser) read;
         assertEquals(user.name, readUser.name);
         assertEquals(user.profilePath, readUser.profilePath);
         assertEquals(user.profile, readUser.profile);
     }
 
-    static class User implements Serializable {
+    static class CustomSerializationUser implements Serializable {
         private String name;
-        private String profilePath;
         private Path profile;
 
-        public User(String name, String profilePath) {
+        public CustomSerializationUser(String name, String profilePath) {
             this.name = name;
-            this.profilePath = profilePath;
-        }
-
-        public Path getProfile() {
-            if (this.profile == null) {
-                this.profile = FileSystems.getDefault().getPath(profilePath);
-            }
-
-            return this.profile;
+            this.profile = FileSystems.getDefault().getPath(profilePath);
         }
 
         private void writeObject(ObjectOutputStream out) throws IOException {
             out.writeObject(name);
-            out.writeObject(profilePath);
+            out.writeObject(profile.toString());
         }
 
         private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
@@ -87,33 +75,24 @@ public class CustomSerializationUnitTest {
             String profilePathTemp = (String) in.readObject();
 
             this.name = nameTemp;
-            this.profilePath = profilePathTemp;
-            this.profile = FileSystems.getDefault().getPath(profilePath);
+            this.profile = FileSystems.getDefault().getPath(profilePathTemp);
         }
     }
 
-    static class User2 implements Serializable {
+    static class ReadResolveUser implements Serializable {
         private String name;
         private String profilePath;
         private transient Path profile;
 
-        public User2(String name, String profilePath) {
+        public ReadResolveUser(String name, String profilePath) {
             this.name = name;
             this.profilePath = profilePath;
-        }
-
-        public Path getProfile() {
-            if (this.profile == null) {
-                this.profile = FileSystems.getDefault().getPath(profilePath);
-            }
-
-            return this.profile;
+            this.profile = FileSystems.getDefault().getPath(profilePath);
         }
 
         public Object readResolve() {
-            User2 result = new User2(this.name, this.profilePath);
-            result.profile = FileSystems.getDefault().getPath(profilePath);
-            return result;
+            this.profile = FileSystems.getDefault().getPath(this.profilePath);
+            return this;
         }
     }
 }

@@ -20,7 +20,6 @@ public class WrapperUnitTest {
     @Test
     void whenSerializingAWrapper_thenTheClassIsSerialized() throws Exception {
         User user = new User("Graham", "/graham.png");
-        user.getProfile();
         assertNotNull(user.profile);
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -35,26 +34,16 @@ public class WrapperUnitTest {
         UserWrapper wrapper = (UserWrapper) read;
         User readUser = wrapper.user;
         assertEquals(user.name, readUser.name);
-        assertEquals(user.profilePath, readUser.profilePath);
         assertEquals(user.profile, readUser.profile);
     }
 
     static class User {
         private String name;
-        private String profilePath;
         private transient Path profile;
 
         public User(String name, String profilePath) {
             this.name = name;
-            this.profilePath = profilePath;
-        }
-
-        public Path getProfile() {
-            if (this.profile == null) {
-                this.profile = FileSystems.getDefault().getPath(profilePath);
-            }
-
-            return this.profile;
+            this.profile = FileSystems.getDefault().getPath(profilePath);
         }
     }
 
@@ -67,7 +56,7 @@ public class WrapperUnitTest {
 
         private void writeObject(ObjectOutputStream out) throws IOException {
             out.writeObject(user.name);
-            out.writeObject(user.profilePath);
+            out.writeObject(user.profile.toString());
         }
 
         private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
@@ -75,7 +64,6 @@ public class WrapperUnitTest {
             String profilePathTemp = (String) in.readObject();
 
             this.user = new User(nameTemp, profilePathTemp);
-            this.user.getProfile();
         }
     }
 }
