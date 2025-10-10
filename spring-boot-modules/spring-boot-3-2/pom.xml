@@ -15,21 +15,9 @@
     </parent>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>6.2.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>6.2.3</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>3.4.3</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -81,7 +69,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
             <optional>true</optional>
         </dependency>
         <dependency>
@@ -105,7 +92,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>3.4.3</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -122,13 +108,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-redis</artifactId>
-        </dependency>
-        <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>${jedis.version}</version>
             <type>jar</type>
         </dependency>
         <dependency>
@@ -272,8 +253,8 @@
 
     <properties>
         <start-class>com.baeldung.restclient.RestClientApplication</start-class>
-        <mapstruct.version>1.6.0.Beta1</mapstruct.version>
-        <mockserver.version>5.14.0</mockserver.version>
+        <mapstruct.version>1.6.0</mapstruct.version>
+        <mockserver.version>5.15.0</mockserver.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <jedis.version>5.0.2</jedis.version>
         <spring-kafka.version>3.1.2</spring-kafka.version>
