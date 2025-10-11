@@ -556,6 +556,7 @@
                 <module>parent-boot-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>parent-spring-7</module>
                 <module>apache-kafka</module>
                 <module>core-groovy-modules</module>
                 <module>core-java-modules/core-java-concurrency-simple</module>
@@ -617,6 +618,7 @@
                 <module>parent-boot-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>parent-spring-7</module>
                 <module>akka-modules</module>
                 <module>algorithms-modules</module>
                 <module>apache-cxf-modules</module>
@@ -1007,6 +1009,7 @@
                 <module>parent-boot-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>parent-spring-7</module>
                 <module>apache-kafka</module>
                 <module>core-groovy-modules</module>
                 <module>core-java-modules/core-java-concurrency-simple</module>
@@ -1062,6 +1065,7 @@
                 <module>parent-boot-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>parent-spring-7</module>
                 <module>akka-modules</module>
                 <module>algorithms-modules</module>
                 <module>apache-cxf-modules</module>
@@ -1473,6 +1477,7 @@
                 <module>parent-boot-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>parent-spring-7</module>
             </modules>
         </profile>
 
