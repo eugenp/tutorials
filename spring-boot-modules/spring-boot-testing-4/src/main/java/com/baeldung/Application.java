@@ -1,4 +1,4 @@
-package com.baeldung.mainclasstest;
+package com.baeldung;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,7 +20,7 @@ public class Application {
         initializeApplication(args);
     }
 
-    static ConfigurableApplicationContext initializeApplication(String[] args) {
+    public static ConfigurableApplicationContext initializeApplication(String[] args) {
         return SpringApplication.run(Application.class, args);
     }
 }
