@@ -1,4 +1,4 @@
-package com.baeldung.resttestclient;
+package com.baeldung.spring.resttestclient;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
@@ -23,5 +23,4 @@ public class RestTestClientTest {
             .expectHeader()
             .contentType(MediaType.APPLICATION_JSON);
     }
-
 }

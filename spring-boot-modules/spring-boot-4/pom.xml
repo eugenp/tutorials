@@ -42,6 +42,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.mapstruct</groupId>
@@ -145,6 +146,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>21</source> <!-- Or 16+ if Java 21 is too aggressive -->
+                    <target>21</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>

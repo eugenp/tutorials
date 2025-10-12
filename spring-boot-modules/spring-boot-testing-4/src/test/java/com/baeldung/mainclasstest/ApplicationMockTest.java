@@ -6,8 +6,6 @@ import org.mockito.MockedStatic;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import com.baeldung.Application;
-
 public class ApplicationMockTest {
 
     @Test
