@@ -16,9 +16,9 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class Hello2WorkerIntegrationTest {
+class Hello2WorkerLiveTest {
     private static final String QUEUE_NAME = "say-hello-queue";
-    private static final Logger log = LoggerFactory.getLogger(Hello2WorkerIntegrationTest.class);
+    private static final Logger log = LoggerFactory.getLogger(Hello2WorkerLiveTest.class);
 
     private WorkerFactory factory;
 
