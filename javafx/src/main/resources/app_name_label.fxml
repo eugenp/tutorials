@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="your.package.YourController">
+    <Label fx:id="appNameLabel" text="Example App" />
+</StackPane>

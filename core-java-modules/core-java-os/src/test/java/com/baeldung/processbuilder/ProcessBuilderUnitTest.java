@@ -8,6 +8,8 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -154,6 +156,16 @@ public class ProcessBuilderUnitTest {
         assertEquals("No errors should be detected", 0, exitCode);
     }
 
+    @Test
+    public void givenProcessBuilder_whenPassingArgsWithSpaces_thenSuccess() throws IOException {
+        ProcessBuilder processBuilder = new ProcessBuilder(getEchoCommandWithSpaces());
+        Process process = processBuilder.start();
+        List<String> results = readOutput(process.getInputStream());
+
+        assertFalse(results.isEmpty(), "Results should not be empty");
+        assertTrue(results.get(0).contains("Hello World from Baeldung"));
+    }
+
     private List<String> readOutput(InputStream inputStream) throws IOException {
         try (BufferedReader output = new BufferedReader(new InputStreamReader(inputStream))) {
             return output.lines()
@@ -171,6 +183,14 @@ public class ProcessBuilderUnitTest {
 
     private List<String> getEchoCommand() {
         return isWindows() ? Arrays.asList("cmd.exe", "/c", "echo hello") : Arrays.asList("/bin/sh", "-c", "echo hello");
+    }
+
+    private List<String> getEchoCommandWithSpaces() {
+        if (isWindows()) {
+            return Arrays.asList("cmd.exe", "/c", "echo", "Hello World from Baeldung");
+        } else {
+            return Arrays.asList("/bin/bash", "-c", "echo 'Hello World from Baeldung'");
+        }
     }
 
     private boolean isWindows() {
