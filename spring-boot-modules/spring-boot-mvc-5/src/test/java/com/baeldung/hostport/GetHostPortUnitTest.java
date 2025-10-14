@@ -3,6 +3,9 @@ package com.baeldung.hostport;
 import jakarta.servlet.http.HttpServletRequest;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -57,6 +60,22 @@ public class GetHostPortUnitTest {
         String result = GetHostPort.getHostWithPort(request);
 
         assertEquals("https://test.example.com:8443", result);
+    }
+
+    @Test
+    void whenUsingServletUriComponentsBuilder_thenReturnBaseUrl() {
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setScheme("https");
+        request.setServerName("example.com");
+        request.setServerPort(8443);
+        request.setRequestURI("/api/users/123");
+
+        RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
+        String baseUrl = GetHostPort.getBaseUrl();
+
+        assertEquals("https://example.com:8443", baseUrl);
+
+        RequestContextHolder.resetRequestAttributes();
     }
 
     @Test

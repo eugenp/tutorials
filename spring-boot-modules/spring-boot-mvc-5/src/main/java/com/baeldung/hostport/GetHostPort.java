@@ -6,9 +6,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class GetHostPort {
 
     public static String getHostWithPort(HttpServletRequest request) {
-        String scheme = request.getScheme(); // http or https
-        String serverName = request.getServerName(); // hostname
-        int serverPort = request.getServerPort(); // port number
+        String scheme = request.getScheme();
+        String serverName = request.getServerName();
+        int serverPort = request.getServerPort();
 
         boolean isDefaultPort = ("http".equals(scheme) && serverPort == 80)
                 || ("https".equals(scheme) && serverPort == 443);
