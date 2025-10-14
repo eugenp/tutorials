@@ -1,6 +1,9 @@
 
 package com.baeldung.jaxb.gen;
 
+import javax.xml.namespace.QName;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.annotation.XmlElementDecl;
 import jakarta.xml.bind.annotation.XmlRegistry;
 
 
@@ -21,6 +24,8 @@ import jakarta.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _UserRequest_QNAME = new QName("http://www.baeldung.com/jaxb/gen", "userRequest");
+    private final static QName _UserResponse_QNAME = new QName("http://www.baeldung.com/jaxb/gen", "userResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.baeldung.jaxb.gen
@@ -43,6 +48,32 @@ public class ObjectFactory {
      */
     public UserResponse createUserResponse() {
         return new UserResponse();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UserRequest }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link UserRequest }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.baeldung.com/jaxb/gen", name = "userRequest")
+    public JAXBElement<UserRequest> createUserRequest(UserRequest value) {
+        return new JAXBElement<UserRequest>(_UserRequest_QNAME, UserRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UserResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link UserResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://www.baeldung.com/jaxb/gen", name = "userResponse")
+    public JAXBElement<UserResponse> createUserResponse(UserResponse value) {
+        return new JAXBElement<UserResponse>(_UserResponse_QNAME, UserResponse.class, null, value);
     }
 
 }

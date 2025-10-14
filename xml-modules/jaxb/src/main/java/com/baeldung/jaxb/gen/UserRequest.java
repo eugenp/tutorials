@@ -1,11 +1,9 @@
 
 package com.baeldung.jaxb.gen;
 
-import java.io.Serializable;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -34,12 +32,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "id",
     "name"
 })
-@XmlRootElement(name = "userRequest")
-public class UserRequest
-    implements Serializable
-{
+public class UserRequest {
 
-    private final static long serialVersionUID = -1L;
     protected int id;
     @XmlElement(required = true)
     protected String name;
