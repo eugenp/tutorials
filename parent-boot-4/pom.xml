@@ -47,7 +47,6 @@
 
     <properties>
         <spring-boot.version>4.0.0-M3</spring-boot.version>
-        <start-class>com.example.MainApplication</start-class>
     </properties>
 
 </project>
