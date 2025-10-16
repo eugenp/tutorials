@@ -1,7 +1,7 @@
 package com.baeldung.springretry;
 
 import java.sql.SQLException;
-
+import reactor.core.publisher.Mono; 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.retry.support.RetrySynchronizationManager;
@@ -54,5 +54,27 @@ public class MyServiceImpl implements MyService {
     public void templateRetryService() {
         logger.info("throw RuntimeException in method templateRetryService()");
         throw new RuntimeException();
+    }
+
+    // **NEW FEATURE: Reactive implementation**
+    private int reactiveAttemptCount = 0;
+
+    @Override
+    public Mono<String> reactiveRetryService() {
+        return Mono.defer(() -> {
+            logger.info("Reactive Retry Number: " + (reactiveAttemptCount++));
+            if (reactiveAttemptCount < 3) {
+                logger.info("throw RuntimeException in method reactiveRetryService()");
+                return Mono.error(new RuntimeException("Transient Reactive Error"));
+            }
+            return Mono.just("Reactive Success");
+        });
+    }
+    
+    // **NEW RECOVER METHOD FOR REACTIVE TYPE**
+    @Override
+    public Mono<String> recover(RuntimeException e) {
+        logger.info("In reactive recover method for RuntimeException");
+        return Mono.just("Reactive Fallback Success");
     }
 }
