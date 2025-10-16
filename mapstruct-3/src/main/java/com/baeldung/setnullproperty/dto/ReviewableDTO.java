@@ -2,15 +2,15 @@ package com.baeldung.setnullproperty.dto;
 
 import java.util.Objects;
 
-public class ArticleDTO extends ReviewableDTO {
+public class ReviewableDTO {
 
     private String title;
 
-    public ArticleDTO(String title) {
-        this.title = title;
+    public ReviewableDTO() {
     }
 
-    public ArticleDTO() {
+    public ReviewableDTO(String title) {
+        this.title = title;
     }
 
     public String getTitle() {
@@ -26,7 +26,7 @@ public class ArticleDTO extends ReviewableDTO {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ArticleDTO that = (ArticleDTO) o;
+        ReviewableDTO that = (ReviewableDTO) o;
         return Objects.equals(title, that.title);
     }
 

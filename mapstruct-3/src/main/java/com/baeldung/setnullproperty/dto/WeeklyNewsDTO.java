@@ -2,21 +2,23 @@ package com.baeldung.setnullproperty.dto;
 
 import java.util.Objects;
 
-public class ArticleDTO extends ReviewableDTO {
+public class WeeklyNewsDTO extends ReviewableDTO {
 
     private String title;
 
-    public ArticleDTO(String title) {
-        this.title = title;
+    public WeeklyNewsDTO() {
     }
 
-    public ArticleDTO() {
+    public WeeklyNewsDTO(String title1) {
+        this.title = title1;
     }
 
+    @Override
     public String getTitle() {
         return title;
     }
 
+    @Override
     public void setTitle(String title) {
         this.title = title;
     }
@@ -26,12 +28,15 @@ public class ArticleDTO extends ReviewableDTO {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ArticleDTO that = (ArticleDTO) o;
+        if (!super.equals(o)) {
+            return false;
+        }
+        WeeklyNewsDTO that = (WeeklyNewsDTO) o;
         return Objects.equals(title, that.title);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(title);
+        return Objects.hash(super.hashCode(), title);
     }
 }

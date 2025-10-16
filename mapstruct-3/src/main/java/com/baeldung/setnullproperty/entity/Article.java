@@ -2,10 +2,8 @@ package com.baeldung.setnullproperty.entity;
 
 import java.util.Objects;
 
-public class Article {
+public class Article extends Reviewable {
 
-    private String id;
-    private String reviewedBy;
     private String title;
 
     public Article(String id, String reviewedBy) {
@@ -14,22 +12,6 @@ public class Article {
     }
 
     public Article() {
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getReviewedBy() {
-        return reviewedBy;
-    }
-
-    public void setReviewedBy(String reviewedBy) {
-        this.reviewedBy = reviewedBy;
     }
 
     @Override
