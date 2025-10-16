@@ -1,7 +1,7 @@
 package com.baeldung.springretry;
 
 import java.sql.SQLException;
-import reactor.core.publisher.Mono;
+ 
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.annotation.Retryable;
@@ -22,15 +22,8 @@ public interface MyService {
                         backoff = @Backoff(delayExpression = "${retry.maxDelay}"))
     void retryServiceWithExternalConfiguration(String sql) throws SQLException;
 
-    @Retryable(maxAttempts = 3, backoff = @Backoff(delay = 50))
-    Mono<String> reactiveRetryService();
-
     @Recover
     void recover(SQLException e, String sql);
-
-    // **NEW RECOVER METHOD FOR REACTIVE TYPE**
-    @Recover
-    Mono<String> recover(RuntimeException e);
     
     void templateRetryService();
 }
