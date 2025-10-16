@@ -10,7 +10,7 @@ import org.springframework.context.ApplicationContext;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(classes = {ConfigTwo.class, ConfigOne.class})
-class OrderedConfigTest {
+class OrderedConfigUnitTest {
 
     @Autowired
     private ApplicationContext context;

@@ -9,7 +9,7 @@ import org.springframework.context.ApplicationContext;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(classes = DependsConfig.class)
-class DependsConfigTest {
+class DependsConfigUnitTest {
 
     @Autowired
     private ApplicationContext context;
