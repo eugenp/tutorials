@@ -33,9 +33,9 @@ public class SpringRetryIntegrationTest {
 
     @Autowired
     private RetryTemplate retryTemplate;
-     // Autowire the new template configuration
+    
     @Autowired
-    private RetryTemplate retryTemplateNoAttempts; // Autowired from AppConfig
+    private RetryTemplate retryTemplateNoAttempts;  
 
 
     @Test(expected = RuntimeException.class)
@@ -82,15 +82,12 @@ public class SpringRetryIntegrationTest {
         });
     }
 
-     // **New test case for maxAttempts(0) - no retry should occur**
     @Test(expected = RuntimeException.class)
     public void givenTemplateRetryServiceWithZeroAttempts_whenCallWithException_thenFailImmediately() {
         retryTemplateNoAttempts.execute(arg0 -> {
             myService.templateRetryService();
             return null;
         });
-        // We expect myService.templateRetryService() to be called only once
-        // (the initial attempt, which counts as 1 call)
         verify(myService, times(1)).templateRetryService(); 
     }
 }
