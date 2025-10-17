@@ -44,9 +44,11 @@
                         <jdk>
                             <version>24</version>
                             <vendor>liberica</vendor>
+                            <require>false</require> <!-- for the Jenkins build server -->
                         </jdk>
                         <protobuf>
                             <version>${protobuf.version}</version>
+                            <require>false</require> <!-- for the Jenkins build server -->
                         </protobuf>
                     </toolchains>
                 </configuration>
