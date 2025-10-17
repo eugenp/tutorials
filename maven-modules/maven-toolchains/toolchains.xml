@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<toolchains>
+    <!-- JDK toolchains -->
+    <toolchain>
+        <type>jdk</type>
+        <provides>
+            <version>24</version>
+            <vendor>liberica</vendor>
+        </provides>
+        <configuration>
+            <jdkHome>/home/njabulo/.sdkman/candidates/java/24.0.1.fx-librca/</jdkHome>
+        </configuration>
+    </toolchain>
+
+    <!-- Protocol Buffers toolchains -->
+    <toolchain>
+        <type>protobuf</type>
+        <provides>
+            <version>3.0.0</version>
+        </provides>
+        <configuration>
+            <protocExecutable>/home/njabulo/DevTools/protoc-3.0.0/bin/protoc</protocExecutable>
+        </configuration>
+    </toolchain>
+</toolchains>
