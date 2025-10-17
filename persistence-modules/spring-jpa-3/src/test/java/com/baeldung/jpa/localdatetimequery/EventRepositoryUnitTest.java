@@ -10,10 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.test.context.TestPropertySource;
 
 @DataJpaTest
 @Import(EventCriteriaRepository.class)
@@ -32,7 +29,6 @@ public class EventRepositoryUnitTest {
 
         eventRepository.deleteAll();
 
-        // Insert test data
         eventRepository.save(new Event("Morning Meeting", LocalDateTime.of(2025, 10, 12, 9, 0, 0)));
         eventRepository.save(new Event("Lunch Discussion", LocalDateTime.of(2025, 10, 12, 12, 30, 0)));
         eventRepository.save(new Event("Evening Review", LocalDateTime.of(2025, 10, 12, 18, 45, 0)));
@@ -94,13 +90,6 @@ public class EventRepositoryUnitTest {
         LocalDateTime endOfDay = testDate.plusDays(1).atStartOfDay();
 
         List<Event> results = eventRepository.findByDateRangeNative(startOfDay, endOfDay);
-        System.out.println(startOfDay);
-        System.out.println(endOfDay);
-        System.out.println(results.size());
-        List<Event> allEvents = eventRepository.findAll();
-        System.out.println("\nAll events in DB:");
-        allEvents.forEach(e -> System.out.println(e.getName() + " -> " + e.getCreatedAt()));
-
 
         assertEquals(3, results.size());
         assertEquals("Morning Meeting", results.get(0).getName());
