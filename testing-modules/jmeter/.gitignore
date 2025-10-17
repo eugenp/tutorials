@@ -22,3 +22,5 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+src/main/resources/*-beanshell_BeanShellTest.csv

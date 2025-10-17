@@ -1,0 +1,10 @@
+<Configuration>
+    <Appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <Encoder>
+            <Pattern>[%d{yyyy-MM-dd HH:mm:ss}] [%p] [%c] - %m%n</Pattern>
+        </Encoder>
+    </Appender>
+    <Root level="INFO">
+        <Appender-ref ref="CONSOLE" />
+    </Root>
+</Configuration>
