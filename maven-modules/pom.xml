@@ -60,6 +60,7 @@
         <module>multimodulemavenproject</module>
         <module>resume-from</module>
         <module>maven-multiple-repositories</module>
+        <module>maven-toolchains</module>
     </modules>
 
     <dependencyManagement>

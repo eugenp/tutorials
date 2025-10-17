@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<toolchains>
+    <!-- JDK toolchains -->
+    <toolchain>
+        <type>jdk</type>
+        <provides>
+            <version>24</version>
+            <vendor>liberica</vendor>
+        </provides>
+        <configuration>
+            <jdkHome>/opt/liberica-24</jdkHome>
+        </configuration>
+    </toolchain>
+
+    <!-- Protocol Buffers toolchains -->
+    <toolchain>
+        <type>protobuf</type>
+        <provides>
+            <version>3.0.0</version>
+        </provides>
+        <configuration>
+            <protocExecutable>/opt/protoc-3.0.0/bin/protoc</protocExecutable>
+        </configuration>
+    </toolchain>
+</toolchains>

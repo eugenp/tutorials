@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option java_package = "com.baeldung";
+option java_multiple_files = true;
+option java_outer_classname = "AddressBookProtos";
+
+message Address {
+	string street_address = 1;
+	string city = 2;
+	string state = 3;
+	string postal_code = 4;
+}
+
+message Contact {
+	string first_name = 1;
+	string last_name = 2;
+	string email = 3;
+	string phone_number = 4;
+	Address address = 5;
+}
+
+message AddressBook {
+	repeated Contact contacts = 1;
+}
