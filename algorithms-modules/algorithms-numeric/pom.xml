@@ -13,6 +13,13 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <maven.compiler.release>21</maven.compiler.release>
+        <junit.jupiter.version>5.11.0</junit.jupiter.version>
+        <commons-math3.version>3.6.1</commons-math3.version>
+        <surefire.version>3.2.5</surefire.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
@@ -23,6 +30,19 @@
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh.version}</version>
+        </dependency>
+        <!-- I need Math3 on the test classpath -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>${commons-math3.version}</version>
+        </dependency>
+        <!-- I need JUnit 5 on the test classpath -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
