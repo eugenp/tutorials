@@ -55,5 +55,4 @@ public class MyServiceImpl implements MyService {
         logger.info("throw RuntimeException in method templateRetryService()");
         throw new RuntimeException();
     }
-
 }
