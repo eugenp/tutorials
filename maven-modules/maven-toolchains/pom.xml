@@ -16,6 +16,9 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <protobuf.version>3.0.0</protobuf.version>
+
+        <!-- For internal build server -->
+        <toolchain.jdk.version>[17,)</toolchain.jdk.version>
     </properties>
 
     <dependencies>
@@ -31,11 +34,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-toolchains-plugin</artifactId>
-                <version>1.1</version>
+                <version>3.2.0</version>
                 <executions>
                     <execution>
                         <goals>
                             <goal>toolchain</goal>
+                            <!-- For internal build server -->
+                            <goal>select-jdk-toolchain</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -44,11 +49,9 @@
                         <jdk>
                             <version>24</version>
                             <vendor>liberica</vendor>
-                            <require>false</require> <!-- for the Jenkins build server -->
                         </jdk>
                         <protobuf>
                             <version>${protobuf.version}</version>
-                            <require>false</require> <!-- for the Jenkins build server -->
                         </protobuf>
                     </toolchains>
                 </configuration>
