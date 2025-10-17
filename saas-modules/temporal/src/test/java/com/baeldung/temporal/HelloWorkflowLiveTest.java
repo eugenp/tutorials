@@ -18,9 +18,9 @@ import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class HelloWorkflowIntegrationTest {
+class HelloWorkflowLiveTest {
     private static final String QUEUE_NAME = "say-hello-queue";
-    private static final Logger log = LoggerFactory.getLogger(HelloWorkflowIntegrationTest.class);
+    private static final Logger log = LoggerFactory.getLogger(HelloWorkflowLiveTest.class);
 
     private WorkerFactory factory;
 
