@@ -24,6 +24,6 @@ public interface MyService {
 
     @Recover
     void recover(SQLException e, String sql);
- 
+
     void templateRetryService();
 }
