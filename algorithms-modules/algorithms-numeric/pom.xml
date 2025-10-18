@@ -13,14 +13,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <maven.compiler.release>21</maven.compiler.release>
-        <junit.jupiter.version>5.11.0</junit.jupiter.version>
-        <commons-math3.version>3.6.1</commons-math3.version>
-        <surefire.version>3.2.5</surefire.version>
-        <jmh.version>1.35</jmh.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
