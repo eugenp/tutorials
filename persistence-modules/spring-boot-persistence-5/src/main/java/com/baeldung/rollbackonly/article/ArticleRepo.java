@@ -1,8 +1,9 @@
-package com.baeldung.transactional.rollback;
+package com.baeldung.rollbackonly.article;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
-interface ArticleRepo extends JpaRepository<Article, Long> {
+public interface ArticleRepo extends JpaRepository<Article, Long> {
 }

@@ -1,6 +1,5 @@
-package com.baeldung.transactional.rollback;
+package com.baeldung.rollbackonly.article;
 
-import jakarta.annotation.Nonnull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-class Article {
+public class Article {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
