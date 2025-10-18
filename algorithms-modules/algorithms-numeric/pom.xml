@@ -18,6 +18,7 @@
         <junit.jupiter.version>5.11.0</junit.jupiter.version>
         <commons-math3.version>3.6.1</commons-math3.version>
         <surefire.version>3.2.5</surefire.version>
+        <jmh.version>1.35</jmh.version>
     </properties>
 
     <dependencies>
@@ -45,9 +46,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <properties>
-        <jmh.version>1.35</jmh.version>
-    </properties>
 
 </project>
