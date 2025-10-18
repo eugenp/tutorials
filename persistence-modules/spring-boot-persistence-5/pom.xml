@@ -83,6 +83,9 @@
         <instancio.version>5.2.1</instancio.version>
         <spring-boot.version>3.4.1</spring-boot.version>
         <db2.version>12.1.0.0</db2.version>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
 </project>
