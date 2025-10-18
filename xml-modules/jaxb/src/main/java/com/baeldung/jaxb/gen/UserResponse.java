@@ -1,16 +1,12 @@
 
 package com.baeldung.jaxb.gen;
 
-import java.io.Serializable;
-import java.util.Calendar;
+import javax.xml.datatype.XMLGregorianCalendar;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
-import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.w3._2001.xmlschema.Adapter1;
 
 
 /**
@@ -42,21 +38,16 @@ import org.w3._2001.xmlschema.Adapter1;
     "gender",
     "created"
 })
-@XmlRootElement(name = "userResponse")
-public class UserResponse
-    implements Serializable
-{
+public class UserResponse {
 
-    private final static long serialVersionUID = -1L;
     protected int id;
     @XmlElement(required = true)
     protected String name;
     @XmlElement(required = true)
     protected String gender;
-    @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlElement(required = true)
     @XmlSchemaType(name = "dateTime")
-    protected Calendar created;
+    protected XMLGregorianCalendar created;
 
     /**
      * Gets the value of the id property.
@@ -127,10 +118,10 @@ public class UserResponse
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public Calendar getCreated() {
+    public XMLGregorianCalendar getCreated() {
         return created;
     }
 
@@ -139,10 +130,10 @@ public class UserResponse
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setCreated(Calendar value) {
+    public void setCreated(XMLGregorianCalendar value) {
         this.created = value;
     }
 
