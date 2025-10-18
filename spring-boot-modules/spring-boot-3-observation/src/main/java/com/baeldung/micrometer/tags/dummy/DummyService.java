@@ -1,18 +1,14 @@
 package com.baeldung.micrometer.tags.dummy;
 
-import java.math.BigDecimal;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.baeldung.micrometer.tags.Application;
-
 import io.micrometer.core.annotation.Counted;
 import io.micrometer.core.annotation.Timed;
 import io.micrometer.core.aop.MeterTag;
-import io.micrometer.core.aop.MeterTags;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.Meter;
 import io.micrometer.core.instrument.MeterRegistry;
@@ -67,23 +63,6 @@ class DummyService {
     public String buzz(@MeterTag("device.type") String device) {
         log.info("buzz({})", device);
         return invokeSomeLogic();
-    }
-
-    @Counted(value = "fizz")
-    public String fizz(
-        @MeterTag(key = "id", expression = "#order.id")
-        @MeterTag(key = "other.id", expression = "#order.otherOrder.id")
-        @MeterTag(key = "math", expression = "20 - 1")
-        @MeterTag(key = "total", expression = "#order.total")
-        @MeterTag(key = "other.total", expression = "#order.otherOrder.total")
-        @MeterTag(key = "total.group", expression = "#order.total > 50 ? 'high' : 'low'")
-        Order order
-    ) {
-        log.info("fizz({})", order);
-        return invokeSomeLogic();
-    }
-
-    public record Order(int id, int total, Order otherOrder) {
     }
 
     private String invokeSomeLogic() {

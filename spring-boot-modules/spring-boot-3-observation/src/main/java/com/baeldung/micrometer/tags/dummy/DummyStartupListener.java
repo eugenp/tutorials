@@ -1,14 +1,11 @@
 package com.baeldung.micrometer.tags.dummy;
 
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
-
-import com.baeldung.micrometer.tags.dummy.DummyService.Order;
 
 @Component
 class DummyStartupListener {
@@ -27,15 +24,7 @@ class DummyStartupListener {
                 service.foo(deviceType);
                 service.bar(deviceType);
                 service.buzz(deviceType);
-                service.fizz(
-                    new Order(randomInt(), randomInt(),
-                        new Order(randomInt(), randomInt(), null)));
             });
-    }
-
-    int randomInt() {
-        return ThreadLocalRandom.current()
-            .nextInt(1, 100);
     }
 
     DummyStartupListener(DummyService service) {
