@@ -1,0 +1,44 @@
+@startuml Nested Transactions in publishArticle_v2
+
+participant "Client" as C
+participant "Blog" as B
+participant "ArticleRepo" as AR
+participant "AuditService" as AS
+database "Database" as DB
+
+C -> B: publishArticle_v2()
+activate B
+note right of B: @Transactional
+B -> DB: Begin TX1
+activate DB #LightBlue
+
+    B -> AR: save()
+    activate AR
+    AR -> DB: INSERT article
+    AR --> B:
+    deactivate AR
+
+    B -> AS: saveAudit()
+    activate AS
+    note right of AS: @Transactional\n(REQUIRES_NEW)
+    AS -> DB: Begin TX2
+    activate DB #LightGreen
+
+    AS -> DB: INSERT audit
+
+    AS -> DB: Commit TX2
+    deactivate DB
+    AS --> B:
+    deactivate AS
+
+B -> DB: Commit / Rollback TX1
+deactivate DB
+B --> C:
+deactivate B
+
+note over DB
+  TX1: Article save
+  TX2: Audit save (independent, always commits)
+end note
+
+@enduml
