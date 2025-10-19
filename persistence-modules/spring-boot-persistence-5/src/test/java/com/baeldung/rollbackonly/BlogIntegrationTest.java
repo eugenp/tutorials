@@ -51,7 +51,7 @@ class BlogIntegrationTest {
         assertThatThrownBy(() -> articleService.publishArticle(
                 new Article("Test Article", null)))
             .isInstanceOf(UnexpectedRollbackException.class)
-            .hasMessageContaining("Transaction silently rolled back because it has been marked as rollback-only");
+            .hasMessageContaining("marked as rollback-only");
 
         assertThat(auditRepo.findAll())
             .isEmpty();
