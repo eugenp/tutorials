@@ -6,45 +6,44 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import software.amazon.awssdk.services.sqs.SqsAsyncClient;
+import software.amazon.awssdk.services.sqs.SqsClient;
 import software.amazon.awssdk.services.sqs.model.SendMessageRequest;
 import software.amazon.awssdk.services.sqs.model.SendMessageResponse;
-import java.util.concurrent.CompletableFuture;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class SqsAsyncMessagePublisherTest {
+class SqsMessagePublisherUnitTest {
 
     @Mock
-    private SqsAsyncClient sqsAsyncClient;
+    private SqsClient sqsClient;
 
     @InjectMocks
-    private SqsAsyncMessagePublisher messagePublisher;
+    private SqsMessagePublisher messagePublisher;
 
     @Test
-    void whenPublishMessage_thenMessageIsSentAsynchronously() throws Exception {
+    void whenPublishMessage_thenMessageIsSentWithCorrectParameters() {
         // Arrange
-        String queueUrl = "https://sqs.us-east-1.amazonaws.com/123456789012/MyAsyncQueue";
-        String messageBody = "Hello, Async SQS!";
-        String expectedMessageId = "test-async-message-id-456";
+        String queueUrl = "https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue";
+        String messageBody = "Hello, SQS!";
+        String expectedMessageId = "test-message-id-123";
 
         SendMessageResponse mockResponse = SendMessageResponse.builder()
                 .messageId(expectedMessageId)
                 .build();
-        when(sqsAsyncClient.sendMessage(any(SendMessageRequest.class)))
-                .thenReturn(CompletableFuture.completedFuture(mockResponse));
+        when(sqsClient.sendMessage(any(SendMessageRequest.class))).thenReturn(mockResponse);
 
         // Act
-        String actualMessageId = messagePublisher.publishMessage(queueUrl, messageBody).get();
+        String actualMessageId = messagePublisher.publishMessage(queueUrl, messageBody);
 
         // Assert
         assertThat(actualMessageId).isEqualTo(expectedMessageId);
 
         ArgumentCaptor<SendMessageRequest> requestCaptor = ArgumentCaptor.forClass(SendMessageRequest.class);
-        verify(sqsAsyncClient).sendMessage(requestCaptor.capture());
+        verify(sqsClient).sendMessage(requestCaptor.capture());
 
         SendMessageRequest capturedRequest = requestCaptor.getValue();
         assertThat(capturedRequest.queueUrl()).isEqualTo(queueUrl);
