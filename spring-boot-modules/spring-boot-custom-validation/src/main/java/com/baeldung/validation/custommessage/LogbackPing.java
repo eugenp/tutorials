@@ -1,5 +1,4 @@
-package com.baeldung.validation;
-
+package com.baeldung.validation.custommessage;
 import ch.qos.logback.core.util.StatusPrinter;
 import org.slf4j.LoggerFactory;
 import ch.qos.logback.classic.LoggerContext;

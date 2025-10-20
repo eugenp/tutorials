@@ -1,4 +1,4 @@
-package com.baeldung.validation;
+package com.baeldung.validation.custommessage;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

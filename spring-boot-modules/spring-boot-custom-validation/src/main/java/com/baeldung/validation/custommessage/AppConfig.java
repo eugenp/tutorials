@@ -1,4 +1,4 @@
-package com.baeldung.validation;
+package com.baeldung.validation.custommessage;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;

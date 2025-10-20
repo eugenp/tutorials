@@ -1,4 +1,4 @@
-package com.baeldung.validation;
+package com.baeldung.validation.custommessage;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;

@@ -1,5 +1,5 @@
 // Minor change to trigger PR comparison
-package com.baeldung.validation;
+package com.baeldung.validation.custommessage;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
