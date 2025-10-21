@@ -20,6 +20,7 @@
         <module>flyway-multidb-springboot</module>
         <module>spring-boot-admin</module>
         <module>spring-boot-angular</module>
+        <module>spring-boot-config-order</module>
         <module>spring-boot-annotations</module>
         <module>spring-boot-annotations-2</module>
         <module>spring-boot-artifacts</module>
