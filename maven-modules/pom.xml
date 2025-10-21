@@ -60,7 +60,8 @@
         <module>multimodulemavenproject</module>
         <module>resume-from</module>
         <module>maven-multiple-repositories</module>
-        <module>maven-toolchains</module>
+        <!-- Commented out maven-toolchains due to missing tools on build server -->
+<!--        <module>maven-toolchains</module>-->
     </modules>
 
     <dependencyManagement>
