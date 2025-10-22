@@ -1,0 +1,14 @@
+spring:
+  ai:
+    anthropic:
+      api-key: ${ANTHROPIC_API_KEY}
+      chat:
+        options:
+          model: ${SECONDARY_LLM}
+          tertiary-model: ${TERTIARY_LLM}
+    open-ai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: ${PRIMARY_LLM}
+          temperature: 1

@@ -8,7 +8,7 @@ import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Component;
 
 @Component
-@CacheConfig(cacheNames = { "addresses" })
+@CacheConfig("addresses")
 public class CustomerDataService {
 
     // this method configuration is equivalent to xml configuration

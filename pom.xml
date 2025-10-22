@@ -553,8 +553,10 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
+                <module>parent-boot-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>parent-spring-7</module>
                 <module>apache-kafka</module>
                 <module>core-groovy-modules</module>
                 <module>core-java-modules/core-java-concurrency-simple</module>
@@ -613,8 +615,10 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
+                <module>parent-boot-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>parent-spring-7</module>
                 <module>akka-modules</module>
                 <module>algorithms-modules</module>
                 <module>apache-cxf-modules</module>
@@ -633,6 +637,7 @@
                 <module>apache-poi-4</module>
                 <module>apache-thrift</module>
                 <module>apache-velocity</module>
+                <module>apollo</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>spring-boot-azure-deployment</module>
@@ -1001,8 +1006,10 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
+                <module>parent-boot-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>parent-spring-7</module>
                 <module>apache-kafka</module>
                 <module>core-groovy-modules</module>
                 <module>core-java-modules/core-java-concurrency-simple</module>
@@ -1055,8 +1062,10 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
+                <module>parent-boot-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>parent-spring-7</module>
                 <module>akka-modules</module>
                 <module>algorithms-modules</module>
                 <module>apache-cxf-modules</module>
@@ -1465,8 +1474,10 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
+                <module>parent-boot-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>parent-spring-7</module>
             </modules>
         </profile>
 
