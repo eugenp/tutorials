@@ -1,3 +1,5 @@
+package com.baeldung.objectclassguide;
+
 import java.util.Objects;
 
 
