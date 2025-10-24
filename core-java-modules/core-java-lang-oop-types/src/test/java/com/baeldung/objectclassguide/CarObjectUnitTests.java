@@ -116,7 +116,7 @@ public class CarObjectUnitTests {
     @DisplayName("Test shallow cloning maintains value equality")
     void testClone_Success() throws CloneNotSupportedException {
         // Assuming Car class implements Cloneable and overrides clone()
-        Car original = new Car(TEST_MAKE, TEST_YEAR);
+        Car original = new Car("Honda", 2020);
         Car cloned = (Car) original.clone();
 
         // 1. Should be different objects (reference inequality)
