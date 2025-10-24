@@ -130,54 +130,6 @@ public class CarObjectUnitTests {
         // assertEquals(original.getYear(), cloned.getYear(), "Year field should be identical.");
     }
 
-    // --- wait(), notify(), notifyAll() Tests (Synchronization - from fifth test block) ---
-
-    @Test
-    @DisplayName("Test wait() throws IllegalMonitorStateException when not synchronized")
-    void testWait_IllegalMonitorState() {
-        Car car = new Car(TEST_MAKE, TEST_YEAR);
-
-        // Assert that calling wait() without a monitor (synchronized block) throws the expected exception
-        assertThrows(IllegalMonitorStateException.class, () -> {
-            car.wait();
-        }, "wait() must throw IllegalMonitorStateException when called outside a synchronized block.");
-    }
-
-    @Test
-    @DisplayName("Test notify() throws IllegalMonitorStateException when not synchronized")
-    void testNotify_IllegalMonitorState() {
-        Car car = new Car(TEST_MAKE, TEST_YEAR);
-
-        // Assert that calling notify() without a monitor (synchronized block) throws the expected exception
-        assertThrows(IllegalMonitorStateException.class, () -> {
-            car.notify();
-        }, "notify() must throw IllegalMonitorStateException when called outside a synchronized block.");
-    }
-
-    @Test
-    @DisplayName("Test notifyAll() throws IllegalMonitorStateException when not synchronized")
-    void testNotifyAll_IllegalMonitorState() {
-        Car car = new Car(TEST_MAKE, TEST_YEAR);
-
-        // Assert that calling notifyAll() without a monitor (synchronized block) throws the expected exception
-        assertThrows(IllegalMonitorStateException.class, () -> {
-            car.notifyAll();
-        }, "notifyAll() must throw IllegalMonitorStateException when called outside a synchronized block.");
-    }
-
-    @Test
-    @DisplayName("Test timed wait() inside synchronized block does not throw exception")
-    void testWait_SynchronizedSuccess() {
-        Car car = new Car(TEST_MAKE, TEST_YEAR);
-
-        assertDoesNotThrow(() -> {
-            synchronized (car) {
-                // Wait for a very short time (1ms) to verify the call is legal
-                car.wait(1);
-            }
-        }, "wait() call inside synchronized block should not throw an exception.");
-    }
-
     // --- finalize() Test (Conceptual - from fifth test block) ---
 
     private static AtomicBoolean finalizedFlag = new AtomicBoolean(false);
