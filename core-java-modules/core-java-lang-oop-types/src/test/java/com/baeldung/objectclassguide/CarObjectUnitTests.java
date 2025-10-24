@@ -23,14 +23,14 @@ public class CarObjectUnitTests {
     // --- equals() Tests (from first test block) ---
 
     @Test
-    void testEquals_Reflexive() {
+    void givenACarObject_whenTestingObjectEqualsItself_thenEqualsReflexive() {
         Car car1 = new Car("Honda", 2020);
         // An object must equal itself.
         assertTrue(car1.equals(car1), "Must be reflexive");
     }
 
     @Test
-    void testEquals_Symmetric() {
+    void givenTwoCarObjects_whenTestingSymmetric_thenEqualsSymmetric() {
         Car car1 = new Car("Honda", 2020);
         Car car2 = new Car("Honda", 2020);
         // If car1.equals(car2) is true, then car2.equals(car1) must be true.
@@ -39,7 +39,7 @@ public class CarObjectUnitTests {
     }
 
     @Test
-    void testEquals_Transitive() {
+    void givenThreeCarObjects_whenTestingTransitive_thenEqualsTransitive() {
         Car car1 = new Car("Honda", 2020);
         Car car2 = new Car("Honda", 2020);
         Car car3 = new Car("Honda", 2020);
@@ -51,7 +51,7 @@ public class CarObjectUnitTests {
     }
 
     @Test
-    void testEquals_NotEqual() {
+    void givenTwoDifferentCarObjects_whenComparingWithEquals_thenEqualsReturnsFalse() {
         Car car1 = new Car("Honda", 2020);
         Car car2 = new Car("Toyota", 2020); // Different make
 
@@ -59,7 +59,7 @@ public class CarObjectUnitTests {
     }
 
     @Test
-    void testEquals_Null() {
+    void givenANonNullCarObject_whenTestingAgainstNull_thenEqualsReturnsFalse() {
         Car car1 = new Car("Honda", 2020);
         // Must return false when compared to null.
         assertFalse(car1.equals(null), "Must return false for null");
@@ -68,7 +68,7 @@ public class CarObjectUnitTests {
     // --- hashCode() Tests (from second test block) ---
 
     @Test
-    void testHashCode_EqualObjects() {
+    void givenTwoEqualCarObjects_whenComparingHashCodes_thenReturnsEqualHashCodes() {
         Car car1 = new Car("Honda", 2020);
         Car car2 = new Car("Honda", 2020);
 
@@ -78,7 +78,7 @@ public class CarObjectUnitTests {
     }
 
     @Test
-    void testHashCode_Consistent() {
+    void givenACarObject_whenTestingHashCodeConsistency_thenReturnsSameHashCodeAcrossMultipleCalls() {
         Car car = new Car("Honda", 2020);
         int initialHash = car.hashCode();
 
@@ -90,7 +90,7 @@ public class CarObjectUnitTests {
     // --- toString() Test (from third test block) ---
 
     @Test
-    void testToString() {
+    void givenACarObject_whenTestingToString_thenReturnsExpectedString() {
         Car car = new Car("Tesla", 2023);
         String expected = "Car{make='Tesla', year=2023}";
 
@@ -102,7 +102,7 @@ public class CarObjectUnitTests {
     // --- getClass() Test (from fourth test block) ---
 
     @Test
-    void testGetClass() {
+    void givenACarObject_whenTestingGetClass_thenReturnsCarClass() {
         Car car = new Car("Ford", 2015);
 
         // The returned Class object must match the Car class.
