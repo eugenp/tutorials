@@ -27,6 +27,12 @@
             <version>${junit-platform-launcher.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-testkit</artifactId>
+            <version>${junit-platform-testkit.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -36,13 +42,22 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
     <properties>
-        <junit-jupiter.version>5.13.4</junit-jupiter.version>
-        <junit-platform-launcher.version>1.13.4</junit-platform-launcher.version>
+        <junit-jupiter.version>6.0.0</junit-jupiter.version>
+        <junit-platform-launcher.version>6.0.0</junit-platform-launcher.version>
         <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
+        <junit-platform-testkit.version>6.0.0</junit-platform-testkit.version>
     </properties>
 
 </project>
