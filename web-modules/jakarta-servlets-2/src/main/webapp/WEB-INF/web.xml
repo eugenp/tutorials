@@ -19,6 +19,11 @@
         <location>/error-404.html</location> <!-- /src/main/webapp/error-404.html-->
     </error-page>
 
+    <servlet-mapping>
+        <servlet-name>CurrentDateAndTime</servlet-name>
+        <url-pattern>/date-time</url-pattern>
+    </servlet-mapping>
+
     <error-page>
         <exception-type>java.lang.Exception</exception-type>
         <location>/errorHandler</location>
