@@ -20,7 +20,7 @@ public class MainController implements Initializable {
     private Label appNameLabel;
 
     public MainController(String name) {
-        this.logger = Logger.getLogger(DashboardController.class.getName());
+        this.logger = Logger.getLogger(MainController.class.getName());
         this.metrics = new MetricsCollector("dashboard-controller");
         this.appName = name;
 

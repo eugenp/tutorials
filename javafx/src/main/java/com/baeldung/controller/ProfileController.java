@@ -26,11 +26,10 @@ public class ProfileController implements Initializable {
 
     // Placeholder classes for demo
     static class UserService {
-        private final User user = new User();
+        private final User user = new User("Baledung");
 
         UserService() {
             this.user = new User();
-            this.user.setName("Baeldung");
         }
 
         public User getCurrentUser() {
