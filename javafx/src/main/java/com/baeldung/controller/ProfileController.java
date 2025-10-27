@@ -16,6 +16,7 @@ public class ProfileController implements Initializable {
     private Label usernameLabel;
 
     public ProfileController(UserService userService) {
+        this.userService = userService;
         this.currentUser = userService.getCurrentUser();
     }
 
@@ -26,10 +27,10 @@ public class ProfileController implements Initializable {
 
     // Placeholder classes for demo
     static class UserService {
-        private final User user = new User("Baledung");
+        private final User user;
 
         UserService() {
-            this.user = new User();
+            this.user = new User("Baeldung");
         }
 
         public User getCurrentUser() {
