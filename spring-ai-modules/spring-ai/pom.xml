@@ -9,9 +9,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-3</relativePath>
+        <artifactId>spring-ai-modules</artifactId>
+        <version>0.0.1</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <repositories>
