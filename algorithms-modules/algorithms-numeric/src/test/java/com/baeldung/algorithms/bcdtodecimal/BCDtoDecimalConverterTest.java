@@ -16,7 +16,7 @@ public class BCDtoDecimalConverterTest {
         // Test 22 (0x22) -> 22
         assertEquals(22, BCDtoDecimalConverter.convertPackedByte((byte) 0x22));
 
-        // Test 97 (0x097) -> 97
+        // Test 97 (0x97) -> 97
         assertEquals(97, BCDtoDecimalConverter.convertPackedByte((byte) 0x097));
     }
 
