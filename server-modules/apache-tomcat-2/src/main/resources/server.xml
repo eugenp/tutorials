@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Server port="8005" shutdown="SHUTDOWN">
+    <Service name="Catalina">
+        <Connector port="8081" protocol="HTTP/1.1" />
+        <Connector port="7081" protocol="HTTP/1.1" />
+
+        <Engine name="Catalina" defaultHost="localhost">
+            <Host name="localhost" appBase="/tmp/tomcat-dummy" unpackWARs="false" autoDeploy="false">
+                <Context path="" docBase="STATIC_DIR_PLACEHOLDER" reloadable="false" />
+            </Host>
+        </Engine>
+    </Service>
+</Server>
