@@ -34,7 +34,7 @@ public class DualPort {
         ctx.addServletMappingDecoded("/", "portServlet");
 
         tomcat.start();
-        System.out.println("✅ Tomcat running on ports 8080 and 7080");
+        System.out.println("Tomcat running on ports 8080 and 7080");
         tomcat.getServer().await();
     }
 }
