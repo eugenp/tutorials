@@ -26,3 +26,13 @@ java -Dspring.aot.enabled=true \
 Startup times:
 `Root WebApplicationContext: initialization completed in 461 ms`
 `Started Application in 3.29 seconds`
+
+## Performance
+
+### Time startup
+from root `sudo ./scripts/startup.sh aot`:
+```shell
+time elapsed 5217 millis
+Threads:       56
+Memory/CPU (RSS KB / VSZ KB / %CPU / CPU Time): 448448 557256448 173.9   0:11.70
+```
