@@ -30,9 +30,22 @@ Startup times:
 ## Performance
 
 ### Time startup
+
 from root `sudo ./scripts/startup.sh aot`:
+
 ```shell
 time elapsed 5217 millis
 Threads:       56
 Memory/CPU (RSS KB / VSZ KB / %CPU / CPU Time): 448448 557256448 173.9   0:11.70
+```
+
+### Time startup
+
+from root `sudo ./scripts/load-test.sh aot`:
+
+```shell
+time elapsed 5347 millis
+Threads:       94
+Memory/CPU START (RSS KB / VSZ KB / %CPU / CPU Time): 449504 557256448 183.8   0:11.56
+Memory/CPU END (RSS KB / VSZ KB / %CPU / CPU Time): 444208 523845152 847.7   1:18.64
 ```

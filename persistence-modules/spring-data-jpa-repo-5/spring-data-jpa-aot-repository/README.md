@@ -39,6 +39,15 @@ Threads:       58
 Memory/CPU (RSS KB / VSZ KB / %CPU / CPU Time): 406992 523697872 167.5   0:10.91
 ```
 
+### Time startup
+from root `sudo ./scripts/load-test.sh aot-repo`:
+```shell
+time elapsed 5298 millis
+Threads:       93
+Memory/CPU START (RSS KB / VSZ KB / %CPU / CPU Time): 450816 557256448 205.1   0:11.72
+Memory/CPU END (RSS KB / VSZ KB / %CPU / CPU Time): 439568 523846176 830.3   1:18.58
+```
+
 **NOTE**:
 AOT is a mandatory step to transform a Spring application to a native executable, so it is automatically enabled when running within a native image. However it is also possible to use AOT optimizations on the JVM by setting the spring.aot.enabled System
 property to true.
