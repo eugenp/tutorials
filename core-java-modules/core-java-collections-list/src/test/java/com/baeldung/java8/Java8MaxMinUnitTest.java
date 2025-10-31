@@ -106,4 +106,23 @@ public class Java8MaxMinUnitTest {
         assertEquals(-10, absMax);
     }
 
+    private static int findMaxRecursive(int[] array, int n) {
+        if (n == 1) {
+            return array[0];
+        }
+        return Math.max(array[n - 1], findMaxRecursive(array, n - 1));
+    }
+
+    @Test
+    public void givenIntegerArray_whenFindingMaxUsingRecursion_thenMaxCanBeFoundUsingRecursion() {
+        // given
+        int[] integers = new int[]{20, 98, 12, 7, 35};
+        int expectedMax = 98;
+
+        // when
+        int max = findMaxRecursive(integers, integers.length);
+
+        // then
+        assertEquals(expectedMax, max);
+    }
 }
