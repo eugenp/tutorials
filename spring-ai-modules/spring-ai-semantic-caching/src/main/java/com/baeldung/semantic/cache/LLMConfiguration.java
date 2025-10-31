@@ -29,7 +29,6 @@ class LLMConfiguration {
             .embeddingFieldName(semanticCacheProperties.embeddingField())
             .metadataFields(
                 RedisVectorStore.MetadataField.text(semanticCacheProperties.metadataField()))
-            .initializeSchema(true)
             .build();
     }
 
