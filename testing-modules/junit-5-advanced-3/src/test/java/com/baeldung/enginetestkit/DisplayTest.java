@@ -16,23 +16,23 @@ public class DisplayTest {
     private final Display display = new Display(Platform.DESKTOP, 1000);
 
     @Test
-    void succeeds() {
+    void whenCorrect_thenSucceeds() {
         assertEquals(1000, display.getHeight());
     }
 
     @Test
-    void fails() {
+    void whenIncorrect_thenFails() {
         assertEquals(500, display.getHeight());
     }
 
     @Test
     @Disabled("Flakey test needs investigating")
-    void skips() {
+    void whenDisabled_thenSkips() {
         assertEquals(999, display.getHeight());
     }
 
     @Test
-    void aborts() {
+    void whenAssumptionsFail_thenAborts() {
         assumeTrue(display.getPlatform() == Platform.MOBILE, "test only runs for mobile");
     }
 

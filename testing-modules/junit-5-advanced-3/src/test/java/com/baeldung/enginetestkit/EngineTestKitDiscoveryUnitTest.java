@@ -22,7 +22,7 @@ import org.opentest4j.TestAbortedException;
 public class EngineTestKitDiscoveryUnitTest {
 
     @Test
-    void verifyTestEngineDiscovery() {
+    void givenJunitJupiterEngine_whenRunningTestSuite_thenTestsAreDiscovered() {
         EngineDiscoveryResults results = EngineTestKit.engine("junit-jupiter")
             .selectors(selectClass(DisplayTest.class))
             .discover();
@@ -32,7 +32,7 @@ public class EngineTestKitDiscoveryUnitTest {
     }
 
     @Test
-    void verifyVintageDiscovery() {
+    void givenJunitVintageEngine_whenRunningTestSuite_thenTestsAreDiscovered() {
         EngineDiscoveryResults results = EngineTestKit.engine("junit-vintage")
             .selectors(selectClass(DisplayTest.class))
             .discover();
@@ -41,7 +41,7 @@ public class EngineTestKitDiscoveryUnitTest {
     }
 
     @Test
-    void verifyHighLevelTestStats() {
+    void givenTestSuite_whenRunningAllTests_thenCollectHighLevelStats() {
         EngineTestKit
             .engine("junit-jupiter")
             .selectors(selectClass(DisplayTest.class))
@@ -52,29 +52,29 @@ public class EngineTestKitDiscoveryUnitTest {
     }
 
     @Test
-    void verifyTestAbortion() {
+    void givenTestSuite_whenRunningTestThatAborts_thenCollectDetailedStats() {
         Events testEvents = EngineTestKit
             .engine("junit-jupiter")
-            .selectors(selectMethod(DisplayTest.class, "aborts"))
+            .selectors(selectMethod(DisplayTest.class, "whenAssumptionsFail_thenAborts"))
             .execute()
             .testEvents();
 
         testEvents.assertThatEvents()
-            .haveExactly(1, event(test("aborts"),
+            .haveExactly(1, event(test("whenAssumptionsFail_thenAborts"),
                     abortedWithReason(instanceOf(TestAbortedException.class),
                         message(message -> message.contains("test only runs for mobile")))));
     }
 
     @Test
-    void verifyTestFailure() {
+    void givenTestSuite_whenRunningTestThatFails_thenCollectDetailedStats() {
         Events testEvents = EngineTestKit
             .engine("junit-jupiter")
-            .selectors(selectMethod(DisplayTest.class, "fails"))
+            .selectors(selectMethod(DisplayTest.class, "whenIncorrect_thenFails"))
             .execute()
             .testEvents();
 
         testEvents.assertThatEvents()
-            .haveExactly(1, event(test("fails"),
+            .haveExactly(1, event(test("whenIncorrect_thenFails"),
                 finishedWithFailure(instanceOf(AssertionFailedError.class))));
     }
 
