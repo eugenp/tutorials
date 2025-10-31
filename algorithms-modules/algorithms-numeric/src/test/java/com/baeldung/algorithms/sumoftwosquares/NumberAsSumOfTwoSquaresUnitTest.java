@@ -1,14 +1,16 @@
 package com.baeldung.algorithms.sumoftwosquares;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 
-class NumberAsSumOfTwoSquaresTest {
+class NumberAsSumOfTwoSquaresUnitTest {
 
     @Test
-    void IsNumberSumOfTwoSquaresValid() {
+    @DisplayName("Given input number can be expressed as a sum of squares, when checked, then returns true")
+    void givenNumberIsSumOfSquares_whenCheckIsCalled_thenReturnsTrue() {
         // Simple cases
         assertTrue(NumberAsSumOfTwoSquares.isSumOfTwoSquares(0)); // 0^2 + 0^2
         assertTrue(NumberAsSumOfTwoSquares.isSumOfTwoSquares(1)); // 1^2 + 0^2
@@ -22,7 +24,8 @@ class NumberAsSumOfTwoSquaresTest {
     }
 
     @Test
-    void IsNumberNotSumOfTwoSquaresValid() {
+    @DisplayName("Given input number can't be expressed as a sum of squares, when checked, then returns false")
+    void givenNumberIsNotSumOfSquares_whenCheckIsCalled_thenReturnsFalse() {
         // Simple cases
         assertFalse(NumberAsSumOfTwoSquares.isSumOfTwoSquares(3));  // 3 (4k+3, exp 1)
         assertFalse(NumberAsSumOfTwoSquares.isSumOfTwoSquares(6));  // 2 * 3 (3 has exp 1)
@@ -36,7 +39,8 @@ class NumberAsSumOfTwoSquaresTest {
     }
 
     @Test
-    void IsNumberNegative() {
+    @DisplayName("Given input number is negative, when checked, then returns false")
+    void givenNegativeNumber_whenCheckIsCalled_thenReturnsFalse() {
         assertFalse(NumberAsSumOfTwoSquares.isSumOfTwoSquares(-1)); // Negatives as hygiene
         assertFalse(NumberAsSumOfTwoSquares.isSumOfTwoSquares(-10)); // Negatives as hygiene
     }
