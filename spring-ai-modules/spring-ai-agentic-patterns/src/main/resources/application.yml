@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: agentic-patterns
+  main:
+    web-application-type: none
