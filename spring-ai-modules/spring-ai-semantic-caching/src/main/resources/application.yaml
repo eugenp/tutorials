@@ -1,0 +1,20 @@
+spring:
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      embedding:
+        options:
+          model: text-embedding-3-small
+          dimensions: 512
+  data:
+    redis:
+      url: ${REDIS_URL}
+
+com:
+  baeldung:
+    semantic:
+      cache:
+        similarity-threshold: 0.8
+        content-field: question
+        embedding-field: embedding
+        metadata-field: answer
