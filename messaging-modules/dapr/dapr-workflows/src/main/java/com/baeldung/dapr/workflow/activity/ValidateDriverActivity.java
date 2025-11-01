@@ -15,12 +15,12 @@ public class ValidateDriverActivity implements WorkflowActivity {
     private static final Logger logger = LoggerFactory.getLogger(ValidateDriverActivity.class);
 
     @Override
-    public Object run(WorkflowActivityContext ctx) {
-        RideWorkflowRequest request = ctx.getInput(RideWorkflowRequest.class);
+    public Object run(WorkflowActivityContext context) {
+        RideWorkflowRequest request = context.getInput(RideWorkflowRequest.class);
         logger.info("Validating driver: {}", request.getDriverId());
 
-        // Simulate validation logic
-        if (request.getDriverId() != null && !request.getDriverId().isEmpty()) {
+        if (request.getDriverId() != null && !request.getDriverId()
+            .isEmpty()) {
             logger.info("Driver {} validated successfully", request.getDriverId());
             return true;
         }

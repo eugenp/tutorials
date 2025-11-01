@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import io.dapr.spring.workflows.config.EnableDaprWorkflows;
 
-@SpringBootApplication
 @EnableDaprWorkflows
+@SpringBootApplication
 public class DaprWorkflowApp {
 
     public static void main(String[] args) {

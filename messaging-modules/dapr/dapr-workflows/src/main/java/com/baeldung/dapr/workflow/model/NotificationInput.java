@@ -30,9 +30,6 @@ public class NotificationInput {
 
     @Override
     public String toString() {
-        return "NotificationInput{" +
-               "request=" + request +
-               ", fare=" + fare +
-               '}';
+        return "NotificationInput{" + "request=" + request + ", fare=" + fare + '}';
     }
 }

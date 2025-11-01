@@ -40,6 +40,7 @@ public class RideRequest {
 
     @Override
     public String toString() {
-        return "RideRequest [passengerId=" + passengerId + ", location=" + location + ", destination=" + destination + "]";
+        return "RideRequest [passengerId=" + passengerId + ", location=" + location + ", destination=" + destination
+                + "]";
     }
 }

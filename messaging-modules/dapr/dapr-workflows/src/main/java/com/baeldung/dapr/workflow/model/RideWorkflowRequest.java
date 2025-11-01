@@ -52,11 +52,6 @@ public class RideWorkflowRequest {
 
     @Override
     public String toString() {
-        return "RideWorkflowRequest{" +
-               "rideId='" + rideId + '\'' +
-               ", rideRequest=" + rideRequest +
-               ", driverId='" + driverId + '\'' +
-               ", workflowInstanceId='" + workflowInstanceId + '\'' +
-               '}';
+        return "RideWorkflowRequest{" + "rideId='" + rideId + '\'' + ", rideRequest=" + rideRequest + ", driverId='" + driverId + '\'' + ", workflowInstanceId='" + workflowInstanceId + '\'' + '}';
     }
 }

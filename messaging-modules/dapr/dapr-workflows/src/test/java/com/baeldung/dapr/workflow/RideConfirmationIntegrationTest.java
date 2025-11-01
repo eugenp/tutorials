@@ -26,13 +26,7 @@ import io.dapr.workflows.client.WorkflowRuntimeStatus;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 
-@SpringBootTest(
-    classes = { 
-        DaprWorkflowApp.class, 
-        DaprWorkflowTestConfig.class,
-        DaprAutoConfiguration.class 
-    },
-    webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@SpringBootTest(classes = { DaprWorkflowApp.class, DaprWorkflowTestConfig.class, DaprAutoConfiguration.class }, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 class RideConfirmationIntegrationTest {
 
     @Autowired
@@ -56,16 +50,14 @@ class RideConfirmationIntegrationTest {
     @Test
     void whenPassengerConfirms_thenWorkflowCompletes() {
         RideRequest rideRequest = new RideRequest("passenger-1", "Downtown", "Airport");
-        RideWorkflowRequest workflowRequest = new RideWorkflowRequest(
-            "ride-123", rideRequest, "driver-456", null);
+        RideWorkflowRequest workflowRequest = new RideWorkflowRequest("ride-123", rideRequest, "driver-456", null);
 
         // Start the workflow via REST
-        RideWorkflowRequest response = given()
-            .contentType(ContentType.JSON)
+        RideWorkflowRequest response = given().contentType(ContentType.JSON)
             .body(workflowRequest)
-        .when()
+            .when()
             .post("/workflow/start-ride")
-        .then()
+            .then()
             .statusCode(200)
             .extract()
             .as(RideWorkflowRequest.class);
@@ -74,8 +66,7 @@ class RideConfirmationIntegrationTest {
         assertNotNull(instanceId);
 
         // Wait a bit for the workflow to reach the confirmation step
-        await()
-            .atMost(Duration.ofSeconds(5))
+        await().atMost(Duration.ofSeconds(5))
             .pollInterval(Duration.ofMillis(500))
             .until(() -> {
                 WorkflowInstanceStatus status = workflowClient.getInstanceState(instanceId, false);
@@ -83,17 +74,15 @@ class RideConfirmationIntegrationTest {
             });
 
         // Send confirmation event
-        given()
-            .contentType(ContentType.JSON)
+        given().contentType(ContentType.JSON)
             .body("confirmed")
-        .when()
+            .when()
             .post("/workflow/confirm/" + instanceId)
-        .then()
+            .then()
             .statusCode(200);
 
         // Wait for workflow to complete after confirmation
-        await()
-            .atMost(Duration.ofSeconds(10))
+        await().atMost(Duration.ofSeconds(10))
             .pollInterval(Duration.ofMillis(500))
             .until(() -> {
                 WorkflowInstanceStatus status = workflowClient.getInstanceState(instanceId, false);
@@ -108,16 +97,14 @@ class RideConfirmationIntegrationTest {
     @Test
     void whenPassengerDoesNotConfirm_thenWorkflowTimesOut() {
         RideRequest rideRequest = new RideRequest("passenger-2", "Mall", "Home");
-        RideWorkflowRequest workflowRequest = new RideWorkflowRequest(
-            "ride-456", rideRequest, "driver-789", null);
+        RideWorkflowRequest workflowRequest = new RideWorkflowRequest("ride-456", rideRequest, "driver-789", null);
 
         // Start the workflow via REST
-        RideWorkflowRequest response = given()
-            .contentType(ContentType.JSON)
+        RideWorkflowRequest response = given().contentType(ContentType.JSON)
             .body(workflowRequest)
-        .when()
+            .when()
             .post("/workflow/start-ride")
-        .then()
+            .then()
             .statusCode(200)
             .extract()
             .as(RideWorkflowRequest.class);
@@ -126,8 +113,7 @@ class RideConfirmationIntegrationTest {
         assertNotNull(instanceId);
 
         // Wait for workflow to reach the confirmation step and then timeout
-        await()
-            .atMost(Duration.ofMinutes(6))
+        await().atMost(Duration.ofMinutes(6))
             .pollInterval(Duration.ofSeconds(2))
             .until(() -> {
                 WorkflowInstanceStatus status = workflowClient.getInstanceState(instanceId, false);

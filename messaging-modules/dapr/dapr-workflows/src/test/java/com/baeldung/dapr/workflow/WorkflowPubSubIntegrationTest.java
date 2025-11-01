@@ -22,13 +22,7 @@ import io.dapr.testcontainers.DaprContainer;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 
-@SpringBootTest(
-    classes = { 
-        DaprWorkflowApp.class, 
-        DaprWorkflowTestConfig.class,
-        DaprAutoConfiguration.class 
-    },
-    webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@SpringBootTest(classes = { DaprWorkflowApp.class, DaprWorkflowTestConfig.class, DaprAutoConfiguration.class }, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 class WorkflowPubSubIntegrationTest {
 
     @Autowired
@@ -49,28 +43,26 @@ class WorkflowPubSubIntegrationTest {
     @Test
     void whenPubSubEventReceived_thenWorkflowStarts() {
         RideRequest rideRequest = new RideRequest("passenger-2", "Mall", "Home");
-        RideWorkflowRequest workflowRequest = new RideWorkflowRequest(
-            "ride-456", rideRequest, "driver-789", null);
+        RideWorkflowRequest workflowRequest = new RideWorkflowRequest("ride-456", rideRequest, "driver-789", null);
 
         // Publish event to trigger workflow
         CloudEvent<RideWorkflowRequest> cloudEvent = new CloudEvent<>();
         cloudEvent.setData(workflowRequest);
 
-        given()
-            .contentType(ContentType.JSON)
+        given().contentType(ContentType.JSON)
             .body(cloudEvent)
-        .when()
+            .when()
             .post("/workflow-subscriber/driver-accepted")
-        .then()
+            .then()
             .statusCode(200);
 
         // Give the workflow time to start and complete
-        await()
-            .atMost(Duration.ofSeconds(15))
+        await().atMost(Duration.ofSeconds(15))
             .pollDelay(Duration.ofSeconds(2))
             .untilAsserted(() -> {
                 // The workflow should have been triggered by the pub/sub event
-                // In a real scenario, we would verify through application logs or database state
+                // In a real scenario, we would verify through application logs or database
+                // state
             });
     }
 }

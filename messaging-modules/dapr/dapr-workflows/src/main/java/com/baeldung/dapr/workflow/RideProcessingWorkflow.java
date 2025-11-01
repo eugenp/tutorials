@@ -21,79 +21,60 @@ public class RideProcessingWorkflow implements Workflow {
 
     @Override
     public WorkflowStub create() {
-        return ctx -> {
-            String instanceId = ctx.getInstanceId();
-            ctx.getLogger().info("Starting ride processing workflow: {}", instanceId);
+        return context -> {
+            String instanceId = context.getInstanceId();
+            context.getLogger()
+                .info("Starting ride processing workflow: {}", instanceId);
 
-            RideWorkflowRequest request = ctx.getInput(RideWorkflowRequest.class);
+            RideWorkflowRequest request = context.getInput(RideWorkflowRequest.class);
 
-            // Configure retry policy for activities
-            Duration backoffTimeout = Duration.ofSeconds(1);
-            Duration maxTimeout = Duration.ofSeconds(10);
-            WorkflowTaskRetryPolicy retryPolicy = new WorkflowTaskRetryPolicy(
-                3, backoffTimeout, 1.5, Duration.ofSeconds(5), maxTimeout);
-            WorkflowTaskOptions options = new WorkflowTaskOptions(retryPolicy);
+            WorkflowTaskOptions options = taskOptions();
 
-            // Step 1: Validate the driver
-            ctx.getLogger().info("Step 1: Validating driver {}", request.getDriverId());
-            boolean isValid = ctx.callActivity(
-                ValidateDriverActivity.class.getName(),
-                request,
-                options,
-                boolean.class
-            ).await();
+            context.getLogger()
+                .info("Step 1: Validating driver {}", request.getDriverId());
+            boolean isValid = context.callActivity(ValidateDriverActivity.class.getName(), request, options, boolean.class)
+                .await();
 
             if (!isValid) {
-                ctx.complete(new RideWorkflowStatus(request.getRideId(), "FAILED", "Driver validation failed"));
+                context.complete(new RideWorkflowStatus(request.getRideId(), "FAILED", "Driver validation failed"));
                 return;
             }
 
-            // Step 2: Calculate the fare
-            ctx.getLogger().info("Step 2: Calculating fare");
-            double fare = ctx.callActivity(
-                CalculateFareActivity.class.getName(),
-                request,
-                options,
-                double.class
-            ).await();
+            context.getLogger()
+                .info("Step 2: Calculating fare");
+            double fare = context.callActivity(CalculateFareActivity.class.getName(), request, options, double.class)
+                .await();
 
-            // Step 3: Notify the passenger
-            ctx.getLogger().info("Step 3: Notifying passenger");
+            context.getLogger()
+                .info("Step 3: Notifying passenger");
             NotificationInput notificationInput = new NotificationInput(request, fare);
-            String notification = ctx.callActivity(
-                NotifyPassengerActivity.class.getName(),
-                notificationInput,
-                options,
-                String.class
-            ).await();
+            String notification = context.callActivity(NotifyPassengerActivity.class.getName(), notificationInput, options, String.class)
+                .await();
 
-            // Step 4: Wait for passenger confirmation
-            ctx.getLogger().info("Step 4: Waiting for passenger confirmation");
-            String confirmation = ctx.waitForExternalEvent(
-                "passenger-confirmation",
-                Duration.ofMinutes(5),
-                String.class
-            ).await();
+            context.getLogger()
+                .info("Step 4: Waiting for passenger confirmation");
+            String confirmation = context.waitForExternalEvent("passenger-confirmation", Duration.ofMinutes(5), String.class)
+                .await();
 
             if (confirmation == null || !confirmation.equalsIgnoreCase("confirmed")) {
-                ctx.complete(new RideWorkflowStatus(
-                    request.getRideId(), 
-                    "CANCELLED", 
-                    "Passenger did not confirm the ride within the timeout period"
-                ));
+                context.complete(new RideWorkflowStatus(request.getRideId(), "CANCELLED", "Passenger did not confirm the ride within the timeout period"));
                 return;
             }
 
-            // Complete the workflow
-            String message = String.format(
-                "Ride confirmed and processed successfully. Fare: $%.2f. %s", 
-                fare, 
-                notification
-            );
+            String message = String.format("Ride confirmed and processed successfully. Fare: $%.2f. %s", fare, notification);
             RideWorkflowStatus status = new RideWorkflowStatus(request.getRideId(), "COMPLETED", message);
 
-            ctx.getLogger().info("Workflow completed: {}", message);
-            ctx.complete(status);
+            context.getLogger()
+                .info("Workflow completed: {}", message);
+            context.complete(status);
         };
+    }
+
+    private WorkflowTaskOptions taskOptions() {
+        Duration backoffTimeout = Duration.ofSeconds(1);
+        Duration maxTimeout = Duration.ofSeconds(10);
+
+        WorkflowTaskRetryPolicy retryPolicy = new WorkflowTaskRetryPolicy(3, backoffTimeout, 1.5, Duration.ofSeconds(5), maxTimeout);
+        return new WorkflowTaskOptions(retryPolicy);
     }
 }

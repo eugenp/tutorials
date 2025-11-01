@@ -15,14 +15,18 @@ public class NotifyPassengerActivity implements WorkflowActivity {
     private static final Logger logger = LoggerFactory.getLogger(NotifyPassengerActivity.class);
 
     @Override
-    public Object run(WorkflowActivityContext ctx) {
-        NotificationInput input = ctx.getInput(NotificationInput.class);
-        logger.info("Notifying passenger: {}", input.getRequest().getRideRequest().getPassengerId());
+    public Object run(WorkflowActivityContext context) {
+        NotificationInput input = context.getInput(NotificationInput.class);
+        logger.info("Notifying passenger: {}", input.getRequest()
+            .getRideRequest()
+            .getPassengerId());
 
         // In a real application, send notification via email, SMS, or push notification
-        String message = String.format("Driver %s is on the way to %s. Estimated fare: $%.2f", 
-            input.getRequest().getDriverId(), 
-            input.getRequest().getRideRequest().getLocation(),
+        String message = String.format("Driver %s is on the way to %s. Estimated fare: $%.2f", input.getRequest()
+            .getDriverId(),
+            input.getRequest()
+                .getRideRequest()
+                .getLocation(),
             input.getFare());
 
         logger.info("Notification sent: {}", message);
