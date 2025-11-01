@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;  
 import java.util.Map;
 import java.util.Set;
 
@@ -30,6 +31,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.baeldung.restassured.model.Movie;
 import com.baeldung.restassured.service.AppService;
 
+import io.restassured.common.mapper.TypeRef;  
 import io.restassured.response.Response;
 
 @RunWith(SpringRunner.class)
@@ -78,7 +80,7 @@ public class AppControllerIntegrationTest {
     }
 
     @Test
-    public void whenCallingMoviesEndpoint_thenReturnAllMovies() {
+    public void givenSetMovie_whenCallingMoviesEndpoint_thenReturnAllMovies() {
 
         Set<Movie> movieSet = new HashSet<>();
         movieSet.add(new Movie(1, "movie1", "summary1"));
@@ -95,6 +97,22 @@ public class AppControllerIntegrationTest {
             .extract()
             .as(Movie[].class);
         assertThat(movies.length).isEqualTo(2);
+    }
+    
+    @Test
+    public void whenCallingMoviesEndpoint_thenReturnAllMoviesAsList() {
+        Set<Movie> movieSet = new HashSet<>();
+        movieSet.add(new Movie(1, "movie1", "summary1"));
+        movieSet.add(new Movie(2, "movie2", "summary2"));
+        when(appService.getAll()).thenReturn(movieSet);
+
+        List<Movie> movies = get(uri + "/movies").then()
+            .statusCode(200)
+            .extract()
+            .as(new TypeRef<List<Movie>>() {});
+
+        assertThat(movies.size()).isEqualTo(2);
+        assertThat(movies).usingFieldByFieldElementComparator().containsAll(movieSet);
     }
 
     @Test
