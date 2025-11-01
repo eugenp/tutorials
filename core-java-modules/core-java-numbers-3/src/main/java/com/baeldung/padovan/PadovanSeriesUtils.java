@@ -10,14 +10,21 @@ public class PadovanSeriesUtils {
     }
 
     public static int nthPadovanTermRecursiveMethodWithMemoization(int n) {
-        int[] memo = new int[n + 1];
         if (n == 0 || n == 1 || n == 2) {
             return 1;
         }
+        int[] memo = new int[n + 1];
+        memo[0] = 1;
+        memo[1] = 1;
+        memo[2] = 1;
+        return nthPadovanTermRecursiveMethodWithMemoization(n, memo);
+    }
+
+    private static int nthPadovanTermRecursiveMethodWithMemoization(int n, int[] memo) {
         if (memo[n] != 0) {
             return memo[n];
         }
-        memo[n] = nthPadovanTermRecursiveMethodWithMemoization(n - 2) + nthPadovanTermRecursiveMethodWithMemoization(n - 3);
+        memo[n] = nthPadovanTermRecursiveMethodWithMemoization(n - 2, memo) + nthPadovanTermRecursiveMethodWithMemoization(n - 3, memo);
         return memo[n];
     }
 
