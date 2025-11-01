@@ -553,8 +553,10 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
+                <module>parent-boot-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>parent-spring-7</module>
                 <module>apache-kafka</module>
                 <module>core-groovy-modules</module>
                 <module>core-java-modules/core-java-concurrency-simple</module>
@@ -613,8 +615,10 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
+                <module>parent-boot-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>parent-spring-7</module>
                 <module>akka-modules</module>
                 <module>algorithms-modules</module>
                 <module>apache-cxf-modules</module>
@@ -633,9 +637,10 @@
                 <module>apache-poi-4</module>
                 <module>apache-thrift</module>
                 <module>apache-velocity</module>
+                <module>apollo</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
-                <module>azure</module>
+                <module>spring-boot-azure-deployment</module>
                 <module>azure-functions</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
@@ -660,10 +665,10 @@
                 <module>grpc</module>
                 <module>guava-modules</module>
                 <module>hazelcast</module>
-                <module>heroku</module>
+                <module>spring-boot-heroku-deployment</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
-                <module>image-compressing</module>
+                <module>image-compression</module>
                 <module>image-processing</module>
                 <module>j2cl</module>
                 <module>jackson-modules</module>
@@ -675,7 +680,7 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
-                <module>jetbrains</module>
+                <module>jetbrains-annotations</module>
                 <module>jgit</module>
                 <module>jmh</module>
                 <module>jmonkeyengine</module>
@@ -1001,8 +1006,10 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
+                <module>parent-boot-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>parent-spring-7</module>
                 <module>apache-kafka</module>
                 <module>core-groovy-modules</module>
                 <module>core-java-modules/core-java-concurrency-simple</module>
@@ -1055,8 +1062,10 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
+                <module>parent-boot-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>parent-spring-7</module>
                 <module>akka-modules</module>
                 <module>algorithms-modules</module>
                 <module>apache-cxf-modules</module>
@@ -1077,7 +1086,7 @@
                 <module>apache-velocity</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
-                <module>azure</module>
+                <module>spring-boot-azure-deployment</module>
                 <module>azure-functions</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
@@ -1102,10 +1111,10 @@
                 <module>grpc</module>
                 <module>guava-modules</module>
                 <module>hazelcast</module>
-                <module>heroku</module>
+                <module>spring-boot-heroku-deployment</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
-                <module>image-compressing</module>
+                <module>image-compression</module>
                 <module>image-processing</module>
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
@@ -1117,7 +1126,7 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
-                <module>jetbrains</module>
+                <module>jetbrains-annotations</module>
                 <module>jgit</module>
                 <module>jmh</module>
                 <module>jmonkeyengine</module>
@@ -1465,8 +1474,10 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
+                <module>parent-boot-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>parent-spring-7</module>
             </modules>
         </profile>
 
