@@ -14,16 +14,10 @@ import com.example.entity.Person;
 public interface PersonMapperInlineFactory {
     PersonMapperInlineFactory INSTANCE = Mappers.getMapper(PersonMapperInlineFactory.class);
 
-    @Mapping(target = "department")
-    @Mapping(target = "salary")
-    Employee toEmployee(PersonDTO dto);
-
-    @Mapping(target = "customerId")
-    @Mapping(target = "tier")
-    Customer toCustomer(PersonDTO dto);
+   Person toPerson(PersonDTO dto);
 
     @ObjectFactory
-    default Person createPerson(Class<? extends Person> targetType, PersonDTO dto) {
+    default Person createPerson(PersonDTO dto) {
         if ("employee".equalsIgnoreCase(dto.getType())) return new Employee();
         else if ("customer".equalsIgnoreCase(dto.getType())) return new Customer();
         throw new IllegalArgumentException("Unknown type: " + dto.getType());
