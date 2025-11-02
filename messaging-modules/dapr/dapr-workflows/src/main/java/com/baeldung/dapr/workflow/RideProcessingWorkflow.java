@@ -56,7 +56,7 @@ public class RideProcessingWorkflow implements Workflow {
             String confirmation = context.waitForExternalEvent("passenger-confirmation", Duration.ofMinutes(5), String.class)
                 .await();
 
-            if (confirmation == null || !confirmation.equalsIgnoreCase("confirmed")) {
+            if (!"confirmed".equalsIgnoreCase(confirmation)) {
                 context.complete(new RideWorkflowStatus(request.getRideId(), "CANCELLED", "Passenger did not confirm the ride within the timeout period"));
                 return;
             }
@@ -71,10 +71,13 @@ public class RideProcessingWorkflow implements Workflow {
     }
 
     private WorkflowTaskOptions taskOptions() {
+        int maxRetries = 3;
         Duration backoffTimeout = Duration.ofSeconds(1);
+        double backoffCoefficient = 1.5;
+        Duration maxRetryInterval = Duration.ofSeconds(5);
         Duration maxTimeout = Duration.ofSeconds(10);
 
-        WorkflowTaskRetryPolicy retryPolicy = new WorkflowTaskRetryPolicy(3, backoffTimeout, 1.5, Duration.ofSeconds(5), maxTimeout);
+        WorkflowTaskRetryPolicy retryPolicy = new WorkflowTaskRetryPolicy(maxRetries, backoffTimeout, backoffCoefficient, maxRetryInterval, maxTimeout);
         return new WorkflowTaskOptions(retryPolicy);
     }
 }

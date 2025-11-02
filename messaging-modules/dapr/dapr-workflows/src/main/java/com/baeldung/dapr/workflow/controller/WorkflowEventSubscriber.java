@@ -32,7 +32,6 @@ public class WorkflowEventSubscriber {
         RideWorkflowRequest request = event.getData();
         logger.info("Received driver acceptance event for ride: {}", request.getRideId());
 
-        // Start the ride processing workflow
         String instanceId = workflowClient.scheduleNewWorkflow(RideProcessingWorkflow.class, request);
 
         logger.info("Started workflow {} for accepted ride {}", instanceId, request.getRideId());

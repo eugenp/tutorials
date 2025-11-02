@@ -1,7 +1,5 @@
 package com.baeldung.dapr.workflow.activity;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.baeldung.dapr.workflow.model.NotificationInput;
@@ -12,24 +10,23 @@ import io.dapr.workflows.WorkflowActivityContext;
 @Component
 public class NotifyPassengerActivity implements WorkflowActivity {
 
-    private static final Logger logger = LoggerFactory.getLogger(NotifyPassengerActivity.class);
-
     @Override
     public Object run(WorkflowActivityContext context) {
         NotificationInput input = context.getInput(NotificationInput.class);
-        logger.info("Notifying passenger: {}", input.getRequest()
-            .getRideRequest()
-            .getPassengerId());
+        context.getLogger()
+            .info("Notifying passenger: {}", input.request()
+                .getRideRequest()
+                .getPassengerId());
 
-        // In a real application, send notification via email, SMS, or push notification
-        String message = String.format("Driver %s is on the way to %s. Estimated fare: $%.2f", input.getRequest()
+        String message = String.format("Driver %s is on the way to %s. Estimated fare: $%.2f", input.request()
             .getDriverId(),
-            input.getRequest()
+            input.request()
                 .getRideRequest()
                 .getLocation(),
-            input.getFare());
+            input.fare());
 
-        logger.info("Notification sent: {}", message);
+        context.getLogger()
+            .info("Notification sent: {}", message);
         return message;
     }
 }

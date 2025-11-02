@@ -42,7 +42,6 @@ public class DaprWorkflowTestConfig {
         return new RabbitMQContainer(DockerImageName.parse("rabbitmq:3.8.26-management")).withExposedPorts(5672, 15672)
             .withNetworkAliases("rabbitmq")
             .withNetwork(daprNetwork)
-            // Use a listening-port wait strategy and give RabbitMQ more time to start
             .waitingFor(Wait.forListeningPort()
                 .withStartupTimeout(Duration.ofMinutes(2)));
     }
