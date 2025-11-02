@@ -2,11 +2,13 @@ package com.baeldung.spring.resttestclient;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpHeaders;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.client.RestTestClient;
@@ -15,23 +17,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.WebApplicationContext;
 
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
 @SpringBootTest
 public class RestTestClientTest {
 
     @Autowired
     private MyController myController;
 
+    @Autowired
+    private AnotherController anotherController;
+
+    @Autowired
     private RestTestClient restTestClient;
 
     @BeforeEach
     void beforeEach(WebApplicationContext context) {
-        var restTestClientBuilder = RestTestClient.bindToController(myController);
-        restTestClient = restTestClientBuilder
-            //.baseUrl("/public") // 1)
-            //.defaultHeader("ContentType", "application/json") // 2)
-            //.defaultCookie("JSESSIONID", "abc123def456ghi789") // 3)
+        restTestClient = RestTestClient.bindToController(myController, anotherController)
             .build();
-
     }
 
     @Test
@@ -100,9 +104,34 @@ public class RestTestClientTest {
             .isOk()
             .expectBody(Person.class)
             .consumeWith(result -> {
-                assertThat(result.getStatus().value()).isEqualTo(200);
-                assertThat(result.getResponseBody().name()).isEqualTo("John Doe");
+                assertThat(result.getStatus()
+                    .value()).isEqualTo(200);
+                assertThat(result.getResponseBody()
+                    .name()).isEqualTo("John Doe");
             });
+    }
+
+    @Test
+    void givenValidQuery_whenGetPersonsStream_thenReturnsFlux() {
+        restTestClient.get()
+            .uri("/persons")
+            .accept(MediaType.APPLICATION_JSON)
+            .exchange()
+            .expectStatus()
+            .isOk()
+            .expectBody(new ParameterizedTypeReference<List<Person>>() {});
+    }
+
+    @Test
+    void givenValidQueryToSecondController_whenGetPenguinMono_thenReturnsEmpty() {
+        restTestClient.get()
+            .uri("/pink/penguin")
+            .accept(MediaType.APPLICATION_JSON)
+            .exchange()
+            .expectStatus()
+            .isOk()
+            .expectBody(Penguin.class)
+            .value(it -> assertThat(it).isNull());
     }
 }
 
@@ -114,8 +143,26 @@ class MyController {
         return id == 1 ? ResponseEntity.ok(new Person(1L, "John Doe")) : ResponseEntity.noContent()
             .build();
     }
+
+    @GetMapping("/persons")
+    public Flux<Person> getAllPersons() {
+        var persons = List.of(
+            new Person(1L, "John Doe"),
+            new Person(2L, "James Bond"),
+            new Person(3L, "Alice In Wonderland")
+        );
+        return Flux.fromIterable(persons);
+    }
 }
 
-record Person(Long id, String name) {
+@RestController("my2")
+class AnotherController {
 
+    @GetMapping("/pink/penguin")
+    public Mono<Penguin> getPinkPenguin() {
+        return Mono.empty();
+    }
 }
+
+record Person(Long id, String name) { }
+record Penguin(Long id) { }
