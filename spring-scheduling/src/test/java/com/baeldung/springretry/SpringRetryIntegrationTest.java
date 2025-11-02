@@ -33,6 +33,10 @@ public class SpringRetryIntegrationTest {
 
     @Autowired
     private RetryTemplate retryTemplate;
+    
+    @Autowired
+    private RetryTemplate retryTemplateNoAttempts;  
+
 
     @Test(expected = RuntimeException.class)
     public void givenRetryService_whenCallWithException_thenRetry() {
@@ -76,5 +80,14 @@ public class SpringRetryIntegrationTest {
             myService.templateRetryService();
             return null;
         });
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void givenTemplateRetryServiceWithZeroAttempts_whenCallWithException_thenFailImmediately() {
+        retryTemplateNoAttempts.execute(arg0 -> {
+            myService.templateRetryService();
+            return null;
+        });
+        verify(myService, times(1)).templateRetryService(); 
     }
 }
