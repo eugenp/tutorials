@@ -16,6 +16,7 @@
 
     <modules>
         <module>jackson-annotations</module>
+        <module>jackson-annotations-2</module>
         <module>jackson-conversions</module>
         <module>jackson-conversions-2</module>
         <module>jackson-conversions-3</module>
