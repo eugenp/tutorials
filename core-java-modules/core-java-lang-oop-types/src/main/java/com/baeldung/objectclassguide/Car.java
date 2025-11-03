@@ -59,10 +59,10 @@ public class Car implements Cloneable {
      */
     @Override
     public String toString() {
-        return "Car{" +
-               "make='" + make + '\'' +
-               ", year=" + year +
-               '}';
+        return "Car{"
+          + "make='" + make + '\''
+          + ", year=" + year
+          + '}';
     }
 
 
