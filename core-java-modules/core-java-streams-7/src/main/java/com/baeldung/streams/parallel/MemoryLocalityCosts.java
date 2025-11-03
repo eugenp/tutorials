@@ -1,13 +1,13 @@
 package com.baeldung.streams.parallel;
 
+import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
+
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
-
-import java.util.Arrays;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.IntStream;
 
 public class MemoryLocalityCosts {
 

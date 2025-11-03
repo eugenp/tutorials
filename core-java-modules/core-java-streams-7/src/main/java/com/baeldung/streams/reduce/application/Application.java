@@ -1,9 +1,9 @@
 package com.baeldung.streams.reduce.application;
 
-import com.baeldung.streams.reduce.entities.User;
-
 import java.util.Arrays;
 import java.util.List;
+
+import com.baeldung.streams.reduce.entities.User;
 
 public class Application {
 
