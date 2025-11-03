@@ -43,8 +43,9 @@ class SemanticCachingService {
         }
 
         Document result = results.getFirst();
-        String answer = String.valueOf(result.getMetadata().get(semanticCacheProperties.metadataField()));
-        return Optional.of(answer);
+        return Optional
+            .ofNullable(result.getMetadata().get(semanticCacheProperties.metadataField()))
+            .map(String::valueOf);
     }
 
 }
