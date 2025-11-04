@@ -1,0 +1,18 @@
+# Create a new order
+POST http://localhost:8080/order
+Content-Type: application/json
+
+{
+  "order" : {
+
+  },
+  "billingInfo" : {
+
+  },
+  "shippingInfo": {
+
+  },
+  "customer" : {
+
+  }
+}

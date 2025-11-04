@@ -1,0 +1,22 @@
+spring:
+  temporal:
+    connection:
+      target: local
+    workers-auto-discovery:
+      packages:
+        - "com.baeldung.temporal.workflows.sboot.order"
+    start-workers: true
+    workflow-cache:
+      using-virtual-workflow-threads: true
+    workers:
+      - task-queue: "ORDERS"
+        capacity:
+          max-concurrent-activity-task-pollers: 10
+          max-concurrent-workflow-task-pollers: 2
+  threads:
+    virtual:
+      enabled: true
+
+logging:
+  level:
+    web: debug

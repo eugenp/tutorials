@@ -1,0 +1,4 @@
+spring:
+  temporal:
+    connection:
+      target: local
