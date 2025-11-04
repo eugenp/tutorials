@@ -21,7 +21,7 @@ class SemanticCacheLiveTest {
     @Test
     void whenUsingSemanticCache_thenCacheReturnsAnswerForSemanticallyRelatedQuestion() {
         String question = "How many sick leaves can I take?";
-        String answer = "No leaves allowed for slaves! Get back to work!!";
+        String answer = "No leaves allowed! Get back to work!!";
         semanticCachingService.save(question, answer);
 
         String rephrasedQuestion = "How many days sick leave can I take?";
