@@ -29,6 +29,21 @@
 
     <dependencies>
         <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-open-ai</artifactId>
+            <version>${langchain4j-open-ai.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut.langchain4j</groupId>
+            <artifactId>micronaut-langchain4j-core</artifactId>
+            <version>${micronaut-langchain4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut.langchain4j</groupId>
+            <artifactId>micronaut-langchain4j-openai</artifactId>
+            <version>${micronaut-langchain4j.version}</version>
+        </dependency>
+        <dependency>
             <groupId>io.micronaut</groupId>
             <artifactId>micronaut-runtime</artifactId>
             <scope>compile</scope>
@@ -116,13 +131,11 @@
                     <!-- <useIncrementalCompilation>false</useIncrementalCompilation> -->
 
                     <annotationProcessorPaths combine.self="append">
-
                         <path>
                             <groupId>io.micronaut</groupId>
                             <artifactId>micronaut-inject-java</artifactId>
                             <version>${micronaut.version}</version>
                         </path>
-
                         <path>
                             <groupId>io.micronaut</groupId>
                             <artifactId>micronaut-http-validation</artifactId>
@@ -149,7 +162,7 @@
     <properties>
         <!-- <exec.mainClass>com.baeldung.micronaut.helloworld.server.ServerApplication</exec.mainClass> -->
         <exec.mainClass>com.baeldung.micronaut.vs.springboot.CompareApplication</exec.mainClass>
-        <micronaut.version>3.10.1</micronaut.version>
+        <micronaut.version>3.10.4</micronaut.version>
         <jdk.version>17</jdk.version>
         <release.version>17</release.version>
         <packaging>jar</packaging>
@@ -157,6 +170,8 @@
         <micronaut.runtime>netty</micronaut.runtime>
         <micronaut-build.version>3.5.4</micronaut-build.version>
         <shade.plugin.version>3.2.0</shade.plugin.version>
+        <langchain4j-open-ai.version>0.36.2</langchain4j-open-ai.version>
+        <micronaut-langchain4j.version>0.0.1</micronaut-langchain4j.version>
     </properties>
 
 </project>

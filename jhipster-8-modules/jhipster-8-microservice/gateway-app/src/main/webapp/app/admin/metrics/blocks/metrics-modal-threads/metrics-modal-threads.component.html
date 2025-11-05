@@ -1,0 +1,104 @@
+<div class="modal-header">
+  <h4 class="modal-title">Threads dump</h4>
+
+  <button type="button" class="btn-close" (click)="dismiss()">&times;</button>
+</div>
+
+<div class="modal-body">
+  <div class="mb-3">
+    <span class="badge bg-primary hand" (click)="threadStateFilter = undefined">
+      @if (threadStateFilter === undefined) {
+        <fa-icon icon="check"></fa-icon>
+      }
+      All&nbsp;<span class="badge rounded-pill bg-default">{{ threadDumpAll }}</span>
+    </span>
+
+    <span class="badge bg-success hand" (click)="threadStateFilter = ThreadState.Runnable">
+      @if (threadStateFilter === ThreadState.Runnable) {
+        <fa-icon icon="check"></fa-icon>
+      }
+      Runnable&nbsp;<span class="badge rounded-pill bg-default">{{ threadDumpRunnable }}</span>
+    </span>
+
+    <span class="badge bg-info hand" (click)="threadStateFilter = ThreadState.Waiting">
+      @if (threadStateFilter === ThreadState.Waiting) {
+        <fa-icon icon="check"></fa-icon>
+      }
+      Waiting&nbsp;<span class="badge rounded-pill bg-default">{{ threadDumpWaiting }}</span>
+    </span>
+
+    <span class="badge bg-warning hand" (click)="threadStateFilter = ThreadState.TimedWaiting">
+      @if (threadStateFilter === ThreadState.TimedWaiting) {
+        <fa-icon icon="check"></fa-icon>
+      }
+      Timed Waiting&nbsp;<span class="badge rounded-pill bg-default">{{ threadDumpTimedWaiting }}</span>
+    </span>
+
+    <span class="badge bg-danger hand" (click)="threadStateFilter = ThreadState.Blocked">
+      @if (threadStateFilter === ThreadState.Blocked) {
+        <fa-icon icon="check"></fa-icon>
+      }
+      Blocked&nbsp;<span class="badge rounded-pill bg-default">{{ threadDumpBlocked }}</span>
+    </span>
+  </div>
+
+  @for (thread of getThreads(); track $index) {
+    <div class="pad">
+      <h6>
+        <span class="badge" [ngClass]="getBadgeClass(thread.threadState)">{{ thread.threadState }}</span>
+
+        &nbsp;{{ thread.threadName }} (ID {{ thread.threadId }})
+
+        <a (click)="thread.showThreadDump = !thread.showThreadDump" href="javascript:void(0);">
+          <span [hidden]="thread.showThreadDump">Show Stacktrace</span>
+          <span [hidden]="!thread.showThreadDump">Hide Stacktrace</span>
+        </a>
+      </h6>
+
+      <div class="card" [hidden]="!thread.showThreadDump">
+        <div class="card-body">
+          @for (st of thread.stackTrace; track $index) {
+            <div class="break">
+              <samp
+                >{{ st.className }}.{{ st.methodName }}(<code>{{ st.fileName }}:{{ st.lineNumber }}</code
+                >)</samp
+              >
+              <span class="mt-1"></span>
+            </div>
+          }
+        </div>
+      </div>
+      <table class="table table-sm table-responsive">
+        <caption>
+          Threads dump:
+          {{
+            thread.threadName
+          }}
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Blocked Time</th>
+            <th scope="col">Blocked Count</th>
+            <th scope="col">Waited Time</th>
+            <th scope="col">Waited Count</th>
+            <th scope="col">Lock name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ thread.blockedTime }}</td>
+            <td>{{ thread.blockedCount }}</td>
+            <td>{{ thread.waitedTime }}</td>
+            <td>{{ thread.waitedCount }}</td>
+            <td class="thread-dump-modal-lock" title="{{ thread.lockName }}">
+              <code>{{ thread.lockName }}</code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  }
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary float-start" data-dismiss="modal" (click)="dismiss()">Done</button>
+</div>

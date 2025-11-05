@@ -4,15 +4,14 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-mvc-forms-thymeleaf</artifactId>
-    <name>spring-mvc-forms-thymeleaf</name>
     <packaging>jar</packaging>
+    <name>spring-mvc-forms-thymeleaf</name>
     <description>spring forms examples using thymeleaf</description>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
+        <artifactId>spring-web-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -40,10 +39,17 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <artifactId>okhttp</artifactId>
+            <groupId>com.squareup.okhttp3</groupId>
+            <version>${com.squareup.okhttp3.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
         <start-class>com.baeldung.sessionattrs.SessionAttrsApplication</start-class>
+        <com.squareup.okhttp3.version>4.12.0</com.squareup.okhttp3.version>
     </properties>
 
 </project>

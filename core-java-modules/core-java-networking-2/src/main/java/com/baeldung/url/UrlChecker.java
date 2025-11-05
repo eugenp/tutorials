@@ -2,6 +2,8 @@ package com.baeldung.url;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 public class UrlChecker {
@@ -16,10 +18,14 @@ public class UrlChecker {
 
     private int getResponseCodeForURLUsing(String address, String method) throws IOException {
         HttpURLConnection.setFollowRedirects(false); // Set follow redirects to false
-        final URL url = new URL(address);
-        HttpURLConnection huc = (HttpURLConnection) url.openConnection();
-        huc.setRequestMethod(method);
-        return huc.getResponseCode();
+        try {
+            final URL url = new URI(address).toURL();
+            HttpURLConnection huc = (HttpURLConnection) url.openConnection();
+            huc.setRequestMethod(method);
+            return huc.getResponseCode();
+        } catch (URISyntaxException e) {
+            throw new IOException(e);
+        }
     }
 
 }

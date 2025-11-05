@@ -30,12 +30,13 @@
         <dependency>
             <groupId>io.leangen.graphql</groupId>
             <artifactId>graphql-spqr-spring-boot-starter</artifactId>
-            <version>${graphql-spqr-spring-boot-starter-version}</version>
+            <version>${graphql-spqr-spring-boot-starter.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
-        <graphql-spqr-spring-boot-starter-version>0.0.6</graphql-spqr-spring-boot-starter-version>
+        <graphql-spqr-spring-boot-starter.version>1.0.1</graphql-spqr-spring-boot-starter.version>
+        <junit-jupiter.version>5.10.3</junit-jupiter.version> <!-- Updating to 5.11.x breaks changes -->
     </properties>
 
 </project>

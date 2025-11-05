@@ -24,9 +24,9 @@ public class RatingController {
     private RatingService ratingService;
 
     @GetMapping
-    public List<Rating> findRatingsByBookId(@RequestParam(required = false) Optional<Long> bookId) {
+    public List<Rating> findRatingsByBookId(@RequestParam(required = false, name = "bookId") Optional<Long> bookId) {
         return bookId.map(ratingService::findRatingsByBookId)
-            .orElseGet(ratingService::findAllRatings);
+                .orElseGet(ratingService::findAllRatings);
     }
 
     @PostMapping
@@ -35,17 +35,17 @@ public class RatingController {
     }
 
     @DeleteMapping("/{ratingId}")
-    public void deleteRating(@PathVariable Long ratingId) {
+    public void deleteRating(@PathVariable("ratingId") Long ratingId) {
         ratingService.deleteRating(ratingId);
     }
 
     @PutMapping("/{ratingId}")
-    public Rating updateRating(@RequestBody Rating rating, @PathVariable Long ratingId) {
+    public Rating updateRating(@RequestBody Rating rating, @PathVariable("ratingId") Long ratingId) {
         return ratingService.updateRating(rating, ratingId);
     }
 
     @PatchMapping("/{ratingId}")
-    public Rating updateRating(@RequestBody Map<String, String> updates, @PathVariable Long ratingId) {
+    public Rating updateRating(@RequestBody Map<String, String> updates, @PathVariable("ratingId") Long ratingId) {
         return ratingService.updateRating(updates, ratingId);
     }
 }

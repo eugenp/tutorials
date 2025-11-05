@@ -2,6 +2,8 @@
 package com.baeldung.soap.ws.client.generated;
 
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
@@ -27,8 +29,8 @@ public class CountryServiceImplService extends Service {
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://localhost:8888/ws/country?wsdl");
-        } catch (MalformedURLException ex) {
+            url = new URI("http://localhost:8888/ws/country?wsdl").toURL();
+        } catch (MalformedURLException | URISyntaxException ex) {
             e = new WebServiceException(ex);
         }
         COUNTRYSERVICEIMPLSERVICE_WSDL_LOCATION = url;

@@ -14,7 +14,7 @@
     </parent>
 
     <modules>
-        <module>axon</module>
+        <!-- <module>axon</module> --> <!-- JAVA-42358 -->
         <module>clean-architecture</module>
         <module>coupling</module>
         <module>cqrs-es</module>
@@ -29,13 +29,16 @@
         <module>design-patterns-functional</module>
         <module>design-patterns-singleton</module>
         <module>design-patterns-structural</module>
-        <module>dip</module>
+        <module>design-patterns-structural-2</module>
+        <module>dependency-inversion</module>
         <module>enterprise-patterns</module>
         <module>front-controller</module>
         <module>idd</module>
         <module>intercepting-filter</module>
         <module>solid</module>
         <module>monkey-patching</module>
+        <module>vertical-slice-architecture</module>
+        <module>data-oriented-programming</module>
     </modules>
 
 </project>

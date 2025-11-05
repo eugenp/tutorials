@@ -23,6 +23,11 @@
             <version>${commons-configuration2}</version>
         </dependency>
         <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson.version}</version>
@@ -44,10 +49,9 @@
             <type>pom</type>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
+            <groupId>com.github.mwiede</groupId>
+            <artifactId>jsch</artifactId>
+            <version>${jsch.version}</version>
         </dependency>
     </dependencies>
 
@@ -55,6 +59,7 @@
         <org.ini4j.version>0.5.4</org.ini4j.version>
         <commons-configuration2>2.8.0</commons-configuration2>
         <itext7-core.version>7.2.4</itext7-core.version>
+        <jsch.version>0.2.20</jsch.version>
     </properties>
 
 </project>

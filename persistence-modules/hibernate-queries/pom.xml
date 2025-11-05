@@ -55,7 +55,7 @@
             <version>${h2.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-spatial</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
@@ -70,7 +70,7 @@
             <version>${mariaDB4j.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-testing</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
@@ -112,7 +112,6 @@
         <mysql.version>8.2.0</mysql.version>
         <mariaDB4j.version>2.6.0</mariaDB4j.version>
         <h2.version>2.1.214</h2.version>
-        <hibernate.version>6.4.2.Final</hibernate.version>
         <testcontainers.mysql.version>1.17.6</testcontainers.mysql.version>
     </properties>
 

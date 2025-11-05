@@ -1,0 +1,16 @@
+@if (filters.hasAnyFilterSet()) {
+  <div class="filter-display">
+    <span>Following filters are set</span>
+    <fa-icon icon="times" (click)="clearAllFilters()" title="Clear all filters"></fa-icon>
+    <ul>
+      @for (filterOption of filters.filterOptions; track filterOption.name) {
+        @for (value of filterOption.values; track value) {
+          <li>
+            <span>{{ filterOption.name }}:</span> {{ value }}
+            <fa-icon icon="times" (click)="clearFilter(filterOption.name, value)" title="Clear filter"></fa-icon>
+          </li>
+        }
+      }
+    </ul>
+  </div>
+}

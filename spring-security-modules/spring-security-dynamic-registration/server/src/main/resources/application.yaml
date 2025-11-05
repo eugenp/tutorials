@@ -1,0 +1,22 @@
+
+spring:
+  security:
+    user:
+      name: user1
+      password: password
+
+baeldung:
+  security:
+    server:
+      registration:
+        registrar-client-id: registrar-client
+        registrar-client-secret: "{noop}secret"
+debug: true
+logging:
+  level:
+    org.springframework.security: TRACE
+server:
+  servlet:
+    session:
+      cookie:
+        name: SASESSIONID

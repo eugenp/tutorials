@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-reactive-data-couchbase</artifactId>
-    <name>spring-reactive-data-couchbase</name>
     <packaging>jar</packaging>
+    <name>spring-reactive-data-couchbase</name>
 
     <parent>
         <groupId>com.baeldung.spring.reactive</groupId>
@@ -37,7 +37,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>io.reactivex.rxjava2</groupId>
+            <groupId>io.reactivex.rxjava3</groupId>
             <artifactId>rxjava</artifactId>
         </dependency>
         <dependency>
@@ -45,18 +45,12 @@
             <artifactId>spring-test</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
-            <version>${spring-tx.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
             <version>${httpclient.version}</version>
         </dependency>
         <dependency>
@@ -71,6 +65,14 @@
             <version>${byte-buddy.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -78,11 +80,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <argLine>
-                        --add-opens java.base/java.util=ALL-UNNAMED
-                    </argLine>
-                </configuration>
+                <version>${maven-surefire-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -126,16 +124,8 @@
     </build>
 
     <properties>
-        <spring-tx.version>5.2.2.RELEASE</spring-tx.version>
-        <httpclient.version>4.5.2</httpclient.version>
-        <couchbaseMock.version>1.5.23</couchbaseMock.version>
-        <!-- This spring-boot.version is set manually, For upgrading this please refer http://team.baeldung.com/browse/JAVA-2802 -->
-        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
-        <!-- This spring-boot.version is not compatible with JDK 17 -->
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <java.version>11</java.version>
-        <byte-buddy.version>1.14.13</byte-buddy.version>
+        <httpclient.version>5.3.1</httpclient.version>
+        <couchbaseMock.version>1.5.27</couchbaseMock.version>
     </properties>
 
 </project>

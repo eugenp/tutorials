@@ -17,12 +17,16 @@
         <module>helidon</module>
         <!-- <module>lagom</module> --> <!-- Not a maven project -->
         <module>micronaut</module>
+        <module>micronaut-configuration</module>
         <module>micronaut-reactive</module>
-        <module>microprofile</module>
+        <!-- <module>microprofile</module> --> <!-- Migrated to heavy profile -->
         <module>msf4j</module>
         <module>open-liberty</module>
         <module>rest-express</module>
         <module>event-driven-microservice</module>
+        <module>micronaut-docker</module>
+        <module>pulumi</module>
+        <module>dubbo</module>
     </modules>
 
 </project>

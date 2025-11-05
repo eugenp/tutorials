@@ -1,8 +1,8 @@
 package com.baeldung.hibernate.cache.dao;
 
-import java.util.List;
-
 import com.baeldung.hibernate.cache.model.Foo;
+
+import java.util.List;
 
 public interface IFooDao {
 
@@ -18,4 +18,9 @@ public interface IFooDao {
 
     void deleteById(long entityId);
 
+    long countAllRowsUsingHibernateCriteria();
+
+    long getFooCountByBarNameUsingHibernateCriteria(String barName);
+
+    long getFooCountByBarNameAndFooNameUsingHibernateCriteria(String barName, String fooName);
 }

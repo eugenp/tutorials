@@ -6,8 +6,8 @@
     <groupId>com.baeldung.springsecuredsockets</groupId>
     <artifactId>spring-security-web-sockets</artifactId>
     <version>1.0.0</version>
-    <name>spring-security-web-sockets</name>
     <packaging>war</packaging>
+    <name>spring-security-web-sockets</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -161,12 +161,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <argLine>
-                        --add-opens java.base/java.lang=ALL-UNNAMED
-                        --add-opens java.base/java.lang.invoke=ALL-UNNAMED
-                    </argLine>
-                </configuration>
+                <version>${maven-surefire-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
@@ -174,7 +169,7 @@
     <properties>
         <spring-security.version>6.1.5</spring-security.version>
         <spring-security-messaging.version>6.0.2</spring-security-messaging.version>
-        <hibernate-core.version>6.4.2.Final</hibernate-core.version>
+        <hibernate-core.version>6.5.2.Final</hibernate-core.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <expressly.version>5.0.0</expressly.version>
         <spring-data-jpa.version>3.2.1</spring-data-jpa.version>

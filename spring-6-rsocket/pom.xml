@@ -3,7 +3,6 @@
     xmlns="http://maven.apache.org/POM/4.0.0"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.bealdung</groupId>
     <artifactId>spring-6-rsocket</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-6-rsocket</name>
@@ -27,10 +26,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <properties>
-        <org.slf4j.version>2.0.7</org.slf4j.version>
-        <logback.version>1.4.11</logback.version>
-    </properties>
 
 </project>

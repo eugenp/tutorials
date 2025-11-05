@@ -2,6 +2,8 @@
 package com.baeldung.jaxws.client;
 
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
@@ -30,8 +32,8 @@ public class EmployeeService_Service
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://localhost:8080/employeeservice?wsdl");
-        } catch (MalformedURLException ex) {
+            url = new URI("http://localhost:8080/employeeservice?wsdl").toURL();
+        } catch (MalformedURLException | URISyntaxException ex) {
             e = new WebServiceException(ex);
         }
         EMPLOYEESERVICE_WSDL_LOCATION = url;

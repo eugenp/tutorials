@@ -31,8 +31,4 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <gson.version>2.10.1</gson.version>
-    </properties>
-
 </project>

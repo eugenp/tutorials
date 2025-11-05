@@ -8,9 +8,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <relativePath>../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -77,12 +77,12 @@
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
-            <version>4.0.0</version>
+            <version>${jakarta.xml.bind-api.version}</version>
         </dependency>
         <dependency>
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-impl</artifactId>
-            <version>4.0.0</version>
+            <version>${jaxb-impl.version}</version>
             <scope>runtime</scope>
         </dependency>
     </dependencies>
@@ -96,7 +96,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxb2-maven-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>${codehaus-jaxb2-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>xjc</id>
@@ -115,7 +115,7 @@
             <plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
                 <artifactId>maven-jaxb2-plugin</artifactId>
-                <version>0.14.0</version>
+                <version>${jvnet-maven-jaxb2-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>feign-soap-stub-generation</id>
@@ -137,11 +137,16 @@
     </build>
 
     <properties>
-        <feign.version>11.8</feign.version>
+        <jvnet-maven-jaxb2-plugin.version>0.14.0</jvnet-maven-jaxb2-plugin.version>
+        <codehaus-jaxb2-maven-plugin.version>3.1.0</codehaus-jaxb2-maven-plugin.version>
+        <jakarta.xml.bind-api.version>4.0.0</jakarta.xml.bind-api.version>
+        <jaxb-impl.version>4.0.0</jaxb-impl.version>
+        <feign.version>13.1</feign.version>
         <wsdl4j.version>1.6.3</wsdl4j.version>
         <feign.form.spring.version>3.8.0</feign.form.spring.version>
         <wire.mock.version>2.33.2</wire.mock.version>
         <jakarta.xml.bind.version>4.0.0</jakarta.xml.bind.version>
+        <start-class>com.baeldung.core.ExampleApplication</start-class>
     </properties>
 
 </project>

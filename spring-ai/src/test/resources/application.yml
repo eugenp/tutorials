@@ -1,3 +1,0 @@
-spring:
-  ai:
-    openai.api-key: "mock-key-token"

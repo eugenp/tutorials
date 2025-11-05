@@ -27,7 +27,7 @@
             <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.codehaus.groovy</groupId>
+            <groupId>org.apache.groovy</groupId>
             <artifactId>groovy-all</artifactId>
             <version>${groovy.version}</version>
             <type>pom</type>
@@ -54,6 +54,11 @@
             <groupId>com.github.groovy-wslite</groupId>
             <artifactId>groovy-wslite</artifactId>
             <version>${groovy-wslite.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.groovy</groupId>
+            <artifactId>groovy-dateutil</artifactId>
+            <version>${groovy.version}</version>
         </dependency>
     </dependencies>
 
@@ -115,6 +120,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <useFile>false</useFile>
                     <includes>

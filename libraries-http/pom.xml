@@ -19,16 +19,6 @@
             <version>${com.squareup.okhttp3.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.google.http-client</groupId>
-            <artifactId>google-http-client</artifactId>
-            <version>${googleclient.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.http-client</groupId>
-            <artifactId>google-http-client-jackson2</artifactId>
-            <version>${googleclient.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>retrofit</artifactId>
             <version>${retrofit.version}</version>
@@ -36,11 +26,6 @@
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>converter-gson</artifactId>
-            <version>${retrofit.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.retrofit2</groupId>
-            <artifactId>adapter-rxjava</artifactId>
             <version>${retrofit.version}</version>
         </dependency>
         <dependency>
@@ -63,11 +48,6 @@
             <groupId>com.mashape.unirest</groupId>
             <artifactId>unirest-java</artifactId>
             <version>${unirest.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.javalin</groupId>
-            <artifactId>javalin</artifactId>
-            <version>${javalin.version}</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
@@ -98,14 +78,12 @@
     </dependencies>
 
     <properties>
-        <gson.version>2.10.1</gson.version>
+        <gson.version>2.11.0</gson.version>
         <httpclient.version>4.5.3</httpclient.version>
         <com.squareup.okhttp3.version>5.0.0-alpha.12</com.squareup.okhttp3.version>
-        <googleclient.version>1.23.0</googleclient.version>
         <async.http.client.version>2.2.0</async.http.client.version>
         <retrofit.version>2.3.0</retrofit.version>
         <unirest.version>1.4.9</unirest.version>
-        <javalin.version>1.6.0</javalin.version>
         <logging-interceptor.version>3.9.0</logging-interceptor.version>
     </properties>
 

@@ -5,16 +5,16 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-web-modules</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-web-modules</name>
     <packaging>pom</packaging>
+    <name>spring-web-modules</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-5</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-spring-5</relativePath>
+        <relativePath>../parent-boot-3</relativePath>
     </parent>
-
+    
     <modules>
         <module>spring-5-mvc</module>
         <module>spring-freemarker</module>
@@ -57,5 +57,19 @@
         <module>spring-web-url</module>
         <module>spring-thymeleaf-attributes</module>
     </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                </configuration>
+           </plugin>
+        </plugins>
+    </build>
 
 </project>

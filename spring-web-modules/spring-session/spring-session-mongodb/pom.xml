@@ -5,15 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-session-mongodb</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-session-mongodb</name>
     <packaging>jar</packaging>
+    <name>spring-session-mongodb</name>
     <description>Spring Session with MongoDB tutorial</description>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../../parent-boot-3</relativePath>
+        <artifactId>spring-session</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -51,7 +50,7 @@
     </build>
 
     <properties>
-        <embedded-mongodb.version>4.12.2</embedded-mongodb.version>
+        <embedded-mongodb.version>4.13.0</embedded-mongodb.version>
     </properties>
 
 </project>

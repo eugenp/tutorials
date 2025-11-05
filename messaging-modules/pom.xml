@@ -16,7 +16,9 @@
 
     <modules>
         <module>apache-camel</module>
+        <module>apache-camel-kserve</module>
         <module>apache-rocketmq</module>
+        <module>automq</module>
         <module>jgroups</module>
         <module>java-redpanda</module>
         <module>rabbitmq</module>
@@ -24,6 +26,8 @@
         <module>spring-apache-camel</module>
         <module>spring-jms</module>
         <module>postgres-notify</module>
+        <module>ibm-mq</module>
+        <module>dapr</module>
     </modules>
 
 </project>

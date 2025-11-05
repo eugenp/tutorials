@@ -1,0 +1,126 @@
+volumes:
+   baeldung_bff_keycloak_postgres_data:
+
+services:
+
+  nginx-reverse-proxy:
+    container_name: baeldung-bff.nginx-reverse-proxy
+    image: baeldung-bff/nginx-reverse-proxy
+    ports:
+    - 7080:7080
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
+    - "LOCALHOST_NAME:host-gateway"
+
+#  postgres-keycloak:
+#    container_name: postgres-keycloak
+#    image: postgres:latest
+#    environment:
+#    - POSTGRES_DB=keycloak
+#    - POSTGRES_PASSWORD=secret
+#    - POSTGRES_USER=keycloak
+#    volumes:
+#    -  baeldung_bff_keycloak_postgres_data:/var/lib/postgresql/data
+#    healthcheck:
+#      test: ["CMD-SHELL", "pg_isready", "-d", "keycloak", "-U", "keycloak"]
+#      interval: 3s
+#      timeout: 60s
+#      retries: 20
+  
+  keycloak:
+    container_name: baeldung-bff.auth
+    image: quay.io/keycloak/keycloak:24.0.0
+    command:
+    - start-dev
+    - --import-realm
+    ports:
+    - 8080:8080
+    volumes:
+      - ./keycloak/import/:/opt/keycloak/data/import/
+    environment:
+#      KC_DB: postgres
+#      KC_DB_URL: jdbc:postgresql://postgres-keycloak:5432/keycloak
+#      KC_DB_SCHEMA: public
+#      KC_DB_USERNAME: keycloak
+#      KC_DB_PASSWORD: secret
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+      KC_HTTP_PORT: 8080
+      KC_HOSTNAME_URL: http://LOCALHOST_NAME:7080/auth
+      KC_HOSTNAME_ADMIN_URL: http://LOCALHOST_NAME:7080/auth
+      KC_HOSTNAME_STRICT_BACKCHANNEL: true
+      #KC_HOSTNAME_DEBUG: true
+      KC_HTTP_RELATIVE_PATH: /auth/
+      KC_HTTP_ENABLED: true
+      KC_HEALTH_ENABLED: true
+      KC_METRICS_ENABLED: true
+      #KC_LOG_LEVEL: DEBUG
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
+    - "LOCALHOST_NAME:host-gateway"
+#    depends_on:
+#      postgres-keycloak:
+#        condition: service_healthy
+    healthcheck:
+      test: ['CMD-SHELL', '[ -f /tmp/HealthCheck.java ] || echo "public class HealthCheck { public static void main(String[] args) throws java.lang.Throwable { System.exit(java.net.HttpURLConnection.HTTP_OK == ((java.net.HttpURLConnection)new java.net.URL(args[0]).openConnection()).getResponseCode() ? 0 : 1); } }" > /tmp/HealthCheck.java && java /tmp/HealthCheck.java http://localhost:8080/auth/health/live']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  angular-ui:
+    container_name: baeldung-bff.angular-ui
+    image: baeldung-bff/angular-ui
+    ports:
+    - 4201:80
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
+    - "LOCALHOST_NAME:host-gateway"
+
+  vue-ui:
+    container_name: baeldung-bff.vue-ui
+    image: baeldung-bff/vue-ui
+    ports:
+    - 4202:80
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
+    - "LOCALHOST_NAME:host-gateway"
+
+  react-ui:
+    container_name: baeldung-bff.react-ui
+    image: baeldung-bff/react-ui
+    ports:
+    - 4203:4203
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
+    - "LOCALHOST_NAME:host-gateway"
+
+  resource-server:
+    container_name: baeldung-bff.resource-server
+    image: baeldung-bff/resource-server
+    ports:
+    - 7084:7084
+    environment:
+      HOSTNAME: LOCALHOST_NAME
+      SERVER_ADDRESS: 0.0.0.0
+    depends_on:
+      keycloak:
+        condition: service_healthy
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
+    - "LOCALHOST_NAME:host-gateway"
+
+  bff:
+    container_name: baeldung-bff.bff
+    image: baeldung-bff/bff
+    ports:
+    - 7081:7081
+    environment:
+      HOSTNAME: LOCALHOST_NAME
+      SERVER_ADDRESS: 0.0.0.0
+      CLIENT_SECRET: secret
+    depends_on:
+      keycloak:
+        condition: service_healthy
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
+    - "LOCALHOST_NAME:host-gateway"

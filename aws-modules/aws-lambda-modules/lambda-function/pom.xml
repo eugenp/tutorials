@@ -24,6 +24,20 @@
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-core</artifactId>
             <version>${aws-java-sdk.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-codec</groupId>
+                    <artifactId>commons-codec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.amazonaws</groupId>
+                    <artifactId>aws-java-sdk-pom</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.amazonaws</groupId>
@@ -53,6 +67,11 @@
             <version>${gson.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
@@ -80,6 +99,23 @@
                 <version>${maven-shade-plugin.version}</version>
                 <configuration>
                     <createDependencyReducedPom>false</createDependencyReducedPom>
+                    <filters>
+                        <filter>
+                            <artifact>*:*</artifact>
+                            <excludes>
+                                <!-- Exclude module-info.class -->
+                                <exclude>**/module-info.class</exclude>
+                                <!-- Exclude overlapping META-INF files -->
+                                <exclude>META-INF/MANIFEST.MF</exclude>
+                                <exclude>META-INF/LICENSE</exclude>
+                                <exclude>META-INF/NOTICE</exclude>
+                                <exclude>META-INF/LICENSE.txt</exclude>
+                                <exclude>META-INF/NOTICE.txt</exclude>
+                                <exclude>META-INF/services/com.fasterxml.jackson.core.JsonFactory</exclude>
+                                <exclude>META-INF/DEPENDENCIES</exclude>
+                            </excludes>
+                        </filter>
+                    </filters>
                 </configuration>
                 <executions>
                     <execution>
@@ -94,10 +130,12 @@
     </build>
 
     <properties>
+        <maven-shade-plugin.version>3.6.0</maven-shade-plugin.version>
+        <jackson.version>2.17.2</jackson.version>
         <json-simple.version>1.1.1</json-simple.version>
         <aws-lambda-java-events.version>3.11.0</aws-lambda-java-events.version>
-        <aws-lambda-java-core.version>1.2.1</aws-lambda-java-core.version>
-        <gson.version>2.10.1</gson.version>
+        <aws-lambda-java-core.version>1.2.3</aws-lambda-java-core.version>
+        <gson.version>2.11.0</gson.version>
     </properties>
 
 </project>

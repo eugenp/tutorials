@@ -7,6 +7,8 @@
         </encoder>
     </appender>
 
+    <logger name="com.couchbase.endpoint" level="ERROR"/>
+
     <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>

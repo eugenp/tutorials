@@ -6,6 +6,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ShufflingCollectionsUnitTest {
 
@@ -66,5 +68,15 @@ public class ShufflingCollectionsUnitTest {
         Collections.shuffle(students_2, new Random(5));
 
         assertThat(students_1).isEqualTo(students_2);
+    }
+
+    @Test
+    public void whenShufflingListWithStream_thenListIsShuffled() {
+        List<String> originalList = Arrays.asList("Foo", "Bar", "Baz", "Qux");
+        List<String> shuffledList = ShufflingCollections.shuffleList(originalList);
+
+        // Ensure the shuffled list contains the same elements as the original list
+        assertTrue(shuffledList.containsAll(originalList), "The shuffled list should contain all elements of the original list");
+        assertTrue(originalList.containsAll(shuffledList), "The original list should contain all elements of the shuffled list");
     }
 }

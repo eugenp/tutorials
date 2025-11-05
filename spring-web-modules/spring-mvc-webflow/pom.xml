@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-mvc-webflow</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-mvc-webflow</name>
     <packaging>war</packaging>
+    <name>spring-mvc-webflow</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -19,12 +19,10 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>${org.springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${org.springframework.version}</version>
         </dependency>
         <!-- Spring Web Flow -->
         <dependency>
@@ -34,16 +32,10 @@
         </dependency>
         <!-- web -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet-api.version}</version>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>${jakarta-servlet.version}</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>${jstl.version}</version>
-            <scope>runtime</scope>
         </dependency>
         <!-- Test -->
         <dependency>
@@ -93,22 +85,23 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
 
     <properties>
-        <!-- Spring -->
-        <org.springframework.version>5.0.1.RELEASE</org.springframework.version>
         <!-- Spring Web Flow -->
-        <spring.webflow>2.5.0.RELEASE</spring.webflow>
+        <spring.webflow>3.0.0</spring.webflow>
         <httpcore.version>4.4.5</httpcore.version>
         <httpclient.version>4.5.2</httpclient.version>
         <!-- Maven plugins -->
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
-        <spring-boot-starter-test.version>1.5.10.RELEASE</spring-boot-starter-test.version>
+        <spring-boot-starter-test.version>3.3.3</spring-boot-starter-test.version>
         <tomee-maven-plugin.version>8.0.1</tomee-maven-plugin.version>
+        <jakarta-servlet.version>6.1.0</jakarta-servlet.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
 </project>

@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-thymeleaf-5</artifactId>
-    <name>spring-thymeleaf-5</name>
     <packaging>war</packaging>
+    <name>spring-thymeleaf-5</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

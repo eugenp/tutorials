@@ -27,12 +27,12 @@ public class WebMVCSecurity {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().antMatchers("/resources/**");
+        return web -> web.ignoring().requestMatchers("/resources/**");
     }
 
     @Bean
     public SecurityFilterChain filterChain(final HttpSecurity http) throws Exception {
-        return http.authorizeRequests().anyRequest().authenticated().and().httpBasic().and().build();
+        return http.authorizeRequests().anyRequest().authenticated().and().build();
     }
 
 }

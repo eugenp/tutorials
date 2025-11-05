@@ -1,10 +1,18 @@
 package com.baeldung.jpa.projection.model;
 
+import com.baeldung.jpa.projection.view.PersonDto;
+
+import jakarta.persistence.ColumnResult;
+import jakarta.persistence.ConstructorResult;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedNativeQuery;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.SqlResultSetMapping;
 
 @Entity
+@NamedNativeQuery(name = "person_native_query_dto", query = "SELECT p.first_name, p.last_name From Person p where p.first_name LIKE :firstNameLike", resultSetMapping = "person_query_dto")
+@SqlResultSetMapping(name = "person_query_dto", classes = @ConstructorResult(targetClass = PersonDto.class, columns = { @ColumnResult(name = "first_name", type = String.class), @ColumnResult(name = "last_name", type = String.class), }))
 public class Person {
     @Id
     private Long id;

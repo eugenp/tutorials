@@ -24,6 +24,12 @@
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-core -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
         <dependency>
             <groupId>ch.qos.logback.contrib</groupId>
             <artifactId>logback-json-classic</artifactId>
@@ -76,14 +82,24 @@
             <scope>provided</scope>
             <version>${lombok.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.codehaus.janino</groupId>
+            <artifactId>janino</artifactId>
+            <version>${janino.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${logstash.version}</version>
+        </dependency>
     </dependencies>
-
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <systemPropertyVariables>
                         <logback.configurationFile>${project.basedir}/src/test/resources/logback-test.xml</logback.configurationFile>
@@ -99,8 +115,10 @@
         <docx4j.version>3.3.5</docx4j.version>
         <angus.mail.version>2.0.1</angus.mail.version>
         <angus.activation.version>2.0.0</angus.activation.version>
-        <logback.version>1.4.8</logback.version>
-        <slf4j.version>2.0.4</slf4j.version>
+        <logback.version>1.5.18</logback.version>
+        <slf4j.version>2.1.0-alpha1</slf4j.version>
+        <janino.version>3.1.12</janino.version>
+        <logstash.version>8.0</logstash.version>
     </properties>
 
 </project>

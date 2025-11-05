@@ -1,14 +1,5 @@
 ## Spring Data REST
 
-This module contains articles about Spring Data REST
-
-### Relevant Articles:
-- [Guide to Spring Data REST Validators](https://www.baeldung.com/spring-data-rest-validators)
-- [Spring Data Web Support](https://www.baeldung.com/spring-data-web-support)
-- [Spring REST and HAL Browser](https://www.baeldung.com/spring-rest-hal)
-- [Spring Data Rest – Serializing the Entity ID](https://www.baeldung.com/spring-data-rest-serialize-entity-id)
-- [Consuming Page Entity Response From RestTemplate](https://www.baeldung.com/resttemplate-page-entity-response)
-
 ### The Course
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 

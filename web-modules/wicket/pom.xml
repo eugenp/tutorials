@@ -6,8 +6,8 @@
     <groupId>com.baeldung.wicket.examples</groupId>
     <artifactId>wicket</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>wicket</name>
     <packaging>war</packaging>
+    <name>wicket</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

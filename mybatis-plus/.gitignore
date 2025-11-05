@@ -1,0 +1,16 @@
+*.class
+
+.settings
+.project
+*.log
+
+#folders#
+/target
+/src/main/webapp/WEB-INF/classes
+*/META-INF/*
+/testdb1
+
+# Packaged files #
+*.jar
+*.war
+*.ear

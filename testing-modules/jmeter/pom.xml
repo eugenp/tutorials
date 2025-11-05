@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jmeter</artifactId>
-    <name>jmeter</name>
     <packaging>jar</packaging>
+    <name>jmeter</name>
     <description>Intro to Performance testing using JMeter</description>
 
     <parent>
@@ -154,6 +154,80 @@
                         <configuration>
                             <testFilesDirectory>${project.basedir}/src/main/resources/dashboard</testFilesDirectory>
                             <resultsDirectory>${project.basedir}/src/main/resources/dashboard</resultsDirectory>
+                            <generateReports>true</generateReports>
+                            <ignoreResultFailures>true</ignoreResultFailures>
+                            <testResultsTimestamp>true</testResultsTimestamp>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>beanshell</id>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>beanshell</value>
+                </property>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>launch-web-app</id>
+                                <goals>
+                                    <goal>start</goal>
+                                </goals>
+                                <configuration>
+                                    <mainClass>com.baeldung.beanshell.BeanshellApplication</mainClass>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>stop-web-app</id>
+                                <goals>
+                                    <goal>stop</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <profiles>
+                                <profile>JMeter-Beanshell</profile>
+                            </profiles>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>com.lazerycode.jmeter</groupId>
+                        <artifactId>jmeter-maven-plugin</artifactId>
+                        <version>${jmeter-maven-plugin.version}</version>
+                        <executions>
+                            <!-- Generate JMeter configuration -->
+                            <execution>
+                                <id>configuration</id>
+                                <goals>
+                                    <goal>configure</goal>
+                                </goals>
+                            </execution>
+                            <!-- Run JMeter tests -->
+                            <execution>
+                                <id>jmeter-tests</id>
+                                <goals>
+                                    <goal>jmeter</goal>
+                                    <goal>results</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <testFilesDirectory>${project.basedir}/src/main/resources/beanshell</testFilesDirectory>
+                            <resultsDirectory>${project.basedir}/src/main/resources/beanshell</resultsDirectory>
                             <generateReports>true</generateReports>
                             <ignoreResultFailures>true</ignoreResultFailures>
                             <testResultsTimestamp>true</testResultsTimestamp>

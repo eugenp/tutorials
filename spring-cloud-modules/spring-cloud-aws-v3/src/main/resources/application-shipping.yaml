@@ -1,0 +1,13 @@
+events:
+  queues:
+    shipping:
+      simple-pojo-conversion-queue: shipping_pojo_conversion_queue
+      custom-object-mapper-queue: shipping_custom_object_mapper_queue
+      subclass-deserialization-queue: subclass_deserialization_queue
+
+headers:
+  types:
+    shipping:
+      header-name: SHIPPING_TYPE
+      international: INTERNATIONAL
+      domestic: DOMESTIC

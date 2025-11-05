@@ -2,6 +2,7 @@ package com.baeldung.spring.mail;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
 
 import jakarta.mail.MessagingException;
@@ -10,6 +11,7 @@ import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
@@ -129,5 +131,5 @@ public class EmailServiceImpl implements EmailService {
         helper.addInline("attachment.png", resourceFile);
         emailSender.send(message);
     }
-   
+
 }

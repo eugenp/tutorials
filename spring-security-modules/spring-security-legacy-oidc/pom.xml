@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-security-legacy-oidc</artifactId>
-    <name>spring-security-legacy-oidc</name>
     <packaging>war</packaging>
+    <name>spring-security-legacy-oidc</name>
     <description>Spring OpenID Connect sample project</description>
 
     <parent>

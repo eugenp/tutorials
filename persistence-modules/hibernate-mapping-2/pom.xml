@@ -14,29 +14,11 @@
     </parent>
 
     <dependencies>
-        <!-- Spring -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        <!-- persistence -->
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>${org.springframework.data.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-dbcp</artifactId>
-            <version>${tomcat-dbcp.version}</version>
-        </dependency>
-        <!-- validation -->
         <!-- utils -->
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -45,27 +27,56 @@
         </dependency>
         <!-- test scoped -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${org.springframework.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.money</groupId>
+            <artifactId>money-api</artifactId>
+            <version>${money-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.javamoney</groupId>
+            <artifactId>moneta</artifactId>
+            <version>${moneta.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.nashorn</groupId>
+            <artifactId>nashorn-core</artifactId>
+            <version>${nashorn-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.expressly</groupId>
+            <artifactId>expressly</artifactId>
+            <version>${expressly.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
-        <!-- Spring -->
-        <org.springframework.version>6.0.6</org.springframework.version>
-        <org.springframework.data.version>3.0.3</org.springframework.data.version>
-        <!-- persistence -->
-        <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
         <com.sun.xml.version>4.0.2</com.sun.xml.version>
         <h2.version>2.1.214</h2.version>
-        <hibernate.version>6.4.2.Final</hibernate.version>
+        <money-api.version>1.1</money-api.version>
+        <moneta.version>1.4.2</moneta.version>
+        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
+        <nashorn-core.version>15.4</nashorn-core.version>
+        <expressly.version>5.0.0</expressly.version>
     </properties>
 
 </project>

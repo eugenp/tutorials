@@ -1,0 +1,36 @@
+/*
+ * Bootstrap overrides https://getbootstrap.com/docs/5.1/customize/sass/
+ * All values defined in bootstrap source
+ * https://github.com/twbs/bootstrap/blob/v5.1.3/scss/_variables.scss can be overwritten here
+ * Make sure not to add !default to values here
+ */
+
+// Options:
+// Quickly modify global styling by enabling or disabling optional features.
+$enable-rounded: true;
+$enable-shadows: false;
+$enable-gradients: false;
+$enable-transitions: true;
+$enable-hover-media-query: false;
+$enable-grid-classes: true;
+$enable-print-styles: true;
+
+// Components:
+// Define common padding and border radius sizes and more.
+
+$border-radius: 0.15rem;
+$border-radius-lg: 0.125rem;
+$border-radius-sm: 0.1rem;
+
+// Body:
+// Settings for the `<body>` element.
+
+$body-bg: #ffffff;
+
+// Typography:
+// Font, line-height, and color for body text, headings, and more.
+
+$font-size-base: 1rem;
+
+$dropdown-link-hover-color: white;
+$dropdown-link-hover-bg: #343a40;

@@ -54,6 +54,11 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh-generator.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.hypersistence</groupId>
+            <artifactId>hypersistence-utils-hibernate-55</artifactId>
+            <version>${hypersistence-utils.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -61,6 +66,7 @@
         <mysql.version>8.2.0</mysql.version>
         <mariaDB4j.version>2.2.3</mariaDB4j.version>
         <h2.version>2.1.214</h2.version>
+        <hypersistence-utils.version>3.8.1</hypersistence-utils.version>
     </properties>
 
 </project>

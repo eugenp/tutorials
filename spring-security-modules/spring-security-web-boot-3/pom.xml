@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-security-web-boot-3</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-security-web-boot-3</name>
     <packaging>jar</packaging>
+    <name>spring-security-web-boot-3</name>
     <description>Spring Security MVC Boot - 3</description>
 
     <parent>
@@ -27,11 +27,31 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-data</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+        <dependency>
             <groupId>de.flapdoodle.embed</groupId>
-            <artifactId>de.flapdoodle.embed.mongo.spring30x</artifactId>
+            <artifactId>de.flapdoodle.embed.mongo.spring3x</artifactId>
             <version>${de.flapdoodle.emeded.mongo.version}</version>
         </dependency>
         <dependency>
@@ -78,11 +98,25 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <bootstrap.version>5.1.1</bootstrap.version>
         <jquery.version>3.6.0</jquery.version>
         <start-class>com.baeldung.cors.basicauth.SpringBootSecurityApplication</start-class>
-        <de.flapdoodle.emeded.mongo.version>4.11.0</de.flapdoodle.emeded.mongo.version>
+        <de.flapdoodle.emeded.mongo.version>4.20.0</de.flapdoodle.emeded.mongo.version>
     </properties>
 
 </project>

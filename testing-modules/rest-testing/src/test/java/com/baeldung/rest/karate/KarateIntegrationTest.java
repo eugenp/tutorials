@@ -2,23 +2,19 @@ package com.baeldung.rest.karate;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
-import com.intuit.karate.junit4.Karate;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.runner.RunWith;
-
+import com.intuit.karate.junit5.Karate;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterAll;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 
-@RunWith(Karate.class)
 public class KarateIntegrationTest {
 
     private static final int PORT_NUMBER = 8097;
 
     private static final WireMockServer wireMockServer = new WireMockServer(WireMockConfiguration.options().port(PORT_NUMBER));
 
-    @BeforeClass
+    @BeforeAll
     public static void setUp() {
         wireMockServer.start();
 
@@ -38,9 +34,14 @@ public class KarateIntegrationTest {
 
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDown() {
         wireMockServer.stop();
+    }
+
+    @Karate.Test
+    Karate testAll() {
+        return Karate.run().relativeTo(getClass());
     }
 
 }

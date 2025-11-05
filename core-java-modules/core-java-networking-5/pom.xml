@@ -45,15 +45,33 @@
             <artifactId>spring-web</artifactId>
             <version>${spring-web.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>jakarta.mail</artifactId>
+            <version>${jakarta.mail.version}</version>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <commons-validator.version>1.7</commons-validator.version>
-        <jsoup.version>1.17.2</jsoup.version>
         <httpclient.version>4.5.2</httpclient.version>
         <javax.ws.rs-api.version>2.1.1</javax.ws.rs-api.version>
         <jersey-common.version>2.22.2</jersey-common.version>
         <spring-web.version>6.0.6</spring-web.version>
+        <jakarta.mail.version>2.0.1</jakarta.mail.version>
     </properties>
 
 </project>

@@ -14,6 +14,24 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.bitcoinj</groupId>
+            <artifactId>bitcoinj-core</artifactId>
+            <version>${bitcoinj.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${sl4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${sl4j.version}</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <finalName>java-blockchain</finalName>
         <resources>
@@ -23,5 +41,10 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <sl4j.version>2.1.0-alpha1</sl4j.version>
+        <bitcoinj.version>0.16.2</bitcoinj.version>
+    </properties>
 
 </project>

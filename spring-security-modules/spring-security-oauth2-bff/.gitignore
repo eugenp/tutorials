@@ -8,3 +8,6 @@
 **/*.settings
 **/*.classpath
 **/*.factorypath
+compose-*.yml
+compose-*.yml''
+keycloak/import/baeldung-realm.json''

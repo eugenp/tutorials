@@ -39,13 +39,14 @@ public class PersistJSONUnitTest {
                 .build();
             MetadataSources metadataSources = new MetadataSources(serviceRegistry);
             metadataSources.addAnnotatedClass(Customer.class);
+            metadataSources.addAnnotatedClass(Warehouse.class);
 
             SessionFactory factory = metadataSources.buildMetadata()
                 .buildSessionFactory();
 
             session = factory.openSession();
         } catch (HibernateException | IOException e) {
-            fail("Failed to initiate Hibernate Session [Exception:" + e.toString() + "]");
+            fail("Failed to initiate Hibernate Session [Exception:" + e + "]");
         }
     }
 
@@ -108,4 +109,34 @@ public class PersistJSONUnitTest {
             .size());
     }
 
+    @Test
+    public void givenWarehouseWithJsonAttributes_whenSavingAndRetrieving_thenJsonAttributesArePersistedAndRetrievedCorrectly() {
+        Warehouse warehouse = new Warehouse();
+        warehouse.setName("Walmart");
+        warehouse.setLocation("123 Main Street");
+
+        Map<String, String> attributes = new HashMap<>();
+        attributes.put("country", "USA");
+        attributes.put("industry", "e-commerce");
+        attributes.put("capacity", "1000");
+        warehouse.setAttributes(attributes);
+
+        session.beginTransaction();
+        session.save(warehouse);
+        session.flush();
+        session.clear();
+
+        Warehouse result = session.createNativeQuery("select * from warehouse where warehouse.id = :id", Warehouse.class)
+            .setParameter("id", 1)
+            .getSingleResult();
+
+        assertEquals(3, result.getAttributes()
+            .size());
+        assertEquals("USA", result.getAttributes()
+            .get("country"));
+        assertEquals("e-commerce", result.getAttributes()
+            .get("industry"));
+        assertEquals("1000", result.getAttributes()
+            .get("capacity"));
+    }
 }

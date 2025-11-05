@@ -2,8 +2,6 @@ plugins {
     `java-platform`
 }
 
-sourceCompatibility = "1.8"
-targetCompatibility = "1.8"
 
 dependencies {
     constraints {

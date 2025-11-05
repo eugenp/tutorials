@@ -26,6 +26,16 @@
             <artifactId>jersey-hk2</artifactId>
             <version>${jersey.version}</version>
         </dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${jakarta.xml.bind-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-catalina</artifactId>
+            <version>${tomcat-catalina.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -40,6 +50,10 @@
                     </httpConnector>
                     <stopKey>quit</stopKey>
                     <stopPort>9000</stopPort>
+                    <webApp>
+                        <webInfIncludeJarPattern>^$</webInfIncludeJarPattern>
+                        <containerIncludeJarPattern>^$</containerIncludeJarPattern>
+                    </webApp>
                 </configuration>
                 <executions>
                     <execution>
@@ -88,6 +102,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <excludes>
                         <exclude>DataTest.java</exclude>
@@ -173,6 +188,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <excludes>
                                 <exclude>DataTest.java</exclude>
@@ -219,6 +235,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <executions>
                             <execution>
                                 <phase>integration-test</phase>
@@ -273,8 +290,10 @@
         <maven.verifier.version>1.1</maven.verifier.version>
         <maven.clean.version>3.0.0</maven.clean.version>
         <maven.build.helper.version>3.0.0</maven.build.helper.version>
-        <jetty.version>10.0.20</jetty.version>
-        <jersey.version>2.27</jersey.version>
+        <jetty.version>11.0.24</jetty.version>
+        <tomcat-catalina.version>10.1.33</tomcat-catalina.version>
+        <jersey.version>3.1.9</jersey.version>
+        <jakarta.xml.bind-api.version>3.0.1</jakarta.xml.bind-api.version>
     </properties>
 
 </project>

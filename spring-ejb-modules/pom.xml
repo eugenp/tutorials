@@ -6,8 +6,8 @@
     <groupId>com.baeldung.spring.ejb</groupId>
     <artifactId>spring-ejb-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>spring-ejb-modules</name>
     <packaging>pom</packaging>
+    <name>spring-ejb-modules</name>
     <description>Spring EJB Tutorial</description>
 
     <parent>
@@ -19,7 +19,7 @@
     <modules>
         <!--<module>ejb-beans</module> cannot upgrade to java 17 -->
         <module>spring-ejb-remote</module>
-        <module>spring-ejb-client</module>
+        <module>spring-ejb-client</module> 
         <module>wildfly-mdb</module>
     </modules>
 

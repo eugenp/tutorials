@@ -14,6 +14,13 @@
     </parent>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
@@ -39,9 +46,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <gson.version>2.10.1</gson.version>
-    </properties>
 
 </project>

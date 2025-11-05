@@ -64,8 +64,18 @@
             <artifactId>hsqldb</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.oracle.database.spring</groupId>
+            <artifactId>oracle-spring-boot-starter-ucp</artifactId>
+            <version>${oracle-spring-boot-starter-ucp.version}</version>
+        </dependency>
+        <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${hikari.version}</version>
         </dependency>
     </dependencies>
 
@@ -74,6 +84,8 @@
         <mysql-connector-java.version>8.2.0</mysql-connector-java.version>
         <start-class>com.baeldung.boot.Application</start-class>
         <spring-boot.version>3.2.0</spring-boot.version>
+        <oracle-spring-boot-starter-ucp.version>24.2.0</oracle-spring-boot-starter-ucp.version>
+        <hikari.version>6.2.1</hikari.version>
     </properties>
 
 </project>

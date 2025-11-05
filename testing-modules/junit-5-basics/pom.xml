@@ -65,11 +65,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <argLine>
-                        --add-opens java.base/java.lang=ALL-UNNAMED
-                    </argLine>
-                </configuration>
+                <version>${maven-surefire-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
@@ -85,6 +81,7 @@
                     <plugin>
                         <groupId>org.apache.maven.surefire</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <excludes>
                                 **/*IntegrationTest.java
@@ -104,6 +101,7 @@
                     <plugin>
                         <groupId>org.apache.maven.surefire</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <groups>com.baeldung.categories.UnitTest</groups>
                             <excludedGroups>com.baeldung.categories.IntegrationTest</excludedGroups>
@@ -122,6 +120,7 @@
                     <plugin>
                         <groupId>org.apache.maven.surefire</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <groups>UnitTest</groups>
                             <excludedGroups>IntegrationTest</excludedGroups>
@@ -133,8 +132,8 @@
     </profiles>
 
     <properties>
-        <spring.version>5.0.6.RELEASE</spring.version>
-        <h2.version>1.4.197</h2.version> <!-- needs to be specified to be compatible with spring.version 5.0.6.RELEASE -->
+        <spring.version>6.2.2</spring.version>
+        <h2.version>1.4.197</h2.version>
     </properties>
 
 </project>

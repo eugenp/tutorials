@@ -1,0 +1,25 @@
+image: maven:3.8.7-eclipse-temurin-17
+
+stages:
+  - test
+  - deploy
+
+cache:
+  paths:
+    - .m2/repository
+    - target
+
+unit-test:
+  stage: test
+  image: maven:latest
+
+  script:
+    - echo "Maven test started"
+    - "mvn test"
+
+deploy_job:
+  stage: deploy
+  image: maven:latest
+
+  script:
+    - HEROKU_API_KEY=${HEROKU_API_KEY} mvn clean heroku:deploy

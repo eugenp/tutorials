@@ -69,10 +69,8 @@
     <properties>
         <mysql.version>8.2.0</mysql.version>
         <hikari.version>4.0.3</hikari.version>
-        <hibernate.version>6.4.2.Final</hibernate.version>
         <spring-boot.version>3.2.2</spring-boot.version>
         <spring-test.version>6.0.16</spring-test.version>
-        <junit-jupiter.version>5.10.2</junit-jupiter.version>
         <h2.version>2.1.214</h2.version>
     </properties>
 

@@ -45,6 +45,11 @@
             <artifactId>swagger-annotations</artifactId>
             <version>${swagger-annotations.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.swagger.parser.v3</groupId>
+            <artifactId>swagger-parser</artifactId>
+            <version>${swagger-parser.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -55,6 +60,7 @@
                 <version>${openapi-generator.version}</version>
                 <executions>
                     <execution>
+                        <id>generate-quotes-api</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
@@ -75,6 +81,30 @@
                                 <modelPackage>com.baeldung.tutorials.openapi.quotes.api.model</modelPackage>
                                 <documentationProvider>source</documentationProvider>
                             </configOptions>
+                            <generateApiTests>false</generateApiTests>
+                            <generateModelTests>false</generateModelTests>
+                            <supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-weather-api</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/api/weatherapi.yaml</inputSpec>
+                            <generatorName>spring</generatorName>
+                            <configOptions>
+                                <openApiNullable>false</openApiNullable>
+                                <useJakartaEe>false</useJakartaEe>
+                                <annotationLibrary>none</annotationLibrary>
+                                <documentationProvider>none</documentationProvider>
+                                <apiPackage>com.baeldung.tutorials.openapi.generatehttpclients.api</apiPackage>
+                                <modelPackage>com.baeldung.tutorials.openapi.generatehttpclients.api.model</modelPackage>
+                            </configOptions>
+                            <generateApiTests>false</generateApiTests>
+                            <generateModelTests>false</generateModelTests>
+                            <supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
                         </configuration>
                     </execution>
                 </executions>
@@ -82,6 +112,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.baeldung.tutorials.openapi.generatehttpclients.GenerateHttpClientSpringApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -89,8 +122,9 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <openapi-generator.version>7.3.0</openapi-generator.version>
+        <openapi-generator.version>7.7.0</openapi-generator.version>
         <swagger-annotations.version>2.2.20</swagger-annotations.version>
+        <swagger-parser.version>2.1.22</swagger-parser.version>
     </properties>
 
 </project>

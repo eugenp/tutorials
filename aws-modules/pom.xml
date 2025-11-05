@@ -14,28 +14,60 @@
     </parent>
 
     <modules>
+        <module>amazon-athena</module>
+        <module>amazon-textract</module>
         <module>aws-app-sync</module>
         <module>aws-dynamodb</module>
+        <module>aws-dynamodb-v2</module>
         <module>aws-lambda-modules</module>
         <module>aws-miscellaneous</module>
         <module>aws-reactive</module>
-        <module>aws-s3</module>
         <module>aws-rest</module>
+        <module>aws-s3</module>
+        <module>aws-s3-2</module>
+        <module>s3proxy</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>bom</artifactId>
+                <version>${aws-java-sdk-v2.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.amazonaws</groupId>
+                <artifactId>aws-java-sdk-bom</artifactId>
+                <version>${aws-java-sdk.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-dynamodb</artifactId>
-            <version>1.12.523</version>
+            <version>${aws-java-sdk-dynamodb.version}</version>
             <scope>compile</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
     <properties>
-        <aws-java-sdk.version>1.12.331</aws-java-sdk.version>
+        <aws-java-sdk.version>1.12.777</aws-java-sdk.version>
         <aws-java-sdk-v2.version>2.24.9</aws-java-sdk-v2.version>
         <maven-shade-plugin.version>3.0.0</maven-shade-plugin.version>
+        <aws-java-sdk-dynamodb.version>1.12.523</aws-java-sdk-dynamodb.version>
+        <spring-boot.version>3.3.2</spring-boot.version>
     </properties>
 
 </project>

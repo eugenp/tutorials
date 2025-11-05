@@ -14,4 +14,22 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-configuration2</artifactId>
+            <version>${apache.commons.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>${commons.beanutils.version}</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <apache.commons.version>2.11.0</apache.commons.version>
+        <commons.beanutils.version>1.10.1</commons.beanutils.version>
+    </properties>
+
 </project>

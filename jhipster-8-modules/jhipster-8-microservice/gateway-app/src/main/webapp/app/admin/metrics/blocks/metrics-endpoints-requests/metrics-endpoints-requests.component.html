@@ -1,0 +1,28 @@
+<h3 id="endpointsRequestsMetrics">Endpoints requests (time in millisecond)</h3>
+
+@if (!updating() && endpointsRequestsMetrics()) {
+  <div class="table-responsive">
+    <table class="table table-striped" aria-describedby="endpointsRequestsMetrics">
+      <thead>
+        <tr>
+          <th scope="col">Method</th>
+          <th scope="col">Endpoint url</th>
+          <th scope="col" class="text-end">Count</th>
+          <th scope="col" class="text-end">Mean</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (entry of endpointsRequestsMetrics() | keyvalue; track entry.key) {
+          @for (method of entry.value | keyvalue; track method.key) {
+            <tr>
+              <td>{{ method.key }}</td>
+              <td>{{ entry.key }}</td>
+              <td class="text-end">{{ method.value!.count }}</td>
+              <td class="text-end">{{ method.value!.mean | number: '1.0-3' }}</td>
+            </tr>
+          }
+        }
+      </tbody>
+    </table>
+  </div>
+}

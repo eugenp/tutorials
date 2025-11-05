@@ -7,6 +7,7 @@ import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import java.io.*;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -72,10 +73,10 @@ public class JavaReadFromFileUnitTest {
     }
 
     @Test
-    public void givenURLName_whenUsingURL_thenFileData() throws IOException {
+    public void givenURLName_whenUsingURL_thenFileData() throws IOException, URISyntaxException {
         String expectedData = "Example Domain";
 
-        URL urlObject = new URL("http://www.example.com/");
+        URL urlObject = new URI("http://www.example.com/").toURL();
 
         URLConnection urlConnection = urlObject.openConnection();
 

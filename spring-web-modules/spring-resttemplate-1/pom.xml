@@ -5,14 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-resttemplate-1</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-resttemplate-1</name>
     <packaging>war</packaging>
+    <name>spring-resttemplate-1</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
+        <artifactId>spring-web-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -24,6 +23,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
         </dependency>
     </dependencies>
 

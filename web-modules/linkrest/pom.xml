@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>linkrest</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>linkrest</name>
     <packaging>war</packaging>
+    <name>linkrest</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

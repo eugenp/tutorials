@@ -19,12 +19,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>${apache.commons.lang3.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.storm</groupId>
-            <artifactId>storm-core</artifactId>
-            <version>1.2.2</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -32,19 +26,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                </configuration>
             </plugin>
         </plugins>
     </build>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
         <apache.commons.lang3.version>3.14.0</apache.commons.lang3.version>
-        <guava.version>33.0.0-jre</guava.version>
     </properties>
 
 </project>

@@ -59,6 +59,7 @@
     <properties>
         <spring-boot.version>3.0.9</spring-boot.version>
         <maven-failsafe-plugin.version>3.1.2</maven-failsafe-plugin.version>
+        <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
     </properties>
 
 </project>

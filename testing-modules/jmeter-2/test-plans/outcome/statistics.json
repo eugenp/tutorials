@@ -1,0 +1,34 @@
+{
+  "uuid-generator-endpoint-test" : {
+    "transaction" : "uuid-generator-endpoint-test",
+    "sampleCount" : 31500,
+    "errorCount" : 0,
+    "errorPct" : 0.0,
+    "meanResTime" : 3.4697460317460442,
+    "medianResTime" : 1.0,
+    "minResTime" : 0.0,
+    "maxResTime" : 111.0,
+    "pct1ResTime" : 3.0,
+    "pct2ResTime" : 20.0,
+    "pct3ResTime" : 69.0,
+    "throughput" : 403.23612995724415,
+    "receivedKBytesPerSec" : 231.1508361149159,
+    "sentKBytesPerSec" : 49.22316039517141
+  },
+  "Total" : {
+    "transaction" : "Total",
+    "sampleCount" : 31500,
+    "errorCount" : 0,
+    "errorPct" : 0.0,
+    "meanResTime" : 3.4697460317460442,
+    "medianResTime" : 1.0,
+    "minResTime" : 0.0,
+    "maxResTime" : 111.0,
+    "pct1ResTime" : 3.0,
+    "pct2ResTime" : 20.0,
+    "pct3ResTime" : 69.0,
+    "throughput" : 403.23612995724415,
+    "receivedKBytesPerSec" : 231.1508361149159,
+    "sentKBytesPerSec" : 49.22316039517141
+  }
+}

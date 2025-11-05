@@ -29,9 +29,13 @@ out/
 # Mac
 .DS_Store
 
+# Quarkus
+.quarkus/
+
 # Maven
 log/*
 target/
+build/
 
 # Gradle
 .gradle/
@@ -131,3 +135,29 @@ persistence-modules/neo4j/data/**
 
 #spring-5-webflux-2
 **/testdb.mv.db
+
+/patterns-modules/design-patterns-creational-2/app.log
+/microservices-modules/micronaut-reactive/.micronaut/test-resources/test-resources.properties
+/libraries-security/src/main/resources/home/upload/test_file_SCP.txt
+/libraries-security/src/main/resources/home/upload/test_file_SFTP.txt
+/libraries-data-io/src/test/resources/protocols/gson_user.json
+/libraries-io/src/main/resources/application.csv
+/libraries-io/src/main/resources/application2.csv
+/libraries-io/src/main/resources/application3.csv
+/libraries-io/src/main/resources/application4.csv
+/persistence-modules/hibernate6/finalRecordingTestMvn.jfr
+/core-java-modules/core-java-io-conversions-3/src/test/resources/xlsxToCsv_output.csv
+/core-java-modules/core-java-io-5/output.txt
+/core-java-modules/core-java-io-apis-2/sample.txt
+/persistence-modules/core-java-persistence-3/test.mv.db
+/apache-libraries/src/main/java/com/baeldung/apache/avro/
+/apache-libraries-2/cars.avro
+
+#spring-cloud
+/spring-cloud-modules/spring-cloud-bootstrap/gateway/src/main/resources/static/home/3rdpartylicenses.txt
+/spring-cloud-modules/spring-cloud-bootstrap/gateway/src/main/resources/static/home/prerendered-routes.json
+/spring-cloud-modules/spring-cloud-bootstrap/gateway/src/main/resources/static/home/browser/*
+/spring-cloud-modules/spring-cloud-bootstrap/gateway/src/main/resources/static/home/server/*
+
+/web-modules/linkrest/src/main/java/com/baeldung/cayenne/auto/_Department.java
+/web-modules/linkrest/src/main/java/com/baeldung/cayenne/auto/_Employee.java

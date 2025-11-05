@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.baeldung.mybatis.generatedid.CarXmlMapper">
+
+    <insert id="saveUsingOptions" parameterType="com.baeldung.mybatis.generatedid.Car"
+            useGeneratedKeys="true" keyColumn="ID" keyProperty="id">
+        INSERT INTO CAR(MODEL)
+        VALUES (#{model});
+    </insert>
+
+    <insert id="saveUsingSelectKey" parameterType="com.baeldung.mybatis.generatedid.Car">
+        INSERT INTO CAR(MODEL)
+        VALUES (#{model});
+
+        <selectKey resultType="Long" order="AFTER" keyColumn="ID" keyProperty="id">
+            CALL IDENTITY()
+        </selectKey>
+    </insert>
+
+</mapper>

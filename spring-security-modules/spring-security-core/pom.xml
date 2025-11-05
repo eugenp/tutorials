@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-security-core</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-security-core</name>
     <packaging>war</packaging>
+    <name>spring-security-core</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -49,6 +49,21 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -64,12 +79,17 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                </configuration>
+           </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <start-class>com.baeldung.app.App</start-class>
-    </properties>
 
     <profiles>
         <profile>
@@ -79,6 +99,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <executions>
                             <execution>
                                 <phase>integration-test</phase>
@@ -103,5 +124,10 @@
             </build>
         </profile>
     </profiles>
+
+    <properties>
+        <start-class>com.baeldung.app.App</start-class>
+        <jjwt.version>0.12.5</jjwt.version>
+    </properties>
 
 </project>

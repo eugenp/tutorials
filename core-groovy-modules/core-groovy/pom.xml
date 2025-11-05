@@ -22,18 +22,13 @@
         <dependency>
             <groupId>org.apache.groovy</groupId>
             <artifactId>groovy-all</artifactId>
-            <version>${groovy-all.version}</version>
+            <version>${groovy.version}</version>
             <type>pom</type>
         </dependency>
         <dependency>
             <groupId>org.apache.groovy</groupId>
             <artifactId>groovy-dateutil</artifactId>
             <version>${groovy.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.groovy</groupId>
-            <artifactId>groovy-sql</artifactId>
-            <version>${groovy-sql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
@@ -99,13 +94,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <groovy.version>4.0.21</groovy.version>
-        <groovy-all.version>4.0.21</groovy-all.version>
-        <groovy-sql.version>4.0.21</groovy-sql.version>
-        <gmavenplus-plugin.version>3.0.0</gmavenplus-plugin.version>
-        <spock-core.version>2.4-M4-groovy-4.0</spock-core.version>
-    </properties>
 
 </project>

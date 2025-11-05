@@ -1,0 +1,30 @@
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        generate_statistics: true
+        ## Enable jdbc batch inserts.
+        jdbc.batch_size: 4
+        order_inserts: true
+        javax.cache.provider: org.ehcache.jsr107.EhcacheCachingProvider
+        cache:
+          ## Enable L2 cache
+          region.factory_class: org.hibernate.cache.jcache.JCacheRegionFactory #jcache
+          use_second_level_cache: true
+          use_query_cache: true
+      jakarta.persistence.sharedCache.mode: ENABLE_SELECTIVE
+  sql:
+    init:
+      data-locations: classpath:data-jfr.sql

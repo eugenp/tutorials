@@ -1,0 +1,26 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (authority()) {
+      <div>
+        <h2 data-cy="authorityDetailsHeading"><span>Authority</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>Name</span></dt>
+          <dd>
+            <span>{{ authority()!.name }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

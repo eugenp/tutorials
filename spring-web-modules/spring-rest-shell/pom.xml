@@ -4,15 +4,14 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-rest-shell</artifactId>
-    <name>spring-rest-shell</name>
     <packaging>jar</packaging>
+    <name>spring-rest-shell</name>
     <description>A simple project to demonstrate Spring REST Shell features.</description>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
+        <artifactId>spring-web-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>

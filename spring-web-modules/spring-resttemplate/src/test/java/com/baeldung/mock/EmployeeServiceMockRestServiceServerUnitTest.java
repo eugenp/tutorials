@@ -48,7 +48,7 @@ public class EmployeeServiceMockRestServiceServerUnitTest {
     }
 
     @Test
-    public void givenMockingIsDoneByMockRestServiceServer_whenGetIsCalled_shouldReturnMockedObject() throws Exception {
+    public void givenMockingIsDoneByMockRestServiceServer_whenGetForEntityIsCalled_thenReturnMockedObject() throws Exception {
         Employee emp = new Employee("E001", "Eric Simmons");
 
         mockServer.expect(ExpectedCount.once(),
@@ -58,9 +58,24 @@ public class EmployeeServiceMockRestServiceServerUnitTest {
               .contentType(MediaType.APPLICATION_JSON)
               .body(mapper.writeValueAsString(emp)));
 
-        Employee employee = empService.getEmployee("E001");
+        Employee employee = empService.getEmployeeWithGetForEntity("E001");
         mockServer.verify();
         Assertions.assertEquals(emp, employee);
     }
 
+    @Test
+    public void givenMockingIsDoneByMockRestServiceServer_whenExchangeIsCalled_thenReturnMockedObject() throws Exception {
+        Employee emp = new Employee("E001", "Eric Simmons");
+
+        mockServer.expect(ExpectedCount.once(),
+                requestTo(new URI("http://localhost:8080/employee/E001")))
+            .andExpect(method(HttpMethod.GET))
+            .andRespond(withStatus(HttpStatus.OK)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(mapper.writeValueAsString(emp)));
+
+        Employee employee = empService.getEmployeeWithRestTemplateExchange("E001");
+        mockServer.verify();
+        Assertions.assertEquals(emp, employee);
+    }
 }

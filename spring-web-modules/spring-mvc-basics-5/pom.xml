@@ -5,14 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-mvc-basics-5</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-mvc-basics-5</name>
     <packaging>jar</packaging>
+    <name>spring-mvc-basics-5</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
+        <artifactId>spring-web-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -62,7 +61,17 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>${io.rest-assured.version}</version>
+            <version>${rest-assured.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
@@ -82,9 +91,8 @@
 
     <properties>
         <json-path.version>2.9.0</json-path.version>
-        <jaxb-runtime.version>2.3.5</jaxb-runtime.version>
         <jakarta.servlet.jsp.jstl>2.0.0</jakarta.servlet.jsp.jstl>
-        <io.rest-assured.version>3.0.0</io.rest-assured.version>
+        <rest-assured.version>5.5.0</rest-assured.version>
     </properties>
 
 </project>

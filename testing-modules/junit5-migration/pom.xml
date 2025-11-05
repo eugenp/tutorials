@@ -43,8 +43,4 @@
         </resources>
     </build>
 
-    <properties>
-        <junit-platform.version>1.10.2</junit-platform.version>
-    </properties>
-
 </project>

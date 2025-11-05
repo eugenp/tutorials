@@ -4,15 +4,14 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-reactive-client-2</artifactId>
-    <name>spring-reactive-client-2</name>
     <packaging>jar</packaging>
+    <name>spring-reactive-client-2</name>
     <description>spring boot sample project about new features</description>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
+        <groupId>com.baeldung.spring.reactive</groupId>
+        <artifactId>spring-reactive-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -70,7 +69,6 @@
             <version>${jmh.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -108,10 +106,6 @@
                     <mainClass>com.baeldung.limitrequests.LimitRequestsApp</mainClass>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
         </plugins>
     </build>
 
@@ -123,6 +117,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <systemPropertyVariables>
                                 <logback.configurationFile>${project.basedir}/src/test/resources/logback-test.xml</logback.configurationFile>
@@ -139,6 +134,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <systemPropertyVariables>
                                 <logback.configurationFile>${project.basedir}/src/test/resources/logback-test.xml</logback.configurationFile>
@@ -152,7 +148,6 @@
 
     <properties>
         <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
-        <jetty-reactive-httpclient.version>1.1.6</jetty-reactive-httpclient.version>
         <resilience4j.version>1.7.1</resilience4j.version>
         <jmh.version>1.37</jmh.version>
     </properties>

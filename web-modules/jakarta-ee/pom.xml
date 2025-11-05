@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jakarta-ee</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>jakarta-ee</name>
     <packaging>war</packaging>
+    <name>jakarta-ee</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -110,6 +110,7 @@
         <maven-glassfish-plugin.version>2.1</maven-glassfish-plugin.version>
         <jakarta.xml.soap-api.version>3.0.1</jakarta.xml.soap-api.version>
         <saaj-impl.version>3.0.3</saaj-impl.version>
+        <junit-jupiter.version>5.10.3</junit-jupiter.version>
     </properties>
 
 </project>

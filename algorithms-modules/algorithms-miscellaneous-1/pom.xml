@@ -35,6 +35,16 @@
             <artifactId>combinatoricslib3</artifactId>
             <version>${combinatoricslib3.version}</version>
         </dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${xml-bind-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
     </dependencies>
 
     <reporting>
@@ -58,7 +68,7 @@
     </reporting>
 
     <properties>
-        <combinatoricslib3.version>3.3.0</combinatoricslib3.version>
+        <xml-bind-api.version>4.0.0</xml-bind-api.version>
     </properties>
 
 </project>

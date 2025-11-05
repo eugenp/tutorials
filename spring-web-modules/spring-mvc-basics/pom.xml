@@ -5,20 +5,31 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-mvc-basics</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-mvc-basics</name>
     <packaging>jar</packaging>
+    <name>spring-mvc-basics</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
+        <artifactId>spring-web-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         <!-- to enable JSP -->
         <dependency>
@@ -48,10 +59,9 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>${rest-assured-version}</version>
+            <version>${rest-assured.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -76,8 +86,7 @@
     </build>
 
     <properties>
-        <jaxb-runtime.version>4.0.1</jaxb-runtime.version>
-        <rest-assured-version>5.4.0</rest-assured-version>
+        <rest-assured.version>5.5.0</rest-assured.version>
         <jstl-version>1.2</jstl-version>
         <jakarta.servlet.jsp.jstl.version>2.0.0</jakarta.servlet.jsp.jstl.version>
     </properties>

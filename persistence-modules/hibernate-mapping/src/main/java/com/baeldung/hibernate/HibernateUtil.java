@@ -12,10 +12,6 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 
-import com.baeldung.hibernate.entities.DeptEmployee;
-import com.baeldung.hibernate.pojo.Employee;
-import com.baeldung.hibernate.pojo.EntityDescription;
-import com.baeldung.hibernate.pojo.Phone;
 import com.baeldung.hibernate.pojo.TemporalValues;
 import com.baeldung.hibernate.pojo.inheritance.Animal;
 import com.baeldung.hibernate.pojo.inheritance.Bag;
@@ -72,12 +68,6 @@ public class HibernateUtil {
         MetadataSources metadataSources = new MetadataSources(serviceRegistry);
 
         metadataSources.addPackage("com.baeldung.hibernate.pojo");
-        metadataSources.addAnnotatedClass(Employee.class);
-        metadataSources.addAnnotatedClass(Phone.class);
-        metadataSources.addAnnotatedClass(EntityDescription.class);
-        metadataSources.addAnnotatedClass(TemporalValues.class);
-        metadataSources.addAnnotatedClass(DeptEmployee.class);
-        metadataSources.addAnnotatedClass(com.baeldung.hibernate.entities.Department.class);
         metadataSources.addAnnotatedClass(Animal.class);
         metadataSources.addAnnotatedClass(Bag.class);
         metadataSources.addAnnotatedClass(Laptop.class);
@@ -88,6 +78,7 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(Pen.class);
         metadataSources.addAnnotatedClass(Pet.class);
         metadataSources.addAnnotatedClass(Vehicle.class);
+        metadataSources.addAnnotatedClass(TemporalValues.class);
 
         Metadata metadata = metadataSources.getMetadataBuilder()
             .build();

@@ -58,6 +58,20 @@
             <version>${querydsl.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-oxm</artifactId>
+            <version>${spring-oxm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+    		<groupId>com.fasterxml.jackson.core</groupId>
+    		<artifactId>jackson-databind</artifactId>
+		</dependency>
     </dependencies>
 
     <build>
@@ -83,9 +97,9 @@
                 </executions>
                 <dependencies>
                     <dependency>
-                        <groupId>org.hibernate</groupId>
+                        <groupId>org.hibernate.orm</groupId>
                         <artifactId>hibernate-jpamodelgen</artifactId>
-                        <version>${hibernate-jpamodelgen.version}</version>
+                        <version>${hibernate.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -96,10 +110,11 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <querydsl.version>5.0.0</querydsl.version>
+        <hibernate.version>6.5.2.Final</hibernate.version>
         <jakarta.persistence.version>3.1.0</jakarta.persistence.version>
         <apt-maven-plugin.version>1.1.3</apt-maven-plugin.version>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
-        <hibernate-jpamodelgen.version>6.4.2.Final</hibernate-jpamodelgen.version>
+        <spring-oxm.version>6.1.4</spring-oxm.version>
     </properties>
 
 </project>

@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-security-modules</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-security-modules</name>
     <packaging>pom</packaging>
+    <name>spring-security-modules</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -22,22 +22,22 @@
         <module>spring-security-core</module>
         <module>spring-security-core-2</module>
         <module>spring-security-core-3</module>
-        <!--        <module>spring-security-ldap</module>-->
-        <module>spring-security-legacy-oidc</module> <!-- Ths module wasn't able to upgrade because is using Spring Security oauth2 which reached end of life. JAVA-29292-->
+        <!-- <module>spring-security-ldap</module>-->
+        <!-- <module>spring-security-legacy-oidc</module> --> <!-- failing after upgrade to jdk21 --> <!-- Ths module wasn't able to upgrade because is using Spring Security oauth2 which reached end of life. JAVA-29292 and JAVA-37717-->
         <module>spring-security-oauth2</module> <!-- This module wasn't updated to spring boot 3 because of spring-oauth2 not supporting Jakarta and reaching end of life. JAVA-29293 -->
         <module>spring-security-oauth2-sso</module> <!-- This module wasn't able to update because Spring Security Oauth reach end of life and not compatible with spring boot 3. JAVA-29294 -->
         <module>spring-security-oidc</module>
         <module>spring-security-okta</module>
-<!--        <module>spring-security-saml</module>-->   <!-- This module wasn't able to update to spring boot 3 because Jakarta clashes with javax -->
+        <!-- <module>spring-security-saml</module>-->   <!-- This module wasn't able to update to spring boot 3 because Jakarta clashes with javax -->
         <module>spring-security-social-login</module> <!-- spring-social-facebook is deprecated and not supported in latest version of spring security. JAVA-29302 -->
         <module>spring-security-web-angular</module>
         <module>spring-security-web-boot-1</module>
         <module>spring-security-web-boot-2</module>
-        <module>spring-security-web-boot-3</module>
+         <module>spring-security-web-boot-3</module>
         <module>spring-security-web-boot-4</module>
         <module>spring-security-web-boot-5</module>
         <module>spring-security-web-digest-auth</module>
-        <!-- <module>spring-security-web-login</module> --> <!-- This module wasn't able to update to spring boot 3 because of a bug see JAVA-29310 -->
+        <module>spring-security-web-login</module>
         <module>spring-security-web-login-2</module>
         <module>spring-security-web-mvc-custom</module>
         <module>spring-security-web-mvc</module>
@@ -56,6 +56,28 @@
         <module>spring-security-oauth2-testing</module>
         <module>spring-security-saml2</module>
         <module>spring-security-oauth2-bff/backend</module>
+        <module>spring-security-pkce-spa</module>
+        <module>spring-security-compromised-password</module>
+        <module>spring-security-authorization</module>
+        <module>spring-disable-security</module>
+        <module>spring-security-dynamic-registration</module>
+        <module>spring-security-ott</module>
+        <module>spring-security-passkey</module>
+        <module>spring-security-faking-oauth2-sso</module>
     </modules>
+
+    <build>
+        <plugins>
+           <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                </configuration>
+           </plugin>
+        </plugins>
+    </build>
 
 </project>

@@ -45,7 +45,6 @@
         <spring-cloud-dependencies.version>2023.0.1</spring-cloud-dependencies.version>
         <spring-boot.version>3.2.4</spring-boot.version>
         <logback.version>1.5.4</logback.version>
-        <org.slf4j.version>2.0.12</org.slf4j.version>
     </properties>
 
 </project>

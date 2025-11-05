@@ -1,0 +1,8 @@
+com:
+  baeldung:
+    sendgrid:
+      api-key: SG0101010101010101010101010101010101010101010101010101010101010101010
+      from-email: no-reply@baeldung.com
+      from-name: Baeldung
+      hydration-alert-notification:
+        template-id: d-01010101010101010101010101010101

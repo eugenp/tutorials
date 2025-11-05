@@ -20,7 +20,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring.boot.dependencies}</version>
+                <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -82,6 +82,16 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>com.mchange</groupId>
             <artifactId>c3p0</artifactId>
             <version>${c3p0.version}</version>
@@ -114,8 +124,17 @@
         <dependency>
             <groupId>com.oracle.database.spring</groupId>
             <artifactId>oracle-spring-boot-starter-ucp</artifactId>
-            <version>3.1.0</version>   <!-- or 2.7.7 for Spring Boot 2.x -->
-            <type>pom</type>
+            <version>${oracle-spring-boot-starter-ucp.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.hypersistence</groupId>
+            <artifactId>hypersistence-utils-hibernate-62</artifactId>
+            <version>${hypersistence-utils.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vladmihalcea</groupId>
+            <artifactId>db-util</artifactId>
+            <version>${db.util.version}</version>
         </dependency>
     </dependencies>
 
@@ -124,20 +143,24 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring.boot.dependencies}</version>
+                <version>${spring-boot.version}</version>
             </plugin>
         </plugins>
     </build>
 
     <properties>
         <jdbi.version>3.38.0</jdbi.version>
-        <spring.boot.dependencies>3.0.5</spring.boot.dependencies>
         <c3p0.version>0.9.5.5</c3p0.version>
         <oracle-database.version>21.9.0.0</oracle-database.version>
         <!--add note in the root pom.xml-->
         <org.slf4j.version>2.0.7</org.slf4j.version>
         <logback.version>1.4.6</logback.version>
         <mysql-connector-java.version>8.2.0</mysql-connector-java.version>
+        <junit-jupiter.version>5.9.3</junit-jupiter.version> <!-- Upgrading to latest version breaks the tests -->
+        <spring-boot.version>3.1.5</spring-boot.version>
+        <oracle-spring-boot-starter-ucp.version>24.2.0</oracle-spring-boot-starter-ucp.version>
+        <hypersistence-utils.version>3.7.0</hypersistence-utils.version>
+        <db.util.version>1.0.7</db.util.version>
     </properties>
 
 </project>

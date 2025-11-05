@@ -5,14 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-rest-http-2</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-rest-http-2</name>
     <packaging>war</packaging>
+    <name>spring-rest-http-2</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
+        <artifactId>spring-web-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -33,26 +32,23 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-timelimiter</artifactId>
-            <version>${resilience4j.version}</version>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>${springdoc.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
     </dependencies>
 
     <properties>
-        <resilience4j.version>2.1.0</resilience4j.version>
-        <springdoc.version>1.7.0</springdoc.version>
         <start-class>com.baeldung.Main</start-class>
+        <springdoc.version>1.7.0</springdoc.version>
+
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
 </project>

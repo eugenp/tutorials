@@ -4,14 +4,13 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>struts-2</artifactId>
-    <name>struts-2</name>
     <packaging>pom</packaging>
+    <name>struts-2</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-4</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-spring-4</relativePath>
+        <artifactId>web-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>

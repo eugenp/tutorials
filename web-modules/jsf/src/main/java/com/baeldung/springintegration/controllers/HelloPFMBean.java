@@ -1,9 +1,9 @@
 package com.baeldung.springintegration.controllers;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import jakarta.inject.Named;
+import jakarta.enterprise.context.SessionScoped;
 
-@ManagedBean(name = "helloPFMBean")
+@Named("helloPFMBean")
 @SessionScoped
 public class HelloPFMBean {
 

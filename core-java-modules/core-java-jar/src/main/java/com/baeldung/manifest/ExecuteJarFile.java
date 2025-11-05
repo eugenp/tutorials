@@ -16,6 +16,8 @@ public class ExecuteJarFile {
 
     private static final String COMPILE_COMMAND = "javac -d . AppExample.java";
     private static final String CREATE_JAR_WITHOUT_MF_ATT_COMMAND = "jar cvf example.jar com/baeldung/manifest/AppExample.class";
+    private static final String CREATE_JAR_WITHOUT_MF_WITH_CP_OPTION = "jar -cp example.jar com/baeldung/manifest/AppExample";
+    private static final String CREATE_JAR_WITHOUT_MF_WITH_CLASSPATH_OPTION = "jar -classpath example.jar com/baeldung/manifest/AppExample";
     private static final String CREATE_JAR_WITH_MF_ATT_COMMAND = "jar cvmf MANIFEST.MF example.jar com/baeldung/manifest/AppExample.class";
     private static final String EXECUTE_JAR_COMMAND = "java -jar example.jar";
 
@@ -26,6 +28,14 @@ public class ExecuteJarFile {
 
     public static String executeJarWithoutManifestAttribute() {
         return executeJar(CREATE_JAR_WITHOUT_MF_ATT_COMMAND);
+    }
+
+    public static String executeJarWithoutManifestAttributeWithCPOption() {
+        return executeJar(CREATE_JAR_WITHOUT_MF_WITH_CP_OPTION);
+    }
+
+    public static String executeJarWithoutManifestAttributeWithClasspathOption() {
+        return executeJar(CREATE_JAR_WITHOUT_MF_WITH_CLASSPATH_OPTION);
     }
 
     public static String executeJarWithManifestAttribute() {

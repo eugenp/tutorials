@@ -1,0 +1,72 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide empty attributes
+skinparam Handwritten false
+skinparam ClassBorderColor black
+skinparam BackgroundColor #fffce8/#f8f9fa
+skinparam class {
+ ArrowColor SeaGreen
+ BackgroundColor #fffce8
+}
+
+class MilvusClientV2 {
+   +createCollection()
+
+}
+
+class IndexParam {
+   +builder()
+}
+class IndexParamBuilder {
+   +fieldName()
+   +indexName()
+   +metricType()
+   +indexType()
+   +build()
+}
+
+class FieldSchemaBuilder {
+   +name()
+   +description()
+   +isPrimary()
+   +dimension()
+   +dataType()
+   +build()
+}
+
+class CreateCollectionReq {
+   +builder()
+}
+
+class FieldSchema {
+   +builder()
+}
+
+class CollectionSchema {
+   +builder()
+}
+
+class CollectionSchemaBuilder {
+   +fieldSchemaList(List<FieldSchema>)
+   +build()
+}
+
+class CreateCollectionReqBuilder {
+   +collectionName()
+   indexParams(List<IndexParam>)
+   +description()
+   +collectionSchema()
+   +build()
+}
+
+CreateCollectionReqBuilder -down-+ CreateCollectionReq: contains
+CollectionSchema -left-+ CreateCollectionReq: uses
+CollectionSchema -down-+ CollectionSchemaBuilder: contains
+FieldSchema -up-+ CreateCollectionReq: uses
+FieldSchema -left-+ FieldSchemaBuilder: contains
+CollectionSchemaBuilder -left-> FieldSchema: uses
+MilvusClientV2 -down-> CreateCollectionReq: uses
+IndexParam +-up- IndexParamBuilder: contains
+CreateCollectionReqBuilder -down-> IndexParam: uses
+
+@enduml

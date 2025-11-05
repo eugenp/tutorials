@@ -73,21 +73,14 @@
             <artifactId>jakarta.persistence-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.subethamail</groupId>
-            <artifactId>subethasmtp</artifactId>
-            <version>${subethasmtp.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.apache.httpcomponents.client5</groupId>
             <artifactId>httpclient5</artifactId>
-            <version>5.3.1</version>
         </dependency>
     </dependencies>
 
     <properties>
-        <subethasmtp.version>3.1.7</subethasmtp.version>
-        <springcloud.version>3.1.3</springcloud.version>
+        <spring-boot.version>3.2.2</spring-boot.version>
+        <springcloud.version>4.1.2</springcloud.version>
         <start-class>com.baeldung.shutdown.Application</start-class>
     </properties>
 

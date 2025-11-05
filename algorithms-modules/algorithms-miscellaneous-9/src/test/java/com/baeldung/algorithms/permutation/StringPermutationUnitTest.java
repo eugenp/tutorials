@@ -1,7 +1,5 @@
 package com.baeldung.algorithms.permutation;
 
-import org.junit.jupiter.api.Test;
-
 import static com.baeldung.algorithms.permutation.StringPermutation.isPermutationInclusion;
 import static com.baeldung.algorithms.permutation.StringPermutation.isPermutationWithMap;
 import static com.baeldung.algorithms.permutation.StringPermutation.isPermutationWithOneCounter;
@@ -9,6 +7,8 @@ import static com.baeldung.algorithms.permutation.StringPermutation.isPermutatio
 import static com.baeldung.algorithms.permutation.StringPermutation.isPermutationWithTwoCounters;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
 
 public class StringPermutationUnitTest {
 

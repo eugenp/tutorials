@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.baeldung.hibernate.criteria.model.Player" table="PLAYER">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="playerName" type="java.lang.String">
+            <column name="PLAYER_NAME"  />
+        </property>
+        <property name="teamName" type="java.lang.String">
+            <column name="TEAM_NAME" />
+        </property>
+        <property name="age" type="java.lang.Integer">
+            <column name="AGE" />
+        </property>
+        <many-to-one name="league" class="com.baeldung.hibernate.criteria.model.League" column="LEAGUE_ID"/>
+    </class>
+</hibernate-mapping>

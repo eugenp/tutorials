@@ -30,7 +30,7 @@
         </dependency>
         <dependency>
             <groupId>de.flapdoodle.embed</groupId>
-            <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <artifactId>de.flapdoodle.embed.mongo.spring3x</artifactId>
             <scope>test</scope>
             <version>${de.flapdoodle.embed.mongo.version}</version>
         </dependency>
@@ -39,6 +39,6 @@
     <properties>
         <start-class>com.baeldung.boot.atlassearch.MongoDbAtlasSearchApplication</start-class>
         <mongodb-crypt.version>1.8.0</mongodb-crypt.version>
-        <de.flapdoodle.embed.mongo.version>4.9.2</de.flapdoodle.embed.mongo.version>
+        <de.flapdoodle.embed.mongo.version>4.13.0</de.flapdoodle.embed.mongo.version>
     </properties>
 </project>

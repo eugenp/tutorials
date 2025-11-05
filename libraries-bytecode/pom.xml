@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-bytecode</artifactId>
@@ -40,6 +40,48 @@
             <artifactId>asm-util</artifactId>
             <version>${asm.version}</version>
         </dependency>
+        <!--
+                Importing the libraries as jars using system path. These are two versions of the same library, which is generated
+        from the code inside /incompatibleclasschange/libraries/modified and /incompatibleclasschange/libraries/original
+
+        To simulate the incompatible class change error, build the jars from the above-mentioned paths, place them in the locations mentioned in
+        the systemPath property and uncomment the following lines.
+
+               -->
+        <!--<dependency>
+            <groupId>org.dinosaur</groupId>
+            <artifactId>dinosaur</artifactId>
+            <version>1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/dinosaur-1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.dinosaur</groupId>
+            <artifactId>dinosaur</artifactId>
+            <version>2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/dinosaur-2.jar</systemPath>
+        </dependency>-->
+        <dependency>
+            <groupId>org.teavm</groupId>
+            <artifactId>teavm-core</artifactId>
+            <version>${teavm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.teavm</groupId>
+            <artifactId>teavm-classlib</artifactId>
+            <version>${teavm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.teavm</groupId>
+            <artifactId>teavm-tooling</artifactId>
+            <version>${teavm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.objenesis</groupId>
+            <artifactId>objenesis</artifactId>
+            <version>${objenesis.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -47,6 +89,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <argLine>
                         --add-opens=java.base/java.lang=ALL-UNNAMED
@@ -73,6 +116,8 @@
     <properties>
         <javaassist.version>3.29.2-GA</javaassist.version>
         <asm.version>5.2</asm.version>
+        <teavm.version>0.10.1</teavm.version>
+        <objenesis.version>3.4</objenesis.version>
     </properties>
 
 </project>

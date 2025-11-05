@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-mockito</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-mockito</name>
     <packaging>jar</packaging>
+    <name>spring-mockito</name>
     <description>Injecting Mockito Mocks into Spring Beans</description>
 
     <parent>
@@ -20,11 +20,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

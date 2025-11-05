@@ -11,6 +11,8 @@ import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.baeldung.GetRequestMockServer;
 import com.baeldung.httpclient.ResponseUtil;
@@ -19,6 +21,8 @@ import com.baeldung.httpclient.ResponseUtil;
  * NOTE : Need module spring-security-rest-basic-auth to be running
  */
 class HttpClientSandboxLiveTest extends GetRequestMockServer {
+
+    private static final Logger log = LoggerFactory.getLogger(HttpClientSandboxLiveTest.class);
 
     @Test
     final void givenGetRequestExecuted_whenAnalyzingTheResponse_thenCorrectStatusCode() throws IOException {
@@ -31,7 +35,7 @@ class HttpClientSandboxLiveTest extends GetRequestMockServer {
         final HttpGet httpGet = new HttpGet("http://localhost:" + serverPort + "/spring-security-rest-basic-auth/api/foos/1");
         final CloseableHttpResponse response = client.execute(httpGet);
 
-        System.out.println(response.getStatusLine());
+        log.debug(String.valueOf(response.getStatusLine()));
 
         ResponseUtil.closeResponse(response);
     }

@@ -12,34 +12,4 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.leansoft</groupId>
-            <artifactId>bigqueue</artifactId>
-            <version>${bigqueue.version}</version>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>exec-maven-plugin</artifactId>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-
-    <repositories>
-        <repository>
-            <id>github.release.repo</id>
-            <url>https://raw.github.com/bulldog2011/bulldog-repo/master/repo/releases/</url>
-        </repository>
-    </repositories>
-
-    <properties>
-        <bigqueue.version>0.7.0</bigqueue.version>
-    </properties>
-
 </project>

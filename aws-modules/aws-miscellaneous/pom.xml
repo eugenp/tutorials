@@ -30,6 +30,18 @@
             <artifactId>gson</artifactId>
             <version>${gson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>5.12.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>5.12.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -57,7 +69,7 @@
     </build>
 
     <properties>
-        <gson.version>2.10.1</gson.version>
+        <gson.version>2.11.0</gson.version>
         <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
     </properties>
 

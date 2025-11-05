@@ -44,7 +44,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${surefire-version}</version>
+                    <version>${maven-surefire-plugin.version}</version>
                     <configuration>
                         <threadCount>1</threadCount>
                     </configuration>
@@ -52,16 +52,11 @@
                         <dependency>
                             <groupId>org.apache.maven.surefire</groupId>
                             <artifactId>surefire-junit-platform</artifactId>
-                            <version>${surefire-version}</version>
+                            <version>${maven-surefire-plugin.version}</version>
                         </dependency>
                     </dependencies>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
-
-    <properties>
-        <surefire-version>2.22.2</surefire-version>
-    </properties>
-
 </project>

@@ -1,0 +1,6 @@
+plugins {
+    id 'java'
+}
+
+group = "com.baeldung"
+version = "1.0.0"

@@ -40,7 +40,6 @@
             <version>${spring-boot-test.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
@@ -85,7 +84,6 @@
         <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
         <activemq-junit.version>5.16.5</activemq-junit.version>
         <testcontainers.version>1.17.3</testcontainers.version>
-        <junit-jupiter.version>5.10.2</junit-jupiter.version>
     </properties>
 
 </project>

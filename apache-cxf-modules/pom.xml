@@ -8,7 +8,6 @@
     <packaging>pom</packaging>
     <name>apache-cxf-modules</name>
 
-
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
@@ -37,6 +36,9 @@
 
     <properties>
         <cxf.version>4.0.0</cxf.version>
+        <jakarta-ws.version>3.1.0</jakarta-ws.version>
+        <jakarta.jws.version>3.0.0</jakarta.jws.version>
+        <jakarta-xml.version>4.0.0</jakarta-xml.version>
     </properties>
 
 </project>

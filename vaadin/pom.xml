@@ -15,11 +15,6 @@
         <relativePath>../parent-boot-3</relativePath>
     </parent>
 
-    <properties>
-        <java.version>17</java.version>
-        <vaadin.version>24.3.3</vaadin.version>
-    </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -85,7 +80,6 @@
         </plugins>
     </build>
 
-
     <profiles>
         <profile>
             <!-- Production mode is activated using -Pproduction -->
@@ -122,4 +116,9 @@
             </build>
         </profile>
     </profiles>
+
+    <properties>
+        <vaadin.version>24.3.3</vaadin.version>
+    </properties>
+
 </project>

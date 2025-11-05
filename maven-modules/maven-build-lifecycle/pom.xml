@@ -17,7 +17,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven.surefire.version}</version>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <!-- Include test classes with names matching the pattern -->
                     <includes>
@@ -25,7 +25,6 @@
                     </includes>
                 </configuration>
             </plugin>
-
             <!-- Maven Failsafe Plugin for integration tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -45,7 +44,6 @@
     </build>
 
     <properties>
-        <maven.surefire.version>3.1.2</maven.surefire.version>
         <maven.failsafe.version>3.1.2</maven.failsafe.version>
         <junit.jupiter.version>5.3.1</junit.jupiter.version>
     </properties>

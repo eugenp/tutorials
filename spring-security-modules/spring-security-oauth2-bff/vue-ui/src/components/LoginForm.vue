@@ -47,6 +47,10 @@ function login() {
     'post_login_success_uri',
     `${import.meta.env.VITE_REVERSE_PROXY}${import.meta.env.BASE_URL}${route.path}`
   )
+  url.searchParams.append(
+    'post_login_failure_uri',
+    `${import.meta.env.VITE_REVERSE_PROXY}${import.meta.env.BASE_URL}/login-error`
+  )
   const loginUrl = url.toString()
   if (selectedLoginExperience.value === LoginExperience[LoginExperience.IFRAME]) {
     iframeSrc.value = loginUrl

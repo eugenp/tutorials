@@ -90,7 +90,7 @@
         <json.version>20240303</json.version>
         <microstream.storage.version>07.00.00-MS-GA</microstream.storage.version>
         <h2.version>2.1.214</h2.version>
-        <spring-jdbc.version>5.3.29</spring-jdbc.version>
+        <spring-jdbc.version>6.1.13</spring-jdbc.version>
         <mybatis.version>3.5.7</mybatis.version>
     </properties>
 

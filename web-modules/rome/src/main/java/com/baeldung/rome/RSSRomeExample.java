@@ -3,6 +3,8 @@ package com.baeldung.rome;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,7 +25,7 @@ import com.sun.syndication.io.XmlReader;
 
 public class RSSRomeExample {
 
-    public static void main(String[] args) throws IOException, FeedException {
+    public static void main(String[] args) throws IOException, FeedException, URISyntaxException {
         SyndFeed feed = createFeed();
         addEntryToFeed(feed);
         publishFeed(feed);
@@ -75,8 +77,8 @@ public class RSSRomeExample {
         writer.close();
     }
 
-    private static SyndFeed readFeed() throws IOException, FeedException {
-        URL feedSource = new URL("http://rssblog.whatisrss.com/feed/");
+    private static SyndFeed readFeed() throws IOException, FeedException, URISyntaxException {
+        URL feedSource = new URI("http://rssblog.whatisrss.com/feed/").toURL();
         SyndFeedInput input = new SyndFeedInput();
         return input.build(new XmlReader(feedSource));
     }

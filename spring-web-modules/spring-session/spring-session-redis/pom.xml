@@ -5,14 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-session-redis</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>spring-session-redis</name>
     <packaging>jar</packaging>
+    <name>spring-session-redis</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../../parent-boot-3</relativePath>
+        <artifactId>spring-session</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>

@@ -51,9 +51,9 @@
     </build>
 
     <properties>
-        <testng.version>6.10</testng.version>
-        <selenium-java.version>4.8.3</selenium-java.version>
-        <webdrivermanager.version>5.3.2</webdrivermanager.version>
+        <testng.version>7.10.2</testng.version>
+        <selenium-java.version>4.23.1</selenium-java.version>
+        <webdrivermanager.version>5.9.2</webdrivermanager.version>
     </properties>
 
 </project>

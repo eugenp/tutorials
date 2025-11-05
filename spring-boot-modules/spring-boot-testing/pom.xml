@@ -8,7 +8,7 @@
     <packaging>war</packaging>
     <description>This is simple boot application for demonstrating testing features.</description>
 
-        <parent>
+    <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
         <artifactId>spring-boot-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
@@ -115,6 +115,8 @@
         <spock.version>2.4-M1-groovy-4.0</spock.version>
         <gmavenplus-plugin.version>3.0.0</gmavenplus-plugin.version>
         <embedded-redis.version>1.4.2</embedded-redis.version>
+        <spring-boot.version>3.4.2</spring-boot.version>
+        <logback.version>1.5.16</logback.version>
     </properties>
 
 </project>

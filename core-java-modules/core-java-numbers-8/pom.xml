@@ -19,6 +19,11 @@
             <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -30,5 +35,9 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <commons-lang3.version>3.17.0</commons-lang3.version>
+    </properties>
 
 </project>

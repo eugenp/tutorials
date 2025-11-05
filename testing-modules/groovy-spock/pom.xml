@@ -6,8 +6,8 @@
     <groupId>org.spockframework</groupId>
     <artifactId>groovy-spock</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>groovy-spock</name>
     <packaging>jar</packaging>
+    <name>groovy-spock</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -15,16 +15,39 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <spock-core.version>2.4-M1-groovy-4.0</spock-core.version>
-        <groovy-all.version>4.0.16</groovy-all.version>
-        <gmavenplus-plugin.version>3.0.2</gmavenplus-plugin.version>
-    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.spockframework</groupId>
+                <artifactId>spock-bom</artifactId>
+                <version>${spock-core.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.spockframework</groupId>
-            <artifactId>spock-core</artifactId>
+            <artifactId>spock-spring</artifactId>
             <version>${spock-core.version}</version>
             <scope>test</scope>
         </dependency>
@@ -33,6 +56,17 @@
             <artifactId>groovy-all</artifactId>
             <version>${groovy-all.version}</version>
             <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.spockframework</groupId>
+            <artifactId>spock-junit4</artifactId>
+            <version>${spock-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -64,7 +98,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.2</version>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <testSourceDirectory>src/test/groovy</testSourceDirectory>
                     <includes>
@@ -76,5 +110,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <spock-core.version>2.4-M4-groovy-4.0</spock-core.version>
+        <groovy-all.version>4.0.16</groovy-all.version>
+        <gmavenplus-plugin.version>3.0.2</gmavenplus-plugin.version>
+        <spring-boot.version>3.3.0</spring-boot.version>
+    </properties>
 
 </project>

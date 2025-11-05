@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>hamcrest</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>hamcrest</name>
     <packaging>jar</packaging>
+    <name>hamcrest</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

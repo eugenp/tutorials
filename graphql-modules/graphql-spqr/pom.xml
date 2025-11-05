@@ -20,7 +20,7 @@
         <dependency>
             <groupId>io.leangen.graphql</groupId>
             <artifactId>spqr</artifactId>
-            <version>${spqr-version}</version>
+            <version>${spqr.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -35,7 +35,8 @@
     </dependencies>
 
     <properties>
-        <spqr-version>0.11.2</spqr-version>
+        <spqr.version>0.12.4</spqr.version>
+        <junit-jupiter.version>5.10.3</junit-jupiter.version> <!-- Updating to 5.11.x breaks changes -->
     </properties>
 
 </project>

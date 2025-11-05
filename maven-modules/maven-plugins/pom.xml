@@ -19,24 +19,27 @@
         <module>custom-rule</module>
         <module>maven-enforcer</module>
         <module>jaxws</module>
+        <module>spotless</module>
+        <module>external-properties-file</module>
+        <module>spring-properties-cleaner</module>
     </modules>
 
     <build>
+        <resources>
+            <resource>
+                <directory>input-resources</directory>
+                <excludes>
+                    <exclude>*.png</exclude>
+                </excludes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>${maven.resources.version}</version>
                 <configuration>
                     <outputDirectory>output-resources</outputDirectory>
-                    <resources>
-                        <resource>
-                            <directory>input-resources</directory>
-                            <excludes>
-                                <exclude>*.png</exclude>
-                            </excludes>
-                            <filtering>true</filtering>
-                        </resource>
-                    </resources>
                 </configuration>
             </plugin>
             <plugin>
@@ -84,6 +87,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <excludes>
                                 <exclude>DataTest.java</exclude>
@@ -105,6 +109,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <executions>
                             <execution>
                                 <phase>integration-test</phase>

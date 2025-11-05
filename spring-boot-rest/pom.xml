@@ -119,6 +119,7 @@
         <dependency>
             <groupId>net.sourceforge.htmlunit</groupId>
             <artifactId>htmlunit</artifactId>
+            <version>${htmlunit.version}</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -157,6 +158,14 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -164,8 +173,12 @@
         <start-class>com.baeldung.SpringBootRestApplication</start-class>
         <xstream.version>1.4.11.1</xstream.version>
         <modelmapper.version>3.2.0</modelmapper.version>
-        <rest-assured.version>3.3.0</rest-assured.version>
-        <jaxb-runtime.version>4.0.1</jaxb-runtime.version>
-        <spring-oxm.version>6.1.4</spring-oxm.version>
+        <rest-assured.version>5.5.0</rest-assured.version>
+        <spring-oxm.version>6.2.3</spring-oxm.version>
+        <spring-boot.version>3.4.3</spring-boot.version>
+        <!-- https://github.com/qos-ch/logback/issues/853 -->
+        <logback.version>1.5.17</logback.version>
+        <!-- not managed by Spring anymore -->
+        <htmlunit.version>2.70.0</htmlunit.version>
     </properties>
 </project>

@@ -45,8 +45,23 @@
     </dependencies>
 
     <properties>
-        <junit-platform.version>1.10.0</junit-platform.version>
+        <junit-jupiter.version>5.11.0</junit-jupiter.version>
         <log4j2.version>2.19.0</log4j2.version>
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <parameters>true</parameters>
+                    <source>21</source>
+                    <target>21</target>
+                    <compilerArgs>--enable-preview</compilerArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

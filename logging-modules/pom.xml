@@ -14,6 +14,7 @@
     </parent>
 
     <modules>
+        <module>customloglevel</module>
         <module>flogger</module>
         <module>log4j</module>
         <module>log4j2</module>
@@ -21,6 +22,10 @@
         <module>log-mdc</module>
         <module>tinylog2</module>
         <module>logging-techniques</module>
+        <module>solarwinds-loggly</module>
+        <module>splunk-with-log4j2</module>
+        <module>jul-to-slf4j</module>
+        <module>log-all-requests</module>
     </modules>
 
 </project>

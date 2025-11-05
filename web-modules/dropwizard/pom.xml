@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>dropwizard</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>dropwizard</name>
     <packaging>jar</packaging>
+    <name>dropwizard</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

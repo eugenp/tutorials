@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-threads</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-threads</name>
     <packaging>jar</packaging>
+    <name>spring-threads</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-5</artifactId>
+        <artifactId>parent-spring-6</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-spring-5</relativePath>
+        <relativePath>../parent-spring-6</relativePath>
     </parent>
 
     <dependencies>

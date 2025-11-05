@@ -4,15 +4,14 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-reactive-client</artifactId>
-    <name>spring-reactive-client</name>
     <packaging>jar</packaging>
+    <name>spring-reactive-client</name>
     <description>spring boot sample project about new features</description>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
+        <groupId>com.baeldung.spring.reactive</groupId>
+        <artifactId>spring-reactive-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -118,7 +117,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
-            <version>${mockito.version}</version>
+            <version>${mockito-junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -160,6 +159,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <systemPropertyVariables>
                                 <logback.configurationFile>${project.basedir}/src/test/resources/logback-test.xml</logback.configurationFile>
@@ -176,6 +176,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <systemPropertyVariables>
                                 <logback.configurationFile>${project.basedir}/src/test/resources/logback-test.xml</logback.configurationFile>
@@ -194,7 +195,7 @@
         <okhttp.version>5.0.0-alpha.12</okhttp.version>
         <reactor-test.version>3.5.3</reactor-test.version>
         <wiremock-standalone.version>3.4.2</wiremock-standalone.version>
-        <spring-cloud-starter-openfeign.version>4.0.3</spring-cloud-starter-openfeign.version>
+        <spring-cloud-starter-openfeign.version>4.1.3</spring-cloud-starter-openfeign.version>
         <kotlin-stdlib.version>2.0.0-Beta4</kotlin-stdlib.version>
         <johnzon-jsonb.version>2.0.0</johnzon-jsonb.version>
         <jakarta.json-api.version>2.1.3</jakarta.json-api.version>

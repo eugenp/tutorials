@@ -18,7 +18,12 @@
         <module>docker-spring-boot</module>
         <module>docker-spring-boot-postgres</module>
         <module>docker-java-jar</module>
+        <module>docker-multi-module-maven</module>
         <module>jib</module>
     </modules>
+
+    <properties>
+        <spring-boot.version>3.3.2</spring-boot.version>
+    </properties>
 
 </project>

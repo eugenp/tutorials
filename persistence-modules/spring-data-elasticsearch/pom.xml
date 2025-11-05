@@ -46,6 +46,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+            <version>${commons-csv.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-batch</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -68,6 +78,7 @@
     <properties>
         <spring-data-elasticsearch.version>5.1.2</spring-data-elasticsearch.version>
         <elasticsearch.version>8.9.0</elasticsearch.version>
+        <commons-csv.version>1.12.0</commons-csv.version>
     </properties>
 
 </project>

@@ -1,0 +1,54 @@
+/* Predefined styles for the MainView with a HorizontalMenu */
+
+vaadin-app-layout.jmix-main-view-top-menu-app-layout::part(navbar) {
+  min-height: 0;
+  border-bottom: 0;
+}
+
+.jmix-main-view-top-menu-navigation-bar-box {
+  padding: 0;
+  gap: 0;
+  width: 100%;
+}
+
+.jmix-main-view-top-menu-navigation {
+  display: flex;
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.jmix-main-view-top-menu-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid var(--lumo-contrast-10pct)
+}
+
+.jmix-main-view-top-menu-logo-container {
+  display: flex;
+  margin: 0 var(--lumo-space-m);
+}
+
+.jmix-main-view-top-menu-logo {
+  width: var(--lumo-size-m);
+  height: var(--lumo-size-m);
+}
+
+.jmix-main-view-top-menu-user-box {
+  align-self: flex-end;
+  align-items: center;
+  margin: 0 var(--lumo-space-m);
+  max-width: 20em;
+}
+
+.jmix-main-view-top-menu-view-header-box {
+  border-bottom: 1px solid var(--lumo-contrast-10pct);
+  padding: 0;
+  width: 100%;
+}
+
+.jmix-main-view-top-menu-view-title {
+  font-size: var(--lumo-font-size-l);
+  margin: var(--lumo-space-s) var(--lumo-space-m);
+}
+

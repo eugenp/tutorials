@@ -9,10 +9,6 @@ import java.util.Optional;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-
-import optionaltoarraylist.OptionalToArrayListConverter;
-
 public class OptionalToArrayListConverterUnitTest {
 
     @Test

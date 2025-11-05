@@ -5,14 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-mvc-java-2</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-mvc-java-2</name>
     <packaging>war</packaging>
+    <name>spring-mvc-java-2</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
+        <artifactId>spring-web-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -100,7 +99,6 @@
     </build>
 
     <properties>
-        <jaxb-runtime.version>4.0.1</jaxb-runtime.version>
         <htmlunit.version>2.32</htmlunit.version>
         <poi.version>3.16-beta1</poi.version>
         <javax.el.version>3.0.1-b09</javax.el.version>

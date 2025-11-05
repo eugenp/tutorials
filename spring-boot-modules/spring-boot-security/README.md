@@ -1,16 +1,6 @@
 ## Spring Boot Security
 
-This module contains articles about Spring Boot Security
-
-### Relevant Articles:
-
-- [Spring Boot Security Auto-Configuration](https://www.baeldung.com/spring-boot-security-autoconfiguration)
-- [Spring Security for Spring Boot Integration Tests](https://www.baeldung.com/spring-security-integration-tests)
-- [Introduction to Spring Security Taglibs](https://www.baeldung.com/spring-security-taglibs)
-- [Guide to @CurrentSecurityContext in Spring Security](https://www.baeldung.com/spring-currentsecuritycontext)
-- [Disable Security for a Profile in Spring Boot](https://www.baeldung.com/spring-security-disable-profile)
-- [Spring @EnableWebSecurity vs. @EnableGlobalMethodSecurity](https://www.baeldung.com/spring-enablewebsecurity-vs-enableglobalmethodsecurity)
-- [Spring Security – Configuring Different URLs](https://www.baeldung.com/spring-security-configuring-urls)
+This module contains code about Spring Boot Security
 
 ### Spring Boot Security Auto-Configuration
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useUserContext } from "@/app/layout";
+import { useUserContext } from "@/app/user-context";
 import axios from "axios";
 import { usePathname } from "next/navigation";
 import { EventHandler, FormEvent, useEffect, useRef, useState } from "react";
@@ -65,6 +65,10 @@ export default function Login({ onLogin }: LoginProperties) {
     url.searchParams.append(
       "post_login_success_uri",
       `${process.env.NEXT_PUBLIC_BASE_URI}${currentPath}`
+    );
+    url.searchParams.append(
+      "post_login_failure_uri",
+      `${process.env.NEXT_PUBLIC_BASE_URI}/login-error`
     );
     const loginUrl = url.toString();
     if (

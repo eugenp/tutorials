@@ -1,19 +1,18 @@
 package com.baeldung.springintegration.controllers;
 
-import javax.annotation.PostConstruct;
-import javax.el.ELContextEvent;
-import javax.el.ELContextListener;
-import javax.el.LambdaExpression;
-import javax.faces.application.Application;
-import javax.faces.application.FacesMessage;
-import javax.el.LambdaExpression;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-import java.util.Collection;
+import jakarta.annotation.PostConstruct;
+import jakarta.el.ELContextEvent;
+import jakarta.el.ELContextListener;
+import jakarta.el.LambdaExpression;
+import jakarta.faces.application.Application;
+import jakarta.faces.application.FacesMessage;
+
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 import java.util.Random;
 
-@ManagedBean(name = "ELBean")
+@Named("ELBean")
 @ViewScoped
 public class ELSampleBean {
 

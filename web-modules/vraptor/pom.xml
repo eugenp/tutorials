@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>vraptor</artifactId>
-    <name>vraptor</name>
     <packaging>war</packaging>
+    <name>vraptor</name>
     <description>A demo project to start using VRaptor 4</description>
 
     <parent>
@@ -43,6 +43,7 @@
             </exclusions>
         </dependency>
         <dependency>
+            <!--  Vraptor is unmaintained and cannot upgrade from Javax to Jakarta JAVA-37376 -->
             <groupId>javax.el</groupId>
             <artifactId>el-api</artifactId>
             <version>${el.version}</version>
@@ -54,11 +55,13 @@
             <version>${hibernate-validator.version}</version>
         </dependency>
         <dependency>
+            <!--  Vraptor is unmaintained and cannot upgrade from Javax to Jakarta JAVA-37376 -->
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>${jstl.version}</version>
         </dependency>
         <dependency>
+            <!--  Vraptor is unmaintained and cannot upgrade from Javax to Jakarta JAVA-37376 -->
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>${javax.servlet-api.version}</version>

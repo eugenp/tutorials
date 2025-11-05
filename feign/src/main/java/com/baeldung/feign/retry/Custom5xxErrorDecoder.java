@@ -19,7 +19,7 @@ public class Custom5xxErrorDecoder implements ErrorDecoder {
               exception.getMessage(),
               response.request().httpMethod(),
               exception,
-              null,
+              50L, // The retry interval
               response.request());
         }
         return exception;

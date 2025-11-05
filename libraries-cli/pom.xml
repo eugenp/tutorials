@@ -22,11 +22,6 @@
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
             <version>${spring.version}</version>
         </dependency>
@@ -57,19 +52,13 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-
-        </plugins>
-    </build>
-
     <properties>
         <picocli.version>4.7.0</picocli.version>
         <jcommander.version>1.78</jcommander.version>
         <airline.version>2.7.2</airline.version>
-        <commons-cli.version>1.6.0</commons-cli.version>
-        <spring-boot-starter.version>2.7.8</spring-boot-starter.version>
-        <spring.version>5.3.25</spring.version>
+        <commons-cli.version>1.8.0</commons-cli.version>
+        <spring-boot-starter.version>3.3.3</spring-boot-starter.version>
+        <spring.version>6.1.12</spring.version>
     </properties>
 
 </project>

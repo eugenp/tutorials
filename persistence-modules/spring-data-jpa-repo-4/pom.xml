@@ -8,24 +8,15 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
-            <groupId>jakarta.persistence</groupId>
-            <artifactId>jakarta.persistence-api</artifactId>
-            <version>${jakarta.persistence-api.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>javax.persistence-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -37,20 +28,12 @@
         </dependency>
         <dependency>
             <groupId>io.hypersistence</groupId>
-            <artifactId>hypersistence-utils-hibernate-55</artifactId>
-            <version>${hypersistance-utils-hibernate-55.version}</version>
+            <artifactId>hypersistence-utils-hibernate-60</artifactId>
+            <version>${hypersistance-utils-hibernate-60.version}</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.querydsl</groupId>
-            <artifactId>querydsl-apt</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.querydsl</groupId>
-            <artifactId>querydsl-jpa</artifactId>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -60,6 +43,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -96,23 +80,6 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>com.mysema.maven</groupId>
-                <artifactId>apt-maven-plugin</artifactId>
-                <version>1.1.3</version>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>process</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
-                            <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.bsc.maven</groupId>
                 <artifactId>maven-processor-plugin</artifactId>
                 <version>3.3.3</version>
@@ -135,7 +102,7 @@
                     <dependency>
                         <groupId>org.hibernate</groupId>
                         <artifactId>hibernate-jpamodelgen</artifactId>
-                        <version>5.6.11.Final</version>
+                        <version>6.6.1.Final</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -143,11 +110,12 @@
     </build>
 
     <properties>
-        <hypersistance-utils-hibernate-55.version>3.7.0</hypersistance-utils-hibernate-55.version>
-        <postgresql.version>42.7.1</postgresql.version>
+        <hypersistance-utils-hibernate-60.version>3.9.0</hypersistance-utils-hibernate-60.version>
+        <postgresql.version>42.7.4</postgresql.version>
         <db.util.version>1.0.7</db.util.version>
-        <hypersistence-utils.version>3.7.0</hypersistence-utils.version>
-        <jakarta.persistence-api.version>3.1.0</jakarta.persistence-api.version>
+        <hypersistence-utils.version>3.9.0</hypersistence-utils.version>
+        <lombok.version>1.18.36</lombok.version>
+        <start-class>com.baeldung.spring.data.noconverterfound.NoConverterFoundApplication</start-class>
     </properties>
 
 </project>

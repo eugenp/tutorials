@@ -15,21 +15,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.eclipse.collections</groupId>
-            <artifactId>eclipse-collections</artifactId>
-            <version>${eclipse-collections.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.carrotsearch</groupId>
-            <artifactId>hppc</artifactId>
-            <version>${hppc.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>it.unimi.dsi</groupId>
-            <artifactId>fastutil</artifactId>
-            <version>${fastutil.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
@@ -50,14 +35,22 @@
             <version>${avaitility.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <streamex.version>0.8.1</streamex.version>
         <avaitility.version>1.7.0</avaitility.version>
-        <eclipse-collections.version>8.2.0</eclipse-collections.version>
-        <hppc.version>0.7.2</hppc.version>
-        <fastutil.version>8.1.0</fastutil.version>
+        <jmh.version>1.37</jmh.version>
     </properties>
 
 </project>

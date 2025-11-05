@@ -18,6 +18,7 @@
         <module>jackson-annotations</module>
         <module>jackson-conversions</module>
         <module>jackson-conversions-2</module>
+        <module>jackson-conversions-3</module>
         <module>jackson-core</module>
         <module>jackson-custom-conversions</module>
         <module>jackson-exceptions</module>
@@ -32,7 +33,7 @@
             <artifactId>jackson-dataformat-xml</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-         <dependency>
+        <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>

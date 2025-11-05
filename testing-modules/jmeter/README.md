@@ -1,6 +1,6 @@
 ## JMeter
 
-This module contains articles about JMeter.
+This module contains code about JMeter.
 It contains the code of a simple API for some CRUD operations built using Spring Boot.
 
 ### Requirements
@@ -47,14 +47,3 @@ $ curl localhost:8080/api/uuid
 Now with default configurations it will be available at: [http://localhost:8080](http://localhost:8080)
 
 Enjoy it :)
-
-### Relevant Articles:
-
-- [Intro to Performance Testing using JMeter](https://www.baeldung.com/jmeter)
-- [Configure Jenkins to Run and Show JMeter Tests](https://www.baeldung.com/ops/jenkins-and-jmeter)
-- [Write Extracted Data to a File Using JMeter](https://www.baeldung.com/jmeter-write-to-file)
-- [Basic Authentication in JMeter](https://www.baeldung.com/jmeter-basic-auth)
-- [JMeter: Latency vs. Load Time](https://www.baeldung.com/java-jmeter-latency-vs-load-time)
-- [How Do I Generate a Dashboard Report in JMeter?](https://www.baeldung.com/jmeter-dashboard-report)
-- [Run JMeter .jmx File From the Command Line and Configure the Report File](https://www.baeldung.com/java-jmeter-command-line)
-- [Create and Run Apache JMeter Test Scripts via Java Program](https://www.baeldung.com/java-jmeter-create-run-test-scripts)

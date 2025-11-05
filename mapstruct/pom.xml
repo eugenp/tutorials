@@ -73,7 +73,7 @@
     </build>
 
     <properties>
-        <org.mapstruct.version>1.6.0.Beta1</org.mapstruct.version>
+        <org.mapstruct.version>1.6.3</org.mapstruct.version>
         <springframework.version>4.3.4.RELEASE</springframework.version>
         <lombok.mapstruct.binding.version>0.2.0</lombok.mapstruct.binding.version>
     </properties>

@@ -8,16 +8,16 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-5</artifactId>
+        <artifactId>parent-spring-6</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-spring-5</relativePath>
+        <relativePath>../../parent-spring-6</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-            <version>${cdi-api.version}</version>
+            <groupId>jakarta.enterprise</groupId>
+            <artifactId>jakarta.enterprise.cdi-api</artifactId>
+            <version>${jakarta.enterprise.cdi-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jboss.weld.se</groupId>
@@ -47,18 +47,14 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <argLine>
-                        --add-opens java.base/java.lang=ALL-UNNAMED
-                    </argLine>
-                </configuration>
+                <version>${maven-surefire-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
 
     <properties>
-        <cdi-api.version>2.0.SP1</cdi-api.version>
-        <weld-se-core.version>3.1.6.Final</weld-se-core.version>
+        <jakarta.enterprise.cdi-api.version>4.1.0</jakarta.enterprise.cdi-api.version>
+        <weld-se-core.version>5.1.3.Final</weld-se-core.version>
         <aspectjweaver.version>1.9.20.1</aspectjweaver.version>
     </properties>
 

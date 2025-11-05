@@ -1,5 +1,5 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "Product",
     "description": "A product from the catalog",
     "type": "object",
@@ -14,8 +14,7 @@
         },
         "price": {
             "type": "number",
-            "minimum": 0,
-            "exclusiveMinimum": true
+            "exclusiveMinimum": 0
         }
     },
     "required": ["id", "name", "price"]

@@ -46,7 +46,6 @@
             <version>4.0.0</version>
             <scope>runtime</scope>
         </dependency>
-
         <!-- marshalling -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -117,7 +116,6 @@
             <version>${jstl.version}</version>
             <scope>runtime</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -172,6 +170,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <executions>
                             <execution>
                                 <phase>integration-test</phase>
@@ -201,13 +200,11 @@
         <!-- util -->
         <commons-codec.version>1.16.0</commons-codec.version>
         <!-- testing -->
-        <wiremock.version>3.3.1</wiremock.version>
+        <wiremock.version>3.9.1</wiremock.version>
         <!-- http client & core 5 -->
         <httpcore5.version>5.2</httpcore5.version>
         <httpclient5.version>5.2</httpclient5.version>
         <httpclient5-fluent.version>5.2</httpclient5-fluent.version>
-        <!-- maven plugins -->
-        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
     </properties>
 
 </project>

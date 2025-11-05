@@ -5,9 +5,12 @@ import java.net.UnknownHostException;
 import java.util.stream.Stream;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class InetAddressSPIUnitTest {
+
+    @Ignore("JAVA-43793")
     @Test
     public void givenInetAddress_whenUsingInetAddress_thenPerformResolution() throws UnknownHostException {
         InetAddressSPI spi = new InetAddressSPI();

@@ -12,7 +12,7 @@ Ratings:
   </div>
 </div>
 
-<form (ngSubmit)="onSaveRating(f)" #f="ngForm">
+<form (ngSubmit)="onSaveRating()" #f="ngForm">
   <div class="form-check form-check-inline" *ngFor="let star of stars; let i = index;">
     <label  class="form-check-label">
       <input class="form-check-input" type="radio" name="star" [(ngModel)]="newRating.stars" [value]="star">{{star}}

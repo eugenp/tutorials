@@ -5,15 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-reactive-security</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-reactive-security</name>
     <packaging>jar</packaging>
+    <name>spring-reactive-security</name>
     <description>spring boot security sample project about new features</description>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
+        <groupId>com.baeldung.spring.reactive</groupId>
+        <artifactId>spring-reactive-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -87,12 +86,6 @@
             <version>${rxjava.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.projectreactor</groupId>
-            <artifactId>reactor-test</artifactId>
-            <version>${reactor-test.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
@@ -121,8 +114,6 @@
         <rxjava.version>2.1.12</rxjava.version>
         <jsonb-api.version>1.0</jsonb-api.version>
         <geronimo-json_1.1_spec.version>1.0</geronimo-json_1.1_spec.version>
-        <reactor-test.version>3.1.6.RELEASE</reactor-test.version>
-        <reactor.version>3.4.29</reactor.version>
         <jakarta.json-api.version>2.0.1</jakarta.json-api.version>
         <johnzon-jsonb.version>2.0.0</johnzon-jsonb.version>
     </properties>

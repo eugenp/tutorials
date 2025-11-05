@@ -1,0 +1,116 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="myUserLabel">Create or edit a user</h2>
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <div class="mb-3" [hidden]="!editForm.value.id">
+        <label class="form-label" for="field_id">ID</label>
+        <input type="text" id="field_id" class="form-control" name="id" formControlName="id" readonly />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_login">Login</label>
+        <input type="text" id="field_login" class="form-control" name="login" formControlName="login" />
+
+        @if (editForm.get('login')!.invalid && (editForm.get('login')!.dirty || editForm.get('login')!.touched)) {
+          <div>
+            @if (editForm.get('login')?.errors?.required) {
+              <small class="form-text text-danger">This field is required.</small>
+            }
+
+            @if (editForm.get('login')?.errors?.maxlength) {
+              <small class="form-text text-danger">This field cannot be longer than 50 characters.</small>
+            }
+
+            @if (editForm.get('login')?.errors?.pattern) {
+              <small class="form-text text-danger">This field can only contain letters, digits and e-mail addresses.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_firstName">First name</label>
+        <input type="text" id="field_firstName" class="form-control" name="firstName" formControlName="firstName" />
+
+        @if (editForm.get('firstName')!.invalid && (editForm.get('firstName')!.dirty || editForm.get('firstName')!.touched)) {
+          <div>
+            @if (editForm.get('firstName')?.errors?.maxlength) {
+              <small class="form-text text-danger">This field cannot be longer than 50 characters.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_lastName">Last name</label>
+        <input type="text" id="field_lastName" class="form-control" name="lastName" formControlName="lastName" />
+
+        @if (editForm.get('lastName')!.invalid && (editForm.get('lastName')!.dirty || editForm.get('lastName')!.touched)) {
+          <div>
+            @if (editForm.get('lastName')?.errors?.maxlength) {
+              <small class="form-text text-danger">This field cannot be longer than 50 characters.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_email">Email</label>
+        <input type="email" id="field_email" class="form-control" name="email" formControlName="email" />
+
+        @if (editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)) {
+          <div>
+            @if (editForm.get('email')?.errors?.required) {
+              <small class="form-text text-danger">This field is required.</small>
+            }
+
+            @if (editForm.get('email')?.errors?.maxlength) {
+              <small class="form-text text-danger">This field cannot be longer than 100 characters.</small>
+            }
+
+            @if (editForm.get('email')?.errors?.minlength) {
+              <small class="form-text text-danger">This field is required to be at least 5 characters.</small>
+            }
+
+            @if (editForm.get('email')?.errors?.email) {
+              <small class="form-text text-danger">Your email is invalid.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-check">
+        <label class="form-check-label" for="activated">
+          <input
+            class="form-check-input"
+            [attr.disabled]="editForm.value.id === undefined ? 'disabled' : null"
+            type="checkbox"
+            id="activated"
+            name="activated"
+            formControlName="activated"
+          />
+          <span>Activated</span>
+        </label>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_authority">Profiles</label>
+        <select class="form-control" id="field_authority" multiple name="authority" formControlName="authorities">
+          @for (authority of authorities(); track $index) {
+            <option [value]="authority">{{ authority }}</option>
+          }
+        </select>
+      </div>
+      <button type="button" class="btn btn-secondary" (click)="previousState()">
+        <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+      </button>
+
+      <button type="submit" [disabled]="editForm.invalid || isSaving()" class="btn btn-primary">
+        <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+      </button>
+    </form>
+  </div>
+</div>

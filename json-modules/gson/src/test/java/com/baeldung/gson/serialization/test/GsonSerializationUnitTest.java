@@ -88,7 +88,7 @@ public class GsonSerializationUnitTest {
         String jsonDate = gson.toJson(sourceDate, sourceDateType);
 
         System.out.println("jsonDate:\n" + jsonDate);
-        String expectedResult = "\"Jan 1, 2000, 12:00:00 AM\"";
+        String expectedResult = "\"Jan 1, 2000, 12:00:00 AM\"";
         assertEquals(expectedResult, jsonDate);
     }
 

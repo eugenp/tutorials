@@ -40,4 +40,29 @@ public class BuilderUnitTest {
         assertThat(testImmutableClient.getName()).isEqualTo("foo");
         assertThat(testImmutableClient.getId()).isEqualTo(1);
     }
+
+    @Test
+    public void whenUsingCustomBuilder_thenExcludeUnspecifiedFields() {
+        ClassWithExcludedFields myObject = ClassWithExcludedFields.customBuilder()
+            .id(3)
+            .includedField("Included Field")
+            // .excludedField() no method to set excludedField
+            .build();
+
+        assertThat(myObject.getId()).isEqualTo(3);
+        assertThat(myObject.getIncludedField()).isEqualTo("Included Field");
+    }
+
+    @Test
+    public void whenUsingBuilderDefaultAnnotation_thenExcludeField() {
+        ClassWithExcludedFields myObject = ClassWithExcludedFields.builder()
+            .id(3)
+            .includedField("Included Field")
+            .build();
+
+        assertThat(myObject.getId()).isEqualTo(3);
+        assertThat(myObject.getIncludedField()).isEqualTo("Included Field");
+        assertThat(myObject.getExcludedField()).isEqualTo("Excluded Field using Default");
+    }
+
 }

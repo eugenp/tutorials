@@ -1,0 +1,13 @@
+
+spring:
+  kafka:
+#    bootstrap-servers <-- it'll be injected in test via Testcontainers and @ServiceConnection
+    consumer:
+      group-id: test-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      properties:
+        spring.deserializer.value.delegate.class: io.confluent.kafka.serializers.KafkaAvroDeserializer
+        schema.registry.url: mock://test
+        specific.avro.reader: true

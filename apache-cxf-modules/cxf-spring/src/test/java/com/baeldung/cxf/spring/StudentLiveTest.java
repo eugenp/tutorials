@@ -7,8 +7,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class StudentLiveTest {
-    private ApplicationContext context = new AnnotationConfigApplicationContext(ClientConfiguration.class);
-    private Baeldung baeldungProxy = (Baeldung) context.getBean("client");
+    private final ApplicationContext context = new AnnotationConfigApplicationContext(ClientConfiguration.class);
+    private final Baeldung baeldungProxy = (Baeldung) context.getBean("client");
 
     @Test
     public void whenUsingHelloMethod_thenCorrect() {

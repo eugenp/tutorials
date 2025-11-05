@@ -20,6 +20,21 @@
             <version>${lombok.version}</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.javamoney</groupId>
+            <artifactId>moneta</artifactId>
+            <version>${javamoney.moneta.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fathzer</groupId>
+            <artifactId>javaluator</artifactId>
+            <version>${javaluator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.objecthunter</groupId>
+            <artifactId>exp4j</artifactId>
+            <version>${exp4j.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -31,5 +46,11 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <javamoney.moneta.version>1.1</javamoney.moneta.version>
+        <exp4j.version>0.4.8</exp4j.version>
+        <javaluator.version>3.0.3</javaluator.version>
+    </properties>
 
 </project>

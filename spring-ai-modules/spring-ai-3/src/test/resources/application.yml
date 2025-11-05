@@ -1,0 +1,17 @@
+spring:
+  ai:
+    vectorstore:
+      mongodb:
+        collection-name: vector_store
+        initialize-schema: true
+        path-name: embedding
+        indexName: vector_index
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: gpt-3.5-turbo
+  data:
+    mongodb:
+      uri: mongodb://wikiuser:password@localhost:27017/admin
+      database: wiki

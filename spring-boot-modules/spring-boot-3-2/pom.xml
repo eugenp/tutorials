@@ -40,7 +40,6 @@
             <artifactId>mockserver-netty</artifactId>
             <version>${mockserver.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.mock-server</groupId>
             <artifactId>mockserver-client-java</artifactId>
@@ -70,7 +69,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
             <optional>true</optional>
         </dependency>
         <dependency>
@@ -96,16 +94,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>5.10.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.10.0</version>
-        </dependency>
-        <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
@@ -120,13 +108,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-redis</artifactId>
-        </dependency>
-        <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>${jedis.version}</version>
             <type>jar</type>
         </dependency>
         <dependency>
@@ -162,12 +145,10 @@
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
-            <version>${spring-kafka.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka-test</artifactId>
-            <version>${spring-kafka.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -272,14 +253,14 @@
 
     <properties>
         <start-class>com.baeldung.restclient.RestClientApplication</start-class>
-        <mapstruct.version>1.6.0.Beta1</mapstruct.version>
-        <springdoc.version>2.3.0</springdoc.version>
-        <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
-        <mockserver.version>5.14.0</mockserver.version>
+        <mapstruct.version>1.6.0</mapstruct.version>
+        <mockserver.version>5.15.0</mockserver.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <jedis.version>5.0.2</jedis.version>
         <spring-kafka.version>3.1.2</spring-kafka.version>
-        <spring-boot.version>3.2.4</spring-boot.version>
+        <spring-boot.version>3.4.1</spring-boot.version>
+        <logback.version>1.5.16</logback.version>
+        <org.slf4j.version>2.0.16</org.slf4j.version>
         <springdoc-openapi-webmvc-ui.version>2.5.0</springdoc-openapi-webmvc-ui.version>
     </properties>
 

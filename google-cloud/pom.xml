@@ -21,6 +21,11 @@
             <version>${google-cloud-storage.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-translate</artifactId>
+            <version>${google-cloud-translate.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
@@ -28,8 +33,22 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <google-cloud-storage.version>1.16.0</google-cloud-storage.version>
+        <google-cloud-translate.version>2.58.0</google-cloud-translate.version>
     </properties>
 
 </project>

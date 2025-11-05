@@ -3,7 +3,7 @@
 If you are getting an error while cloning the repository, try running:
 git config --global http.postBuffer 5000000
 
-This will increase the size of the buffer from the default 1MiB to 5MiB.
+This will increase the buffer size from the default 1MiB to 5MiB.
 
 To revert this value to the default, use:
 git config --global http.postBuffer 1000000
@@ -13,13 +13,13 @@ The Courses
 ==============================
 
 
-Here's the new "Learn Spring" course: <br/>
+"Learn Spring" Course: <br/>
 **[>> LEARN SPRING - THE MASTER CLASS](https://www.baeldung.com/learn-spring-course?utm_source=github&utm_medium=social&utm_content=tutorials&utm_campaign=ls#master-class)**
 
-Here's the Master Class of "REST With Spring" (along with the new announced Boot 2 material): <br/>
+"REST With Spring" Course: <br/>
 **[>> THE REST WITH SPRING - MASTER CLASS](https://www.baeldung.com/rest-with-spring-course?utm_source=github&utm_medium=social&utm_content=tutorials&utm_campaign=rws#master-class)**
 
-And here's the Master Class of "Learn Spring Security": <br/>
+"Learn Spring Security" Course: <br/>
 **[>> LEARN SPRING SECURITY - MASTER CLASS](https://www.baeldung.com/learn-spring-security-course?utm_source=github&utm_medium=social&utm_content=tutorials&utm_campaign=lss#master-class)**
 
 
@@ -27,38 +27,38 @@ And here's the Master Class of "Learn Spring Security": <br/>
 Java and Spring Tutorials
 ================
 
-This project is **a collection of small and focused tutorials** - each covering a single and well defined area of development in the Java ecosystem. 
-A strong focus of these is, of course, the Spring Framework - Spring, Spring Boot and Spring Security. 
-In addition to Spring, the modules here cover a number of aspects of Java. 
+This project is **a collection of small and focused tutorials** - each covering a single and well-defined area of development in the Java ecosystem. 
+A strong focus of these is the Spring Framework - Spring, Spring Boot and Spring Security. 
+In addition to Spring, the modules here cover several aspects of Java. 
 
-Profile based segregation
+Profile-based segregation
 ====================
 
-We are using maven build profiles to segregate the huge list of individual projects we have in our repository.
+We use Maven build profiles to segregate the huge list of individual projects in our repository.
 
-As for now, vast majority of the modules require JDK8 to build and run correctly.
+The projects are broadly divided into 6 lists: default, default-jdk17, default-jdk22, default-jdk23, default-jdk8 and default-heavy. 
 
-The projects are broadly divided into 3 lists: first, second and heavy. 
-
-Next, they are segregated further on the basis of the tests that we want to execute.
-
-Additionally, there are 2 profiles dedicated for JDK9 and above builds - **which require JDK 17**.
+Next, they are segregated further based on the tests that we want to execute.
 
 We also have a parents profile to build only parent modules.
 
-Therefore, we have a total of 9 profiles:
+Therefore, we have a total of 13 profiles:
 
-| Profile                    | Includes                    | Type of test enabled |
-| -------------------------- | --------------------------- | -------------------- |
-| default-first              | First set of projects       | *UnitTest            |
-| integration-lite-first     | First set of projects       | *IntegrationTest     |
-| default-second             | Second set of projects      | *UnitTest            |
-| integration-lite-second    | Second set of projects      | *IntegrationTest     |
-| default-heavy              | Heavy/long running projects | *UnitTest            |
-| integration-heavy          | Heavy/long running projects | *IntegrationTest     |
-| default-jdk9-and-above     | JDK9 and above projects     | *UnitTest            |
-| integration-jdk9-and-above | JDK9 and above projects     | *IntegrationTest     |
-| parents                    | Set of parent modules       | None                 |
+| Profile           | Includes                    | Type of test enabled |
+|-------------------|-----------------------------|----------------------|
+| default           | JDK21 projects              | *UnitTest            |
+| integration       | JDK21 projects              | *IntegrationTest     |
+| default-jdk17     | JDK17 projects              | *UnitTest            |
+| integration-jdk17 | JDK17 projects              | *IntegrationTest     |
+| default-jdk22     | JDK22 projects              | *UnitTest            |
+| integration-jdk22 | JDK22 projects              | *IntegrationTest     |
+| default-jdk23     | JDK23 projects              | *UnitTest            |
+| integration-jdk23 | JDK23 projects              | *IntegrationTest     |
+| default-heavy     | Heavy/long running projects | *UnitTest            |
+| integration-heavy | Heavy/long running projects | *IntegrationTest     |
+| default-jdk8      | JDK8  projects              | *UnitTest            |
+| integration-jdk8  | JDK8  projects              | *IntegrationTest     |
+| parents           | Set of parent modules       | None                 |
 
 Building the project
 ====================
@@ -67,19 +67,19 @@ Though it should not be needed often to build the entire repository at once beca
 
 But if we want to, we can invoke the below command from the root of the repository if we want to build the entire repository with only Unit Tests enabled:
 
-`mvn clean install -Pdefault-first,default-second,default-heavy`
+`mvn clean install -Pdefault,default-heavy`
 
 or if we want to build the entire repository with Integration Tests enabled, we can do:
 
-`mvn clean install -Pintegration-lite-first,integration-lite-second,integration-heavy`
+`mvn clean install -Pintegration,integration-heavy`
 
-Analogously, for the JDK9 and above projects the commands are:
+Analogously, for the JDK8 projects the commands are:
 
-`mvn clean install -Pdefault-jdk9-and-above`
+`mvn clean install -Pdefault-jdk8`
 
 and
 
-`mvn clean install -Pintegration-jdk9-and-above`
+`mvn clean install -Pintegration-jdk8`
 
 Building a single module
 ====================
@@ -92,9 +92,9 @@ We have created a `parents` profile that you can use to build just the parent mo
 
 Building modules from the root of the repository
 ====================
-To build specific modules from the root of the repository, run the command: `mvn clean install --pl asm,atomikos -Pdefault-first` in the root directory.
+To build specific modules from the root of the repository, run the command: `mvn clean install --pl akka-modules,algorithms-modules -Pdefault` in the root directory.
 
-Here `asm` and `atomikos` are the modules that we want to build and `default-first` is the maven profile in which these modules are present.
+Here `akka-modules` and `algorithms-modules` are the modules that we want to build and `default` is the maven profile in which these modules are present.
 
 
 Running a Spring Boot module
@@ -115,12 +115,10 @@ For Spring modules this will also run the `SpringContextTest` if present.
 
 To run the integration tests, use the command:
 
-`mvn clean install -Pintegration-lite-first` or 
-
-`mvn clean install -Pintegration-lite-second` or 
+`mvn clean install -Pintegration` or
 
 `mvn clean install -Pintegration-heavy` or
 
-`mvn clean install -Pintegration-jdk9-and-above`
+`mvn clean install -Pintegration-jdk8`
 
 depending on the list where our module exists

@@ -1,7 +1,7 @@
 "use client";
 
+import { useUserContext } from "@/app/user-context";
 import Link from "next/link";
-import { useUserContext } from "./layout";
 import { User } from "./lib/auth/user.service";
 
 export default function Home() {

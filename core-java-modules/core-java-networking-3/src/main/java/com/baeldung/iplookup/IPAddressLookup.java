@@ -3,13 +3,7 @@ package com.baeldung.iplookup;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketException;
-import java.net.URL;
-import java.net.UnknownHostException;
+import java.net.*;
 
 public class IPAddressLookup {
     public static void main(String[] args) {
@@ -39,11 +33,11 @@ public class IPAddressLookup {
     public static String getPublicIpAddressAws() {
         try {
             String urlString = "http://checkip.amazonaws.com/";
-            URL url = new URL(urlString);
+            URL url = new URI(urlString).toURL();
             try (BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()))) {
                 return br.readLine();
             }
-        } catch (IOException e) {
+        } catch (IOException | URISyntaxException e) {
             throw new RuntimeException(e);
         }
     }

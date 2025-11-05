@@ -2,12 +2,10 @@ package com.baeldung.feign.retry;
 
 import com.baeldung.feign.clients.BookClient;
 import feign.Feign;
-import feign.Logger;
 import feign.Retryer;
 import feign.gson.GsonDecoder;
 import feign.gson.GsonEncoder;
 import feign.okhttp.OkHttpClient;
-import feign.slf4j.Slf4jLogger;
 import lombok.Getter;
 
 import java.util.concurrent.TimeUnit;

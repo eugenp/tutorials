@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>spring-properties-cleaner</artifactId>
+
+    <parent>
+        <artifactId>maven-plugins</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>uk.org.webcompere</groupId>
+                <artifactId>spring-properties-cleaner-plugin</artifactId>
+                <version>1.0.6</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>scan</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- final configuration that protects these properties files - comment these all out and bring in the properties
+                    from "original-unfixed" to follow the steps from the example -->
+                    <sort>clustered</sort>
+                    <inlinePrefix>https?://</inlinePrefix>
+                    <common>full</common>
+                    <whitespace>section</whitespace>
+                </configuration>
+            </plugin>
+
+            <!-- the configuration below in not needed for this tutorial or for Spotless,
+                but we need it when building all the modules in our Jenkins CI  -->
+            <plugin>
+                <artifactId>maven-verifier-plugin</artifactId>
+                <version>${maven.verifier.version}</version>
+                <configuration>
+                    <verificationFile>../input-resources/verifications.xml</verificationFile>
+                    <failOnError>false</failOnError>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <!-- in a spring project it will default to src/main/resources -->
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+            </resource>
+        </resources>
+    </build>
+
+</project>

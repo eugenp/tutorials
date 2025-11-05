@@ -49,9 +49,8 @@
     </build>
 
     <properties>
-        <assertj.version>3.22.0</assertj.version>
         <mockserver.version>5.11.2</mockserver.version>
-        <wiremock.version>3.3.1</wiremock.version>
+        <wiremock.version>3.9.1</wiremock.version>
     </properties>
 
 </project>

@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-ejb-remote</artifactId>
-    <name>spring-ejb-remote</name>
     <packaging>ejb</packaging>
+    <name>spring-ejb-remote</name>
 
     <parent>
         <groupId>com.baeldung.spring.ejb</groupId>

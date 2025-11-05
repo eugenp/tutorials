@@ -6,18 +6,19 @@
     <groupId>com.baeldung.spring.cloud</groupId>
     <artifactId>spring-cloud-task</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>spring-cloud-task</name>
     <packaging>pom</packaging>
+    <name>spring-cloud-task</name>
 
     <parent>
-        <groupId>com.baeldung.spring.cloud</groupId>
-        <artifactId>spring-cloud-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-3</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <modules>
-        <module>springcloudtaskbatch</module>
-        <module>springcloudtasksink</module>
+        <!-- <module>springcloudtaskbatch</module> --> <!-- JAVA-34716 -->
+        <module>springcloudtaskstreambridge</module>
     </modules>
 
     <dependencyManagement>
@@ -47,8 +48,8 @@
     </dependencyManagement>
 
     <properties>
-        <spring-cloud-dependencies.version>2021.0.0</spring-cloud-dependencies.version>
-        <spring-cloud-task.version>2.4.0</spring-cloud-task.version>
+        <spring-cloud-dependencies.version>2023.0.1</spring-cloud-dependencies.version>
+        <spring-cloud-task.version>3.1.1</spring-cloud-task.version>
     </properties>
 
 </project>

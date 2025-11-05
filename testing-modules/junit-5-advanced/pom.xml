@@ -16,12 +16,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.github.stefanbirkner</groupId>
-            <artifactId>system-lambda</artifactId>
-            <version>${system-lambda.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.jmockit</groupId>
             <artifactId>jmockit</artifactId>
             <version>${jmockit.version}</version>
@@ -39,24 +33,6 @@
             <version>${junit-platform.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-runner</artifactId>
-            <version>${junit-platform.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-launcher</artifactId>
-            <version>${junit-platform.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-commons</artifactId>
-            <version>${junit-platform.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -65,24 +41,13 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <argLine>
-                        -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
-                    </argLine>
-                    <disableXmlReport>true</disableXmlReport>
-                    <excludes>
-                        <exclude>**/testsuite/**/*UnitTest.java</exclude>
-                    </excludes>
-                </configuration>
             </plugin>
         </plugins>
     </build>
 
     <properties>
-        <system-lambda.version>1.2.1</system-lambda.version>
         <jmockit.version>1.49</jmockit.version>
-        <junit-platform.version>1.10.1</junit-platform.version>
-        <maven-surefire-plugin.version>3.0.0</maven-surefire-plugin.version>
+        <junit-platform.version>1.11.0</junit-platform.version>
     </properties>
 
 </project>

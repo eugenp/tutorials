@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <servers>
+        <server>
+            <id>internal-maven-repo</id>
+            <username>username</username>
+            <password>passphrase_or_token</password>
+        </server>
+    </servers>
+
+    <profiles>
+        <profile>
+            <id>local-dev</id>
+            <repositories>
+                <repository>
+                    <id>internal-maven-repo</id>
+                    <name>Internal Repository</name>
+                    <url>https://host/internal-maven-packages</url>
+                </repository>
+                <repository>
+                    <id>central</id>
+                    <name>Central Repository</name>
+                    <url>https://repo.maven.apache.org/maven2</url>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+
+    <activeProfiles>
+        <activeProfile>local-dev</activeProfile>
+    </activeProfiles>
+</settings>

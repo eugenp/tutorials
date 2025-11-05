@@ -4,13 +4,14 @@ import com.baeldung.springintegration.dao.UserManagementDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
+import jakarta.faces.annotation.ManagedProperty;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
+
 import java.io.Serializable;
 
-@ManagedBean(name = "registration")
+@Named("registration")
 @ViewScoped
 public class RegistrationBean implements Serializable {
     private static final Logger LOGGER = LoggerFactory.getLogger(RegistrationBean.class);

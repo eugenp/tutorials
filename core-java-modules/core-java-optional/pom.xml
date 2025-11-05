@@ -17,7 +17,7 @@
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.core.version}</version>
+            <version>${hibernate-core.version}</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -53,7 +53,7 @@
     </dependencies>
 
     <properties>
-        <hibernate.core.version>6.4.2.Final</hibernate.core.version>
+        <hibernate-core.version>6.5.2.Final</hibernate-core.version>
         <json-path.version>5.4.0</json-path.version>
     </properties>
 
