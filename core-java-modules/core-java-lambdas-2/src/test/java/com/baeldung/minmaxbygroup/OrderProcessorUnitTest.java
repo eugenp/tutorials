@@ -1,10 +1,11 @@
-package com.baeldung.streams.minmaxbygroup;
+package com.baeldung.minmaxbygroup;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.Test;
 
