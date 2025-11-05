@@ -8,7 +8,6 @@
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>parent-modules</name>
-
     <packaging>pom</packaging>
 
     <dependencies>
@@ -873,6 +872,7 @@
                 <module>xml</module>
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
+                <module>testing-modules/test-containers-podman</module>
                 <!--<module>spring-swagger-codegen/openapi-custom-generator</module>
                 <module>spring-swagger-codegen/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
             </modules>
