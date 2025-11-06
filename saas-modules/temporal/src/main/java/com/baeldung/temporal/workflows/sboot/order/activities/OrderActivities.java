@@ -8,7 +8,7 @@ public interface OrderActivities {
 
     void reserveOrderItems(Order order);
     void cancelReservedItems(Order order);
-    void returnReservedItems(Order order);
+    void returnOrderItems(Order order);
 
     PaymentAuthorization createPaymentRequest(Order order, BillingInfo billingInfo);
     RefundRequest createRefundRequest(PaymentAuthorization payment);

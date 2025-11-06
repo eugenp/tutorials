@@ -1,6 +1,7 @@
 package com.baeldung.temporal.workflows.sboot.order.activities;
 
 import com.baeldung.temporal.workflows.sboot.order.domain.*;
+import com.baeldung.temporal.workflows.sboot.order.services.InventoryService;
 import io.temporal.spring.boot.ActivityImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,23 +17,32 @@ public class OrderActivitiesImpl implements OrderActivities{
     private static  final Logger log = LoggerFactory.getLogger(OrderActivitiesImpl.class);
 
     private final Clock clock;
+    private final InventoryService inventoryService;
 
-    public OrderActivitiesImpl(Clock clock) {
+    public OrderActivitiesImpl(Clock clock, InventoryService inventoryService) {
         this.clock = clock;
+        this.inventoryService = inventoryService;
+        log.info("[I22] OrderActivitiesImpl created");
     }
 
     @Override
     public void reserveOrderItems(Order order) {
-        log.info("reserveOrderItems: orderId={}", order.orderId());
+        log.info("reserveOrderItems: order={}", order);
+        for (OrderItem item : order.items()) {
+            inventoryService.reserveInventory(item.sku(), item.quantity());
+        }
     }
 
     @Override
     public void cancelReservedItems(Order order) {
-
+        log.info("cancelReservedItems: order={}", order);
+        for (OrderItem item : order.items()) {
+            inventoryService.reserveInventory(item.sku(), item.quantity());
+        }
     }
 
     @Override
-    public void returnReservedItems(Order order) {
+    public void returnOrderItems(Order order) {
 
     }
 
@@ -43,7 +53,9 @@ public class OrderActivitiesImpl implements OrderActivities{
           billingInfo,
           PaymentStatus.PENDING,
           order.orderId().toString(),
-          UUID.randomUUID().toString());
+          UUID.randomUUID().toString(),
+          null,
+          null);
     }
 
     @Override
@@ -53,14 +65,15 @@ public class OrderActivitiesImpl implements OrderActivities{
 
     @Override
     public Shipping createShipping(Order order) {
-
         var provider = selectProvider(order);
-
         return new Shipping(
           order,
           provider,
-          ShippingStatus.PENDING,
-          List.of(new ShippingEvent(null, ShippingStatus.PENDING, "Shipping created")));
+          ShippingStatus.CREATED,
+          List.of(new ShippingEvent(
+            clock.instant(),
+            ShippingStatus.CREATED,
+            "Shipping created")));
     }
 
     private ShippingProvider selectProvider(Order order) {

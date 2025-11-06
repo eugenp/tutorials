@@ -1,8 +1,10 @@
 package com.baeldung.temporal.workflows.sboot.order.domain;
 
 public enum ShippingStatus {
-    PENDING,
+    CREATED,
+    WAITING_FOR_PICKUP,
     SHIPPED,
     DELIVERED,
     RETURNED,
+    CANCELLED,
 }

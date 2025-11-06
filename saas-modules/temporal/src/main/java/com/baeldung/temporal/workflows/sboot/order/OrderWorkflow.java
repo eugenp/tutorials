@@ -15,10 +15,10 @@ public interface OrderWorkflow {
     void processOrder(OrderSpec spec);
 
     @SignalMethod
-    void paymentAuthorized(String transactionId);
+    void paymentAuthorized(String transactionId, String authorizationId);
 
     @SignalMethod
-    void paymentDeclined(String cause);
+    void paymentDeclined(String transactionId, String cause);
 
     @SignalMethod
     void packagePickup(Instant pickupTime);
@@ -34,5 +34,11 @@ public interface OrderWorkflow {
 
     @QueryMethod
     Shipping getDelivery();
+
+    @QueryMethod
+    PaymentAuthorization getPayment();
+
+    @QueryMethod
+    RefundRequest getRefund();
 
 }

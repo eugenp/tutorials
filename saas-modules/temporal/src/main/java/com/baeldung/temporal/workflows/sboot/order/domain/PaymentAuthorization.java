@@ -6,5 +6,7 @@ public record PaymentAuthorization(
   BillingInfo info,
   PaymentStatus status,
   String orderId,
-  String authorizationId) {
+  String transactionId,
+  String authorizationId,
+  String cause) {
 }
