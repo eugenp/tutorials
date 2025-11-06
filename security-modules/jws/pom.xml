@@ -47,15 +47,6 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <webResources>
-                        <resource>
-                            <directory>${project.basedir}/java-core-samples-lib/</directory>
-                            <includes>
-                                <include>**/*.jar</include>
-                            </includes>
-                            <targetPath>WEB-INF/lib</targetPath>
-                        </resource>
-                    </webResources>
                 </configuration>
             </plugin>
         </plugins>
