@@ -2,10 +2,14 @@ package com.baeldung.okhttp;
 
 import static com.baeldung.client.Consts.APPLICATION_PORT;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
 import java.io.IOException;
+
+import org.junit.Before;
+import org.junit.Test;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -13,9 +17,6 @@ import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-
-import org.junit.Before;
-import org.junit.Test;
 
 /**
  * Execute <code>spring-rest</code> module before running this live test
@@ -34,7 +35,8 @@ public class OkHttpGetLiveTest {
 
     @Test
     public void whenGetRequest_thenCorrect() throws IOException {
-        final Request request = new Request.Builder().url(BASE_URL + "/date").build();
+        final Request request = new Request.Builder().url(BASE_URL + "/date")
+            .build();
 
         final Call call = client.newCall(request);
         final Response response = call.execute();
@@ -43,13 +45,31 @@ public class OkHttpGetLiveTest {
     }
 
     @Test
+    public void whenResponseBodyReadOnce_thenNotNull() throws IOException {
+        OkHttpClient client = new OkHttpClient.Builder().build();
+
+        Request request = new Request.Builder().url(BASE_URL + "/date")
+            .build();
+
+        try (Response response = client.newCall(request)
+            .execute()) {
+            String first = response.body()
+                .string();
+            assertNotNull(first);
+        }
+    }
+
+    @Test
     public void whenGetRequestWithQueryParameter_thenCorrect() throws IOException {
-        final HttpUrl.Builder urlBuilder = HttpUrl.parse(BASE_URL + "/ex/bars").newBuilder();
+        final HttpUrl.Builder urlBuilder = HttpUrl.parse(BASE_URL + "/ex/bars")
+            .newBuilder();
         urlBuilder.addQueryParameter("id", "1");
 
-        final String url = urlBuilder.build().toString();
+        final String url = urlBuilder.build()
+            .toString();
 
-        final Request request = new Request.Builder().url(url).build();
+        final Request request = new Request.Builder().url(url)
+            .build();
 
         final Call call = client.newCall(request);
         final Response response = call.execute();
@@ -59,7 +79,8 @@ public class OkHttpGetLiveTest {
 
     @Test
     public void whenAsynchronousGetRequest_thenCorrect() throws InterruptedException {
-        final Request request = new Request.Builder().url(BASE_URL + "/date").build();
+        final Request request = new Request.Builder().url(BASE_URL + "/date")
+            .build();
 
         final Call call = client.newCall(request);
 
