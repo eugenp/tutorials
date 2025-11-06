@@ -8,12 +8,12 @@
    <packaging>jar</packaging>
    <name>spring-ai-2</name>
 
-   <parent>
-       <groupId>com.baeldung</groupId>
-       <artifactId>parent-boot-3</artifactId>
-       <version>0.0.1-SNAPSHOT</version>
-       <relativePath>../parent-boot-3</relativePath>
-   </parent>
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>spring-ai-modules</artifactId>
+        <version>0.0.1</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
    <repositories>
        <repository>
