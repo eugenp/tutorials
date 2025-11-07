@@ -26,6 +26,8 @@
         <module>remoting-amqp</module>
         <module>remoting-jms</module>
         <module>remoting-rmi</module>
+        <module>spring-boot-azure-deployment</module>
+        <module>spring-boot-heroku-deployment</module>
     </modules>
 
     <dependencyManagement>
