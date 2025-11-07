@@ -17,7 +17,7 @@ import com.jcraft.jsch.JSchUnknownHostKeyException;
 import com.jcraft.jsch.Session;
 
 @Testcontainers
-class ConnectIntegrationTest {
+class ConnectLiveTest {
     private static final int SFTP_PORT = 22;
 
     private static final String USERNAME = "baeldung";
