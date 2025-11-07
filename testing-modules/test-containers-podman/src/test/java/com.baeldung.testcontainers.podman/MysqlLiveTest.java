@@ -9,7 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-class MySQLIntegrationTest {
+class MysqlLiveTest {
 
 @Test
 void whenQueryingDatabase_thenReturnsOne() throws Exception {

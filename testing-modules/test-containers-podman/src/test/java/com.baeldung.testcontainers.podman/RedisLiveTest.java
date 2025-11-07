@@ -2,12 +2,11 @@ package com.baeldung.testcontainers.podman;
 
 
 import com.redis.testcontainers.RedisContainer;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import redis.clients.jedis.Jedis;
 
-class RedisIntegrationTest {
+class RedisLiveTest {
 
 @Test
 void whenSettingValue_thenCanGetItBack() {

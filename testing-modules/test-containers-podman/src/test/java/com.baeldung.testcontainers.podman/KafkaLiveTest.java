@@ -18,7 +18,7 @@ import java.time.Duration;
 import java.util.Collections;
 import java.util.Properties;
 
-public class KafkaIntegrationTest {
+public class KafkaLiveTest {
 
 @Test
 void whenProducingMessage_thenConsumerReceivesIt() {
