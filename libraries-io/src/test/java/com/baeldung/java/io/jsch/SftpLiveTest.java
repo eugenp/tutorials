@@ -22,7 +22,7 @@ import com.jcraft.jsch.Session;
 import com.jcraft.jsch.SftpATTRS;
 
 @Testcontainers
-public class SftpIntegrationTest {
+public class SftpLiveTest {
 
     private static final int SFTP_PORT = 22;
 
