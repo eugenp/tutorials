@@ -16,8 +16,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>3.5.3</version>
+            <version>${spring.boot.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <spring.boot.version>3.5.7</spring.boot.version>
+    </properties>
 
 </project>
