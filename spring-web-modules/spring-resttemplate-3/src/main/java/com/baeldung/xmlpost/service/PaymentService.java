@@ -13,27 +13,23 @@ import java.util.Collections;
 
 @Service
 public class PaymentService {
-
     private final RestTemplate restTemplate;
 
     public PaymentService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    public ResponseEntity<PaymentResponse> sendPaymentRequest(PaymentRequest request, String paymentUrl) {
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_XML);
-        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_XML));
-
-        HttpEntity<PaymentRequest> entity = new HttpEntity<>(request, headers);
-
-        return restTemplate.postForEntity(paymentUrl, entity, PaymentResponse.class);
-    }
-
     public PaymentResponse processPayment(PaymentRequest request, String paymentUrl) {
         try {
-            ResponseEntity<PaymentResponse> response = sendPaymentRequest(request, paymentUrl);
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_XML);
+            headers.setAccept(Collections.singletonList(MediaType.APPLICATION_XML));
+
+            HttpEntity<PaymentRequest> entity = new HttpEntity<>(request, headers);
+
+            ResponseEntity<PaymentResponse> response =
+              restTemplate.postForEntity(paymentUrl, entity, PaymentResponse.class);
+
             return response.getBody();
         } catch (Exception ex) {
             throw new RuntimeException("Payment processing failed: " + ex.getMessage(), ex);

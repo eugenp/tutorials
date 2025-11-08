@@ -1,6 +1,5 @@
 package com.baeldung.xmlpost.service;
 
-
 import com.baeldung.xmlpost.model.PaymentRequest;
 import com.baeldung.xmlpost.model.PaymentResponse;
 import org.junit.jupiter.api.Test;
@@ -66,20 +65,6 @@ class PaymentServiceUnitTest {
 
         assertTrue(exception.getMessage().contains("Payment processing failed"));
         assertTrue(exception.getMessage().contains("Invalid amount"));
-    }
-
-    @Test
-    void givenNetworkFailure_whenProcessPayment_thenThrowConnectionErrorException() {
-        PaymentRequest request = new PaymentRequest("TXN003", 150.75, "GBP", "Alice Brown");
-
-        when(restTemplate.postForEntity(eq(testUrl), any(HttpEntity.class), eq(PaymentResponse.class)))
-          .thenThrow(new RuntimeException("Connection timeout"));
-
-        Exception exception = assertThrows(RuntimeException.class,
-          () -> paymentService.processPayment(request, testUrl));
-
-        assertTrue(exception.getMessage().contains("Payment processing failed"));
-        assertTrue(exception.getMessage().contains("Connection timeout"));
     }
 
     @Test
