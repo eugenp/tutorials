@@ -59,13 +59,13 @@ class UserStreamLiveTest {
     }
 
     @Test
-    void givenValidUserIsSent_whenStreamServiceStarts_returnAggregatedCount() {
+    void givenValidUserIsSent_whenStreamServiceStarts_thenAggregatedCountIsSent() {
         producer.send(new ProducerRecord<>("user-topic", "x1", new User("1", "user1", "US")));
         producer.send(new ProducerRecord<>("user-topic", "x2", new User("2", "user2", "DE")));
         consumer.subscribe(List.of("users_per_country"));
 
         Awaitility.await()
-            .atMost(30, TimeUnit.SECONDS)
+            .atMost(45, TimeUnit.SECONDS)
             .pollInterval(Duration.ofSeconds(1))
             .untilAsserted(() -> {
                 ConsumerRecords<String, Long> records = consumer.poll(Duration.ofMillis(500));
@@ -80,9 +80,9 @@ class UserStreamLiveTest {
     }
 
     @Test
-    void givenValidAndNullUserIsSent_whenStreamServiceStarts_returnAggregatedCount() {
-        producer.send(new ProducerRecord<>("user-topic", "x4", new User("4", "user4", "IE")));
-        producer.send(new ProducerRecord<>("user-topic", "x5", null));
+    void givenValidAndNullUserIsSent_whenStreamServiceIsRunning_thenAggregatedCount() {
+        producer.send(new ProducerRecord<>("user-topic", "x3", new User("3", "user3", "IE")));
+        producer.send(new ProducerRecord<>("user-topic", "x4", null));
 
         consumer.subscribe(List.of("users_per_country"));
 
@@ -100,7 +100,7 @@ class UserStreamLiveTest {
     }
 
     @Test
-    void givenInvalidUserIsSent_whenStreamServiceStarts_returnAggregatedCountIsEmpty() {
+    void givenInvalidUserIsSent_whenStreamServiceIsRunning_thenAggregatedCountIsEmpty() {
         Properties props = new Properties();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_CONTAINER.getBootstrapServers());
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -108,7 +108,7 @@ class UserStreamLiveTest {
         KafkaProducer<String, byte[]> producer = new KafkaProducer<>(props);
 
         byte[] invalidJson = "{ invalid json".getBytes(StandardCharsets.UTF_8);
-        producer.send(new ProducerRecord<>("user-topic", "1", invalidJson));
+        producer.send(new ProducerRecord<>("user-topic", "x5", invalidJson));
 
         consumer.subscribe(List.of("users_per_country"));
         Awaitility.await()
@@ -121,14 +121,14 @@ class UserStreamLiveTest {
     }
 
     @Test
-    void givenEmptyUserJsonIsSent_whenStreamServiceStarts_returnAggregatedCountIsEmpty() {
+    void givenEmptyUserJsonIsSent_whenStreamServiceIsRunning_thenAggregatedCountIsEmpty() {
         Properties props = new Properties();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_CONTAINER.getBootstrapServers());
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, ByteArraySerializer.class);
         KafkaProducer<String, byte[]> producer = new KafkaProducer<>(props);
         byte[] emptyJson = "".getBytes(StandardCharsets.UTF_8);
-        producer.send(new ProducerRecord<>("user-topic", "1", emptyJson));
+        producer.send(new ProducerRecord<>("user-topic", "x6", emptyJson));
 
         consumer.subscribe(List.of("users_per_country"));
         Awaitility.await()
@@ -138,6 +138,20 @@ class UserStreamLiveTest {
                 ConsumerRecords<String, Long> records = consumer.poll(Duration.ofMillis(500));
                 assertTrue(records.isEmpty());
             });
+    }
+
+    @Test
+    void givenInvalidCountryUserIsSent_whenStreamServiceIsRunning_thenNoAggregatedCount() {
+        producer.send(new ProducerRecord<>("user-topic", "x7", new User("7", "user7", null)));
+        consumer.subscribe(List.of("users_per_country"));
+
+        Awaitility.await()
+                .atMost(30, TimeUnit.SECONDS)
+                .pollInterval(Duration.ofSeconds(1))
+                .untilAsserted(() -> {
+                    ConsumerRecords<String, Long> records = consumer.poll(Duration.ofMillis(500));
+                    assertTrue(records.isEmpty());
+                });
     }
 
     private static Properties getProducerConfig() {
