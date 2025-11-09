@@ -11,7 +11,14 @@ import org.apache.catalina.Context;
 import org.apache.catalina.startup.Tomcat;
 
 public class DualPort {
+    
     public static void main(String[] args) throws Exception {
+        DualPort dualPort = new DualPort();
+        Tomcat tomcat = dualPort.startServer();
+        tomcat.getServer().await();
+    }
+
+    public Tomcat startServer() throws Exception {
         Tomcat tomcat = new Tomcat();
         tomcat.setBaseDir(new File("tomcat-temp").getAbsolutePath());
 
@@ -35,7 +42,7 @@ public class DualPort {
 
         tomcat.start();
         System.out.println("Tomcat running on ports 8080 and 7080");
-        tomcat.getServer().await();
+        
+        return tomcat;
     }
 }
-
