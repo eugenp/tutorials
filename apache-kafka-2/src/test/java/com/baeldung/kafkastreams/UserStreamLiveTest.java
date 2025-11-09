@@ -1,8 +1,5 @@
 package com.baeldung.kafkastreams;
 
-import com.baeldung.kafkastreams.User;
-import com.baeldung.kafkastreams.UserSerializer;
-import com.baeldung.kafkastreams.UserStreamService;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -97,13 +94,13 @@ class UserStreamLiveTest {
                     Map<String, Long> counts = StreamSupport.stream(records.spliterator(), false)
                       .collect(Collectors.toMap(ConsumerRecord::key, ConsumerRecord::value, (a, b) -> b));
 
-                    assertTrue(counts.containsKey("IE"));;
+                    assertTrue(counts.containsKey("IE"));
                     assertEquals(1L, counts.get("IE"));
                 });
     }
 
     @Test
-    void givenInvalidUserIsSent_whenStreamServiceStarts_returnAggregatedCountIsEmpty() throws Exception {
+    void givenInvalidUserIsSent_whenStreamServiceStarts_returnAggregatedCountIsEmpty() {
         Properties props = new Properties();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_CONTAINER.getBootstrapServers());
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -124,7 +121,7 @@ class UserStreamLiveTest {
     }
 
     @Test
-    void givenEmptyUserJsonIsSent_whenStreamServiceStarts_returnAggregatedCountIsEmpty() throws Exception {
+    void givenEmptyUserJsonIsSent_whenStreamServiceStarts_returnAggregatedCountIsEmpty() {
         Properties props = new Properties();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_CONTAINER.getBootstrapServers());
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);

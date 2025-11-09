@@ -6,7 +6,7 @@ import org.apache.kafka.common.serialization.Deserializer;
 import java.io.IOException;
 
 public class UserDeserializer implements Deserializer<User> {
-    private final ObjectMapper mapper = new ObjectMapper();;
+    private final ObjectMapper mapper = new ObjectMapper();
 
     @Override
     public User deserialize(String topic, byte[] bytes) {

@@ -4,7 +4,6 @@ import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.*;
 import org.apache.kafka.streams.errors.LogAndContinueExceptionHandler;
 import org.apache.kafka.streams.kstream.*;
-import org.checkerframework.checker.guieffect.qual.AlwaysSafe;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
