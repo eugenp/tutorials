@@ -37,8 +37,8 @@ public class PostmanUploadController {
         return ResponseEntity.ok("file received successfully");
     }
 
-    @PostMapping(value = "/uploadJsonAndMultipartData", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<String> handleUploadeJsonAndMultipartInput(@RequestPart("data") JsonRequest json, @RequestPart("file") MultipartFile file) {
+    @PostMapping(value = "/uploadJsonAndMultipartInput", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<String> handleUploadJsonAndMultipartInput(@RequestPart("data") JsonRequest json, @RequestPart("file") MultipartFile file) {
         return ResponseEntity.ok(json.getId() + json.getName());
     }
 }

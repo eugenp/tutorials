@@ -56,7 +56,7 @@ public class PostmanUploadControllerUnitTest {
         MockMultipartFile jsonPart = new MockMultipartFile("data", "", "application/json", jsonString.getBytes());
         MockMultipartFile filePart = new MockMultipartFile("file", "test.txt", "text/plain", "some file content".getBytes());
 
-        this.mockMvc.perform(MockMvcRequestBuilders.multipart("/uploadJsonAndMultipartData")
+        this.mockMvc.perform(MockMvcRequestBuilders.multipart("/uploadJsonAndMultipartInput")
                 .file(jsonPart)
                 .file(filePart))
             .andExpect(status().isOk())
