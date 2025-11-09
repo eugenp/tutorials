@@ -87,16 +87,16 @@ class UserStreamLiveTest {
         consumer.subscribe(List.of("users_per_country"));
 
         Awaitility.await()
-                .atMost(30, TimeUnit.SECONDS)
-                .pollInterval(Duration.ofSeconds(1))
-                .untilAsserted(() -> {
-                    ConsumerRecords<String, Long> records = consumer.poll(Duration.ofMillis(500));
-                    Map<String, Long> counts = StreamSupport.stream(records.spliterator(), false)
-                      .collect(Collectors.toMap(ConsumerRecord::key, ConsumerRecord::value, (a, b) -> b));
+            .atMost(30, TimeUnit.SECONDS)
+            .pollInterval(Duration.ofSeconds(1))
+            .untilAsserted(() -> {
+                ConsumerRecords<String, Long> records = consumer.poll(Duration.ofMillis(500));
+                Map<String, Long> counts = StreamSupport.stream(records.spliterator(), false)
+                    .collect(Collectors.toMap(ConsumerRecord::key, ConsumerRecord::value, (a, b) -> b));
 
-                    assertTrue(counts.containsKey("IE"));
-                    assertEquals(1L, counts.get("IE"));
-                });
+                assertTrue(counts.containsKey("IE"));
+                assertEquals(1L, counts.get("IE"));
+            });
     }
 
     @Test
@@ -146,12 +146,12 @@ class UserStreamLiveTest {
         consumer.subscribe(List.of("users_per_country"));
 
         Awaitility.await()
-                .atMost(30, TimeUnit.SECONDS)
-                .pollInterval(Duration.ofSeconds(1))
-                .untilAsserted(() -> {
-                    ConsumerRecords<String, Long> records = consumer.poll(Duration.ofMillis(500));
-                    assertTrue(records.isEmpty());
-                });
+            .atMost(30, TimeUnit.SECONDS)
+            .pollInterval(Duration.ofSeconds(1))
+            .untilAsserted(() -> {
+                ConsumerRecords<String, Long> records = consumer.poll(Duration.ofMillis(500));
+                assertTrue(records.isEmpty());
+            });
     }
 
     private static Properties getProducerConfig() {
