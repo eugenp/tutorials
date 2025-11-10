@@ -29,7 +29,8 @@ public class KemUtilsIntegrationTest {
         assertNotNull(senderResult.sharedSecret());
         assertNotNull(senderResult.encapsulation());
 
-        KemUtils.KemResult receiverResult = KemUtils.decapsulate(KEM_ALGORITHM, keyPair.getPrivate(), senderResult.encapsulation());
+        KemUtils.KemResult receiverResult = KemUtils.decapsulate(KEM_ALGORITHM, keyPair.getPrivate(),
+          senderResult.encapsulation());
 
         SecretKey senderSecret = senderResult.sharedSecret();
         SecretKey receiverSecret = receiverResult.sharedSecret();

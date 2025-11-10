@@ -17,7 +17,8 @@ public class KemUtils {
         return new KemResult(result.key(), result.encapsulation());
     }
 
-    public static KemResult decapsulate(String algorithm, PrivateKey privateKey, byte[] encapsulation) throws Exception {
+    public static KemResult decapsulate(String algorithm, PrivateKey privateKey, byte[] encapsulation)
+      throws Exception {
         KEM kem = KEM.getInstance(algorithm);
         KEM.Decapsulator decapsulator = kem.newDecapsulator(privateKey);
         SecretKey recoveredSecret = decapsulator.decapsulate(encapsulation);
