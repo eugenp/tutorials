@@ -86,10 +86,17 @@ public class StringToBigDecimalConversionUnitTest {
     public void givenStringWithDollarSign_whenParsedWithNumberFormat_thenReturnExpectedValue() throws ParseException {
         String salePrice = "$348.45";
         Locale locale = Locale.US;
-
         Number number = NumberFormat.getCurrencyInstance(locale).parse(salePrice);
         BigDecimal amount = new BigDecimal(number.toString());
+        assertEquals(new BigDecimal("348.45"), amount);
+    }
 
+    @Test
+    public void givenEuroCurrencyString_whenParsedWithNumberFormat_thenReturnExpectedValue() throws ParseException {
+        String salePrice = "348,45\u00A0€";
+        Locale locale = Locale.FRANCE;
+        Number number = NumberFormat.getCurrencyInstance(locale).parse(salePrice);
+        BigDecimal amount = new BigDecimal(number.toString());
         assertEquals(new BigDecimal("348.45"), amount);
     }
 }
