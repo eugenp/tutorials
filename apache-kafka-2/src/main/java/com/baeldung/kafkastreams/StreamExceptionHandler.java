@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class StreamExceptionHandler implements StreamsUncaughtExceptionHandler {
+
     private static final Logger log = LoggerFactory.getLogger(StreamExceptionHandler.class);
 
     @Override

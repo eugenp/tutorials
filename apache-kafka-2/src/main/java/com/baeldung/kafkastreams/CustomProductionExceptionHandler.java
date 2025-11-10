@@ -9,25 +9,18 @@ import org.slf4j.LoggerFactory;
 import java.util.Map;
 
 public class CustomProductionExceptionHandler implements ProductionExceptionHandler {
+
     private static final Logger log = LoggerFactory.getLogger(UserSerializer.class);
 
     @Override
-    public ProductionExceptionHandlerResponse handle(
-            ErrorHandlerContext context,
-            ProducerRecord<byte[], byte[]> record,
-            Exception exception) {
-
+    public ProductionExceptionHandlerResponse handle(ErrorHandlerContext context, ProducerRecord<byte[], byte[]> record, Exception exception) {
         log.error("ProductionExceptionHandler Error producing record NodeId: {} | TaskId: {} | Topic: {} | Partition: {} | Exception: {}",
-            context.processorNodeId(),
-            context.taskId(),
-            record.topic(),
-            record.partition(),
-            exception.getMessage()
-        );
+            context.processorNodeId(), context.taskId(), record.topic(), record.partition(), exception.getMessage(), exception);
 
         return ProductionExceptionHandlerResponse.CONTINUE;
     }
 
     @Override
-    public void configure(Map<String, ?> configs) {}
+    public void configure(Map<String, ?> configs) {
+    }
 }

@@ -70,7 +70,7 @@ class UserStreamLiveTest {
             .untilAsserted(() -> {
                 ConsumerRecords<String, Long> records = consumer.poll(Duration.ofMillis(500));
                 Map<String, Long> counts = StreamSupport.stream(records.spliterator(), false)
-                    .collect(Collectors.toMap(ConsumerRecord::key, ConsumerRecord::value, (a, b) -> b));
+                    .collect(Collectors.toMap(ConsumerRecord::key, ConsumerRecord::value));
 
                 assertTrue(counts.containsKey("US"));
                 assertTrue(counts.containsKey("DE"));
@@ -92,7 +92,7 @@ class UserStreamLiveTest {
             .untilAsserted(() -> {
                 ConsumerRecords<String, Long> records = consumer.poll(Duration.ofMillis(500));
                 Map<String, Long> counts = StreamSupport.stream(records.spliterator(), false)
-                    .collect(Collectors.toMap(ConsumerRecord::key, ConsumerRecord::value, (a, b) -> b));
+                    .collect(Collectors.toMap(ConsumerRecord::key, ConsumerRecord::value));
 
                 assertTrue(counts.containsKey("IE"));
                 assertEquals(1L, counts.get("IE"));
