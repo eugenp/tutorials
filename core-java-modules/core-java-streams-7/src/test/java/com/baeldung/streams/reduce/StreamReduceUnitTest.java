@@ -2,13 +2,13 @@ package com.baeldung.streams.reduce;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.baeldung.streams.reduce.entities.User;
-import com.baeldung.streams.reduce.utilities.NumberUtils;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.List;
+import com.baeldung.streams.reduce.entities.User;
+import com.baeldung.streams.reduce.utilities.NumberUtils;
 
 class StreamReduceUnitTest {
 

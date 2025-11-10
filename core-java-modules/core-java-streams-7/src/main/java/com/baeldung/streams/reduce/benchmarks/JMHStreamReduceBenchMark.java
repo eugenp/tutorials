@@ -1,8 +1,8 @@
 package com.baeldung.streams.reduce.benchmarks;
 
-import com.baeldung.streams.reduce.entities.User;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Mode;
@@ -12,6 +12,8 @@ import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
+
+import com.baeldung.streams.reduce.entities.User;
 
 @State(Scope.Thread)
 @BenchmarkMode(Mode.AverageTime)

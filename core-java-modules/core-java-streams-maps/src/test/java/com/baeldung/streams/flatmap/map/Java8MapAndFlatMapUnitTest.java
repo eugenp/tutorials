@@ -1,7 +1,7 @@
 package com.baeldung.streams.flatmap.map;
 
+import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -10,8 +10,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static java.util.Arrays.asList;
-
+import org.junit.jupiter.api.Test;
 
 class Java8MapAndFlatMapUnitTest {
 

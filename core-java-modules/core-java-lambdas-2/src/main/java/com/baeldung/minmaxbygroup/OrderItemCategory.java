@@ -1,4 +1,4 @@
-package com.baeldung.streams.minmaxbygroup;
+package com.baeldung.minmaxbygroup;
 
 public enum OrderItemCategory {
   BOOKS,
