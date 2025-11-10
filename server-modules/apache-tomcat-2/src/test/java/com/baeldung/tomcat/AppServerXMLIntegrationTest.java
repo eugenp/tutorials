@@ -3,21 +3,15 @@ package com.baeldung.tomcat;
 import org.apache.catalina.startup.Catalina;
 import org.junit.jupiter.api.*;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URI;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.stream.Collectors;
 
+import static com.baeldung.tomcat.HttpConnection.getContent;
+import static com.baeldung.tomcat.HttpConnection.getResponseCode;
 import static org.junit.jupiter.api.Assertions.*;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class AppServerXMLUnitTest {
+public class AppServerXMLIntegrationTest {
 
     private static AppServerXML app;
     private static Catalina catalina;
@@ -77,34 +71,6 @@ public class AppServerXMLUnitTest {
             assertTrue(content1.contains("Tomcat is running"), "Content should contain expected text");
             assertEquals(content1, content2, "Both ports should serve identical content");
         });
-    }
-
-    private int getResponseCode(int port) throws Exception {
-        HttpURLConnection connection = getConnection(port);
-        try {
-            return connection.getResponseCode();
-        } finally {
-            connection.disconnect();
-        }
-    }
-
-    private String getContent(int port) throws Exception {
-        HttpURLConnection connection = getConnection(port);
-        try (BufferedReader reader = new BufferedReader(
-                new InputStreamReader(connection.getInputStream()))) {
-            return reader.lines().collect(Collectors.joining());
-        } finally {
-            connection.disconnect();
-        }
-    }
-
-    private HttpURLConnection getConnection(int port) throws IOException {
-        URL url = URI.create("http://localhost:" + port + "/").toURL();
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
-        connection.setConnectTimeout(5000);
-        connection.setReadTimeout(5000);
-        return connection;
     }
 }
 
