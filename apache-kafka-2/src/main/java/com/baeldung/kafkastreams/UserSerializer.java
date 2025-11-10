@@ -19,7 +19,7 @@ public class UserSerializer implements Serializer<User> {
         try {
             return mapper.writeValueAsBytes(user);
         } catch (JsonProcessingException ex) {
-            log.error("Error deserializing the user {} with exception {}", user, ex.getMessage());
+            log.error("Error deserializing the user {} with exception {}", user, ex.getMessage(), ex);
             throw new RuntimeException(ex);
         }
     }
