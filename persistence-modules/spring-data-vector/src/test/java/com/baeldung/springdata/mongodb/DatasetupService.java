@@ -1,4 +1,4 @@
-package com.baedlung.springdata.mongodb;
+package com.baeldung.springdata.mongodb;
 
 import static org.springframework.data.mongodb.core.index.VectorIndex.SimilarityFunction.COSINE;
 
@@ -14,8 +14,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.index.SearchIndexStatus;
 import org.springframework.data.mongodb.core.index.VectorIndex;
 
-import com.baeldung.springdata.mongodb.Book;
-import com.baeldung.springdata.mongodb.MongoDbBookRepository;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 

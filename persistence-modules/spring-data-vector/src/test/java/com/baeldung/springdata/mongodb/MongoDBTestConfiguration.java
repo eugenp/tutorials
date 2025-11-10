@@ -1,4 +1,4 @@
-package com.baedlung.springdata.mongodb;
+package com.baeldung.springdata.mongodb;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -10,7 +10,6 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.testcontainers.mongodb.MongoDBAtlasLocalContainer;
 
-import com.baeldung.springdata.mongodb.MongoDbBookRepository;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 

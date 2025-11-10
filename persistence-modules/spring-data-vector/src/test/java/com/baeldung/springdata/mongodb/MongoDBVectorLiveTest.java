@@ -1,4 +1,4 @@
-package com.baedlung.springdata.mongodb;
+package com.baeldung.springdata.mongodb;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,9 +23,6 @@ import org.springframework.data.domain.Vector;
 import org.springframework.test.context.ActiveProfiles;
 import org.testcontainers.mongodb.MongoDBAtlasLocalContainer;
 
-import com.baeldung.springdata.mongodb.Book;
-import com.baeldung.springdata.mongodb.MongoDbBookRepository;
-import com.baeldung.springdata.mongodb.SpringDataMongoDBVectorApplication;
 import com.opencsv.exceptions.CsvValidationException;
 
 @SpringBootTest(classes = { SpringDataMongoDBVectorApplication.class })
