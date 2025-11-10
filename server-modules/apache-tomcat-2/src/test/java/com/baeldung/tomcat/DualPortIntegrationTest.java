@@ -8,7 +8,7 @@ import static com.baeldung.tomcat.HttpConnection.getContent;
 import static com.baeldung.tomcat.HttpConnection.getResponseCode;
 import static org.junit.jupiter.api.Assertions.*;
 
-class DualPortIntegrationTest {
+public class DualPortIntegrationTest {
 
     private static DualPort app;
     private static Tomcat tomcat;
