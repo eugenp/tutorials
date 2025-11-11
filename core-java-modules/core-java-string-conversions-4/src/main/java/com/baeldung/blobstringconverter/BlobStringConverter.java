@@ -1,3 +1,5 @@
+package java.com.baeldung.blobstringconverter;
+
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.nio.charset.StandardCharsets;
