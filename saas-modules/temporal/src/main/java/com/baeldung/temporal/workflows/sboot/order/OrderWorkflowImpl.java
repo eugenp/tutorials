@@ -82,6 +82,9 @@ public class OrderWorkflowImpl implements OrderWorkflow {
             return;
         }
 
+        // The items left the warehouse
+        activities.dispatchOrderItems(spec.order());
+
         // Wait up to a week for delivery completion
         if ( !Workflow.await(Duration.ofDays(7), () -> checkShippingCompleted())) {
             log.info("[I87] Delivery timeout. Assuming package lost...");
@@ -133,17 +136,17 @@ public class OrderWorkflowImpl implements OrderWorkflow {
 
     @Override
     public void packagePickup(Instant pickupTime) {
-
+        shipping = shipping.toStatus(ShippingStatus.SHIPPED, pickupTime, "Package picked up");
     }
 
     @Override
     public void packageDelivered(Instant pickupTime) {
-
+        shipping = shipping.toStatus(ShippingStatus.DELIVERED, pickupTime, "Package delivered");
     }
 
     @Override
     public void packageReturned(Instant pickupTime) {
-
+        shipping = shipping.toStatus(ShippingStatus.RETURNED, pickupTime, "Package returned");
     }
 
     @Override

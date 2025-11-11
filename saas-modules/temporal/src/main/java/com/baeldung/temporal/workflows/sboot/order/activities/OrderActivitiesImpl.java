@@ -10,9 +10,10 @@ import org.springframework.stereotype.Service;
 import java.time.Clock;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
-@ActivityImpl
+@ActivityImpl(taskQueues = "ORDERS")
 public class OrderActivitiesImpl implements OrderActivities{
     private static  final Logger log = LoggerFactory.getLogger(OrderActivitiesImpl.class);
 
@@ -22,7 +23,6 @@ public class OrderActivitiesImpl implements OrderActivities{
     public OrderActivitiesImpl(Clock clock, InventoryService inventoryService) {
         this.clock = clock;
         this.inventoryService = inventoryService;
-        log.info("[I22] OrderActivitiesImpl created");
     }
 
     @Override
@@ -37,18 +37,29 @@ public class OrderActivitiesImpl implements OrderActivities{
     public void cancelReservedItems(Order order) {
         log.info("cancelReservedItems: order={}", order);
         for (OrderItem item : order.items()) {
-            inventoryService.reserveInventory(item.sku(), item.quantity());
+            inventoryService.cancelInventoryReservation(item.sku(), item.quantity());
         }
     }
 
     @Override
     public void returnOrderItems(Order order) {
-
+        log.info("returnOrderItems: order={}", order);
+        for (OrderItem item : order.items()) {
+            inventoryService.addInventory(item.sku(), item.quantity());
+        }
     }
 
+    @Override
+    public void dispatchOrderItems(Order order) {
+        log.info("deliverOrderItems: order={}", order);
+        for(OrderItem item : order.items()) {
+            inventoryService.addInventory(item.sku(), -item.quantity());
+        }
+    }
 
     @Override
     public PaymentAuthorization createPaymentRequest(Order order, BillingInfo billingInfo) {
+        log.info("createPaymentRequest: order={}, billingInfo={}", order, billingInfo);
         return new PaymentAuthorization(
           billingInfo,
           PaymentStatus.PENDING,
@@ -60,7 +71,8 @@ public class OrderActivitiesImpl implements OrderActivities{
 
     @Override
     public RefundRequest createRefundRequest(PaymentAuthorization payment) {
-        return null;
+        log.info("createRefundRequest: payment={}", payment);
+        return new RefundRequest(payment);
     }
 
     @Override
@@ -96,6 +108,6 @@ public class OrderActivitiesImpl implements OrderActivities{
 
     @Override
     public Shipping updateShipping(Shipping shipping, ShippingStatus status) {
-        return null;
+        return shipping.toStatus(status, clock.instant(), "Shipping status update");
     }
 }

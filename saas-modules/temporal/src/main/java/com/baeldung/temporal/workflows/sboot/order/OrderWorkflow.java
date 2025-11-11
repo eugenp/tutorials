@@ -1,10 +1,7 @@
 package com.baeldung.temporal.workflows.sboot.order;
 
 import com.baeldung.temporal.workflows.sboot.order.domain.*;
-import io.temporal.workflow.QueryMethod;
-import io.temporal.workflow.SignalMethod;
-import io.temporal.workflow.WorkflowInterface;
-import io.temporal.workflow.WorkflowMethod;
+import io.temporal.workflow.*;
 
 import java.time.Instant;
 
@@ -20,7 +17,7 @@ public interface OrderWorkflow {
     @SignalMethod
     void paymentDeclined(String transactionId, String cause);
 
-    @SignalMethod
+    @UpdateMethod
     void packagePickup(Instant pickupTime);
 
     @SignalMethod
