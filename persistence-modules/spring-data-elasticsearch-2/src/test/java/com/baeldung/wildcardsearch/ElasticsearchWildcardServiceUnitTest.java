@@ -6,8 +6,10 @@ import co.elastic.clients.elasticsearch.core.search.Hit;
 import co.elastic.clients.elasticsearch.core.search.HitsMetadata;
 import co.elastic.clients.elasticsearch.core.search.TotalHits;
 import co.elastic.clients.elasticsearch.core.search.TotalHitsRelation;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -59,13 +61,10 @@ class ElasticsearchWildcardServiceUnitTest {
     @DisplayName("wildcardSearch should return matching documents")
     void testWildcardSearch_ReturnsMatchingDocuments() throws IOException {
         // Given
-        SearchResponse<ObjectNode> mockResponse = createMockResponse(
-                createHit("1", "John Doe", "john.doe@example.com"),
-                createHit("2", "Johnny Cash", "johnny.cash@example.com")
-        );
+        SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "John Doe", "john.doe@example.com"),
+            createHit("2", "Johnny Cash", "johnny.cash@example.com"));
 
-        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class)))
-                .thenReturn(mockResponse);
+        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class))).thenReturn(mockResponse);
 
         // When
         List<Map<String, Object>> results = wildcardService.wildcardSearch("users", "name", "john*");
@@ -83,8 +82,7 @@ class ElasticsearchWildcardServiceUnitTest {
         // Given
         SearchResponse<ObjectNode> mockResponse = createMockResponse();
 
-        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class)))
-                .thenReturn(mockResponse);
+        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class))).thenReturn(mockResponse);
 
         // When
         List<Map<String, Object>> results = wildcardService.wildcardSearch("users", "name", "xyz*");
@@ -97,12 +95,9 @@ class ElasticsearchWildcardServiceUnitTest {
     @DisplayName("wildcardSearch should be case-insensitive")
     void testWildcardSearch_IsCaseInsensitive() throws IOException {
         // Given
-        SearchResponse<ObjectNode> mockResponse = createMockResponse(
-                createHit("1", "John Doe", "john.doe@example.com")
-        );
+        SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "John Doe", "john.doe@example.com"));
 
-        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class)))
-                .thenReturn(mockResponse);
+        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class))).thenReturn(mockResponse);
 
         // When
         List<Map<String, Object>> results = wildcardService.wildcardSearch("users", "name", "JOHN*");
@@ -116,12 +111,10 @@ class ElasticsearchWildcardServiceUnitTest {
     @DisplayName("wildcardSearch should throw IOException on client failure")
     void testWildcardSearch_ThrowsIOException() throws IOException {
         // Given
-        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class)))
-                .thenThrow(new IOException("Connection timeout"));
+        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class))).thenThrow(new IOException("Connection timeout"));
 
         // When & Then
-        assertThrows(IOException.class, () ->
-                wildcardService.wildcardSearch("users", "name", "john*"));
+        assertThrows(IOException.class, () -> wildcardService.wildcardSearch("users", "name", "john*"));
     }
 
     // ==================== PREFIX SEARCH TESTS ====================
@@ -130,21 +123,19 @@ class ElasticsearchWildcardServiceUnitTest {
     @DisplayName("prefixSearch should return documents with matching prefix")
     void testPrefixSearch_ReturnsMatchingDocuments() throws IOException {
         // Given
-        SearchResponse<ObjectNode> mockResponse = createMockResponse(
-                createHit("1", "John Doe", "john@example.com"),
-                createHit("2", "John Smith", "john.smith@example.com")
-        );
+        SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "John Doe", "john@example.com"),
+            createHit("2", "John Smith", "john.smith@example.com"));
 
-        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class)))
-                .thenReturn(mockResponse);
+        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class))).thenReturn(mockResponse);
 
         // When
         List<Map<String, Object>> results = wildcardService.prefixSearch("users", "email", "john");
 
         // Then
         assertThat(results).hasSize(2);
-        assertThat(results)
-                .allMatch(r -> r.get("email").toString().startsWith("john"));
+        assertThat(results).allMatch(r -> r.get("email")
+            .toString()
+            .startsWith("john"));
     }
 
     @Test
@@ -153,8 +144,7 @@ class ElasticsearchWildcardServiceUnitTest {
         // Given
         SearchResponse<ObjectNode> mockResponse = createMockResponse();
 
-        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class)))
-                .thenReturn(mockResponse);
+        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class))).thenReturn(mockResponse);
 
         // When
         List<Map<String, Object>> results = wildcardService.prefixSearch("users", "email", "xyz");
@@ -167,13 +157,10 @@ class ElasticsearchWildcardServiceUnitTest {
     @DisplayName("prefixSearch should handle single character prefix")
     void testPrefixSearch_SingleCharacterPrefix() throws IOException {
         // Given
-        SearchResponse<ObjectNode> mockResponse = createMockResponse(
-                createHit("1", "Alice", "alice@example.com"),
-                createHit("2", "Andrew", "andrew@example.com")
-        );
+        SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "Alice", "alice@example.com"),
+            createHit("2", "Andrew", "andrew@example.com"));
 
-        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class)))
-                .thenReturn(mockResponse);
+        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class))).thenReturn(mockResponse);
 
         // When
         List<Map<String, Object>> results = wildcardService.prefixSearch("users", "name", "a");
@@ -188,34 +175,29 @@ class ElasticsearchWildcardServiceUnitTest {
     @DisplayName("regexpSearch should match regex pattern")
     void testRegexpSearch_MatchesPattern() throws IOException {
         // Given
-        SearchResponse<ObjectNode> mockResponse = createMockResponse(
-                createHit("1", "John Doe", "john.doe@example.com"),
-                createHit("2", "Jane Doe", "jane.doe@example.com")
-        );
+        SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "John Doe", "john.doe@example.com"),
+            createHit("2", "Jane Doe", "jane.doe@example.com"));
 
-        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class)))
-                .thenReturn(mockResponse);
+        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class))).thenReturn(mockResponse);
 
         // When
         List<Map<String, Object>> results = wildcardService.regexpSearch("users", "email", ".*@example\\.com");
 
         // Then
         assertThat(results).hasSize(2);
-        assertThat(results)
-                .allMatch(r -> r.get("email").toString().endsWith("@example.com"));
+        assertThat(results).allMatch(r -> r.get("email")
+            .toString()
+            .endsWith("@example.com"));
     }
 
     @Test
     @DisplayName("regexpSearch should handle complex patterns")
     void testRegexpSearch_ComplexPattern() throws IOException {
         // Given
-        SearchResponse<ObjectNode> mockResponse = createMockResponse(
-                createHit("1", "User 1", "user123@test.com"),
-                createHit("2", "User 2", "user456@test.com")
-        );
+        SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "User 1", "user123@test.com"),
+            createHit("2", "User 2", "user456@test.com"));
 
-        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class)))
-                .thenReturn(mockResponse);
+        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class))).thenReturn(mockResponse);
 
         // When - pattern for emails starting with "user" followed by digits
         List<Map<String, Object>> results = wildcardService.regexpSearch("users", "email", "user[0-9]+@.*");
@@ -230,8 +212,7 @@ class ElasticsearchWildcardServiceUnitTest {
         // Given
         SearchResponse<ObjectNode> mockResponse = createMockResponse();
 
-        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class)))
-                .thenReturn(mockResponse);
+        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class))).thenReturn(mockResponse);
 
         // When
         List<Map<String, Object>> results = wildcardService.regexpSearch("users", "email", "nomatch.*");
@@ -246,33 +227,29 @@ class ElasticsearchWildcardServiceUnitTest {
     @DisplayName("fuzzySearch should find similar terms with typos")
     void testFuzzySearch_FindsSimilarTerms() throws IOException {
         // Given - searching for "jhon" should find "john"
-        SearchResponse<ObjectNode> mockResponse = createMockResponse(
-                createHit("1", "John Doe", "john.doe@example.com"),
-                createHit("2", "Johnny Cash", "johnny.cash@example.com")
-        );
+        SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "John Doe", "john.doe@example.com"),
+            createHit("2", "Johnny Cash", "johnny.cash@example.com"));
 
-        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class)))
-                .thenReturn(mockResponse);
+        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class))).thenReturn(mockResponse);
 
         // When
         List<Map<String, Object>> results = wildcardService.fuzzySearch("users", "name", "jhon");
 
         // Then
         assertThat(results).hasSize(2);
-        assertThat(results)
-                .allMatch(r -> r.get("name").toString().toLowerCase().contains("john"));
+        assertThat(results).allMatch(r -> r.get("name")
+            .toString()
+            .toLowerCase()
+            .contains("john"));
     }
 
     @Test
     @DisplayName("fuzzySearch should handle exact matches")
     void testFuzzySearch_ExactMatch() throws IOException {
         // Given
-        SearchResponse<ObjectNode> mockResponse = createMockResponse(
-                createHit("1", "John Doe", "john.doe@example.com")
-        );
+        SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "John Doe", "john.doe@example.com"));
 
-        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class)))
-                .thenReturn(mockResponse);
+        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class))).thenReturn(mockResponse);
 
         // When
         List<Map<String, Object>> results = wildcardService.fuzzySearch("users", "name", "john");
@@ -288,8 +265,7 @@ class ElasticsearchWildcardServiceUnitTest {
         // Given
         SearchResponse<ObjectNode> mockResponse = createMockResponse();
 
-        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class)))
-                .thenReturn(mockResponse);
+        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class))).thenReturn(mockResponse);
 
         // When
         List<Map<String, Object>> results = wildcardService.fuzzySearch("users", "name", "zzzzz");
@@ -302,12 +278,9 @@ class ElasticsearchWildcardServiceUnitTest {
     @DisplayName("fuzzySearch should be tolerant to small spelling mistakes")
     void testFuzzySearch_ToleratesSpellingMistakes() throws IOException {
         // Given
-        SearchResponse<ObjectNode> mockResponse = createMockResponse(
-                createHit("1", "Michael", "michael@example.com")
-        );
+        SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "Michael", "michael@example.com"));
 
-        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class)))
-                .thenReturn(mockResponse);
+        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class))).thenReturn(mockResponse);
 
         // When - searching for "micheal" (common misspelling)
         List<Map<String, Object>> results = wildcardService.fuzzySearch("users", "name", "micheal");
@@ -323,12 +296,9 @@ class ElasticsearchWildcardServiceUnitTest {
     @DisplayName("wildcardSearch should handle multiple wildcards in pattern")
     void testWildcardSearch_MultipleWildcards() throws IOException {
         // Given
-        SearchResponse<ObjectNode> mockResponse = createMockResponse(
-                createHit("1", "John Michael Doe", "jmdoe@example.com")
-        );
+        SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "John Michael Doe", "jmdoe@example.com"));
 
-        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class)))
-                .thenReturn(mockResponse);
+        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class))).thenReturn(mockResponse);
 
         // When - search for names containing both "john" and "doe"
         List<Map<String, Object>> results = wildcardService.wildcardSearch("users", "name", "*john*doe*");
@@ -341,13 +311,10 @@ class ElasticsearchWildcardServiceUnitTest {
     @DisplayName("prefixSearch should work with numeric prefixes")
     void testPrefixSearch_NumericPrefix() throws IOException {
         // Given
-        SearchResponse<ObjectNode> mockResponse = createMockResponse(
-                createHit("1", "User", "user123@example.com"),
-                createHit("2", "User", "user124@example.com")
-        );
+        SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "User", "user123@example.com"),
+            createHit("2", "User", "user124@example.com"));
 
-        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class)))
-                .thenReturn(mockResponse);
+        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class))).thenReturn(mockResponse);
 
         // When
         List<Map<String, Object>> results = wildcardService.prefixSearch("users", "email", "user12");
@@ -362,12 +329,9 @@ class ElasticsearchWildcardServiceUnitTest {
         // Given - set a low max results
         ReflectionTestUtils.setField(wildcardService, "maxResults", 10);
 
-        SearchResponse<ObjectNode> mockResponse = createMockResponse(
-                createHit("1", "User 1", "user1@example.com")
-        );
+        SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "User 1", "user1@example.com"));
 
-        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class)))
-                .thenReturn(mockResponse);
+        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class))).thenReturn(mockResponse);
 
         // When
         wildcardService.wildcardSearch("users", "name", "*");
@@ -380,12 +344,9 @@ class ElasticsearchWildcardServiceUnitTest {
     @DisplayName("wildcardSearch should handle special characters in search term")
     void testWildcardSearch_SpecialCharacters() throws IOException {
         // Given
-        SearchResponse<ObjectNode> mockResponse = createMockResponse(
-                createHit("1", "O'Brien", "obrien@example.com")
-        );
+        SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "O'Brien", "obrien@example.com"));
 
-        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class)))
-                .thenReturn(mockResponse);
+        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class))).thenReturn(mockResponse);
 
         // When
         List<Map<String, Object>> results = wildcardService.wildcardSearch("users", "name", "o'*");
@@ -399,12 +360,9 @@ class ElasticsearchWildcardServiceUnitTest {
     @DisplayName("regexpSearch should handle dot metacharacter")
     void testRegexpSearch_DotMetacharacter() throws IOException {
         // Given
-        SearchResponse<ObjectNode> mockResponse = createMockResponse(
-                createHit("1", "User", "a.b.c@example.com")
-        );
+        SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "User", "a.b.c@example.com"));
 
-        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class)))
-                .thenReturn(mockResponse);
+        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class))).thenReturn(mockResponse);
 
         // When - dot needs to be escaped in regex
         List<Map<String, Object>> results = wildcardService.regexpSearch("users", "email", ".*\\..*\\..*@.*");
@@ -417,12 +375,9 @@ class ElasticsearchWildcardServiceUnitTest {
     @DisplayName("fuzzySearch should handle numbers in search terms")
     void testFuzzySearch_WithNumbers() throws IOException {
         // Given
-        SearchResponse<ObjectNode> mockResponse = createMockResponse(
-                createHit("1", "Room 101", "room101@example.com")
-        );
+        SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "Room 101", "room101@example.com"));
 
-        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class)))
-                .thenReturn(mockResponse);
+        when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class))).thenReturn(mockResponse);
 
         // When
         List<Map<String, Object>> results = wildcardService.fuzzySearch("users", "name", "room101");
@@ -438,16 +393,12 @@ class ElasticsearchWildcardServiceUnitTest {
      */
     @SafeVarargs
     private SearchResponse<ObjectNode> createMockResponse(Hit<ObjectNode>... hits) {
-        @SuppressWarnings("unchecked")
-        SearchResponse<ObjectNode> mockResponse = mock(SearchResponse.class);
+        @SuppressWarnings("unchecked") SearchResponse<ObjectNode> mockResponse = mock(SearchResponse.class);
 
-        @SuppressWarnings("unchecked")
-        HitsMetadata<ObjectNode> mockHitsMetadata = mock(HitsMetadata.class);
+        @SuppressWarnings("unchecked") HitsMetadata<ObjectNode> mockHitsMetadata = mock(HitsMetadata.class);
 
-        TotalHits totalHits = TotalHits.of(t -> t
-                .value(hits.length)
-                .relation(TotalHitsRelation.Eq)
-        );
+        TotalHits totalHits = TotalHits.of(t -> t.value(hits.length)
+            .relation(TotalHitsRelation.Eq));
 
         when(mockHitsMetadata.hits()).thenReturn(List.of(hits));
         when(mockHitsMetadata.total()).thenReturn(totalHits);
@@ -460,14 +411,9 @@ class ElasticsearchWildcardServiceUnitTest {
      * Creates a mock Hit with typical user data
      */
     private Hit<ObjectNode> createHit(String id, String name, String email) {
-        @SuppressWarnings("unchecked")
-        Hit<ObjectNode> mockHit = mock(Hit.class);
+        @SuppressWarnings("unchecked") Hit<ObjectNode> mockHit = mock(Hit.class);
 
-        Map<String, Object> sourceData = Map.of(
-                "name", name,
-                "email", email,
-                "status", "active"
-        );
+        Map<String, Object> sourceData = Map.of("name", name, "email", email, "status", "active");
 
         ObjectNode sourceNode = objectMapper.valueToTree(sourceData);
 
@@ -482,8 +428,7 @@ class ElasticsearchWildcardServiceUnitTest {
      * Creates a mock Hit with custom data
      */
     private Hit<ObjectNode> createHit(String id, Map<String, Object> sourceData) {
-        @SuppressWarnings("unchecked")
-        Hit<ObjectNode> mockHit = mock(Hit.class);
+        @SuppressWarnings("unchecked") Hit<ObjectNode> mockHit = mock(Hit.class);
 
         ObjectNode sourceNode = objectMapper.valueToTree(sourceData);
 

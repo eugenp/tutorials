@@ -1,9 +1,9 @@
 package com.baeldung.wildcardsearch;
 
-
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.json.jackson.JacksonJsonpMapper;
 import co.elastic.clients.transport.rest_client.RestClientTransport;
+
 import org.apache.http.HttpHost;
 import org.elasticsearch.client.RestClient;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,7 +21,12 @@ public class ElasticsearchConfig {
 
     @Bean
     public RestClient restClient() {
-        return RestClient.builder(new HttpHost(host, port, "http")).setRequestConfigCallback(requestConfigBuilder -> requestConfigBuilder.setConnectTimeout(5000).setSocketTimeout(60000)).setHttpClientConfigCallback(httpClientBuilder -> httpClientBuilder.setMaxConnTotal(100).setMaxConnPerRoute(100)).build();
+        return RestClient.builder(new HttpHost(host, port, "http"))
+            .setRequestConfigCallback(requestConfigBuilder -> requestConfigBuilder.setConnectTimeout(5000)
+                .setSocketTimeout(60000))
+            .setHttpClientConfigCallback(httpClientBuilder -> httpClientBuilder.setMaxConnTotal(100)
+                .setMaxConnPerRoute(100))
+            .build();
     }
 
     @Bean

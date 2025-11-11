@@ -4,6 +4,7 @@ import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.elasticsearch.core.IndexRequest;
 import co.elastic.clients.elasticsearch.indices.CreateIndexRequest;
 import co.elastic.clients.elasticsearch.indices.DeleteIndexRequest;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,12 +32,11 @@ class ElasticsearchWildcardServiceIntegrationTest {
     private static final Logger logger = LoggerFactory.getLogger(ElasticsearchWildcardServiceIntegrationTest.class);
 
     @Container
-    static ElasticsearchContainer elasticsearchContainer = new ElasticsearchContainer(
-            "docker.elastic.co/elasticsearch/elasticsearch:8.11.1")
-            .withExposedPorts(9200)
-            .withEnv("discovery.type", "single-node")
-            .withEnv("xpack.security.enabled", "false")
-            .withEnv("xpack.security.http.ssl.enabled", "false");
+    static ElasticsearchContainer elasticsearchContainer = new ElasticsearchContainer("docker.elastic.co/elasticsearch/elasticsearch:8.11.1").withExposedPorts(
+            9200)
+        .withEnv("discovery.type", "single-node")
+        .withEnv("xpack.security.enabled", "false")
+        .withEnv("xpack.security.http.ssl.enabled", "false");
 
     @Autowired
     private ElasticsearchWildcardService wildcardService;
@@ -64,17 +64,17 @@ class ElasticsearchWildcardServiceIntegrationTest {
         try {
             Thread.sleep(1500);
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+            Thread.currentThread()
+                .interrupt();
         }
     }
 
     @AfterEach
     void cleanup() throws IOException {
         // Clean up test index
-        DeleteIndexRequest deleteRequest = DeleteIndexRequest.of(d -> d
-                .index(TEST_INDEX)
-        );
-        elasticsearchClient.indices().delete(deleteRequest);
+        DeleteIndexRequest deleteRequest = DeleteIndexRequest.of(d -> d.index(TEST_INDEX));
+        elasticsearchClient.indices()
+            .delete(deleteRequest);
     }
 
     @Test
@@ -97,8 +97,8 @@ class ElasticsearchWildcardServiceIntegrationTest {
             String name = nameObj.toString();
             logger.info("Checking name: '{}'", name);
 
-            assertTrue(name.toLowerCase().startsWith("john"),
-                    "Expected name to start with 'john', but got: " + name);
+            assertTrue(name.toLowerCase()
+                .startsWith("john"), "Expected name to start with 'john', but got: " + name);
         });
 
         // Should find exactly 2 documents: "John Doe" and "Johnny Smith"
@@ -120,8 +120,7 @@ class ElasticsearchWildcardServiceIntegrationTest {
             assertNotNull(emailObj, "Email field should not be null");
 
             String email = emailObj.toString();
-            assertTrue(email.startsWith("john"),
-                    "Expected email to start with 'john', but got: " + email);
+            assertTrue(email.startsWith("john"), "Expected email to start with 'john', but got: " + email);
         });
     }
 
@@ -136,20 +135,22 @@ class ElasticsearchWildcardServiceIntegrationTest {
 
         // At least one result should contain a name similar to "john"
         boolean foundSimilar = results.stream()
-                .anyMatch(result -> {
-                    Object nameObj = result.get("name");
-                    if (nameObj == null) return false;
-                    String name = nameObj.toString().toLowerCase();
-                    return name.contains("john");
-                });
+            .anyMatch(result -> {
+                Object nameObj = result.get("name");
+                if (nameObj == null) {
+                    return false;
+                }
+                String name = nameObj.toString()
+                    .toLowerCase();
+                return name.contains("john");
+            });
         assertTrue(foundSimilar, "Expected to find names similar to 'john'");
     }
 
     @Test
     void testAdvancedWildcardSearch_IntegrationTest() throws IOException {
         // When
-        List<Map<String, Object>> results = wildcardService.advancedWildcardSearch(
-                TEST_INDEX, "name", "*john*", "status", "active", "name");
+        List<Map<String, Object>> results = wildcardService.advancedWildcardSearch(TEST_INDEX, "name", "*john*", "status", "active", "name");
 
         // Then
         assertNotNull(results);
@@ -159,14 +160,13 @@ class ElasticsearchWildcardServiceIntegrationTest {
             Object statusObj = result.get("status");
             assertNotNull(statusObj, "Status field should not be null");
             String status = statusObj.toString();
-            assertEquals("active", status,
-                    "Expected status to be 'active', but got: " + status);
+            assertEquals("active", status, "Expected status to be 'active', but got: " + status);
 
             Object nameObj = result.get("name");
             assertNotNull(nameObj, "Name field should not be null");
             String name = nameObj.toString();
-            assertTrue(name.toLowerCase().contains("john"),
-                    "Expected name to contain 'john', but got: " + name);
+            assertTrue(name.toLowerCase()
+                .contains("john"), "Expected name to contain 'john', but got: " + name);
         });
     }
 
@@ -184,16 +184,15 @@ class ElasticsearchWildcardServiceIntegrationTest {
             Object nameObj = result.get("name");
             assertNotNull(nameObj, "Name field should not be null");
             String name = nameObj.toString();
-            assertTrue(name.toLowerCase().contains("john"),
-                    "Expected name to contain 'john', but got: " + name);
+            assertTrue(name.toLowerCase()
+                .contains("john"), "Expected name to contain 'john', but got: " + name);
         });
     }
 
     @Test
     void testMultiFieldWildcardSearch_IntegrationTest() throws IOException {
         // When
-        List<Map<String, Object>> results = wildcardService.multiFieldWildcardSearch(
-                TEST_INDEX, "john", "name", "email");
+        List<Map<String, Object>> results = wildcardService.multiFieldWildcardSearch(TEST_INDEX, "john", "name", "email");
 
         // Then
         assertNotNull(results);
@@ -204,36 +203,24 @@ class ElasticsearchWildcardServiceIntegrationTest {
             Object nameObj = result.get("name");
             Object emailObj = result.get("email");
 
-            String name = nameObj != null ? nameObj.toString().toLowerCase() : "";
-            String email = emailObj != null ? emailObj.toString().toLowerCase() : "";
+            String name = nameObj != null ? nameObj.toString()
+                .toLowerCase() : "";
+            String email = emailObj != null ? emailObj.toString()
+                .toLowerCase() : "";
 
-            assertTrue(name.contains("john") || email.contains("john"),
-                    "Expected 'john' in name or email");
+            assertTrue(name.contains("john") || email.contains("john"), "Expected 'john' in name or email");
         });
     }
 
     private void createTestIndex() throws IOException {
         // Create index with proper mapping for wildcard searches
-        CreateIndexRequest createRequest = CreateIndexRequest.of(c -> c
-                .index(TEST_INDEX)
-                .mappings(m -> m
-                        .properties("name", p -> p
-                                .text(t -> t
-                                        .fields("keyword", kf -> kf
-                                                .keyword(k -> k)
-                                        )
-                                )
-                        )
-                        .properties("email", p -> p
-                                .keyword(k -> k)
-                        )
-                        .properties("status", p -> p
-                                .keyword(k -> k)
-                        )
-                )
-        );
+        CreateIndexRequest createRequest = CreateIndexRequest.of(c -> c.index(TEST_INDEX)
+            .mappings(m -> m.properties("name", p -> p.text(t -> t.fields("keyword", kf -> kf.keyword(k -> k))))
+                .properties("email", p -> p.keyword(k -> k))
+                .properties("status", p -> p.keyword(k -> k))));
 
-        elasticsearchClient.indices().create(createRequest);
+        elasticsearchClient.indices()
+            .create(createRequest);
         logger.debug("Created test index {} with proper mapping", TEST_INDEX);
     }
 
@@ -261,11 +248,9 @@ class ElasticsearchWildcardServiceIntegrationTest {
     }
 
     private void indexDocument(String id, Map<String, Object> document) throws IOException {
-        IndexRequest<Map<String, Object>> indexRequest = IndexRequest.of(i -> i
-                .index(TEST_INDEX)
-                .id(id)
-                .document(document)
-        );
+        IndexRequest<Map<String, Object>> indexRequest = IndexRequest.of(i -> i.index(TEST_INDEX)
+            .id(id)
+            .document(document));
         elasticsearchClient.index(indexRequest);
     }
 }

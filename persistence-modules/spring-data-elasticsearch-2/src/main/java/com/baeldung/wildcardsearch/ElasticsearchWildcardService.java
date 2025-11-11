@@ -5,7 +5,9 @@ import co.elastic.clients.elasticsearch._types.SortOrder;
 import co.elastic.clients.elasticsearch._types.query_dsl.TextQueryType;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
 import co.elastic.clients.elasticsearch.core.search.Hit;
+
 import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +42,11 @@ public class ElasticsearchWildcardService {
         // Convert search term to lowercase for case-insensitive search
         String lowercaseSearchTerm = searchTerm.toLowerCase();
 
-        SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName).query(q -> q.wildcard(w -> w.field(fieldName).value(lowercaseSearchTerm).caseInsensitive(true))).size(maxResults), ObjectNode.class);
+        SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName)
+            .query(q -> q.wildcard(w -> w.field(fieldName)
+                .value(lowercaseSearchTerm)
+                .caseInsensitive(true)))
+            .size(maxResults), ObjectNode.class);
 
         return extractSearchResults(response);
     }
@@ -54,7 +60,11 @@ public class ElasticsearchWildcardService {
         // Convert to lowercase for case-insensitive matching
         String lowercaseSearchTerm = searchTerm.toLowerCase();
 
-        SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName).query(q -> q.wildcard(w -> w.field(keywordField).value(lowercaseSearchTerm).caseInsensitive(true))).size(maxResults), ObjectNode.class);
+        SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName)
+            .query(q -> q.wildcard(w -> w.field(keywordField)
+                .value(lowercaseSearchTerm)
+                .caseInsensitive(true)))
+            .size(maxResults), ObjectNode.class);
 
         return extractSearchResults(response);
     }
@@ -65,7 +75,10 @@ public class ElasticsearchWildcardService {
     public List<Map<String, Object>> prefixSearch(String indexName, String fieldName, String prefix) throws IOException {
         logger.info("Performing prefix search on index: {}, field: {}, prefix: {}", indexName, fieldName, prefix);
 
-        SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName).query(q -> q.prefix(p -> p.field(fieldName).value(prefix))).size(maxResults), ObjectNode.class);
+        SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName)
+            .query(q -> q.prefix(p -> p.field(fieldName)
+                .value(prefix)))
+            .size(maxResults), ObjectNode.class);
 
         return extractSearchResults(response);
     }
@@ -76,7 +89,10 @@ public class ElasticsearchWildcardService {
     public List<Map<String, Object>> regexpSearch(String indexName, String fieldName, String pattern) throws IOException {
         logger.info("Performing regexp search on index: {}, field: {}, pattern: {}", indexName, fieldName, pattern);
 
-        SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName).query(q -> q.regexp(r -> r.field(fieldName).value(pattern))).size(maxResults), ObjectNode.class);
+        SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName)
+            .query(q -> q.regexp(r -> r.field(fieldName)
+                .value(pattern)))
+            .size(maxResults), ObjectNode.class);
 
         return extractSearchResults(response);
     }
@@ -87,7 +103,11 @@ public class ElasticsearchWildcardService {
     public List<Map<String, Object>> fuzzySearch(String indexName, String fieldName, String searchTerm) throws IOException {
         logger.info("Performing fuzzy search on index: {}, field: {}, term: {}", indexName, fieldName, searchTerm);
 
-        SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName).query(q -> q.fuzzy(f -> f.field(fieldName).value(searchTerm).fuzziness("AUTO"))).size(maxResults), ObjectNode.class);
+        SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName)
+            .query(q -> q.fuzzy(f -> f.field(fieldName)
+                .value(searchTerm)
+                .fuzziness("AUTO")))
+            .size(maxResults), ObjectNode.class);
 
         return extractSearchResults(response);
     }
@@ -98,7 +118,10 @@ public class ElasticsearchWildcardService {
     public List<Map<String, Object>> matchPhrasePrefixSearch(String indexName, String fieldName, String searchTerm) throws IOException {
         logger.info("Performing match phrase prefix search on index: {}, field: {}, term: {}", indexName, fieldName, searchTerm);
 
-        SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName).query(q -> q.matchPhrasePrefix(m -> m.field(fieldName).query(searchTerm))).size(maxResults), ObjectNode.class);
+        SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName)
+            .query(q -> q.matchPhrasePrefix(m -> m.field(fieldName)
+                .query(searchTerm)))
+            .size(maxResults), ObjectNode.class);
 
         return extractSearchResults(response);
     }
@@ -106,10 +129,16 @@ public class ElasticsearchWildcardService {
     /**
      * Combined wildcard search with multiple conditions
      */
-    public List<Map<String, Object>> combinedWildcardSearch(String indexName, String field1, String wildcard1, String field2, String wildcard2) throws IOException {
+    public List<Map<String, Object>> combinedWildcardSearch(String indexName, String field1, String wildcard1, String field2, String wildcard2)
+        throws IOException {
         logger.info("Performing combined wildcard search on index: {}", indexName);
 
-        SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName).query(q -> q.bool(b -> b.must(m -> m.wildcard(w -> w.field(field1).value(wildcard1))).must(m -> m.wildcard(w -> w.field(field2).value(wildcard2))))).size(maxResults), ObjectNode.class);
+        SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName)
+            .query(q -> q.bool(b -> b.must(m -> m.wildcard(w -> w.field(field1)
+                    .value(wildcard1)))
+                .must(m -> m.wildcard(w -> w.field(field2)
+                    .value(wildcard2)))))
+            .size(maxResults), ObjectNode.class);
 
         return extractSearchResults(response);
     }
@@ -122,7 +151,11 @@ public class ElasticsearchWildcardService {
 
         String lowercaseSearchTerm = searchTerm.toLowerCase();
 
-        SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName).query(q -> q.wildcard(w -> w.field(fieldName + ".lowercase").value(lowercaseSearchTerm).caseInsensitive(true))).size(maxResults), ObjectNode.class);
+        SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName)
+            .query(q -> q.wildcard(w -> w.field(fieldName + ".lowercase")
+                .value(lowercaseSearchTerm)
+                .caseInsensitive(true)))
+            .size(maxResults), ObjectNode.class);
 
         return extractSearchResults(response);
     }
@@ -130,10 +163,18 @@ public class ElasticsearchWildcardService {
     /**
      * Advanced wildcard search with filtering and sorting
      */
-    public List<Map<String, Object>> advancedWildcardSearch(String indexName, String wildcardField, String wildcardTerm, String filterField, String filterValue, String sortField) throws IOException {
+    public List<Map<String, Object>> advancedWildcardSearch(String indexName, String wildcardField, String wildcardTerm, String filterField, String filterValue,
+        String sortField) throws IOException {
         logger.info("Performing advanced wildcard search on index: {}", indexName);
 
-        SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName).query(q -> q.bool(b -> b.must(m -> m.wildcard(w -> w.field(wildcardField).value(wildcardTerm))).filter(f -> f.term(t -> t.field(filterField).value(filterValue))))).sort(so -> so.field(f -> f.field(sortField).order(SortOrder.Asc))).size(maxResults), ObjectNode.class);
+        SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName)
+            .query(q -> q.bool(b -> b.must(m -> m.wildcard(w -> w.field(wildcardField)
+                    .value(wildcardTerm)))
+                .filter(f -> f.term(t -> t.field(filterField)
+                    .value(filterValue)))))
+            .sort(so -> so.field(f -> f.field(sortField)
+                .order(SortOrder.Asc)))
+            .size(maxResults), ObjectNode.class);
 
         return extractSearchResults(response);
     }
@@ -144,7 +185,11 @@ public class ElasticsearchWildcardService {
     public List<Map<String, Object>> multiFieldWildcardSearch(String indexName, String searchTerm, String... fields) throws IOException {
         logger.info("Performing multi-field wildcard search on index: {}, fields: {}", indexName, String.join(", ", fields));
 
-        SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName).query(q -> q.multiMatch(m -> m.query(searchTerm).fields(List.of(fields)).type(TextQueryType.PhrasePrefix))).size(maxResults), ObjectNode.class);
+        SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName)
+            .query(q -> q.multiMatch(m -> m.query(searchTerm)
+                .fields(List.of(fields))
+                .type(TextQueryType.PhrasePrefix)))
+            .size(maxResults), ObjectNode.class);
 
         return extractSearchResults(response);
     }
@@ -155,17 +200,22 @@ public class ElasticsearchWildcardService {
     private List<Map<String, Object>> extractSearchResults(SearchResponse<ObjectNode> response) {
         List<Map<String, Object>> results = new ArrayList<>();
 
-        logger.info("Search completed. Total hits: {}", response.hits().total().value());
+        logger.info("Search completed. Total hits: {}", response.hits()
+            .total()
+            .value());
 
-        for (Hit<ObjectNode> hit : response.hits().hits()) {
+        for (Hit<ObjectNode> hit : response.hits()
+            .hits()) {
             Map<String, Object> sourceMap = new HashMap<>();
 
             if (hit.source() != null) {
-                hit.source().fields().forEachRemaining(entry -> {
-                    // Extract the actual value from JsonNode
-                    Object value = extractJsonNodeValue(entry.getValue());
-                    sourceMap.put(entry.getKey(), value);
-                });
+                hit.source()
+                    .fields()
+                    .forEachRemaining(entry -> {
+                        // Extract the actual value from JsonNode
+                        Object value = extractJsonNodeValue(entry.getValue());
+                        sourceMap.put(entry.getKey(), value);
+                    });
             }
 
             results.add(sourceMap);
@@ -192,11 +242,13 @@ public class ElasticsearchWildcardService {
             return jsonNode.asBoolean();
         } else if (jsonNode.isArray()) {
             List<Object> list = new ArrayList<>();
-            jsonNode.elements().forEachRemaining(element -> list.add(extractJsonNodeValue(element)));
+            jsonNode.elements()
+                .forEachRemaining(element -> list.add(extractJsonNodeValue(element)));
             return list;
         } else if (jsonNode.isObject()) {
             Map<String, Object> map = new HashMap<>();
-            jsonNode.fields().forEachRemaining(entry -> map.put(entry.getKey(), extractJsonNodeValue(entry.getValue())));
+            jsonNode.fields()
+                .forEachRemaining(entry -> map.put(entry.getKey(), extractJsonNodeValue(entry.getValue())));
             return map;
         } else {
             return jsonNode.asText();
