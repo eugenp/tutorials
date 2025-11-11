@@ -6,19 +6,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
-class RandomKeyTrackingMap<K, V> {
+public class RandomKeyTrackingMap<K, V> {
 
     private final Map<K, V> delegate = new HashMap<>();
     private final List<K> keys = new ArrayList<>();
 
-    void put(K key, V value) {
+    public void put(K key, V value) {
         V previousValue = delegate.put(key, value);
         if (previousValue == null) {
             keys.add(key);
         }
     }
 
-    V remove(K key) {
+    public V remove(K key) {
         V removedValue = delegate.remove(key);
         if (removedValue != null) {
             int index = keys.indexOf(key);
@@ -29,7 +29,7 @@ class RandomKeyTrackingMap<K, V> {
         return removedValue;
     }
 
-    V getRandomValue() {
+    public V getRandomValue() {
         if (keys.isEmpty()) {
             return null;
         }

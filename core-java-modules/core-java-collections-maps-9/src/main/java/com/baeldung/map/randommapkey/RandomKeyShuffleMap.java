@@ -5,9 +5,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-class RandomKeyShuffleMap {
+public class RandomKeyShuffleMap {
 
-    static <K, V> K getRandomKeyUsingShuffle(Map<K, V> map) {
+    public  <K, V> K getRandomKeyUsingShuffle(Map<K, V> map) {
         if (map == null || map.isEmpty()) {
             return null;
         }

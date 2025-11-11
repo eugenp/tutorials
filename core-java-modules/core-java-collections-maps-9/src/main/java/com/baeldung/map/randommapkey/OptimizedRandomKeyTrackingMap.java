@@ -6,13 +6,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
-class OptimizedRandomKeyTrackingMap<K, V> {
+public class OptimizedRandomKeyTrackingMap<K, V> {
 
     private final Map<K, V> delegate = new HashMap<>();
     private final List<K> keys = new ArrayList<>();
     private final Map<K, Integer> keyToIndex = new HashMap<>();
 
-    void put(K key, V value) {
+    public void put(K key, V value) {
         V previousValue = delegate.put(key, value);
         if (previousValue == null) {
             keys.add(key);
@@ -20,7 +20,7 @@ class OptimizedRandomKeyTrackingMap<K, V> {
         }
     }
 
-    V remove(K key) {
+    public V remove(K key) {
         V removedValue = delegate.remove(key);
         if (removedValue != null) {
             Integer index = keyToIndex.remove(key);
@@ -44,7 +44,7 @@ class OptimizedRandomKeyTrackingMap<K, V> {
         keys.remove(lastIndex);
     }
 
-    V getRandomValue() {
+    public V getRandomValue() {
         if (keys.isEmpty()) {
             return null;
         }

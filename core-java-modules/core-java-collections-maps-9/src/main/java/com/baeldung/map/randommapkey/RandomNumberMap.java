@@ -7,9 +7,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ThreadLocalRandom;
 
-class RandomNumberMap {
+public class RandomNumberMap {
 
-    static <K, V> V getRandomValueUsingList(Map<K, V> map) {
+    public <K, V> V getRandomValueUsingList(Map<K, V> map) {
         if (map == null || map.isEmpty()) {
             return null;
         }
@@ -19,7 +19,7 @@ class RandomNumberMap {
         return map.get(randomKey);
     }
 
-    static <K, V> V getRandomValueUsingOffset(Map<K, V> map) {
+    public <K, V> V getRandomValueUsingOffset(Map<K, V> map) {
         if (map == null || map.isEmpty()) {
             return null;
         }
