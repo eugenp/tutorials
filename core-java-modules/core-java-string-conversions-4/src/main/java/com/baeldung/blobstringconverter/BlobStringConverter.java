@@ -1,4 +1,4 @@
-package java.com.baeldung.blobstringconverter;
+package com.baeldung.blobstringconverter;
 
 import java.sql.Blob;
 import java.sql.SQLException;
