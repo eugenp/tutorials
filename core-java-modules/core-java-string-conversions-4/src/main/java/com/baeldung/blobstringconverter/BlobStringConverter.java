@@ -20,7 +20,7 @@ public class BlobStringConverter {
 
         long length = blob.length();
 
-        // FIX: Check for zero length to avoid SerialException: Invalid arguments.
+        // Check for zero length to avoid SerialException: Invalid arguments.
         if (length == 0) {
             return ""; 
         }
