@@ -803,7 +803,6 @@
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
                 <module>spring-grpc</module>
-                <module>spring-jersey</module>
                 <module>spring-kafka</module>
                 <module>spring-kafka-2</module>
                 <module>spring-kafka-3</module>
@@ -1244,7 +1243,6 @@
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
                 <module>spring-grpc</module>
-                <module>spring-jersey</module>
                 <module>spring-kafka</module>
                 <module>spring-kafka-2</module>
                 <module>spring-kafka-3</module>
