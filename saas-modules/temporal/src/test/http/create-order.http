@@ -1,31 +1,9 @@
 ###
-# Update payment status
-PUT http://localhost:8080/order/59ca52cc-fc67-4d99-9448-73bca3148a35/shippingStatus
-Content-Type: application/json
-
-{
-  "status": "SHIPPED",
-  "statusTime" : "2025-11-09T18:30:04.000Z"
-}
-
-###
-# Update payment status
-PUT http://localhost:8080/order/59ca52cc-fc67-4d99-9448-73bca3148a35/paymentStatus
-Content-Type: application/json
-
-{
-  "status": "APPROVED",
-  "transactionId": "tx1234",
-  "authorizationId": "auth1234",
-  "cause": null
-}
-
-###
 # Create a new order
 POST http://localhost:8080/order
 Content-Type: application/json
 
-{
+{ 
   "order" : {
     "orderId": "9c7e2b84-3f5a-4d8e-9a1c-7b2f6e3d1a9b",
     "items": [
@@ -51,11 +29,58 @@ Content-Type: application/json
     "city": "Luminara",
     "countryCode": "ARV",
     "postalCode": "472-FE-LU",
-    "deliveryInstructions": "Please do ring the bell"
+    "deliveryInstructions": "Please ring the bell"
   },
   "customer" : {
     "name": "Max Ludenwall",
     "uuid": "f3a9c1e2-7b4d-4c9e-9f1a-2d8e6b5a3c7f",
     "birthDate": "1970-01-01"
   }
+}
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 201, "Response status is not 201");
+    });
+
+    client.global.set("orderId", response.body.orderId);
+    console.log("Order created with ID: " + response.body.orderId);
+
+%}
+
+###
+# Check payment status
+GET http://localhost:8080/order/{{orderId}}/payment
+
+
+###
+# Update payment status
+PUT http://localhost:8080/order/{{orderId}}/paymentStatus
+Content-Type: application/json
+
+{
+  "status": "APPROVED",
+  "transactionId": "tx1234",
+  "authorizationId": "auth1234",
+  "cause": null
+}
+
+###
+# Update payment status
+PUT http://localhost:8080/order/{{orderId}}/shippingStatus
+Content-Type: application/json
+
+{
+  "status": "SHIPPED",
+  "statusTime" : "2025-11-11T14:30:04.000Z"
+}
+
+###
+# Update payment status
+PUT http://localhost:8080/order/{{orderId}}/shippingStatus
+Content-Type: application/json
+
+{
+  "status": "DELIVERED",
+  "statusTime" : "2025-11-11T18:30:04.000Z"
 }

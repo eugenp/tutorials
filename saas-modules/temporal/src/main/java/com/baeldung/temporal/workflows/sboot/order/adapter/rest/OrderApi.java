@@ -35,28 +35,34 @@ public class OrderApi {
             .setTaskQueue("ORDERS")
             .setWorkflowId(uuid.toString()).build());
         var execution = WorkflowClient.start(wf::processOrder, orderSpec);
-
-        var location = UriComponentsBuilder.fromUriString("/order/{executionId}").build(execution.getWorkflowId());
+        var location = UriComponentsBuilder.fromUriString("/order/{orderId}").build(execution.getWorkflowId());
 
         return ResponseEntity.created(location).body(new OrderCreationResponse(uuid));
 
     }
 
-    @GetMapping("/{executionId}")
-    public ResponseEntity<Order> getOrder(@PathVariable("executionId") String executionId) {
-        var wf = workflowClient.newWorkflowStub(OrderWorkflow.class, executionId);
+    @GetMapping("/{orderId}")
+    public ResponseEntity<Order> getOrder(@PathVariable("orderId") String orderId) {
+        var wf = workflowClient.newWorkflowStub(OrderWorkflow.class, orderId);
         return ResponseEntity.ok(wf.getOrder());
     }
 
-    @GetMapping("/{executionId}/delivery")
-    public ResponseEntity<Shipping> getOrderDelivery(@PathVariable("executionId") String executionId) {
-        var wf = workflowClient.newWorkflowStub(OrderWorkflow.class, executionId);
-        return ResponseEntity.ok(wf.getDelivery());
+    @GetMapping("/{orderId}/payment")
+    public ResponseEntity<PaymentAuthorization> getPayment(@PathVariable("orderId") String orderId) {
+        var wf = workflowClient.newWorkflowStub(OrderWorkflow.class, orderId);
+        return ResponseEntity.ok(wf.getPayment());
     }
 
-    @PutMapping("/{executionId}/paymentStatus")
-    public ResponseEntity<Void> updatePaymentStatus(@PathVariable("executionId") String executionId, @RequestBody PaymentStatusUpdateInfo info) {
-        var wf = workflowClient.newWorkflowStub(OrderWorkflow.class, executionId);
+
+    @GetMapping("/{orderId}/shipping")
+    public ResponseEntity<Shipping> getOrderShipping(@PathVariable("orderId") String orderId) {
+        var wf = workflowClient.newWorkflowStub(OrderWorkflow.class, orderId);
+        return ResponseEntity.ok(wf.getShipping());
+    }
+
+    @PutMapping("/{orderId}/paymentStatus")
+    public ResponseEntity<Void> updatePaymentStatus(@PathVariable("orderId") String orderId, @RequestBody PaymentStatusUpdateInfo info) {
+        var wf = workflowClient.newWorkflowStub(OrderWorkflow.class, orderId);
         switch (info.status()) {
         case APPROVED -> wf.paymentAuthorized(info.transactionId(), info.authorizationId());
         case DECLINED -> wf.paymentDeclined(info.transactionId(), info.cause());
@@ -66,15 +72,15 @@ public class OrderApi {
         return ResponseEntity.accepted().build();
     }
 
-    @PutMapping("/{executionId}/shippingStatus")
-    public ResponseEntity<Void> updateShippingStatus(@PathVariable("executionId") String executionId, @RequestBody ShippingStatusUpdateInfo info) {
-        var wf = workflowClient.newWorkflowStub(OrderWorkflow.class, executionId);
+    @PutMapping("/{orderId}/shippingStatus")
+    public ResponseEntity<Void> updateShippingStatus(@PathVariable("orderId") String orderId, @RequestBody ShippingStatusUpdateInfo info) {
+        var wf = workflowClient.newWorkflowStub(OrderWorkflow.class, orderId);
         switch (info.status()) {
         case RETURNED -> wf.packageReturned(info.statusTime());
+        case SHIPPED -> wf.packagePickup(info.statusTime());
         case DELIVERED -> wf.packageDelivered(info.statusTime());
         default-> log.info("shipping status update: new status={}", info.status());
         }
-
         return ResponseEntity.accepted().build();
     }
 

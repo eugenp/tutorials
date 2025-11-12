@@ -9,6 +9,7 @@ import io.temporal.workflow.Workflow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -48,6 +49,7 @@ public class OrderWorkflowImpl implements OrderWorkflow {
     public void processOrder(OrderSpec spec) {
 
         log.info("processOrder: spec={}", spec);
+        order = spec.order();
 
         // Reserve inventory
         var activities = orderActivities.get();
@@ -111,6 +113,7 @@ public class OrderWorkflowImpl implements OrderWorkflow {
 
     @Override
     public void paymentAuthorized(String transactionId, String authorizationId) {
+        Workflow.await(() -> payment != null);
         payment = new PaymentAuthorization(
           payment.info(),
           PaymentStatus.APPROVED,
@@ -123,6 +126,7 @@ public class OrderWorkflowImpl implements OrderWorkflow {
 
     @Override
     public void paymentDeclined(String transactionId, String cause) {
+        Workflow.await(() -> payment != null);
         payment = new PaymentAuthorization(
           payment.info(),
           PaymentStatus.DECLINED,
@@ -136,11 +140,13 @@ public class OrderWorkflowImpl implements OrderWorkflow {
 
     @Override
     public void packagePickup(Instant pickupTime) {
+        Workflow.await(() -> shipping != null);
         shipping = shipping.toStatus(ShippingStatus.SHIPPED, pickupTime, "Package picked up");
     }
 
     @Override
     public void packageDelivered(Instant pickupTime) {
+        Workflow.await(() -> shipping != null);
         shipping = shipping.toStatus(ShippingStatus.DELIVERED, pickupTime, "Package delivered");
     }
 
@@ -155,7 +161,7 @@ public class OrderWorkflowImpl implements OrderWorkflow {
     }
 
     @Override
-    public Shipping getDelivery() {
+    public Shipping getShipping() {
         return shipping;
     }
 

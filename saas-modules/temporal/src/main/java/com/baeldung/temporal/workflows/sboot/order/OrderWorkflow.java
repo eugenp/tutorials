@@ -30,7 +30,7 @@ public interface OrderWorkflow {
     Order getOrder();
 
     @QueryMethod
-    Shipping getDelivery();
+    Shipping getShipping();
 
     @QueryMethod
     PaymentAuthorization getPayment();
