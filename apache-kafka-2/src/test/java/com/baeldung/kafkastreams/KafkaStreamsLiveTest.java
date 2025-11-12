@@ -40,7 +40,7 @@ public class KafkaStreamsLiveTest {
             .getName());
         streamsConfiguration.put(StreamsConfig.COMMIT_INTERVAL_MS_CONFIG, 1000);
         streamsConfiguration.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-        
+
         // Use a temporary directory for storing state, which will be automatically removed after the test.
         try {
             Path stateDirectory = Files.createTempDirectory("kafka-streams");
