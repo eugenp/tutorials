@@ -16,10 +16,12 @@
 
     <modules>
         <module>jackson-annotations</module>
+        <module>jackson-annotations-2</module>
         <module>jackson-conversions</module>
         <module>jackson-conversions-2</module>
         <module>jackson-conversions-3</module>
         <module>jackson-core</module>
+        <module>jackson-core-2</module>
         <module>jackson-custom-conversions</module>
         <module>jackson-exceptions</module>
         <module>jackson-jr</module>
