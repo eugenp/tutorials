@@ -25,6 +25,7 @@
         <module>spring-ai-introduction</module>
         <module>spring-ai-mcp</module>
         <module>spring-ai-multiple-llms</module>
+        <module>spring-ai-semantic-caching</module>
         <module>spring-ai-text-to-sql</module>
         <module>spring-ai-vector-stores</module>
     </modules>

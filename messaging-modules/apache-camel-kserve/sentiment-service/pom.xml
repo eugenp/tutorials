@@ -3,30 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>sentiment-service</artifactId>
+    <name>sentiment-service</name>
+    <description>This is the main service of the system, that uses Apache Camel to integrate with Triton server and
+        use an AI model for inference
+    </description>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>sentiment-parent-pom</artifactId>
+        <artifactId>apache-camel-kserve</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-
-    <name>Sentiment System - Service</name>
-    <description>This is the main service of the system, that uses Apache Camel to integrate with Triton server and
-        use an AI model for inference</description>
-    <artifactId>sentiment-service</artifactId>
-
-    <properties>
-        <java.version>21</java.version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.release>${java.version}</maven.compiler.release>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <camel.version>4.13.0</camel.version>
-        <jackson-databind.version>2.19.2</jackson-databind.version>
-        <tokenizers.version>0.21.0</tokenizers.version>
-        <maven-shade-plugin.version>3.6.0</maven-shade-plugin.version>
-    </properties>
 
     <dependencies>
         <!-- Core Camel -->
@@ -35,7 +22,6 @@
             <artifactId>camel-main</artifactId>
             <version>${camel.version}</version>
         </dependency>
-
         <!-- REST support via Undertow -->
         <dependency>
             <groupId>org.apache.camel</groupId>
@@ -47,21 +33,18 @@
             <artifactId>camel-rest</artifactId>
             <version>${camel.version}</version>
         </dependency>
-
         <!-- KServe inference component -->
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-kserve</artifactId>
             <version>${camel.version}</version>
         </dependency>
-
         <!-- JSON support -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson-databind.version}</version>
         </dependency>
-
         <!-- lib to use for tokenizer -->
         <dependency>
             <groupId>ai.djl.huggingface</groupId>
@@ -91,7 +74,9 @@
                 <executions>
                     <execution>
                         <phase>package</phase>
-                        <goals><goal>shade</goal></goals>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
@@ -105,4 +90,18 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <java.version>21</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.release>${java.version}</maven.compiler.release>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <camel.version>4.13.0</camel.version>
+        <jackson-databind.version>2.19.2</jackson-databind.version>
+        <tokenizers.version>0.21.0</tokenizers.version>
+        <maven-shade-plugin.version>3.6.0</maven-shade-plugin.version>
+    </properties>
+
 </project>

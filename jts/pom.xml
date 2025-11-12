@@ -2,6 +2,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>jst</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -9,21 +12,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.baeldung.jts</groupId>
-    <artifactId>jst-example</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-
-    <properties>
-        <maven.compiler.source>21</maven.compiler.source>  <!-- Java version -->
-        <maven.compiler.target>21</maven.compiler.target>
-        <slf4j.version>2.0.17</slf4j.version>
-        <junit.version>4.13.2</junit.version>
-        <jts.version>1.20.0</jts.version>
-        <qos.logback.version>1.5.18</qos.logback.version>
-        <maven.compiler.plugin.version>3.14.0</maven.compiler.plugin.version>
-        <maven.shade.plugin.version>3.2.4</maven.shade.plugin.version>
-    </properties>
     <dependencies>
         <dependency>
             <groupId>org.locationtech.jts</groupId>
@@ -90,4 +78,16 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>  <!-- Java version -->
+        <maven.compiler.target>21</maven.compiler.target>
+        <slf4j.version>2.0.17</slf4j.version>
+        <junit.version>4.13.2</junit.version>
+        <jts.version>1.20.0</jts.version>
+        <qos.logback.version>1.5.18</qos.logback.version>
+        <maven.compiler.plugin.version>3.14.0</maven.compiler.plugin.version>
+        <maven.shade.plugin.version>3.2.4</maven.shade.plugin.version>
+    </properties>
+
 </project>
