@@ -1523,6 +1523,7 @@
                 <module>quarkus-modules/consume-rest-api/consume-api</module>
                 <module>maven-modules/maven-exec-plugin</module> <!-- JAVA-42059 -->
                 <module>maven-modules/dependencygraph</module> <!-- JAVA-42057 -->
+                <module>maven-modules/maven-toolchains</module>
                 <module>spring-boot-modules/spring-boot-groovy</module> <!-- JAVA-42052 -->
                 <module>spring-boot-modules/spring-boot-data-3</module> <!-- JAVA-42051 -->
                 <module>spring-boot-modules/spring-boot-3-3</module> <!-- JAVA-42049 -->
@@ -1588,6 +1589,7 @@
                 <module>quarkus-modules/consume-rest-api/consume-api</module>
                 <module>maven-modules/maven-exec-plugin</module> <!-- JAVA-42059 -->
                 <module>maven-modules/dependencygraph</module> <!-- JAVA-42057 -->
+                <module>maven-modules/maven-toolchains</module>
                 <module>spring-boot-modules/spring-boot-groovy</module> <!-- JAVA-42052 -->
                 <module>spring-boot-modules/spring-boot-data-3</module> <!-- JAVA-42051 -->
                 <module>spring-boot-modules/spring-boot-3-3</module> <!-- JAVA-42049 -->
