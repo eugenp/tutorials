@@ -2,6 +2,7 @@ package com.baeldung.xmlpost.service;
 
 import com.baeldung.xmlpost.model.PaymentRequest;
 import com.baeldung.xmlpost.model.PaymentResponse;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -15,7 +16,7 @@ import java.util.Collections;
 public class PaymentService {
     private final RestTemplate restTemplate;
 
-    public PaymentService(RestTemplate restTemplate) {
+    public PaymentService(@Qualifier("xmlRestTemplate") RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
