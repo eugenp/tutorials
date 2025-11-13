@@ -1,6 +1,5 @@
 package com.baeldung.springdata.mongodb;
 
-import com.baedlung.springdata.mongodb.DatasetupService;
 import com.opencsv.exceptions.CsvValidationException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;

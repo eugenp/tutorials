@@ -1,6 +1,5 @@
 package com.baeldung.springdata.mongodb;
 
-import com.baedlung.springdata.mongodb.DatasetupService;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import org.springframework.beans.factory.annotation.Autowired;
