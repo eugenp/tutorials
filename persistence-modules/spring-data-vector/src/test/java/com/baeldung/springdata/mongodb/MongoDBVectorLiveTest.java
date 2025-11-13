@@ -1,10 +1,7 @@
-package com.baedlung.springdata.mongodb;
+package com.baeldung.springdata.mongodb;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.io.IOException;
-import java.util.List;
-
+import com.baedlung.springdata.mongodb.DatasetupService;
+import com.opencsv.exceptions.CsvValidationException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -14,19 +11,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.data.domain.Range;
-import org.springframework.data.domain.Score;
-import org.springframework.data.domain.SearchResult;
-import org.springframework.data.domain.SearchResults;
-import org.springframework.data.domain.Similarity;
-import org.springframework.data.domain.Vector;
+import org.springframework.data.domain.*;
 import org.springframework.test.context.ActiveProfiles;
 import org.testcontainers.mongodb.MongoDBAtlasLocalContainer;
 
-import com.baeldung.springdata.mongodb.Book;
-import com.baeldung.springdata.mongodb.MongoDbBookRepository;
-import com.baeldung.springdata.mongodb.SpringDataMongoDBVectorApplication;
-import com.opencsv.exceptions.CsvValidationException;
+import java.io.IOException;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(classes = { SpringDataMongoDBVectorApplication.class })
 @Import(MongoDBTestConfiguration.class)
