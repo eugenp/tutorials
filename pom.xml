@@ -1080,6 +1080,7 @@
                 <module>apache-poi-4</module>
                 <module>apache-thrift</module>
                 <module>apache-velocity</module>
+                <module>apollo</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>spring-boot-azure-deployment</module>
