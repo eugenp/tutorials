@@ -26,9 +26,4 @@ public class RestTemplateConfiguration {
         restTemplate.getInterceptors().add(new CompressingClientHttpRequestInterceptor());
         return restTemplate;
     }
-
-    @Bean("xmlRestTemplate")
-    public RestTemplate xmlRestTemplate() {
-        return new RestTemplate();
-    }
 }
