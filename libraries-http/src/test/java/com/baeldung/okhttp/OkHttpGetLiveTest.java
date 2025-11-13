@@ -59,6 +59,24 @@ public class OkHttpGetLiveTest {
         }
     }
 
+    @Test(expected = IllegalStateException.class)
+    public void whenResponseBodyReadTwice_thenThrows() throws IOException {
+        OkHttpClient client = new OkHttpClient.Builder().build();
+
+        Request request = new Request.Builder().url(BASE_URL + "/date")
+            .build();
+
+        try (Response response = client.newCall(request)
+            .execute()) {
+            String first = response.body()
+                .string();
+            assertNotNull(first);
+
+            String second = response.body()
+                .string(); // throws IllegalStateException
+        }
+    }
+
     @Test
     public void whenGetRequestWithQueryParameter_thenCorrect() throws IOException {
         final HttpUrl.Builder urlBuilder = HttpUrl.parse(BASE_URL + "/ex/bars")
