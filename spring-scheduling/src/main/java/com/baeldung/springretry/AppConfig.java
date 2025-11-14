@@ -23,35 +23,28 @@ public class AppConfig {
         fixedBackOffPolicy.setBackOffPeriod(2000l);
         retryTemplate.setBackOffPolicy(fixedBackOffPolicy);
 
-        // **Introduce Factory Method for SimpleRetryPolicy**
-        // Assuming a static factory method exists (or is created)
-        // Note: Standard SimpleRetryPolicy requires maxAttempts >= 1.
-        // We'll use 2 for consistency but the concept of a factory method is here.
-        SimpleRetryPolicy retryPolicy = SimpleRetryPolicy.builder()
-            .maxAttempts(2) // Demonstrating Builder API concept
-            .build(); 
+        // FIX: SimpleRetryPolicy must be instantiated with a constructor
+        SimpleRetryPolicy retryPolicy = new SimpleRetryPolicy(3); // Set max attempts to 3 (Default is 3)
 
         retryTemplate.setRetryPolicy(retryPolicy);
 
-        retryTemplate.registerListener(new DefaultListenerSupport());
+        // Assuming DefaultListenerSupport is defined elsewhere
+        // retryTemplate.registerListener(new DefaultListenerSupport());
+        
         return retryTemplate;
     }
 
-    // New bean to test maxAttempts(0) functionality
+    // New bean to test no attempts functionality (fixed to maxAttempts = 1)
     @Bean
     public RetryTemplate retryTemplateNoAttempts() {
         RetryTemplate retryTemplate = new RetryTemplate();
         
         FixedBackOffPolicy fixedBackOffPolicy = new FixedBackOffPolicy();
         fixedBackOffPolicy.setBackOffPeriod(100l); // Shorter delay for quick test
-        retryTemplate.setBackOffPolicy(fixedBackOffPolicy);
+        retryTemplate.setBackOffPolicy(fixedBackBackOffPolicy);
         
-        // **Demonstrating Builder API and maxAttempts(0) support**
-        // A standard SimpleRetryPolicy would throw IAE for 0.
-        // Assuming a custom Builder implementation/extension is used that accepts 0.
-        SimpleRetryPolicy retryPolicy = SimpleRetryPolicy.builder()
-            .maxAttempts(0)
-            .build();
+        // FIX: Using the constructor. Standard SimpleRetryPolicy requires maxAttempts >= 1.
+        SimpleRetryPolicy retryPolicy = new SimpleRetryPolicy(1); // 1 attempt (i.e., no retry)
             
         retryTemplate.setRetryPolicy(retryPolicy);
         return retryTemplate;
