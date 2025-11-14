@@ -3,8 +3,8 @@
     xmlns="http://maven.apache.org/POM/4.0.0"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>gateway-2</artifactId>
-    <name>gateway-2</name>
+    <artifactId>spring-cloud-gateway-intro</artifactId>
+    <name>spring-cloud-gateway-intro</name>
     <packaging>jar</packaging>
 
     <parent>

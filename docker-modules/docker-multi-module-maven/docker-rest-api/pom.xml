@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>api</artifactId>
+    <artifactId>docker-rest-api</artifactId>
 
     <parent>
         <groupId>com.baeldung.docker-multi-module-maven</groupId>
@@ -20,7 +20,7 @@
         <dependency>
             <groupId>com.baeldung.docker-multi-module-maven</groupId>
             <artifactId>domain</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
