@@ -38,7 +38,7 @@ class McpClientAppServerUnitTest {
     }
 
     @Test
-    void whenCalledViaClient_thenReturnsLoggedResult() throws Exception {
+    void whenCalledViaClient_thenReturnsLoggedResult() {
         McpSchema.CallToolRequest request = new McpSchema.CallToolRequest("echo", Map.of("message", "Client-server test message"));
         McpSchema.CallToolResult result = client.callTool(request);
 
