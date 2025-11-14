@@ -21,7 +21,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @SpringBootTest
-public class RestTestClientTest {
+public class RestTestClientUnitTest {
 
     @Autowired
     private MyController myController;
@@ -39,7 +39,7 @@ public class RestTestClientTest {
     }
 
     @Test
-    void givenValidPath_WhenCalled_ThenReturnOk() {
+    void givenValidPath_whenCalled_thenReturnOk() {
         restTestClient.get()
             .uri("/persons/1")
             .accept(MediaType.APPLICATION_JSON)
@@ -51,7 +51,7 @@ public class RestTestClientTest {
     }
 
     @Test
-    void givenWrongCallType_WhenCalled_ThenReturnClientError() {
+    void givenWrongCallType_whenCalled_thenReturnClientError() {
         restTestClient.post() // <=== wrong type
             .uri("/persons/1")
             .accept(MediaType.APPLICATION_JSON)
@@ -61,7 +61,7 @@ public class RestTestClientTest {
     }
 
     @Test
-    void givenWrongId_WhenCalled_ThenReturnNoContent() {
+    void givenWrongId_whenCalled_thenReturnNoContent() {
         restTestClient.get()
             .uri("/persons/0") // <=== wrong id
             .accept(MediaType.APPLICATION_JSON)
@@ -71,7 +71,7 @@ public class RestTestClientTest {
     }
 
     @Test
-    void givenInvalidPath_WhenCalled_ThenReturnNotFound() {
+    void givenInvalidPath_whenCalled_thenReturnNotFound() {
         restTestClient.get()
             .uri("/invalid")
             .accept(MediaType.APPLICATION_JSON)
