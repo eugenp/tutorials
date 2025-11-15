@@ -20,7 +20,7 @@ import org.springframework.web.context.WebApplicationContext;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class RestTestClientUnitTest {
 
     @Autowired
@@ -29,7 +29,6 @@ public class RestTestClientUnitTest {
     @Autowired
     private AnotherController anotherController;
 
-    @Autowired
     private RestTestClient restTestClient;
 
     @BeforeEach
