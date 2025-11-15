@@ -7,10 +7,11 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class RetryTemplateService {
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
     private final RetryTemplate retryTemplate;
 
-    public RetryTemplateService(RetryTemplate retryTemplate) {
+    public RetryTemplateService(RestTemplate restTemplate, RetryTemplate retryTemplate) {
+        this.restTemplate = restTemplate;
         this.retryTemplate = retryTemplate;
     }
 

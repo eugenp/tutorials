@@ -11,7 +11,11 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class RestClientService {
 
-    private RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
+
+    public RestClientService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     @Retryable(
             retryFor = {ResourceAccessException.class},
