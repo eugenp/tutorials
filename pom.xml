@@ -677,6 +677,7 @@
                 <module>java-jdi</module>
                 <module>java-panama</module>
                 <module>javafx</module>
+                <module>javafx-2</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
@@ -1120,6 +1121,7 @@
                 <module>java-jdi</module>
                 <module>java-panama</module>
                 <module>javafx</module>
+                <module>javafx-2</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
