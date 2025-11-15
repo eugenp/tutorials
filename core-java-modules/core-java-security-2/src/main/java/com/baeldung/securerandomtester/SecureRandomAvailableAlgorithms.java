@@ -1,12 +1,14 @@
 package com.baeldung.securerandomtester;
+
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
 public class SecureRandomAvailableAlgorithms {
-    static String [] algorithmNames =  {"NativePRNG", "NativePRNGBlocking", "NativePRNGNonBlocking", "PKCS11", "SHA1PRNG", "Windows-PRNG"};
+
+    static String[] algorithmNames = { "NativePRNG", "NativePRNGBlocking", "NativePRNGNonBlocking", "PKCS11", "SHA1PRNG", "Windows-PRNG" };
+
     public static void main(String[] args) {
-        for (int i = 0; i < algorithmNames.length; i++)
-        {
+        for (int i = 0; i < algorithmNames.length; i++) {
             String name = algorithmNames[i];
             Boolean isAvailable = true;
             try {

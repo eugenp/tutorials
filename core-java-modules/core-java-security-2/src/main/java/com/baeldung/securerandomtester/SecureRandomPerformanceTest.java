@@ -3,7 +3,6 @@ package com.baeldung.securerandomtester;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.concurrent.TimeUnit;
-
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Level;
@@ -33,18 +32,16 @@ public class SecureRandomPerformanceTest {
     @Benchmark
     public void measureTimePRNGBlocking() {
         byte[] randomBytes = new byte[NBYTES];
-        for (int i = 0; i < NSAMPLES; i++)
-        {
-            randomNativePRNGBlocking.nextBytes(randomBytes);          
+        for (int i = 0; i < NSAMPLES; i++) {
+            randomNativePRNGBlocking.nextBytes(randomBytes);
         }
     }
 
     @Benchmark
     public void measureTimePRNGNonBlocking() {
         byte[] randomBytes = new byte[NBYTES];
-        for (int i = 0; i < NSAMPLES; i++)
-        {
-            randomNativePRNGNonBlocking.nextBytes(randomBytes);          
+        for (int i = 0; i < NSAMPLES; i++) {
+            randomNativePRNGNonBlocking.nextBytes(randomBytes);
         }
     }
 

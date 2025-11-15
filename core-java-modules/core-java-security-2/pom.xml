@@ -27,18 +27,20 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>1.37</version>
+            <version>${jmh-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
-            <version>1.37</version>
+            <version>${jmh-generator-annprocess.version}</version>
             </dependency>
     </dependencies>
 
     <properties>
         <bouncycastle.version>1.76</bouncycastle.version>
         <commons-codec.version>1.16.0</commons-codec.version>
+        <jmh-core.version>1.37</jmh-core.version>
+        <jmh-generator-annprocess.version>1.37</jmh-generator-annprocess.version>
     </properties>
 
     <build>
