@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.retry.support.RetryTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -18,6 +17,11 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 import com.baeldung.springretry.logging.LogAppender;
@@ -26,7 +30,7 @@ import com.baeldung.springretry.logging.LogAppender;
 @ContextConfiguration(classes = AppConfig.class, loader = AnnotationConfigContextLoader.class)
 public class SpringRetryIntegrationTest {
 
-    @SpyBean
+    @Autowired
     private MyService myService;
     @Value("${retry.maxAttempts}")
     private String maxAttempts;
@@ -88,10 +92,10 @@ public class SpringRetryIntegrationTest {
             myService.templateRetryService();
             return null;
         });
-        verify(myService, times(1)).templateRetryService(); 
+        verify(myService, times(1)).templateRetryService();
     }
 
-     // ------------------------------------------------------------------
+    // ------------------------------------------------------------------
     // NEW TEST FOR @ConcurrencyLimit
     // ------------------------------------------------------------------
     @Test
