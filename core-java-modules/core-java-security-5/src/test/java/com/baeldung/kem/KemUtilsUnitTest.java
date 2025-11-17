@@ -12,7 +12,7 @@ import javax.crypto.SecretKey;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class KemUtilsIntegrationTest {
+public class KemUtilsUnitTest {
     private static KeyPair keyPair;
     public static final String KEM_ALGORITHM = "DHKEM";
 
