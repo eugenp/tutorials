@@ -12,6 +12,7 @@ import org.springframework.retry.support.RetryTemplate;
 @Configuration
 @ComponentScan(basePackages = "com.baeldung.springretry")
 @EnableRetry
+@EnableResilientMethods    
 @PropertySource("classpath:retryConfig.properties")
 public class AppConfig {
 
