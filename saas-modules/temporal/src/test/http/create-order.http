@@ -43,31 +43,39 @@ Content-Type: application/json
         client.assert(response.status === 201, "Response status is not 201");
     });
 
-    client.global.set("orderId", response.body.orderId);
-    console.log("Order created with ID: " + response.body.orderId);
+    client.global.set("orderExecutionId", response.body.orderExecutionId);
+    console.log("Order created with ID: " + response.body.orderExecutionId);
 
 %}
 
 ###
 # Check payment status
-GET http://localhost:8080/order/{{orderId}}/payment
+GET http://localhost:8080/order/{{orderExecutionId}}/payment
 
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+
+    client.global.set("transactionId", response.body.transactionId);
+    console.log("Payment TransactionId: " + response.body.transactionId);
+%}
 
 ###
 # Update payment status
-PUT http://localhost:8080/order/{{orderId}}/paymentStatus
+PUT http://localhost:8080/order/{{orderExecutionId}}/paymentStatus
 Content-Type: application/json
 
 {
   "status": "APPROVED",
-  "transactionId": "tx1234",
+  "transactionId": "{{transactionId}}",
   "authorizationId": "auth1234",
   "cause": null
 }
 
 ###
 # Update payment status
-PUT http://localhost:8080/order/{{orderId}}/shippingStatus
+PUT http://localhost:8080/order/{{orderExecutionId}}/shippingStatus
 Content-Type: application/json
 
 {
@@ -77,7 +85,7 @@ Content-Type: application/json
 
 ###
 # Update payment status
-PUT http://localhost:8080/order/{{orderId}}/shippingStatus
+PUT http://localhost:8080/order/{{orderExecutionId}}/shippingStatus
 Content-Type: application/json
 
 {

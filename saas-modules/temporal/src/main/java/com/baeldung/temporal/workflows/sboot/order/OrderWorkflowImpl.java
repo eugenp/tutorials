@@ -22,11 +22,11 @@ public class OrderWorkflowImpl implements OrderWorkflow {
     private static final Logger log = LoggerFactory.getLogger(OrderWorkflowImpl.class);
 
 
-    private Order order;
-    private Shipping shipping;
+    private volatile Order order;
+    private volatile Shipping shipping;
     private final Supplier<OrderActivities> orderActivities;
-    private PaymentAuthorization payment;
-    private RefundRequest refund;
+    private volatile PaymentAuthorization payment;
+    private volatile RefundRequest refund;
 
 
     public OrderWorkflowImpl() {
@@ -53,15 +53,20 @@ public class OrderWorkflowImpl implements OrderWorkflow {
 
         // Reserve inventory
         var activities = orderActivities.get();
+
+        log.info("[I57] Reserving order items: orderId={}", spec.order().orderId());
         activities.reserveOrderItems(spec.order());
 
         // Create payment request
+        log.info("[I61] Creating payment request: orderId={}", spec.order().orderId());
         payment = activities.createPaymentRequest(spec.order(), spec.billingInfo());
 
         // Create a shipping request
+        log.info("[I65] Creating shipping request: orderId={}", spec.order().orderId());
         shipping = activities.createShipping(spec.order());
 
         // Wait for a payment result, which will be triggered by one of the signal methods
+        log.info("[I65] Waiting for payment result: orderId={}", spec.order().orderId());
         Workflow.await(() -> payment.status() != PaymentStatus.PENDING);
 
         // Process payment result
@@ -113,6 +118,7 @@ public class OrderWorkflowImpl implements OrderWorkflow {
 
     @Override
     public void paymentAuthorized(String transactionId, String authorizationId) {
+        log.info("[I116] Payment authorized: transactionId={}, authorizationId={}", transactionId, authorizationId);
         Workflow.await(() -> payment != null);
         payment = new PaymentAuthorization(
           payment.info(),
@@ -126,7 +132,8 @@ public class OrderWorkflowImpl implements OrderWorkflow {
 
     @Override
     public void paymentDeclined(String transactionId, String cause) {
-        Workflow.await(() -> payment != null);
+        log.info("[I116] Payment declined: transactionId={}, cause={}", transactionId, cause);
+        Workflow.await(() ->  payment != null);
         payment = new PaymentAuthorization(
           payment.info(),
           PaymentStatus.DECLINED,

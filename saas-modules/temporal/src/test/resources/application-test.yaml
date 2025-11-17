@@ -1,0 +1,4 @@
+spring:
+  temporal:
+    test-server:
+      enabled: true

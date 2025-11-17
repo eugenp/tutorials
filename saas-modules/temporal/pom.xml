@@ -36,7 +36,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
-            <scope>annotationProcessor</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

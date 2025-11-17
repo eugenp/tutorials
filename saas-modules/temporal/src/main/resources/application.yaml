@@ -8,16 +8,14 @@ spring:
         - "com.baeldung.temporal.workflows.sboot.order.activities"
     start-workers: true
     workflow-cache:
-      using-virtual-workflow-threads: true
+      using-virtual-workflow-threads: false
     workers:
       - task-queue: "ORDERS"
+        name: "order-worker"
         capacity:
           max-concurrent-activity-task-pollers: 10
-          max-concurrent-workflow-task-pollers: 2
+          max-concurrent-workflow-task-pollers: 10
 
-  threads:
-    virtual:
-      enabled: true
 
 logging:
   level:

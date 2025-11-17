@@ -27,7 +27,7 @@ public class OrderActivitiesImpl implements OrderActivities{
 
     @Override
     public void reserveOrderItems(Order order) {
-        log.info("reserveOrderItems: order={}", order);
+        log.info("[isVirtual={}] reserveOrderItems: order={}", Thread.currentThread().isVirtual(),order);
         for (OrderItem item : order.items()) {
             inventoryService.reserveInventory(item.sku(), item.quantity());
         }
@@ -35,7 +35,7 @@ public class OrderActivitiesImpl implements OrderActivities{
 
     @Override
     public void cancelReservedItems(Order order) {
-        log.info("cancelReservedItems: order={}", order);
+        log.info("[isVirtual={}]cancelReservedItems: order={}", Thread.currentThread().isVirtual(),order);
         for (OrderItem item : order.items()) {
             inventoryService.cancelInventoryReservation(item.sku(), item.quantity());
         }

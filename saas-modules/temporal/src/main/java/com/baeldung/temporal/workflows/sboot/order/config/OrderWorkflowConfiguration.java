@@ -1,5 +1,6 @@
 package com.baeldung.temporal.workflows.sboot.order.config;
 
+import com.baeldung.temporal.workflows.sboot.order.OrderWorkflow;
 import com.baeldung.temporal.workflows.sboot.order.activities.OrderActivities;
 import com.baeldung.temporal.workflows.sboot.order.activities.OrderActivitiesImpl;
 import com.baeldung.temporal.workflows.sboot.order.activities.OrderActivitiesStub;
@@ -30,19 +31,5 @@ public class OrderWorkflowConfiguration {
         return Clock.systemDefaultZone();
     }
 
-    @Bean
-    Supplier<OrderActivities> orderActivities() {
 
-        log.info("[I36] Creating OrderActivities Supplier");
-
-        return () -> Workflow.newActivityStub(OrderActivities.class,
-          ActivityOptions.newBuilder()
-            .setStartToCloseTimeout(Duration.ofSeconds(10))
-            .setRetryOptions(RetryOptions.newBuilder()
-              .setMaximumAttempts(3)
-              .setInitialInterval(Duration.ofSeconds(1))
-              .build())
-            .build()
-          );
-    }
 }

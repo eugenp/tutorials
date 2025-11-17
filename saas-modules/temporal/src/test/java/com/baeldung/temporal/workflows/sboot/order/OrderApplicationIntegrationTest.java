@@ -2,32 +2,39 @@ package com.baeldung.temporal.workflows.sboot.order;
 
 import com.baeldung.temporal.workflows.sboot.order.adapter.rest.OrderApi;
 import com.baeldung.temporal.workflows.sboot.order.domain.*;
-import org.apache.catalina.core.ApplicationContext;
+import io.temporal.spring.boot.TemporalOptionsCustomizer;
+import io.temporal.worker.WorkerFactoryOptions;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.junit.jupiter.api.Timeout;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClient;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(
+  properties = {
+    "spring.temporal.test-server.enabled=true"
+  },
   webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class OrderApplicationLiveTest {
+public class OrderApplicationIntegrationTest {
 
     @LocalServerPort
     int port;
 
-
     @Test
+    @Timeout(15)
     public void whenHappyPathOrder_thenWorkflowSucceeds() {
 
         RestClient client = RestClient.create("http://localhost:" + port);
@@ -44,15 +51,44 @@ public class OrderApplicationLiveTest {
           .isNotNull()
           .satisfies(e -> e.getStatusCode().is2xxSuccessful());
 
-        var orderId = orderResponse.getBody().orderId();
+        var orderExecutionId = orderResponse.getBody().orderExecutionId();
+
+        // Query payment so we can get the transaction id and simulate an authorization.
+        // Since query methods can't block, we may get a 204 response, which
+        // means the workflow hasn't reached the step where a payment request is generated.
+        // For testing purposes, we'll simply poll the server until we get a response.
+        ResponseEntity<PaymentAuthorization> payment = null;
+        do {
+            payment = client.get()
+              .uri("/order/{orderExecutionId}/payment", orderExecutionId)
+              .retrieve()
+              .toEntity(PaymentAuthorization.class);
+
+            assertTrue(payment.getStatusCode().is2xxSuccessful());
+            if ( payment.getStatusCode().value() == 200) {
+                break;
+            }
+            else {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        while( true );
+
+        assertThat(payment.getBody())
+          .isNotNull()
+          .satisfies(p -> assertThat(p.transactionId()).isNotNull());
 
         // Signal payment accepted
         var r1 = client.put()
-          .uri("/order/{orderId}/paymentStatus", orderId)
+          .uri("/order/{orderExecutionId}/paymentStatus", orderExecutionId)
           .body(new OrderApi.PaymentStatusUpdateInfo(
             PaymentStatus.APPROVED,
-            "auth1234",
-            "tx1234",
+            "auth124",
+            payment.getBody().transactionId(),
             null
             )
           )
@@ -65,7 +101,7 @@ public class OrderApplicationLiveTest {
 
         // Signal package dispatched for delivery
         var r2 = client.put()
-          .uri("/order/{orderId}/shippingStatus", orderId)
+          .uri("/order/{orderExecutionId}/shippingStatus", orderExecutionId)
           .body(new OrderApi.ShippingStatusUpdateInfo(
             ShippingStatus.SHIPPED, Instant.now()))
           .retrieve()
@@ -75,9 +111,9 @@ public class OrderApplicationLiveTest {
           .isNotNull()
           .satisfies(e -> e.getStatusCode().is2xxSuccessful());
 
-        // Signal package dispatched for delivery
+        // Signal package delivered at final destination
         var r3 = client.put()
-          .uri("/order/{orderId}/shippingStatus", orderId)
+          .uri("/order/{orderExecutionId}/shippingStatus", orderExecutionId)
           .body(new OrderApi.ShippingStatusUpdateInfo(
             ShippingStatus.DELIVERED, Instant.now()))
           .retrieve()
@@ -87,7 +123,18 @@ public class OrderApplicationLiveTest {
           .isNotNull()
           .satisfies(e -> e.getStatusCode().is2xxSuccessful());
 
-        // Get shipping and payment state
+        // Get shipping state
+        var r4 = client.get()
+          .uri("/order/{orderExecutionId}/shipping", orderExecutionId)
+          .retrieve()
+          .toEntity(Shipping.class);
+        assertThat(r4)
+          .isNotNull()
+          .satisfies(e -> e.getStatusCode().is2xxSuccessful());
+        var shipping = r4.getBody();
+        assertThat(shipping)
+          .satisfies(s -> assertThat(s.status()).isEqualTo(ShippingStatus.DELIVERED))
+          .satisfies(s -> assertThat(s.history().size()).isEqualTo(4));
 
     }
 
@@ -123,6 +170,20 @@ public class OrderApplicationLiveTest {
             LocalDate.of(1970,1,1)
           )
         );
+    }
+
+
+    @TestConfiguration
+    static class Config {
+
+        @Bean
+        TemporalOptionsCustomizer<WorkerFactoryOptions.Builder> temporalOptionsCustomizer() {
+
+            return (builder) -> {
+                return builder
+                  .setUsingVirtualWorkflowThreads(true);
+            };
+        }
     }
 
 }
