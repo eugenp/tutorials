@@ -46,7 +46,7 @@
 
     <properties>
         <spring-retry.version>2.0.3</spring-retry.version>
-        <spring-aspects.version>6.1.5</spring-aspects.version>
+        <spring-aspects.version>7.0.0</spring-aspects.version>
     </properties>
 
 </project>
