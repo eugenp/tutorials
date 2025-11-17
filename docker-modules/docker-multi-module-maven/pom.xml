@@ -15,7 +15,7 @@
     </parent>
 
     <modules>
-        <module>api</module>
+        <module>docker-rest-api</module>
         <module>domain</module>
     </modules>
 </project>
