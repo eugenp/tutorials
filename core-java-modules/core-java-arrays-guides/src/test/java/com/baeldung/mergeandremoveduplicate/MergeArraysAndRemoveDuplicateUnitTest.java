@@ -30,7 +30,7 @@ public class MergeArraysAndRemoveDuplicateUnitTest {
         //merged array maintains the order of the elements in the arrays
         assertArrayEquals(expectedArr, mergedArr);
 
-        logger.info(getCommaDelimited(mergedArr));
+        logger.debug(getCommaDelimited(mergedArr));
     }
 
     @Test
@@ -43,7 +43,7 @@ public class MergeArraysAndRemoveDuplicateUnitTest {
 
         assertArrayEquals(expectedArr, mergedArr);
 
-        logger.info(getCommaDelimited(mergedArr));
+        logger.debug(getCommaDelimited(mergedArr));
     }
 
     @Test
@@ -56,7 +56,7 @@ public class MergeArraysAndRemoveDuplicateUnitTest {
 
         assertArrayEquals(expectedArr, mergedArr);
 
-        logger.info(getCommaDelimited(mergedArr));
+        logger.debug(getCommaDelimited(mergedArr));
     }
 
     @Test
@@ -69,6 +69,6 @@ public class MergeArraysAndRemoveDuplicateUnitTest {
 
         assertArrayEquals(expectedArr, mergedArr);
 
-        logger.info(getCommaDelimited(mergedArr));
+        logger.debug(getCommaDelimited(mergedArr));
     }
 }

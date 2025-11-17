@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.baeldung.enums.values;
 
 import org.junit.After;
@@ -43,8 +38,20 @@ public class Element2UnitTest {
     @Test
     public void whenLocatebyLabel_thenReturnCorrectValue() {
         for (Element2 e2 : Element2.values()) {
+            // FIX: Skip UNKNOWN element, as it's not meant to be looked up by its own label in this test
+            if (e2 == Element2.UNKNOWN) { 
+                continue;
+            }
             assertSame(e2, Element2.valueOfLabel(e2.label));
         }
+    }
+
+    @Test
+    public void whenLocatebyUnknownLabel_thenReturnUNKNOWN() {
+        // New test to ensure an unknown label returns the UNKNOWN constant
+        assertSame(Element2.UNKNOWN, Element2.valueOfLabel("Unobtainium"));
+        // Test for null label, which should also return UNKNOWN
+        assertSame(Element2.UNKNOWN, Element2.valueOfLabel(null));
     }
 
     /**

@@ -1,0 +1,50 @@
+@startuml Sequential Transactions in publishArticle_v3
+
+participant "Client" as C
+participant "Blog" as B
+participant "TransactionTemplate" as TT
+participant "ArticleRepo" as AR
+participant "AuditRepo" as AuR
+database "Database" as DB
+
+C -> B: publishArticle_v3()
+activate B
+
+B -> TT: execute()
+activate TT
+TT -> DB: Begin TX1
+activate DB #LightBlue
+
+TT -> AR: save()
+activate AR
+AR -> DB: INSERT article
+AR --> TT
+deactivate AR
+
+TT -> DB: Commit / Rollback TX1
+deactivate DB
+TT --> B
+deactivate TT
+
+
+B -> DB: Begin TX2
+activate DB #LightGreen
+
+B -> AuR: save()
+activate AuR
+AuR -> DB: INSERT audit (FAILURE)
+AuR --> B:
+deactivate AuR
+
+B -> DB: Commit TX2
+deactivate DB
+
+B --> C:
+deactivate B
+
+note over DB
+  TX1 completes (commit or rollback) BEFORE TX2 begins
+  TX2: Independent transaction for FAILURE audit
+end note
+
+@enduml

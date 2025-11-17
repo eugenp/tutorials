@@ -20,6 +20,7 @@
         <module>flyway-multidb-springboot</module>
         <module>spring-boot-admin</module>
         <module>spring-boot-angular</module>
+        <module>spring-boot-config-order</module>
         <module>spring-boot-annotations</module>
         <module>spring-boot-annotations-2</module>
         <module>spring-boot-artifacts</module>
@@ -115,6 +116,7 @@
         <module>spring-boot-3-4</module>
         <module>spring-boot-4</module>
         <module>spring-boot-resilience4j</module>
+        <module>spring-boot-retries</module>
         <module>spring-boot-properties</module>
         <module>spring-boot-properties-2</module>
         <module>spring-boot-properties-3</module>

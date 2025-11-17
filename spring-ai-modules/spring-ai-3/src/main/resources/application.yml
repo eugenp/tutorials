@@ -1,0 +1,12 @@
+spring:
+  ai:
+    mistralai:
+      api-key: ${MISTRAL_AI_API_KEY}
+      chat:
+        options:
+          model: mistral-small-latest
+    openai:
+      api-key: xxxx
+      chat.enabled: true
+      embedding.enabled: true
+      chat.options.model: gpt-4o
