@@ -1,12 +1,7 @@
-package com.baedlung.springdata.mongodb;
+package com.baeldung.springdata.mongodb;
 
-import static org.springframework.data.mongodb.core.index.VectorIndex.SimilarityFunction.COSINE;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.security.SecureRandom;
-
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Vector;
@@ -14,10 +9,12 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.index.SearchIndexStatus;
 import org.springframework.data.mongodb.core.index.VectorIndex;
 
-import com.baeldung.springdata.mongodb.Book;
-import com.baeldung.springdata.mongodb.MongoDbBookRepository;
-import com.opencsv.CSVReader;
-import com.opencsv.exceptions.CsvValidationException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.security.SecureRandom;
+
+import static org.springframework.data.mongodb.core.index.VectorIndex.SimilarityFunction.COSINE;
 
 public class DatasetupService {
     private final Logger logger = LoggerFactory.getLogger(DatasetupService.class);
