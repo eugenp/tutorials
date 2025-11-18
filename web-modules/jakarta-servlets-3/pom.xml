@@ -16,80 +16,16 @@
     </parent>
 
     <dependencies>
-        <!-- File Uploading -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-fileupload2-jakarta-servlet6</artifactId>
-            <version>${commons-fileupload2-jakarta-servlet6.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>${gson.version}</version>
-        </dependency>
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
             <version>${jakarta.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>jakarta.servlet.jsp</groupId>
-            <artifactId>jakarta.servlet.jsp-api</artifactId>
-            <version>${jakarta.servlet.jsp-api.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.servlet.jsp.jstl</groupId>
-            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-            <version>${jakarta.servlet.jsp.jstl-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>${httpclient.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-server</artifactId>
-            <version>${jetty.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-servlet</artifactId>
-            <version>${jetty.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-client</artifactId>
-            <version>${jetty.version}</version>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>${jetty-maven-plugin.version}</version>
-                <configuration>
-                    <webApp>
-                        <contextPath>/</contextPath>
-                    </webApp>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -102,15 +38,7 @@
     </build>
 
     <properties>
-        <httpclient.version>4.5.13</httpclient.version>
-        <jetty-maven-plugin.version>10.0.4</jetty-maven-plugin.version>
-        <commons-text.version>1.10.0</commons-text.version>
         <jakarta.servlet-api.version>6.1.0</jakarta.servlet-api.version>
-        <jakarta.servlet.jsp-api.version>4.0.0</jakarta.servlet.jsp-api.version>
-        <jakarta.servlet.jsp.jstl-api.version>3.0.0</jakarta.servlet.jsp.jstl-api.version>
-        <jetty.version>11.0.24</jetty.version>
-        <gson.version>2.11.0</gson.version>
-        <commons-fileupload2-jakarta-servlet6.version>2.0.0-M2</commons-fileupload2-jakarta-servlet6.version>
     </properties>
 
 </project>
