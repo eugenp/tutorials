@@ -309,6 +309,7 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <commons-lang3.version>3.17.0</commons-lang3.version>
         <org.json.version>20240303</org.json.version>
         <gson.version>2.11.0</gson.version>
     </properties>
