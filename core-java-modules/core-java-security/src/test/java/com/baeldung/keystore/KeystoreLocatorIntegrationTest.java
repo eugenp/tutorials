@@ -5,10 +5,10 @@ import java.io.File;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class KeystoreLocatorIntegrationTest {
+class KeystoreLocatorIntegrationTest {
     
     @Test
-    public void givenJavaInstallation_whenUsingSystemProperties_thenKeystoreLocationFound() {
+    void givenJavaInstallation_whenUsingSystemProperties_thenKeystoreLocationFound() {
         String javaHome = System.getProperty("java.home");
         String separator = System.getProperty("file.separator");
         
