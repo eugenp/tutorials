@@ -25,6 +25,7 @@
         <module>java-takes</module>
         <module>jakarta-servlets</module>
         <module>jakarta-servlets-2</module>
+        <module>jakarta-servlets-3</module>
         <module>jee-7</module>
         <module>jersey</module>
         <module>jersey-2</module>
