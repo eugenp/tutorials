@@ -12,7 +12,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.4</version>
+        <version>3.5.7</version>
         <relativePath/>
     </parent>
 
@@ -89,7 +89,7 @@
 
     <properties>
         <start-class>com.baeldung.actuator.Application</start-class>
-        <spring-boot-maven-plugin.version>3.5.4</spring-boot-maven-plugin.version>
+        <spring-boot-maven-plugin.version>3.5.7</spring-boot-maven-plugin.version>
     </properties>
 
 </project>
