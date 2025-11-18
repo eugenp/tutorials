@@ -24,6 +24,7 @@
 
     <properties>
         <spring-boot.version>3.3.2</spring-boot.version>
+        <h2.version>2.2.224</h2.version>
     </properties>
 
 </project>

@@ -17,8 +17,8 @@
     <description>Demo project for Spring Security Authorization Server Dynamic Client Registration</description>
 
     <modules>
-        <module>server</module>
-        <module>client</module>
+        <module>oauth2-authorization-server</module>
+        <module>oauth2-dynamic-client</module>
     </modules>
 
     <build>
