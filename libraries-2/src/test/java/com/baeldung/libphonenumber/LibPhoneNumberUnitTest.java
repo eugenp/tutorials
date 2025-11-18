@@ -1,15 +1,13 @@
 package com.baeldung.libphonenumber;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
-
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberType;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class LibPhoneNumberUnitTest {
 
@@ -54,7 +52,7 @@ public class LibPhoneNumberUnitTest {
     public void givenPhoneNumber_whenPossible_thenValid() {
         PhoneNumber number = new PhoneNumber();
         number.setCountryCode(1)
-            .setNationalNumber(123000L);
+          .setNationalNumber(123000L);
         assertFalse(phoneNumberUtil.isPossibleNumber(number));
         assertFalse(phoneNumberUtil.isPossibleNumber("+1 343 253 00000", "US"));
         assertFalse(phoneNumberUtil.isPossibleNumber("(343) 253-00000", "US"));
@@ -69,11 +67,31 @@ public class LibPhoneNumberUnitTest {
         assertTrue(phoneNumberUtil.isNumberGeographical(phone));
 
         phone = new PhoneNumber().setCountryCode(1)
-            .setNationalNumber(2530000L);
+          .setNationalNumber(2530000L);
         assertFalse(phoneNumberUtil.isNumberGeographical(phone));
 
         phone = new PhoneNumber().setCountryCode(800)
-            .setNationalNumber(12345678L);
+          .setNationalNumber(12345678L);
         assertFalse(phoneNumberUtil.isNumberGeographical(phone));
+    }
+
+    @Test
+    public void givenUSPhoneNumber_whenFormattedToE164_thenReturnsCorrectInternationalFormat() throws NumberParseException {
+        PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.getInstance();
+
+        PhoneNumber number = phoneNumberUtil.parse("(415) 555-2671", "US");
+        String e164Format = phoneNumberUtil.format(number, PhoneNumberUtil.PhoneNumberFormat.E164);
+
+        assertEquals("+14155552671", e164Format);
+    }
+
+    @Test
+    public void givenIndianPhoneNumber_whenFormattedToE164_thenReturnsCorrectInternationalFormat() throws NumberParseException {
+        PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.getInstance();
+
+        PhoneNumber number = phoneNumberUtil.parse("09876543210", "IN");
+        String e164Format = phoneNumberUtil.format(number, PhoneNumberUtil.PhoneNumberFormat.E164);
+
+        assertEquals("+919876543210", e164Format);
     }
 }
