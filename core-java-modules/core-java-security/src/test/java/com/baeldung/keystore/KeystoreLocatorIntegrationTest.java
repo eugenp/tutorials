@@ -1,13 +1,10 @@
 package com.baeldung.keystore;
 
-import org.junit.jupiter.api.Test;
-import java.io.File;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 class KeystoreLocatorIntegrationTest {
+
+    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(KeystoreLocatorIntegrationTest.class);
     
-    @Test
+    @org.junit.jupiter.api.Test
     void givenJavaInstallation_whenUsingSystemProperties_thenKeystoreLocationFound() {
         String javaHome = System.getProperty("java.home");
         String separator = System.getProperty("file.separator");
@@ -15,27 +12,27 @@ class KeystoreLocatorIntegrationTest {
         String cacertsPath = javaHome + separator + "lib" + separator 
           + "security" + separator + "cacerts";
         
-        assertNotNull(javaHome);
-        System.out.println("Java Home: " + javaHome);
-        System.out.println("Expected cacerts location: " + cacertsPath);
+        org.junit.jupiter.api.Assertions.assertNotNull(javaHome);
+        logger.info("Java Home: {}", javaHome);
+        logger.info("Expected cacerts location: {}", cacertsPath);
         
-        File cacertsFile = new File(cacertsPath);
+        java.io.File cacertsFile = new java.io.File(cacertsPath);
         if (cacertsFile.exists()) {
-            System.out.println("Cacerts file exists: YES");
-            System.out.println("Absolute path: " + cacertsFile.getAbsolutePath());
-            assertTrue(cacertsFile.exists());
+            logger.info("Cacerts file exists: YES");
+            logger.info("Absolute path: {}", cacertsFile.getAbsolutePath());
+            org.junit.jupiter.api.Assertions.assertTrue(cacertsFile.exists());
         }
         
         String customTrustStore = System.getProperty("javax.net.ssl.trustStore");
         if (customTrustStore != null) {
-            System.out.println("Custom trustStore is specified: " + customTrustStore);
+            logger.info("Custom trustStore is specified: {}", customTrustStore);
         } else {
-            System.out.println("No custom trustStore specified, using default");
+            logger.info("No custom trustStore specified, using default");
         }
         
         String userHome = System.getProperty("user.home");
         String userKeystore = userHome + separator + ".keystore";
-        assertNotNull(userHome);
-        System.out.println("User keystore location: " + userKeystore);
+        org.junit.jupiter.api.Assertions.assertNotNull(userHome);
+        logger.info("User keystore location: {}", userKeystore);
     }
 }
