@@ -18,7 +18,7 @@
         <module>config</module>
         <module>discovery</module>
         <module>gateway</module>
-        <module>gateway-2</module>
+        <module>spring-cloud-gateway-intro</module>
         <module>zipkin-log-svc-book</module>
         <module>zipkin-log-svc-rating</module>
         <module>customer-service</module>

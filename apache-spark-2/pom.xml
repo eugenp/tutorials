@@ -6,7 +6,7 @@
     <artifactId>apache-spark-2</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>apache-spark</name>
+    <name>apache-spark-2</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -36,7 +36,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>${maven-assembly-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -67,4 +67,5 @@
         <org.apache.spark.spark-sql.version>3.4.0</org.apache.spark.spark-sql.version>
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
     </properties>
+
 </project>
