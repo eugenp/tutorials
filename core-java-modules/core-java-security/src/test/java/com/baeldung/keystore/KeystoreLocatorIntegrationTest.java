@@ -1,10 +1,18 @@
 package com.baeldung.keystore;
 
+import java.io.File;
+
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 class KeystoreLocatorIntegrationTest {
 
-    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(KeystoreLocatorIntegrationTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(KeystoreLocatorIntegrationTest.class);
     
-    @org.junit.jupiter.api.Test
+    @Test
     void givenJavaInstallation_whenUsingSystemProperties_thenKeystoreLocationFound() {
         String javaHome = System.getProperty("java.home");
         String separator = System.getProperty("file.separator");
@@ -12,15 +20,15 @@ class KeystoreLocatorIntegrationTest {
         String cacertsPath = javaHome + separator + "lib" + separator 
           + "security" + separator + "cacerts";
         
-        org.junit.jupiter.api.Assertions.assertNotNull(javaHome);
+        assertNotNull(javaHome);
         logger.info("Java Home: {}", javaHome);
         logger.info("Expected cacerts location: {}", cacertsPath);
         
-        java.io.File cacertsFile = new java.io.File(cacertsPath);
+        File cacertsFile = new File(cacertsPath);
         if (cacertsFile.exists()) {
             logger.info("Cacerts file exists: YES");
             logger.info("Absolute path: {}", cacertsFile.getAbsolutePath());
-            org.junit.jupiter.api.Assertions.assertTrue(cacertsFile.exists());
+            assertTrue(cacertsFile.exists());
         }
         
         String customTrustStore = System.getProperty("javax.net.ssl.trustStore");
@@ -32,7 +40,7 @@ class KeystoreLocatorIntegrationTest {
         
         String userHome = System.getProperty("user.home");
         String userKeystore = userHome + separator + ".keystore";
-        org.junit.jupiter.api.Assertions.assertNotNull(userHome);
+        assertNotNull(userHome);
         logger.info("User keystore location: {}", userKeystore);
     }
 }
