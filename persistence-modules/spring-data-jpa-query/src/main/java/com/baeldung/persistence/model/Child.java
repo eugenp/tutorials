@@ -47,5 +47,4 @@ public class Child implements Serializable {
         builder.append("Child [id=").append(id).append("]");
         return builder.toString();
     }
-
 }
