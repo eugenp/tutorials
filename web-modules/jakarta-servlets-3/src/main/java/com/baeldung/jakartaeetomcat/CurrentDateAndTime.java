@@ -34,7 +34,5 @@ public class CurrentDateAndTime extends HttpServlet {
         processRequest(request, response);
     }
 
-    
-
 }
 
