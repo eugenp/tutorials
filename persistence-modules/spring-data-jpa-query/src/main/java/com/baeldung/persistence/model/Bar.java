@@ -50,6 +50,9 @@ public class Bar implements Serializable {
         }
 
         public static OPERATION parse(final String value) {
+            if (value == null) {
+                return null;
+            }
             OPERATION operation = null;
             for (final OPERATION op : OPERATION.values()) {
                 if (op.getValue().equals(value)) {
@@ -70,7 +73,8 @@ public class Bar implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "bar", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @OrderBy(clause = "name DESC")
+    // Updated clause for Hibernate 6/7
+    @OrderBy(clause = "name DESC") 
     // @NotAudited
     private Set<Foo> fooSet = Sets.newHashSet();
 
