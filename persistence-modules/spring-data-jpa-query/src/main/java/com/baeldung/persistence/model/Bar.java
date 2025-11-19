@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import org.hibernate.annotations.OrderBy;
+import jakarta.persistence.OrderBy;
 import org.hibernate.envers.Audited;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
