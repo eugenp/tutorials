@@ -73,12 +73,13 @@
     </dependencies>
 
     <properties>
-        <datasource-proxy.version>1.4.1</datasource-proxy.version>
-        <spring-oxm.version>6.1.4</spring-oxm.version>
-        <hibernate.version>6.5.2.Final</hibernate.version>
-        <hibernate-envers.version>6.5.2.Final</hibernate-envers.version>
-        <mysql.version>8.2.0</mysql.version>
-        <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
+        <datasource-proxy.version>1.11.0</datasource-proxy.version>
+        <spring-oxm.version>7.0.0</spring-oxm.version>
+        <hibernate.version>7.1.8.Final</hibernate.version>
+        <hibernate-envers.version>7.1.8.Final</hibernate-envers.version>
+        <mysql.version>9.5.0</mysql.version>
+        <tomcat-dbcp.version>11.0.14</tomcat-dbcp.version>
     </properties>
+
 
 </project>
