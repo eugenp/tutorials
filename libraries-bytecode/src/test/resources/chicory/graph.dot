@@ -1,3 +1,4 @@
+// Render with Graphviz, https://dreampuf.github.io/GraphvizOnline/?engine=dot
 digraph WasmOnJVM {
   rankdir=LR;
   node [shape=box, style=rounded];

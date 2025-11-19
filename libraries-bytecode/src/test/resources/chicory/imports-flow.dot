@@ -1,0 +1,35 @@
+// Render with Graphviz, https://dreampuf.github.io/GraphvizOnline/?engine=dot
+digraph ImportsFlow {
+  rankdir=LR;
+  node [shape=box, style=rounded];
+
+  subgraph cluster_host {
+    label="Host (JVM)";
+    style=rounded;
+
+    junit   [label="JUnit test"];
+    store   [label="Store\n(registers imports)"];
+    doublef [label="HostFunction\nhost.double : (i32) -> i32"];
+    inst    [label="Chicory Instance"];
+  }
+
+  subgraph cluster_module {
+    label="Wasm module: imports.wasm";
+    style=rounded;
+
+    importD [label="Import required:\nhost.double : (i32) -> i32"];
+    useD    [label="Exported function:\nuseDouble(i32) -> i32"];
+  }
+
+  // Linking at instantiation
+  store -> inst   [label="instantiate with Store", style=dashed];
+  importD -> doublef [label="resolved to HostFunction", style=dashed];
+
+  // Call flow at runtime
+  junit -> inst   [label="invoke useDouble(21)"];
+  inst  -> useD   [label="call export"];
+  useD  -> importD[label="import call"];
+  importD -> doublef [label="dispatch"];
+  doublef -> inst [label="return i32 42"];
+  inst -> junit   [label="result as long[]{42}"];
+}
