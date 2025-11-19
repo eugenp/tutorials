@@ -84,7 +84,6 @@
         <spring-boot.version>3.3.3</spring-boot.version>
         <maven.deploy.skip>true</maven.deploy.skip>
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
-        <lombok.version>1.18.30</lombok.version>
         <liquibase-core.version>4.24.0</liquibase-core.version>
         <logback-core.version>1.5.8</logback-core.version>
         <hypersistance-utils-hibernate-60.version>3.3.1</hypersistance-utils-hibernate-60.version>
