@@ -1,4 +1,4 @@
-package com.baeldung.temporal.workflows.sboot.order;
+package com.baeldung.temporal.workflows.sboot.order.workflow;
 
 import com.baeldung.temporal.workflows.sboot.order.activities.OrderActivities;
 import com.baeldung.temporal.workflows.sboot.order.domain.*;
@@ -9,7 +9,6 @@ import io.temporal.workflow.Workflow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
 
 import java.time.Duration;
 import java.time.Instant;

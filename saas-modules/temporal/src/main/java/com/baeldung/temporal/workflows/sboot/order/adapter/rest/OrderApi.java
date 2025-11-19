@@ -1,10 +1,7 @@
 package com.baeldung.temporal.workflows.sboot.order.adapter.rest;
 
-import com.baeldung.temporal.workflows.sboot.order.OrderWorkflow;
 import com.baeldung.temporal.workflows.sboot.order.domain.*;
 import com.baeldung.temporal.workflows.sboot.order.services.OrderService;
-import io.temporal.client.WorkflowClient;
-import io.temporal.client.WorkflowOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.time.Instant;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/order")

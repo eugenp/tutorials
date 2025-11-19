@@ -5,7 +5,8 @@ spring:
     workers-auto-discovery:
       packages:
         - "com.baeldung.temporal.workflows.sboot.order"
-        - "com.baeldung.temporal.workflows.sboot.order.activities"
+#        - "com.baeldung.temporal.workflows.sboot.order.activities"
+#        - "com.baeldung.temporal.workflows.sboot.order.workflow"
     start-workers: true
     workflow-cache:
       using-virtual-workflow-threads: false

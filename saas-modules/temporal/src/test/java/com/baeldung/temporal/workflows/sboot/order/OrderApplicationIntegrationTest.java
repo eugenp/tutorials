@@ -172,18 +172,4 @@ public class OrderApplicationIntegrationTest {
         );
     }
 
-
-    @TestConfiguration
-    static class Config {
-
-        @Bean
-        TemporalOptionsCustomizer<WorkerFactoryOptions.Builder> temporalOptionsCustomizer() {
-
-            return (builder) -> {
-                return builder
-                  .setUsingVirtualWorkflowThreads(true);
-            };
-        }
-    }
-
 }

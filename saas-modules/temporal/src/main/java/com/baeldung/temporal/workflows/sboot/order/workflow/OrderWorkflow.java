@@ -1,4 +1,4 @@
-package com.baeldung.temporal.workflows.sboot.order;
+package com.baeldung.temporal.workflows.sboot.order.workflow;
 
 import com.baeldung.temporal.workflows.sboot.order.domain.*;
 import io.temporal.workflow.*;

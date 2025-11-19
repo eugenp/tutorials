@@ -1,6 +1,6 @@
 package com.baeldung.temporal.workflows.sboot.order.services;
 
-import com.baeldung.temporal.workflows.sboot.order.OrderWorkflow;
+import com.baeldung.temporal.workflows.sboot.order.workflow.OrderWorkflow;
 import com.baeldung.temporal.workflows.sboot.order.domain.OrderSpec;
 import io.temporal.client.WorkflowClient;
 import io.temporal.client.WorkflowOptions;
