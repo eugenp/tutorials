@@ -286,6 +286,7 @@
         <!--<module>core-java-22</module>--> <!-- Migrated to default-jdk22 profile -->
         <!--<module>core-java-23</module>--> <!-- Migrated to default-jdk23 profile -->
         <!--<module>core-java-24</module>--> <!-- Migrated to default-jdk24 profile -->
+        <!--<module>core-java-25</module>--> <!-- Migrated to default-jdk25 profile -->
     </modules>
 
     <dependencies>
