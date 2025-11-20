@@ -1,11 +1,11 @@
-package com.baeldung.producer;
+package com.baeldung.hollow.producer;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-import com.baeldung.model.MonitoringEvent;
-import com.baeldung.service.MonitoringDataService;
+import com.baeldung.hollow.model.MonitoringEvent;
+import com.baeldung.hollow.service.MonitoringDataService;
 import com.netflix.hollow.api.producer.HollowProducer;
 import com.netflix.hollow.api.producer.fs.HollowFilesystemAnnouncer;
 import com.netflix.hollow.api.producer.fs.HollowFilesystemPublisher;

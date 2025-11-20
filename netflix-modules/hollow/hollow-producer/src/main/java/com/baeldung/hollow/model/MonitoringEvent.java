@@ -1,4 +1,4 @@
-package com.baeldung.model;
+package com.baeldung.hollow.model;
 
 public class MonitoringEvent {
     private int eventId;
