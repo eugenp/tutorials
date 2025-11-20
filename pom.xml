@@ -688,7 +688,6 @@
                 <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jts</module>
-                <module>jws</module>
                 <module>ksqldb</module>
                 <module>kubernetes-modules</module>
                 <module>libraries</module> <!-- very long running -->
@@ -1133,7 +1132,6 @@
                 <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jts</module>
-                <module>jws</module>
                 <module>ksqldb</module>
                 <module>kubernetes-modules</module>
                 <module>libraries</module> <!-- very long running -->
