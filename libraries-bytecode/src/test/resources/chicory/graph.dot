@@ -1,0 +1,29 @@
+// Render with Graphviz, https://dreampuf.github.io/GraphvizOnline/?engine=dot
+digraph WasmOnJVM {
+  rankdir=LR;
+  node [shape=box, style=rounded];
+
+  subgraph cluster_host {
+    label="Host (JVM)";
+    style=rounded;
+    host_app [label="JUnit test / application"];
+    chicory [label="Chicory runtime\n(Instance)"];
+  }
+
+  subgraph cluster_module {
+    label="Wasm module";
+    style=rounded;
+    module [label=".wasm binary"];
+    export_add [label="Exported functions"];
+    imports [label="Imported functions"];
+  }
+
+  host_app -> chicory [label="Java calls"];
+  chicory -> module [label="load & instantiate"];
+  chicory -> export_add [label="invoke exports"];
+  export_add -> chicory [label="results"];
+  chicory -> host_app [label="map to JVM types"];
+
+  chicory -> imports [label="provide imports", style=dashed];
+}
+

@@ -19,6 +19,7 @@
         <module>undertow</module>
         <module>wildfly</module>
         <module>armeria</module>
+        <module>apache-tomcat-2</module>
     </modules>
 
 </project>
