@@ -193,7 +193,7 @@
         <flink.version>1.20.0</flink.version>
         <hazelcast.version>5.2.0</hazelcast.version>
         <javassist.version>3.29.2-GA</javassist.version>
-        <caffeine.version>3.1.8</caffeine.version>
+        <caffeine.version>3.2.3</caffeine.version>
         <org.modelmapper.version>3.2.0</org.modelmapper.version>
         <dozer.version>5.5.1</dozer.version>
         <javatuples.version>1.2</javatuples.version>
