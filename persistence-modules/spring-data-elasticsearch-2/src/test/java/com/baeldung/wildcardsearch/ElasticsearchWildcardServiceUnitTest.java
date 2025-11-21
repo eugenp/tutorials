@@ -58,8 +58,8 @@ class ElasticsearchWildcardServiceUnitTest {
     // ==================== WILDCARD SEARCH TESTS ====================
 
     @Test
-    @DisplayName("wildcardSearch should return matching documents")
-    void testWildcardSearch_ReturnsMatchingDocuments() throws IOException {
+    @DisplayName("Return matching documents when performing wildcard search")
+    void whenWildcardSearch_thenReturnMatchingDocuments() throws IOException {
         // Given
         SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "John Doe", "john.doe@example.com"),
             createHit("2", "Johnny Cash", "johnny.cash@example.com"));
@@ -70,15 +70,15 @@ class ElasticsearchWildcardServiceUnitTest {
         List<Map<String, Object>> results = wildcardService.wildcardSearch("users", "name", "john*");
 
         // Then
-        assertThat(results).hasSize(2);
-        assertThat(results.get(0)).containsEntry("name", "John Doe");
-        assertThat(results.get(1)).containsEntry("name", "Johnny Cash");
+        assertThat(results).hasSize(2)
+            .extracting(result -> result.get("name"))
+            .containsExactly("John Doe", "Johnny Cash");
         verify(elasticsearchClient).search(any(Function.class), eq(ObjectNode.class));
     }
 
     @Test
-    @DisplayName("wildcardSearch should handle empty results")
-    void testWildcardSearch_HandlesEmptyResults() throws IOException {
+    @DisplayName("Handle empty results when performing wildcard search")
+    void whenWildcardSearch_thenHandleEmptyResults() throws IOException {
         // Given
         SearchResponse<ObjectNode> mockResponse = createMockResponse();
 
@@ -92,8 +92,8 @@ class ElasticsearchWildcardServiceUnitTest {
     }
 
     @Test
-    @DisplayName("wildcardSearch should be case-insensitive")
-    void testWildcardSearch_IsCaseInsensitive() throws IOException {
+    @DisplayName("Perform case-insensitive wildcard search")
+    void whenWildcardSearch_thenBeCaseInsensitive() throws IOException {
         // Given
         SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "John Doe", "john.doe@example.com"));
 
@@ -103,13 +103,15 @@ class ElasticsearchWildcardServiceUnitTest {
         List<Map<String, Object>> results = wildcardService.wildcardSearch("users", "name", "JOHN*");
 
         // Then
-        assertThat(results).hasSize(1);
-        assertThat(results.get(0)).containsEntry("name", "John Doe");
+        assertThat(results)
+            .hasSize(1)
+            .extracting(result -> result.get("name"))
+            .contains("John Doe");
     }
 
     @Test
-    @DisplayName("wildcardSearch should throw IOException on client failure")
-    void testWildcardSearch_ThrowsIOException() throws IOException {
+    @DisplayName("Throw IOException when client connection fails")
+    void whenWildcardSearch_thenThrowIOException() throws IOException {
         // Given
         when(elasticsearchClient.search(any(Function.class), eq(ObjectNode.class))).thenThrow(new IOException("Connection timeout"));
 
@@ -120,8 +122,8 @@ class ElasticsearchWildcardServiceUnitTest {
     // ==================== PREFIX SEARCH TESTS ====================
 
     @Test
-    @DisplayName("prefixSearch should return documents with matching prefix")
-    void testPrefixSearch_ReturnsMatchingDocuments() throws IOException {
+    @DisplayName("Return matching documents when performing prefix search")
+    void whenPrefixSearch_thenReturnMatchingDocuments() throws IOException {
         // Given
         SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "John Doe", "john@example.com"),
             createHit("2", "John Smith", "john.smith@example.com"));
@@ -132,15 +134,16 @@ class ElasticsearchWildcardServiceUnitTest {
         List<Map<String, Object>> results = wildcardService.prefixSearch("users", "email", "john");
 
         // Then
-        assertThat(results).hasSize(2);
-        assertThat(results).allMatch(r -> r.get("email")
-            .toString()
-            .startsWith("john"));
+        assertThat(results)
+            .hasSize(2)
+            .extracting(result -> result.get("email"))
+            .doesNotContainNull()
+            .allSatisfy(email -> assertThat(email.toString()).startsWith("john"));
     }
 
     @Test
-    @DisplayName("prefixSearch should return empty list when no matches")
-    void testPrefixSearch_NoMatches() throws IOException {
+    @DisplayName("Return empty list when prefix search finds no matches")
+    void whenPrefixSearch_thenReturnEmptyWhenNoMatches() throws IOException {
         // Given
         SearchResponse<ObjectNode> mockResponse = createMockResponse();
 
@@ -154,8 +157,8 @@ class ElasticsearchWildcardServiceUnitTest {
     }
 
     @Test
-    @DisplayName("prefixSearch should handle single character prefix")
-    void testPrefixSearch_SingleCharacterPrefix() throws IOException {
+    @DisplayName("Handle single character prefix in search")
+    void whenPrefixSearch_thenHandleSingleCharacterPrefix() throws IOException {
         // Given
         SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "Alice", "alice@example.com"),
             createHit("2", "Andrew", "andrew@example.com"));
@@ -172,8 +175,8 @@ class ElasticsearchWildcardServiceUnitTest {
     // ==================== REGEXP SEARCH TESTS ====================
 
     @Test
-    @DisplayName("regexpSearch should match regex pattern")
-    void testRegexpSearch_MatchesPattern() throws IOException {
+    @DisplayName("Match regex pattern in regexp search")
+    void whenRegexpSearch_thenMatchPattern() throws IOException {
         // Given
         SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "John Doe", "john.doe@example.com"),
             createHit("2", "Jane Doe", "jane.doe@example.com"));
@@ -184,15 +187,16 @@ class ElasticsearchWildcardServiceUnitTest {
         List<Map<String, Object>> results = wildcardService.regexpSearch("users", "email", ".*@example\\.com");
 
         // Then
-        assertThat(results).hasSize(2);
-        assertThat(results).allMatch(r -> r.get("email")
-            .toString()
-            .endsWith("@example.com"));
+        assertThat(results)
+            .hasSize(2)
+            .extracting(result -> result.get("email"))
+            .doesNotContainNull()
+            .allSatisfy(email -> assertThat(email.toString()).endsWith("@example.com"));
     }
 
     @Test
-    @DisplayName("regexpSearch should handle complex patterns")
-    void testRegexpSearch_ComplexPattern() throws IOException {
+    @DisplayName("Handle complex patterns in regexp search")
+    void whenRegexpSearch_thenHandleComplexPattern() throws IOException {
         // Given
         SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "User 1", "user123@test.com"),
             createHit("2", "User 2", "user456@test.com"));
@@ -207,8 +211,8 @@ class ElasticsearchWildcardServiceUnitTest {
     }
 
     @Test
-    @DisplayName("regexpSearch should return empty for non-matching pattern")
-    void testRegexpSearch_NoMatches() throws IOException {
+    @DisplayName("Return empty when regexp pattern does not match")
+    void whenRegexpSearch_thenReturnEmptyWhenNoMatches() throws IOException {
         // Given
         SearchResponse<ObjectNode> mockResponse = createMockResponse();
 
@@ -224,8 +228,8 @@ class ElasticsearchWildcardServiceUnitTest {
     // ==================== FUZZY SEARCH TESTS ====================
 
     @Test
-    @DisplayName("fuzzySearch should find similar terms with typos")
-    void testFuzzySearch_FindsSimilarTerms() throws IOException {
+    @DisplayName("Find similar terms with typos in fuzzy search")
+    void whenFuzzySearch_thenFindSimilarTerms() throws IOException {
         // Given - searching for "jhon" should find "john"
         SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "John Doe", "john.doe@example.com"),
             createHit("2", "Johnny Cash", "johnny.cash@example.com"));
@@ -236,16 +240,18 @@ class ElasticsearchWildcardServiceUnitTest {
         List<Map<String, Object>> results = wildcardService.fuzzySearch("users", "name", "jhon");
 
         // Then
-        assertThat(results).hasSize(2);
-        assertThat(results).allMatch(r -> r.get("name")
-            .toString()
-            .toLowerCase()
-            .contains("john"));
+        assertThat(results)
+            .hasSize(2)
+            .extracting(result -> result.get("name"))
+            .doesNotContainNull()
+            .extracting(Object::toString)
+            .extracting(name -> name.toLowerCase())
+            .allSatisfy(name -> assertThat(name).contains("john"));
     }
 
     @Test
-    @DisplayName("fuzzySearch should handle exact matches")
-    void testFuzzySearch_ExactMatch() throws IOException {
+    @DisplayName("Handle exact matches in fuzzy search")
+    void whenFuzzySearch_thenHandleExactMatch() throws IOException {
         // Given
         SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "John Doe", "john.doe@example.com"));
 
@@ -255,13 +261,15 @@ class ElasticsearchWildcardServiceUnitTest {
         List<Map<String, Object>> results = wildcardService.fuzzySearch("users", "name", "john");
 
         // Then
-        assertThat(results).hasSize(1);
-        assertThat(results.get(0)).containsEntry("name", "John Doe");
+        assertThat(results)
+            .hasSize(1)
+            .extracting(result -> result.get("name"))
+            .contains("John Doe");
     }
 
     @Test
-    @DisplayName("fuzzySearch should handle terms too different to match")
-    void testFuzzySearch_TooManyDifferences() throws IOException {
+    @DisplayName("Return empty when terms are too different to match in fuzzy search")
+    void whenFuzzySearch_thenReturnEmptyWhenTooManyDifferences() throws IOException {
         // Given
         SearchResponse<ObjectNode> mockResponse = createMockResponse();
 
@@ -275,8 +283,8 @@ class ElasticsearchWildcardServiceUnitTest {
     }
 
     @Test
-    @DisplayName("fuzzySearch should be tolerant to small spelling mistakes")
-    void testFuzzySearch_ToleratesSpellingMistakes() throws IOException {
+    @DisplayName("Tolerate small spelling mistakes in fuzzy search")
+    void whenFuzzySearch_thenTolerateSmalSpellingMistakes() throws IOException {
         // Given
         SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "Michael", "michael@example.com"));
 
@@ -286,15 +294,17 @@ class ElasticsearchWildcardServiceUnitTest {
         List<Map<String, Object>> results = wildcardService.fuzzySearch("users", "name", "micheal");
 
         // Then
-        assertThat(results).hasSize(1);
-        assertThat(results.get(0)).containsEntry("name", "Michael");
+        assertThat(results)
+            .hasSize(1)
+            .extracting(result -> result.get("name"))
+            .contains("Michael");
     }
 
     // ==================== ADDITIONAL TEST SCENARIOS ====================
 
     @Test
-    @DisplayName("wildcardSearch should handle multiple wildcards in pattern")
-    void testWildcardSearch_MultipleWildcards() throws IOException {
+    @DisplayName("Handle multiple wildcards in pattern")
+    void whenWildcardSearch_thenHandleMultipleWildcards() throws IOException {
         // Given
         SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "John Michael Doe", "jmdoe@example.com"));
 
@@ -308,8 +318,8 @@ class ElasticsearchWildcardServiceUnitTest {
     }
 
     @Test
-    @DisplayName("prefixSearch should work with numeric prefixes")
-    void testPrefixSearch_NumericPrefix() throws IOException {
+    @DisplayName("Work with numeric prefixes in prefix search")
+    void whenPrefixSearch_thenWorkWithNumericPrefix() throws IOException {
         // Given
         SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "User", "user123@example.com"),
             createHit("2", "User", "user124@example.com"));
@@ -324,8 +334,8 @@ class ElasticsearchWildcardServiceUnitTest {
     }
 
     @Test
-    @DisplayName("All search methods should respect maxResults limit")
-    void testSearchMethods_RespectMaxResults() throws IOException {
+    @DisplayName("Respect maxResults limit in search methods")
+    void whenSearchMethods_thenRespectMaxResultsLimit() throws IOException {
         // Given - set a low max results
         ReflectionTestUtils.setField(wildcardService, "maxResults", 10);
 
@@ -341,8 +351,8 @@ class ElasticsearchWildcardServiceUnitTest {
     }
 
     @Test
-    @DisplayName("wildcardSearch should handle special characters in search term")
-    void testWildcardSearch_SpecialCharacters() throws IOException {
+    @DisplayName("Handle special characters in search term")
+    void whenWildcardSearch_thenHandleSpecialCharacters() throws IOException {
         // Given
         SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "O'Brien", "obrien@example.com"));
 
@@ -352,13 +362,15 @@ class ElasticsearchWildcardServiceUnitTest {
         List<Map<String, Object>> results = wildcardService.wildcardSearch("users", "name", "o'*");
 
         // Then
-        assertThat(results).hasSize(1);
-        assertThat(results.get(0)).containsEntry("name", "O'Brien");
+        assertThat(results)
+            .hasSize(1)
+            .extracting(result -> result.get("name"))
+            .contains("O'Brien");
     }
 
     @Test
-    @DisplayName("regexpSearch should handle dot metacharacter")
-    void testRegexpSearch_DotMetacharacter() throws IOException {
+    @DisplayName("Handle dot metacharacter in regexp search")
+    void whenRegexpSearch_thenHandleDotMetacharacter() throws IOException {
         // Given
         SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "User", "a.b.c@example.com"));
 
@@ -372,8 +384,8 @@ class ElasticsearchWildcardServiceUnitTest {
     }
 
     @Test
-    @DisplayName("fuzzySearch should handle numbers in search terms")
-    void testFuzzySearch_WithNumbers() throws IOException {
+    @DisplayName("Handle numbers in fuzzy search terms")
+    void whenFuzzySearch_thenHandleNumbers() throws IOException {
         // Given
         SearchResponse<ObjectNode> mockResponse = createMockResponse(createHit("1", "Room 101", "room101@example.com"));
 

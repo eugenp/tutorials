@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest
 @Testcontainers
@@ -78,119 +79,87 @@ class ElasticsearchWildcardServiceIntegrationTest {
     }
 
     @Test
-    void testWildcardSearch_IntegrationTest() throws IOException {
+    void whenWildcardSearchOnKeyword_thenReturnMatchingDocuments() throws IOException {
         // When
         List<Map<String, Object>> results = wildcardService.wildcardSearchOnKeyword(TEST_INDEX, "name", "john*");
 
         // Then
-        assertNotNull(results);
-        assertFalse(results.isEmpty(), "Expected at least one result for 'john*'");
+        assertThat(results)
+            .isNotEmpty()
+            .hasSize(2)
+            .extracting(result -> result.get("name"))
+            .doesNotContainNull()
+            .extracting(Object::toString)
+            .allSatisfy(name -> assertThat(name.toLowerCase()).startsWith("john"));
 
         logger.info("Found {} results for 'john*'", results.size());
-        results.forEach(result -> logger.info("Result: {}", result));
-
-        // Verify that all results contain names starting with "john" (case-insensitive)
-        results.forEach(result -> {
-            Object nameObj = result.get("name");
-            assertNotNull(nameObj, "Name field should not be null");
-
-            String name = nameObj.toString();
-            logger.info("Checking name: '{}'", name);
-
-            assertTrue(name.toLowerCase()
-                .startsWith("john"), "Expected name to start with 'john', but got: " + name);
-        });
-
-        // Should find exactly 2 documents: "John Doe" and "Johnny Smith"
-        assertEquals(2, results.size(), "Expected exactly 2 results for 'john*'");
     }
 
     @Test
-    void testPrefixSearch_IntegrationTest() throws IOException {
+    void whenPrefixSearch_thenReturnDocumentsWithMatchingPrefix() throws IOException {
         // When
         List<Map<String, Object>> results = wildcardService.prefixSearch(TEST_INDEX, "email", "john");
 
         // Then
-        assertNotNull(results);
-        assertFalse(results.isEmpty());
-
-        // Verify that all results contain emails starting with "john"
-        results.forEach(result -> {
-            Object emailObj = result.get("email");
-            assertNotNull(emailObj, "Email field should not be null");
-
-            String email = emailObj.toString();
-            assertTrue(email.startsWith("john"), "Expected email to start with 'john', but got: " + email);
-        });
+        assertThat(results)
+            .isNotEmpty()
+            .extracting(result -> result.get("email"))
+            .doesNotContainNull()
+            .extracting(Object::toString)
+            .allSatisfy(email -> assertThat(email).startsWith("john"));
     }
 
     @Test
-    void testFuzzySearch_IntegrationTest() throws IOException {
+    void givenSearchTermWithTypo_whenFuzzySearch_thenReturnSimilarMatches() throws IOException {
         // When - search with typo
         List<Map<String, Object>> results = wildcardService.fuzzySearch(TEST_INDEX, "name", "jhon");
 
         // Then
-        assertNotNull(results);
-        assertFalse(results.isEmpty());
-
-        // At least one result should contain a name similar to "john"
-        boolean foundSimilar = results.stream()
-            .anyMatch(result -> {
-                Object nameObj = result.get("name");
-                if (nameObj == null) {
-                    return false;
-                }
-                String name = nameObj.toString()
-                    .toLowerCase();
-                return name.contains("john");
-            });
-        assertTrue(foundSimilar, "Expected to find names similar to 'john'");
+        assertThat(results)
+            .isNotEmpty()
+            .extracting(result -> result.get("name"))
+            .doesNotContainNull()
+            .extracting(Object::toString)
+            .extracting(name -> name.toLowerCase())
+            .anySatisfy(name -> assertThat(name).contains("john"));
     }
 
     @Test
-    void testAdvancedWildcardSearch_IntegrationTest() throws IOException {
+    void whenAdvancedWildcardSearch_thenReturnFilteredAndMatchingResults() throws IOException {
         // When
         List<Map<String, Object>> results = wildcardService.advancedWildcardSearch(TEST_INDEX, "name", "*john*", "status", "active", "name");
 
         // Then
-        assertNotNull(results);
+        assertThat(results)
+            .isNotEmpty()
+            .extracting(result -> result.get("status"))
+            .doesNotContainNull()
+            .extracting(Object::toString)
+            .allSatisfy(status -> assertThat(status).isEqualTo("active"));
 
-        // Verify filtering worked - all results should have status "active"
-        results.forEach(result -> {
-            Object statusObj = result.get("status");
-            assertNotNull(statusObj, "Status field should not be null");
-            String status = statusObj.toString();
-            assertEquals("active", status, "Expected status to be 'active', but got: " + status);
-
-            Object nameObj = result.get("name");
-            assertNotNull(nameObj, "Name field should not be null");
-            String name = nameObj.toString();
-            assertTrue(name.toLowerCase()
-                .contains("john"), "Expected name to contain 'john', but got: " + name);
-        });
+        assertThat(results)
+            .extracting(result -> result.get("name"))
+            .doesNotContainNull()
+            .extracting(Object::toString)
+            .allSatisfy(name -> assertThat(name.toLowerCase()).contains("john"));
     }
 
     @Test
-    void testWildcardSearch_WithContainsPattern() throws IOException {
+    void whenWildcardSearchWithContainsPattern_thenReturnDocumentsContainingPattern() throws IOException {
         // When - search for names containing "John" anywhere
         List<Map<String, Object>> results = wildcardService.wildcardSearch(TEST_INDEX, "name", "*john*");
 
         // Then
-        assertNotNull(results);
-        assertTrue(results.size() >= 2, "Expected at least 2 results");
-
-        // Verify results contain "john" somewhere in the name
-        results.forEach(result -> {
-            Object nameObj = result.get("name");
-            assertNotNull(nameObj, "Name field should not be null");
-            String name = nameObj.toString();
-            assertTrue(name.toLowerCase()
-                .contains("john"), "Expected name to contain 'john', but got: " + name);
-        });
+        assertThat(results)
+            .hasSizeGreaterThanOrEqualTo(2)
+            .extracting(result -> result.get("name"))
+            .doesNotContainNull()
+            .extracting(Object::toString)
+            .allSatisfy(name -> assertThat(name.toLowerCase()).contains("john"));
     }
 
     @Test
-    void testMultiFieldWildcardSearch_IntegrationTest() throws IOException {
+    void whenMultiFieldWildcardSearch_thenReturnDocumentsMatchingAnyField() throws IOException {
         // When
         List<Map<String, Object>> results = wildcardService.multiFieldWildcardSearch(TEST_INDEX, "john", "name", "email");
 

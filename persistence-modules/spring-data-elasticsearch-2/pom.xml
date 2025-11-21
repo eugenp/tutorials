@@ -19,19 +19,6 @@
             <artifactId>spring-data-elasticsearch</artifactId>
             <version>${spring-data-elasticsearch.version}</version>
         </dependency>
-        <!--These two dependencies are inherited from spring-data-elasticsearch. Overriding to the newer version
-            will break tests. -->
-        <!--            <dependency>-->
-        <!--                <groupId>co.elastic.clients</groupId>-->
-        <!--                <artifactId>elasticsearch-java</artifactId>-->
-        <!--                <version>${elasticsearch.version}</version>-->
-        <!--            </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>com.fasterxml.jackson.core</groupId>-->
-        <!--            <artifactId>jackson-databind</artifactId>-->
-        <!--            <version>${jackson.version}</version>-->
-        <!--        </dependency>-->
-        <!-- Here for backward compatibility-->
         <dependency>
             <groupId>org.elasticsearch.client</groupId>
             <artifactId>elasticsearch-rest-high-level-client</artifactId>
@@ -201,9 +188,9 @@
         <spring-data-elasticsearch.version>5.1.2</spring-data-elasticsearch.version>
         <elasticsearch.version>8.9.0</elasticsearch.version>
         <commons-csv.version>1.12.0</commons-csv.version>
-        <java.version>11</java.version>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <elasticsearch.version>8.11.1</elasticsearch.version>
         <testcontainers.version>1.19.3</testcontainers.version>
