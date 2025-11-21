@@ -33,8 +33,8 @@ class ElasticsearchWildcardServiceIntegrationTest {
     private static final Logger logger = LoggerFactory.getLogger(ElasticsearchWildcardServiceIntegrationTest.class);
 
     @Container
-    static ElasticsearchContainer elasticsearchContainer = new ElasticsearchContainer("docker.elastic.co/elasticsearch/elasticsearch:8.11.1").withExposedPorts(
-            9200)
+    static ElasticsearchContainer elasticsearchContainer = new ElasticsearchContainer("docker.elastic.co/elasticsearch/elasticsearch:8.11.1")
+        .withExposedPorts(9200)
         .withEnv("discovery.type", "single-node")
         .withEnv("xpack.security.enabled", "false")
         .withEnv("xpack.security.http.ssl.enabled", "false");
