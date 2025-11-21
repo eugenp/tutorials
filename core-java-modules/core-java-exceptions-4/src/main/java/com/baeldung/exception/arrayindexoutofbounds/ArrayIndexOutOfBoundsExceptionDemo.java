@@ -3,12 +3,7 @@ package com.baeldung.exception.arrayindexoutofbounds;
 import java.util.Arrays;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class ArrayIndexOutOfBoundsExceptionDemo {
-
-    public static Logger LOG = LoggerFactory.getLogger(ArrayIndexOutOfBoundsExceptionDemo.class);
 
     public static void main(String[] args) {
         int[] numbers = new int[] { 1, 2, 3, 4, 5 };
