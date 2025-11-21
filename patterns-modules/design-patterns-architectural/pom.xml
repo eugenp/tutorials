@@ -61,17 +61,44 @@
             <artifactId>camel-test-junit5</artifactId>
             <version>${camel-test-junit5.version}</version>
         </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${org.slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${org.slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectjweaver.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <hibernate-core.version>6.5.2.Final</hibernate-core.version>
         <mysql-connector.version>8.2.0</mysql-connector.version>
-        <spring-boot.version>3.1.5</spring-boot.version>
-        <rest-assured.version>5.5.0</rest-assured.version>
-        <spring-boot-starter-integration.version>2.7.5</spring-boot-starter-integration.version>
-        <spring-integration-test.version>5.5.14</spring-integration-test.version>
+        <spring-boot.version>3.5.7</spring-boot.version>
+        <logback.version>1.5.20</logback.version>
+        <org.slf4j.version>2.0.17</org.slf4j.version>        <rest-assured.version>5.5.0</rest-assured.version>
+        <spring-boot-starter-integration.version>3.5.7</spring-boot-starter-integration.version>
+        <spring-integration-test.version>6.5.4</spring-integration-test.version>
         <camel-core.version>3.20.4</camel-core.version>
         <camel-test-junit5.version>3.14.0</camel-test-junit5.version>
+        <aspectjweaver.version>1.9.25</aspectjweaver.version>
     </properties>
 
 </project>
