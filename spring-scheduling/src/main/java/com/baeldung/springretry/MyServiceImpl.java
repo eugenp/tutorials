@@ -55,4 +55,17 @@ public class MyServiceImpl implements MyService {
         logger.info("throw RuntimeException in method templateRetryService()");
         throw new RuntimeException();
     }
+
+    // **NEW Implementation for Concurrency Limit**
+    @Override
+    public void concurrentLimitService() {
+        logger.info("Concurrency Limit Active. Current Thread: " + Thread.currentThread().getName());
+        // Simulate a time-consuming task to observe throttling
+        try {
+            Thread.sleep(1000); 
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        logger.info("Concurrency Limit Released. Current Thread: " + Thread.currentThread().getName());
+    }
 }
