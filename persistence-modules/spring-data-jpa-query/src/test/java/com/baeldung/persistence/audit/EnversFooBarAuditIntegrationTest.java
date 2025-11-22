@@ -127,5 +127,4 @@ public class EnversFooBarAuditIntegrationTest {
         assertEquals("FOO2", fooRevisionList.get(1).getName());
         assertEquals("FOO3", fooRevisionList.get(2).getName());
     }
-
 }
