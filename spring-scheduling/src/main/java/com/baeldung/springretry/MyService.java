@@ -1,7 +1,7 @@
 package com.baeldung.springretry;
 
 import java.sql.SQLException;
-
+import org.springframework.resilience.annotation.ConcurrencyLimit;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.annotation.Retryable;
@@ -26,4 +26,8 @@ public interface MyService {
     void recover(SQLException e, String sql);
 
     void templateRetryService();
+
+    // **NEW Method with Concurrency Limit**
+    @ConcurrencyLimit(5)
+    void concurrentLimitService();
 }
