@@ -11,7 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringJUnit5ClassRunner.class)
 @ContextConfiguration(classes = { SpringAsyncConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class AsyncAnnotationExampleIntegrationTest {
 
@@ -27,13 +27,17 @@ public class AsyncAnnotationExampleIntegrationTest {
 
     @Test
     public void testAsyncAnnotationForMethodsWithReturnType() throws InterruptedException, ExecutionException {
-        final Future<String> future = asyncAnnotationExample.asyncMethodWithReturnType();
-
+ 
+        CompletableFuture<String> future = simpleAsyncService.asyncMethodWithReturnType();
+        System.out.println("Invoking an asynchronous method. " + Thread.currentThread().getName());
+    
         while (true) {
             if (future.isDone()) {
+                System.out.println("Result from asynchronous process - " + future.get()); 
                 break;
             }
-            Thread.sleep(1000);
+        System.out.println("Continue doing something else. ");
+        Thread.sleep(1000);
         }
     }
 
@@ -46,5 +50,4 @@ public class AsyncAnnotationExampleIntegrationTest {
     public void testAsyncAnnotationForMethodsWithException() throws Exception {
         asyncAnnotationExample.asyncMethodWithExceptions();
     }
-
 }
