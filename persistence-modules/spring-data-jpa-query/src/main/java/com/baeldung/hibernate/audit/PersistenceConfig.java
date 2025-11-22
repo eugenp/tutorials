@@ -1,15 +1,12 @@
 package com.baeldung.hibernate.audit;
 
 import java.util.Properties;
-
+import org.apache.commons.dbcp2.BasicDataSource; 
+import jakarta.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
-
-import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.domain.AuditorAware;
@@ -46,7 +43,11 @@ import com.google.common.base.Preconditions;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories
+@EnableJpaRepositories(
+    basePackages = "com.baeldung.persistence.dao", 
+    entityManagerFactoryRef = "jpaEntityManager", 
+    transactionManagerRef = "jpaTransactionManager" 
+)
 @EnableJpaAuditing(auditorAwareRef = "auditorProvider")
 public class PersistenceConfig {
 
@@ -62,21 +63,25 @@ public class PersistenceConfig {
         return new AuditorAwareImpl();
     }
 
+    // --- 1. Hibernate SessionFactory Configuration (Updated for Hibernate 6) ---
+    
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(restDataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.baeldung.persistence.model" });
+        sessionFactory.setPackagesToScan("com.baeldung.persistence.model");
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;
     }
 
+    // --- 2. JPA EntityManagerFactory Configuration (Updated for Hibernate 6) ---
+
     @Bean("jpaEntityManager")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(restDataSource());
-        emf.setPackagesToScan(new String[] { "com.baeldung.persistence.model" });
+        emf.setPackagesToScan("com.baeldung.persistence.model");
 
         final JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         emf.setJpaVendorAdapter(vendorAdapter);
@@ -96,17 +101,19 @@ public class PersistenceConfig {
         return dataSource;
     }
 
+    // --- 3. Transaction Managers (Updated for Hibernate 6) ---
+
     @Bean
-    public PlatformTransactionManager hibernateTransactionManager() {
+    public PlatformTransactionManager hibernateTransactionManager(LocalSessionFactoryBean sessionFactory) {
         final HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-        transactionManager.setSessionFactory(sessionFactory().getObject());
+        transactionManager.setSessionFactory(sessionFactory.getObject());
         return transactionManager;
     }
 
     @Bean
-    public PlatformTransactionManager jpaTransactionManager() {
+    public PlatformTransactionManager jpaTransactionManager(EntityManagerFactory entityManagerFactory) {
         final JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
+        transactionManager.setEntityManagerFactory(entityManagerFactory);
         return transactionManager;
     }
 
@@ -114,6 +121,8 @@ public class PersistenceConfig {
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
         return new PersistenceExceptionTranslationPostProcessor();
     }
+    
+    // --- Service and DAO Beans ---
 
     @Bean
     public IBarService barJpaService() {
@@ -165,19 +174,23 @@ public class PersistenceConfig {
         return new FooAuditableDao();
     }
 
+    // --- Hibernate Properties (Updated for Hibernate 6) ---
+    
     private final Properties hibernateProperties() {
         final Properties hibernateProperties = new Properties();
-        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
+        
+        // DDL setting is now JPA standard property
+        hibernateProperties.setProperty("jakarta.persistence.schema-generation.database.action", env.getProperty("hibernate.hbm2ddl.auto"));
+        
+        // Dialect class name might change slightly depending on the DB, but property name is stable
         hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
 
         hibernateProperties.setProperty("hibernate.show_sql", "true");
-        // hibernateProperties.setProperty("hibernate.format_sql", "true");
         hibernateProperties.setProperty("hibernate.globally_quoted_identifiers", "true");
 
-        // Envers properties
+        // Envers properties are stable
         hibernateProperties.setProperty("org.hibernate.envers.audit_table_suffix", env.getProperty("envers.audit_table_suffix"));
-
+        
         return hibernateProperties;
     }
-
 }
