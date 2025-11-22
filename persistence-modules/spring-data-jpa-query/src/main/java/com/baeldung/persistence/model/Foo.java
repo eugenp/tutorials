@@ -63,8 +63,6 @@ public class Foo implements Serializable {
         this.name = name;
     }
 
-    //
-
     public Bar getBar() {
         return bar;
     }
@@ -88,8 +86,6 @@ public class Foo implements Serializable {
     public void setName(final String name) {
         this.name = name;
     }
-
-    //
 
     @Override
     public int hashCode() {
