@@ -21,8 +21,6 @@ public class Child implements Serializable {
         super();
     }
 
-    // API
-
     public long getId() {
         return id;
     }
@@ -38,8 +36,6 @@ public class Child implements Serializable {
     public void setParent(final Parent parent) {
         this.parent = parent;
     }
-
-    //
 
     @Override
     public String toString() {
