@@ -14,8 +14,6 @@ public class BarAuditableDao extends AbstractHibernateAuditableDao<Bar> implemen
         setClazz(Bar.class);
     }
 
-    // API
-
     @Override
     public List<Bar> getRevisions() {
         final List<Bar> resultList = super.getRevisions();
