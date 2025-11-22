@@ -15,6 +15,5 @@ public class FooDao extends AbstractHibernateDao<Foo> implements IFooDao {
         setClazz(Foo.class);
     }
 
-    // API
-
 }
+
