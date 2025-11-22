@@ -39,5 +39,4 @@ public abstract class AbstractJpaService<T extends Serializable> extends Abstrac
     public void deleteById(final long entityId) {
         super.deleteById(entityId);
     }
-
 }
