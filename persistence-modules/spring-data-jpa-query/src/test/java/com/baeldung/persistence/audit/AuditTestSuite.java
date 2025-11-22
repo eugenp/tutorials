@@ -1,14 +1,15 @@
 package com.baeldung.persistence.audit;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
+// FIX: Changed to fully qualified names from the JUnit 5 platform suite API
+import org.junit.platform.suite.api.SelectClasses;
+import org.junit.platform.suite.api.Suite;
 
-@RunWith(Suite.class)
-@Suite.SuiteClasses({ // @formatter:off
+@Suite
+@SelectClasses({ 
     EnversFooBarAuditIntegrationTest.class,
     JPABarAuditIntegrationTest.class,
-    SpringDataJPABarAuditIntegrationTest.class
-}) // @formatter:on
+    SpringDataJPABarAuditIntegrationTest.class 
+})
 public class AuditTestSuite {
     //
 }
