@@ -10,9 +10,9 @@ public class AuditorAwareImpl implements AuditorAware<String> {
 
     @Override
     public Optional<String> getCurrentAuditor() {
+        // This is the correct modern Spring way to fetch the authenticated principal's username.
         return Optional.ofNullable(SecurityContextHolder.getContext())
             .map(e -> e.getAuthentication())
             .map(Authentication::getName);
     }
-
 }
