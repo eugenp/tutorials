@@ -30,8 +30,6 @@ public class Parent implements Serializable {
         this.child = child;
     }
 
-    // API
-
     public long getId() {
         return id;
     }
@@ -48,13 +46,10 @@ public class Parent implements Serializable {
         this.child = child;
     }
 
-    //
-
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append("Parent [id=").append(id).append("]");
         return builder.toString();
     }
-
 }
