@@ -156,6 +156,7 @@
         <postgresql.version>42.5.4</postgresql.version>
         <hsqldb.version>2.7.1</hsqldb.version>
         <testcontainers.version>1.19.6</testcontainers.version>
+        <lombok.version>1.18.36</lombok.version>
     </properties>
 
 </project>
