@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.baeldung.persistence.dao.common.IAuditOperations;
 import com.baeldung.persistence.dao.common.IOperations;
 
-@Transactional(value = "hibernateTransactionManager")
+@Transactional(value = "hibernateTransactionManager") // This value is CORRECT, assuming it's the dedicated Hibernate transaction manager bean name.
 public abstract class AbstractHibernateAuditableService<T extends Serializable> extends AbstractHibernateService<T> implements IOperations<T>, IAuditOperations<T> {
 
     @Override
