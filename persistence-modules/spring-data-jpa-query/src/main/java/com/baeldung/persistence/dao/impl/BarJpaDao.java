@@ -15,6 +15,4 @@ public class BarJpaDao extends AbstractJpaDao<Bar> implements IBarDao {
         setClazz(Bar.class);
     }
 
-    // API
-
 }
