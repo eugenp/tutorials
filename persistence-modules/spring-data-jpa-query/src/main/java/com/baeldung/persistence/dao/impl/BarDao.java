@@ -15,6 +15,4 @@ public class BarDao extends AbstractHibernateDao<Bar> implements IBarDao {
         setClazz(Bar.class);
     }
 
-    // API
-
 }
