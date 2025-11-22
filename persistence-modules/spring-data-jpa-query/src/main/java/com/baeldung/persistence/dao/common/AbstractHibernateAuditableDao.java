@@ -8,11 +8,15 @@ import org.hibernate.envers.AuditReaderFactory;
 import org.hibernate.envers.query.AuditQuery;
 
 @SuppressWarnings("unchecked")
-public class AbstractHibernateAuditableDao<T extends Serializable> extends AbstractHibernateDao<T> implements IAuditOperations<T> {
+public abstract class AbstractHibernateAuditableDao<T extends Serializable> extends AbstractHibernateDao<T> implements IAuditOperations<T> {
+
+    protected AuditReader getAuditReader() {
+        return AuditReaderFactory.get(getCurrentSession());
+    }
 
     @Override
     public List<T> getEntitiesAtRevision(final Number revision) {
-        final AuditReader auditReader = AuditReaderFactory.get(getCurrentSession());
+        final AuditReader auditReader = getAuditReader();
         final AuditQuery query = auditReader.createQuery().forEntitiesAtRevision(clazz, revision);
         final List<T> resultList = query.getResultList();
         return resultList;
@@ -20,7 +24,7 @@ public class AbstractHibernateAuditableDao<T extends Serializable> extends Abstr
 
     @Override
     public List<T> getEntitiesModifiedAtRevision(final Number revision) {
-        final AuditReader auditReader = AuditReaderFactory.get(getCurrentSession());
+        final AuditReader auditReader = getAuditReader();
         final AuditQuery query = auditReader.createQuery().forEntitiesModifiedAtRevision(clazz, revision);
         final List<T> resultList = query.getResultList();
         return resultList;
@@ -28,10 +32,9 @@ public class AbstractHibernateAuditableDao<T extends Serializable> extends Abstr
 
     @Override
     public List<T> getRevisions() {
-        final AuditReader auditReader = AuditReaderFactory.get(getCurrentSession());
+        final AuditReader auditReader = getAuditReader();
         final AuditQuery query = auditReader.createQuery().forRevisionsOfEntity(clazz, true, true);
         final List<T> resultList = query.getResultList();
         return resultList;
     }
-
 }
