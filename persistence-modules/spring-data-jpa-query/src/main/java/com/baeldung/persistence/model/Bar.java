@@ -73,8 +73,7 @@ public class Bar implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "bar", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    // Updated clause for Hibernate 6/7
-    @OrderBy(clause = "name DESC") 
+    @OrderBy("name DESC")
     // @NotAudited
     private Set<Foo> fooSet = Sets.newHashSet();
 
@@ -237,5 +236,4 @@ public class Bar implements Serializable {
         setOperation(operation);
         setTimestamp((new Date()).getTime());
     }
-
 }
