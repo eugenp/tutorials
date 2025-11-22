@@ -15,11 +15,12 @@ public class AbstractJpaDao<T extends Serializable> extends AbstractDao<T> imple
     @PersistenceContext(unitName = "jpaEntityManager")
     private EntityManager em;
 
-    // API
-
     @Override
     public T findOne(final long id) {
-        return em.find(clazz, Long.valueOf(id).intValue());
+        // The type of the ID is assumed to be Integer/int based on the original usage (intValue()).
+        // This is highly dependent on the entity's ID type. Assuming 'id' is a Long/long from IOperations
+        // and the Entity's ID is Integer for consistency with the original code.
+        return em.find(clazz, id); // Use 'id' directly. JPA will handle the type cast/wrapping.
     }
 
     @Override
@@ -39,18 +40,19 @@ public class AbstractJpaDao<T extends Serializable> extends AbstractDao<T> imple
 
     @Override
     public T update(final T entity) {
-        em.merge(entity);
-        return entity;
+        // The result of merge must be returned, as merge returns the managed entity instance.
+        return em.merge(entity);
     }
 
     @Override
     public void delete(final T entity) {
-        em.remove(entity);
+        // Ensure entity is managed before removal
+        em.remove(em.contains(entity) ? entity : em.merge(entity));
     }
 
     @Override
     public void deleteById(final long entityId) {
+        // Find is sufficient; merge/contains check is done in delete(T entity)
         delete(findOne(entityId));
     }
-
 }
