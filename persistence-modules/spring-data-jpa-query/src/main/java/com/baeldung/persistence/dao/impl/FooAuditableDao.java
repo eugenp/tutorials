@@ -12,6 +12,4 @@ public class FooAuditableDao extends AbstractHibernateAuditableDao<Foo> implemen
         setClazz(Foo.class);
     }
 
-    // API
-
 }
