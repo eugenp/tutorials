@@ -8,7 +8,7 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
+        <artifactId>parent-boot-3</artifactId> 
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
@@ -17,7 +17,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
+            </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
@@ -38,7 +38,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
-            <version>${spring-oxm.version}</version>
+            <version>${spring-oxm.version}</version> 
         </dependency>
         <dependency>
             <groupId>org.hibernate.orm</groupId>
@@ -66,20 +66,24 @@
             <version>${guava.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-dbcp</artifactId>
-            <version>${tomcat-dbcp.version}</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>${commons-dbcp2.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
+            <scope>test</scope>
+            </dependency>
     </dependencies>
 
     <properties>
         <datasource-proxy.version>1.11.0</datasource-proxy.version>
-        <spring-oxm.version>7.0.0</spring-oxm.version>
-        <hibernate.version>7.1.8.Final</hibernate.version>
-        <hibernate-envers.version>7.1.8.Final</hibernate-envers.version>
-        <mysql.version>9.5.0</mysql.version>
-        <tomcat-dbcp.version>11.0.14</tomcat-dbcp.version>
-    </properties>
-
-
+        <spring-oxm.version>6.2.14</spring-oxm.version>
+        <hibernate.version>6.6.36.Final</hibernate.version>
+        <hibernate-envers.version>6.6.36.Final</hibernate-envers.version>
+        <mysql.version>8.4.0</mysql.version>
+        <commons-dbcp2.version>2.12.0</commons-dbcp2.version>
+        </properties>
 </project>
+
