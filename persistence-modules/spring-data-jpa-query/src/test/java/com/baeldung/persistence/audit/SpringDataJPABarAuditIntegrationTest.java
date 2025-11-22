@@ -1,42 +1,42 @@
 package com.baeldung.persistence.audit;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
+import com.baeldung.persistence.config.PersistenceTestConfig;
 import com.baeldung.persistence.model.Bar;
 import com.baeldung.persistence.service.IBarService;
-import com.baeldung.persistence.config.PersistenceTestConfig;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { PersistenceTestConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class SpringDataJPABarAuditIntegrationTest {
 
     private static final Logger logger = LoggerFactory.getLogger(SpringDataJPABarAuditIntegrationTest.class);
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpBeforeClass() throws Exception {
         logger.info("setUpBeforeClass()");
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDownAfterClass(){
         logger.info("tearDownAfterClass()");
     }
@@ -51,13 +51,13 @@ public class SpringDataJPABarAuditIntegrationTest {
 
     private EntityManager em;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         logger.info("setUp()");
         em = entityManagerFactory.createEntityManager();
     }
 
-    @After
+    @AfterEach
     public void tearDown() throws Exception {
         logger.info("tearDown()");
         em.close();
@@ -67,12 +67,23 @@ public class SpringDataJPABarAuditIntegrationTest {
     @WithMockUser(username = "tutorialuser")
     public final void whenBarsModified_thenBarsAudited() {
         Bar bar = new Bar("BAR1");
+        
+        // 1. Create (INSERT)
         barService.create(bar);
-        assertEquals(bar.getCreatedDate(), bar.getModifiedDate());
-        assertEquals("tutorialuser", bar.getCreatedBy(), bar.getModifiedBy());
+        
+        // Assertions after INSERT
+        assertEquals(bar.getCreatedDate(), bar.getModifiedDate(), "Created and Modified dates should be equal after insert.");
+        assertEquals("tutorialuser", bar.getCreatedBy(), "CreatedBy should be 'tutorialuser'.");
+        assertEquals("tutorialuser", bar.getModifiedBy(), "ModifiedBy should be 'tutorialuser' after insert.");
+
         bar.setName("BAR2");
+        
+        // 2. Update (UPDATE)
         bar = barService.update(bar);
-        assertTrue(bar.getCreatedDate() < bar.getModifiedDate());
-        assertEquals("tutorialuser", bar.getCreatedBy(), bar.getModifiedBy());
+        
+        // Assertions after UPDATE
+        assertTrue(bar.getCreatedDate() < bar.getModifiedDate(), "Modified date should be greater than created date after update.");
+        assertEquals("tutorialuser", bar.getCreatedBy(), "CreatedBy should remain 'tutorialuser'.");
+        assertEquals("tutorialuser", bar.getModifiedBy(), "ModifiedBy should remain 'tutorialuser' after update.");
     }
 }
