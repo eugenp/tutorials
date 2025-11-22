@@ -21,11 +21,22 @@ public class SpringAsyncConfig implements AsyncConfigurer {
         return new ThreadPoolTaskExecutor();
     }
 
+    @Bean(name = "threadPoolTaskExecutor")
+    public Executor threadPoolTaskExecutor() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(5);
+        executor.setMaxPoolSize(10);
+        executor.setQueueCapacity(25);
+        executor.setThreadNamePrefix("CustomPool-");
+        executor.initialize();
+        return executor;
+    }
+
     @Override
     public Executor getAsyncExecutor() {
-        ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
-        threadPoolTaskExecutor.initialize();
-        return threadPoolTaskExecutor;
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.initialize();
+        return executor;
     }
 
     @Override
