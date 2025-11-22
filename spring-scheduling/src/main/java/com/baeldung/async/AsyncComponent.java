@@ -1,28 +1,35 @@
 package com.baeldung.async;
 
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Component;
-
-import java.util.concurrent.Future;
+import java.util.concurrent.CompletableFuture;
 
 @Component
 public class AsyncComponent {
 
     @Async
     public void asyncMethodWithVoidReturnType() {
+        System.out.println("Execute method asynchronously. " 
+          + Thread.currentThread().getName());
     }
 
     @Async
-    public Future<String> asyncMethodWithReturnType() {
+    public CompletableFuture<String> asyncMethodWithReturnType() {
+        System.out.println("Execute method asynchronously - " 
+          + Thread.currentThread().getName());
+
         try {
-            Thread.sleep(5000);
-            return new AsyncResult<>("hello world !!!!");
-        } catch (final InterruptedException e) {
+                Thread.sleep(5000);
+                return CompletableFuture.completedFuture("hello world !!!!");
+        } catch (InterruptedException e) {
+              return CompletableFuture.failedFuture(e);
+          }
+    }
 
-        }
-
-        return null;
+    @Async("threadPoolTaskExecutor")
+    public void asyncMethodWithConfiguredExecutor() {
+        System.out.println("Execute method with configured executor - "
+          + Thread.currentThread().getName());
     }
 
     @Async("threadPoolTaskExecutor")
@@ -33,5 +40,4 @@ public class AsyncComponent {
     public void asyncMethodWithExceptions() throws Exception {
         throw new Exception("Throw message from asynchronous method. ");
     }
-
 }
