@@ -1323,6 +1323,7 @@
                 <module>web-modules</module>
                 <module>webrtc</module>
                 <module>xml-modules</module>
+				<module>java-mcp</module>
             </modules>
 
             <properties>
