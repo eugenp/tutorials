@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.baeldung.persistence.dao.common.IOperations;
 
-@Transactional(value = "hibernateTransactionManager")
+@Transactional(value = "hibernateTransactionManager")  
 public abstract class AbstractHibernateService<T extends Serializable> extends AbstractService<T> implements IOperations<T> {
 
     @Override
@@ -39,5 +39,4 @@ public abstract class AbstractHibernateService<T extends Serializable> extends A
     public void deleteById(final long entityId) {
         super.deleteById(entityId);
     }
-
 }
