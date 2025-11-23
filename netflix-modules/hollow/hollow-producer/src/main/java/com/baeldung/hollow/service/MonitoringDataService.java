@@ -6,9 +6,16 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.baeldung.hollow.model.MonitoringEvent;
+/**
+ * Dummy Service to generate synthetic MonitoringEvent data.
+ */
 
 public class MonitoringDataService {
+    private final static Logger logger = LoggerFactory.getLogger(MonitoringDataService.class);
 
     private final Random random = new Random();
 
@@ -21,10 +28,10 @@ public class MonitoringDataService {
     };
 
     /**
-     * Retrieve a random list of MonitoringEvent instances (between 5 and 20 events).
+     * Retrieve a random list of MonitoringEvent instances (between 2 and 6 events).
      */
     public List<MonitoringEvent> retrieveEvents() {
-        int count = 5 + random.nextInt(16); // 5..20 events
+        int count = 2 + random.nextInt(5); // 2..6 events
         List<MonitoringEvent> events = new ArrayList<>(count);
 
         for (int i = 0; i < count; i++) {
@@ -35,11 +42,21 @@ public class MonitoringDataService {
             long timestamp = System.currentTimeMillis();
 
             MonitoringEvent evt = buildMonitoringEvent(id, device, type, value, timestamp);
+
+            logger.info("MonitoringEvent created - Event ID: {}, Device ID: {}, Event Type: {}, Event Name: {}, Status: {}, Creation Date: {}",
+                evt.getEventId(),
+                evt.getDeviceId(),
+                evt.getEventType(),
+                evt.getEventName(),
+                evt.getStatus(),
+                evt.getCreationDate()
+            );
+
             if (evt != null) {
                 events.add(evt);
             }
         }
-
+        logger.info("Generated {} monitoring events", events.size());
         return events;
     }
 
@@ -92,5 +109,4 @@ public class MonitoringDataService {
             return null;
         }
     }
-
 }

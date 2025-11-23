@@ -1,5 +1,8 @@
 package com.baeldung.hollow.model;
 
+import com.netflix.hollow.core.write.objectmapper.HollowPrimaryKey;
+
+@HollowPrimaryKey(fields = "eventId")
 public class MonitoringEvent {
     private int eventId;
     private String eventName;
