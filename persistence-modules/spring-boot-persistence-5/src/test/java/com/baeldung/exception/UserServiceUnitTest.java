@@ -34,7 +34,6 @@ class UserServiceUnitTest {
 
     @Test
     void givenExistingEmail_whenFindUserByEmailOrThrow_thenReturnUser() {
-        // given
         User user = new User("anna", "anna@example.com");
         when(userRepository.findByEmail("anna@example.com")).thenReturn(Optional.of(user));
         User result = userService.findUserByEmailOrThrow("anna@example.com");
