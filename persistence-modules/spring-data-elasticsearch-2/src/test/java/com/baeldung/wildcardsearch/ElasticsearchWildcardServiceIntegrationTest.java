@@ -1,11 +1,17 @@
 package com.baeldung.wildcardsearch;
 
-import co.elastic.clients.elasticsearch.ElasticsearchClient;
-import co.elastic.clients.elasticsearch.core.IndexRequest;
-import co.elastic.clients.elasticsearch.indices.CreateIndexRequest;
-import co.elastic.clients.elasticsearch.indices.DeleteIndexRequest;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.awaitility.Awaitility.await;
+
+import java.io.IOException;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assumptions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -14,23 +20,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.testcontainers.DockerClientFactory;
 import org.testcontainers.elasticsearch.ElasticsearchContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.assertj.core.api.Assertions.*;
+import co.elastic.clients.elasticsearch.ElasticsearchClient;
+import co.elastic.clients.elasticsearch.core.IndexRequest;
+import co.elastic.clients.elasticsearch.indices.CreateIndexRequest;
+import co.elastic.clients.elasticsearch.indices.DeleteIndexRequest;
 
 @SpringBootTest
 @Testcontainers
 class ElasticsearchWildcardServiceIntegrationTest {
 
     private static final Logger logger = LoggerFactory.getLogger(ElasticsearchWildcardServiceIntegrationTest.class);
+
+
+    @BeforeAll
+    static void checkDocker() {
+        Assumptions.assumeTrue(
+            DockerClientFactory.instance().isDockerAvailable(),
+            "Docker is not available, skipping Testcontainers-based tests"
+        );
+    }
 
     @Container
     static ElasticsearchContainer elasticsearchContainer = new ElasticsearchContainer("docker.elastic.co/elasticsearch/elasticsearch:8.11.1").withExposedPorts(
@@ -61,13 +74,19 @@ class ElasticsearchWildcardServiceIntegrationTest {
         // Index sample documents
         indexSampleDocuments();
 
-        // Wait for documents to be indexed
-        try {
-            Thread.sleep(1500);
-        } catch (InterruptedException e) {
-            Thread.currentThread()
-                .interrupt();
-        }
+        // Wait until documents are actually indexed
+        waitUntilDocumentsIndexed(3); // Adjust expected count based on your test data
+    }
+
+    private void waitUntilDocumentsIndexed(int expectedCount) throws IOException {
+        await().atMost(Duration.ofSeconds(10))
+            .pollInterval(Duration.ofMillis(100))
+            .pollDelay(Duration.ofMillis(50))
+            .untilAsserted(() -> {
+                List<Map<String, Object>> results = wildcardService.regexpSearch(TEST_INDEX, "name", "*");
+                assertThat(results).as("Expected at least %d documents to be indexed", expectedCount)
+                    .hasSizeGreaterThanOrEqualTo(expectedCount);
+            });
     }
 
     @AfterEach
@@ -164,21 +183,17 @@ class ElasticsearchWildcardServiceIntegrationTest {
         List<Map<String, Object>> results = wildcardService.multiFieldWildcardSearch(TEST_INDEX, "john", "name", "email");
 
         // Then
-        assertNotNull(results);
-        assertFalse(results.isEmpty());
-
-        // Results should have "john" in either name or email
-        results.forEach(result -> {
-            Object nameObj = result.get("name");
-            Object emailObj = result.get("email");
-
-            String name = nameObj != null ? nameObj.toString()
-                .toLowerCase() : "";
-            String email = emailObj != null ? emailObj.toString()
-                .toLowerCase() : "";
-
-            assertTrue(name.contains("john") || email.contains("john"), "Expected 'john' in name or email");
-        });
+        assertThat(results).isNotEmpty()
+            .allSatisfy(result -> {
+                String name = result.get("name") != null ? result.get("name")
+                    .toString()
+                    .toLowerCase() : "";
+                String email = result.get("email") != null ? result.get("email")
+                    .toString()
+                    .toLowerCase() : "";
+                assertThat(name.contains("john") || email.contains("john")).as("Expected 'john' in name or email")
+                    .isTrue();
+            });
     }
 
     private void createTestIndex() throws IOException {
