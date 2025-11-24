@@ -31,7 +31,7 @@
     </build>
 
     <properties>
-        <apache.commons.lang3.version>3.12.0</apache.commons.lang3.version>
+        <apache.commons.lang3.version>3.20.0</apache.commons.lang3.version>
     </properties>
 
 </project>
