@@ -32,10 +32,6 @@ public class AsyncComponent {
           + Thread.currentThread().getName());
     }
 
-    @Async("threadPoolTaskExecutor")
-    public void asyncMethodWithConfiguredExecutor() {
-    }
-
     @Async
     public void asyncMethodWithExceptions() throws Exception {
         throw new Exception("Throw message from asynchronous method. ");
