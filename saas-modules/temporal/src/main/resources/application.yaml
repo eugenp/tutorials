@@ -5,19 +5,6 @@ spring:
     workers-auto-discovery:
       packages:
         - "com.baeldung.temporal.workflows.sboot.order"
-#        - "com.baeldung.temporal.workflows.sboot.order.activities"
-#        - "com.baeldung.temporal.workflows.sboot.order.workflow"
-    start-workers: true
-    workflow-cache:
-      using-virtual-workflow-threads: false
-    workers:
-      - task-queue: "ORDERS"
-        name: "order-worker"
-        capacity:
-          max-concurrent-activity-task-pollers: 10
-          max-concurrent-workflow-task-pollers: 10
-
-
 logging:
   level:
     web: debug

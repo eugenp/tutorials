@@ -55,7 +55,7 @@ public class InventoryService {
         return inventory.getOrDefault(sku, new InventoryItem(sku, 0, 0));
     }
 
-    static record InventoryItem(String sku, int quantity, int reserved) {
+    public record InventoryItem(String sku, int quantity, int reserved) {
 
     }
 }

@@ -2,6 +2,8 @@ package com.baeldung.temporal.workflows.sboot.order.activities;
 
 import com.baeldung.temporal.workflows.sboot.order.domain.*;
 import com.baeldung.temporal.workflows.sboot.order.services.InventoryService;
+import com.baeldung.temporal.workflows.sboot.order.services.PaymentService;
+import com.baeldung.temporal.workflows.sboot.order.services.ShippingService;
 import io.temporal.spring.boot.ActivityImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,15 +21,19 @@ public class OrderActivitiesImpl implements OrderActivities{
 
     private final Clock clock;
     private final InventoryService inventoryService;
+    private final PaymentService paymentService;
+    private final ShippingService shippingService;
 
-    public OrderActivitiesImpl(Clock clock, InventoryService inventoryService) {
+    public OrderActivitiesImpl(Clock clock, InventoryService inventoryService, PaymentService paymentService, ShippingService shippingService) {
         this.clock = clock;
         this.inventoryService = inventoryService;
+        this.paymentService = paymentService;
+        this.shippingService = shippingService;
     }
 
     @Override
     public void reserveOrderItems(Order order) {
-        log.info("[isVirtual={}] reserveOrderItems: order={}", Thread.currentThread().isVirtual(),order);
+        log.info("reserveOrderItems: order={}", order);
         for (OrderItem item : order.items()) {
             inventoryService.reserveInventory(item.sku(), item.quantity());
         }
@@ -35,7 +41,7 @@ public class OrderActivitiesImpl implements OrderActivities{
 
     @Override
     public void cancelReservedItems(Order order) {
-        log.info("[isVirtual={}]cancelReservedItems: order={}", Thread.currentThread().isVirtual(),order);
+        log.info("cancelReservedItems: order={}", order);
         for (OrderItem item : order.items()) {
             inventoryService.cancelInventoryReservation(item.sku(), item.quantity());
         }
@@ -60,54 +66,29 @@ public class OrderActivitiesImpl implements OrderActivities{
     @Override
     public PaymentAuthorization createPaymentRequest(Order order, BillingInfo billingInfo) {
         log.info("createPaymentRequest: order={}, billingInfo={}", order, billingInfo);
-        return new PaymentAuthorization(
+        var request =  new PaymentAuthorization(
           billingInfo,
           PaymentStatus.PENDING,
           order.orderId().toString(),
           UUID.randomUUID().toString(),
           null,
           null);
+        return paymentService.processPaymentRequest(request);
     }
 
     @Override
     public RefundRequest createRefundRequest(PaymentAuthorization payment) {
         log.info("createRefundRequest: payment={}", payment);
-        return new RefundRequest(payment);
+        return paymentService.createRefundRequest(payment);
     }
 
     @Override
     public Shipping createShipping(Order order) {
-        var provider = selectProvider(order);
-        return new Shipping(
-          order,
-          provider,
-          ShippingStatus.CREATED,
-          List.of(new ShippingEvent(
-            clock.instant(),
-            ShippingStatus.CREATED,
-            "Shipping created")));
-    }
-
-    private ShippingProvider selectProvider(Order order) {
-
-        int totalItems = order.items().stream()
-          .map(OrderItem::quantity)
-          .reduce(0, Integer::sum);
-
-        if ( totalItems < 5) {
-            return ShippingProvider.DHL;
-        }
-        else if ( totalItems < 10) {
-            return ShippingProvider.FedEx;
-        }
-        else {
-            return ShippingProvider.UPS;
-        }
-
+        return shippingService.createShipping(order);
     }
 
     @Override
     public Shipping updateShipping(Shipping shipping, ShippingStatus status) {
-        return shipping.toStatus(status, clock.instant(), "Shipping status update");
+        return shippingService.updateStatus(shipping,status);
     }
 }

@@ -5,6 +5,7 @@ import com.baeldung.temporal.workflows.sboot.order.domain.*;
 import io.temporal.activity.ActivityOptions;
 import io.temporal.common.RetryOptions;
 import io.temporal.spring.boot.WorkflowImpl;
+import io.temporal.workflow.Async;
 import io.temporal.workflow.Workflow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,7 +59,7 @@ public class OrderWorkflowImpl implements OrderWorkflow {
 
         // Create payment request
         log.info("[I61] Creating payment request: orderId={}", spec.order().orderId());
-        payment = activities.createPaymentRequest(spec.order(), spec.billingInfo());
+        Async.function(() -> payment = activities.createPaymentRequest(spec.order(), spec.billingInfo()));
 
         // Create a shipping request
         log.info("[I65] Creating shipping request: orderId={}", spec.order().orderId());
@@ -66,7 +67,7 @@ public class OrderWorkflowImpl implements OrderWorkflow {
 
         // Wait for a payment result, which will be triggered by one of the signal methods
         log.info("[I65] Waiting for payment result: orderId={}", spec.order().orderId());
-        Workflow.await(() -> payment.status() != PaymentStatus.PENDING);
+        Workflow.await(() -> payment != null && payment.status() != PaymentStatus.PENDING);
 
         // Process payment result
         if ( payment.status() == PaymentStatus.DECLINED) {

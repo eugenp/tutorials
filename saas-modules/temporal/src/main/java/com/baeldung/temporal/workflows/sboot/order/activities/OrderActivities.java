@@ -16,6 +16,4 @@ public interface OrderActivities {
 
     Shipping createShipping(Order order);
     Shipping updateShipping(Shipping shipping, ShippingStatus status);
-
-
 }

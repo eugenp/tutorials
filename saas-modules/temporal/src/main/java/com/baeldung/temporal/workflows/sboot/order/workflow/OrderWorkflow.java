@@ -17,7 +17,7 @@ public interface OrderWorkflow {
     @SignalMethod
     void paymentDeclined(String transactionId, String cause);
 
-    @UpdateMethod
+    @SignalMethod
     void packagePickup(Instant pickupTime);
 
     @SignalMethod
@@ -37,5 +37,4 @@ public interface OrderWorkflow {
 
     @QueryMethod
     RefundRequest getRefund();
-
 }

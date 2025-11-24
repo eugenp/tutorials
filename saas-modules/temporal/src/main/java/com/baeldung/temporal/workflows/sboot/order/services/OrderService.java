@@ -29,6 +29,5 @@ public class OrderService {
             .setWorkflowId(uuid.toString()).build());
         var execution = WorkflowClient.start(wf::processOrder, orderSpec);
         return execution.getWorkflowId();
-
     }
 }
