@@ -8,7 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension; // Use JUnit 5 Extension
-
+import com.baeldung.async.AsyncComponent;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration("classpath:springAsync-config.xml")
