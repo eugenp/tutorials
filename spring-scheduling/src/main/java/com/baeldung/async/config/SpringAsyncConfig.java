@@ -12,15 +12,13 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 @Configuration
-@EnableAsync()
+@EnableAsync
 @ComponentScan("com.baeldung.async")
 public class SpringAsyncConfig implements AsyncConfigurer {
 
-    @Bean(name = "threadPoolTaskExecutor")
-    public Executor threadPoolTaskExecutor() {
-        return new ThreadPoolTaskExecutor();
-    }
-
+    /**
+     * Defines a custom Executor used by @Async("threadPoolTaskExecutor") calls.
+     */
     @Bean(name = "threadPoolTaskExecutor")
     public Executor threadPoolTaskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
@@ -32,13 +30,24 @@ public class SpringAsyncConfig implements AsyncConfigurer {
         return executor;
     }
 
+    /**
+     * Defines the default Executor used by un-named @Async calls.
+     */
     @Override
     public Executor getAsyncExecutor() {
+        // You could return the named bean here, or create a new one.
+        // Creating a new one for demonstration purposes.
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(2);
+        executor.setMaxPoolSize(4);
+        executor.setThreadNamePrefix("DefaultAsync-");
         executor.initialize();
         return executor;
     }
 
+    /**
+     * Defines the exception handler for asynchronous method calls.
+     */
     @Override
     public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
         return new CustomAsyncExceptionHandler();
