@@ -14,20 +14,16 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import com.baeldung.async.config.SpringAsyncConfig;
 
-// Replace @RunWith(SpringJUnit4ClassRunner.class) with @ExtendWith(SpringExtension.class)
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { SpringAsyncConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class AsyncAnnotationExampleIntegrationTest {
 
-    // Assuming AsyncComponent is the bean for void methods
     @Autowired
     private AsyncComponent asyncAnnotationExample; 
 
     @Test
     public void testAsyncAnnotationForMethodsWithVoidReturnType() {
         asyncAnnotationExample.asyncMethodWithVoidReturnType();
-        // Since this is void, we typically assert that the calling thread continues immediately,
-        // but for a simple integration test, invoking it is sufficient.
     }
 
     @Test
