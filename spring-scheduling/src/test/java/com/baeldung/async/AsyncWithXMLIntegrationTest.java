@@ -9,11 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension; // Use JUnit 5 Extension
 
-/**
- * Integration test for methods annotated with @Async, using XML configuration
- * instead of Java @Configuration classes.
- * * Replaces @RunWith(SpringJUnit4ClassRunner.class) with @ExtendWith(SpringExtension.class)
- */
+
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration("classpath:springAsync-config.xml")
 public class AsyncWithXMLIntegrationTest {
