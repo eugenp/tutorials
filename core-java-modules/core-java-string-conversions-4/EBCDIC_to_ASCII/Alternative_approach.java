@@ -1,8 +1,12 @@
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.io.*;
-import java.nio.charset.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
-public class EbcdicStreamConverter {
-
+public class StreamingConverter {
+    private static final Logger logger = LoggerFactory.getLogger(StreamingConverter.class);
+    
     public static void main(String[] args) {
         try (
             InputStreamReader reader = new InputStreamReader(
@@ -21,10 +25,10 @@ public class EbcdicStreamConverter {
                 writer.write(buffer, 0, length);
             }
 
-            System.out.println("Conversion complete! See output.txt");
+            logger.info("Conversion complete! See output.txt");
 
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Error during conversion", e);
         }
     }
 }
