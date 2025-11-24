@@ -15,7 +15,6 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.baeldung.async.config.SpringAsyncConfig;
 
-// Replace @RunWith(SpringJUnit4ClassRunner.class) with @ExtendWith(SpringExtension.class)
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { SpringAsyncConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class AsyncServiceUnitTest {
