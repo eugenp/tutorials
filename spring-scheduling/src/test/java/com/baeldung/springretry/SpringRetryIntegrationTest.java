@@ -35,7 +35,7 @@ public class SpringRetryIntegrationTest {
     private RetryTemplate retryTemplate;
     
     @Autowired
-    private RetryTemplate retryTemplateNoAttempts;  
+    private RetryTemplate retryTemplateNoRetry;  
 
 
     @Test(expected = RuntimeException.class)
