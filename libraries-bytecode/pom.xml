@@ -40,6 +40,11 @@
             <artifactId>asm-util</artifactId>
             <version>${asm.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.dylibso.chicory</groupId>
+            <artifactId>runtime</artifactId>
+            <version>${chicory.version}</version>
+        </dependency>
         <!--
                 Importing the libraries as jars using system path. These are two versions of the same library, which is generated
         from the code inside /incompatibleclasschange/libraries/modified and /incompatibleclasschange/libraries/original
@@ -118,6 +123,7 @@
         <asm.version>5.2</asm.version>
         <teavm.version>0.10.1</teavm.version>
         <objenesis.version>3.4</objenesis.version>
+        <chicory.version>1.5.3</chicory.version>
     </properties>
 
 </project>

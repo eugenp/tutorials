@@ -677,6 +677,7 @@
                 <module>java-jdi</module>
                 <module>java-panama</module>
                 <module>javafx</module>
+                <module>javafx-2</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
@@ -687,7 +688,6 @@
                 <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jts</module>
-                <module>jws</module>
                 <module>ksqldb</module>
                 <module>kubernetes-modules</module>
                 <module>libraries</module> <!-- very long running -->
@@ -803,7 +803,6 @@
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
                 <module>spring-grpc</module>
-                <module>spring-jersey</module>
                 <module>spring-kafka</module>
                 <module>spring-kafka-2</module>
                 <module>spring-kafka-3</module>
@@ -840,6 +839,7 @@
                 <module>web-modules</module>
                 <module>webrtc</module>
                 <module>xml-modules</module>
+                <module>java-mcp</module>
             </modules>
 
             <properties>
@@ -971,6 +971,47 @@
                 <java.version>24</java.version>
                 <maven.compiler.source>24</maven.compiler.source>
                 <maven.compiler.target>24</maven.compiler.target>
+                <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
+            </properties>
+
+        </profile>
+
+        <profile>
+            <id>default-jdk25</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <includes>
+                                <include>SpringContextTest</include>
+                                <include>**/*UnitTest</include>
+                            </includes>
+                            <excludes>
+                                <exclude>**/*IntegrationTest.java</exclude>
+                                <exclude>**/*IntTest.java</exclude>
+                                <exclude>**/*LongRunningUnitTest.java</exclude>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/JdbcTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>core-java-modules/core-java-25</module>
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>25</java.version>
+                <maven.compiler.source>25</maven.compiler.source>
+                <maven.compiler.target>25</maven.compiler.target>
                 <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
             </properties>
 
@@ -1120,6 +1161,7 @@
                 <module>java-jdi</module>
                 <module>java-panama</module>
                 <module>javafx</module>
+                <module>javafx-2</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
@@ -1130,7 +1172,6 @@
                 <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jts</module>
-                <module>jws</module>
                 <module>ksqldb</module>
                 <module>kubernetes-modules</module>
                 <module>libraries</module> <!-- very long running -->
@@ -1246,7 +1287,6 @@
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
                 <module>spring-grpc</module>
-                <module>spring-jersey</module>
                 <module>spring-kafka</module>
                 <module>spring-kafka-2</module>
                 <module>spring-kafka-3</module>
@@ -1405,6 +1445,42 @@
         </profile>
 
         <profile>
+            <id>integration-jdk25</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*IntegrationTest.java</include>
+                                <include>**/*IntTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>core-java-modules/core-java-25</module>
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>25</java.version>
+                <maven.compiler.source>25</maven.compiler.source>
+                <maven.compiler.target>25</maven.compiler.target>
+                <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
+            </properties>
+
+        </profile>
+
+        <profile>
             <id>live-all</id>
             <build>
                 <plugins>
@@ -1504,6 +1580,7 @@
                 <module>spring-cloud-cli</module> <!-- Not a maven project -->
                 <module>spring-roo</module> <!-- Not supported JAVA-17327 -->
                 <module>apache-spark</module> <!-- JAVA-42030 -->
+                <module>apache-spark-2</module>
                 <module>jhipster-modules</module><!-- failing after upgrading to jdk17-->
                 <module>persistence-modules/java-harperdb</module> <!-- This module requires a library to download manually --> <!-- JAVA-42044 -->
                 <module>spring-cloud-modules/spring-cloud-data-flow</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42054 -->
@@ -1538,6 +1615,8 @@
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
+                <module>testing-modules/selenium-3/scrollelementintoview</module>
+                <module>testing-modules/selenium-3/selenium-json-demo</module>
             </modules>
         </profile>
 
@@ -1570,6 +1649,7 @@
                 <module>spring-cloud-cli</module> <!-- Not a maven project -->
                 <module>spring-roo</module> <!-- Not supported JAVA-17327 -->
                 <module>apache-spark</module> <!-- JAVA-42030 -->
+                <module>apache-spark-2</module>
                 <module>jhipster-modules</module><!-- failing after upgrading to jdk17-->
                 <module>persistence-modules/java-harperdb</module> <!-- This module requires a library to download manually --> <!-- JAVA-42044 -->
                 <module>spring-cloud-modules/spring-cloud-data-flow</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42054 -->
@@ -1604,6 +1684,8 @@
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
+                <module>testing-modules/selenium-3/scrollelementintoview</module>
+                <module>testing-modules/selenium-3/selenium-json-demo</module>
             </modules>
         </profile>
 
