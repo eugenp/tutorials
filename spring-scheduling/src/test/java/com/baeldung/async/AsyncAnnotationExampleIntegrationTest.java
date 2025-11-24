@@ -2,7 +2,7 @@ package com.baeldung.async;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.CompletableFuture;
-
+import com.baeldung.async.AsyncComponent;
 // JUnit 5 Imports
 import org.junit.jupiter.api.Test; 
 import org.junit.jupiter.api.extension.ExtendWith;
