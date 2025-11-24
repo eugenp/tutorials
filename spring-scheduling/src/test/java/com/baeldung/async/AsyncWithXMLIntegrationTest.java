@@ -1,16 +1,12 @@
 package com.baeldung.async;
 
-// JUnit 5 Imports
-import org.junit.jupiter.api.Test; 
-import org.junit.jupiter.api.extension.ExtendWith;
-
-// Spring Imports
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension; // Use JUnit 5 Extension
-import com.baeldung.async.AsyncComponent;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@ExtendWith(SpringExtension.class)
+@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:springAsync-config.xml")
 public class AsyncWithXMLIntegrationTest {
 
