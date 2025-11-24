@@ -49,8 +49,6 @@ public class AsyncAnnotationExampleIntegrationTest {
 
     @Test
     public void testAsyncAnnotationForMethodsWithException() throws Exception {
-        // This test relies on an exception handler (AsyncUncaughtExceptionHandler) 
-        // being configured for void return types.
         asyncAnnotationExample.asyncMethodWithExceptions();
     }
 }
