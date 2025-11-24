@@ -1,19 +1,19 @@
 package com.baeldung.springretry;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import org.junit.jupiter.api.Test; // Use JUnit 5 Test
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.mock.mockito.SpyBean;  
 import org.springframework.retry.support.RetryTemplate;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension; // Use JUnit 5 Extension
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import java.sql.SQLException;
@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 
 import com.baeldung.springretry.logging.LogAppender;
 
-@ExtendWith(SpringExtension.class) // Using JUnit 5 Spring extension
+@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = AppConfig.class, loader = AnnotationConfigContextLoader.class)
 public class SpringRetryIntegrationTest {
 
