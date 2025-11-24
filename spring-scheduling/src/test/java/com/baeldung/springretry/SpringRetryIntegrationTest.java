@@ -42,10 +42,9 @@ public class SpringRetryIntegrationTest {
     @Autowired
     private RetryTemplate retryTemplateNoRetry; // Corrected variable name from AppConfig
 
-    @Test
+    @Test(expected = RuntimeException.class)
     public void givenRetryService_whenCallWithException_thenRetry() {
-        // Converted from @Test(expected = RuntimeException.class) to JUnit 5 assertThrows
-        assertThrows(RuntimeException.class, () -> myService.retryService());
+        myService.retryService();
     }
 
     @Test
@@ -83,27 +82,21 @@ public class SpringRetryIntegrationTest {
         verify(myService, times(Integer.parseInt(maxAttempts))).retryServiceWithExternalConfiguration(any());
     }
 
-    @Test
+    @Test(expected = RuntimeException.class)
     public void givenTemplateRetryService_whenCallWithException_thenRetry() {
-        // Converted from @Test(expected = RuntimeException.class) to JUnit 5 assertThrows
-        assertThrows(RuntimeException.class, () -> {
-            retryTemplate.execute(arg0 -> {
-                myService.templateRetryService();
-                return null;
-            });
+        retryTemplate.execute(arg0 -> {
+            myService.templateRetryService();
+            return null;
         });
     }
 
-    @Test
+
+    @Test(expected = RuntimeException.class)
     public void givenTemplateRetryServiceWithZeroAttempts_whenCallWithException_thenFailImmediately() {
-        // Converted from @Test(expected = RuntimeException.class) to JUnit 5 assertThrows
-        assertThrows(RuntimeException.class, () -> {
-            retryTemplateNoRetry.execute(arg0 -> {
-                myService.templateRetryService();
-                return null;
-            });
+        retryTemplateNoAttempts.execute(arg0 -> {
+            myService.templateRetryService();
+            return null;
         });
-        // The service should only be called once if maxAttempts is 1 (zero retries)
         verify(myService, times(1)).templateRetryService(); 
     }
 
