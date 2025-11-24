@@ -2,20 +2,16 @@ package com.baeldung.async;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import com.baeldung.async.AsyncService;
-// JUnit 5 Imports
-import org.junit.jupiter.api.Test; 
-import org.junit.jupiter.api.extension.ExtendWith;
-
-// Spring Imports
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension; // Use JUnit 5 Extension
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.baeldung.async.config.SpringAsyncConfig;
 
-@ExtendWith(SpringExtension.class)
+@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { SpringAsyncConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class AsyncServiceUnitTest {
 
