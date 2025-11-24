@@ -36,7 +36,7 @@ public class ElasticsearchWildcardService {
      * Note: For case-insensitive search, the searchTerm is converted to lowercase
      * and the field should be mapped with a .keyword subfield or use caseInsensitive flag
      */
-    public List<Map<String, Object>> wildcardSearch(String indexName, String fieldName, String searchTerm) throws IOException {
+    public List<Map<String, Object>> wildcardSearchOnField(String indexName, String fieldName, String searchTerm) throws IOException {
         logger.info("Performing wildcard search on index: {}, field: {}, term: {}", indexName, fieldName, searchTerm);
 
         // Convert search term to lowercase for case-insensitive search
@@ -51,7 +51,7 @@ public class ElasticsearchWildcardService {
         return extractSearchResults(response);
     }
 
-    public List<Map<String, Object>> wildcardSearchOnKeyword(String indexName, String fieldName, String searchTerm) throws IOException {
+    public List<Map<String, Object>> wildcardSearch(String indexName, String fieldName, String searchTerm) throws IOException {
         logger.info("Performing wildcard search on keyword field - index: {}, field: {}, term: {}", indexName, fieldName, searchTerm);
 
         // Use the .keyword subfield for exact matching
@@ -69,9 +69,6 @@ public class ElasticsearchWildcardService {
         return extractSearchResults(response);
     }
 
-    /**
-     * Performs prefix search - optimized for autocomplete
-     */
     public List<Map<String, Object>> prefixSearch(String indexName, String fieldName, String prefix) throws IOException {
         logger.info("Performing prefix search on index: {}, field: {}, prefix: {}", indexName, fieldName, prefix);
 
@@ -83,9 +80,6 @@ public class ElasticsearchWildcardService {
         return extractSearchResults(response);
     }
 
-    /**
-     * Performs regex search for complex pattern matching
-     */
     public List<Map<String, Object>> regexpSearch(String indexName, String fieldName, String pattern) throws IOException {
         logger.info("Performing regexp search on index: {}, field: {}, pattern: {}", indexName, fieldName, pattern);
 
@@ -163,8 +157,8 @@ public class ElasticsearchWildcardService {
     /**
      * Advanced wildcard search with filtering and sorting
      */
-    public List<Map<String, Object>> advancedWildcardSearch(String indexName, String wildcardField, String wildcardTerm, String filterField, String filterValue,
-        String sortField) throws IOException {
+    public List<Map<String, Object>> advancedWildcardSearchWithFields(String indexName, String wildcardField, String wildcardTerm, String filterField,
+        String filterValue, String sortField) throws IOException {
         logger.info("Performing advanced wildcard search on index: {}", indexName);
 
         SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName)
@@ -179,16 +173,49 @@ public class ElasticsearchWildcardService {
         return extractSearchResults(response);
     }
 
-    /**
-     * Multi-field wildcard search
-     */
-    public List<Map<String, Object>> multiFieldWildcardSearch(String indexName, String searchTerm, String... fields) throws IOException {
+    public List<Map<String, Object>> advancedWildcardSearch(String indexName, String wildcardField, String wildcardTerm, String filterField, String filterValue,
+        String sortField) throws IOException {
+        logger.info("Performing advanced wildcard search on index: {}", indexName);
+
+        SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName)
+            .query(q -> q.bool(b -> b.must(m -> m.wildcard(w -> w.field(wildcardField + ".keyword")  // Use .keyword for case-insensitive wildcard
+                    .value(wildcardTerm)
+                    .caseInsensitive(true)))
+                .filter(f -> f.term(t -> t.field(filterField)  // Remove .keyword - status is already keyword type
+                    .value(filterValue)))))
+            .sort(so -> so.field(f -> f.field(sortField + ".keyword")  // Use .keyword for sorting text fields
+                .order(SortOrder.Asc)))
+            .size(maxResults), ObjectNode.class);
+
+        return extractSearchResults(response);
+    }
+
+    public List<Map<String, Object>> multiFieldWildcardSearchWithFields(String indexName, String searchTerm, String... fields) throws IOException {
         logger.info("Performing multi-field wildcard search on index: {}, fields: {}", indexName, String.join(", ", fields));
 
         SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName)
             .query(q -> q.multiMatch(m -> m.query(searchTerm)
                 .fields(List.of(fields))
                 .type(TextQueryType.PhrasePrefix)))
+            .size(maxResults), ObjectNode.class);
+
+        return extractSearchResults(response);
+    }
+
+    public List<Map<String, Object>> multiFieldWildcardSearch(String indexName, String searchTerm, String... fields) throws IOException {
+        logger.info("Performing multi-field wildcard search on index: {}, fields: {}", indexName, String.join(", ", fields));
+
+        // Build a bool query with should clauses for each field
+        SearchResponse<ObjectNode> response = elasticsearchClient.search(s -> s.index(indexName)
+            .query(q -> q.bool(b -> {
+                // Add a wildcard query for each field
+                for (String field : fields) {
+                    b.should(sh -> sh.wildcard(w -> w.field(field + ".keyword")
+                        .value("*" + searchTerm.toLowerCase() + "*")
+                        .caseInsensitive(true)));
+                }
+                return b.minimumShouldMatch("1"); // At least one field must match
+            }))
             .size(maxResults), ObjectNode.class);
 
         return extractSearchResults(response);

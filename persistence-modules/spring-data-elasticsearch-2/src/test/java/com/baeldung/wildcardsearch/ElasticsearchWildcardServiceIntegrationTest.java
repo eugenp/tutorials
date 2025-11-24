@@ -10,8 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assumptions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -20,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
-import org.testcontainers.DockerClientFactory;
 import org.testcontainers.elasticsearch.ElasticsearchContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -35,22 +32,7 @@ import co.elastic.clients.elasticsearch.indices.DeleteIndexRequest;
 class ElasticsearchWildcardServiceIntegrationTest {
 
     private static final Logger logger = LoggerFactory.getLogger(ElasticsearchWildcardServiceIntegrationTest.class);
-
-
-    @BeforeAll
-    static void checkDocker() {
-        Assumptions.assumeTrue(
-            DockerClientFactory.instance().isDockerAvailable(),
-            "Docker is not available, skipping Testcontainers-based tests"
-        );
-    }
-
-    @Container
-    static ElasticsearchContainer elasticsearchContainer = new ElasticsearchContainer("docker.elastic.co/elasticsearch/elasticsearch:8.11.1")
-        .withExposedPorts(9200)
-        .withEnv("discovery.type", "single-node")
-        .withEnv("xpack.security.enabled", "false")
-        .withEnv("xpack.security.http.ssl.enabled", "false");
+    private static final String TEST_INDEX = "test_users";
 
     @Autowired
     private ElasticsearchWildcardService wildcardService;
@@ -58,7 +40,12 @@ class ElasticsearchWildcardServiceIntegrationTest {
     @Autowired
     private ElasticsearchClient elasticsearchClient;
 
-    private static final String TEST_INDEX = "test_users";
+    @Container
+    static ElasticsearchContainer elasticsearchContainer = new ElasticsearchContainer("docker.elastic.co/elasticsearch/elasticsearch:8.11.1").withExposedPorts(
+            9200)
+        .withEnv("discovery.type", "single-node")
+        .withEnv("xpack.security.enabled", "false")
+        .withEnv("xpack.security.http.ssl.enabled", "false");
 
     @DynamicPropertySource
     static void configureProperties(DynamicPropertyRegistry registry) {
@@ -74,18 +61,20 @@ class ElasticsearchWildcardServiceIntegrationTest {
         // Index sample documents
         indexSampleDocuments();
 
+        // Wait for documents to be indexed
         // Wait until documents are actually indexed
-        waitUntilDocumentsIndexed(3); // Adjust expected count based on your test data
+        waitUntilDocumentsIndexed(); // Adjust expected count based on your test data
     }
 
-    private void waitUntilDocumentsIndexed(int expectedCount) throws IOException {
+    private void waitUntilDocumentsIndexed() {
         await().atMost(Duration.ofSeconds(10))
             .pollInterval(Duration.ofMillis(100))
             .pollDelay(Duration.ofMillis(50))
             .untilAsserted(() -> {
-                List<Map<String, Object>> results = wildcardService.regexpSearch(TEST_INDEX, "name", "*");
-                assertThat(results).as("Expected at least %d documents to be indexed", expectedCount)
-                    .hasSizeGreaterThanOrEqualTo(expectedCount);
+
+                List<Map<String, Object>> results = wildcardService.wildcardSearch(TEST_INDEX, "name", "j*");
+                assertThat(results).as("Expected at least %d documents to be indexed", 3)
+                    .hasSizeGreaterThanOrEqualTo(3);
             });
     }
 
@@ -100,11 +89,10 @@ class ElasticsearchWildcardServiceIntegrationTest {
     @Test
     void whenWildcardSearchOnKeyword_thenReturnMatchingDocuments() throws IOException {
         // When
-        List<Map<String, Object>> results = wildcardService.wildcardSearchOnKeyword(TEST_INDEX, "name", "john*");
+        List<Map<String, Object>> results = wildcardService.wildcardSearch(TEST_INDEX, "name", "john*");
 
         // Then
-        assertThat(results)
-            .isNotEmpty()
+        assertThat(results).isNotEmpty()
             .hasSize(2)
             .extracting(result -> result.get("name"))
             .doesNotContainNull()
@@ -120,8 +108,7 @@ class ElasticsearchWildcardServiceIntegrationTest {
         List<Map<String, Object>> results = wildcardService.prefixSearch(TEST_INDEX, "email", "john");
 
         // Then
-        assertThat(results)
-            .isNotEmpty()
+        assertThat(results).isNotEmpty()
             .extracting(result -> result.get("email"))
             .doesNotContainNull()
             .extracting(Object::toString)
@@ -134,8 +121,7 @@ class ElasticsearchWildcardServiceIntegrationTest {
         List<Map<String, Object>> results = wildcardService.fuzzySearch(TEST_INDEX, "name", "jhon");
 
         // Then
-        assertThat(results)
-            .isNotEmpty()
+        assertThat(results).isNotEmpty()
             .extracting(result -> result.get("name"))
             .doesNotContainNull()
             .extracting(Object::toString)
@@ -145,22 +131,23 @@ class ElasticsearchWildcardServiceIntegrationTest {
 
     @Test
     void whenAdvancedWildcardSearch_thenReturnFilteredAndMatchingResults() throws IOException {
-        // When
+        // When - search for names containing "john" with status "active"
+        // Should return doc1 (John Doe) and doc3 (Johnny Smith)
         List<Map<String, Object>> results = wildcardService.advancedWildcardSearch(TEST_INDEX, "name", "*john*", "status", "active", "name");
 
         // Then
-        assertThat(results)
-            .isNotEmpty()
-            .extracting(result -> result.get("status"))
-            .doesNotContainNull()
-            .extracting(Object::toString)
-            .allSatisfy(status -> assertThat(status).isEqualTo("active"));
+        assertThat(results).isNotEmpty()
+            .hasSize(2)  // Exactly 2 documents match
+            .allSatisfy(result -> {
+                assertThat(result.get("status")).isNotNull()
+                    .extracting(Object::toString)
+                    .isEqualTo("active");
 
-        assertThat(results)
-            .extracting(result -> result.get("name"))
-            .doesNotContainNull()
-            .extracting(Object::toString)
-            .allSatisfy(name -> assertThat(name.toLowerCase()).contains("john"));
+                assertThat(result.get("name")).isNotNull()
+                    .extracting(Object::toString)
+                    .asString()
+                    .containsIgnoringCase("john");
+            });
     }
 
     @Test
@@ -169,8 +156,7 @@ class ElasticsearchWildcardServiceIntegrationTest {
         List<Map<String, Object>> results = wildcardService.wildcardSearch(TEST_INDEX, "name", "*john*");
 
         // Then
-        assertThat(results)
-            .hasSizeGreaterThanOrEqualTo(2)
+        assertThat(results).hasSizeGreaterThanOrEqualTo(2)
             .extracting(result -> result.get("name"))
             .doesNotContainNull()
             .extracting(Object::toString)
