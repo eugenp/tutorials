@@ -93,7 +93,7 @@ public class SpringRetryIntegrationTest {
 
     @Test(expected = RuntimeException.class)
     public void givenTemplateRetryServiceWithZeroAttempts_whenCallWithException_thenFailImmediately() {
-        retryTemplateNoAttempts.execute(arg0 -> {
+        retryTemplateNoRetry.execute(arg0 -> {
             myService.templateRetryService();
             return null;
         });
