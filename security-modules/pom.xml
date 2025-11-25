@@ -21,6 +21,7 @@
         <module>jee-7-security</module>
         <module>jjwt</module>
         <module>jwt</module>
+        <module>jws</module>
         <module>oauth2-framework-impl</module>
         <module>sql-injection-samples</module>
     </modules>
