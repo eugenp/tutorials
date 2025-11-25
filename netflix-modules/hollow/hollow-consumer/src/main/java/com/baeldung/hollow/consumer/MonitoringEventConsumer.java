@@ -18,7 +18,7 @@ public class MonitoringEventConsumer {
     static HollowConsumer consumer;
     static HollowFilesystemAnnouncementWatcher announcementWatcher;
     static HollowFilesystemBlobRetriever blobRetriever;
-    static boolean initialized = false;
+    static MonitoringEventAPI monitoringEventAPI;
 
     final static long POLL_INTERVAL_MILLISECONDS = 30000;
     final static String SNAPSHOT_DIR = System.getProperty("user.home") + "/.hollow/snapshots";
@@ -26,7 +26,7 @@ public class MonitoringEventConsumer {
     public static void main(String[] args) {
         initialize(getSnapshotFilePath());
         while (true) {
-            Collection<MonitoringEvent> events = consumer.getAPI(MonitoringEventAPI.class).getAllMonitoringEvent();
+            Collection<MonitoringEvent> events = monitoringEventAPI.getAllMonitoringEvent();
             processEvents(events);
             sleep(POLL_INTERVAL_MILLISECONDS);
         }
@@ -36,30 +36,26 @@ public class MonitoringEventConsumer {
         logger.info("Processing {} events", events.size());
         events.forEach(evt -> {
             logger.info("Event ID: {}, Name: {}, Type: {}, Status: {}, Device ID: {}, Creation Date: {}",
-                evt.getEventId(),
-                evt.getEventName().getValue(),
-                evt.getEventType().getValue(),
-                evt.getStatus().getValue(),
-                evt.getDeviceId().getValue(),
-                evt.getCreationDate().getValue());
+                    evt.getEventId(),
+                    evt.getEventName().getValue(),
+                    evt.getEventType().getValue(),
+                    evt.getStatus().getValue(),
+                    evt.getDeviceId().getValue(),
+                    evt.getCreationDate().getValue());
         });
     }
 
     private static void initialize(final Path snapshotPath) {
-        if (initialized) {
-            return;
-        }
-
         announcementWatcher = new HollowFilesystemAnnouncementWatcher(snapshotPath);
         blobRetriever = new HollowFilesystemBlobRetriever(snapshotPath);
 
         consumer = new HollowConsumer.Builder<>()
-            .withAnnouncementWatcher(announcementWatcher)
-            .withBlobRetriever(blobRetriever)
-            .withGeneratedAPIClass(MonitoringEventAPI.class)
-            .build();
+                .withAnnouncementWatcher(announcementWatcher)
+                .withBlobRetriever(blobRetriever)
+                .withGeneratedAPIClass(MonitoringEventAPI.class)
+                .build();
+        monitoringEventAPI = consumer.getAPI(MonitoringEventAPI.class);
         consumer.triggerRefresh();
-        initialized = true;
     }
 
     private static void sleep(long milliseconds) {
@@ -72,8 +68,8 @@ public class MonitoringEventConsumer {
 
     private static Path getSnapshotFilePath() {
         logger.info("snapshot data directory: {}", SNAPSHOT_DIR);
-        
-        Path path = Paths.get(SNAPSHOT_DIR);        
+
+        Path path = Paths.get(SNAPSHOT_DIR);
         return path;
     }
 }

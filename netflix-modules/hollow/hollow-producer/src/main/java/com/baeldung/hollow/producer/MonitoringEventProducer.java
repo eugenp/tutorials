@@ -28,8 +28,6 @@ public class MonitoringEventProducer {
     final static String SNAPSHOT_DIR = System.getProperty("user.home") + "/.hollow/snapshots";
 
     static MonitoringDataService dataService;
-    
-    static boolean initialized = false;
 
     public static void main(String[] args) {
         initialize(getSnapshotFilePath());
@@ -37,22 +35,17 @@ public class MonitoringEventProducer {
     }
 
     private static void initialize(final Path snapshotPath) {
-        if (initialized) {
-            return;
-        }
         publisher = new HollowFilesystemPublisher(snapshotPath);
         announcer = new HollowFilesystemAnnouncer(snapshotPath);
         producer = HollowProducer.withPublisher(publisher)
-            .withAnnouncer(announcer)
-            .build();
+                .withAnnouncer(announcer)
+                .build();
         dataService = new MonitoringDataService();
         mapper = new HollowObjectMapper(producer.getWriteEngine());
-
-        initialized = true;
     }
 
     private static void pollEvents() {
-        while(true) {
+        while (true) {
             List<MonitoringEvent> events = dataService.retrieveEvents();
             events.forEach(mapper::add);
             producer.runCycle(task -> {
@@ -61,7 +54,7 @@ public class MonitoringEventProducer {
             producer.getWriteEngine().prepareForNextCycle();
             sleep(POLL_INTERVAL_MILLISECONDS);
         }
-    }   
+    }
 
     private static void sleep(long milliseconds) {
         try {
@@ -72,17 +65,17 @@ public class MonitoringEventProducer {
     }
 
     private static Path getSnapshotFilePath() {
-   
+
         logger.info("snapshot data directory: {}", SNAPSHOT_DIR);
         Path path = Paths.get(SNAPSHOT_DIR);
-        
+
         // Create directories if they don't exist
         try {
             Files.createDirectories(path);
         } catch (java.io.IOException e) {
             throw new RuntimeException("Failed to create snapshot directory: " + path, e);
         }
-        
+
         return path;
     }
 }

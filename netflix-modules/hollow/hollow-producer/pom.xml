@@ -20,6 +20,7 @@
                 <version>3.0.0</version>
                 <executions>
                     <execution>
+                        <?m2e execute onConfiguration,onIncremental?>
                         <id>generate-consumer-api</id>
                         <phase>compile</phase>
                         <goals>
@@ -29,7 +30,6 @@
                             <mainClass>com.baeldung.hollow.producer.ConsumerApiGenerator</mainClass>
                             <arguments>
                                 <argument>${project.build.directory}/generated-sources</argument>
-                                <argument>${project.build.outputDirectory}</argument>
                             </arguments>
                             <includeProjectDependencies>true</includeProjectDependencies>
                             <classpathScope>compile</classpathScope>

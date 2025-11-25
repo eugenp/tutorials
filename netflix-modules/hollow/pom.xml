@@ -6,14 +6,17 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <artifactId>hollow</artifactId>
+    <name>hollow</name>
+    <packaging>pom</packaging>
+    <description>Module for Netflix Hollow</description>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>netflix-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>hollow</artifactId>
-    <packaging>pom</packaging>
     <modules>
         <module>hollow-producer</module>
         <module>hollow-consumer</module>
@@ -33,8 +36,7 @@
             <groupId>com.netflix.hollow</groupId>
             <artifactId>hollow</artifactId>
             <version>${hollow.version}</version>
-        </dependency>
-        <!-- Add other dependencies as necessary -->
+        </dependency>        
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
