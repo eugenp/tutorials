@@ -3,7 +3,12 @@ package com.baeldung.exception.arrayindexoutofbounds;
 import java.util.Arrays;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class ArrayIndexOutOfBoundsExceptionDemo {
+
+    private static Logger LOG = LoggerFactory.getLogger(ArrayIndexOutOfBoundsExceptionDemo.class);
 
     public static void main(String[] args) {
         int[] numbers = new int[] { 1, 2, 3, 4, 5 };
@@ -20,7 +25,7 @@ public class ArrayIndexOutOfBoundsExceptionDemo {
         }
     }
 
-    public static String addArrayElementsUsingLoopInsideTryCatchBlock(int[] numbers) {
+    public static int addArrayElementsUsingLoopInsideTryCatchBlock(int[] numbers) {
         int sum = 0;
 
         try {
@@ -28,9 +33,11 @@ public class ArrayIndexOutOfBoundsExceptionDemo {
                 sum += numbers[i];
             }
         } catch (ArrayIndexOutOfBoundsException e) {
-            return "index out of bound";
+            LOG.info("Attempted to access an index outside array bounds: {}", e.getMessage());
+            return -1;
         }
-        return "";
+
+        return sum;
     }
 
     public static int getListElementAtIndex(int index) {

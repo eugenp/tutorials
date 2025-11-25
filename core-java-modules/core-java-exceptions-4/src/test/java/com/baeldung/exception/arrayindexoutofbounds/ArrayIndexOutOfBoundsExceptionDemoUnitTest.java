@@ -22,7 +22,8 @@ public class ArrayIndexOutOfBoundsExceptionDemoUnitTest {
 
     @Test
     void givenAnArrayOfSizeFive_whenAccessedElementBeyondRangeWithTryCatchBlock_thenShouldThrowArrayIndexOutOfBoundsException() {
-        assertEquals("index out of bound", ArrayIndexOutOfBoundsExceptionDemo.addArrayElementsUsingLoopInsideTryCatchBlock(numbers));
+        int result = ArrayIndexOutOfBoundsExceptionDemo.addArrayElementsUsingLoopInsideTryCatchBlock(numbers);
+        assertEquals(-1, result);
 
     }
 
