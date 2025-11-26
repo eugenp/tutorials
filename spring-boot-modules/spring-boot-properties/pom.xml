@@ -123,11 +123,11 @@
     </profiles>
 
     <properties>
-        <spring-cloud.version>2023.0.1</spring-cloud.version>
+        <spring-cloud.version>2025.0.0</spring-cloud.version>
         <commons-configuration.version>1.10</commons-configuration.version>
         <resource.delimiter>@</resource.delimiter>
         <start-class>com.baeldung.yaml.MyApplication</start-class>
-        <spring-boot.version>3.2.2</spring-boot.version>
+        <spring-boot.version>3.5.7</spring-boot.version>
     </properties>
 
 </project>
