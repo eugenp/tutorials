@@ -86,6 +86,7 @@
     </build>
 
     <properties>
+        <spring-boot.version>3.5.7</spring-boot.version>
         <rest-assured.version>5.5.0</rest-assured.version>
         <jstl-version>1.2</jstl-version>
         <jakarta.servlet.jsp.jstl.version>2.0.0</jakarta.servlet.jsp.jstl.version>

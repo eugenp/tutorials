@@ -95,7 +95,6 @@
         <jimmer.version>0.9.81</jimmer.version>
         <spring.boot.version>3.4.1</spring.boot.version>
         <maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
-        <lombok.version>1.18.36</lombok.version>
     </properties>
 
 </project>
