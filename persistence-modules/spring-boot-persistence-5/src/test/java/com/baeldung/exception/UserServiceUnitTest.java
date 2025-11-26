@@ -20,30 +20,44 @@ class UserServiceUnitTest {
     @Test
     void givenExistingUsername_whenFindUserByUsernameOrThrow_thenReturnUser() {
         User user = new User("john", "john@example.com");
-        when(userRepository.findByUsername("john")).thenReturn(Optional.of(user));
+        when(userRepository.findByUsername("john"))
+          .thenReturn(Optional.of(user));
+
         User result = userService.findUserByUsernameOrThrow("john");
+
         assertEquals("john", result.getUsername());
     }
 
     @Test
     void givenUnknownUsername_whenFindUserByUsernameOrThrow_thenThrowUserNotFoundException() {
-        when(userRepository.findByUsername("ghost")).thenReturn(Optional.empty());
-        assertThrows(UserNotFoundException.class,
-          () -> userService.findUserByUsernameOrThrow("ghost"));
+        when(userRepository.findByUsername("ghost"))
+          .thenReturn(Optional.empty());
+
+        assertThrows(
+          UserNotFoundException.class,
+          () -> userService.findUserByUsernameOrThrow("ghost")
+        );
     }
 
     @Test
     void givenExistingEmail_whenFindUserByEmailOrThrow_thenReturnUser() {
         User user = new User("anna", "anna@example.com");
-        when(userRepository.findByEmail("anna@example.com")).thenReturn(Optional.of(user));
+        when(userRepository.findByEmail("anna@example.com"))
+          .thenReturn(Optional.of(user));
+
         User result = userService.findUserByEmailOrThrow("anna@example.com");
+
         assertEquals("anna@example.com", result.getEmail());
     }
 
     @Test
     void givenUnknownEmail_whenFindUserByEmailOrThrow_thenThrowUserNotFoundException() {
-        when(userRepository.findByEmail("missing@example.com")).thenReturn(Optional.empty());
-        assertThrows(UserNotFoundException.class,
-          () -> userService.findUserByEmailOrThrow("missing@example.com"));
+        when(userRepository.findByEmail("missing@example.com"))
+          .thenReturn(Optional.empty());
+
+        assertThrows(
+          UserNotFoundException.class,
+          () -> userService.findUserByEmailOrThrow("missing@example.com")
+        );
     }
 }
