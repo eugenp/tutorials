@@ -32,7 +32,7 @@ import org.mockito.stubbing.Answer;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = AppConfig.class)
-public class SpringRetryIntegrationTestIT {
+public class SpringRetryIntegrationTest {
 
     @MockitoSpyBean
     private MyService myService;
