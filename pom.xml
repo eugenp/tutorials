@@ -640,7 +640,6 @@
                 <module>apollo</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
-                <module>spring-boot-azure-deployment</module>
                 <module>azure-functions</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
@@ -665,7 +664,6 @@
                 <module>grpc</module>
                 <module>guava-modules</module>
                 <module>hazelcast</module>
-                <module>spring-boot-heroku-deployment</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>image-compression</module>
@@ -1124,7 +1122,6 @@
                 <module>apollo</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
-                <module>spring-boot-azure-deployment</module>
                 <module>azure-functions</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
@@ -1149,7 +1146,6 @@
                 <module>grpc</module>
                 <module>guava-modules</module>
                 <module>hazelcast</module>
-                <module>spring-boot-heroku-deployment</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>image-compression</module>
