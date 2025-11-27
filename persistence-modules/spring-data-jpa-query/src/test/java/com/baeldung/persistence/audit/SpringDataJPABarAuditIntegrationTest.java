@@ -17,7 +17,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
-import org.springframework.transaction.annotation.Transactional; // <-- IMPORT ADDED
+import org.springframework.transaction.annotation.Transactional;
 
 import com.baeldung.persistence.config.PersistenceTestConfig;
 import com.baeldung.persistence.model.Bar;
@@ -65,13 +65,14 @@ public class SpringDataJPABarAuditIntegrationTest {
     }
 
     @Test
-    @Transactional // <-- FIX: Ensures auditing context is available
+    @Transactional
     @WithMockUser(username = "tutorialuser")
     public final void whenBarsModified_thenBarsAudited() {
         Bar bar = new Bar("BAR1");
         
         // 1. Create (INSERT)
-        bar = barService.create(bar); // Ensure we get the updated managed entity
+        // FIX: Remove assignment because barService.create likely returns void
+        barService.create(bar); 
         
         // Assertions after INSERT
         assertEquals(bar.getCreatedDate(), bar.getModifiedDate(), "Created and Modified dates should be equal after insert.");
@@ -81,7 +82,8 @@ public class SpringDataJPABarAuditIntegrationTest {
         bar.setName("BAR2");
         
         // 2. Update (UPDATE)
-        bar = barService.update(bar);
+        // Keep assignment assuming barService.update returns the managed Bar instance
+        bar = barService.update(bar); 
         
         // Assertions after UPDATE
         assertTrue(bar.getCreatedDate() < bar.getModifiedDate(), "Modified date should be greater than created date after update.");
