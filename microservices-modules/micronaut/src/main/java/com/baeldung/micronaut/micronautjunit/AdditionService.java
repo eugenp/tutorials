@@ -1,12 +1,7 @@
 package com.baeldung.micronaut.micronautjunit;
 
-import jakarta.inject.Singleton;
+public interface AdditionService {
 
-@Singleton
-public class AdditionService {
-
-    public Integer sum(int a, int b) {
-        return a + b;
-    }
+    Integer sum(int a, int b);
 
 }
