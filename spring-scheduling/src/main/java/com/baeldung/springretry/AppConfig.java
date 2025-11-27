@@ -7,11 +7,12 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.retry.annotation.EnableRetry;
 import org.springframework.retry.backoff.FixedBackOffPolicy;
 import org.springframework.retry.support.RetryTemplate;
- 
+import org.springframework.resilience.annotation.EnableResilientMethods;
 
 @Configuration
 @ComponentScan(basePackages = "com.baeldung.springretry")
 @EnableRetry
+@EnableResilientMethods 
 @PropertySource("classpath:retryConfig.properties")
 public class AppConfig {
 
