@@ -29,9 +29,9 @@ import com.baeldung.persistence.config.PersistenceTestConfig;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceTestConfig.class }, loader = AnnotationConfigContextLoader.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
-public class EnversFooBarAuditIntegrationTestIT {
+public class EnversFooBarAuditIntegrationTest {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(EnversFooBarAuditIntegrationTestIT.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(EnversFooBarAuditIntegrationTest.class);
 
     @Autowired
     @Qualifier("fooHibernateAuditableService")
