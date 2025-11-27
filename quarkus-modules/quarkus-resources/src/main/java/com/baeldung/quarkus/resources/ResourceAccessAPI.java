@@ -45,7 +45,7 @@ public class ResourceAccessAPI {
     @Path("/json")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getJsonResource() throws IOException {
-        return Response.ok(readResource("config.json")).build();
+        return Response.ok(readResource("resources.json")).build();
     }
 
 
