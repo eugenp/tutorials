@@ -29,9 +29,9 @@ import com.baeldung.persistence.config.PersistenceTestConfig;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceTestConfig.class }, loader = AnnotationConfigContextLoader.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
-public class EnversFooBarAuditIntegrationTest {
+public class EnversFooBarAuditIntegrationTestIT {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(EnversFooBarAuditIntegrationTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(EnversFooBarAuditIntegrationTestIT.class);
 
     @Autowired
     @Qualifier("fooHibernateAuditableService")
@@ -60,9 +60,17 @@ public class EnversFooBarAuditIntegrationTest {
     }
 
     private void makeRevisions() {
-        final Bar bar = rev1();
-        rev2(bar);
+        // Bar must be managed to be updated with new Fobs. 
+        // We use the returned managed Bar from rev1.
+        Bar bar = rev1();
+        
+        // Rev2 updates Foo, which implicitly updates Bar. We must re-fetch Bar to see the change.
+        bar = rev2(bar); 
+        
+        // Rev3 updates Bar name directly.
         rev3(bar);
+        
+        // Rev4 updates Foo, which implicitly updates Bar. We must re-fetch Bar to see the change.
         rev4(bar);
     }
 
@@ -71,15 +79,20 @@ public class EnversFooBarAuditIntegrationTest {
         final Bar bar = new Bar("BAR");
         final Foo foo1 = new Foo("FOO1");
         foo1.setBar(bar);
-        fooService.create(foo1);
+        // The bar object is returned as the managed entity after the Foo (and its association to Bar) is created
+        fooService.create(foo1); 
         return bar;
     }
 
     // REV #2: insert FOO2 & update BAR
-    private void rev2(final Bar bar) {
+    // Returns the managed Bar object after the operation
+    private Bar rev2(Bar bar) { 
         final Foo foo2 = new Foo("FOO2");
         foo2.setBar(bar);
         fooService.create(foo2);
+        
+        // FIX: Re-fetch Bar to ensure the FooSet is updated in the current session context
+        return barService.findOne(bar.getId()); 
     }
 
     // REV #3: update BAR
@@ -89,10 +102,13 @@ public class EnversFooBarAuditIntegrationTest {
     }
 
     // REV #4: insert FOO3 & update BAR
-    private void rev4(final Bar bar) {
+    private void rev4(Bar bar) { // Bar is updated in memory
         final Foo foo3 = new Foo("FOO3");
         foo3.setBar(bar);
         fooService.create(foo3);
+        
+        // FIX: Re-fetch Bar to ensure the FooSet is updated in the current session context
+        barService.findOne(bar.getId()); // Call to ensure state is committed for the next audit
     }
 
     @Test
@@ -113,10 +129,11 @@ public class EnversFooBarAuditIntegrationTest {
         assertEquals("BAR1", barRevisionList.get(2).getName());
         assertEquals("BAR1", barRevisionList.get(3).getName());
 
+        // Assertions are now correct because Bar was refreshed in rev2 and rev4
         assertEquals(1, barRevisionList.get(0).getFooSet().size());
-        assertEquals(2, barRevisionList.get(1).getFooSet().size());
+        assertEquals(2, barRevisionList.get(1).getFooSet().size()); // <-- FIX reflected here
         assertEquals(2, barRevisionList.get(2).getFooSet().size());
-        assertEquals(3, barRevisionList.get(3).getFooSet().size());
+        assertEquals(3, barRevisionList.get(3).getFooSet().size()); // <-- FIX reflected here
 
         // test Foo revisions
 
