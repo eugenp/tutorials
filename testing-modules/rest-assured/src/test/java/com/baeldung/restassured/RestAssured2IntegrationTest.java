@@ -21,7 +21,7 @@ import io.restassured.RestAssured;
 public class RestAssured2IntegrationTest {
     private static WireMockServer wireMockServer;
 
-    private static final String EVENTS_PATH = "/odds";
+    private static final String ODDS_PATH = "/odds";
     private static final String APPLICATION_JSON = "application/json";
     private static final String ODDS = getJson();
 
@@ -33,7 +33,7 @@ public class RestAssured2IntegrationTest {
         wireMockServer.start();
         configureFor("localhost", port);
         RestAssured.port = port;
-        stubFor(com.github.tomakehurst.wiremock.client.WireMock.get(urlEqualTo(EVENTS_PATH))
+        stubFor(com.github.tomakehurst.wiremock.client.WireMock.get(urlEqualTo(ODDS_PATH))
           .willReturn(aResponse().withStatus(200)
             .withHeader("Content-Type", APPLICATION_JSON)
             .withBody(ODDS)));
@@ -42,11 +42,13 @@ public class RestAssured2IntegrationTest {
     }
 
     @Test
-    public void givenUrl_whenVerifiesOddPricesAccuratelyByStatus_thenCorrect() {
-        get("/odds").then()
-          .body("odds.findAll { it.status > 0 }.price", hasItems(5.25f, 1.2f));
+    public void whenRequestedPost_thenCreated() {
+        with().body(new Odd(5.25f, 1, 13.1f, "X"))
+          .when()
+          .request("POST", "/odds/new")
+          .then()
+          .statusCode(201);
     }
-
 
     private static String getJson() {
         return Util.inputStreamToString(RestAssured2IntegrationTest.class.getResourceAsStream("/odds.json"));
