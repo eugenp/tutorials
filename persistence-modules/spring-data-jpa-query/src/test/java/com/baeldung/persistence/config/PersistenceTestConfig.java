@@ -2,13 +2,12 @@ package com.baeldung.persistence.config;
 
 import java.util.Properties;
 
-// NOTE: For pure Jakarta EE compliance, this should be jakarta.sql.DataSource, but javax.sql is often acceptable for basic JDBC
-import javax.sql.DataSource; 
+import javax.sql.DataSource;
 
-//   Change to the correct Apache Commons DBCP2 package
 import org.apache.commons.dbcp2.BasicDataSource;
-
+import org.hibernate.SessionFactory; // Added for correct injection
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier; // <-- IMPORT ADDED
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +16,6 @@ import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-//  Update Spring ORM package to Hibernate 6 compatibility
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -47,7 +45,6 @@ import com.baeldung.persistence.service.impl.FooAuditableService;
 import com.baeldung.persistence.service.impl.FooService;
 import com.google.common.base.Preconditions;
 
-// Required for EntityManagerFactory
 import jakarta.persistence.EntityManagerFactory;
 
 
@@ -91,7 +88,6 @@ public class PersistenceTestConfig {
 
     @Bean
     public DataSource restDataSource() {
-        //  BasicDataSource uses the correct import now
         final BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(Preconditions.checkNotNull(env.getProperty("jdbc.driverClassName")));
         dataSource.setUrl(Preconditions.checkNotNull(env.getProperty("jdbc.url")));
@@ -102,16 +98,17 @@ public class PersistenceTestConfig {
     }
 
     @Bean
-    //  Use dependency injection instead of calling sessionFactory().getObject()
-    public PlatformTransactionManager hibernateTransactionManager(LocalSessionFactoryBean sessionFactory) {
+    // Fix: Inject SessionFactory directly
+    public PlatformTransactionManager hibernateTransactionManager(SessionFactory sessionFactory) {
         final HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-        transactionManager.setSessionFactory(sessionFactory.getObject());
+        // sessionFactory is the object produced by LocalSessionFactoryBean
+        transactionManager.setSessionFactory(sessionFactory);
         return transactionManager;
     }
 
-    @Bean
-    // Use dependency injection instead of calling entityManagerFactory().getObject()
-    public PlatformTransactionManager jpaTransactionManager(EntityManagerFactory entityManagerFactory) {
+    @Bean("jpaTransactionManager") // Renamed bean to match the name used in @EnableJpaRepositories
+    // Fix: Use @Qualifier to select the correct EntityManagerFactory bean
+    public PlatformTransactionManager jpaTransactionManager(@Qualifier("jpaEntityManager") EntityManagerFactory entityManagerFactory) {
         final JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory);
         return transactionManager;
@@ -174,14 +171,14 @@ public class PersistenceTestConfig {
 
     private final Properties hibernateProperties() {
         final Properties hibernateProperties = new Properties();
-        
-        //Use the Jakarta Persistence API property name for schema generation
+
+        // Use the Jakarta Persistence API property name for schema generation
         hibernateProperties.setProperty("jakarta.persistence.schema-generation.database.action", env.getProperty("hibernate.hbm2ddl.auto"));
-        
+
         // Retain other properties
         hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
         hibernateProperties.setProperty("hibernate.show_sql", "false");
-        
+
         // Envers properties are stable
         hibernateProperties.setProperty("org.hibernate.envers.audit_table_suffix", env.getProperty("envers.audit_table_suffix"));
 
