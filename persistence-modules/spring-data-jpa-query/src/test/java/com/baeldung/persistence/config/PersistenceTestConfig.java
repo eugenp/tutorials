@@ -5,9 +5,9 @@ import java.util.Properties;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
-import org.hibernate.SessionFactory;  
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;  
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -98,16 +98,15 @@ public class PersistenceTestConfig {
     }
 
     @Bean
-    //  Inject SessionFactory directly
-    public PlatformTransactionManager hibernateTransactionManager(SessionFactory sessionFactory) {
+    // FIX: Use @Qualifier to explicitly select the 'sessionFactory' bean
+    public PlatformTransactionManager hibernateTransactionManager(@Qualifier("sessionFactory") SessionFactory sessionFactory) {
         final HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-        // sessionFactory is the object produced by LocalSessionFactoryBean
         transactionManager.setSessionFactory(sessionFactory);
         return transactionManager;
     }
 
-    @Bean("jpaTransactionManager") // Renamed bean to match the name used in @EnableJpaRepositories
-    //  Use @Qualifier to select the correct EntityManagerFactory bean
+    @Bean("jpaTransactionManager")
+    // FIX: Use @Qualifier to explicitly select the 'jpaEntityManager' bean
     public PlatformTransactionManager jpaTransactionManager(@Qualifier("jpaEntityManager") EntityManagerFactory entityManagerFactory) {
         final JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory);
