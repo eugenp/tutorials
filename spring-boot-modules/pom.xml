@@ -134,6 +134,8 @@
         <module>spring-boot-brave</module>
         <module>spring-boot-simple</module>
         <module>spring-boot-http2</module>
+        <module>spring-boot-azure-deployment</module>
+        <module>spring-boot-heroku-deployment</module>
     </modules>
 
     <build>
