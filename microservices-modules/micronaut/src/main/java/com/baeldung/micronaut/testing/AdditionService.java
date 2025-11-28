@@ -1,4 +1,4 @@
-package com.baeldung.micronaut.micronautjunit;
+package com.baeldung.micronaut.testing;
 
 public interface AdditionService {
 

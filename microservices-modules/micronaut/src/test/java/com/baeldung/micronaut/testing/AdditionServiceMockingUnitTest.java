@@ -1,4 +1,4 @@
-package com.baeldung.micronaut.micronautjunit;
+package com.baeldung.micronaut.testing;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
