@@ -21,13 +21,6 @@ public class ResourceAccessAPI {
     private static final Logger LOGGER = LoggerFactory.getLogger(ResourceAccessAPI.class);
 
     @GET
-    @Path("/hello")
-    @Produces(MediaType.TEXT_PLAIN)
-    public Response getHello() throws IOException {
-        return Response.ok("Hello Quarkus!").build();
-    }
-
-    @GET
     @Path("/default")
     @Produces(MediaType.TEXT_PLAIN)
     public Response getDefaultResource() throws IOException {
