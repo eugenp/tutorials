@@ -93,8 +93,9 @@
     </profiles>
 
     <properties>
-        <start-class>org.baeldung.org.baeldung.sample.App</start-class>
-        <aspectjweaver.version>1.9.20.1</aspectjweaver.version>
+        <start-class>com.baeldung.sample.App</start-class>
+        <spring-boot.version>3.5.7</spring-boot.version>
+        <aspectjweaver.version>1.9.25</aspectjweaver.version>
     </properties>
 
 </project>

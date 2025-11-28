@@ -127,6 +127,9 @@
     </build>
 
     <properties>
+        <spring-boot.version>3.5.7</spring-boot.version>
+        <logback.version>1.5.20</logback.version>
+        <org.slf4j.version>2.0.17</org.slf4j.version>
         <jobrunr-spring-boot-starter.version>5.1.7</jobrunr-spring-boot-starter.version>
         <awaitility.version>4.0.3</awaitility.version>
         <reflections.version>0.10.2</reflections.version>
