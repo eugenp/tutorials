@@ -15,3 +15,4 @@ public class FooAuditableDao extends AbstractHibernateAuditableDao<Foo> implemen
     // API
 
 }
+

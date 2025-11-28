@@ -4,33 +4,45 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.envers.AuditReader;
-import org.hibernate.envers.AuditReaderFactory;
-import org.hibernate.envers.query.AuditQuery;
+// FIX: AuditQueryCreator replaces the query building methods on AuditReader
+import org.hibernate.envers.query.AuditQueryCreator; 
+import org.springframework.beans.factory.annotation.Autowired;
 
 @SuppressWarnings("unchecked")
 public class AbstractHibernateAuditableDao<T extends Serializable> extends AbstractHibernateDao<T> implements IAuditOperations<T> {
 
+    // FIX 1: Inject AuditReader instead of getting it from static factory
+    @Autowired
+    private AuditReader auditReader;
+
+    private AuditQueryCreator createQuery() {
+        return auditReader.createQuery();
+    }
+
     @Override
     public List<T> getEntitiesAtRevision(final Number revision) {
-        final AuditReader auditReader = AuditReaderFactory.get(getCurrentSession());
-        final AuditQuery query = auditReader.createQuery().forEntitiesAtRevision(clazz, revision);
-        final List<T> resultList = query.getResultList();
+        // FIX 2: Use createQuery().forEntitiesAtRevision
+        final List<T> resultList = createQuery()
+            .forEntitiesAtRevision(clazz, revision)
+            .getResultList();
         return resultList;
     }
 
     @Override
     public List<T> getEntitiesModifiedAtRevision(final Number revision) {
-        final AuditReader auditReader = AuditReaderFactory.get(getCurrentSession());
-        final AuditQuery query = auditReader.createQuery().forEntitiesModifiedAtRevision(clazz, revision);
-        final List<T> resultList = query.getResultList();
+        // FIX 2: Use createQuery().forEntitiesModifiedAtRevision
+        final List<T> resultList = createQuery()
+            .forEntitiesModifiedAtRevision(clazz, revision)
+            .getResultList();
         return resultList;
     }
 
     @Override
     public List<T> getRevisions() {
-        final AuditReader auditReader = AuditReaderFactory.get(getCurrentSession());
-        final AuditQuery query = auditReader.createQuery().forRevisionsOfEntity(clazz, true, true);
-        final List<T> resultList = query.getResultList();
+        // FIX 2: Use createQuery().forRevisionsOfEntity
+        final List<T> resultList = createQuery()
+            .forRevisionsOfEntity(clazz, true, true)
+            .getResultList();
         return resultList;
     }
 

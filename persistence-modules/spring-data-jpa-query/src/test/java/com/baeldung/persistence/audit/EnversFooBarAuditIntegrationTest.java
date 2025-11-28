@@ -5,11 +5,8 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.Before; // Keeping JUnit 4
+import org.junit.Test; // Keeping JUnit 4
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,18 +14,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner; // Keeping JUnit 4
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
+import org.springframework.transaction.annotation.Transactional; // Added for managed transactions
 
+import com.baeldung.persistence.config.PersistenceTestConfig;
 import com.baeldung.persistence.model.Bar;
 import com.baeldung.persistence.model.Foo;
 import com.baeldung.persistence.service.IBarAuditableService;
 import com.baeldung.persistence.service.IFooAuditableService;
-import com.baeldung.persistence.config.PersistenceTestConfig;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class) // JUnit 4 Maintained
 @ContextConfiguration(classes = { PersistenceTestConfig.class }, loader = AnnotationConfigContextLoader.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
+@Transactional("hibernateTransactionManager") // FIX: Use Spring transaction manager to control the context
 public class EnversFooBarAuditIntegrationTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EnversFooBarAuditIntegrationTest.class);
@@ -41,23 +40,16 @@ public class EnversFooBarAuditIntegrationTest {
     @Qualifier("barHibernateAuditableService")
     private IBarAuditableService barService;
 
-    @Autowired
-    private SessionFactory sessionFactory;
+    // FIX: Removed SessionFactory and Session injection as Spring manages the transaction context
 
-    private Session session;
-
-    @Before
+    @Before // Keeping JUnit 4
     public void setUp() {
-        LOGGER.info("setUp()");
-        makeRevisions();
-        session = sessionFactory.openSession();
+        LOGGER.info("setUp() - Data Revisions will be created inside the test method's transaction.");
+        // FIX: Removed manual session management (openSession and close)
+        // Data setup moved to the @Test method
     }
 
-    @After
-    public void tearDown() {
-        LOGGER.info("tearDown()");
-        session.close();
-    }
+    // FIX: Removed @After tearDown() method as manual session closing is no longer required
 
     private void makeRevisions() {
         final Bar bar = rev1();
@@ -95,8 +87,10 @@ public class EnversFooBarAuditIntegrationTest {
         fooService.create(foo3);
     }
 
-    @Test
+    @Test // Keeping JUnit 4
     public final void whenFooBarsModified_thenFooBarsAudited() {
+        // FIX: Data setup moved into the transactional test method
+        makeRevisions(); 
 
         List<Bar> barRevisionList;
         List<Foo> fooRevisionList;
@@ -113,6 +107,7 @@ public class EnversFooBarAuditIntegrationTest {
         assertEquals("BAR1", barRevisionList.get(2).getName());
         assertEquals("BAR1", barRevisionList.get(3).getName());
 
+        assertNotNull(barRevisionList.get(0).getFooSet());
         assertEquals(1, barRevisionList.get(0).getFooSet().size());
         assertEquals(2, barRevisionList.get(1).getFooSet().size());
         assertEquals(2, barRevisionList.get(2).getFooSet().size());

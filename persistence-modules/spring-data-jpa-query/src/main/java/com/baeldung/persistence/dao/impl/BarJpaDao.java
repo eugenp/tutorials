@@ -18,3 +18,4 @@ public class BarJpaDao extends AbstractJpaDao<Bar> implements IBarDao {
     // API
 
 }
+
