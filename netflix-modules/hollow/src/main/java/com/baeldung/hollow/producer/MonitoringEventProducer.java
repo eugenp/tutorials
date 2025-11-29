@@ -65,17 +65,17 @@ public class MonitoringEventProducer {
 
     private static Path getSnapshotFilePath() {
         String moduleDir = System.getProperty("user.dir");
-        String snapshotPath = moduleDir + "/.hollow/snapshots";
-        logger.info("snapshot data directory: {}", snapshotPath);
-        Path path = Paths.get(snapshotPath);
+        String snapshotDir = moduleDir + "/.hollow/snapshots";
+        logger.info("snapshot data directory: {}", snapshotDir);
+        Path snapshotPath = Paths.get(snapshotDir);
 
         // Create directories if they don't exist
         try {
-            Files.createDirectories(path);
+            Files.createDirectories(snapshotPath);
         } catch (java.io.IOException e) {
-            throw new RuntimeException("Failed to create snapshot directory: " + path, e);
+            throw new RuntimeException("Failed to create snapshot directory: " + snapshotDir, e);
         }
 
-        return path;
+        return snapshotPath;
     }
 }
