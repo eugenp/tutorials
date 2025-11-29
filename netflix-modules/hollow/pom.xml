@@ -8,7 +8,7 @@
 
     <artifactId>hollow</artifactId>
     <name>hollow</name>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <description>Module for Netflix Hollow</description>
 
     <parent>
@@ -16,11 +16,6 @@
         <artifactId>netflix-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
-    <modules>
-        <module>hollow-producer</module>
-        <module>hollow-consumer</module>
-    </modules>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -44,5 +39,86 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Step 1: Compile producer code in generate-sources phase -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <executions>
+                    <execution>
+                        <id>compile-producer-for-api-generation</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <includes>
+                                <include>com/baeldung/hollow/model/**/*.java</include>
+                                <include>com/baeldung/hollow/producer/**/*.java</include>
+                                <include>com/baeldung/hollow/service/**/*.java</include>
+                            </includes>
+                            <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>compile-all</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Step 2: Run API generator in process-sources phase (after generate-sources compilation) -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <?m2e execute onConfiguration,onIncremental?>
+                        <id>generate-consumer-api</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>com.baeldung.hollow.producer.ConsumerApiGenerator</mainClass>
+                            <arguments>
+                                <argument>${project.build.directory}/generated-sources</argument>
+                            </arguments>
+                            <includeProjectDependencies>true</includeProjectDependencies>
+                            <classpathScope>compile</classpathScope>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Step 3: Add generated-sources folder as source (in process-sources phase) -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>add-generated-sources</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.build.directory}/generated-sources</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

@@ -21,7 +21,6 @@ public class MonitoringEventConsumer {
     static MonitoringEventAPI monitoringEventAPI;
 
     final static long POLL_INTERVAL_MILLISECONDS = 30000;
-    final static String SNAPSHOT_DIR = System.getProperty("user.home") + "/.hollow/snapshots";
 
     public static void main(String[] args) {
         initialize(getSnapshotFilePath());
@@ -48,7 +47,7 @@ public class MonitoringEventConsumer {
     private static void initialize(final Path snapshotPath) {
         announcementWatcher = new HollowFilesystemAnnouncementWatcher(snapshotPath);
         blobRetriever = new HollowFilesystemBlobRetriever(snapshotPath);
-
+        logger.info("snapshot data file location: {}", snapshotPath.toString());
         consumer = new HollowConsumer.Builder<>()
                 .withAnnouncementWatcher(announcementWatcher)
                 .withBlobRetriever(blobRetriever)
@@ -67,9 +66,11 @@ public class MonitoringEventConsumer {
     }
 
     private static Path getSnapshotFilePath() {
-        logger.info("snapshot data directory: {}", SNAPSHOT_DIR);
+        String moduleDir = System.getProperty("user.dir");
+        String snapshotPath = moduleDir + "/.hollow/snapshots";
+        logger.info("snapshot data directory: {}", snapshotPath);
 
-        Path path = Paths.get(SNAPSHOT_DIR);
+        Path path = Paths.get(snapshotPath);
         return path;
     }
 }

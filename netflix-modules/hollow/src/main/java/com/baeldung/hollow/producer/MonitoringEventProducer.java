@@ -25,7 +25,6 @@ public class MonitoringEventProducer {
     static HollowObjectMapper mapper;
 
     final static long POLL_INTERVAL_MILLISECONDS = 30000;
-    final static String SNAPSHOT_DIR = System.getProperty("user.home") + "/.hollow/snapshots";
 
     static MonitoringDataService dataService;
 
@@ -65,9 +64,10 @@ public class MonitoringEventProducer {
     }
 
     private static Path getSnapshotFilePath() {
-
-        logger.info("snapshot data directory: {}", SNAPSHOT_DIR);
-        Path path = Paths.get(SNAPSHOT_DIR);
+        String moduleDir = System.getProperty("user.dir");
+        String snapshotPath = moduleDir + "/.hollow/snapshots";
+        logger.info("snapshot data directory: {}", snapshotPath);
+        Path path = Paths.get(snapshotPath);
 
         // Create directories if they don't exist
         try {
