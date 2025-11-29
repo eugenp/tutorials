@@ -53,8 +53,8 @@ public class MonitoringEventConsumer {
                 .withBlobRetriever(blobRetriever)
                 .withGeneratedAPIClass(MonitoringEventAPI.class)
                 .build();
-        monitoringEventAPI = consumer.getAPI(MonitoringEventAPI.class);
         consumer.triggerRefresh();
+        monitoringEventAPI = consumer.getAPI(MonitoringEventAPI.class);
     }
 
     private static void sleep(long milliseconds) {
