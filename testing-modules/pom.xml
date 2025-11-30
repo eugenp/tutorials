@@ -33,6 +33,7 @@
         <module>junit-4</module>
         <module>junit-5-advanced</module>
         <module>junit-5-advanced-2</module>
+        <module>junit-5-advanced-3</module>
         <module>junit-5-basics</module>
         <module>junit-5-basics-2</module>
         <module>junit-5</module>
@@ -75,6 +76,7 @@
         <module>mockito-3</module>
         <module>mockito-4</module>
         <module>gatling-java</module>
+        <module>test-containers-podman</module>
     </modules>
 
 </project>

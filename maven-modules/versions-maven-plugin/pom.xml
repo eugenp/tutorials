@@ -15,7 +15,7 @@
     </parent>
 
     <modules>
-        <module>original</module>
+        <module>versions-plugin-original-state</module>
     </modules>
 
     <dependencies>

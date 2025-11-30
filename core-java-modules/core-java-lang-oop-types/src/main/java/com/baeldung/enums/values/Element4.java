@@ -15,10 +15,11 @@ public enum Element4 implements Labeled {
     C("Carbon", 6, 12.011f),
     N("Nitrogen", 7, 14.007f),
     O("Oxygen", 8, 15.999f),
-    F("Flourine", 9, 18.998f),
+    // Fixed: "Flourine" -> "Fluorine"
+    F("Fluorine", 9, 18.998f), 
     NE("Neon", 10, 20.180f);
-    /** 
-     * Maps cache labels and their associated Element3 instances.
+    
+    /** * Maps cache labels and their associated Element3 instances.
      * Note that this only works if the values are all unique!
      */
     private static final Map<String, Element4> BY_LABEL = new HashMap<>();
@@ -55,7 +56,7 @@ public enum Element4 implements Labeled {
     }
 
     /**
-     * Look up Element2 instances by the label field. This implementation finds the
+     * Look up Element4 instances by the label field. This implementation finds the
      * label in the BY_LABEL cache.
      * @param label The label to look up
      * @return The Element4 instance with the label, or null if not found.
@@ -65,7 +66,7 @@ public enum Element4 implements Labeled {
     }
 
     /**
-     * Look up Element2 instances by the atomicNumber field. This implementation finds the
+     * Look up Element4 instances by the atomicNumber field. This implementation finds the
      * atomicNUmber in the cache.
      * @param number The atomicNumber to look up 
      * @return The Element4 instance with the label, or null if not found.
@@ -75,7 +76,7 @@ public enum Element4 implements Labeled {
     }
 
     /**
-     * Look up Element2 instances by the atomicWeight field. This implementation finds the
+     * Look up Element4 instances by the atomicWeight field. This implementation finds the
      * atomic weight in the cache.
      * @param weight the atomic weight to look up
      * @return The Element4 instance with the label, or null if not found.
