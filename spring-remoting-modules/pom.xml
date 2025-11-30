@@ -26,6 +26,8 @@
         <module>remoting-amqp</module>
         <module>remoting-jms</module>
         <module>remoting-rmi</module>
+        <module>spring-grpc</module>
+        <module>spring-protobuf</module>
     </modules>
 
     <dependencyManagement>
