@@ -4,9 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.baeldung.dapr</groupId>
-        <artifactId>dapr</artifactId>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <artifactId>dapr-workflows</artifactId>
@@ -23,10 +24,12 @@
         <dependency>
             <groupId>io.dapr.spring</groupId>
             <artifactId>dapr-spring-boot-starter</artifactId>
+            <version>${dapr.version}</version>
         </dependency>
         <dependency>
             <groupId>io.dapr.spring</groupId>
             <artifactId>dapr-spring-boot-starter-test</artifactId>
+            <version>${dapr.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -41,17 +44,8 @@
         </dependency>
     </dependencies>
     
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>21</source>
-                    <target>21</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <properties>
+        <dapr.version>1.16.0</dapr.version>
+    </properties>
 
 </project>

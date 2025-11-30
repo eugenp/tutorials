@@ -926,6 +926,7 @@
 
             <modules>
                 <module>core-java-modules/core-java-23</module>
+                <module>workflows/dapr-workflows</module>
             </modules>
 
             <properties>
@@ -1361,6 +1362,7 @@
 
             <modules>
                 <module>core-java-modules/core-java-23</module>
+                <module>workflows/dapr-workflows</module>
             </modules>
 
             <properties>
