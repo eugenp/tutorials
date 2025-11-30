@@ -679,6 +679,7 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
+                <module>jdeb</module>
                 <module>jetbrains-annotations</module>
                 <module>jgit</module>
                 <module>jmh</module>
@@ -1159,6 +1160,7 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
+                <module>jdeb</module>
                 <module>jetbrains-annotations</module>
                 <module>jgit</module>
                 <module>jmh</module>
