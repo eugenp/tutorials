@@ -76,6 +76,7 @@
         <module>mockito-3</module>
         <module>mockito-4</module>
         <module>gatling-java</module>
+        <module>test-containers-podman</module>
     </modules>
 
 </project>

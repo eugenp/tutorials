@@ -79,7 +79,7 @@
     </build>
 
     <properties>
-        <commons-codec.version>1.17.1</commons-codec.version>
+        <commons-codec.version>1.20.0</commons-codec.version>
         <commons-text.version>1.10.0</commons-text.version>
         <jakarta.xml.bind-api.version>4.0.0</jakarta.xml.bind-api.version>
         <spring-core.version>5.3.0</spring-core.version>

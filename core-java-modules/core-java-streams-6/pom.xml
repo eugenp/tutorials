@@ -69,7 +69,6 @@
         <maven.compiler.target>12</maven.compiler.target>
         <vavr.version>0.10.2</vavr.version>
         <assertj-core.version>3.23.1</assertj-core.version>
-        <commons-lang3.version>3.12.0</commons-lang3.version>
     </properties>
 
 </project>
