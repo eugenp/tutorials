@@ -1,4 +1,4 @@
-package com.example.demo.dto;
+package com.baeldung.FixingBeanCreationIssues.dto;
 
 public class PersonDto {
     private String name;
