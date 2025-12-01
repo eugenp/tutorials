@@ -1,8 +1,8 @@
-package com.example.Service;
+package com.example.demo.service;
 
-import com.example.Mapper.PersonMapper;
-import com.example.Model.Person;
-import com.example.Model.PersonDto;
+import com.example.demo.mapper.PersonMapper;
+import com.example.demo.model.Person;
+import com.example.demo.dto.PersonDto;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,5 +22,3 @@ public class PersonService {
         return personMapper.toEntity(dto);
     }
 }
-
-

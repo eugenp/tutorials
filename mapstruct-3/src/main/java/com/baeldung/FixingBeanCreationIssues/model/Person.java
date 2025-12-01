@@ -1,13 +1,12 @@
-package com.example.Model;
+package com.example.demo.model;
 
-
-public class PersonDto {
+public class Person {
     private String name;
     private int age;
 
-     public PersonDto() {}
+    public Person() {}
 
-    public PersonDto(String name, int age) {
+    public Person(String name, int age) {
         this.name = name;
         this.age = age;
     }
