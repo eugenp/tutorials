@@ -800,7 +800,6 @@
                 <module>spring-drools</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
-                <module>spring-grpc</module>
                 <module>spring-kafka</module>
                 <module>spring-kafka-2</module>
                 <module>spring-kafka-3</module>
@@ -808,7 +807,6 @@
                 <module>spring-katharsis</module> <!-- Upgrade to Boot 3 not possible as the project has not been upgraded to Support Jakarta dependencies-->
                 <module>spring-mobile</module>
                 <module>spring-native</module>
-                <module>spring-protobuf</module>
                 <module>spring-pulsar</module>
                 <module>spring-quartz</module>
                 <module>spring-reactive-modules</module>
@@ -920,6 +918,7 @@
 
             <modules>
                 <module>core-java-modules/core-java-23</module>
+                <module>workflows/dapr-workflows</module>
             </modules>
 
             <properties>
@@ -1282,7 +1281,6 @@
                 <module>spring-drools</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
-                <module>spring-grpc</module>
                 <module>spring-kafka</module>
                 <module>spring-kafka-2</module>
                 <module>spring-kafka-3</module>
@@ -1290,7 +1288,6 @@
                 <module>spring-katharsis</module> <!-- Upgrade to Boot 3 not possible as the project has not been upgraded to Support Jakarta dependencies-->
                 <module>spring-mobile</module>
                 <module>spring-native</module>
-                <module>spring-protobuf</module>
                 <module>spring-pulsar</module>
                 <module>spring-quartz</module>
                 <module>spring-reactive-modules</module>
@@ -1391,6 +1388,7 @@
 
             <modules>
                 <module>core-java-modules/core-java-23</module>
+                <module>workflows/dapr-workflows</module>
             </modules>
 
             <properties>
