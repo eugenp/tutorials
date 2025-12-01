@@ -24,6 +24,11 @@
             <version>${kafka.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.databind.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${org.slf4j.version}</version>
@@ -70,6 +75,7 @@
 
     <properties>
         <kafka.version>3.9.0</kafka.version>
+        <jackson.databind.version>2.15.2</jackson.databind.version>
         <testcontainers-kafka.version>1.19.3</testcontainers-kafka.version>
         <testcontainers-jupiter.version>1.19.3</testcontainers-jupiter.version>
         <awaitility.version>3.0.0</awaitility.version>
