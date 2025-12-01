@@ -11,7 +11,7 @@ import static org.hamcrest.CoreMatchers.is;
 class ResourceAccessAPIUnitTest {
     @Test
     @DisplayName("should return content from default resource")
-    void whenGetDefaultResource_thenReturnsContent() {
+    void givenAPI_whenGetDefaultResource_thenReturnsContent() {
         given()
             .when().get("/resources/default")
             .then()
@@ -21,7 +21,7 @@ class ResourceAccessAPIUnitTest {
 
     @Test
     @DisplayName("should return content from nested default resource")
-    void whenGetDefaultNestedResource_thenReturnsContent() {
+    void givenAPI_whenGetDefaultNestedResource_thenReturnsContent() {
         given()
             .when().get("/resources/default-nested")
             .then()
@@ -31,7 +31,7 @@ class ResourceAccessAPIUnitTest {
 
     @Test
     @DisplayName("should return content from included json resource")
-    void whenGetJsonResource_thenReturnsContent() {
+    void givenAPI_whenGetJsonResource_thenReturnsContent() {
         given()
             .when().get("/resources/json")
             .then()
