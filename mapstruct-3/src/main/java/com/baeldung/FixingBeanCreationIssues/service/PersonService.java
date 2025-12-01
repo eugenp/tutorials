@@ -1,8 +1,8 @@
-package com.baeldung.FixingBeanCreationIssues.service;
+package com.baeldung.fixingbeancreationissues.service;
+import com.baeldung.fixingbeancreationissues.dto.PersonDto;
+import com.baeldung.fixingbeancreationissues.mapper.PersonMapper;       
+import com.baeldung.fixingbeancreationissues.model.Person;
 
-import com.baeldung.FixingBeanCreationIssues.mapper.PersonMapper;
-import com.baeldung.FixingBeanCreationIssues.model.Person;
-import com.baeldung.FixingBeanCreationIssues.dto.PersonDto;
 import org.springframework.stereotype.Service;
 
 @Service

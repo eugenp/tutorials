@@ -1,8 +1,8 @@
-package com.baeldung.FixingBeanCreationIssues.mapper;
+package com.baeldung.fixingbeancreationissues.mapper;
 
 import org.mapstruct.Mapper;
-import com.baeldung.FixingBeanCreationIssues.model.Person;
-import com.baeldung.FixingBeanCreationIssues.dto.PersonDto;
+import com.baeldung.fixingbeancreationissues.model.Person;
+import com.baeldung.fixingbeancreationissues.dto.PersonDto;
 
 @Mapper(componentModel = "spring")
 public interface PersonMapper {

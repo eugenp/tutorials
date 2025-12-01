@@ -1,4 +1,4 @@
-package com.baeldung.FixingBeanCreationIssues.model;
+package com.baeldung.fixingbeancreationissues.model;
 
 public class Person {
     private String name;
