@@ -4,7 +4,8 @@ import org.mapstruct.Mapper;
 import com.baeldung.fixingbeancreationissues.model.Person;
 import com.baeldung.fixingbeancreationissues.dto.PersonDto;
 
-@Mapper(componentModel = "spring")
+// @Mapper {Incorrect}
+//@Mapper(componentModel = "spring") {Correct}
 public interface PersonMapper {
     PersonDto toDto(Person person);
     Person toEntity(PersonDto dto);
