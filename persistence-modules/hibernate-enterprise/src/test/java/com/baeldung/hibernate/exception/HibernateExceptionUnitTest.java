@@ -1,29 +1,17 @@
 package com.baeldung.hibernate.exception;
 
-import static org.hamcrest.CoreMatchers.isA;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-
-import java.io.IOException;
-import java.util.List;
-
+import jakarta.persistence.OptimisticLockException;
 import org.h2.jdbc.JdbcSQLDataException;
 import org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException;
 import org.h2.jdbc.JdbcSQLSyntaxErrorException;
-import org.hibernate.HibernateException;
-import org.hibernate.MappingException;
-import org.hibernate.NonUniqueObjectException;
-import org.hibernate.PropertyValueException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.StaleObjectStateException;
-import org.hibernate.StaleStateException;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.id.IdentifierGenerationException;
 import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
 import org.hibernate.query.SemanticException;
+import org.hibernate.query.UnknownParameterException;
 import org.hibernate.query.sqm.UnknownEntityException;
 import org.hibernate.tool.schema.spi.CommandAcceptanceException;
 import org.hibernate.tool.schema.spi.SchemaManagementException;
@@ -34,7 +22,12 @@ import org.junit.rules.ExpectedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import jakarta.persistence.OptimisticLockException;
+import java.io.IOException;
+import java.util.List;
+
+import static org.hamcrest.CoreMatchers.isA;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class HibernateExceptionUnitTest {
 
@@ -89,7 +82,7 @@ public class HibernateExceptionUnitTest {
 
         Session session = sessionFactory.openSession();
         List<Product> results = session.createQuery("from PRODUCT", Product.class)
-            .getResultList();
+          .getResultList();
     }
 
     @Test
@@ -126,7 +119,7 @@ public class HibernateExceptionUnitTest {
         // This does not work due to hibernate bug
         // cfg.setProperty(AvailableSettings.HBM2DDL_HALT_ON_ERROR,"true");
         cfg.getProperties()
-            .put(AvailableSettings.HBM2DDL_HALT_ON_ERROR, true);
+          .put(AvailableSettings.HBM2DDL_HALT_ON_ERROR, true);
 
         cfg.addAnnotatedClass(Product.class);
         cfg.buildSessionFactory();
@@ -314,7 +307,7 @@ public class HibernateExceptionUnitTest {
             transaction = session.beginTransaction();
             Product product2 = session.get(Product.class, 12);
             session.createNativeQuery("delete from Product where id=12")
-                .executeUpdate();
+              .executeUpdate();
             // We need to refresh to fix the error.
             // session.refresh(product2);
             session.delete(product2);
@@ -457,8 +450,81 @@ public class HibernateExceptionUnitTest {
     public void givenEnumParam_whenSettingEnumParam_thenSemanticExceptionIsNotThrown() {
         Session session = sessionFactory.openSession();
         assertDoesNotThrow(() -> session.createQuery("FROM User u WHERE u.role = ?1", User.class)
-            .setParameter(1, Role.ADMIN));
+          .setParameter(1, Role.ADMIN));
         session.close();
+    }
+
+    @Test
+    public void givenTooManyParameters_whenQueryExecuted_thenThrowQueryParameterException() {
+        thrown.expectCause(isA(UnknownParameterException.class));
+        thrown.expectMessage("Could not locate ordinal parameter [2]");
+
+        Session session = null;
+        Transaction transaction = null;
+
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+
+            String hql = "FROM Product p WHERE p.name = ?1";
+            Query<Product> query = session.createQuery(hql, Product.class);
+            query.setParameter(1, "Book");   // valid
+            query.setParameter(2, "Extra");  // invalid — no ?2 declared
+
+            query.getResultList();
+            transaction.commit();
+        } catch (Exception e) {
+            rollbackTransactionQuietly(transaction);
+            throw e;
+        } finally {
+            closeSessionQuietly(session);
+        }
+    }
+
+    @Test
+    public void givenCorrectParameterCount_whenQueryExecuted_thenNoException() {
+        Session session = null;
+        Transaction transaction = null;
+
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+
+            String hql = "FROM Product p WHERE p.name = ?1";
+            Query<Product> query = session.createQuery(hql, Product.class);
+            query.setParameter(1, "Book"); // matches ?1
+
+            assertDoesNotThrow(query::getResultList);
+            transaction.commit();
+        } catch (Exception e) {
+            rollbackTransactionQuietly(transaction);
+            throw e;
+        } finally {
+            closeSessionQuietly(session);
+        }
+    }
+
+    @Test
+    public void givenNamedParameter_whenQueryExecuted_thenNoException() {
+        Session session = null;
+        Transaction transaction = null;
+
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+
+            String hql = "FROM Product p WHERE p.name = :name";
+            Query<Product> query = session.createQuery(hql, Product.class);
+            query.setParameter("name", "Book"); // named parameter instead of ?1
+
+            assertDoesNotThrow(query::getResultList);
+            transaction.commit();
+        } catch (Exception e) {
+            rollbackTransactionQuietly(transaction);
+            throw e;
+        } finally {
+            closeSessionQuietly(session);
+        }
     }
 
 }

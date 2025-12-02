@@ -6,7 +6,7 @@
     <artifactId>submodule-2</artifactId>
 
     <parent>
-        <artifactId>plugin-management</artifactId>
+        <artifactId>maven-plugin-management</artifactId>
         <groupId>com.baeldung</groupId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>

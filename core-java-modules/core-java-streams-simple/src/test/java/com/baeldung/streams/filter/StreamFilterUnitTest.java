@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import com.pivovarit.function.ThrowingPredicate;
 import com.pivovarit.function.exception.WrappedException;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;

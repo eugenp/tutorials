@@ -15,11 +15,11 @@ public enum Element3 {
     C("Carbon"),
     N("Nitrogen"),
     O("Oxygen"),
-    F("Flourine"),
+    // Fixed: "Flourine" -> "Fluorine"
+    F("Fluorine"), 
     NE("Neon");
 
-    /** 
-     * A map to cache labels and their associated Element3 instances.
+    /** * A map to cache labels and their associated Element3 instances.
      * Note that this only works if the labels are all unique!
      */
     private static final Map<String, Element3> BY_LABEL = new HashMap<>();

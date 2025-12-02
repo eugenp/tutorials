@@ -40,4 +40,27 @@ public class PostmanUploadControllerUnitTest {
           .andExpect(status().isOk())
           .andExpect(content().string("file received successfully"));
     }
+
+    @Test
+    public void givenFile_whenUploadSingleFile_thenSuccessReturned() throws Exception {
+        MockMultipartFile request = new MockMultipartFile("dummy", "{\"key\": \"value\"}".getBytes());
+        this.mockMvc.perform(MockMvcRequestBuilders.multipart("/uploadSingleFile")
+                .file("file", request.getBytes()))
+            .andExpect(status().isOk())
+            .andExpect(content().string("file received successfully"));
+    }
+
+    @Test
+    public void givenJsonAndFile_whenUploadJsonAndMultipart_thenSuccessReturned() throws Exception {
+        String jsonString = "{\"id\": 1, \"name\": \"Alice\"}";
+        MockMultipartFile jsonPart = new MockMultipartFile("data", "", "application/json", jsonString.getBytes());
+        MockMultipartFile filePart = new MockMultipartFile("file", "test.txt", "text/plain", "some file content".getBytes());
+
+        this.mockMvc.perform(MockMvcRequestBuilders.multipart("/uploadJsonAndMultipartInput")
+                .file(jsonPart)
+                .file(filePart))
+            .andExpect(status().isOk())
+            .andExpect(content().string("1Alice"));
+
+    }
 }

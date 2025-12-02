@@ -207,10 +207,17 @@ public class HibernateCriteriaIntegrationTest {
         int oldPrice = 10, newPrice = 20;
 
         Session session = HibernateUtil.getHibernateSession();
+        Transaction transaction = session.beginTransaction();
 
-        Item item = new Item(12, "Test Item 12", "This is a description");
+        Item item = new Item();
+        item.setItemName("Test Item 12");
+        item.setItemDescription("This is a description");
         item.setItemPrice(oldPrice);
-        session.save(item);
+        session.persist(item);
+
+        transaction.commit();
+
+        transaction = session.beginTransaction();
 
         CriteriaBuilder cb = session.getCriteriaBuilder();
         CriteriaUpdate<Item> criteriaUpdate = cb.createCriteriaUpdate(Item.class);
@@ -218,7 +225,6 @@ public class HibernateCriteriaIntegrationTest {
         criteriaUpdate.set("itemPrice", newPrice);
         criteriaUpdate.where(cb.equal(root.get("itemPrice"), oldPrice));
 
-        Transaction transaction = session.beginTransaction();
         session.createQuery(criteriaUpdate).executeUpdate();
         transaction.commit();
 
