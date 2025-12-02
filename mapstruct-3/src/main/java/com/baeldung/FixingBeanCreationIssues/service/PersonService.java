@@ -3,9 +3,10 @@ import com.baeldung.fixingbeancreationissues.dto.PersonDto;
 import com.baeldung.fixingbeancreationissues.mapper.PersonMapper;       
 import com.baeldung.fixingbeancreationissues.model.Person;
 
-import org.springframework.stereotype.Service;
+/*import org.springframework.stereotype.Service;
 
-@Service
+@Service */
+
 public class PersonService {
 
     private final PersonMapper personMapper;
