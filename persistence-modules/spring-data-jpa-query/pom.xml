@@ -5,14 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-data-jpa-query</artifactId>
     <name>spring-data-jpa-query</name>
-
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -38,12 +36,10 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
-            <version>${spring-oxm.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
         </dependency>
         <dependency>
             <groupId>com.mysql</groupId>
@@ -53,7 +49,6 @@
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-envers</artifactId>
-            <version>${hibernate-envers.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -66,19 +61,13 @@
             <version>${guava.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-dbcp</artifactId>
-            <version>${tomcat-dbcp.version}</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
         </dependency>
     </dependencies>
-
     <properties>
         <datasource-proxy.version>1.4.1</datasource-proxy.version>
-        <spring-oxm.version>6.1.4</spring-oxm.version>
-        <hibernate.version>6.5.2.Final</hibernate.version>
-        <hibernate-envers.version>6.5.2.Final</hibernate-envers.version>
         <mysql.version>8.2.0</mysql.version>
-        <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
+        <guava.version>33.2.1-jre</guava.version>
     </properties>
-
 </project>
