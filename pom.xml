@@ -919,6 +919,7 @@
 
             <modules>
                 <module>core-java-modules/core-java-23</module>
+                <module>workflows/dapr-workflows</module>
             </modules>
 
             <properties>
@@ -1317,6 +1318,7 @@
                 <module>web-modules</module>
                 <module>webrtc</module>
                 <module>xml-modules</module>
+				<module>java-mcp</module>
             </modules>
 
             <properties>
@@ -1389,6 +1391,7 @@
 
             <modules>
                 <module>core-java-modules/core-java-23</module>
+                <module>workflows/dapr-workflows</module>
             </modules>
 
             <properties>

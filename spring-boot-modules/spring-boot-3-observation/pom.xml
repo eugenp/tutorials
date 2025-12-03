@@ -72,6 +72,11 @@
             <version>${p6spy-spring-boot-starter.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.github.gavlyukovskiy</groupId>
+            <artifactId>datasource-proxy-spring-boot-starter</artifactId>
+            <version>${datasource-proxy-spring-boot-starter.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
@@ -133,8 +138,12 @@
 
     <properties>
         <start-class>com.baeldung.samples.SimpleObservationApplication</start-class>
-        <p6spy-spring-boot-starter.version>1.9.0</p6spy-spring-boot-starter.version>
+        <p6spy-spring-boot-starter.version>1.12.1</p6spy-spring-boot-starter.version>
+        <datasource-proxy-spring-boot-starter.version>1.12.1</datasource-proxy-spring-boot-starter.version>
         <micrometer.version>1.15.3</micrometer.version>
+        <spring-boot.version>3.5.8</spring-boot.version>
+        <logback.version>1.5.20</logback.version>
+        <slf4j.version>2.0.17</slf4j.version>
     </properties>
 
 </project>
