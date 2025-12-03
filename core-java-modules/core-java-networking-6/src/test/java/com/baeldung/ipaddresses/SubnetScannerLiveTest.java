@@ -14,7 +14,7 @@ import org.apache.commons.net.telnet.TelnetClient;
 import org.apache.commons.net.util.SubnetUtils;
 import org.junit.jupiter.api.Test;
 
-public class SubnetScannerUnitTest {
+public class SubnetScannerLiveTest {
 
     @Test
     public void givenSubnet_whenScanningForDevices_thenReturnConnectedIPs() throws Exception {
