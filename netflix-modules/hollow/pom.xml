@@ -8,7 +8,6 @@
 
     <artifactId>hollow</artifactId>
     <name>hollow</name>
-    <packaging>jar</packaging>
     <description>Module for Netflix Hollow</description>
 
     <parent>
