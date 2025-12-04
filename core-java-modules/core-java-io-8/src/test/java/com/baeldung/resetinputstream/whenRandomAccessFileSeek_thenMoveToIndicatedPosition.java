@@ -7,7 +7,7 @@ import java.io.RandomAccessFile;
 
 import org.junit.jupiter.api.Test;
 
-class whenRandomAccessFile_thenSeek {
+class whenRandomAccessFileSeek_thenMoveToIndicatedPosition {
 
     final char EXPECTED_CHAR = 'w';
     final String fileName = "src/test/resources/InputStreamData.txt";
