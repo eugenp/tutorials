@@ -627,6 +627,7 @@
                 <module>apache-httpclient4</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
+                <module>apache-kafka-4</module>
                 <module>apache-libraries</module>
                 <module>apache-libraries-2</module>
                 <module>apache-libraries-3</module>
