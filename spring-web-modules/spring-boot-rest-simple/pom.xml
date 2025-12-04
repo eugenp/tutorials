@@ -13,7 +13,7 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-3</relativePath>
+        <relativePath>../../parent-boot-3/pom.xml</relativePath>
     </parent>
 
     <dependencies>
