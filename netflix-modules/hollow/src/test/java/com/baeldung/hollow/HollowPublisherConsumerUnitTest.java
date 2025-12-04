@@ -72,10 +72,10 @@ public class HollowPublisherConsumerUnitTest {
         HollowFilesystemBlobRetriever blobRetriever = new HollowFilesystemBlobRetriever(snapshotDataDir);
         logger.info("consumer: snapshot data file location: {}", snapshotDataDir.toString());
         HollowConsumer consumer = new HollowConsumer.Builder<>()
-                .withAnnouncementWatcher(announcementWatcher)
-                .withBlobRetriever(blobRetriever)
-                .withGeneratedAPIClass(MonitoringEventAPI.class)
-                .build();
+            .withAnnouncementWatcher(announcementWatcher)
+            .withBlobRetriever(blobRetriever)
+            .withGeneratedAPIClass(MonitoringEventAPI.class)
+            .build();
         consumer.triggerRefresh();
 
         MonitoringEventAPI monitoringEventAPI = consumer.getAPI(MonitoringEventAPI.class);
@@ -90,8 +90,8 @@ public class HollowPublisherConsumerUnitTest {
         Publisher publisher = new HollowFilesystemPublisher(snapshotDataDir);
 
         HollowProducer producer = HollowProducer.withPublisher(publisher)
-                .withAnnouncer(announcer)
-                .build();
+            .withAnnouncer(announcer)
+            .build();
         HollowObjectMapper mapper = new HollowObjectMapper(producer.getWriteEngine());
 
         events.forEach(mapper::add);
