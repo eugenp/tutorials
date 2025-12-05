@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project root="true"
+        xmlns="http://maven.apache.org/POM/4.1.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.1.0 http://maven.apache.org/xsd/maven-4.1.0.xsd">
+
+    <groupId>com.baeldung</groupId>
+    <artifactId>apache-maven-4</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <type>classpath-processor</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!-- Necessary for the Maven 4 Release Candidate -->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>${maven-install-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>conditional-profile</id>
+            <activation>
+                <condition>
+                    <![CDATA[exists('${project.basedir}/src/**/*.xsd') && length(${user.name}) > 5]]></condition>
+            </activation>
+        </profile>
+    </profiles>
+
+    <properties>
+        <!-- Maven 4 needs 17+ -->
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <junit-bom.version>5.13.4</junit-bom.version>
+        <log4j-core.version>2.24.3</log4j-core.version>
+        <lombok.version>1.18.42</lombok.version>
+        <!-- Necessary for the Maven 4 Release Candidate -->
+        <maven-compiler-plugin.version>4.0.0-beta-3</maven-compiler-plugin.version>
+        <maven-install-plugin.version>4.0.0-beta-2</maven-install-plugin.version>
+    </properties>
+
+</project>
