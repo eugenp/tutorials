@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.containsString;
 
 @QuarkusTest
 class ResourceAccessAPIUnitTest {
@@ -15,8 +16,8 @@ class ResourceAccessAPIUnitTest {
         given()
             .when().get("/resources/default")
             .then()
-                .statusCode(200)
-                .body(is("This is the default resource."));
+            .statusCode(200)
+            .body(is("This is the default resource."));
     }
 
     @Test
@@ -25,8 +26,8 @@ class ResourceAccessAPIUnitTest {
         given()
             .when().get("/resources/default-nested")
             .then()
-                .statusCode(200)
-                .body(is("This is another resource from a sub-directory."));
+            .statusCode(200)
+            .body(is("This is another resource from a sub-directory."));
     }
 
     @Test
@@ -39,4 +40,14 @@ class ResourceAccessAPIUnitTest {
             .body("version", is("1.0.0"));
     }
 
+
+    @Test
+    @DisplayName("should return content from index.html")
+    void givenIndexPage_whenGetRootUrl_thenReturnsContent() {
+        given()
+            .when().get("/")
+            .then()
+            .statusCode(200)
+            .body(containsString("Hello"));
+    }
 }
