@@ -31,6 +31,7 @@
         <module>quarkus-management-interface</module>
         <module>quarkus-mcp-langchain</module>
         <module>quarkus-panache</module>
+        <module>quarkus-resources</module>
         <!-- <module>quarkus-rbac</module> --> <!-- JAVA-42048 -->
         <module>quarkus-testcontainers</module>
         <module>quarkus-virtual-threads</module>
