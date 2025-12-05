@@ -1,0 +1,2 @@
+#!/bin/sh
+java -jar /opt/simple-cal/simple-cal-1.0-SNAPSHOT.jar "$@"
