@@ -9,8 +9,8 @@
     <name>reactor-core-2</name>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
+        <groupId>com.baeldung.spring.reactive</groupId>
+        <artifactId>spring-reactive-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
@@ -53,6 +53,7 @@
     <properties>
         <reactor.version>3.6.0</reactor.version>
         <reactor-extra.version>3.5.1</reactor-extra.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
 </project>

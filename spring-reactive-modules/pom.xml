@@ -36,6 +36,10 @@
         <module>spring-reactive-kafka-stream-binder</module>
         <module>spring-reactive-kafka</module>
         <module>spring-reactive-performance</module>
+        <module>reactor-core</module>
+        <module>reactor-core-2</module>
+        <module>rsocket</module>
+        <module>spring-6-rsocket</module>
     </modules>
 
     <dependencyManagement>
