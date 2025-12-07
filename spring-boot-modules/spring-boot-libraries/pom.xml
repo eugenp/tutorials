@@ -322,8 +322,8 @@
         <resilience4j-spring-boot2.version>2.0.2</resilience4j-spring-boot2.version>
         <wiremock-jre8.version>2.34.0</wiremock-jre8.version>
         <openapi-generator.version>7.16.0</openapi-generator.version>
-        <springdoc.version>1.7.0</springdoc.version>
-        <jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
+        <springdoc.version>1.8.0</springdoc.version>
+        <jackson-databind-nullable.version>0.2.8</jackson-databind-nullable.version>
     </properties>
 
 </project>
