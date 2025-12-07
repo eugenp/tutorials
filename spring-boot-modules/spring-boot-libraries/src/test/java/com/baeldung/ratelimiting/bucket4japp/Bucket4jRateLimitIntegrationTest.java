@@ -21,7 +21,7 @@ import com.baeldung.ratelimiting.bucket4japp.service.PricingPlan;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Bucket4jRateLimitApp.class)
-@TestPropertySource(properties = "bucket4j.enabled=false")
+@TestPropertySource(properties = "spring.config.location=classpath:ratelimiting/application-bucket4j.yml")
 @AutoConfigureMockMvc
 public class Bucket4jRateLimitIntegrationTest {
 
