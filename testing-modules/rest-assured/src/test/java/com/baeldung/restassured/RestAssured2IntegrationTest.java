@@ -1,0 +1,62 @@
+package com.baeldung.restassured;
+
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.containing;
+import static com.github.tomakehurst.wiremock.client.WireMock.post;
+import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
+import static io.restassured.RestAssured.get;
+import static io.restassured.RestAssured.with;
+import static org.hamcrest.Matchers.hasItems;
+
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import com.github.tomakehurst.wiremock.WireMockServer;
+
+import io.restassured.RestAssured;
+
+public class RestAssured2IntegrationTest {
+    private static WireMockServer wireMockServer;
+
+    private static final String ODDS_PATH = "/odds";
+    private static final String APPLICATION_JSON = "application/json";
+    private static final String ODDS = getJson();
+
+    @BeforeClass
+    public static void before() {
+        System.out.println("Setting up!");
+        final int port = Util.getAvailablePort();
+        wireMockServer = new WireMockServer(port);
+        wireMockServer.start();
+        configureFor("localhost", port);
+        RestAssured.port = port;
+        stubFor(com.github.tomakehurst.wiremock.client.WireMock.get(urlEqualTo(ODDS_PATH))
+          .willReturn(aResponse().withStatus(200)
+            .withHeader("Content-Type", APPLICATION_JSON)
+            .withBody(ODDS)));
+        stubFor(post(urlEqualTo("/odds/new")).withRequestBody(containing("{\"price\":5.25,\"status\":1,\"ck\":13.1,\"name\":\"X\"}"))
+          .willReturn(aResponse().withStatus(201)));
+    }
+
+    @Test
+    public void whenRequestedPost_thenCreated() {
+        with().body(new Odd(5.25f, 1, 13.1f, "X"))
+          .when()
+          .request("POST", "/odds/new")
+          .then()
+          .statusCode(201);
+    }
+
+    private static String getJson() {
+        return Util.inputStreamToString(RestAssured2IntegrationTest.class.getResourceAsStream("/odds.json"));
+    }
+
+    @AfterClass
+    public static void after() {
+        System.out.println("Running: tearDown");
+        wireMockServer.stop();
+    }
+}
