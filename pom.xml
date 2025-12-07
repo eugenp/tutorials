@@ -627,6 +627,7 @@
                 <module>apache-httpclient4</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
+                <module>apache-kafka-4</module>
                 <module>apache-libraries</module>
                 <module>apache-libraries-2</module>
                 <module>apache-libraries-3</module>
@@ -679,6 +680,7 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
+                <module>jdeb</module>
                 <module>jetbrains-annotations</module>
                 <module>jgit</module>
                 <module>jmh</module>
@@ -1160,6 +1162,7 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
+                <module>jdeb</module>
                 <module>jetbrains-annotations</module>
                 <module>jgit</module>
                 <module>jmh</module>
