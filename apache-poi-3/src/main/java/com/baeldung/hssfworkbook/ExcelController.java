@@ -27,14 +27,14 @@ public class ExcelController {
                 byte[] bytes = baos.toByteArray();
 
                 return ResponseEntity.ok()
-                  .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=employee_data.xls")
-                  .contentType(MediaType.parseMediaType("application/vnd.ms-excel")) // More specific MIME type
-                  .body(bytes);
+                         .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=employee_data.xls")
+                         .contentType(MediaType.parseMediaType("application/vnd.ms-excel")) // More specific MIME type
+                         .body(bytes);
             }
         } catch (IOException e) {
             System.err.println("Error generating or writing Excel workbook: " + e.getMessage());
             return ResponseEntity.internalServerError()
-              .build();
+                     .build();
         }
     }
 
@@ -54,11 +54,12 @@ public class ExcelController {
         } catch (IOException e) {
             System.err.println("Error processing uploaded Excel file: " + e.getMessage());
             return ResponseEntity.internalServerError()
-              .body("Failed to process the Excel file.");
+                     .body("Failed to process the Excel file.");
         } catch (Exception e) {
             System.err.println("An unexpected error occurred during file upload: " + e.getMessage());
             return ResponseEntity.internalServerError()
-              .body("An unexpected error occurred.");
+                     .body("An unexpected error occurred.");
         }
     }
+
 }
