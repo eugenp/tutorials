@@ -38,9 +38,9 @@ public class HibernateOneToManyAnnotationMain {
             Transaction tx = session.beginTransaction();
 
             // Save the Model object
-            session.save(cart);
-            session.save(item1);
-            session.save(item2);
+            session.persist(cart);
+            session.persist(item1);
+            session.persist(item2);
 
             // Commit transaction
             tx.commit();

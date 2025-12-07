@@ -93,7 +93,7 @@
     </build>
 
     <properties>
-        <log4j2.version>2.17.1</log4j2.version>
+        <log4j2.version>2.25.2</log4j2.version>
         <disruptor.version>3.3.6</disruptor.version>
         <jbosslogging.version>3.3.0.Final</jbosslogging.version>
         <maven-war-plugin.version>3.3.2</maven-war-plugin.version>

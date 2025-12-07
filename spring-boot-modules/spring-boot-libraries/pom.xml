@@ -316,7 +316,7 @@
         <zxing.version>3.3.0</zxing.version>
         <bucket4j.version>8.15.0</bucket4j.version>
         <bucket4j-spring-boot-starter.version>0.13.0</bucket4j-spring-boot-starter.version>
-        <caffeine.version>3.1.8</caffeine.version>
+        <caffeine.version>3.2.3</caffeine.version>
         <okapi.version>0.4.6</okapi.version>
         <qrcodegen.version>1.8.0</qrcodegen.version>
         <resilience4j-spring-boot2.version>2.0.2</resilience4j-spring-boot2.version>

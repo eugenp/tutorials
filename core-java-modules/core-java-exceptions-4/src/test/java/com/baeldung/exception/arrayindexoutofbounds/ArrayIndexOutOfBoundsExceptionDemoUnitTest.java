@@ -1,5 +1,6 @@
 package com.baeldung.exception.arrayindexoutofbounds;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -16,19 +17,23 @@ public class ArrayIndexOutOfBoundsExceptionDemoUnitTest {
 
     @Test
     void givenAnArrayOfSizeFive_whenAccessedElementBeyondRange_thenShouldThrowArrayIndexOutOfBoundsException() {
-        assertThrows(ArrayIndexOutOfBoundsException.class,
-          () -> ArrayIndexOutOfBoundsExceptionDemo.addArrayElementsUsingLoop(numbers));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> ArrayIndexOutOfBoundsExceptionDemo.addArrayElementsUsingLoop(numbers));
+    }
+
+    @Test
+    void givenAnArrayOfSizeFive_whenAccessedElementBeyondRangeWithTryCatchBlock_thenShouldThrowArrayIndexOutOfBoundsException() {
+        int result = ArrayIndexOutOfBoundsExceptionDemo.addArrayElementsUsingLoopInsideTryCatchBlock(numbers);
+        assertEquals(-1, result);
+
     }
 
     @Test
     void givenAnArrayOfSizeFive_whenAccessedAnElementAtIndexEqualToSize_thenShouldThrowArrayIndexOutOfBoundsException() {
-        assertThrows(ArrayIndexOutOfBoundsException.class,
-          () -> ArrayIndexOutOfBoundsExceptionDemo.getArrayElementAtIndex(numbers, 5));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> ArrayIndexOutOfBoundsExceptionDemo.getArrayElementAtIndex(numbers, 5));
     }
 
     @Test
     void givenAListReturnedByArraysAsListMethod_whenAccessedAnElementAtIndexEqualToSize_thenShouldThrowArrayIndexOutOfBoundsException() {
-        assertThrows(ArrayIndexOutOfBoundsException.class,
-          () -> ArrayIndexOutOfBoundsExceptionDemo.getListElementAtIndex(5));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> ArrayIndexOutOfBoundsExceptionDemo.getListElementAtIndex(5));
     }
 }
