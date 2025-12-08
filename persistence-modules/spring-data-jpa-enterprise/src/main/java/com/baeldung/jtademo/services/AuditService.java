@@ -1,12 +1,13 @@
 package com.baeldung.jtademo.services;
 
-import com.baeldung.jtademo.dto.TransferLog;
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
+import com.baeldung.jtademo.dto.TransferLog;
 
 @Service
 public class AuditService {

@@ -1,5 +1,7 @@
 package com.baeldung.jtademo;
 
+import javax.sql.DataSource;
+
 import org.hsqldb.jdbc.pool.JDBCXADataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -9,8 +11,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-import javax.sql.DataSource;
 
 @EnableAutoConfiguration
 @EnableTransactionManagement
