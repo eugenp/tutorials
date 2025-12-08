@@ -550,6 +550,10 @@
             </build>
 
             <modules>
+                <!-- This would need a Maven 4 runtime (RC5) to build successfully -->
+                <!--
+                <module>apache-maven-4</module>
+                -->
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
