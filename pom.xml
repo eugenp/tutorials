@@ -744,7 +744,6 @@
                 <module>metrics</module>
                 <module>microservices-modules</module>
                 <module>mustache</module>
-                <module>mvel</module>
                 <module>mybatis</module>
                 <module>mybatis-plus</module>
                 <module>netflix-modules</module>
@@ -1227,7 +1226,6 @@
                 <module>metrics</module>
                 <module>microservices-modules</module>
                 <module>mustache</module>
-                <module>mvel</module>
                 <module>mybatis</module>
                 <module>mybatis-plus</module>
                 <module>netflix-modules</module>
