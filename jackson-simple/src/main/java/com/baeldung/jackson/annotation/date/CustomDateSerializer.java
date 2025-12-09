@@ -1,13 +1,12 @@
 package com.baeldung.jackson.annotation.date;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ser.std.StdSerializer;
 
 public class CustomDateSerializer extends StdSerializer<Date> {
 
@@ -23,7 +22,7 @@ public class CustomDateSerializer extends StdSerializer<Date> {
     }
 
     @Override
-    public void serialize(final Date value, final JsonGenerator gen, final SerializerProvider arg2) throws IOException, JsonProcessingException {
+    public void serialize(final Date value, final JsonGenerator gen, final SerializationContext arg2) throws JacksonException {
         gen.writeString(formatter.format(value));
     }
 }

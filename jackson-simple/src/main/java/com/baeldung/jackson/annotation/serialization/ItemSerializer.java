@@ -1,12 +1,10 @@
 package com.baeldung.jackson.annotation.serialization;
 
-import java.io.IOException;
-
 import com.baeldung.jackson.annotation.dtos.Item;
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ser.std.StdSerializer;
 
 public class ItemSerializer extends StdSerializer<Item> {
 
@@ -21,11 +19,11 @@ public class ItemSerializer extends StdSerializer<Item> {
     }
 
     @Override
-    public final void serialize(final Item value, final JsonGenerator jgen, final SerializerProvider provider) throws IOException, JsonProcessingException {
+    public final void serialize(final Item value, final JsonGenerator jgen, final SerializationContext provider) throws JacksonException {
         jgen.writeStartObject();
-        jgen.writeNumberField("id", value.id);
-        jgen.writeStringField("itemName", value.itemName);
-        jgen.writeNumberField("owner", value.owner.id);
+        jgen.writeNumberProperty("id", value.id);
+        jgen.writeStringProperty("itemName", value.itemName);
+        jgen.writeNumberProperty("owner", value.owner.id);
         jgen.writeEndObject();
     }
 

@@ -6,11 +6,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.baeldung.jackson.objectmapper.dto.Car;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.ObjectCodec;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+import tools.jackson.core.JsonParser;
+import tools.jackson.core.ObjectReadContext;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.deser.std.StdDeserializer;
 
 public class CustomCarDeserializer extends StdDeserializer<Car> {
 
@@ -26,9 +26,9 @@ public class CustomCarDeserializer extends StdDeserializer<Car> {
     }
 
     @Override
-    public Car deserialize(final JsonParser parser, final DeserializationContext deserializer) throws IOException {
+    public Car deserialize(final JsonParser parser, final DeserializationContext deserializer) {
         final Car car = new Car();
-        final ObjectCodec codec = parser.getCodec();
+        final ObjectReadContext codec = parser.objectReadContext();
         final JsonNode node = codec.readTree(parser);
         try {
             final JsonNode colorNode = node.get("color");
