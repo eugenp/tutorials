@@ -31,4 +31,8 @@
         </resources>
     </build>
 
+    <properties>
+        <jackson.version>2.20.1</jackson.version>
+    </properties>
+
 </project>
