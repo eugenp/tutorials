@@ -567,7 +567,6 @@
                 <module>core-java-modules/core-java-datetime-conversion</module>
                 <module>libraries-data-io</module>
                 <module>persistence-modules/spring-data-neo4j</module>
-                <module>persistence-modules/spring-persistence</module>
                 <module>quarkus-modules/quarkus</module>
                 <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
                 <module>spring-di-2</module>
@@ -1057,7 +1056,6 @@
                 <module>core-java-modules/core-java-datetime-conversion</module>
                 <module>libraries-data-io</module>
                 <module>persistence-modules/spring-data-neo4j</module>
-                <module>persistence-modules/spring-persistence</module>
                 <module>quarkus-modules/quarkus</module>
                 <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
                 <module>spring-di-2</module>
