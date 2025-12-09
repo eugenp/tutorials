@@ -33,7 +33,9 @@ public class UnknownPropertiesUnitTest {
     @Test(expected = UnrecognizedPropertyException.class)
     public final void givenJsonHasUnknownValues_whenDeserializingAJsonToAClass_thenExceptionIsThrown() throws StreamReadException, DatabindException, IOException {
         final String jsonAsString = "{\"stringValue\":\"a\",\"intValue\":1,\"booleanValue\":true,\"stringValue2\":\"something\"}";
-        final ObjectMapper mapper = new ObjectMapper();
+        final ObjectMapper mapper = JsonMapper.builder()
+            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true)
+            .build();
 
         final MyDto readValue = mapper.readValue(jsonAsString, MyDto.class);
 

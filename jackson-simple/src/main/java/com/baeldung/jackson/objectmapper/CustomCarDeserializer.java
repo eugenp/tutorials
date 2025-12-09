@@ -18,7 +18,7 @@ public class CustomCarDeserializer extends StdDeserializer<Car> {
     private final Logger Logger = LoggerFactory.getLogger(getClass());
 
     public CustomCarDeserializer() {
-        this(null);
+        super(Car.class);
     }
 
     public CustomCarDeserializer(final Class<?> vc) {

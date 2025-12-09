@@ -15,7 +15,7 @@ public class CustomDateDeserializer extends StdDeserializer<Date> {
     private SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 
     public CustomDateDeserializer() {
-        this(null);
+        super(Date.class);
     }
 
     public CustomDateDeserializer(final Class<?> vc) {

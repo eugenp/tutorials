@@ -11,7 +11,7 @@ public class ItemSerializer extends StdSerializer<Item> {
     private static final long serialVersionUID = 6739170890621978901L;
 
     public ItemSerializer() {
-        this(null);
+        super(Item.class);
     }
 
     public ItemSerializer(final Class<Item> t) {

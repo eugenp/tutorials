@@ -13,7 +13,7 @@ public class CustomCarSerializer extends StdSerializer<Car> {
     private static final long serialVersionUID = 1396140685442227917L;
 
     public CustomCarSerializer() {
-        this(null);
+        super(Car.class);
     }
 
     public CustomCarSerializer(final Class<Car> t) {
