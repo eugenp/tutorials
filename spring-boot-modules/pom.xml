@@ -17,15 +17,28 @@
         <relativePath>../parent-boot-3</relativePath>
     </parent>
 
-    <modules>
-        <!-- all your module entries here -->
-        <module>spring-boot-mvc</module>
-        <module>spring-boot-mvc-2</module>
-        <module>spring-boot-mvc-3</module>
-        <module>spring-boot-mvc-4</module>
-        <module>spring-boot-mvc-5</module>
-        <!-- rest of modules unchanged -->
-    </modules>
+   <modules>
+    <module>flyway-multidb-springboot</module>
+    <module>spring-boot-admin</module>
+    <module>spring-boot-angular</module>
+    <module>spring-boot-config-order</module>
+    <module>spring-boot-annotations</module>
+    <module>spring-boot-annotations-2</module>
+    <module>spring-boot-artifacts</module>
+    <module>spring-boot-artifacts-2</module>
+    <module>spring-boot-autoconfiguration</module>
+    ...
+    <module>spring-boot-mvc</module>
+    <module>spring-boot-mvc-2</module>
+    <module>spring-boot-mvc-3</module>
+    <module>spring-boot-mvc-4</module>
+    <module>spring-boot-mvc-5</module>
+    ...
+    <module>spring-boot-simple</module>
+    <module>spring-boot-http2</module>
+    <module>spring-boot-azure-deployment</module>
+    <module>spring-boot-heroku-deployment</module>
+</modules>
 
     <build>
         <plugins>
