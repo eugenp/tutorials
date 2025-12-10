@@ -19,7 +19,6 @@
     <modules>
         <module>flyway-multidb-springboot</module>
         <module>spring-boot-admin</module>
-	<module>SqlScript</module>
         <module>spring-boot-angular</module>
         <module>spring-boot-config-order</module>
         <module>spring-boot-annotations</module>
