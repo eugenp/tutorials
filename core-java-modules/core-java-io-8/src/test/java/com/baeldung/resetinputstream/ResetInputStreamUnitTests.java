@@ -54,7 +54,7 @@ public class ResetInputStreamUnitTests {
     }
 
     @Test
-    void givenBufferedInputStream_whenMarkSupported_theTrue() throws IOException {
+    void givenBufferedInputStream_whenMarkSupported_thenTrue() throws IOException {
         BufferedInputStream bis = new BufferedInputStream(new FileInputStream(fileName));
         boolean isMarkSupported = bis.markSupported();
         assertEquals(isMarkSupported, true);
