@@ -1,11 +1,12 @@
 package com.baeldung.jtademo.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.math.BigDecimal;
 
 import javax.transaction.Transactional;
 import javax.transaction.UserTransaction;
-import java.math.BigDecimal;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class TellerService {

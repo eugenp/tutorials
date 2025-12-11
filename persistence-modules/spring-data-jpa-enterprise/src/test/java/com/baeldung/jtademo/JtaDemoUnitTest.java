@@ -1,24 +1,27 @@
 package com.baeldung.jtademo;
 
-import com.baeldung.jtademo.dto.TransferLog;
-import com.baeldung.jtademo.services.AuditService;
-import com.baeldung.jtademo.services.BankAccountService;
-import com.baeldung.jtademo.services.TellerService;
-import com.baeldung.jtademo.services.TestHelper;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import java.math.BigDecimal;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.math.BigDecimal;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import com.baeldung.jtademo.dto.TransferLog;
+import com.baeldung.jtademo.services.AuditService;
+import com.baeldung.jtademo.services.BankAccountService;
+import com.baeldung.jtademo.services.TellerService;
+import com.baeldung.jtademo.services.TestHelper;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = JtaDemoApplication.class)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 public class JtaDemoUnitTest {
     @Autowired
     TestHelper testHelper;

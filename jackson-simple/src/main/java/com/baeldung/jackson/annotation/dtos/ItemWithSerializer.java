@@ -3,8 +3,8 @@ package com.baeldung.jackson.annotation.dtos;
 import com.baeldung.jackson.annotation.deserialization.ItemDeserializerOnClass;
 import com.baeldung.jackson.annotation.serialization.ItemSerializerOnClass;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import tools.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(using = ItemSerializerOnClass.class)
 @JsonDeserialize(using = ItemDeserializerOnClass.class)

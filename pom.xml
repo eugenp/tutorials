@@ -567,7 +567,6 @@
                 <module>core-java-modules/core-java-datetime-conversion</module>
                 <module>libraries-data-io</module>
                 <module>persistence-modules/spring-data-neo4j</module>
-                <module>persistence-modules/spring-persistence</module>
                 <module>quarkus-modules/quarkus</module>
                 <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
                 <module>spring-di-2</module>
@@ -813,6 +812,7 @@
                 <module>spring-quartz</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-remoting-modules</module> <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. -->
+                <module>spring-scheduling</module>
                 <module>spring-scheduling-2</module>
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
@@ -1056,7 +1056,6 @@
                 <module>core-java-modules/core-java-datetime-conversion</module>
                 <module>libraries-data-io</module>
                 <module>persistence-modules/spring-data-neo4j</module>
-                <module>persistence-modules/spring-persistence</module>
                 <module>quarkus-modules/quarkus</module>
                 <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
                 <module>spring-di-2</module>
@@ -1295,6 +1294,7 @@
                 <module>spring-quartz</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-remoting-modules</module> <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. -->
+                <module>spring-scheduling</module>
                 <module>spring-scheduling-2</module>
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
@@ -1589,7 +1589,6 @@
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> <!-- cannot add the individual modules here because the order is not guaranteed -->
                 <module>persistence-modules/spring-data-cassandra</module>   <!-- failing after upgrading to jdk17. JDK 17 compatibility in progress CASSANDRA-16895 --> <!-- JAVA-42047 -->
                 <module>language-interop</module>
-                <module>spring-scheduling</module> <!-- BAEL-8382 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb</module> <!-- JAVA-42144 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb-2</module> <!-- JAVA-42371 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb-4</module> <!-- JAVA-42372 -->
@@ -1658,7 +1657,6 @@
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> <!-- cannot add the individual modules here because the order is not guaranteed -->
                 <module>persistence-modules/spring-data-cassandra</module>   <!-- failing after upgrading to jdk17. JDK 17 compatibility in progress CASSANDRA-16895 --> <!-- JAVA-42047 -->
                 <module>language-interop</module>
-                <module>spring-scheduling</module> <!-- BAEL-8382 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb</module> <!-- JAVA-42144 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb-2</module> <!-- JAVA-42371 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb-4</module> <!-- JAVA-42372 -->
