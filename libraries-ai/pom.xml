@@ -108,6 +108,11 @@
             <artifactId>opencsv</artifactId>
             <version>${opencsv.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.github.sashirestela</groupId>
+            <artifactId>simple-openai</artifactId>
+            <version>${simpleopenai.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -133,6 +138,7 @@
         <tribuo-all.version>4.3.2</tribuo-all.version>
         <common-lang3.version>3.17.0</common-lang3.version>
         <opencsv.version>5.11</opencsv.version>
+        <simpleopenai.version>3.22.2</simpleopenai.version>
     </properties>
 
 </project>
