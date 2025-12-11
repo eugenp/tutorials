@@ -34,7 +34,6 @@ public class UserDataService {
             .orElseThrow(() -> new RuntimeException("User not found for Id" + id));
 
         user.setActivated(true);
-
         return user;
     }
 }
