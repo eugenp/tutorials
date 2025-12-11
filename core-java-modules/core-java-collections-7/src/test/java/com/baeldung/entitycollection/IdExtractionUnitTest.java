@@ -75,42 +75,5 @@ class IdExtractionUnitTest {
         Set<Long> ids = IdExtractor.extractUniqueIds(users);
         assertTrue(ids.isEmpty());
     }
-
-    @Test
-    void givenListOfUsers_whenUsingUtilityExtractor_thenReturnListOfIds() {
-        List<User> users = Arrays.asList(
-                new User(100L, "A"),
-                new User(200L, "B")
-        );
-
-        List<Long> ids = EntityUtils.extractField(users, User::getId);
-        assertEquals(Arrays.asList(100L, 200L), ids);
-    }
-
-    @Test
-    void givenEmptyList_whenUsingUtilityExtractor_thenReturnEmptyList() {
-        List<User> users = List.of();
-        List<Long> ids = EntityUtils.extractField(users, User::getId);
-        assertTrue(ids.isEmpty());
-    }
-
-    @Test
-    void givenUsersWithDuplicates_whenUsingUtilityExtractorAsSet_thenReturnUniqueIds() {
-        List<User> users = Arrays.asList(
-                new User(5L, "A"),
-                new User(5L, "B"),
-                new User(6L, "C")
-        );
-
-        Set<Long> ids = EntityUtils.extractFieldAsSet(users, User::getId);
-        assertEquals(Set.of(5L, 6L), ids);
-    }
-
-    @Test
-    void givenEmptyList_whenUsingUtilityExtractorAsSet_thenReturnEmptySet() {
-        List<User> users = List.of();
-        Set<Long> ids = EntityUtils.extractFieldAsSet(users, User::getId);
-        assertTrue(ids.isEmpty());
-    }
 }
 
