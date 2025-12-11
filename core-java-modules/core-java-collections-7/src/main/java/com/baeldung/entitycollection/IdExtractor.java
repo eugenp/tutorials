@@ -1,4 +1,4 @@
-package com.baeldung.entityCollection;
+package com.baeldung.entitycollection;
 
 import java.util.*;
 import java.util.stream.Collectors;

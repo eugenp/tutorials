@@ -1,4 +1,4 @@
-package com.baeldung.entityCollection;
+package com.baeldung.entitycollection;
 
 public class User {
     private final Long id;

@@ -1,4 +1,4 @@
-package com.baeldung.entityCollection;
+package com.baeldung.entitycollection;
 
 import org.junit.jupiter.api.Test;
 
