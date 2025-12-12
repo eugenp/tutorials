@@ -7,7 +7,5 @@ public class RuleUtils {
     public static void track(RuleContext ctx, RuleTracker tracker) {
         String ruleName = ctx.getRule().getName();
         tracker.add(ruleName);
-
-        System.out.println("Rule fired (via RuleUtils): " + ruleName);
     }
 }
