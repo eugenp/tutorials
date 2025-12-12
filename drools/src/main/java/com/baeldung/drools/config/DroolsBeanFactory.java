@@ -25,7 +25,8 @@ public class DroolsBeanFactory {
     private KieFileSystem getKieFileSystem() {
         KieFileSystem kieFileSystem = kieServices.newKieFileSystem();
         List<String> rules = Arrays.asList("com/baeldung/drools/rules/BackwardChaining.drl", "com/baeldung/drools/rules/SuggestApplicant.drl",
-          "com/baeldung/drools/rules/Product_rules.drl.xls", "com/baeldung/drools/rules/eligibility_rules.drl");
+          "com/baeldung/drools/rules/Product_rules.drl.xls", "com/baeldung/drools/rules/eligibility_rules_event.drl",
+          "com/baeldung/drools/rules/eligibility_rules_context.drl");
         for (String rule : rules) {
             kieFileSystem.write(ResourceFactory.newClassPathResource(rule));
         }
