@@ -1,6 +1,6 @@
-package com.baeldung.spring.data.es.termsqueries.repository;
+package com.baeldung.termsqueries.repository;
 
-import com.baeldung.spring.data.es.termsqueries.model.User;
+import com.baeldung.termsqueries.model.User;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 import java.util.List;

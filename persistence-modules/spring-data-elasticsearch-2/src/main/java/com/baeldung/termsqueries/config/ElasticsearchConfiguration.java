@@ -1,4 +1,4 @@
-package com.baeldung.spring.data.es.termsqueries.config;
+package com.baeldung.termsqueries.config;
 
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.json.jackson.JacksonJsonpMapper;

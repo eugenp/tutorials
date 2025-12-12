@@ -1,4 +1,4 @@
-package com.baeldung.spring.data.es.termsqueries;
+package com.baeldung.termsqueries;
 
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.elasticsearch._types.aggregations.Aggregation;
@@ -10,9 +10,9 @@ import co.elastic.clients.elasticsearch._types.query_dsl.TermQuery;
 import co.elastic.clients.elasticsearch.core.SearchRequest;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
 import co.elastic.clients.elasticsearch.core.search.Hit;
-import com.baeldung.spring.data.es.termsqueries.config.ElasticsearchConfiguration;
-import com.baeldung.spring.data.es.termsqueries.model.User;
-import com.baeldung.spring.data.es.termsqueries.repository.UserRepository;
+import com.baeldung.termsqueries.config.ElasticsearchConfiguration;
+import com.baeldung.termsqueries.model.User;
+import com.baeldung.termsqueries.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,8 +57,7 @@ public class ElasticSearchTermsQueriesManualTest {
           .satisfies(source -> {
             assertThat(source)
               .isNotNull()
-              .values()
-              .containsExactly("1", "Alice", "admin", true);
+              .containsValues("1", "Alice", "admin", true);
           });
     }
 

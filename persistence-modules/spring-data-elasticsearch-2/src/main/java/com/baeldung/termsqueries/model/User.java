@@ -1,4 +1,4 @@
-package com.baeldung.spring.data.es.termsqueries.model;
+package com.baeldung.termsqueries.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
