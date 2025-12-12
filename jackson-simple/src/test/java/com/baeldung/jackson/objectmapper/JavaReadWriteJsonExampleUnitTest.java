@@ -17,9 +17,9 @@ import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
 import com.baeldung.jackson.objectmapper.dto.Car;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ObjectMapper;
 
 public class JavaReadWriteJsonExampleUnitTest {
 
@@ -107,7 +107,7 @@ public class JavaReadWriteJsonExampleUnitTest {
         URL resource = new URI("file:src/test/resources/json_car.json").toURL();
 
         ObjectMapper objectMapper = new ObjectMapper();
-        Car fromFile = objectMapper.readValue(resource, Car.class);
+        Car fromFile = objectMapper.readValue(resource.openStream(), Car.class);
 
         assertEquals("BMW", fromFile.getType());
         assertEquals("Black", fromFile.getColor());

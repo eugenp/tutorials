@@ -15,6 +15,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.web.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>${poi.version}</version>
@@ -108,6 +113,7 @@
         <logback-core.version>1.5.6</logback-core.version>
         <jmh.version>1.37</jmh.version>
         <log4j.version>2.23.1</log4j.version>
+        <spring.web.version>3.5.7</spring.web.version>
     </properties>
 
 </project>
