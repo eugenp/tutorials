@@ -7,7 +7,6 @@ import org.drools.decisiontable.DecisionTableProviderImpl;
 import org.kie.api.KieServices;
 import org.kie.api.builder.KieBuilder;
 import org.kie.api.builder.KieFileSystem;
-import org.kie.api.builder.KieModule;
 import org.kie.api.builder.KieRepository;
 import org.kie.api.builder.ReleaseId;
 import org.kie.api.io.Resource;
@@ -25,7 +24,9 @@ public class DroolsBeanFactory {
 
     private KieFileSystem getKieFileSystem() {
         KieFileSystem kieFileSystem = kieServices.newKieFileSystem();
-        List<String> rules = Arrays.asList("com/baeldung/drools/rules/BackwardChaining.drl", "com/baeldung/drools/rules/SuggestApplicant.drl", "com/baeldung/drools/rules/Product_rules.drl.xls");
+        List<String> rules = Arrays.asList("com/baeldung/drools/rules/BackwardChaining.drl", "com/baeldung/drools/rules/SuggestApplicant.drl",
+          "com/baeldung/drools/rules/Product_rules.drl.xls", "com/baeldung/drools/rules/eligibility_rules_event.drl",
+          "com/baeldung/drools/rules/eligibility_rules_context.drl");
         for (String rule : rules) {
             kieFileSystem.write(ResourceFactory.newClassPathResource(rule));
         }
