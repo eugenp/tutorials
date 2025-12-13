@@ -776,9 +776,6 @@
                 <module>spring-batch</module>
                 <module>spring-batch-2</module>
                 <module>spring-boot-modules</module>
-                <module>spring-boot-rest</module>
-                <module>spring-boot-rest-2</module>
-                <module>spring-boot-rest-simple</module>
                 <module>spring-cloud-modules/spring-cloud-bootstrap</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
@@ -816,16 +813,13 @@
                 <module>spring-scheduling-2</module>
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
-                <module>spring-soap</module>
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
-                <module>spring-static-resources</module>
                 <module>spring-structurizr</module>
                 <module>spring-swagger-codegen-modules/custom-validations-opeanpi-codegen</module>
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
-                <module>spring-websockets</module>
                 <module>static-analysis-modules</module>
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
@@ -1258,9 +1252,6 @@
                 <module>spring-batch</module>
                 <module>spring-batch-2</module>
                 <module>spring-boot-modules</module>
-                <module>spring-boot-rest</module>
-                <module>spring-boot-rest-2</module>
-                <module>spring-boot-rest-simple</module>
                 <module>spring-cloud-modules/spring-cloud-bootstrap</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
@@ -1298,16 +1289,13 @@
                 <module>spring-scheduling-2</module>
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
-                <module>spring-soap</module>
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
-                <module>spring-static-resources</module>
                 <module>spring-structurizr</module>
                 <module>spring-swagger-codegen-modules/custom-validations-opeanpi-codegen</module>
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
-                <module>spring-websockets</module>
                 <module>static-analysis-modules</module>
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>

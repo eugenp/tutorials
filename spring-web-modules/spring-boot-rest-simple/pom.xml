@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.web</groupId>
-    <artifactId>spring-boot-rest</artifactId>
-    <name>spring-boot-rest</name>
+    <artifactId>spring-boot-rest-simple</artifactId>
+    <name>spring-boot-rest-simple</name>
     <packaging>war</packaging>
     <description>Spring Boot Rest Module</description>
 
@@ -13,7 +13,7 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-3</relativePath>
+        <relativePath>../../parent-boot-3/pom.xml</relativePath>
     </parent>
 
     <dependencies>
@@ -175,7 +175,7 @@
         <modelmapper.version>3.2.0</modelmapper.version>
         <rest-assured.version>5.5.0</rest-assured.version>
         <spring-oxm.version>6.2.3</spring-oxm.version>
-        <spring-boot.version>3.5.7</spring-boot.version>
+        <spring-boot.version>3.4.3</spring-boot.version>
         <!-- https://github.com/qos-ch/logback/issues/853 -->
         <logback.version>1.5.17</logback.version>
         <!-- not managed by Spring anymore -->
