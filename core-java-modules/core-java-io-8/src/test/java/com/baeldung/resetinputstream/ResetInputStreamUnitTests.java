@@ -14,17 +14,16 @@ import org.junit.jupiter.api.Test;
 
 public class ResetInputStreamUnitTests {
 
-    final int readLimit = 500;
     final String fileName = "src/test/resources/InputStreamData.txt";
-    
+
     @Test
     void givenByteArrayInputStream_whenMarkSupported_thenTrue() {
         byte[] buffer = { 1, 2, 3, 4, 5 };
         ByteArrayInputStream bis = new ByteArrayInputStream(buffer);
         boolean isMarkSupported = bis.markSupported();
-        assertEquals(isMarkSupported, true);
+        assertEquals(true, isMarkSupported);
     }
-    
+
     @Test
     void givenByteArrayInputStream_whenMarkAndReset_thenReadMarkedPosition() {
         final int EXPECTED_NUMBER = 3;
@@ -32,18 +31,19 @@ public class ResetInputStreamUnitTests {
         ByteArrayInputStream bis = new ByteArrayInputStream(buffer);
         int number = bis.read();    //get 1
         number = bis.read();        //get 2
-        bis.mark(readLimit);
+        bis.mark(0);                //irrelevant for ByteArrayInputStream
         number = bis.read();        //get 3
         number = bis.read();        //get 4
 
         bis.reset();
 
         number = bis.read();        //should get 3
-        assertEquals(number, EXPECTED_NUMBER);
+        assertEquals(EXPECTED_NUMBER, number);
     }
 
     @Test
     void givenFileInputStream_whenReset_thenIOException() {
+        final int readLimit = 500;
         assertThrows(IOException.class, () -> {
             FileInputStream fis = new FileInputStream(fileName);
             fis.read();
@@ -54,14 +54,22 @@ public class ResetInputStreamUnitTests {
     }
 
     @Test
+    void givenFileInputStream_whenMarkSupported_thenFalse() throws FileNotFoundException {
+        FileInputStream fis = new FileInputStream(fileName);
+        boolean isMarkSupported = fis.markSupported();
+        assertEquals(false, isMarkSupported);
+    }
+
+    @Test
     void givenBufferedInputStream_whenMarkSupported_thenTrue() throws IOException {
         BufferedInputStream bis = new BufferedInputStream(new FileInputStream(fileName));
         boolean isMarkSupported = bis.markSupported();
-        assertEquals(isMarkSupported, true);
+        assertEquals(true, isMarkSupported);
     }
 
     @Test
     void givenBufferedInputStream_whenMarkAndReset_thenReadMarkedPosition() throws IOException {
+        final int readLimit = 500;
         final char EXPECTED_CHAR = 'w';
         FileInputStream fis = new FileInputStream(fileName);
         //content:
@@ -79,14 +87,24 @@ public class ResetInputStreamUnitTests {
         bis.reset();
 
         char test = (char) bis.read();
-        assertEquals(test, EXPECTED_CHAR);
+        assertEquals(EXPECTED_CHAR, test);
     }
 
     @Test
-    void givenFileInputStream_whenMarkSupported_thenFalse() throws FileNotFoundException {
-        FileInputStream fis = new FileInputStream(fileName);
-        boolean isMarkSupported = fis.markSupported();
-        assertEquals(isMarkSupported, false);
+    void givenBufferedInputStream_whenMarkIsInvalid_thenIOException() throws IOException {
+        final int bufferSize = 2;
+        final int readLimit = 1;
+        assertThrows(IOException.class, () -> {
+            FileInputStream fis = new FileInputStream(fileName);
+            BufferedInputStream bis = new BufferedInputStream(fis, bufferSize); // constructor accepting buffer size
+            bis.read();
+            bis.mark(readLimit);
+            bis.read();
+            bis.read();
+            bis.read();  // subsequent read exceeds both read limit and buffer size
+
+            bis.reset(); // mark position is invalid
+        });
     }
 
     @Test
@@ -111,6 +129,6 @@ public class ResetInputStreamUnitTests {
         raf.seek(filePointer);
 
         int test = raf.read();
-        assertEquals(test, EXPECTED_CHAR);
+        assertEquals(EXPECTED_CHAR, test);
     }
 }
