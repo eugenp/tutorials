@@ -101,7 +101,7 @@ public class ResetInputStreamUnitTests {
             bis.mark(readLimit);
             bis.read();
             bis.read();
-            bis.read();  // subsequent read exceeds both read limit and buffer size
+            bis.read();  // this read exceeds both read limit and buffer size
 
             bis.reset(); // mark position is invalid
         });
