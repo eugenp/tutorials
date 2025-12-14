@@ -10,9 +10,8 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-6</artifactId>
+        <artifactId>spring-web-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-spring-6</relativePath>
     </parent>
 
     <dependencies>
@@ -186,10 +185,26 @@
                     </webResources>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>repackage</id>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
     <properties>
+        <spring.version>6.2.8</spring.version>
         <spring-security.version>6.3.3</spring-security.version>
         <jakarta.jstl-api.version>3.0.2</jakarta.jstl-api.version>
         <jakarta.servlet-api.version>6.0.0</jakarta.servlet-api.version>
