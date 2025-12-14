@@ -756,9 +756,6 @@
                 <module>google-protocol-buffer</module>
                 <module>quarkus-modules</module>
                 <module>reactive-systems</module>
-                <module>reactor-core</module>
-                <module>reactor-core-2</module>
-                <module>rsocket</module>
                 <module>rule-engines-modules</module>
                 <module>rxjava-modules</module>
                 <module>saas-modules</module>
@@ -767,7 +764,6 @@
                 <module>spf4j</module>
                 <module>spring-5</module>
                 <module>spring-5-rest-docs</module>
-                <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai-modules</module>
@@ -1238,9 +1234,6 @@
                 <module>google-protocol-buffer</module>
                 <module>quarkus-modules</module>
                 <module>reactive-systems</module>
-                <module>reactor-core</module>
-                <module>reactor-core-2</module>
-                <module>rsocket</module>
                 <module>rule-engines-modules</module>
                 <module>rxjava-modules</module>
                 <module>saas-modules</module>
@@ -1249,7 +1242,6 @@
                 <module>spf4j</module>
                 <module>spring-5</module>
                 <module>spring-5-rest-docs</module>
-                <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai-modules</module>
