@@ -1,6 +1,5 @@
 package com.baeldung.simpleopenai;
 
-import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
 import java.util.concurrent.CompletableFuture;
 
@@ -24,7 +23,6 @@ public class SingleTurnChatCompletion {
             client.chatCompletions().create(chatRequest);
         Chat chat = chatFuture.join();
 
-        Logger logger = Client.LOGGER;
-        logger.log(Level.INFO, "Model reply: {0}", chat.firstContent());
+        Client.LOGGER.log(Level.INFO, "Model reply: {0}", chat.firstContent());
     }
 }
