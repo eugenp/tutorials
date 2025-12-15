@@ -39,9 +39,10 @@ public class BsonProductMapper {
         BsonDocument bsonDoc = document.toBsonDocument();
         BasicOutputBuffer buffer = new BasicOutputBuffer();
         new BsonDocumentCodec().encode(
-                new BsonBinaryWriter(buffer),
-                bsonDoc,
-                EncoderContext.builder().build()
+          new BsonBinaryWriter(buffer),
+          bsonDoc, EncoderContext
+            .builder()
+            .build()
         );
         return fromBytes(buffer.toByteArray());
     }
