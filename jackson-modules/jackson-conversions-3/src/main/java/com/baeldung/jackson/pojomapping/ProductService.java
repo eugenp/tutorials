@@ -10,7 +10,7 @@ public class ProductService {
 
     public ProductService(MongoDatabase database) {
         this.collection = JacksonMongoCollection.builder()
-                .build(database, "products", Product.class, UuidRepresentation.STANDARD);
+          .build(database, "products", Product.class, UuidRepresentation.STANDARD);
     }
 
     public void save(Product product) {

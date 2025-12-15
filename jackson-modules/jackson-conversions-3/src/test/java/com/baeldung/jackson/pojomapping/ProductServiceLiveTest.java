@@ -24,7 +24,7 @@ class ProductServiceLiveTest {
         var serverAddress = mongodbProcess.current().getServerAddress();
 
         mongoClient = MongoClients.create(String.format("mongodb://%s:%d",
-            serverAddress.getHost(), serverAddress.getPort()));
+          serverAddress.getHost(), serverAddress.getPort()));
         productService = new ProductService(mongoClient.getDatabase("testdb"));
     }
 

@@ -58,8 +58,8 @@ class BsonProductMapperUnitTest {
     @Test
     void givenDocument_whenConvertingToProduct_thenReturnsProduct() throws IOException {
         Document document = new Document()
-                .append("name", "Document Product")
-                .append("price", 49.99);
+          .append("name", "Document Product")
+          .append("price", 49.99);
 
         Product convertedProduct = mapper.fromDocument(document);
 
