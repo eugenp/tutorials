@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/chat")
+@RequestMapping("/api/v1/baelgent/interact")
 class BaelgentController {
 
     private final BaelgentService baelgentService;
@@ -16,7 +16,7 @@ class BaelgentController {
     }
 
     @PostMapping
-    BaelgentResponse chat(@RequestBody BaelgentRequest request) {
+    BaelgentResponse interact(@RequestBody BaelgentRequest request) {
         return baelgentService.interact(request);
     }
 
