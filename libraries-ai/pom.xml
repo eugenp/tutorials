@@ -124,7 +124,7 @@
             <artifactId>jlama-native</artifactId>
             <!-- supports linux-x86_64, macos-x86_64/aarch_64, windows-x86_64
                  Use https://github.com/trustin/os-maven-plugin to detect os and arch -->
-            <classifier>windows-x86_64</classifier>
+            <classifier>${jlama-native.classifier}</classifier>
             <version>${jlama.version}</version>
         </dependency>
     </dependencies>
@@ -166,6 +166,7 @@
         <opencsv.version>5.11</opencsv.version>
         <simpleopenai.version>3.22.2</simpleopenai.version>
         <jlama.version>0.8.4</jlama.version>
+        <jlama-native.classifier>windows-x86_64</jlama-native.classifier>
     </properties>
 
 </project>
