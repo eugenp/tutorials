@@ -117,7 +117,7 @@
         <dependency>
             <groupId>com.github.tjake</groupId>
             <artifactId>jlama-core</artifactId>
-            <version>0.8.4</version>
+            <version>${jlama.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.tjake</groupId>
@@ -125,7 +125,7 @@
             <!-- supports linux-x86_64, macos-x86_64/aarch_64, windows-x86_64
                  Use https://github.com/trustin/os-maven-plugin to detect os and arch -->
             <classifier>windows-x86_64</classifier>
-            <version>0.8.4</version>
+            <version>${jlama.version}</version>
         </dependency>
     </dependencies>
 
@@ -164,6 +164,8 @@
         <tribuo-all.version>4.3.2</tribuo-all.version>
         <common-lang3.version>3.17.0</common-lang3.version>
         <opencsv.version>5.11</opencsv.version>
+        <simpleopenai.version>3.22.2</simpleopenai.version>
+        <jlama.version>0.8.4</jlama.version>
     </properties>
 
 </project>
