@@ -1,0 +1,7 @@
+com:
+  baeldung:
+    agent:
+      name: baelgent
+      description: Baeldung's AI agent
+      ai-model: gemini-2.5-flash
+      instruction: classpath:prompts/baelgent-system-prompt.txt
