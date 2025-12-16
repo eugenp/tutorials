@@ -113,6 +113,20 @@
             <artifactId>simple-openai</artifactId>
             <version>${simpleopenai.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.github.tjake</groupId>
+            <artifactId>jlama-core</artifactId>
+            <version>0.8.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.tjake</groupId>
+            <artifactId>jlama-native</artifactId>
+            <!-- supports linux-x86_64, macos-x86_64/aarch_64, windows-x86_64
+                 Use https://github.com/trustin/os-maven-plugin to detect os and arch -->
+            <classifier>windows-x86_64</classifier>
+            <version>0.8.4</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -123,6 +137,18 @@
                 <configuration>
                     <source>21</source>
                     <target>21</target>
+                    <compilerArgs>
+                        <arg>--add-modules</arg>
+                        <arg>jdk.incubator.vector</arg>
+                        <arg>--enable-preview</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>--add-modules jdk.incubator.vector --enable-preview</argLine>
                 </configuration>
             </plugin>
         </plugins>
@@ -138,7 +164,6 @@
         <tribuo-all.version>4.3.2</tribuo-all.version>
         <common-lang3.version>3.17.0</common-lang3.version>
         <opencsv.version>5.11</opencsv.version>
-        <simpleopenai.version>3.22.2</simpleopenai.version>
     </properties>
 
 </project>
