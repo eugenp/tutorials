@@ -2,13 +2,10 @@
 
 This is a Spring Boot demo application that demonstrates integration with OJP (Open JDBC Proxy) using TestContainers.
 
-## ✅ Status: Working
+## ✅ Module Structure: Complete
+## ⚠️  Integration Tests: Blocked by logging conflict
 
-The integration test successfully demonstrates:
-- Custom OJP TestContainer implementation
-- OJP container starts before PostgreSQL
-- Spring Boot application connects through OJP to PostgreSQL
-- Full CRUD operations work correctly through the proxy
+The module follows the tutorials repository conventions with proper Maven profile integration. The integration test code is correct but cannot run due to a dependency conflict.
 
 ## Overview
 
@@ -46,53 +43,81 @@ Both containers share a Docker network to allow inter-container communication.
 
 ## Building and Testing
 
-```bash
-# Build the project
-./mvnw clean compile
+### Module Structure
+This module follows the tutorials repository conventions:
+- Parent: `ojp` → inherits from → `parent-boot-3`  
+- Included in: `default` and `integration` Maven profiles
+- Java compatibility: 17+ (compiled with target 17, runs on 17 or higher)
 
-# Run tests
-./mvnw test
+### Build Commands
+
+```bash
+# Build from ojp parent directory
+cd ojp
+mvn clean install
+
+# Build from root with integration profile
+mvn clean install -Pintegration --pl ojp
 ```
+
+### Known Issue: Logging Conflict
+
+**Problem:** The `ojp-jdbc-driver:0.3.0-beta` dependency has `slf4j-simple` classes shaded directly into the jar. This conflicts with Logback inherited from `parent-boot-3`. Spring Boot detects both logging implementations and refuses to start.
+
+**Error:**
+```
+LoggerFactory is not a Logback LoggerContext but Logback is on the classpath. 
+Either remove Logback or the competing implementation 
+(class org.slf4j.simple.SimpleLoggerFactory loaded from ojp-jdbc-driver-0.3.0-beta.jar)
+```
+
+**Possible Solutions:**
+1. Update `ojp-jdbc-driver` to not shade slf4j-simple
+2. Create a custom parent pom without logback dependencies
+3. Use Spring Boot's logging exclusion mechanisms (attempted, unsuccessful so far)
+
+The test code itself is correct and follows all repository conventions.
 
 ## Questions and Concerns
 
-### ✅ Resolved: Container Configuration and Network Architecture
+### ✅ Resolved: Module Structure and Profiles
 
-**Initial Concern**: Whether OJP running in a container could resolve the PostgreSQL network alias when the connection request comes from outside the Docker network.
+**Initial Concern**: How to properly integrate the module into the tutorials repository structure.
 
-**Resolution**: The implementation works correctly! The architecture is:
-- Spring Boot App (Host) → OJP Container (via exposed port) → PostgreSQL Container (via network alias)
-- The JDBC URL format `jdbc:ojp[host:port]_postgresql://postgres:5432/database` works as expected
-- OJP correctly resolves the "postgres" network alias because it's running within the Docker network
+**Resolution**: 
+- Created parent `ojp` pom following repository patterns (inherits from `parent-boot-3`)
+- Added `ojp` module to `default` and `integration` profiles in root pom.xml
+- Integration test follows naming convention: `*IntegrationTest.java`
+- Java 17 compatibility configured (works with JDK 17+)
 
-**Test Results**: The integration test passes successfully, confirming that:
-- Both containers start correctly on a shared network
-- OJP can connect to PostgreSQL using the network alias
-- The Spring Boot application can connect through OJP to perform database operations
+### ⚠️ Active Issue: Logging Conflict
 
-### Additional Notes
+**Problem**: The `ojp-jdbc-driver:0.3.0-beta` artifact contains shaded `slf4j-simple` classes that conflict with Logback from the parent pom.
 
-#### Container Startup Order
-The current implementation uses `@Container` annotations for both containers. TestContainers manages the lifecycle automatically, and the order doesn't matter because:
-- Both containers can start independently
-- The application waits for containers to be ready before connecting
-- There are no direct dependencies between OJP and PostgreSQL startup
+**Impact**: Integration tests cannot run due to Spring Boot detecting multiple logging implementations.
 
-#### JDBC URL Format
-The OJP JDBC URL format is: `jdbc:ojp[ojp_host:ojp_port]_postgresql://postgres_host:postgres_port/database`
+**Root Cause**: The ojp-jdbc-driver dependency includes org.slf4j.simple.SimpleLoggerFactory embedded in its jar file, which cannot be excluded via Maven dependency management.
 
-Where:
-- `ojp_host:ojp_port`: Connection to OJP from the host machine (uses exposed/mapped port)
-- `postgres_host:postgres_port`: Connection from OJP to PostgreSQL (uses Docker network alias)
+**Attempted Workarounds**:
+1. Excluding slf4j-simple (doesn't work - classes are shaded/embedded)
+2. System properties to force Logback logging system
+3. Excluding spring-boot-starter-logging from all starters
+4. Setting logback dependencies to `provided` scope  
+5. JUnit Platform configuration
+6. Maven Surefire argLine configuration
 
-This dual-addressing works because:
-- The JDBC driver connects to OJP using the host-visible address
-- OJP interprets the PostgreSQL connection details from within the Docker network
+None of these workarounds successfully resolved the conflict.
+
+**Recommended Fix**: Update the `ojp-jdbc-driver` artifact to not shade slf4j dependencies, or provide a variant without shaded logging.
 
 ## Next Steps
 
-The integration is now working successfully! Possible enhancements:
+**Priority 1 - Fix Logging Conflict:**
+1. Contact OJP maintainers about removing shaded slf4j-simple from ojp-jdbc-driver
+2. OR: Create custom parent pom for this module without logback
+3. OR: Wait for updated ojp-jdbc-driver version
 
+**Future Enhancements (after logging fixed):**
 1. Add more comprehensive tests (error handling, connection pooling, etc.)
 2. Add integration tests for other database operations (Update, Delete)
 3. Consider adding a docker-compose.yml for local development/testing
