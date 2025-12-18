@@ -747,6 +747,7 @@
                 <module>mybatis-plus</module>
                 <module>netflix-modules</module>
                 <module>optaplanner</module>
+                <module>ojp</module>
                 <module>orika</module>
                 <module>osgi</module>
                 <module>patterns-modules</module>
@@ -1219,6 +1220,7 @@
                 <module>mybatis-plus</module>
                 <module>netflix-modules</module>
                 <module>optaplanner</module>
+                <module>ojp</module>
                 <module>orika</module>
                 <module>osgi</module>
                 <module>patterns-modules</module>
