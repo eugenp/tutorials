@@ -11,7 +11,7 @@ import org.testcontainers.utility.DockerImageName;
  */
 public class OjpContainer extends GenericContainer<OjpContainer> {
 
-    private static final DockerImageName DEFAULT_IMAGE_NAME = DockerImageName.parse("rrobetti/ojp:0.3.0-beta");
+    private static final DockerImageName DEFAULT_IMAGE_NAME = DockerImageName.parse("rrobetti/ojp:0.3.1-beta");
     private static final int OJP_PORT = 1059;
 
     public OjpContainer() {

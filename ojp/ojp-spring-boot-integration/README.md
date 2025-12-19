@@ -21,7 +21,7 @@ This application demonstrates:
 
 The `OjpContainer` class (`src/test/java/com/example/demo/testcontainers/OjpContainer.java`) is a custom TestContainer that:
 - Extends `GenericContainer<OjpContainer>`
-- Wraps the Docker image `rrobetti/ojp:0.3.0-beta`
+- Wraps the Docker image `rrobetti/ojp:0.3.1-beta`
 - Exposes port 1059 (OJP's default port)
 - Provides helper methods to get connection information
 
