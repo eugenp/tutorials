@@ -24,10 +24,22 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.nd4j</groupId>
+            <artifactId>nd4j-api</artifactId>
+            <version>${nd4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.nd4j</groupId>
+            <artifactId>nd4j-native</artifactId>
+            <version>${nd4j.version}</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <properties>
         <jmh.version>1.35</jmh.version>
+        <nd4j.version>1.0.0-M2.1</nd4j.version>
     </properties>
 
 </project>

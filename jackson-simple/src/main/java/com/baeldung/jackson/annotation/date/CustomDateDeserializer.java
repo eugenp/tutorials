@@ -1,14 +1,13 @@
 package com.baeldung.jackson.annotation.date;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+import tools.jackson.core.JsonParser;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.deser.std.StdDeserializer;
 
 public class CustomDateDeserializer extends StdDeserializer<Date> {
 
@@ -16,7 +15,7 @@ public class CustomDateDeserializer extends StdDeserializer<Date> {
     private SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 
     public CustomDateDeserializer() {
-        this(null);
+        super(Date.class);
     }
 
     public CustomDateDeserializer(final Class<?> vc) {
@@ -24,8 +23,8 @@ public class CustomDateDeserializer extends StdDeserializer<Date> {
     }
 
     @Override
-    public Date deserialize(final JsonParser jsonparser, final DeserializationContext context) throws IOException, JsonProcessingException {
-        final String date = jsonparser.getText();
+    public Date deserialize(final JsonParser jsonparser, final DeserializationContext context) throws JacksonException {
+        final String date = jsonparser.getString();
         try {
             return formatter.parse(date);
         } catch (final ParseException e) {

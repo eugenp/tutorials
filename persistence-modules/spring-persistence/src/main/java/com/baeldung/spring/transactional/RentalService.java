@@ -3,8 +3,8 @@ package com.baeldung.spring.transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityExistsException;
-import javax.transaction.Transactional;
+import jakarta.persistence.EntityExistsException;
+import jakarta.transaction.Transactional;
 
 @Service
 @Transactional(Transactional.TxType.SUPPORTS)

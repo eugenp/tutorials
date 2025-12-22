@@ -2,11 +2,12 @@ package com.baeldung.jackson.objectmapper;
 
 import com.baeldung.jackson.objectmapper.dto.Car;
 import com.baeldung.jackson.objectmapper.dto.Request;
-import com.fasterxml.jackson.core.Version;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
+import tools.jackson.core.Version;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
+import tools.jackson.databind.module.SimpleModule;
 import org.junit.Test;
 
 import java.text.DateFormat;
@@ -27,8 +28,9 @@ public class SerializationDeserializationFeatureUnitTest {
     @Test
     public void whenFailOnUnkownPropertiesFalse_thanJsonReadCorrectly() throws Exception {
 
-        final ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        final ObjectMapper objectMapper = JsonMapper.builder()
+            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+            .build();
         final Car car = objectMapper.readValue(JSON_CAR, Car.class);
         final JsonNode jsonNodeRoot = objectMapper.readTree(JSON_CAR);
         final JsonNode jsonNodeYear = jsonNodeRoot.get("year");
@@ -41,10 +43,11 @@ public class SerializationDeserializationFeatureUnitTest {
 
     @Test
     public void whenCustomSerializerDeserializer_thanReadWriteCorrect() throws Exception {
-        final ObjectMapper mapper = new ObjectMapper();
         final SimpleModule serializerModule = new SimpleModule("CustomSerializer", new Version(1, 0, 0, null, null, null));
         serializerModule.addSerializer(Car.class, new CustomCarSerializer());
-        mapper.registerModule(serializerModule);
+        final ObjectMapper mapper = JsonMapper.builder()
+            .addModule(serializerModule)
+            .build();
         final Car car = new Car("yellow", "renault");
         final String carJson = mapper.writeValueAsString(car);
         assertThat(carJson, containsString("renault"));
@@ -52,21 +55,24 @@ public class SerializationDeserializationFeatureUnitTest {
 
         final SimpleModule deserializerModule = new SimpleModule("CustomCarDeserializer", new Version(1, 0, 0, null, null, null));
         deserializerModule.addDeserializer(Car.class, new CustomCarDeserializer());
-        mapper.registerModule(deserializerModule);
-        final Car carResult = mapper.readValue(EXAMPLE_JSON, Car.class);
+        final ObjectMapper mapper2 = mapper.rebuild()
+            .addModule(deserializerModule)
+            .build();
+        final Car carResult = mapper2.readValue(EXAMPLE_JSON, Car.class);
         assertNotNull(carResult);
         assertThat(carResult.getColor(), equalTo("Black"));
     }
 
     @Test
     public void whenDateFormatSet_thanSerializedAsExpected() throws Exception {
-        final ObjectMapper objectMapper = new ObjectMapper();
         final Car car = new Car("yellow", "renault");
         final Request request = new Request();
         request.setCar(car);
         request.setDatePurchased(new Date());
         final DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm a z");
-        objectMapper.setDateFormat(df);
+        final ObjectMapper objectMapper = JsonMapper.builder()
+            .defaultDateFormat(df)
+            .build();
         final String carAsString = objectMapper.writeValueAsString(request);
         assertNotNull(carAsString);
         assertThat(carAsString, containsString("datePurchased"));
@@ -74,8 +80,9 @@ public class SerializationDeserializationFeatureUnitTest {
 
     @Test
     public void whenUseJavaArrayForJsonArrayTrue_thanJsonReadAsArray() throws Exception {
-        final ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.configure(DeserializationFeature.USE_JAVA_ARRAY_FOR_JSON_ARRAY, true);
+        final ObjectMapper objectMapper = JsonMapper.builder()
+            .configure(DeserializationFeature.USE_JAVA_ARRAY_FOR_JSON_ARRAY, true)
+            .build();
         final Car[] cars = objectMapper.readValue(JSON_ARRAY, Car[].class);
         for (final Car car : cars) {
             assertNotNull(car);

@@ -7,7 +7,6 @@ import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.FormatFlagsConversionMismatchException;
-import java.util.IllegalFormatException;
 import java.util.IllegalFormatPrecisionException;
 import java.util.Locale;
 import java.util.MissingFormatArgumentException;
@@ -75,6 +74,12 @@ public class StringFormatUnitTest {
     }
 
     @Test
+    public void givenAnInteger_whenPaddingWithZeros_thanIntegerGetsPadded() {
+        assertEquals("00000001", padIntegerWithZeros(1, 8));
+        assertEquals("-0000001", padIntegerWithZeros(-1, 8));
+    }
+
+    @Test
     public void whenNumberFormatWithLocales_thenCorrect() {
         String frenchFormatted = String.format(Locale.FRANCE, "%,f", 1234567.89);
         assertEquals("1 234 567,890000", frenchFormatted);
@@ -103,4 +108,9 @@ public class StringFormatUnitTest {
         String frenchFormatted = frenchCurrencyFormat.format(1000);
         assertEquals("1 000,00 €", frenchFormatted);
     }
+
+    private String padIntegerWithZeros(int number, int width) {
+        return String.format("%0" + width + "d", number);
+    }
+
 }

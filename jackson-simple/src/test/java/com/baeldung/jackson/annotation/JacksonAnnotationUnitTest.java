@@ -25,23 +25,23 @@ import com.baeldung.jackson.annotation.ignore.MyMixInForIgnoreType;
 import com.baeldung.jackson.annotation.dtos.withEnum.DistanceEnumWithValue;
 import com.baeldung.jackson.annotation.exception.UserWithRoot;
 import com.baeldung.jackson.annotation.exception.UserWithRootNamespace;
-import com.baeldung.jackson.annotation.ignore.MyMixInForIgnoreType;
 import com.baeldung.jackson.annotation.jsonview.Item;
 import com.baeldung.jackson.annotation.jsonview.Views;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.InjectableValues;
-import com.fasterxml.jackson.databind.MapperFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.ser.FilterProvider;
-import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
-import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.InjectableValues;
+import tools.jackson.databind.MapperFeature;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.SerializationFeature;
+import tools.jackson.databind.json.JsonMapper;
+import tools.jackson.databind.ser.FilterProvider;
+import tools.jackson.databind.ser.std.SimpleBeanPropertyFilter;
+import tools.jackson.databind.ser.std.SimpleFilterProvider;
+import tools.jackson.dataformat.xml.XmlMapper;
 
 public class JacksonAnnotationUnitTest {
 
     @Test
-    public void whenSerializingUsingJsonAnyGetter_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingUsingJsonAnyGetter_thenCorrect() throws JacksonException {
         final ExtendableBean bean = new ExtendableBean("My bean");
         bean.add("attr1", "val1");
         bean.add("attr2", "val2");
@@ -52,7 +52,7 @@ public class JacksonAnnotationUnitTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonGetter_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingUsingJsonGetter_thenCorrect() throws JacksonException {
         final BeanWithGetter bean = new BeanWithGetter(1, "My bean");
 
         final String result = new ObjectMapper().writeValueAsString(bean);
@@ -61,7 +61,7 @@ public class JacksonAnnotationUnitTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonPropertyOrder_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingUsingJsonPropertyOrder_thenCorrect() throws JacksonException {
         final MyBean bean = new MyBean(1, "My bean");
 
         final String result = new ObjectMapper().writeValueAsString(bean);
@@ -70,7 +70,7 @@ public class JacksonAnnotationUnitTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonRawValue_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingUsingJsonRawValue_thenCorrect() throws JacksonException {
         final RawBean bean = new RawBean("My bean", "{\"attr\":false}");
 
         final String result = new ObjectMapper().writeValueAsString(bean);
@@ -79,11 +79,12 @@ public class JacksonAnnotationUnitTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonRootName_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingUsingJsonRootName_thenCorrect() throws JacksonException {
         final UserWithRoot user = new UserWithRoot(1, "John");
 
-        final ObjectMapper mapper = new ObjectMapper();
-        mapper.enable(SerializationFeature.WRAP_ROOT_VALUE);
+        final ObjectMapper mapper = JsonMapper.builder()
+            .configure(SerializationFeature.WRAP_ROOT_VALUE, true)
+            .build();
         final String result = mapper.writeValueAsString(user);
 
         assertThat(result, containsString("John"));
@@ -106,7 +107,7 @@ public class JacksonAnnotationUnitTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonSerialize_thenCorrect() throws JsonProcessingException, ParseException {
+    public void whenSerializingUsingJsonSerialize_thenCorrect() throws JacksonException, ParseException {
         final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 
         final String toParse = "20-12-2014 02:30:00";
@@ -118,13 +119,13 @@ public class JacksonAnnotationUnitTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonValueAnnotatedField_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingUsingJsonValueAnnotatedField_thenCorrect() throws JacksonException {
         final String enumValue = new ObjectMapper().writeValueAsString(TypeEnumWithValue.TYPE1);
         assertThat(enumValue, is("\"Type A\""));
     }
 
     @Test
-    public void whenSerializingUsingJsonValueAnnotatedFieldInPojo_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingUsingJsonValueAnnotatedFieldInPojo_thenCorrect() throws JacksonException {
         GeneralBean bean1 = new GeneralBean(1, "Bean 1");
         final String bean1AsString = new ObjectMapper().writeValueAsString(bean1);
         assertThat(bean1AsString, is("\"Bean 1\""));
@@ -186,7 +187,7 @@ public class JacksonAnnotationUnitTest {
     }
 
     @Test
-    public void whenDeserializingUsingJsonValue_thenCorrect() throws JsonProcessingException {
+    public void whenDeserializingUsingJsonValue_thenCorrect() throws JacksonException {
         final String str = "\"Type A\"";
         TypeEnumWithValue te = new ObjectMapper().readerFor(TypeEnumWithValue.class)
             .readValue(str);
@@ -194,7 +195,7 @@ public class JacksonAnnotationUnitTest {
     }
 
     @Test(expected = Exception.class)
-    public void whenDeserializingUsingJsonValueAnnotatedFieldInPojo_thenGetException() throws JsonProcessingException {
+    public void whenDeserializingUsingJsonValueAnnotatedFieldInPojo_thenGetException() throws JacksonException {
         GeneralBean bean1 = new GeneralBean(1, "Bean 1");
         final String bean1AsString = new ObjectMapper().writeValueAsString(bean1);
         GeneralBean bean = new ObjectMapper().readerFor(GeneralBean.class)
@@ -205,7 +206,7 @@ public class JacksonAnnotationUnitTest {
     // ========================= Inclusion annotations ============================
 
     @Test
-    public void whenSerializingUsingJsonIgnoreProperties_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingUsingJsonIgnoreProperties_thenCorrect() throws JacksonException {
         final BeanWithIgnore bean = new BeanWithIgnore(1, "My bean");
 
         final String result = new ObjectMapper().writeValueAsString(bean);
@@ -214,7 +215,7 @@ public class JacksonAnnotationUnitTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonIncludeProperties_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingUsingJsonIncludeProperties_thenCorrect() throws JacksonException {
         final BeanWithInclude bean = new BeanWithInclude(1, "My bean");
         final String result = new ObjectMapper().writeValueAsString(bean);
         assertThat(result, containsString("My bean"));
@@ -223,7 +224,7 @@ public class JacksonAnnotationUnitTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonIgnore_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingUsingJsonIgnore_thenCorrect() throws JacksonException {
         final BeanWithIgnore bean = new BeanWithIgnore(1, "My bean");
 
         final String result = new ObjectMapper().writeValueAsString(bean);
@@ -232,7 +233,7 @@ public class JacksonAnnotationUnitTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonIgnoreType_thenCorrect() throws JsonProcessingException, ParseException {
+    public void whenSerializingUsingJsonIgnoreType_thenCorrect() throws JacksonException, ParseException {
         final UserWithIgnoreType.Name name = new UserWithIgnoreType.Name("John", "Doe");
         final UserWithIgnoreType user = new UserWithIgnoreType(1, name);
 
@@ -244,7 +245,7 @@ public class JacksonAnnotationUnitTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonInclude_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingUsingJsonInclude_thenCorrect() throws JacksonException {
         final MyBean bean = new MyBean(1, null);
 
         final String result = new ObjectMapper().writeValueAsString(bean);
@@ -253,7 +254,7 @@ public class JacksonAnnotationUnitTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonAutoDetect_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingUsingJsonAutoDetect_thenCorrect() throws JacksonException {
         final PrivateBean bean = new PrivateBean(1, "My bean");
 
         final String result = new ObjectMapper().writeValueAsString(bean);
@@ -264,7 +265,7 @@ public class JacksonAnnotationUnitTest {
     // ========================= Polymorphic annotations ============================
 
     @Test
-    public void whenSerializingPolymorphic_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingPolymorphic_thenCorrect() throws JacksonException {
         final Zoo.Dog dog = new Zoo.Dog("lacy");
         final Zoo zoo = new Zoo(dog);
 
@@ -300,7 +301,7 @@ public class JacksonAnnotationUnitTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonFormat_thenCorrect() throws JsonProcessingException, ParseException {
+    public void whenSerializingUsingJsonFormat_thenCorrect() throws JacksonException, ParseException {
         final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
 
@@ -313,7 +314,7 @@ public class JacksonAnnotationUnitTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonUnwrapped_thenCorrect() throws JsonProcessingException, ParseException {
+    public void whenSerializingUsingJsonUnwrapped_thenCorrect() throws JacksonException, ParseException {
         final UnwrappedUser.Name name = new UnwrappedUser.Name("John", "Doe");
         final UnwrappedUser user = new UnwrappedUser(1, name);
 
@@ -323,7 +324,7 @@ public class JacksonAnnotationUnitTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonView_thenCorrect() throws JsonProcessingException, JsonProcessingException {
+    public void whenSerializingUsingJsonView_thenCorrect() throws JacksonException, JacksonException {
         final Item item = new Item(2, "book", "John");
 
         final String result = new ObjectMapper().writerWithView(Views.Public.class)
@@ -335,7 +336,7 @@ public class JacksonAnnotationUnitTest {
     }
 
     @Test
-    public void whenSerializingUsingJacksonReferenceAnnotation_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingUsingJacksonReferenceAnnotation_thenCorrect() throws JacksonException {
         final UserWithRef user = new UserWithRef(1, "John");
         final ItemWithRef item = new ItemWithRef(2, "book", user);
         user.addItem(item);
@@ -348,7 +349,7 @@ public class JacksonAnnotationUnitTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonIdentityInfo_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingUsingJsonIdentityInfo_thenCorrect() throws JacksonException {
         final UserWithIdentity user = new UserWithIdentity(1, "John");
         final ItemWithIdentity item = new ItemWithIdentity(2, "book", user);
         user.addItem(item);
@@ -361,7 +362,7 @@ public class JacksonAnnotationUnitTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonFilter_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingUsingJsonFilter_thenCorrect() throws JacksonException {
         final BeanWithFilter bean = new BeanWithFilter(1, "My bean");
 
         final FilterProvider filters = new SimpleFilterProvider().addFilter("myFilter", SimpleBeanPropertyFilter.filterOutAllExcept("name"));
@@ -375,7 +376,7 @@ public class JacksonAnnotationUnitTest {
 
     // =========================
     @Test
-    public void whenSerializingUsingCustomAnnotation_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingUsingCustomAnnotation_thenCorrect() throws JacksonException {
         final BeanWithCustomAnnotation bean = new BeanWithCustomAnnotation(1, "My bean", null);
 
         final String result = new ObjectMapper().writeValueAsString(bean);
@@ -387,25 +388,27 @@ public class JacksonAnnotationUnitTest {
 
     // @Ignore("Jackson 2.7.1-1 seems to have changed the API regarding mixins")
     @Test
-    public void whenSerializingUsingMixInAnnotation_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingUsingMixInAnnotation_thenCorrect() throws JacksonException {
         final com.baeldung.jackson.annotation.dtos.Item item = new com.baeldung.jackson.annotation.dtos.Item(1, "book", null);
 
         String result = new ObjectMapper().writeValueAsString(item);
         assertThat(result, containsString("owner"));
 
-        final ObjectMapper mapper = new ObjectMapper();
-        mapper.addMixIn(com.baeldung.jackson.annotation.dtos.User.class, MyMixInForIgnoreType.class);
+        final ObjectMapper mapper = JsonMapper.builder()
+            .addMixIn(com.baeldung.jackson.annotation.dtos.User.class, MyMixInForIgnoreType.class)
+            .build();
 
         result = mapper.writeValueAsString(item);
         assertThat(result, not(containsString("owner")));
     }
 
     @Test
-    public void whenDisablingAllAnnotations_thenAllDisabled() throws JsonProcessingException {
+    public void whenDisablingAllAnnotations_thenAllDisabled() throws JacksonException {
         final MyBean bean = new MyBean(1, null);
 
-        final ObjectMapper mapper = new ObjectMapper();
-        mapper.disable(MapperFeature.USE_ANNOTATIONS);
+        final ObjectMapper mapper = JsonMapper.builder()
+            .configure(MapperFeature.USE_ANNOTATIONS, false)
+            .build();
 
         final String result = mapper.writeValueAsString(bean);
         assertThat(result, containsString("1"));
@@ -426,14 +429,16 @@ public class JacksonAnnotationUnitTest {
     }
     
     @Test
-    public void whenSerializingUsingXMLRootNameWithNameSpace_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingUsingXMLRootNameWithNameSpace_thenCorrect() throws JacksonException {
 
         // arrange
         UserWithRootNamespace author = new UserWithRootNamespace(1, "John");
 
         // act
-        ObjectMapper mapper = new XmlMapper();
-        mapper = mapper.enable(SerializationFeature.WRAP_ROOT_VALUE).enable(SerializationFeature.INDENT_OUTPUT);
+        ObjectMapper mapper = XmlMapper.builder()
+            .configure(SerializationFeature.WRAP_ROOT_VALUE, true)
+            .configure(SerializationFeature.INDENT_OUTPUT, true)
+            .build();
         String result = mapper.writeValueAsString(author);
 
         // assert
