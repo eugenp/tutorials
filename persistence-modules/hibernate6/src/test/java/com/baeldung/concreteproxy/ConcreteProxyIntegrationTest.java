@@ -38,7 +38,7 @@ class ConcreteProxyIntegrationTest {
 
         try (Session session = sessionFactory.openSession()) {
             Wizard wizard = session.find(Wizard.class, wizardId);
-            HogwartsHouse hogwartsHouse = wizard.getHouse();
+            HogwartsHouse hogwartsHouse = wizard.getHogwartsHouse();
 
             assertThat(hogwartsHouse)
                 .isInstanceOf(HogwartsHouse.class);

@@ -16,14 +16,14 @@ class Wizard {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private HogwartsHouse house;
+    private HogwartsHouse hogwartsHouse;
 
     Wizard() {
     }
 
-    Wizard(String name, HogwartsHouse house) {
+    Wizard(String name, HogwartsHouse hogwartsHouse) {
         this.name = name;
-        this.house = house;
+        this.hogwartsHouse = hogwartsHouse;
     }
 
     Long getId() {
@@ -38,11 +38,11 @@ class Wizard {
         this.name = name;
     }
 
-    HogwartsHouse getHouse() {
-        return house;
+    HogwartsHouse getHogwartsHouse() {
+        return hogwartsHouse;
     }
 
-    void setHouse(HogwartsHouse house) {
-        this.house = house;
+    void setHogwartsHouse(HogwartsHouse hogwartsHouse) {
+        this.hogwartsHouse = hogwartsHouse;
     }
 }
