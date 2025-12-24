@@ -3,7 +3,6 @@ package com.baeldung.google.adk;
 import com.google.adk.agents.BaseAgent;
 import com.google.adk.agents.LlmAgent;
 import com.google.adk.tools.FunctionTool;
-import com.google.adk.tools.GoogleSearchTool;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,21 +11,20 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 
 @Configuration
-@EnableConfigurationProperties(BaelgentProperties.class)
-class BaelgentConfiguration {
+@EnableConfigurationProperties(AgentProperties.class)
+class AgentConfiguration {
 
     @Bean
-    BaseAgent baseAgent(BaelgentProperties baelgentProperties) throws IOException {
+    BaseAgent baseAgent(AgentProperties agentProperties) throws IOException {
         return LlmAgent
             .builder()
-            .name(baelgentProperties.name())
-            .description(baelgentProperties.description())
-            .model(baelgentProperties.aiModel())
-            .instruction(baelgentProperties.instruction().getContentAsString(Charset.defaultCharset()))
+            .name(agentProperties.name())
+            .description(agentProperties.description())
+            .model(agentProperties.aiModel())
+            .instruction(agentProperties.systemPrompt().getContentAsString(Charset.defaultCharset()))
             .tools(
-                FunctionTool.create(BaeldungAuthorFetcher.class, "fetch")
+                FunctionTool.create(AuthorFetcher.class, "fetch")
             )
             .build();
     }
-
 }

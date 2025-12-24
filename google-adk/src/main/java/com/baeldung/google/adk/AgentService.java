@@ -12,16 +12,16 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 @Service
-class BaelgentService {
+class AgentService {
 
     private final InMemoryRunner runner;
     private final ConcurrentMap<String, Session> inMemorySessionCache = new ConcurrentHashMap<>();
 
-    BaelgentService(BaseAgent baseAgent) {
+    AgentService(BaseAgent baseAgent) {
         this.runner = new InMemoryRunner(baseAgent);
     }
 
-    BaelgentResponse interact(BaelgentRequest request) {
+    UserResponse interact(UserRequest request) {
         UUID userId = request.userId() != null ? request.userId() : UUID.randomUUID();
         UUID sessionId = request.sessionId() != null ? request.sessionId() : UUID.randomUUID();
 
@@ -42,7 +42,6 @@ class BaelgentService {
                 }
             });
 
-        return new BaelgentResponse(userId, sessionId, answerBuilder.toString());
+        return new UserResponse(userId, sessionId, answerBuilder.toString());
     }
-
 }

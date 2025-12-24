@@ -4,9 +4,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.core.io.Resource;
 
 @ConfigurationProperties(prefix = "com.baeldung.agent")
-record BaelgentProperties(
+record AgentProperties(
     String name,
     String description,
     String aiModel,
-    Resource instruction
+    Resource systemPrompt
 ) {}
