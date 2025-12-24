@@ -661,6 +661,7 @@
                 <module>feign</module>
                 <module>gcp-firebase</module>
                 <module>geotools</module>
+                <module>google-adk</module>
                 <module>google-auto-project</module>
                 <module>google-cloud</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
@@ -1133,6 +1134,7 @@
                 <module>feign</module>
                 <module>gcp-firebase</module>
                 <module>geotools</module>
+                <module>google-adk</module>
                 <module>google-auto-project</module>
                 <module>google-cloud</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
