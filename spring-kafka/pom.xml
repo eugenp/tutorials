@@ -71,7 +71,7 @@
             <dependency>
                 <groupId>tools.jackson</groupId>
                 <artifactId>jackson-bom</artifactId>
-                <version>3.0.0</version>
+                <version>${tools-jackson.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -93,6 +93,7 @@
     <properties>
         <spring-kafka.version>3.3.1</spring-kafka.version>
         <spring-boot.version>3.4.1</spring-boot.version>
+        <tools-jackson.version>3.0.0</tools-jackson.version>
     </properties>
 
 </project>
