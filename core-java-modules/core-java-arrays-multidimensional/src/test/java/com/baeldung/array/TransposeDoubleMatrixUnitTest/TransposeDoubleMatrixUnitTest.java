@@ -3,6 +3,8 @@ package com.baeldung.array.TransposeDoubleMatrixUnitTest;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.baeldung.array.TransposeDoubleMatrix.TransposeDoubleMatrix;
+
 class TransposeDoubleMatrixUnitTest {
 
     @Test
