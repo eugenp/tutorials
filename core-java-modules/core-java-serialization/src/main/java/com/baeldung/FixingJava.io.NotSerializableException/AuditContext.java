@@ -1,4 +1,4 @@
-package com.example;
+package com.baeldung.FixingJava.io.NotSerializableException;
 
 public class AuditContext {
 
