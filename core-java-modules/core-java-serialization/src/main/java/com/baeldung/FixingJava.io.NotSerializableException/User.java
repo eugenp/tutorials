@@ -17,9 +17,8 @@ public class User implements Serializable {
         this.name = name;
         this.age = age;
         this.address = address;
-        this.auditContext = auditContext;
 
-        // Extract serializable data from third-party object
+        // Extract only serializable data from the third-party object
         this.traceId = auditContext.getTraceId();
     }
 
