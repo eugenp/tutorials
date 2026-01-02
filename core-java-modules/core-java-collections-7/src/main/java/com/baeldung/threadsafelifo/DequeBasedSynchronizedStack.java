@@ -3,7 +3,9 @@ package com.baeldung.threadsafelifo;
 import java.util.ArrayDeque;
 
 /**
- * Deque Based Stack implementation.
+ * A synchronized stack implementation backed by an ArrayDeque.
+ * Note that ArrayDeque itself is not thread-safe; synchronization
+ * is provided by this wrapper.
  */
 public class DequeBasedSynchronizedStack<T> {
 
