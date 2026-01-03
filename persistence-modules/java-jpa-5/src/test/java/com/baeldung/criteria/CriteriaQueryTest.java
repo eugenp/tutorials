@@ -72,15 +72,12 @@ class CriteriaQueryTest {
     }
 
     private EntityManagerFactory createEntityManagerFactory() {
-        return new PersistenceConfiguration("EmployeeData").jtaDataSource("java:comp/env/jdbc/SchoolData")
+        return new PersistenceConfiguration("SchoolData")
+            .jtaDataSource("java:comp/env/jdbc/SchoolData")
             .managedClass(School.class)
             .managedClass(Student.class)
-
-            // Hibernate SQL logging
             .property("hibernate.show_sql", true)
             .property("hibernate.format_sql", true)
-
-            .property(PersistenceConfiguration.LOCK_TIMEOUT, 5000)
             .createEntityManagerFactory();
     }
 
