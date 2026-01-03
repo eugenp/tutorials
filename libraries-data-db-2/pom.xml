@@ -130,6 +130,12 @@
             <artifactId>tigerbeetle-java</artifactId>
             <version>0.15.3</version>
         </dependency>
+        <!-- IoTDB -->
+        <dependency>
+            <groupId>org.apache.iotdb</groupId>
+            <artifactId>iotdb-jdbc</artifactId>
+            <version>${iotdb.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -274,6 +280,7 @@
         <ebean.version>13.15.2</ebean.version>
         <flexy-pool.version>2.2.3</flexy-pool.version>
         <jakarta.xml.bind.version>4.0.1</jakarta.xml.bind.version>
+        <iotdb.version>2.0.5</iotdb.version>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip> <!-- to avoid repackaging of the jar -->
     </properties>
 
