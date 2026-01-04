@@ -1,4 +1,4 @@
-package com.baeldung.unnamedclasses;
+package com.baeldung.compactsourcefiles;
 
 public class HelloWorldSuper {
     public static void main(String[] args) {
