@@ -9,4 +9,8 @@ public interface UserMapper {
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
     UserDTO toDto(User user);
+    
+    default String map(Status status) {
+        return status == null ? null : status.name();
+    }
 }
