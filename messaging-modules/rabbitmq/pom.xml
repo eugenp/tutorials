@@ -13,6 +13,11 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <spring-cloud-dependencies.version>2023.0.0</spring-cloud-dependencies.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip> <!-- to avoid repackaging of the jar -->
+    </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -39,10 +44,5 @@
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
     </dependencies>
-
-    <properties>
-        <spring-cloud-dependencies.version>2023.0.0</spring-cloud-dependencies.version>
-        <spring-boot.repackage.skip>true</spring-boot.repackage.skip> <!-- to avoid repackaging of the jar -->
-    </properties>
 
 </project>

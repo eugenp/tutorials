@@ -14,6 +14,15 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <jool.version>0.9.12</jool.version>
+        <parallel-collectors.version>3.0.0</parallel-collectors.version>
+        <vavr.version>0.9.0</vavr.version>
+        <eclipse-collections.version>8.2.0</eclipse-collections.version>
+        <streamex.version>0.8.1</streamex.version>
+        <protonpack.version>1.15</protonpack.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.jooq</groupId>
@@ -46,15 +55,6 @@
             <version>${protonpack.version}</version>
         </dependency>
     </dependencies>
-
-    <properties>
-        <jool.version>0.9.12</jool.version>
-        <parallel-collectors.version>3.0.0</parallel-collectors.version>
-        <vavr.version>0.9.0</vavr.version>
-        <eclipse-collections.version>8.2.0</eclipse-collections.version>
-        <streamex.version>0.8.1</streamex.version>
-        <protonpack.version>1.15</protonpack.version>
-    </properties>
 
     <build>
         <plugins>

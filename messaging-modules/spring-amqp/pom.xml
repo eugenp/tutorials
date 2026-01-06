@@ -14,15 +14,15 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <start-class>com.baeldung.springamqp.simple.HelloWorldMessageApp</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
     </dependencies>
-
-    <properties>
-        <start-class>com.baeldung.springamqp.simple.HelloWorldMessageApp</start-class>
-    </properties>
 
 </project>

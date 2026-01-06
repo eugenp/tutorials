@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jgroups</artifactId>
-    <name>jgroups</name>
     <packaging>jar</packaging>
+    <name>jgroups</name>
     <description>Reliable Messaging with JGroups Tutorial</description>
 
     <parent>
@@ -13,6 +13,10 @@
         <artifactId>messaging-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
+    <properties>
+        <jgroups.version>4.0.10.Final</jgroups.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -26,9 +30,5 @@
             <version>${commons-cli.version}</version>
         </dependency>
     </dependencies>
-
-    <properties>
-        <jgroups.version>4.0.10.Final</jgroups.version>
-    </properties>
 
 </project>

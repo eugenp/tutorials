@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>maven-modules</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>maven-modules</name>
     <packaging>pom</packaging>
+    <name>maven-modules</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
