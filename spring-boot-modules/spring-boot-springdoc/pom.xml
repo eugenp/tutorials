@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-springdoc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-springdoc</name>
     <packaging>jar</packaging>
+    <name>spring-boot-springdoc</name>
     <description>Project for Springdoc integration</description>
 
     <parent>

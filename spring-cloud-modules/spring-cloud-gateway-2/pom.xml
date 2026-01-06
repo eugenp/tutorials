@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-cloud-gateway-2</artifactId>
-    <name>spring-cloud-gateway-2</name>
-    <packaging>jar</packaging>
-
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-3</artifactId>
-        <relativePath>../../parent-boot-3</relativePath>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
+
+    <artifactId>spring-cloud-gateway-2</artifactId>
+    <packaging>jar</packaging>
+    <name>spring-cloud-gateway-2</name>
 
     <dependencyManagement>
         <dependencies>
@@ -104,6 +104,14 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <spring-boot.version>3.2.3</spring-boot.version>
+        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
+        <redis.version>0.7.2</redis.version>
+        <spring-cloud-dependencies.version>2023.0.1</spring-cloud-dependencies.version>
+        <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -130,13 +138,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <spring-boot.version>3.2.3</spring-boot.version>
-        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
-        <redis.version>0.7.2</redis.version>
-        <spring-cloud-dependencies.version>2023.0.1</spring-cloud-dependencies.version>
-        <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
-    </properties>
 
 </project>
