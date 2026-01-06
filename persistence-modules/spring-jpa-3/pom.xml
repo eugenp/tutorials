@@ -14,6 +14,11 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <!-- Spring -->
+        <spring-boot.version>3.2.4</spring-boot.version>
+    </properties>
+
     <dependencies>
         <!-- Spring -->
         <dependency>
@@ -43,10 +48,5 @@
             <version>${spring-boot.version}</version>
         </dependency>
     </dependencies>
-
-    <properties>
-        <!-- Spring -->
-        <spring-boot.version>3.2.4</spring-boot.version>
-    </properties>
 
 </project>

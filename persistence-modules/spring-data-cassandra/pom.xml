@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-data-cassandra</artifactId>
-    <name>spring-data-cassandra</name>
     <packaging>jar</packaging>
+    <name>spring-data-cassandra</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -13,6 +13,14 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
+
+    <properties>
+        <org.springframework.data.version>4.1.9</org.springframework.data.version>
+        <testcontainers.version>1.19.5</testcontainers.version>
+        <system.stubs.version>2.1.5</system.stubs.version>
+        <hector-core.version>2.0-0</hector-core.version>
+        <java-driver-mapper-runtime.version>4.17.0</java-driver-mapper-runtime.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -61,13 +69,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <properties>
-        <org.springframework.data.version>4.1.9</org.springframework.data.version>
-        <testcontainers.version>1.19.5</testcontainers.version>
-        <system.stubs.version>2.1.5</system.stubs.version>
-        <hector-core.version>2.0-0</hector-core.version>
-        <java-driver-mapper-runtime.version>4.17.0</java-driver-mapper-runtime.version>
-    </properties>
 
 </project>

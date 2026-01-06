@@ -13,6 +13,11 @@
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
+    <properties>
+        <start-class>com.baeldung.boot.Application</start-class>
+        <testcontainers.postgresql.version>1.19.6</testcontainers.postgresql.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -62,10 +67,5 @@
             <version>${guava.version}</version>
         </dependency>
     </dependencies>
-
-    <properties>
-        <start-class>com.baeldung.boot.Application</start-class>
-        <testcontainers.postgresql.version>1.19.6</testcontainers.postgresql.version>
-    </properties>
 
 </project>

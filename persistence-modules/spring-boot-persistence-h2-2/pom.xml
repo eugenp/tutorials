@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.h2db</groupId>
     <artifactId>spring-boot-persistence-h2-2</artifactId>
-    <name>spring-boot-persistence-h2-2</name>
     <packaging>jar</packaging>
+    <name>spring-boot-persistence-h2-2</name>
     <description>Demo Spring Boot applications that starts H2 in memory database</description>
 
     <parent>
@@ -15,6 +15,10 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
+
+    <properties>
+        <start-class>com.baeldung.h2db.schema.SampleSchemaApplication</start-class>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -45,9 +49,5 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
-
-    <properties>
-        <start-class>com.baeldung.h2db.schema.SampleSchemaApplication</start-class>
-    </properties>
 
 </project>

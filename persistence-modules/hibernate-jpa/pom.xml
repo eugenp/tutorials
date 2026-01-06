@@ -13,6 +13,15 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <mysql.version>8.2.0</mysql.version>
+        <mariaDB4j.version>2.6.0</mariaDB4j.version>
+        <spring-boot.version>3.0.4</spring-boot.version>
+        <h2.version>2.1.214</h2.version>
+        <org.slf4j.version>2.0.7</org.slf4j.version>
+        <logback.version>1.4.6</logback.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.hibernate.orm</groupId>
@@ -81,14 +90,5 @@
             <version>${postgresql.version}</version>
         </dependency>
     </dependencies>
-
-    <properties>
-        <mysql.version>8.2.0</mysql.version>
-        <mariaDB4j.version>2.6.0</mariaDB4j.version>
-        <spring-boot.version>3.0.4</spring-boot.version>
-        <h2.version>2.1.214</h2.version>
-        <org.slf4j.version>2.0.7</org.slf4j.version>
-        <logback.version>1.4.6</logback.version>
-    </properties>
 
 </project>

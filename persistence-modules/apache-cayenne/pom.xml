@@ -29,6 +29,11 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <mysql.connector.version>8.2.0</mysql.connector.version>
+        <cayenne.version>4.0.M5</cayenne.version>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -38,10 +43,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <mysql.connector.version>8.2.0</mysql.connector.version>
-        <cayenne.version>4.0.M5</cayenne.version>
-    </properties>
 
 </project>

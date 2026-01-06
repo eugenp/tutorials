@@ -13,6 +13,12 @@
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
+    <properties>
+        <start-class>com.baeldung.boot.Application</start-class>
+        <testcontainers.version>1.19.6</testcontainers.version>
+        <hibernate.orm.version>7.0.0.Final</hibernate.orm.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -60,11 +66,5 @@
             <version>${hibernate.orm.version}</version>
         </dependency>
     </dependencies>
-
-    <properties>
-        <start-class>com.baeldung.boot.Application</start-class>
-        <testcontainers.version>1.19.6</testcontainers.version>
-        <hibernate.orm.version>7.0.0.Final</hibernate.orm.version>
-    </properties>
 
 </project>
