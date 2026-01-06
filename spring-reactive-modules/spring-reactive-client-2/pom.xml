@@ -97,12 +97,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
-        <resilience4j.version>1.7.1</resilience4j.version>
-        <jmh.version>1.37</jmh.version>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -114,6 +108,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
+        <resilience4j.version>1.7.1</resilience4j.version>
+        <jmh.version>1.37</jmh.version>
+    </properties>
 
     <profiles>
         <profile>

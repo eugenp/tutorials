@@ -43,11 +43,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <json.version>20240303</json.version>
-        <mvc-auth-commons.version>1.2.0</mvc-auth-commons.version>
-    </properties>
-
     <build>
         <finalName>spring-security-auth0</finalName>
         <resources>
@@ -72,5 +67,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <json.version>20240303</json.version>
+        <mvc-auth-commons.version>1.2.0</mvc-auth-commons.version>
+    </properties>
 
 </project>

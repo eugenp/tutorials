@@ -138,6 +138,19 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.baeldung.Spring5Application</mainClass>
+                    <layout>JAR</layout>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
         <geronimo-json_1.1_spec.version>1.0</geronimo-json_1.1_spec.version>
@@ -151,19 +164,6 @@
         <jakarta.json-api.version>2.1.3</jakarta.json-api.version>
         <logback.configurationFileName>logback.xml</logback.configurationFileName>
     </properties>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.baeldung.Spring5Application</mainClass>
-                    <layout>JAR</layout>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
     <profiles>
         <profile>

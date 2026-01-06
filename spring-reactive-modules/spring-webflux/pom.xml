@@ -60,13 +60,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <mockwebserver.version>5.0.0-alpha.12</mockwebserver.version>
-        <kotlin-stdlib.version>2.0.0-Beta4</kotlin-stdlib.version>
-        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
-        <spring-boot.version>3.2.2</spring-boot.version>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -82,5 +75,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <mockwebserver.version>5.0.0-alpha.12</mockwebserver.version>
+        <kotlin-stdlib.version>2.0.0-Beta4</kotlin-stdlib.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+        <spring-boot.version>3.2.2</spring-boot.version>
+    </properties>
 
 </project>

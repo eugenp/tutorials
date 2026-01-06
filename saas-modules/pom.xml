@@ -28,10 +28,6 @@
         <module>temporal</module>
     </modules>
 
-    <properties>
-        <start-class>com.baeldung.Main</start-class>
-    </properties>
-
     <build>
         <pluginManagement>
             <plugins>
@@ -42,5 +38,9 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <properties>
+        <start-class>com.baeldung.Main</start-class>
+    </properties>
 
 </project>

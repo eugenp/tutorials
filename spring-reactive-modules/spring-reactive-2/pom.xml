@@ -71,11 +71,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
-        <wiremock.version>3.9.1</wiremock.version>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -88,6 +83,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
+        <wiremock.version>3.9.1</wiremock.version>
+    </properties>
 
     <profiles>
         <profile>

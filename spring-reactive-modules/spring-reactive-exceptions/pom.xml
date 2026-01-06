@@ -40,11 +40,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <spring-boot.version>3.2.2</spring-boot.version>
-        <maven.compiler.release>17</maven.compiler.release>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -64,5 +59,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <spring-boot.version>3.2.2</spring-boot.version>
+        <maven.compiler.release>17</maven.compiler.release>
+    </properties>
 
 </project>

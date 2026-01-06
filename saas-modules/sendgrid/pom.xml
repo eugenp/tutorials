@@ -15,11 +15,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <sendgrid.version>4.10.2</sendgrid.version>
-        <mockserver.version>5.15.0</mockserver.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -52,5 +47,10 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <properties>
+        <sendgrid.version>4.10.2</sendgrid.version>
+        <mockserver.version>5.15.0</mockserver.version>
+    </properties>
 
 </project>

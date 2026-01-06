@@ -93,16 +93,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <spring-boot.version>3.3.0</spring-boot.version>
-        <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
-        <spring-cloud.version>2021.0.4</spring-cloud.version>
-        <mockwebserver.version>5.0.0-alpha.12</mockwebserver.version>
-        <kotlin-stdlib.version>2.0.0-Beta4</kotlin-stdlib.version>
-        <cyclonedx-maven-plugin.version>2.9.0</cyclonedx-maven-plugin.version>
-        <start-class>com.baeldung.custom.deserialization.Application</start-class>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -138,5 +128,15 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <spring-boot.version>3.3.0</spring-boot.version>
+        <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
+        <spring-cloud.version>2021.0.4</spring-cloud.version>
+        <mockwebserver.version>5.0.0-alpha.12</mockwebserver.version>
+        <kotlin-stdlib.version>2.0.0-Beta4</kotlin-stdlib.version>
+        <cyclonedx-maven-plugin.version>2.9.0</cyclonedx-maven-plugin.version>
+        <start-class>com.baeldung.custom.deserialization.Application</start-class>
+    </properties>
 
 </project>

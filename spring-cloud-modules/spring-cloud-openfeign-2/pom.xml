@@ -63,11 +63,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <spring-cloud.version>2021.0.7</spring-cloud.version>
-        <wire.mock.version>2.35.0</wire.mock.version>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -80,5 +75,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <spring-cloud.version>2021.0.7</spring-cloud.version>
+        <wire.mock.version>2.35.0</wire.mock.version>
+    </properties>
 
 </project>
