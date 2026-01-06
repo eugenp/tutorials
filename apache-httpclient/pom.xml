@@ -13,6 +13,16 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <mockserver.version>5.11.2</mockserver.version>
+        <wiremock.version>3.9.1</wiremock.version>
+        <!-- http client & core 5 -->
+        <httpcore5.version>5.2.5</httpcore5.version>
+        <httpclient5.version>5.3.1</httpclient5.version>
+        <httpclient5-fluent.version>5.3.1</httpclient5-fluent.version>
+        <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.httpcomponents.core5</groupId>
@@ -101,15 +111,5 @@
             </resource>
         </resources>
     </build>
-
-    <properties>
-        <mockserver.version>5.11.2</mockserver.version>
-        <wiremock.version>3.9.1</wiremock.version>
-        <!-- http client & core 5 -->
-        <httpcore5.version>5.2.5</httpcore5.version>
-        <httpclient5.version>5.3.1</httpclient5.version>
-        <httpclient5-fluent.version>5.3.1</httpclient5-fluent.version>
-        <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
-    </properties>
 
 </project>

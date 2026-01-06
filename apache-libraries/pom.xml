@@ -13,6 +13,16 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <bval.version>3.0.1</bval.version>
+        <jakarta.validation.validation-api.version>3.1.0</jakarta.validation.validation-api.version>
+        <opennlp.opennlp-tools.version>1.8.4</opennlp.opennlp-tools.version>
+        <solr.solr-solrj.version>6.4.0</solr.solr-solrj.version>
+        <apache.avro.version>1.12.0</apache.avro.version>
+        <mesos.library.version>1.11.0</mesos.library.version>
+        <json-unit-assertj.version>3.5.0</json-unit-assertj.version>
+    </properties>
+
     <dependencies>
         <!-- avro -->
         <dependency>
@@ -118,15 +128,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <bval.version>3.0.1</bval.version>
-        <jakarta.validation.validation-api.version>3.1.0</jakarta.validation.validation-api.version>
-        <opennlp.opennlp-tools.version>1.8.4</opennlp.opennlp-tools.version>
-        <solr.solr-solrj.version>6.4.0</solr.solr-solrj.version>
-        <apache.avro.version>1.12.0</apache.avro.version>
-        <mesos.library.version>1.11.0</mesos.library.version>
-        <json-unit-assertj.version>3.5.0</json-unit-assertj.version>
-    </properties>
 
 </project>

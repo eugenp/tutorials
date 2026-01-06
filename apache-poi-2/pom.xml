@@ -13,6 +13,10 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <poi.version>5.2.5</poi.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -25,9 +29,5 @@
             <version>${poi.version}</version>
         </dependency>
     </dependencies>
-
-    <properties>
-        <poi.version>5.2.5</poi.version>
-    </properties>
 
 </project>
