@@ -13,18 +13,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <encoding>UTF-8</encoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <maven.compiler.release>17</maven.compiler.release>
-        <pulumi.version>(,1.0]</pulumi.version>
-        <pulumi.aws.version>(6.0.2,6.99]</pulumi.aws.version>
-        <junit.jupiter.version>5.7.0</junit.jupiter.version>
-        <mainClass>myproject.WebserverInfra</mainClass>
-        <mainArgs/>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.pulumi</groupId>
@@ -116,4 +104,16 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <encoding>UTF-8</encoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.release>17</maven.compiler.release>
+        <pulumi.version>(,1.0]</pulumi.version>
+        <pulumi.aws.version>(6.0.2,6.99]</pulumi.aws.version>
+        <junit.jupiter.version>5.7.0</junit.jupiter.version>
+        <mainClass>myproject.WebserverInfra</mainClass>
+        <mainArgs/>
+    </properties>
 </project>

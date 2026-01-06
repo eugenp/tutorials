@@ -15,18 +15,6 @@
         <relativePath/>
     </parent>
 
-    <properties>
-        <packaging>jar</packaging>
-        <jdk.version>17</jdk.version>
-        <release.version>17</release.version>
-        <micronaut.runtime>netty</micronaut.runtime>
-        <micronaut.aot.enabled>false</micronaut.aot.enabled>
-        <micronaut.aot.packageName>com.baeldung.aot.generated</micronaut.aot.packageName>
-        <micronaut.test.resources.enabled>true</micronaut.test.resources.enabled>
-        <exec.mainClass>com.baeldung.micronautreactive.Application</exec.mainClass>
-        <micronaut-test-resources-testcontainers.version>2.1.0</micronaut-test-resources-testcontainers.version>
-    </properties>
-
     <repositories>
         <repository>
             <id>central</id>
@@ -199,5 +187,17 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <packaging>jar</packaging>
+        <jdk.version>17</jdk.version>
+        <release.version>17</release.version>
+        <micronaut.runtime>netty</micronaut.runtime>
+        <micronaut.aot.enabled>false</micronaut.aot.enabled>
+        <micronaut.aot.packageName>com.baeldung.aot.generated</micronaut.aot.packageName>
+        <micronaut.test.resources.enabled>true</micronaut.test.resources.enabled>
+        <exec.mainClass>com.baeldung.micronautreactive.Application</exec.mainClass>
+        <micronaut-test-resources-testcontainers.version>2.1.0</micronaut-test-resources-testcontainers.version>
+    </properties>
 
 </project>

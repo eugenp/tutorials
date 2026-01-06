@@ -12,12 +12,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <dubbo.version>2.5.7</dubbo.version>
-        <zookeeper.version>3.4.11</zookeeper.version>
-        <zkclient.version>0.10</zkclient.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -35,5 +29,11 @@
             <version>${zkclient.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <dubbo.version>2.5.7</dubbo.version>
+        <zookeeper.version>3.4.11</zookeeper.version>
+        <zkclient.version>0.10</zkclient.version>
+    </properties>
 
 </project>

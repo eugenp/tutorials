@@ -12,12 +12,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <helidon.version>3.2.2</helidon.version>
-        <helidon-webserver-netty.version>0.10.6</helidon-webserver-netty.version>
-        <helidon-webserver-json.version>0.11.0</helidon-webserver-json.version>
-    </properties>
-
     <dependencies>
         <!--Config -->
         <dependency>
@@ -64,5 +58,11 @@
             <version>${helidon.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <helidon.version>3.2.2</helidon.version>
+        <helidon-webserver-netty.version>0.10.6</helidon-webserver-netty.version>
+        <helidon-webserver-json.version>0.11.0</helidon-webserver-json.version>
+    </properties>
 
 </project>

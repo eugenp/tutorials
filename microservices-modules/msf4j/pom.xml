@@ -14,11 +14,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <microservice.mainClass>com.baeldung.msf4j.msf4jintro.Application</microservice.mainClass>
-        <msf4j.version>2.8.11</msf4j.version>
-    </properties>
-
     <repositories>
         <repository>
             <id>wso2-https</id>
@@ -63,5 +58,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <microservice.mainClass>com.baeldung.msf4j.msf4jintro.Application</microservice.mainClass>
+        <msf4j.version>2.8.11</msf4j.version>
+    </properties>
 
 </project>

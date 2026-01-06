@@ -15,21 +15,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <!-- <exec.mainClass>com.baeldung.micronaut.helloworld.server.ServerApplication</exec.mainClass> -->
-        <exec.mainClass>com.baeldung.micronaut.vs.springboot.CompareApplication</exec.mainClass>
-        <micronaut.version>3.10.4</micronaut.version>
-        <jdk.version>17</jdk.version>
-        <release.version>17</release.version>
-        <packaging>jar</packaging>
-        <compiler.plugin.version>3.12.1</compiler.plugin.version>
-        <micronaut.runtime>netty</micronaut.runtime>
-        <micronaut-build.version>3.5.4</micronaut-build.version>
-        <shade.plugin.version>3.2.0</shade.plugin.version>
-        <langchain4j-open-ai.version>0.36.2</langchain4j-open-ai.version>
-        <micronaut-langchain4j.version>0.0.1</micronaut-langchain4j.version>
-    </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -173,5 +158,20 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <!-- <exec.mainClass>com.baeldung.micronaut.helloworld.server.ServerApplication</exec.mainClass> -->
+        <exec.mainClass>com.baeldung.micronaut.vs.springboot.CompareApplication</exec.mainClass>
+        <micronaut.version>3.10.4</micronaut.version>
+        <jdk.version>17</jdk.version>
+        <release.version>17</release.version>
+        <packaging>jar</packaging>
+        <compiler.plugin.version>3.12.1</compiler.plugin.version>
+        <micronaut.runtime>netty</micronaut.runtime>
+        <micronaut-build.version>3.5.4</micronaut-build.version>
+        <shade.plugin.version>3.2.0</shade.plugin.version>
+        <langchain4j-open-ai.version>0.36.2</langchain4j-open-ai.version>
+        <micronaut-langchain4j.version>0.0.1</micronaut-langchain4j.version>
+    </properties>
 
 </project>
