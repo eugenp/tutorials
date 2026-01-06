@@ -12,6 +12,10 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <commons-csv.version>1.10.0</commons-csv.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -29,9 +33,5 @@
             <version>${lombok.version}</version>
         </dependency>
     </dependencies>
-
-    <properties>
-        <commons-csv.version>1.10.0</commons-csv.version>
-    </properties>
 
 </project>
