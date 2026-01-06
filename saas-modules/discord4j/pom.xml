@@ -13,6 +13,10 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <discord4j-core.version>3.3.0-RC1</discord4j-core.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -52,9 +56,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <discord4j-core.version>3.3.0-RC1</discord4j-core.version>
-    </properties>
 
 </project>
