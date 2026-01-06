@@ -273,6 +273,14 @@
         </profile>
     </profiles>
 
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <distribution>repo</distribution>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+        </license>
+    </licenses>
+
     <properties>
         <querydsl.version>3.7.4</querydsl.version>
         <deltaspike.version>1.8.2</deltaspike.version>
@@ -287,13 +295,5 @@
         <jandex.version>1.2.4.Final</jandex.version>
         <h2.version>2.1.214</h2.version>
     </properties>
-
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <distribution>repo</distribution>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-        </license>
-    </licenses>
 
 </project>
