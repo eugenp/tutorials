@@ -3,17 +3,17 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>spring-security-core</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <name>spring-security-core</name>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
-
-    <artifactId>spring-security-core</artifactId>
-    <version>0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
-    <name>spring-security-core</name>
 
     <dependencies>
         <dependency>
@@ -65,11 +65,6 @@
             <version>${jjwt.version}</version>
         </dependency>
     </dependencies>
-
-    <properties>
-        <start-class>com.baeldung.app.App</start-class>
-        <jjwt.version>0.12.5</jjwt.version>
-    </properties>
 
     <build>
         <finalName>spring-security-core</finalName>
@@ -129,5 +124,10 @@
             </build>
         </profile>
     </profiles>
+
+    <properties>
+        <start-class>com.baeldung.app.App</start-class>
+        <jjwt.version>0.12.5</jjwt.version>
+    </properties>
 
 </project>

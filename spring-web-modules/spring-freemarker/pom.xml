@@ -3,16 +3,17 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung.freemarker</groupId>
+    <artifactId>spring-freemarker</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <name>spring-freemarker</name>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>spring-web-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-
-    <artifactId>spring-freemarker</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
-    <name>spring-freemarker</name>
 
     <dependencies>
         <dependency>
@@ -50,13 +51,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <freemarker.version>2.3.32</freemarker.version>
-        <failOnMissingWebXml>false</failOnMissingWebXml>
-        <start-class>com.baeldung.Spring5Application</start-class>
-        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -65,5 +59,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <freemarker.version>2.3.32</freemarker.version>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+        <start-class>com.baeldung.Spring5Application</start-class>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+    </properties>
 
 </project>

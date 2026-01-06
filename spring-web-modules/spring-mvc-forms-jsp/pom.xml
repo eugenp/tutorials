@@ -14,16 +14,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
-        <hibernate.version>5.2.5.Final</hibernate.version>
-        <mysql-connector-java.version>8.2.0</mysql-connector-java.version>
-        <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
-        <jakarta.servlet-api.version>6.1.0</jakarta.servlet-api.version>
-        <jakarta.servlet.jsp-api.version>4.0.0</jakarta.servlet.jsp-api.version>
-        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -110,5 +100,15 @@
             </build>
         </profile>
     </profiles>
+
+    <properties>
+        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
+        <hibernate.version>5.2.5.Final</hibernate.version>
+        <mysql-connector-java.version>8.2.0</mysql-connector-java.version>
+        <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
+        <jakarta.servlet-api.version>6.1.0</jakarta.servlet-api.version>
+        <jakarta.servlet.jsp-api.version>4.0.0</jakarta.servlet.jsp-api.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+    </properties>
 
 </project>

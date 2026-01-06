@@ -34,11 +34,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <jakarta.version>6.1.0-M2</jakarta.version>
-        <start-class>com.baeldung.Main</start-class>
-    </properties>
-
     <build>
         <finalName>spring-mvc-java-3</finalName>
         <resources>
@@ -48,5 +43,10 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <jakarta.version>6.1.0-M2</jakarta.version>
+        <start-class>com.baeldung.Main</start-class>
+    </properties>
 
 </project>

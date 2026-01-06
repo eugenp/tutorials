@@ -14,15 +14,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <htmlunit.version>2.32</htmlunit.version>
-        <poi.version>3.16-beta1</poi.version>
-        <javax.el.version>3.0.1-b09</javax.el.version>
-        <javax-servlet-api.version>2.3.3</javax-servlet-api.version>
-        <thymeleaf.version>3.1.2.RELEASE</thymeleaf.version>
-        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -106,5 +97,14 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <htmlunit.version>2.32</htmlunit.version>
+        <poi.version>3.16-beta1</poi.version>
+        <javax.el.version>3.0.1-b09</javax.el.version>
+        <javax-servlet-api.version>2.3.3</javax-servlet-api.version>
+        <thymeleaf.version>3.1.2.RELEASE</thymeleaf.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+    </properties>
 
 </project>

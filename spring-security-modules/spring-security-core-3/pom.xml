@@ -48,9 +48,10 @@
                 <artifactId>maven-war-plugin</artifactId>
             </plugin>
         </plugins>
+    </build>
 
-        <profiles>
-            <profile>
+    <profiles>
+        <profile>
             <id>live</id>
             <build>
                 <plugins>
@@ -81,8 +82,7 @@
                 </plugins>
             </build>
         </profile>
-        </profiles>
-    </build>
+    </profiles>
 
     <properties>
         <start-class>com.baeldung.Application</start-class>

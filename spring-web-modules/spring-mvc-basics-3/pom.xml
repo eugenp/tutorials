@@ -14,16 +14,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <!-- The main class to start by executing java -jar -->
-        <start-class>com.baeldung.boot.Application</start-class>
-        <jquery.version>3.1.1</jquery.version>
-        <bootstrap.version>3.3.7-1</bootstrap.version>
-        <jpa.version>2.2</jpa.version>
-        <subethasmtp.version>7.0.2</subethasmtp.version>
-        <httpclient.version>4.5.8</httpclient.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -128,5 +118,15 @@
             </build>
         </profile>
     </profiles>
+
+    <properties>
+        <!-- The main class to start by executing java -jar -->
+        <start-class>com.baeldung.boot.Application</start-class>
+        <jquery.version>3.1.1</jquery.version>
+        <bootstrap.version>3.3.7-1</bootstrap.version>
+        <jpa.version>2.2</jpa.version>
+        <subethasmtp.version>7.0.2</subethasmtp.version>
+        <httpclient.version>4.5.8</httpclient.version>
+    </properties>
 
 </project>
