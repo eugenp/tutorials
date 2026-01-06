@@ -14,6 +14,15 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <app.name>library</app.name>
+        <package.name>${app.name}-service</package.name>
+        <packaging.type>runnable</packaging.type>
+        <microprofile.version>6.0</microprofile.version>
+        <liberty-maven-plugin.version>3.10.3</liberty-maven-plugin.version>
+        <openliberty-runtime.version>23.0.0.5</openliberty-runtime.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.eclipse.microprofile</groupId>
@@ -77,14 +86,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <app.name>library</app.name>
-        <package.name>${app.name}-service</package.name>
-        <packaging.type>runnable</packaging.type>
-        <microprofile.version>6.0</microprofile.version>
-        <liberty-maven-plugin.version>3.10.3</liberty-maven-plugin.version>
-        <openliberty-runtime.version>23.0.0.5</openliberty-runtime.version>
-    </properties>
 
 </project>

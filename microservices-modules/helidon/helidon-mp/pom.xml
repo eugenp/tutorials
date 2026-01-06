@@ -12,6 +12,11 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <helidon-microprofile.version>3.2.2</helidon-microprofile.version>
+        <jersey-media-json-binding.version>3.1.2</jersey-media-json-binding.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>io.helidon.microprofile.bundles</groupId>
@@ -24,10 +29,5 @@
             <version>${jersey-media-json-binding.version}</version>
         </dependency>
     </dependencies>
-
-    <properties>
-        <helidon-microprofile.version>3.2.2</helidon-microprofile.version>
-        <jersey-media-json-binding.version>3.1.2</jersey-media-json-binding.version>
-    </properties>
 
 </project>

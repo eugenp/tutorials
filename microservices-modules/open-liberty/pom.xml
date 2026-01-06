@@ -14,6 +14,26 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+        <!-- versions -->
+        <version.jakarta.jakartaee-web-api>8.0.0</version.jakarta.jakartaee-web-api>
+        <version.microprofile>3.2</version.microprofile>
+        <version.derby>10.14.2.0</version.derby>
+        <version.liberty-maven-plugin>3.3-M3</version.liberty-maven-plugin>
+        <version.yasson>1.0.5</version.yasson>
+        <version.cxf-rt-rs-client>3.2.6</version.cxf-rt-rs-client>
+        <version.javax.json>1.0.4</version.javax.json>
+        <version.cxf-rt-rs-mp-client>3.3.1</version.cxf-rt-rs-mp-client>
+        <!-- Liberty configuration -->
+        <liberty.var.app.context.root>openliberty</liberty.var.app.context.root>
+        <liberty.var.default.http.port>9080</liberty.var.default.http.port>
+        <liberty.var.default.https.port>9443</liberty.var.default.https.port>
+        <testServerHttpPort>7070</testServerHttpPort>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>jakarta.platform</groupId>
@@ -98,25 +118,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <failOnMissingWebXml>false</failOnMissingWebXml>
-        <!-- versions -->
-        <version.jakarta.jakartaee-web-api>8.0.0</version.jakarta.jakartaee-web-api>
-        <version.microprofile>3.2</version.microprofile>
-        <version.derby>10.14.2.0</version.derby>
-        <version.liberty-maven-plugin>3.3-M3</version.liberty-maven-plugin>
-        <version.yasson>1.0.5</version.yasson>
-        <version.cxf-rt-rs-client>3.2.6</version.cxf-rt-rs-client>
-        <version.javax.json>1.0.4</version.javax.json>
-        <version.cxf-rt-rs-mp-client>3.3.1</version.cxf-rt-rs-mp-client>
-        <!-- Liberty configuration -->
-        <liberty.var.app.context.root>openliberty</liberty.var.app.context.root>
-        <liberty.var.default.http.port>9080</liberty.var.default.http.port>
-        <liberty.var.default.https.port>9443</liberty.var.default.https.port>
-        <testServerHttpPort>7070</testServerHttpPort>
-    </properties>
 
 </project>

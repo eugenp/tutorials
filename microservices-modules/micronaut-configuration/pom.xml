@@ -15,6 +15,21 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdk.version>17</jdk.version>
+        <release.version>17</release.version>
+        <packaging>jar</packaging>
+        <micronaut.version>4.4.3</micronaut.version>
+        <exec.mainClass>com.baeldung.micronaut.httpfilters.ServerApplication</exec.mainClass>
+        <micronaut.validation.version>4.6.1</micronaut.validation.version>
+        <micronaut.runtime>netty</micronaut.runtime>
+        <micronaut.test.version>4.3.0</micronaut.test.version>
+        <junit.jupiter.version>5.9.1</junit.jupiter.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>io.micronaut</groupId>
@@ -138,19 +153,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jdk.version>17</jdk.version>
-        <release.version>17</release.version>
-        <packaging>jar</packaging>
-        <micronaut.version>4.4.3</micronaut.version>
-        <exec.mainClass>com.baeldung.micronaut.httpfilters.ServerApplication</exec.mainClass>
-        <micronaut.validation.version>4.6.1</micronaut.validation.version>
-        <micronaut.runtime>netty</micronaut.runtime>
-        <micronaut.test.version>4.3.0</micronaut.test.version>
-        <junit.jupiter.version>5.9.1</junit.jupiter.version>
-    </properties>
 </project>

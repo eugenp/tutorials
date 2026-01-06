@@ -15,6 +15,12 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <conductor.client.version>2.0.8</conductor.client.version>
+        <spring-boot.version>3.2.0</spring-boot.version>
+        <springdoc-openapi-webmvc-ui.version>2.5.0</springdoc-openapi-webmvc-ui.version>
+    </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -76,11 +82,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <conductor.client.version>2.0.8</conductor.client.version>
-        <spring-boot.version>3.2.0</spring-boot.version>
-        <springdoc-openapi-webmvc-ui.version>2.5.0</springdoc-openapi-webmvc-ui.version>
-    </properties>
 
 </project>
