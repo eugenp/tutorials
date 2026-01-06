@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>apache-cayenne</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>apache-cayenne</name>
     <packaging>jar</packaging>
+    <name>apache-cayenne</name>
     <description>Introduction to Apache Cayenne</description>
 
     <parent>
@@ -29,11 +29,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <mysql.connector.version>8.2.0</mysql.connector.version>
-        <cayenne.version>4.0.M5</cayenne.version>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -43,5 +38,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <mysql.connector.version>8.2.0</mysql.connector.version>
+        <cayenne.version>4.0.M5</cayenne.version>
+    </properties>
 
 </project>

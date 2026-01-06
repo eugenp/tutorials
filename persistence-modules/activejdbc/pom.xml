@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>activejdbc</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>activejdbc</name>
     <packaging>jar</packaging>
+    <name>activejdbc</name>
     <url>http://maven.apache.org</url>
 
     <parent>
@@ -38,12 +38,6 @@
             <version>${org.slf4j.version}</version>
         </dependency>
     </dependencies>
-
-    <properties>
-        <activejdbc.version>3.4-j11</activejdbc.version>
-        <environments>development.test,development</environments>
-        <mysql.connector.version>8.2.0</mysql.connector.version>
-    </properties>
 
     <build>
         <plugins>
@@ -78,5 +72,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <activejdbc.version>3.4-j11</activejdbc.version>
+        <environments>development.test,development</environments>
+        <mysql.connector.version>8.2.0</mysql.connector.version>
+    </properties>
 
 </project>

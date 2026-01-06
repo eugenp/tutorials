@@ -14,18 +14,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <!-- Spring -->
-        <org.springframework.version>6.0.9</org.springframework.version>
-        <spring-boot.version>3.1.0</spring-boot.version>
-        <!-- persistence -->
-        <tomcat-dbcp.version>10.1.9</tomcat-dbcp.version>
-        <jakson-databind.version>2.16.1</jakson-databind.version>
-        <jakson-core.version>2.16.1</jakson-core.version>
-        <jjwt.version>0.12.3</jjwt.version>
-        <logback.version>1.4.14</logback.version>
-    </properties>
-
     <dependencies>
         <!-- Spring -->
         <dependency>
@@ -132,5 +120,17 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <properties>
+        <!-- Spring -->
+        <org.springframework.version>6.0.9</org.springframework.version>
+        <spring-boot.version>3.1.0</spring-boot.version>
+        <!-- persistence -->
+        <tomcat-dbcp.version>10.1.9</tomcat-dbcp.version>
+        <jakson-databind.version>2.16.1</jakson-databind.version>
+        <jakson-core.version>2.16.1</jakson-core.version>
+        <jjwt.version>0.12.3</jjwt.version>
+        <logback.version>1.4.14</logback.version>
+    </properties>
 
 </project>

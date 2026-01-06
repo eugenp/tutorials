@@ -14,14 +14,6 @@
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
-    <properties>
-        <org.springframework.data.version>4.1.9</org.springframework.data.version>
-        <testcontainers.version>1.19.5</testcontainers.version>
-        <system.stubs.version>2.1.5</system.stubs.version>
-        <hector-core.version>2.0-0</hector-core.version>
-        <java-driver-mapper-runtime.version>4.17.0</java-driver-mapper-runtime.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -69,5 +61,13 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <properties>
+        <org.springframework.data.version>4.1.9</org.springframework.data.version>
+        <testcontainers.version>1.19.5</testcontainers.version>
+        <system.stubs.version>2.1.5</system.stubs.version>
+        <hector-core.version>2.0-0</hector-core.version>
+        <java-driver-mapper-runtime.version>4.17.0</java-driver-mapper-runtime.version>
+    </properties>
 
 </project>

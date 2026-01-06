@@ -13,12 +13,6 @@
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
-    <properties>
-        <spring-oxm.version>6.1.4</spring-oxm.version>
-        <hypersistance-utils-hibernate-60.version>3.9.0</hypersistance-utils-hibernate-60.version>
-        <lombok.version>1.18.36</lombok.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -90,5 +84,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <spring-oxm.version>6.1.4</spring-oxm.version>
+        <hypersistance-utils-hibernate-60.version>3.9.0</hypersistance-utils-hibernate-60.version>
+        <lombok.version>1.18.36</lombok.version>
+    </properties>
 
 </project>

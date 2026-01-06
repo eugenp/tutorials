@@ -16,10 +16,6 @@
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
-    <properties>
-        <start-class>com.baeldung.h2db.schema.SampleSchemaApplication</start-class>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -49,5 +45,9 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
+
+    <properties>
+        <start-class>com.baeldung.h2db.schema.SampleSchemaApplication</start-class>
+    </properties>
 
 </project>
