@@ -13,28 +13,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <bval.version>3.0.1</bval.version>
-        <jakarta.validation.validation-api.version>3.1.0</jakarta.validation.validation-api.version>
-        <camel.version>4.4.1</camel.version>
-        <apache.avro.version>1.11.3</apache.avro.version>
-        <beam.version>2.45.0</beam.version>
-        <pulsar-client.version>2.1.1-incubating</pulsar-client.version>
-        <curator.version>4.0.1</curator.version>
-        <avaitility.version>1.7.0</avaitility.version>
-        <zookeeper.version>3.4.11</zookeeper.version>
-        <meecrowave-junit.version>1.2.15</meecrowave-junit.version>
-        <okhttp.version>5.0.0-alpha.12</okhttp.version>
-        <meecrowave-jpa.version>1.2.15</meecrowave-jpa.version>
-        <meecrowave-core.version>1.2.15</meecrowave-core.version>
-        <meecrowave-maven-plugin.version>1.2.15</meecrowave-maven-plugin.version>
-        <xbean.version>4.24</xbean.version>
-        <geode.core>1.15.1</geode.core>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <maven.compiler.release>17</maven.compiler.release>
-    </properties>
-
     <dependencies>
         <!-- camel -->
         <dependency>
@@ -269,5 +247,27 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <bval.version>3.0.1</bval.version>
+        <jakarta.validation.validation-api.version>3.1.0</jakarta.validation.validation-api.version>
+        <camel.version>4.4.1</camel.version>
+        <apache.avro.version>1.11.3</apache.avro.version>
+        <beam.version>2.45.0</beam.version>
+        <pulsar-client.version>2.1.1-incubating</pulsar-client.version>
+        <curator.version>4.0.1</curator.version>
+        <avaitility.version>1.7.0</avaitility.version>
+        <zookeeper.version>3.4.11</zookeeper.version>
+        <meecrowave-junit.version>1.2.15</meecrowave-junit.version>
+        <okhttp.version>5.0.0-alpha.12</okhttp.version>
+        <meecrowave-jpa.version>1.2.15</meecrowave-jpa.version>
+        <meecrowave-core.version>1.2.15</meecrowave-core.version>
+        <meecrowave-maven-plugin.version>1.2.15</meecrowave-maven-plugin.version>
+        <xbean.version>4.24</xbean.version>
+        <geode.core>1.15.1</geode.core>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.release>17</maven.compiler.release>
+    </properties>
 
 </project>

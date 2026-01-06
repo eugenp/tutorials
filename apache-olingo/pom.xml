@@ -15,10 +15,6 @@
         <relativePath>../parent-boot-2</relativePath>
     </parent>
 
-    <properties>
-        <olingo.version>2.0.11</olingo.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -82,5 +78,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <olingo.version>2.0.11</olingo.version>
+    </properties>
 
 </project>

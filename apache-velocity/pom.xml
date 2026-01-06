@@ -14,12 +14,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <httpclient.version>4.5.2</httpclient.version>
-        <velocity-version>1.7</velocity-version>
-        <velocity-tools-version>2.0</velocity-tools-version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.apache.velocity</groupId>
@@ -64,5 +58,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <httpclient.version>4.5.2</httpclient.version>
+        <velocity-version>1.7</velocity-version>
+        <velocity-tools-version>2.0</velocity-tools-version>
+    </properties>
 
 </project>
