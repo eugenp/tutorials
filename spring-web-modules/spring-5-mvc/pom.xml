@@ -14,6 +14,11 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <start-class>com.baeldung.Spring5Application</start-class>
+        <javafaker.version>0.18</javafaker.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -71,10 +76,5 @@
     <build>
         <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
     </build>
-
-    <properties>
-        <start-class>com.baeldung.Spring5Application</start-class>
-        <javafaker.version>0.18</javafaker.version>
-    </properties>
 
 </project>

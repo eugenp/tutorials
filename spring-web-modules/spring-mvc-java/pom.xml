@@ -14,6 +14,31 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <thymeleaf.version>3.0.9.RELEASE</thymeleaf.version>
+        <!-- persistence -->
+        <hibernate.version>6.0.10.Final</hibernate.version>
+        <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
+        <!-- util -->
+        <jsonpath.version>2.2.0</jsonpath.version>
+        <!-- testing -->
+        <httpcore.version>4.4.5</httpcore.version>
+        <httpclient.version>4.5.2</httpclient.version>
+        <!-- maven plugins -->
+        <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
+        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+        <!-- AspectJ -->
+        <aspectj.version>1.9.1</aspectj.version>
+        <jakarta.el.version>5.0.0-M1</jakarta.el.version>
+        <jakarta.version>6.1.0-M1</jakarta.version>
+        <jakarta-servlet-api.version>4.0.0-M1</jakarta-servlet-api.version>
+        <json-path.version>2.9.0</json-path.version>
+        <start-class>com.baeldung.SpringMVCApplication</start-class>
+        <jakarta-servlet-jstl-version>3.0.0</jakarta-servlet-jstl-version>
+        <rest-assured.version>5.5.0</rest-assured.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -187,30 +212,5 @@
             </build>
         </profile>
     </profiles>
-
-    <properties>
-        <thymeleaf.version>3.0.9.RELEASE</thymeleaf.version>
-        <!-- persistence -->
-        <hibernate.version>6.0.10.Final</hibernate.version>
-        <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
-        <!-- util -->
-        <jsonpath.version>2.2.0</jsonpath.version>
-        <!-- testing -->
-        <httpcore.version>4.4.5</httpcore.version>
-        <httpclient.version>4.5.2</httpclient.version>
-        <!-- maven plugins -->
-        <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
-        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
-        <!-- AspectJ -->
-        <aspectj.version>1.9.1</aspectj.version>
-        <jakarta.el.version>5.0.0-M1</jakarta.el.version>
-        <jakarta.version>6.1.0-M1</jakarta.version>
-        <jakarta-servlet-api.version>4.0.0-M1</jakarta-servlet-api.version>
-        <json-path.version>2.9.0</json-path.version>
-        <start-class>com.baeldung.SpringMVCApplication</start-class>
-        <jakarta-servlet-jstl-version>3.0.0</jakarta-servlet-jstl-version>
-        <rest-assured.version>5.5.0</rest-assured.version>
-    </properties>
 
 </project>

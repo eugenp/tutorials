@@ -104,6 +104,21 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <spring.version>4.3.27.RELEASE</spring.version>
+        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+        <!-- testing -->
+        <powermock.version>2.0.9</powermock.version>
+        <httpcore.version>4.4.5</httpcore.version>
+        <httpclient.version>4.5.2</httpclient.version>
+        <velocity.version>1.7</velocity.version>
+        <velocity-tools.version>2.0</velocity-tools.version>
+        <rest-assured.version>2.9.0</rest-assured.version>
+        <!-- Maven plugins -->
+        <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
+        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+    </properties>
+
     <build>
         <finalName>spring-mvc-velocity</finalName>
         <resources>
@@ -161,20 +176,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <spring.version>4.3.27.RELEASE</spring.version>
-        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
-        <!-- testing -->
-        <powermock.version>2.0.9</powermock.version>
-        <httpcore.version>4.4.5</httpcore.version>
-        <httpclient.version>4.5.2</httpclient.version>
-        <velocity.version>1.7</velocity.version>
-        <velocity-tools.version>2.0</velocity-tools.version>
-        <rest-assured.version>2.9.0</rest-assured.version>
-        <!-- Maven plugins -->
-        <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
-    </properties>
 
 </project>

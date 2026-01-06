@@ -73,10 +73,9 @@
                 <artifactId>maven-war-plugin</artifactId>
             </plugin>
         </plugins>
-    </build>
 
-    <profiles>
-        <profile>
+        <profiles>
+            <profile>
             <id>live</id>
             <build>
                 <plugins>
@@ -107,7 +106,8 @@
                 </plugins>
             </build>
         </profile>
-    </profiles>
+        </profiles>
+    </build>
 
     <properties>
         <start-class>com.baeldung.authresolver.AuthResolverApplication</start-class>

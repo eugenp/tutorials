@@ -14,6 +14,26 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <!-- Spring -->
+        <spring-boot.version>3.3.3</spring-boot.version>
+        <!-- persistence -->
+        <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
+        <!-- http -->
+        <httpcore.version>4.4.5</httpcore.version>
+        <httpclient.version>4.5.2</httpclient.version>
+        <!-- various -->
+        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
+        <!-- util -->
+        <geoip2.version>2.8.0</geoip2.version>
+        <!-- Maven plugins -->
+        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+        <crash.version>1.3.2</crash.version>
+        <groovy.version>3.0.0-rc-3</groovy.version>
+        <jakarta-servlet.version>6.1.0</jakarta-servlet.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+    </properties>
+
     <dependencies>
         <!-- Spring -->
         <dependency>
@@ -119,25 +139,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <!-- Spring -->
-        <spring-boot.version>3.3.3</spring-boot.version>
-        <!-- persistence -->
-        <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
-        <!-- http -->
-        <httpcore.version>4.4.5</httpcore.version>
-        <httpclient.version>4.5.2</httpclient.version>
-        <!-- various -->
-        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
-        <!-- util -->
-        <geoip2.version>2.8.0</geoip2.version>
-        <!-- Maven plugins -->
-        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
-        <crash.version>1.3.2</crash.version>
-        <groovy.version>3.0.0-rc-3</groovy.version>
-        <jakarta-servlet.version>6.1.0</jakarta-servlet.version>
-        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
-    </properties>
 
 </project>

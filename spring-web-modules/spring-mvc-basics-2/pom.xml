@@ -14,6 +14,23 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
+        <deploy-path>enter-location-of-server</deploy-path>
+        <org.thymeleaf-version>3.1.2.RELEASE</org.thymeleaf-version>
+        <groovy.version>2.4.12</groovy.version>
+        <freemarker.version>2.3.27-incubating</freemarker.version>
+        <jade.version>1.2.5</jade.version>
+        <rome.version>1.9.0</rome.version>
+        <xstream.version>1.4.9</xstream.version>
+        <scribejava.version>5.1.0</scribejava.version>
+        <json.version>20240303</json.version>
+        <jakarta.mail.version>2.0.1</jakarta.mail.version>
+        <jakarta.servlet-api.version>6.1.0-M2</jakarta.servlet-api.version>
+        <jte.version>3.1.15</jte.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -145,22 +162,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
-        <deploy-path>enter-location-of-server</deploy-path>
-        <org.thymeleaf-version>3.1.2.RELEASE</org.thymeleaf-version>
-        <groovy.version>2.4.12</groovy.version>
-        <freemarker.version>2.3.27-incubating</freemarker.version>
-        <jade.version>1.2.5</jade.version>
-        <rome.version>1.9.0</rome.version>
-        <xstream.version>1.4.9</xstream.version>
-        <scribejava.version>5.1.0</scribejava.version>
-        <json.version>20240303</json.version>
-        <jakarta.mail.version>2.0.1</jakarta.mail.version>
-        <jakarta.servlet-api.version>6.1.0-M2</jakarta.servlet-api.version>
-        <jte.version>3.1.15</jte.version>
-        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
-    </properties>
 
 </project>
