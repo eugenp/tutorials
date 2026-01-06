@@ -13,11 +13,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <finagle.core.version>20.4.0</finagle.core.version>
-        <finagle.http.version>20.4.0</finagle.http.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.twitter</groupId>
@@ -30,5 +25,10 @@
             <version>${finagle.http.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <finagle.core.version>20.4.0</finagle.core.version>
+        <finagle.http.version>20.4.0</finagle.http.version>
+    </properties>
 
 </project>

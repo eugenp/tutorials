@@ -14,15 +14,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <springframework.version>4.3.4.RELEASE</springframework.version>
-        <activemq.version>5.14.1</activemq.version>
-        <spring-boot-test.version>1.5.10.RELEASE</spring-boot-test.version>
-        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
-        <activemq-junit.version>5.16.5</activemq-junit.version>
-        <testcontainers.version>1.17.3</testcontainers.version>
-    </properties>
-
     <dependencies>
         <!-- Spring JMS -->
         <dependency>
@@ -85,5 +76,14 @@
         </pluginManagement>
         <finalName>spring-jms</finalName>
     </build>
+
+    <properties>
+        <springframework.version>4.3.4.RELEASE</springframework.version>
+        <activemq.version>5.14.1</activemq.version>
+        <spring-boot-test.version>1.5.10.RELEASE</spring-boot-test.version>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+        <activemq-junit.version>5.16.5</activemq-junit.version>
+        <testcontainers.version>1.17.3</testcontainers.version>
+    </properties>
 
 </project>

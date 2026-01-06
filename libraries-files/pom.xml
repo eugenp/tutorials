@@ -11,13 +11,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <org.ini4j.version>0.5.4</org.ini4j.version>
-        <commons-configuration2>2.8.0</commons-configuration2>
-        <itext7-core.version>7.2.4</itext7-core.version>
-        <jsch.version>0.2.20</jsch.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.ini4j</groupId>
@@ -61,5 +54,12 @@
             <version>${jsch.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <org.ini4j.version>0.5.4</org.ini4j.version>
+        <commons-configuration2>2.8.0</commons-configuration2>
+        <itext7-core.version>7.2.4</itext7-core.version>
+        <jsch.version>0.2.20</jsch.version>
+    </properties>
 
 </project>

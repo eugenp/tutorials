@@ -15,10 +15,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <camel.version>4.3.0</camel.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
@@ -51,5 +47,9 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <properties>
+        <camel.version>4.3.0</camel.version>
+    </properties>
 
 </project>

@@ -11,10 +11,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <spoon-core.version>10.3.0</spoon-core.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>fr.inria.gforge.spoon</groupId>
@@ -22,5 +18,9 @@
             <version>${spoon-core.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <spoon-core.version>10.3.0</spoon-core.version>
+    </properties>
 
 </project>

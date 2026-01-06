@@ -13,11 +13,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <fastutil.version>8.2.2</fastutil.version>
-        <eclipse-collections.version>10.0.0</eclipse-collections.version>
-    </properties>
-
     <dependencies>
         <!-- https://mvnrepository.com/artifact/it.unimi.dsi/fastutil -->
         <dependency>
@@ -69,5 +64,10 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <properties>
+        <fastutil.version>8.2.2</fastutil.version>
+        <eclipse-collections.version>10.0.0</eclipse-collections.version>
+    </properties>
 
 </project>

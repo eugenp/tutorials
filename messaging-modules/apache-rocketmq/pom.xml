@@ -13,12 +13,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <geode.core>1.6.0</geode.core>
-        <rocketmq.version>2.0.4</rocketmq.version>
-        <spring-boot.repackage.skip>true</spring-boot.repackage.skip> <!-- to avoid repackaging of the jar -->
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.apache.rocketmq</groupId>
@@ -26,5 +20,11 @@
             <version>${rocketmq.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <geode.core>1.6.0</geode.core>
+        <rocketmq.version>2.0.4</rocketmq.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip> <!-- to avoid repackaging of the jar -->
+    </properties>
 
 </project>

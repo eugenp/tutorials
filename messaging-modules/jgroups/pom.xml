@@ -14,10 +14,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <jgroups.version>4.0.10.Final</jgroups.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.jgroups</groupId>
@@ -30,5 +26,9 @@
             <version>${commons-cli.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <jgroups.version>4.0.10.Final</jgroups.version>
+    </properties>
 
 </project>
