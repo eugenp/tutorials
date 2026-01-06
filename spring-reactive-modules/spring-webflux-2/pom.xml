@@ -3,16 +3,16 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-webflux-2</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>spring-webflux-2</name>
-    <url>http://www.baeldung.com</url>
-
     <parent>
         <groupId>com.baeldung.spring.reactive</groupId>
         <artifactId>spring-reactive-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+
+    <artifactId>spring-webflux-2</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>spring-webflux-2</name>
+    <url>http://www.baeldung.com</url>
 
     <dependencies>
         <dependency>
@@ -103,15 +103,6 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <reactor.version>3.5.2</reactor.version>
         <caffeine.version>3.1.8</caffeine.version>
@@ -120,5 +111,14 @@
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
         <spring-boot.version>3.2.2</spring-boot.version>
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

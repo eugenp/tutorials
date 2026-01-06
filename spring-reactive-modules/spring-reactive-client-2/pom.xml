@@ -3,16 +3,16 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-reactive-client-2</artifactId>
-    <packaging>jar</packaging>
-    <name>spring-reactive-client-2</name>
-    <description>spring boot sample project about new features</description>
-
     <parent>
         <groupId>com.baeldung.spring.reactive</groupId>
         <artifactId>spring-reactive-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+
+    <artifactId>spring-reactive-client-2</artifactId>
+    <packaging>jar</packaging>
+    <name>spring-reactive-client-2</name>
+    <description>spring boot sample project about new features</description>
 
     <dependencies>
         <dependency>
@@ -97,6 +97,12 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
+        <resilience4j.version>1.7.1</resilience4j.version>
+        <jmh.version>1.37</jmh.version>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -145,11 +151,5 @@
             </build>
         </profile>
     </profiles>
-
-    <properties>
-        <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
-        <resilience4j.version>1.7.1</resilience4j.version>
-        <jmh.version>1.37</jmh.version>
-    </properties>
 
 </project>

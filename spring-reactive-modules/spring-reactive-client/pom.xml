@@ -3,16 +3,16 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-reactive-client</artifactId>
-    <packaging>jar</packaging>
-    <name>spring-reactive-client</name>
-    <description>spring boot sample project about new features</description>
-
     <parent>
         <groupId>com.baeldung.spring.reactive</groupId>
         <artifactId>spring-reactive-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+
+    <artifactId>spring-reactive-client</artifactId>
+    <packaging>jar</packaging>
+    <name>spring-reactive-client</name>
+    <description>spring boot sample project about new features</description>
 
     <dependencies>
         <dependency>
@@ -138,6 +138,20 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
+        <geronimo-json_1.1_spec.version>1.0</geronimo-json_1.1_spec.version>
+        <jetty-reactive-httpclient.version>4.0.3</jetty-reactive-httpclient.version>
+        <okhttp.version>5.0.0-alpha.12</okhttp.version>
+        <reactor-test.version>3.5.3</reactor-test.version>
+        <wiremock-standalone.version>3.4.2</wiremock-standalone.version>
+        <spring-cloud-starter-openfeign.version>4.1.3</spring-cloud-starter-openfeign.version>
+        <kotlin-stdlib.version>2.0.0-Beta4</kotlin-stdlib.version>
+        <johnzon-jsonb.version>2.0.0</johnzon-jsonb.version>
+        <jakarta.json-api.version>2.1.3</jakarta.json-api.version>
+        <logback.configurationFileName>logback.xml</logback.configurationFileName>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -187,19 +201,5 @@
             </build>
         </profile>
     </profiles>
-
-    <properties>
-        <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
-        <geronimo-json_1.1_spec.version>1.0</geronimo-json_1.1_spec.version>
-        <jetty-reactive-httpclient.version>4.0.3</jetty-reactive-httpclient.version>
-        <okhttp.version>5.0.0-alpha.12</okhttp.version>
-        <reactor-test.version>3.5.3</reactor-test.version>
-        <wiremock-standalone.version>3.4.2</wiremock-standalone.version>
-        <spring-cloud-starter-openfeign.version>4.1.3</spring-cloud-starter-openfeign.version>
-        <kotlin-stdlib.version>2.0.0-Beta4</kotlin-stdlib.version>
-        <johnzon-jsonb.version>2.0.0</johnzon-jsonb.version>
-        <jakarta.json-api.version>2.1.3</jakarta.json-api.version>
-        <logback.configurationFileName>logback.xml</logback.configurationFileName>
-    </properties>
 
 </project>

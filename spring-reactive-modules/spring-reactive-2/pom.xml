@@ -3,17 +3,17 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-reactive-2</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <name>spring-reactive-2</name>
-    <description>spring sample project about new features</description>
-
     <parent>
         <groupId>com.baeldung.spring.reactive</groupId>
         <artifactId>spring-reactive-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+
+    <artifactId>spring-reactive-2</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>spring-reactive-2</name>
+    <description>spring sample project about new features</description>
 
     <dependencies>
         <dependency>
@@ -71,6 +71,11 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
+        <wiremock.version>3.9.1</wiremock.version>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -120,10 +125,5 @@
             </build>
         </profile>
     </profiles>
-
-    <properties>
-        <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
-        <wiremock.version>3.9.1</wiremock.version>
-    </properties>
 
 </project>
