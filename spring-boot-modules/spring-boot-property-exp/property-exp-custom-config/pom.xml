@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>property-exp-custom-config</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>property-exp-custom-config</name>
     <packaging>jar</packaging>
+    <name>property-exp-custom-config</name>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>

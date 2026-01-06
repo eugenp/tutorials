@@ -6,8 +6,8 @@
     <groupId>com.baeldung.spring-boot-core</groupId>
     <artifactId>spring-boot-core</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>spring-boot-core</name>
     <packaging>war</packaging>
+    <name>spring-boot-core</name>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
