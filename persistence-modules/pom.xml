@@ -131,7 +131,7 @@
         <module>spring-jdbc-2</module>
         <!--<module>spring-jooq</module>--><!--disabling the jooq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
         <module>spring-mybatis</module>
-        <!-- <module>spring-persistence</module> --> <!-- failing after upgrade to jdk21 -->
+        <module>spring-persistence</module>
         <module>spring-data-yugabytedb</module>
         <module>fauna</module>
         <module>spring-data-rest</module>

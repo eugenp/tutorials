@@ -25,7 +25,7 @@
         <module>spring-boot-annotations-2</module>
         <module>spring-boot-artifacts</module>
         <module>spring-boot-artifacts-2</module>
-        <module>spring-boot-autoconfiguration</module>
+	<module>spring-boot-autoconfiguration</module>
         <module>spring-boot-basic-customization</module>
         <module>spring-boot-basic-customization-2</module>
         <module>spring-boot-bootstrap</module>
@@ -94,6 +94,7 @@
         <module>spring-boot-testing-2</module>
         <module>spring-boot-testing-3</module>
         <module>spring-boot-testing-4</module>
+        <module>spring-boot-testing-5</module>
         <module>spring-boot-testing-spock</module>
         <module>spring-boot-vue</module>
         <module>spring-boot-actuator</module>
@@ -134,6 +135,8 @@
         <module>spring-boot-brave</module>
         <module>spring-boot-simple</module>
         <module>spring-boot-http2</module>
+        <module>spring-boot-azure-deployment</module>
+        <module>spring-boot-heroku-deployment</module>
     </modules>
 
     <build>
