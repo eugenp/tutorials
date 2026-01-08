@@ -12,11 +12,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <quasar.version>0.8.0</quasar.version>
-        <jctools.version>2.1.2</jctools.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>co.paralleluniverse</groupId>
@@ -89,5 +84,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <quasar.version>0.8.0</quasar.version>
+        <jctools.version>2.1.2</jctools.version>
+    </properties>
 
 </project>

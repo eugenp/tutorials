@@ -12,11 +12,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <graphql-dgs-codegen-client-core.version>5.1.14</graphql-dgs-codegen-client-core.version>
-        <graphql-dgs-spring-boot-starter.version>4.9.15</graphql-dgs-spring-boot-starter.version>
-    </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -68,5 +63,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <graphql-dgs-codegen-client-core.version>5.1.14</graphql-dgs-codegen-client-core.version>
+        <graphql-dgs-spring-boot-starter.version>4.9.15</graphql-dgs-spring-boot-starter.version>
+    </properties>
 
 </project>

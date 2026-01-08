@@ -12,10 +12,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <joda-time.version>2.12.5</joda-time.version>
-    </properties>
-
     <dependencies>
         <!-- utils -->
         <dependency>
@@ -66,5 +62,9 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <joda-time.version>2.12.5</joda-time.version>
+    </properties>
 
 </project>

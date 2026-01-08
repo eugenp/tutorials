@@ -11,15 +11,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <java-diff-utils.version>4.12</java-diff-utils.version>
-        <yavi.version>0.14.1</yavi.version>
-        <manifold.version>2024.1.20</manifold.version>
-        <record-builder.version>47</record-builder.version>
-        <jena.version>5.5.0</jena.version>
-        <mybatis-dynamic-sql.version>1.5.2</mybatis-dynamic-sql.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>io.github.java-diff-utils</groupId>
@@ -111,5 +102,14 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <java-diff-utils.version>4.12</java-diff-utils.version>
+        <yavi.version>0.14.1</yavi.version>
+        <manifold.version>2024.1.20</manifold.version>
+        <record-builder.version>47</record-builder.version>
+        <jena.version>5.5.0</jena.version>
+        <mybatis-dynamic-sql.version>1.5.2</mybatis-dynamic-sql.version>
+    </properties>
 
 </project>

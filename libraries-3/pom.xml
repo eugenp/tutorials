@@ -12,24 +12,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <velocity-engine-core.version>2.2</velocity-engine-core.version>
-        <nullaway.version>0.3.0</nullaway.version>
-        <plexus-compiler.version>2.8</plexus-compiler.version>
-        <errorprone.version>2.1.3</errorprone.version>
-        <javers.version>3.1.0</javers.version>
-        <sbe-tool.version>1.27.0</sbe-tool.version>
-        <agrona.version>1.17.1</agrona.version>
-        <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
-        <jnats.version>2.17.3</jnats.version>
-        <awaitility.version>4.2.1</awaitility.version>
-        <jfreechart.version>1.5.4</jfreechart.version>
-        <dev.failsafe.version>3.3.2</dev.failsafe.version>
-        <spring-boot.version>3.3.0</spring-boot.version>
-        <spring.version>6.1.8</spring.version>
-        <yauaa.version>7.28.1</yauaa.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -184,5 +166,23 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <velocity-engine-core.version>2.2</velocity-engine-core.version>
+        <nullaway.version>0.3.0</nullaway.version>
+        <plexus-compiler.version>2.8</plexus-compiler.version>
+        <errorprone.version>2.1.3</errorprone.version>
+        <javers.version>3.1.0</javers.version>
+        <sbe-tool.version>1.27.0</sbe-tool.version>
+        <agrona.version>1.17.1</agrona.version>
+        <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
+        <jnats.version>2.17.3</jnats.version>
+        <awaitility.version>4.2.1</awaitility.version>
+        <jfreechart.version>1.5.4</jfreechart.version>
+        <dev.failsafe.version>3.3.2</dev.failsafe.version>
+        <spring-boot.version>3.3.0</spring-boot.version>
+        <spring.version>6.1.8</spring.version>
+        <yauaa.version>7.28.1</yauaa.version>
+    </properties>
 
 </project>

@@ -12,11 +12,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <graphql-spqr-spring-boot-starter.version>1.0.1</graphql-spqr-spring-boot-starter.version>
-        <junit-jupiter.version>5.10.3</junit-jupiter.version> <!-- Updating to 5.11.x breaks changes -->
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -38,5 +33,10 @@
             <version>${graphql-spqr-spring-boot-starter.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <graphql-spqr-spring-boot-starter.version>1.0.1</graphql-spqr-spring-boot-starter.version>
+        <junit-jupiter.version>5.10.3</junit-jupiter.version> <!-- Updating to 5.11.x breaks changes -->
+    </properties>
 
 </project>

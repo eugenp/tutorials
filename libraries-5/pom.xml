@@ -11,21 +11,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <jetcache.version>2.7.6</jetcache.version>
-        <spring-boot.version>3.3.0</spring-boot.version>
-        <spring.version>6.1.8</spring.version>
-        <jline.version>3.28.0</jline.version>
-        <com.restfb.version>2025.6.0</com.restfb.version>
-        <jool.version>0.9.12</jool.version>
-        <mbassador.version>1.3.1</mbassador.version>
-        <javax.el.version>3.0.0</javax.el.version>
-        <glassfish.web.version>2.2.4</glassfish.web.version>
-        <renjin.version>3.5-beta72</renjin.version>
-        <rcaller.version>3.0</rcaller.version>
-        <rserve.version>1.8.1</rserve.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.alicp.jetcache</groupId>
@@ -137,6 +122,21 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <jetcache.version>2.7.6</jetcache.version>
+        <spring-boot.version>3.3.0</spring-boot.version>
+        <spring.version>6.1.8</spring.version>
+        <jline.version>3.28.0</jline.version>
+        <com.restfb.version>2025.6.0</com.restfb.version>
+        <jool.version>0.9.12</jool.version>
+        <mbassador.version>1.3.1</mbassador.version>
+        <javax.el.version>3.0.0</javax.el.version>
+        <glassfish.web.version>2.2.4</glassfish.web.version>
+        <renjin.version>3.5-beta72</renjin.version>
+        <rcaller.version>3.0</rcaller.version>
+        <rserve.version>1.8.1</rserve.version>
+    </properties>
 
     <repositories>
         <repository>

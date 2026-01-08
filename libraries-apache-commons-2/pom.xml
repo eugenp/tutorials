@@ -12,21 +12,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <commons-compress.version>1.26.1</commons-compress.version>
-        <ant.version>1.10.13</ant.version>
-        <commons-vfs2.version>2.9.0</commons-vfs2.version>
-        <apache-commons-text.version>1.10.0</apache-commons-text.version>
-        <commons-net.version>3.6</commons-net.version>
-        <mockftpserver.version>2.7.1</mockftpserver.version>
-        <commons-configuration2.version>2.10.0</commons-configuration2.version>
-        <commons-beanutils.version>1.9.4</commons-beanutils.version>
-        <commons-jexl.version>2.1.1</commons-jexl.version>
-        <xz.version>1.9</xz.version>
-        <zstd-jni.version>1.5.5-11</zstd-jni.version>
-        <commons-validator.version>1.9.0</commons-validator.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -90,5 +75,20 @@
             <version>${commons-validator.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <commons-compress.version>1.26.1</commons-compress.version>
+        <ant.version>1.10.13</ant.version>
+        <commons-vfs2.version>2.9.0</commons-vfs2.version>
+        <apache-commons-text.version>1.10.0</apache-commons-text.version>
+        <commons-net.version>3.6</commons-net.version>
+        <mockftpserver.version>2.7.1</mockftpserver.version>
+        <commons-configuration2.version>2.10.0</commons-configuration2.version>
+        <commons-beanutils.version>1.9.4</commons-beanutils.version>
+        <commons-jexl.version>2.1.1</commons-jexl.version>
+        <xz.version>1.9</xz.version>
+        <zstd-jni.version>1.5.5-11</zstd-jni.version>
+        <commons-validator.version>1.9.0</commons-validator.version>
+    </properties>
 
 </project>
