@@ -29,6 +29,14 @@ public class Blog {
 
     @Transactional
     @Retryable(maxAttempts = 3)
+    /**
+     * Publishes an article using a transactional operation that is automatically retried
+     * in case of transient failures.
+     *
+     * When {@link Retryable} is used together with {@link Transactional}, each retry
+     * triggers a new transaction. Therefore, the operation should be idempotent to
+     * avoid unintended side effects such as duplicate updates.
+     */
     public Article publishArticle(Long draftId) {
         Article article = articles.findById(draftId)
             .orElseThrow();
