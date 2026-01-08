@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-caching</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-boot-caching</name>
     <packaging>war</packaging>
+    <name>spring-boot-caching</name>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
