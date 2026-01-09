@@ -25,10 +25,6 @@ public class JobAspirantUnitTest {
         JobAspirant jobAspirant = getJobAspirant("Junior", "John Adam", "2100-12-31", 3, true);
         Set<ConstraintViolation<JobAspirant>> violations = validator.validate(jobAspirant, Junior.class);
 
-        violations.forEach(action -> {
-            System.out.println(action.getPropertyPath());
-        });
-
         assertThat(violations.size()).isEqualTo(1);
         violations.forEach(action -> {
             assertThat(action.getPropertyPath().toString()).isEqualTo("experience");
