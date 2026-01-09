@@ -21,7 +21,7 @@ public class JobAspirantUnitTest {
     }
     @Test
     public void givenJobLevelJunior_whenInValidMinExperience_thenExpectErrors() throws ParseException {
-        JobAspirant jobAspirant = getJobAspirant("Junior", "John Adam", "2025-12-31", 3, true);
+        JobAspirant jobAspirant = getJobAspirant("Junior", "John Adam", "2030-12-31", 3, true);
         Set<ConstraintViolation<JobAspirant>> violations = validator.validate(jobAspirant, Junior.class);
         assertThat(violations.size()).isEqualTo(1);
         violations.forEach(action -> {
@@ -31,7 +31,7 @@ public class JobAspirantUnitTest {
     }
     @Test
     public void givenJobLevelMidSenior_whenInvalidMinExperience_thenExpectErrors() throws ParseException {
-        JobAspirant jobAspirant = getJobAspirant("MidSenior", "John Adam", "2025-12-31", 8, true);
+        JobAspirant jobAspirant = getJobAspirant("MidSenior", "John Adam", "2030-12-31", 8, true);
         Set<ConstraintViolation<JobAspirant>> violations = validator.validate(jobAspirant, MidSenior.class);
         assertThat(violations.size()).isEqualTo(1);
         violations.forEach(action -> {
@@ -41,7 +41,7 @@ public class JobAspirantUnitTest {
     }
     @Test
     public void givenJobLevelSenior_whenInvalidMinExperience_thenExpectErrors() throws ParseException {
-        JobAspirant jobAspirant = getJobAspirant("Senior", "John Adam", "2025-12-31", 13, true);
+        JobAspirant jobAspirant = getJobAspirant("Senior", "John Adam", "2030-12-31", 13, true);
         Set<ConstraintViolation<JobAspirant>> violations = validator.validate(jobAspirant, Senior.class);
         assertThat(violations.size()).isEqualTo(1);
         violations.forEach(action -> {
@@ -51,7 +51,7 @@ public class JobAspirantUnitTest {
     }
     @Test
     public void givenJobLevelJunior_whenInValidMaxExperience_thenExpectErrors() throws ParseException {
-        JobAspirant jobAspirant = getJobAspirant("Junior", "John Adam", "2025-12-31", 11, true);
+        JobAspirant jobAspirant = getJobAspirant("Junior", "John Adam", "2030-12-31", 11, true);
         Set<ConstraintViolation<JobAspirant>> violations = validator.validate(jobAspirant, Junior.class);
         assertThat(violations.size()).isEqualTo(1);
         violations.forEach(action -> {
@@ -61,7 +61,7 @@ public class JobAspirantUnitTest {
     }
     @Test
     public void givenJobLevelMidSenior_whenInvalidMaxExperience_thenExpectErrors() throws ParseException {
-        JobAspirant jobAspirant = getJobAspirant("MidSenior", "John Adam", "2025-12-31", 16, true);
+        JobAspirant jobAspirant = getJobAspirant("MidSenior", "John Adam", "2030-12-31", 16, true);
         Set<ConstraintViolation<JobAspirant>> violations = validator.validate(jobAspirant, MidSenior.class);
         assertThat(violations.size()).isEqualTo(1);
         violations.forEach(action -> {
@@ -71,7 +71,7 @@ public class JobAspirantUnitTest {
     }
     @Test
     public void givenJobLevelSenior_whenInvalidMaxExperience_thenExpectErrors() throws ParseException {
-        JobAspirant jobAspirant = getJobAspirant("Senior", "John Adam", "2025-12-31", 23, true);
+        JobAspirant jobAspirant = getJobAspirant("Senior", "John Adam", "2030-12-31", 23, true);
         Set<ConstraintViolation<JobAspirant>> violations = validator.validate(jobAspirant, Senior.class);
         assertThat(violations.size()).isEqualTo(1);
         violations.forEach(action -> {
@@ -81,7 +81,7 @@ public class JobAspirantUnitTest {
     }
     @Test
     public void whenInvalidName_thenExpectErrors() throws ParseException {
-        JobAspirant jobAspirant = getJobAspirant("Senior", "John  Adam", "2025-12-31", 17, true);
+        JobAspirant jobAspirant = getJobAspirant("Senior", "John  Adam", "2030-12-31", 17, true);
         Set<ConstraintViolation<JobAspirant>> violations = validator.validate(jobAspirant, Senior.class, AllLevels.class);
         assertThat(violations.size()).isEqualTo(1);
         violations.forEach(action -> {
@@ -91,7 +91,7 @@ public class JobAspirantUnitTest {
     }
     @Test
     public void givenJuniorLevel_whenInvalidAgreement_thenExpectErrors() throws ParseException {
-        JobAspirant jobAspirant = getJobAspirant("Junior", "John Adam", "2025-12-31", 7, false);
+        JobAspirant jobAspirant = getJobAspirant("Junior", "John Adam", "2030-12-31", 7, false);
         Set<ConstraintViolation<JobAspirant>> violations = validator.validate(jobAspirant, Junior.class);
         assertThat(violations.size()).isEqualTo(1);
         violations.forEach(action -> {
@@ -101,7 +101,7 @@ public class JobAspirantUnitTest {
     }
     @Test
     public void givenSeniorLevel_whenInvalidAgreement_thenExpectErrors() throws ParseException {
-        JobAspirant jobAspirant = getJobAspirant("Senior", "John Adam", "2025-12-31", 17, false);
+        JobAspirant jobAspirant = getJobAspirant("Senior", "John Adam", "2030-12-31", 17, false);
         Set<ConstraintViolation<JobAspirant>> violations = validator.validate(jobAspirant, Senior.class);
         assertThat(violations.size()).isEqualTo(1);
         violations.forEach(action -> {
@@ -131,19 +131,19 @@ public class JobAspirantUnitTest {
     }
     @Test
     public void givenJobLevelSenior_whenAllFieldsValid_thenNoErrors() throws ParseException {
-        JobAspirant jobAspirant = getJobAspirant("Senior", "John Adam", "2025-12-31", 17, true);
+        JobAspirant jobAspirant = getJobAspirant("Senior", "John Adam", "2030-12-31", 17, true);
         Set<ConstraintViolation<JobAspirant>> violations = validator.validate(jobAspirant, Senior.class, AllLevels.class);
         assertThat(violations.size()).isEqualTo(0);
     }
     @Test
     public void givenJobLevelMidSenior_whenAllFieldsValid_thenNoErrors() throws ParseException {
-        JobAspirant jobAspirant = getJobAspirant("MidSenior", "John Adam", "2025-12-31", 12, true);
+        JobAspirant jobAspirant = getJobAspirant("MidSenior", "John Adam", "2030-12-31", 12, true);
         Set<ConstraintViolation<JobAspirant>> violations = validator.validate(jobAspirant, MidSenior.class, AllLevels.class);
         assertThat(violations.size()).isEqualTo(0);
     }
     @Test
     public void givenJobLevelJunior_whenAllFieldsValid_thenNoErrors() throws ParseException {
-        JobAspirant jobAspirant = getJobAspirant("Junior", "John Adam", "2025-12-31", 7, true);
+        JobAspirant jobAspirant = getJobAspirant("Junior", "John Adam", "2030-12-31", 7, true);
         Set<ConstraintViolation<JobAspirant>> violations = validator.validate(jobAspirant, Junior.class, AllLevels.class);
         assertThat(violations.size()).isEqualTo(0);
     }
