@@ -42,7 +42,7 @@ public class SeleniumValue {
         driver.findElement(By.id("submitBtn"))
           .click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(8));
-        wait.until(ExpectedConditions.urlContains("/submit"));
+        wait.until(ExpectedConditions.urlContains("/result"));
 
         Thread.sleep(4000);
 
