@@ -1,12 +1,13 @@
 package com.baeldung.mapstructstringmapping;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 class UserMapperUnitTest {
 
     @Test
-    void givenUserWithStatus_whenMapsToUserDTO_thenEnumIsConvertedToString() {
+    void shouldMapEnumToString() {
 
         User user = new User();
         user.setUsername("Kevin");

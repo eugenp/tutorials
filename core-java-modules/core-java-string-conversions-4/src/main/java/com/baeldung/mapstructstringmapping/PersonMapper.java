@@ -1,8 +1,10 @@
+package com.baeldung.mapstructstringmapping;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
 import org.mapstruct.NullValueMappingStrategy;
 import org.mapstruct.Named;
+import org.mapstruct.factory.Mappers;
 
 @Mapper(nullValueMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT)
 public interface PersonMapper {
