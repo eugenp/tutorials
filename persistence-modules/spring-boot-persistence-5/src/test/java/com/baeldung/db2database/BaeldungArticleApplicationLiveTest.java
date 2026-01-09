@@ -14,7 +14,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("db2")
-class ArticleApplicationLiveTest {
+class BaeldungArticleApplicationLiveTest {
 
     @Autowired
     TestRestTemplate restTemplate;
@@ -34,4 +34,3 @@ class ArticleApplicationLiveTest {
         assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 }
-
