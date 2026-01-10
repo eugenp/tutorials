@@ -2,6 +2,7 @@ package com.baeldung.config;
 
 import javax.sql.DataSource;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -14,20 +15,18 @@ import java.util.Map;
 public class HibernateConfig {
 
     @Bean
-    public SessionFactory sessionFactory(DataSource dataSource) {
-        Map<String, Object> settings = new HashMap<>();
-        settings.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-        settings.put("hibernate.hbm2ddl.auto", "create-drop");
-        settings.put("hibernate.show_sql", true);
-        settings.put("hibernate.connection.datasource", dataSource);
-
+    SessionFactory sessionFactory(DataSource dataSource) {
         StandardServiceRegistry registry =
                 new StandardServiceRegistryBuilder()
-                        .applySettings(settings)
+                        .applySetting("hibernate.connection.datasource", dataSource)
+                        .applySetting("hibernate.hbm2ddl.auto", "create-drop")
+                        .applySetting("hibernate.show_sql", true)
                         .build();
 
-        return new MetadataSources(registry)
-                .buildMetadata()
-                .buildSessionFactory();
+        MetadataSources sources =
+                new MetadataSources(registry);
+
+        return sources.buildMetadata().buildSessionFactory();
     }
+
 }

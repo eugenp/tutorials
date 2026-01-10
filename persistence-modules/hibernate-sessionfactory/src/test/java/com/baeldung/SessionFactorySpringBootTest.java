@@ -15,10 +15,9 @@ public class SessionFactorySpringBootTest {
 
     @Test
     void whenSessionFactoryIsInjected_thenSessionCanBeOpened() {
-        Session session = sessionFactory.openSession();
 
-        assertNotNull(session);
-
-        session.close();
+        try (Session session = sessionFactory.openSession()) {
+            assertNotNull(session);
+        }
     }
 }
