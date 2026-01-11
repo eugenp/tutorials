@@ -104,9 +104,6 @@
         <testcontainers-jupiter.version>1.19.3</testcontainers-jupiter.version>
         <jackson.databind.version>2.15.2</jackson.databind.version>
         <awaitility.version>3.0.0</awaitility.version>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <maven.compiler.release>21</maven.compiler.release>
     </properties>
 
 </project>
