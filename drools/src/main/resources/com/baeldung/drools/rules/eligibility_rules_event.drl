@@ -1,0 +1,19 @@
+package com.baeldung.drools.rules
+
+import com.baeldung.drools.matched_rules.Person;
+
+rule "Check Voting Eligibility Event"
+    when
+        $person : Person(age >= 18)
+    then
+        $person.setEligibleToVote(true);
+        update($person);
+end
+
+rule "Senior Priority Voting Event"
+    when
+        $person : Person(age >= 65)
+    then
+        $person.setPriorityVoter(true);
+        update($person);
+end
