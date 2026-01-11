@@ -47,6 +47,7 @@
             <groupId>org.testcontainers</groupId>
             <artifactId>kafka</artifactId>
             <version>${testcontainers-kafka.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.testcontainers</groupId>
