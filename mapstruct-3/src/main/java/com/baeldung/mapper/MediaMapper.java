@@ -1,9 +1,8 @@
 package com.baeldung.mapper;
 
-import org.mapstruct.Mapper;
-
 import com.baeldung.dto.MediaDto;
 import com.baeldung.entity.Media;
+import org.mapstruct.Mapper;
 
 @Mapper
 public interface MediaMapper {

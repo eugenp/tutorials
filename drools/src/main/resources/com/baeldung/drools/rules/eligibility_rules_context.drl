@@ -1,0 +1,25 @@
+package com.baeldung.drools.rules
+
+import com.baeldung.drools.matched_rules.Person;
+import com.baeldung.drools.matched_rules.RuleTracker;
+import static com.baeldung.drools.matched_rules.RuleUtils.track;
+
+rule "Check Voting Eligibility"
+    when
+        $person : Person(age >= 18)
+        $tracker : RuleTracker()
+    then
+        track(drools, $tracker);
+        $person.setEligibleToVote(true);
+        update($person);
+end
+
+rule "Senior Priority Voting"
+    when
+        $person : Person(age >= 65)
+        $tracker : RuleTracker()
+    then
+        track(drools, $tracker);
+        $person.setPriorityVoter(true);
+        update($person);
+end
