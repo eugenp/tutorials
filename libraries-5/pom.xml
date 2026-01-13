@@ -123,21 +123,6 @@
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>nm-repo</id>
-            <name>Numerical Method's Maven Repository</name>
-            <url>http://repo.numericalmethod.com/maven/</url>
-            <layout>default</layout>
-        </repository>
-        <!-- Needed for Renjin -->
-        <repository>
-            <id>bedatadriven</id>
-            <name>BeDataDriven repository</name>
-            <url>https://nexus.bedatadriven.com/content/groups/public/</url>
-        </repository>
-    </repositories>
-
     <properties>
         <jetcache.version>2.7.6</jetcache.version>
         <spring-boot.version>3.3.0</spring-boot.version>
@@ -152,5 +137,20 @@
         <rcaller.version>3.0</rcaller.version>
         <rserve.version>1.8.1</rserve.version>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>nm-repo</id>
+            <name>Numerical Method's Maven Repository</name>
+            <url>http://repo.numericalmethod.com/maven/</url>
+            <layout>default</layout>
+        </repository>
+        <!-- Needed for Renjin -->
+        <repository>
+            <id>bedatadriven</id>
+            <name>BeDataDriven repository</name>
+            <url>https://nexus.bedatadriven.com/content/groups/public/</url>
+        </repository>
+    </repositories>
 
 </project>
