@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * <p></p>
  * Test naming convention: givenWW_whenYY_thenXX
  */
-class FizzBuzzUnitTest {
+public class FizzBuzzUnitTest {
 
     private FizzBuzz fizzBuzz;
 
