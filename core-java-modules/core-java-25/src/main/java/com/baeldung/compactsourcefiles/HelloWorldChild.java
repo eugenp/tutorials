@@ -1,7 +1,7 @@
-package com.baeldung.unnamedclasses;
+package com.baeldung.compactsourcefiles;
 
 public class HelloWorldChild extends HelloWorldSuper {
     void main() {
-        System.out.println("Hello, World!");
+        IO.println("Hello, World!");
     }
 }
