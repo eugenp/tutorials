@@ -18,6 +18,7 @@ import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
+import org.apache.lucene.index.StoredFields;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.IndexSearcher;
@@ -62,9 +63,10 @@ public class LuceneFileSearch {
             IndexReader indexReader = DirectoryReader.open(indexDirectory);
             IndexSearcher searcher = new IndexSearcher(indexReader);
             TopDocs topDocs = searcher.search(query, 10);
+            StoredFields storedFields = searcher.storedFields();
             List<Document> documents = new ArrayList<>();
             for (ScoreDoc scoreDoc : topDocs.scoreDocs) {
-                documents.add(searcher.doc(scoreDoc.doc));
+                documents.add(storedFields.document(scoreDoc.doc));
             }
 
             return documents;
