@@ -15,7 +15,7 @@ import org.junit.Test;
 public class LinkedHashMapBasedLRUCacheUnitTest {
 
     @Test
-    public void WhenAddDataToTheCache_ThenLeastRecentlyDataWillEvict() {
+    public void whenAddDataToTheCache_ThenLeastRecentlyDataWillEvict() {
         LinkedHashMapBasedLRUCache<String, String> lruCache = new LinkedHashMapBasedLRUCache<>(3);
         lruCache.put("1", "test1");
         lruCache.put("2", "test2");
@@ -36,12 +36,10 @@ public class LinkedHashMapBasedLRUCacheUnitTest {
         Map<Integer, String> cache = Collections.synchronizedMap(new LinkedHashMapBasedLRUCache<>(size));
         CountDownLatch countDownLatch = new CountDownLatch(size);
         try {
-            IntStream.range(0, size)
-                .<Runnable> mapToObj(key -> () -> {
-                    cache.put(key, "value" + key);
-                    countDownLatch.countDown();
-                })
-                .forEach(executorService::submit);
+            IntStream.range(0, size).<Runnable> mapToObj(key -> () -> {
+                cache.put(key, "value" + key);
+                countDownLatch.countDown();
+            }).forEach(executorService::submit);
             countDownLatch.await();
         } finally {
             executorService.shutdown();
