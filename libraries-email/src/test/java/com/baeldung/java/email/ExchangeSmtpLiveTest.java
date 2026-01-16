@@ -123,7 +123,12 @@ public class ExchangeSmtpLiveTest {
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.auth.mechanisms", "LOGIN");
 
-        Session session = Session.getInstance(props, new ExchangeAuthenticator(username, password));
+        Session session = Session.getInstance(props, new Authenticator() {
+
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
 
         session.setDebug(true);
 
@@ -136,22 +141,4 @@ public class ExchangeSmtpLiveTest {
         Transport.send(message);
     }
 
-    // --------------------------------------------------
-    // Explicit Authenticator (no lambda)
-    // --------------------------------------------------
-
-    private static class ExchangeAuthenticator extends Authenticator {
-
-        private final String username;
-        private final String password;
-
-        ExchangeAuthenticator(String username, String password) {
-            this.username = username;
-            this.password = password;
-        }
-
-        protected PasswordAuthentication getPasswordAuthentication() {
-            return new PasswordAuthentication(username, password);
-        }
-    }
 }
