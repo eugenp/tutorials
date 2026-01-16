@@ -1,0 +1,52 @@
+spring:
+  security:
+    oauth2:
+      authorizationserver:
+        multiple-issuers-allowed: true
+        client:
+          client1:
+            registration:
+              client-name: Client 1
+              client-id: client1
+              client-secret: secret1
+              authorization-grant-types:
+                - client_credentials
+                - authorization_code
+                - refresh_token
+              scopes:
+                - openid
+                - email
+
+multitenant-auth-server:
+  issuer1:
+    client:
+      client1:
+        require-authorization-consent: false
+        registration:
+          client-name: Client 1 - Issuer 1
+          client-id: issuer1client1
+          client-secret: issuer1secret1
+          authorization-grant-types:
+            - client_credentials
+            - authorization_code
+            - refresh_token
+          scopes:
+            - openid
+            - email
+  issuer2:
+    client:
+      client1:
+        require-authorization-consent: false
+        registration:
+          client-name: Client 1 - Issuer 2
+          client-id: issuer2client1
+          client-secret: issuer2secret1
+          authorization-grant-types:
+            - client_credentials
+            - authorization_code
+            - refresh_token
+          scopes:
+            - openid
+            - email
+
+
