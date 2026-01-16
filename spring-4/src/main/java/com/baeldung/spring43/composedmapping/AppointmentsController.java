@@ -6,16 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Controller
 @RequestMapping("/appointments")
 public class AppointmentsController {
 
-    private AppointmentService appointmentService;
+    private static final Logger logger = LoggerFactory.getLogger(AppointmentsController.class);
 
-    @Autowired
-    private Logger logger;
+    private AppointmentService appointmentService;
 
     @Autowired
     public AppointmentsController(AppointmentService appointmentService) {

@@ -42,6 +42,27 @@
             <artifactId>json</artifactId>
             <version>${json.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.mongojack</groupId>
+            <artifactId>mongojack</artifactId>
+            <version>${mongojack.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-sync</artifactId>
+            <version>${mongodb-driver.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>de.undercouch</groupId>
+            <artifactId>bson4jackson</artifactId>
+            <version>${bson4jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>de.flapdoodle.embed</groupId>
+            <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <version>${flapdoodle.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -57,6 +78,10 @@
     <properties>
         <mockserver-netty.version>5.13.2</mockserver-netty.version>
         <json.version>20240303</json.version>
+        <mongojack.version>5.0.3</mongojack.version>
+        <mongodb-driver.version>5.6.1</mongodb-driver.version>
+        <bson4jackson.version>2.18.0</bson4jackson.version>
+        <flapdoodle.version>4.21.0</flapdoodle.version>
     </properties>
 
 </project>
