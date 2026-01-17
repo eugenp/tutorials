@@ -4,20 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * FizzBuzz implementation demonstrating three different approaches to solve
+ * FizzBuzz implementation that demonstrates three different approaches to solving
  * the classic FizzBuzz programming puzzle.
  * <p>
- * Problem Stmt: Given an positive integer n, iterate over 1 to n, print "Fizz" for multiples of 3, "Buzz" for
+ * Problem Stmt: Given a positive integer n, iterate over 1 to n, print "Fizz" for multiples of 3, "Buzz" for
  * multiples of 5, "FizzBuzz" for multiples of both, and the number otherwise.
  */
 public class FizzBuzz {
 
     /**
-     * Naive approach using explicit modulo checks with if-else chain.
-     * Order of conditions is critical - must check divisibility by both 3 and 5 first.
+     * Naive approach using explicit modulo checks with an if-else chain.
+     * Order of conditions is critical here, so we must check divisibility
+     * by both 3 and 5 first.
      *
-     * @param n the upper limit (inclusive)
-     * @return list of FizzBuzz results
+     * @param n positive integer (we iterate from 1 to n inclusive)
+     * @return FizzBuzz list with n elements
      */
     public List<String> fizzBuzzNaive(int n) {
         List<String> result = new ArrayList<>();
@@ -37,10 +38,11 @@ public class FizzBuzz {
 
     /**
      * String concatenation approach that elegantly handles the FizzBuzz case.
-     * Uses StringBuilder reuse with setLength(0) to avoid repeated instantiation.
+     * It uses StringBuilder and reuses the same object by setting its length to 0
+     * using setLength(0) to avoid repeated instantiation.
      *
-     * @param n the upper limit (inclusive)
-     * @return list of FizzBuzz results
+     * @param n positive integer (we iterate from 1 to n inclusive)
+     * @return FizzBuzz list with n elements
      * @see <a href="https://www.baeldung.com/java-clear-stringbuilder-stringbuffer">Clearing StringBuilder</a>
      */
     public List<String> fizzBuzzConcatenation(int n) {
@@ -61,11 +63,11 @@ public class FizzBuzz {
 
     /**
      * Counter approach that eliminates modulo operations using counters.
-     * Uses StringBuilder reuse with setLength(0) to avoid repeated instantiation.
+     * It also uses StringBuilder and reuses the same object by settings
+     * its length to 0 using setLength(0) to avoid repeated instantiation.
      *
-     * @param n the upper limit (inclusive)
-     * @return list of FizzBuzz results
-     * @see <a href="https://www.baeldung.com/java-clear-stringbuilder-stringbuffer">Clearing StringBuilder</a>
+     * @param n positive integer (we iterate from 1 to n inclusive)
+     * @return FizzBuzz list with n elements
      */
     public List<String> fizzBuzzCounter(int n) {
         List<String> result = new ArrayList<>();
