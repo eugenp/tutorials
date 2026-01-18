@@ -10,9 +10,17 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-security-auth-server</artifactId>
+    <!--    <parent>-->
+    <!--        <groupId>org.springframework.boot</groupId>-->
+    <!--        <artifactId>spring-boot-starter-parent</artifactId>-->
+    <!--        <version>4.0.1</version>-->
+    <!--        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+    <!--    </parent>-->
 
+
+    <artifactId>spring-security-auth-server</artifactId>
     <properties>
+        <java.version>21</java.version>
         <spring-boot.version>4.0.1</spring-boot.version>
         <logback.version>1.5.22</logback.version>
         <junit-jupiter.version>6.0.1</junit-jupiter.version>
@@ -20,16 +28,26 @@
         <hamcrest.version>3.0</hamcrest.version>
         <assertj.version>3.27.6</assertj.version>
         <org.slf4j.version>2.0.17</org.slf4j.version>
+        <junit-platform.version>6.0.1</junit-platform.version>
     </properties>
+
+
+    <!--    <properties>-->
+    <!--        <spring-boot.version>4.0.1</spring-boot.version>-->
+    <!--        <logback.version>1.5.22</logback.version>-->
+    <!--        <junit-jupiter.version>6.0.1</junit-jupiter.version>-->
+    <!--        <mockito.version>5.20.0</mockito.version>-->
+    <!--        <hamcrest.version>3.0</hamcrest.version>-->
+    <!--        <assertj.version>3.27.6</assertj.version>-->
+    <!--        <org.slf4j.version>2.0.17</org.slf4j.version>-->
+    <!--        <junit-platform.version>6.0.1</junit-platform.version>-->
+    <!--    </properties>-->
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-webmvc</artifactId>
+            <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -40,10 +58,22 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring-boot.version}</version>
+            <artifactId>spring-boot-starter-security-oauth2-authorization-server-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webmvc-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <version>${junit-platform.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
