@@ -22,6 +22,8 @@ public class LinkedHashMapBasedLRUCacheUnitTest {
         lruCache.put("3", "test3");
         lruCache.put("4", "test4");
 
+        assertEquals(3, lruCache.size());
+
         assertFalse(lruCache.containsKey("1"));
 
         assertEquals("test2", lruCache.get("2"));
@@ -36,10 +38,12 @@ public class LinkedHashMapBasedLRUCacheUnitTest {
         Map<Integer, String> cache = Collections.synchronizedMap(new LinkedHashMapBasedLRUCache<>(size));
         CountDownLatch countDownLatch = new CountDownLatch(size);
         try {
-            IntStream.range(0, size).<Runnable> mapToObj(key -> () -> {
-                cache.put(key, "value" + key);
-                countDownLatch.countDown();
-            }).forEach(executorService::submit);
+            IntStream.range(0, size)
+                .<Runnable> mapToObj(key -> () -> {
+                    cache.put(key, "value" + key);
+                    countDownLatch.countDown();
+                })
+                .forEach(executorService::submit);
             countDownLatch.await();
         } finally {
             executorService.shutdown();
