@@ -11,6 +11,7 @@ import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
+import org.slf4j.Logger;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,24 +20,25 @@ import org.springframework.security.oauth2.server.authorization.InMemoryOAuth2Au
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsentService;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository;
-import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.context.AuthorizationServerContext;
 import org.springframework.security.oauth2.server.authorization.context.AuthorizationServerContextHolder;
-import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings;
-import org.springframework.security.web.server.authorization.AuthorizationContext;
 
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 import java.util.function.Supplier;
 
 @Configuration
 @EnableConfigurationProperties(MultitenantAuthServerProperties.class)
 public class AuthServerConfiguration {
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(AuthServerConfiguration.class);
 
     private final MultitenantAuthServerProperties multitenantAuthServerProperties;
 
@@ -51,6 +53,7 @@ public class AuthServerConfiguration {
         Map<String, RegisteredClientRepository> clientRepoByTenant = new HashMap<>();
         for(var entry : multitenantAuthServerProperties.getTenants().entrySet()) {
             var mapper = new OAuth2AuthorizationServerPropertiesMapper(entry.getValue());
+            log.info("Creating RegisteredClientRepository for tenant: {}", entry.getKey());
             clientRepoByTenant.put(entry.getKey(), new InMemoryRegisteredClientRepository(mapper.asRegisteredClients()));
         }
 
@@ -62,6 +65,7 @@ public class AuthServerConfiguration {
     OAuth2AuthorizationService multitenantAuthorizationService(Supplier<AuthorizationServerContext> authorizationServerContextSupplier) {
         Map<String, OAuth2AuthorizationService> authServiceByTenant = new HashMap<>();
         for(var tenantId : multitenantAuthServerProperties.getTenants().keySet()) {
+            log.info("Creating OAuth2AuthorizationService for tenant: {}", tenantId);
             authServiceByTenant.put(tenantId, new InMemoryOAuth2AuthorizationService());
         }
         return new MultitenantOAuth2AuthorizationService(authServiceByTenant,authorizationServerContextSupplier);
@@ -72,6 +76,7 @@ public class AuthServerConfiguration {
 
         Map<String, OAuth2AuthorizationConsentService> authServiceByTenant = new HashMap<>();
         for(var tenantId : multitenantAuthServerProperties.getTenants().keySet()) {
+            log.info("Creating OAuth2AuthorizationConsentService for tenant: {}", tenantId);
             authServiceByTenant.put(tenantId, new InMemoryOAuth2AuthorizationConsentService());
         }
 
@@ -82,6 +87,7 @@ public class AuthServerConfiguration {
     JWKSource<SecurityContext> multitenantJWKSource(Supplier<AuthorizationServerContext> authorizationServerContextSupplier) {
         Map<String, JWKSource<SecurityContext>> jwkSourceByTenant = new HashMap<>();
         for( var tenantId : multitenantAuthServerProperties.getTenants().keySet()) {
+            log.info("Creating JWKSource for tenant: {}", tenantId);
             jwkSourceByTenant.put(tenantId, new ImmutableJWKSet(createJwkForTenant(tenantId)));
         }
 

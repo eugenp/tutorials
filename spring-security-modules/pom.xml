@@ -64,6 +64,7 @@
         <module>spring-security-ott</module>
         <module>spring-security-passkey</module>
         <module>spring-security-faking-oauth2-sso</module>
+        <module>spring-security-auth-server</module>
     </modules>
 
     <build>

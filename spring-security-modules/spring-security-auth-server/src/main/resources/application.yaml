@@ -3,50 +3,53 @@ spring:
     oauth2:
       authorizationserver:
         multiple-issuers-allowed: true
-        client:
-          client1:
-            registration:
-              client-name: Client 1
-              client-id: client1
-              client-secret: secret1
-              authorization-grant-types:
-                - client_credentials
-                - authorization_code
-                - refresh_token
-              scopes:
-                - openid
-                - email
+logging:
+  level:
+    org.springframework.security: TRACE
 
 multitenant-auth-server:
-  issuer1:
-    client:
-      client1:
-        require-authorization-consent: false
-        registration:
-          client-name: Client 1 - Issuer 1
-          client-id: issuer1client1
-          client-secret: issuer1secret1
-          authorization-grant-types:
-            - client_credentials
-            - authorization_code
-            - refresh_token
-          scopes:
-            - openid
-            - email
-  issuer2:
-    client:
-      client1:
-        require-authorization-consent: false
-        registration:
-          client-name: Client 1 - Issuer 2
-          client-id: issuer2client1
-          client-secret: issuer2secret1
-          authorization-grant-types:
-            - client_credentials
-            - authorization_code
-            - refresh_token
-          scopes:
-            - openid
-            - email
+  tenants:
+    issuer1:
+      client:
+        client1:
+          require-authorization-consent: false
+          registration:
+            client-name: Client 1 - Issuer 1
+            client-id: client1
+            client-secret: "{noop}secret1"
+            client-authentication-methods:
+              - client_secret_basic
+            redirect-uris:
+              - http://localhost:9090/login/oauth2/code/issuer1client1
+            authorization-grant-types:
+              - client_credentials
+              - authorization_code
+              - refresh_token
+            scopes:
+              - openid
+              - email
+              - account:read
+    issuer2:
+      client:
+        client1:
+          require-authorization-consent: false
+          registration:
+            client-name: Client 1 - Issuer 2
+            client-id: client1
+            client-secret: "{noop}secret1"
+            client-authentication-methods:
+              - client_secret_basic
+            redirect-uris:
+              - http://localhost:9090/login/oauth2/code/issuer2client1
+            authorization-grant-types:
+              - client_credentials
+              - authorization_code
+              - refresh_token
+            scopes:
+              - openid
+              - email
+              - account:write
+
+
 
 
