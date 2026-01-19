@@ -3,13 +3,17 @@ package com.baeldung.kafka.resetoffset.admin;
 import org.apache.kafka.clients.admin.*;
 import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.clients.consumer.OffsetAndMetadata;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
-public class ResetOffsetService {
+import com.baeldung.kafka.resetoffset.consumer.KafkaConsumerService;
 
+public class ResetOffsetService {
+    private static final Logger log = LoggerFactory.getLogger(KafkaConsumerService.class);
     private final AdminClient adminClient;
 
     public ResetOffsetService(String bootstrapServers) {
@@ -20,8 +24,9 @@ public class ResetOffsetService {
         List<TopicPartition> partitions;
         try {
             partitions = fetchPartitions(topic);
-        } catch (ExecutionException | InterruptedException e) {
-            throw new RuntimeException(e);
+        } catch (ExecutionException | InterruptedException ex) {
+            log.error("Error in the fetching partitions with exception {}", ex.getMessage(), ex);
+            throw new RuntimeException(ex);
         }
 
         Map<TopicPartition, OffsetAndMetadata> earliestOffsets = fetchEarliestOffsets(partitions);
@@ -30,8 +35,9 @@ public class ResetOffsetService {
             adminClient.alterConsumerGroupOffsets(consumerGroup, earliestOffsets)
                 .all()
                 .get();
-        } catch (InterruptedException | ExecutionException e) {
-            throw new RuntimeException(e);
+        } catch (InterruptedException | ExecutionException ex) {
+            log.error("Error in the Kafka Consumer reset with exception {}", ex.getMessage(), ex);
+            throw new RuntimeException(ex);
         }
     }
 
@@ -60,6 +66,7 @@ public class ResetOffsetService {
                     .get()
                     .offset();
             } catch (InterruptedException | ExecutionException ex) {
+                log.error("Error in the Kafka Consumer reset with exception {}", ex.getMessage(), ex);
                 throw new RuntimeException(ex);
             }
             offsets.put(tp, new OffsetAndMetadata(offset));
