@@ -29,7 +29,9 @@ public class KafkaConsumerService {
         try {
             while (running.get()) {
                 ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(1));
-                records.forEach(this::process);
+                records.forEach(record ->
+                    log.info("topic={} partition={} offset={} key={} value={}", record.topic(), record.partition(),
+                        record.offset(), record.key(), record.value()));
                 consumer.commitSync();
             }
         } catch (WakeupException ex) {
@@ -45,9 +47,5 @@ public class KafkaConsumerService {
     public void shutdown() {
         running.set(false);
         consumer.wakeup();
-    }
-
-    private void process(ConsumerRecord<String, String> record) {
-        log.info("topic={} partition={} offset={} key={} value={}", record.topic(), record.partition(), record.offset(), record.key(), record.value());
     }
 }
