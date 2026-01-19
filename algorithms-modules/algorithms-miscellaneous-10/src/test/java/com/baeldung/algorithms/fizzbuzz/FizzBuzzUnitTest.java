@@ -19,9 +19,9 @@ class FizzBuzzUnitTest {
 
     private FizzBuzz fizzBuzz;
 
-    private static final List<String> GROUND_TRUTH_SEQ_LEN_5 = generateGroundTruth(5);
+    private static final List<String> GROUND_TRUTH_SEQUENCE_LENGTH_5 = generateGroundTruth(5);
 
-    private static final List<String> GROUND_TRUTH_SEQ_LEN_100 = generateGroundTruth(100);
+    private static final List<String> GROUND_TRUTH_SEQUENCE_LENGTH_100 = generateGroundTruth(100);
 
     @BeforeEach
     void setUp() {
@@ -29,33 +29,33 @@ class FizzBuzzUnitTest {
     }
 
     @Test
-    void givenNLessThan15_whenAllMethods_thenReturnCorrectSequence() {
+    void givenNLessThanSequenceLength_whenAllMethods_thenReturnCorrectSequence() {
         List<String> naiveResult = fizzBuzz.fizzBuzzNaive(5);
         List<String> concatResult = fizzBuzz.fizzBuzzConcatenation(5);
         List<String> counterResult = fizzBuzz.fizzBuzzCounter(5);
 
         assertAll(
-            () -> assertEquals(GROUND_TRUTH_SEQ_LEN_5, naiveResult,
+            () -> assertEquals(GROUND_TRUTH_SEQUENCE_LENGTH_5, naiveResult,
                 "fizzBuzzNaive should return correct sequence for n=5"),
-            () -> assertEquals(GROUND_TRUTH_SEQ_LEN_5, concatResult,
+            () -> assertEquals(GROUND_TRUTH_SEQUENCE_LENGTH_5, concatResult,
                 "fizzBuzzConcatenation should return correct sequence for n=5"),
-            () -> assertEquals(GROUND_TRUTH_SEQ_LEN_5, counterResult,
+            () -> assertEquals(GROUND_TRUTH_SEQUENCE_LENGTH_5, counterResult,
                 "fizzBuzzOptimized should return correct sequence for n=5")
         );
     }
 
     @Test
-    void givenN100_whenAllMethods_thenReturnCorrectSequence() {
+    void givenSequenceLength100_whenAllMethods_thenReturnCorrectSequence() {
         List<String> naiveResult = fizzBuzz.fizzBuzzNaive(100);
         List<String> concatResult = fizzBuzz.fizzBuzzConcatenation(100);
         List<String> counterResult = fizzBuzz.fizzBuzzCounter(100);
 
         assertAll(
-            () -> assertEquals(GROUND_TRUTH_SEQ_LEN_100, naiveResult,
+            () -> assertEquals(GROUND_TRUTH_SEQUENCE_LENGTH_100, naiveResult,
                 "fizzBuzzNaive should return correct sequence for n=100"),
-            () -> assertEquals(GROUND_TRUTH_SEQ_LEN_100, concatResult,
+            () -> assertEquals(GROUND_TRUTH_SEQUENCE_LENGTH_100, concatResult,
                 "fizzBuzzConcatenation should return correct sequence for n=100"),
-            () -> assertEquals(GROUND_TRUTH_SEQ_LEN_100, counterResult,
+            () -> assertEquals(GROUND_TRUTH_SEQUENCE_LENGTH_100, counterResult,
                 "fizzBuzzOptimized should return correct sequence for n=100")
         );
     }
