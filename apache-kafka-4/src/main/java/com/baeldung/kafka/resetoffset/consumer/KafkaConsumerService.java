@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
-import java.util.Collections;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -15,20 +15,14 @@ public class KafkaConsumerService {
     private static final Logger log = LoggerFactory.getLogger(KafkaConsumerService.class);
     private final KafkaConsumer<String, String> consumer;
     private final AtomicBoolean running = new AtomicBoolean(true);
-    private final boolean replayEnabled;
-    private final long replayFromTimestamp;
 
-    public KafkaConsumerService(Properties consumerProps, String topic, boolean replayEnabled, long replayFromTimestamp) {
-        if (replayEnabled && replayFromTimestamp == 0L) {
-            throw new IllegalArgumentException("replayFromTimestamp must be provided when replayEnabled=true");
-        }
-
+    public KafkaConsumerService(Properties consumerProps, String topic, Long replayFromTimestampInEpoch) {
         this.consumer = new KafkaConsumer<>(consumerProps);
-        this.replayEnabled = replayEnabled;
-        this.replayFromTimestamp = replayFromTimestamp;
-        ConsumerRebalanceListener replayRebalanceListener = new ReplayRebalanceListener(consumer, replayEnabled, replayFromTimestamp);
-
-        consumer.subscribe(Collections.singletonList(topic), replayRebalanceListener);
+        if (replayFromTimestampInEpoch != null) {
+            consumer.subscribe(List.of(topic), new ReplayRebalanceListener(consumer, replayFromTimestampInEpoch));
+        } else {
+            consumer.subscribe(List.of(topic));
+        }
     }
 
     public void start() {
@@ -36,15 +30,15 @@ public class KafkaConsumerService {
             while (running.get()) {
                 ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(1));
                 records.forEach(this::process);
+                consumer.commitSync();
             }
         } catch (WakeupException ex) {
-            log.error("Error in the Kafka Consumer with exception {}", ex.getMessage(), ex);
-        } finally {
-            try {
-                consumer.commitSync();
-            } finally {
-                consumer.close();
+            if (running.get()) {
+                log.error("Error in the Kafka Consumer with exception {}", ex.getMessage(), ex);
+                throw ex;
             }
+        } finally {
+            consumer.close();
         }
     }
 

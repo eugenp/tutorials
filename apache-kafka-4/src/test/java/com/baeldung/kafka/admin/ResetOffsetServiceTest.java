@@ -21,21 +21,25 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.testcontainers.shaded.org.awaitility.Awaitility.await;
 
-import com.baeldung.kafka.resetoffset.admin.OffsetResetService;
+import com.baeldung.kafka.resetoffset.admin.ResetOffsetService;
 
 @Testcontainers
-class OffsetResetServiceTest {
+class ResetOffsetServiceTest {
 
     @Container
     private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.9.0"));
     private static String bootstrapServers;
-    private static OffsetResetService resetService;
+    private static ResetOffsetService resetService;
+    private static KafkaProducer<String, String> producer;
+    private static KafkaConsumer<String, String> consumer;
 
     @BeforeAll
     static void startKafka() {
         KAFKA_CONTAINER.start();
         bootstrapServers = KAFKA_CONTAINER.getBootstrapServers();
-        resetService = new OffsetResetService(bootstrapServers);
+        resetService = new ResetOffsetService(bootstrapServers);
+        producer = new KafkaProducer<>(getProducerConfig());
+        consumer = new KafkaConsumer<>(getConsumerConfig());
     }
 
     @AfterAll
@@ -45,16 +49,21 @@ class OffsetResetServiceTest {
     }
 
     @Test
-    void givenMessagesConsumed_whenOffsetIsReset_thenOffsetIsSetToEarliest() throws Exception {
-        try (KafkaProducer<String, String> producer = new KafkaProducer<>(getProducerConfig())) {
-            producer.send(new ProducerRecord<>("test-topic", "msg-1"));
-            producer.send(new ProducerRecord<>("test-topic", "msg-2"));
-            producer.flush();
+    void givenMessagesAreConsumed_whenOffsetIsReset_thenOffsetIsSetToEarliest() {
+        producer.send(new ProducerRecord<>("test-topic", "msg-1"));
+        producer.send(new ProducerRecord<>("test-topic", "msg-2"));
+        producer.flush();
+
+        consumer.subscribe(List.of("test-topic"));
+
+        int consumed = 0;
+        while (consumed < 2) {
+            ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(2));
+            consumed += records.count();
         }
 
-        consumeAndCommitAll();
         awaitCommittedOffset(2L);
-        awaitGroupInactive("test-group");
+        awaitGroupInactive();
 
         resetService.reset("test-topic", "test-group");
 
@@ -62,37 +71,21 @@ class OffsetResetServiceTest {
     }
 
     @Test
-    void givenNoMessagesConsumed_whenOffsetIsReset_thenOffsetIsSetToEarliest() throws Exception {
-        try (KafkaProducer<String, String> producer = new KafkaProducer<>(getProducerConfig())) {
-            producer.send(new ProducerRecord<>("test-topic", "msg-1"));
-            producer.send(new ProducerRecord<>("test-topic", "msg-2"));
-            producer.flush();
-        }
+    void givenNoMessagesConsumed_whenOffsetIsReset_thenOffsetIsSetToEarliest() {
+        producer.send(new ProducerRecord<>("test-topic", "msg-1"));
+        producer.send(new ProducerRecord<>("test-topic", "msg-2"));
+        producer.flush();
 
         awaitCommittedOffset(0L);
-        awaitGroupInactive("test-group");
+        awaitGroupInactive();
 
         resetService.reset("test-topic", "test-group");
 
         awaitCommittedOffset(0L);
     }
 
-    private void consumeAndCommitAll() {
-        try (KafkaConsumer<String, String> consumer = new KafkaConsumer<>(getConsumerConfig())) {
-            consumer.subscribe(List.of("test-topic"));
-
-            int consumed = 0;
-            while (consumed < 2) {
-                ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(1));
-                consumed += records.count();
-            }
-
-            consumer.commitSync();
-        }
-    }
 
     private long fetchCommittedOffset() throws ExecutionException, InterruptedException {
-
         Properties props = new Properties();
         props.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
 
@@ -108,7 +101,7 @@ class OffsetResetServiceTest {
         }
     }
 
-    private void awaitGroupInactive(String groupId) {
+    private void awaitGroupInactive() {
         Properties props = new Properties();
         props.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
 
@@ -116,9 +109,9 @@ class OffsetResetServiceTest {
             .pollInterval(Duration.ofMillis(300))
             .untilAsserted(() -> {
                 try (AdminClient admin = AdminClient.create(props)) {
-                    ConsumerGroupDescription description = admin.describeConsumerGroups(List.of(groupId))
+                    ConsumerGroupDescription description = admin.describeConsumerGroups(List.of("test-group"))
                         .describedGroups()
-                        .get(groupId)
+                        .get("test-group")
                         .get();
 
                     Assertions.assertTrue(description.members()
@@ -131,20 +124,6 @@ class OffsetResetServiceTest {
         await().atMost(10, SECONDS)
             .pollInterval(Duration.ofMillis(300))
             .untilAsserted(() -> assertEquals(expectedOffset, fetchCommittedOffset()));
-    }
-
-    private KafkaConsumer<String, String> startActiveConsumer() {
-        KafkaConsumer<String, String> consumer = new KafkaConsumer<>(getConsumerConfig());
-        consumer.subscribe(List.of("test-topic"));
-
-        new Thread(() -> {
-            while (!Thread.currentThread()
-                .isInterrupted()) {
-                consumer.poll(Duration.ofMillis(500));
-            }
-        }).start();
-
-        return consumer;
     }
 
     private static Properties getProducerConfig() {
@@ -162,7 +141,8 @@ class OffsetResetServiceTest {
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "test-group");
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
-        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
+        props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "true");
 
         return props;
     }

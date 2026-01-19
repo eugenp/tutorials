@@ -11,9 +11,8 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
-import org.awaitility.Duration;
-
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,7 +20,6 @@ import com.baeldung.kafka.resetoffset.consumer.KafkaConsumerService;
 
 @Testcontainers
 public class KafkaConsumerServiceLiveTest {
-
     @Container
     private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.9.0"));
     private static KafkaProducer<String, String> producer;
@@ -39,7 +37,7 @@ public class KafkaConsumerServiceLiveTest {
     }
 
     @Test
-    void givenReplayEnabled_WhenTimestampProvided_ThenConsumesFromTimestamp() {
+    void givenConsumerReplayIsEnabled_whenReplayTimestampIsProvided_thenConsumesFromTimestamp() {
         producer.send(new ProducerRecord<>("test-topic", "x1", "test1"));
         producer.flush();
 
@@ -47,22 +45,20 @@ public class KafkaConsumerServiceLiveTest {
         producer.send(new ProducerRecord<>("test-topic", "x2", "test2"));
         producer.flush();
 
-        String groupId = "test-group-1";
-
-        KafkaConsumerService service = new KafkaConsumerService(getConsumerConfig(groupId), "test-topic", true, baseTs);
-        new Thread(service::start).start();
+        KafkaConsumerService kafkaConsumerService = new KafkaConsumerService(getConsumerConfig("test-group-1"), "test-topic", baseTs);
+        new Thread(kafkaConsumerService::start).start();
 
         Awaitility.await()
-            .atMost(Duration.FIVE_SECONDS)
-            .pollInterval(Duration.FIVE_HUNDRED_MILLISECONDS)
+            .atMost(45, TimeUnit.SECONDS)
+            .pollInterval(1, TimeUnit.SECONDS)
             .untilAsserted(() -> {
-                List<String> consumed = consumeFromCommittedOffset(groupId);
+                List<String> consumed = consumeFromCommittedOffset("test-group-1");
                 assertEquals(0, consumed.size());
                 assertFalse(consumed.contains("test1"));
                 assertFalse(consumed.contains("test2"));
             });
 
-        service.shutdown();
+        kafkaConsumerService.shutdown();
     }
 
     @Test
@@ -71,12 +67,13 @@ public class KafkaConsumerServiceLiveTest {
         producer.send(new ProducerRecord<>("test-topic", "x4", "test4"));
         producer.flush();
 
-        KafkaConsumerService service = new KafkaConsumerService(getConsumerConfig("test-group-2"), "test-topic", false, 0L);
+        KafkaConsumerService service = new KafkaConsumerService(getConsumerConfig("test-group-2"),
+            "test-topic", null);
         new Thread(service::start).start();
 
         Awaitility.await()
-            .atMost(Duration.FIVE_SECONDS)
-            .pollInterval(Duration.FIVE_HUNDRED_MILLISECONDS)
+            .atMost(45, TimeUnit.SECONDS)
+            .pollInterval(1, TimeUnit.SECONDS)
             .untilAsserted(() -> {
                 List<String> consumed = consumeFromCommittedOffset("test-group-2");
                 assertEquals(0, consumed.size());
@@ -93,21 +90,22 @@ public class KafkaConsumerServiceLiveTest {
         producer.flush();
 
         String groupId = "test-group-3";
-        KafkaConsumerService service1 = new KafkaConsumerService(getConsumerConfig(groupId), "test-topic", false, 0L);
+        KafkaConsumerService service1 = new KafkaConsumerService(getConsumerConfig(groupId),
+            "test-topic", null);
         new Thread(service1::start).start();
         Thread.sleep(5000);
         service1.shutdown();
 
-        long baseTs = System.currentTimeMillis();
         producer.send(new ProducerRecord<>("test-topic", "x6", "test6"));
         producer.flush();
 
-        KafkaConsumerService service2 = new KafkaConsumerService(getConsumerConfig(groupId), "test-topic", true, baseTs);
+        KafkaConsumerService service2 = new KafkaConsumerService(getConsumerConfig(groupId),
+            "test-topic", null);
         new Thread(service2::start).start();
 
         Awaitility.await()
-            .atMost(Duration.FIVE_SECONDS)
-            .pollInterval(Duration.FIVE_HUNDRED_MILLISECONDS)
+            .atMost(45, TimeUnit.SECONDS)
+            .pollInterval(1, TimeUnit.SECONDS)
             .untilAsserted(() -> {
                 List<String> consumed = consumeFromCommittedOffset(groupId);
                 assertEquals(0, consumed.size());

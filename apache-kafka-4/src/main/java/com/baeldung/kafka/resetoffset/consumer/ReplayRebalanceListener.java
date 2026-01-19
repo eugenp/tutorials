@@ -12,16 +12,12 @@ import java.util.stream.Collectors;
 public class ReplayRebalanceListener implements ConsumerRebalanceListener {
 
     private final KafkaConsumer<String, String> consumer;
-    private final boolean replayEnabled;
-    private final long replayFromTimestamp;
-
+    private final long replayFromTimeInEpoch;
     private boolean seekDone = false;
 
-    public ReplayRebalanceListener(KafkaConsumer<String, String> consumer, boolean replayEnabled, long replayFromTimestamp) {
-
+    public ReplayRebalanceListener(KafkaConsumer<String, String> consumer, long replayFromTimeInEpoch) {
         this.consumer = consumer;
-        this.replayEnabled = replayEnabled;
-        this.replayFromTimestamp = replayFromTimestamp;
+        this.replayFromTimeInEpoch = replayFromTimeInEpoch;
     }
 
     @Override
@@ -31,18 +27,17 @@ public class ReplayRebalanceListener implements ConsumerRebalanceListener {
 
     @Override
     public void onPartitionsAssigned(Collection<TopicPartition> partitions) {
-        if (!replayEnabled || seekDone || partitions.isEmpty()) {
+        if (seekDone || partitions.isEmpty()) {
             return;
         }
 
         Map<TopicPartition, Long> partitionsTimestamp = partitions.stream()
-            .collect(Collectors.toMap(Function.identity(), tp -> replayFromTimestamp));
+            .collect(Collectors.toMap(Function.identity(), tp -> replayFromTimeInEpoch));
 
         Map<TopicPartition, OffsetAndTimestamp> offsets = consumer.offsetsForTimes(partitionsTimestamp);
 
         partitions.forEach(tp -> {
             OffsetAndTimestamp offsetAndTimestamp = offsets.get(tp);
-
             if (offsetAndTimestamp != null) {
                 consumer.seek(tp, offsetAndTimestamp.offset());
             }

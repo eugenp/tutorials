@@ -8,21 +8,31 @@ import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
-public class OffsetResetService {
+public class ResetOffsetService {
+
     private final AdminClient adminClient;
 
-    public OffsetResetService(String bootstrapServers) {
+    public ResetOffsetService(String bootstrapServers) {
         this.adminClient = AdminClient.create(Map.of(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers));
     }
 
-    public void reset(String topic, String consumerGroup) throws ExecutionException, InterruptedException {
-        List<TopicPartition> partitions = fetchPartitions(topic);
+    public void reset(String topic, String consumerGroup) {
+        List<TopicPartition> partitions;
+        try {
+            partitions = fetchPartitions(topic);
+        } catch (ExecutionException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
         Map<TopicPartition, OffsetAndMetadata> earliestOffsets = fetchEarliestOffsets(partitions);
 
-        adminClient.alterConsumerGroupOffsets(consumerGroup, earliestOffsets)
-            .all()
-            .get();
+        try {
+            adminClient.alterConsumerGroupOffsets(consumerGroup, earliestOffsets)
+                .all()
+                .get();
+        } catch (InterruptedException | ExecutionException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private List<TopicPartition> fetchPartitions(String topic) throws ExecutionException, InterruptedException {
@@ -37,7 +47,7 @@ public class OffsetResetService {
     }
 
     private Map<TopicPartition, OffsetAndMetadata> fetchEarliestOffsets(List<TopicPartition> partitions) {
-        Map<TopicPartition,OffsetSpec> offsetSpecs = partitions.stream()
+        Map<TopicPartition, OffsetSpec> offsetSpecs = partitions.stream()
             .collect(Collectors.toMap(tp -> tp, tp -> OffsetSpec.earliest()));
 
         ListOffsetsResult offsetsResult = adminClient.listOffsets(offsetSpecs);
@@ -46,7 +56,9 @@ public class OffsetResetService {
         for (var tp : partitions) {
             long offset;
             try {
-                offset = offsetsResult.partitionResult(tp).get().offset();
+                offset = offsetsResult.partitionResult(tp)
+                    .get()
+                    .offset();
             } catch (InterruptedException | ExecutionException ex) {
                 throw new RuntimeException(ex);
             }
