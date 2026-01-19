@@ -36,13 +36,13 @@ Profile-based segregation
 
 We use Maven build profiles to segregate the huge list of individual projects in our repository.
 
-The projects are broadly divided into 6 lists: default, default-jdk17, default-jdk22, default-jdk23, default-jdk8 and default-heavy. 
+The projects are broadly divided into 8 lists: default, default-jdk17, default-jdk22, default-jdk23, default-jdk24, default-jdk25, default-jdk8 and default-heavy. 
 
 Next, they are segregated further based on the tests that we want to execute.
 
 We also have a parents profile to build only parent modules.
 
-Therefore, we have a total of 13 profiles:
+Therefore, we have a total of 17 profiles:
 
 | Profile           | Includes                    | Type of test enabled |
 |-------------------|-----------------------------|----------------------|
@@ -54,6 +54,10 @@ Therefore, we have a total of 13 profiles:
 | integration-jdk22 | JDK22 projects              | *IntegrationTest     |
 | default-jdk23     | JDK23 projects              | *UnitTest            |
 | integration-jdk23 | JDK23 projects              | *IntegrationTest     |
+| default-jdk24     | JDK24 projects              | *UnitTest            |
+| integration-jdk24 | JDK24 projects              | *IntegrationTest     |
+| default-jdk25     | JDK25 projects              | *UnitTest            |
+| integration-jdk25 | JDK25 projects              | *IntegrationTest     |
 | default-heavy     | Heavy/long running projects | *UnitTest            |
 | integration-heavy | Heavy/long running projects | *IntegrationTest     |
 | default-jdk8      | JDK8  projects              | *UnitTest            |

@@ -1,0 +1,8 @@
+Package: simple-cal
+Version: 1.0-SNAPSHOT
+Section: utils
+Priority: optional
+Architecture: all
+Depends: openjdk-25-jre
+Maintainer: Haidar Ali <test@test.com>
+Description: A CLI calendar that simply prints the current month.

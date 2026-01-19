@@ -16,12 +16,18 @@
     </parent>
 
     <modules>
+        <module>spring-ai</module>
+        <module>spring-ai-2</module>
+        <module>spring-ai-3</module>
+        <module>spring-ai-4</module>
+        <module>spring-ai-agentic-patterns</module>
         <module>spring-ai-chat-stream</module>
         <module>spring-ai-introduction</module>
         <module>spring-ai-mcp</module>
+<!--        <module>spring-ai-mcp-oauth</module>--><!-- test failures -->
         <module>spring-ai-multiple-llms</module>
+        <module>spring-ai-semantic-caching</module>
         <module>spring-ai-text-to-sql</module>
         <module>spring-ai-vector-stores</module>
-        <module>spring-ai-agentic-patterns</module>
     </modules>
 </project>
