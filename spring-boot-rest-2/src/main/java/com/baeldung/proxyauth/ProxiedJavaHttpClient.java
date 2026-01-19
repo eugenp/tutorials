@@ -1,10 +1,6 @@
 package com.baeldung.proxyauth;
 
 import java.io.IOException;
-import java.net.Authenticator;
-import java.net.InetSocketAddress;
-import java.net.PasswordAuthentication;
-import java.net.ProxySelector;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -16,21 +12,9 @@ public class ProxiedJavaHttpClient {
     }
 
     public static HttpClient createClient(ProxyConfig config) {
-        ProxySelector proxySelector = ProxySelector.of(
-            new InetSocketAddress(config.getHost(), config.getPort()));
-
-        Authenticator authenticator = new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(
-                    config.getUsername(), 
-                    config.getPassword().toCharArray());
-            }
-        };
-
         return HttpClient.newBuilder()
-            .proxy(proxySelector)
-            .authenticator(authenticator)
+            .proxy(config.proxySelector())
+            .authenticator(config.authenticator())
             .build();
     }
 

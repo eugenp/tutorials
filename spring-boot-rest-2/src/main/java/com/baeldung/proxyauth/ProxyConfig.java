@@ -1,5 +1,11 @@
 package com.baeldung.proxyauth;
 
+import java.net.Authenticator;
+import java.net.InetSocketAddress;
+import java.net.PasswordAuthentication;
+import java.net.Proxy;
+import java.net.ProxySelector;
+
 public class ProxyConfig {
     private String host;
     private int port;
@@ -36,5 +42,25 @@ public class ProxyConfig {
 
     public boolean requiresAuth() {
         return username != null && password != null;
+    }
+
+    public Authenticator authenticator() {
+        if (!requiresAuth()) {
+            return null;
+        }
+        return new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password.toCharArray());
+            }
+        };
+    }
+
+    public ProxySelector proxySelector() {
+        return ProxySelector.of(new InetSocketAddress(host, port));
+    }
+
+    public Proxy proxy() {
+        return new Proxy(Proxy.Type.HTTP, new InetSocketAddress(host, port));
     }
 }
