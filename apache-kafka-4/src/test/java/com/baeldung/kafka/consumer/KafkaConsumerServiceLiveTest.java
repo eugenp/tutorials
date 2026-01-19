@@ -22,37 +22,35 @@ import com.baeldung.kafka.resetoffset.consumer.KafkaConsumerService;
 public class KafkaConsumerServiceLiveTest {
     @Container
     private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.9.0"));
-    private static KafkaProducer<String, String> producer;
 
     @BeforeAll
     static void setup() {
         KAFKA_CONTAINER.start();
-        producer = new KafkaProducer<>(getProducerConfig());
     }
 
     @AfterAll
     static void cleanup() {
-        producer.close();
         KAFKA_CONTAINER.stop();
     }
 
     @Test
     void givenConsumerReplayIsEnabled_whenReplayTimestampIsProvided_thenConsumesFromTimestamp() {
-        producer.send(new ProducerRecord<>("test-topic", "x1", "test1"));
+        KafkaProducer<String, String> producer = new KafkaProducer<>(getProducerConfig());
+        producer.send(new ProducerRecord<>("test-topic-1", "x1", "test1"));
         producer.flush();
 
         long baseTs = System.currentTimeMillis();
-        producer.send(new ProducerRecord<>("test-topic", "x2", "test2"));
+        producer.send(new ProducerRecord<>("test-topic-1", "x2", "test2"));
         producer.flush();
 
-        KafkaConsumerService kafkaConsumerService = new KafkaConsumerService(getConsumerConfig("test-group-1"), "test-topic", baseTs);
+        KafkaConsumerService kafkaConsumerService = new KafkaConsumerService(getConsumerConfig("test-group-1"), "test-topic-1", baseTs);
         new Thread(kafkaConsumerService::start).start();
 
         Awaitility.await()
             .atMost(45, TimeUnit.SECONDS)
             .pollInterval(1, TimeUnit.SECONDS)
             .untilAsserted(() -> {
-                List<String> consumed = consumeFromCommittedOffset("test-group-1");
+                List<String> consumed = consumeFromCommittedOffset("test-topic-1", "test-group-1");
                 assertEquals(0, consumed.size());
                 assertFalse(consumed.contains("test1"));
                 assertFalse(consumed.contains("test2"));
@@ -63,19 +61,20 @@ public class KafkaConsumerServiceLiveTest {
 
     @Test
     void givenProducerMessagesSent_WhenConsumerIsRunningWithReplayDisabled_ThenConsumesLatestOffset() {
-        producer.send(new ProducerRecord<>("test-topic", "x3", "test3"));
-        producer.send(new ProducerRecord<>("test-topic", "x4", "test4"));
+        KafkaProducer<String, String> producer = new KafkaProducer<>(getProducerConfig());
+        producer.send(new ProducerRecord<>("test-topic-2", "x3", "test3"));
+        producer.send(new ProducerRecord<>("test-topic-2", "x4", "test4"));
         producer.flush();
 
         KafkaConsumerService service = new KafkaConsumerService(getConsumerConfig("test-group-2"),
-            "test-topic", null);
+            "test-topic-2", null);
         new Thread(service::start).start();
 
         Awaitility.await()
             .atMost(45, TimeUnit.SECONDS)
             .pollInterval(1, TimeUnit.SECONDS)
             .untilAsserted(() -> {
-                List<String> consumed = consumeFromCommittedOffset("test-group-2");
+                List<String> consumed = consumeFromCommittedOffset("test-topic-2", "test-group-2");
                 assertEquals(0, consumed.size());
                 assertFalse(consumed.contains("test3"));
                 assertFalse(consumed.contains("test4"));
@@ -86,28 +85,28 @@ public class KafkaConsumerServiceLiveTest {
 
     @Test
     void givenConsumerWithReplayedDisabledRuns_whenReplayIsEnabled_WhenTimestampProvided_ThenConsumesFromTimestamp() throws InterruptedException {
-        producer.send(new ProducerRecord<>("test-topic", "x5", "test5"));
+        KafkaProducer<String, String> producer = new KafkaProducer<>(getProducerConfig());
+        producer.send(new ProducerRecord<>("test-topic-3", "x5", "test5"));
         producer.flush();
 
-        String groupId = "test-group-3";
-        KafkaConsumerService service1 = new KafkaConsumerService(getConsumerConfig(groupId),
-            "test-topic", null);
+        KafkaConsumerService service1 = new KafkaConsumerService(getConsumerConfig("test-group-3"),
+            "test-topic-3", null);
         new Thread(service1::start).start();
         Thread.sleep(5000);
         service1.shutdown();
 
-        producer.send(new ProducerRecord<>("test-topic", "x6", "test6"));
+        producer.send(new ProducerRecord<>("test-topic-3", "x6", "test6"));
         producer.flush();
 
-        KafkaConsumerService service2 = new KafkaConsumerService(getConsumerConfig(groupId),
-            "test-topic", null);
+        KafkaConsumerService service2 = new KafkaConsumerService(getConsumerConfig("test-group-3"),
+            "test-topic-3", null);
         new Thread(service2::start).start();
 
         Awaitility.await()
             .atMost(45, TimeUnit.SECONDS)
             .pollInterval(1, TimeUnit.SECONDS)
             .untilAsserted(() -> {
-                List<String> consumed = consumeFromCommittedOffset(groupId);
+                List<String> consumed = consumeFromCommittedOffset("test-topic-3", "test-group-3");
                 assertEquals(0, consumed.size());
                 assertFalse(consumed.contains("test5"));
                 assertFalse(consumed.contains("test6"));
@@ -117,11 +116,11 @@ public class KafkaConsumerServiceLiveTest {
         service2.shutdown();
     }
 
-    private List<String> consumeFromCommittedOffset(String groupId) {
+    private List<String> consumeFromCommittedOffset(String topic, String groupId) {
         List<String> values = new ArrayList<>();
 
         try (KafkaConsumer<String, String> consumer = new KafkaConsumer<>(getConsumerConfig(groupId))) {
-            consumer.subscribe(Collections.singleton("test-topic"));
+            consumer.subscribe(Collections.singleton(topic));
 
             ConsumerRecords<String, String> records = consumer.poll(java.time.Duration.ofSeconds(2));
             for (ConsumerRecord<String, String> r : records) {
