@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import com.baeldung.kafka.resetoffset.consumer.KafkaConsumerService;
 
 public class ResetOffsetService {
+
     private static final Logger log = LoggerFactory.getLogger(KafkaConsumerService.class);
     private final AdminClient adminClient;
 

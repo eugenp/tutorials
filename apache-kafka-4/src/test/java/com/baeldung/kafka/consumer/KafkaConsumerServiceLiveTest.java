@@ -67,7 +67,7 @@ public class KafkaConsumerServiceLiveTest {
         producer.flush();
 
         KafkaConsumerService service = new KafkaConsumerService(getConsumerConfig("test-group-2"),
-            "test-topic-2", null);
+            "test-topic-2", 0L);
         new Thread(service::start).start();
 
         Awaitility.await()
@@ -90,7 +90,7 @@ public class KafkaConsumerServiceLiveTest {
         producer.flush();
 
         KafkaConsumerService service1 = new KafkaConsumerService(getConsumerConfig("test-group-3"),
-            "test-topic-3", null);
+            "test-topic-3", 0L);
         new Thread(service1::start).start();
         Thread.sleep(5000);
         service1.shutdown();
@@ -99,7 +99,7 @@ public class KafkaConsumerServiceLiveTest {
         producer.flush();
 
         KafkaConsumerService service2 = new KafkaConsumerService(getConsumerConfig("test-group-3"),
-            "test-topic-3", null);
+            "test-topic-3", 0L);
         new Thread(service2::start).start();
 
         Awaitility.await()

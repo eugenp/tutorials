@@ -16,9 +16,10 @@ public class KafkaConsumerService {
     private final KafkaConsumer<String, String> consumer;
     private final AtomicBoolean running = new AtomicBoolean(true);
 
-    public KafkaConsumerService(Properties consumerProps, String topic, Long replayFromTimestampInEpoch) {
+    public KafkaConsumerService(Properties consumerProps, String topic, long replayFromTimestampInEpoch) {
         this.consumer = new KafkaConsumer<>(consumerProps);
-        if (replayFromTimestampInEpoch != null) {
+
+        if (replayFromTimestampInEpoch > 0) {
             consumer.subscribe(List.of(topic), new ReplayRebalanceListener(consumer, replayFromTimestampInEpoch));
         } else {
             consumer.subscribe(List.of(topic));
