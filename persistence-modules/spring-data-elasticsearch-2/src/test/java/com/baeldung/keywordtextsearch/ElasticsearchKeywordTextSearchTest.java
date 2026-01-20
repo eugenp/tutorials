@@ -40,7 +40,7 @@ import co.elastic.clients.elasticsearch.indices.DeleteIndexRequest;
  * }
  *
  * Mapping:
- * - title  -> text (analyzed) + title.keyword (exact)
+ * - title  -> text (analyzed)
  * - type   -> keyword
  * - status -> keyword
  */
