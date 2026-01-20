@@ -30,7 +30,7 @@ class ResetOffsetServiceTest {
     @Container
     private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.9.0"));
     private static ResetOffsetService resetService;
-    private static AdminClient adminClient;
+    private static AdminClient testAdminClient;
 
     @BeforeAll
     static void startKafka() {
@@ -39,12 +39,12 @@ class ResetOffsetServiceTest {
 
         Properties props = new Properties();
         props.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_CONTAINER.getBootstrapServers());
-        adminClient = AdminClient.create(props);
+        testAdminClient = AdminClient.create(props);
     }
 
     @AfterAll
     static void stopKafka() {
-        adminClient.close();
+        testAdminClient.close();
         resetService.close();
         KAFKA_CONTAINER.stop();
     }
@@ -103,17 +103,6 @@ class ResetOffsetServiceTest {
             .untilAsserted(() -> assertEquals(2L, fetchCommittedOffset("test-group-2")));
     }
 
-    private long fetchCommittedOffset(String groupId) throws ExecutionException, InterruptedException {
-        Map<TopicPartition, OffsetAndMetadata> offsets = adminClient.listConsumerGroupOffsets(groupId)
-            .partitionsToOffsetAndMetadata()
-            .get();
-
-        return offsets.values()
-            .iterator()
-            .next()
-            .offset();
-    }
-
     private static Properties getProducerConfig() {
         Properties producerProperties = new Properties();
         producerProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_CONTAINER.getBootstrapServers());
@@ -133,5 +122,16 @@ class ResetOffsetServiceTest {
         consumerProperties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
 
         return consumerProperties;
+    }
+
+    private long fetchCommittedOffset(String groupId) throws ExecutionException, InterruptedException {
+        Map<TopicPartition, OffsetAndMetadata> offsets = testAdminClient.listConsumerGroupOffsets(groupId)
+            .partitionsToOffsetAndMetadata()
+            .get();
+
+        return offsets.values()
+            .iterator()
+            .next()
+            .offset();
     }
 }

@@ -10,11 +10,9 @@ import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
-import com.baeldung.kafka.resetoffset.consumer.KafkaConsumerService;
-
 public class ResetOffsetService {
 
-    private static final Logger log = LoggerFactory.getLogger(KafkaConsumerService.class);
+    private static final Logger log = LoggerFactory.getLogger(ResetOffsetService.class);
     private final AdminClient adminClient;
 
     public ResetOffsetService(String bootstrapServers) {
