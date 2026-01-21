@@ -4,7 +4,7 @@ import io.modelcontextprotocol.spec.McpSchema;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class CodeReviewPromptsTest {
+class CodeReviewPromptsUnitTest {
 
     private final CodeReviewPrompts prompts = new CodeReviewPrompts();
 

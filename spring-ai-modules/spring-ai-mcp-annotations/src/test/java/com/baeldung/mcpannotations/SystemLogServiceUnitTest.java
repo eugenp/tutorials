@@ -4,7 +4,7 @@ import io.modelcontextprotocol.spec.McpSchema;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class SystemLogServiceTest {
+class SystemLogServiceUnitTest {
 
     private final SystemLogService systemLogService = new SystemLogService();
 
