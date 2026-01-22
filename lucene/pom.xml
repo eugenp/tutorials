@@ -27,13 +27,13 @@
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-analyzers-common</artifactId>
+            <artifactId>lucene-analysis-common</artifactId>
             <version>${lucene.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
-        <lucene.version>7.4.0</lucene.version>
+        <lucene.version>10.3.2</lucene.version>
     </properties>
 
 </project>
