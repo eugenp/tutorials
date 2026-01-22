@@ -89,13 +89,6 @@
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>SparkPackagesRepo</id>
-            <url>https://repos.spark-packages.org</url>
-        </repository>
-    </repositories>
-
     <properties>
         <org.apache.spark.spark-core.version>3.3.2</org.apache.spark.spark-core.version>
         <org.apache.spark.spark-sql.version>3.3.2</org.apache.spark.spark-sql.version>
@@ -109,5 +102,12 @@
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
         <postgres.version>42.5.4</postgres.version>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>SparkPackagesRepo</id>
+            <url>https://repos.spark-packages.org</url>
+        </repository>
+    </repositories>
 
 </project>
