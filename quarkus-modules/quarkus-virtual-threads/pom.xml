@@ -7,7 +7,6 @@
     <artifactId>quarkus-virtual-threads</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>quarkus-modules</artifactId>
@@ -25,18 +24,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <properties>
-        <compiler-plugin.version>3.12.1</compiler-plugin.version>
-        <maven.compiler.release>21</maven.compiler.release>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
-        <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-        <quarkus.platform.version>3.4.3</quarkus.platform.version>
-        <loom-unit.version>0.3.0</loom-unit.version>
-        <panache-common-deployment.version>3.6.0</panache-common-deployment.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -155,4 +142,17 @@
             </properties>
         </profile>
     </profiles>
+
+    <properties>
+        <compiler-plugin.version>3.12.1</compiler-plugin.version>
+        <maven.compiler.release>21</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
+        <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
+        <quarkus.platform.version>3.4.3</quarkus.platform.version>
+        <loom-unit.version>0.3.0</loom-unit.version>
+        <panache-common-deployment.version>3.6.0</panache-common-deployment.version>
+    </properties>
+
 </project>
