@@ -1,4 +1,4 @@
-package com.baeldung.samba;
+package com.baeldung.sambajcifs;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

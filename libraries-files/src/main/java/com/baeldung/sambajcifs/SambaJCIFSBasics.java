@@ -1,4 +1,4 @@
-package com.baeldung.samba;
+package com.baeldung.sambajcifs;
 
 import java.net.MalformedURLException;
 import java.util.Date;
