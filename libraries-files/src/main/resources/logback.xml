@@ -15,10 +15,10 @@
 	<root level="INFO">
 		<appender-ref ref="STDOUT" />
 	</root>
-	<logger name="com.baeldung.samba.SambaJCIFSBasics" level="INFO" additivity="false">
+	<logger name="com.baeldung.sambajcifs.SambaJCIFSBasics" level="INFO" additivity="false">
 		<appender-ref ref="STDOUT_SIMPLE" />
 	</logger>
-	<logger name="com.baeldung.samba.SambaJCIFSFiles" level="INFO"
+	<logger name="com.baeldung.sambajcifs.SambaJCIFSFiles" level="INFO"
 		additivity="false">
 		<appender-ref ref="STDOUT_SIMPLE" />
 	</logger>
