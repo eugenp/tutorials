@@ -34,7 +34,7 @@ multitenant-auth-server:
         client1:
           require-authorization-consent: false
           registration:
-            client-name: Client 1 - Issuer 2
+            client-name: 'Client 1 - Issuer 2'
             client-id: client1
             client-secret: "{noop}secret1"
             client-authentication-methods:
