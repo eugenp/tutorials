@@ -47,6 +47,12 @@
             <artifactId>micrometer-tracing-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
         <!-- get ObservationRegistry configured -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -140,7 +146,8 @@
         <start-class>com.baeldung.samples.SimpleObservationApplication</start-class>
         <p6spy-spring-boot-starter.version>1.12.1</p6spy-spring-boot-starter.version>
         <datasource-proxy-spring-boot-starter.version>1.12.1</datasource-proxy-spring-boot-starter.version>
-        <micrometer.version>1.15.3</micrometer.version>
+        <assertj-core.version>4.0.0-M1</assertj-core.version>
+        <micrometer.version>1.17.0-M1</micrometer.version>
         <spring-boot.version>3.5.8</spring-boot.version>
         <logback.version>1.5.20</logback.version>
         <slf4j.version>2.0.17</slf4j.version>
