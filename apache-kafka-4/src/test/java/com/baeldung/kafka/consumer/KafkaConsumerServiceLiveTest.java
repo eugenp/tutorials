@@ -11,6 +11,7 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
+import java.time.Duration;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -122,7 +123,7 @@ public class KafkaConsumerServiceLiveTest {
         try (KafkaConsumer<String, String> consumer = new KafkaConsumer<>(getConsumerConfig(groupId))) {
             consumer.subscribe(Collections.singleton(topic));
 
-            ConsumerRecords<String, String> records = consumer.poll(java.time.Duration.ofSeconds(2));
+            ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(2));
             for (ConsumerRecord<String, String> r : records) {
                 values.add(r.value());
             }
