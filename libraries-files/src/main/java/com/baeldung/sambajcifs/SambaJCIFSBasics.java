@@ -29,16 +29,6 @@ public class SambaJCIFSBasics {
             }
         }
 
-        LOGGER.info("# List files and folders in Samba share");
-        try (SmbFile res = new SmbFile("smb://192.168.56.101/publicshare/", context)) {
-            for (SmbFile element : res.listFiles()) {
-                LOGGER.info("Found Samba element of name: " + element.getName());
-                LOGGER.info("    Element is file or folder: " + (element.isDirectory() ? "file" : "folder"));
-                LOGGER.info("    Length: " + element.length());
-                LOGGER.info("    Last modified: " + new Date(element.lastModified()));
-            }
-        }
-
         NtlmPasswordAuthenticator credentials = new NtlmPasswordAuthenticator("WORKGROUP",    // Domain name
             "jane",         // Username
             "Test@Password" // Password
@@ -50,7 +40,16 @@ public class SambaJCIFSBasics {
         LOGGER.info("# Logging in with user and password");
         try (SmbFile res = new SmbFile("smb://192.168.56.101/sambashare/", authContext)) {
             for (String element : res.list()) {
-                LOGGER.info("Found element in " + element);
+                LOGGER.info("Found element " + element);
+            }
+        }
+        LOGGER.info("# List files and folders in Samba share");
+        try (SmbFile res = new SmbFile("smb://192.168.56.101/publicshare/", context)) {
+            for (SmbFile element : res.listFiles()) {
+                LOGGER.info("Found Samba element of name: " + element.getName());
+                LOGGER.info("    Element is file or folder: " + (element.isDirectory() ? "file" : "folder"));
+                LOGGER.info("    Length: " + element.length());
+                LOGGER.info("    Last modified: " + new Date(element.lastModified()));
             }
         }
     }
