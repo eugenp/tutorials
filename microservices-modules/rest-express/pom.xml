@@ -126,16 +126,6 @@
         </plugins>
     </build>
 
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>versions-maven-plugin</artifactId>
-                <version>${versions-maven-plugin.version}</version>
-            </plugin>
-        </plugins>
-    </reporting>
-
     <properties>
         <RestExpress.plugin.version>0.3.3</RestExpress.plugin.version>
         <metrics-graphite.version>3.1.2</metrics-graphite.version>
@@ -146,5 +136,15 @@
         <maven-shade-plugin.version>2.4.1</maven-shade-plugin.version>
         <versions-maven-plugin.version>2.0</versions-maven-plugin.version>
     </properties>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>${versions-maven-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>
