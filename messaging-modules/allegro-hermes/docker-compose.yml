@@ -1,0 +1,46 @@
+services:
+  zk:
+    image: "confluentinc/cp-zookeeper:7.9.4"
+    ports:
+      - "2181:2181"
+    user: root
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+
+  kafka:
+    image: "confluentinc/cp-kafka:7.9.4"
+    ports:
+      - '9092:9092'
+    depends_on:
+      - zk
+    user: root
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zk:2181
+      KAFKA_ADVERTISED_LISTENERS: DOCKER_INTERNAL_LISTENER://kafka:29092,DOCKER_EXTERNAL_LISTENER://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: DOCKER_INTERNAL_LISTENER:PLAINTEXT,DOCKER_EXTERNAL_LISTENER:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: DOCKER_INTERNAL_LISTENER
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+  frontend:
+    image: allegro/hermes-frontend:hermes-2.11.7
+    ports:
+      - "8080:8080"
+    depends_on:
+      - zk
+      - kafka
+
+  consumers:
+    image: allegro/hermes-consumers:hermes-2.11.7
+    ports:
+      - "8070:8070"
+    depends_on:
+      - zk
+      - kafka
+
+  management:
+    image: allegro/hermes-management:hermes-2.11.7
+    ports:
+      - "8090:8090"
+    depends_on:
+      - zk
+      - kafka

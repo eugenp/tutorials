@@ -95,7 +95,7 @@ public class DaprTestContainersConfig {
         rabbitMqConfig.put("password", "guest");
         rabbitMqConfig.put("requeueInFailure", "true");
 
-        return new DaprContainer("daprio/daprd:1.14.4").withAppName(applicationName)
+        return new DaprContainer("daprio/daprd:1.16.0").withAppName(applicationName)
             .withNetwork(daprNetwork)
             .withComponent(new Component(pubSub.getName(), "pubsub.rabbitmq", "v1", rabbitMqConfig))
             .withDaprLogLevel(DaprLogLevel.INFO)

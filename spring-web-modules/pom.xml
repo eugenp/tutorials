@@ -18,6 +18,7 @@
     <modules>
         <module>spring-5-mvc</module>
         <module>spring-freemarker</module>
+        <module>spring-java-templates</module>
         <module>spring-mvc-basics</module>
         <module>spring-mvc-basics-2</module>
         <module>spring-mvc-basics-3</module>
@@ -57,6 +58,12 @@
         <module>spring-web-url</module>
         <module>spring-thymeleaf-attributes</module>
         <module>spring-jersey</module>
+        <module>spring-websockets</module>
+        <module>spring-soap</module>
+        <module>spring-static-resources</module>
+        <module>spring-boot-rest</module>
+        <module>spring-boot-rest-2</module>
+        <module>spring-boot-rest-simple</module>
     </modules>
 
     <build>

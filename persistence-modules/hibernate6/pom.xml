@@ -27,6 +27,11 @@
         </dependency>
         <dependency>
             <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-jfr</artifactId>
             <version>${hibernate.version}</version>
             <scope>runtime</scope>
@@ -78,6 +83,7 @@
         <ehcache.version>3.10.8</ehcache.version>
         <hibernate.version>6.6.0.Final</hibernate.version>
         <postgresql.version>42.7.3</postgresql.version>
+        <java.version>17</java.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>

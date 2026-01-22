@@ -9,15 +9,15 @@ import org.springframework.stereotype.Service;
 public class AsyncService {
 
     @Autowired
-    private FirstAsyncService fisrtService;
+    private FirstAsyncService firstService;
     @Autowired
     private SecondAsyncService secondService;
 
     public CompletableFuture<String> asyncMergeServicesResponse() throws InterruptedException {
-        CompletableFuture<String> fisrtServiceResponse = fisrtService.asyncGetData();
+        CompletableFuture<String> firstServiceResponse = firstService.asyncGetData();
         CompletableFuture<String> secondServiceResponse = secondService.asyncGetData();
 
         // Merge responses from FirstAsyncService and SecondAsyncService
-        return fisrtServiceResponse.thenCompose(fisrtServiceValue -> secondServiceResponse.thenApply(secondServiceValue -> fisrtServiceValue + secondServiceValue));
+        return firstServiceResponse.thenCompose(firstServiceValue -> secondServiceResponse.thenApply(secondServiceValue -> firstServiceValue + secondServiceValue));
     }
 }

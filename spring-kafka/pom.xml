@@ -33,7 +33,7 @@
             <artifactId>kafka-streams</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
+            <groupId>tools.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
         <dependency>
@@ -66,6 +66,18 @@
         </dependency>
     </dependencies>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>tools.jackson</groupId>
+                <artifactId>jackson-bom</artifactId>
+                <version>${tools-jackson.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <build>
         <plugins>
             <plugin>
@@ -81,6 +93,7 @@
     <properties>
         <spring-kafka.version>3.3.1</spring-kafka.version>
         <spring-boot.version>3.4.1</spring-boot.version>
+        <tools-jackson.version>3.0.0</tools-jackson.version>
     </properties>
 
 </project>

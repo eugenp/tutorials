@@ -90,9 +90,11 @@
     </build>
 
     <properties>
-        <log4j-core.version>2.23.1</log4j-core.version>
-        <log4j-api.version>2.23.1</log4j-api.version>
-        <log4j-slf4j.version>2.23.1</log4j-slf4j.version>
+        <log4j-core.version>2.25.2</log4j-core.version>
+        <log4j-api.version>2.25.2</log4j-api.version>
+        <log4j-slf4j.version>2.25.2</log4j-slf4j.version>
+        <org.slf4j.version>2.0.17</org.slf4j.version>
+        <logback.version>1.5.21</logback.version>
         <commons-dbcp2.version>2.9.0</commons-dbcp2.version>
         <disruptor.version>3.3.6</disruptor.version>
     </properties>

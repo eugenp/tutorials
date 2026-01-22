@@ -50,7 +50,7 @@ class HibernateCreationUpdateTimestampIntegrationTest {
         session.beginTransaction();
         Book book = new Book();
 
-        session.save(book);
+        session.persist(book);
         session.getTransaction()
           .commit();
         session.close();
@@ -64,7 +64,7 @@ class HibernateCreationUpdateTimestampIntegrationTest {
         session.beginTransaction();
         Book book = new Book();
 
-        session.save(book);
+        session.persist(book);
         session.getTransaction()
           .commit();
         session.close();
@@ -79,7 +79,7 @@ class HibernateCreationUpdateTimestampIntegrationTest {
         session.beginTransaction();
         Book book = new Book();
 
-        session.save(book);
+        session.persist(book);
         session.getTransaction().commit();
         session.close();
 
@@ -96,14 +96,14 @@ class HibernateCreationUpdateTimestampIntegrationTest {
         session.setHibernateFlushMode(MANUAL);
         session.beginTransaction();
         Book book = new Book();
-        session.save(book);
+        session.persist(book);
         session.flush();
         Instant createdOnAfterCreation = book.getCreatedOn();
         Instant lastUpdatedOnAfterCreation = book.getLastUpdatedOn();
 
         String newName = "newName";
         book.setTitle(newName);
-        session.save(book);
+        session.persist(book);
         session.flush();
         session.getTransaction().commit();
         session.close();

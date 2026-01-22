@@ -217,6 +217,7 @@
     </profiles>
 
     <properties>
+        <spring-boot.version>3.5.7</spring-boot.version>
         <xstream.version>1.4.21</xstream.version>
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.9.0</cargo-maven2-plugin.version>

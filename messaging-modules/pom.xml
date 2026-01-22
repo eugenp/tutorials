@@ -28,6 +28,7 @@
         <module>postgres-notify</module>
         <module>ibm-mq</module>
         <module>dapr</module>
+        <module>allegro-hermes</module>
     </modules>
 
 </project>

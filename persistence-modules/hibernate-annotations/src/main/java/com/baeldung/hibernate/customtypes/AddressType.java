@@ -25,16 +25,15 @@ public class AddressType implements CompositeUserType<Address> {
             case 4:
                 return component.getZipCode();
             default:
-                throw new IllegalArgumentException(property +
-                        " is an invalid property index for class type " +
-                        component.getClass().getName());
+                throw new IllegalArgumentException(property + " is an invalid property index for class type " + component.getClass()
+                    .getName());
         }
     }
 
     @Override
-    public Address instantiate(ValueAccess values, SessionFactoryImplementor sessionFactory) {
-        return new Address(values.getValue(0, String.class), values.getValue(1,String.class), values.getValue(2, String.class),
-                values.getValue(3, String.class), values.getValue(4,Integer.class));
+    public Address instantiate(ValueAccess values) {
+        return new Address(values.getValue(0, String.class), values.getValue(1, String.class), values.getValue(2, String.class),
+            values.getValue(3, String.class), values.getValue(4, Integer.class));
     }
 
     @Override
@@ -49,11 +48,13 @@ public class AddressType implements CompositeUserType<Address> {
 
     @Override
     public boolean equals(Address x, Address y) {
-        if (x == y)
+        if (x == y) {
             return true;
+        }
 
-        if (Objects.isNull(x) || Objects.isNull(y))
+        if (Objects.isNull(x) || Objects.isNull(y)) {
             return false;
+        }
 
         return x.equals(y);
     }
@@ -65,8 +66,9 @@ public class AddressType implements CompositeUserType<Address> {
 
     @Override
     public Address deepCopy(Address value) {
-        if (Objects.isNull(value))
+        if (Objects.isNull(value)) {
             return null;
+        }
 
         Address newEmpAdd = new Address();
 
@@ -100,12 +102,12 @@ public class AddressType implements CompositeUserType<Address> {
     }
 
     @Override
-    public boolean isInstance(Object object, SessionFactoryImplementor sessionFactory) {
-        return CompositeUserType.super.isInstance(object, sessionFactory);
+    public boolean isInstance(Object object) {
+        return CompositeUserType.super.isInstance(object);
     }
 
     @Override
-    public boolean isSameClass(Object object, SessionFactoryImplementor sessionFactory) {
-        return CompositeUserType.super.isSameClass(object, sessionFactory);
+    public boolean isSameClass(Object object) {
+        return CompositeUserType.super.isSameClass(object);
     }
 }

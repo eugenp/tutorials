@@ -1,0 +1,26 @@
+id,name,category,price,stock
+1,Microwave,Appliances,705.77,136
+2,Vacuum Cleaner,Appliances,1397.23,92
+3,Power Bank,Accessories,114.78,32
+4,Keyboard,Accessories,54.09,33
+5,Charger,Accessories,157.95,90
+6,Microwave,Appliances,239.81,107
+7,Power Bank,Accessories,933.47,118
+8,Washer,Appliances,298.55,41
+9,Camera,Electronics,1736.29,148
+10,Laptop,Electronics,632.69,18
+11,Smartwatch,Electronics,261.04,129
+12,Tablet,Electronics,774.85,115
+13,Laptop,Electronics,58.03,93
+14,Smartwatch,Electronics,336.71,63
+15,Washer,Appliances,975.68,148
+16,Charger,Accessories,1499.18,98
+17,Tablet,Electronics,89.61,147
+18,Laptop,Electronics,251.67,80
+19,Washer,Appliances,1026.93,102
+20,Power Bank,Accessories,1239.02,30
+21,Camera,Electronics,1990.1,92
+22,Headphones,Accessories,1532.08,112
+23,Refrigerator,Appliances,205.95,77
+24,Vacuum Cleaner,Appliances,218.43,43
+25,Vacuum Cleaner,Appliances,1869.89,123

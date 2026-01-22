@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Assertions;
 
 import com.baeldung.jackson.objectmapper.dto.Car;
 import com.baeldung.jackson.objectmapper.dto.Request;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.ObjectMapper;
 
 public class ObjectMapperBuilderUnitTest {
 
@@ -22,14 +22,14 @@ public class ObjectMapperBuilderUnitTest {
     String givenCarJsonStr = "{ \"color\" : \"White\", \"type\" : \"Sedan\" }";
 
     @Test
-    public void whenReadCarJsonStr_thenReturnCarObjectCorrectly() throws JsonProcessingException {
+    public void whenReadCarJsonStr_thenReturnCarObjectCorrectly() throws JacksonException {
         Car actual = mapper.readValue(givenCarJsonStr, Car.class);
         Assertions.assertEquals("White", actual.getColor());
         Assertions.assertEquals("Sedan", actual.getType());
     }
 
     @Test
-    public void whenWriteRequestObject_thenReturnRequestJsonStrCorrectly() throws JsonProcessingException {
+    public void whenWriteRequestObject_thenReturnRequestJsonStrCorrectly() throws JacksonException {
         Request request = new Request();
         request.setCar(givenCar);
         Date date = new Date(1684909857000L);

@@ -6,7 +6,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import jakarta.persistence.TypedQuery;
 import java.time.LocalDate;
@@ -15,9 +15,9 @@ import java.util.List;
 import java.util.Map;
 
 import static org.hibernate.testing.transaction.TransactionUtil.doInHibernate;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class HibernateCustomTypesIntegrationTest {
 
@@ -45,7 +45,7 @@ public class HibernateCustomTypesIntegrationTest {
         e.setSalary(empSalary);
 
         doInHibernate(this::sessionFactory, session -> {
-            session.save(e);
+            session.persist(e);
             boolean contains = session.contains(e);
             assertTrue(contains);
         });
@@ -75,7 +75,7 @@ public class HibernateCustomTypesIntegrationTest {
         e.setSalary(empSalary);
 
         doInHibernate(this::sessionFactory, session -> {
-            session.save(e);
+            session.persist(e);
             session.flush();
             session.refresh(e);
 

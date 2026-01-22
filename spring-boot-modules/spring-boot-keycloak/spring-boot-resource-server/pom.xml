@@ -3,15 +3,15 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>spring-boot-resource-server</artifactId>
+    <description>Servlet OAuth2 resource server</description>
+
     <parent>
         <groupId>com.baeldung.spring-boot-modules.keycloak</groupId>
         <artifactId>spring-boot-keycloak</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>..</relativePath>
     </parent>
-    <artifactId>spring-boot-resource-server</artifactId>
-    <description>Servlet OAuth2 resource server</description>
-        
+
     <developers>
         <developer>
             <id>ch4mpy</id>
@@ -20,10 +20,6 @@
             <url>https://github.com/ch4mpy</url>
         </developer>
     </developers>
-
-    <properties>
-        <tutorialsproject.basedir>../../..</tutorialsproject.basedir>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -38,7 +34,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -70,5 +65,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <tutorialsproject.basedir>../../..</tutorialsproject.basedir>
+    </properties>
 
 </project>

@@ -17,6 +17,7 @@
     <modules>
         <module>dapr-publisher</module>
         <module>dapr-subscriber</module>
+        <module>dapr-workflows</module>
     </modules>
 
     <dependencyManagement>

@@ -27,6 +27,16 @@ class DelimiterDemoUnitTest {
     }
 
     @Test
+    void givenMultipleDelimiters_whenScannerWithDelimiter_ThenInputIsCorrectlyParsed() {
+        checkOutput(DelimiterDemo::scannerWithDelimiter, "11-22,95-115,998-1012", "[,-]", Arrays.asList("11", "22", "95", "115", "998", "1012"));
+    }
+
+    @Test
+    void givenMultipleSpecialCharactersAsDelimiters_whenScannerWithDelimiter_ThenInputIsCorrectlyParsed() {
+        checkOutput(DelimiterDemo::scannerWithDelimiter, "key1:value1,key2:value2", "[:,]", Arrays.asList("key1", "value1", "key2", "value2"));
+    }
+
+    @Test
     void givenWildcardRegexDelimiter_whenScannerWithDelimiter_ThenInputIsCorrectlyParsed() {
         checkOutput(DelimiterDemo::scannerWithDelimiter, "1aaaaaaa2aa3aaa4", "a+", Arrays.asList("1", "2", "3", "4"));
     }
