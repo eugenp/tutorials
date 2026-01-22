@@ -2,6 +2,7 @@ package com.baeldung.mcpannotations;
 
 import io.modelcontextprotocol.spec.McpSchema;
 import org.springaicommunity.mcp.annotation.McpArg;
+import org.springaicommunity.mcp.annotation.McpComplete;
 import org.springaicommunity.mcp.annotation.McpPrompt;
 import org.springframework.stereotype.Service;
 
@@ -31,5 +32,17 @@ public class CodeReviewPrompts {
                 "Code Review",
                 List.of(new McpSchema.PromptMessage(McpSchema.Role.USER, new McpSchema.TextContent(content)))
         );
+    }
+
+    @McpComplete(prompt = "review_code")
+    public List<String> completeLanguage(McpSchema.CompleteRequest.CompleteArgument argument) {
+        if (!"language".equals(argument.name())) {
+            return List.of();
+        }
+
+        String token = argument.value();
+        return List.of("Java", "Python", "TypeScript", "Go").stream()
+                .filter(lang -> lang.toLowerCase().startsWith(token.toLowerCase()))
+                .toList();
     }
 }

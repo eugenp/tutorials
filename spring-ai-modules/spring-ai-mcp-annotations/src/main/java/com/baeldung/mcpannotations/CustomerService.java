@@ -1,6 +1,5 @@
 package com.baeldung.mcpannotations;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springaicommunity.mcp.annotation.McpTool;
 import org.springaicommunity.mcp.annotation.McpToolParam;
 import org.springaicommunity.mcp.context.McpSyncRequestContext;
@@ -26,8 +25,9 @@ public class CustomerService {
     ) {
         context.info("Starting processing for ID: " + dataId);
 
-        // Simulate work
-        context.progress(50);
+        // Simulate work and report detailed progress
+        // 50% complete (0.5 out of 1.0)
+        context.progress(p -> p.progress(0.5).total(1.0).message("Processing records..."));
 
         return "Processed " + dataId;
     }

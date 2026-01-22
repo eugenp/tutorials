@@ -7,8 +7,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springaicommunity.mcp.context.McpSyncRequestContext;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
@@ -42,7 +44,11 @@ class CustomerServiceUnitTest {
 
         // Then
         assertEquals("Processed 12345", result);
+
+        // Verify the logger was called
         verify(mockContext).info("Starting processing for ID: 12345");
-        verify(mockContext).progress(50);
+
+        // Verify progress was called with ANY configuration lambda
+        verify(mockContext).progress(any(Consumer.class));
     }
 }
