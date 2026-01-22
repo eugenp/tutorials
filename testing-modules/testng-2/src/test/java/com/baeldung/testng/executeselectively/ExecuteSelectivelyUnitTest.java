@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
 import java.util.Set;
 
 @Listeners(SkipMethodInterceptor.class)
-public class ExecuteSelectivelyTest {
+public class ExecuteSelectivelyUnitTest {
     private static final Set<String> SKIP_METHODS = Set.of("givenTest_whenFails_thenExecuteSelectively");
 
     @BeforeMethod
