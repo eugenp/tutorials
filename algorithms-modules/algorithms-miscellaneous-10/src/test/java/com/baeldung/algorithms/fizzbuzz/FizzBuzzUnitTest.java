@@ -29,7 +29,7 @@ class FizzBuzzUnitTest {
     }
 
     @Test
-    void givenNLessThanSequenceLength_whenAllMethods_thenReturnCorrectSequence() {
+    void givenSequenceLength5_whenAllMethods_thenReturnCorrectSequence() {
         List<String> naiveResult = fizzBuzz.fizzBuzzNaive(5);
         List<String> concatResult = fizzBuzz.fizzBuzzConcatenation(5);
         List<String> counterResult = fizzBuzz.fizzBuzzCounter(5);
