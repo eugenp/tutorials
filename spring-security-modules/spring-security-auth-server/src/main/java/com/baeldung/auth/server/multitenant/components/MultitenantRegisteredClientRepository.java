@@ -18,7 +18,9 @@ public class MultitenantRegisteredClientRepository
 
     @Override
     public void save(RegisteredClient registeredClient) {
-         getComponent().ifPresent( repo -> repo.save(registeredClient));
+         getComponent()
+           .orElseThrow(UnknownIssuerException::new)
+           .save(registeredClient);
     }
 
     @Override
@@ -34,4 +36,6 @@ public class MultitenantRegisteredClientRepository
           .map(repo -> repo.findByClientId(clientId))
           .orElse(null);
     }
+
+    private static class UnknownIssuerException extends RuntimeException {}
 }
