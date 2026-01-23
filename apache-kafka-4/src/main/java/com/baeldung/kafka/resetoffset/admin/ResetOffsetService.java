@@ -58,18 +58,21 @@ public class ResetOffsetService {
         ListOffsetsResult offsetsResult = adminClient.listOffsets(offsetSpecs);
         Map<TopicPartition, OffsetAndMetadata> offsets = new HashMap<>();
 
-        for (var tp : partitions) {
-            long offset;
-            try {
-                offset = offsetsResult.partitionResult(tp)
-                    .get()
-                    .offset();
-            } catch (InterruptedException | ExecutionException ex) {
-                log.error("Error in the Kafka Consumer reset with exception {}", ex.getMessage(), ex);
-                throw new RuntimeException(ex);
-            }
+        partitions.forEach(tp -> {
+            long offset = Optional.ofNullable(offsetsResult.partitionResult(tp))
+                .map(kafkaFuture -> {
+                    try {
+                        return kafkaFuture.get();
+                    } catch (InterruptedException | ExecutionException ex) {
+                        log.error("Error in the Kafka Consumer reset with exception {}", ex.getMessage(), ex);
+                        throw new RuntimeException(ex);
+                    }
+                })
+                .map(ListOffsetsResult.ListOffsetsResultInfo::offset)
+                .orElseThrow(() -> new RuntimeException("No offset result returned for partition " + tp));
+
             offsets.put(tp, new OffsetAndMetadata(offset));
-        }
+        });
 
         return offsets;
     }

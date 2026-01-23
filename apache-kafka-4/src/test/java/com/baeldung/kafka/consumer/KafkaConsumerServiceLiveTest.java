@@ -37,11 +37,14 @@ public class KafkaConsumerServiceLiveTest {
     @Test
     void givenConsumerReplayIsEnabled_whenReplayTimestampIsProvided_thenConsumesFromTimestamp() {
         KafkaProducer<String, String> producer = new KafkaProducer<>(getProducerConfig());
-        producer.send(new ProducerRecord<>("test-topic-1", "x1", "test1"));
+        long firstMsgTs = System.currentTimeMillis();
+        producer.send(new ProducerRecord<>("test-topic-1", 0, firstMsgTs, "x1", "test1"));
         producer.flush();
 
         long baseTs = System.currentTimeMillis();
-        producer.send(new ProducerRecord<>("test-topic-1", "x2", "test2"));
+
+        long secondMsgTs = baseTs + 1L;
+        producer.send(new ProducerRecord<>("test-topic-1", 0, secondMsgTs, "x2", "test2"));
         producer.flush();
 
         KafkaConsumerService kafkaConsumerService = new KafkaConsumerService(getConsumerConfig("test-group-1"), "test-topic-1", baseTs);
@@ -149,6 +152,7 @@ public class KafkaConsumerServiceLiveTest {
         consumerProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
         consumerProperties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
+
 
         return consumerProperties;
     }

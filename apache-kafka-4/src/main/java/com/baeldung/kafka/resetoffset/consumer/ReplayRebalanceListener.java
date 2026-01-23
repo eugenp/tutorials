@@ -6,6 +6,7 @@ import org.apache.kafka.clients.consumer.OffsetAndTimestamp;
 import org.apache.kafka.common.TopicPartition;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -13,7 +14,7 @@ public class ReplayRebalanceListener implements ConsumerRebalanceListener {
 
     private final KafkaConsumer<String, String> consumer;
     private final long replayFromTimeInEpoch;
-    private boolean seekDone = false;
+    private final AtomicBoolean seekDone = new AtomicBoolean(false);
 
     public ReplayRebalanceListener(KafkaConsumer<String, String> consumer, long replayFromTimeInEpoch) {
         this.consumer = consumer;
@@ -27,7 +28,7 @@ public class ReplayRebalanceListener implements ConsumerRebalanceListener {
 
     @Override
     public void onPartitionsAssigned(Collection<TopicPartition> partitions) {
-        if (seekDone || partitions.isEmpty()) {
+        if (seekDone.get() || partitions.isEmpty()) {
             return;
         }
 
@@ -43,6 +44,6 @@ public class ReplayRebalanceListener implements ConsumerRebalanceListener {
             }
         });
 
-        seekDone = true;
+        seekDone.set(true);
     }
 }

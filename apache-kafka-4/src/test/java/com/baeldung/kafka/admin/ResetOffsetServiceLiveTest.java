@@ -25,7 +25,7 @@ import static org.testcontainers.shaded.org.awaitility.Awaitility.await;
 import com.baeldung.kafka.resetoffset.admin.ResetOffsetService;
 
 @Testcontainers
-class ResetOffsetServiceTest {
+class ResetOffsetServiceLiveTest {
 
     @Container
     private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.9.0"));
