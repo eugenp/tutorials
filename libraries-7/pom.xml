@@ -115,7 +115,7 @@
         <record-builder.version>47</record-builder.version>
         <jena.version>5.5.0</jena.version>
         <mybatis-dynamic-sql.version>1.5.2</mybatis-dynamic-sql.version>
-        <jte.version>3.2.1</jte.version>
+        <jte.version>3.2.2</jte.version>
     </properties>
 
 </project>
