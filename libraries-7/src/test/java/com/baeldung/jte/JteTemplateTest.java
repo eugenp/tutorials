@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class JteTemplateTest {
 
     @Test
-    public void createArticleViewTest() {
+    public void given_an_article_when_html_is_created_with_jte_then_article_view_is_rendered() {
         ArticleView articleView = new ArticleView();
 
         String output = articleView.createHtml(
