@@ -40,7 +40,7 @@ class FizzBuzzUnitTest {
             () -> assertEquals(GROUND_TRUTH_SEQUENCE_LENGTH_5, concatResult,
                 "fizzBuzzConcatenation should return correct sequence for n=5"),
             () -> assertEquals(GROUND_TRUTH_SEQUENCE_LENGTH_5, counterResult,
-                "fizzBuzzOptimized should return correct sequence for n=5")
+                "fizzBuzzCounter should return correct sequence for n=5")
         );
     }
 
@@ -56,7 +56,7 @@ class FizzBuzzUnitTest {
             () -> assertEquals(GROUND_TRUTH_SEQUENCE_LENGTH_100, concatResult,
                 "fizzBuzzConcatenation should return correct sequence for n=100"),
             () -> assertEquals(GROUND_TRUTH_SEQUENCE_LENGTH_100, counterResult,
-                "fizzBuzzOptimized should return correct sequence for n=100")
+                "fizzBuzzCounter should return correct sequence for n=100")
         );
     }
 
