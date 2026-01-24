@@ -11,8 +11,8 @@ public class JteTemplateTest {
         ArticleView articleView = new ArticleView();
 
         String output = articleView.createHtml(
-                "article.jte",
-                new Article("Java Template Engine", "Baeldung", "Helpful article", 42)
+            "article.jte",
+            new Article("Java Template Engine", "Baeldung", "Helpful article", 42)
         );
 
         assertEquals("""
