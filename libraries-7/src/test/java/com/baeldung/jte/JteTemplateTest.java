@@ -8,7 +8,6 @@ public class JteTemplateTest {
 
     @Test
     public void createArticleViewTest() {
-
         ArticleView articleView = new ArticleView();
 
         String output = articleView.createHtml(
