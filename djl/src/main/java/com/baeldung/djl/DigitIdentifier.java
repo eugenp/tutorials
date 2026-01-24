@@ -26,10 +26,10 @@ public class DigitIdentifier {
     public String identifyDigit(String imagePath)
             throws ModelNotFoundException, MalformedModelException, IOException, TranslateException {
         Criteria<Image, Classifications> criteria = Criteria.builder()
-                .optApplication(Application.CV.IMAGE_CLASSIFICATION)
-                .setTypes(Image.class, Classifications.class)
-                .optFilter("dataset", "mnist")
-                .build();
+            .optApplication(Application.CV.IMAGE_CLASSIFICATION)
+            .setTypes(Image.class, Classifications.class)
+            .optFilter("dataset", "mnist")
+            .build();
 
         ZooModel<Image, Classifications> model = criteria.loadModel();
 
