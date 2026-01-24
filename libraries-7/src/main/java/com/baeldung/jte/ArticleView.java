@@ -17,11 +17,7 @@ public class ArticleView {
         TemplateEngine templateEngine = TemplateEngine.create(codeResolver, Html);
 
         TemplateOutput output = new StringOutput();
-        templateEngine.render(
-                template,
-                article,
-                output
-        );
+        templateEngine.render(template, article, output);
 
         return output.toString();
     }
