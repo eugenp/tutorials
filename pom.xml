@@ -655,6 +655,7 @@
                 <module>deeplearning4j</module>
                 <module>di-modules</module>
                 <module>disruptor</module>
+                <module>djl</module>
                 <module>docker-modules</module>
                 <module>drools</module>
                 <module>embabel-modules</module>
@@ -1128,6 +1129,7 @@
                 <module>data-structures-2</module>
                 <module>deeplearning4j</module>
                 <module>di-modules</module>
+                <module>djl</module>
                 <module>disruptor</module>
                 <module>docker-modules</module>
                 <module>drools</module>
