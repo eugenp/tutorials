@@ -15,7 +15,7 @@ class HttpServicesConfig {
     @Bean
     WebClientHttpServiceGroupConfigurer groupConfigurer() {
         return groups -> {
-            groups.forEachClient((client, builder) -> builder
+            groups.forEachClient((group, builder) -> builder
                 .defaultHeader("User-Agent", "Baeldung-Client v1.0"));
 
             groups.filterByName("books")
