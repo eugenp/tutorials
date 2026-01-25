@@ -1,4 +1,4 @@
-package com.baeldung.httpinterface;
+package com.baeldung.spring.httpinterface;
 
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.AfterAll;
@@ -12,7 +12,9 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.List;
 
+import org.mockserver.matchers.Times;
 import org.mockserver.model.HttpRequest;
+import org.mockserver.model.HttpResponse;
 import org.mockserver.model.MediaType;
 import org.mockserver.verify.VerificationTimes;
 import org.slf4j.event.Level;
@@ -24,10 +26,6 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockserver.integration.ClientAndServer.startClientAndServer;
-import static org.mockserver.matchers.Times.exactly;
-import static org.mockserver.model.HttpRequest.request;
-import static org.mockserver.model.HttpResponse.response;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BooksServiceMockServerTest {
@@ -45,7 +43,7 @@ class BooksServiceMockServerTest {
         serviceUrl = "http://" + SERVER_ADDRESS + ":" + serverPort;
 
         Configuration config = Configuration.configuration().logLevel(Level.WARN);
-        mockServer = startClientAndServer(config, serverPort);
+        mockServer = ClientAndServer.startClientAndServer(config, serverPort);
 
         mockAllBooksRequest();
         mockBookByIdRequest();
@@ -151,13 +149,13 @@ class BooksServiceMockServerTest {
     private static void mockAllBooksRequest() {
         new MockServerClient(SERVER_ADDRESS, serverPort)
           .when(
-            request()
+            HttpRequest.request()
               .withPath(PATH)
               .withMethod(HttpMethod.GET.name()),
-            exactly(1)
+            Times.exactly(1)
           )
           .respond(
-            response()
+            HttpResponse.response()
               .withStatusCode(HttpStatus.SC_OK)
               .withContentType(MediaType.APPLICATION_JSON)
               .withBody("[{\"id\":1,\"title\":\"Book_1\",\"author\":\"Author_1\",\"year\":1998},{\"id\":2,\"title\":\"Book_2\",\"author\":\"Author_2\",\"year\":1999}]")
@@ -167,13 +165,13 @@ class BooksServiceMockServerTest {
     private static void mockBookByIdRequest() {
         new MockServerClient(SERVER_ADDRESS, serverPort)
           .when(
-            request()
+            HttpRequest.request()
               .withPath(PATH + "/1")
               .withMethod(HttpMethod.GET.name()),
-            exactly(1)
+            Times.exactly(1)
           )
           .respond(
-            response()
+            HttpResponse.response()
               .withStatusCode(HttpStatus.SC_OK)
               .withContentType(MediaType.APPLICATION_JSON)
               .withBody("{\"id\":1,\"title\":\"Book_1\",\"author\":\"Author_1\",\"year\":1998}")
@@ -183,15 +181,15 @@ class BooksServiceMockServerTest {
     private static void mockSaveBookRequest() {
         new MockServerClient(SERVER_ADDRESS, serverPort)
           .when(
-            request()
+            HttpRequest.request()
               .withPath(PATH)
               .withMethod(HttpMethod.POST.name())
               .withContentType(MediaType.APPLICATION_JSON)
               .withBody("{\"id\":3,\"title\":\"Book_3\",\"author\":\"Author_3\",\"year\":2000}"),
-            exactly(1)
+            Times.exactly(1)
           )
           .respond(
-            response()
+            HttpResponse.response()
               .withStatusCode(HttpStatus.SC_OK)
               .withContentType(MediaType.APPLICATION_JSON)
               .withBody("{\"id\":3,\"title\":\"Book_3\",\"author\":\"Author_3\",\"year\":2000}")
@@ -201,13 +199,13 @@ class BooksServiceMockServerTest {
     private static void mockDeleteBookRequest() {
         new MockServerClient(SERVER_ADDRESS, serverPort)
           .when(
-            request()
+            HttpRequest.request()
               .withPath(PATH + "/3")
               .withMethod(HttpMethod.DELETE.name()),
-            exactly(1)
+            Times.exactly(1)
           )
           .respond(
-            response()
+            HttpResponse.response()
               .withStatusCode(HttpStatus.SC_OK)
           );
     }
