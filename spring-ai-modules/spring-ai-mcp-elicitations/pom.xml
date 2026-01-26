@@ -38,6 +38,24 @@
         <spring-ai.version>1.1.2</spring-ai.version>
     </properties>
 
+    <profiles>
+        <profile>
+            <id>mcp-server</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.mcp.server.ServerApplication</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>mcp-client</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.mcp.client.ClientApplication</spring.boot.mainclass>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>
