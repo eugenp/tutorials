@@ -24,6 +24,7 @@ import com.baeldung.wildcardsearch.ElasticsearchConfig;
 
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.elasticsearch._types.Refresh;
+import co.elastic.clients.elasticsearch._types.SortOrder;
 import co.elastic.clients.elasticsearch._types.query_dsl.Operator;
 import co.elastic.clients.elasticsearch.core.IndexRequest;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
@@ -161,6 +162,127 @@ class ElasticsearchKeywordTextSearchTest {
             .hits()).isEmpty();
     }
 
+    @Test
+    void whenSearchDocumentsAndApplySort_thenSortedDocumentsShouldBeReturned() throws IOException {
+
+        SearchResponse<Article> response = elasticsearchClient.search(s -> s.index(TEST_INDEX)
+            .sort(so -> so.field(f -> f.field("status")
+                .order(SortOrder.Asc))), Article.class);
+
+        Article article = response.hits()
+            .hits()
+            .get(0)
+            .source();
+        assertThat(article).isNotNull();
+        assertThat(article.type()).isEqualTo("mini-article");
+        assertThat(article.status()).isEqualTo("DONE");
+    }
+
+    @Test
+    void whenUsingMultiField_thenBothTextAndKeywordBehaviorWork() throws IOException {
+        // Full-text search on the analyzed 'title' field
+        SearchResponse<Article> textSearchResponse = elasticsearchClient.search(s -> s.index(TEST_INDEX)
+            .query(q -> q.match(m -> m.field("title")
+                .query("spring elasticsearch")
+                .operator(Operator.And))), Article.class);
+
+        assertThat(textSearchResponse.hits()
+            .hits()).hasSize(2);
+        logger.info("Full-text search found {} documents", textSearchResponse.hits()
+            .hits()
+            .size());
+
+        // Exact match on 'title.keyword' (multi-field)
+        SearchResponse<Article> keywordSearchResponse = elasticsearchClient.search(s -> s.index(TEST_INDEX)
+            .query(q -> q.term(t -> t.field("title.keyword")
+                .value("Spring Boot Elasticsearch Basics"))), Article.class);
+
+        assertThat(keywordSearchResponse.hits()
+            .hits()).hasSize(1);
+        Article article = keywordSearchResponse.hits()
+            .hits()
+            .get(0)
+            .source();
+        assertThat(article).isNotNull();
+        assertThat(article.title()).isEqualTo("Spring Boot Elasticsearch Basics");
+
+        logger.info("Exact match on title.keyword found: {}", article.title());
+    }
+
+    @Test
+    void whenSortingByMultiFieldKeyword_thenDocumentsAreSortedAlphabetically() throws IOException {
+        SearchResponse<Article> response = elasticsearchClient.search(s -> s.index(TEST_INDEX)
+            .query(q -> q.matchAll(m -> m))
+            .sort(so -> so.field(f -> f.field("title.keyword")
+                .order(SortOrder.Asc))), Article.class);
+
+        assertThat(response.hits()
+            .hits()).hasSize(2);
+
+        Article firstArticle = response.hits()
+            .hits()
+            .get(0)
+            .source();
+        Article secondArticle = response.hits()
+            .hits()
+            .get(1)
+            .source();
+
+        assertThat(firstArticle.title()).isEqualTo("Spring Boot Elasticsearch Basics");
+        assertThat(secondArticle.title()).isEqualTo("Using Elasticsearch with Spring Boot");
+
+        logger.info("Documents sorted by title.keyword: {} -> {}", firstArticle.title(), secondArticle.title());
+    }
+
+    @Test
+    void whenAggregatingOnMultiFieldKeyword_thenExactValuesAreCounted() throws IOException {
+        SearchResponse<Void> response = elasticsearchClient.search(s -> s.index(TEST_INDEX)
+            .size(0)
+            .aggregations("popular_titles", a -> a.terms(t -> t.field("title.keyword")
+                .size(10))), Void.class);
+
+        var buckets = response.aggregations()
+            .get("popular_titles")
+            .sterms()
+            .buckets()
+            .array();
+
+        assertThat(buckets).hasSize(2);
+
+        buckets.forEach(b -> {
+            logger.info("Title: '{}' -> Count: {}", b.key()
+                .stringValue(), b.docCount());
+            assertThat(b.docCount()).isEqualTo(1);
+        });
+    }
+
+    @Test
+    void whenCombiningFullTextSearchWithKeywordSort_thenResultsAreSearchedAndSorted() throws IOException {
+        SearchResponse<Article> response = elasticsearchClient.search(s -> s.index(TEST_INDEX)
+            .query(q -> q.match(m -> m.field("title")
+                .query("spring elasticsearch")))
+            .sort(so -> so.field(f -> f.field("title.keyword")
+                .order(SortOrder.Desc))), Article.class);
+
+        assertThat(response.hits()
+            .hits()).hasSize(2);
+
+        // Verify documents are returned in descending order by title.keyword
+        Article firstArticle = response.hits()
+            .hits()
+            .get(0)
+            .source();
+        Article secondArticle = response.hits()
+            .hits()
+            .get(1)
+            .source();
+
+        assertThat(firstArticle.title()).isEqualTo("Using Elasticsearch with Spring Boot");
+        assertThat(secondArticle.title()).isEqualTo("Spring Boot Elasticsearch Basics");
+
+        logger.info("Full-text search with sorting: first={}, second={}", firstArticle.title(), secondArticle.title());
+    }
+
     private void waitUntilDocumentsIndexed() {
         await().atMost(Duration.ofSeconds(10))
             .pollInterval(Duration.ofMillis(100))
@@ -192,7 +314,7 @@ class ElasticsearchKeywordTextSearchTest {
     private void indexSampleDocuments() throws IOException {
         indexDocument("1", new Article("article", "Using Elasticsearch with Spring Boot", "IN_PROGRESS"));
 
-        indexDocument("2", new Article("article", "Spring Boot Elasticsearch Basics", "DONE"));
+        indexDocument("2", new Article("mini-article", "Spring Boot Elasticsearch Basics", "DONE"));
     }
 
     private void indexDocument(String id, Article article) throws IOException {
