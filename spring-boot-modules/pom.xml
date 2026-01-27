@@ -137,6 +137,7 @@
         <module>spring-boot-http2</module>
         <module>spring-boot-azure-deployment</module>
         <module>spring-boot-heroku-deployment</module>
+        <module>spring-boot-heroku-postgres</module>
     </modules>
 
     <build>
