@@ -14,7 +14,7 @@ import org.springframework.context.annotation.PropertySource;
     AnthropicChatAutoConfiguration.class
 })
 @PropertySource("classpath:application-mcp-server.properties")
-public class ServerApplication {
+class ServerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ServerApplication.class, args);
