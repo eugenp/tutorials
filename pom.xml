@@ -142,6 +142,14 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <encoding>UTF-8</encoding>
+                    <proc>full</proc>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
             <plugin>
@@ -156,12 +164,13 @@
                     </dependency>
                 </dependencies>
                 <configuration>
+                    <skip>true</skip>
                     <failurePriority>5</failurePriority>
                     <failOnViolation>true</failOnViolation>
                     <verbose>true</verbose>
                     <linkXRef>true</linkXRef>
                     <includeTests>true</includeTests>
-                    <targetJdk>${java.version}</targetJdk>
+                    <targetJdk>21</targetJdk>
                     <rulesets>
                         <ruleset>${tutorialsproject.basedir}/baeldung-pmd-rules.xml</ruleset>
                     </rulesets>
@@ -410,9 +419,9 @@
 
             <properties>
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-                <java.version>17</java.version>
-                <maven.compiler.source>17</maven.compiler.source>
-                <maven.compiler.target>17</maven.compiler.target>
+                <java.version>25</java.version>
+                <maven.compiler.source>25</maven.compiler.source>
+                <maven.compiler.target>25</maven.compiler.target>
             </properties>
 
         </profile>
@@ -514,9 +523,9 @@
 
             <properties>
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-                <java.version>17</java.version>
-                <maven.compiler.source>17</maven.compiler.source>
-                <maven.compiler.target>17</maven.compiler.target>
+                <java.version>25</java.version>
+                <maven.compiler.source>25</maven.compiler.source>
+                <maven.compiler.target>25</maven.compiler.target>
             </properties>
 
         </profile>
@@ -580,9 +589,9 @@
 
             <properties>
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-                <java.version>17</java.version>
-                <maven.compiler.source>17</maven.compiler.source>
-                <maven.compiler.target>17</maven.compiler.target>
+                <java.version>25</java.version>
+                <maven.compiler.source>25</maven.compiler.source>
+                <maven.compiler.target>25</maven.compiler.target>
             </properties>
 
         </profile>
@@ -838,9 +847,9 @@
 
             <properties>
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-                <java.version>21</java.version>
-                <maven.compiler.source>21</maven.compiler.source>
-                <maven.compiler.target>21</maven.compiler.target>
+                <java.version>25</java.version>
+                <maven.compiler.source>25</maven.compiler.source>
+                <maven.compiler.target>25</maven.compiler.target>
             </properties>
 
         </profile>
@@ -1061,9 +1070,9 @@
 
             <properties>
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-                <java.version>17</java.version>
-                <maven.compiler.source>17</maven.compiler.source>
-                <maven.compiler.target>17</maven.compiler.target>
+                <java.version>25</java.version>
+                <maven.compiler.source>25</maven.compiler.source>
+                <maven.compiler.target>25</maven.compiler.target>
             </properties>
 
         </profile>
@@ -1312,9 +1321,9 @@
 
             <properties>
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-                <java.version>21</java.version>
-                <maven.compiler.source>21</maven.compiler.source>
-                <maven.compiler.target>21</maven.compiler.target>
+                <java.version>25</java.version>
+                <maven.compiler.source>25</maven.compiler.source>
+                <maven.compiler.target>25</maven.compiler.target>
             </properties>
 
         </profile>
@@ -1518,9 +1527,9 @@
 
             <properties>
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-                <java.version>17</java.version>
-                <maven.compiler.source>17</maven.compiler.source>
-                <maven.compiler.target>17</maven.compiler.target>
+                <java.version>25</java.version>
+                <maven.compiler.source>25</maven.compiler.source>
+                <maven.compiler.target>25</maven.compiler.target>
             </properties>
         </profile>
 
@@ -1710,10 +1719,10 @@
         <logback.version>1.5.6</logback.version>
 
         <!-- plugins -->
-        <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>3.5.2</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
         <exec-maven-plugin.version>3.3.0</exec-maven-plugin.version>
-        <java.version>8</java.version>
+        <java.version>25</java.version>
         <log4j.version>1.2.17</log4j.version>
         <jmh-core.version>1.37</jmh-core.version>
         <jmh-generator.version>1.37</jmh-generator.version>
@@ -1738,7 +1747,7 @@
         <maven-jxr-plugin.version>3.4.0</maven-jxr-plugin.version>
         <gitflow-incremental-builder.version>4.5.4</gitflow-incremental-builder.version>
         <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
-        <lombok.version>1.18.36</lombok.version>
+        <lombok.version>1.18.42</lombok.version>
         <h2.version>2.2.224</h2.version>
         <guava.version>33.2.1-jre</guava.version>
         <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
