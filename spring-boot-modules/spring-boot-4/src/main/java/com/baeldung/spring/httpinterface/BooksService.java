@@ -1,4 +1,4 @@
-package com.baeldung.httpinterface;
+package com.baeldung.spring.httpinterface;
 
 import java.util.List;
 

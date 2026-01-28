@@ -1,4 +1,4 @@
-package com.baeldung.httpinterface;
+package com.baeldung.spring.httpinterface;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyMap;

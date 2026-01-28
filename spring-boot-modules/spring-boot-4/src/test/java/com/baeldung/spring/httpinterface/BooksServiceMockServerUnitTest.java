@@ -1,34 +1,32 @@
-package com.baeldung.httpinterface;
+package com.baeldung.spring.httpinterface;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockserver.model.HttpRequest.request;
+import static org.mockserver.model.HttpResponse.response;
+import static org.mockserver.verify.VerificationTimes.exactly;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.util.List;
 
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockserver.client.MockServerClient;
-import org.mockserver.integration.ClientAndServer;
 import org.mockserver.configuration.Configuration;
-
-import java.io.IOException;
-import java.net.ServerSocket;
-import java.util.List;
-
-import org.mockserver.model.HttpRequest;
+import org.mockserver.integration.ClientAndServer;
+import org.mockserver.matchers.Times;
 import org.mockserver.model.MediaType;
-import org.mockserver.verify.VerificationTimes;
 import org.slf4j.event.Level;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
-import reactor.core.publisher.Mono;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockserver.integration.ClientAndServer.startClientAndServer;
-import static org.mockserver.matchers.Times.exactly;
-import static org.mockserver.model.HttpRequest.request;
-import static org.mockserver.model.HttpResponse.response;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import reactor.core.publisher.Mono;
 
 class BooksServiceMockServerTest {
 
@@ -45,7 +43,7 @@ class BooksServiceMockServerTest {
         serviceUrl = "http://" + SERVER_ADDRESS + ":" + serverPort;
 
         Configuration config = Configuration.configuration().logLevel(Level.WARN);
-        mockServer = startClientAndServer(config, serverPort);
+        mockServer = ClientAndServer.startClientAndServer(config, serverPort);
 
         mockAllBooksRequest();
         mockBookByIdRequest();
@@ -67,10 +65,10 @@ class BooksServiceMockServerTest {
         assertEquals(2, books.size());
 
         mockServer.verify(
-          HttpRequest.request()
+          request()
             .withMethod(HttpMethod.GET.name())
             .withPath(PATH),
-          VerificationTimes.exactly(1)
+          exactly(1)
         );
     }
 
@@ -83,10 +81,10 @@ class BooksServiceMockServerTest {
         assertEquals("Book_1", book.title());
 
         mockServer.verify(
-          HttpRequest.request()
+          request()
             .withMethod(HttpMethod.GET.name())
             .withPath(PATH + "/1"),
-          VerificationTimes.exactly(1)
+          exactly(1)
         );
     }
 
@@ -119,10 +117,10 @@ class BooksServiceMockServerTest {
         assertEquals("Book_3", book.title());
 
         mockServer.verify(
-          HttpRequest.request()
+          request()
             .withMethod(HttpMethod.POST.name())
             .withPath(PATH),
-          VerificationTimes.exactly(1)
+          exactly(1)
         );
     }
 
@@ -135,10 +133,10 @@ class BooksServiceMockServerTest {
         assertEquals(HttpStatusCode.valueOf(200), response.getStatusCode());
 
         mockServer.verify(
-          HttpRequest.request()
+          request()
             .withMethod(HttpMethod.DELETE.name())
             .withPath(PATH + "/3"),
-          VerificationTimes.exactly(1)
+          exactly(1)
         );
     }
 
@@ -154,7 +152,7 @@ class BooksServiceMockServerTest {
             request()
               .withPath(PATH)
               .withMethod(HttpMethod.GET.name()),
-            exactly(1)
+            Times.exactly(1)
           )
           .respond(
             response()
@@ -170,7 +168,7 @@ class BooksServiceMockServerTest {
             request()
               .withPath(PATH + "/1")
               .withMethod(HttpMethod.GET.name()),
-            exactly(1)
+            Times.exactly(1)
           )
           .respond(
             response()
@@ -188,7 +186,7 @@ class BooksServiceMockServerTest {
               .withMethod(HttpMethod.POST.name())
               .withContentType(MediaType.APPLICATION_JSON)
               .withBody("{\"id\":3,\"title\":\"Book_3\",\"author\":\"Author_3\",\"year\":2000}"),
-            exactly(1)
+            Times.exactly(1)
           )
           .respond(
             response()
@@ -204,7 +202,7 @@ class BooksServiceMockServerTest {
             request()
               .withPath(PATH + "/3")
               .withMethod(HttpMethod.DELETE.name()),
-            exactly(1)
+            Times.exactly(1)
           )
           .respond(
             response()
