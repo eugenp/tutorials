@@ -1,4 +1,4 @@
-package com.baeldung.httpinterface;
+package com.baeldung.spring.httpinterface;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;

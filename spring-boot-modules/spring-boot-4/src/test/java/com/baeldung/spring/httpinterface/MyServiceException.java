@@ -1,4 +1,4 @@
-package com.baeldung.httpinterface;
+package com.baeldung.spring.httpinterface;
 
 public class MyServiceException extends RuntimeException {
 
