@@ -26,7 +26,6 @@ public class MethodsController {
             return theName;
         }
 
-
         public String buildUppercaseName() {
             return getName().toUpperCase();
         }
