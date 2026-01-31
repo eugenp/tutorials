@@ -24,9 +24,9 @@ class AuthorRepository {
         log.info("Author requested for article: {}", articleTitle);
 
         if (isPremiumArticle(articleTitle)) {
-            log.info("Article is premium, credentials required");
+            log.info("Article is premium, further information required");
             if ((isBlank(username) || isBlank(reason)) && requestContext.elicitEnabled()) {
-                log.info("Credentials missing, initiating elicitation");
+                log.info("Required details missing, initiating elicitation");
 
                 StructuredElicitResult<PremiumArticleAccessRequest> elicitResult = requestContext.elicit(
                     e -> e.message("Baeldung username and reason required."),
