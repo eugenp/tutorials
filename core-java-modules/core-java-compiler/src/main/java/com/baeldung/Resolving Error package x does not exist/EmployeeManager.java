@@ -3,7 +3,7 @@
 import com.baeldung.model.Employee;
 
 // Importing external Apache Commons Lang library
-import org.apache.commons.lang3.StringUtils;
+//import org.apache.commons.lang3.StringUtils;
 
 /**
  * EmployeeManager class demonstrates
@@ -17,9 +17,8 @@ public class EmployeeManager {
 
         Employee emp = new Employee("Alice", 101);
 
-        // Convert employee info to uppercase using external library
+        /* Convert employee info to uppercase using external library
         String result = StringUtils.upperCase(emp.getInfo());
-
-        System.out.println(result);
+        System.out.println(result);*/
     }
 }
