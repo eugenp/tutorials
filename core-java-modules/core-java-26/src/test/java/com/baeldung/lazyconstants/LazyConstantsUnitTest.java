@@ -14,7 +14,7 @@ public class LazyConstantsUnitTest {
     
     private Set<String> cities;
 
-    private String expensiveMethodToDetermineCountry(String city) {
+    private String expensiveMethodToGetCountry(String city) {
         switch(city) {
         case "Berlin":
             return "Germany";
@@ -48,7 +48,7 @@ public class LazyConstantsUnitTest {
 
     @Test
     void givenLazyMapForCityToCountry_thenVerifyValuesAreExpected() {
-        Map<String, String> cityToCountry = Map.ofLazy(cities, city -> expensiveMethodToDetermineCountry(city));
+        Map<String, String> cityToCountry = Map.ofLazy(cities, city -> expensiveMethodToGetCountry(city));
 
         assertThat(cityToCountry.get("London")).isEqualTo("England");
         assertThat(cityToCountry.get("Madrid")).isEqualTo("Spain");
