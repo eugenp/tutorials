@@ -68,6 +68,11 @@
             <artifactId>mybatis-dynamic-sql</artifactId>
             <version>${mybatis-dynamic-sql.version}</version>
         </dependency>
+        <dependency>
+            <groupId>gg.jte</groupId>
+            <artifactId>jte-spring-boot-starter-3</artifactId>
+            <version>${jte.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -110,6 +115,7 @@
         <record-builder.version>47</record-builder.version>
         <jena.version>5.5.0</jena.version>
         <mybatis-dynamic-sql.version>1.5.2</mybatis-dynamic-sql.version>
+        <jte.version>3.2.2</jte.version>
     </properties>
 
 </project>
