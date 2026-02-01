@@ -10,7 +10,7 @@ import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class StableFunctionUnitTest {
+public class LazyConstantsUnitTest {
     
     private Set<String> cities;
 
@@ -59,5 +59,4 @@ public class StableFunctionUnitTest {
     void init() {
         cities = Set.of("London", "Madrid", "Paris");
     }
-
 }
