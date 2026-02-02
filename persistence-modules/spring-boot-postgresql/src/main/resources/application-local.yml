@@ -14,9 +14,9 @@ spring:
     activate:
       on-profile: local
   datasource:
-    url: ${DATABASE_URL}
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
 
 ---
 # ---------- heroku profile ----------
