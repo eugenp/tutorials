@@ -16,6 +16,7 @@
 
     <modules>
         <module>genie</module>
+        <module>hollow</module>
         <module>mantis</module>
     </modules>
 

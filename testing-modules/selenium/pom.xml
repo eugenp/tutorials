@@ -26,6 +26,11 @@
             </exclusions>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-web.version}</version>
+        </dependency>
+        <dependency>
             <groupId>ru.yandex.qatools.ashot</groupId>
             <artifactId>ashot</artifactId>
             <version>${ashot.version}</version>
@@ -60,6 +65,7 @@
         <selenium-java.version>4.18.1</selenium-java.version>
         <ashot.version>1.5.4</ashot.version>
         <webdrivermanager.version>5.7.0</webdrivermanager.version>
+        <spring-web.version>3.4.1</spring-web.version>
     </properties>
 
 </project>

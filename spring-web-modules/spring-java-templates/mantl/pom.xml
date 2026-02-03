@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>spring-java-templates-mantl</artifactId>
+    <name>spring-java.templates.mantl</name>
+    <packaging>jar</packaging>
+    <description>Spring Java Templates Module - ManTL</description>
+
+    <parent>
+        <groupId>com.baeldung.web</groupId>
+        <artifactId>spring-java-templates</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- ManTL -->
+        <dependency>
+            <groupId>systems.manifold</groupId>
+            <artifactId>manifold-templates-rt</artifactId>
+            <version>${mantl.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                        <arg>-Xplugin:Manifold</arg>
+                    </compilerArgs>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>systems.manifold</groupId>
+                            <artifactId>manifold-templates</artifactId>
+                            <version>${mantl.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <properties>
+        <start-class>com.baeldung.templates.SpringJavaTemplatesApplication</start-class>
+        <spring-boot.version>3.5.7</spring-boot.version>
+        <logback.version>1.5.17</logback.version>
+        <java.version>21</java.version>
+
+        <mantl.version>2025.1.31</mantl.version>
+    </properties>
+</project>
+

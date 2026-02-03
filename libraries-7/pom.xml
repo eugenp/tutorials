@@ -63,6 +63,16 @@
             <artifactId>webmagic-extension</artifactId>
             <version>1.0.3</version>
         </dependency>
+        <dependency>
+            <groupId>org.mybatis.dynamic-sql</groupId>
+            <artifactId>mybatis-dynamic-sql</artifactId>
+            <version>${mybatis-dynamic-sql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>gg.jte</groupId>
+            <artifactId>jte-spring-boot-starter-3</artifactId>
+            <version>${jte.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -104,6 +114,8 @@
         <manifold.version>2024.1.20</manifold.version>
         <record-builder.version>47</record-builder.version>
         <jena.version>5.5.0</jena.version>
+        <mybatis-dynamic-sql.version>1.5.2</mybatis-dynamic-sql.version>
+        <jte.version>3.2.2</jte.version>
     </properties>
 
 </project>

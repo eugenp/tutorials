@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Selenium Input Demo</title>
+</head>
+<body>
+
+<h2>Demo Form</h2>
+
+<form action="/submit" method="post">
+
+    <input type="hidden" id="hiddenInput" name="hiddenInput" value=""/>
+
+    <label>Username</label><br>
+    <input type="text" id="username" name="username"><br><br>
+
+    <label>Password</label><br>
+    <input type="password" id="password" name="password"><br><br>
+
+    <label>Gender</label><br>
+    <input type="radio" name="gender" value="male"> Male
+    <input type="radio" name="gender" value="female"> Female<br><br>
+
+    <label>Date of Birth</label><br>
+    <input type="date" id="dob" name="dateOfBirth"><br><br>
+
+    <button type="submit" id="submitBtn">Submit</button>
+
+</form>
+
+</body>
+</html>

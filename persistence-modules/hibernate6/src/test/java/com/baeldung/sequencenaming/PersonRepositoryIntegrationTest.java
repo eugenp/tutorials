@@ -1,24 +1,16 @@
 package com.baeldung.sequencenaming;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-import java.sql.Connection;
 import java.util.List;
 
-import javax.sql.DataSource;
-
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest(properties = "spring.config.location=classpath:application-test.properties")
+@SpringBootTest(properties = { "spring.config.location=classpath:application-test.properties",
+    "spring.datasource.url=jdbc:h2:mem:testdb-person;DB_CLOSE_DELAY=-1" })
 public class PersonRepositoryIntegrationTest {
 
     @Autowired

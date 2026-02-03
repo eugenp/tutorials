@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-mvc-5</artifactId>
     <name>spring-boot-mvc-5</name>
@@ -13,6 +14,22 @@
         <artifactId>spring-boot-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+
+    <properties>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.release>17</maven.compiler.release>
+
+        <spring-boot.version>3.2.2</spring-boot.version>
+        <spring.fox.version>3.0.0</spring.fox.version>
+        <spring-cloud.version>2023.0.0</spring-cloud.version>
+        <commons-configuration.version>1.10</commons-configuration.version>
+        <rome.version>1.10.0</rome.version>
+
+        <!-- Set your correct main class -->
+        <start-class>com.baeldung.versioning.ApiVersioningDemoApplication</start-class>
+    </properties>
 
     <dependencyManagement>
         <dependencies>
@@ -80,16 +97,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <spring-boot.version>3.2.2</spring-boot.version>
-        <spring.fox.version>3.0.0</spring.fox.version>
-        <start-class>com.baeldung.springboot.swagger.ArticleApplication</start-class>
-        <spring-cloud.version>2023.0.0</spring-cloud.version>
-        <commons-configuration.version>1.10</commons-configuration.version>
-        <maven.compiler.release>17</maven.compiler.release>
-        <!-- ROME for RSS -->
-        <rome.version>1.10.0</rome.version>
-    </properties>
 
 </project>

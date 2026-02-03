@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="simple-cal" default="deb" basedir=".">
+
+    <property name="app.name" value="simple-cal"/>
+    <property name="app.version" value="1.0-SNAPSHOT"/>
+    <property name="build.dir" location="target"/>
+    <property name="dist.dir" location="${build.dir}/dist"/>
+    <property name="control.dir" location="src/main/resources/deb/control"/>
+
+    <path id="jdeb.classpath">
+        <fileset dir="lib" includes="jdeb-*.jar"/>
+    </path>
+
+    <taskdef name="deb" classname="org.vafer.jdeb.ant.DebTask" classpathref="jdeb.classpath"/>
+
+    <target name="deb" depends="jar">
+        <echo message="Creating Debian package ${app.name}_${app.version}_all.deb"/>
+
+        <deb destFile="${build.dir}/${app.name}_${app.version}_all.deb"
+             controlDir="${control.dir}"
+             name="${app.name}"
+             version="${app.version}"
+             revision="1"
+             type="deb">
+
+            <data src="${build.dir}/${app.name}.jar"
+                  type="file">
+                <mapper type="perm"
+                        prefix="/usr/share/${app.name}"/>
+            </data>
+
+            <data src="src/main/resources/${app.name}"
+                  type="file">
+                <mapper type="perm"
+                        prefix="/usr/bin"
+                        filemode="755"/>
+            </data>
+
+            <data type="template">
+                <paths>
+                    <path>/var/log/${app.name}</path>
+                </paths>
+            </data>
+
+        </deb>
+    </target>
+
+    <target name="jar">
+        <echo message="Creating JAR file (implementation omitted)"/>
+        <mkdir dir="${build.dir}"/>
+        <jar destfile="${build.dir}/${app.name}.jar">
+        </jar>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+</project>
