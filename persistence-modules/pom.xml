@@ -148,6 +148,7 @@
         <module>hibernate-reactive</module>
         <module>spring-data-envers</module>
         <module>spring-persistence-simple</module>
+        <module>mariadb4j</module>
     </modules>
 
     <properties>

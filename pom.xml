@@ -569,7 +569,7 @@
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-java-modules/core-java-lang-7</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
-                <module>libraries-data-io</module>
+                <module>libraries-serialization-modules</module>
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>quarkus-modules/quarkus</module>
                 <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
@@ -714,8 +714,6 @@
                 <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
                 <module>libraries-data-db-2</module>
-                <module>libraries-data-io-2</module>
-                <module>libraries-data-mariadb4j</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
 		        <module>libraries-http-2</module>
@@ -1049,7 +1047,7 @@
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-java-modules/core-java-lang-7</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
-                <module>libraries-data-io</module>
+                <module>libraries-serialization-modules</module>
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>quarkus-modules/quarkus</module>
                 <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
@@ -1187,8 +1185,6 @@
                 <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
                 <module>libraries-data-db-2</module>
-                <module>libraries-data-io-2</module>
-                <module>libraries-data-mariadb4j</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
                 <module>libraries-http-2</module>
