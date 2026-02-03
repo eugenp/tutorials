@@ -1,0 +1,18 @@
+application.rest.services.christmasJoy.baseUrl: https://christmasjoy.dev/api
+
+spring:
+  application:
+    name: baeldung-spring-boot-4
+
+  artemis:
+    mode: native
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+  jms:
+    template:
+      default-destination: demo-queue
+
+logging:
+  level:
+    org.springframework.jms: DEBUG
