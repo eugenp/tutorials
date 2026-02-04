@@ -102,6 +102,27 @@ class ListSortWithComparatorUnitTest {
     }
 
     @Test
+    void givenComparableTasks_whenSortedWithNaturalOrder_thenOrderIsCorrect() {
+        List<SimpleTask> tasks = new ArrayList<>();
+        tasks.add(new SimpleTask("Write docs", 3));
+        tasks.add(new SimpleTask("Fix build", 1));
+        tasks.add(new SimpleTask("Review PR", 2));
+        tasks.add(new SimpleTask("Another P1", 1));
+
+        tasks.sort(Comparator.naturalOrder());
+
+        assertEquals(
+            Arrays.asList(
+                new SimpleTask("Another P1", 1),
+                new SimpleTask("Fix build", 1),
+                new SimpleTask("Review PR", 2),
+                new SimpleTask("Write docs", 3)
+            ),
+            tasks
+        );
+    }
+
+    @Test
     void givenNonComparableTasksInArrayList_whenSortedWithoutComparator_thenThrowsClassCastException() {
         List<NonComparableTask> tasks = new ArrayList<>();
         tasks.add(new NonComparableTask("B", 2));
