@@ -47,8 +47,7 @@ public class LikeUsageInPreparedStatementIntegrationTest {
     @Test
     void whenConcatenatingWildcardCharsInParamForLike_thenCorrect() throws SQLException {
         String keyword = "hello";
-        try (Connection conn = ds.getConnection()) {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT ID, CONTENT FROM MESSAGES WHERE CONTENT LIKE ?");
+        try (Connection conn = ds.getConnection(); PreparedStatement pstmt = conn.prepareStatement("SELECT ID, CONTENT FROM MESSAGES WHERE CONTENT LIKE ?")) {
             pstmt.setString(1, "%" + keyword + "%");
             try (ResultSet rs = pstmt.executeQuery()) {
                 List<String> contents = new ArrayList<>();
@@ -63,8 +62,8 @@ public class LikeUsageInPreparedStatementIntegrationTest {
     @Test
     void whenUsingSqlConcatFunctionForLike_thenCorrect() throws SQLException {
         String keyword = "hello";
-        try (Connection conn = ds.getConnection()) {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT ID, CONTENT FROM MESSAGES WHERE CONTENT LIKE CONCAT('%', ?, '%')");
+        try (Connection conn = ds.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement("SELECT ID, CONTENT FROM MESSAGES WHERE CONTENT LIKE CONCAT('%', ?, '%')")) {
             pstmt.setString(1, keyword);
             try (ResultSet rs = pstmt.executeQuery()) {
                 List<String> contents = new ArrayList<>();
@@ -79,8 +78,8 @@ public class LikeUsageInPreparedStatementIntegrationTest {
 
     @Test
     void whenKeywordContainsWildcardChar_thenIncorrect() throws SQLException {
-        try (Connection conn = ds.getConnection()) {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT ID, CONTENT FROM MESSAGES WHERE CONTENT LIKE CONCAT('%', ?, '%')");
+        try (Connection conn = ds.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement("SELECT ID, CONTENT FROM MESSAGES WHERE CONTENT LIKE CONCAT('%', ?, '%')")) {
             pstmt.setString(1, "50%");
             try (ResultSet rs = pstmt.executeQuery()) {
                 List<String> contents = new ArrayList<>();
@@ -106,8 +105,8 @@ public class LikeUsageInPreparedStatementIntegrationTest {
 
     @Test
     void whenEscapeInSqlForLike_thenCorrect() throws SQLException {
-        try (Connection conn = ds.getConnection()) {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT ID, CONTENT FROM MESSAGES WHERE CONTENT LIKE ? ESCAPE '!'");
+        try (Connection conn = ds.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement("SELECT ID, CONTENT FROM MESSAGES WHERE CONTENT LIKE ? ESCAPE '!'")) {
 
             pstmt.setString(1, "%" + escapeLikeSpecialChars("50%") + "%");
             try (ResultSet rs = pstmt.executeQuery()) {
@@ -122,9 +121,8 @@ public class LikeUsageInPreparedStatementIntegrationTest {
 
     @Test
     void whenEscapeInSqlWithConcatFunctionForLike_thenCorrect() throws SQLException {
-        try (Connection conn = ds.getConnection()) {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT ID, CONTENT FROM MESSAGES WHERE CONTENT LIKE CONCAT('%',?,'%') ESCAPE '!'");
-
+        try (Connection conn = ds.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement("SELECT ID, CONTENT FROM MESSAGES WHERE CONTENT LIKE CONCAT('%',?,'%') ESCAPE '!'")) {
             pstmt.setString(1, escapeLikeSpecialChars("50%"));
             try (ResultSet rs = pstmt.executeQuery()) {
                 List<String> contents = new ArrayList<>();
