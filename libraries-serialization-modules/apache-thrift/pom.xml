@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>apache-thrift</artifactId>
+    <name>apache-thrift</name>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>libraries-serialization-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libthrift</artifactId>
+            <version>${apache-thrift.version}</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <apache-thrift.version>0.14.2</apache-thrift.version>
+    </properties>
+
+</project>
