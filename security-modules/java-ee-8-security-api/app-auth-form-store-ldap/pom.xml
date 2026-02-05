@@ -23,6 +23,7 @@
 
     <properties>
         <unboundid.ldapsdk.version>4.0.4</unboundid.ldapsdk.version>
+        <skipLibertyParent>false</skipLibertyParent>
     </properties>
 
 </project>

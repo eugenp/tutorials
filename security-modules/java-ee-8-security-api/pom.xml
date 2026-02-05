@@ -52,6 +52,7 @@
                         <version>3.8.2</version>
                         <configuration>
                             <serverName>guideServer</serverName>
+                            <skip>${skipLibertyParent}</skip>
                         </configuration>
                         <executions>
                             <execution>
@@ -59,7 +60,7 @@
                                 <phase>prepare-package</phase>
                                 <goals>
                                     <goal>install-server</goal>
-                                    <goal>create-server</goal>
+                                    <goal>create</goal>
                                     <goal>install-feature</goal>
                                 </goals>
                             </execution>
@@ -67,7 +68,7 @@
                                 <id>install-apps</id>
                                 <phase>package</phase>
                                 <goals>
-                                    <goal>install-apps</goal>
+                                    <goal>deploy</goal>
                                 </goals>
                             </execution>
                         </executions>
@@ -96,6 +97,7 @@
         <liberty-maven-plugin.version>2.3</liberty-maven-plugin.version>
         <openliberty-runtime.version>18.0.0.1</openliberty-runtime.version>
         <liberty.var.app.context.root>${project.artifactId}</liberty.var.app.context.root>
+        <skipLibertyParent>true</skipLibertyParent>
     </properties>
 
 </project>

@@ -13,4 +13,8 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <skipLibertyParent>false</skipLibertyParent>
+    </properties>
+
 </project>
