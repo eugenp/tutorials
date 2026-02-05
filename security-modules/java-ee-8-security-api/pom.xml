@@ -38,28 +38,57 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
             </plugin>
-            <plugin>
-                <groupId>io.openliberty.tools</groupId>
-                <artifactId>liberty-maven-plugin</artifactId>
-                <version>3.8.2</version>
-                <configuration>
-                    <serverName>guideServer</serverName>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.1.2</version>
-                <configuration>
-                    <systemPropertyVariables>
-                        <default.http.port>${defaultHttpPort}</default.http.port>
-                        <http.port>${defaultHttpPort}</http.port>
-                        <war.name>${liberty.var.app.context.root}</war.name>
-                    </systemPropertyVariables>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>liberty-deploy</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.openliberty.tools</groupId>
+                        <artifactId>liberty-maven-plugin</artifactId>
+                        <version>3.8.2</version>
+                        <configuration>
+                            <serverName>guideServer</serverName>
+                            <skip>${skipLibertyParent}</skip>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>install-server</id>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>install-server</goal>
+                                    <goal>create</goal>
+                                    <goal>install-feature</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>install-apps</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>deploy</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>3.1.2</version>
+                        <configuration>
+                            <systemPropertyVariables>
+                                <default.http.port>${defaultHttpPort}</default.http.port>
+                                <http.port>${defaultHttpPort}</http.port>
+                                <war.name>${liberty.var.app.context.root}</war.name>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <properties>
         <defaultHttpPort>9080</defaultHttpPort>
@@ -68,6 +97,7 @@
         <liberty-maven-plugin.version>2.3</liberty-maven-plugin.version>
         <openliberty-runtime.version>18.0.0.1</openliberty-runtime.version>
         <liberty.var.app.context.root>${project.artifactId}</liberty.var.app.context.root>
+        <skipLibertyParent>true</skipLibertyParent>
     </properties>
 
 </project>
