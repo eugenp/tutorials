@@ -1,0 +1,32 @@
+server:
+  port: 9001
+
+logging:
+  level:
+    org.springframework.security: trace
+
+spring:
+  security:
+    oauth2:
+      authorizationserver:
+        client:
+          oidc-client:
+            registration:
+              client-id: "user-service"
+              client-secret: "{noop}secret"
+              client-authentication-methods:
+                - "client_secret_basic"
+              authorization-grant-types:
+                - "client_credentials"
+              scopes:
+                - "user.read"
+          token-client:
+            registration:
+              client-id: "token-client"
+              client-secret: "{noop}token"
+              client-authentication-methods:
+                - "client_secret_basic"
+              authorization-grant-types:
+                - "urn:ietf:params:oauth:grant-type:token-exchange"
+              scopes:
+                - "message.read"
