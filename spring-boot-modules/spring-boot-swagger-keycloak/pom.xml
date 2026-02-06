@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-swagger-keycloak</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-    <name>spring-boot-swagger-keycloak</name>
     <packaging>jar</packaging>
+    <name>spring-boot-swagger-keycloak</name>
     <description>Module For Spring Boot Swagger UI with Keycloak</description>
 
     <parent>
