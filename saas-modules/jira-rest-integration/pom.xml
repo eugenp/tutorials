@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jira-rest-integration</artifactId>
-    <name>jira-rest-integration</name>
     <packaging>jar</packaging>
+    <name>jira-rest-integration</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -25,6 +25,13 @@
             <version>${atlassian.fugue.version}</version>
         </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>atlassian-public</id>
+            <url>https://packages.atlassian.com/maven/repository/public</url>
+        </repository>
+    </repositories>
 
     <build>
         <finalName>jira-rest-integration</finalName>
@@ -52,13 +59,6 @@
             </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>atlassian-public</id>
-            <url>https://packages.atlassian.com/maven/repository/public</url>
-        </repository>
-    </repositories>
 
     <properties>
         <jira-rest-java-client-core.version>4.0.0</jira-rest-java-client-core.version>
