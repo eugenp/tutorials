@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-data-mariadb4j</artifactId>
-    <name>libraries-data-mariadb4j</name>
     <packaging>jar</packaging>
+    <name>libraries-data-mariadb4j</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
