@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
-public class HttpProxyApplicationTest {
+public class HttpProxyApplicationUnitTest {
 
     @Autowired
     private MyHttpClient webClient;
@@ -15,25 +15,25 @@ public class HttpProxyApplicationTest {
     private MyHttpClient restTemplateClient;
 
     @Test
-    public void testGreet() {
+    public void givenWebClient_whenGreet_thenReturnGreeting() {
         String response = webClient.greet();
         Assertions.assertEquals("Hello from the server!", response);
     }
 
     @Test
-    public void testGreetWithUsername() {
+    public void givenWebClient_whenGreetWithUsername_thenReturnPersonalizedGreeting() {
         String response = webClient.greet("John");
         Assertions.assertEquals("Hello, John!", response);
     }
 
     @Test
-    public void testGreetWithRestTemplate() {
+    public void givenRestTemplate_whenGreet_thenReturnGreeting() {
         String response = restTemplateClient.greet();
         Assertions.assertEquals("Hello from the server!", response);
     }
 
     @Test
-    public void testGreetWithUsernameRestTemplate() {
+    public void givenRestTemplate_whenGreetWithUsername_thenReturnPersonalizedGreeting() {
         String response = restTemplateClient.greet("Jane");
         Assertions.assertEquals("Hello, Jane!", response);
     }
