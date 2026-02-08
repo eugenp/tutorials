@@ -127,7 +127,7 @@
    <properties>
        <junit-jupiter.version>5.9.0</junit-jupiter.version>
        <spring-boot.version>3.5.0</spring-boot.version>
-       <spring-ai.version>1.0.1</spring-ai.version>
+       <spring-ai.version>1.1.3-SNAPSHOT</spring-ai.version>
    </properties>
 
 </project>
