@@ -23,7 +23,8 @@ public class JteTemplateTest {
                 <p>Helpful article</p>
                 <p>42</p>
             </body>
-        </html>""",
+        </html>
+        """,
         output);
     }
 
