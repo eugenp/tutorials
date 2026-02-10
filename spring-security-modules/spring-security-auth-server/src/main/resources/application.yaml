@@ -1,0 +1,55 @@
+spring:
+  security:
+    oauth2:
+      authorizationserver:
+        multiple-issuers-allowed: true
+logging:
+  level:
+    org.springframework.security: TRACE
+
+multitenant-auth-server:
+  tenants:
+    issuer1:
+      client:
+        client1:
+          require-authorization-consent: false
+          registration:
+            client-name: Client 1 - Issuer 1
+            client-id: client1
+            client-secret: "{noop}secret1"
+            client-authentication-methods:
+              - client_secret_basic
+            redirect-uris:
+              - http://localhost:9090/login/oauth2/code/issuer1client1
+            authorization-grant-types:
+              - client_credentials
+              - authorization_code
+              - refresh_token
+            scopes:
+              - openid
+              - email
+              - account:read
+    issuer2:
+      client:
+        client1:
+          require-authorization-consent: false
+          registration:
+            client-name: 'Client 1 - Issuer 2'
+            client-id: client1
+            client-secret: "{noop}secret1"
+            client-authentication-methods:
+              - client_secret_basic
+            redirect-uris:
+              - http://localhost:9090/login/oauth2/code/issuer2client1
+            authorization-grant-types:
+              - client_credentials
+              - authorization_code
+              - refresh_token
+            scopes:
+              - openid
+              - email
+              - account:write
+
+
+
+

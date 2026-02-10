@@ -2,7 +2,11 @@ package com.baeldung.composite.entity;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-
+/**
+ * JPA entity representing a Book with a composite primary key.
+ *
+ * Uses {@link BookId} as an embedded identifier.
+ */
 @Entity
 public class Book {
 
