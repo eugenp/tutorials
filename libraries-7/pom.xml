@@ -73,6 +73,11 @@
             <artifactId>jte-spring-boot-starter-3</artifactId>
             <version>${jte.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.hypersistence</groupId>
+            <artifactId>hypersistence-tsid</artifactId>
+            <version>${hypersistence.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -116,6 +121,7 @@
         <jena.version>5.5.0</jena.version>
         <mybatis-dynamic-sql.version>1.5.2</mybatis-dynamic-sql.version>
         <jte.version>3.2.2</jte.version>
+        <hypersistence.version>2.1.4</hypersistence.version>
     </properties>
 
 </project>
