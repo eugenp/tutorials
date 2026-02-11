@@ -10,15 +10,12 @@ public class DataSourceDemo {
 
         try {
             String sampleData = "Hello from the database! This could be a large file.";
-            InputStream inputStream =
-                    new ByteArrayInputStream(sampleData.getBytes());
+            InputStream inputStream = new ByteArrayInputStream(sampleData.getBytes());
 
             System.out.println("Step 1: Retrieved InputStream from database");
             System.out.println("Data size: " + sampleData.length() + " bytes\n");
 
-            DataHandler dataHandler = new DataHandler(
-                    new InputStreamDataSource(inputStream, "application/octet-stream")
-            );
+            DataHandler dataHandler = new DataHandler(new InputStreamDataSource(inputStream, "application/octet-stream"));
 
             System.out.println("Step 2: Created DataHandler successfully!");
             System.out.println("Content type: " + dataHandler.getContentType());
@@ -26,13 +23,13 @@ public class DataSourceDemo {
 
             InputStream resultStream = dataHandler.getInputStream();
 
-            // Used only for demonstration – not memory efficient for large streams
+            // Used only for demonstration - not memory efficient for large streams
             String retrievedData = new String(resultStream.readAllBytes());
 
             System.out.println("Step 3: Retrieved data from DataHandler:");
             System.out.println("\"" + retrievedData + "\"");
 
-            System.out.println("\n✓ Success! Data streamed without loading entirely into memory first.");
+            System.out.println("\nSuccess! Data streamed without loading entirely into memory first.");
 
         } catch (Exception e) {
             e.printStackTrace();
