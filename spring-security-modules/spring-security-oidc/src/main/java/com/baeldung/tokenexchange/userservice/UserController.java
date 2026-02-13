@@ -64,8 +64,8 @@ public class UserController {
         this.restClient = restClient;
     }
 
-    @GetMapping(value = "/user/messages")
-    public List<String> getMessagesWithImpersonation(
+    @GetMapping(value = "/user/message")
+    public List<String> getUserMessage(
         @RegisteredOAuth2AuthorizedClient("my-token-exchange-client")
         OAuth2AuthorizedClient authorizedClient) {
         return getUserMessages(authorizedClient);
