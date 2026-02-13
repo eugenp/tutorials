@@ -7,6 +7,9 @@ logging:
 
 spring:
   security:
+    user:
+      name: baeldung
+      password: password
     oauth2:
       authorizationserver:
         client:
@@ -17,16 +20,20 @@ spring:
               client-authentication-methods:
                 - "client_secret_basic"
               authorization-grant-types:
-                - "client_credentials"
+                - "authorization_code"
               scopes:
+                - "openid"
                 - "user.read"
-          token-client:
+              redirect-uris:
+                - "http://localhost:8080/login/oauth2/code/user-service"
+          token-exchange-client:
             registration:
-              client-id: "token-client"
+              client-id: "token-exchange-client"
               client-secret: "{noop}token"
               client-authentication-methods:
                 - "client_secret_basic"
               authorization-grant-types:
                 - "urn:ietf:params:oauth:grant-type:token-exchange"
               scopes:
+                - "openid"
                 - "message.read"
