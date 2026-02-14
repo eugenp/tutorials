@@ -41,7 +41,7 @@
             <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
-                <version>5.11.0-M2</version> <!-- Align all JUnit dependencies -->
+                <version>${junit-bom.version}</version> <!-- Align all JUnit dependencies -->
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -53,6 +53,7 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <junit-bom.version>5.11.0-M2</junit-bom.version>
     </properties>
 
 </project>

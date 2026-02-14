@@ -16,7 +16,7 @@ public class HttpClientConfig {
     @Bean
     public MyHttpClient webClient() {
         HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(WebClientAdapter.create(WebClient.builder()
-                .baseUrl("http://localhost:8080").build()))
+          .baseUrl("http://localhost:8080").build()))
             .build();
         return factory.createClient(MyHttpClient.class);
     }
@@ -29,7 +29,7 @@ public class HttpClientConfig {
         RestTemplateAdapter adapter = RestTemplateAdapter.create(restTemplate);
 
         HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(adapter)
-            .build();
+          .build();
         return factory.createClient(MyHttpClient.class);
     }
 }
