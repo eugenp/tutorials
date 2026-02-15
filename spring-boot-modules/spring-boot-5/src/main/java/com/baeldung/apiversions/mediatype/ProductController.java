@@ -42,7 +42,7 @@ public class ProductController {
     @PostConstruct
     public void init(){
         productsMap.put("1001", new Product("1001", "apple",
-            "apple_long_desc", 1.99));
+            "apple_desc", 1.99));
         productsV2Map.put("1001", new ProductV2("1001", "apple", 1.99));
     }
 }

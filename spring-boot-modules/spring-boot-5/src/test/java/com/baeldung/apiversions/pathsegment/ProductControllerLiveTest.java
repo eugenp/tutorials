@@ -25,12 +25,9 @@ class ProductControllerLiveTest {
             .expectStatus()
             .isOk()
             .expectBody()
-            .jsonPath("$.name")
-            .isEqualTo("apple")
-            .jsonPath("$.desc")
-            .isEqualTo("apple_long_desc")
-            .jsonPath("$.price")
-            .isEqualTo(1.99);
+            .jsonPath("$.name").isEqualTo("apple")
+            .jsonPath("$.desc").isEqualTo("apple_desc")
+            .jsonPath("$.price").isEqualTo(1.99);
     }
 
     @Test
@@ -41,12 +38,9 @@ class ProductControllerLiveTest {
             .expectStatus()
             .isOk()
             .expectBody()
-            .jsonPath("$.name")
-            .isEqualTo("apple")
-            .jsonPath("$.desc")
-            .doesNotExist()
-            .jsonPath("$.price")
-            .isEqualTo(1.99);
+            .jsonPath("$.name").isEqualTo("apple")
+            .jsonPath("$.desc").doesNotExist()
+            .jsonPath("$.price").isEqualTo(1.99);
     }
 
     @Test

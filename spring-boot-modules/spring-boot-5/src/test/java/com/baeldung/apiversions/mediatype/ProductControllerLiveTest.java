@@ -26,13 +26,11 @@ class ProductControllerLiveTest {
             .exchange()
             .expectStatus()
             .isOk()
+            .expectHeader().contentType("application/vnd.baeldung.product+json;version=1")
             .expectBody()
-            .jsonPath("$.name")
-            .isEqualTo("apple")
-            .jsonPath("$.desc")
-            .isEqualTo("apple_long_desc")
-            .jsonPath("$.price")
-            .isEqualTo(1.99);
+            .jsonPath("$.name").isEqualTo("apple")
+            .jsonPath("$.desc").isEqualTo("apple_desc")
+            .jsonPath("$.price").isEqualTo(1.99);
     }
 
     @Test
@@ -43,13 +41,11 @@ class ProductControllerLiveTest {
             .exchange()
             .expectStatus()
             .isOk()
+            .expectHeader().contentType("application/vnd.baeldung.product+json;version=2")
             .expectBody()
-            .jsonPath("$.name")
-            .isEqualTo("apple")
-            .jsonPath("$.desc")
-            .doesNotExist()
-            .jsonPath("$.price")
-            .isEqualTo(1.99);
+            .jsonPath("$.name").isEqualTo("apple")
+            .jsonPath("$.desc").doesNotExist()
+            .jsonPath("$.price").isEqualTo(1.99);
     }
 
     @Test
@@ -61,12 +57,9 @@ class ProductControllerLiveTest {
             .expectStatus()
             .is4xxClientError()
             .expectBody()
-            .jsonPath("$.name")
-            .doesNotExist()
-            .jsonPath("$.desc")
-            .doesNotExist()
-            .jsonPath("$.price")
-            .doesNotExist();
+            .jsonPath("$.name").doesNotExist()
+            .jsonPath("$.desc").doesNotExist()
+            .jsonPath("$.price").doesNotExist();
     }
 
     @Test
@@ -78,11 +71,8 @@ class ProductControllerLiveTest {
             .expectStatus()
             .is4xxClientError()
             .expectBody()
-            .jsonPath("$.name")
-            .doesNotExist()
-            .jsonPath("$.desc")
-            .doesNotExist()
-            .jsonPath("$.price")
-            .doesNotExist();
+            .jsonPath("$.name").doesNotExist()
+            .jsonPath("$.desc").doesNotExist()
+            .jsonPath("$.price").doesNotExist();
     }
 }

@@ -23,15 +23,11 @@ class ProductControllerLiveTest {
             .uri("/api/products/1001")
             .header("X-API-Version", "1")
             .exchange()
-            .expectStatus()
-            .isOk()
+            .expectStatus().isOk()
             .expectBody()
-            .jsonPath("$.name")
-            .isEqualTo("apple")
-            .jsonPath("$.desc")
-            .isEqualTo("apple_long_desc")
-            .jsonPath("$.price")
-            .isEqualTo(1.99);
+            .jsonPath("$.name").isEqualTo("apple")
+            .jsonPath("$.desc").isEqualTo("apple_desc")
+            .jsonPath("$.price").isEqualTo(1.99);
     }
 
     @Test
@@ -40,15 +36,11 @@ class ProductControllerLiveTest {
             .uri("/api/products/1001")
             .header("X-API-Version", "2")
             .exchange()
-            .expectStatus()
-            .isOk()
+            .expectStatus().isOk()
             .expectBody()
-            .jsonPath("$.name")
-            .isEqualTo("apple")
-            .jsonPath("$.desc")
-            .doesNotExist()
-            .jsonPath("$.price")
-            .isEqualTo(1.99);
+            .jsonPath("$.name").isEqualTo("apple")
+            .jsonPath("$.desc").doesNotExist()
+            .jsonPath("$.price").isEqualTo(1.99);
     }
 
     @Test
@@ -60,11 +52,8 @@ class ProductControllerLiveTest {
             .expectStatus()
             .is4xxClientError()
             .expectBody()
-            .jsonPath("$.name")
-            .doesNotExist()
-            .jsonPath("$.desc")
-            .doesNotExist()
-            .jsonPath("$.price")
-            .doesNotExist();
+            .jsonPath("$.name").doesNotExist()
+            .jsonPath("$.desc").doesNotExist()
+            .jsonPath("$.price").doesNotExist();
     }
 }
