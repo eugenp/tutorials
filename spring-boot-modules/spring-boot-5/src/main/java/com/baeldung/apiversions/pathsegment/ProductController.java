@@ -26,9 +26,9 @@ public class ProductController {
     private final Map<String, ProductV2> productsV2Map = new HashMap<>();
 
     @GetMapping(value = "/{id}", version = "1.0")
-    public ResponseEntity<Product> getProductV1ByIdPath(@PathVariable String id) {
+    public Product getProductV1ByIdPath(@PathVariable String id) {
         LOGGER.info("Get Product with Path specific version 1 for id {}", id);
-        return new ResponseEntity<>(productsMap.get(id), HttpStatus.OK);
+        return productsMap.get(id);
     }
 
     @GetMapping(value = "/{id}", version = "2.0")

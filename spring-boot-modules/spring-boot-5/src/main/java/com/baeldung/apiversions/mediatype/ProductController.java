@@ -27,16 +27,16 @@ public class ProductController {
 
     @GetMapping(value = "/{id}", version = "1.0",
         produces = "application/vnd.baeldung.product+json")
-    public ResponseEntity<Product> getProductByIdCustomMedia(@PathVariable String id) {
+    public Product getProductByIdCustomMedia(@PathVariable String id) {
         LOGGER.info("Get Product with custom media version 1 for id {}", id);
-        return new ResponseEntity<>(productsMap.get(id), HttpStatus.OK);
+        return productsMap.get(id);
     }
 
     @GetMapping(value = "/{id}", version = "2.0",
         produces = "application/vnd.baeldung.product+json")
-    public ResponseEntity<ProductV2> getProductV2ByIdCustomMedia(@PathVariable String id) {
+    public ProductV2 getProductV2ByIdCustomMedia(@PathVariable String id) {
         LOGGER.info("Get Product with custom media version 2 for id {}", id);
-        return new ResponseEntity<>(productsV2Map.get(id), HttpStatus.OK);
+        return productsV2Map.get(id);
     }
 
     @PostConstruct

@@ -7,8 +7,6 @@ import jakarta.annotation.PostConstruct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,15 +24,15 @@ public class ProductController {
     private final Map<String, ProductV2> productsV2Map = new HashMap<>();
 
     @GetMapping(value = "/{id}", version = "1.0")
-    public ResponseEntity<Product> getProductV1ByIdPath(@PathVariable String id) {
+    public Product getProductV1ByIdPath(@PathVariable String id) {
         LOGGER.info("Get Product version 1 for id {}", id);
-        return new ResponseEntity<>(productsMap.get(id), HttpStatus.OK);
+        return productsMap.get(id);
     }
 
     @GetMapping(value = "/{id}", version = "2.0")
-    public ResponseEntity<ProductV2> getProductV2ByIdPath(@PathVariable String id) {
+    public ProductV2 getProductV2ByIdPath(@PathVariable String id) {
         LOGGER.info("Get Product version 2 for id {}", id);
-        return new ResponseEntity<>(productsV2Map.get(id), HttpStatus.OK);
+        return productsV2Map.get(id);
     }
 
     @PostConstruct
