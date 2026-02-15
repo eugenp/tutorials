@@ -1,4 +1,4 @@
-package com.baeldung.apiversions.controller;
+package com.baeldung.apiversions.mediatype;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,22 +18,24 @@ import com.baeldung.apiversions.model.Product;
 import com.baeldung.apiversions.model.ProductV2;
 
 @RestController
-@RequestMapping(path = "/api/v{version}/products")
-public class ProductControllerWithPathSegment {
+@RequestMapping(path = "/api/products")
+public class ProductController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ProductControllerWithPathSegment.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
     private final Map<String, Product> productsMap = new HashMap<>();
     private final Map<String, ProductV2> productsV2Map = new HashMap<>();
 
-    @GetMapping(value = "/{id}", version = "1.0.0")
-    public ResponseEntity<Product> getProductV1ByIdPath(@PathVariable String id) {
-        LOGGER.info("Get Product with Path specific version 1 for id {}", id);
+    @GetMapping(value = "/{id}", version = "1.0",
+        produces = "application/vnd.baeldung.product+json")
+    public ResponseEntity<Product> getProductByIdCustomMedia(@PathVariable String id) {
+        LOGGER.info("Get Product with custom media version 1 for id {}", id);
         return new ResponseEntity<>(productsMap.get(id), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{id}", version = "2.0.0")
-    public ResponseEntity<ProductV2> getProductV2ByIdPath(@PathVariable String id) {
-        LOGGER.info("Get Product with Path specific version 2 for id {}", id);
+    @GetMapping(value = "/{id}", version = "2.0",
+        produces = "application/vnd.baeldung.product+json")
+    public ResponseEntity<ProductV2> getProductV2ByIdCustomMedia(@PathVariable String id) {
+        LOGGER.info("Get Product with custom media version 2 for id {}", id);
         return new ResponseEntity<>(productsV2Map.get(id), HttpStatus.OK);
     }
 

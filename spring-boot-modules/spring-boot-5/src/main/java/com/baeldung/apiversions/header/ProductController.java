@@ -1,4 +1,4 @@
-package com.baeldung.apiversions.controller;
+package com.baeldung.apiversions.header;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,13 +25,13 @@ public class ProductController {
     private final Map<String, Product> productsMap = new HashMap<>();
     private final Map<String, ProductV2> productsV2Map = new HashMap<>();
 
-    @GetMapping(value = "/{id}", version = "1.0.0")
+    @GetMapping(value = "/{id}", version = "1.0")
     public ResponseEntity<Product> getProductV1ById(@PathVariable String id) {
         LOGGER.info("Get Product version 1 for id {}", id);
         return new ResponseEntity<>(productsMap.get(id), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{id}", version = "2.0.0")
+    @GetMapping(value = "/{id}", version = "2.0")
     public ResponseEntity<ProductV2> getProductV2ById(@PathVariable String id) {
         LOGGER.info("Get Product version 2 for id {}", id);
         return new ResponseEntity<>(productsV2Map.get(id), HttpStatus.OK);

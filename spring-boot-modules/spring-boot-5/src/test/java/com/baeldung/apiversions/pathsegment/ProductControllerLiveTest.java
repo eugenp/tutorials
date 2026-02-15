@@ -1,18 +1,13 @@
-package com.baeldung.apiversions.controller;
+package com.baeldung.apiversions.pathsegment;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.client.RestTestClient;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.baeldung.apiversions.ExampleApplication;
-import com.baeldung.apiversions.config.WebHeaderBasedConfig;
-
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = ExampleApplication.class)
-@ContextConfiguration(classes = { ProductController.class, WebHeaderBasedConfig.class, })
-class ProductControllerHeaderLiveTest {
+class ProductControllerLiveTest {
 
     private RestTestClient restTestClient;
 
@@ -23,10 +18,9 @@ class ProductControllerHeaderLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenProductAPIIsCalled_WithHeaderVersion1_thenReturnValidProduct() {
+    void givenProductExists_WhenGetProductAPIIsCalled_WithPathSegmentV1_thenReturnValidProduct() {
         restTestClient.get()
-            .uri("/api/products/1001")
-            .header("X-API-Version", "1")
+            .uri("/api/v1/products/1001")
             .exchange()
             .expectStatus()
             .isOk()
@@ -40,10 +34,9 @@ class ProductControllerHeaderLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenProductAPIIsCalled_WithHeaderVersion2_thenReturnValidProduct() {
+    void givenProductExists_WhenProductAPIIsCalled_WithPathSegmentV2_thenReturnValidProduct() {
         restTestClient.get()
-            .uri("/api/products/1001")
-            .header("X-API-Version", "2")
+            .uri("/api/v2/products/1001")
             .exchange()
             .expectStatus()
             .isOk()
@@ -57,19 +50,12 @@ class ProductControllerHeaderLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenProductAPIIsCalled_WithInvalidHeaderVersion_thenReturnBadRequestError() {
+    void givenProductExists_WhenProductAPIIsCalled_WithPathSegment2_thenThrowNotFoundError() {
         restTestClient.get()
-            .uri("/api/products/1001")
-            .header("X-API-Version", "3")
+            .uri("/api/2/products/1001")
             .exchange()
             .expectStatus()
-            .is4xxClientError()
-            .expectBody()
-            .jsonPath("$.name")
-            .doesNotExist()
-            .jsonPath("$.desc")
-            .doesNotExist()
-            .jsonPath("$.price")
-            .doesNotExist();
+            .isNotFound();
     }
+
 }

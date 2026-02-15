@@ -1,25 +1,13 @@
-package com.baeldung.apiversions.controller;
+package com.baeldung.apiversions.queryparam;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.client.RestTestClient;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.baeldung.apiversions.ExampleApplication;
-import com.baeldung.apiversions.config.WebHeaderBasedConfig;
-import com.baeldung.apiversions.config.WebMediaTypeConfig;
-import com.baeldung.apiversions.config.WebPathSegmentConfig;
-import com.baeldung.apiversions.config.WebQueryParamConfig;
-
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = ExampleApplication.class)
-@ContextConfiguration(classes = { ProductControllerWithPathSegment.class, WebPathSegmentConfig.class })
-@DisplayName("All Get Products API Versions Tests")
-class ProductControllerPathSegmentLiveTest {
+class ProductControllerLiveTest {
 
     private RestTestClient restTestClient;
 
@@ -30,9 +18,9 @@ class ProductControllerPathSegmentLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenGetProductAPIIsCalled_WithPathSegmentV1_thenReturnValidProduct() {
+    void givenProductExists_WhenProductAPIIsCalled_WithQueryParamVersion1_thenReturnValidProduct() {
         restTestClient.get()
-            .uri("/api/v1/products/1001")
+            .uri("/api/products/1001?version=1")
             .exchange()
             .expectStatus()
             .isOk()
@@ -46,9 +34,9 @@ class ProductControllerPathSegmentLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenProductAPIIsCalled_WithPathSegmentV2_thenReturnValidProduct() {
+    void givenProductExists_WhenProductAPIIsCalled_WithQueryParamVersion2_thenReturnValidProduct() {
         restTestClient.get()
-            .uri("/api/v2/products/1001")
+            .uri("/api/products/1001?version=2")
             .exchange()
             .expectStatus()
             .isOk()
@@ -62,12 +50,18 @@ class ProductControllerPathSegmentLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenProductAPIIsCalled_WithPathSegment2_thenThrowNotFoundError() {
+    void givenProductExists_WhenProductAPIIsCalled_WithInvalidQueryParam_thenReturnBadRequestError() {
         restTestClient.get()
-            .uri("/api/2/products/1001")
+            .uri("/api/products/1001?version=invalid")
             .exchange()
             .expectStatus()
-            .isNotFound();
+            .is4xxClientError()
+            .expectBody()
+            .jsonPath("$.name")
+            .doesNotExist()
+            .jsonPath("$.desc")
+            .doesNotExist()
+            .jsonPath("$.price")
+            .doesNotExist();
     }
-
 }
