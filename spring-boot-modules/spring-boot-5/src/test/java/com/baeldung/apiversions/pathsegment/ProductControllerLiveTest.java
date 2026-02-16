@@ -6,7 +6,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.web.servlet.client.RestTestClient;
 import org.springframework.web.client.ApiVersionInserter;
-import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ProductControllerLiveTest {
@@ -17,7 +16,7 @@ class ProductControllerLiveTest {
     private int port;
 
     @BeforeEach
-    void setUp(WebApplicationContext context) {
+    void setUp() {
         restTestClient = RestTestClient
             .bindToServer()
             .baseUrl("http://localhost:" + port)

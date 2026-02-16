@@ -116,6 +116,7 @@
         <!-- <module>spring-boot-3-3</module> --> <!-- JAVA-42049 -->
         <module>spring-boot-3-4</module>
         <module>spring-boot-4</module>
+        <module>spring-boot-5</module>
         <module>spring-boot-resilience4j</module>
         <module>spring-boot-retries</module>
         <module>spring-boot-properties</module>
