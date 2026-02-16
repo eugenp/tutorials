@@ -3,8 +3,6 @@ package com.baeldung.apiversions.queryparam;
 import java.util.HashMap;
 import java.util.Map;
 
-import jakarta.annotation.PostConstruct;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +18,10 @@ import com.baeldung.apiversions.model.ProductDtoV2;
 public class ProductController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
-    private final Map<String, ProductDto> productsMap = new HashMap<>();
-    private final Map<String, ProductDtoV2> productsV2Map = new HashMap<>();
+    private final Map<String, ProductDto> productsMap =
+        Map.of("1001", new ProductDto("1001", "apple", "apple_desc", 1.99));
+    private final Map<String, ProductDtoV2> productsV2Map =
+        Map.of("1001", new ProductDtoV2("1001", "apple", 1.99));
 
     @GetMapping(value = "/{id}", version = "1.0")
     public ProductDto getProductV1ByIdPath(@PathVariable String id) {
@@ -33,12 +33,5 @@ public class ProductController {
     public ProductDtoV2 getProductV2ByIdPath(@PathVariable String id) {
         LOGGER.info("Get Product version 2 for id {}", id);
         return productsV2Map.get(id);
-    }
-
-    @PostConstruct
-    public void init(){
-        productsMap.put("1001", new ProductDto("1001", "apple",
-            "apple_desc", 1.99));
-        productsV2Map.put("1001", new ProductDtoV2("1001", "apple", 1.99));
     }
 }
