@@ -28,12 +28,6 @@ public class ProductController {
         return productsMap.get(id);
     }
 
-    @GetMapping(value = "/{id}", version = "1.1+")
-    public ProductDto getProductV1ById11(@PathVariable String id) {
-        LOGGER.info("Get Product version 1.1 for id {}", id);
-        return productsMap.get(id);
-    }
-
     @GetMapping(value = "/{id}", version = "2.0")
     public ProductDtoV2 getProductV2ById(@PathVariable String id) {
         LOGGER.info("Get Product version 2 for id {}", id);

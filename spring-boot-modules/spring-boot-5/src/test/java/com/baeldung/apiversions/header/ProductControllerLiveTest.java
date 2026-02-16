@@ -3,6 +3,7 @@ package com.baeldung.apiversions.header;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.web.servlet.client.RestTestClient;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -11,14 +12,19 @@ class ProductControllerLiveTest {
 
     private RestTestClient restTestClient;
 
+    @LocalServerPort
+    private int port;
+
     @BeforeEach
     void setUp(WebApplicationContext context) {
-        restTestClient = RestTestClient.bindToApplicationContext(context)
+        restTestClient = RestTestClient
+            .bindToServer()
+            .baseUrl("http://localhost:" + port)
             .build();
     }
 
     @Test
-    void givenProductExists_WhenProductAPIIsCalled_WithHeaderVersion1_thenReturnValidProduct() {
+    void givenProductExists_WhenGetProductIsCalled_WithHeaderVersion1_thenReturnValidProduct() {
         restTestClient.get()
             .uri("/api/products/1001")
             .header("X-API-Version", "1")
@@ -31,7 +37,7 @@ class ProductControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenProductAPIIsCalled_WithHeaderVersion2_thenReturnValidProduct() {
+    void givenProductExists_WhenGetProductIsCalled_WithHeaderVersion2_thenReturnValidProduct() {
         restTestClient.get()
             .uri("/api/products/1001")
             .header("X-API-Version", "2")
@@ -44,7 +50,7 @@ class ProductControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenProductAPIIsCalled_WithInvalidHeaderVersion_thenReturnBadRequestError() {
+    void givenProductExists_WhenGetProductIsCalled_WithInvalidHeaderVersion_thenReturnBadRequestError() {
         restTestClient.get()
             .uri("/api/products/1001")
             .header("X-API-Version", "3")

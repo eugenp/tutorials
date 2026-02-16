@@ -3,6 +3,7 @@ package com.baeldung.apiversions.mediatype;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.client.RestTestClient;
 import org.springframework.web.context.WebApplicationContext;
@@ -12,14 +13,19 @@ class ProductControllerLiveTest {
 
     private RestTestClient restTestClient;
 
+    @LocalServerPort
+    private int port;
+
     @BeforeEach
     void setUp(WebApplicationContext context) {
-        restTestClient = RestTestClient.bindToApplicationContext(context)
+        restTestClient = RestTestClient
+            .bindToServer()
+            .baseUrl("http://localhost:" + port)
             .build();
     }
 
     @Test
-    void givenProductExists_WhenProductAPIIsCalled_WithValidMediaTypeVersion_thenReturnValidProduct() {
+    void givenProductExists_WhenGetProductIsCalled_WithValidMediaTypeVersion_thenReturnValidProduct() {
         restTestClient.get()
             .uri("/api/products/1001")
             .accept(MediaType.valueOf("application/vnd.baeldung.product+json;version=1"))
@@ -34,7 +40,7 @@ class ProductControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenProductAPIIsCalled_WithValidMediaType_thenReturnValidProduct() {
+    void givenProductExists_WhenGetProductIsCalled_WithValidMediaType_thenReturnValidProduct() {
         restTestClient.get()
             .uri("/api/products/1001")
             .accept(MediaType.valueOf("application/vnd.baeldung.product+json;version=2"))
@@ -49,7 +55,7 @@ class ProductControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenProductAPIIsCalled_WithInValidMediaTypeVersion_thenReturnBadRequestError() {
+    void givenProductExists_WhenGetProductIsCalled_WithInValidMediaTypeVersion_thenReturnBadRequestError() {
         restTestClient.get()
             .uri("/api/products/1001")
             .accept(MediaType.valueOf("application/vnd.baeldung.product+json;version=3"))
@@ -63,7 +69,7 @@ class ProductControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenProductAPIIsCalled_WithInValidMediaType_thenReturnBadRequestError() {
+    void givenProductExists_WhenGetProductIsCalled_WithInValidMediaType_thenReturnBadRequestError() {
         restTestClient.get()
             .uri("/api/products/1001")
             .accept(MediaType.valueOf("application/invalid"))
