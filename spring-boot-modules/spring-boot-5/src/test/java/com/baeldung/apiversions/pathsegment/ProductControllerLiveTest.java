@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.web.servlet.client.RestTestClient;
+import org.springframework.web.client.ApiVersionInserter;
 import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -20,13 +21,15 @@ class ProductControllerLiveTest {
         restTestClient = RestTestClient
             .bindToServer()
             .baseUrl("http://localhost:" + port)
+            .apiVersionInserter(ApiVersionInserter.usePathSegment(1))
             .build();
     }
 
     @Test
     void givenProductExists_WhenGetProductIsCalled_WithPathSegmentV1_thenReturnValidProduct() {
         restTestClient.get()
-            .uri("/api/v1/products/1001")
+            .uri("/api/products/1001")
+            .apiVersion("v1")
             .exchange()
             .expectStatus()
             .isOk()
@@ -39,7 +42,8 @@ class ProductControllerLiveTest {
     @Test
     void givenProductExists_WhenGetProductIsCalled_WithPathSegmentV2_thenReturnValidProduct() {
         restTestClient.get()
-            .uri("/api/v2/products/1001")
+            .uri("/api/products/1001")
+            .apiVersion("v2")
             .exchange()
             .expectStatus()
             .isOk()
@@ -52,10 +56,25 @@ class ProductControllerLiveTest {
     @Test
     void givenProductExists_WhenGetProductIsCalled_WithPathSegment2_thenThrowNotFoundError() {
         restTestClient.get()
-            .uri("/api/2/products/1001")
+            .uri("/api/3/products/1001")
+            .apiVersion(3)
             .exchange()
             .expectStatus()
             .isNotFound();
+    }
+
+    @Test
+    void givenProductExists_WhenGetProductIsCalled_WithPathSegmentV1_0_thenReturnValidProduct() {
+        restTestClient.get()
+            .uri("/api/products/1001")
+            .apiVersion("v1.0")
+            .exchange()
+            .expectStatus()
+            .isOk()
+            .expectBody()
+            .jsonPath("$.name").isEqualTo("apple")
+            .jsonPath("$.desc").isEqualTo("apple_desc")
+            .jsonPath("$.price").isEqualTo(1.99);
     }
 
 }

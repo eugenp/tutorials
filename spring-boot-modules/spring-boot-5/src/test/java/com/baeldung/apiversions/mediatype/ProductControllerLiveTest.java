@@ -32,7 +32,8 @@ class ProductControllerLiveTest {
             .exchange()
             .expectStatus()
             .isOk()
-            .expectHeader().contentType("application/vnd.baeldung.product+json;version=1")
+            .expectHeader()
+            .contentType("application/vnd.baeldung.product+json;version=1")
             .expectBody()
             .jsonPath("$.name").isEqualTo("apple")
             .jsonPath("$.desc").isEqualTo("apple_desc")
@@ -47,7 +48,8 @@ class ProductControllerLiveTest {
             .exchange()
             .expectStatus()
             .isOk()
-            .expectHeader().contentType("application/vnd.baeldung.product+json;version=2")
+            .expectHeader()
+            .contentType("application/vnd.baeldung.product+json;version=2")
             .expectBody()
             .jsonPath("$.name").isEqualTo("apple")
             .jsonPath("$.desc").doesNotExist()
@@ -80,5 +82,21 @@ class ProductControllerLiveTest {
             .jsonPath("$.name").doesNotExist()
             .jsonPath("$.desc").doesNotExist()
             .jsonPath("$.price").doesNotExist();
+    }
+
+    @Test
+    void givenProductExists_WhenGetProductIsCalled_WithValidMediaTypeVersion1_0_thenReturnValidProduct() {
+        restTestClient.get()
+            .uri("/api/products/1001")
+            .accept(MediaType.valueOf("application/vnd.baeldung.product+json;version=1.0"))
+            .exchange()
+            .expectStatus()
+            .isOk()
+            .expectHeader()
+            .contentType("application/vnd.baeldung.product+json;version=1.0")
+            .expectBody()
+            .jsonPath("$.name").isEqualTo("apple")
+            .jsonPath("$.desc").isEqualTo("apple_desc")
+            .jsonPath("$.price").isEqualTo(1.99);
     }
 }

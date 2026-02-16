@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.web.servlet.client.RestTestClient;
+import org.springframework.web.client.ApiVersionInserter;
 import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -20,6 +21,7 @@ class ProductControllerLiveTest {
         restTestClient = RestTestClient
             .bindToServer()
             .baseUrl("http://localhost:" + port)
+            .apiVersionInserter(ApiVersionInserter.useHeader("X-API-Version"))
             .build();
     }
 
@@ -27,7 +29,7 @@ class ProductControllerLiveTest {
     void givenProductExists_WhenGetProductIsCalled_WithHeaderVersion1_thenReturnValidProduct() {
         restTestClient.get()
             .uri("/api/products/1001")
-            .header("X-API-Version", "1")
+            .apiVersion(1)
             .exchange()
             .expectStatus().isOk()
             .expectBody()
@@ -40,7 +42,7 @@ class ProductControllerLiveTest {
     void givenProductExists_WhenGetProductIsCalled_WithHeaderVersion2_thenReturnValidProduct() {
         restTestClient.get()
             .uri("/api/products/1001")
-            .header("X-API-Version", "2")
+            .apiVersion(2)
             .exchange()
             .expectStatus().isOk()
             .expectBody()
@@ -53,7 +55,7 @@ class ProductControllerLiveTest {
     void givenProductExists_WhenGetProductIsCalled_WithInvalidHeaderVersion_thenReturnBadRequestError() {
         restTestClient.get()
             .uri("/api/products/1001")
-            .header("X-API-Version", "3")
+            .apiVersion(3)
             .exchange()
             .expectStatus()
             .is4xxClientError()
@@ -61,5 +63,18 @@ class ProductControllerLiveTest {
             .jsonPath("$.name").doesNotExist()
             .jsonPath("$.desc").doesNotExist()
             .jsonPath("$.price").doesNotExist();
+    }
+
+    @Test
+    void givenProductExists_WhenGetProductIsCalled_WithHeaderVersion1_0_thenReturnValidProduct() {
+        restTestClient.get()
+            .uri("/api/products/1001")
+            .apiVersion(1.0)
+            .exchange()
+            .expectStatus().isOk()
+            .expectBody()
+            .jsonPath("$.name").isEqualTo("apple")
+            .jsonPath("$.desc").isEqualTo("apple_desc")
+            .jsonPath("$.price").isEqualTo(1.99);
     }
 }
