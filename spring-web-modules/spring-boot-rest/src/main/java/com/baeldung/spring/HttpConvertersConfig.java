@@ -16,7 +16,6 @@ import tools.jackson.databind.json.JsonMapper;
 import tools.jackson.dataformat.xml.XmlMapper;
 import tools.jackson.dataformat.xml.XmlReadFeature;
 
-@ConditionalOnMissingBean// during the tests, WebConfig will be active
 @Configuration
 class HttpConvertersConfig implements WebMvcConfigurer {
 
