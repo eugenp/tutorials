@@ -655,6 +655,7 @@
                 <module>deeplearning4j</module>
                 <module>di-modules</module>
                 <module>disruptor</module>
+                <module>djl</module>
                 <module>docker-modules</module>
                 <module>drools</module>
                 <module>embabel-modules</module>
@@ -722,6 +723,7 @@
 		        <module>libraries-http-2</module>
 	            <module>libraries-http-3</module>
                 <module>libraries-io</module>
+				<module>libraries-email</module>
                 <module>libraries-llms</module>
                 <module>libraries-llms-2</module>
                 <module>libraries-open-telemetry</module>
@@ -1128,6 +1130,7 @@
                 <module>data-structures-2</module>
                 <module>deeplearning4j</module>
                 <module>di-modules</module>
+                <module>djl</module>
                 <module>disruptor</module>
                 <module>docker-modules</module>
                 <module>drools</module>
@@ -1196,6 +1199,7 @@
                 <module>libraries-http-2</module>
                 <module>libraries-http-3</module>
                 <module>libraries-io</module>
+				<module>libraries-email</module>
                 <module>libraries-llms</module>
                 <module>libraries-llms-2</module>
                 <module>libraries-open-telemetry</module>

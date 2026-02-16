@@ -1,8 +1,8 @@
 package com.baeldung.springpagination;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 
 import com.baeldung.springpagination.dto.PostDto;

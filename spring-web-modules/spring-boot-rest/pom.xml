@@ -11,8 +11,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>spring-web-modules</artifactId>
+        <artifactId>parent-boot-4</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-4</relativePath>
     </parent>
 
     <dependencies>
@@ -25,6 +26,11 @@
                     <groupId>org.apache.tomcat.embed</groupId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>tools.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+            <version>${jackson-dataformat-xml.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
@@ -149,6 +155,11 @@
             <artifactId>jaxb-impl</artifactId>
             <version>${jaxb-runtime.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -169,15 +180,18 @@
     </build>
 
     <properties>
+        <java.version>21</java.version>
+        <junit-jupiter.version>5.12.2</junit-jupiter.version>
+        <junit-platform.version>1.12.2</junit-platform.version>
         <start-class>com.baeldung.SpringBootRestApplication</start-class>
         <xstream.version>1.4.11.1</xstream.version>
         <modelmapper.version>3.2.0</modelmapper.version>
         <rest-assured.version>5.5.0</rest-assured.version>
         <spring-oxm.version>6.2.3</spring-oxm.version>
-        <spring-boot.version>3.5.7</spring-boot.version>
         <!-- https://github.com/qos-ch/logback/issues/853 -->
         <logback.version>1.5.17</logback.version>
         <!-- not managed by Spring anymore -->
         <htmlunit.version>2.70.0</htmlunit.version>
+        <jackson-dataformat-xml.version>3.0.0</jackson-dataformat-xml.version>
     </properties>
 </project>

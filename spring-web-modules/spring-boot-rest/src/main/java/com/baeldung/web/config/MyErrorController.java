@@ -4,9 +4,9 @@ import java.util.Map;
 
 import jakarta.servlet.http.HttpServletRequest;
 
-import org.springframework.boot.autoconfigure.web.ServerProperties;
-import org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController;
-import org.springframework.boot.web.servlet.error.ErrorAttributes;
+import org.springframework.boot.web.server.autoconfigure.ServerProperties;
+import org.springframework.boot.webmvc.autoconfigure.error.BasicErrorController;
+import org.springframework.boot.webmvc.error.ErrorAttributes;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
