@@ -10,19 +10,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.Collections;
 
 import org.hamcrest.Matchers;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.baeldung.persistence.model.Foo;
 import com.baeldung.persistence.service.IFooService;
@@ -35,17 +34,16 @@ import com.baeldung.web.hateoas.event.PaginatedResultsRetrievedEvent;
  *  We'll start only the web layer.
  *
  */
-@RunWith(SpringRunner.class)
 @WebMvcTest(FooController.class)
 public class FooControllerWebLayerIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
 
-    @MockBean
+    @MockitoBean
     private IFooService service;
 
-    @MockBean
+    @MockitoBean
     private ApplicationEventPublisher publisher;
 
     @Test()
@@ -68,7 +66,7 @@ public class FooControllerWebLayerIntegrationTest {
         Mockito.when(service.findAll()).thenThrow(new CustomException1());
         this.mockMvc.perform(get("/foos")).andDo(h ->  {
             final Exception expectedException = h.getResolvedException();
-            Assert.assertTrue(expectedException instanceof CustomException1);
+            assertTrue(expectedException instanceof CustomException1);
 
         });
     }
