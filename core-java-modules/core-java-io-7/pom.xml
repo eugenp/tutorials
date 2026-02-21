@@ -54,6 +54,6 @@
     <properties>
         <commons-csv.version>1.9.0</commons-csv.version>
         <asciitable.version>0.3.2</asciitable.version>
-        <jakarta.activation.version>2.0.1</jakarta.activation.version>
+        <jakarta.activation.version>1.2.2</jakarta.activation.version>
     </properties>
 </project>
