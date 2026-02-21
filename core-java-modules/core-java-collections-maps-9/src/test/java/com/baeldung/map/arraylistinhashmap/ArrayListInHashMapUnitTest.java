@@ -20,59 +20,59 @@ import static org.junit.Assert.assertTrue;
 
 class ArrayListInHashMapUnitTest {
 
-    private static final String KEY_1 = "key1";
-    private static final String KEY_2 = "key2";
-    private static final List<String> VALUE_1 = List.of("key1_value1", "key1_value2");
-    private static final List<String> VALUE_2 = List.of("key2_value1");
+    private static final String K1 = "key1";
+    private static final String K2 = "key2";
+    private static final String K1_V1 = "key1_value1";
+    private static final String K1_V2 = "key1_value2";
+    private static final String K2_V1 = "key2_value1";
 
-    private void verifyMap(Map<String, ? extends Collection<String>> actualMap) {
-        assertNotNull(actualMap);
-        assertEquals(2, actualMap.size());
-        assertTrue(actualMap.containsKey(KEY_1));
-        assertEquals(VALUE_1, new ArrayList<>(actualMap.get(KEY_1)));
-        assertTrue(actualMap.containsKey(KEY_2));
-        assertEquals(VALUE_2, new ArrayList<>(actualMap.get(KEY_2)));
+    private static void verifyMap(Map<String, ? extends Collection<String>> testMap) {
+        assertEquals(Map.of(K1, List.of(K1_V1, K1_V2), K2, List.of(K2_V1)), testMap);
     }
 
     @Test
-    void whenUsingWithoutExternalLibraries_thenMapMatches() {
-        Map<String, ArrayList<String>> map = new ArrayListInHashMap().withoutExternalLibraries();
+    void whenUsingAddKeyManually_thenMapMatches() {
+        HashMap<String, ArrayList<String>> map = new HashMap<>();
+        ArrayListInHashMap.addKeyManually(map, K1, K1_V1);
+        ArrayListInHashMap.addKeyManually(map, K1, K1_V2);
+        ArrayListInHashMap.addKeyManually(map, K2, K2_V1);
         verifyMap(map);
     }
 
     @Test
-    void whenWithoutExternalLibrariesForLoop_thenMapMatches() {
-        Map<String, ArrayList<String>> map = new ArrayListInHashMap().withoutExternalLibrariesForLoop();
+    void whenUsingComputeIfAbsent_thenMapMatches() {
+        HashMap<String, ArrayList<String>> map = new HashMap<>();
+        ArrayListInHashMap.addKeyWithComputeIfAbsent(map, K1, K1_V1);
+        ArrayListInHashMap.addKeyWithComputeIfAbsent(map, K1, K1_V2);
+        ArrayListInHashMap.addKeyWithComputeIfAbsent(map, K2, K2_V1);
         verifyMap(map);
     }
 
     @Test
-    void whenWithComputeIfAbsent_thenMapMatches() {
-        Map<String, ArrayList<String>> map = new ArrayListInHashMap().withComputeIfAbsent();
-        verifyMap(map);
-    }
-
-    @Test
-    void whenWithComputeIfAbsentIterables_thenMapMatches() {
-        Map<String, ArrayList<String>> map = new ArrayListInHashMap().withComputeIfAbsentIterables();
-        verifyMap(map);
-    }
-
-    @Test
-    void whenWithApacheMultiValuedMap_thenMapMatches() {
-        MultiValuedMap<String, String> map = new ArrayListInHashMap().withApacheMultiValuedMap();
+    void whenUsingApacheMultiValuedMap_thenMapMatches() {
+        MultiValuedMap<String, String> map = new ArrayListValuedHashMap<>();
+        ArrayListInHashMap.addKeyToApacheMultiValuedMap(map, K1, K1_V1);
+        ArrayListInHashMap.addKeyToApacheMultiValuedMap(map, K1, K1_V2);
+        ArrayListInHashMap.addKeyToApacheMultiValuedMap(map, K2, K2_V1);
         verifyMap(map.asMap());
     }
 
     @Test
-    void whenWithSpringLinkedMultiValueMap_thenMapMatches() {
-        MultiValueMap<String, String> map = new ArrayListInHashMap().withSpringLinkedMultiValueMap();
+    void whenUsingSpringLinkedMultiValueMap_thenMapMatches() {
+        MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
+        ArrayListInHashMap.addKeyToSpringLinkedMultiValueMap(map, K1, K1_V1);
+        ArrayListInHashMap.addKeyToSpringLinkedMultiValueMap(map, K1, K1_V2);
+        ArrayListInHashMap.addKeyToSpringLinkedMultiValueMap(map, K2, K2_V1);
         verifyMap(map);
     }
 
     @Test
-    void whenWithGuavaMultimap_thenMapMatches() {
-        Multimap<String, String> map = new ArrayListInHashMap().withGuavaMultimap();
+    void whenUsingGuavaMultimap_thenMapMatches() {
+        Multimap<String, String> map = ArrayListMultimap.create();
+        ArrayListInHashMap.addKeyToGuavaMultimap(map, K1, K1_V1);
+        ArrayListInHashMap.addKeyToGuavaMultimap(map, K1, K1_V2);
+        ArrayListInHashMap.addKeyToGuavaMultimap(map, K2, K2_V1);
         verifyMap(map.asMap());
     }
+
 }
