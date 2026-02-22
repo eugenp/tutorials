@@ -25,11 +25,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(
-  basePackageClasses = Order.class,
-  entityManagerFactoryRef = "routingEntityManagerFactory",
-  transactionManagerRef = "routingTransactionManager"
-)
+@EnableJpaRepositories(basePackageClasses = Order.class, entityManagerFactoryRef = "routingEntityManagerFactory", transactionManagerRef = "routingTransactionManager")
 public class DataSourceConfiguration {
 
     @Bean
@@ -46,64 +42,48 @@ public class DataSourceConfiguration {
 
     @Bean
     public DataSource readWriteDataSource() {
-        return readWriteProperties()
-          .initializeDataSourceBuilder()
-          .build();
+        return readWriteProperties().initializeDataSourceBuilder()
+            .build();
     }
 
     @Bean
     public DataSource readOnlyDataSource() {
-        return readOnlyProperties()
-          .initializeDataSourceBuilder()
-          .build();
+        return readOnlyProperties().initializeDataSourceBuilder()
+            .build();
     }
 
     @Bean
     @Primary
     public TransactionRoutingDataSource routingDataSource() {
-        TransactionRoutingDataSource routingDataSource =
-          new TransactionRoutingDataSource();
+        TransactionRoutingDataSource routingDataSource = new TransactionRoutingDataSource();
 
         Map<Object, Object> dataSourceMap = new HashMap<>();
-        dataSourceMap.put(
-          DataSourceType.READ_WRITE, readWriteDataSource());
-        dataSourceMap.put(
-          DataSourceType.READ_ONLY, readOnlyDataSource());
+        dataSourceMap.put(DataSourceType.READ_WRITE, readWriteDataSource());
+        dataSourceMap.put(DataSourceType.READ_ONLY, readOnlyDataSource());
 
         routingDataSource.setTargetDataSources(dataSourceMap);
-        routingDataSource.setDefaultTargetDataSource(
-          readWriteDataSource());
+        routingDataSource.setDefaultTargetDataSource(readWriteDataSource());
 
         return routingDataSource;
     }
 
     @Bean
-    public DataSourceInitializer readWriteInitializer(
-      @Qualifier("readWriteDataSource")
-      DataSource readWriteDataSource) {
-        ResourceDatabasePopulator populator =
-          new ResourceDatabasePopulator();
-        populator.addScript(
-          new ClassPathResource("rwrouting-schema.sql"));
+    public DataSourceInitializer readWriteInitializer(@Qualifier("readWriteDataSource") DataSource readWriteDataSource) {
+        ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
+        populator.addScript(new ClassPathResource("rwrouting-schema.sql"));
 
-        DataSourceInitializer init =
-          new DataSourceInitializer();
+        DataSourceInitializer init = new DataSourceInitializer();
         init.setDataSource(readWriteDataSource);
         init.setDatabasePopulator(populator);
         return init;
     }
 
     @Bean
-    public DataSourceInitializer readOnlyInitializer(
-      @Qualifier("readOnlyDataSource")
-      DataSource readOnlyDataSource) {
-        ResourceDatabasePopulator populator =
-          new ResourceDatabasePopulator();
-        populator.addScript(
-          new ClassPathResource("rwrouting-schema.sql"));
+    public DataSourceInitializer readOnlyInitializer(@Qualifier("readOnlyDataSource") DataSource readOnlyDataSource) {
+        ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
+        populator.addScript(new ClassPathResource("rwrouting-schema.sql"));
 
-        DataSourceInitializer init =
-          new DataSourceInitializer();
+        DataSourceInitializer init = new DataSourceInitializer();
         init.setDataSource(readOnlyDataSource);
         init.setDatabasePopulator(populator);
         return init;
@@ -111,26 +91,18 @@ public class DataSourceConfiguration {
 
     @Bean
     public DataSource dataSource() {
-        return new LazyConnectionDataSourceProxy(
-          routingDataSource());
+        return new LazyConnectionDataSourceProxy(routingDataSource());
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean
-      routingEntityManagerFactory(
-        EntityManagerFactoryBuilder builder) {
-        return builder
-          .dataSource(dataSource())
-          .packages(Order.class)
-          .build();
+    public LocalContainerEntityManagerFactoryBean routingEntityManagerFactory(EntityManagerFactoryBuilder builder) {
+        return builder.dataSource(dataSource())
+            .packages(Order.class)
+            .build();
     }
 
     @Bean
-    public PlatformTransactionManager routingTransactionManager(
-      LocalContainerEntityManagerFactoryBean
-        routingEntityManagerFactory) {
-        return new JpaTransactionManager(
-          Objects.requireNonNull(
-            routingEntityManagerFactory.getObject()));
+    public PlatformTransactionManager routingTransactionManager(LocalContainerEntityManagerFactoryBean routingEntityManagerFactory) {
+        return new JpaTransactionManager(Objects.requireNonNull(routingEntityManagerFactory.getObject()));
     }
 }

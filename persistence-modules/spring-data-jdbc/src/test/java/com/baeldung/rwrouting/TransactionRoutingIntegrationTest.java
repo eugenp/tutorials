@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 @ActiveProfiles("rwrouting")
-@SpringBootTest(classes = Application.class)
+@SpringBootTest(classes = RwRoutingApplication.class)
 class TransactionRoutingIntegrationTest {
 
     @Autowired
@@ -22,9 +22,8 @@ class TransactionRoutingIntegrationTest {
 
         List<Order> result = orderService.findAllReadWrite();
 
-        assertThat(result)
-          .anyMatch(o ->
-            o.getId().equals(saved.getId()));
+        assertThat(result).anyMatch(o -> o.getId()
+            .equals(saved.getId()));
     }
 
     @Test
