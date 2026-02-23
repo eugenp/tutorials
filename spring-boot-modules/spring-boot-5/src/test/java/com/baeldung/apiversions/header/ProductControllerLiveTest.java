@@ -25,7 +25,7 @@ class ProductControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenGetProductIsCalled_WithHeaderVersion1_thenReturnValidProduct() {
+    void givenProductExists_WhenGetProductIsCalledWithHeaderVersion1_thenReturnValidProduct() {
         restTestClient.get()
             .uri("/api/products/1001")
             .apiVersion(1)
@@ -38,7 +38,7 @@ class ProductControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenGetProductIsCalled_WithHeaderVersion2_thenReturnValidProduct() {
+    void givenProductExists_WhenGetProductIsCalledWithHeaderVersion2_thenReturnValidProduct() {
         restTestClient.get()
             .uri("/api/products/1001")
             .apiVersion(2)
@@ -51,7 +51,7 @@ class ProductControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenGetProductIsCalled_WithInvalidHeaderVersion_thenReturnBadRequestError() {
+    void givenProductExists_WhenGetProductIsCalledWithInvalidHeaderVersion_thenReturnBadRequestError() {
         restTestClient.get()
             .uri("/api/products/1001")
             .apiVersion(3)
@@ -65,7 +65,7 @@ class ProductControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenGetProductIsCalled_WithHeaderVersion1_0_thenReturnValidProduct() {
+    void givenProductExists_WhenGetProductIsCalledWithHeaderVersion1Dot0_thenReturnValidProduct() {
         restTestClient.get()
             .uri("/api/products/1001")
             .apiVersion(1.0)

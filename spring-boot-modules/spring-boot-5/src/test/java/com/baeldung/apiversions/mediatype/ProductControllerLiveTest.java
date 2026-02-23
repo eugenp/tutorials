@@ -24,7 +24,7 @@ class ProductControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenGetProductIsCalled_WithValidMediaTypeVersion_thenReturnValidProduct() {
+    void givenProductExists_WhenGetProductIsCalledWithValidMediaTypeVersion_thenReturnValidProduct() {
         restTestClient.get()
             .uri("/api/products/1001")
             .accept(MediaType.valueOf("application/vnd.baeldung.product+json;version=1"))
@@ -40,7 +40,7 @@ class ProductControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenGetProductIsCalled_WithValidMediaType_thenReturnValidProduct() {
+    void givenProductExists_WhenGetProductIsCalledWithValidMediaType_thenReturnValidProduct() {
         restTestClient.get()
             .uri("/api/products/1001")
             .accept(MediaType.valueOf("application/vnd.baeldung.product+json;version=2"))
@@ -56,7 +56,7 @@ class ProductControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenGetProductIsCalled_WithInValidMediaTypeVersion_thenReturnBadRequestError() {
+    void givenProductExists_WhenGetProductIsCalledWithInValidMediaTypeVersion_thenReturnBadRequestError() {
         restTestClient.get()
             .uri("/api/products/1001")
             .accept(MediaType.valueOf("application/vnd.baeldung.product+json;version=3"))
@@ -70,7 +70,7 @@ class ProductControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenGetProductIsCalled_WithInValidMediaType_thenReturnBadRequestError() {
+    void givenProductExists_WhenGetProductIsCalledWithInValidMediaType_thenReturnBadRequestError() {
         restTestClient.get()
             .uri("/api/products/1001")
             .accept(MediaType.valueOf("application/invalid"))
@@ -84,7 +84,7 @@ class ProductControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenGetProductIsCalled_WithValidMediaTypeVersion1_0_thenReturnValidProduct() {
+    void givenProductExists_WhenGetProductIsCalledWithValidMediaTypeVersion1Dot0_thenReturnValidProduct() {
         restTestClient.get()
             .uri("/api/products/1001")
             .accept(MediaType.valueOf("application/vnd.baeldung.product+json;version=1.0"))
