@@ -67,7 +67,7 @@ Therefore, we have a total of 17 profiles:
 Building the project
 ====================
 
-Though it should'nt be needed often to build the entire repository at once because we are usually concerned with a specific module.
+Though it shouldn't be needed often to build the entire repository at once because we are usually concerned with a specific module.
 
 But if we want to, we can invoke the below command from the root of the repository if we want to build the entire repository with only Unit Tests enabled:
 
