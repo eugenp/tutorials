@@ -25,7 +25,7 @@ class ProductControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenGetProductIsCalledWithPathSegmentV1_thenReturnValidProduct() {
+    void givenProductExists_whenGetProductIsCalledWithPathSegmentV1_thenReturnValidProduct() {
         restTestClient.get()
             .uri("/api/products/1001")
             .apiVersion("v1")
@@ -39,7 +39,7 @@ class ProductControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenGetProductIsCalledWithPathSegmentV2_thenReturnValidProduct() {
+    void givenProductExists_whenGetProductIsCalledWithPathSegmentV2_thenReturnValidProduct() {
         restTestClient.get()
             .uri("/api/products/1001")
             .apiVersion("v2")
@@ -53,7 +53,7 @@ class ProductControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenGetProductIsCalledWithPathSegment2_thenThrowNotFoundError() {
+    void givenProductExists_whenGetProductIsCalledWithPathSegment2_thenThrowNotFoundError() {
         restTestClient.get()
             .uri("/api/3/products/1001")
             .apiVersion(3)
@@ -63,7 +63,7 @@ class ProductControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenGetProductIsCalledWithPathSegmentV1Dot0_thenReturnValidProduct() {
+    void givenProductExists_whenGetProductIsCalledWithPathSegmentV1Dot0_thenReturnValidProduct() {
         restTestClient.get()
             .uri("/api/products/1001")
             .apiVersion("v1.0")

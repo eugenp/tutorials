@@ -51,7 +51,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.5</version>
+                <version>${maven-surefire-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
@@ -60,5 +60,6 @@
         <spring-boot.version>4.0.2</spring-boot.version>
         <junit-jupiter.version>6.0.0</junit-jupiter.version>
         <logback.version>1.5.18</logback.version>
+        <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
     </properties>
 </project>

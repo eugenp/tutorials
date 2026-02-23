@@ -25,7 +25,7 @@ class ProductControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenGetProductIsCalledWithQueryParamVersion1_thenReturnValidProduct() {
+    void givenProductExists_whenGetProductIsCalledWithQueryParamVersion1_thenReturnValidProduct() {
         restTestClient.get()
             .uri("/api/products/1001")
             .apiVersion(1)
@@ -39,7 +39,7 @@ class ProductControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenGetProductIsCalledWithQueryParamVersion2_thenReturnValidProductV2() {
+    void givenProductExists_whenGetProductIsCalledWithQueryParamVersion2_thenReturnValidProductV2() {
         restTestClient.get()
             .uri("/api/products/1001")
             .apiVersion(2)
@@ -53,7 +53,7 @@ class ProductControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenGetProductIsCalledWithInvalidQueryParam_thenReturnBadRequestError() {
+    void givenProductExists_whenGetProductIsCalledWithInvalidQueryParam_thenReturnBadRequestError() {
         restTestClient.get()
             .uri("/api/products/1001")
             .apiVersion(3)
@@ -67,7 +67,7 @@ class ProductControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_WhenGetProductIsCalledWithQueryParamVersion1Dot0_thenReturnValidProduct() {
+    void givenProductExists_whenGetProductIsCalledWithQueryParamVersion1Dot0_thenReturnValidProduct() {
         restTestClient.get()
             .uri("/api/products/1001")
             .apiVersion(1.0)
