@@ -32,7 +32,7 @@ class ArrayListInHashMapUnitTest {
 
     @Test
     void whenUsingAddKeyManually_thenMapMatches() {
-        HashMap<String, ArrayList<String>> map = new HashMap<>();
+        Map<String, ArrayList<String>> map = new HashMap<>();
         ArrayListInHashMap.addKeyManually(map, K1, K1_V1);
         ArrayListInHashMap.addKeyManually(map, K1, K1_V2);
         ArrayListInHashMap.addKeyManually(map, K2, K2_V1);
@@ -41,7 +41,7 @@ class ArrayListInHashMapUnitTest {
 
     @Test
     void whenUsingComputeIfAbsent_thenMapMatches() {
-        HashMap<String, ArrayList<String>> map = new HashMap<>();
+        Map<String, ArrayList<String>> map = new HashMap<>();
         ArrayListInHashMap.addKeyWithComputeIfAbsent(map, K1, K1_V1);
         ArrayListInHashMap.addKeyWithComputeIfAbsent(map, K1, K1_V2);
         ArrayListInHashMap.addKeyWithComputeIfAbsent(map, K2, K2_V1);
