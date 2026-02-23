@@ -568,6 +568,7 @@
                 <module>core-java-modules/core-java-io-6</module>
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-java-modules/core-java-lang-7</module>
+                <module>core-java-modules/core-java-lang-oop-types-3</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
                 <module>libraries-data-io</module>
                 <module>persistence-modules/spring-data-neo4j</module>
