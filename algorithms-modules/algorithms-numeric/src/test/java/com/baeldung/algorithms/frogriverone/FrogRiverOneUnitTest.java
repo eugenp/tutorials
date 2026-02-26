@@ -15,8 +15,9 @@ class FrogRiverOneUnitTest {
     void whenLeavesCoverPath_thenReturnsEarliestTime() {
         int m = 7;
         int[] leaves = {1, 3, 6, 4, 2, 3, 7, 5, 4};
-
         // Expected: Time 8 (Value 5 falls at index 7, completing 1..7)
+
+        // HashSet based solution
         assertEquals(8, frogRiverOne.HashSetSolution(m, leaves));
 
         // Boolean array based solution
