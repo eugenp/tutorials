@@ -36,16 +36,6 @@
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.mock-server</groupId>
-            <artifactId>mockserver-netty</artifactId>
-            <version>${mockserver.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mock-server</groupId>
-            <artifactId>mockserver-client-java</artifactId>
-            <version>${mockserver.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
@@ -254,7 +244,6 @@
     <properties>
         <start-class>com.baeldung.restclient.RestClientApplication</start-class>
         <mapstruct.version>1.6.0</mapstruct.version>
-        <mockserver.version>5.15.0</mockserver.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <jedis.version>5.0.2</jedis.version>
         <spring-kafka.version>3.1.2</spring-kafka.version>

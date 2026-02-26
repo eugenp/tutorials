@@ -5,13 +5,13 @@ import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import com.baeldung.common.web.AbstractDiscoverabilityLiveTest;
 import com.baeldung.persistence.model.Foo;
 import com.baeldung.spring.ConfigIntegrationTest;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { ConfigIntegrationTest.class }, loader = AnnotationConfigContextLoader.class)
 @ActiveProfiles("test")
 public class FooDiscoverabilityLiveTest extends AbstractDiscoverabilityLiveTest<Foo> {

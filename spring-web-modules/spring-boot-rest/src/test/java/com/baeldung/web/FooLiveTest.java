@@ -2,17 +2,17 @@ package com.baeldung.web;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.baeldung.common.web.AbstractBasicLiveTest;
 import com.baeldung.persistence.model.Foo;
 import com.baeldung.spring.ConfigIntegrationTest;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { ConfigIntegrationTest.class }, loader = AnnotationConfigContextLoader.class)
 @ActiveProfiles("test")
 public class FooLiveTest extends AbstractBasicLiveTest<Foo> {

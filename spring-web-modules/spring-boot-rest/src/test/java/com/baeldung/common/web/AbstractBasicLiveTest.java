@@ -5,18 +5,18 @@ import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.Serializable;
 import java.util.List;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import com.baeldung.persistence.model.Foo;
 import com.google.common.net.HttpHeaders;
@@ -169,7 +169,7 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
     }
 
     @Test
-    @Ignore("Not Yet Implemented By Spring - https://jira.springsource.org/browse/SPR-10164")
+    @Disabled("Not Yet Implemented By Spring - https://jira.springsource.org/browse/SPR-10164")
     public void givenResourceExists_whenRetrievedWithIfMatchIncorrectEtag_then412IsReceived() {
         // Given
         final String uriOfResource = createAsUri();

@@ -10,8 +10,8 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.beans.factory.InjectionPoint;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 
 import static org.easymock.EasyMock.replay;
@@ -40,7 +40,7 @@ public class ComposedMappingConfiguration {
     @Bean
     @Scope("prototype")
     public Logger logger(InjectionPoint injectionPoint) {
-        return LogManager.getLogger(injectionPoint.getField().getDeclaringClass());
+        return LoggerFactory.getLogger(injectionPoint.getField().getDeclaringClass());
     }
 
 }

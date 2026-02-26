@@ -1,0 +1,14 @@
+target/
+.mvn/
+!.mvn/wrapper/maven-wrapper.properties
+*.class
+*.jar
+*.war
+*.ear
+*.log
+.DS_Store
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/

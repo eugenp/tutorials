@@ -11,7 +11,7 @@ import java.io.Serializable;
 import com.baeldung.persistence.model.Foo;
 import com.baeldung.web.util.HTTPLinkHeaderUtil;
 import org.hamcrest.core.AnyOf;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
 import com.google.common.net.HttpHeaders;

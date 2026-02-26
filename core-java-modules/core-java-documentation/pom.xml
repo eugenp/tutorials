@@ -22,7 +22,6 @@
                 <version>${maven-javadoc-plugin.version}</version>
                 <configuration>
                     <source>${source.version}</source>
-                    <target>${target.version}</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -30,9 +29,8 @@
 
     <properties>
         <!-- maven plugins -->
-        <maven-javadoc-plugin.version>3.6.2</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>3.12.0</maven-javadoc-plugin.version>
         <source.version>1.8</source.version>
-        <target.version>1.8</target.version>
     </properties>
 
 </project>

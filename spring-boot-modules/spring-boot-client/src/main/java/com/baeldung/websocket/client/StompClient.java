@@ -23,7 +23,7 @@ public class StompClient {
         stompClient.setMessageConverter(new MappingJackson2MessageConverter());
 
         StompSessionHandler sessionHandler = new MyStompSessionHandler();
-        stompClient.connect(URL, sessionHandler);
+        stompClient.connectAsync(URL, sessionHandler);
 
         new Scanner(System.in).nextLine(); // Don't close immediately.
     }

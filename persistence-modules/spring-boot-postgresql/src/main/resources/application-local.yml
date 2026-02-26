@@ -1,0 +1,30 @@
+# ---------- defaults (applies to all profiles) ----------
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+---
+# ---------- local profile ----------
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+
+---
+# ---------- heroku profile ----------
+spring:
+  config:
+    activate:
+      on-profile: heroku
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:${JDBC_DATABASE_URL:}}
+    username: ${SPRING_DATASOURCE_USERNAME:${JDBC_DATABASE_USERNAME:}}
+    password: ${SPRING_DATASOURCE_PASSWORD:${JDBC_DATABASE_PASSWORD:}}

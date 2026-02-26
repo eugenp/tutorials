@@ -24,7 +24,7 @@ public class ReqStreamClient {
           .requestStream(DefaultPayload.create(DATA_STREAM_NAME))
           .map(Payload::getData)
           .map(buf -> buf.getFloat())
-          .onErrorReturn(null);
+          .onErrorResume(err -> Flux.empty());
     }
 
     public void dispose() {

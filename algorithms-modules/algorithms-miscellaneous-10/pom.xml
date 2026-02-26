@@ -6,7 +6,7 @@
     <artifactId>algorithms-miscellaneous-10</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>algorithms-miscellaneous-10</name>
-
+ 
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>algorithms-modules</artifactId>

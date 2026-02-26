@@ -1,0 +1,4 @@
+<%@ import com.baeldung.templates.ManTLModel %>
+
+<%@ params(ManTLModel model) %>
+Hello ${model.name()}!

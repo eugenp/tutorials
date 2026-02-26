@@ -137,6 +137,7 @@
         <kotlin-stdlib.version>2.0.0-Beta4</kotlin-stdlib.version>
         <cyclonedx-maven-plugin.version>2.9.0</cyclonedx-maven-plugin.version>
         <start-class>com.baeldung.custom.deserialization.Application</start-class>
+        <lombok.version>1.18.42</lombok.version>
     </properties>
 
 </project>

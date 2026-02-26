@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<target>System.out</target>
+		<encoder>
+			<pattern>%date %level [%thread] %logger{10} [%file:%line] -%kvp-%msg%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="STDOUT_SIMPLE" class="ch.qos.logback.core.ConsoleAppender">
+		<target>System.out</target>
+		<encoder>
+			<pattern>%msg%n</pattern>
+		</encoder>
+	</appender>
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+	</root>
+	<logger name="com.baeldung.sambajcifs.SambaJCIFSBasics" level="INFO" additivity="false">
+		<appender-ref ref="STDOUT_SIMPLE" />
+	</logger>
+	<logger name="com.baeldung.sambajcifs.SambaJCIFSFiles" level="INFO"
+		additivity="false">
+		<appender-ref ref="STDOUT_SIMPLE" />
+	</logger>
+	<logger name="org.codelibs.jcifs.smb" level="INFO" />
+	<logger name="org.codelibs.jcifs.smb.internal" level="WARM" />
+	<!-- Disable everything but errors for clarity -->
+	<logger name="org.codelibs.jcifs.smb.internal.smb2" level="ERROR" />
+</configuration>

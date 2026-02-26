@@ -8,7 +8,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 
-import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class StableValuesUnitTest {
 
