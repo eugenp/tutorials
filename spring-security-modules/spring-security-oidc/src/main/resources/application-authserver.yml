@@ -19,19 +19,24 @@ spring:
               client-secret: "{noop}secret"
               client-authentication-methods:
                 - "client_secret_basic"
+                - "none"
               authorization-grant-types:
                 - "authorization_code"
+                - "client_credentials"
               scopes:
                 - "openid"
                 - "user.read"
               redirect-uris:
-                - "http://localhost:8080/login/oauth2/code/user-service"
+                - "http://127.0.0.1:8081/login/oauth2/code/user-service"
+                - "http://localhost:8080/client/login/oauth2/code/messaging-client-oidc"
+                - "http://127.0.0.1:8080/client/login/oauth2/code/messaging-client-oidc"
           token-exchange-client:
             registration:
               client-id: "token-exchange-client"
               client-secret: "{noop}token"
               client-authentication-methods:
                 - "client_secret_basic"
+                - "client_secret_post"
               authorization-grant-types:
                 - "urn:ietf:params:oauth:grant-type:token-exchange"
               scopes:

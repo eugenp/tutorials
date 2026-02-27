@@ -7,4 +7,4 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:9001
-          audiences: message-service
+          audiences: token-exchange-client
