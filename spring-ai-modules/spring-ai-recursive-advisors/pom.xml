@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <artifactId>spring-ai-recursive-advisors</artifactId>
+   <packaging>jar</packaging>
+   <name>spring-ai-recursive-advisors</name>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>spring-ai-modules</artifactId>
+        <version>0.0.1</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+   <dependencyManagement>
+       <dependencies>
+           <dependency>
+               <groupId>org.springframework.ai</groupId>
+               <artifactId>spring-ai-bom</artifactId>
+               <version>${spring-ai.version}</version>
+               <type>pom</type>
+               <scope>import</scope>
+           </dependency>
+       </dependencies>
+   </dependencyManagement>
+
+   <dependencies>
+       <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-web</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-starter-model-openai</artifactId>
+           <version>${spring-ai.version}</version>
+       </dependency>
+       <dependency>
+           <groupId>org.commonmark</groupId>
+           <artifactId>commonmark</artifactId>
+           <version>0.27.1</version>
+       </dependency>
+       <dependency>
+           <groupId>org.commonmark</groupId>
+           <artifactId>commonmark-ext-gfm-tables</artifactId>
+           <version>${commonmark-ext-gfm-tables.version}</version>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-devtools</artifactId>
+           <scope>runtime</scope>
+           <optional>true</optional>
+       </dependency>
+       <dependency>
+           <groupId>org.projectlombok</groupId>
+           <artifactId>lombok</artifactId>
+           <optional>true</optional>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-test</artifactId>
+           <scope>test</scope>
+       </dependency>
+
+   </dependencies>
+
+   <build>
+       <plugins>
+           <plugin>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-maven-plugin</artifactId>
+               <configuration>
+                   <mainClass>${spring.boot.mainclass}</mainClass>
+               </configuration>
+           </plugin>
+       </plugins>
+   </build>
+
+   <properties>
+       <java.version>21</java.version>
+       <spring-boot.version>3.5.0</spring-boot.version>
+       <spring-ai.version>1.1.2</spring-ai.version>
+       <commonmark-ext-gfm-tables.version>0.21.0</commonmark-ext-gfm-tables.version>
+       <logback.version>1.5.18</logback.version>
+   </properties>
+
+</project>
