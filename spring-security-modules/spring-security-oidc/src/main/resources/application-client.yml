@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: token-exchange-client
+  security:
+    oauth2:
+      client:
+        registration:
+          messaging-client-oidc:
+            provider: spring
+            client-id: user-service
+            client-authentication-method: none
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope:
+              - "openid"
+              - "user.read"
+            client-name: messaging-client-oidc
+        provider:
+          spring:
+            issuer-uri: http://localhost:9001
+
+server:
+  port: 8080
+  servlet:
+    context-path: /client
+
+logging:
+  level:
+    org.springframework.security: trace
