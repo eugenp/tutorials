@@ -5,31 +5,32 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.client.RestClient;
 
-/**
- * @author Steve Riesenberg
- * @since 1.3
- */
-@Configuration
 @EnableWebSecurity
+@Configuration
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        // @formatter:off
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .securityMatcher("/user/**")
-            .authorizeHttpRequests((authorize) -> authorize
-                .requestMatchers("/user/**").authenticated()
-            )
-            .oauth2ResourceServer((oauth2ResourceServer) -> oauth2ResourceServer
-                .jwt(Customizer.withDefaults())
-            )
-            .oauth2Client(Customizer.withDefaults());
-        // @formatter:on
-
+          .authorizeHttpRequests(authorize -> authorize
+            .anyRequest().authenticated())
+          .csrf(AbstractHttpConfigurer::disable)
+          .sessionManagement(session ->
+              session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+          .oauth2ResourceServer(resource -> resource.jwt(Customizer.withDefaults()))
+          .oauth2Client(Customizer.withDefaults());
         return http.build();
+    }
+
+    @Bean
+    public RestClient restClient() {
+        return RestClient.builder()
+          .build();
     }
 
 }
