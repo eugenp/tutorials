@@ -14,7 +14,7 @@ import com.google.common.collect.ArrayListMultimap;
 
 public class ArrayListInHashMap {
 
-    public static Map<String, ArrayList<String>> addKeyManually(Map<String, ArrayList<String>> map, String key, String value) {
+    public static Map<String, List<String>> addKeyManually(Map<String, List<String>> map, String key, String value) {
         if (!map.containsKey(key)) {
             map.put(key, new ArrayList<String>());
         }
@@ -22,7 +22,7 @@ public class ArrayListInHashMap {
         return map;
     }
 
-    public static Map<String, ArrayList<String>> addKeyWithComputeIfAbsent(Map<String, ArrayList<String>> map, String key, String value) {
+    public static Map<String, List<String>> addKeyWithComputeIfAbsent(Map<String, List<String>> map, String key, String value) {
         map.computeIfAbsent(key, k -> new ArrayList<String>()).add(value);
         return map;
     }
