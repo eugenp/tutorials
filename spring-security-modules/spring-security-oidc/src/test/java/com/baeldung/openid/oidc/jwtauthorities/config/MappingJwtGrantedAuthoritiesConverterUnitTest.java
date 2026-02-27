@@ -1,6 +1,5 @@
 package com.baeldung.openid.oidc.jwtauthorities.config;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Collection;
@@ -27,8 +26,7 @@ class MappingJwtGrantedAuthoritiesConverterUnitTest {
         MappingJwtGrantedAuthoritiesConverter converter = new MappingJwtGrantedAuthoritiesConverter(scopeMap);
         Collection<GrantedAuthority> result = converter.convert(jwt);
         
-        assertTrue("Result must contain the authoriry 'SCOPE_profile.read'", 
-         result.contains(new SimpleGrantedAuthority("SCOPE_profile.read")));
+        assertTrue(result.contains(new SimpleGrantedAuthority("SCOPE_profile.read")), "Result must contain the authoriry 'SCOPE_profile.read'");
     }
 
     @Test
@@ -44,8 +42,7 @@ class MappingJwtGrantedAuthoritiesConverterUnitTest {
         converter.setAuthoritiesClaimName("myscope_claim");
         Collection<GrantedAuthority> result = converter.convert(jwt);
         
-        assertTrue("Result must contain the authoriry 'SCOPE_profile'", 
-         result.contains(new SimpleGrantedAuthority("SCOPE_profile")));
+        assertTrue(result.contains(new SimpleGrantedAuthority("SCOPE_profile")), "Result must contain the authoriry 'SCOPE_profile'");
     }
     
     @Test
@@ -61,8 +58,7 @@ class MappingJwtGrantedAuthoritiesConverterUnitTest {
         MappingJwtGrantedAuthoritiesConverter converter = new MappingJwtGrantedAuthoritiesConverter(scopeMap);
         Collection<GrantedAuthority> result = converter.convert(jwt);
         
-        assertTrue("Result must contain the authority SCOPE_custom", 
-         result.contains(new SimpleGrantedAuthority("SCOPE_custom")));
+        assertTrue(result.contains(new SimpleGrantedAuthority("SCOPE_custom")), "Result must contain the authority SCOPE_custom");
     }
     
 
@@ -85,7 +81,7 @@ class MappingJwtGrantedAuthoritiesConverterUnitTest {
           .filter(s -> !s.startsWith("MY_SCOPE"))
           .count();
         
-        assertTrue("All authorities names must start with custom prefix", count == 0 );
+        assertTrue(count == 0, "All authorities names must start with custom prefix");
     }
 
 }

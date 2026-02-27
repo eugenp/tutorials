@@ -1,0 +1,27 @@
+server:
+  port: 8081
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:9001/oauth2/jwks
+          issuer-uri: http://localhost:9001
+          audiences: user-service
+      client:
+        registration:
+          my-token-exchange-client:
+            provider: my-auth-server
+            client-id: "token-exchange-client"
+            client-secret: "token"
+            authorization-grant-type: "urn:ietf:params:oauth:grant-type:token-exchange"
+            client-authentication-method:
+              - "client_secret_basic"
+              - "client_secret_post"
+            scope:
+              - message.read
+            client-name: my-token-exchange-client
+        provider:
+          my-auth-server:
+            issuer-uri: http://localhost:9001
