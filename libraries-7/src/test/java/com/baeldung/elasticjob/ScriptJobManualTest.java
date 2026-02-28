@@ -16,8 +16,8 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ScriptJobLiveTest {
-    private static final Logger LOG = LoggerFactory.getLogger(ScriptJobLiveTest.class);
+public class ScriptJobManualTest {
+    private static final Logger LOG = LoggerFactory.getLogger(ScriptJobManualTest.class);
 
     @Test
     void whenSchedulingAScriptJob_thenTheScriptRuns() throws Exception {
@@ -52,7 +52,7 @@ public class ScriptJobLiveTest {
 
     private static CoordinatorRegistryCenter createRegistryCenter() {
         CoordinatorRegistryCenter regCenter = new ZookeeperRegistryCenter(new ZookeeperConfiguration("localhost:2181",
-            ScriptJobLiveTest.class.getName()));
+            ScriptJobManualTest.class.getName()));
         regCenter.init();
         return regCenter;
     }
