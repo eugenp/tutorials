@@ -1,0 +1,36 @@
+<configuration>
+    <property name="outputDir" value="${outputDir:-.}"/>
+
+    <condition class="ch.qos.logback.core.boolex.ExpressionPropertyCondition">
+        <expression>
+            isNull("LB_TEST_ENV") &amp;&amp; propertyEquals("LB_TEST_HOST", "torino")
+        </expression>
+    </condition>
+
+    <if>
+        <then>
+            <appender name="CON" class="ch.qos.logback.core.ConsoleAppender">
+                <target>System.out</target>
+                <encoder>
+                    <pattern>%msg%n</pattern>
+                </encoder>
+            </appender>
+            <root level="INFO">
+                <appender-ref ref="CON"/>
+            </root>
+        </then>
+
+        <else>
+            <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+                <file>${outputDir}/conditional.log</file>
+                <append>false</append>
+                <encoder>
+                    <pattern>%msg%n</pattern>
+                </encoder>
+            </appender>
+            <root level="INFO">
+                <appender-ref ref="FILE"/>
+            </root>
+        </else>
+    </if>
+</configuration>
