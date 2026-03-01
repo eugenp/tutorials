@@ -78,6 +78,11 @@
             <artifactId>hypersistence-tsid</artifactId>
             <version>${hypersistence.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.shardingsphere.elasticjob</groupId>
+            <artifactId>elasticjob-bootstrap</artifactId>
+            <version>${elasticjob.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -122,6 +127,7 @@
         <mybatis-dynamic-sql.version>1.5.2</mybatis-dynamic-sql.version>
         <jte.version>3.2.2</jte.version>
         <hypersistence.version>2.1.4</hypersistence.version>
+        <elasticjob.version>3.0.5</elasticjob.version>
     </properties>
 
 </project>
