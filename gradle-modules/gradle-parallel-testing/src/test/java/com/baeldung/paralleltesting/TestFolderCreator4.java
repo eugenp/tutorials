@@ -79,7 +79,6 @@ public class TestFolderCreator4 {
     private void removeTestFolder() {
         File folder = new File(baseFolder.toFile()
             .getAbsolutePath() + testFolderName);
-        System.out.println("Foobar " + folder.getAbsolutePath());
         folder.delete();
     }
 }
