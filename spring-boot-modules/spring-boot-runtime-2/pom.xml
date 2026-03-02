@@ -43,6 +43,9 @@
         <finalName>${project.artifactId}</finalName>
         <resources>
             <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
                 <directory>src/main/resources/heap</directory>
                 <targetPath>${project.build.directory}</targetPath>
                 <filtering>true</filtering>
