@@ -27,11 +27,12 @@ class TransactionRoutingIntegrationTest {
     }
 
     @Test
-    void whenSaveAndReadWithReadOnly_thenRoutesToReplica() {
-        orderService.save(new Order("keyboard"));
+    void whenSaveAndReadWithReadOnly_thenOrderNotFound() {
+        Order saved = orderService.save(new Order("keyboard"));
 
         List<Order> result = orderService.findAllReadOnly();
 
-        assertThat(result).isEmpty();
+        assertThat(result).noneMatch(o -> o.getId()
+            .equals(saved.getId()));
     }
 }

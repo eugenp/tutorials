@@ -7,6 +7,13 @@ public class TransactionRoutingDataSource extends AbstractRoutingDataSource {
 
     @Override
     protected Object determineCurrentLookupKey() {
-        return TransactionSynchronizationManager.isCurrentTransactionReadOnly() ? DataSourceType.READ_ONLY : DataSourceType.READ_WRITE;
+        boolean readOnly = TransactionSynchronizationManager
+          .isCurrentTransactionReadOnly();
+
+        if (readOnly) {
+            return DataSourceType.READ_ONLY;
+        }
+
+        return DataSourceType.READ_WRITE;
     }
 }

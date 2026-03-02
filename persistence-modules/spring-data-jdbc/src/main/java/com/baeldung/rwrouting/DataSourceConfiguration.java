@@ -25,7 +25,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackageClasses = Order.class, entityManagerFactoryRef = "routingEntityManagerFactory", transactionManagerRef = "routingTransactionManager")
+@EnableJpaRepositories(
+  basePackageClasses = OrderRepository.class,
+  entityManagerFactoryRef = "routingEntityManagerFactory",
+  transactionManagerRef = "routingTransactionManager"
+)
 public class DataSourceConfiguration {
 
     @Bean
@@ -97,7 +101,7 @@ public class DataSourceConfiguration {
     @Bean
     public LocalContainerEntityManagerFactoryBean routingEntityManagerFactory(EntityManagerFactoryBuilder builder) {
         return builder.dataSource(dataSource())
-            .packages(Order.class)
+            .packages(OrderRepository.class)
             .build();
     }
 
