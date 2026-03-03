@@ -16,7 +16,7 @@ import lombok.SneakyThrows;
 
 @Component
 @RequiredArgsConstructor
-public class JsonMessageConverter implements MessageConverter {
+class JsonMessageConverter implements MessageConverter {
 
 	private final JsonMapper jsonMapper = JsonMapper.builder()
 			.build();
@@ -26,8 +26,8 @@ public class JsonMessageConverter implements MessageConverter {
 	public Message toMessage(Object object, Session session)
 			throws JMSException, MessageConversionException {
 
-		var json = jsonMapper.writeValueAsString(object);
-		var msg = session.createTextMessage(json);
+		String json = jsonMapper.writeValueAsString(object);
+		TextMessage msg = session.createTextMessage(json);
 		msg.setStringProperty("_type", object.getClass().getName());
 		return msg;
 	}

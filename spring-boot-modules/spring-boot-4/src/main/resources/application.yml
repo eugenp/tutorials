@@ -9,9 +9,6 @@ spring:
     broker-url: tcp://localhost:61616
     user: admin
     password: admin
-  jms:
-    template:
-      default-destination: demo-queue
 
 logging:
   level:
