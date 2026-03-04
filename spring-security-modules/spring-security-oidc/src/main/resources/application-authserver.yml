@@ -30,9 +30,9 @@ spring:
                 - "http://127.0.0.1:8081/login/oauth2/code/user-service"
                 - "http://localhost:8080/client/login/oauth2/code/messaging-client-oidc"
                 - "http://127.0.0.1:8080/client/login/oauth2/code/messaging-client-oidc"
-          token-exchange-client:
+          message-service:
             registration:
-              client-id: "token-exchange-client"
+              client-id: "message-service"
               client-secret: "{noop}token"
               client-authentication-methods:
                 - "client_secret_basic"

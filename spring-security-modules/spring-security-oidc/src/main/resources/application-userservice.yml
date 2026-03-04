@@ -11,9 +11,9 @@ spring:
           audiences: user-service
       client:
         registration:
-          my-token-exchange-client:
+          my-message-service:
             provider: my-auth-server
-            client-id: "token-exchange-client"
+            client-id: "message-service"
             client-secret: "token"
             authorization-grant-type: "urn:ietf:params:oauth:grant-type:token-exchange"
             client-authentication-method:
@@ -21,7 +21,7 @@ spring:
               - "client_secret_post"
             scope:
               - message.read
-            client-name: my-token-exchange-client
+            client-name: my-message-service
         provider:
           my-auth-server:
             issuer-uri: http://localhost:9001

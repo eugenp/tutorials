@@ -11,11 +11,11 @@ import org.springframework.web.client.RestClient;
 
 @RestController
 @RequestMapping("/")
-public class ClientApi {
+public class ClientController {
     private static final String TARGET_RESOURCE_SERVER_URL = "http://localhost:8081/user/message";
     private final RestClient restClient;
 
-    public ClientApi(RestClient restClient) {
+    public ClientController(RestClient restClient) {
         this.restClient = restClient;
     }
 
@@ -24,11 +24,13 @@ public class ClientApi {
         return "<html><body><title>Hello</title><p>Hello '" +
           user.getSubject() + " (" + user.getAuthorizedParty() + ")" +
           "' from the Token Exchange Client!</p></br><p>" +
-          "Use the <a href=\"/client/api/hello\">/api/hello</a> endpoint to access the resource server.</p></body></html>";
+          "Use the <a href=\"/client/api/user/message\">/user/message</a>" +
+          " endpoint to access the resource server.</p></body></html>";
     }
 
-    @GetMapping("/api/hello")
-    public String hello(@RegisteredOAuth2AuthorizedClient(registrationId = "messaging-client-oidc") OAuth2AuthorizedClient oauth2AuthorizedClient) {
+    @GetMapping("/api/user/message")
+    public String userMessage(@RegisteredOAuth2AuthorizedClient(registrationId = "messaging-client-oidc")
+      OAuth2AuthorizedClient oauth2AuthorizedClient) {
         RestClient.ResponseSpec responseSpec = restClient.get().uri(TARGET_RESOURCE_SERVER_URL)
           .headers(headers -> headers.setBearerAuth(oauth2AuthorizedClient.getAccessToken().getTokenValue()))
           .retrieve();

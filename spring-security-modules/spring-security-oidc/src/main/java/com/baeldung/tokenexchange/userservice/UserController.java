@@ -24,9 +24,10 @@ public class UserController {
     @GetMapping("/user/message")
     public String message(JwtAuthenticationToken jwtAuthentication) {
 
-        OAuth2AuthorizeRequest authorizeRequest = OAuth2AuthorizeRequest.withClientRegistrationId("my-token-exchange-client")
-                .principal(jwtAuthentication)
-                .build();
+        OAuth2AuthorizeRequest authorizeRequest = OAuth2AuthorizeRequest
+          .withClientRegistrationId("my-message-service")
+          .principal(jwtAuthentication)
+          .build();
 
         OAuth2AuthorizedClient authorizedClient = this.authorizedClientManager.authorize(authorizeRequest);
 

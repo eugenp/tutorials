@@ -21,7 +21,7 @@ public class SecurityConfig {
             .anyRequest().authenticated())
           .csrf(AbstractHttpConfigurer::disable)
           .sessionManagement(session ->
-              session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
           .oauth2ResourceServer(resource -> resource.jwt(withDefaults()));
         return http.build();
     }
