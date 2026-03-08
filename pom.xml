@@ -667,6 +667,7 @@
                 <module>google-auto-project</module>
                 <module>google-cloud</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
+                <module>gradle-modules/gradle-parallel-testing</module>
                 <module>graphql-modules</module>
                 <module>grpc</module>
                 <module>guava-modules</module>
@@ -1143,6 +1144,7 @@
                 <module>google-auto-project</module>
                 <module>google-cloud</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
+                <module>gradle-modules/gradle-parallel-testing</module>
                 <module>graphql-modules</module>
                 <module>grpc</module>
                 <module>guava-modules</module>
