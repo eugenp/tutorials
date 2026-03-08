@@ -25,12 +25,11 @@ public class TestFolderCreator2 {
     private long start;
     private static long startAll;
 
-    private Path baseFolder = Paths.get(this.getClass()
-        .getResource("/")
+    private Path baseFolder = Paths.get(getClass().getResource("/")
         .getPath());
 
-    private Integer worker = Integer.valueOf(System.getProperty("org.gradle.test.worker", "1"));
-    private String testFolderName = "/" + "Test_" + worker;
+    private Integer workerID = Integer.valueOf(System.getProperty("org.gradle.test.worker", "1"));
+    private String testFolderName = "/" + "Test_" + workerID;
 
     @BeforeAll
     static void beforeAll() {
