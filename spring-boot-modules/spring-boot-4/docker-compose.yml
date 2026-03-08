@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  activemq:
+    image: apache/activemq-artemis:2.37.0
+    container_name: activemq-artemis
+    ports:
+      - "61616:61616"   # OpenWire (JMS)
+      - "8161:8161"     # Web Console
+    environment:
+      - ARTEMIS_USER=admin
+      - ARTEMIS_PASSWORD=admin

@@ -9,6 +9,7 @@
 
     <modules>
         <module>library-core</module>
+        <module>jmod-file</module>
     </modules>
 
     <parent>
