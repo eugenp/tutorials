@@ -163,7 +163,7 @@ class ToonSerializationUnitTest {
         String toon = JsonIo.toToon(employees, null);
 
         EncodingRegistry registry = Encodings.newDefaultEncodingRegistry();
-        Encoding encoding = registry.getEncoding(EncodingType.CL100K_BASE);
+        Encoding encoding = registry.getEncoding(EncodingType.O200K_BASE);
 
         int jsonTokens = encoding.countTokens(json);
         int toonTokens = encoding.countTokens(toon);
