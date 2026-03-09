@@ -14,7 +14,7 @@ import org.springframework.security.oauth2.jwt.Jwt;
 class MappingJwtGrantedAuthoritiesConverterUnitTest {
 
     @Test
-    void testGivenConverterWithScopeMap_whenConvert_thenResultHasMappedAuthorities() {
+    void givenConverterWithScopeMap_whenConvert_thenResultHasMappedAuthorities() {
         Jwt jwt = Jwt.withTokenValue("NOTUSED")
           .header("typ", "JWT")
           .subject("user")
@@ -30,7 +30,7 @@ class MappingJwtGrantedAuthoritiesConverterUnitTest {
     }
 
     @Test
-    void testGivenConverterWithCustomScopeClaim_whenConvert_thenResultHasAuthorities() {
+    void givenConverterWithCustomScopeClaim_whenConvert_thenResultHasAuthorities() {
         Jwt jwt = Jwt.withTokenValue("NOTUSED")
           .header("typ", "JWT")
           .subject("user")
@@ -46,7 +46,7 @@ class MappingJwtGrantedAuthoritiesConverterUnitTest {
     }
     
     @Test
-    void testGivenTokenWithNonMappedScope_whenConvert_thenResultHasOriginalScope() {
+    void givenTokenWithNonMappedScope_whenConvert_thenResultHasOriginalScope() {
         Jwt jwt = Jwt.withTokenValue("NOTUSED")
           .header("typ", "JWT")
           .subject("user")
@@ -63,7 +63,7 @@ class MappingJwtGrantedAuthoritiesConverterUnitTest {
     
 
     @Test
-    void testGivenConverterWithCustomPrefix_whenConvert_thenAllAuthoritiesMustHaveTheCustomPrefix() {
+    void givenConverterWithCustomPrefix_whenConvert_thenAllAuthoritiesMustHaveTheCustomPrefix() {
         Jwt jwt = Jwt.withTokenValue("NOTUSED")
           .header("typ", "JWT")
           .subject("user")
