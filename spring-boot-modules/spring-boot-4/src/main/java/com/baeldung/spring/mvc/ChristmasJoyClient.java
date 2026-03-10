@@ -3,9 +3,9 @@ package com.baeldung.spring.mvc;
 import org.springframework.resilience.annotation.ConcurrencyLimit;
 import org.springframework.resilience.annotation.Retryable;
 import org.springframework.web.service.annotation.GetExchange;
-import org.springframework.web.service.registry.HttpServiceClient;
+import org.springframework.web.service.annotation.HttpExchange;
 
-@HttpServiceClient("christmasJoy")
+@HttpExchange("/api")
 public interface ChristmasJoyClient {
 
     @GetExchange("/greetings?random")
