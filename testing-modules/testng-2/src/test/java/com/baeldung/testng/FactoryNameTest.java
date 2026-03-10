@@ -9,8 +9,10 @@ import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
 
 import java.lang.reflect.Method;
+import java.util.List;
 
 public class FactoryNameTest {
+
     private static final Logger logger = LoggerFactory.getLogger(FactoryNameTest.class);
     private final String instanceLabel;
 
@@ -20,7 +22,7 @@ public class FactoryNameTest {
 
     @Factory
     public static Object[] build() {
-        return new Object[]{new FactoryNameTest("fast-path"), new FactoryNameTest("slow-path")};
+        return new Object[] { new FactoryNameTest("fast-path"), new FactoryNameTest("slow-path") };
     }
 
     @BeforeMethod
@@ -31,8 +33,8 @@ public class FactoryNameTest {
     }
 
     @Test
-    public void givenSimpleAssertionThenShouldPass() {
+    public void givenTestNameSetupWhenTestNameIsRequestedThenShouldReturnTestName() {
         logger.info("Executing scenario {}", instanceLabel);
-        Assert.assertEquals(4, 2 + 2);
+        Assert.assertListContainsObject(List.of("fast-path", "slow-path"), instanceLabel, "instance label is not");
     }
 }

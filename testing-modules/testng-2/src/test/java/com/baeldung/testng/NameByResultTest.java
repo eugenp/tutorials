@@ -21,8 +21,8 @@ public class NameByResultTest {
     }
 
     @Test
-    public void givenSimpleAssertionThenShouldPass() {
+    public void givenTestNameSetupWhenTestNameIsRequestedThenShouldReturnTestName() {
         logger.info("Executing scenario {}", testName);
-        Assert.assertEquals(4, 2 + 2);
+        Assert.assertEquals(testName, "givenTestNameSetupWhenTestNameIsRequestedThenShouldReturnTestName");
     }
 }

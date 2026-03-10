@@ -25,13 +25,13 @@ public class DataDrivenNameTest {
     }
 
     @Test(dataProvider = "numbers")
-    public void shouldSquare(int input, int expected) {
+    public void givenInputWhenSquaringThenShouldBeExpected(int input, int expected) {
         logger.info("Executing scenario from {}", testName);
         assertEquals(Math.pow(input, 2), expected);
     }
 
     @DataProvider
     public Object[][] numbers() {
-        return new Object[][]{{2, 4}, {3, 9}};
+        return new Object[][] { { 2, 4 }, { 3, 9 } };
     }
 }

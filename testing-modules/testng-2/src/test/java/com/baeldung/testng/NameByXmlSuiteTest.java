@@ -20,8 +20,8 @@ public class NameByXmlSuiteTest {
     }
 
     @Test
-    public void givenSimpleAssertionThenShouldPass() {
+    public void givenTestContextSetupWhenRequestingSuiteNameThenShouldReturnSuiteName() {
         logger.info("Executing scenario from {}", iTestContextSuiteName);
-        Assert.assertEquals(4, 2 + 2);
+        Assert.assertEquals(iTestContextSuiteName, "tutorials");
     }
 }
