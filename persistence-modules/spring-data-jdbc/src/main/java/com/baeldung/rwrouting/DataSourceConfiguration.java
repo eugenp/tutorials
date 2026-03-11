@@ -57,7 +57,6 @@ public class DataSourceConfiguration {
     }
 
     @Bean
-    @Primary
     public TransactionRoutingDataSource routingDataSource() {
         TransactionRoutingDataSource routingDataSource = new TransactionRoutingDataSource();
 
@@ -94,6 +93,7 @@ public class DataSourceConfiguration {
     }
 
     @Bean
+    @Primary
     public DataSource dataSource() {
         return new LazyConnectionDataSourceProxy(routingDataSource());
     }
