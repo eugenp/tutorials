@@ -1,0 +1,54 @@
+services:
+  seata-server:
+    image: apache/seata-server:2.6.0
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: seata
+      POSTGRES_USER: seata
+      POSTGRES_PASSWORD: seata
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+
+  service-a:
+    platform: linux/amd64
+    build:
+      context: apache-seata-a
+    environment:
+      PORT: 8080
+      SERVICE_B_URL: http://service-b:8081
+    ports:
+      - 127.0.0.1:8080:8080
+    links:
+      - postgres
+      - service-b
+    depends_on:
+      - postgres
+      - seata-server
+
+  service-b:
+    platform: linux/amd64
+    build:
+      context: apache-seata-b
+    environment:
+      PORT: 8081
+      SERVICE_C_URL: http://service-c:8082
+    ports:
+      - 127.0.0.1:8081:8081
+    depends_on:
+      - postgres
+      - seata-server
+
+  service-c:
+    platform: linux/amd64
+    build:
+      context: apache-seata-c
+    environment:
+      PORT: 8082
+    ports:
+      - 127.0.0.1:8082:8082
+    depends_on:
+      - postgres
+      - seata-server
+
