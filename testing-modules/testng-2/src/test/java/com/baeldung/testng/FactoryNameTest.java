@@ -33,7 +33,7 @@ public class FactoryNameTest {
     }
 
     @Test
-    public void givenTestNameSetupWhenTestNameIsRequestedThenShouldReturnTestName() {
+    public void givenTestNameSetup_WhenTestNameIsRequested_ThenShouldReturnTestName() {
         logger.info("Executing scenario {}", instanceLabel);
         Assert.assertListContainsObject(List.of("fast-path", "slow-path"), instanceLabel, "instance label is not");
     }

@@ -1,15 +1,15 @@
 package com.baeldung.testng;
 
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.lang.reflect.Method;
-import java.util.Arrays;
-
-import static org.testng.Assert.assertEquals;
 
 public class DataDrivenNameTest {
 
@@ -25,9 +25,9 @@ public class DataDrivenNameTest {
     }
 
     @Test(dataProvider = "numbers")
-    public void givenInputWhenSquaringThenShouldBeExpected(int input, int expected) {
+    public void givenInputParameters_WhenFetchingTestName_ThenShouldReturnCorrectTestName(int input, int expected) {
         logger.info("Executing scenario from {}", testName);
-        assertEquals(Math.pow(input, 2), expected);
+        Assert.assertListContainsObject(List.of("givenInputWhenSquaringThenShouldBeExpected[2, 4]", "givenInputWhenSquaringThenShouldBeExpected[3, 9]"), testName, "Test name is not as expected");
     }
 
     @DataProvider

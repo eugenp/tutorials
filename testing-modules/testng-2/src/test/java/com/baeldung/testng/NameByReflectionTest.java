@@ -21,7 +21,7 @@ public class NameByReflectionTest {
     }
 
     @Test
-    public void givenTestNameSetupWhenTestNameIsRequestedThenShouldReturnTestName() {
+    public void givenTestNameSetup_WhenTestNameIsRequested_ThenShouldReturnTestName() {
         logger.info("Executing scenario {}", testName);
         Assert.assertEquals(testName, "givenTestNameSetupWhenTestNameIsRequestedThenShouldReturnTestName");
     }
