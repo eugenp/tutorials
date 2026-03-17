@@ -23,6 +23,6 @@ public class NameByResultTest {
     @Test
     public void givenTestNameSetup_WhenTestNameIsRequested_ThenShouldReturnTestName() {
         logger.info("Executing scenario {}", testName);
-        Assert.assertEquals(testName, "givenTestNameSetupWhenTestNameIsRequestedThenShouldReturnTestName");
+        Assert.assertEquals(testName, "givenTestNameSetup_WhenTestNameIsRequested_ThenShouldReturnTestName");
     }
 }
