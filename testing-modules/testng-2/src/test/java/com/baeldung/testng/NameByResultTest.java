@@ -15,9 +15,8 @@ public class NameByResultTest {
     @BeforeMethod
     public void capture(ITestResult result) {
         String testName = result.getMethod().getMethodName();
-        long startTime = result.getStartMillis();
         this.testName = testName;
-        logger.info("Starting test {} at {}", testName, startTime);
+        logger.info("Starting test {}", testName);
     }
 
     @Test
