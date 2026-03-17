@@ -22,6 +22,6 @@ public class NameByXmlSuiteTest {
     @Test
     public void givenTestContextSetup_WhenRequestingSuiteName_ThenShouldReturnSuiteName() {
         logger.info("Executing scenario from {}", iTestContextSuiteName);
-        Assert.assertEquals(iTestContextSuiteName, "tutorials");
+        Assert.assertEquals(iTestContextSuiteName, "All Tests");
     }
 }
