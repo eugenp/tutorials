@@ -754,6 +754,7 @@
                 <module>mustache</module>
                 <module>mybatis</module>
                 <module>mybatis-plus</module>
+                <module>mybatis-flex</module>
                 <module>netflix-modules</module>
                 <module>optaplanner</module>
                 <module>ojp</module>

@@ -6,7 +6,7 @@ import org.springframework.core.io.buffer.DefaultDataBufferFactory;
 import reactor.core.publisher.Flux;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-public class DataBufferConverterTest {
+public class DataBufferConverterUnitTest {
 
     private final DataBufferConverter converter = new DataBufferConverter();
     private final DefaultDataBufferFactory factory = new DefaultDataBufferFactory();
