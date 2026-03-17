@@ -667,7 +667,6 @@
                 <module>google-auto-project</module>
                 <module>google-cloud</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
-                <module>gradle-modules/gradle-parallel-testing</module>
                 <module>graphql-modules</module>
                 <module>grpc</module>
                 <module>guava-modules</module>
@@ -1145,7 +1144,6 @@
                 <module>google-auto-project</module>
                 <module>google-cloud</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
-                <module>gradle-modules/gradle-parallel-testing</module>
                 <module>graphql-modules</module>
                 <module>grpc</module>
                 <module>guava-modules</module>
@@ -1569,6 +1567,7 @@
                 <module>clojure-modules</module> <!-- Not a maven project -->
                 <module>ethereum</module> <!-- JAVA-6001 -->
                 <module>gradle-modules</module> <!-- Not a maven project -->
+                <module>gradle-modules/gradle-parallel-testing</module> <!-- Not a maven project -->
                 <module>guest</module> <!-- not to be built as its for guest articles  -->
                 <module>pants</module> <!-- Not a maven project -->
                 <module>spring-cloud-cli</module> <!-- Not a maven project -->
@@ -1637,6 +1636,7 @@
                 <module>clojure-modules</module> <!-- Not a maven project -->
                 <module>ethereum</module> <!-- JAVA-6001 -->
                 <module>gradle-modules</module> <!-- Not a maven project -->
+                <module>gradle-modules/gradle-parallel-testing</module> <!-- Not a maven project -->
                 <module>guest</module> <!-- not to be built as its for guest articles  -->
                 <module>pants</module> <!-- Not a maven project -->
                 <module>spring-cloud-cli</module> <!-- Not a maven project -->
