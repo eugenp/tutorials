@@ -29,7 +29,6 @@ public class FactoryNameTest {
     public void capture(Method method, ITestResult result) {
         String fullName = method.getName() + "[" + instanceLabel + "]";
         result.setAttribute("displayName", fullName);
-        logger.info("capturing {}", fullName);
     }
 
     @Test
