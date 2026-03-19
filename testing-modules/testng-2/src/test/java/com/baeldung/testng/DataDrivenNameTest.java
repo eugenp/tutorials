@@ -14,7 +14,6 @@ import org.testng.annotations.Test;
 public class DataDrivenNameTest {
 
     private static final Logger logger = LoggerFactory.getLogger(DataDrivenNameTest.class);
-
     private String testName;
 
     @BeforeMethod
