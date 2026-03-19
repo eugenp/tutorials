@@ -16,7 +16,7 @@ public class FactoryNameTest {
     private static final Logger logger = LoggerFactory.getLogger(FactoryNameTest.class);
     private final String instanceLabel;
 
-    public FactoryNameTest(String label) {
+    public FactoryNameTest(String instanceLabel) {
         this.instanceLabel = label;
     }
 
