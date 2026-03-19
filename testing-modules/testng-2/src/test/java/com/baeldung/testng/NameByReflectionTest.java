@@ -17,7 +17,6 @@ public class NameByReflectionTest {
     public void capture(Method method) {
         String testName = method.getName();
         this.testName = testName;
-        logger.info("Method name: {}", testName);
     }
 
     @Test
