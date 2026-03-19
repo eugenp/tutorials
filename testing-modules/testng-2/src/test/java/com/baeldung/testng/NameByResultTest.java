@@ -16,7 +16,6 @@ public class NameByResultTest {
     public void capture(ITestResult result) {
         String testName = result.getMethod().getMethodName();
         this.testName = testName;
-        logger.info("Starting test {}", testName);
     }
 
     @Test
