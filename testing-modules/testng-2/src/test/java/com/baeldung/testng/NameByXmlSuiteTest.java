@@ -9,8 +9,7 @@ import org.testng.annotations.Test;
 
 public class NameByXmlSuiteTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(NameByXmlSuiteTest.class);
-
+    private static final Logger logger = LoggerFactory.getLogger(NameByXmlSuiteTest);
     private String iTestContextSuiteName;
 
     @BeforeTest
