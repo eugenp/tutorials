@@ -20,7 +20,6 @@ public class DataDrivenNameTest {
     public void capture(Method method, Object[] params) {
         String testName = method.getName() + Arrays.toString(params);
         this.testName = testName;
-        logger.info("Executing test {}", testName);
     }
 
     @Test(dataProvider = "numbers")
