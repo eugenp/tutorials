@@ -11,9 +11,10 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>apache-seata-a</module>
-        <module>apache-seata-b</module>
-        <module>apache-seata-c</module>
+        <module>shop-service</module>
+        <module>inventory-service</module>
+        <module>order-service</module>
+        <module>billing-service</module>
     </modules>
 </project>
 

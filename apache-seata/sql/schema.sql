@@ -1,14 +1,19 @@
-CREATE TABLE table_a (
+CREATE TABLE shop_table (
     id TEXT PRIMARY KEY,
     created TIMESTAMP NOT NULL
 );
 
-CREATE TABLE table_b (
+CREATE TABLE inventory_table (
     id TEXT PRIMARY KEY,
     created TIMESTAMP NOT NULL
 );
 
-CREATE TABLE table_c (
+CREATE TABLE order_table (
+    id TEXT PRIMARY KEY,
+    created TIMESTAMP NOT NULL
+);
+
+CREATE TABLE billing_table (
     id TEXT PRIMARY KEY,
     created TIMESTAMP NOT NULL
 );
