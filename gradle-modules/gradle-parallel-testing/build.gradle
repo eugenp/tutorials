@@ -7,7 +7,7 @@ test {
     useJUnitPlatform {
         includeTags testForGradleTag
     }
-	forkEvery = 1
+        forkEvery = 1
 }
 
 repositories {
