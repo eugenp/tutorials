@@ -56,6 +56,11 @@ public class BookStoreRunSteps {
         foundBooks = store.booksByAuthor(author);
     }
 
+    @When("^I search for books by unknown authors$")
+    public void searchForBooksByUnknownAuthors() {
+        foundBooks = store.booksByAuthor("Unknown Author");
+    }
+
     @Then("^I find (\\d+) books$")
     public void findBooks(int count) {
         assertEquals(count, foundBooks.size());

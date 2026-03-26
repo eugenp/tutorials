@@ -18,6 +18,7 @@
     <modules>
         <module>spring-5-mvc</module>
         <module>spring-freemarker</module>
+        <module>spring-java-templates</module>
         <module>spring-mvc-basics</module>
         <module>spring-mvc-basics-2</module>
         <module>spring-mvc-basics-3</module>

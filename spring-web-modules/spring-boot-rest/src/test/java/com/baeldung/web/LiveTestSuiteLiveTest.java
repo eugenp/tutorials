@@ -1,11 +1,10 @@
 package com.baeldung.web;
 
-import com.baeldung.web.FooDiscoverabilityLiveTest;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
+import org.junit.platform.suite.api.SelectClasses;
+import org.junit.platform.suite.api.Suite;
 
-@RunWith(Suite.class)
-@Suite.SuiteClasses({
+@Suite
+@SelectClasses({
 // @formatter:off
     FooDiscoverabilityLiveTest.class,
     FooLiveTest.class,
