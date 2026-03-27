@@ -23,9 +23,10 @@ public class DataDrivenNameTest {
     }
 
     @Test(dataProvider = "numbers")
-    public void givenInputParameters_WhenFetchingTestName_ThenShouldReturnCorrectTestName(int input, int expected) {
+    public void givenInputParameters_whenFetchingTestName_thenShouldReturnCorrectTestName(int input, int expected) {
         logger.info("Executing scenario from {}", testName);
-        Assert.assertListContainsObject(List.of("givenInputParameters_WhenFetchingTestName_ThenShouldReturnCorrectTestName[2, 4]", "givenInputParameters_WhenFetchingTestName_ThenShouldReturnCorrectTestName[3, 9]"), testName, "Test name is not as expected");
+        Assert.assertListContainsObject(List.of("givenInputParameters_whenFetchingTestName_thenShouldReturnCorrectTestName[2, 4]",
+            "givenInputParameters_whenFetchingTestName_thenShouldReturnCorrectTestName[3, 9]"), testName, "Test name is not as expected");
     }
 
     @DataProvider

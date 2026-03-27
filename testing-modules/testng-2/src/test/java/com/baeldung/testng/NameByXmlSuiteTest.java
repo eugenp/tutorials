@@ -9,17 +9,16 @@ import org.testng.annotations.Test;
 
 public class NameByXmlSuiteTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(NameByXmlSuiteTest);
+    private static final Logger logger = LoggerFactory.getLogger(NameByXmlSuiteTest.class);
     private String iTestContextSuiteName;
 
     @BeforeTest
-    public void xmlName(ITestContext ctx) {
+    public void fetchSuiteNameFromITestContext(ITestContext ctx) {
         iTestContextSuiteName = ctx.getName();
-        logger.info("Starting test suite: {}", ctx.getName());
     }
 
     @Test
-    public void givenTestContextSetup_WhenRequestingSuiteName_ThenShouldReturnSuiteName() {
+    public void givenTestContextSetup_whenRequestingSuiteName_thenShouldReturnSuiteName() {
         logger.info("Executing scenario from {}", iTestContextSuiteName);
         Assert.assertEquals(iTestContextSuiteName, "All Tests");
     }

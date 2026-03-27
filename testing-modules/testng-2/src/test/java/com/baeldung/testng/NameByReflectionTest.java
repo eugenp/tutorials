@@ -20,8 +20,8 @@ public class NameByReflectionTest {
     }
 
     @Test
-    public void givenTestNameSetup_WhenTestNameIsRequested_ThenShouldReturnTestName() {
+    public void givenTestNameSetup_whenTestNameIsRequested_thenShouldReturnTestName() {
         logger.info("Executing scenario {}", testName);
-        Assert.assertEquals(testName, "givenTestNameSetup_WhenTestNameIsRequested_ThenShouldReturnTestName");
+        Assert.assertEquals(testName, "givenTestNameSetup_whenTestNameIsRequested_thenShouldReturnTestName");
     }
 }

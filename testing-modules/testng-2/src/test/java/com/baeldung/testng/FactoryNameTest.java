@@ -1,5 +1,8 @@
 package com.baeldung.testng;
 
+import java.lang.reflect.Method;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -8,16 +11,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
 
-import java.lang.reflect.Method;
-import java.util.List;
-
 public class FactoryNameTest {
 
     private static final Logger logger = LoggerFactory.getLogger(FactoryNameTest.class);
     private final String instanceLabel;
 
     public FactoryNameTest(String instanceLabel) {
-        this.instanceLabel = label;
+        this.instanceLabel = instanceLabel;
     }
 
     @Factory
@@ -32,8 +32,8 @@ public class FactoryNameTest {
     }
 
     @Test
-    public void givenTestNameSetup_WhenTestNameIsRequested_ThenShouldReturnTestName() {
+    public void givenTestNameSetup_whenTestNameIsRequested_thenShouldReturnTestName() {
         logger.info("Executing scenario {}", instanceLabel);
-        Assert.assertListContainsObject(List.of("fast-path", "slow-path"), instanceLabel, "instance label is not");
+        Assert.assertListContainsObject(List.of("fast-path", "slow-path"), instanceLabel, "instance label is not as expected");
     }
 }
