@@ -655,6 +655,7 @@
                 <module>deeplearning4j</module>
                 <module>di-modules</module>
                 <module>disruptor</module>
+                <module>djl</module>
                 <module>docker-modules</module>
                 <module>drools</module>
                 <module>embabel-modules</module>
@@ -722,6 +723,7 @@
 		        <module>libraries-http-2</module>
 	            <module>libraries-http-3</module>
                 <module>libraries-io</module>
+				<module>libraries-email</module>
                 <module>libraries-llms</module>
                 <module>libraries-llms-2</module>
                 <module>libraries-open-telemetry</module>
@@ -750,6 +752,7 @@
                 <module>mustache</module>
                 <module>mybatis</module>
                 <module>mybatis-plus</module>
+                <module>mybatis-flex</module>
                 <module>netflix-modules</module>
                 <module>optaplanner</module>
                 <module>ojp</module>
@@ -916,7 +919,7 @@
 
             <modules>
                 <module>core-java-modules/core-java-23</module>
-                <module>workflows/dapr-workflows</module>
+                <module>workflows</module>
             </modules>
 
             <properties>
@@ -1105,6 +1108,7 @@
                 <module>apache-httpclient4</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
+                <module>apache-kafka-4</module>
                 <module>apache-libraries</module>
                 <module>apache-libraries-2</module>
                 <module>apache-libraries-3</module>
@@ -1128,6 +1132,7 @@
                 <module>data-structures-2</module>
                 <module>deeplearning4j</module>
                 <module>di-modules</module>
+                <module>djl</module>
                 <module>disruptor</module>
                 <module>docker-modules</module>
                 <module>drools</module>
@@ -1196,6 +1201,7 @@
                 <module>libraries-http-2</module>
                 <module>libraries-http-3</module>
                 <module>libraries-io</module>
+				<module>libraries-email</module>
                 <module>libraries-llms</module>
                 <module>libraries-llms-2</module>
                 <module>libraries-open-telemetry</module>
@@ -1380,7 +1386,7 @@
 
             <modules>
                 <module>core-java-modules/core-java-23</module>
-                <module>workflows/dapr-workflows</module>
+                <module>workflows</module>
             </modules>
 
             <properties>
@@ -1493,6 +1499,7 @@
 
             <modules>
                 <module>apache-kafka</module>
+                <module>apache-kafka-4</module>
                 <module>apache-libraries</module>
                 <module>apache-spark</module> <!-- failing after upgrading to jdk17 -->
                 <module>atomix</module>
@@ -1561,6 +1568,7 @@
                 <module>clojure-modules</module> <!-- Not a maven project -->
                 <module>ethereum</module> <!-- JAVA-6001 -->
                 <module>gradle-modules</module> <!-- Not a maven project -->
+                <module>gradle-modules/gradle-parallel-testing</module> <!-- Not a maven project -->
                 <module>guest</module> <!-- not to be built as its for guest articles  -->
                 <module>pants</module> <!-- Not a maven project -->
                 <module>spring-cloud-cli</module> <!-- Not a maven project -->
@@ -1629,6 +1637,7 @@
                 <module>clojure-modules</module> <!-- Not a maven project -->
                 <module>ethereum</module> <!-- JAVA-6001 -->
                 <module>gradle-modules</module> <!-- Not a maven project -->
+                <module>gradle-modules/gradle-parallel-testing</module> <!-- Not a maven project -->
                 <module>guest</module> <!-- not to be built as its for guest articles  -->
                 <module>pants</module> <!-- Not a maven project -->
                 <module>spring-cloud-cli</module> <!-- Not a maven project -->

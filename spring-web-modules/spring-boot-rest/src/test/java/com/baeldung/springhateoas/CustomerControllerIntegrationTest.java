@@ -9,13 +9,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.Collections;
 import java.util.List;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.hateoas.MediaTypes;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.baeldung.persistence.model.Customer;
@@ -24,17 +22,16 @@ import com.baeldung.services.CustomerService;
 import com.baeldung.services.OrderService;
 import com.baeldung.web.controller.CustomerController;
 
-@RunWith(SpringRunner.class)
 @WebMvcTest(CustomerController.class)
 public class CustomerControllerIntegrationTest {
 
     @Autowired
     private MockMvc mvc;
 
-    @MockBean
+    @MockitoBean
     private CustomerService customerService;
 
-    @MockBean
+    @MockitoBean
     private OrderService orderService;
 
     private static final String DEFAULT_CUSTOMER_ID = "customer1";
