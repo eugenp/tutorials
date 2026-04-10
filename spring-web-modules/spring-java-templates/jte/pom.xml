@@ -3,8 +3,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-java-templates-jte</artifactId>
-    <name>spring-java.templates.jte</name>
+    <artifactId>jte</artifactId>
+    <name>jte</name>
     <packaging>jar</packaging>
     <description>Spring Java Templates Module - JTE</description>
 
@@ -24,7 +24,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <!-- JTE -->
         <dependency>
             <groupId>gg.jte</groupId>
@@ -36,7 +35,6 @@
             <artifactId>jte-spring-boot-starter-3</artifactId>
             <version>${jte.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -45,7 +43,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>gg.jte</groupId>
                 <artifactId>jte-maven-plugin</artifactId>
@@ -64,7 +61,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 
@@ -73,7 +69,6 @@
         <spring-boot.version>3.5.7</spring-boot.version>
         <logback.version>1.5.17</logback.version>
         <java.version>21</java.version>
-
         <jte.version>3.2.1</jte.version>
     </properties>
 </project>
