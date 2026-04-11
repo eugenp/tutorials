@@ -1,6 +1,6 @@
 package com.baeldung.spring.aotrepository;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
@@ -24,9 +24,12 @@ class ExtendingRepositoryTest {
         User user = new User("firstname", "lastname");
 
         User saved = userRepository.save(user);
-        System.out.println(saved);
-        List<User> allUsers = userRepository.findAll();
 
-        assertTrue(allUsers.contains(user));
+        assertThat(saved).isNotNull();
+
+        List<User> allById = userRepository.findAllById(List.of(saved.getId()));
+
+        assertThat(allById).hasSize(1);
+        assertThat("firstname").isEqualTo(allById.getFirst().getFirstName());
     }
 }

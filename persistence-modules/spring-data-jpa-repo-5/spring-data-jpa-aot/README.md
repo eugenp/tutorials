@@ -1,10 +1,10 @@
-Compile AOT
+## Compile AOT
 
 ```shell
 mvn clean install -Paot
 ```
 
-Compilation time: `14.747 s`
+Compilation time: `Total time:  17.166 s`
 
 1) run using maven and the spring-boot plugin:
 
@@ -13,39 +13,46 @@ mvn spring-boot:run -Dspring.aot.enabled=true -Dspring.aot.repositories.enabled=
 ```
 
 Startup times:
-`Root WebApplicationContext: initialization completed in 470 ms`
-`Started Application in 2.036 seconds`
+`Root WebApplicationContext: initialization completed in 1370 ms`
+`Started Application in 4.897 seconds (process running for 5.349)`
 
 ```shell
 java -Dspring.aot.enabled=true \
      -Dspring.aot.repositories.enabled=false \
-     -agentlib:native-image-agent=config-output-dir=target/native-image-hints \
      -jar target/spring-data-jpa-aot-0.0.1-SNAPSHOT.jar
 ```
 
 Startup times:
-`Root WebApplicationContext: initialization completed in 461 ms`
-`Started Application in 3.29 seconds`
+`Started Application in 5.995 seconds (process running for 6.935)`
 
 ## Performance
 
 ### Time startup
 
-from root `sudo ./scripts/startup.sh aot`:
+from root `sudo ./scripts/startup-linux.sh aot`:
 
 ```shell
-time elapsed 5217 millis
-Threads:       56
-Memory/CPU (RSS KB / VSZ KB / %CPU / CPU Time): 448448 557256448 173.9   0:11.70
+==== RESULTS ====
+time elapsed 9885 millis
+Process Specific Memory/CPU (RSS KB / CPU Time): 291104 00:00:25
 ```
 
 ### Time startup
 
-from root `sudo ./scripts/load-test.sh aot`:
+from root `sudo ./scripts/load-test-linux.sh aot`:
 
 ```shell
-time elapsed 5347 millis
-Threads:       94
-Memory/CPU START (RSS KB / VSZ KB / %CPU / CPU Time): 449504 557256448 183.8   0:11.56
-Memory/CPU END (RSS KB / VSZ KB / %CPU / CPU Time): 444208 523845152 847.7   1:18.64
+==== RESULTS ====
+Total requests: 7664
+Success (2xx): 7664
+Failed: 0
+Avg time (curl): 0.00770692s
+Avg duration (measured): 43.934ms
+P95: 0.017294s
+Max: 0.437678s
+
+Max memory utilised: 334000
+Memory/CPU (RSS KB / TIME):
+Before: 282004 00:00:24
+After : 332724 00:00:51
 ```

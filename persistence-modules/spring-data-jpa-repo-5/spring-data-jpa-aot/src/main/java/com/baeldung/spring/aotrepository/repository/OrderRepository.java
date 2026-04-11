@@ -1,12 +1,11 @@
 package com.baeldung.spring.aotrepository.repository;
 
-import java.util.List;
-
+import com.baeldung.spring.aotrepository.entity.Order;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.baeldung.spring.aotrepository.entity.Order;
+import java.util.List;
 
 public interface OrderRepository extends Repository<Order, Long> {
 
@@ -17,9 +16,13 @@ public interface OrderRepository extends Repository<Order, Long> {
 
     List<Order> findAllById(Iterable<Long> longs);
 
+    List<Order> findByProductIdContainingIgnoreCase(String productId);
+
     @Query(value = "SELECT * FROM ORDERS", nativeQuery = true)
     List<Order> nativeQueryFindAllOrders();
 
     @Query(value = "SELECT u FROM Order u")
     List<Order> queryFindAllOrders();
+
+    void delete(Order entity);
 }

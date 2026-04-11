@@ -17,9 +17,13 @@ public interface OrderRepository extends Repository<Order, Long> {
 
     List<Order> findAllById(Iterable<Long> longs);
 
+    List<Order> findByProductIdContainingIgnoreCase(String productId);
+
     @Query(value = "SELECT * FROM ORDERS", nativeQuery = true)
     List<Order> nativeQueryFindAllOrders();
 
     @Query(value = "SELECT u FROM Order u")
     List<Order> queryFindAllOrders();
+
+    void delete(Order entity);
 }

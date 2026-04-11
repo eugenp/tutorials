@@ -1,5 +1,9 @@
 package com.baeldung.spring.aotrepository;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,6 +25,11 @@ class ExtendingRepositoryTest {
 
         User saved = userRepository.save(user);
 
-        System.out.println(saved);
+        assertThat(saved).isNotNull();
+
+        List<User> allById = userRepository.findAllById(List.of(saved.getId()));
+
+        assertThat(allById).hasSize(1);
+        assertThat("firstname").isEqualTo(allById.getFirst().getFirstName());
     }
 }

@@ -6,13 +6,19 @@
     <packaging>jar</packaging>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>spring-data-jpa-repo-5</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../spring-data-jpa-repo-5</relativePath>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>4.0.5</version>
     </parent>
 
+    <groupId>com.baeldung</groupId>
     <artifactId>spring-data-jpa-aot-repository</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <properties>
+        <java.version>21</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -45,12 +51,6 @@
                     <plugin>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-maven-plugin</artifactId>
-                        <configuration>
-                            <mainClass>com.baeldung.spring.aotrepository.Application</mainClass>
-                            <jvmArguments>
-                                -agentlib:native-image-agent=config-output-dir=target/native-image-hints/
-                            </jvmArguments>
-                        </configuration>
                         <executions>
                             <execution>
                                 <id>process-aot</id>

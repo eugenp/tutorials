@@ -21,6 +21,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     List<User> findAllById(Iterable<Long> longs);
 
+    List<User> findByLastNameContainingIgnoreCase(String lastName);
+
     @Query(value = "SELECT * FROM users", nativeQuery = true)
     List<User> nativeQueryFindAllUsers();
 
@@ -30,4 +32,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Transactional(readOnly = true)
     @Query(value = "SELECT u FROM User u WHERE u.firstName = :firstName")
     List<User> queryFindByFirstNameSorted(@Param(value = "firstName") String firstName, Sort sort);
+
+    void delete(User entity);
 }

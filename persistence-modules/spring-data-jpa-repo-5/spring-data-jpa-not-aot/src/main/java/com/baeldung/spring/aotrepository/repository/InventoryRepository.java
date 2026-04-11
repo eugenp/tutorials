@@ -2,6 +2,7 @@ package com.baeldung.spring.aotrepository.repository;
 
 import java.util.List;
 
+import com.baeldung.spring.aotrepository.entity.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -19,9 +20,13 @@ public interface InventoryRepository extends JpaRepository<Inventory, Long> {
 
     List<Inventory> findAllById(Iterable<Long> longs);
 
+    List<Order> findByProductIdGreaterThan(long productId);
+
     @Query(value = "SELECT * FROM INVENTORY", nativeQuery = true)
     List<Inventory> nativeQueryFindAllInventories();
 
     @Query(value = "SELECT u FROM Inventory u")
     List<Inventory> queryFindAllInventories();
+
+    void delete(Inventory entity);
 }

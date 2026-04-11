@@ -2,17 +2,19 @@ package com.baeldung.spring.aotrepository.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.baeldung.spring.aotrepository.entity.Address;
 
-public interface AddressRepository extends Repository<Address, Long> {
+public interface AddressRepository extends JpaRepository<Address, Long> {
 
     Address save(Address address);
 
     List<Address> findAllById(Iterable<Long> longs);
+
+    List<Address> findByStreetContainingIgnoreCase(String street);
 
     @Transactional(readOnly = true)
     List<Address> findAll();
@@ -22,4 +24,6 @@ public interface AddressRepository extends Repository<Address, Long> {
 
     @Query(value = "SELECT u FROM Address u")
     List<Address> queryFindAllAddresses();
+
+    void delete(Address entity);
 }

@@ -19,13 +19,17 @@ public interface UserRepository extends Repository<User, Long> {
 
     List<User> findAllById(Iterable<Long> longs);
 
+    List<User> findByLastNameContainingIgnoreCase(String lastName);
+
     @Query(value = "SELECT * FROM users", nativeQuery = true)
     List<User> nativeQueryFindAllUsers();
 
     @Query(value = "SELECT u FROM User u")
     List<User> queryFindAllUsers();
 
-//    @Transactional(readOnly = true)
-//    @Query(value = "SELECT u FROM User u WHERE u.firstName = :firstName")
-//    List<User> queryFindByFirstNameSorted(@Param(value = "firstName") String firstName, Sort sort);
+    @Transactional(readOnly = true)
+    @Query(value = "SELECT u FROM User u WHERE u.firstName = :firstName")
+    List<User> queryFindByFirstNameSorted(@Param(value = "firstName") String firstName, Sort sort);
+
+    void delete(User entity);
 }

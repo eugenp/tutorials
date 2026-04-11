@@ -19,9 +19,13 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findAllById(Iterable<Long> longs);
 
+    List<Product> findByPriceGreaterThan(double price);
+
     @Query(value = "SELECT * FROM PRODUCTS", nativeQuery = true)
     List<Product> nativeQueryFindAllProducts();
 
     @Query(value = "SELECT p FROM Product p")
     List<Product> queryFindAllProducts();
+
+    void delete(Product entity);
 }

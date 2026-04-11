@@ -16,6 +16,8 @@ public interface AddressRepository extends JpaRepository<Address, Long> {
 
     List<Address> findAllById(Iterable<Long> longs);
 
+    List<Address> findByStreetContainingIgnoreCase(String street);
+
     @Transactional(readOnly = true)
     List<Address> findAll();
 
@@ -24,4 +26,6 @@ public interface AddressRepository extends JpaRepository<Address, Long> {
 
     @Query(value = "SELECT u FROM Address u")
     List<Address> queryFindAllAddresses();
+
+    void delete(Address entity);
 }

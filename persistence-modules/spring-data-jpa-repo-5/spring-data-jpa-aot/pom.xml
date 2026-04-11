@@ -3,14 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
-    <version>0.0.1-SNAPSHOT</version>
     <artifactId>spring-data-jpa-aot</artifactId>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.0-RC1</version>
+        <groupId>com.baeldung</groupId>
+        <artifactId>spring-data-jpa-repo-5</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../spring-data-jpa-repo-5</relativePath>
     </parent>
 
     <dependencies>
@@ -44,12 +43,6 @@
                     <plugin>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-maven-plugin</artifactId>
-                        <configuration>
-                            <mainClass>com.baeldung.spring.aotrepository.Application</mainClass>
-                            <jvmArguments>
-                                -agentlib:native-image-agent=config-output-dir=target/classes/META-INF/native-image/com.baeldung/spring-data-jpa-aot-native-image-additional-hints/
-                            </jvmArguments>
-                        </configuration>
                         <executions>
                             <execution>
                                 <id>process-aot</id>
