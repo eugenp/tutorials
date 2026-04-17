@@ -25,6 +25,7 @@
         <module>spring-ai-anthropic-agent-skills</module>
         <module>spring-ai-chat-stream</module>
         <module>spring-ai-introduction</module>
+        <module>spring-ai-llm-as-a-judge</module>
         <module>spring-ai-mcp</module>
         <module>spring-ai-mcp-elicitations</module>
 <!--        <module>spring-ai-mcp-oauth</module>--><!-- test failures -->
