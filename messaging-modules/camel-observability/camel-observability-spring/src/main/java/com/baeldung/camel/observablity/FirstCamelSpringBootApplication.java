@@ -10,18 +10,18 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class FirstCamelSpringBootApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(FirstCamelSpringBootApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(FirstCamelSpringBootApplication.class, args);
+    }
 
-	@Bean
-	SimpleProcessor simpleProcessor() {
-		return new SimpleProcessor();
-	}
+    @Bean
+    SimpleProcessor simpleProcessor() {
+        return new SimpleProcessor();
+    }
 
-	@Bean
-	SimpleRouteBuilder simpleRouteBuilder(SimpleProcessor simpleProcessor) {
-		return new SimpleRouteBuilder(simpleProcessor);
-	}
+    @Bean
+    SimpleRouteBuilder simpleRouteBuilder(SimpleProcessor simpleProcessor) {
+        return new SimpleRouteBuilder(simpleProcessor);
+    }
 
 }

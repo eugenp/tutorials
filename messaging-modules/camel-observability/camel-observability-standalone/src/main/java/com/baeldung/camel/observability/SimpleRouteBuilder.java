@@ -13,15 +13,15 @@ public class SimpleRouteBuilder extends RouteBuilder {
                 .process(simpleProcessor)
                 .choice()
                 .when(xpath("/person/city = 'London'"))
-                    .log("UK message")
-                    .to("file:target/messages/uk")
-                    .log("UK message 2")
-                    .to("file:target/messages/general-sink")
+                .log("UK message")
+                .to("file:target/messages/uk")
+                .log("UK message 2")
+                .to("file:target/messages/general-sink")
                 .otherwise()
-                    .log("Other message")
-                    .to("file:target/messages/others")
-                    .log("Other message 2")
-                    .to("file:target/messages/general-sink");
+                .log("Other message")
+                .to("file:target/messages/others")
+                .log("Other message 2")
+                .to("file:target/messages/general-sink");
     }
 
 }
