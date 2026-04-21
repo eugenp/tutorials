@@ -1,0 +1,77 @@
+services:
+  seata-server:
+    image: apache/seata-server:2.6.0
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: seata
+      POSTGRES_USER: seata
+      POSTGRES_PASSWORD: seata
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+
+  shop-service:
+    platform: linux/amd64
+    build:
+      context: shop-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/seata
+      SPRING_DATASOURCE_USERNAME: seata
+      SPRING_DATASOURCE_PASSWORD: seata
+      INVENTORY_SERVICE_URL: http://inventory-service:8081
+      ORDER_SERVICE_URL: http://order-service:8082
+      BILLING_SERVICE_URL: http://billing-service:8083
+    ports:
+      - 127.0.0.1:8080:8080
+    links:
+      - postgres
+      - inventory-service
+      - order-service
+      - billing-service
+    depends_on:
+      - postgres
+      - seata-server
+
+  inventory-service:
+    platform: linux/amd64
+    build:
+      context: inventory-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/seata
+      SPRING_DATASOURCE_USERNAME: seata
+      SPRING_DATASOURCE_PASSWORD: seata
+    links:
+      - postgres
+    depends_on:
+      - postgres
+      - seata-server
+
+  order-service:
+    platform: linux/amd64
+    build:
+      context: order-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/seata
+      SPRING_DATASOURCE_USERNAME: seata
+      SPRING_DATASOURCE_PASSWORD: seata
+    links:
+      - postgres
+    depends_on:
+      - postgres
+      - seata-server
+
+  billing-service:
+    platform: linux/amd64
+    build:
+      context: billing-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/seata
+      SPRING_DATASOURCE_USERNAME: seata
+      SPRING_DATASOURCE_PASSWORD: seata
+    links:
+      - postgres
+    depends_on:
+      - postgres
+      - seata-server
+

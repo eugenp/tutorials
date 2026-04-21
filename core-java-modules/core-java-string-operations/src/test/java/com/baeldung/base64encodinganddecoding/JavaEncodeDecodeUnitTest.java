@@ -104,7 +104,7 @@ public class JavaEncodeDecodeUnitTest {
 
         assertNotNull(decodedString);
     }
-    
+
     @Test(expected = IllegalArgumentException.class)
     public void whenEncodedStringHasInvalidCharacters_thenIllegalArgumentException() {
         final String encodedString = "dGVzdCMkaW5wdXQ#";
@@ -112,6 +112,39 @@ public class JavaEncodeDecodeUnitTest {
         final String decodedString = new String(decodedBytes);
 
         assertNotNull(decodedString);
+    }
+
+    @Test
+    public void whenEncodedStringWithNewlineChar_thenIllegalArgumentException(){
+        String originalInput = "test input";
+        String encodedString = Base64.getEncoder().encodeToString(originalInput.getBytes()) + "\n";
+
+        IllegalArgumentException exception = assertThrows(
+            IllegalArgumentException.class, () -> Base64.getDecoder().decode(encodedString)
+        );
+
+        assertTrue( exception.getMessage().startsWith("Input byte array has incorrect ending byte at"));
+    }
+
+    @Test
+    public void whenTrimEncodedStringWithNewlineChar_thenOk(){
+        String originalInput = "test input";
+        String encodedString = Base64.getEncoder().encodeToString(originalInput.getBytes()) + "\n";
+
+        byte[] decodedBytes = Base64.getMimeDecoder().decode(encodedString.trim());
+        String decodedString = new String(decodedBytes);
+
+        assertEquals(originalInput, decodedString);
+    }
+    @Test
+    public void whenUsingMimeDecoderForEncodedStringWithNewlineChar_thenOk(){
+        String originalInput = "test input";
+        String encodedString = Base64.getEncoder().encodeToString(originalInput.getBytes()) + "\n";
+
+        byte[] decodedBytes = Base64.getMimeDecoder().decode(encodedString);
+        String decodedString = new String(decodedBytes);
+
+        assertEquals(originalInput, decodedString);
     }
 
     private static StringBuilder getMimeBuffer() {
