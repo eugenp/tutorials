@@ -29,6 +29,7 @@
         <module>ibm-mq</module>
         <module>dapr</module>
         <module>camel-observability</module>
+        <module>allegro-hermes</module>
     </modules>
 
 </project>

@@ -15,7 +15,7 @@
     <dependencies>
         <!--jackson for xml -->
         <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <groupId>tools.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
             <version>${jackson.version}</version>
         </dependency>
@@ -30,5 +30,9 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <jackson.version>3.0.3</jackson.version>
+    </properties>
 
 </project>

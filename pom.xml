@@ -550,6 +550,10 @@
             </build>
 
             <modules>
+                <!-- This would need a Maven 4 runtime (RC5) to build successfully -->
+                <!--
+                <module>apache-maven-4</module>
+                -->
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
@@ -567,7 +571,6 @@
                 <module>core-java-modules/core-java-datetime-conversion</module>
                 <module>libraries-data-io</module>
                 <module>persistence-modules/spring-data-neo4j</module>
-                <module>persistence-modules/spring-persistence</module>
                 <module>quarkus-modules/quarkus</module>
                 <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
                 <module>spring-di-2</module>
@@ -580,6 +583,7 @@
                 <java.version>17</java.version>
                 <maven.compiler.source>17</maven.compiler.source>
                 <maven.compiler.target>17</maven.compiler.target>
+				<maven.compiler.release>17</maven.compiler.release>
             </properties>
 
         </profile>
@@ -627,6 +631,7 @@
                 <module>apache-httpclient4</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
+                <module>apache-kafka-4</module>
                 <module>apache-libraries</module>
                 <module>apache-libraries-2</module>
                 <module>apache-libraries-3</module>
@@ -640,7 +645,6 @@
                 <module>apollo</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
-                <module>spring-boot-azure-deployment</module>
                 <module>azure-functions</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
@@ -652,12 +656,14 @@
                 <module>deeplearning4j</module>
                 <module>di-modules</module>
                 <module>disruptor</module>
+                <module>djl</module>
                 <module>docker-modules</module>
                 <module>drools</module>
                 <module>embabel-modules</module>
                 <module>feign</module>
                 <module>gcp-firebase</module>
                 <module>geotools</module>
+                <module>google-adk</module>
                 <module>google-auto-project</module>
                 <module>google-cloud</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
@@ -665,7 +671,6 @@
                 <module>grpc</module>
                 <module>guava-modules</module>
                 <module>hazelcast</module>
-                <module>spring-boot-heroku-deployment</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>image-compression</module>
@@ -681,6 +686,7 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
+                <module>jdeb</module>
                 <module>jetbrains-annotations</module>
                 <module>jgit</module>
                 <module>jmh</module>
@@ -718,6 +724,7 @@
 		        <module>libraries-http-2</module>
 	            <module>libraries-http-3</module>
                 <module>libraries-io</module>
+				<module>libraries-email</module>
                 <module>libraries-llms</module>
                 <module>libraries-llms-2</module>
                 <module>libraries-open-telemetry</module>
@@ -746,8 +753,10 @@
                 <module>mustache</module>
                 <module>mybatis</module>
                 <module>mybatis-plus</module>
+                <module>mybatis-flex</module>
                 <module>netflix-modules</module>
                 <module>optaplanner</module>
+                <module>ojp</module>
                 <module>orika</module>
                 <module>osgi</module>
                 <module>patterns-modules</module>
@@ -757,9 +766,6 @@
                 <module>google-protocol-buffer</module>
                 <module>quarkus-modules</module>
                 <module>reactive-systems</module>
-                <module>reactor-core</module>
-                <module>reactor-core-2</module>
-                <module>rsocket</module>
                 <module>rule-engines-modules</module>
                 <module>rxjava-modules</module>
                 <module>saas-modules</module>
@@ -768,7 +774,6 @@
                 <module>spf4j</module>
                 <module>spring-5</module>
                 <module>spring-5-rest-docs</module>
-                <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai-modules</module>
@@ -777,9 +782,6 @@
                 <module>spring-batch</module>
                 <module>spring-batch-2</module>
                 <module>spring-boot-modules</module>
-                <module>spring-boot-rest</module>
-                <module>spring-boot-rest-2</module>
-                <module>spring-boot-rest-simple</module>
                 <module>spring-cloud-modules/spring-cloud-bootstrap</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
@@ -802,8 +804,6 @@
                 <module>spring-drools</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
-                <module>spring-grpc</module>
-                <module>spring-jersey</module>
                 <module>spring-kafka</module>
                 <module>spring-kafka-2</module>
                 <module>spring-kafka-3</module>
@@ -811,24 +811,21 @@
                 <module>spring-katharsis</module> <!-- Upgrade to Boot 3 not possible as the project has not been upgraded to Support Jakarta dependencies-->
                 <module>spring-mobile</module>
                 <module>spring-native</module>
-                <module>spring-protobuf</module>
                 <module>spring-pulsar</module>
                 <module>spring-quartz</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-remoting-modules</module> <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. -->
+                <module>spring-scheduling</module>
                 <module>spring-scheduling-2</module>
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
-                <module>spring-soap</module>
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
-                <module>spring-static-resources</module>
                 <module>spring-structurizr</module>
                 <module>spring-swagger-codegen-modules/custom-validations-opeanpi-codegen</module>
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
-                <module>spring-websockets</module>
                 <module>static-analysis-modules</module>
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
@@ -923,6 +920,7 @@
 
             <modules>
                 <module>core-java-modules/core-java-23</module>
+                <module>workflows</module>
             </modules>
 
             <properties>
@@ -978,6 +976,47 @@
         </profile>
 
         <profile>
+            <id>default-jdk25</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <includes>
+                                <include>SpringContextTest</include>
+                                <include>**/*UnitTest</include>
+                            </includes>
+                            <excludes>
+                                <exclude>**/*IntegrationTest.java</exclude>
+                                <exclude>**/*IntTest.java</exclude>
+                                <exclude>**/*LongRunningUnitTest.java</exclude>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/JdbcTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>core-java-modules/core-java-25</module>
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>25</java.version>
+                <maven.compiler.source>25</maven.compiler.source>
+                <maven.compiler.target>25</maven.compiler.target>
+                <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
+            </properties>
+
+        </profile>
+
+        <profile>
             <id>integration-jdk17</id>
             <build>
                 <plugins>
@@ -1017,7 +1056,6 @@
                 <module>core-java-modules/core-java-datetime-conversion</module>
                 <module>libraries-data-io</module>
                 <module>persistence-modules/spring-data-neo4j</module>
-                <module>persistence-modules/spring-persistence</module>
                 <module>quarkus-modules/quarkus</module>
                 <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
                 <module>spring-di-2</module>
@@ -1030,6 +1068,7 @@
                 <java.version>17</java.version>
                 <maven.compiler.source>17</maven.compiler.source>
                 <maven.compiler.target>17</maven.compiler.target>
+				<maven.compiler.release>17</maven.compiler.release>
             </properties>
 
         </profile>
@@ -1071,6 +1110,7 @@
                 <module>apache-httpclient4</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
+                <module>apache-kafka-4</module>
                 <module>apache-libraries</module>
                 <module>apache-libraries-2</module>
                 <module>apache-libraries-3</module>
@@ -1084,7 +1124,6 @@
                 <module>apollo</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
-                <module>spring-boot-azure-deployment</module>
                 <module>azure-functions</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
@@ -1095,6 +1134,7 @@
                 <module>data-structures-2</module>
                 <module>deeplearning4j</module>
                 <module>di-modules</module>
+                <module>djl</module>
                 <module>disruptor</module>
                 <module>docker-modules</module>
                 <module>drools</module>
@@ -1102,6 +1142,7 @@
                 <module>feign</module>
                 <module>gcp-firebase</module>
                 <module>geotools</module>
+                <module>google-adk</module>
                 <module>google-auto-project</module>
                 <module>google-cloud</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
@@ -1109,7 +1150,6 @@
                 <module>grpc</module>
                 <module>guava-modules</module>
                 <module>hazelcast</module>
-                <module>spring-boot-heroku-deployment</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>image-compression</module>
@@ -1125,6 +1165,7 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
+                <module>jdeb</module>
                 <module>jetbrains-annotations</module>
                 <module>jgit</module>
                 <module>jmh</module>
@@ -1162,6 +1203,7 @@
                 <module>libraries-http-2</module>
                 <module>libraries-http-3</module>
                 <module>libraries-io</module>
+				<module>libraries-email</module>
                 <module>libraries-llms</module>
                 <module>libraries-llms-2</module>
                 <module>libraries-open-telemetry</module>
@@ -1192,6 +1234,7 @@
                 <module>mybatis-plus</module>
                 <module>netflix-modules</module>
                 <module>optaplanner</module>
+                <module>ojp</module>
                 <module>orika</module>
                 <module>osgi</module>
                 <module>patterns-modules</module>
@@ -1201,9 +1244,6 @@
                 <module>google-protocol-buffer</module>
                 <module>quarkus-modules</module>
                 <module>reactive-systems</module>
-                <module>reactor-core</module>
-                <module>reactor-core-2</module>
-                <module>rsocket</module>
                 <module>rule-engines-modules</module>
                 <module>rxjava-modules</module>
                 <module>saas-modules</module>
@@ -1212,7 +1252,6 @@
                 <module>spf4j</module>
                 <module>spring-5</module>
                 <module>spring-5-rest-docs</module>
-                <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai-modules</module>
@@ -1221,9 +1260,6 @@
                 <module>spring-batch</module>
                 <module>spring-batch-2</module>
                 <module>spring-boot-modules</module>
-                <module>spring-boot-rest</module>
-                <module>spring-boot-rest-2</module>
-                <module>spring-boot-rest-simple</module>
                 <module>spring-cloud-modules/spring-cloud-bootstrap</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
@@ -1246,8 +1282,6 @@
                 <module>spring-drools</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
-                <module>spring-grpc</module>
-                <module>spring-jersey</module>
                 <module>spring-kafka</module>
                 <module>spring-kafka-2</module>
                 <module>spring-kafka-3</module>
@@ -1255,24 +1289,21 @@
                 <module>spring-katharsis</module> <!-- Upgrade to Boot 3 not possible as the project has not been upgraded to Support Jakarta dependencies-->
                 <module>spring-mobile</module>
                 <module>spring-native</module>
-                <module>spring-protobuf</module>
                 <module>spring-pulsar</module>
                 <module>spring-quartz</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-remoting-modules</module> <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. -->
+                <module>spring-scheduling</module>
                 <module>spring-scheduling-2</module>
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
-                <module>spring-soap</module>
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
-                <module>spring-static-resources</module>
                 <module>spring-structurizr</module>
                 <module>spring-swagger-codegen-modules/custom-validations-opeanpi-codegen</module>
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
-                <module>spring-websockets</module>
                 <module>static-analysis-modules</module>
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
@@ -1284,6 +1315,7 @@
                 <module>web-modules</module>
                 <module>webrtc</module>
                 <module>xml-modules</module>
+				<module>java-mcp</module>
             </modules>
 
             <properties>
@@ -1356,6 +1388,7 @@
 
             <modules>
                 <module>core-java-modules/core-java-23</module>
+                <module>workflows</module>
             </modules>
 
             <properties>
@@ -1406,6 +1439,42 @@
         </profile>
 
         <profile>
+            <id>integration-jdk25</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*IntegrationTest.java</include>
+                                <include>**/*IntTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>core-java-modules/core-java-25</module>
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>25</java.version>
+                <maven.compiler.source>25</maven.compiler.source>
+                <maven.compiler.target>25</maven.compiler.target>
+                <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
+            </properties>
+
+        </profile>
+
+        <profile>
             <id>live-all</id>
             <build>
                 <plugins>
@@ -1432,6 +1501,7 @@
 
             <modules>
                 <module>apache-kafka</module>
+                <module>apache-kafka-4</module>
                 <module>apache-libraries</module>
                 <module>apache-spark</module> <!-- failing after upgrading to jdk17 -->
                 <module>atomix</module>
@@ -1500,11 +1570,13 @@
                 <module>clojure-modules</module> <!-- Not a maven project -->
                 <module>ethereum</module> <!-- JAVA-6001 -->
                 <module>gradle-modules</module> <!-- Not a maven project -->
+                <module>gradle-modules/gradle-parallel-testing</module> <!-- Not a maven project -->
                 <module>guest</module> <!-- not to be built as its for guest articles  -->
                 <module>pants</module> <!-- Not a maven project -->
                 <module>spring-cloud-cli</module> <!-- Not a maven project -->
                 <module>spring-roo</module> <!-- Not supported JAVA-17327 -->
                 <module>apache-spark</module> <!-- JAVA-42030 -->
+                <module>apache-spark-2</module>
                 <module>jhipster-modules</module><!-- failing after upgrading to jdk17-->
                 <module>persistence-modules/java-harperdb</module> <!-- This module requires a library to download manually --> <!-- JAVA-42044 -->
                 <module>spring-cloud-modules/spring-cloud-data-flow</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42054 -->
@@ -1515,7 +1587,6 @@
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> <!-- cannot add the individual modules here because the order is not guaranteed -->
                 <module>persistence-modules/spring-data-cassandra</module>   <!-- failing after upgrading to jdk17. JDK 17 compatibility in progress CASSANDRA-16895 --> <!-- JAVA-42047 -->
                 <module>language-interop</module>
-                <module>spring-scheduling</module> <!-- BAEL-8382 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb</module> <!-- JAVA-42144 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb-2</module> <!-- JAVA-42371 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb-4</module> <!-- JAVA-42372 -->
@@ -1539,6 +1610,8 @@
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
+                <module>testing-modules/selenium-3/scrollelementintoview</module>
+                <module>testing-modules/selenium-3/selenium-json-demo</module>
             </modules>
         </profile>
 
@@ -1566,11 +1639,13 @@
                 <module>clojure-modules</module> <!-- Not a maven project -->
                 <module>ethereum</module> <!-- JAVA-6001 -->
                 <module>gradle-modules</module> <!-- Not a maven project -->
+                <module>gradle-modules/gradle-parallel-testing</module> <!-- Not a maven project -->
                 <module>guest</module> <!-- not to be built as its for guest articles  -->
                 <module>pants</module> <!-- Not a maven project -->
                 <module>spring-cloud-cli</module> <!-- Not a maven project -->
                 <module>spring-roo</module> <!-- Not supported JAVA-17327 -->
                 <module>apache-spark</module> <!-- JAVA-42030 -->
+                <module>apache-spark-2</module>
                 <module>jhipster-modules</module><!-- failing after upgrading to jdk17-->
                 <module>persistence-modules/java-harperdb</module> <!-- This module requires a library to download manually --> <!-- JAVA-42044 -->
                 <module>spring-cloud-modules/spring-cloud-data-flow</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42054 -->
@@ -1581,7 +1656,6 @@
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> <!-- cannot add the individual modules here because the order is not guaranteed -->
                 <module>persistence-modules/spring-data-cassandra</module>   <!-- failing after upgrading to jdk17. JDK 17 compatibility in progress CASSANDRA-16895 --> <!-- JAVA-42047 -->
                 <module>language-interop</module>
-                <module>spring-scheduling</module> <!-- BAEL-8382 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb</module> <!-- JAVA-42144 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb-2</module> <!-- JAVA-42371 -->
                 <module>persistence-modules/spring-boot-persistence-mongodb-4</module> <!-- JAVA-42372 -->
@@ -1605,6 +1679,8 @@
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
+                <module>testing-modules/selenium-3/scrollelementintoview</module>
+                <module>testing-modules/selenium-3/selenium-json-demo</module>
             </modules>
         </profile>
 

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.mock.jndi.SimpleNamingContextBuilder;
+//import org.springframework.mock.jndi.SimpleNamingContextBuilder;
 
 // marked as a manual test as the bindings in this test and
 // SimpleJNDIUnitTest conflict depending on the order they are run in
@@ -21,7 +21,8 @@ public class SimpleNamingContextBuilderManualTest {
 
     @BeforeEach
     public void init() throws Exception {
-        SimpleNamingContextBuilder.emptyActivatedContextBuilder();
+// SimpleNamingContextBuilder has been deprecated and removed in recent Spring versions
+//        SimpleNamingContextBuilder.emptyActivatedContextBuilder();
         this.initContext = new InitialContext();
     }
 

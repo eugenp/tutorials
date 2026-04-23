@@ -65,14 +65,14 @@ public class TypeSafeCriteriaIntegrationTest {
         student1.setLastName("Thompson");
         student1.setGradYear(1965);
 
-        session.save(student1);
+        session.persist(student1);
 
         Student student2 = new Student();
         student2.setFirstName("Dennis");
         student2.setLastName("Ritchie");
         student2.setGradYear(1963);
 
-        session.save(student2);
+        session.persist(student2);
         session.getTransaction().commit();
     }
 

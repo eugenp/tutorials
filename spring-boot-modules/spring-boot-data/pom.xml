@@ -156,10 +156,12 @@
 
     <properties>
         <start-class>com.baeldung.SpringBootDataApplication</start-class>
-        <spring-boot.version>3.2.2</spring-boot.version>
+        <spring-boot.version>3.5.7</spring-boot.version>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
         <spring-cloud-starter-aws-secrets-manager-config.version>2.4.4</spring-cloud-starter-aws-secrets-manager-config.version>
         <aws-secretsmanager-jdbc.version>1.0.11</aws-secretsmanager-jdbc.version>
+        <logback.version>1.5.20</logback.version>
+        <org.slf4j.version>2.0.17</org.slf4j.version>
     </properties>
 
 </project>

@@ -6,8 +6,9 @@ import java.time.ZoneId;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.SerializationFeature;
+import tools.jackson.databind.json.JsonMapper;
 
 public class ObjectMapperBuilder {
     private boolean enableIndentation;
@@ -32,13 +33,11 @@ public class ObjectMapperBuilder {
     }
 
     public ObjectMapper build() {
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        objectMapper.configure(SerializationFeature.INDENT_OUTPUT, this.enableIndentation);
-        objectMapper.setDateFormat(this.dateFormat);
-        if (this.preserveOrder) {
-            objectMapper.enable(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS);
-        }
+        ObjectMapper objectMapper = JsonMapper.builder()
+            .configure(SerializationFeature.INDENT_OUTPUT, this.enableIndentation)
+            .defaultDateFormat(this.dateFormat)
+            .configure(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS, this.preserveOrder)
+            .build();
 
         return objectMapper;
     }

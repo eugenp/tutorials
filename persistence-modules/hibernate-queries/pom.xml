@@ -14,6 +14,11 @@
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-hikaricp</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -87,10 +92,22 @@
         </dependency>
         <dependency>
             <groupId>io.hypersistence</groupId>
-            <artifactId>hypersistence-utils-hibernate-60</artifactId>
-            <version>3.3.1</version>
+            <artifactId>hypersistence-utils-hibernate-70</artifactId>
+            <version>${hypersistence-utils-hibernate-70.version}</version>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
@@ -106,6 +123,8 @@
     </build>
 
     <properties>
+        <hibernate.version>7.1.10.Final</hibernate.version>
+        <hypersistence-utils-hibernate-70.version>3.12.0</hypersistence-utils-hibernate-70.version>
         <org.springframework.version>6.0.6</org.springframework.version>
         <org.springframework.data.version>3.0.3</org.springframework.data.version>
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>

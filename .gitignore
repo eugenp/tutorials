@@ -7,6 +7,8 @@ bin/
 *.jar
 *.war
 *.ear
+# Except for illustrating jar file
+!libraries-transform/src/main/resources/exampleforjadx/ExampleForJadx.jar
 
 
 # Eclipse

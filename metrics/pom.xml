@@ -83,33 +83,28 @@
         <dependency>
             <groupId>io.prometheus</groupId>
             <artifactId>prometheus-metrics-core</artifactId>
-            <version>1.0.0</version>
+            <version>${prometheus.version}</version>
         </dependency>
         <dependency>
             <groupId>io.prometheus</groupId>
             <artifactId>prometheus-metrics-instrumentation-jvm</artifactId>
-            <version>1.0.0</version>
+            <version>${prometheus.version}</version>
         </dependency>
         <dependency>
             <groupId>io.prometheus</groupId>
             <artifactId>prometheus-metrics-exporter-httpserver</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.11.0-M2</version>
-            <scope>test</scope>
+            <version>${prometheus.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
         <dropwizard.metrics.version>4.2.17</dropwizard.metrics.version>
         <netflix.servo.version>0.13.2</netflix.servo.version>
-        <micrometer-registry-atlas.version>1.12.3</micrometer-registry-atlas.version>
+        <micrometer-registry-atlas.version>1.16.0</micrometer-registry-atlas.version>
         <spring-boot-starter-web.version>3.1.0</spring-boot-starter-web.version>
         <metrics-aspectj-deps.version>1.2.0</metrics-aspectj-deps.version>
         <spectator-api.version>1.7.7</spectator-api.version>
+        <prometheus.version>1.0.0</prometheus.version>
     </properties>
 
 </project>

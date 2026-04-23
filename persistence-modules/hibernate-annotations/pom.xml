@@ -78,8 +78,8 @@
         </dependency>
         <dependency>
             <groupId>io.hypersistence</groupId>
-            <artifactId>hypersistence-utils-hibernate-60</artifactId>
-            <version>${hypersistance-utils-hibernate-60.version}</version>
+            <artifactId>hypersistence-utils-hibernate-70</artifactId>
+            <version>${hypersistence-utils-hibernate-70.version}</version>
         </dependency>
         <dependency>
             <groupId>org.liquibase</groupId>
@@ -93,15 +93,29 @@
         </dependency>
     </dependencies>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <properties>
         <!-- Spring -->
         <org.springframework.version>6.0.6</org.springframework.version>
         <org.springframework.data.version>3.0.3</org.springframework.data.version>
         <maven.deploy.skip>true</maven.deploy.skip>
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
-        <hypersistance-utils-hibernate-60.version>3.3.1</hypersistance-utils-hibernate-60.version>
-        <lombok.version>1.18.30</lombok.version>
+        <hypersistence-utils-hibernate-70.version>3.12.0</hypersistence-utils-hibernate-70.version>
         <liquibase-core.version>4.24.0</liquibase-core.version>
+        <hibernate.version>7.1.0.Final</hibernate.version>
+        <maven-surefire-plugin.version>3.5.2</maven-surefire-plugin.version>
+        <junit-jupiter.version>5.10.0</junit-jupiter.version>
     </properties>
 
 </project>

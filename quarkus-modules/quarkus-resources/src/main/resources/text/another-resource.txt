@@ -1,0 +1,1 @@
+This is another resource from a sub-directory.

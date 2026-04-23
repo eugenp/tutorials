@@ -35,6 +35,15 @@
             <artifactId>h2</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jta-atomikos</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-envers</artifactId>
         </dependency>
@@ -99,6 +108,7 @@
     <properties>
         <mapstruct.version>1.6.0.Beta1</mapstruct.version>
         <testcontainers.version>1.19.6</testcontainers.version>
+        <hsqldb.version>2.5.2</hsqldb.version>
     </properties>
 
 </project>

@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -21,6 +22,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest(classes = OpenApiApplication.class)
 @ComponentScan("com.baeldung.openapi")
 @AutoConfigureMockMvc
+@TestPropertySource(properties = "bucket4j.enabled=false")
 public class OpenApiPetsIntegrationTest {
 
     private static final String PETS_PATH = "/pets";

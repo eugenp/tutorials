@@ -37,7 +37,7 @@
         <module>junit-5-basics</module>
         <module>junit-5-basics-2</module>
         <module>junit-5</module>
-        <module>junit5-annotations</module>
+        <module>junit-5-annotations</module>
         <module>junit5-migration</module>
         <module>k6</module>
         <module>load-testing-comparison</module>
@@ -76,6 +76,7 @@
         <module>mockito-3</module>
         <module>mockito-4</module>
         <module>gatling-java</module>
+        <module>test-containers-podman</module>
     </modules>
 
 </project>

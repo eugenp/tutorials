@@ -3,17 +3,17 @@ package com.baeldung.jackson.objectmapper;
 import java.io.IOException;
 
 import com.baeldung.jackson.objectmapper.dto.Car;
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ser.std.StdSerializer;
 
 public class CustomCarSerializer extends StdSerializer<Car> {
 
     private static final long serialVersionUID = 1396140685442227917L;
 
     public CustomCarSerializer() {
-        this(null);
+        super(Car.class);
     }
 
     public CustomCarSerializer(final Class<Car> t) {
@@ -21,9 +21,9 @@ public class CustomCarSerializer extends StdSerializer<Car> {
     }
 
     @Override
-    public void serialize(final Car car, final JsonGenerator jsonGenerator, final SerializerProvider serializer) throws IOException, JsonProcessingException {
+    public void serialize(final Car car, final JsonGenerator jsonGenerator, final SerializationContext serializer) throws JacksonException {
         jsonGenerator.writeStartObject();
-        jsonGenerator.writeStringField("model: ", car.getType());
+        jsonGenerator.writeStringProperty("model: ", car.getType());
         jsonGenerator.writeEndObject();
     }
 }

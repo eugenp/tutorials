@@ -46,8 +46,8 @@
 
     <properties>
         <testng.version>7.10.2</testng.version>
-        <selenium-java.version>4.27.0</selenium-java.version>
-        <webdrivermanager.version>5.9.2</webdrivermanager.version>
+        <selenium-java.version>4.38.0</selenium-java.version>
+        <webdrivermanager.version>6.3.3</webdrivermanager.version>
 
     </properties>
 

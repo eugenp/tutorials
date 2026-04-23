@@ -3,6 +3,7 @@ package com.baeldung.floatvsdouble;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FloatVsDoubleUnitTest {
@@ -46,5 +47,21 @@ public class FloatVsDoubleUnitTest {
     public void givenUnderflowScenario_whenExceedingFloatRange_thenFloatUnderflowsToZero() {
         float underflowValue = 1.4e-45f / 2; // Smaller than the smallest normalized float value
         assertEquals(0.0f, underflowValue, "Float should underflow to zero for values smaller than the smallest representable number");
+    }
+
+    // 4. Equality Pitfalls
+    @Test
+    public void givenDecimalValues_whenAdding_thenEqualityCheckFails() {
+        double value = 0.1d + 0.2d;
+        assertNotEquals(0.3d, value, "The binary form introduces a small rounding difference");
+        assertEquals(0.3d, value, 1e-15, "A comparison using a tolerance verifies the expected result");
+    }
+
+    // 5. Compiler and Literal Rules
+    @Test
+    public void givenFloatAssignment_whenUsingLiteral_thenSuffixIsRequired() {
+        // float f = 1.0; // Compilation error because the literal is a double
+        float f = 1.0f;
+        assertEquals(1.0f, f, "Float literal using 'f' compiles correctly");
     }
 }

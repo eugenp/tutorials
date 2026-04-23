@@ -1,0 +1,10 @@
+spring:
+  temporal:
+    connection:
+      target: local
+    workers-auto-discovery:
+      packages:
+        - "com.baeldung.temporal.workflows.sboot.order"
+logging:
+  level:
+    web: debug

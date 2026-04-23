@@ -36,8 +36,4 @@
         </resources>
     </build>
 
-    <properties>
-        <commons-lang3.version>3.17.0</commons-lang3.version>
-    </properties>
-
 </project>
