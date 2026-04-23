@@ -1,8 +1,7 @@
-package com.baeldung.camel.observablity;
+package com.baeldung.camel.observability;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 public class SimpleRouteBuilder extends RouteBuilder {
 

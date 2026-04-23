@@ -1,4 +1,4 @@
-package com.baeldung.camel.observablity;
+package com.baeldung.camel.observability;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;

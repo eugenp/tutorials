@@ -1,4 +1,4 @@
-package com.baeldung.camel.observablity;
+package com.baeldung.camel.observability;
 
 import org.apache.camel.observation.starter.CamelObservation;
 import org.springframework.boot.SpringApplication;
