@@ -21,6 +21,7 @@
         <module>spring-ai-3</module>
         <module>spring-ai-4</module>
         <module>spring-ai-agentic-patterns</module>
+        <module>spring-ai-agent-skills</module>
         <module>spring-ai-chat-stream</module>
         <module>spring-ai-introduction</module>
         <module>spring-ai-mcp</module>
