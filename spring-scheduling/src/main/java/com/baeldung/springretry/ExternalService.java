@@ -16,7 +16,7 @@ public class ExternalService {
     public void callExternalApi() {
 
         attempt++;
-        LOG.info("Attempt " + attempt + " - Calling external API...");
+        LOG.info("Attempt {} - Calling external API...", attempt);
 
         throw new RuntimeException("Temporary connection failure!");
     }
