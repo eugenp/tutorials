@@ -1,0 +1,39 @@
+package com.baeldung.testng;
+
+import java.lang.reflect.Method;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Factory;
+import org.testng.annotations.Test;
+
+public class FactoryNameTest {
+
+    private static final Logger logger = LoggerFactory.getLogger(FactoryNameTest.class);
+    private final String instanceLabel;
+
+    public FactoryNameTest(String instanceLabel) {
+        this.instanceLabel = instanceLabel;
+    }
+
+    @Factory
+    public static Object[] build() {
+        return new Object[] { new FactoryNameTest("fast-path"), new FactoryNameTest("slow-path") };
+    }
+
+    @BeforeMethod
+    public void capture(Method method, ITestResult result) {
+        String fullName = method.getName() + "[" + instanceLabel + "]";
+        result.setAttribute("displayName", fullName);
+    }
+
+    @Test
+    public void givenTestNameSetup_whenTestNameIsRequested_thenShouldReturnTestName() {
+        logger.info("Executing scenario {}", instanceLabel);
+        Assert.assertListContainsObject(List.of("fast-path", "slow-path"), instanceLabel, "instance label is not as expected");
+    }
+}
