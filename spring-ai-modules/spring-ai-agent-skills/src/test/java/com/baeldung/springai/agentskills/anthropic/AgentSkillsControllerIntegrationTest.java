@@ -2,7 +2,7 @@ package com.baeldung.springai.agentskills.anthropic;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -33,11 +33,11 @@ class AgentSkillsControllerIntegrationTest {
     void whenReportRequestIsValid_thenEndpointReturnsGeneratedDocument() throws Exception {
         byte[] documentContent = "%PDF-1.7\nMock PDF".getBytes();
         ReportRequest reportRequest = new ReportRequest("Generate a monthly sales summary");
-        AnthropicDocument generatedDocument = new AnthropicDocument("sales-report.pdf", documentContent);
+        AnthropicDocument generatedDocument = new AnthropicDocument("sales-report.pdf", "application/pdf", documentContent);
 
         when(agentSkillsService.genReport(reportRequest)).thenReturn(generatedDocument);
 
-        mockMvc.perform(get("/agent-skills/report")
+        mockMvc.perform(post("/agent-skills/report")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("""
                     {

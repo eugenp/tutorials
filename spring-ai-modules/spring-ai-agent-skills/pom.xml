@@ -23,11 +23,6 @@
             <artifactId>spring-ai-starter-model-anthropic</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.tika</groupId>
-            <artifactId>tika-core</artifactId>
-            <version>${tika.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
@@ -51,7 +46,6 @@
         <spring-boot.version>3.5.13</spring-boot.version>
         <org.slf4j.version>2.0.17</org.slf4j.version>
         <logback.version>1.5.18</logback.version>
-        <tika.version>3.3.0</tika.version>
     </properties>
 
     <build>
