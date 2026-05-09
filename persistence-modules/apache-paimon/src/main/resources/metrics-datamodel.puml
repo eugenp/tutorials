@@ -1,0 +1,22 @@
+@startuml
+!theme crt-amber
+
+entity "metrics (Paimon Table)" as metrics {
+  + device_id : STRING <<PK>>
+  + metric_name : STRING <<PK>>
+  + create_time : TIMESTAMP(3) <<PK>>
+  --
+  metric_value : DOUBLE
+  source : STRING
+}
+
+note right of metrics
+Primary Key: (device_id, metric_name, create_time)
+
+Optimized for:
+- High-ingest time-series data
+- Device-level analytics
+- Streaming upserts
+end note
+
+@enduml
