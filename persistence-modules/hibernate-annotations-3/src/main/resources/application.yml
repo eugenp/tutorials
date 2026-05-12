@@ -1,0 +1,17 @@
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        orm:
+          results: DEBUG
+          jdbc:
+            bind: TRACE
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+        resource:
+          jdbc:
+            internal:
+              ResourceRegistryStandardImpl: TRACE
