@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestClient;
+import org.springframework.web.util.HtmlUtils;
 
 @RestController
 @RequestMapping("/")
@@ -36,7 +37,15 @@ public class ClientController {
           .retrieve();
 
         String messageFromResourceServer = responseSpec.toEntity(String.class).getBody();
-        return "<html><body><title>Token Exchange</title><p>Token Exchange Client!</p></br><p>" +
-          "The resource server: <strong>" + messageFromResourceServer + "</strong></p></body></html>";
+
+        String safeMessage = HtmlUtils.htmlEscape(
+          messageFromResourceServer != null ? messageFromResourceServer : ""
+        );
+
+        return "<html><body><title>Token Exchange</title>" +
+          "<p>Token Exchange Client!</p><br/>" +
+          "<p>The resource server: <strong>" +
+          safeMessage +
+          "</strong></p></body></html>";
     }
 }
