@@ -13,7 +13,7 @@
     <artifactId>spring-security-auth-server</artifactId>
     <properties>
         <java.version>21</java.version>
-        <spring-boot.version>4.0.1</spring-boot.version>
+        <spring-boot.version>4.0.5</spring-boot.version>
         <logback.version>1.5.22</logback.version>
         <junit-jupiter.version>6.0.1</junit-jupiter.version>
         <mockito.version>5.20.0</mockito.version>
