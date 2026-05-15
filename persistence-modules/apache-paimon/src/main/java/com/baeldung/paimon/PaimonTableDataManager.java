@@ -10,6 +10,8 @@ import org.apache.paimon.data.BinaryString;
 import org.apache.paimon.data.GenericRow;
 import org.apache.paimon.data.InternalRow;
 import org.apache.paimon.data.Timestamp;
+import org.apache.paimon.predicate.Predicate;
+import org.apache.paimon.predicate.PredicateBuilder;
 import org.apache.paimon.reader.RecordReader;
 import org.apache.paimon.table.Table;
 import org.apache.paimon.table.sink.BatchTableCommit;
@@ -19,6 +21,7 @@ import org.apache.paimon.table.sink.CommitMessage;
 import org.apache.paimon.table.source.ReadBuilder;
 import org.apache.paimon.table.source.Split;
 import org.apache.paimon.table.source.TableRead;
+import org.apache.paimon.types.RowType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,8 +47,9 @@ public class PaimonTableDataManager {
                     BinaryString.fromString(metric.getMetricsName()),
                     metric.getMetricsValue(),
                     BinaryString.fromString(metric.getSource()),
-                    timestamp                    
-                ), 0);
+                    timestamp,
+                    BinaryString.fromString(metric.getCreatedBy())                    
+                ), 2);
             } catch (Exception e) {
                 logger.error("Error writing metric", e);
             }
@@ -57,30 +61,54 @@ public class PaimonTableDataManager {
         commit.commit(messages);
     }
 
-    public static List<String> read(Catalog catalog, Identifier tableId) throws Exception {
+    private static Timestamp convertToTimestamp(String createTime) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime localDateTime = LocalDateTime.parse(createTime, formatter);
+        return Timestamp.fromLocalDateTime(localDateTime);
+    }
+
+
+    public static List<Metric> fetchMetricsBySourceAndDateRange(Catalog catalog, Identifier tableId,
+            String source, String startDate, String endDate) throws Exception {
 
         Table table = catalog.getTable(tableId);
+        RowType rowType = table.rowType();
+        PredicateBuilder predicateBuilder = new PredicateBuilder(rowType);
 
-        ReadBuilder readBuilder = table.newReadBuilder();
+       int[] projection = new int[] {0, 1, 2, 3, 4};
+
+        Predicate sourcePredicate = predicateBuilder.equal(3, BinaryString.fromString(source));
+        Predicate dateRangePredicate = predicateBuilder.between(4, convertToTimestamp(startDate), convertToTimestamp(endDate));
+        Predicate predicate = PredicateBuilder.and(sourcePredicate, dateRangePredicate);
+
+        ReadBuilder readBuilder = table.newReadBuilder().withFilter(predicate).withProjection(projection);
 
         List<Split> splits = readBuilder.newScan().plan().splits();
 
-        TableRead read = readBuilder.newRead();
+        TableRead read = readBuilder.newRead().executeFilter();
 
         RecordReader<InternalRow> reader = read.createReader(splits);
 
-        List<String> results = new ArrayList<>();
+        List<Metric> results = new ArrayList<>();
 
-        reader.forEachRemaining(row -> {
-            results.add(row.toString());
+        reader.forEachRemaining(internalRow -> {
+            String deviceId = internalRow.getString(0).toString();
+            String metricsName = internalRow.getString(1).toString();
+            double metricsValue = internalRow.getDouble(2);
+            String sourceValue = internalRow.getString(3).toString();
+            Timestamp timestamp = internalRow.getTimestamp(4, 3);
+            String createTime = ConvertTimestampToStr(timestamp); 
+
+            Metric metric = new Metric(deviceId, metricsName, metricsValue, sourceValue, createTime, null);
+            logger.info("Fetched Metric: {}", metric);
+            results.add(metric);
         });
 
         return results;
     }
 
-    private static Timestamp convertToTimestamp(String createTime) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime localDateTime = LocalDateTime.parse(createTime, formatter);
-        return Timestamp.fromLocalDateTime(localDateTime);
+    private static String ConvertTimestampToStr(Timestamp timestamp) {
+        return timestamp.toLocalDateTime()
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 }

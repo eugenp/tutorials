@@ -19,6 +19,7 @@ public class MetricReader {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         String line;
+        String CREATED_BY = "admin";
         List<Metric> metrics = new ArrayList<>();
         boolean isFirstLine = true;
         try {
@@ -40,7 +41,7 @@ public class MetricReader {
                     logger.info("Read metric: deviceId={}, metricsName={}, createTime={}, metricsValue={}, source={}",
                             deviceId, metricsName, createTime, metricsValue, source);
 
-                    Metric metric = new Metric(deviceId, metricsName, metricsValue, source, createTime);
+                    Metric metric = new Metric(deviceId, metricsName, metricsValue, source, createTime, CREATED_BY);
                     //add the metric to the list
                     metrics.add(metric);
                 }

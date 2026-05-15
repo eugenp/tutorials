@@ -6,17 +6,28 @@ public class Metric {
     private double metricsValue;
     private String source;
     private String createTime;
+    private String createdBy;
 
     public Metric() {
     }
 
-    public Metric(String deviceId, String metricsName, double metricsValue, String source, String createTime) {
+    public Metric(String deviceId, String metricsName, double metricsValue, String source, String createTime, String createdBy) {
         this.deviceId = deviceId;
         this.metricsName = metricsName;
         this.metricsValue = metricsValue;
         this.source = source;
         this.createTime = createTime;
+        this.createdBy = createdBy;
     }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
 
     public String getDeviceId() {
         return deviceId;
@@ -56,5 +67,11 @@ public class Metric {
 
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Metric [deviceId=" + deviceId + ", metricsName=" + metricsName + ", metricsValue="
+                + metricsValue + ", source=" + source + ", createTime=" + createTime + "]";
     }
 }
