@@ -44,7 +44,7 @@
 
     <properties>
         <java.version>21</java.version>
-        <spring-ai.version>1.1.2</spring-ai.version>
+        <spring-ai.version>2.0.0-M6</spring-ai.version>
     </properties>
 
     <profiles>
@@ -61,6 +61,12 @@
             <id>mcp-client</id>
             <properties>
                 <spring.boot.mainclass>com.baeldung.springai.mcp.client.ClientApplication</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>mcp-UI</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.mcp.ui.McpApplication</spring.boot.mainclass>
             </properties>
         </profile>
     </profiles>

@@ -62,7 +62,7 @@ class ExchangeRateMcpToolSseIntegrationTest {
             .findFirst()
             .orElseThrow();
 
-        String argumentName = exchangeRateTool.inputSchema().properties().keySet().stream()
+        String argumentName = exchangeRateTool.inputSchema().keySet().stream()
             .findFirst()
             .orElseThrow();
 
