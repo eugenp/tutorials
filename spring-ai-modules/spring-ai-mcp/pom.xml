@@ -44,7 +44,12 @@
 
     <properties>
         <java.version>21</java.version>
+        <spring-boot.version>4.0.0</spring-boot.version>
+        <logback.version>1.5.18</logback.version>
+        <junit-jupiter.version>5.13.0</junit-jupiter.version>
         <spring-ai.version>2.0.0-M6</spring-ai.version>
+        <jackson-bom.version>3.1.2</jackson-bom.version>
+        <jackson-annotations.version>2.21</jackson-annotations.version>
     </properties>
 
     <profiles>
@@ -64,9 +69,9 @@
             </properties>
         </profile>
         <profile>
-            <id>mcp-UI</id>
+            <id>mcp-ui</id>
             <properties>
-                <spring.boot.mainclass>com.baeldung.springai.mcp.ui.McpApplication</spring.boot.mainclass>
+                <spring.boot.mainclass>com.baeldung.springai.mcp.ui.McpUiApplication</spring.boot.mainclass>
             </properties>
         </profile>
     </profiles>
@@ -85,6 +90,25 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson-annotations.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>tools.jackson</groupId>
+                <artifactId>jackson-bom</artifactId>
+                <version>${jackson-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.ai</groupId>
                 <artifactId>spring-ai-bom</artifactId>
