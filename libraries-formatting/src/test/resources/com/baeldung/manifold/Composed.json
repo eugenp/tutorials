@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "http://baeldung.com/manifold/SimpleUser.json",
+  "type": "object",
+  "properties": {
+    "all": {
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "roles": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "allRef": {
+      "allOf": [
+        {"$ref":  "#/definitions/user"},
+        {"$ref":  "#/definitions/adminUser"}
+      ]
+    },
+    "any": {
+      "anyOf": [
+        {"$ref":  "#/definitions/dog"},
+        {"$ref":  "#/definitions/cat"}
+      ]
+    }
+  },
+  "definitions": {
+    "user": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        }
+      }
+    },
+    "adminUser": {
+      "type": "object",
+      "properties": {
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+
+    "dog": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": ["dog"]
+        },
+        "breed": {
+          "type": "string"
+        }
+      }
+    },
+    "cat": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": ["cat"]
+        },
+        "color": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
