@@ -1,5 +1,6 @@
 package com.baeldung.paimon;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -7,13 +8,6 @@ import java.nio.file.Path;
 import java.util.List;
 import org.apache.paimon.catalog.Catalog;
 import org.apache.paimon.catalog.Identifier;
-import org.apache.paimon.data.BinaryString;
-import org.apache.paimon.data.GenericRow;
-import org.apache.paimon.table.Table;
-import org.apache.paimon.table.sink.BatchTableWrite;
-import org.apache.paimon.table.sink.BatchWriteBuilder;
-import org.apache.paimon.table.sink.CommitMessage;
-import org.apache.paimon.types.RowKind;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
@@ -41,7 +35,6 @@ public class PaimonLifecycleIntegrationTest {
         WAREHOUSE_PATH = getWarehousePath(tempDir);
         logger.info("Warehouse path set to: {}", WAREHOUSE_PATH);
     }
-
 
     @AfterAll
     void cleanup() {
@@ -79,7 +72,7 @@ public class PaimonLifecycleIntegrationTest {
         PaimonTableDataManager.insert(catalog, tableId, getMetrics());
     }
 
-        @Test
+    @Test
     @Order(3)
     void whenCallReadRecords_thenRecordsRead() throws Exception {
         List<Metric> metrics = PaimonTableDataManager.fetchMetricsBySourceAndDateRange(catalog,
@@ -88,63 +81,41 @@ public class PaimonLifecycleIntegrationTest {
         assertTrue(metrics.size() == 4);
     }
 
-    /*
-     * @Test
-     * 
-     * @Order(4)
-     */
-    void whenCallUpdateRecord_thenRecordUpdated() throws Exception {
-
-        Table table = catalog.getTable(tableId);
-
-        BatchWriteBuilder builder = table.newBatchWriteBuilder();
-
-        BatchTableWrite write = builder.newWrite();
-
-        // update Alice age
-        write.write(GenericRow.of(BinaryString.fromString("Alice"), 35));
-
-        List<CommitMessage> messages = write.prepareCommit();
-
-        builder.newCommit().commit(messages);
-
-        assertTrue(messages.size() > 0);
-    }
-
-    // ------------------------------------------------
-    // 5 Delete Record
-    // ------------------------------------------------
-    /*
-     * @Test
-     * 
-     * @Order(5)
-     */
+    @Test     
+    @Order(4)     
     void whenCallDeleteRecord_thenRecordDeleted() throws Exception {
+        Metric metric = PaimonTableDataManager.fetchMetricByDeviceIdMetricNameAndCreatedDate(catalog, tableId, "dev_136", "disk_io", "2026-04-21 18:58:26");
+        assertNotNull(metric);
 
-        Table table = catalog.getTable(tableId);
+        PaimonTableDataManager.deleteRecordsByDeviceIdMetricNameAndCreatedDate(catalog, tableId, "dev_136", "disk_io", "2026-04-21 18:58:26");
 
-        BatchWriteBuilder builder = table.newBatchWriteBuilder();
-
-        BatchTableWrite write = builder.newWrite();
-
-        GenericRow deleteRow = GenericRow.of(BinaryString.fromString("Bob"), 0);
-
-        deleteRow.setRowKind(RowKind.DELETE);
-
-        write.write(deleteRow);
-
-        List<CommitMessage> messages = write.prepareCommit();
-
-        builder.newCommit().commit(messages);
-
-        assertTrue(messages.size() > 0);
+        metric = PaimonTableDataManager.fetchMetricByDeviceIdMetricNameAndCreatedDate(catalog, tableId, "dev_136", "disk_io", "2026-04-21 18:58:26");
+        assertTrue(metric == null);
     }
 
-    // ------------------------------------------------
-    // 6 Read Records
-    // ------------------------------------------------
+    @Test
+    @Order(5)
+    void whenCallUpdateRecord_thenRecordUpdated() throws Exception {
+        Metric metric = PaimonTableDataManager.fetchMetricByDeviceIdMetricNameAndCreatedDate(
+            catalog, tableId, 
+            "dev_137", "cpu_usage",
+            "2026-04-21 18:58:27"
+        );
+        assertNotNull(metric);
 
+        assertEquals("active", metric.getState());
 
+        PaimonTableDataManager.updateMetricStateByDeviceIdMetricNameAndCreatedDate(
+            catalog, tableId, "dev_137",
+             "cpu_usage", "inactive", 
+             "2026-04-21 18:58:27"
+        );
+
+        metric = PaimonTableDataManager.fetchMetricByDeviceIdMetricNameAndCreatedDate(catalog, tableId, "dev_137", "cpu_usage", "2026-04-21 18:58:27");
+        assertNotNull(metric);
+        assertEquals("inactive", metric.getState());
+    }
+ 
     private List<Metric> getMetrics() {
         return new MetricReader().readMetrics();
     }

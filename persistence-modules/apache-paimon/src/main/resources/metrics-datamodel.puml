@@ -1,4 +1,4 @@
-@startuml
+@startuml metrics-datamodel
 !theme crt-amber
 
 entity "metrics (Paimon Table)" as metrics {
@@ -8,6 +8,8 @@ entity "metrics (Paimon Table)" as metrics {
   --
   metric_value : DOUBLE
   source : STRING
+  created_by : STRING
+  state : STRING
 }
 
 note right of metrics

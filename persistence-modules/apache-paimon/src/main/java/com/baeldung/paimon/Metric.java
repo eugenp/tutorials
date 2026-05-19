@@ -5,19 +5,21 @@ public class Metric {
     private String metricsName;
     private double metricsValue;
     private String source;
+    private String state = "active";
     private String createTime;
     private String createdBy;
 
     public Metric() {
     }
 
-    public Metric(String deviceId, String metricsName, double metricsValue, String source, String createTime, String createdBy) {
+    public Metric(String deviceId, String metricsName, double metricsValue, String source, String createTime, String createdBy, String state) {
         this.deviceId = deviceId;
         this.metricsName = metricsName;
         this.metricsValue = metricsValue;
         this.source = source;
         this.createTime = createTime;
         this.createdBy = createdBy;
+        this.state = state;
     }
 
     public String getCreatedBy() {
@@ -69,9 +71,17 @@ public class Metric {
         this.createTime = createTime;
     }
 
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
     @Override
     public String toString() {
         return "Metric [deviceId=" + deviceId + ", metricsName=" + metricsName + ", metricsValue="
-                + metricsValue + ", source=" + source + ", createTime=" + createTime + "]";
+                + metricsValue + ", source=" + source + ", createTime=" + createTime + ", state=" + state + "]";
     }
 }

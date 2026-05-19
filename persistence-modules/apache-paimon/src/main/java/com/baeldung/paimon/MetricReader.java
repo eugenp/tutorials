@@ -41,7 +41,7 @@ public class MetricReader {
                     logger.info("Read metric: deviceId={}, metricsName={}, createTime={}, metricsValue={}, source={}",
                             deviceId, metricsName, createTime, metricsValue, source);
 
-                    Metric metric = new Metric(deviceId, metricsName, metricsValue, source, createTime, CREATED_BY);
+                    Metric metric = new Metric(deviceId, metricsName, metricsValue, source, createTime, CREATED_BY, "active");
                     //add the metric to the list
                     metrics.add(metric);
                 }

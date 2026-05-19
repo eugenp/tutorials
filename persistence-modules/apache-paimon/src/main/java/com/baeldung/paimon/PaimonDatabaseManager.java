@@ -23,6 +23,7 @@ public class PaimonDatabaseManager {
             .column("source", DataTypes.STRING())
             .column("create_time", DataTypes.TIMESTAMP(3))
             .column("created_by", DataTypes.STRING())
+            .column("state", DataTypes.STRING())
             .primaryKey("device_id", "metrics_name", "create_time")  
             .build();
 
