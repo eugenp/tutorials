@@ -9,6 +9,11 @@ import java.util.Set;
 public class DynamicScopeServiceImpl implements DynamicScopeService {
     @Override
     public boolean validate(String clientId, Set<String> scopes) {
-        return false;
+        // Any scope starting with TX: is valid
+        return scopes.stream()
+          .filter(scope -> scope.toUpperCase().startsWith("TX:"))
+          .map(scope -> true)
+          .findFirst()
+          .orElse(false);
     }
 }

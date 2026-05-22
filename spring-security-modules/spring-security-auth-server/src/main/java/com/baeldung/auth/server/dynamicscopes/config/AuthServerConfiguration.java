@@ -2,11 +2,16 @@ package com.baeldung.auth.server.dynamicscopes.config;
 
 import com.baeldung.auth.server.dynamicscopes.components.DynamicScopeService;
 import org.slf4j.Logger;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.security.autoconfigure.web.servlet.SecurityFilterProperties;
+import org.springframework.boot.security.oauth2.server.authorization.autoconfigure.servlet.OAuth2AuthorizationServerAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
-import org.springframework.security.config.Customizer;
+import org.springframework.http.MediaType;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.oauth2.server.authorization.OAuth2AuthorizationServerConfigurer;
 import org.springframework.security.oauth2.core.OAuth2Error;
 import org.springframework.security.oauth2.core.OAuth2ErrorCodes;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationCodeRequestAuthenticationContext;
@@ -14,10 +19,16 @@ import org.springframework.security.oauth2.server.authorization.authentication.O
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationCodeRequestAuthenticationProvider;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationCodeRequestAuthenticationToken;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
+import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher;
+import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import java.util.HashSet;
+import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+
+import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 public class AuthServerConfiguration {
@@ -30,38 +41,63 @@ public class AuthServerConfiguration {
     }
 
     @Bean
-    @Order(1)
-    SecurityFilterChain dynamicScopesAuthorizationServerSecurityFilterChain(HttpSecurity http) {
+    @Order(Ordered.HIGHEST_PRECEDENCE)
+    SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http) {
 
-        http.oauth2AuthorizationServer( authServer -> {
-            http.securityMatcher(authServer.getEndpointsMatcher());
+        log.info("[I22] Creating custom authorizationServer configuration");
 
-            authServer
-              .oidc(Customizer.withDefaults()) // Enable OpenID Connect 1.0
-              .authorizationEndpoint(authorizationEndpoint -> authorizationEndpoint
-                .authenticationProviders(providers -> providers.stream()
-                  .filter(OAuth2AuthorizationCodeRequestAuthenticationProvider.class::isInstance)
-                  .map(p -> (OAuth2AuthorizationCodeRequestAuthenticationProvider)p)
-                  .findFirst()
-                  .ifPresent(p -> {
-                    p.setAuthenticationValidator(dynamicScopesAuthenticationValidator());
-                    p.setAuthorizationConsentRequired(dynamicScopesConsentValidator());
-                  })));
-          });
-
+        http.oauth2AuthorizationServer(authorizationServer -> {
+            http.securityMatcher(authorizationServer.getEndpointsMatcher());
+            authorizationServer
+              .oidc(withDefaults())
+              .authorizationEndpoint(ap -> {
+                  ap.consentPage("/consent");
+                  ap.authenticationProviders(providers -> {
+                      providers.stream()
+                        .filter(OAuth2AuthorizationCodeRequestAuthenticationProvider.class::isInstance)
+                        .map(p -> (OAuth2AuthorizationCodeRequestAuthenticationProvider)p)
+                        .findFirst()
+                        .ifPresent(p -> {
+                            p.setAuthenticationValidator(dynamicScopesAuthenticationValidator());
+                            p.setAuthorizationConsentRequired(dynamicScopesConsentValidator());
+                        });
+                  });
+              });
+        });
+        http.authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated());
+        http.oauth2ResourceServer(resourceServer -> resourceServer.jwt(withDefaults()));
+        http.exceptionHandling(exceptions -> exceptions.defaultAuthenticationEntryPointFor(
+          new LoginUrlAuthenticationEntryPoint("/login"), createRequestMatcher()));
         return http.build();
     }
+
+    @Bean
+    @Order(SecurityFilterProperties.BASIC_AUTH_ORDER)
+    SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) {
+        http.authorizeHttpRequests(authorize -> {
+            authorize.anyRequest().authenticated();
+          })
+          .formLogin(withDefaults());
+        return http.build();
+    }
+
+    private static RequestMatcher createRequestMatcher() {
+        MediaTypeRequestMatcher requestMatcher = new MediaTypeRequestMatcher(MediaType.TEXT_HTML);
+        requestMatcher.setIgnoredMediaTypes(Set.of(MediaType.ALL));
+        return requestMatcher;
+    }
+
 
     private Consumer<OAuth2AuthorizationCodeRequestAuthenticationContext> dynamicScopesAuthenticationValidator() {
 
         return ctx -> {
-            log.info("Dynamic scopes authentication validator invoked for client: {}, requested scopes: {}",
-              ctx.getAuthorizationRequest().getClientId(),
-              ctx.getAuthorizationRequest().getScopes());
 
             OAuth2AuthorizationCodeRequestAuthenticationToken auth = ctx.getAuthentication();
             var requestedScopes = new HashSet<>(auth.getScopes()); //
             var registeredClient = ctx.getRegisteredClient();
+
+            log.info("[I95] validating requested scopes {} for client {}", requestedScopes, registeredClient.getClientId());
+
             var allowedScopes = registeredClient.getScopes();
 
             if ( requestedScopes.isEmpty() ) {

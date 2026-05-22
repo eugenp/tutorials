@@ -29,6 +29,13 @@
             <artifactId>spring-boot-starter-security-oauth2-authorization-server</artifactId>
             <version>${spring-boot.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security-oauth2-authorization-server-test</artifactId>

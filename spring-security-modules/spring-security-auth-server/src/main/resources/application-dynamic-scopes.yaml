@@ -7,7 +7,7 @@ spring:
       authorizationserver:
         client:
           client1:
-            require-authorization-consent: false
+            require-proof-key: false
             registration:
               client-name: Client 1 - Issuer 1
               client-id: client1
@@ -23,3 +23,9 @@ spring:
               scopes:
                 - openid
                 - email
+  web:
+    error:
+      include-message: always
+      include-exception: true
+      include-stacktrace: always
+
