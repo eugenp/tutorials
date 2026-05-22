@@ -10,8 +10,8 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>spring-ai-agent-skills</artifactId>
-    <name>spring-ai-agent-skills</name>
+    <artifactId>spring-ai-anthropic-agent-skills</artifactId>
+    <name>spring-ai-anthropic-agent-skills</name>
 
     <dependencies>
         <dependency>
