@@ -12,32 +12,37 @@ import org.junit.jupiter.api.Test;
 class CommonMarkUsageUnitTest {
 
     @Test
-    void markDownToHtmlTest() {
+    void givenMarkdownInput_whenConvertingToHtml_thenReturnRenderedHtml() {
         String html = markDownToHtml("Welcome to *Baeldung*");
+
         assertEquals("<p>Welcome to <em>Baeldung</em></p>\n", html);
     }
 
     @Test
-    void visitorCountTest() {
-        int html = processParsedNode("Welcome to *Baeldung*");
-        assertEquals(3, html);
+    void givenMarkdownInput_whenProcessingParsedNode_thenReturnWordCount() {
+        int wordCount = processParsedNode("Welcome to *Baeldung*");
+
+        assertEquals(3, wordCount);
     }
 
     @Test
-    void htmlToMarkdownTest() {
-        String html = htmlToMarkDown("Java Tutorial");
-        assertEquals("## Java Tutorial\n", html);
+    void givenHeadingText_whenConvertingToMarkdown_thenReturnMarkdownHeading() {
+        String markdown = htmlToMarkDown("Java Tutorial");
+
+        assertEquals("## Java Tutorial\n", markdown);
     }
 
     @Test
-    void changingHtmlAttributeTest() {
+    void givenImageMarkdown_whenRenderingHtml_thenAddCustomClassAttribute() {
         String html = changingHtmlAttribute("![text](/url.png)");
+
         assertEquals("<p><img src=\"/url.png\" alt=\"text\" class=\"border\" /></p>\n", html);
     }
 
     @Test
-    void customizingHtmlRendererTest() {
-        String html = customizingHtmlRendering("![text](/url.png)");
-        assertEquals("<p><img src=\"/url.png\" alt=\"text\" /></p>\n", html);
+    void givenIndentedCodeBlock_whenRenderingHtml_thenUseCustomNodeRenderer() {
+        String html = customizingHtmlRendering("Example:\n\n    code");
+
+        assertEquals("<p>Example:</p>\n<pre>code\n</pre>\n", html);
     }
 }
