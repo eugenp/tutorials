@@ -23,6 +23,7 @@
         <junit-platform.version>6.0.3</junit-platform.version>
         <org.slf4j.version>2.0.17</org.slf4j.version>
         <logback.version>1.5.18</logback.version>
+        <maven-surefire-plugin.version>3.5.5</maven-surefire-plugin.version>
     </properties>
 
     <repositories>
@@ -86,7 +87,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.5.5</version>
+                <version>${maven-surefire-plugin.version}</version>
             </plugin>
         </plugins>
     </build>

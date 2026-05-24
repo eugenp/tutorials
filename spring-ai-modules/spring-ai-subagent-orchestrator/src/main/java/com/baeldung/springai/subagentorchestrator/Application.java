@@ -10,12 +10,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 
 @SpringBootApplication
-public class SpringAiSubagentOrchestratorApplication {
+public class Application {
 
-    private static final Logger logger = LoggerFactory.getLogger(SpringAiSubagentOrchestratorApplication.class);
+    private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringAiSubagentOrchestratorApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
     @Bean
