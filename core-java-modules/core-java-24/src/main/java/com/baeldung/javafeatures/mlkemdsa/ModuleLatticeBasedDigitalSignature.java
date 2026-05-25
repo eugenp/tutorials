@@ -10,9 +10,7 @@ import org.slf4j.LoggerFactory;
 
 public class ModuleLatticeBasedDigitalSignature {
 
-    public static void main(String[] args) throws Exception {
-        Logger logger = LoggerFactory.getLogger(ModuleLatticeBasedDigitalSignature.class);
-
+    public static boolean verifyDigitalSignature() throws Exception {
         // Signer: Generate an ML-DSA key pair
         KeyPairGenerator kpg = KeyPairGenerator.getInstance("ML-DSA");
         kpg.initialize(NamedParameterSpec.ML_DSA_65);
@@ -35,7 +33,11 @@ public class ModuleLatticeBasedDigitalSignature {
         signature.update(messageBytes);
         boolean isValid = signature.verify(sigBytes);
 
-        logger.info("Is the signature valid? " + isValid);
+        return isValid;
+    }
 
+    public static void main(String[] args) throws Exception {
+        Logger logger = LoggerFactory.getLogger(ModuleLatticeBasedDigitalSignature.class);
+        logger.info("Is the signature valid? " + verifyDigitalSignature());
     }
 }

@@ -10,8 +10,7 @@ import org.slf4j.LoggerFactory;
 
 public class ModuleLatticeBasedKeyEncapsulation {
 
-    public static void main(String[] args) throws Exception {
-        Logger logger = LoggerFactory.getLogger(ModuleLatticeBasedKeyEncapsulation.class);
+    public static boolean performKeyExchange() throws Exception {
 
         // Receiver: Generate an ML-KEM key pair
         KeyPairGenerator kpg = KeyPairGenerator.getInstance("ML-KEM");
@@ -37,9 +36,13 @@ public class ModuleLatticeBasedKeyEncapsulation {
         KEM.Decapsulator decapsulator = receiverKem.newDecapsulator(privateKey);
         SecretKey receiverSharedSecret = decapsulator.decapsulate(ciphertext);
 
-        // Verify that both parties have the same secret key
         boolean match = Arrays.equals(senderSharedSecret.getEncoded(), receiverSharedSecret.getEncoded());
-        logger.info("Do the shared secret keys match? " + match);
 
+        return match;
+    }
+
+    public static void main(String[] args) throws Exception {
+        Logger logger = LoggerFactory.getLogger(ModuleLatticeBasedKeyEncapsulation.class);
+        logger.info("Do the shared secret keys match? " + performKeyExchange());
     }
 }
