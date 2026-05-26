@@ -1,4 +1,4 @@
-package com.baeldung.restclient;
+package com.baeldung.migration;
 
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.junit.jupiter.api.Test;
@@ -8,6 +8,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.web.client.RestTemplate;
+
+import com.baeldung.migration.RestTemplateConfiguration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
