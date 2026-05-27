@@ -40,13 +40,18 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
         <java.version>21</java.version>
         <spring-boot.version>4.0.0</spring-boot.version>
         <logback.version>1.5.18</logback.version>
-        <junit-jupiter.version>5.13.0</junit-jupiter.version>
+        <junit-jupiter.version>6.0.1</junit-jupiter.version>
         <spring-ai.version>2.0.0-M6</spring-ai.version>
         <jackson-bom.version>3.1.2</jackson-bom.version>
         <jackson-annotations.version>2.21</jackson-annotations.version>
@@ -84,6 +89,11 @@
                 <configuration>
                     <mainClass>${spring.boot.mainclass}</mainClass>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.2</version>
             </plugin>
         </plugins>
     </build>
