@@ -2,6 +2,7 @@ package com.baeldung.springai.mcp.ui;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 
@@ -33,7 +34,7 @@ class SportSpinnerUI {
         mimeType = "text/html;profile=mcp-app",
         metaProvider = CspMetaProvider.class)
     public String getSportSpinnerResource() throws IOException {
-        return sportSpinnerResource.getContentAsString(Charset.defaultCharset());
+        return sportSpinnerResource.getContentAsString(StandardCharsets.UTF_8);
     }
 
     public static final class SportSpinnerToolMetaProvider implements MetaProvider {
