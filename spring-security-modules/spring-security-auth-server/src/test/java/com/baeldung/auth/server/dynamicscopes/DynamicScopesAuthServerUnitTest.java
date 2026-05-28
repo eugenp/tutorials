@@ -30,7 +30,7 @@ import static org.springframework.test.web.servlet.client.RestTestClient.bindToS
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("dynamic-scopes")
-public class DynamicScopesAuthServerIntegrationTest {
+public class DynamicScopesAuthServerUnitTest {
 
     @LocalServerPort
     int port;
@@ -43,7 +43,7 @@ public class DynamicScopesAuthServerIntegrationTest {
 
     // Happy path integration test
     @Test
-    void whenAuthorizationRequest_thenSuccess() {
+    void whenAuthorizationRequestWithDynamicScope_thenSuccess() {
 
         assertNotNull(ctx);
         var response = restTestClient.get().uri("/.well-known/openid-configuration").exchange();
