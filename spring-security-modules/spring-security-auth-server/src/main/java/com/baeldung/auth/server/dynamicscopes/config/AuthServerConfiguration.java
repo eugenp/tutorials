@@ -14,6 +14,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.authorization.OAuth2AuthorizationServerConfigurer;
 import org.springframework.security.oauth2.core.OAuth2Error;
 import org.springframework.security.oauth2.core.OAuth2ErrorCodes;
+import org.springframework.security.oauth2.server.authorization.InMemoryOAuth2AuthorizationConsentService;
+import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsentService;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationCodeRequestAuthenticationContext;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationCodeRequestAuthenticationException;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationCodeRequestAuthenticationProvider;
@@ -47,7 +49,6 @@ public class AuthServerConfiguration {
         log.info("[I22] Creating custom authorizationServer configuration");
 
         http.oauth2AuthorizationServer(authorizationServer -> {
-            http.securityMatcher(authorizationServer.getEndpointsMatcher());
             authorizationServer
               .oidc(withDefaults())
               .authorizationEndpoint(ap -> {
@@ -63,6 +64,8 @@ public class AuthServerConfiguration {
                         });
                   });
               });
+
+            http.securityMatcher(authorizationServer.getEndpointsMatcher());
         });
         http.authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated());
         http.oauth2ResourceServer(resourceServer -> resourceServer.jwt(withDefaults()));
@@ -163,5 +166,12 @@ public class AuthServerConfiguration {
 
         };
     }
+
+    @Bean
+    OAuth2AuthorizationConsentService dynamicScopesConsentService() {
+        return new InMemoryOAuth2AuthorizationConsentService();
+    }
+
+
 
 }

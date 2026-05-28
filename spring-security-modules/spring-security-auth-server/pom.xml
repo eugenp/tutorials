@@ -21,6 +21,7 @@
         <assertj.version>3.27.6</assertj.version>
         <org.slf4j.version>2.0.17</org.slf4j.version>
         <junit-platform.version>6.0.1</junit-platform.version>
+        <jsoup.version>1.22.2</jsoup.version>
     </properties>
 
     <dependencies>
@@ -47,6 +48,12 @@
             <version>${junit-platform.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>${jsoup.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -64,6 +71,13 @@
                                 <artifactId>spring-boot-configuration-processor</artifactId>
                             </path>
                         </annotationProcessorPaths>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <skip>true</skip>
                     </configuration>
                 </plugin>
             </plugins>

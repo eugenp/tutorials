@@ -2,9 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Consent Page</title>
+    <title>Custom Consent Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
-<body>
-<h1>This is the consent page</h1>
+<script>
+    function clearConsent() {
+        const form = document.forms['consent_form'];
+        for (let el in form.elements.length) {
+            if (el.type === 'checkbox') {
+                el.checked = false;
+            }
+        }
+    }
+</script>
+<body class="container">
+<h1>Custom consent page</h1>
+
+    <p>The client <span th:text="${clientName}">CLIENT NAME</span> is asking your consent for the following new scopes:</p>
+
+    <form th:action="@{/oauth2/authorize}" method="post" name="consent_form">
+
+        <div class="form-check" th:each="scope : ${scopes}">
+            <input class="form-check-input" type="checkbox" th:value="${scope}" th:id="${scope}" name="scope" >
+            <label class="form-check-label" th:for="${scope}">
+                <span th:text="${scope}">SCOPE</span>
+            </label>
+        </div>
+
+        <p>Do you want to grant access?</p>
+        <input type="hidden" name="client_id" th:value="${clientId}">
+        <input type="hidden" name="state" th:value="${state}">
+        <p>
+            <button type="submit" class="btn btn-primary">Yes</button>
+            <button type="submit" class="btn btn-danger" onclick="clearConsent()">No</button>
+        </p>
+    </form>
 </body>
 </html>

@@ -9,7 +9,7 @@ spring:
           client1:
             require-proof-key: false
             registration:
-              client-name: Client 1 - Issuer 1
+              client-name: "Client 1 - Issuer 1"
               client-id: client1
               client-secret: "{noop}secret1"
               client-authentication-methods:
