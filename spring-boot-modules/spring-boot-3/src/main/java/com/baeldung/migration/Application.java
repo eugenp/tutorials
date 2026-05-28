@@ -1,4 +1,4 @@
-package com.baeldung.restclient;
+package com.baeldung.migration;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
