@@ -13,7 +13,6 @@ public class MetricReader {
     Logger logger = LoggerFactory.getLogger(MetricReader.class);
 
     List<Metric> readMetrics() {
-        //read the metrics from the file
         ClassLoader classLoader = getClass().getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream("metrics.out");
 
@@ -42,7 +41,6 @@ public class MetricReader {
                             deviceId, metricsName, createTime, metricsValue, source);
 
                     Metric metric = new Metric(deviceId, metricsName, metricsValue, source, createTime, CREATED_BY, "active");
-                    //add the metric to the list
                     metrics.add(metric);
                 }
             }

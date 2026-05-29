@@ -63,7 +63,7 @@ public class PaimonTableDataManager {
 
         BatchTableWrite write = builder.newWrite();
         metric.setState(newState);
-        write.write(createGenericRow(metric),0);
+        write.write(createGenericRow(metric), 0);
 
         List<CommitMessage> messages = write.prepareCommit();
 

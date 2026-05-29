@@ -87,9 +87,15 @@ public class PaimonLifecycleIntegrationTest {
         Metric metric = PaimonTableDataManager.fetchMetricByDeviceIdMetricNameAndCreatedDate(catalog, tableId, "dev_136", "disk_io", "2026-04-21 18:58:26");
         assertNotNull(metric);
 
-        PaimonTableDataManager.deleteRecordsByDeviceIdMetricNameAndCreatedDate(catalog, tableId, "dev_136", "disk_io", "2026-04-21 18:58:26");
+        PaimonTableDataManager.deleteRecordsByDeviceIdMetricNameAndCreatedDate(
+            catalog, tableId, "dev_136", 
+            "disk_io", "2026-04-21 18:58:26"
+        );
 
-        metric = PaimonTableDataManager.fetchMetricByDeviceIdMetricNameAndCreatedDate(catalog, tableId, "dev_136", "disk_io", "2026-04-21 18:58:26");
+        metric = PaimonTableDataManager.fetchMetricByDeviceIdMetricNameAndCreatedDate(
+            catalog, tableId, "dev_136",
+            "disk_io", "2026-04-21 18:58:26"
+        );
         assertTrue(metric == null);
     }
 
@@ -111,7 +117,10 @@ public class PaimonLifecycleIntegrationTest {
              "2026-04-21 18:58:27"
         );
 
-        metric = PaimonTableDataManager.fetchMetricByDeviceIdMetricNameAndCreatedDate(catalog, tableId, "dev_137", "cpu_usage", "2026-04-21 18:58:27");
+        metric = PaimonTableDataManager.fetchMetricByDeviceIdMetricNameAndCreatedDate(
+            catalog, tableId, "dev_137",
+            "cpu_usage", "2026-04-21 18:58:27"
+        );
         assertNotNull(metric);
         assertEquals("inactive", metric.getState());
     }
