@@ -28,10 +28,8 @@ public class PaimonDatabaseManager {
             .build();
 
         Identifier tableId = Identifier.create("metric_db", "metrics");
-        catalog.createDatabase("metric_db", false);
-
-
-  
+        
+        catalog.createDatabase("metric_db", false);  
         catalog.createTable(tableId, schema, false);
         return tableId;
     }
