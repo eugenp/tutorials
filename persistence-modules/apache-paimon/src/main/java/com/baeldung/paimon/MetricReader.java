@@ -37,8 +37,10 @@ public class MetricReader {
                     
                     long metricsValue = (long) Double.parseDouble(parts[3]);
                     String source = parts[4];
-                    logger.info("Read metric: deviceId={}, metricsName={}, createTime={}, metricsValue={}, source={}",
-                            deviceId, metricsName, createTime, metricsValue, source);
+                    logger.info(
+                        "Read metric: deviceId={}, metricsName={}, createTime={}, metricsValue={}, source={}",
+                        deviceId, metricsName, createTime, metricsValue, source
+                    );
 
                     Metric metric = new Metric(deviceId, metricsName, metricsValue, source, createTime, CREATED_BY, "active");
                     metrics.add(metric);
