@@ -1,4 +1,4 @@
-package com.baeldung.restclient;
+package com.baeldung.migration;
 
 import org.apache.hc.client5.http.config.ConnectionConfig;
 import org.apache.hc.client5.http.config.RequestConfig;

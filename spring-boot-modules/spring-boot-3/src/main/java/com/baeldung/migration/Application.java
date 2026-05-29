@@ -1,13 +1,12 @@
-package com.baeldung.restclient;
+package com.baeldung.migration;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RestClientApplication {
+class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(RestClientApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
-
 }
