@@ -40,11 +40,21 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
         <java.version>21</java.version>
-        <spring-ai.version>1.1.2</spring-ai.version>
+        <spring-boot.version>4.0.0</spring-boot.version>
+        <logback.version>1.5.18</logback.version>
+        <junit-jupiter.version>6.0.1</junit-jupiter.version>
+        <spring-ai.version>2.0.0-M6</spring-ai.version>
+        <jackson-bom.version>3.1.2</jackson-bom.version>
+        <jackson-annotations.version>2.21</jackson-annotations.version>
     </properties>
 
     <profiles>
@@ -63,6 +73,12 @@
                 <spring.boot.mainclass>com.baeldung.springai.mcp.client.ClientApplication</spring.boot.mainclass>
             </properties>
         </profile>
+        <profile>
+            <id>mcp-ui</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.springai.mcp.ui.McpUiApplication</spring.boot.mainclass>
+            </properties>
+        </profile>
     </profiles>
 
     <build>
@@ -74,11 +90,35 @@
                     <mainClass>${spring.boot.mainclass}</mainClass>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.2</version>
+            </plugin>
         </plugins>
     </build>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson-annotations.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>tools.jackson</groupId>
+                <artifactId>jackson-bom</artifactId>
+                <version>${jackson-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.ai</groupId>
                 <artifactId>spring-ai-bom</artifactId>
