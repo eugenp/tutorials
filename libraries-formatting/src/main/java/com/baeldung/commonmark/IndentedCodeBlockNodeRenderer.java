@@ -30,6 +30,5 @@ public class IndentedCodeBlockNodeRenderer implements NodeRenderer {
         html.tag("/pre");
         html.line();
 
-
     }
 }

@@ -32,7 +32,7 @@ public class CommonMarkUsage {
 
     public static String htmlToMarkDown(String htmlHeading) {
         Heading heading = new Heading();
-        heading.setLevel(2);
+        heading.setLevel(3);
 
         heading.appendChild(new Text(htmlHeading));
         Document document = new Document();
