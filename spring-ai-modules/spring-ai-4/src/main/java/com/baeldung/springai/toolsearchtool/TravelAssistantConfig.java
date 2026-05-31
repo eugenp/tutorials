@@ -28,8 +28,8 @@ public class TravelAssistantConfig {
     ChatClient chatClient(ToolSearchToolCallAdvisor toolSearchToolCallAdvisor, OpenAiChatModel model) {
         return ChatClient.builder(model)
           .defaultTools(
-                  new FlightTools(),
-                  new RandomTools()
+            new FlightTools(),
+            new RandomTools()
           )
           .defaultAdvisors(toolSearchToolCallAdvisor, new TokenCounterAdvisor())
           .build();
@@ -39,8 +39,8 @@ public class TravelAssistantConfig {
     ChatClient chatClientWithoutToolsSearch(OpenAiChatModel model) {
         return ChatClient.builder(model)
           .defaultTools(
-                  new FlightTools(),
-                  new RandomTools()
+            new FlightTools(),
+            new RandomTools()
           )
           .defaultAdvisors(new TokenCounterAdvisor())
           .build();

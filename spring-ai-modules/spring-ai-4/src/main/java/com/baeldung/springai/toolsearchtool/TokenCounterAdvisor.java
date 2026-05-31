@@ -10,7 +10,6 @@ import org.springframework.core.Ordered;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-
 public class TokenCounterAdvisor implements BaseAdvisor {
     private static final Logger log = LoggerFactory.getLogger(TokenCounterAdvisor.class);
 
@@ -36,9 +35,6 @@ public class TokenCounterAdvisor implements BaseAdvisor {
         var usage = chatClientResponse.chatResponse().getMetadata().getUsage();
 
         totalTokenCounter.addAndGet(usage.getTotalTokens());
-
-        System.out.println("Current TOKENS Total: " + usage.getTotalTokens() + ", Completion: "
-                + usage.getCompletionTokens() + ", Prompt: " + usage.getPromptTokens());
 
         log.info("Total tokens spent: {}", totalTokenCounter.get());
 

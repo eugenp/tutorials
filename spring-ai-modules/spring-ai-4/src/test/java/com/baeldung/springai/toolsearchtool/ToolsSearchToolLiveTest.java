@@ -38,8 +38,8 @@ class ToolsSearchToolLiveTest {
     private String getClientResponseString(ChatClient chatClientWithoutToolsSearch) {
         return chatClientWithoutToolsSearch.prompt()
           .user("""
-                  Find available flights from Romania to Croatia next week.
-                  """)
+            Find available flights from Romania to Croatia next week.
+            """)
           .call()
           .content();
     }
