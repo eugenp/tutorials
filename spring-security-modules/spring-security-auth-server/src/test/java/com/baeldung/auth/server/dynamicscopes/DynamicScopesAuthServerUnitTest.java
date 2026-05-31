@@ -40,6 +40,8 @@ public class DynamicScopesAuthServerUnitTest {
     @Autowired
     ApplicationContext ctx;
 
+    private static final String ACCEPT_HEADER_VALUE = "text/html";
+
 
     // Happy path integration test
     @Test
@@ -73,7 +75,7 @@ public class DynamicScopesAuthServerUnitTest {
             .queryParam("redirect_uri", redirectUri)
             .queryParam("state", state)
             .build())
-          .header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7")
+          .header("Accept", ACCEPT_HEADER_VALUE)
           .header("Cache-Control", "no-cache")
           .exchange();
         var authResult = authResponse.returnResult();
@@ -97,7 +99,7 @@ public class DynamicScopesAuthServerUnitTest {
 
         var loginResponse = restTestClient.post()
           .uri(loginUri)
-          .header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7")
+          .header("Accept", ACCEPT_HEADER_VALUE)
           .header("Cache-Control", "no-cache")
           .contentType(MediaType.APPLICATION_FORM_URLENCODED)
           .body(loginBody)

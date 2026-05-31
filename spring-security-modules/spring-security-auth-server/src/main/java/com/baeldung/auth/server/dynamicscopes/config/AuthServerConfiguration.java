@@ -46,9 +46,11 @@ public class AuthServerConfiguration {
     @Order(Ordered.HIGHEST_PRECEDENCE)
     SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http) {
 
-        log.info("[I22] Creating custom authorizationServer configuration");
+        log.info("Creating custom authorizationServer configuration");
 
         http.oauth2AuthorizationServer(authorizationServer -> {
+            http.securityMatcher(authorizationServer.getEndpointsMatcher());
+
             authorizationServer
               .oidc(withDefaults())
               .authorizationEndpoint(ap -> {
@@ -65,7 +67,6 @@ public class AuthServerConfiguration {
                   });
               });
 
-            http.securityMatcher(authorizationServer.getEndpointsMatcher());
         });
         http.authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated());
         http.oauth2ResourceServer(resourceServer -> resourceServer.jwt(withDefaults()));
@@ -99,7 +100,7 @@ public class AuthServerConfiguration {
             var requestedScopes = new HashSet<>(auth.getScopes()); //
             var registeredClient = ctx.getRegisteredClient();
 
-            log.info("[I95] validating requested scopes {} for client {}", requestedScopes, registeredClient.getClientId());
+            log.debug("Validating requested scopes {} for client {}", requestedScopes, registeredClient.getClientId());
 
             var allowedScopes = registeredClient.getScopes();
 
