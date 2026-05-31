@@ -3,8 +3,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-java-templates-rocker</artifactId>
-    <name>spring-java.templates.rocker</name>
+    <artifactId>rocker</artifactId>
+    <name>rocker</name>
     <packaging>jar</packaging>
     <description>Spring Java Templates Module - Rocker</description>
 
@@ -24,14 +24,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <!-- Rocker -->
         <dependency>
             <groupId>com.fizzed</groupId>
             <artifactId>rocker-runtime</artifactId>
             <version>${rocker.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -40,7 +38,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>com.fizzed</groupId>
                 <artifactId>rocker-maven-plugin</artifactId>
@@ -59,7 +56,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 
@@ -68,7 +64,6 @@
         <spring-boot.version>3.5.7</spring-boot.version>
         <logback.version>1.5.17</logback.version>
         <java.version>21</java.version>
-
         <rocker.version>2.4.0</rocker.version>
     </properties>
 </project>

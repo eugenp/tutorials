@@ -7,6 +7,18 @@
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>spring-scheduling</name>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>21</source>
+                    <target>21</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -56,10 +68,21 @@
             <artifactId>junit-vintage-engine</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
         <spring-retry.version>2.0.12</spring-retry.version>
+        <spring-boot.version>4.0.2</spring-boot.version>
     </properties>
 
 </project>

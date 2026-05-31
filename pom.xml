@@ -583,6 +583,7 @@
                 <java.version>17</java.version>
                 <maven.compiler.source>17</maven.compiler.source>
                 <maven.compiler.target>17</maven.compiler.target>
+				<maven.compiler.release>17</maven.compiler.release>
             </properties>
 
         </profile>
@@ -1067,6 +1068,7 @@
                 <java.version>17</java.version>
                 <maven.compiler.source>17</maven.compiler.source>
                 <maven.compiler.target>17</maven.compiler.target>
+				<maven.compiler.release>17</maven.compiler.release>
             </properties>
 
         </profile>
@@ -1568,6 +1570,7 @@
                 <module>clojure-modules</module> <!-- Not a maven project -->
                 <module>ethereum</module> <!-- JAVA-6001 -->
                 <module>gradle-modules</module> <!-- Not a maven project -->
+                <module>gradle-modules/gradle-parallel-testing</module> <!-- Not a maven project -->
                 <module>guest</module> <!-- not to be built as its for guest articles  -->
                 <module>pants</module> <!-- Not a maven project -->
                 <module>spring-cloud-cli</module> <!-- Not a maven project -->
@@ -1636,6 +1639,7 @@
                 <module>clojure-modules</module> <!-- Not a maven project -->
                 <module>ethereum</module> <!-- JAVA-6001 -->
                 <module>gradle-modules</module> <!-- Not a maven project -->
+                <module>gradle-modules/gradle-parallel-testing</module> <!-- Not a maven project -->
                 <module>guest</module> <!-- not to be built as its for guest articles  -->
                 <module>pants</module> <!-- Not a maven project -->
                 <module>spring-cloud-cli</module> <!-- Not a maven project -->
