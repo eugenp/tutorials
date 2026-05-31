@@ -30,10 +30,8 @@ public class KafkaConsumerServiceLiveTest {
         CountDownLatch countDownLatch = new CountDownLatch(1);
         AtomicReference<Throwable> uncaughtException = new AtomicReference<>();
 
-        KafkaProducer<String, String> producer = new KafkaProducer<>(getProducerConfig());
 
-        Properties properties = getConsumerConfig();
-        KafkaConsumerService service = new KafkaConsumerService(properties, "test-topic");
+        KafkaConsumerService service = new KafkaConsumerService(getConsumerConfig(), "test-topic");
         Thread th1 = new Thread(service::consume);
 
         th1.setUncaughtExceptionHandler((thread, ex) -> {
@@ -42,9 +40,11 @@ public class KafkaConsumerServiceLiveTest {
         });
         th1.start();
 
-        for (int num = 0; num < 50; num++) {
-            producer.send(new ProducerRecord<>("test-topic", "x" + num, "test" + num));
-            producer.flush();
+        try (KafkaProducer<String, String> producer = new KafkaProducer<>(getProducerConfig())) {
+            for (int num = 0; num < 100; num++) {
+                producer.send(new ProducerRecord<>("test-topic", "x1" + num, "test" + num));
+                producer.flush();
+            }
         }
 
         countDownLatch.await(300, TimeUnit.SECONDS);
