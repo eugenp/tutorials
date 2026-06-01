@@ -51,7 +51,7 @@ public class KafkaConsumerService {
     private void simulateDBUpdate(ConsumerRecords<String, String> records) {
         try {
             log.info("Simulating long running batch db update {}", records.count());
-            Thread.sleep(1200L);
+            Thread.sleep(1000L);
         } catch (InterruptedException ex) {
             Thread.currentThread()
                 .interrupt();

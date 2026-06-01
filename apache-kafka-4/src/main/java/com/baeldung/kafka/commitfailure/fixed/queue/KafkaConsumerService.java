@@ -28,8 +28,8 @@ import org.slf4j.LoggerFactory;
 public class KafkaConsumerService {
 
     private static final Logger log = LoggerFactory.getLogger(KafkaConsumerService.class);
-    private static final int MAX_CAPACITY = 20;
-    private static final int WORKERS = 5;
+    private static final int MAX_CAPACITY = 500;
+    private static final int WORKERS = 8;
     private final AtomicBoolean running = new AtomicBoolean(true);
     private final KafkaConsumer<String, String> consumer;
     private final ExecutorService workerPool;
@@ -52,7 +52,7 @@ public class KafkaConsumerService {
             }
         });
         this.recordQueue = new LinkedBlockingQueue<>(MAX_CAPACITY);
-        this.workerPool = Executors.newVirtualThreadPerTaskExecutor();
+        this.workerPool = Executors.newFixedThreadPool(WORKERS);
 
         IntStream.range(0, WORKERS)
             .forEach((ignored) -> workerPool.submit(this::process));
@@ -116,7 +116,7 @@ public class KafkaConsumerService {
     private void simulateDBUpdate(ConsumerRecord<String, String> record) {
         try {
             log.info("Simulating DB update key={} value={} offset={}", record.key(), record.value(), record.offset());
-            Thread.sleep(200L);
+            Thread.sleep(100L);
         } catch (InterruptedException ex) {
             Thread.currentThread()
                 .interrupt();
@@ -128,11 +128,12 @@ public class KafkaConsumerService {
         if (processedOffsets.isEmpty()) {
             return;
         }
+
         Map<TopicPartition, OffsetAndMetadata> snapshot = new HashMap<>(processedOffsets);
         processedOffsets.clear();
         try {
             consumer.commitSync(snapshot);
-            log.debug("Committed offsets: {}", snapshot);
+            log.info("Committed offsets: {}", snapshot);
         } catch (CommitFailedException ex) {
             log.warn("Commit failed — likely rebalance in progress", ex);
         }

@@ -30,10 +30,8 @@ public class KafkaConsumerServiceLiveTest {
         CountDownLatch countDownLatch = new CountDownLatch(1);
         AtomicReference<Throwable> uncaughtException = new AtomicReference<>();
 
-
         KafkaConsumerService service = new KafkaConsumerService(getConsumerConfig(), "test-topic");
         Thread th1 = new Thread(service::consume);
-
         th1.setUncaughtExceptionHandler((thread, ex) -> {
             uncaughtException.set(ex);
             countDownLatch.countDown();
@@ -41,13 +39,13 @@ public class KafkaConsumerServiceLiveTest {
         th1.start();
 
         try (KafkaProducer<String, String> producer = new KafkaProducer<>(getProducerConfig())) {
-            for (int num = 0; num < 100; num++) {
+            for (int num = 0; num < 1000; num++) {
                 producer.send(new ProducerRecord<>("test-topic", "x1" + num, "test" + num));
                 producer.flush();
             }
         }
 
-        countDownLatch.await(300, TimeUnit.SECONDS);
+        countDownLatch.await(60, TimeUnit.SECONDS);
         assertThat(uncaughtException.get()).doesNotThrowAnyException();
         service.shutdown();
     }
@@ -67,10 +65,10 @@ public class KafkaConsumerServiceLiveTest {
         consumerProperties.put(ConsumerConfig.GROUP_ID_CONFIG, "queue-consumer-app");
         consumerProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         consumerProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
-        consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
+        consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         consumerProperties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
-        consumerProperties.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, 20);
-        consumerProperties.put(ConsumerConfig.MAX_POLL_INTERVAL_MS_CONFIG, 500);
+        consumerProperties.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, 500);
+        consumerProperties.put(ConsumerConfig.MAX_POLL_INTERVAL_MS_CONFIG, 3000);
 
         return consumerProperties;
     }

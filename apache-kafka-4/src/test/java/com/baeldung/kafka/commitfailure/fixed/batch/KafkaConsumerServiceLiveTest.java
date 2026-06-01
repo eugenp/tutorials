@@ -68,7 +68,7 @@ public class KafkaConsumerServiceLiveTest {
         consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         consumerProperties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
         consumerProperties.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, 50);
-        consumerProperties.put(ConsumerConfig.MAX_POLL_INTERVAL_MS_CONFIG, 1500);
+        consumerProperties.put(ConsumerConfig.MAX_POLL_INTERVAL_MS_CONFIG, 2000);
 
         return consumerProperties;
     }

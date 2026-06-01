@@ -52,7 +52,7 @@ public class KafkaConsumerService {
     private void simulateDBUpdate(ConsumerRecord<String, String> record) {
         try {
             log.info("Simulating a db call - record key {} value {}", record.key(), record.value());
-            Thread.sleep(250L);
+            Thread.sleep(100L);
         } catch (InterruptedException ex) {
             Thread.currentThread()
                 .interrupt();
