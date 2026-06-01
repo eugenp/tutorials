@@ -40,9 +40,11 @@ public class KafkaConsumerService {
             @Override
             public void onPartitionsRevoked(Collection<TopicPartition> partitions) {
                 try {
-                    commitOffsets();
+                    commitOffsets(partitions);
                 } catch (Exception ex) {
-                    log.error("Commit failed during rebalance", ex);
+                    log.error("Commit failed during rebalance {} {}", ex.getMessage(), ex, ex.getCause());
+                } finally {
+                    partitions.forEach(committableOffsets::remove);
                 }
             }
 
@@ -147,5 +149,24 @@ public class KafkaConsumerService {
                 ref.compareAndSet(meta.offset(), -1L);
             }
         });
+    }
+
+    private void commitOffsets(Collection<TopicPartition> partitions) {
+        Map<TopicPartition, OffsetAndMetadata> toCommit = new HashMap<>();
+
+        partitions.forEach(tp -> {
+            AtomicLong ref = committableOffsets.get(tp);
+            if (ref != null) {
+                long val = ref.get();
+                if (val != -1L) {
+                    toCommit.put(tp, new OffsetAndMetadata(val));
+                }
+            }
+        });
+
+        if (toCommit.isEmpty()) {
+            return;
+        }
+        consumer.commitSync(toCommit);
     }
 }
