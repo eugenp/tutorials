@@ -63,7 +63,6 @@ public class KafkaConsumerService {
                     continue;
                 }
 
-                log.info("Fetched records count: {}", records.count());
                 List<CompletableFuture<Void>> futures = StreamSupport.stream(records.spliterator(), false)
                     .map(record -> CompletableFuture.runAsync(() -> simulateDBUpdate(record), workers)
                         .whenComplete((ignored, ex) -> {

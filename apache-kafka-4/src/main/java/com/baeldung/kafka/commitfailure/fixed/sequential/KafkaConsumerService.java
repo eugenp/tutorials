@@ -30,7 +30,6 @@ public class KafkaConsumerService {
                 if (records.isEmpty()) {
                     continue;
                 }
-                log.info("Fetched records count: {}", records.count());
                 records.forEach(this::simulateDBUpdate);
                 consumer.commitSync();
             }
