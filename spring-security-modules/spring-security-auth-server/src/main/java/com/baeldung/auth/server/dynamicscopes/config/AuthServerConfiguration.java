@@ -97,21 +97,17 @@ public class AuthServerConfiguration {
         return ctx -> {
 
             OAuth2AuthorizationCodeRequestAuthenticationToken auth = ctx.getAuthentication();
-            var requestedScopes = new HashSet<>(auth.getScopes()); //
             var registeredClient = ctx.getRegisteredClient();
 
-            log.debug("Validating requested scopes {} for client {}", requestedScopes, registeredClient.getClientId());
-
-            var allowedScopes = registeredClient.getScopes();
-
+            var requestedScopes = new HashSet<>(auth.getScopes());
             if ( requestedScopes.isEmpty() ) {
                 // No scopes requested. This is fine.
                 return;
             }
 
             // Filter out dynamic scopes from the requested scopes. We will handle them separately.
+            var allowedScopes = registeredClient.getScopes();
             requestedScopes.removeIf(allowedScopes::contains);
-
             if (requestedScopes.isEmpty() ) {
                 // Request contains only static scopes. This is fine.
                 return;
@@ -142,29 +138,23 @@ public class AuthServerConfiguration {
                 return true;
             }
 
-            var alreadyConsented = new HashSet<>(lastConsent.getScopes());
-
-
             OAuth2AuthorizationCodeRequestAuthenticationToken auth = ctx.getAuthentication();
             var requestedScopes = new HashSet<>(auth.getScopes()); //
-
             if ( requestedScopes.isEmpty() ) {
                 // No scopes requested, so no consent required
                 return false;
             }
 
-            // Remove already consented scopes from the requested scopes.
+            // Remove already consented scopes
+            var alreadyConsented = new HashSet<>(lastConsent.getScopes());
             requestedScopes.removeIf(alreadyConsented::contains);
-
-
             if (requestedScopes.isEmpty() ) {
                 // Request contains only previously consented scopes. No consent required.
                 return false;
             }
 
-            // Any remaining scopes are dynamic scopes or static ones with no previous consent, so consent is required.
-            return true;
-
+            // Any remaining scopes are dynamic scopes or static ones with no previous consent. Ask the service
+            return dynamicScopeService.isConsentNeeded(ctx.getRegisteredClient().getId(), requestedScopes);
         };
     }
 

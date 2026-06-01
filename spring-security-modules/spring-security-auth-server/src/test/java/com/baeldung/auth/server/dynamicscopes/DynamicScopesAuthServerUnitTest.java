@@ -37,9 +37,6 @@ public class DynamicScopesAuthServerUnitTest {
 
     RestTestClient restTestClient, noRedirecRestTestClient;
 
-    @Autowired
-    ApplicationContext ctx;
-
     private static final String ACCEPT_HEADER_VALUE = "text/html";
 
 
@@ -47,7 +44,6 @@ public class DynamicScopesAuthServerUnitTest {
     @Test
     void whenAuthorizationRequestWithDynamicScope_thenSuccess() {
 
-        assertNotNull(ctx);
         var response = restTestClient.get().uri("/.well-known/openid-configuration").exchange();
 
         // sanity check
