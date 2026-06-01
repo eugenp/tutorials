@@ -16,7 +16,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.StreamSupport;
 
-import org.apache.kafka.clients.consumer.CommitFailedException;
 import org.apache.kafka.clients.consumer.ConsumerRebalanceListener;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -41,8 +40,8 @@ public class KafkaConsumerService {
             @Override
             public void onPartitionsRevoked(Collection<TopicPartition> partitions) {
                 try {
-                    commitSafeOffsets();
-                } catch (CommitFailedException ex) {
+                    commitOffsets();
+                } catch (Exception ex) {
                     log.error("Commit failed during rebalance", ex);
                 }
             }
@@ -69,7 +68,7 @@ public class KafkaConsumerService {
                             if (ex == null) {
                                 markComplete(record);
                             } else {
-                                log.error("Failed offset=%d send to DLQ key={} {} {}", record.offset(), record.key(), ex.getMessage());
+                                log.error("Failed offset and send to DLQ {} {} {}", record.offset(), record.key(), ex.getMessage());
                             }
                         })
                         .exceptionally(ex -> null))
@@ -77,13 +76,13 @@ public class KafkaConsumerService {
 
                 try {
                     CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new))
-                        .orTimeout(800, TimeUnit.SECONDS)
+                        .orTimeout(1000, TimeUnit.MILLISECONDS)
                         .join();
                 } catch (CompletionException ex) {
-                    log.error("Batch processing timed out or failed, committing partial offsets", ex);
+                    log.error("Batch processing timed out or failed {} {}", ex.getMessage(), ex, ex.getCause());
                 }
 
-                commitSafeOffsets();
+                commitOffsets();
             }
         } catch (WakeupException ex) {
             if (running.get()) {
@@ -91,11 +90,7 @@ public class KafkaConsumerService {
                 throw ex;
             }
         } finally {
-            try {
-                commitSafeOffsets();
-            } catch (Exception ex) {
-                log.warn("Final commit before close failed", ex);
-            }
+            commitOffsets();
             consumer.close();
         }
     }
@@ -105,11 +100,13 @@ public class KafkaConsumerService {
         consumer.wakeup();
         try {
             workers.shutdown();
-            if (!workers.awaitTermination(60, TimeUnit.SECONDS))
+            if (!workers.awaitTermination(60, TimeUnit.SECONDS)) {
                 workers.shutdownNow();
+            }
         } catch (InterruptedException ex) {
             workers.shutdownNow();
-            Thread.currentThread().interrupt();
+            Thread.currentThread()
+                .interrupt();
         }
     }
 
@@ -130,7 +127,7 @@ public class KafkaConsumerService {
             .accumulateAndGet(record.offset() + 1, Math::max);
     }
 
-    private void commitSafeOffsets() {
+    private void commitOffsets() {
         Map<TopicPartition, OffsetAndMetadata> toCommit = new HashMap<>();
 
         committableOffsets.forEach((tp, atomicOffset) -> {
@@ -143,9 +140,12 @@ public class KafkaConsumerService {
         if (toCommit.isEmpty()) {
             return;
         }
-
         consumer.commitSync(toCommit);
-        toCommit.keySet()
-            .forEach(committableOffsets::remove);
+        toCommit.forEach((tp, meta) -> {
+            AtomicLong ref = committableOffsets.get(tp);
+            if (ref != null) {
+                ref.compareAndSet(meta.offset(), -1L);
+            }
+        });
     }
 }

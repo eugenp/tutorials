@@ -29,7 +29,6 @@ public class KafkaConsumerService {
                 if (records.isEmpty()) {
                     continue;
                 }
-                log.info("Fetched records count: {}", records.count());
                 simulateDBCall(records);
                 consumer.commitSync();
             }
