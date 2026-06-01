@@ -7,9 +7,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.StreamSupport;
@@ -31,14 +33,13 @@ public class KafkaConsumerService {
     private final KafkaConsumer<String, String> consumer;
     private final AtomicBoolean running = new AtomicBoolean(true);
     private final ExecutorService workers;
-    private static final Map<TopicPartition, AtomicLong> committableOffsets = new ConcurrentHashMap<>();
+    private final Map<TopicPartition, AtomicLong> committableOffsets = new ConcurrentHashMap<>();
 
     public KafkaConsumerService(Properties consumerProps, String topic) {
         this.consumer = new KafkaConsumer<>(consumerProps);
         consumer.subscribe(List.of(topic), new ConsumerRebalanceListener() {
             @Override
             public void onPartitionsRevoked(Collection<TopicPartition> partitions) {
-                log.info("Partitions revoked: {}, committing offsets", partitions);
                 try {
                     commitSafeOffsets();
                 } catch (CommitFailedException ex) {
@@ -48,8 +49,7 @@ public class KafkaConsumerService {
 
             @Override
             public void onPartitionsAssigned(Collection<TopicPartition> partitions) {
-                log.info("Partitions assigned: {}", partitions);
-                committableOffsets.clear();
+                partitions.forEach(committableOffsets::remove);
             }
         });
         workers = Executors.newVirtualThreadPerTaskExecutor();
@@ -76,8 +76,14 @@ public class KafkaConsumerService {
                         .exceptionally(ex -> null))
                     .toList();
 
-                CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new))
-                    .join();
+                try {
+                    CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new))
+                        .orTimeout(800, TimeUnit.SECONDS)
+                        .join();
+                } catch (CompletionException ex) {
+                    log.error("Batch processing timed out or failed, committing partial offsets", ex);
+                }
+
                 commitSafeOffsets();
             }
         } catch (WakeupException ex) {
@@ -86,14 +92,26 @@ public class KafkaConsumerService {
                 throw ex;
             }
         } finally {
+            try {
+                commitSafeOffsets();
+            } catch (Exception ex) {
+                log.warn("Final commit before close failed", ex);
+            }
             consumer.close();
         }
     }
 
     public void shutdown() {
         running.compareAndSet(true, false);
-        workers.shutdown();
         consumer.wakeup();
+        try {
+            workers.shutdown();
+            if (!workers.awaitTermination(60, TimeUnit.SECONDS))
+                workers.shutdownNow();
+        } catch (InterruptedException ex) {
+            workers.shutdownNow();
+            Thread.currentThread().interrupt();
+        }
     }
 
     private void simulateDBUpdate(ConsumerRecord<String, String> record) {
@@ -115,16 +133,20 @@ public class KafkaConsumerService {
 
     private void commitSafeOffsets() {
         Map<TopicPartition, OffsetAndMetadata> toCommit = new HashMap<>();
-        committableOffsets.forEach((tp, offset) -> {
-            long val = offset.get();
-            if (val > 0) {
+
+        committableOffsets.forEach((tp, atomicOffset) -> {
+            long val = atomicOffset.get();
+            if (val != -1L) {
                 toCommit.put(tp, new OffsetAndMetadata(val));
             }
         });
-        if (!toCommit.isEmpty()) {
-            consumer.commitSync(toCommit);
-            log.info("Committed: offset {}", toCommit);
-            committableOffsets.clear();
+
+        if (toCommit.isEmpty()) {
+            return;
         }
+
+        consumer.commitSync(toCommit);
+        toCommit.keySet()
+            .forEach(committableOffsets::remove);
     }
 }
