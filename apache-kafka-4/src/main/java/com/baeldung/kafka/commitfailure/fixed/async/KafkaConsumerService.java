@@ -64,17 +64,7 @@ public class KafkaConsumerService {
                     continue;
                 }
 
-                List<CompletableFuture<Void>> futures = StreamSupport.stream(records.spliterator(), false)
-                    .map(record -> CompletableFuture.runAsync(() -> simulateDBUpdate(record), workers)
-                        .whenComplete((ignored, ex) -> {
-                            if (ex == null) {
-                                markComplete(record);
-                            } else {
-                                log.error("Failed offset and send to DLQ {} {} {}", record.offset(), record.key(), ex.getMessage());
-                            }
-                        })
-                        .exceptionally(ex -> null))
-                    .toList();
+                List<CompletableFuture<Void>> futures = processAsync(records);
 
                 try {
                     CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new))
@@ -110,6 +100,20 @@ public class KafkaConsumerService {
             Thread.currentThread()
                 .interrupt();
         }
+    }
+
+    private List<CompletableFuture<Void>> processAsync(ConsumerRecords<String, String> records) {
+        return StreamSupport.stream(records.spliterator(), false)
+            .map(record -> CompletableFuture.runAsync(() -> simulateDBUpdate(record), workers)
+                .whenComplete((ignored, ex) -> {
+                    if (ex == null) {
+                        markComplete(record);
+                    } else {
+                        log.error("Failed offset and send to DLQ {} {} {}", record.offset(), record.key(), ex.getMessage());
+                    }
+                })
+                .exceptionally(ex -> null))
+            .toList();
     }
 
     private void simulateDBUpdate(ConsumerRecord<String, String> record) {
