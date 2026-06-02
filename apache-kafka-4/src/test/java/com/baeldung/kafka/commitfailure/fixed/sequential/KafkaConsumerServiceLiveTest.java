@@ -27,10 +27,10 @@ public class KafkaConsumerServiceLiveTest {
 
     @Test
     void givenProducerMessagesIsSent_whenConsumerIsRunning_thenConsumerDoesNotThrowsCommitFailedException() throws InterruptedException {
+        KafkaConsumerService kafkaConsumerService = new KafkaConsumerService(getConsumerConfig(), "test-topic");
         CountDownLatch countDownLatch = new CountDownLatch(1);
         AtomicReference<Throwable> uncaughtException = new AtomicReference<>();
 
-        KafkaConsumerService kafkaConsumerService = new KafkaConsumerService(getConsumerConfig(), "test-topic");
         Thread th = new Thread(kafkaConsumerService::consume);
         th.setUncaughtExceptionHandler((thread, ex) -> {
             uncaughtException.set(ex);
