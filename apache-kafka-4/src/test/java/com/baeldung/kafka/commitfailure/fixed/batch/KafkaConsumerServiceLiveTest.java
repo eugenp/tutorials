@@ -26,7 +26,7 @@ public class KafkaConsumerServiceLiveTest {
     private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.9.0"));
 
     @Test
-    void givenProducerMessagesSentInBatches_WhenConsumerIsRunningAsBatch_ThenConsumesThrowCommitFailedException() throws InterruptedException {
+    void givenProducerMessagesAreSent_whenConsumerIsRunningAsBatch_thenConsumesDoesNotThrowCommitFailedException() throws InterruptedException {
         CountDownLatch countDownLatch = new CountDownLatch(1);
         AtomicReference<Throwable> uncaughtException = new AtomicReference<>();
 
