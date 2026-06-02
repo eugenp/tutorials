@@ -42,7 +42,7 @@ public class KafkaConsumerService {
                 try {
                     commitOffsets(partitions);
                 } catch (Exception ex) {
-                    log.error("Commit failed during rebalance {} {}", ex.getMessage(), ex, ex.getCause());
+                    log.error("Commit failed during rebalance", ex);
                 } finally {
                     partitions.forEach(committableOffsets::remove);
                 }
@@ -81,14 +81,14 @@ public class KafkaConsumerService {
                         .orTimeout(1000, TimeUnit.MILLISECONDS)
                         .join();
                 } catch (CompletionException ex) {
-                    log.error("Batch processing timed out or failed {} {}", ex.getMessage(), ex, ex.getCause());
+                    log.error("Batch processing timed out or failed", ex);
                 }
 
                 commitOffsets();
             }
         } catch (WakeupException ex) {
             if (running.get()) {
-                log.error("Error in the Kafka Consumer with exception {} {}", ex.getMessage(), ex, ex.getCause());
+                log.error("Error in the Kafka Consumer with exception", ex);
                 throw ex;
             }
         } finally {

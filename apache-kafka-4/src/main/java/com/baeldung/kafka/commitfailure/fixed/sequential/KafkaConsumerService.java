@@ -35,7 +35,7 @@ public class KafkaConsumerService {
             }
         } catch (WakeupException ex) {
             if (running.get()) {
-                log.error("Error in the Kafka Consumer with exception {} {}", ex.getMessage(), ex, ex.getCause());
+                log.error("Error in the Kafka Consumer with exception", ex);
                 throw ex;
             }
         } finally {
