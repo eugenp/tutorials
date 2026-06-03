@@ -41,7 +41,7 @@
     <properties>
         <java.version>21</java.version>
         <spring-boot.version>4.0.6</spring-boot.version>
-        <spring-ai.version>2.0.0-M6</spring-ai.version>
+        <spring-ai.version>2.0.0-M8</spring-ai.version>
         <spring-ai-agent-utils.version>0.7.0</spring-ai-agent-utils.version>
     </properties>
 
