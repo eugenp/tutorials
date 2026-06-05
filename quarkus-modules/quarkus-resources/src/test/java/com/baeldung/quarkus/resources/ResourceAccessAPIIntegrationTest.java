@@ -9,7 +9,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.containsString;
 
 @QuarkusTest
-class ResourceAccessAPIUnitTest {
+class ResourceAccessAPIIntegrationTest {
     @Test
     @DisplayName("should return content from default resource")
     void givenAPI_whenGetDefaultResource_thenReturnsContent() {
