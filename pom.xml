@@ -1521,7 +1521,7 @@
                 <module>spring-reactive-modules/spring-webflux-2</module>
                 <module>spring-reactive-modules/spring-webflux-amqp</module>
                 <module>spring-web-modules/spring-rest-http</module>
-                <module>web-modules/jee-7</module>
+                <!--<module>web-modules/jee-7</module>-->
                 <module>web-modules/ratpack</module>
             </modules>
 
