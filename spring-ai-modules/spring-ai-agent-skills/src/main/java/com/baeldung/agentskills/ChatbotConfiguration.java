@@ -18,13 +18,17 @@ class ChatbotConfiguration {
         String skillsRootDirectory = ".openai/skills";
         return ChatClient
             .builder(chatModel)
-            .defaultTools(SkillsTool.builder()
-                .addSkillsDirectory(skillsRootDirectory)
-                .build())
-            .defaultTools(FileSystemTools.builder()
-                .allowedDirectory(Paths.get(skillsRootDirectory))
-                .build())
-            .defaultTools(ShellTools.builder().build())
+            .defaultTools(toolSpec -> toolSpec
+                .callbacks(
+                    SkillsTool.builder()
+                        .addSkillsDirectory(skillsRootDirectory)
+                        .build())
+                .instances(
+                    FileSystemTools.builder()
+                        .allowedDirectory(Paths.get(skillsRootDirectory))
+                        .build(),
+                    ShellTools.builder()
+                        .build()))
             .build();
     }
 
