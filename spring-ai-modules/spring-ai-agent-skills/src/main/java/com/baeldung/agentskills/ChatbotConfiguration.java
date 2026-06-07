@@ -18,7 +18,7 @@ class ChatbotConfiguration {
         String skillsRootDirectory = ".openai/skills";
         return ChatClient
             .builder(chatModel)
-            .defaultToolCallbacks(SkillsTool.builder()
+            .defaultTools(SkillsTool.builder()
                 .addSkillsDirectory(skillsRootDirectory)
                 .build())
             .defaultTools(FileSystemTools.builder()
