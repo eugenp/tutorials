@@ -16,19 +16,19 @@ class ChatbotController {
     }
 
     @PostMapping("/chat")
-    ResponseEntity<ChatResponse> chat(@RequestBody ChatRequest chatRequest) {
+    ResponseEntity<ChatbotResponse> chat(@RequestBody ChatbotRequest chatbotRequest) {
         String answer = chatClient
             .prompt()
-            .user(chatRequest.question)
+            .user(chatbotRequest.question)
             .call()
             .content();
-        return ResponseEntity.ok(new ChatResponse(answer));
+        return ResponseEntity.ok(new ChatbotResponse(answer));
     }
 
-    record ChatRequest(String question) {
+    record ChatbotRequest(String question) {
     }
 
-    record ChatResponse(String answer) {
+    record ChatbotResponse(String answer) {
     }
 
 }
