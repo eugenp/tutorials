@@ -1,6 +1,7 @@
 package com.baeldung.kafka.commitfailure.batch;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
@@ -42,11 +43,11 @@ public class KafkaConsumerServiceLiveTest {
         try (KafkaProducer<String, String> producer = new KafkaProducer<>(getProducerConfig())) {
             for (int num = 0; num < 300; num++) {
                 producer.send(new ProducerRecord<>("test-topic", "x1" + num, "test" + num));
-                producer.flush();
             }
+            producer.flush();
         }
 
-        countDownLatch.await(30, TimeUnit.SECONDS);
+        assertTrue(countDownLatch.await(30, TimeUnit.SECONDS));
         assertThat(uncaughtException.get()).isInstanceOf(CommitFailedException.class);
 
         kafkaConsumerService.shutdown();
@@ -64,7 +65,7 @@ public class KafkaConsumerServiceLiveTest {
     private static Properties getConsumerConfig() {
         Properties consumerProperties = new Properties();
         consumerProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_CONTAINER.getBootstrapServers());
-        consumerProperties.put(ConsumerConfig.GROUP_ID_CONFIG, "test-batch-consumer-app");
+        consumerProperties.put(ConsumerConfig.GROUP_ID_CONFIG, "consumer-app");
         consumerProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         consumerProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");

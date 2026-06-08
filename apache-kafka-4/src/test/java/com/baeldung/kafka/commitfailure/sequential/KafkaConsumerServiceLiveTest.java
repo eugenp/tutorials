@@ -1,6 +1,7 @@
 package com.baeldung.kafka.commitfailure.sequential;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
@@ -27,7 +28,8 @@ public class KafkaConsumerServiceLiveTest {
     private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.9.0"));
 
     @Test
-    void givenProducerMessageIsSent_whenConsumerIsRunning_thenConsumerThrowsCommitFailedException() throws InterruptedException {
+    void givenProducerMessageIsSent_whenConsumerIsRunning_thenConsumerThrowsCommitFailedException()
+        throws InterruptedException {
         KafkaConsumerService kafkaConsumerService = new KafkaConsumerService(getConsumerConfig(), "test-topic");
         CountDownLatch countDownLatch = new CountDownLatch(1);
         AtomicReference<Throwable> uncaughtException = new AtomicReference<>();
@@ -45,8 +47,10 @@ public class KafkaConsumerServiceLiveTest {
             producer.flush();
         }
 
-        countDownLatch.await(30, TimeUnit.SECONDS);
-        assertThat(uncaughtException.get()).isInstanceOf(CommitFailedException.class);
+        assertTrue(countDownLatch.await(30, TimeUnit.SECONDS));
+        assertThat(uncaughtException.get()).isNotNull()
+            .isInstanceOf(CommitFailedException.class);
+        assertThat(th.isAlive()).isFalse();
 
         kafkaConsumerService.shutdown();
     }
@@ -63,8 +67,7 @@ public class KafkaConsumerServiceLiveTest {
     private static Properties getConsumerConfig() {
         Properties consumerProperties = new Properties();
         consumerProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_CONTAINER.getBootstrapServers());
-        consumerProperties.put(ConsumerConfig.GROUP_ID_CONFIG, "seq-consumer-app");
-        consumerProperties.put(ConsumerConfig.GROUP_INSTANCE_ID_CONFIG, "consumer-1");
+        consumerProperties.put(ConsumerConfig.GROUP_ID_CONFIG, "consumer-app");
         consumerProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         consumerProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");

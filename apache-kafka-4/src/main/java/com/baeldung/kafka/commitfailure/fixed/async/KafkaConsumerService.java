@@ -68,7 +68,7 @@ public class KafkaConsumerService {
 
                 try {
                     CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new))
-                        .orTimeout(1000, TimeUnit.MILLISECONDS)
+                        .orTimeout(700, TimeUnit.MILLISECONDS)
                         .join();
                 } catch (CompletionException ex) {
                     log.error("Batch processing timed out or failed", ex);
