@@ -35,7 +35,7 @@ public class KafkaConsumerServiceLiveTest {
     private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.9.0"));
 
     @Test
-    void givenProducerMessagesAreSent_whenConsumerIsRunningAsBatch_thenConsumerCommitsOffset() {
+    void givenProducerMessagesAreSent_whenConsumerIsRunning_thenConsumerOffsetIsCommitted() {
         KafkaConsumerService kafkaConsumerService = new KafkaConsumerService(getConsumerConfig(), "test-topic");
         Thread th = new Thread(kafkaConsumerService::consume);
         th.start();
@@ -57,7 +57,7 @@ public class KafkaConsumerServiceLiveTest {
                     committedOffsets = result.partitionsToOffsetAndMetadata()
                         .get();
                 }
-                assertThat(committedOffsets).isNotEmpty();
+                assertNotNull(committedOffsets);
                 assertNotNull(committedOffsets.get(new TopicPartition("test-topic", 0)));
                 assertEquals(300L, committedOffsets.get(new TopicPartition("test-topic", 0))
                     .offset());

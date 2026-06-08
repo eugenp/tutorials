@@ -1,14 +1,11 @@
 package com.baeldung.kafka.commitfailure.fixed.async;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.Map;
 import java.util.Properties;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.AdminClientConfig;
@@ -35,7 +32,7 @@ public class KafkaConsumerServiceLiveTest {
     private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.9.0"));
 
     @Test
-    void givenProducerMessagesAreSent_whenConsumerIsRunning_thenConsumerCommitsOffset() throws InterruptedException, ExecutionException, TimeoutException {
+    void givenProducerMessagesAreSent_whenConsumerIsRunning_thenConsumerOffsetIsCommitted() {
         KafkaConsumerService kafkaConsumerService = new KafkaConsumerService(getConsumerConfig(), "test-topic");
 
         Thread th = new Thread(kafkaConsumerService::consume);
@@ -58,7 +55,7 @@ public class KafkaConsumerServiceLiveTest {
                     committedOffsets = result.partitionsToOffsetAndMetadata()
                         .get();
                 }
-                assertThat(committedOffsets).isNotEmpty();
+                assertNotNull(committedOffsets);
                 assertNotNull(committedOffsets.get(new TopicPartition("test-topic", 0)));
                 assertEquals(100L, committedOffsets.get(new TopicPartition("test-topic", 0))
                     .offset());
@@ -79,7 +76,7 @@ public class KafkaConsumerServiceLiveTest {
     private static Properties getConsumerConfig() {
         Properties consumerProperties = new Properties();
         consumerProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_CONTAINER.getBootstrapServers());
-        consumerProperties.put(ConsumerConfig.GROUP_ID_CONFIG, "consumer-app");
+        consumerProperties.put(ConsumerConfig.GROUP_ID_CONFIG, "-consumer-app");
         consumerProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         consumerProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");

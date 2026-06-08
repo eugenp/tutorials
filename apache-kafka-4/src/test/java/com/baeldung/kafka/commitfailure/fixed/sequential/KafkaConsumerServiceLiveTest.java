@@ -1,6 +1,5 @@
 package com.baeldung.kafka.commitfailure.fixed.sequential;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -33,7 +32,7 @@ public class KafkaConsumerServiceLiveTest {
     private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.9.0"));
 
     @Test
-    void givenProducerMessagesIsSent_whenConsumerIsRunning_thenConsumerDoesNotThrowsCommitFailedException() throws InterruptedException {
+    void givenProducerMessagesAreSent_whenConsumerIsRunning_thenConsumerOffsetIsCommitted() throws InterruptedException {
         KafkaConsumerService kafkaConsumerService = new KafkaConsumerService(getConsumerConfig(), "test-topic");
 
         Thread th = new Thread(kafkaConsumerService::consume);
@@ -54,7 +53,7 @@ public class KafkaConsumerServiceLiveTest {
                     committedOffsets = result.partitionsToOffsetAndMetadata()
                         .get(10, TimeUnit.SECONDS);
                 }
-                assertThat(committedOffsets).isNotEmpty();
+                assertNotNull(committedOffsets);
                 assertNotNull(committedOffsets.get(new TopicPartition("test-topic", 0)));
                 assertEquals(1L, committedOffsets.get(new TopicPartition("test-topic", 0))
                     .offset());

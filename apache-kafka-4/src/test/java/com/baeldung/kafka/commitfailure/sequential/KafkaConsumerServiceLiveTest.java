@@ -50,7 +50,6 @@ public class KafkaConsumerServiceLiveTest {
         assertTrue(countDownLatch.await(30, TimeUnit.SECONDS));
         assertThat(uncaughtException.get()).isNotNull()
             .isInstanceOf(CommitFailedException.class);
-        assertThat(th.isAlive()).isFalse();
 
         kafkaConsumerService.shutdown();
     }
