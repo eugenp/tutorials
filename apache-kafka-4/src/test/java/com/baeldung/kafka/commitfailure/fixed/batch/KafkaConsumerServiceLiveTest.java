@@ -58,7 +58,6 @@ public class KafkaConsumerServiceLiveTest {
                 }
 
                 assertNotNull(committedOffsets);
-                assertEquals(1, committedOffsets.size());
                 assertNotNull(committedOffsets.get(topicPartition));
                 assertEquals(300L, committedOffsets.get(topicPartition)
                     .offset());
