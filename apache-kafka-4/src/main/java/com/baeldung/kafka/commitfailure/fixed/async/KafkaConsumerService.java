@@ -68,7 +68,7 @@ public class KafkaConsumerService {
 
                 try {
                     CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new))
-                        .orTimeout(700, TimeUnit.MILLISECONDS)
+                        .orTimeout(700L, TimeUnit.MILLISECONDS)
                         .join();
                 } catch (CompletionException ex) {
                     log.error("Batch processing timed out or failed", ex);
@@ -129,8 +129,8 @@ public class KafkaConsumerService {
 
     private void markComplete(ConsumerRecord<String, String> record) {
         TopicPartition tp = new TopicPartition(record.topic(), record.partition());
-        committableOffsets.computeIfAbsent(tp, k -> new AtomicLong(-1))
-            .accumulateAndGet(record.offset() + 1, Math::max);
+        committableOffsets.computeIfAbsent(tp, k -> new AtomicLong(-1L))
+            .accumulateAndGet(record.offset() + 1L, Math::max);
     }
 
     private void commitOffsets() {
