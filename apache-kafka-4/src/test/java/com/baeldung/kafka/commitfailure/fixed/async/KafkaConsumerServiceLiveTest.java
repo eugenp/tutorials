@@ -34,7 +34,6 @@ public class KafkaConsumerServiceLiveTest {
     @Test
     void givenProducerMessagesAreSent_whenConsumerIsRunning_thenConsumerOffsetIsCommitted() {
         KafkaConsumerService kafkaConsumerService = new KafkaConsumerService(getConsumerConfig(), "test-topic");
-
         Thread th = new Thread(kafkaConsumerService::consume);
         th.start();
 
@@ -47,17 +46,20 @@ public class KafkaConsumerServiceLiveTest {
 
         Awaitility.await()
             .atMost(30, TimeUnit.SECONDS)
-            .pollInterval(1, TimeUnit.SECONDS)
+            .pollInterval(2, TimeUnit.SECONDS)
             .untilAsserted(() -> {
+                TopicPartition topicPartition = new TopicPartition("test-topic", 0);
                 Map<TopicPartition, OffsetAndMetadata> committedOffsets;
+
                 try (AdminClient adminClient = AdminClient.create(getAdminProps())) {
                     ListConsumerGroupOffsetsResult result = adminClient.listConsumerGroupOffsets("consumer-app");
                     committedOffsets = result.partitionsToOffsetAndMetadata()
                         .get();
                 }
+
                 assertNotNull(committedOffsets);
-                assertNotNull(committedOffsets.get(new TopicPartition("test-topic", 0)));
-                assertEquals(100L, committedOffsets.get(new TopicPartition("test-topic", 0))
+                assertNotNull(committedOffsets.get(topicPartition));
+                assertEquals(100L, committedOffsets.get(topicPartition)
                     .offset());
             });
 
@@ -76,7 +78,7 @@ public class KafkaConsumerServiceLiveTest {
     private static Properties getConsumerConfig() {
         Properties consumerProperties = new Properties();
         consumerProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_CONTAINER.getBootstrapServers());
-        consumerProperties.put(ConsumerConfig.GROUP_ID_CONFIG, "-consumer-app");
+        consumerProperties.put(ConsumerConfig.GROUP_ID_CONFIG, "consumer-app");
         consumerProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         consumerProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");

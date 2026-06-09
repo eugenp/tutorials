@@ -51,7 +51,7 @@ public class KafkaConsumerService {
     private void simulateDBCall(ConsumerRecord<String, String> record) {
         try {
             log.info("Simulating a DB call - record key {} value {}", record.key(), record.value());
-            Thread.sleep(100L);
+            Thread.sleep(150L);
         } catch (InterruptedException ex) {
             Thread.currentThread()
                 .interrupt();

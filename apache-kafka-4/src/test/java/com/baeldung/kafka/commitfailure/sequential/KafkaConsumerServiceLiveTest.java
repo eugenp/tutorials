@@ -1,7 +1,6 @@
 package com.baeldung.kafka.commitfailure.sequential;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
@@ -28,12 +27,11 @@ public class KafkaConsumerServiceLiveTest {
     private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.9.0"));
 
     @Test
-    void givenProducerMessageIsSent_whenConsumerIsRunning_thenConsumerThrowsCommitFailedException()
-        throws InterruptedException {
-        KafkaConsumerService kafkaConsumerService = new KafkaConsumerService(getConsumerConfig(), "test-topic");
+    void givenProducerMessageIsSent_whenConsumerIsRunning_thenConsumerThrowsCommitFailedException() throws InterruptedException {
         CountDownLatch countDownLatch = new CountDownLatch(1);
         AtomicReference<Throwable> uncaughtException = new AtomicReference<>();
 
+        KafkaConsumerService kafkaConsumerService = new KafkaConsumerService(getConsumerConfig(), "test-topic");
         Thread th = new Thread(kafkaConsumerService::consume);
         th.setUncaughtExceptionHandler((thread, ex) -> {
             uncaughtException.set(ex);
@@ -47,7 +45,7 @@ public class KafkaConsumerServiceLiveTest {
             producer.flush();
         }
 
-        assertTrue(countDownLatch.await(30, TimeUnit.SECONDS));
+        countDownLatch.await(30, TimeUnit.SECONDS);
         assertThat(uncaughtException.get()).isNotNull()
             .isInstanceOf(CommitFailedException.class);
 

@@ -46,17 +46,21 @@ public class KafkaConsumerServiceLiveTest {
 
         Awaitility.await()
             .atMost(30, TimeUnit.SECONDS)
-            .pollInterval(1, TimeUnit.SECONDS)
+            .pollInterval(2, TimeUnit.SECONDS)
             .untilAsserted(() -> {
+                TopicPartition topicPartition = new TopicPartition("test-topic", 0);
                 Map<TopicPartition, OffsetAndMetadata> committedOffsets;
+
                 try (AdminClient adminClient = AdminClient.create(getAdminProps())) {
                     ListConsumerGroupOffsetsResult result = adminClient.listConsumerGroupOffsets("consumer-app");
                     committedOffsets = result.partitionsToOffsetAndMetadata()
                         .get();
                 }
+
                 assertNotNull(committedOffsets);
-                assertNotNull(committedOffsets.get(new TopicPartition("test-topic", 0)));
-                assertEquals(300L, committedOffsets.get(new TopicPartition("test-topic", 0))
+                assertEquals(1, committedOffsets.size());
+                assertNotNull(committedOffsets.get(topicPartition));
+                assertEquals(300L, committedOffsets.get(topicPartition)
                     .offset());
             });
 
