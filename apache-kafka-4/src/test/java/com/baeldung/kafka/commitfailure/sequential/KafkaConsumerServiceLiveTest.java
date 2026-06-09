@@ -1,6 +1,7 @@
 package com.baeldung.kafka.commitfailure.sequential;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
@@ -45,7 +46,7 @@ public class KafkaConsumerServiceLiveTest {
             producer.flush();
         }
 
-        countDownLatch.await(30, TimeUnit.SECONDS);
+        assertTrue(countDownLatch.await(30, TimeUnit.SECONDS));
         assertThat(uncaughtException.get()).isNotNull()
             .isInstanceOf(CommitFailedException.class);
 
