@@ -32,7 +32,7 @@ public class KafkaConsumerServiceLiveTest {
     private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.9.0"));
 
     @Test
-    void givenProducerMessagesAreSent_whenConsumerIsRunning_thenConsumerOffsetIsCommitted() {
+    void givenProducerMessageIsSent_whenConsumerIsRunning_thenConsumerOffsetIsCommitted() {
         KafkaConsumerService kafkaConsumerService = new KafkaConsumerService(getConsumerConfig(), "test-topic");
         Thread th = new Thread(kafkaConsumerService::consume);
         th.start();
