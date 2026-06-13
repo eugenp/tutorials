@@ -71,10 +71,10 @@ public class IteratorVsListIteratorUnitTest {
     @Test
     void whenUsingSetElement_thenGetExpectedResult() {
         List<String> inputList = Lists.newArrayList("1", "2", "3", "4", "5");
-        ListIterator<String> lit = inputList.listIterator(1); // ^ 1 2 3 4 5
-        lit.next(); // 1 ^ 2 3 4 5
+        ListIterator<String> lit = inputList.listIterator(1); // 1 ^ 2 3 4 5
+        lit.next(); // 1 2 ^ 3 4 5
 
-        assertEquals("3", lit.next()); // 1 2 ^ 3 4 5
+        assertEquals("3", lit.next()); // 1 2 3 ^ 4 5
         lit.set("X");
         assertEquals(Lists.newArrayList("1", "2", "X", "4", "5"), inputList);
 

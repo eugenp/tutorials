@@ -33,5 +33,6 @@
         <module>spring-ai-text-to-sql</module>
         <module>spring-ai-vector-stores</module>
         <module>spring-ai-mcp-annotations</module>
+        <module>spring-ai-subagent-orchestrator</module>
     </modules>
 </project>

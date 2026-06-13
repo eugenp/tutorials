@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+      <groupId>com.baeldung.cn1tutorial</groupId>
+      <artifactId>dailyroutine</artifactId>
+      <version>1.0-SNAPSHOT</version>
+  </parent>
+  <groupId>com.baeldung.cn1tutorial</groupId>
+  <artifactId>dailyroutine-ios</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>dailyroutine-ios</name>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <codename1.platform>ios</codename1.platform>
+      <codename1.projectPlatform>ios</codename1.projectPlatform>
+      <codename1.defaultBuildTarget>ios-device</codename1.defaultBuildTarget>
+  </properties>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/objectivec</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <plugins>
+<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.1</version>
+                <executions>
+                    <execution>
+                        <id>default-jar</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.codenameone</groupId>
+                <artifactId>codenameone-maven-plugin</artifactId>
+                <version>${cn1.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>build-ios</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+  <dependencies>
+      <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>${cn1app.name}-common</artifactId>
+          <version>${project.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>${cn1app.name}-common</artifactId>
+          <version>${project.version}</version>
+          <classifier>tests</classifier>
+          <scope>test</scope>
+      </dependency>
+
+  </dependencies>
+  
+  <profiles>
+
+  </profiles>
+  
+</project>
