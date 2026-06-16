@@ -14,7 +14,6 @@ class EnforcerUnitTest {
 
     @Test
     void givenAclConfiguration_whenCheckingPermissions_thenTheCorrectResultsAreReturned() throws IOException {
-
         FileAdapter fileAdapter = new FileAdapter(getClass().getResourceAsStream("/com/baeldung/jcasbin/acl.csv"));
 
         String content = new String(getClass().getClassLoader().getResourceAsStream("com/baeldung/jcasbin/acl.conf").readAllBytes());
@@ -31,7 +30,6 @@ class EnforcerUnitTest {
 
     @Test
     void givenAclSuperuserConfiguration_whenCheckingPermissions_thenTheCorrectResultsAreReturned() throws IOException {
-
         FileAdapter fileAdapter = new FileAdapter(getClass().getResourceAsStream("/com/baeldung/jcasbin/acl.csv"));
 
         String content = new String(getClass().getClassLoader().getResourceAsStream("com/baeldung/jcasbin/acl_superuser.conf").readAllBytes());
@@ -49,7 +47,6 @@ class EnforcerUnitTest {
 
     @Test
     void givenRbacConfiguration_whenCheckingPermissions_thenTheCorrectResultsAreReturned() throws IOException {
-
         FileAdapter fileAdapter = new FileAdapter(getClass().getResourceAsStream("/com/baeldung/jcasbin/rbac.csv"));
 
         String content = new String(getClass().getClassLoader().getResourceAsStream("com/baeldung/jcasbin/rbac.conf").readAllBytes());
