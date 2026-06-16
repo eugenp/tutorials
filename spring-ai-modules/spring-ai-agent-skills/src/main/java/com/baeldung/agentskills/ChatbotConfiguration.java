@@ -1,7 +1,5 @@
 package com.baeldung.agentskills;
 
-import java.nio.file.Paths;
-
 import org.springaicommunity.agent.tools.FileSystemTools;
 import org.springaicommunity.agent.tools.ShellTools;
 import org.springaicommunity.agent.tools.SkillsTool;
@@ -18,18 +16,16 @@ class ChatbotConfiguration {
         String skillsRootDirectory = ".openai/skills";
         return ChatClient
             .builder(chatModel)
-            .defaultTools(toolSpec -> toolSpec
-                .callbacks(
-                    SkillsTool.builder()
-                        .addSkillsDirectory(skillsRootDirectory)
-                        .build())
-                .instances(
-                    FileSystemTools.builder()
-                        .allowedDirectory(Paths.get(skillsRootDirectory))
-                        .build(),
-                    ShellTools.builder()
-                        .build()))
-            .build();
+            .defaultTools(
+                SkillsTool.builder()
+                    .addSkillsDirectory(skillsRootDirectory)
+                    .build(),
+                FileSystemTools.builder()
+                    .allowedDirectory(skillsRootDirectory)
+                    .build(),
+                ShellTools.builder()
+                    .build()
+            ).build();
     }
 
 }

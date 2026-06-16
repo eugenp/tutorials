@@ -41,20 +41,9 @@
     <properties>
         <java.version>21</java.version>
         <spring-boot.version>4.0.6</spring-boot.version>
-        <spring-ai.version>2.0.0-M8</spring-ai.version>
-        <spring-ai-agent-utils.version>0.8.0</spring-ai-agent-utils.version>
+        <spring-ai.version>2.0.0</spring-ai.version>
+        <spring-ai-agent-utils.version>0.10.0</spring-ai-agent-utils.version>
     </properties>
-
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
     <build>
         <plugins>
