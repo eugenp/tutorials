@@ -64,7 +64,9 @@ class ExchangeRateMcpToolStreamableIntegrationTest {
             .findFirst()
             .orElseThrow();
 
-        String argumentName = exchangeRateTool.inputSchema().keySet().stream()
+		String argumentName = ((Map<String, Object>) exchangeRateTool.inputSchema().get("properties"))
+			.keySet()
+			.stream()
             .findFirst()
             .orElseThrow();
 
