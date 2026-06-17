@@ -1,6 +1,10 @@
 package com.baeldung.jcasbin;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.Set;
 
@@ -12,8 +16,13 @@ import org.casbin.jcasbin.main.Enforcer;
 import org.casbin.jcasbin.model.Model;
 import org.casbin.jcasbin.persist.file_adapter.FileAdapter;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
 public class ManagementUnitTest {
+
+    @TempDir
+    private Path tempDir;
+
     @Test
     void whenQueryingSubjects_thenTheCorrectSubjectsAreReturned() throws IOException {
         FileAdapter fileAdapter = new FileAdapter(getClass().getResourceAsStream("/com/baeldung/jcasbin/acl.csv"));
@@ -140,5 +149,32 @@ public class ManagementUnitTest {
         enforcer.addRoleForUser("alice", "superuser");
 
         assertTrue(enforcer.enforce("alice", "data2", "read"));
+    }
+
+    @Test
+    void whenSavingChanges_thenTheNewPermissionsWork() throws IOException {
+        Path tempFile = tempDir.resolve("rbac.csv");
+        try (InputStream in = getClass().getResourceAsStream("/com/baeldung/jcasbin/rbac.csv")) {
+            Files.copy(in, tempFile, StandardCopyOption.REPLACE_EXISTING);
+        }
+
+        String content = new String(getClass().getClassLoader().getResourceAsStream("com/baeldung/jcasbin/rbac.conf").readAllBytes());
+        Model model = new Model();
+        model.loadModelFromText(content);
+
+        {
+            Enforcer enforcer = new Enforcer(model, new FileAdapter(tempFile.toString()));
+
+            assertFalse(enforcer.enforce("alice", "data2", "read"));
+
+            enforcer.addRoleForUser("alice", "superuser");
+            enforcer.savePolicy();
+        }
+
+        {
+            Enforcer enforcer = new Enforcer(model, new FileAdapter(tempFile.toString()));
+
+            assertTrue(enforcer.enforce("alice", "data2", "read"));
+        }
     }
 }
