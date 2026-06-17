@@ -2,6 +2,8 @@ package com.baeldung;
 
 public class Ebook {
 
+    //todo...
+    
     private int bookId;
     private String bookTitle;
     
