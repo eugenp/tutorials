@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.baeldung.BeanBackgroundInitialization;
 
 import java.time.LocalTime;
 

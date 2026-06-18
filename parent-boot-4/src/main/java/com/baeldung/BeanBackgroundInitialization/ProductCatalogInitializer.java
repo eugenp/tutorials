@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.baeldung.BeanBackgroundInitialization;
 
 public class ProductCatalogInitializer {
 
