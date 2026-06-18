@@ -169,3 +169,5 @@ persistence-modules/neo4j/data/**
 logging-modules/log4j/app-dynamic-log.log
 logging-modules/logback/conditional.log
 logging-modules/logback/filtered.log
+"*.exe" 
+"prometheus-3.7.3.windows-amd64/" 

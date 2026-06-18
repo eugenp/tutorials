@@ -16,11 +16,23 @@ spec:
       creationTimestamp: null
       labels:
         app: demo
-    spec:
-      containers:
-      - image: docker.io/library/demo:0.0.1-SNAPSHOT
-        name: demo
-        resources: {}
-        imagePullPolicy: Never
+		spec:
+	      containers:
+	      - image: docker.io/library/demo:0.0.1-SNAPSHOT
+	        name: demo
+	        resources: {}
+	        imagePullPolicy: Never
+	        livenessProbe:
+	          httpGet:
+	            path: /actuator/health/liveness
+	            port: 8080
+	          initialDelaySeconds: 10
+	          periodSeconds: 10
+	        readinessProbe:
+	          httpGet:
+	            path: /actuator/health/readiness
+	            port: 8080
+	          initialDelaySeconds: 10
+	          periodSeconds: 10
 
 status: {}
