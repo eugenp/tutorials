@@ -8,10 +8,10 @@
 		<version>4.1.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>demo</artifactId>
+	<groupId>com.baeldung.spring-boot-modules</groupId>
+	<artifactId>spring-boot-modules</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
+	<name>spring-boot-properties-4</name>
 	<description/>
 	<url/>
 	<licenses>
