@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.baeldung;
 
 import java.time.LocalTime;
 
