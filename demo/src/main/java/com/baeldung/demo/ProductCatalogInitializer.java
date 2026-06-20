@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.baeldung.demo;
 
 public class ProductCatalogInitializer {
 

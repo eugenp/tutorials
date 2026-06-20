@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.baeldung.demo;
 
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.stereotype.Service;

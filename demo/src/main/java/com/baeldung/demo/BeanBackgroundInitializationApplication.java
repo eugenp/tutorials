@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.baeldung.demo;
 
 import java.time.LocalTime;
 
@@ -8,12 +8,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class BeanBackgroundInitializationApplication {
+public class demoApplication {
 
     public static void main(String[] args) {
 
         SpringApplication.run(
-                BeanBackgroundInitializationApplication.class,
+                demoApplication.class,
                 args
         );
     }
