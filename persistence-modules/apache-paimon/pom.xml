@@ -49,6 +49,5 @@
     <properties>
         <paimon.version>1.4.1</paimon.version>
         <hadoop.version>3.4.3</hadoop.version>
-        <java.version>17</java.version>
     </properties>
 </project>
