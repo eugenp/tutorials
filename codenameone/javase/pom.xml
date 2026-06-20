@@ -1,0 +1,778 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+      <groupId>com.baeldung.cn1tutorial</groupId>
+      <artifactId>dailyroutine</artifactId>
+      <version>1.0-SNAPSHOT</version>
+  </parent>
+  <groupId>com.baeldung.cn1tutorial</groupId>
+  <artifactId>dailyroutine-javase</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>dailyroutine-javase</name>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <codename1.platform>javase</codename1.platform>
+      <codename1.projectPlatform>javase</codename1.projectPlatform>
+  </properties>
+    <build>
+    <testSourceDirectory>${project.basedir}/../common/src/test/java</testSourceDirectory>
+        <plugins>
+            <plugin>
+                <artifactId>codenameone-maven-plugin</artifactId>
+                <groupId>com.codenameone</groupId>
+                <version>${cn1.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>add-se-sources</id>
+                        <goals>
+                            <goal>generate-javase-sources</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+  <dependencies>
+      <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>${cn1app.name}-common</artifactId>
+          <version>${project.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>${cn1app.name}-common</artifactId>
+          <version>${project.version}</version>
+          <classifier>tests</classifier>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>com.codenameone</groupId>
+          <artifactId>codenameone-core</artifactId>
+          <scope>test</scope>
+      </dependency>
+            <dependency>
+          <groupId>com.codenameone</groupId>
+          <artifactId>codenameone-javase</artifactId>
+          <scope>test</scope>
+      </dependency>
+      
+  </dependencies>
+  
+  <profiles>
+      <!-- Profile for generating executable jar.  -->
+      <profile>
+          <id>executable-jar</id>
+          <properties>
+              <codename1.platform>javase</codename1.platform>
+              <exec.mainClass>com.baeldung.cn1tutorial.DailyRoutineStub</exec.mainClass>
+          </properties>
+          <dependencies>
+              <dependency>
+                  <groupId>com.codenameone</groupId>
+                  <artifactId>codenameone-core</artifactId>
+                  <scope>compile</scope>
+              </dependency>
+              <dependency>
+                  <groupId>com.codenameone</groupId>
+                  <artifactId>codenameone-javase</artifactId>
+                  <scope>compile</scope>
+              </dependency>
+
+          </dependencies>
+          <build>
+              <resources>
+                  <resource><directory>src/main/resources</directory></resource>
+                  <resource><directory>src/desktop/resources</directory></resource>
+              </resources>
+              <plugins>
+                  <plugin>
+                      <groupId>org.codehaus.mojo</groupId>
+                      <artifactId>properties-maven-plugin</artifactId>
+                      <version>1.0.0</version>
+                      <executions>
+                          <execution>
+                              <phase>initialize</phase>
+                              <goals>
+                                  <goal>read-project-properties</goal>
+                              </goals>
+                              <configuration>
+                                  <files>
+                                      <file>${basedir}/../common/codenameone_settings.properties</file>
+                                  </files>
+                              </configuration>
+                          </execution>
+                      </executions>
+                  </plugin>
+                  <plugin>
+                      <groupId>com.codenameone</groupId>
+                      <artifactId>codenameone-maven-plugin</artifactId>
+                      <executions>
+                          <execution>
+                              <id>generate-icons</id>
+                              <phase>generate-sources</phase>
+                              <goals>
+                                  <goal>generate-desktop-app-wrapper</goal>
+                              </goals>
+                          </execution>
+                      </executions>
+                  </plugin>
+                  <plugin>
+                      <groupId>org.apache.maven.plugins</groupId>
+                      <artifactId>maven-dependency-plugin</artifactId>
+                      <executions>
+                          <execution>
+                              <id>copy-dependencies</id>
+                              <phase>prepare-package</phase>
+                              <goals>
+                                  <goal>copy-dependencies</goal>
+                              </goals>
+                              <configuration>
+                                  <outputDirectory>
+                                      ${project.build.directory}/libs
+                                  </outputDirectory>
+                              </configuration>
+                          </execution>
+                      </executions>
+                  </plugin>
+                  <plugin>
+                      <groupId>org.apache.maven.plugins</groupId>
+                      <artifactId>maven-jar-plugin</artifactId>
+                      <configuration>
+                          <archive>
+                              <manifest>
+                                  <addClasspath>true</addClasspath>
+                                  <classpathPrefix>libs/</classpathPrefix>
+                                  <mainClass>
+                                      ${codename1.packageName}.${codename1.mainName}Stub
+                                  </mainClass>
+                              </manifest>
+                          </archive>
+                      </configuration>
+                  </plugin>
+                  <plugin>
+                      <artifactId>maven-antrun-plugin</artifactId>
+                      <executions>
+                          <execution>
+                              <id>generate-javase-zip</id>
+                              <phase>package</phase>
+                              <configuration>
+                                  <target>
+                                      <mkdir dir="${project.build.directory}/${project.build.finalName}"/>
+                                      <mkdir dir="${project.build.directory}/${project.build.finalName}/libs"/>
+                                      <copy todir="${project.build.directory}/${project.build.finalName}/libs">
+                                          <fileset dir="${project.build.directory}/libs"/>
+                                      </copy>
+                                      <copy todir="${project.build.directory}/${project.build.finalName}" file="${project.build.directory}/${project.build.finalName}.jar"/>
+
+                                      <zip destfile="${project.build.directory}/${project.build.finalName}.zip"
+                                           basedir="${project.build.directory}/${project.build.finalName}"
+                                           includes="**">
+
+                                      </zip>
+
+                                  </target>
+                              </configuration>
+                              <goals>
+                                  <goal>run</goal>
+                              </goals>
+                          </execution>
+                      </executions>
+                  </plugin>
+
+              </plugins>
+          </build>
+      </profile>
+      <profile>
+          <!-- Profile for running JavaSE desktop app -->
+          <id>run-desktop</id>
+          <properties>
+              <codename1.platform>javase</codename1.platform>
+              <exec.mainClass>com.baeldung.cn1tutorial.DailyRoutineStub</exec.mainClass>
+          </properties>
+          <dependencies>
+              <dependency>
+                  <groupId>com.codenameone</groupId>
+                  <artifactId>codenameone-core</artifactId>
+                  <scope>compile</scope>
+              </dependency>
+              <dependency>
+                  <groupId>com.codenameone</groupId>
+                  <artifactId>codenameone-javase</artifactId>
+                  <scope>compile</scope>
+              </dependency>
+
+          </dependencies>
+          <build>
+              <resources>
+                  <resource><directory>src/main/resources</directory></resource>
+                  <resource><directory>src/desktop/resources</directory></resource>
+              </resources>
+              <plugins>
+                  <plugin>
+                      <groupId>com.codenameone</groupId>
+                      <artifactId>codenameone-maven-plugin</artifactId>
+                      <executions>
+                          <execution>
+                              <id>generate-icons</id>
+                              <phase>generate-sources</phase>
+                              <goals>
+                                  <goal>generate-desktop-app-wrapper</goal>
+                              </goals>
+                          </execution>
+                      </executions>
+                  </plugin>
+                  <plugin>
+                      <groupId>org.codehaus.mojo</groupId>
+                      <artifactId>exec-maven-plugin</artifactId>
+                      <executions>
+                          <execution>
+                              <id>run-desktop</id>
+                              <phase>verify</phase>
+                              <goals>
+                                  <goal>java</goal>
+                              </goals>
+                          </execution>
+                      </executions>
+                  </plugin>
+              </plugins>
+          </build>
+      </profile>
+      <profile>
+          <!-- Profile for Building JavaSE Desktop App -->
+          <id>desktop_build</id>
+          <activation>
+              <property>
+                  <name>codename1.buildTarget</name>
+              </property>
+          </activation>
+          <dependencies>
+              <dependency>
+                  <groupId>com.codenameone</groupId>
+                  <artifactId>codenameone-core</artifactId>
+                  <scope>provided</scope>
+              </dependency>
+              <dependency>
+                  <groupId>com.codenameone</groupId>
+                  <artifactId>codenameone-javase</artifactId>
+                  <scope>provided</scope>
+              </dependency>
+
+          </dependencies>
+          <build>
+              <plugins>
+                  <plugin>
+                      <groupId>com.codenameone</groupId>
+                      <artifactId>codenameone-maven-plugin</artifactId>
+                      <version>${cn1.plugin.version}</version>
+                      <executions>
+                          <execution>
+                              <id>build-desktop-macosx</id>
+                              <phase>package</phase>
+                              <goals>
+                                  <goal>build</goal>
+                              </goals>
+                          </execution>
+                      </executions>
+                  </plugin>
+
+              </plugins>
+          </build>
+      </profile>
+      <profile>
+          <!-- Profile for running Unit Tests -->
+          <id>test</id>
+          <activation>
+              <property>
+                      <name>true</name>
+              </property>
+          </activation>
+          <properties>
+              <codename1.platform>javase</codename1.platform>
+              <exec.mainClass>com.codename1.impl.javase.Simulator</exec.mainClass>
+          </properties>
+          <dependencies>
+              <dependency>
+                  <groupId>com.codenameone</groupId>
+                  <artifactId>codenameone-core</artifactId>
+                  <scope>compile</scope>
+              </dependency>
+
+              <dependency>
+                  <groupId>com.codenameone</groupId>
+                  <artifactId>codenameone-javase</artifactId>
+                  <scope>compile</scope>
+              </dependency>
+          </dependencies>
+          <build>
+              <plugins>
+                  <plugin>
+                      <groupId>com.codenameone</groupId>
+                      <artifactId>codenameone-maven-plugin</artifactId>
+
+                      <executions>
+                    
+                          <execution>
+                              <id>cn1-tests</id>
+                              <phase>test</phase>
+                              <goals>
+                                  <goal>test</goal>
+                              </goals>
+                          </execution>
+                      </executions>
+
+                  </plugin>
+            
+              </plugins>
+          </build>
+      </profile>
+      <profile>
+          <!-- Profile used for debugging the Simulator in NetBeans.
+
+            NOTE: IntelliJ uses the idea-simulator profile for both run and debug.
+
+           -->
+          <id>debug-simulator</id>
+          <properties>
+              <codename1.platform>javase</codename1.platform>
+              <exec.mainClass>com.codename1.impl.javase.Simulator</exec.mainClass>
+              <jpda.listen>true</jpda.listen>
+          </properties>
+          <dependencies>
+              <dependency>
+                  <groupId>com.codenameone</groupId>
+                  <artifactId>codenameone-core</artifactId>
+                  <scope>compile</scope>
+              </dependency>
+              <dependency>
+                  <groupId>com.codenameone</groupId>
+                  <artifactId>codenameone-javase</artifactId>
+                  <scope>compile</scope>
+              </dependency>
+          </dependencies>
+          <build>
+              <plugins>
+                  <plugin>
+                      <!-- Set some properties required by the simulator, such as the
+                            main class, and the CSS args. -->
+                      <groupId>com.codenameone</groupId>
+                      <artifactId>codenameone-maven-plugin</artifactId>
+                      <executions>
+                          <execution>
+                              <id>prepare-simulator-environment</id>
+                              <phase>initialize</phase>
+                              <goals>
+                                  <goal>prepare-simulator-classpath</goal>
+                              </goals>
+                          </execution>
+                      </executions>
+                  </plugin>
+
+                  <plugin>
+                      <groupId>org.codehaus.mojo</groupId>
+                      <artifactId>exec-maven-plugin</artifactId>
+                      <configuration>
+                          <workingDirectory>${basedir}/../common</workingDirectory>
+
+                          <executable>java</executable>
+                          <longClasspath>true</longClasspath>
+                          <arguments>
+                              <!-- Parameters used for Debugging from NetBeans -->
+                              <argument>-Xdebug</argument>
+                              <argument>-Xrunjdwp:transport=dt_socket,server=n,address=${jpda.address}</argument>
+                              <argument>-Xmx1024M</argument>
+                              <argument>-Xmx1024M</argument>
+                              <!-- Pass the locations of CN1 system dependencies so that
+                                    the simulator can find them.  Most of these properties
+                                    are set in the prepare-simulator-classpath goal
+                                    of the codenameone-maven-plugin which was run during
+                                    the initialize phase. -->
+
+
+                              <!-- The location of CEF.  This property is set in the
+                                  prepare-simulator-classpath goal, and the CEF files are
+                                  managed by maven. -->
+                              <argument>-Dcef.dir=${cef.dir}</argument>
+
+                              <!-- The location of the designer jar.  This property is set in the
+                                  prepare-simulator-classpath goal, and the file itself is managed
+                                  by maven. -->
+                              <argument>-Dcodename1.designer.jar=${codename1.designer.jar}</argument>
+
+                              <!-- The location of the theme.css file.  This property
+                                  is set in the prepare-simulator-classpath goal.  This is used by the simulator
+                                  for watching CSS for changes. -->
+                              <argument>-Dcodename1.css.compiler.args.input=${codename1.css.compiler.args.input}</argument>
+
+                              <!-- The location of the output theme.res file (where the CSS compiles
+                                  the theme.css file to. This property is set in the prepare-simulator-classpath goal.
+                                  This is used by the simulator for watching CSS for changes. -->
+                              <argument>-Dcodename1.css.compiler.args.output=${codename1.css.compiler.args.output}</argument>
+
+                              <!-- The location of the CSS merge file.  This is where all of the CSS for all
+                                  cn1libs and the main project are merged together for the CSS compiler.  This is the
+                                  *actual* input to the CSS compiler.  This is used by the simulator to watch CSS for changes. -->
+                              <argument>-Dcodename1.css.compiler.args.merge=${codename1.css.compiler.args.merge}</argument>
+                              <argument>${codename1.exec.args.debug}</argument>
+                              <argument>${codename1.exec.args.runjdwp.transport}</argument>
+                              <argument>-classpath</argument>
+                              <classpath />
+                              <argument>${exec.mainClass}</argument>
+                              <argument>${codename1.mainClass}</argument>
+                          </arguments>
+                      </configuration>
+                      <executions>
+                          <execution>
+                              <id>run-in-simulator</id>
+                              <phase>verify</phase>
+                              <goals>
+                                  <goal>exec</goal>
+                              </goals>
+                          </execution>
+                      </executions>
+                  </plugin>
+              </plugins>
+          </build>
+      </profile>
+
+      <profile>
+          <!-- Profile used for debugging the Simulator in Eclipse. -->
+          <id>debug-eclipse</id>
+          <properties>
+              <codename1.platform>javase</codename1.platform>
+              <exec.mainClass>com.codename1.impl.javase.Simulator</exec.mainClass>
+              <jpda.listen>true</jpda.listen>
+          </properties>
+          <dependencies>
+              <dependency>
+                  <groupId>com.codenameone</groupId>
+                  <artifactId>codenameone-core</artifactId>
+                  <scope>compile</scope>
+              </dependency>
+              <dependency>
+                  <groupId>com.codenameone</groupId>
+                  <artifactId>codenameone-javase</artifactId>
+                  <scope>compile</scope>
+              </dependency>
+          </dependencies>
+          <build>
+              <plugins>
+                  <plugin>
+                      <!-- Set some properties required by the simulator, such as the
+                            main class, and the CSS args. -->
+                      <groupId>com.codenameone</groupId>
+                      <artifactId>codenameone-maven-plugin</artifactId>
+                      <executions>
+                          <execution>
+                              <id>prepare-simulator-environment</id>
+                              <phase>initialize</phase>
+                              <goals>
+                                  <goal>prepare-simulator-classpath</goal>
+                              </goals>
+                          </execution>
+                      </executions>
+                  </plugin>
+
+                  <plugin>
+                      <groupId>org.codehaus.mojo</groupId>
+                      <artifactId>exec-maven-plugin</artifactId>
+                      <configuration>
+                          <workingDirectory>${basedir}/../common</workingDirectory>
+
+                          <executable>java</executable>
+                          <longClasspath>true</longClasspath>
+                          <arguments>
+                              <!-- Parameters used for Debugging from NetBeans -->
+                              <argument>-Xdebug</argument>
+                              <argument>-Xrunjdwp:transport=dt_socket,server=y,address=${jpda.address},suspend=y</argument>
+                              <argument>-Xmx1024M</argument>
+                              <argument>-Xmx1024M</argument>
+                              <!-- Pass the locations of CN1 system dependencies so that
+                                    the simulator can find them.  Most of these properties
+                                    are set in the prepare-simulator-classpath goal
+                                    of the codenameone-maven-plugin which was run during
+                                    the initialize phase. -->
+
+
+                              <!-- The location of CEF.  This property is set in the
+                                  prepare-simulator-classpath goal, and the CEF files are
+                                  managed by maven. -->
+                              <argument>-Dcef.dir=${cef.dir}</argument>
+
+                              <!-- The location of the designer jar.  This property is set in the
+                                  prepare-simulator-classpath goal, and the file itself is managed
+                                  by maven. -->
+                              <argument>-Dcodename1.designer.jar=${codename1.designer.jar}</argument>
+
+                              <!-- The location of the theme.css file.  This property
+                                  is set in the prepare-simulator-classpath goal.  This is used by the simulator
+                                  for watching CSS for changes. -->
+                              <argument>-Dcodename1.css.compiler.args.input=${codename1.css.compiler.args.input}</argument>
+
+                              <!-- The location of the output theme.res file (where the CSS compiles
+                                  the theme.css file to. This property is set in the prepare-simulator-classpath goal.
+                                  This is used by the simulator for watching CSS for changes. -->
+                              <argument>-Dcodename1.css.compiler.args.output=${codename1.css.compiler.args.output}</argument>
+
+                              <!-- The location of the CSS merge file.  This is where all of the CSS for all
+                                  cn1libs and the main project are merged together for the CSS compiler.  This is the
+                                  *actual* input to the CSS compiler.  This is used by the simulator to watch CSS for changes. -->
+                              <argument>-Dcodename1.css.compiler.args.merge=${codename1.css.compiler.args.merge}</argument>
+                              <argument>${codename1.exec.args.debug}</argument>
+                              <argument>${codename1.exec.args.runjdwp.transport}</argument>
+                              <argument>-classpath</argument>
+                              <classpath />
+                              <argument>${exec.mainClass}</argument>
+                              <argument>${codename1.mainClass}</argument>
+                          </arguments>
+                      </configuration>
+                      <executions>
+                          <execution>
+                              <id>run-in-simulator</id>
+                              <phase>verify</phase>
+                              <goals>
+                                  <goal>exec</goal>
+                              </goals>
+                          </execution>
+                      </executions>
+                  </plugin>
+              </plugins>
+          </build>
+      </profile>
+      <profile>
+          <!-- Profile used for running the simulator.  This uses exec:exec to fork a Java process.
+            NOTE: IntelliJ does not use this profile for running the simulator.  It, instead uses
+            the ideas-simulator profile which uses exec:java instead because it works better with
+            the IntelliJ debugger.
+
+            This profile is used by NetBeans and for CLI builds.
+
+            -->
+          <id>simulator</id>
+          <properties>
+              <codename1.platform>javase</codename1.platform>
+              <exec.mainClass>com.codename1.impl.javase.Simulator</exec.mainClass>
+          </properties>
+          <dependencies>
+              <dependency>
+                  <groupId>com.codenameone</groupId>
+                  <artifactId>codenameone-core</artifactId>
+                  <scope>compile</scope>
+              </dependency>
+              <dependency>
+                  <groupId>com.codenameone</groupId>
+                  <artifactId>codenameone-javase</artifactId>
+                  <scope>compile</scope>
+              </dependency>
+          </dependencies>
+          <build>
+              <plugins>
+                  <plugin>
+                      <groupId>com.codenameone</groupId>
+                      <artifactId>codenameone-maven-plugin</artifactId>
+                      <executions>
+                          <execution>
+                              <id>prepare-simulator-environment</id>
+                              <phase>initialize</phase>
+                              <goals>
+                                  <goal>prepare-simulator-classpath</goal>
+                              </goals>
+                          </execution>
+                      </executions>
+                  </plugin>
+              
+                  <plugin>
+                      <groupId>org.codehaus.mojo</groupId>
+                      <artifactId>exec-maven-plugin</artifactId>
+                      <configuration>
+                          <workingDirectory>${basedir}/../common</workingDirectory>
+            
+                          <executable>java</executable>
+                          <longClasspath>true</longClasspath>
+                          <arguments>
+                              <argument>-Xmx1024M</argument>
+
+                              <!-- The location of CEF.  This property is set in the
+                                  prepare-simulator-classpath goal, and the CEF files are
+                                  managed by maven. -->
+                              <argument>-Dcef.dir=${cef.dir}</argument>
+
+                              <!-- The location of the designer jar.  This property is set in the
+                                  prepare-simulator-classpath goal, and the file itself is managed
+                                  by maven. -->
+                              <argument>-Dcodename1.designer.jar=${codename1.designer.jar}</argument>
+
+                              <!-- The location of the theme.css file.  This property
+                                  is set in the prepare-simulator-classpath goal.  This is used by the simulator
+                                  for watching CSS for changes. -->
+                              <argument>-Dcodename1.css.compiler.args.input=${codename1.css.compiler.args.input}</argument>
+
+                              <!-- The location of the output theme.res file (where the CSS compiles
+                                  the theme.css file to. This property is set in the prepare-simulator-classpath goal.
+                                  This is used by the simulator for watching CSS for changes. -->
+                              <argument>-Dcodename1.css.compiler.args.output=${codename1.css.compiler.args.output}</argument>
+
+                              <!-- The location of the CSS merge file.  This is where all of the CSS for all
+                                  cn1libs and the main project are merged together for the CSS compiler.  This is the
+                                  *actual* input to the CSS compiler.  This is used by the simulator to watch CSS for changes. -->
+                              <argument>-Dcodename1.css.compiler.args.merge=${codename1.css.compiler.args.merge}</argument>
+                              <argument>${codename1.exec.args.debug}</argument>
+                              <argument>${codename1.exec.args.runjdwp.transport}</argument>
+                              <argument>-classpath</argument>
+                              <classpath />
+                              <argument>${exec.mainClass}</argument>
+                              <argument>${codename1.mainClass}</argument>
+                          </arguments>
+                      </configuration>
+                      <executions>
+                          <execution>
+                              <id>run-in-simulator</id>
+                              <phase>verify</phase>
+                              <goals>
+                                  <goal>exec</goal>
+                              </goals>
+                          </execution>
+                      </executions>
+                  </plugin>
+              </plugins>
+          </build>
+      </profile>
+      <profile>
+          <!-- Debugging Doesn't seem to work in IntelliJ when using exec:exec goal
+               Therefore we create a separate profile for the simulator in IntelliJ. -->
+          <id>idea-simulator</id>
+          <properties>
+              <codename1.platform>javase</codename1.platform>
+              <exec.mainClass>com.codename1.impl.javase.Simulator</exec.mainClass>
+              <cn1.class.path.required>true</cn1.class.path.required>
+          </properties>
+          <dependencies>
+              <dependency>
+                  <groupId>com.codenameone</groupId>
+                  <artifactId>codenameone-core</artifactId>
+                  <scope>compile</scope>
+              </dependency>
+              <dependency>
+                  <groupId>com.codenameone</groupId>
+                  <artifactId>codenameone-javase</artifactId>
+                  <scope>compile</scope>
+              </dependency>
+          </dependencies>
+          <build>
+              <plugins>
+                  <plugin>
+                      <!-- We need to prepare the classpath for the simulator so that everything
+                            is in place for the exec:java goal.
+                            The main things that the exec:java goal need to work correctly are the
+                            codename1.mainClass, which it gets from the codenameone_settings.properties
+                            file; and the cn1.class.path which is a string representation of the classpath
+                            which the simulator will try to parse.  Normally the simulator will just parse
+                            the java.class.path system property, but IntelliJ obscures this with its
+                            Maven runner. -->
+                      <groupId>com.codenameone</groupId>
+                      <artifactId>codenameone-maven-plugin</artifactId>
+                      <executions>
+                          <execution>
+                              <id>prepare-simulator-environment</id>
+                              <phase>initialize</phase>
+                              <goals>
+
+                                  <goal>prepare-simulator-classpath</goal>
+                              </goals>
+                          </execution>
+                      </executions>
+                  </plugin>
+
+                  <plugin>
+                      <groupId>org.codehaus.mojo</groupId>
+                      <artifactId>exec-maven-plugin</artifactId>
+                      <configuration>
+
+                          <!-- To remain consistent with the way old Ant projects worked,
+                                we make the working directory the "common" directory.  This is
+                                the directory that contains codenameone_settings.properties -->
+                          <workingDirectory>${basedir}/../common</workingDirectory>
+
+                          <longClasspath>true</longClasspath>
+                          <arguments>
+                              <argument>${codename1.mainClass}</argument>
+                          </arguments>
+                          <systemProperties>
+                              <!-- Pass the locations of CN1 system dependencies so that
+                                    the simulator can find them.  Most of these properties
+                                    are set in the prepare-simulator-classpath goal
+                                    of the codenameone-maven-plugin which was run during
+                                    the initialize phase. -->
+                              <systemProperty>
+                                  <!-- The location of CEF.  This property is set in the
+                                  prepare-simulator-classpath goal, and the CEF files are
+                                  managed by maven. -->
+                                  <key>cef.dir</key>
+                                  <value>${cef.dir}</value>
+                              </systemProperty>
+                              <systemProperty>
+                                  <!-- The location of the designer jar.  This property is set in the
+                                  prepare-simulator-classpath goal, and the file itself is managed
+                                  by maven. -->
+                                  <key>codename1.designer.jar</key>
+                                  <value>${codename1.designer.jar}</value>
+                              </systemProperty>
+                              <systemProperty>
+                                  <!-- The location of the theme.css file.  This property
+                                  is set in the prepare-simulator-classpath goal.  This is used by the simulator
+                                  for watching CSS for changes. -->
+                                  <key>codename1.css.compiler.args.input</key>
+                                  <value>${codename1.css.compiler.args.input}</value>
+                              </systemProperty>
+                              <systemProperty>
+                                  <!-- The location of the output theme.res file (where the CSS compiles
+                                  the theme.css file to. This property is set in the prepare-simulator-classpath goal.
+                                  This is used by the simulator for watching CSS for changes. -->
+                                  <key>codename1.css.compiler.args.output</key>
+                                  <value>${codename1.css.compiler.args.output}</value>
+                              </systemProperty>
+                              <systemProperty>
+                                  <!-- The location of the CSS merge file.  This is where all of the CSS for all
+                                  cn1libs and the main project are merged together for the CSS compiler.  This is the
+                                  *actual* input to the CSS compiler.  This is used by the simulator to watch CSS for changes. -->
+                                  <key>codename1.css.compiler.args.merge</key>
+                                  <value>${codename1.css.compiler.args.merge}</value>
+                              </systemProperty>
+
+                              <systemProperty>
+                                  <!-- Classpath.  We duplicate it here so that the simulator can parse it
+                                  for setting up its internal classloaders.  Normally it just parses the java.class.path
+                                  property, but IntelliJ's maven runner obscures that property so we need to replicate it
+                                  here.  This property is set up in the prepare-simulator-classpath goal. -->
+                                  <key>cn1.class.path</key>
+                                  <value>${cn1.class.path}</value>
+                              </systemProperty>
+                          </systemProperties>
+
+                      </configuration>
+                      <executions>
+                          <execution>
+                              <!-- Bind the java goal to verify phase so that we can run the simulator
+                              in the root project with mvn verify -->
+                              <id>run-in-simulator-idea</id>
+                              <phase>verify</phase>
+                              <goals>
+                                  <goal>java</goal>
+                              </goals>
+
+                          </execution>
+                      </executions>
+                  </plugin>
+              </plugins>
+          </build>
+      </profile>
+  </profiles>
+
+  
+</project>

@@ -1,22 +1,22 @@
 package com.baeldung.springai.mcp.test;
 
-import io.modelcontextprotocol.client.McpSyncClient;
-import io.modelcontextprotocol.spec.McpSchema;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.when;
+
+import java.util.Map;
+import java.util.Objects;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
-import java.util.Map;
-import java.util.Objects;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.when;
+import io.modelcontextprotocol.client.McpSyncClient;
+import io.modelcontextprotocol.spec.McpSchema;
 
 @SpringBootTest(
     webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
@@ -27,7 +27,7 @@ class ExchangeRateMcpToolStreamableIntegrationTest {
     @LocalServerPort
     private int port;
 
-    @MockBean
+    @MockitoBean
     private ExchangeRateService exchangeRateService;
 
     @Autowired
@@ -64,7 +64,9 @@ class ExchangeRateMcpToolStreamableIntegrationTest {
             .findFirst()
             .orElseThrow();
 
-        String argumentName = exchangeRateTool.inputSchema().properties().keySet().stream()
+		String argumentName = ((Map<String, Object>) exchangeRateTool.inputSchema().get("properties"))
+			.keySet()
+			.stream()
             .findFirst()
             .orElseThrow();
 
