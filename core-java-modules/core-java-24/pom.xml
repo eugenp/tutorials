@@ -23,27 +23,27 @@
                 </configuration>
             </plugin>
             <plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-pmd-plugin</artifactId>
-				<version>3.26.0</version>
-				<configuration>
-					<targetJdk>24</targetJdk>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>net.sourceforge.pmd</groupId>
-						<artifactId>pmd-core</artifactId>
-						<version>7.10.0</version>
-					</dependency>
-					<dependency>
-						<groupId>net.sourceforge.pmd</groupId>
-						<artifactId>pmd-java</artifactId>
-						<version>7.10.0</version>
-					</dependency>
-				</dependencies>
-			</plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.26.0</version>
+                <configuration>
+                    <targetJdk>24</targetJdk>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.sourceforge.pmd</groupId>
+                        <artifactId>pmd-core</artifactId>
+                        <version>7.10.0</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>net.sourceforge.pmd</groupId>
+                        <artifactId>pmd-java</artifactId>
+                        <version>7.10.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
         </plugins>
-        
+
     </build>
 
 </project>

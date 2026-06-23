@@ -36,13 +36,6 @@
             </dependency>
     </dependencies>
 
-    <properties>
-        <bouncycastle.version>1.76</bouncycastle.version>
-        <commons-codec.version>1.16.0</commons-codec.version>
-        <jmh-core.version>1.37</jmh-core.version>
-        <jmh-generator-annprocess.version>1.37</jmh-generator-annprocess.version>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -76,5 +69,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <bouncycastle.version>1.76</bouncycastle.version>
+        <commons-codec.version>1.16.0</commons-codec.version>
+        <jmh-core.version>1.37</jmh-core.version>
+        <jmh-generator-annprocess.version>1.37</jmh-generator-annprocess.version>
+    </properties>
 
 </project>
