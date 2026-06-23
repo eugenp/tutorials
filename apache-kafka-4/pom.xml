@@ -100,6 +100,7 @@
     </build>
 
     <properties>
+        <java.version>21</java.version>
         <kafka.version>3.9.0</kafka.version>
         <testcontainers-kafka.version>1.19.3</testcontainers-kafka.version>
         <testcontainers-jupiter.version>1.19.3</testcontainers-jupiter.version>
