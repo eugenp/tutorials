@@ -26,12 +26,12 @@
             <dependency>
                 <groupId>org.jboss.logging</groupId>
                 <artifactId>jboss-logging</artifactId>
-                <version>3.6.1.Final</version>
+                <version>${jboss.logging.version}</version>
             </dependency>
             <dependency>
                 <groupId>jakarta.persistence</groupId>
                 <artifactId>jakarta.persistence-api</artifactId>
-                <version>3.2.0</version>
+                <version>${jakartar.persistence.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -65,7 +65,9 @@
     </build>
 
     <properties>
-        <hibernate.version>7.2.0.Final</hibernate.version>
+        <hibernate.version>7.4.0.Final</hibernate.version>
+        <jakartar.persistence.version>3.2.0</jakartar.persistence.version>
+        <jboss.logging.version>3.6.1.Final</jboss.logging.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>

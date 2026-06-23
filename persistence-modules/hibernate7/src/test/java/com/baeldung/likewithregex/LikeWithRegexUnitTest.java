@@ -17,7 +17,6 @@ class LikeWithRegexUnitTest {
     @Autowired
     private MessageRepository repository;
 
-
     @Test
     void givenContainsDigitRegex_whenLikeRegexp_thenReturnsMatching() {
         List<Message> results = repository.findByContentMatchingRegex(".*\\d+.*");
