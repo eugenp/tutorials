@@ -1,6 +1,5 @@
 package com.baeldung;
 
-import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 import java.util.Arrays;
@@ -38,8 +37,7 @@ public class OuterUnitTest {
           .map(Class::getName)
           .collect(Collectors.toSet());
 
-        is(nestMembers.size()).equals(2);
-
+        assertEquals(2, nestMembers.size());
         assertTrue(nestMembers.contains("com.baeldung.Outer"));
         assertTrue(nestMembers.contains("com.baeldung.Outer$Inner"));
     }
