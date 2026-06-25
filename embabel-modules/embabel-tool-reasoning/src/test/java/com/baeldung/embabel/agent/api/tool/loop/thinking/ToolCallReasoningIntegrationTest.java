@@ -1,7 +1,5 @@
 /*
- *
  * Example got patterned after:
- *
  * <link>https://github.com/embabel/embabel-agent-experimental/blob/main/embabel-experimental-integration-tests/src/test/java/com/embabel/agent/api/tool/loop/thinking/ToolCallReasoningIT.java</link>
  *
  * Original code (see link above) was developed by Embabel Pty Ltd, 2026
@@ -61,7 +59,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class ToolCallReasoningIntegrationTest {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
-
     @Autowired
     private Ai ai;
 
@@ -116,7 +113,6 @@ class ToolCallReasoningIntegrationTest {
                 .trim();
             attributes.put(key, value);
         }
-
         return attributes;
     }
 
@@ -129,20 +125,17 @@ class ToolCallReasoningIntegrationTest {
 
         @LlmTool(description = "Find free street parking. Uncertain and may take time.")
         public String findStreetParking(String location, int maxMinutes) {
-
             boolean found = random.nextDouble() < 0.3; // low probability
-
             if (found) {
                 return "Street parking found near " + location + " (free)";
             }
             return "No street parking found within " + maxMinutes + " minutes";
         }
 
-        @LlmTool(description = "Find metered parking. Moderate cost and moderate availability. May have time limits.")
+        @LlmTool(description = "Find metered parking. Moderate cost and moderate availability. " +
+            "May have time limits.")
         public String findMeterParking(String location, int maxMinutes) {
-
             boolean found = random.nextDouble() < 0.6; // medium probability
-
             if (found) {
                 return "Metered parking found near " + location + " ($5/hour, 2-hour limit)";
             }
@@ -151,7 +144,6 @@ class ToolCallReasoningIntegrationTest {
 
         @LlmTool(description = "Reserve guaranteed garage parking near destination.")
         public String reserveGarage(String location) {
-
             return "Garage reserved near " + location + " ($30/hour, guaranteed)";
         }
     }
@@ -209,10 +201,10 @@ class ToolCallReasoningIntegrationTest {
                             - Your final recommendation should synthesize insights from multiple probes.
                             - Never copy reasoning blocks into the final structured object.
                 
-                        REMINDER: One <tool_use_reasoning> block per tool call. At least 2 tools = at least 2 blocks. Emit reasoning in BOTH phases.
+                        REMINDER: One <tool_use_reasoning> block per tool call. At least 2 tools = at least 2 blocks.
+                        Emit reasoning in BOTH phases.
                 """
         );
-
         String prompt = """
             
                       Scenario:
@@ -253,7 +245,6 @@ class ToolCallReasoningIntegrationTest {
             .stream()
             .map(Object::toString)
             .collect(Collectors.joining("\n  "));
-
         logger.info("""
                 
                 ========== RESULT ({} ms) ==========
@@ -274,7 +265,6 @@ class ToolCallReasoningIntegrationTest {
             callbackTracker.afterLlmCallCount.get(),
             callbackTracker.afterToolResultCount.get()
         );
-
         // Verify at least 2 unique tools were called
         List<String> uniqueToolsInvoked = callbackTracker.toolsInvoked.stream()
             .distinct()
@@ -312,7 +302,6 @@ class ToolCallReasoningIntegrationTest {
         List<String> uniqueTools = callbackTracker.toolsInvoked.stream()
             .distinct()
             .toList();
-
         logger.info("""
                 === TOOL CALL PATTERN ANALYSIS ===
                 Total LLM calls: {}
@@ -326,7 +315,6 @@ class ToolCallReasoningIntegrationTest {
             toolResultCallbacks,
             iterationsWithTools
         );
-
         if (totalToolsInvoked > uniqueTools.size()) {
             // Duplicate names mean the tool loop restarted (LlmDataBindingProperties retry).
             // Stats above span all attempts combined — pattern analysis would be misleading.
@@ -420,13 +408,11 @@ class ToolCallReasoningIntegrationTest {
                     lastSystemMessageIndex = i;
                 }
             }
-
             // Insert after last SystemMessage, or at beginning if none exist
             int insertIndex = lastSystemMessageIndex + 1;
             for (String content : systemMessages) {
                 history.add(insertIndex++, new SystemMessage(content));
             }
-
             return history;
         }
     }
@@ -477,5 +463,4 @@ class ToolCallReasoningIntegrationTest {
             LoggerFactory.getLogger(ToolLoopLoggingInspector.class)
         );
     }
-
 }
