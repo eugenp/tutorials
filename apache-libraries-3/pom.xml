@@ -6,6 +6,7 @@
     <artifactId>apache-libraries-3</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>apache-libraries-3</name>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
