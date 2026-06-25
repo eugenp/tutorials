@@ -193,7 +193,7 @@
         <module>core-java-lang-oop-others</module>
         <module>core-java-lang-operators</module>
         <module>core-java-lang-operators-2</module>
-		<module>core-java-lang-operators-3</module>
+        <module>core-java-lang-operators-3</module>
         <module>core-java-lang-syntax</module>
         <module>core-java-lang-syntax-2</module>
         <module>core-java-lang-syntax-3</module>
@@ -289,6 +289,23 @@
         <!--<module>core-java-25</module>--> <!-- Migrated to default-jdk25 profile -->
     </modules>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.vintage</groupId>
+                <artifactId>junit-vintage-engine</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -315,20 +332,4 @@
         <gson.version>2.11.0</gson.version>
     </properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter</artifactId>
-                <version>${junit-jupiter.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.vintage</groupId>
-                <artifactId>junit-vintage-engine</artifactId>
-                <version>${junit-jupiter.version}</version>
-                <scope>test</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 </project>

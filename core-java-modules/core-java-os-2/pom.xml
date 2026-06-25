@@ -33,7 +33,7 @@
     </dependencies>
 
     <build>
-        <finalName>core-java-os</finalName>
+        <finalName>core-java-os-2</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
