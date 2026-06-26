@@ -1,0 +1,16 @@
+spring:
+
+  application:
+    name: lm-studio
+
+  ai:
+    openai:
+      api-key: dummy
+      base-url: http://localhost:1234/v1
+      chat:
+        options:
+          model:
+            google/gemma-4-e4b
+      embedding:
+        options:
+          model: text-embedding-embeddinggemma-300m
