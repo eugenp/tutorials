@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @ExtendWith(OutputCaptureExtension.class)
-class BookControllerLoggingTest {
+class BookControllerLoggingUnitTest {
 
     @Autowired
     private MockMvc mockMvc;
