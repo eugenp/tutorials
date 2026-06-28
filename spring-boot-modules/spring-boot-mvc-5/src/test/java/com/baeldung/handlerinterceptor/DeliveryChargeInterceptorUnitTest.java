@@ -13,7 +13,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(controllers = DeliveryChargesController.class)
-class DeliveryChargeInterceptorIntegrationTest {
+class DeliveryChargeInterceptorUnitTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -25,7 +25,7 @@ class DeliveryChargeInterceptorIntegrationTest {
     private FeatureFlagService featureFlagService;
 
     @Test
-    void whenRolloutIsZero_thenV1IsUsed() throws Exception {
+    void givenZeroRollout_whenCalculateDeliveryCharge_thenV1IsUsed() throws Exception {
         when(featureFlagService.rolloutPercentage()).thenReturn(0);
         when(deliveryChargeService.calculateV1("SW1A")).thenReturn(5.0);
 
@@ -35,7 +35,7 @@ class DeliveryChargeInterceptorIntegrationTest {
     }
 
     @Test
-    void whenRolloutIs100_thenV2IsUsed() throws Exception {
+    void givenFullRollout_whenCalculateDeliveryCharge_thenV2IsUsed() throws Exception {
         when(featureFlagService.rolloutPercentage()).thenReturn(100);
         when(deliveryChargeService.calculateV2("SW1A")).thenReturn(3.5);
 
@@ -45,7 +45,7 @@ class DeliveryChargeInterceptorIntegrationTest {
     }
 
     @Test
-    void whenRolloutIs50_thenBothVersionsAreUsed() throws Exception {
+    void givenPartialRollout_whenCalculateDeliveryCharge_thenBothVersionsAreUsed() throws Exception {
         when(featureFlagService.rolloutPercentage()).thenReturn(50);
         when(deliveryChargeService.calculateV1("SW1A")).thenReturn(5.0);
         when(deliveryChargeService.calculateV2("SW1A")).thenReturn(3.5);
