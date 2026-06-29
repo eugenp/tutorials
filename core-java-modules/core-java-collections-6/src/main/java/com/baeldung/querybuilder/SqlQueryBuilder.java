@@ -1,4 +1,4 @@
-package com.baeldung.sql.querybuilder;
+package com.baeldung.querybuilder;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -25,6 +25,26 @@ public class SqlQueryBuilder {
 
         return sb.toString();
     }
+
+
+    public String buildStudentQueryUsingStringConcatenation(
+        String enrollmentDate,
+        String birthDate) {
+
+    StringBuilder sb =
+            new StringBuilder(
+                    "SELECT id, name FROM Student");
+
+    if (enrollmentDate != null) {
+        sb.append(" WHERE enrollment_date = ?");
+    }
+
+    if (birthDate != null) {
+        sb.append(" AND birth_date = ?");
+    }
+
+    return sb.toString();
+}
 
     public PreparedStatement createPreparedStatement(
             Connection connection,

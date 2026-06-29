@@ -1,4 +1,4 @@
-package com.baeldung.sql.querybuilder;
+package com.baeldung.querybuilder;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -8,6 +8,20 @@ class SqlQueryBuilderUnitTest {
 
     private final SqlQueryBuilder queryBuilder =
             new SqlQueryBuilder();
+
+    
+    @Test
+    void givenOnlyBirthDate_whenUsingStringConcatenation_thenGenerateInvalidSql() {
+
+        String query =
+                queryBuilder.buildStudentQueryUsingStringConcatenation(
+                    null,"2000-01-01");
+
+        assertEquals(
+                "SELECT id, name FROM Student AND birth_date = ?",
+                query);
+    }
+            
 
     @Test
     void givenNoFilters_whenUsingWhereOneEqualsOne_thenReturnBaseQuery() {
