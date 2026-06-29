@@ -164,72 +164,70 @@ class ToolCallReasoningIntegrationTest {
         var callbackTracker = new CallbackTracker();
 
         var systemMessageTransformer = new SystemMessageTransformer(
-            "You are a helpful decision assistant. Be concise and practical.",
+"You are a helpful decision assistant. Be concise and practical.",
             """
-                        CRITICAL WORKFLOW - Two-phase decision process:
-                
-                        === PHASE 1: Tool Selection (First Response) ===
-                
-                        1. For EACH tool you plan to call, emit a SEPARATE <tool_use_reasoning> block:
-                
-                            <tool_use_reasoning>
-                            Tool: [TOOL_NAME]
-                            Why THIS tool: [explain why this specific tool is needed]
-                            Information expected: [what this tool will reveal]
-                            Advantage over alternatives: [why this tool vs others]
-                            Confidence in this tool selection [confidence=0.XX]
-                            </tool_use_reasoning>
-                
-                            Since you must call at least 2 tools, you must emit at least 2 separate blocks.
-                
-                        2. Call AT LEAST TWO tools to gather comprehensive information
-                            - You MUST call at least 2 tools to probe different aspects.
-                            - Tools are PROBES for information gathering, not final decisions.
-                            - Multiple probes provide better decision quality.
-                
-                        === PHASE 2: Final Decision (After receiving tool results) ===
-                
-                        1. Emit final decision reasoning:
-                            <final_decision_reasoning>
-                            - What each tool probe revealed
-                            - How the probe results informed your analysis
-                            - Why you chose this option based on probe data and constraints
-                            Confidence: [confidence=0.XX]
-                            </final_decision_reasoning>
-                
-                        2. Then provide the final structured output
-                            - Your final recommendation should synthesize insights from multiple probes.
-                            - Never copy reasoning blocks into the final structured object.
-                
-                        REMINDER: One <tool_use_reasoning> block per tool call. At least 2 tools = at least 2 blocks.
-                        Emit reasoning in BOTH phases.
-                """
+            CRITICAL WORKFLOW - Two-phase decision process:
+    
+            === PHASE 1: Tool Selection (First Response) ===
+    
+            1. For EACH tool you plan to call, emit a SEPARATE <tool_use_reasoning> block:
+    
+                <tool_use_reasoning>
+                Tool: [TOOL_NAME]
+                Why THIS tool: [explain why this specific tool is needed]
+                Information expected: [what this tool will reveal]
+                Advantage over alternatives: [why this tool vs others]
+                Confidence in this tool selection [confidence=0.XX]
+                </tool_use_reasoning>
+    
+                Since you must call at least 2 tools, you must emit at least 2 separate blocks.
+    
+            2. Call AT LEAST TWO tools to gather comprehensive information
+                - You MUST call at least 2 tools to probe different aspects.
+                - Tools are PROBES for information gathering, not final decisions.
+                - Multiple probes provide better decision quality.
+    
+            === PHASE 2: Final Decision (After receiving tool results) ===
+    
+            1. Emit final decision reasoning:
+                <final_decision_reasoning>
+                - What each tool probe revealed
+                - How the probe results informed your analysis
+                - Why you chose this option based on probe data and constraints
+                Confidence: [confidence=0.XX]
+                </final_decision_reasoning>
+    
+            2. Then provide the final structured output
+                - Your final recommendation should synthesize insights from multiple probes.
+                - Never copy reasoning blocks into the final structured object.
+    
+            REMINDER: One <tool_use_reasoning> block per tool call. At least 2 tools = at least 2 blocks.
+            Emit reasoning in BOTH phases.
+            """
         );
-        String prompt = """
+        String prompt =
+            """
+              Scenario:
+              An advisor is driving to a client meeting in Midtown Manhattan.
             
-                      Scenario:
-                      An advisor is driving to a client meeting in Midtown Manhattan.
+              Constraints:
+              - 30 minutes remain before the meeting starts
+              - arriving late is not acceptable
+              - the meeting is expected to last about 3 hours
             
-                      Constraints:
-                      - 30 minutes remain before the meeting starts
-                      - arriving late is not acceptable
-                      - the meeting is expected to last about 3 hours
+              Parking options:
+              - Street parking: free, but uncertain
+              - Metered parking: $5 per hour, typically limited to 2 hours
+              - Garage parking: $30 per hour, guaranteed availability
             
-                      Parking options:
-                      - Street parking: free, but uncertain
-                      - Metered parking: $5 per hour, typically limited to 2 hours
-                      - Garage parking: $30 per hour, guaranteed availability
+              Important decision factors:
+              - available time before the meeting
+              - risk of arriving late
+              - trade-offs between street, metered, and garage parking
             
-                      Important decision factors:
-                      - available time before the meeting
-                      - risk of arriving late
-                      - trade-offs between street, metered, and garage parking
+              Recommend the best parking option.
             
-                      Recommend the best parking option.
-            
-                      Available tools: %s
-            
-            
+              Available tools: %s
             """.formatted(String.join(", ", extractToolNames()));
 
         long start = System.currentTimeMillis();
