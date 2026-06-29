@@ -15,7 +15,7 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <embabel-agent.version>0.4.0</embabel-agent.version>
+        <embabel-agent.version>0.5.0</embabel-agent.version>
     </properties>
 
     <dependencies>
@@ -25,7 +25,8 @@
             <groupId>com.embabel.agent</groupId>
             <artifactId>embabel-agent-api</artifactId>
             <version>${embabel-agent.version}</version>
-        </dependency> <!-- Embabel Agent Starter -->
+        </dependency>
+        <!-- Embabel Agent Starter -->
         <dependency>
             <groupId>com.embabel.agent</groupId>
             <artifactId>embabel-agent-starter-shell</artifactId>
