@@ -163,7 +163,8 @@ class ToolCallReasoningIntegrationTest {
         var callbackTracker = new CallbackTracker();
 
         var systemMessageTransformer = new SystemMessageTransformer(
-            "You are a helpful decision assistant. Be concise and practical.",            """
+            "You are a helpful decision assistant. Be concise and practical.",
+            """
             CRITICAL WORKFLOW - Two-phase decision process:
     
             === PHASE 1: Tool Selection (First Response) ===
@@ -252,7 +253,8 @@ class ToolCallReasoningIntegrationTest {
               afterLlmCall: {}
               afterToolResult: {}
             
-            """,            elapsed,
+            """,
+            elapsed,
             result.getResult(),
             formattedThinking,
             callbackTracker.beforeLlmCallCount.get(),
