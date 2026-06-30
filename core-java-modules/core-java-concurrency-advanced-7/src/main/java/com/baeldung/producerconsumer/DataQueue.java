@@ -33,16 +33,16 @@ public class DataQueue {
         }
     }
 
-    public void add(Message message) {
-        queue.add(message);
-        notifyIsNotEmpty();
-    }
+    public synchronized void add(Message message) {
+    queue.add(message);
+    notifyIsNotEmpty();
+}
 
-    public Message poll() {
-        Message mess = queue.poll();
-        notifyIsNotFull();
-        return mess;
-    }
+    public synchronized Message poll() {
+    Message mess = queue.poll();
+    notifyIsNotFull();
+    return mess;
+}
 
     public Integer getSize() {
         return queue.size();
