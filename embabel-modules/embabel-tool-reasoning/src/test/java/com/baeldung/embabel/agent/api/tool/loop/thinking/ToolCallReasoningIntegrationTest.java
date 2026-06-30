@@ -28,6 +28,7 @@ import java.lang.reflect.Method;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -121,11 +122,9 @@ class ToolCallReasoningIntegrationTest {
      */
     static class ParkingTooling {
 
-        private final Random random = new Random();
-
         @LlmTool(description = "Find free street parking. Uncertain and may take time.")
         public String findStreetParking(String location, int maxMinutes) {
-            boolean found = random.nextDouble() < 0.3; // low probability
+            boolean found = ThreadLocalRandom.current().nextDouble() < 0.3; // low probability
             if (found) {
                 return "Street parking found near " + location + " (free)";
             }
@@ -135,7 +134,7 @@ class ToolCallReasoningIntegrationTest {
         @LlmTool(description = "Find metered parking. Moderate cost and moderate availability. " +
             "May have time limits.")
         public String findMeterParking(String location, int maxMinutes) {
-            boolean found = random.nextDouble() < 0.6; // medium probability
+            boolean found = ThreadLocalRandom.current().nextDouble() < 0.6; // medium probability
             if (found) {
                 return "Metered parking found near " + location + " ($5/hour, 2-hour limit)";
             }
@@ -164,8 +163,7 @@ class ToolCallReasoningIntegrationTest {
         var callbackTracker = new CallbackTracker();
 
         var systemMessageTransformer = new SystemMessageTransformer(
-"You are a helpful decision assistant. Be concise and practical.",
-            """
+            "You are a helpful decision assistant. Be concise and practical.",            """
             CRITICAL WORKFLOW - Two-phase decision process:
     
             === PHASE 1: Tool Selection (First Response) ===
@@ -207,29 +205,28 @@ class ToolCallReasoningIntegrationTest {
         );
         String prompt =
             """
-              Scenario:
-              An advisor is driving to a client meeting in Midtown Manhattan.
+            Scenario:
+            An advisor is driving to a client meeting in Midtown Manhattan.
             
-              Constraints:
-              - 30 minutes remain before the meeting starts
-              - arriving late is not acceptable
-              - the meeting is expected to last about 3 hours
+            Constraints:
+            - 30 minutes remain before the meeting starts
+            - arriving late is not acceptable
+            - the meeting is expected to last about 3 hours
             
-              Parking options:
-              - Street parking: free, but uncertain
-              - Metered parking: $5 per hour, typically limited to 2 hours
-              - Garage parking: $30 per hour, guaranteed availability
+            Parking options:
+            - Street parking: free, but uncertain
+            - Metered parking: $5 per hour, typically limited to 2 hours
+            - Garage parking: $30 per hour, guaranteed availability
             
-              Important decision factors:
-              - available time before the meeting
-              - risk of arriving late
-              - trade-offs between street, metered, and garage parking
+            Important decision factors:
+            - available time before the meeting
+            - risk of arriving late
+            - trade-offs between street, metered, and garage parking
             
-              Recommend the best parking option.
+            Recommend the best parking option.
             
-              Available tools: %s
+            Available tools: %s
             """.formatted(String.join(", ", extractToolNames()));
-
         long start = System.currentTimeMillis();
         ThinkingResponse<ParkingRecommendation> result = ai.withDefaultLlm()
             .withToolObject(tools)
@@ -244,19 +241,18 @@ class ToolCallReasoningIntegrationTest {
             .map(Object::toString)
             .collect(Collectors.joining("\n  "));
         logger.info("""
-                
-                ========== RESULT ({} ms) ==========
-                Recommended: {}
-                Reasoning:
-                  {}
-                
-                Callback stats:
-                  beforeLlmCall: {}
-                  afterLlmCall: {}
-                  afterToolResult: {}
-                
-                """,
-            elapsed,
+            
+            ========== RESULT ({} ms) ==========
+            Recommended: {}
+            Reasoning:
+              {}
+            
+            Callback stats:
+              beforeLlmCall: {}
+              afterLlmCall: {}
+              afterToolResult: {}
+            
+            """,            elapsed,
             result.getResult(),
             formattedThinking,
             callbackTracker.beforeLlmCallCount.get(),
@@ -301,12 +297,12 @@ class ToolCallReasoningIntegrationTest {
             .distinct()
             .toList();
         logger.info("""
-                === TOOL CALL PATTERN ANALYSIS ===
-                Total LLM calls: {}
-                Unique tools: {}
-                Total invocations: {}
-                Tool result callbacks: {}
-                Iterations with tool calls: {}""",
+            === TOOL CALL PATTERN ANALYSIS ===
+            Total LLM calls: {}
+            Unique tools: {}
+            Total invocations: {}
+            Tool result callbacks: {}
+            Iterations with tool calls: {}""",
             totalLlmCalls,
             uniqueTools,
             totalToolsInvoked,

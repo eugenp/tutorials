@@ -19,25 +19,12 @@
     </properties>
 
     <dependencies>
-
-        <!-- Embabel Agent API -->
-        <dependency>
-            <groupId>com.embabel.agent</groupId>
-            <artifactId>embabel-agent-api</artifactId>
-            <version>${embabel-agent.version}</version>
-        </dependency>
-        <!-- Embabel Agent Starter -->
-        <dependency>
-            <groupId>com.embabel.agent</groupId>
-            <artifactId>embabel-agent-starter-shell</artifactId>
-            <version>${embabel-agent.version}</version>
-        </dependency>
+        <!-- Embabel Agent Open AI Starter -->
         <dependency>
             <groupId>com.embabel.agent</groupId>
             <artifactId>embabel-agent-starter-openai</artifactId>
             <version>${embabel-agent.version}</version>
         </dependency>
-
         <!-- Embabel Agent Test Support -->
         <dependency>
             <groupId>com.embabel.agent</groupId>
