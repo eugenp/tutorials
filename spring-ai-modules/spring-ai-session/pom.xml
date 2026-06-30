@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <artifactId>spring-ai-session</artifactId>
+   <version>0.0.1</version>
+   <packaging>jar</packaging>
+   <name>spring-ai-session</name>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-4</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-4</relativePath>
+    </parent>
+
+   <dependencyManagement>
+       <dependencies>
+           <dependency>
+               <groupId>org.springframework.ai</groupId>
+               <artifactId>spring-ai-bom</artifactId>
+               <version>${spring-ai.version}</version>
+               <type>pom</type>
+               <scope>import</scope>
+           </dependency>
+           <dependency>
+               <groupId>org.springaicommunity</groupId>
+               <artifactId>spring-ai-session-bom</artifactId>
+               <version>${spring-ai-session.version}</version>
+               <type>pom</type>
+               <scope>import</scope>
+           </dependency>
+       </dependencies>
+   </dependencyManagement>
+
+   <dependencies>
+       <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-starter-model-google-genai</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.springaicommunity</groupId>
+           <artifactId>spring-ai-session-management</artifactId>
+       </dependency>
+
+       <!-- Test dependencies -->
+       <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-test</artifactId>
+           <scope>test</scope>
+       </dependency>
+       <dependency>
+           <groupId>org.junit.platform</groupId>
+           <artifactId>junit-platform-launcher</artifactId>
+           <scope>test</scope>
+       </dependency>
+   </dependencies>
+
+   <build>
+       <plugins>
+           <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-compiler-plugin</artifactId>
+               <configuration>
+                   <release>21</release>
+               </configuration>
+           </plugin>
+       </plugins>
+   </build>
+
+   <properties>
+       <spring-boot.version>4.0.7</spring-boot.version>
+       <spring-ai.version>2.0.0</spring-ai.version>
+       <spring-ai-session.version>0.5.0</spring-ai-session.version>
+       <junit-jupiter.version>6.0.3</junit-jupiter.version>
+       <junit-platform.version>6.0.3</junit-platform.version>
+       <logback.version>1.5.34</logback.version>
+   </properties>
+
+    <repositories>
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+    </repositories>
+
+</project>
