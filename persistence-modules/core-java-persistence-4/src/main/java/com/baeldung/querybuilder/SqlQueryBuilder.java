@@ -27,24 +27,24 @@ public class SqlQueryBuilder {
     }
 
 
-    public String buildStudentQueryUsingStringConcatenation(
-        String enrollmentDate,
-        String birthDate) {
+    public String buildStudentQueryUsingStringBuilder(
+            String enrollmentDate,
+            String birthDate) {
 
-    StringBuilder sb =
-            new StringBuilder(
-                    "SELECT id, name FROM Student");
+        StringBuilder sb =
+                new StringBuilder(
+                        "SELECT id, name FROM Student");
 
-    if (enrollmentDate != null) {
-        sb.append(" WHERE enrollment_date = ?");
+        if (enrollmentDate != null) {
+            sb.append(" WHERE enrollment_date = ?");
+        }
+
+        if (birthDate != null) {
+            sb.append(" AND birth_date = ?");
+        }
+
+        return sb.toString();
     }
-
-    if (birthDate != null) {
-        sb.append(" AND birth_date = ?");
-    }
-
-    return sb.toString();
-}
 
     public PreparedStatement createPreparedStatement(
             Connection connection,

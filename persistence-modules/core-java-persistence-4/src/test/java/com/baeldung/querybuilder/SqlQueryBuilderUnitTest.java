@@ -11,10 +11,10 @@ class SqlQueryBuilderUnitTest {
 
     
     @Test
-    void givenOnlyBirthDate_whenUsingStringConcatenation_thenGenerateInvalidSql() {
+    void givenOnlyBirthDate_whenUsingStringBuilder_thenGenerateInvalidSql() {
 
         String query =
-                queryBuilder.buildStudentQueryUsingStringConcatenation(
+                queryBuilder.buildStudentQueryUsingStringBuilder(
                     null,"2000-01-01");
 
         assertEquals(
