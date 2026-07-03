@@ -26,11 +26,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <bouncycastle.version>1.76</bouncycastle.version>
-        <cryptacular.version>1.2.6</cryptacular.version>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -56,5 +51,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <bouncycastle.version>1.76</bouncycastle.version>
+        <cryptacular.version>1.2.6</cryptacular.version>
+    </properties>
 
 </project>
