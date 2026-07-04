@@ -62,7 +62,7 @@ public class FormView extends HorizontalLayout {
                 .asRequired()
                 .bind(Contact::getName, Contact::setName);
         binder.forField(emailField)
-                .withValidator(email -> email.contains("@"), "Not a valid email address")
+                .withValidator(email -> email.matches("^[\\w.+-]+@[\\w-]+\\.[a-zA-Z]{2,}$"), "Not a valid email address")
                 .bind(Contact::getEmail, Contact::setEmail);
         binder.forField(phoneField)
                 .withValidator(phone -> phone.matches("\\d{3}-\\d{3}-\\d{4}"), "Not a valid phone number")
