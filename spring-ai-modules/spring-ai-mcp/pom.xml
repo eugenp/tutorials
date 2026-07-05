@@ -31,7 +31,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-starter-mcp-server-webmvc</artifactId>
+            <artifactId>spring-ai-starter-mcp-server</artifactId>
         </dependency>
 
         <!-- Test dependencies -->
@@ -52,7 +52,7 @@
         <spring-boot.version>4.0.0</spring-boot.version>
         <logback.version>1.5.18</logback.version>
         <junit-jupiter.version>6.0.1</junit-jupiter.version>
-        <spring-ai.version>2.0.0-M6</spring-ai.version>
+        <spring-ai.version>2.0.0</spring-ai.version>
         <jackson-bom.version>3.1.2</jackson-bom.version>
         <jackson-annotations.version>2.21</jackson-annotations.version>
     </properties>
@@ -60,9 +60,6 @@
     <profiles>
         <profile>
             <id>mcp-server</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
                 <spring.boot.mainclass>com.baeldung.springai.mcp.server.ServerApplication</spring.boot.mainclass>
             </properties>
@@ -75,6 +72,9 @@
         </profile>
         <profile>
             <id>mcp-ui</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
                 <spring.boot.mainclass>com.baeldung.springai.mcp.ui.McpUiApplication</spring.boot.mainclass>
             </properties>
