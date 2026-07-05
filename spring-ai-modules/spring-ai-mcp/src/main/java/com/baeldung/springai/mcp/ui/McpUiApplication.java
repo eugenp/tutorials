@@ -27,6 +27,6 @@ class McpUiApplication {
 	    mvn -q -DskipTests package
 	    npx @modelcontextprotocol/inspector java -jar target/spring-ai-mcp-0.0.1.jar
 
-  		claude mcp add-json mcp-ui '{"command":"java","args":["-jar","D:/repos/tutorials/spring-ai-modules/spring-ai-mcp/target/spring-ai-mcp-0.0.1.jar"]}'
+  		claude mcp add-json sport-spinner '{"command":"java","args":["-jar","D:/repos/tutorials/spring-ai-modules/spring-ai-mcp/target/spring-ai-mcp-0.0.1.jar"]}'
 	*/
 }
