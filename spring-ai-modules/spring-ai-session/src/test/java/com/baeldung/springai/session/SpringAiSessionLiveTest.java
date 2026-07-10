@@ -6,14 +6,17 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
+import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.MessageType;
 import org.springframework.ai.chat.messages.UserMessage;
+import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.session.CreateSessionRequest;
 import org.springframework.ai.session.Session;
 import org.springframework.ai.session.SessionService;
 import org.springframework.ai.session.compaction.CompactionResult;
+import org.springframework.ai.session.compaction.RecursiveSummarizationCompactionStrategy;
 import org.springframework.ai.session.compaction.SlidingWindowCompactionStrategy;
 import org.springframework.ai.session.compaction.TurnCountTrigger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +31,9 @@ class SpringAiSessionLiveTest {
 
     @Autowired
     private ChatService chatService;
+
+    @Autowired
+    private ChatModel chatModel;
 
     @Test
     void givenSession_whenAppendingMessages_thenStoredInOrder() {
@@ -72,6 +78,27 @@ class SpringAiSessionLiveTest {
 
         assertThat(response).containsIgnoringCase("Yadier");
         assertThat(sessionService.getMessages("session-abc")).hasSize(4);
+    }
+
+    @Test
+    void givenLongConversation_whenSummarizing_thenOlderEventsAreReplacedBySummary() {
+        Session session = sessionService.create(CreateSessionRequest.builder()
+            .userId("alice")
+            .build());
+        for (int turn = 1; turn <= 4; turn++) {
+            sessionService.appendMessage(session.id(), new UserMessage("Question " + turn));
+            sessionService.appendMessage(session.id(), new AssistantMessage("Answer " + turn));
+        }
+
+        ChatClient chatClient = ChatClient.builder(chatModel).build();
+        CompactionResult result = sessionService.compact(session.id(),
+            new TurnCountTrigger(2),
+            RecursiveSummarizationCompactionStrategy.builder(chatClient)
+                .maxEventsToKeep(4)
+                .build());
+
+        assertThat(result.eventsRemoved()).isPositive();
+        assertThat(result.compactedEvents()).anyMatch(e -> e.isSynthetic());
     }
 
 }
