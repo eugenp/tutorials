@@ -14,6 +14,7 @@ import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.session.CreateSessionRequest;
 import org.springframework.ai.session.Session;
+import org.springframework.ai.session.SessionEvent;
 import org.springframework.ai.session.SessionService;
 import org.springframework.ai.session.compaction.CompactionResult;
 import org.springframework.ai.session.compaction.RecursiveSummarizationCompactionStrategy;
@@ -97,8 +98,13 @@ class SpringAiSessionLiveTest {
                 .maxEventsToKeep(4)
                 .build());
 
+        SessionEvent summary = result.compactedEvents().stream()
+            .filter(SessionEvent::isSynthetic)
+            .findFirst()
+            .orElseThrow();
+
         assertThat(result.eventsRemoved()).isPositive();
-        assertThat(result.compactedEvents()).anyMatch(e -> e.isSynthetic());
+        assertThat(summary.getMessage().getText()).isNotBlank();
     }
 
 }
