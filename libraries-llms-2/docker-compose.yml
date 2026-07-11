@@ -11,5 +11,4 @@ services:
       - DOCLING_PORT=5001
     volumes:
       - ./data/docling:/data
-      - ./config/docling:/app/config:ro
     restart: unless-stopped

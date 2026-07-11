@@ -1,8 +1,10 @@
 package com.baeldung.camellangchain4jdocling;
 
+import org.apache.camel.main.Main;
+
 import dev.langchain4j.model.openai.OpenAiChatModel;
 
-public class Main {
+public class CamelDoclingApplication {
 
     public static void main(String[] args) throws Exception {
         OpenAiChatModel model = OpenAiChatModel.builder()
@@ -11,10 +13,10 @@ public class Main {
             .modelName("gpt-4o-mini")
             .build();
 
-        org.apache.camel.main.Main main = new org.apache.camel.main.Main();
+        Main main = new Main();
+        main.bind("chatModel", model);
         main.configure()
             .addRoutesBuilder(new QuestionAndAnswerRoute());
-        main.bind("chatModel", model);
 
         main.run(args);
 

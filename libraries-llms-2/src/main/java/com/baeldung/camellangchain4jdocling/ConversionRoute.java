@@ -3,7 +3,7 @@ package com.baeldung.camellangchain4jdocling;
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 
-class CamelRouteBuilder extends RouteBuilder {
+class ConversionRoute extends RouteBuilder {
 
     @Override
     public void configure() {
