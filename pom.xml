@@ -583,6 +583,7 @@
                 <java.version>17</java.version>
                 <maven.compiler.source>17</maven.compiler.source>
                 <maven.compiler.target>17</maven.compiler.target>
+				<maven.compiler.release>17</maven.compiler.release>
             </properties>
 
         </profile>
@@ -655,12 +656,14 @@
                 <module>deeplearning4j</module>
                 <module>di-modules</module>
                 <module>disruptor</module>
+                <module>djl</module>
                 <module>docker-modules</module>
                 <module>drools</module>
                 <module>embabel-modules</module>
                 <module>feign</module>
                 <module>gcp-firebase</module>
                 <module>geotools</module>
+                <module>google-adk</module>
                 <module>google-auto-project</module>
                 <module>google-cloud</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
@@ -717,10 +720,12 @@
                 <module>libraries-data-io-2</module>
                 <module>libraries-data-mariadb4j</module>
                 <module>libraries-files</module>
+                <module>libraries-formatting</module>
                 <module>libraries-http</module>
 		        <module>libraries-http-2</module>
 	            <module>libraries-http-3</module>
                 <module>libraries-io</module>
+				<module>libraries-email</module>
                 <module>libraries-llms</module>
                 <module>libraries-llms-2</module>
                 <module>libraries-open-telemetry</module>
@@ -749,8 +754,10 @@
                 <module>mustache</module>
                 <module>mybatis</module>
                 <module>mybatis-plus</module>
+                <module>mybatis-flex</module>
                 <module>netflix-modules</module>
                 <module>optaplanner</module>
+                <module>ojp</module>
                 <module>orika</module>
                 <module>osgi</module>
                 <module>patterns-modules</module>
@@ -914,7 +921,7 @@
 
             <modules>
                 <module>core-java-modules/core-java-23</module>
-                <module>workflows/dapr-workflows</module>
+                <module>workflows</module>
             </modules>
 
             <properties>
@@ -1062,6 +1069,7 @@
                 <java.version>17</java.version>
                 <maven.compiler.source>17</maven.compiler.source>
                 <maven.compiler.target>17</maven.compiler.target>
+				<maven.compiler.release>17</maven.compiler.release>
             </properties>
 
         </profile>
@@ -1103,6 +1111,7 @@
                 <module>apache-httpclient4</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
+                <module>apache-kafka-4</module>
                 <module>apache-libraries</module>
                 <module>apache-libraries-2</module>
                 <module>apache-libraries-3</module>
@@ -1126,6 +1135,7 @@
                 <module>data-structures-2</module>
                 <module>deeplearning4j</module>
                 <module>di-modules</module>
+                <module>djl</module>
                 <module>disruptor</module>
                 <module>docker-modules</module>
                 <module>drools</module>
@@ -1133,6 +1143,7 @@
                 <module>feign</module>
                 <module>gcp-firebase</module>
                 <module>geotools</module>
+                <module>google-adk</module>
                 <module>google-auto-project</module>
                 <module>google-cloud</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
@@ -1189,10 +1200,12 @@
                 <module>libraries-data-io-2</module>
                 <module>libraries-data-mariadb4j</module>
                 <module>libraries-files</module>
+                <module>libraries-formatting</module>
                 <module>libraries-http</module>
                 <module>libraries-http-2</module>
                 <module>libraries-http-3</module>
                 <module>libraries-io</module>
+				<module>libraries-email</module>
                 <module>libraries-llms</module>
                 <module>libraries-llms-2</module>
                 <module>libraries-open-telemetry</module>
@@ -1223,6 +1236,7 @@
                 <module>mybatis-plus</module>
                 <module>netflix-modules</module>
                 <module>optaplanner</module>
+                <module>ojp</module>
                 <module>orika</module>
                 <module>osgi</module>
                 <module>patterns-modules</module>
@@ -1376,7 +1390,7 @@
 
             <modules>
                 <module>core-java-modules/core-java-23</module>
-                <module>workflows/dapr-workflows</module>
+                <module>workflows</module>
             </modules>
 
             <properties>
@@ -1489,6 +1503,7 @@
 
             <modules>
                 <module>apache-kafka</module>
+                <module>apache-kafka-4</module>
                 <module>apache-libraries</module>
                 <module>apache-spark</module> <!-- failing after upgrading to jdk17 -->
                 <module>atomix</module>
@@ -1557,6 +1572,7 @@
                 <module>clojure-modules</module> <!-- Not a maven project -->
                 <module>ethereum</module> <!-- JAVA-6001 -->
                 <module>gradle-modules</module> <!-- Not a maven project -->
+                <module>gradle-modules/gradle-parallel-testing</module> <!-- Not a maven project -->
                 <module>guest</module> <!-- not to be built as its for guest articles  -->
                 <module>pants</module> <!-- Not a maven project -->
                 <module>spring-cloud-cli</module> <!-- Not a maven project -->
@@ -1625,6 +1641,7 @@
                 <module>clojure-modules</module> <!-- Not a maven project -->
                 <module>ethereum</module> <!-- JAVA-6001 -->
                 <module>gradle-modules</module> <!-- Not a maven project -->
+                <module>gradle-modules/gradle-parallel-testing</module> <!-- Not a maven project -->
                 <module>guest</module> <!-- not to be built as its for guest articles  -->
                 <module>pants</module> <!-- Not a maven project -->
                 <module>spring-cloud-cli</module> <!-- Not a maven project -->
@@ -1666,6 +1683,7 @@
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
                 <module>testing-modules/selenium-3/scrollelementintoview</module>
                 <module>testing-modules/selenium-3/selenium-json-demo</module>
+                <module>codenameone</module>
             </modules>
         </profile>
 

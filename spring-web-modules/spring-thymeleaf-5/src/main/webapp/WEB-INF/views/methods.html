@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+    <title>Calling an Object’s Method From Thymeleaf</title>
+</head>
+<body>
+<p th:text="'getName = ' + ${methodsModel.name}"></p>
+<p th:text="'buildUppercaseName = ' + ${methodsModel.buildUppercaseName()}"></p>
+<p th:text="'getNameSubstring = ' + ${methodsModel.getNameSubstring(3)}"></p>
+
+<p th:text="'getNow = ' + ${methodsModel.now}"></p>
+<p th:text="'defaultDateFormat = ' + ${T(com.baeldung.thymeleaf.methods.DateFormatter).defaultDateFormat()}"></p>
+<p th:text="'formatNow = ' + ${T(com.baeldung.thymeleaf.methods.DateFormatter).format(methodsModel.now)}"></p>
+
+<p th:text="'methodsBean = ' + ${@methodsBean.hello()}"></p>
+</body>
+</html>

@@ -68,17 +68,17 @@ public class JsoupParserIntegrationTest {
 
     @Test
     public void examplesTraversing() throws IOException {
-        Elements articles = doc.select("article");
+        Elements sections = doc.select("section");
 
-        Element firstArticle = articles.first();
-        Element lastSection = articles.last();
-        Element secondSection = articles.get(2);
-        Elements allParents = firstArticle.parents();
-        Element parent = firstArticle.parent();
-        Elements children = firstArticle.children();
-        Elements siblings = firstArticle.siblingElements();
+        Element firstSection = sections.first();
+        Element lastSection = sections.last();
+        Element secondSection = sections.get(2);
+        Elements allParents = firstSection.parents();
+        Element parent = firstSection.parent();
+        Elements children = firstSection.children();
+        Elements siblings = firstSection.siblingElements();
 
-        articles.forEach(el -> log.debug("article: {}", el));
+        sections.forEach(el -> log.debug("section: {}", el));
     }
 
     @Test

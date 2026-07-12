@@ -91,7 +91,7 @@
     </dependencies>
 
     <properties>
-        <HikariCP.version>5.1.0</HikariCP.version>
+        <HikariCP.version>7.0.2</HikariCP.version>
         <debezium.version>2.5.0.Final</debezium.version>
         <testcontainers-version>1.19.3</testcontainers-version>
         <jakarta.xml.bind.version>4.0.1</jakarta.xml.bind.version>

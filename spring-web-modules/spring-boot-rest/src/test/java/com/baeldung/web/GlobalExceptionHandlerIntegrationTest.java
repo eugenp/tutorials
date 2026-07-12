@@ -4,14 +4,12 @@ import com.baeldung.persistence.service.IFooService;
 import com.baeldung.web.controller.FooController;
 import com.baeldung.web.exception.CustomException3;
 import com.baeldung.web.exception.CustomException4;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.Mockito.when;
@@ -24,7 +22,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  *  We'll start only the web layer.
  *
  */
-@RunWith(SpringRunner.class)
 @WebMvcTest(FooController.class)
 public class GlobalExceptionHandlerIntegrationTest {
 

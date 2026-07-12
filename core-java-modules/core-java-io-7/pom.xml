@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-io-7</artifactId>
-    <name>core-java-io-7</name>
     <packaging>jar</packaging>
+    <name>core-java-io-7</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -28,6 +28,11 @@
             <groupId>de.vandermeer</groupId>
             <artifactId>asciitable</artifactId>
             <version>${asciitable.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.activation</groupId>
+            <artifactId>jakarta.activation</artifactId>
+            <version>${jakarta.activation.version}</version>
         </dependency>
     </dependencies>
 
@@ -53,6 +58,7 @@
     <properties>
         <commons-csv.version>1.9.0</commons-csv.version>
         <asciitable.version>0.3.2</asciitable.version>
+        <jakarta.activation.version>1.2.2</jakarta.activation.version>
     </properties>
 
 </project>

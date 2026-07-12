@@ -1,6 +1,5 @@
 package com.baeldung.openid.oidc.jwtauthorities.config;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Collection;
@@ -15,7 +14,7 @@ import org.springframework.security.oauth2.jwt.Jwt;
 class MappingJwtGrantedAuthoritiesConverterUnitTest {
 
     @Test
-    void testGivenConverterWithScopeMap_whenConvert_thenResultHasMappedAuthorities() {
+    void givenConverterWithScopeMap_whenConvert_thenResultHasMappedAuthorities() {
         Jwt jwt = Jwt.withTokenValue("NOTUSED")
           .header("typ", "JWT")
           .subject("user")
@@ -27,12 +26,11 @@ class MappingJwtGrantedAuthoritiesConverterUnitTest {
         MappingJwtGrantedAuthoritiesConverter converter = new MappingJwtGrantedAuthoritiesConverter(scopeMap);
         Collection<GrantedAuthority> result = converter.convert(jwt);
         
-        assertTrue("Result must contain the authoriry 'SCOPE_profile.read'", 
-         result.contains(new SimpleGrantedAuthority("SCOPE_profile.read")));
+        assertTrue(result.contains(new SimpleGrantedAuthority("SCOPE_profile.read")), "Result must contain the authoriry 'SCOPE_profile.read'");
     }
 
     @Test
-    void testGivenConverterWithCustomScopeClaim_whenConvert_thenResultHasAuthorities() {
+    void givenConverterWithCustomScopeClaim_whenConvert_thenResultHasAuthorities() {
         Jwt jwt = Jwt.withTokenValue("NOTUSED")
           .header("typ", "JWT")
           .subject("user")
@@ -44,12 +42,11 @@ class MappingJwtGrantedAuthoritiesConverterUnitTest {
         converter.setAuthoritiesClaimName("myscope_claim");
         Collection<GrantedAuthority> result = converter.convert(jwt);
         
-        assertTrue("Result must contain the authoriry 'SCOPE_profile'", 
-         result.contains(new SimpleGrantedAuthority("SCOPE_profile")));
+        assertTrue(result.contains(new SimpleGrantedAuthority("SCOPE_profile")), "Result must contain the authoriry 'SCOPE_profile'");
     }
     
     @Test
-    void testGivenTokenWithNonMappedScope_whenConvert_thenResultHasOriginalScope() {
+    void givenTokenWithNonMappedScope_whenConvert_thenResultHasOriginalScope() {
         Jwt jwt = Jwt.withTokenValue("NOTUSED")
           .header("typ", "JWT")
           .subject("user")
@@ -61,13 +58,12 @@ class MappingJwtGrantedAuthoritiesConverterUnitTest {
         MappingJwtGrantedAuthoritiesConverter converter = new MappingJwtGrantedAuthoritiesConverter(scopeMap);
         Collection<GrantedAuthority> result = converter.convert(jwt);
         
-        assertTrue("Result must contain the authority SCOPE_custom", 
-         result.contains(new SimpleGrantedAuthority("SCOPE_custom")));
+        assertTrue(result.contains(new SimpleGrantedAuthority("SCOPE_custom")), "Result must contain the authority SCOPE_custom");
     }
     
 
     @Test
-    void testGivenConverterWithCustomPrefix_whenConvert_thenAllAuthoritiesMustHaveTheCustomPrefix() {
+    void givenConverterWithCustomPrefix_whenConvert_thenAllAuthoritiesMustHaveTheCustomPrefix() {
         Jwt jwt = Jwt.withTokenValue("NOTUSED")
           .header("typ", "JWT")
           .subject("user")
@@ -85,7 +81,7 @@ class MappingJwtGrantedAuthoritiesConverterUnitTest {
           .filter(s -> !s.startsWith("MY_SCOPE"))
           .count();
         
-        assertTrue("All authorities names must start with custom prefix", count == 0 );
+        assertTrue(count == 0, "All authorities names must start with custom prefix");
     }
 
 }

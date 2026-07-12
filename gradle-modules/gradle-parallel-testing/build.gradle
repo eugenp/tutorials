@@ -1,0 +1,20 @@
+plugins {
+    id 'java-library'
+}
+
+test {
+    maxParallelForks = (int) (Runtime.runtime.availableProcessors() / 2 + 1)
+    useJUnitPlatform {
+        includeTags testForGradleTag
+    }
+        forkEvery = 1
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+}
