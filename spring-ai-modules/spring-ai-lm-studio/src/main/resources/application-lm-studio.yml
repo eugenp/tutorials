@@ -8,9 +8,6 @@ spring:
       api-key: dummy
       base-url: http://localhost:1234/v1
       chat:
-        options:
-          model:
-            google/gemma-4-e4b
+        model: google/gemma-4-e4b
       embedding:
-        options:
-          model: text-embedding-embeddinggemma-300m
+        model: text-embedding-nomic-embed-text-v1.5-embedding

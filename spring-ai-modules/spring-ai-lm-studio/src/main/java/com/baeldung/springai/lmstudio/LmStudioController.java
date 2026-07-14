@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/lm-studio")
-@Validated
 public class LmStudioController {
 
     private final ChatService chatService;
