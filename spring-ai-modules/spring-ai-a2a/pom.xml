@@ -45,11 +45,38 @@
         <a2a-client.version>0.3.3.Final</a2a-client.version>
     </properties>
 
+    <profiles>
+        <profile>
+            <id>skills-matcher-server</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.a2a.server.skillsmatcher.Application</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>salary-evaluator-server</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.a2a.server.salaryevaluator.Application</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>job-screening-orchestrator-client</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.a2a.client.orchestrator.jobscreening.Application</spring.boot.mainclass>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>${spring.boot.mainclass}</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>
