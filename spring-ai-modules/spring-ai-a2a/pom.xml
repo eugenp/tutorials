@@ -30,6 +30,11 @@
             <artifactId>spring-ai-a2a-server-autoconfigure</artifactId>
             <version>${spring-ai-a2a-server-config.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.github.a2asdk</groupId>
+            <artifactId>a2a-java-sdk-client</artifactId>
+            <version>${a2a-client.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -37,6 +42,7 @@
         <spring-boot.version>4.0.6</spring-boot.version>
         <spring-ai.version>2.0.0</spring-ai.version>
         <spring-ai-a2a-server-config.version>0.3.0</spring-ai-a2a-server-config.version>
+        <a2a-client.version>0.3.3.Final</a2a-client.version>
     </properties>
 
     <build>
