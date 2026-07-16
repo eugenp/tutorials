@@ -32,6 +32,7 @@
         <module>spring-ai-multiple-llms</module>
         <module>spring-ai-recursive-advisors</module>
         <module>spring-ai-semantic-caching</module>
+        <module>spring-ai-session</module>
         <module>spring-ai-text-to-sql</module>
         <module>spring-ai-vector-stores</module>
         <module>spring-ai-mcp-annotations</module>
