@@ -39,11 +39,13 @@ class SpringAiSessionLiveTest {
     @Test
     void givenSession_whenAppendingMessages_thenStoredInOrder() {
         Session session = sessionService.create(CreateSessionRequest.builder()
-            .userId("alice")
-            .build());
+          .userId("alice")
+          .build());
 
-        sessionService.appendMessage(session.id(), new UserMessage("What is Spring AI?"));
-        sessionService.appendMessage(session.id(), new AssistantMessage("It's an application framework for AI engineering."));
+        sessionService.appendMessage(session.id(),
+          new UserMessage("What is Spring AI?"));
+        sessionService.appendMessage(session.id(),
+          new AssistantMessage("It's an application framework for AI engineering."));
 
         List<Message> messages = sessionService.getMessages(session.id());
         assertThat(messages).hasSize(2);
@@ -54,21 +56,24 @@ class SpringAiSessionLiveTest {
     @Test
     void givenMultiTurnConversation_whenCompacting_thenOlderEventsAreArchived() {
         Session session = sessionService.create(CreateSessionRequest.builder()
-            .userId("alice")
-            .build());
+          .userId("alice")
+          .build());
         for (int turn = 1; turn <= 4; turn++) {
-            sessionService.appendMessage(session.id(), new UserMessage("Question " + turn));
-            sessionService.appendMessage(session.id(), new AssistantMessage("Answer " + turn));
+            sessionService.appendMessage(session.id(),
+              new UserMessage("Question " + turn));
+            sessionService.appendMessage(session.id(),
+              new AssistantMessage("Answer " + turn));
         }
 
         CompactionResult result = sessionService.compact(session.id(),
-            new TurnCountTrigger(2),
-            SlidingWindowCompactionStrategy.builder()
-                .maxEvents(4)
-                .build());
+          new TurnCountTrigger(2),
+          SlidingWindowCompactionStrategy.builder()
+            .maxEvents(4)
+            .build());
 
         assertThat(result.eventsRemoved()).isPositive();
-        assertThat(sessionService.getEvents(session.id())).hasSameSizeAs(result.compactedEvents());
+        assertThat(sessionService.getEvents(session.id()))
+          .hasSameSizeAs(result.compactedEvents());
     }
 
     @Test
@@ -84,24 +89,26 @@ class SpringAiSessionLiveTest {
     @Test
     void givenLongConversation_whenSummarizing_thenOlderEventsAreReplacedBySummary() {
         Session session = sessionService.create(CreateSessionRequest.builder()
-            .userId("alice")
-            .build());
+          .userId("alice")
+          .build());
         for (int turn = 1; turn <= 4; turn++) {
-            sessionService.appendMessage(session.id(), new UserMessage("Question " + turn));
-            sessionService.appendMessage(session.id(), new AssistantMessage("Answer " + turn));
+            sessionService.appendMessage(session.id(),
+              new UserMessage("Question " + turn));
+            sessionService.appendMessage(session.id(),
+              new AssistantMessage("Answer " + turn));
         }
 
         ChatClient chatClient = ChatClient.builder(chatModel).build();
         CompactionResult result = sessionService.compact(session.id(),
-            new TurnCountTrigger(2),
-            RecursiveSummarizationCompactionStrategy.builder(chatClient)
-                .maxEventsToKeep(4)
-                .build());
+          new TurnCountTrigger(2),
+          RecursiveSummarizationCompactionStrategy.builder(chatClient)
+            .maxEventsToKeep(4)
+            .build());
 
         SessionEvent summary = result.compactedEvents().stream()
-            .filter(SessionEvent::isSynthetic)
-            .findFirst()
-            .orElseThrow();
+          .filter(SessionEvent::isSynthetic)
+          .findFirst()
+          .orElseThrow();
 
         assertThat(result.eventsRemoved()).isPositive();
         assertThat(summary.getMessage().getText()).isNotBlank();
