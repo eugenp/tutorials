@@ -52,11 +52,11 @@
             <version>${spring-boot.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- dependencies for apache camel -->
         <dependency>
             <groupId>org.apache.camel</groupId>
-            <artifactId>camel-core</artifactId>
+            <artifactId>camel-openai</artifactId>
             <version>${apache-camel.version}</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
@@ -65,12 +65,12 @@
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
-            <artifactId>camel-docling</artifactId>
+            <artifactId>camel-core</artifactId>
             <version>${apache-camel.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
-            <artifactId>camel-langchain4j-chat</artifactId>
+            <artifactId>camel-jackson</artifactId>
             <version>${apache-camel.version}</version>
         </dependency>
         <dependency>
