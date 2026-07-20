@@ -16,7 +16,7 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <embabel-agent.version>1.0.0-SNAPSHOT</embabel-agent.version>
+        <embabel-agent.version>1.0.0</embabel-agent.version>
     </properties>
 
     <dependencies>
