@@ -1,0 +1,55 @@
+#!/bin/bash
+
+PROJECT_DIR="patterns-modules/vertical-slice-architecture"
+
+BRANCH=$(git branch --show-current)
+SAFE_BRANCH=$(echo "$BRANCH" | tr '/' '-')
+DOCS_FILE="${PROJECT_DIR}/docs/${SAFE_BRANCH}.md"
+
+STAGED_FILES=$(git diff --cached --name-only | grep "^${PROJECT_DIR}/")
+[ -z "$STAGED_FILES" ] && exit 0
+
+DIFF_STAT=$(git diff --cached --stat -- "${PROJECT_DIR}")
+DIFF=$(git diff --cached -- "${PROJECT_DIR}" | head -c 4000)
+
+EXISTING=""
+[ -f "$DOCS_FILE" ] && EXISTING=$(cat "$DOCS_FILE")
+
+PROMPT="Generate or update a brief Markdown documentation file for a git commit. Output ONLY valid Markdown, no preamble.
+
+Branch: ${BRANCH}
+
+Modified files:
+${STAGED_FILES}
+
+Diff summary:
+${DIFF_STAT}
+
+Code changes (may be truncated):
+${DIFF}
+
+Existing doc content (update and extend this if present, do not repeat unchanged sections):
+${EXISTING}
+
+Use exactly this structure:
+
+## Summary
+2-3 sentences describing what changed and why.
+
+## Modified Components
+- bullet list of changed files or classes
+
+## Component Diagram
+\`\`\`mermaid
+(a simple diagram — graph TD or classDiagram — showing the core components touched by this commit and their relationships)
+\`\`\`"
+
+mkdir -p "${PROJECT_DIR}/docs"
+
+if ! claude --model claude-haiku-4-5-20251001 -p "$PROMPT" --output-format text > "$DOCS_FILE" 2>/dev/null; then
+  echo "[pre-commit] doc generation skipped (claude unavailable or failed)"
+  exit 0
+fi
+
+git add "$DOCS_FILE"
+echo "[pre-commit] updated ${DOCS_FILE}"
