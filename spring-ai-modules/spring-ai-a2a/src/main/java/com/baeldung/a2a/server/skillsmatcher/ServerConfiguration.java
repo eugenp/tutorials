@@ -17,20 +17,30 @@ class ServerConfiguration {
 
     @Bean
     AgentExecutor agentExecutor(ChatClient chatClient) {
-        return new DefaultAgentExecutor(chatClient, (chat, ctx) -> {
-            String userMessage = DefaultAgentExecutor.extractTextFromMessage(ctx.getMessage());
-            return chat.prompt().user(userMessage).call().content();
+        return new DefaultAgentExecutor(chatClient, (client, requestContext) -> {
+            String userMessage = DefaultAgentExecutor.extractTextFromMessage(requestContext.getMessage());
+            return client
+                .prompt()
+                .user(userMessage)
+                .call()
+                .content();
         });
     }
 
     @Bean
-    AgentCard agentCard(@Value("${server.host}") String host, @Value("${server.port}") int port) {
+    AgentCard agentCard(
+        @Value("${server.host}") String host,
+        @Value("${server.port}") int port
+    ) {
         return new AgentCard.Builder()
             .name("Skills Matcher Agent")
             .description("Evaluates how well a candidate's skills match a job's required skills")
-            .url("http://" + host + ":" + port + "/a2a/")
+            .url(String.format("http://%s:%d/a2a/", host, port))
             .version("1.0.0")
-            .capabilities(new AgentCapabilities.Builder().streaming(false).build())
+            .capabilities(new AgentCapabilities
+                .Builder()
+                .streaming(false)
+                .build())
             .defaultInputModes(List.of("text"))
             .defaultOutputModes(List.of("text"))
             .skills(List.of(new AgentSkill.Builder()

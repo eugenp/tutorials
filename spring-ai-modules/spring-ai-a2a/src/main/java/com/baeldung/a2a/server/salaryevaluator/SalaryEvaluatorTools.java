@@ -25,21 +25,17 @@ class SalaryEvaluatorTools {
     }
 
     private SalaryRange budgetLookup(String jobTitle) {
-        if (jobTitle.toLowerCase().contains("backend"))
-            return new SalaryRange(80000, 120000);
-        return new SalaryRange(40000, 60000);
+        return new SalaryRange(80000, 120000);
     }
 
     record SalaryRange(
         int min,
         int max
-    ){
-    }
+    ) {}
 
     record SalaryEvaluationResult(
         Verdict verdict
-    ) {
-    }
+    ) {}
 
     enum Verdict {
         WITHIN_BUDGET,

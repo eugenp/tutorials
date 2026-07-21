@@ -17,26 +17,36 @@ class ServerConfiguration {
 
     @Bean
     AgentExecutor agentExecutor(ChatClient chatClient) {
-        return new DefaultAgentExecutor(chatClient, (chat, ctx) -> {
-            String userMessage = DefaultAgentExecutor.extractTextFromMessage(ctx.getMessage());
-            return chat.prompt().user(userMessage).call().content();
+        return new DefaultAgentExecutor(chatClient, (client, requestContext) -> {
+            String userMessage = DefaultAgentExecutor.extractTextFromMessage(requestContext.getMessage());
+            return client
+                .prompt()
+                .user(userMessage)
+                .call()
+                .content();
         });
     }
 
     @Bean
-    AgentCard agentCard(@Value("${server.host}") String host, @Value("${server.port}") int port) {
+    AgentCard agentCard(
+        @Value("${server.host}") String host,
+        @Value("${server.port}") int port
+    ) {
         return new AgentCard.Builder()
             .name("Salary Evaluator Agent")
-            .description("Evaluates whether a candidate's expected salary fits a job's budgeted salary range")
-            .url("http://" + host + ":" + port + "/a2a/")
+            .description("Checks if a candidate's expected salary fits a job title's budget range")
+            .url(String.format("http://%s:%d/a2a/", host, port))
             .version("1.0.0")
-            .capabilities(new AgentCapabilities.Builder().streaming(false).build())
+            .capabilities(new AgentCapabilities
+                .Builder()
+                .streaming(false)
+                .build())
             .defaultInputModes(List.of("text"))
             .defaultOutputModes(List.of("text"))
             .skills(List.of(new AgentSkill.Builder()
                 .id("salary_evaluation")
                 .name("Salary Evaluation")
-                .description("Compares a candidate's expected salary against a job's budgeted range")
+                .description("Compares a candidate's expected salary against a job title's budget range")
                 .tags(List.of("hiring", "recruiting", "compensation"))
                 .build()))
             .protocolVersion("0.3.0")

@@ -29,11 +29,9 @@ class JobScreeningController {
         String requiredSkills,
         String candidateSkills,
         int expectedSalary
-    ) {
-    }
+    ) {}
 
     record ScreeningResponse(
         String verdict
-    ) {
-    }
+    ) {}
 }

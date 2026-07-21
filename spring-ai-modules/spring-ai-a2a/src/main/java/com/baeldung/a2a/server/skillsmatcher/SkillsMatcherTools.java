@@ -52,8 +52,7 @@ class SkillsMatcherTools {
         Verdict verdict,
         Set<String> matchedSkills,
         Set<String> missingSkills
-    ) {
-    }
+    ) {}
 
     enum Verdict {
         STRONG_MATCH,
