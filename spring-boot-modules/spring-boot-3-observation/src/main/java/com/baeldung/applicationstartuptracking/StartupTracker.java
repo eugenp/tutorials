@@ -1,6 +1,7 @@
 package com.baeldung.applicationstartuptracking;
 
-import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.metrics.buffering.BufferingApplicationStartup;
@@ -19,17 +20,20 @@ public class StartupTracker {
         startup = (BufferingApplicationStartup) ((ConfigurableApplicationContext) context).getApplicationStartup();
     }
 
-    public void record() {
+    public List<String> recorded() {
 
-        Instant startTime = startup.getBufferedTimeline().getStartTime();
-        System.out.println(startTime);
+        List<String> recordedEvents = new ArrayList<>();
 
         for(StartupTimeline.TimelineEvent event : startup.getBufferedTimeline().getEvents()) {
-            System.out.println(event.getStartTime() + ": " + event.getStartupStep().getName());
-
             for(StartupStep.Tag tag : event.getStartupStep().getTags()) {
-                System.out.println("  " + tag.getKey() + " " + tag.getValue());
+                recordedEvents.add(
+                    event.getStartupStep().getName() + "  " +
+                        tag.getKey() + " " +
+                        tag.getValue()
+                );
             }
         }
+
+        return recordedEvents;
     }
 }
