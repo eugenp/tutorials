@@ -406,6 +406,7 @@
                 <module>testing-modules/jmeter</module>
                 <module>core-java-modules/core-java-networking-5</module>
                 <module>quarkus-modules/quarkus-hibernate-reactive</module>
+                <module>security-modules/java-ee-8-security-api</module>
             </modules>
 
             <properties>
@@ -510,6 +511,7 @@
                 <module>testing-modules/jmeter</module>
                 <module>core-java-modules/core-java-networking-5</module>
                 <module>quarkus-modules/quarkus-hibernate-reactive</module>
+                <module>security-modules/java-ee-8-security-api</module>
             </modules>
 
             <properties>
