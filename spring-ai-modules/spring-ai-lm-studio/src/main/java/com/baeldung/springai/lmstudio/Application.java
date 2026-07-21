@@ -1,10 +1,11 @@
-package com.baeldung.verticalslices;
+package com.baeldung.springai.lmstudio;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.modulith.Modulith;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@Modulith
-public class Application {
+@SpringBootApplication
+class Application {
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
