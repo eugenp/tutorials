@@ -13,7 +13,7 @@ import com.baeldung.openid.oidc.jwtauthorities.service.AccountService;
 class CustomJwtAuthenticationConverterUnitTest {
 
     @Test
-    void testGivenCustomJwtAuthenticationConverter_whenConvert_thenReturnAccountToken() {
+    void givenCustomJwtAuthenticationConverter_whenConvert_thenReturnAccountToken() {
         
         AccountService accountService = new AccountService();
         MappingJwtGrantedAuthoritiesConverter authoritiesConverter = new MappingJwtGrantedAuthoritiesConverter(new HashMap<>());
@@ -35,7 +35,7 @@ class CustomJwtAuthenticationConverterUnitTest {
     }
 
     @Test
-    void testGivenCustomPrincipalClaimName_whenConvert_thenReturnAccountToken() {
+    void givenCustomPrincipalClaimName_whenConvert_thenReturnAccountToken() {
         
         AccountService accountService = new AccountService();
         MappingJwtGrantedAuthoritiesConverter authoritiesConverter = new MappingJwtGrantedAuthoritiesConverter(new HashMap<>());

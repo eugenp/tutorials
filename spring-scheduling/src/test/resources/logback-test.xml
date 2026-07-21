@@ -1,6 +1,16 @@
 <configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
     <appender name="TEST" class="com.baeldung.springretry.logging.LogAppender"/>
-    <root level="info">
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
         <appender-ref ref="TEST"/>
     </root>
+
+    <logger name="com.b.springretry" level="DEBUG"/>
+
 </configuration>

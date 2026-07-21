@@ -83,6 +83,16 @@
             <artifactId>elasticjob-bootstrap</artifactId>
             <version>${elasticjob.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.casbin</groupId>
+            <artifactId>jcasbin</artifactId>
+            <version>${jcasbin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -128,6 +138,8 @@
         <jte.version>3.2.2</jte.version>
         <hypersistence.version>2.1.4</hypersistence.version>
         <elasticjob.version>3.0.5</elasticjob.version>
+        <jcasbin.version>1.99.0</jcasbin.version>
+        <commons-io.version>2.17.0</commons-io.version>
     </properties>
 
 </project>

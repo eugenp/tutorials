@@ -1,4 +1,4 @@
-Package: simple-cal
+Package: jdeb
 Version: 1.0-SNAPSHOT
 Section: utils
 Priority: optional

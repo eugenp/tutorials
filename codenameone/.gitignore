@@ -1,0 +1,7 @@
+**/target/
+.idea/
+*.iml
+*.bak
+TEST-*.xml
+.DS_Store
+Thumbs.db

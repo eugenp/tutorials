@@ -29,6 +29,16 @@
 
    <dependencies>
        <dependency>
+           <groupId>org.springaicommunity</groupId>
+           <artifactId>tool-search-tool</artifactId>
+           <version>${tool-search-tool.version}</version>
+       </dependency>
+       <dependency>
+           <groupId>org.springaicommunity</groupId>
+           <artifactId>tool-searcher-regex</artifactId>
+           <version>${tool-search-tool.version}</version>
+       </dependency>
+       <dependency>
            <groupId>org.springframework.boot</groupId>
            <artifactId>spring-boot-starter-web</artifactId>
        </dependency>
@@ -53,7 +63,6 @@
            <artifactId>hsqldb</artifactId>
            <scope>runtime</scope>
        </dependency>
-
        <!-- Test dependencies -->
        <dependency>
            <groupId>org.springframework.boot</groupId>
@@ -103,6 +112,7 @@
        <junit-jupiter.version>5.9.0</junit-jupiter.version>
        <spring-boot.version>3.5.0</spring-boot.version>
        <spring-ai.version>1.1.3-SNAPSHOT</spring-ai.version>
+       <tool-search-tool.version>1.0.1</tool-search-tool.version>
    </properties>
 
     <repositories>
@@ -119,6 +129,14 @@
             <id>spring-milestones</id>
             <name>Spring Milestones</name>
             <url>https://repo.spring.io/milestone</url>
+        </repository>
+
+        <repository>
+            <id>central-snapshots</id>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
     </repositories>
 

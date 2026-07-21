@@ -3,8 +3,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-java-templates-jstachio</artifactId>
-    <name>spring-java.templates.jstachio</name>
+    <artifactId>jstachio</artifactId>
+    <name>jstachio</name>
     <packaging>jar</packaging>
     <description>Spring Java Templates Module - JStachio</description>
 
@@ -24,7 +24,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <!-- JStachio -->
         <dependency>
             <groupId>io.jstach</groupId>
@@ -36,7 +35,6 @@
             <artifactId>jstachio-spring-boot-starter-webmvc</artifactId>
             <version>${jstachio.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -45,7 +43,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
@@ -61,7 +58,6 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 
@@ -70,7 +66,6 @@
         <spring-boot.version>3.5.7</spring-boot.version>
         <logback.version>1.5.17</logback.version>
         <java.version>21</java.version>
-
         <jstachio.version>1.3.7</jstachio.version>
     </properties>
 </project>
