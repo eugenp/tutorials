@@ -25,6 +25,8 @@ class JobScreeningController {
     }
 
     record ScreeningRequest(
+        String name,
+        String email,
         String jobTitle,
         String requiredSkills,
         String candidateSkills,
