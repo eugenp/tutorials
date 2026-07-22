@@ -12,9 +12,7 @@ public class ApplicationTest {
     private StartupTracker startupTracker;
 
     @Test
-    void givenTheApplicationStarts_whenRetrieveRecordedEvents_ThenContainsCustumBeans() {
-
-        startupTracker.recorded().stream().forEach(System.out::println);
+    void givenTheApplicationStarts_whenRetrieveRecordedEvents_ThenContainsCustomBeans() {
 
         Assertions.assertThat(startupTracker.recorded()).contains(
             "spring.beans.instantiate  beanName specialService",
