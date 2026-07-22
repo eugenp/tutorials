@@ -720,6 +720,7 @@
                 <module>libraries-data-io-2</module>
                 <module>libraries-data-mariadb4j</module>
                 <module>libraries-files</module>
+                <module>libraries-formatting</module>
                 <module>libraries-http</module>
 		        <module>libraries-http-2</module>
 	            <module>libraries-http-3</module>
@@ -1199,6 +1200,7 @@
                 <module>libraries-data-io-2</module>
                 <module>libraries-data-mariadb4j</module>
                 <module>libraries-files</module>
+                <module>libraries-formatting</module>
                 <module>libraries-http</module>
                 <module>libraries-http-2</module>
                 <module>libraries-http-3</module>
@@ -1681,6 +1683,7 @@
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
                 <module>testing-modules/selenium-3/scrollelementintoview</module>
                 <module>testing-modules/selenium-3/selenium-json-demo</module>
+                <module>codenameone</module>
             </modules>
         </profile>
 
