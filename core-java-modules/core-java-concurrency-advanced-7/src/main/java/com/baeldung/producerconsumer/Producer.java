@@ -5,11 +5,9 @@ import java.util.logging.Logger;
 
 public class Producer implements Runnable {
 
-    private static final Logger log =
-            Logger.getLogger(Producer.class.getCanonicalName());
+    private static final Logger log = Logger.getLogger(Producer.class.getCanonicalName());
 
-    private static final AtomicInteger idSequence =
-            new AtomicInteger(0);
+    private static final AtomicInteger idSequence = new AtomicInteger(0);
 
     private volatile boolean running = false;
 
@@ -37,8 +35,7 @@ public class Producer implements Runnable {
 
                 dataQueue.add(generateMessage());
 
-                log.info("Size of the queue is: "
-                        + dataQueue.getSize());
+                log.info("Size of the queue is: " + dataQueue.getSize());
 
                 ThreadUtil.sleep((long) (Math.random() * 100));
 
@@ -57,15 +54,14 @@ public class Producer implements Runnable {
 
     private Message generateMessage() {
 
-        Message message =
-                new Message(idSequence.incrementAndGet(),
-                        Math.random());
+        Message message = new Message(idSequence.incrementAndGet(),
+            Math.random());
 
         log.info(String.format(
-                "[%s] Generated Message. Id: %d, Data: %f%n",
-                Thread.currentThread().getName(),
-                message.getId(),
-                message.getData()));
+            "[%s] Generated Message. Id: %d, Data: %f%n",
+            Thread.currentThread().getName(),
+            message.getId(),
+            message.getData()));
 
         return message;
     }

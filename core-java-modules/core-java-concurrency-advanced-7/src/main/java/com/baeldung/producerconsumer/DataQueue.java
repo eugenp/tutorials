@@ -13,7 +13,7 @@ public class DataQueue {
     }
 
     public synchronized void add(Message message)
-            throws InterruptedException {
+                                                  throws InterruptedException {
 
         while (queue.size() == maxSize) {
             wait();
@@ -25,7 +25,7 @@ public class DataQueue {
     }
 
     public synchronized Message poll()
-            throws InterruptedException {
+                                       throws InterruptedException {
 
         while (queue.isEmpty()) {
             wait();
