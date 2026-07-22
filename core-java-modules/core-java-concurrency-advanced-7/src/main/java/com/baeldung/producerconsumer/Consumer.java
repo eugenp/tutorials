@@ -4,8 +4,7 @@ import java.util.logging.Logger;
 
 public class Consumer implements Runnable {
 
-    private static final Logger log =
-            Logger.getLogger(Consumer.class.getCanonicalName());
+    private static final Logger log = Logger.getLogger(Consumer.class.getCanonicalName());
 
     private volatile boolean running = false;
 
@@ -55,10 +54,10 @@ public class Consumer implements Runnable {
         if (message != null) {
 
             log.info(String.format(
-                    "[%s] Consuming Message. Id: %d, Data: %f%n",
-                    Thread.currentThread().getName(),
-                    message.getId(),
-                    message.getData()));
+                "[%s] Consuming Message. Id: %d, Data: %f%n",
+                Thread.currentThread().getName(),
+                message.getId(),
+                message.getData()));
         }
     }
 }
