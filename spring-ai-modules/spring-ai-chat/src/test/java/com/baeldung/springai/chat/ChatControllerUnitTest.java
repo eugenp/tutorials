@@ -23,7 +23,7 @@ import org.springframework.test.web.servlet.MockMvc;
     "spring.ai.google.genai.api-key=test-key"
 })
 @AutoConfigureMockMvc
-class ChatControllerIntegrationTest {
+class ChatControllerUnitTest {
 
     @Autowired
     private MockMvc mockMvc;
