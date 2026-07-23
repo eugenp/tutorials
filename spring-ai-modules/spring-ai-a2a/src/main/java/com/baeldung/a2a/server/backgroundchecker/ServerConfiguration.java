@@ -35,7 +35,7 @@ class ServerConfiguration {
         return new AgentCard.Builder()
             .name("Background Check Agent")
             .description("Runs a background check on a candidate")
-            .url(String.format("http://%s:%d/a2a/", host, port))
+            .url(String.format("http://%s:%d/", host, port))
             .version("1.0.0")
             .capabilities(new AgentCapabilities
                 .Builder()
@@ -49,7 +49,7 @@ class ServerConfiguration {
                 .description("Runs a background check on a candidate using their name and email")
                 .tags(List.of("hiring", "recruiting", "compliance"))
                 .build()))
-            .protocolVersion("0.3.0")
+            .protocolVersion("1.0.1")
             .build();
     }
 }

@@ -35,7 +35,7 @@ class ServerConfiguration {
         return new AgentCard.Builder()
             .name("Salary Evaluator Agent")
             .description("Checks if a candidate's expected salary fits a job title's budget range")
-            .url(String.format("http://%s:%d/a2a/", host, port))
+            .url(String.format("http://%s:%d/", host, port))
             .version("1.0.0")
             .capabilities(new AgentCapabilities
                 .Builder()
@@ -49,7 +49,7 @@ class ServerConfiguration {
                 .description("Compares a candidate's expected salary against a job title's budget range")
                 .tags(List.of("hiring", "recruiting", "compensation"))
                 .build()))
-            .protocolVersion("0.3.0")
+            .protocolVersion("1.0.1")
             .build();
     }
 }

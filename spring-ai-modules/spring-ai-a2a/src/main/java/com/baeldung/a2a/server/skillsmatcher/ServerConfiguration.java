@@ -35,7 +35,7 @@ class ServerConfiguration {
         return new AgentCard.Builder()
             .name("Skills Matcher Agent")
             .description("Evaluates how well a candidate's skills match a job's required skills")
-            .url(String.format("http://%s:%d/a2a/", host, port))
+            .url(String.format("http://%s:%d/", host, port))
             .version("1.0.0")
             .capabilities(new AgentCapabilities
                 .Builder()
@@ -49,7 +49,7 @@ class ServerConfiguration {
                 .description("Compares candidate skills to job requirements and scores the fit")
                 .tags(List.of("hiring", "recruiting"))
                 .build()))
-            .protocolVersion("0.3.0")
+            .protocolVersion("1.0.1")
             .build();
     }
 }
