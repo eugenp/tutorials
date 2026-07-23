@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>spring-ai-modules</artifactId>
+        <version>0.0.1</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <groupId>com.baeldung</groupId>
+    <artifactId>spring-ai-a2a</artifactId>
+    <version>0.0.1</version>
+    <name>spring-ai-a2a</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webmvc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-model-openai</artifactId>
+            <version>${spring-ai.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springaicommunity</groupId>
+            <artifactId>spring-ai-a2a-server-autoconfigure</artifactId>
+            <version>${spring-ai-a2a-server-config.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.a2asdk</groupId>
+            <artifactId>a2a-java-sdk-client</artifactId>
+            <version>${a2a-client.version}</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <java.version>21</java.version>
+        <spring-boot.version>4.0.6</spring-boot.version>
+        <spring-ai.version>2.0.0</spring-ai.version>
+        <spring-ai-a2a-server-config.version>0.3.0</spring-ai-a2a-server-config.version>
+        <a2a-client.version>0.3.3.Final</a2a-client.version>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>skills-matcher-server</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.a2a.server.skillsmatcher.Application</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>salary-evaluator-server</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.a2a.server.salaryevaluator.Application</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>job-screening-orchestrator-client</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.a2a.client.orchestrator.jobscreening.Application</spring.boot.mainclass>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>${spring.boot.mainclass}</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
