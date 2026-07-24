@@ -12,7 +12,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class CteUnitTest {
+public class CommonTableExpressionsUnitTest {
 
     private static SessionFactory sessionFactory;
     private Session session;
@@ -38,19 +38,21 @@ public class CteUnitTest {
     @Test
     void whenQueryingEngineers_thenCorrectRowsAreReturned() {
         List<Employee> employees = session.createQuery("""
-            with engineers as (
-                select e.id as id
-                from Employee e
-                where e.department = 'Engineering'
+            WITH engineers AS (
+                SELECT e.id AS id
+                FROM Employee e
+                WHERE e.department = 'Engineering'
             )
-            select e
-            from Employee e
-            where e.id in (select id from engineers)
-            and e.salary > 100000
-            order by e.name asc
+            SELECT e
+            FROM Employee e
+            WHERE e.id IN (SELECT id FROM engineers)
+            AND e.salary > 100000
+            ORDER BY e.name ASC
         """, Employee.class).getResultList();
 
-        List<String> names = employees.stream().map(Employee::getName).toList();
+        List<String> names = employees.stream()
+            .map(Employee::getName)
+            .toList();
 
         assertEquals(List.of("Ben Rodgers", "David Kim", "Ella Novak", "Grace Lin"), names);
     }
@@ -58,19 +60,21 @@ public class CteUnitTest {
     @Test
     void whenQueryingEmployeesPerDepartment_thenCorrectRowsAreReturned() {
         List<Employee> employees = session.createQuery("""
-            with dept_avg as (
-                select e.department as dept, avg(e.salary) as avgSalary
-                from Employee e
-                group by e.department
+            WITH dept_avg AS (
+                SELECT e.department AS dept, avg(e.salary) AS avgSalary
+                FROM Employee e
+                GROUP BY e.department
             )
-            select e
-            from Employee e
-            join dept_avg d on e.department = d.dept
-            where e.salary > d.avgSalary
-            order by e.department, e.salary desc
+            SELECT e
+            FROM Employee e
+            JOIN dept_avg d ON e.department = d.dept
+            WHERE e.salary > d.avgSalary
+            ORDER BY e.department, e.salary DESC
         """, Employee.class).getResultList();
 
-        List<String> names = employees.stream().map(Employee::getName).toList();
+        List<String> names = employees.stream()
+            .map(Employee::getName)
+            .toList();
 
         assertEquals(List.of("Ben Rodgers", "David Kim", "Ella Novak", "Carla Nunes", "Frank Osei"), names);
     }
@@ -78,20 +82,26 @@ public class CteUnitTest {
     @Test
     void whenQueryingSubordinates_thenCorrectRowsAreReturned() {
         List<Employee> employees = session.createQuery("""
-            with subordinates as (
-                select e.id as id from Employee e where e.manager.id = 2
+            WITH subordinates as (
+                SELECT e.id AS id 
+                FROM Employee e 
+                WHERE e.manager.id = 2
             
-                union
+                UNION
             
-                select e2.id as id from Employee e2 join subordinates s on e2.manager.id = s.id
+                SELECT e2.id AS id 
+                FROM Employee e2 
+                JOIN subordinates s ON e2.manager.id = s.id
             )
-            select e
-            from Employee e
-            where e.id in (select s.id from subordinates s)
-            order by e.department, e.name
+            SELECT e
+            FROM Employee e
+            WHERE e.id IN (SELECT s.id FROM subordinates s)
+            ORDER BY e.department, e.name
             """, Employee.class).getResultList();
 
-        List<String> names = employees.stream().map(Employee::getName).toList();
+        List<String> names = employees.stream()
+            .map(Employee::getName)
+            .toList();
 
         assertEquals(List.of("David Kim", "Ella Novak", "Grace Lin", "Hugo Alvarez", "Ivy Chen", "Liam Foster"), names);
     }
