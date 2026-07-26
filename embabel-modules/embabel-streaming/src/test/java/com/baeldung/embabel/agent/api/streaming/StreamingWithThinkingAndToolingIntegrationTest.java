@@ -1,9 +1,3 @@
-/*
- * Example got patterned after:
- * <link>https://github.com/embabel/embabel-agent/blob/main/embabel-agent-autoconfigure/models/embabel-agent-anthropic-autoconfigure/src/test/java/com/embabel/agent/config/models/anthropic/LLMAnthropicStreamingBuilderIT.java</link>
- *
- * Original code (see link above) was developed by Embabel Pty Ltd, 2026
- */
 package com.baeldung.embabel.agent.api.streaming;
 
 import com.embabel.agent.AgentTestApplication;
@@ -25,14 +19,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import reactor.core.publisher.Flux;
-
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(
@@ -59,7 +51,6 @@ class StreamingWithThinkingAndToolingIntegrationTest {
         System.setProperty("embabel.agent.shell.interactive.enabled", "false");
     }
 
-    // TODO: move to embabel-tutorial-common once available
     public record ParkingRecommendation(
         String scenario,
         Option chosenOption,
@@ -73,7 +64,6 @@ class StreamingWithThinkingAndToolingIntegrationTest {
         }
     }
 
-    // TODO: move to embabel-tutorial-common once available
     static class ParkingTooling {
 
         @LlmTool(description = "Find free street parking. Uncertain and may take time.")
@@ -108,7 +98,17 @@ class StreamingWithThinkingAndToolingIntegrationTest {
         Recommend the best parking option.
         """;
 
-    private static final String TOOLING_PROMPT =
+    private static final String TIMED_PARKING_PROMPT =
+        """
+        Provide parking recommendations for an advisor visiting Midtown Manhattan across three time scenarios:
+        1. Early morning (before 8am): street meters are free before 8am
+        2. Business hours (9am-5pm): all paid options apply, 30-minute window, 3-hour stay
+        3. Evening (after 6pm): meters are free after 6pm, but garages may close at 9pm (3-hour stay at risk)
+
+        Return all three recommendations.
+        """;
+
+    private static final String TOOLING_PARKING_PROMPT =
         """
         An advisor needs to park in Midtown Manhattan for a 3-hour client meeting starting in 30 minutes.
         Use the available tools to probe parking options, then recommend the best one.
@@ -116,14 +116,76 @@ class StreamingWithThinkingAndToolingIntegrationTest {
         """;
 
     /**
-     * Verifies structured streaming output with thinking enabled and no tools.
+     * Verifies basic structured streaming: a single object is emitted and completed without errors.
+     */
+    @Nested
+    class SimpleStreaming {
+
+        @Test
+        void whenStreaming_thenReceivesParkingRecommendation() {
+            PromptRunner runner = ai.withDefaultLlm();
+            assertTrue(runner.supportsStreaming(), "Default LLM must support streaming");
+
+            List<ParkingRecommendation> received = new ArrayList<>();
+
+            Flux<ParkingRecommendation> stream = new StreamingPromptRunnerBuilder(runner)
+                .streaming()
+                .withPrompt(PARKING_PROMPT)
+                .createObjectStream(ParkingRecommendation.class);
+
+            stream
+                .timeout(Duration.ofSeconds(120))
+                .doOnNext(rec -> {
+                    received.add(rec);
+                    logger.info("Received parking recommendation: option={}, cost={}, summary={}",
+                        rec.chosenOption(), rec.estimatedTotalCost(), rec.summary());
+                })
+                .doOnError(error -> logger.error("Stream error: {}", error.getMessage()))
+                .doOnComplete(() -> logger.info("Stream completed successfully"))
+                .blockLast(Duration.ofSeconds(240));
+
+            assertThat(received).hasSize(1);
+            assertThat(received.getFirst().chosenOption()).isNotNull();
+            assertThat(received.getFirst().summary()).isNotBlank();
+        }
+    }
+
+    /**
+     * Verifies that a prompt requesting multiple results streams them as individual objects,
+     * one per scenario, rather than a single batched response.
+     */
+    @Nested
+    class StreamingCollection {
+
+        @Test
+        void whenStreamingMultipleScenarios_thenReceivesRecommendationPerScenario() {
+            PromptRunner runner = ai.withDefaultLlm();
+            assertTrue(runner.supportsStreaming(), "Default LLM must support streaming");
+
+            List<ParkingRecommendation> received = new ArrayList<>();
+
+            new StreamingPromptRunnerBuilder(runner)
+                .streaming()
+                .withPrompt(TIMED_PARKING_PROMPT)
+                .createObjectStream(ParkingRecommendation.class)
+                .timeout(Duration.ofSeconds(120))
+                .doOnNext(rec -> {
+                    received.add(rec);
+                    logger.info("Received recommendation: scenario={}, option={}, cost={}",
+                        rec.scenario(), rec.chosenOption(), rec.estimatedTotalCost());
+                })
+                .blockLast(Duration.ofSeconds(240));
+
+            assertThat(received).hasSizeGreaterThanOrEqualTo(2);
+        }
+    }
+
+    /**
+     * Verifies structured streaming output with thinking enabled and with no tools.
      *
-     * <p>{@link Thinking#withTokenBudget(int)} sets {@code thinkingEnabled=true} in the streaming
-     * converter, sending {@code <think>} format instructions in the system prompt.
-     * Budget must be less than {@code max_tokens}=8192 for {@code claude-sonnet-4-5}.
-     *
-     * <p>The streaming pipeline emits one {@link com.embabel.common.core.streaming.StreamingEvent.Thinking}
-     * event per line, so expect multiple reasoning events rather than a single block.
+     * <p>Token budget must stay below {@code max_tokens} (8192 for {@code claude-sonnet-4-5}).
+     * Reasoning arrives as multiple {@link com.embabel.common.core.streaming.StreamingEvent.Thinking}
+     * events — one per line, not a single block.
      */
     @Nested
     class StreamingWithThinkingNoTools {
@@ -135,10 +197,8 @@ class StreamingWithThinkingAndToolingIntegrationTest {
             PromptRunner runner = ai.withDefaultLlm().withLlm(thinkingOptions);
             assertTrue(runner.supportsStreaming(), "Default LLM must support streaming");
 
-            List<ParkingRecommendation> received = new CopyOnWriteArrayList<>();
-            List<String> reasoning = new CopyOnWriteArrayList<>();
-            AtomicReference<Throwable> errorOccurred = new AtomicReference<>();
-            AtomicBoolean completionCalled = new AtomicBoolean(false);
+            List<ParkingRecommendation> received = new ArrayList<>();
+            List<String> reasoning = new ArrayList<>();
 
             Flux<StreamingEvent<ParkingRecommendation>> stream = new StreamingPromptRunnerBuilder(runner)
                 .streaming()
@@ -160,21 +220,12 @@ class StreamingWithThinkingAndToolingIntegrationTest {
                         logger.info("Received reasoning: {}", event.getThinking());
                     }
                 })
-                .doOnError(error -> {
-                    errorOccurred.set(error);
-                    logger.error("Stream error: {}", error.getMessage());
-                })
-                .doOnComplete(() -> {
-                    completionCalled.set(true);
-                    logger.info("Stream completed: {} recommendations, {} reasoning blocks",
-                        received.size(), reasoning.size());
-                })
                 .blockLast(Duration.ofSeconds(240));
 
-            assertNull(errorOccurred.get(), "Streaming should not produce errors");
-            assertTrue(completionCalled.get(), "Stream should complete successfully");
-            assertFalse(received.isEmpty(), "Should receive at least one parking recommendation");
-            assertFalse(reasoning.isEmpty(), "Should receive reasoning blocks");
+            assertThat(received).isNotEmpty();
+            assertThat(received.getFirst().chosenOption()).isNotNull();
+            assertThat(received.getFirst().summary()).isNotBlank();
+            assertThat(reasoning).isNotEmpty();
         }
     }
 
@@ -186,7 +237,7 @@ class StreamingWithThinkingAndToolingIntegrationTest {
          *
          * <p>Reasoning events are emitted only from the final LLM iteration — after all tool calls
          * complete. Intermediate reasoning (the model's thinking while deciding which tools to call)
-         * is not surfaced to the subscriber, as each tool-loop iteration replaces the previous stream.
+         * is not surfaced to the subscriber, as each Spring AI-managed tool-loop iteration starts a new stream.
          */
         @Test
         void whenStreamingWithThinkingAndTooling_thenReceivesRecommendationAndReasoning() {
@@ -195,17 +246,13 @@ class StreamingWithThinkingAndToolingIntegrationTest {
                 .withToolCallInspectors(new ToolCallLoggingInspector(LogLevel.INFO, logger));
             assertTrue(runner.supportsStreaming(), "Default LLM must support streaming");
 
-            List<ParkingRecommendation> received = new CopyOnWriteArrayList<>();
-            List<String> reasoning = new CopyOnWriteArrayList<>();
-            AtomicReference<Throwable> errorOccurred = new AtomicReference<>();
-            AtomicBoolean completionCalled = new AtomicBoolean(false);
+            List<ParkingRecommendation> received = new ArrayList<>();
+            List<String> reasoning = new ArrayList<>();
 
-            Flux<StreamingEvent<ParkingRecommendation>> stream = new StreamingPromptRunnerBuilder(runner)
+            new StreamingPromptRunnerBuilder(runner)
                 .streaming()
-                .withPrompt(TOOLING_PROMPT)
-                .createObjectStreamWithThinking(ParkingRecommendation.class);
-
-            stream
+                .withPrompt(TOOLING_PARKING_PROMPT)
+                .createObjectStreamWithThinking(ParkingRecommendation.class)
                 .timeout(Duration.ofSeconds(120))
                 .doOnNext(event -> {
                     if (event.isObject()) {
@@ -220,21 +267,12 @@ class StreamingWithThinkingAndToolingIntegrationTest {
                         logger.info("Received reasoning: {}", event.getThinking());
                     }
                 })
-                .doOnError(error -> {
-                    errorOccurred.set(error);
-                    logger.error("Stream error: {}", error.getMessage());
-                })
-                .doOnComplete(() -> {
-                    completionCalled.set(true);
-                    logger.info("Stream completed: {} recommendations, {} reasoning blocks",
-                        received.size(), reasoning.size());
-                })
                 .blockLast(Duration.ofSeconds(240));
 
-            assertNull(errorOccurred.get(), "Streaming should not produce errors");
-            assertTrue(completionCalled.get(), "Stream should complete successfully");
-            assertFalse(received.isEmpty(), "Should receive at least one parking recommendation");
-            assertFalse(reasoning.isEmpty(), "Should receive reasoning blocks alongside tool results");
+            assertThat(received).isNotEmpty();
+            assertThat(received.getFirst().chosenOption()).isNotNull();
+            assertThat(received.getFirst().summary()).isNotBlank();
+            assertThat(reasoning).isNotEmpty();
         }
     }
 }

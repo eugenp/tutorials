@@ -10,9 +10,9 @@
     </parent>
 
     <artifactId>embabel-streaming</artifactId>
-    <packaging>pom</packaging>
 
     <properties>
+        <java.version>21</java.version>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,15 +22,41 @@
     <dependencies>
         <dependency>
             <groupId>com.embabel.agent</groupId>
+            <artifactId>embabel-agent-starter-anthropic</artifactId>
+            <version>${embabel-agent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.embabel.agent</groupId>
             <artifactId>embabel-agent-test-internal</artifactId>
             <version>${embabel-agent.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
-    <modules>
-        <module>embabel-streaming-openai</module>
-        <module>embabel-streaming-anthropic</module>
-    </modules>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.source}</target>
+                    <release>${maven.compiler.source}</release>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>repackage</id>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
