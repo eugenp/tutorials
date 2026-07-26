@@ -27,11 +27,9 @@ public class CartServiceTest {
                 .withThreshold(Duration.ofMillis(1));
             recording.start();
 
-            Thread th1 = Thread.ofVirtual().start(() ->
-                cartService.update("test1", 2));
+            Thread th1 = Thread.ofVirtual().start(() -> cartService.update("test1", 2));
 
-            Thread th2 = Thread.ofVirtual().start(() ->
-                cartService.update("test1", 3));
+            Thread th2 = Thread.ofVirtual().start(() -> cartService.update("test1", 3));
 
             th1.join();
             th2.join();
@@ -50,11 +48,9 @@ public class CartServiceTest {
     @Test
     void givenProductsIsPresent_whenProductIsAdded_thenProductIsUpdated() throws InterruptedException {
         String productId = "test4";
-        Thread th1 = Thread.ofVirtual().start(() ->
-            cartService.update(productId, 2));
+        Thread th1 = Thread.ofVirtual().start(() -> cartService.update(productId, 2));
 
-        Thread th2 = Thread.ofVirtual().start(() ->
-            cartService.update(productId, 3));
+        Thread th2 = Thread.ofVirtual().start(() -> cartService.update(productId, 3));
 
         th1.join();
         th2.join();
@@ -68,8 +64,7 @@ public class CartServiceTest {
     @Test
     void givenProductIsNotPresent_whenProductIsAdded_thenProductIsUpdate() throws InterruptedException {
         String productId = "test5";
-        Thread th = Thread.ofVirtual().start(() ->
-            cartService.update(productId, 2));
+        Thread th = Thread.ofVirtual().start(() -> cartService.update(productId, 2));
         th.join();
 
         Map<String, Integer> products = cartService.getProducts();

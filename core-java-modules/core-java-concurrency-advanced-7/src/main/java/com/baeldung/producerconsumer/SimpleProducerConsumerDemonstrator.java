@@ -7,6 +7,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.logging.Logger;
 
 public class SimpleProducerConsumerDemonstrator {
+
     private static final Logger log = Logger.getLogger(SimpleProducerConsumerDemonstrator.class.getCanonicalName());
     BlockingQueue<Double> blockingQueue = new LinkedBlockingDeque<>(5);
 

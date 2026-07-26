@@ -12,7 +12,7 @@ public class CyclicBarrierCompletionMethodExample {
     private int count;
     private int threadCount;
     private final AtomicInteger updateCount;
-    
+
     CyclicBarrierCompletionMethodExample(int count, int threadCount) {
         updateCount = new AtomicInteger(0);
         this.count = count;
