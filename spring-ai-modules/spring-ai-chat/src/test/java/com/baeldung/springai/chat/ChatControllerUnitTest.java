@@ -20,7 +20,8 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest(properties = {
     "spring.ai.model.chat=google-genai",
     "spring.ai.google.genai.chat.model=gemini-2.5-flash",
-    "spring.ai.google.genai.api-key=test-key"
+    "spring.ai.google.genai.api-key=test-key",
+    "spring.autoconfigure.exclude=org.springframework.ai.model.google.genai.autoconfigure.chat.GoogleGenAiChatAutoConfiguration"
 })
 @AutoConfigureMockMvc
 class ChatControllerUnitTest {
