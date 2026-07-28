@@ -140,8 +140,6 @@ class StreamingWithThinkingAndToolingIntegrationTest {
                     logger.info("Received parking recommendation: option={}, cost={}, summary={}",
                         rec.chosenOption(), rec.estimatedTotalCost(), rec.summary());
                 })
-                .doOnError(error -> logger.error("Stream error: {}", error.getMessage()))
-                .doOnComplete(() -> logger.info("Stream completed successfully"))
                 .blockLast(Duration.ofSeconds(240));
 
             assertThat(received).hasSize(1);
@@ -177,6 +175,12 @@ class StreamingWithThinkingAndToolingIntegrationTest {
                 .blockLast(Duration.ofSeconds(240));
 
             assertThat(received).hasSizeGreaterThanOrEqualTo(2);
+            assertThat(received).allSatisfy(r -> {
+                assertThat(r.scenario()).isNotBlank();
+                assertThat(r.chosenOption()).isNotNull();
+                assertThat(r.summary()).isNotBlank();
+            });
+            assertThat(received).map(ParkingRecommendation::scenario).doesNotHaveDuplicates();
         }
     }
 
@@ -222,10 +226,10 @@ class StreamingWithThinkingAndToolingIntegrationTest {
                 })
                 .blockLast(Duration.ofSeconds(240));
 
-            assertThat(received).isNotEmpty();
+            assertThat(received).hasSize(1);
             assertThat(received.getFirst().chosenOption()).isNotNull();
             assertThat(received.getFirst().summary()).isNotBlank();
-            assertThat(reasoning).isNotEmpty();
+            assertThat(reasoning).allSatisfy(r -> assertThat(r).isNotBlank());
         }
     }
 
@@ -269,10 +273,10 @@ class StreamingWithThinkingAndToolingIntegrationTest {
                 })
                 .blockLast(Duration.ofSeconds(240));
 
-            assertThat(received).isNotEmpty();
+            assertThat(received).hasSize(1);
             assertThat(received.getFirst().chosenOption()).isNotNull();
             assertThat(received.getFirst().summary()).isNotBlank();
-            assertThat(reasoning).isNotEmpty();
+            assertThat(reasoning).allSatisfy(r -> assertThat(r).isNotBlank());
         }
     }
 }
