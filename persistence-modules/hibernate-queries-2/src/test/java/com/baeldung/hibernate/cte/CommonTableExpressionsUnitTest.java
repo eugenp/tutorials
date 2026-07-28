@@ -97,7 +97,7 @@ public class CommonTableExpressionsUnitTest {
             FROM Employee e
             WHERE e.id IN (SELECT s.id FROM subordinates s)
             ORDER BY e.department, e.name
-            """, Employee.class).getResultList();
+        """, Employee.class).getResultList();
 
         List<String> names = employees.stream()
             .map(Employee::getName)
