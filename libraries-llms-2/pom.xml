@@ -78,11 +78,16 @@
             <artifactId>camel-undertow</artifactId>
             <version>${apache-camel.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-langchain4j-chat</artifactId>
+            <version>${apache-camel.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
-        <langchain4j.version>1.17.1</langchain4j.version>
-        <langchain4j-mongodb-atlas.version>1.17.1-beta27</langchain4j-mongodb-atlas.version>
+        <langchain4j.version>1.18.0</langchain4j.version>
+        <langchain4j-mongodb-atlas.version>1.18.0-beta28</langchain4j-mongodb-atlas.version>
         <spring-boot.version>3.3.2</spring-boot.version>
         <apache-camel.version>4.20.0</apache-camel.version>
     </properties>

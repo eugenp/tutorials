@@ -10,7 +10,6 @@ class ConversionRoute extends RouteBuilder {
 
         from("file:documents?include=.*\\.(pdf|docx|pptx|html|md)&noop=true&idempotent=true").routeId("document-analysis-workflow")
             .log("Processing document: ${header.CamelFileName}")
-            .setBody(simple("${body.file.absolutePath}"))
             .to("docling:CONVERT_TO_MARKDOWN?useDoclingServe=true&doclingServeUrl=http://localhost:5001&contentInBody=true")
             .setProperty("convertedMarkdown", body())
             .setHeader(Exchange.FILE_NAME, simple("${header.CamelFileName.replaceFirst('\\.[^.]+$', '')}.md"))
