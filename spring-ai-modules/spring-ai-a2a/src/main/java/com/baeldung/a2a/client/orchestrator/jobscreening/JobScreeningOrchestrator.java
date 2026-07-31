@@ -7,9 +7,9 @@ import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication(exclude = A2AServerAutoConfiguration.class)
 @PropertySource("classpath:application-job-screening-orchestrator.properties")
-class Application {
+class JobScreeningOrchestrator {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(JobScreeningOrchestrator.class, args);
     }
 }

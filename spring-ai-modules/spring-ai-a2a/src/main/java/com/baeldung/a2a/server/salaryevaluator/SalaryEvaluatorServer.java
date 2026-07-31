@@ -6,9 +6,9 @@ import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 @PropertySource("classpath:application-salary-evaluator-server.properties")
-class Application {
+public class SalaryEvaluatorServer {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(SalaryEvaluatorServer.class, args);
     }
 }

@@ -35,10 +35,17 @@
             <artifactId>a2a-java-sdk-client</artifactId>
             <version>${a2a-client.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webmvc-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
         <java.version>21</java.version>
+        <junit-jupiter.version>6.0.3</junit-jupiter.version>
         <spring-boot.version>4.0.6</spring-boot.version>
         <spring-ai.version>2.0.0</spring-ai.version>
         <spring-ai-a2a-server-config.version>0.3.0</spring-ai-a2a-server-config.version>
@@ -52,19 +59,19 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <spring.boot.mainclass>com.baeldung.a2a.server.skillsmatcher.Application</spring.boot.mainclass>
+                <spring.boot.mainclass>com.baeldung.a2a.server.skillsmatcher.SkillsMatcherServer</spring.boot.mainclass>
             </properties>
         </profile>
         <profile>
             <id>salary-evaluator-server</id>
             <properties>
-                <spring.boot.mainclass>com.baeldung.a2a.server.salaryevaluator.Application</spring.boot.mainclass>
+                <spring.boot.mainclass>com.baeldung.a2a.server.salaryevaluator.SalaryEvaluatorServer</spring.boot.mainclass>
             </properties>
         </profile>
         <profile>
             <id>job-screening-orchestrator-client</id>
             <properties>
-                <spring.boot.mainclass>com.baeldung.a2a.client.orchestrator.jobscreening.Application</spring.boot.mainclass>
+                <spring.boot.mainclass>com.baeldung.a2a.client.orchestrator.jobscreening.JobScreeningOrchestrator</spring.boot.mainclass>
             </properties>
         </profile>
     </profiles>
