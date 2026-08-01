@@ -36,44 +36,55 @@ class ChatClientConfiguration {
     @Primary
     ChatClient chatClient(ChatModel chatModel) {
         return ChatClient
-                .builder(chatModel)
-                .defaultAdvisors(
-                        AutoMemoryToolsAdvisor.builder()
-                                .memoriesRootDirectory(memoryDirectory)
-                                .build(),
-                        MessageChatMemoryAdvisor.builder(MessageWindowChatMemory.builder().maxMessages(100).build())
-                                .build(),
-                        ToolCallingAdvisor.builder().disableInternalConversationHistory().build())
-                .build();
+            .builder(chatModel)
+            .defaultAdvisors(
+                AutoMemoryToolsAdvisor.builder()
+                    .memoriesRootDirectory(memoryDirectory)
+                    .build(),
+                MessageChatMemoryAdvisor.builder(MessageWindowChatMemory.builder()
+                        .maxMessages(100)
+                        .build())
+                    .build(),
+                ToolCallingAdvisor.builder()
+                    .disableInternalConversationHistory()
+                    .build())
+            .build();
     }
 
     // Option B
     @Bean
     ChatClient chatClientWithMoreSystemPrompt(ChatModel chatModel) {
         return ChatClient
-                .builder(chatModel)
-                .defaultSystem(p -> p
-                        .text(memorySystemPromptAutoMemoryTools)
-                        .param("MEMORIES_ROOT_DIERCTORY", memoryDirectory))
-                .defaultTools(
-                        AutoMemoryTools.builder().memoriesDir(memoryDirectory).build(),
-                        TodoWriteTool.builder().build())
-                .defaultAdvisors(ToolCallingAdvisor.builder().build())
-                .build();
+            .builder(chatModel)
+            .defaultSystem(p -> p
+                .text(memorySystemPromptAutoMemoryTools)
+                .param("MEMORIES_ROOT_DIERCTORY", memoryDirectory))
+            .defaultTools(
+                AutoMemoryTools.builder()
+                    .memoriesDir(memoryDirectory)
+                    .build(),
+                TodoWriteTool.builder()
+                    .build())
+            .defaultAdvisors(ToolCallingAdvisor.builder()
+                .build())
+            .build();
     }
 
     // Option C
     @Bean
     ChatClient chatClientWithoutAutoMemoryTools(ChatModel chatModel) {
         return ChatClient
-                .builder(chatModel)
-                .defaultSystem(p -> p
-                        .text(memorySystemPromptFilesystemTools)
-                        .param("MEMORIES_ROOT_DIERCTORY", memoryDirectory))   // tells the agent where to write
-                .defaultTools(
-                        ShellTools.builder().build(),         // Bash — mkdir, ls, etc.
-                        FileSystemTools.builder().build())    // Read, Write, Edit — memory file operations
-                .defaultAdvisors(ToolCallingAdvisor.builder().build())
-                .build();
+            .builder(chatModel)
+            .defaultSystem(p -> p
+                .text(memorySystemPromptFilesystemTools)
+                .param("MEMORIES_ROOT_DIERCTORY", memoryDirectory))   // tells the agent where to write
+            .defaultTools(
+                ShellTools.builder()
+                    .build(),         // Bash — mkdir, ls, etc.
+                FileSystemTools.builder()
+                    .build())    // Read, Write, Edit — memory file operations
+            .defaultAdvisors(ToolCallingAdvisor.builder()
+                .build())
+            .build();
     }
 }

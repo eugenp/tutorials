@@ -20,11 +20,11 @@ class ChatbotWithMemoryController {
     @PostMapping("/chat-with-memory")
     ResponseEntity<String> chat(@RequestBody String question, @RequestHeader("X-Conversation-ID") String conversationId) {
         String answer = chatClient
-                .prompt()
-                .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, conversationId))
-                .user(question)
-                .call()
-                .content();
+            .prompt()
+            .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, conversationId))
+            .user(question)
+            .call()
+            .content();
 
         return ResponseEntity.ok(answer);
     }
