@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousSocketChannel;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -46,7 +47,7 @@ public class AsyncEchoClient {
     }
 
     public String sendMessage(String message) {
-        byte[] byteMsg = message.getBytes();
+        byte[] byteMsg = message.getBytes(StandardCharsets.UTF_8);
         ByteBuffer buffer = ByteBuffer.wrap(byteMsg);
         Future<Integer> writeResult = client.write(buffer);
 
@@ -62,7 +63,7 @@ public class AsyncEchoClient {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String echo = new String(buffer.array()).trim();
+        String echo = new String(buffer.array(), 0, buffer.position(), StandardCharsets.UTF_8).trim();
         buffer.clear();
         return echo;
     }
