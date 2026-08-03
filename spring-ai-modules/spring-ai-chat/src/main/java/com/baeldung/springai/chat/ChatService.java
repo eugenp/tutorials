@@ -19,8 +19,8 @@ public class ChatService {
         this.chatModel = chatModel;
         this.defaultChatClient = chatClientBuilder.build();
         this.fluentChatClient = chatClientBuilder
-            .defaultSystem("You are a concise technical writer summarizing software concepts.")
-            .build();
+                .defaultSystem("You are a concise technical writer summarizing software concepts.")
+                .build();
     }
 
     public String simplifiedPrompt(String message) {
@@ -29,38 +29,38 @@ public class ChatService {
 
     public String fluentPrompt(String prompt) {
         return this.fluentChatClient.prompt()
-            .user(prompt)
-            .call()
-            .content();
+                .user(prompt)
+                .call()
+                .content();
     }
 
     public String reviewCode(String language, String codeSnippet) {
         String template = """
-            Analyze the following {language} code snippet for memory leaks or inefficiencies.
-            Provide an optimized version.
+                Analyze the following {language} code snippet for memory leaks or inefficiencies.
+                Provide an optimized version.
 
-            Code:
-            {code}
-            """;
+                Code:
+                {code}
+                """;
 
-        return this.defaultChatClient.prompt()
-            .user(u -> u.text(template)
-                .params(Map.of("language", language, "code", codeSnippet)))
-            .call()
-            .content();
+                return this.defaultChatClient.prompt()
+                        .user(u -> u.text(template)
+                                .params(Map.of("language", language, "code", codeSnippet)))
+                        .call()
+                        .content();
     }
 
     public String searchGroundedPrompt(String currentEventQuery) {
         return this.defaultChatClient.prompt()
-            .user(currentEventQuery)
-            .call()
-            .content();
+                .user(currentEventQuery)
+                .call()
+                .content();
     }
 
     public Flux<String> streamChatTokens(String prompt) {
         return this.defaultChatClient.prompt()
-            .user(prompt)
-            .stream()
-            .content();
+                .user(prompt)
+                .stream()
+                .content();
     }
 }

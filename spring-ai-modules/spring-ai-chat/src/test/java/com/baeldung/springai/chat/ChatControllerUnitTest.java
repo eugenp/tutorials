@@ -30,8 +30,8 @@ class ChatControllerUnitTest {
         when(chatService.simplifiedPrompt(anyString())).thenReturn("Mocked Gemini Response");
 
         mockMvc.perform(get("/v1/chat/simple").param("message", "Hello"))
-            .andExpect(status().isOk())
-            .andExpect(content().string("Mocked Gemini Response"));
+        .andExpect(status().isOk())
+        .andExpect(content().string("Mocked Gemini Response"));
 
         verify(chatService).simplifiedPrompt("Hello");
     }
@@ -41,8 +41,8 @@ class ChatControllerUnitTest {
         when(chatService.fluentPrompt(anyString())).thenReturn("Fluent Response");
 
         mockMvc.perform(get("/v1/chat/fluent").param("prompt", "Explain DI"))
-            .andExpect(status().isOk())
-            .andExpect(content().string("Fluent Response"));
+        .andExpect(status().isOk())
+        .andExpect(content().string("Fluent Response"));
 
         verify(chatService).fluentPrompt("Explain DI");
     }
@@ -55,8 +55,8 @@ class ChatControllerUnitTest {
                 .param("language", "Java")
                 .contentType(MediaType.TEXT_PLAIN)
                 .content("class A { }"))
-            .andExpect(status().isOk())
-            .andExpect(content().string("Optimized Code"));
+        .andExpect(status().isOk())
+        .andExpect(content().string("Optimized Code"));
 
         verify(chatService).reviewCode("Java", "class A { }");
     }
@@ -66,8 +66,8 @@ class ChatControllerUnitTest {
         when(chatService.searchGroundedPrompt(anyString())).thenReturn("Grounded Response");
 
         mockMvc.perform(get("/v1/chat/grounded").param("currentEventQuery", "latest match winner"))
-            .andExpect(status().isOk())
-            .andExpect(content().string("Grounded Response"));
+        .andExpect(status().isOk())
+        .andExpect(content().string("Grounded Response"));
 
         verify(chatService).searchGroundedPrompt("latest match winner");
     }
@@ -77,9 +77,9 @@ class ChatControllerUnitTest {
         when(chatService.streamChatTokens(anyString())).thenReturn(reactor.core.publisher.Flux.just("token-1", "token-2"));
 
         mockMvc.perform(get("/v1/chat/stream").param("prompt", "Stream tokens"))
-            .andExpect(status().isOk())
-            .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_EVENT_STREAM))
-            .andExpect(content().string("data:token-1\n\ndata:token-2\n\n"));
+        .andExpect(status().isOk())
+        .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_EVENT_STREAM))
+        .andExpect(content().string("data:token-1\n\ndata:token-2\n\n"));
 
         verify(chatService).streamChatTokens("Stream tokens");
     }
