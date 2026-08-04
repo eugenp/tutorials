@@ -6,7 +6,7 @@
     <artifactId>spring-boot-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-boot-client</name>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <description>This is simple boot client application for Spring boot actuator test</description>
 
     <!--<parent>
@@ -23,14 +23,6 @@
     </parent>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-restclient</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webclient</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-restclient</artifactId>
