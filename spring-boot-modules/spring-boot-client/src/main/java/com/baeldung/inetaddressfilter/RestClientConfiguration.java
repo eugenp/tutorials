@@ -13,10 +13,11 @@ public class RestClientConfiguration {
 
     @Bean
     RestClient restClient(RestClient.Builder builder) {
-
         InetAddressFilter onlyExternalAddresses = InetAddressFilter.externalAddresses();
-        HttpClientSettings settings = HttpClientSettings.defaults().withInetAddressFilter(onlyExternalAddresses);
-        ClientHttpRequestFactory requestFactory = ClientHttpRequestFactoryBuilder.jdk().build(settings);
+        HttpClientSettings settings = HttpClientSettings.defaults()
+          .withInetAddressFilter(onlyExternalAddresses);
+        ClientHttpRequestFactory requestFactory = ClientHttpRequestFactoryBuilder
+          .jdk().build(settings);
 
         return builder
           .requestFactory(requestFactory)
