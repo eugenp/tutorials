@@ -1,6 +1,7 @@
 package com.baeldung.assertj.ignoring;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -31,9 +32,9 @@ public class EmployeeUnitTest {
         employee2.netSalary = 80000.0;
 
         Assertions.assertThat(employee1)
-          .usingRecursiveComparison()
-          .ignoringFields("id", "homeAddress", "workAddress", "grossSalary", "netSalary")
-          .isEqualTo(employee2);
+            .usingRecursiveComparison()
+            .ignoringFields("id", "homeAddress", "workAddress", "grossSalary", "netSalary")
+            .isEqualTo(employee2);
     }
 
     @Test
@@ -60,10 +61,10 @@ public class EmployeeUnitTest {
         employee2.netSalary = 72000.0;
 
         Assertions.assertThat(employee1)
-          .usingRecursiveComparison()
-          .ignoringFields("id")
-          .ignoringFieldsMatchingRegexes(".*Address", ".*Salary")
-          .isEqualTo(employee2);
+            .usingRecursiveComparison()
+            .ignoringFields("id")
+            .ignoringFieldsMatchingRegexes(".*Address", ".*Salary")
+            .isEqualTo(employee2);
     }
 
     @Test
@@ -90,8 +91,58 @@ public class EmployeeUnitTest {
         actualEmployee.netSalary = 65000.0;
 
         Assertions.assertThat(actualEmployee)
-          .usingRecursiveComparison()
-          .ignoringExpectedNullFields()
-          .isEqualTo(expectedEmployee);
+            .usingRecursiveComparison()
+            .ignoringExpectedNullFields()
+            .isEqualTo(expectedEmployee);
+    }
+
+    @Test
+    public void givenEmployees_whenComparingIgnoringFields_thenContainsEqualElements() {
+        Employee actual1 = new Employee();
+        actual1.id = 1L;
+        actual1.name = "John Doe";
+        actual1.department = "Engineering";
+        actual1.homeAddress = "123 Home St";
+        actual1.workAddress = "456 Work Ave";
+        actual1.dateOfBirth = LocalDate.of(1990, 1, 1);
+        actual1.grossSalary = 100000.0;
+        actual1.netSalary = 75000.0;
+
+        Employee actual2 = new Employee();
+        actual2.id = 2L;
+        actual2.name = "John Doe";
+        actual2.department = "Engineering";
+        actual2.homeAddress = "789 Home St";
+        actual2.workAddress = "101 Work Ave";
+        actual2.dateOfBirth = LocalDate.of(1990, 1, 1);
+        actual2.grossSalary = 110000.0;
+        actual2.netSalary = 80000.0;
+
+        Employee expected1 = new Employee();
+        expected1.id = 999L;
+        expected1.name = "John Doe";
+        expected1.department = "Engineering";
+        expected1.homeAddress = "Nil";
+        expected1.workAddress = "Nil";
+        expected1.dateOfBirth = LocalDate.of(1990, 1, 1);
+        expected1.grossSalary = 0.0;
+        expected1.netSalary = 0.0;
+
+        Employee expected2 = new Employee();
+        expected2.id = 1000L;
+        expected2.name = "John Doe";
+        expected2.department = "Engineering";
+        expected2.homeAddress = "Nil";
+        expected2.workAddress = "Nil";
+        expected2.dateOfBirth = LocalDate.of(1990, 1, 1);
+        expected2.grossSalary = 0.0;
+        expected2.netSalary = 0.0;
+
+        List<Employee> actual = List.of(actual1, actual2);
+        List<Employee> expected = List.of(expected1, expected2);
+
+        Assertions.assertThat(actual)
+            .usingRecursiveFieldByFieldElementComparatorIgnoringFields("id", "homeAddress", "workAddress", "grossSalary", "netSalary")
+            .containsExactlyInAnyOrderElementsOf(expected);
     }
 }
