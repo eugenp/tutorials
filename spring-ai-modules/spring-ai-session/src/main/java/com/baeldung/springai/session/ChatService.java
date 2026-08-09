@@ -10,18 +10,20 @@ public class ChatService {
 
     private final ChatClient chatClient;
 
-    public ChatService(ChatModel chatModel, SessionMemoryAdvisor sessionMemoryAdvisor) {
+    public ChatService(ChatModel chatModel,
+      SessionMemoryAdvisor sessionMemoryAdvisor) {
         this.chatClient = ChatClient.builder(chatModel)
-            .defaultAdvisors(sessionMemoryAdvisor)
-            .build();
+          .defaultAdvisors(sessionMemoryAdvisor)
+          .build();
     }
 
     public String chat(String sessionId, String prompt) {
         return chatClient.prompt()
-            .user(prompt)
-            .advisors(a -> a.param(SessionMemoryAdvisor.SESSION_ID_CONTEXT_KEY, sessionId))
-            .call()
-            .content();
+          .user(prompt)
+          .advisors(a -> a.param(SessionMemoryAdvisor.SESSION_ID_CONTEXT_KEY,
+            sessionId))
+          .call()
+          .content();
     }
 
 }
