@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Sport Spinner</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 30px 16px;
+        }
+        h1 { margin: 0 0 8px; font-size: 24px; }
+        p.subtitle { margin: 0 0 20px; opacity: 0.7; }
+
+        .wheel-wrap {
+            position: relative;
+            width: 360px;
+            height: 360px;
+            margin: 0 auto;
+        }
+        canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .pointer {
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 16px solid transparent;
+            border-right: 16px solid transparent;
+            border-top: 26px solid #e63946;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.35));
+            z-index: 2;
+        }
+        .hub {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 44px;
+            height: 44px;
+            margin: -22px 0 0 -22px;
+            border-radius: 50%;
+            background: #fff;
+            border: 4px solid #222;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        .result {
+            font-size: 26px;
+            margin: 22px 0 14px;
+            min-height: 34px;
+            font-weight: 600;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 22px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            background: #1d4ed8;
+            color: white;
+            font-weight: 600;
+        }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        @media (prefers-color-scheme: dark) {
+            body { background-color: #1d1e22; color: white; }
+            .hub { background: #1d1e22; border-color: #fff; }
+        }
+    </style>
+</head>
+<body>
+
+<h1>🎡 Sport Spinner</h1>
+<p class="subtitle">Spin the wheel to pick today's sport</p>
+
+<div class="wheel-wrap">
+    <div class="pointer"></div>
+    <canvas id="wheel" width="720" height="720"></canvas>
+    <div class="hub"></div>
+</div>
+
+<div class="result" id="result">Ready to spin!</div>
+<button id="spin-btn">Spin</button>
+
+<script type="module">
+    import { App } from "https://unpkg.com/@modelcontextprotocol/ext-apps@0.4.2/app-with-deps";
+    const app = new App({ name: "sport-spinner", version: "1.0.0" });
+
+    const sports = [
+        { label: "Swim",       emoji: "🏊", color: "#4cc9f0", special: false },
+        { label: "Bike",       emoji: "🚴", color: "#f9c74f", special: false },
+        { label: "Run",        emoji: "🏃", color: "#f8961e", special: false },
+        { label: "Bouldering", emoji: "🧗", color: "#90be6d", special: false },
+        { label: "Tennis",     emoji: "🎾", color: "#bde0fe", special: false },
+        { label: "Triathlon",  emoji: "🏅", color: "#e63946", special: true  },
+        { label: "Swim",       emoji: "🏊", color: "#4cc9f0", special: false },
+        { label: "Bike",       emoji: "🚴", color: "#f9c74f", special: false },
+        { label: "Run",        emoji: "🏃", color: "#f8961e", special: false },
+        { label: "Bouldering", emoji: "🧗", color: "#90be6d", special: false },
+        { label: "Tennis",     emoji: "🎾", color: "#bde0fe", special: false },
+        { label: "Triathlon",  emoji: "🏅", color: "#e63946", special: true  },
+    ];
+
+    const canvas = document.getElementById("wheel");
+    const ctx = canvas.getContext("2d");
+    const resultEl = document.getElementById("result");
+    const btn = document.getElementById("spin-btn");
+
+    const N = sports.length;
+    const slice = (Math.PI * 2) / N;
+    const cx = canvas.width / 2;
+    const cy = canvas.height / 2;
+    const radius = cx - 10;
+
+    let rotation = 0;
+
+    const draw = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < N; i++) {
+            const start = rotation + i * slice;
+            const end = start + slice;
+            ctx.beginPath();
+            ctx.moveTo(cx, cy);
+            ctx.arc(cx, cy, radius, start, end);
+            ctx.closePath();
+            ctx.fillStyle = sports[i].color;
+            ctx.fill();
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = "rgba(0,0,0,0.25)";
+            ctx.stroke();
+
+            ctx.save();
+            ctx.translate(cx, cy);
+            ctx.rotate(start + slice / 2);
+            ctx.textAlign = "right";
+            ctx.fillStyle = "#1d1e22";
+            ctx.font = "bold 26px sans-serif";
+            ctx.fillText(sports[i].label, radius - 18, 6);
+            ctx.font = "32px 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif";
+            ctx.fillText(sports[i].emoji, radius - 130, 10);
+            ctx.restore();
+        }
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+        ctx.lineWidth = 6;
+        ctx.strokeStyle = "#222";
+        ctx.stroke();
+    };
+
+    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+    const sportAtPointer = () => {
+        // pointer is at top (-PI/2). Find which slice contains that angle.
+        const twoPi = Math.PI * 2;
+        const pointerAngle = (-Math.PI / 2 - rotation) % twoPi;
+        const normalized = (pointerAngle + twoPi) % twoPi;
+        return Math.floor(normalized / slice) % N;
+    };
+
+    const spin = async () => {
+        btn.disabled = true;
+        resultEl.textContent = "Spinning...";
+
+        const targetIndex = Math.floor(Math.random() * N);
+        const turns = 5 + Math.random() * 2;
+        const targetCenter = -Math.PI / 2 - (targetIndex + 0.5) * slice;
+        const startRotation = rotation;
+        const endRotation = startRotation + turns * Math.PI * 2
+            + ((targetCenter - startRotation) % (Math.PI * 2));
+
+        const duration = 4200;
+        const t0 = performance.now();
+
+        return new Promise((resolve) => {
+            const step = (now) => {
+                const t = Math.min(1, (now - t0) / duration);
+                rotation = startRotation + (endRotation - startRotation) * easeOutCubic(t);
+                draw();
+                if (t < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    resolve(sports[sportAtPointer()]);
+                }
+            };
+            requestAnimationFrame(step);
+        });
+    };
+
+    let mcpConnected = false;
+
+    const announce = async (pick) => {
+        const prefix = pick.special ? "🔥 SPECIAL! " : "";
+        resultEl.textContent = `${prefix}${pick.emoji} ${pick.label}`;
+        if (!mcpConnected) return;
+        try {
+            await app.updateModelContext({
+                content: [{
+                    type: "text",
+                    text: `The spinner landed on: ${pick.label}${pick.special ? " (special triathlon slice!)" : ""}`,
+                }],
+            });
+        } catch (_) { /* host unavailable — standalone browser mode */ }
+    };
+
+    draw();
+
+    app.connect()
+        .then(() => { mcpConnected = true; })
+        .catch(() => { /* no MCP host — standalone browser mode */ })
+        .finally(() => {
+            resultEl.textContent = "Press Spin to pick your sport";
+        });
+
+    btn.addEventListener("click", async () => {
+        const pick = await spin();
+        await announce(pick);
+        btn.disabled = false;
+    });
+</script>
+
+</body>
+</html>

@@ -6,18 +6,6 @@
     <artifactId>java-websocket</artifactId>
     <packaging>war</packaging>
     <name>java-websocket</name>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>21</source>
-                    <target>21</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -44,6 +32,19 @@
             <version>${gson.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>21</source>
+                    <target>21</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <jakarta.websocket-api.version>2.2.0</jakarta.websocket-api.version>

@@ -27,6 +27,7 @@
         <module>micronaut-docker</module>
         <module>pulumi</module>
         <module>dubbo</module>
+        <module>nacos</module>
     </modules>
 
 </project>

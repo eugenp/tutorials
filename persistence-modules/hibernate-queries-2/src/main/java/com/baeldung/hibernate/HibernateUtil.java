@@ -1,13 +1,10 @@
 package com.baeldung.hibernate;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.net.URL;
-import java.util.Properties;
-
+import com.baeldung.hibernate.daterange.entity.Order;
 import com.baeldung.hibernate.distinct.entities.Comment;
 import com.baeldung.hibernate.distinct.entities.Post;
 import com.baeldung.hibernate.entities.DeptEmployee;
+import com.baeldung.hibernate.pojo.Student;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -15,7 +12,10 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 
-import com.baeldung.hibernate.pojo.Student;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Properties;
 
 public class HibernateUtil {
     private static String PROPERTY_FILE_NAME;
@@ -43,13 +43,14 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(Comment.class);
         metadataSources.addAnnotatedClass(Post.class);
         metadataSources.addAnnotatedClass(DeptEmployee.class);
+        metadataSources.addAnnotatedClass(Order.class);
         metadataSources.addAnnotatedClass(com.baeldung.hibernate.entities.Department.class);
 
         Metadata metadata = metadataSources.getMetadataBuilder()
-                .build();
+          .build();
 
         return metadata.getSessionFactoryBuilder()
-                .build();
+          .build();
 
     }
 
@@ -59,7 +60,7 @@ public class HibernateUtil {
 
     private static ServiceRegistry configureServiceRegistry(Properties properties) throws IOException {
         return new StandardServiceRegistryBuilder().applySettings(properties)
-                .build();
+          .build();
     }
 
     public static Properties getProperties() throws IOException {

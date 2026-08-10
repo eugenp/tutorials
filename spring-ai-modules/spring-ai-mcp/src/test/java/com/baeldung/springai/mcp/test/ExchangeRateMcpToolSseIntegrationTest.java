@@ -14,8 +14,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 @SpringBootTest(
     webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
@@ -28,7 +28,7 @@ class ExchangeRateMcpToolSseIntegrationTest {
     @Autowired
     private TestMcpClientFactory testMcpClientFactory;
 
-    @MockBean
+    @MockitoBean
     private ExchangeRateService exchangeRateService;
 
     private McpSyncClient client;
@@ -62,7 +62,9 @@ class ExchangeRateMcpToolSseIntegrationTest {
             .findFirst()
             .orElseThrow();
 
-        String argumentName = exchangeRateTool.inputSchema().properties().keySet().stream()
+		String argumentName = ((Map<String, Object>) exchangeRateTool.inputSchema().get("properties"))
+			.keySet()
+			.stream()
             .findFirst()
             .orElseThrow();
 

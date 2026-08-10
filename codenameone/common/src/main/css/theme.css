@@ -1,0 +1,1855 @@
+/** Define Theme Constants here */
+#Constants {
+    includeNativeBool: true;
+    defaultSourceDPIInt: "0";
+    useLargerTextScaleBool: true;
+    darkModeBool: true;
+    capsButtonTextBool: false;
+    dlgButtonCommandUIID: DialogButtonCommand;
+    lightweightPickerBool: true;
+    sideMenuSizePortraitInt: "20";
+    sideMenuSizeLandscapeInt: "55";
+    sideMenuSizeTabPortraitInt: "34";
+    sideMenuSizeTabLandscapeInt: "25";
+}
+
+/* =========================================================
+   Base theme: light
+   ========================================================= */
+
+Default {
+    background: #f5f7fb;
+    background-color: #f5f7fb;
+    color: #1f2933;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+}
+
+/* App surfaces */
+Form,
+ContentPane,
+List,
+Tabs {
+    background: #f5f7fb;
+    background-color: #f5f7fb;
+    color: #1f2933;
+    border: none;
+}
+
+ContentPane {
+    padding: 0;
+    margin: 2mm;
+}
+
+/* Toolbar */
+Toolbar,
+ToolbarSearch,
+TitleArea,
+StatusBar {
+    background: #f5f7fb;
+    background-color: #f5f7fb;
+    color: #1f2933;
+    border: none;
+}
+
+/* Toolbar/title text */
+Title {
+    background: transparent;
+    background-color: transparent;
+    color: #1f2933;
+    border: none;
+    font-family: "native:MainBold";
+    font-size: 5.4mm;
+}
+
+TitleCommand,
+BackCommand,
+SheetBackButton {
+    background: transparent;
+    background-color: transparent;
+    color: #0f766e;
+    border: none;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+    margin-right: 2mm;
+    margin-left: 1mm;
+}
+
+TitleCommand.pressed,
+TitleCommand.selected,
+BackCommand.pressed,
+BackCommand.selected,
+SheetBackButton.pressed,
+SheetBackButton.selected {
+    background: transparent;
+    background-color: transparent;
+    color: #0b5d57;
+    border: none;
+}
+
+/* Dialogs, sheets, popups */
+Dialog,
+PopupContent,
+PopupContentPane,
+Sheet,
+SheetTitleBar {
+    background: #ffffff;
+    background-color: #ffffff;
+    color: #1f2933;
+    border: 1px solid #d6dde7;
+    padding: 0;
+    margin: 0;
+}
+
+DialogBody {
+    background: transparent;
+    background-color: transparent;
+    color: #1f2933;
+    border: none;
+    font-family: "native:MainLight";
+    font-size: 2.8mm;
+}
+
+DialogTitle,
+SheetTitle {
+    background: #ffffff;
+    background-color: #ffffff;
+    color: #1f2933;
+    border: none;
+    font-family: "native:MainBold";
+    font-size: 4.4mm;
+}
+
+DialogCommandArea {
+    background: #ffffff;
+    background-color: #ffffff;
+    color: #1f2933;
+    border: none;
+    padding: 0.8mm 1mm 1mm 1mm;
+    margin: 0;
+}
+
+DialogButtonCommand {
+    background: transparent;
+    background-color: transparent;
+    color: #0f766e;
+    border: none;
+    font-family: "native:MainRegular";
+    font-weight: bold;
+    font-size: 3mm;
+    padding: 1.2mm 2mm 1.2mm 2mm;
+    text-align: center;
+}
+
+DialogButtonCommand.pressed,
+DialogButtonCommand.selected {
+    background: #e3e9f0;
+    background-color: #e3e9f0;
+    color: #0b5d57;
+    border: none;
+    font-family: "native:MainRegular";
+    font-weight: bold;
+    font-size: 3mm;
+    padding: 1.2mm 2mm 1.2mm 2mm;
+    text-align: center;
+}
+
+ActivityActionButton {
+    background: #eef2f7;
+    background-color: #eef2f7;
+    color: #1f2933;
+    border: 1px solid #d6dde7;
+    border-radius: 2.5mm;
+    font-family: "native:MainRegular";
+    font-size: 3mm;
+    margin: 0 0 2mm 0;
+    padding: 1.7mm 2.6mm 1.7mm 2.6mm;
+    text-align: center;
+}
+
+ActivityActionButton.pressed,
+ActivityActionButton.selected {
+    background: #e3e9f0;
+    background-color: #e3e9f0;
+    color: #1f2933;
+    border: 1px solid #c6d0dc;
+    border-radius: 2.5mm;
+    font-family: "native:MainRegular";
+    font-size: 3mm;
+    margin: 0 0 2mm 0;
+    padding: 1.7mm 2.6mm 1.7mm 2.6mm;
+    text-align: center;
+}
+
+ActivityActionButton.disabled {
+    background: #eff3f7;
+    background-color: #eff3f7;
+    color: #9aa6b5;
+    border: 1px solid #dde4ec;
+    border-radius: 2.5mm;
+    font-family: "native:MainRegular";
+    font-size: 3mm;
+    margin: 0 0 2mm 0;
+    padding: 1.7mm 2.6mm 1.7mm 2.6mm;
+    text-align: center;
+}
+
+/* Text */
+Label,
+SpanLabel,
+CheckBox,
+RadioButton {
+    background: transparent;
+    background-color: transparent;
+    color: #1f2933;
+    border: none;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+    padding: 0;
+}
+
+TextHint,
+TextHintSearch {
+    background: transparent;
+    background-color: transparent;
+    color: #7b8794;
+    border: none;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+}
+
+/* Buttons */
+Button {
+    background: #eef2f7;
+    background-color: #eef2f7;
+    color: #1f2933;
+    border: 1px solid #d6dde7;
+    border-radius: 2.5mm;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+    padding: 1.7mm 2.6mm 1.7mm 2.6mm;
+}
+
+Button.pressed,
+Button.selected {
+    background: #e3e9f0;
+    background-color: #e3e9f0;
+    color: #1f2933;
+    border: 1px solid #c6d0dc;
+    border-radius: 2.5mm;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+    padding: 1.7mm 2.6mm 1.7mm 2.6mm;
+}
+
+Button.disabled {
+    background: #eff3f7;
+    background-color: #eff3f7;
+    color: #9aa6b5;
+    border: 1px solid #dde4ec;
+    border-radius: 2.5mm;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+    padding: 1.7mm 2.6mm 1.7mm 2.6mm;
+}
+
+RaisedButton {
+    background: #0f766e;
+    background-color: #0f766e;
+    color: #ffffff;
+    border: none;
+    border-radius: 2.5mm;
+    font-family: "native:MainBold";
+    font-size: 3mm;
+    padding: 1.9mm 3mm 1.9mm 3mm;
+}
+
+RaisedButton.pressed,
+RaisedButton.selected {
+    background: #0b5d57;
+    background-color: #0b5d57;
+    color: #ffffff;
+    border: none;
+    border-radius: 2.5mm;
+    font-family: "native:MainBold";
+    font-size: 3mm;
+    padding: 1.9mm 3mm 1.9mm 3mm;
+}
+
+RaisedButton.disabled {
+    background: #9fd4ce;
+    background-color: #9fd4ce;
+    color: #eff8f7;
+    border: none;
+    border-radius: 2.5mm;
+    font-family: "native:MainBold";
+    font-size: 3mm;
+    padding: 1.9mm 3mm 1.9mm 3mm;
+}
+
+FloatingActionButton {
+    background: #0f766e;
+    background-color: #0f766e;
+    color: #ffffff;
+    border: none;
+}
+
+/* Inputs */
+TextField,
+TextArea,
+TextFieldSearch,
+Picker {
+    background: #ffffff;
+    background-color: #ffffff;
+    color: #1f2933;
+    border: 1px solid #d6dde7;
+    border-radius: 2.2mm;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+    padding: 1.6mm;
+}
+
+TextField.selected,
+TextArea.selected,
+TextFieldSearch.selected,
+Picker.selected {
+    background: #ffffff;
+    background-color: #ffffff;
+    color: #1f2933;
+    border: 1px solid #0f766e;
+    border-radius: 2.2mm;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+    padding: 1.6mm;
+}
+
+TextField.disabled,
+TextArea.disabled,
+TextFieldSearch.disabled,
+Picker.disabled {
+    background: #eff3f7;
+    background-color: #eff3f7;
+    color: #9aa6b5;
+    border: 1px solid #dde4ec;
+    border-radius: 2.2mm;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+    padding: 1.6mm;
+}
+
+TextArea {
+    padding: 1.8mm;
+}
+
+/* Popup renderer UIIDs */
+PopupItem {
+    background: #ffffff;
+    background-color: #ffffff;
+    color: #1f2933;
+    border: none;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+    padding: 1.6mm 2mm 1.6mm 2mm;
+}
+
+PopupItem.pressed,
+PopupItem.selected,
+PopupFocus {
+    background: #e3e9f0;
+    background-color: #e3e9f0;
+    color: #1f2933;
+    border: none;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+    padding: 1.6mm 2mm 1.6mm 2mm;
+}
+
+PickerShortcutButton {
+    background: #eef2f7;
+    background-color: #eef2f7;
+    color: #1f2933;
+    border: 1px solid #d6dde7;
+    border-radius: 2.2mm;
+    font-family: "native:MainLight";
+    font-size: 2.7mm;
+    padding: 1.2mm 1.4mm 1.2mm 1.4mm;
+    text-align: center;
+}
+
+PickerShortcutButton.pressed,
+PickerShortcutButton.selected {
+    background: #e3e9f0;
+    background-color: #e3e9f0;
+    color: #1f2933;
+    border: 1px solid #c6d0dc;
+    border-radius: 2.2mm;
+    font-family: "native:MainLight";
+    font-size: 2.7mm;
+    padding: 1.2mm 1.4mm 1.2mm 1.4mm;
+}
+
+/* Generic command/menu items */
+Command,
+MenuItem,
+PopupMenu,
+CommandList {
+    background: #ffffff;
+    background-color: #ffffff;
+    color: #1f2933;
+    border: none;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+}
+
+Command.pressed,
+Command.selected,
+MenuItem.pressed,
+MenuItem.selected {
+    background: #e3e9f0;
+    background-color: #e3e9f0;
+    color: #1f2933;
+    border: none;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+}
+
+/* Switch */
+Switch {
+    background: #d8dee8;
+    background-color: #d8dee8;
+    color: #1f2933;
+    border: none;
+}
+
+Switch.selected {
+    background: #0f766e;
+    background-color: #0f766e;
+    color: #ffffff;
+    border: none;
+}
+
+/* Side navigation */
+SideNavigationPanel {
+    background: #ffffff;
+    background-color: #ffffff;
+    color: #1f2933;
+    border: none;
+    padding: 2mm 1mm 1mm 1mm;
+}
+
+SideCommand {
+    background: transparent;
+    background-color: transparent;
+    color: #1f2933;
+    border: none;
+    border-bottom: 1px solid #e0e6ee;
+    text-decoration: none;
+    font-family: "native:MainLight";
+    font-size: 4mm;
+    padding: 1.4mm 1mm 1.4mm 1mm;
+    text-align: left;
+}
+
+SideCommand.pressed,
+SideCommand.selected {
+    background: #edf2f7;
+    background-color: #edf2f7;
+    color: #1f2933;
+    border: none;
+    border-bottom: 1px solid #e0e6ee;
+    text-decoration: none;
+    font-family: "native:MainLight";
+    font-size: 4mm;
+    padding: 1.4mm 1mm 1.4mm 1mm;
+    text-align: left;
+}
+
+/* Lists/cards */
+MultiButton {
+    background: #ffffff;
+    background-color: #ffffff;
+    color: #1f2933;
+    border: 1px solid #d6dde7;
+    border-radius: 3mm;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+    padding: 1.4mm;
+}
+
+MultiButton.pressed,
+MultiButton.selected {
+    background: #eef2f7;
+    background-color: #eef2f7;
+    color: #1f2933;
+    border: 1px solid #c6d0dc;
+    border-radius: 3mm;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+    padding: 1.4mm;
+}
+
+MultiLine1 {
+    background: transparent;
+    background-color: transparent;
+    color: #1f2933;
+    border: none;
+    font-family: "native:MainBold";
+    font-size: 3.1mm;
+}
+
+MultiLine2,
+MultiLine3,
+MultiLine4 {
+    background: transparent;
+    background-color: transparent;
+    color: #5b6675;
+    border: none;
+    font-family: "native:MainLight";
+    font-size: 2.7mm;
+}
+
+Emblem {
+    background: transparent;
+    background-color: transparent;
+    color: #0f766e;
+    border: none;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+}
+
+/* Custom UIIDs */
+SectionTitle {
+    background: transparent;
+    background-color: transparent;
+    color: #1f2933;
+    border: none;
+    font-family: "native:MainBold";
+    font-size: 3.2mm;
+    margin: 0.4mm 0 0.6mm 0;
+    padding: 0;
+}
+
+SectionText {
+    background: transparent;
+    background-color: transparent;
+    color: #5b6675;
+    border: none;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+    margin: 0 0 0.5mm 0;
+    padding: 0;
+}
+
+ActivityCardIcon {
+    background: transparent;
+    background-color: transparent;
+    color: #0f766e;
+    border: none;
+    font-family: "native:MainLight";
+    font-size: 3.2mm;
+    margin: 0 2mm 0 0;
+    padding: 0;
+}
+
+ActivityCardTitle {
+    background: transparent;
+    background-color: transparent;
+    color: #1f2933;
+    border: none;
+    font-family: "native:MainRegular";
+    font-weight: bold;
+    font-size: 3.2mm;
+    margin: 0 0 0.5mm 0;
+    padding: 0;
+}
+
+ActivityCardMeta {
+    background: transparent;
+    background-color: transparent;
+    color: #5b6675;
+    border: none;
+    font-family: "native:MainRegular";
+    font-style: italic;
+    font-size: 3mm;
+    margin: 0 0 0.5mm 0;
+    padding: 0;
+}
+
+DetailSection {
+    background: transparent;
+    background-color: transparent;
+    color: #1f2933;
+    border: none;
+    border-bottom: 0.3mm solid #d6dde7;
+    margin: 0 0 1mm 0;
+    padding: 0 0 1mm 0;
+}
+
+DetailSectionTitle {
+    background: transparent;
+    background-color: transparent;
+    color: #5b6675;
+    border: none;
+    font-family: "native:MainRegular";
+    font-size: 2.35mm;
+    margin: 0 0 0.35mm 0;
+    padding: 0;
+}
+
+DetailSectionValue {
+    background: transparent;
+    background-color: transparent;
+    color: #1f2933;
+    border: none;
+    font-family: "native:MainRegular";
+    font-weight: bold;
+    font-size: 3mm;
+    margin: 0;
+    padding: 0;
+}
+
+EditSection {
+    background: transparent;
+    background-color: transparent;
+    color: #1f2933;
+    border: none;
+    border-bottom: 0.3mm solid #d6dde7;
+    margin: 0 0 1mm 0;
+    padding: 0 0 1mm 0;
+}
+
+EditSectionTitle {
+    background: transparent;
+    background-color: transparent;
+    color: #5b6675;
+    border: none;
+    font-family: "native:MainRegular";
+    font-size: 2.35mm;
+    margin: 0 0 0.35mm 0;
+    padding: 0;
+}
+
+EditSectionValue {
+    background: #ffffff;
+    background-color: #ffffff;
+    color: #1f2933;
+    border: 1px solid #d6dde7;
+    border-radius: 2.2mm;
+    font-family: "native:MainRegular";
+    font-weight: bold;
+    font-size: 3mm;
+    margin: 0 0 0.6mm 0;
+    padding: 1.6mm;
+}
+
+EditSectionValue.pressed,
+EditSectionValue.selected {
+    background: #ffffff;
+    background-color: #ffffff;
+    color: #1f2933;
+    border: 1px solid #0f766e;
+    border-radius: 2.2mm;
+    font-family: "native:MainRegular";
+    font-weight: bold;
+    font-size: 3mm;
+    margin: 0 0 0.6mm 0;
+    padding: 1.6mm;
+}
+
+EditSectionValue.disabled {
+    background: #eff3f7;
+    background-color: #eff3f7;
+    color: #9aa6b5;
+    border: 1px solid #dde4ec;
+    border-radius: 2.2mm;
+    font-family: "native:MainRegular";
+    font-weight: bold;
+    font-size: 3mm;
+    margin: 0 0 0.6mm 0;
+    padding: 1.6mm;
+}
+
+PickerDialog,
+PickerDialogTablet,
+PickerDialogContent,
+PickerDialogContentTablet,
+PickerButtonBar,
+PickerButtonBarTablet {
+    background: #ffffff;
+    background-color: #ffffff;
+    color: #1f2933;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+PickerButton,
+PickerButtonTablet {
+    background: transparent;
+    background-color: transparent;
+    color: #0f766e;
+    border: none;
+    font-family: "native:MainRegular";
+    font-weight: bold;
+    font-size: 3mm;
+    padding: 1.2mm 1.8mm 1.2mm 1.8mm;
+    text-align: center;
+}
+
+PickerButton.pressed,
+PickerButton.selected,
+PickerButtonTablet.pressed,
+PickerButtonTablet.selected {
+    background: #e3e9f0;
+    background-color: #e3e9f0;
+    color: #0b5d57;
+    border: none;
+    font-family: "native:MainRegular";
+    font-weight: bold;
+    font-size: 3mm;
+    padding: 1.2mm 1.8mm 1.2mm 1.8mm;
+    text-align: center;
+}
+
+Spinner3DRow,
+TimeSpinnerHoursLabel,
+TimeSpinnerMinutesLabel {
+    background: transparent;
+    background-color: transparent;
+    color: #5b6675;
+    border: none;
+    font-family: "native:MainRegular";
+    font-size: 3mm;
+    padding: 0.8mm 1mm 0.8mm 1mm;
+    text-align: center;
+}
+
+Spinner3DRow.selected {
+    background: transparent;
+    background-color: transparent;
+    color: #1f2933;
+    border: none;
+    font-family: "native:MainRegular";
+    font-weight: bold;
+    font-size: 3.2mm;
+    padding: 0.8mm 1mm 0.8mm 1mm;
+    text-align: center;
+}
+
+Spinner3DOverlay {
+    background: #ffffff;
+    background-color: #ffffff;
+    color: #1f2933;
+    border: none;
+}
+
+ActivityCard {
+    background: #ffffff;
+    background-color: #ffffff;
+    color: #1f2933;
+    border: 1px solid #d6dde7;
+    border-radius: 3mm;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+    margin: 1.2mm 0 1.2mm 0;
+    padding: 1.4mm;
+}
+
+ActivityCardPressed,
+ActivityCard.pressed,
+ActivityCard.selected {
+    background: #f3f6fa;
+    background-color: #f3f6fa;
+    color: #1f2933;
+    border: 1px solid #ccd6e2;
+    border-radius: 3mm;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+    margin: 1.2mm 0 1.2mm 0;
+    padding: 1.4mm;
+}
+
+PrimaryActionButton {
+    background: #0f766e;
+    background-color: #0f766e;
+    color: #ffffff;
+    border: none;
+    border-radius: 2.5mm;
+    font-family: "native:MainBold";
+    font-size: 3mm;
+    padding: 2mm 3mm 2mm 3mm;
+    text-align: center;
+}
+
+PrimaryActionButton.pressed,
+PrimaryActionButton.selected {
+    background: #0b5d57;
+    background-color: #0b5d57;
+    color: #ffffff;
+    border: none;
+    border-radius: 2.5mm;
+    font-family: "native:MainBold";
+    font-size: 3mm;
+    padding: 2mm 3mm 2mm 3mm;
+}
+
+PrimaryActionButton.disabled {
+    background: #9fd4ce;
+    background-color: #9fd4ce;
+    color: #eff8f7;
+    border: none;
+    border-radius: 2.5mm;
+    font-family: "native:MainBold";
+    font-size: 3mm;
+    padding: 2mm 3mm 2mm 3mm;
+}
+
+InlineLink {
+    background: transparent;
+    background-color: transparent;
+    color: #0f766e;
+    border: none;
+    text-decoration: underline;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+    padding: 0;
+}
+
+InlineLink.pressed,
+InlineLink.selected {
+    background: transparent;
+    background-color: transparent;
+    color: #0b5d57;
+    border: none;
+    text-decoration: underline;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+    padding: 0;
+}
+
+TickLabel {
+    background: transparent;
+    background-color: transparent;
+    color: #5b6675;
+    border: none;
+    text-align: center;
+    font-family: "native:MainLight";
+    font-size: 2.4mm;
+}
+
+MapCard {
+    background: #ffffff;
+    background-color: #ffffff;
+    color: #1f2933;
+    border: 1px solid #d6dde7;
+    border-radius: 3mm;
+    padding: 0;
+}
+
+MapPlaceholder {
+    background: transparent;
+    background-color: transparent;
+    color: #5b6675;
+    border: none;
+    text-align: center;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+    padding: 2mm;
+}
+
+MapStaticImage {
+    background: transparent;
+    background-color: transparent;
+    color: #1f2933;
+    border: none;
+    padding: 1mm 0 0 0;
+}
+
+PlaceSummary {
+    background: transparent;
+    background-color: transparent;
+    color: #435164;
+    border: none;
+    font-family: "native:MainLight";
+    font-size: 2.8mm;
+}
+
+EmptyStateLabel {
+    background: transparent;
+    background-color: transparent;
+    color: #5b6675;
+    border: none;
+    text-align: center;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+    padding: 4mm 2mm 4mm 2mm;
+}
+
+/* Tabs */
+Tab,
+UnselectedTab {
+    background: transparent;
+    background-color: transparent;
+    color: #5b6675;
+    border: none;
+    font-family: "native:MainLight";
+    font-size: 3mm;
+}
+
+SelectedTab {
+    background: transparent;
+    background-color: transparent;
+    color: #0f766e;
+    border: none;
+    font-family: "native:MainBold";
+    font-size: 3mm;
+}
+
+/* Scrollbar/splitter/separators */
+Scroll,
+ScrollThumb {
+    background: #cbd5e1;
+    background-color: #cbd5e1;
+    color: #1f2933;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+Separator {
+    background: #d6dde7;
+    background-color: #d6dde7;
+    color: #d6dde7;
+    border: none;
+}
+
+SliderThumb {
+    background: transparent;
+    background-color: transparent;
+    color: #0f766e;
+    border: none;
+}
+
+SideNavigationPanel {
+    padding: 6mm 1mm 1mm 1mm;
+}
+
+SettingsRow {
+    margin-bottom: 2mm;
+    background: transparent;
+    background-color: transparent;
+}
+
+/* =========================================================
+   Dark mode
+   ========================================================= */
+
+@media (prefers-color-scheme: dark) {
+    Default {
+        background: #0f172a;
+        background-color: #0f172a;
+        color: #eef2f7;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+    }
+
+    Form,
+    ContentPane,
+    List,
+    Tabs {
+        background: #0f172a;
+        background-color: #0f172a;
+        color: #eef2f7;
+        border: none;
+    }
+
+    ContentPane {
+        padding: 0;
+        margin: 2mm;
+    }
+
+    Toolbar,
+    ToolbarSearch,
+    TitleArea,
+    StatusBar {
+        background: #0f172a;
+        background-color: #0f172a;
+        color: #eef2f7;
+        border: none;
+    }
+
+    Title {
+        background: transparent;
+        background-color: transparent;
+        color: #eef2f7;
+        border: none;
+        font-family: "native:MainBold";
+        font-size: 5.4mm;
+    }
+
+    TitleCommand,
+    BackCommand,
+    SheetBackButton {
+        background: transparent;
+        background-color: transparent;
+        color: #5eead4;
+        border: none;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+        margin-left: 1mm;
+        margin-right: 2mm;
+    }
+
+    TitleCommand.pressed,
+    TitleCommand.selected,
+    BackCommand.pressed,
+    BackCommand.selected,
+    SheetBackButton.pressed,
+    SheetBackButton.selected {
+        background: transparent;
+        background-color: transparent;
+        color: #99f6e4;
+        border: none;
+    }
+
+    Dialog,
+    PopupContent,
+    PopupContentPane,
+    Sheet,
+    SheetTitleBar {
+        background: #162033;
+        background-color: #162033;
+        color: #eef2f7;
+        border: 1px solid #334155;
+        padding: 0;
+        margin: 0;
+    }
+
+    DialogBody {
+        background: transparent;
+        background-color: transparent;
+        color: #eef2f7;
+        border: none;
+        font-family: "native:MainLight";
+        font-size: 2.8mm;
+    }
+
+    DialogTitle,
+    SheetTitle {
+        background: #162033;
+        background-color: #162033;
+        color: #eef2f7;
+        border: none;
+        font-family: "native:MainBold";
+        font-size: 4.4mm;
+    }
+
+    DialogCommandArea {
+        background: #162033;
+        background-color: #162033;
+        color: #eef2f7;
+        border: none;
+        padding: 0.8mm 1mm 1mm 1mm;
+        margin: 0;
+    }
+
+    DialogButtonCommand {
+        background: transparent;
+        background-color: transparent;
+        color: #5eead4;
+        border: none;
+        font-family: "native:MainRegular";
+        font-weight: bold;
+        font-size: 3mm;
+        padding: 1.2mm 2mm 1.2mm 2mm;
+        text-align: center;
+    }
+
+    DialogButtonCommand.pressed,
+    DialogButtonCommand.selected {
+        background: #273447;
+        background-color: #273447;
+        color: #99f6e4;
+        border: none;
+        font-family: "native:MainRegular";
+        font-weight: bold;
+        font-size: 3mm;
+        padding: 1.2mm 2mm 1.2mm 2mm;
+        text-align: center;
+    }
+
+    ActivityActionButton {
+        background: #233046;
+        background-color: #233046;
+        color: #eef2f7;
+        border: 1px solid #334155;
+        border-radius: 2.5mm;
+        font-family: "native:MainRegular";
+        font-size: 3mm;
+        margin: 0 0 2mm 0;
+        padding: 1.7mm 2.6mm 1.7mm 2.6mm;
+        text-align: center;
+    }
+
+    ActivityActionButton.pressed,
+    ActivityActionButton.selected {
+        background: #273447;
+        background-color: #273447;
+        color: #ffffff;
+        border: 1px solid #4b607a;
+        border-radius: 2.5mm;
+        font-family: "native:MainRegular";
+        font-size: 3mm;
+        margin: 0 0 2mm 0;
+        padding: 1.7mm 2.6mm 1.7mm 2.6mm;
+        text-align: center;
+    }
+
+    ActivityActionButton.disabled {
+        background: #182231;
+        background-color: #182231;
+        color: #6f8095;
+        border: 1px solid #283549;
+        border-radius: 2.5mm;
+        font-family: "native:MainRegular";
+        font-size: 3mm;
+        margin: 0 0 2mm 0;
+        padding: 1.7mm 2.6mm 1.7mm 2.6mm;
+        text-align: center;
+    }
+
+    Label,
+    SpanLabel,
+    CheckBox,
+    RadioButton {
+        background: transparent;
+        background-color: transparent;
+        color: #eef2f7;
+        border: none;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+        padding: 0;
+    }
+
+    TextHint,
+    TextHintSearch {
+        background: transparent;
+        background-color: transparent;
+        color: #94a3b8;
+        border: none;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+    }
+
+    Button {
+        background: #1e293b;
+        background-color: #1e293b;
+        color: #eef2f7;
+        border: 1px solid #334155;
+        border-radius: 2.5mm;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+        padding: 1.7mm 2.6mm 1.7mm 2.6mm;
+    }
+
+    Button.pressed,
+    Button.selected {
+        background: #273447;
+        background-color: #273447;
+        color: #ffffff;
+        border: 1px solid #46586f;
+        border-radius: 2.5mm;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+        padding: 1.7mm 2.6mm 1.7mm 2.6mm;
+    }
+
+    Button.disabled {
+        background: #182231;
+        background-color: #182231;
+        color: #6f8095;
+        border: 1px solid #283549;
+        border-radius: 2.5mm;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+        padding: 1.7mm 2.6mm 1.7mm 2.6mm;
+    }
+
+    RaisedButton {
+        background: #4fd2c3;
+        background-color: #4fd2c3;
+        color: #08211e;
+        border: none;
+        border-radius: 2.5mm;
+        font-family: "native:MainBold";
+        font-size: 3mm;
+        padding: 1.9mm 3mm 1.9mm 3mm;
+    }
+
+    RaisedButton.pressed,
+    RaisedButton.selected {
+        background: #36bbac;
+        background-color: #36bbac;
+        color: #08211e;
+        border: none;
+        border-radius: 2.5mm;
+        font-family: "native:MainBold";
+        font-size: 3mm;
+        padding: 1.9mm 3mm 1.9mm 3mm;
+    }
+
+    RaisedButton.disabled {
+        background: #214440;
+        background-color: #214440;
+        color: #86b2ad;
+        border: none;
+        border-radius: 2.5mm;
+        font-family: "native:MainBold";
+        font-size: 3mm;
+        padding: 1.9mm 3mm 1.9mm 3mm;
+    }
+
+    FloatingActionButton {
+        background: #4fd2c3;
+        background-color: #4fd2c3;
+        color: #08211e;
+        border: none;
+    }
+
+    TextField,
+    TextArea,
+    TextFieldSearch,
+    Picker {
+        background: #162033;
+        background-color: #162033;
+        color: #eef2f7;
+        border: 1px solid #334155;
+        border-radius: 2.2mm;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+        padding: 1.6mm;
+    }
+
+    TextField.selected,
+    TextArea.selected,
+    TextFieldSearch.selected,
+    Picker.selected {
+        background: #162033;
+        background-color: #162033;
+        color: #ffffff;
+        border: 1px solid #5eead4;
+        border-radius: 2.2mm;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+        padding: 1.6mm;
+    }
+
+    TextField.disabled,
+    TextArea.disabled,
+    TextFieldSearch.disabled,
+    Picker.disabled {
+        background: #182231;
+        background-color: #182231;
+        color: #6f8095;
+        border: 1px solid #283549;
+        border-radius: 2.2mm;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+        padding: 1.6mm;
+    }
+
+    TextArea {
+        padding: 1.8mm;
+    }
+
+    PopupItem {
+        background: #162033;
+        background-color: #162033;
+        color: #eef2f7;
+        border: none;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+        padding: 1.6mm 2mm 1.6mm 2mm;
+    }
+
+    PopupItem.pressed,
+    PopupItem.selected,
+    PopupFocus {
+        background: #35506f;
+        background-color: #35506f;
+        color: #ffffff;
+        border: none;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+        padding: 1.6mm 2mm 1.6mm 2mm;
+    }
+
+    PickerShortcutButton {
+        background: #223046;
+        background-color: #223046;
+        color: #eef2f7;
+        border: 1px solid #334155;
+        border-radius: 2.2mm;
+        font-family: "native:MainLight";
+        font-size: 2.7mm;
+        padding: 1.2mm 1.4mm 1.2mm 1.4mm;
+        text-align: center;
+    }
+
+    PickerShortcutButton.pressed,
+    PickerShortcutButton.selected {
+        background: #35506f;
+        background-color: #35506f;
+        color: #ffffff;
+        border: 1px solid #4b607a;
+        border-radius: 2.2mm;
+        font-family: "native:MainLight";
+        font-size: 2.7mm;
+        padding: 1.2mm 1.4mm 1.2mm 1.4mm;
+    }
+
+    Command,
+    MenuItem,
+    PopupMenu,
+    CommandList {
+        background: #162033;
+        background-color: #162033;
+        color: #eef2f7;
+        border: none;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+    }
+
+    Command.pressed,
+    Command.selected,
+    MenuItem.pressed,
+    MenuItem.selected {
+        background: #273447;
+        background-color: #273447;
+        color: #ffffff;
+        border: none;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+    }
+
+    Switch {
+        background: #334155;
+        background-color: #334155;
+        color: #eef2f7;
+        border: none;
+    }
+
+    Switch.selected {
+        background: #4fd2c3;
+        background-color: #4fd2c3;
+        color: #08211e;
+        border: none;
+    }
+
+    SideNavigationPanel {
+        background: #162033;
+        background-color: #162033;
+        color: #eef2f7;
+        border: none;
+        padding: 2mm 1mm 1mm 1mm;
+    }
+
+    SideCommand {
+        background: transparent;
+        background-color: transparent;
+        color: #eef2f7;
+        border: none;
+        border-bottom: 1px solid #334155;
+        text-decoration: none;
+        font-family: "native:MainLight";
+        font-size: 4mm;
+        padding: 1.4mm 1mm 1.4mm 1mm;
+        text-align: left;
+    }
+
+    SideCommand.pressed,
+    SideCommand.selected {
+        background: #223046;
+        background-color: #223046;
+        color: #ffffff;
+        border: none;
+        border-bottom: 1px solid #334155;
+        text-decoration: none;
+        font-family: "native:MainLight";
+        font-size: 4mm;
+        padding: 1.4mm 1mm 1.4mm 1mm;
+        text-align: left;
+    }
+
+    MultiButton {
+        background: #162033;
+        background-color: #162033;
+        color: #eef2f7;
+        border: 1px solid #334155;
+        border-radius: 3mm;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+        padding: 1.4mm;
+    }
+
+    MultiButton.pressed,
+    MultiButton.selected {
+        background: #1d2a3d;
+        background-color: #1d2a3d;
+        color: #ffffff;
+        border: 1px solid #46586f;
+        border-radius: 3mm;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+        padding: 1.4mm;
+    }
+
+    MultiLine1 {
+        background: transparent;
+        background-color: transparent;
+        color: #eef2f7;
+        border: none;
+        font-family: "native:MainBold";
+        font-size: 3.1mm;
+    }
+
+    MultiLine2,
+    MultiLine3,
+    MultiLine4 {
+        background: transparent;
+        background-color: transparent;
+        color: #c2cfde;
+        border: none;
+        font-family: "native:MainLight";
+        font-size: 2.7mm;
+    }
+
+    Emblem {
+        background: transparent;
+        background-color: transparent;
+        color: #5eead4;
+        border: none;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+    }
+
+    SectionTitle {
+        background: transparent;
+        background-color: transparent;
+        color: #eef2f7;
+        border: none;
+        font-family: "native:MainBold";
+        font-size: 3.2mm;
+        margin: 0.4mm 0 0.6mm 0;
+        padding: 0;
+    }
+
+    SectionText {
+        background: transparent;
+        background-color: transparent;
+        color: #c2cfde;
+        border: none;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+        margin: 0 0 0.5mm 0;
+        padding: 0;
+    }
+
+    ActivityCardIcon {
+        background: transparent;
+        background-color: transparent;
+        color: #5eead4;
+        border: none;
+        font-family: "native:MainLight";
+        font-size: 3.2mm;
+        margin: 0 2mm 0 0;
+        padding: 0;
+    }
+
+    ActivityCardTitle {
+        background: transparent;
+        background-color: transparent;
+        color: #eef2f7;
+        border: none;
+        font-family: "native:MainRegular";
+        font-weight: bold;
+        font-size: 3.2mm;
+        margin: 0 0 0.5mm 0;
+        padding: 0;
+    }
+
+    ActivityCardMeta {
+        background: transparent;
+        background-color: transparent;
+        color: #c2cfde;
+        border: none;
+        font-family: "native:MainRegular";
+        font-style: italic;
+        font-size: 3mm;
+        margin: 0 0 0.5mm 0;
+        padding: 0;
+    }
+
+    DetailSection {
+        background: transparent;
+        background-color: transparent;
+        color: #eef2f7;
+        border: none;
+        border-bottom: 0.3mm solid #334155;
+        margin: 0 0 1mm 0;
+        padding: 0 0 1mm 0;
+    }
+
+    DetailSectionTitle {
+        background: transparent;
+        background-color: transparent;
+        color: #c2cfde;
+        border: none;
+        font-family: "native:MainRegular";
+        font-size: 2.35mm;
+        margin: 0 0 0.35mm 0;
+        padding: 0;
+    }
+
+    DetailSectionValue {
+        background: transparent;
+        background-color: transparent;
+        color: #eef2f7;
+        border: none;
+        font-family: "native:MainRegular";
+        font-weight: bold;
+        font-size: 3mm;
+        margin: 0;
+        padding: 0;
+    }
+
+    EditSection {
+        background: transparent;
+        background-color: transparent;
+        color: #eef2f7;
+        border: none;
+        border-bottom: 0.3mm solid #334155;
+        margin: 0 0 1mm 0;
+        padding: 0 0 1mm 0;
+    }
+
+    EditSectionTitle {
+        background: transparent;
+        background-color: transparent;
+        color: #c2cfde;
+        border: none;
+        font-family: "native:MainRegular";
+        font-size: 2.35mm;
+        margin: 0 0 0.35mm 0;
+        padding: 0;
+    }
+
+    EditSectionValue {
+        background: #162033;
+        background-color: #162033;
+        color: #eef2f7;
+        border: 1px solid #334155;
+        border-radius: 2.2mm;
+        font-family: "native:MainRegular";
+        font-weight: bold;
+        font-size: 3mm;
+        margin: 0 0 0.6mm 0;
+        padding: 1.6mm;
+    }
+
+    EditSectionValue.pressed,
+    EditSectionValue.selected {
+        background: #162033;
+        background-color: #162033;
+        color: #ffffff;
+        border: 1px solid #5eead4;
+        border-radius: 2.2mm;
+        font-family: "native:MainRegular";
+        font-weight: bold;
+        font-size: 3mm;
+        margin: 0 0 0.6mm 0;
+        padding: 1.6mm;
+    }
+
+    EditSectionValue.disabled {
+        background: #182231;
+        background-color: #182231;
+        color: #6f8095;
+        border: 1px solid #283549;
+        border-radius: 2.2mm;
+        font-family: "native:MainRegular";
+        font-weight: bold;
+        font-size: 3mm;
+        margin: 0 0 0.6mm 0;
+        padding: 1.6mm;
+    }
+
+    PickerDialog,
+    PickerDialogTablet,
+    PickerDialogContent,
+    PickerDialogContentTablet,
+    PickerButtonBar,
+    PickerButtonBarTablet {
+        background: #162033;
+        background-color: #162033;
+        color: #eef2f7;
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    PickerButton,
+    PickerButtonTablet {
+        background: transparent;
+        background-color: transparent;
+        color: #5eead4;
+        border: none;
+        font-family: "native:MainRegular";
+        font-weight: bold;
+        font-size: 3mm;
+        padding: 1.2mm 1.8mm 1.2mm 1.8mm;
+        text-align: center;
+    }
+
+    PickerButton.pressed,
+    PickerButton.selected,
+    PickerButtonTablet.pressed,
+    PickerButtonTablet.selected {
+        background: #273447;
+        background-color: #273447;
+        color: #99f6e4;
+        border: none;
+        font-family: "native:MainRegular";
+        font-weight: bold;
+        font-size: 3mm;
+        padding: 1.2mm 1.8mm 1.2mm 1.8mm;
+        text-align: center;
+    }
+
+    Spinner3DRow,
+    TimeSpinnerHoursLabel,
+    TimeSpinnerMinutesLabel {
+        background: transparent;
+        background-color: transparent;
+        color: #c2cfde;
+        border: none;
+        font-family: "native:MainRegular";
+        font-size: 3mm;
+        padding: 0.8mm 1mm 0.8mm 1mm;
+        text-align: center;
+    }
+
+    Spinner3DRow.selected {
+        background: transparent;
+        background-color: transparent;
+        color: #ffffff;
+        border: none;
+        font-family: "native:MainRegular";
+        font-weight: bold;
+        font-size: 3.2mm;
+        padding: 0.8mm 1mm 0.8mm 1mm;
+        text-align: center;
+    }
+
+    Spinner3DOverlay {
+        background: #162033;
+        background-color: #162033;
+        color: #eef2f7;
+        border: none;
+    }
+
+    ActivityCard {
+        background: #162033;
+        background-color: #162033;
+        color: #eef2f7;
+        border: 1px solid #334155;
+        border-radius: 3mm;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+        margin: 1.2mm 0 1.2mm 0;
+        padding: 1.4mm;
+    }
+
+    ActivityCardPressed,
+    ActivityCard.pressed,
+    ActivityCard.selected {
+        background: #223148;
+        background-color: #223148;
+        color: #ffffff;
+        border: 1px solid #4b607a;
+        border-radius: 3mm;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+        margin: 1.2mm 0 1.2mm 0;
+        padding: 1.4mm;
+    }
+
+    PrimaryActionButton {
+        background: #4fd2c3;
+        background-color: #4fd2c3;
+        color: #08211e;
+        border: none;
+        border-radius: 2.5mm;
+        font-family: "native:MainBold";
+        font-size: 3mm;
+        padding: 2mm 3mm 2mm 3mm;
+        text-align: center;
+    }
+
+    PrimaryActionButton.pressed,
+    PrimaryActionButton.selected {
+        background: #36bbac;
+        background-color: #36bbac;
+        color: #08211e;
+        border: none;
+        border-radius: 2.5mm;
+        font-family: "native:MainBold";
+        font-size: 3mm;
+        padding: 2mm 3mm 2mm 3mm;
+    }
+
+    PrimaryActionButton.disabled {
+        background: #214440;
+        background-color: #214440;
+        color: #86b2ad;
+        border: none;
+        border-radius: 2.5mm;
+        font-family: "native:MainBold";
+        font-size: 3mm;
+        padding: 2mm 3mm 2mm 3mm;
+    }
+
+    InlineLink {
+        background: transparent;
+        background-color: transparent;
+        color: #5eead4;
+        border: none;
+        text-decoration: underline;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+        padding: 0;
+    }
+
+    InlineLink.pressed,
+    InlineLink.selected {
+        background: transparent;
+        background-color: transparent;
+        color: #99f6e4;
+        border: none;
+        text-decoration: underline;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+        padding: 0;
+    }
+
+    TickLabel {
+        background: transparent;
+        background-color: transparent;
+        color: #c2cfde;
+        border: none;
+        text-align: center;
+        font-family: "native:MainLight";
+        font-size: 2.4mm;
+    }
+
+    MapCard {
+        background: #162033;
+        background-color: #162033;
+        color: #eef2f7;
+        border: 1px solid #334155;
+        border-radius: 3mm;
+        padding: 0;
+    }
+
+    MapPlaceholder {
+        background: transparent;
+        background-color: transparent;
+        color: #c2cfde;
+        border: none;
+        text-align: center;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+        padding: 2mm;
+    }
+
+    MapStaticImage {
+        background: transparent;
+        background-color: transparent;
+        color: #eef2f7;
+        border: none;
+        padding: 1mm 0 0 0;
+    }
+
+    PlaceSummary {
+        background: transparent;
+        background-color: transparent;
+        color: #d4dde9;
+        border: none;
+        font-family: "native:MainLight";
+        font-size: 2.8mm;
+    }
+
+    EmptyStateLabel {
+        background: transparent;
+        background-color: transparent;
+        color: #c2cfde;
+        border: none;
+        text-align: center;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+        padding: 4mm 2mm 4mm 2mm;
+    }
+
+    Tab,
+    UnselectedTab {
+        background: transparent;
+        background-color: transparent;
+        color: #c2cfde;
+        border: none;
+        font-family: "native:MainLight";
+        font-size: 3mm;
+    }
+
+    SelectedTab {
+        background: transparent;
+        background-color: transparent;
+        color: #5eead4;
+        border: none;
+        font-family: "native:MainBold";
+        font-size: 3mm;
+    }
+
+    Scroll,
+    ScrollThumb {
+        background: #334155;
+        background-color: #334155;
+        color: #eef2f7;
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    Separator {
+        background: #334155;
+        background-color: #334155;
+        color: #334155;
+        border: none;
+    }
+
+    SliderThumb {
+        background: transparent;
+        background-color: transparent;
+        color: #5eead4;
+        border: none;
+    }
+
+    SideNavigationPanel {
+        padding: 6mm 1mm 1mm 1mm;
+    }
+
+    SettingsRow {
+        margin-bottom: 2mm;
+        background: transparent;
+        background-color: transparent;
+    }
+}

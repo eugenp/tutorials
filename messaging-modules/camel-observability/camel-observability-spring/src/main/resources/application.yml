@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: first-camel-spring-boot
+camel:
+  main:
+    run-controller: true
+  opentelemetry2:
+    enabled: true
+    trace-processors: true
+    trace-headers-inclusion: true
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,prometheus
+  server:
+    port: 7654
