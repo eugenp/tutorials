@@ -27,8 +27,7 @@ public class ConferencePojoValidationTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {
-        "{\"name\":\"\"}",   // Empty String
+    @ValueSource(strings = { "{\"name\":\"\"}",   // Empty String
         "{\"name\":\" \"}"   // Space only
     })
     public void givenGson_whenEmptyString_ThenNoValidation(String badJson) {

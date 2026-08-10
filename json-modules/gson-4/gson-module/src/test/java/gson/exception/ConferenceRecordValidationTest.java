@@ -12,11 +12,10 @@ import com.google.gson.Gson;
 public class ConferenceRecordValidationTest {
 
     @ParameterizedTest
-    @ValueSource(strings = {
-        "{}",                 // Empty JSON
-        "{\"nazwa\":null}",   // Explicit null in JSON
-        "{\"nazwa\":\"\"}",   // Empty String ""
-        "{\"nazwa\":\" \"}"   // String contains only space " "
+    @ValueSource(strings = { "{}",    // Empty JSON
+        "{\"nazwa\":null}",           // Explicit null in JSON
+        "{\"nazwa\":\"\"}",           // Empty String ""
+        "{\"nazwa\":\" \"}"           // String contains only space " "
     })
     public void givenGson_WhenRecord_ThenValidation(String badJson) {
 
