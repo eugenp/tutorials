@@ -41,6 +41,7 @@
         <module>junit5-migration</module>
         <module>k6</module>
         <module>load-testing-comparison</module>
+        <module>microcks</module>
         <module>mockito</module>
         <module>mockito-simple</module>
         <module>mocks</module>
