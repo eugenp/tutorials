@@ -93,6 +93,17 @@
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.kagkarlsson</groupId>
+            <artifactId>db-scheduler</artifactId>
+            <version>${db-scheduler.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -140,6 +151,8 @@
         <elasticjob.version>3.0.5</elasticjob.version>
         <jcasbin.version>1.99.0</jcasbin.version>
         <commons-io.version>2.17.0</commons-io.version>
+        <db-scheduler.version>16.12.0</db-scheduler.version>
+        <hsqldb.version>2.7.4</hsqldb.version>
     </properties>
 
 </project>
