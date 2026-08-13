@@ -58,6 +58,8 @@ Therefore, we have a total of 17 profiles:
 | integration-jdk24 | JDK24 projects              | *IntegrationTest     |
 | default-jdk25     | JDK25 projects              | *UnitTest            |
 | integration-jdk25 | JDK25 projects              | *IntegrationTest     |
+| default-jdk26     | JDK26 projects              | *UnitTest            |
+| integration-jdk26 | JDK26 projects              | *IntegrationTest     |
 | default-heavy     | Heavy/long running projects | *UnitTest            |
 | integration-heavy | Heavy/long running projects | *IntegrationTest     |
 | default-jdk8      | JDK8  projects              | *UnitTest            |
