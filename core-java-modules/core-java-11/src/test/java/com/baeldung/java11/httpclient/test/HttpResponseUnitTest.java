@@ -36,7 +36,7 @@ public class HttpResponseUnitTest {
     @Test
     public void shouldResponseURIDifferentThanRequestURIWhenRedirect() throws IOException, InterruptedException, URISyntaxException {
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(new URI("http://stackoverflow.com"))
+            .uri(new URI("http://httpbin.org/redirect-to?url=https://httpbin.org/get"))
             .version(HttpClient.Version.HTTP_2)
             .GET()
             .build();
@@ -46,9 +46,9 @@ public class HttpResponseUnitTest {
             .send(request, HttpResponse.BodyHandlers.ofString());
 
         assertThat(request.uri()
-            .toString(), equalTo("http://stackoverflow.com"));
+            .toString(), equalTo("http://httpbin.org/redirect-to?url=https://httpbin.org/get"));
         assertThat(response.uri()
-            .toString(), equalTo("https://stackoverflow.com/questions"));
+            .toString(), equalTo("https://httpbin.org/get"));
     }
 
 }
