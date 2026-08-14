@@ -102,6 +102,9 @@ class DbSchedulerIntegrationTest {
             .startTasks(task)
             .registerShutdownHook()
             .pollingInterval(Duration.ofSeconds(2))
+            .heartbeatInterval(Duration.ofMinutes(2))
+            .missedHeartbeatsLimit(10)
+            .threads(5)
             .build();
 
         scheduler.start();
@@ -124,7 +127,11 @@ class DbSchedulerIntegrationTest {
                 counter.incrementAndGet();
             });
         Scheduler scheduler = Scheduler.create(dataSource, task)
+            .registerShutdownHook()
             .pollingInterval(Duration.ofSeconds(2))
+            .heartbeatInterval(Duration.ofMinutes(2))
+            .missedHeartbeatsLimit(10)
+            .threads(5)
             .build();
 
         scheduler.start();
@@ -154,7 +161,11 @@ class DbSchedulerIntegrationTest {
                 counter.incrementAndGet();
             });
         Scheduler scheduler = Scheduler.create(dataSource, task)
-            .pollingInterval(Duration.ofSeconds(1))
+            .registerShutdownHook()
+            .pollingInterval(Duration.ofSeconds(2))
+            .heartbeatInterval(Duration.ofMinutes(2))
+            .missedHeartbeatsLimit(10)
+            .threads(5)
             .build();
 
         scheduler.start();
