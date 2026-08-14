@@ -9,8 +9,11 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.util.UUID;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.github.kagkarlsson.scheduler.Scheduler;
@@ -27,8 +30,8 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class DbSchedulerLiveTest {
-    private static final Logger LOG = LoggerFactory.getLogger(DbSchedulerLiveTest.class);
+class DbSchedulerIntegrationTest {
+    private static final Logger LOG = LoggerFactory.getLogger(DbSchedulerIntegrationTest.class);
 
     private DataSource dataSource;
 
@@ -79,38 +82,49 @@ public class DbSchedulerLiveTest {
 
         assertTrue(scheduler.getSchedulerState().isStarted());
 
-
         scheduler.stop();
         assertTrue(scheduler.getSchedulerState().isShuttingDown());
     }
 
     @Test
-    void whenStartingARecurringTask_theTaskRunsRegularly() throws Exception {
-        RecurringTask<Void> task = Tasks.recurring("my-task", FixedDelay.ofSeconds(1))
+    void whenStartingARecurringTask_thenTheTaskRunsRegularly() throws Exception {
+        CountDownLatch countDownLatch  = new CountDownLatch(3);
+        AtomicInteger counter = new AtomicInteger(0);
+
+        RecurringTask<Void> task = Tasks.recurring("my-task", FixedDelay.ofSeconds(5))
             .execute((instance, context) -> {
                 LOG.info("Executed!");
+                countDownLatch.countDown();
+                counter.incrementAndGet();
             });
 
         Scheduler scheduler = Scheduler.create(dataSource)
             .startTasks(task)
             .registerShutdownHook()
+            .pollingInterval(Duration.ofSeconds(2))
             .build();
 
         scheduler.start();
 
-        // Just block forever
-        Thread.currentThread().join();
+        countDownLatch.await();
+
+        assertEquals(3, counter.get());
+        scheduler.stop();
     }
 
     @Test
-    void whenStartingAOneTimeTask_theTaskRunsOnce() throws Exception {
+    void whenStartingAOneTimeTask_thenTheTaskRunsOnce() throws Exception {
+        AtomicInteger counter = new AtomicInteger(0);
+
         TaskDescriptor<String> taskDescriptor = TaskDescriptor.of("my-onetime-task", String.class);
 
         Task<String> task = Tasks.oneTime(taskDescriptor)
             .execute((inst, ctx) -> {
                 LOG.info("Executed! Custom data {}, Instance {}", inst.getData(), inst.getId());
+                counter.incrementAndGet();
             });
         Scheduler scheduler = Scheduler.create(dataSource, task)
+            .pollingInterval(Duration.ofSeconds(2))
             .build();
 
         scheduler.start();
@@ -120,17 +134,24 @@ public class DbSchedulerLiveTest {
             .scheduledTo(Instant.now().plusSeconds(5))
         );
 
-        // Just block forever
-        Thread.currentThread().join();
+        TimeUnit.SECONDS.sleep(20);
+        assertEquals(1, counter.get());
+
+        scheduler.stop();
     }
 
     @Test
-    void whenStartingADynamicRecurringTask_theTaskRunsAsExpected() throws Exception {
+    void whenStartingADynamicRecurringTask_thenTheTaskRunsAsExpected() throws Exception {
+        CountDownLatch countDownLatch = new CountDownLatch(3);
+        AtomicInteger counter = new AtomicInteger(0);
+
         TaskDescriptor<String> taskDescriptor = TaskDescriptor.of("my-dynamic-recurring-task", String.class);
 
         Task<String> task = Tasks.recurring(taskDescriptor, new CronSchedule("*/5 * * * * ?", ZoneId.of("UTC")))
             .execute((inst, ctx) -> {
                 LOG.info("Executed! Custom data {}, Instance {}", inst.getData(), inst.getId());
+                countDownLatch.countDown();
+                counter.incrementAndGet();
             });
         Scheduler scheduler = Scheduler.create(dataSource, task)
             .pollingInterval(Duration.ofSeconds(1))
@@ -143,7 +164,9 @@ public class DbSchedulerLiveTest {
             .scheduledTo(Instant.now().plusSeconds(10))
         );
 
-        // Just block forever
-        Thread.currentThread().join();
+        countDownLatch.await();
+
+        assertEquals(3, counter.get());
+        scheduler.stop();
     }
 }
