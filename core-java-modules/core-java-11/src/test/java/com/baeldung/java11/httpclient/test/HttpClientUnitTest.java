@@ -71,7 +71,7 @@ public class HttpClientUnitTest {
     @Test
     public void shouldFollowRedirectWhenSetToAlways() throws IOException, InterruptedException, URISyntaxException {
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(new URI("https://httpbin.org/redirect-to?url=https://httpbin.org/get"))
+            .uri(new URI("https://postman-echo.com/redirect-to?url=https://postman-echo.com/get"))
             .version(HttpClient.Version.HTTP_1_1)
             .GET()
             .build();
@@ -83,7 +83,7 @@ public class HttpClientUnitTest {
         assertThat(response.statusCode(), equalTo(HttpURLConnection.HTTP_OK));
         assertThat(response.request()
             .uri()
-            .toString(), equalTo("https://httpbin.org/get"));
+            .toString(), equalTo("https://postman-echo.com/get"));
     }
 
     @Test
