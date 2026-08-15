@@ -6,7 +6,7 @@ public enum Modes {
     ALPHA("A"),
     BETA("B");
 
-    private String text;
+    private final String text;
 
     Modes(String text) {
         this.text = text;
@@ -24,7 +24,7 @@ public enum Modes {
                 return modes;
             }
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("Unknown mode value: " + text);
     }
 
     @Override
