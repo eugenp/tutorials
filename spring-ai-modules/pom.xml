@@ -35,5 +35,6 @@
         <module>spring-ai-vector-stores</module>
         <module>spring-ai-mcp-annotations</module>
         <module>spring-ai-subagent-orchestrator</module>
+        <module>spring-ai-todowrite-tool</module>
     </modules>
 </project>
