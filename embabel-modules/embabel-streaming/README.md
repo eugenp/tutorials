@@ -12,8 +12,16 @@ export ANTHROPIC_API_KEY=your-anthropic-key
 
 ## Run
 
-**Anthropic tests** (claude-sonnet-4-5):
+**All tests:**
 ```bash
-mvn test -pl embabel-streaming -P integration
+$ mvn test -pl embabel-streaming -P integration
 
+```
+
+**Single test:**
+```bash
+$ mvn test -pl embabel-streaming -P integration -Dtest=StreamingWithThinkingAndToolingIntegrationTest#whenStreaming_thenReceivesParkingRecommendation
+$ mvn test -pl embabel-streaming -P integration -Dtest=StreamingWithThinkingAndToolingIntegrationTest#whenStreamingMultipleScenarios_thenReceivesRecommendationPerScenario
+$ mvn test -pl embabel-streaming -P integration -Dtest=StreamingWithThinkingAndToolingIntegrationTest#whenStreamingWithThinking_thenReceivesReasoningAndRecommendation
+$ mvn test -pl embabel-streaming -P integration -Dtest=StreamingWithThinkingAndToolingIntegrationTest#whenStreamingWithThinkingAndTooling_thenReceivesRecommendationAndReasoning
 ```

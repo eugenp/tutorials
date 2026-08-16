@@ -1,5 +1,18 @@
 package com.baeldung.embabel.agent.api.streaming;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.time.Duration;
+import java.util.concurrent.ThreadLocalRandom;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+
 import com.embabel.agent.AgentTestApplication;
 import com.embabel.agent.api.annotation.LlmTool;
 import com.embabel.agent.api.common.Ai;
@@ -10,22 +23,8 @@ import com.embabel.agent.api.tool.callback.ToolCallLoggingInspector;
 import com.embabel.common.ai.model.LlmOptions;
 import com.embabel.common.ai.model.Thinking;
 import com.embabel.common.core.streaming.StreamingEvent;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-import reactor.core.publisher.Flux;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import reactor.core.publisher.Flux;
 
 @SpringBootTest(
     classes = AgentTestApplication.class,
@@ -54,11 +53,10 @@ class StreamingWithThinkingAndToolingIntegrationTest {
     public record ParkingRecommendation(
         String scenario,
         Option chosenOption,
-        String location,
         int estimatedTotalCost,
         String summary
     ) {
-        @SuppressWarnings("unused")
+        
         public enum Option {
             STREET, METER, GARAGE
         }
@@ -117,53 +115,19 @@ class StreamingWithThinkingAndToolingIntegrationTest {
 
     /**
      * Verifies basic structured streaming: a single object is emitted and completed without errors.
-     */
-    @Nested
-    class SimpleStreaming {
-
-        @Test
-        void whenStreaming_thenReceivesParkingRecommendation() {
-            PromptRunner runner = ai.withDefaultLlm();
-            assertTrue(runner.supportsStreaming(), "Default LLM must support streaming");
-
-            Flux<ParkingRecommendation> stream = new StreamingPromptRunnerBuilder(runner)
-                .streaming()
-                .withPrompt(PARKING_PROMPT)
-                .createObjectStream(ParkingRecommendation.class);
-
-            stream
-                .timeout(Duration.ofSeconds(120))
-                .doOnNext(rec -> {
-                    logger.info("Received parking recommendation: option={}, cost={}, summary={}",
-                        rec.chosenOption(), rec.estimatedTotalCost(), rec.summary());
-                })
-                .blockLast(Duration.ofSeconds(240));
-        }
+    */
+    @Test
+    void whenStreaming_thenReceivesParkingRecommendation() {
+        streamParkingRecommendations(PARKING_PROMPT);
     }
 
     /**
      * Verifies that a prompt requesting multiple results streams them as individual objects,
      * one per scenario, rather than a single batched response.
-     */
-    @Nested
-    class StreamingCollection {
-
-        @Test
-        void whenStreamingMultipleScenarios_thenReceivesRecommendationPerScenario() {
-            PromptRunner runner = ai.withDefaultLlm();
-            assertTrue(runner.supportsStreaming(), "Default LLM must support streaming");
-
-            new StreamingPromptRunnerBuilder(runner)
-                .streaming()
-                .withPrompt(TIMED_PARKING_PROMPT)
-                .createObjectStream(ParkingRecommendation.class)
-                .timeout(Duration.ofSeconds(120))
-                .doOnNext(rec -> {
-                    logger.info("Received recommendation: scenario={}, option={}, cost={}",
-                        rec.scenario(), rec.chosenOption(), rec.estimatedTotalCost());
-                })
-                .blockLast(Duration.ofSeconds(240));
-        }
+    */
+    @Test
+    void whenStreamingMultipleScenarios_thenReceivesRecommendationPerScenario() {
+        streamParkingRecommendations(TIMED_PARKING_PROMPT);
     }
 
     /**
@@ -173,72 +137,66 @@ class StreamingWithThinkingAndToolingIntegrationTest {
      * Reasoning arrives as multiple {@link com.embabel.common.core.streaming.StreamingEvent.Thinking}
      * events — one per line, not a single block.
      */
-    @Nested
-    class StreamingWithThinkingNoTools {
-
-        @Test
-        void whenStreamingWithThinking_thenReceivesReasoningAndRecommendation() {
-            // budget_tokens must be < max_tokens (8192). This also enables <think> format instructions.
-            LlmOptions thinkingOptions = new LlmOptions().withThinking(Thinking.withTokenBudget(8000));
-            PromptRunner runner = ai.withDefaultLlm().withLlm(thinkingOptions);
-            assertTrue(runner.supportsStreaming(), "Default LLM must support streaming");
-
-            Flux<StreamingEvent<ParkingRecommendation>> stream = new StreamingPromptRunnerBuilder(runner)
-                .streaming()
-                .withPrompt(PARKING_PROMPT)
-                .createObjectStreamWithThinking(ParkingRecommendation.class);
-
-            stream
-                .timeout(Duration.ofSeconds(120))
-                .doOnNext(event -> {
-                    if (event.isObject()) {
-                        ParkingRecommendation rec = event.getObject();
-                        if (rec != null) {
-                            logger.info("Received recommendation: option={}, cost={}, summary={}",
-                                rec.chosenOption(), rec.estimatedTotalCost(), rec.summary());
-                        }
-                    } else if (event.isThinking()) {
-                        logger.info("Received reasoning: {}", event.getThinking());
-                    }
-                })
-                .blockLast(Duration.ofSeconds(240));
-        }
+    @Test
+    void whenStreamingWithThinking_thenReceivesReasoningAndRecommendation() {
+        // budget_tokens must be < max_tokens (8192). This also enables more rigorous reasoning
+        LlmOptions thinkingOptions = new LlmOptions().withThinking(Thinking.withTokenBudget(8000));
+        streamWithThinking(ai.withDefaultLlm().withLlm(thinkingOptions), PARKING_PROMPT);
     }
 
-    @Nested
-    class StreamingWithThinkingAndTooling {
 
-        /**
-         * Verifies that streaming with tools produces reasoning and a recommendation informed by tool results.
-         *
-         * <p>Reasoning events are emitted only from the final LLM iteration — after all tool calls
-         * complete. Intermediate reasoning (the model's thinking while deciding which tools to call)
-         * is not surfaced to the subscriber, as each Spring AI-managed tool-loop iteration starts a new stream.
-         */
-        @Test
-        void whenStreamingWithThinkingAndTooling_thenReceivesRecommendationAndReasoning() {
-            PromptRunner runner = ai.withDefaultLlm()
-                .withToolObject(new ParkingTooling())
-                .withToolCallInspectors(new ToolCallLoggingInspector(LogLevel.INFO, logger));
-            assertTrue(runner.supportsStreaming(), "Default LLM must support streaming");
+    /**
+     * Verifies that streaming with tools produces reasoning and a recommendation informed by tool results.
+     *
+     * <p>Reasoning events are emitted only from the final LLM iteration — after all tool calls
+     * complete. Intermediate reasoning (the model's thinking while deciding which tools to call)
+     * is not surfaced to the subscriber, as each Spring AI-managed tool-loop iteration starts a new stream.
+     */
+    @Test
+    void whenStreamingWithThinkingAndTooling_thenReceivesRecommendationAndReasoning() {
+        PromptRunner runner = ai.withDefaultLlm()
+            .withToolObject(new ParkingTooling())
+            .withToolCallInspectors(new ToolCallLoggingInspector(LogLevel.INFO, logger));
+        streamWithThinking(runner, TOOLING_PARKING_PROMPT);
+    }
 
-            new StreamingPromptRunnerBuilder(runner)
-                .streaming()
-                .withPrompt(TOOLING_PARKING_PROMPT)
-                .createObjectStreamWithThinking(ParkingRecommendation.class)
-                .timeout(Duration.ofSeconds(120))
-                .doOnNext(event -> {
-                    if (event.isObject()) {
-                        ParkingRecommendation rec = event.getObject();
-                        if (rec != null) {
-                            logger.info("Received recommendation: option={}, cost={}, summary={}",
-                                rec.chosenOption(), rec.estimatedTotalCost(), rec.summary());
-                        }
-                    } else if (event.isThinking()) {
-                        logger.info("Received reasoning: {}", event.getThinking());
+    private void streamWithThinking(PromptRunner runner, String prompt) {
+        assertTrue(runner.supportsStreaming(), "Default LLM must support streaming");
+
+        Flux<StreamingEvent<ParkingRecommendation>> stream = new StreamingPromptRunnerBuilder(runner)
+            .streaming()
+            .withPrompt(prompt)
+            .createObjectStreamWithThinking(ParkingRecommendation.class);
+
+        stream
+            .timeout(Duration.ofSeconds(120))
+            .doOnNext(event -> {
+                if (event.isObject()) {
+                    ParkingRecommendation rec = event.getObject();
+                    if (rec != null) {
+                        logger.info("Received recommendation: scenario={}, option={}, cost={}, summary={}",
+                            rec.scenario(), rec.chosenOption(), rec.estimatedTotalCost(), rec.summary());
                     }
-                })
-                .blockLast(Duration.ofSeconds(240));
-        }
+                } else if (event.isThinking()) {
+                    logger.info("Received reasoning: {}", event.getThinking());
+                }
+            })
+            .blockLast(Duration.ofSeconds(240));
+    }
+
+    private void streamParkingRecommendations(String prompt) {
+        PromptRunner runner = ai.withDefaultLlm();
+        assertTrue(runner.supportsStreaming(), "Default LLM must support streaming");
+
+        Flux<ParkingRecommendation> stream = new StreamingPromptRunnerBuilder(runner)
+            .streaming()
+            .withPrompt(prompt)
+            .createObjectStream(ParkingRecommendation.class);
+
+        stream
+            .timeout(Duration.ofSeconds(120))
+            .doOnNext(rec -> logger.info("Received recommendation: scenario={}, option={}, cost={}, summary={}",
+                rec.scenario(), rec.chosenOption(), rec.estimatedTotalCost(), rec.summary()))
+            .blockLast(Duration.ofSeconds(240));
     }
 }
