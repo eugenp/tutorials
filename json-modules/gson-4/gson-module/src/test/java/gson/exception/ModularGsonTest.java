@@ -13,7 +13,7 @@ import com.google.gson.JsonIOException;
 public class ModularGsonTest {
 
     @Test
-    public void givenModularAndExportedPackage_whenDeserializingPojo_thenJsonIOException() {
+    void givenModularAndExportedPackage_whenDeserializingPojo_thenJsonIOException() {
         String json = "{\"name\":\"Java Conference\",\"numberOfParticipants\":150}";
         final Gson gson = new Gson();
 
@@ -23,7 +23,7 @@ public class ModularGsonTest {
     }
 
     @Test
-    public void givenModularAndExportedPackage_whenDeserializingRecord_thenSuccess() {
+    void givenModularAndExportedPackage_whenDeserializingRecord_thenSuccess() {
         String json = "{\"name\":\"Java Conference\",\"numberOfParticipants\":150}";
         final Gson gson = new Gson();
 
@@ -36,7 +36,7 @@ public class ModularGsonTest {
     }
 
     @Test
-    public void givenModularAndExportedPackage_whenDeserializingPublicPojo_thenSuccess() {
+    void givenModularAndExportedPackage_whenDeserializingPublicPojo_thenSuccess() {
         String json = "{\"name\":\"Java Conference\",\"numberOfParticipants\":150}";
         final Gson gson = new Gson();
 

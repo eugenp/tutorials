@@ -12,7 +12,8 @@ public class ModularGsonWithAdapterTest {
 
     @Test
     void whenAdapterForPojo_thenSuccess() {
-        final Gson gson = new GsonBuilder().registerTypeAdapter(ConferencePojo.class, new ConferencePojoAdapter())
+        Gson gson = new GsonBuilder()
+            .registerTypeAdapter(ConferencePojo.class, new ConferencePojoAdapter())
             .create();
 
         final String jsonInput = "{\"name\":\"Java Conference\", \"numberOfParticipants\":100}";
