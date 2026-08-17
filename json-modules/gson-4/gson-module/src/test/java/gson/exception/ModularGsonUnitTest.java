@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 
-public class ModularGsonTest {
+public class ModularGsonUnitTest {
 
     @Test
     void givenModularAndExportedPackage_whenDeserializingPojo_thenJsonIOException() {

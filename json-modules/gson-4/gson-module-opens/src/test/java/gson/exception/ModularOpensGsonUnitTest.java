@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import com.google.gson.Gson;
 
-class ModularOpensGsonTest {
+class ModularOpensGsonUnitTest {
 
     @Test
     void givenModularAndOpens_whenDeserializingPojo_thenSuccess() {
