@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
 
 public class ModularGsonTest {
 
@@ -16,7 +17,7 @@ public class ModularGsonTest {
         String json = "{\"name\":\"Java Conference\",\"numberOfParticipants\":150}";
         final Gson gson = new Gson();
 
-        assertThrows(com.google.gson.JsonIOException.class, () -> {
+        assertThrows(JsonIOException.class, () -> {
             gson.fromJson(json, ConferencePojo.class);
         });
     }

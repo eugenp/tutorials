@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder; // Wymagany nowy import
+import com.google.gson.GsonBuilder;
 
 public class ModularGsonWithAdapterTest {
 
