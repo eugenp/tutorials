@@ -15,7 +15,7 @@ public class ModularGsonUnitTest {
     @Test
     void givenModularAndExportedPackage_whenDeserializingPojo_thenJsonIOException() {
         String json = "{\"name\":\"Java Conference\",\"numberOfParticipants\":150}";
-        final Gson gson = new Gson();
+        Gson gson = new Gson();
 
         assertThrows(JsonIOException.class, () -> {
             gson.fromJson(json, ConferencePojo.class);
@@ -25,7 +25,7 @@ public class ModularGsonUnitTest {
     @Test
     void givenModularAndExportedPackage_whenDeserializingRecord_thenSuccess() {
         String json = "{\"name\":\"Java Conference\",\"numberOfParticipants\":150}";
-        final Gson gson = new Gson();
+        Gson gson = new Gson();
 
         ConferenceRecord result = assertDoesNotThrow(() -> {
             return gson.fromJson(json, ConferenceRecord.class);
@@ -38,7 +38,7 @@ public class ModularGsonUnitTest {
     @Test
     void givenModularAndExportedPackage_whenDeserializingPublicPojo_thenSuccess() {
         String json = "{\"name\":\"Java Conference\",\"numberOfParticipants\":150}";
-        final Gson gson = new Gson();
+        Gson gson = new Gson();
 
         ConferencePojoPublic result = assertDoesNotThrow(() -> {
             return gson.fromJson(json, ConferencePojoPublic.class);
