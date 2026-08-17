@@ -1,18 +1,22 @@
 package gson.exception;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.gson.Gson;
 
 public class GsonModuleMain {
 
     public static void main(String[] args) {
+        Logger log = LoggerFactory.getLogger(GsonModuleMain.class);
 
         String moduleName = GsonModuleMain.class.getModule()
             .getName();
 
         if (moduleName == null) {
-            System.out.println("Mode: [ Class Path ] (Class in the Unnamed Module)");
+            log.info("Mode: [ Class Path ] (Class in the Unnamed Module)");
         } else {
-            System.out.println("Mode: [ Module Path ] - Module name: " + moduleName);
+            log.info("Mode: [ Module Path ] - Module name: " + moduleName);
         }
 
         Gson gson = new Gson();
@@ -20,9 +24,9 @@ public class GsonModuleMain {
 
         try {
             ConferencePojo pojo = gson.fromJson(json, ConferencePojo.class);
-            System.out.println("Deserialization successful! Object " + pojo);
+            log.info("Deserialization successful! Object " + pojo);
         } catch (Exception e) {
-            System.out.println("Expected exception caught!");
+            log.info("Expected exception caught!");
             e.printStackTrace();
         }
     }
