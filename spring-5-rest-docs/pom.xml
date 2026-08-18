@@ -113,6 +113,7 @@
         <asciidoctor-plugin.version>2.2.6</asciidoctor-plugin.version>
         <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+        <maven.compiler.release>17</maven.compiler.release>
     </properties>
 
 </project>
