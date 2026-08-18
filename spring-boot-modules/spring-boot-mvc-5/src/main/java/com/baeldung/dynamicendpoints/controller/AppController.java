@@ -1,7 +1,7 @@
 package com.baeldung.dynamicendpoints.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
@@ -48,7 +48,7 @@ public class AppController {
     }
 
     @Bean
-    @ConditionalOnBean(EnvironmentConfigBean.class)
+    
     public FilterRegistrationBean<DynamicEndpointFilter> dynamicEndpointFilterFilterRegistrationBean(EnvironmentConfigBean environmentConfigBean) {
         FilterRegistrationBean<DynamicEndpointFilter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(new DynamicEndpointFilter(environmentConfigBean.getEnvironment()));
