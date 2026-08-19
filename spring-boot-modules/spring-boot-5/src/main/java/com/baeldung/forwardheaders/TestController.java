@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-public class HealthController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(HealthController.class);
+public class TestController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(TestController.class);
 
-    @GetMapping("/health")
-    public ResponseEntity<Void> getHealth(HttpServletRequest request) {
+    @GetMapping("/test")
+    public ResponseEntity<Void> test(HttpServletRequest request) {
         LOGGER.info("""
                 scheme : {}
                 Remote Host IP : {}

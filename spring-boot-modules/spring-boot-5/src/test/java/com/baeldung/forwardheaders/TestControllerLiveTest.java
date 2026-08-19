@@ -7,7 +7,7 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.web.servlet.client.RestTestClient;;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class HealthControllerLiveTest {
+class TestControllerLiveTest {
 
     private RestTestClient restTestClient;
 
@@ -25,7 +25,7 @@ class HealthControllerLiveTest {
     @Test
     void givenProductExists_whenGetProductIsCalledWithHeaderVersion1_thenReturnValidProduct() {
         restTestClient.get()
-            .uri("/health")
+            .uri("/test")
             .exchange()
             .expectStatus().isOk()
             .expectBody().isEmpty();
