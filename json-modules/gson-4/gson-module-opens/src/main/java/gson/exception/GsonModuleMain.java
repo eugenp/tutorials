@@ -1,5 +1,6 @@
 package gson.exception;
 
+import java.time.LocalDate;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,8 +9,10 @@ import com.google.gson.Gson;
 
 public class GsonModuleMain {
 
+    static Logger log = LoggerFactory.getLogger(GsonModuleMain.class);
+
     public static void main(String[] args) {
-        Logger log = LoggerFactory.getLogger(GsonModuleMain.class);
+
         String moduleName = GsonModuleMain.class.getModule()
             .getName();
 
@@ -18,7 +21,7 @@ public class GsonModuleMain {
         } else {
             log.info("Mode: [ Module Path ] - Module name: " + moduleName);
         }
-
+        LocalDate excpectedDate = LocalDate.of(2026, 8, 17);
         Gson gson = new Gson();
         String json = "{\"name\":\"Java Conference\"}";
 

@@ -7,8 +7,9 @@ import com.google.gson.Gson;
 
 public class GsonModuleMain {
 
+    static Logger log = LoggerFactory.getLogger(GsonModuleMain.class);
+
     public static void main(String[] args) {
-        Logger log = LoggerFactory.getLogger(GsonModuleMain.class);
 
         String moduleName = GsonModuleMain.class.getModule()
             .getName();
