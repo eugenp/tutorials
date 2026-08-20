@@ -23,7 +23,7 @@ class TestControllerLiveTest {
     }
 
     @Test
-    void givenProductExists_whenGetProductIsCalledWithHeaderVersion1_thenReturnValidProduct() {
+    void givenTestApiIsRunning_whenGetTestIsCalled_thenReturnOkWithNoContent() {
         restTestClient.get()
             .uri("/test")
             .exchange()
