@@ -56,7 +56,7 @@ class StreamingWithThinkingAndToolingIntegrationTest {
         int estimatedTotalCost,
         String summary
     ) {
-        
+
         public enum Option {
             STREET, METER, GARAGE
         }
@@ -135,13 +135,15 @@ class StreamingWithThinkingAndToolingIntegrationTest {
      *
      * <p>Token budget must stay below {@code max_tokens} (8192 for {@code claude-sonnet-4-5}).
      * Reasoning arrives as multiple {@link com.embabel.common.core.streaming.StreamingEvent.Thinking}
-     * events — one per line, not a single block.
+     * events — one per line, not as a single block.
      */
     @Test
     void whenStreamingWithThinking_thenReceivesReasoningAndRecommendation() {
         // budget_tokens must be < max_tokens (8192). This also enables more rigorous reasoning
         LlmOptions thinkingOptions = new LlmOptions().withThinking(Thinking.withTokenBudget(8000));
-        streamWithThinking(ai.withDefaultLlm().withLlm(thinkingOptions), PARKING_PROMPT);
+        PromptRunner runner = ai.withDefaultLlm()
+            .withLlm(thinkingOptions);
+        streamParkingRecommendationsWithThinking(runner, PARKING_PROMPT);
     }
 
 
@@ -157,10 +159,10 @@ class StreamingWithThinkingAndToolingIntegrationTest {
         PromptRunner runner = ai.withDefaultLlm()
             .withToolObject(new ParkingTooling())
             .withToolCallInspectors(new ToolCallLoggingInspector(LogLevel.INFO, logger));
-        streamWithThinking(runner, TOOLING_PARKING_PROMPT);
+        streamParkingRecommendationsWithThinking(runner, TOOLING_PARKING_PROMPT);
     }
 
-    private void streamWithThinking(PromptRunner runner, String prompt) {
+    private void streamParkingRecommendationsWithThinking(PromptRunner runner, String prompt) {
         assertTrue(runner.supportsStreaming(), "Default LLM must support streaming");
 
         Flux<StreamingEvent<ParkingRecommendation>> stream = new StreamingPromptRunnerBuilder(runner)
