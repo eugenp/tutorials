@@ -37,7 +37,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.baeldung.apiversions.header.ExampleApplication</mainClass>
+                    <mainClass>com.baeldung.forwardheaders.ForwardHeadersApplication</mainClass>
                 </configuration>
             </plugin>
             <plugin>
