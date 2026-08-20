@@ -12,6 +12,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 public class TestController {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(TestController.class);
 
     @GetMapping("/test")
@@ -23,9 +24,7 @@ public class TestController {
                 Server Name : {}
                 Server Port : {}
                 Request URL : {}""", request.getScheme(), request.getRemoteHost(), request.getRemotePort(), request.getServerName(), request.getServerPort(),
-            ServletUriComponentsBuilder.fromRequest(request)
-                .build()
-                .toUriString());
+            request.getRequestURL());
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
