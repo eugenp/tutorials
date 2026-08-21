@@ -17,6 +17,7 @@
 
     <modules>
         <module>embabel-quiz-generator</module>
+        <module>embabel-tool-reasoning</module>
     </modules>
 
 </project>

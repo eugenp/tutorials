@@ -1,7 +1,6 @@
 package com.baeldung.spel;
 
 import com.baeldung.spring.spel.examples.*;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,22 +15,22 @@ import static org.junit.Assert.assertThat;
 public class SpelIntegrationTest {
 
     @Autowired
-    private SpelArithmetic spelArithmetic = new SpelArithmetic();
+    private SpelArithmetic spelArithmetic;
 
     @Autowired
-    private SpelCollections spelCollections = new SpelCollections();
+    private SpelCollections spelCollections;
 
     @Autowired
-    private SpelConditional spelConditional = new SpelConditional();
+    private SpelConditional spelConditional;
 
     @Autowired
-    private SpelLogical spelLogical = new SpelLogical();
+    private SpelLogical spelLogical;
 
     @Autowired
-    private SpelRegex spelRegex = new SpelRegex();
+    private SpelRegex spelRegex;
 
     @Autowired
-    private SpelRelational spelRelational = new SpelRelational();
+    private SpelRelational spelRelational;
 
     @Test
     public void testArithmetic() throws Exception {

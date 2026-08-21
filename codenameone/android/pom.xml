@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+      <groupId>com.baeldung.cn1tutorial</groupId>
+      <artifactId>dailyroutine</artifactId>
+      <version>1.0-SNAPSHOT</version>
+  </parent>
+  <groupId>com.baeldung.cn1tutorial</groupId>
+  <artifactId>dailyroutine-android</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>dailyroutine-android</name>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <codename1.platform>android</codename1.platform>
+      <codename1.projectPlatform>android</codename1.projectPlatform>
+      <codename1.defaultBuildTarget>android-device</codename1.defaultBuildTarget>
+  </properties>
+    <build>
+        <sourceDirectory>src/main/empty</sourceDirectory>
+        <resources>
+
+            <resource>
+                <directory>src/main/java</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <plugins>
+<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.1</version>
+                <executions>
+                    <execution>
+                        <id>default-jar</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.codenameone</groupId>
+                <artifactId>codenameone-maven-plugin</artifactId>
+                <version>${cn1.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>build-android</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+  <dependencies>
+      <dependency>
+          <groupId>com.codenameone</groupId>
+          <artifactId>codenameone-core</artifactId>
+          <scope>provided</scope>
+      </dependency>
+      <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>${cn1app.name}-common</artifactId>
+          <version>${project.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>${cn1app.name}-common</artifactId>
+          <version>${project.version}</version>
+          <classifier>tests</classifier>
+          <scope>test</scope>
+      </dependency>
+
+  </dependencies>
+  
+  <profiles>
+      <profile>
+          <id>run-android</id>
+          <build>
+              <plugins>
+<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.1</version>
+                <executions>
+                    <execution>
+                        <id>default-jar</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+                  <plugin>
+                      <groupId>org.codehaus.mojo</groupId>
+                      <artifactId>properties-maven-plugin</artifactId>
+                      <version>1.0.0</version>
+                      <executions>
+                          <execution>
+                              <phase>initialize</phase>
+                              <goals>
+                                  <goal>read-project-properties</goal>
+                              </goals>
+                              <configuration>
+                                  <files>
+                                      <file>${basedir}/../common/codenameone_settings.properties</file>
+                                  </files>
+                              </configuration>
+                          </execution>
+                      </executions>
+                  </plugin>
+
+                  <plugin>
+                      <artifactId>maven-antrun-plugin</artifactId>
+                      <executions>
+                          <execution>
+                              <id>adb-install</id>
+                              <phase>verify</phase>
+                              <goals>
+                                  <goal>run</goal>
+                              </goals>
+                              <configuration>
+                                  <target>
+                                      <echo>Running adb install</echo>
+                                      <exec executable="${env.ANDROID_HOME}/platform-tools/adb" failonerror="true">
+                                          <arg value="install"/>
+                                          <arg value="-r"/>
+                                          <arg value="${project.build.directory}/${project.build.finalName}.apk"/>
+                                      </exec>
+
+                                      <echo>Trying to start app on device using adb</echo>
+                                      <exec executable="${env.ANDROID_HOME}/platform-tools/adb" failonerror="true">
+                                          <arg value="shell"/>
+                                          <arg value="am" />
+                                          <arg value="start" />
+                                          <arg value="-n" />
+                                          <arg value="${codename1.packageName}/.${codename1.mainName}Stub"/>
+                                      </exec>
+                                  </target>
+                              </configuration>
+                          </execution>
+                      </executions>
+                  </plugin>
+              </plugins>
+          </build>
+      </profile>
+  </profiles>
+  
+</project>

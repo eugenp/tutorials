@@ -102,7 +102,7 @@
             <scope>test</scope>
             <version>${spring.boot.version}</version>
             <exclusions>
-                <!-- junit4 dependency is excluded as it should to be resolved from junit-vintage-engine 
+                <!-- junit4 dependency is excluded as it should to be resolved from junit-vintage-engine
                     included in parent-modules. -->
                 <exclusion>
                     <groupId>junit</groupId>

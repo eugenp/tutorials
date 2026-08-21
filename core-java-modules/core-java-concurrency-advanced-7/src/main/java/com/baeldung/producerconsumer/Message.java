@@ -1,6 +1,7 @@
 package com.baeldung.producerconsumer;
 
 public class Message {
+
     private int id;
     private double data;
 

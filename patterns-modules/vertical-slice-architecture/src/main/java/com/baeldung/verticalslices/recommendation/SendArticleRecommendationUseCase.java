@@ -2,7 +2,7 @@ package com.baeldung.verticalslices.recommendation;
 
 import java.util.List;
 
-import org.springframework.context.event.EventListener;
+import org.springframework.modulith.events.ApplicationModuleListener;
 import org.springframework.stereotype.Component;
 
 import com.baeldung.verticalslices.events.ArticleCreatedEvent;
@@ -10,7 +10,7 @@ import com.baeldung.verticalslices.events.ArticleCreatedEvent;
 @Component
 class SendArticleRecommendationUseCase {
 
-    @EventListener
+    @ApplicationModuleListener
     void onArticleRecommendation(ArticleCreatedEvent article) {
         findTargetAudience(article.name(), article.category())
           .forEach(follower -> sendArticleViaEmail(article.slug(), article.name(), follower));

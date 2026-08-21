@@ -1,0 +1,29 @@
+causeway:
+  applib:
+    annotation:
+      action:
+        explicit: true
+
+  core:
+    meta-model:
+      introspector:
+        lock-after-full-introspection: true
+        mode: full
+      validator:
+        allow-deprecated: false
+
+  viewer:
+    common:
+      application:
+        about: Internal hardware inventory
+        menubars-layout-file: menubars.layout.xml
+        name: Asset Management
+
+eclipselink:
+  weaving: false
+
+resteasy:
+  jaxrs:
+    app:
+      registration: beans
+    defaultPath: /restful
