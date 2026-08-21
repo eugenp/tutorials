@@ -1019,6 +1019,48 @@
         </profile>
 
         <profile>
+            <id>default-jdk26</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <includes>
+                                <include>SpringContextTest</include>
+                                <include>**/*UnitTest</include>
+                            </includes>
+                            <excludes>
+                                <exclude>**/*IntegrationTest.java</exclude>
+                                <exclude>**/*IntTest.java</exclude>
+                                <exclude>**/*LongRunningUnitTest.java</exclude>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/JdbcTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>26</java.version>
+                <maven.compiler.source>26</maven.compiler.source>
+                <maven.compiler.target>26</maven.compiler.target>
+                <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
+            </properties>
+
+        </profile>
+
+
+        <profile>
             <id>integration-jdk17</id>
             <build>
                 <plugins>
@@ -1477,6 +1519,43 @@
             </properties>
 
         </profile>
+
+        <profile>
+            <id>integration-jdk26</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*IntegrationTest.java</include>
+                                <include>**/*IntTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>26</java.version>
+                <maven.compiler.source>26</maven.compiler.source>
+                <maven.compiler.target>26</maven.compiler.target>
+                <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
+            </properties>
+
+        </profile>
+
 
         <profile>
             <id>live-all</id>
