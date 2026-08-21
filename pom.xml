@@ -1046,7 +1046,7 @@
             </build>
 
             <modules>
-                
+                <module>core-java-modules/core-java-httpclient-2</module>
             </modules>
 
             <properties>
@@ -1543,7 +1543,7 @@
             </build>
 
             <modules>
-                
+                <module>core-java-modules/core-java-httpclient-2</module>
             </modules>
 
             <properties>
