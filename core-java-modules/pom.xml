@@ -276,6 +276,7 @@
         <module>core-java-datetime-conversion-3</module>
         <module>core-java-datetime-conversion-4</module>
         <module>core-java-httpclient</module>
+        <module>core-java-httpclient-2</module>
         <module>java-native</module>
         <module>java-rmi</module>
         <module>java-spi</module>
