@@ -1,4 +1,4 @@
-package com.baeldung.junit5.nonstatic;
+package com.baeldung.nonstatic;
 
 import org.junit.jupiter.api.*;
 
