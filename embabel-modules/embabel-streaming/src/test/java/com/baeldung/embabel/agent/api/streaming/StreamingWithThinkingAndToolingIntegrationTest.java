@@ -106,10 +106,10 @@ class StreamingWithThinkingAndToolingIntegrationTest {
         Return all three recommendations.
         """;
 
-    private static final String TOOLING_PARKING_PROMPT =
+    private static final String TOOL_PARKING_PROMPT =
         """
         An advisor needs to park in Midtown Manhattan for a 3-hour client meeting starting in 30 minutes.
-        Use the available tools to probe parking options, then recommend the best one.
+        Use the available tools to probe parking options, then recommend three options, the best one first.
         Arriving late is not acceptable.
         """;
 
@@ -143,15 +143,15 @@ class StreamingWithThinkingAndToolingIntegrationTest {
         LlmOptions thinkingOptions = new LlmOptions().withThinking(Thinking.withTokenBudget(8000));
         PromptRunner runner = ai.withDefaultLlm()
             .withLlm(thinkingOptions);
-        streamParkingRecommendationsWithThinking(runner, PARKING_PROMPT);
+        streamParkingRecommendationsWithThinking(runner, TIMED_PARKING_PROMPT);
     }
 
 
     /**
      * Verifies that streaming with tools produces reasoning and a recommendation informed by tool results.
      *
-     * <p>Reasoning events are emitted only from the final LLM iteration — after all tool calls
-     * complete. Intermediate reasoning (the model's thinking while deciding which tools to call)
+     * <p>Reasoning events are emitted after all tool calls complete.
+     * Reasoning while deciding which tools to call
      * is not surfaced to the subscriber, as each Spring AI-managed tool-loop iteration starts a new stream.
      */
     @Test
@@ -159,7 +159,7 @@ class StreamingWithThinkingAndToolingIntegrationTest {
         PromptRunner runner = ai.withDefaultLlm()
             .withToolObject(new ParkingTooling())
             .withToolCallInspectors(new ToolCallLoggingInspector(LogLevel.INFO, logger));
-        streamParkingRecommendationsWithThinking(runner, TOOLING_PARKING_PROMPT);
+        streamParkingRecommendationsWithThinking(runner, TOOL_PARKING_PROMPT);
     }
 
     private void streamParkingRecommendationsWithThinking(PromptRunner runner, String prompt) {
