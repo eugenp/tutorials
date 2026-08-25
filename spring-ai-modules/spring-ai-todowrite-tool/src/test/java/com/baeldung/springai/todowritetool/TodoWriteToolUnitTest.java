@@ -13,15 +13,15 @@ class TodoWriteToolUnitTest {
         TodoService todoService = new TodoService();
         TodoWriteTool todoWriteTool = new TodoWriteTool(todoService);
         List<TodoItem> todos = List.of(
-            new TodoItem("1", "Set up project", "completed", "high"),
-            new TodoItem("2", "Write TodoWriteTool", "in_progress", "high"),
-            new TodoItem("3", "Add tests", "pending", "medium"));
+            new TodoItem("1", "Set up project", TodoItem.Status.completed, TodoItem.Priority.high),
+            new TodoItem("2", "Write TodoWriteTool", TodoItem.Status.in_progress, TodoItem.Priority.high),
+            new TodoItem("3", "Add tests", TodoItem.Status.pending, TodoItem.Priority.medium));
 
         List<TodoItem> written = todoWriteTool.todoWrite(todos);
 
         assertThat(written).hasSize(3);
         assertThat(todoWriteTool.todoRead())
             .extracting(TodoItem::status)
-            .containsExactly("completed", "in_progress", "pending");
+            .containsExactly(TodoItem.Status.completed, TodoItem.Status.in_progress, TodoItem.Status.pending);
     }
 }
