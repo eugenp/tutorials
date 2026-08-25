@@ -18,6 +18,7 @@
     <modules>
         <module>embabel-quiz-generator</module>
         <module>embabel-tool-reasoning</module>
+        <module>embabel-streaming</module>
     </modules>
 
 </project>
