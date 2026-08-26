@@ -1,0 +1,22 @@
+services:
+  backend-app:
+    build:
+      context: ../../../../../
+      dockerfile: ./src/test/resources/docker/Dockerfile
+    container_name: backend-app
+    environment:
+      - SPRING_PROFILES_ACTIVE=framework
+    expose:
+      - "8081"
+
+  nginx:
+    image: nginx:1.31.3-alpine
+    container_name: nginx-proxy
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/certs:/etc/nginx/certs:ro
+    ports:
+      - "443:443"
+    depends_on:
+      - backend-app
+

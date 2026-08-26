@@ -1,9 +1,11 @@
 services:
   backend-app:
     build:
-      context: ../../../../
+      context: ../../../../../
       dockerfile: ./src/test/resources/docker/Dockerfile
     container_name: backend-app
+    environment:
+      - SPRING_PROFILES_ACTIVE=native
     expose:
       - "8081"
 
