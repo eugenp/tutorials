@@ -13,5 +13,5 @@ server:
       directory: /app/logs
       prefix: access_log
       suffix: .log
-      pattern: '%h %l %u %t "%r" %s %b "%{X-Forwarded-Host}i" "%{X-Forwarded-For}i" "%{X-Forwarded-Proto}i" "%{Forwarded}i"'
+      pattern: '%h %l %u %t "%r" %s %b "%{X-Forwarded-Host}i" "%{X-Forwarded-For}i" "%{X-Forwarded-Proto}i"'
       rotate: false
