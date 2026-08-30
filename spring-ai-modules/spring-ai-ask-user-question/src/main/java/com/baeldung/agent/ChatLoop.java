@@ -3,6 +3,7 @@ package com.baeldung.agent;
 import java.util.Scanner;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +27,7 @@ class ChatLoop implements CommandLineRunner {
 
                 String response = chatClient.prompt()
                     .user(input)
+                    .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, "session-1"))
                     .call()
                     .content();
                 System.out.println("AI: " + response + "\n");
