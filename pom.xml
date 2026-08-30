@@ -625,6 +625,7 @@
                 <module>parent-spring-7</module>
                 <module>akka-modules</module>
                 <module>algorithms-modules</module>
+                <module>apache-causeway</module>
                 <module>apache-cxf-modules</module>
                 <module>apache-httpclient</module>
                 <module>apache-httpclient-2</module>
@@ -720,6 +721,7 @@
                 <module>libraries-data-io-2</module>
                 <module>libraries-data-mariadb4j</module>
                 <module>libraries-files</module>
+                <module>libraries-formatting</module>
                 <module>libraries-http</module>
 		        <module>libraries-http-2</module>
 	            <module>libraries-http-3</module>
@@ -1017,6 +1019,48 @@
         </profile>
 
         <profile>
+            <id>default-jdk26</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <includes>
+                                <include>SpringContextTest</include>
+                                <include>**/*UnitTest</include>
+                            </includes>
+                            <excludes>
+                                <exclude>**/*IntegrationTest.java</exclude>
+                                <exclude>**/*IntTest.java</exclude>
+                                <exclude>**/*LongRunningUnitTest.java</exclude>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/JdbcTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>26</java.version>
+                <maven.compiler.source>26</maven.compiler.source>
+                <maven.compiler.target>26</maven.compiler.target>
+                <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
+            </properties>
+
+        </profile>
+
+
+        <profile>
             <id>integration-jdk17</id>
             <build>
                 <plugins>
@@ -1104,6 +1148,7 @@
                 <module>parent-spring-7</module>
                 <module>akka-modules</module>
                 <module>algorithms-modules</module>
+                <module>apache-causeway</module>
                 <module>apache-cxf-modules</module>
                 <module>apache-httpclient</module>
                 <module>apache-httpclient-2</module>
@@ -1199,6 +1244,7 @@
                 <module>libraries-data-io-2</module>
                 <module>libraries-data-mariadb4j</module>
                 <module>libraries-files</module>
+                <module>libraries-formatting</module>
                 <module>libraries-http</module>
                 <module>libraries-http-2</module>
                 <module>libraries-http-3</module>
@@ -1475,6 +1521,43 @@
         </profile>
 
         <profile>
+            <id>integration-jdk26</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*IntegrationTest.java</include>
+                                <include>**/*IntTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>26</java.version>
+                <maven.compiler.source>26</maven.compiler.source>
+                <maven.compiler.target>26</maven.compiler.target>
+                <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
+            </properties>
+
+        </profile>
+
+
+        <profile>
             <id>live-all</id>
             <build>
                 <plugins>
@@ -1681,6 +1764,7 @@
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
                 <module>testing-modules/selenium-3/scrollelementintoview</module>
                 <module>testing-modules/selenium-3/selenium-json-demo</module>
+                <module>codenameone</module>
             </modules>
         </profile>
 

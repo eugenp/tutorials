@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+<parent>  <artifactId>dailyroutine-cn1libs</artifactId>
+  <groupId>com.baeldung.cn1tutorial</groupId>
+  <version>1.0-SNAPSHOT</version>
+</parent>
+
+  <groupId>com.baeldung.cn1tutorial</groupId>
+  <artifactId>dailyroutine-NativeLogsReader</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>NativeLogsReader</name>
+  <dependencies>
+<dependency>
+     <groupId>com.baeldung.cn1tutorial</groupId>
+     <artifactId>dailyroutine-NativeLogsReader</artifactId>
+     <version>1.0-SNAPSHOT</version>
+     <classifier>common</classifier>
+     <type>jar</type>
+</dependency>
+<dependency>
+  <groupId>com.baeldung.cn1tutorial</groupId>
+  <artifactId>dailyroutine-NativeLogsReader</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <classifier>cn1css</classifier>
+  <type>zip</type>
+</dependency>
+</dependencies>
+<profiles>
+  <profile>
+    <id>javase</id>     <activation>         <property><name>codename1.platform</name><value>javase</value></property>
+     </activation>     <dependencies>         <dependency>             <groupId>com.baeldung.cn1tutorial</groupId>
+             <artifactId>dailyroutine-NativeLogsReader</artifactId>
+             <version>1.0-SNAPSHOT</version>
+             <type>jar</type>
+             <classifier>javase</classifier>
+         </dependency>
+     </dependencies>
+  </profile>  <profile>
+    <id>android</id>     <activation>         <property><name>codename1.platform</name><value>android</value></property>
+     </activation>     <dependencies>         <dependency>             <groupId>com.baeldung.cn1tutorial</groupId>
+             <artifactId>dailyroutine-NativeLogsReader</artifactId>
+             <version>1.0-SNAPSHOT</version>
+             <type>jar</type>
+             <classifier>android</classifier>
+         </dependency>
+     </dependencies>
+  </profile>  <profile>
+    <id>ios</id>     <activation>         <property><name>codename1.platform</name><value>ios</value></property>
+     </activation>     <dependencies>         <dependency>             <groupId>com.baeldung.cn1tutorial</groupId>
+             <artifactId>dailyroutine-NativeLogsReader</artifactId>
+             <version>1.0-SNAPSHOT</version>
+             <type>jar</type>
+             <classifier>ios</classifier>
+         </dependency>
+     </dependencies>
+  </profile>  <profile>
+    <id>javascript</id>     <activation>         <property><name>codename1.platform</name><value>javascript</value></property>
+     </activation>     <dependencies>         <dependency>             <groupId>com.baeldung.cn1tutorial</groupId>
+             <artifactId>dailyroutine-NativeLogsReader</artifactId>
+             <version>1.0-SNAPSHOT</version>
+             <type>jar</type>
+             <classifier>javascript</classifier>
+         </dependency>
+     </dependencies>
+  </profile>  <profile>
+    <id>win</id>     <activation>         <property><name>codename1.platform</name><value>win</value></property>
+     </activation>     <dependencies>         <dependency>             <groupId>com.baeldung.cn1tutorial</groupId>
+             <artifactId>dailyroutine-NativeLogsReader</artifactId>
+             <version>1.0-SNAPSHOT</version>
+             <type>jar</type>
+             <classifier>win</classifier>
+         </dependency>
+     </dependencies>
+  </profile></profiles>
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>build-helper-maven-plugin</artifactId>
+      <version>1.7</version>
+      <executions>
+          <execution>
+            <id>attach-artifacts</id>
+            <phase>package</phase>
+            <goals>
+              <goal>attach-artifact</goal>
+            </goals>
+            <configuration>
+              <artifacts>
+<artifact>
+<file>${basedir}/jars/main.zip</file>
+<type>jar</type>
+<classifier>common</classifier>
+</artifact>
+<artifact>
+<file>${basedir}/jars/nativese.zip</file>
+<type>jar</type>
+<classifier>javase</classifier>
+</artifact>
+<artifact>
+<file>${basedir}/jars/nativeand.zip</file>
+<type>jar</type>
+<classifier>android</classifier>
+</artifact>
+<artifact>
+<file>${basedir}/jars/nativeios.zip</file>
+<type>jar</type>
+<classifier>ios</classifier>
+</artifact>
+<artifact>
+<file>${basedir}/jars/nativejavascript.zip</file>
+<type>jar</type>
+<classifier>javascript</classifier>
+</artifact>
+<artifact>
+<file>${basedir}/jars/nativewin.zip</file>
+<type>jar</type>
+<classifier>win</classifier>
+</artifact>
+<artifact>
+<file>${basedir}/jars/css.zip</file>
+<type>zip</type>
+<classifier>cn1css</classifier>
+</artifact>
+              </artifacts>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+   </build>
+</project>

@@ -24,7 +24,9 @@ class McpUiApplication {
 	}
 
 	/*
-	 	npx @modelcontextprotocol/inspector
-	  	claude mcp add --transport http sport-spinner http://localhost:3001/mcp
- 	*/
+	    mvn -q -DskipTests package
+	    npx @modelcontextprotocol/inspector java -jar target/spring-ai-mcp-0.0.1.jar
+
+  		claude mcp add-json sport-spinner '{"command":"java","args":["-jar","D:/repos/tutorials/spring-ai-modules/spring-ai-mcp/target/spring-ai-mcp-0.0.1.jar"]}'
+	*/
 }

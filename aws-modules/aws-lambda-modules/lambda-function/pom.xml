@@ -4,9 +4,9 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>lambda-function</artifactId>
-    <name>lambda-function</name>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <name>lambda-function</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

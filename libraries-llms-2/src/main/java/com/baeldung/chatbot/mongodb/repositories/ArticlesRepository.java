@@ -1,7 +1,23 @@
 package com.baeldung.chatbot.mongodb.repositories;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import dev.langchain4j.data.document.Document;
 import dev.langchain4j.data.document.DocumentSplitter;
 import dev.langchain4j.data.document.Metadata;
@@ -10,21 +26,12 @@ import dev.langchain4j.data.embedding.Embedding;
 import dev.langchain4j.data.segment.TextSegment;
 import dev.langchain4j.model.embedding.EmbeddingModel;
 import dev.langchain4j.model.openai.OpenAiEmbeddingModelName;
-import dev.langchain4j.model.openai.OpenAiTokenizer;
+import dev.langchain4j.model.openai.OpenAiTokenCountEstimator;
 import dev.langchain4j.store.embedding.EmbeddingStore;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 @Component
 public class ArticlesRepository {
+
     private static final Logger log = LoggerFactory.getLogger(ArticlesRepository.class);
 
     private final EmbeddingStore<TextSegment> embeddingStore;
@@ -32,8 +39,8 @@ public class ArticlesRepository {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Autowired
-    public ArticlesRepository(@Value("${app.load-articles}") Boolean shouldLoadArticles,
-      EmbeddingStore<TextSegment> embeddingStore, EmbeddingModel embeddingModel) throws IOException {
+    public ArticlesRepository(@Value("${app.load-articles}") Boolean shouldLoadArticles, EmbeddingStore<TextSegment> embeddingStore,
+        EmbeddingModel embeddingModel) throws IOException {
         this.embeddingStore = embeddingStore;
         this.embeddingModel = embeddingModel;
 
@@ -52,7 +59,8 @@ public class ArticlesRepository {
         log.info("Documents to store: " + documents.size());
 
         for (TextSegment document : documents) {
-            Embedding embedding = embeddingModel.embed(document.text()).content();
+            Embedding embedding = embeddingModel.embed(document.text())
+                .content();
             embeddingStore.add(embedding, document);
         }
 
@@ -61,7 +69,8 @@ public class ArticlesRepository {
 
     private List<TextSegment> loadJsonDocuments(String resourcePath, int maxTokensPerChunk, int overlapTokens) throws IOException {
 
-        InputStream inputStream = ArticlesRepository.class.getClassLoader().getResourceAsStream(resourcePath);
+        InputStream inputStream = ArticlesRepository.class.getClassLoader()
+            .getResourceAsStream(resourcePath);
 
         if (inputStream == null) {
             throw new FileNotFoundException("Resource not found: " + resourcePath);
@@ -77,8 +86,10 @@ public class ArticlesRepository {
         while ((line = reader.readLine()) != null) {
             JsonNode jsonNode = objectMapper.readTree(line);
 
-            String title = jsonNode.path("title").asText(null);
-            String body = jsonNode.path("body").asText(null);
+            String title = jsonNode.path("title")
+                .asText(null);
+            String body = jsonNode.path("body")
+                .asText(null);
             JsonNode metadataNode = jsonNode.path("metadata");
 
             if (body != null) {
@@ -106,7 +117,8 @@ public class ArticlesRepository {
             Iterator<String> fieldNames = metadataNode.fieldNames();
             while (fieldNames.hasNext()) {
                 String fieldName = fieldNames.next();
-                metadata.put(fieldName, metadataNode.path(fieldName).asText());
+                metadata.put(fieldName, metadataNode.path(fieldName)
+                    .asText());
             }
         }
 
@@ -115,13 +127,9 @@ public class ArticlesRepository {
     }
 
     private List<TextSegment> splitIntoChunks(List<Document> documents, int maxTokensPerChunk, int overlapTokens) {
-        OpenAiTokenizer tokenizer = new OpenAiTokenizer(OpenAiEmbeddingModelName.TEXT_EMBEDDING_3_SMALL);
+        OpenAiTokenCountEstimator tokenizer = new OpenAiTokenCountEstimator(OpenAiEmbeddingModelName.TEXT_EMBEDDING_3_SMALL);
 
-        DocumentSplitter splitter = DocumentSplitters.recursive(
-                maxTokensPerChunk,
-                overlapTokens,
-                tokenizer
-        );
+        DocumentSplitter splitter = DocumentSplitters.recursive(maxTokensPerChunk, overlapTokens, tokenizer);
 
         List<TextSegment> allSegments = new ArrayList<>();
         for (Document document : documents) {
