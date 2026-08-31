@@ -12,7 +12,13 @@ class ModularOpensGsonUnitTest {
 
     @Test
     void givenModularAndOpens_whenDeserializingPojo_thenSuccess() {
-        String json = "{\"name\":\"Java Conference\",\"numberOfParticipants\":150}";
+        String json = """
+            {
+                "name": "Java Conference",
+                "numberOfParticipants": 150
+            }
+            """;
+
         Gson gson = new Gson();
 
         ConferencePojo result = assertDoesNotThrow(() -> {

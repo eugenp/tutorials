@@ -27,8 +27,7 @@ public class GsonModuleMain {
             ConferencePojo pojo = gson.fromJson(json, ConferencePojo.class);
             log.info("Deserialization successful! Object " + pojo);
         } catch (Exception e) {
-            log.info("Expected exception caught!");
-            e.printStackTrace();
+            log.error("Expected exception caught!", e);
         }
     }
 }

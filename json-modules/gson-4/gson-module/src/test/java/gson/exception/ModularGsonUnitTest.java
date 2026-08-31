@@ -10,11 +10,16 @@ import org.junit.jupiter.api.Test;
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 
-public class ModularGsonUnitTest {
+class ModularGsonUnitTest {
 
     @Test
     void givenModularAndExportedPackage_whenDeserializingPojo_thenJsonIOException() {
-        String json = "{\"name\":\"Java Conference\",\"numberOfParticipants\":150}";
+        String json = """
+            {
+                "name": "Java Conference",
+                "numberOfParticipants": 150
+            }
+            """;
         Gson gson = new Gson();
 
         assertThrows(JsonIOException.class, () -> {
@@ -24,7 +29,12 @@ public class ModularGsonUnitTest {
 
     @Test
     void givenModularAndExportedPackage_whenDeserializingRecord_thenSuccess() {
-        String json = "{\"name\":\"Java Conference\",\"numberOfParticipants\":150}";
+        String json = """
+            {
+            "name": "Java Conference",
+            "numberOfParticipants": 150
+        }
+        """;
         Gson gson = new Gson();
 
         ConferenceRecord result = assertDoesNotThrow(() -> {
@@ -37,7 +47,12 @@ public class ModularGsonUnitTest {
 
     @Test
     void givenModularAndExportedPackage_whenDeserializingPublicPojo_thenSuccess() {
-        String json = "{\"name\":\"Java Conference\",\"numberOfParticipants\":150}";
+        String json = """
+            {
+                "name": "Java Conference",
+                "numberOfParticipants": 150
+            }
+            """;
         Gson gson = new Gson();
 
         ConferencePojoPublic result = assertDoesNotThrow(() -> {

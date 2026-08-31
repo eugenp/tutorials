@@ -1,7 +1,5 @@
 package gson.exception;
 
-import java.time.LocalDate;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,7 +19,7 @@ public class GsonModuleMain {
         } else {
             log.info("Mode: [ Module Path ] - Module name: " + moduleName);
         }
-        LocalDate excpectedDate = LocalDate.of(2026, 8, 17);
+
         Gson gson = new Gson();
         String json = "{\"name\":\"Java Conference\"}";
 
@@ -29,8 +27,7 @@ public class GsonModuleMain {
             ConferencePojo pojo = gson.fromJson(json, ConferencePojo.class);
             log.info("Deserialization successful! Object " + pojo);
         } catch (Exception e) {
-            log.info("Expected exception caught!");
-            e.printStackTrace();
+            log.error("Expected exception caught!", e);
         }
     }
 }

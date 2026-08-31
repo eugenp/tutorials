@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public class ModularGsonWithAdapterUnitTest {
+class ModularGsonWithAdapterUnitTest {
 
     @Test
     void whenAdapterForPojo_thenSuccess() {
@@ -16,9 +16,14 @@ public class ModularGsonWithAdapterUnitTest {
             .registerTypeAdapter(ConferencePojo.class, new ConferencePojoAdapter())
             .create();
 
-        String jsonInput = "{\"name\":\"Java Conference\", \"numberOfParticipants\":100}";
+        String json = """
+            {
+                "name": "Java Conference",
+                "numberOfParticipants": 100
+            }
+            """;
 
-        ConferencePojo result = gson.fromJson(jsonInput, ConferencePojo.class);
+        ConferencePojo result = gson.fromJson(json, ConferencePojo.class);
 
         assertNotNull(result);
         assertEquals("Java Conference", result.getName());
