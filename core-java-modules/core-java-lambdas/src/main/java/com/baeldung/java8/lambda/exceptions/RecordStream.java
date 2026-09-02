@@ -9,5 +9,4 @@ class RecordStream<E> {
     RecordStream<E> validate(Validator<? super E> validator) {
         return this;
     }
-
 }

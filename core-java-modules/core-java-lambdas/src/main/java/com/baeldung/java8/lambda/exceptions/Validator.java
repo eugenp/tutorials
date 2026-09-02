@@ -7,5 +7,4 @@ interface Validator<T> extends Predicate<T> {
 
     @Override
     boolean test(T t);
-
 }
