@@ -1,0 +1,6 @@
+Test case to ensure variables defined on the !-SetUp-! page (via !define) are available in the test.
+
+This test case covers !-FitNesse-! the regression as described in issue #249 ( https://github.com/unclebob/fitnesse/issues/249 )
+
+| script | echo fixture |
+| check | echo | foo | ${VariableUsedInTest} |

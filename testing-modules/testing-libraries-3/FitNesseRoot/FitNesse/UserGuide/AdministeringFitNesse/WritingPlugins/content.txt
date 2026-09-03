@@ -1,0 +1,53 @@
+FitNesse is extensible. It can be extended via components configured in the ConfigurationFile. Since version 20150226 FitNesse also has another mechanism: service providers. It's using the Java [[!-ServiceLoader-!][http://docs.oracle.com/javase/7/docs/api/java/util/ServiceLoader.html]] functionality to load services dynamically.
+
+!2 How does it help me?
+Previously, to install a plugin you had to download the plugin and load it alongside FitNesse (either from the plugins folder or by using a build tool such as Ant or Maven to launch FitNesse) '''and''' you had to configure the plugin in the ConfigurationFile. When a plugin has a service provider it is no longer needed to also define it in the configuration file. Just put the plugin  jar on the FitNesse class path or in the plugins folder and it will be configured automatically.
+
+!2 Add service providers to your plugin
+To add a service provider the plugin provider class (plugin feature factory) has to be configure in
+
+{{{META-INF/services/fitnesse.plugins.PluginFeatureFactory}}}This file has to contain the plugin implementations (which should implement the !-PluginFeatureFactory-! interface), one per line. Plugins can also extend !-PluginFeatureFactoryBase-!, which contains empty implementations for all methods.
+
+The interface looks like this:
+
+{{{public interface PluginFeatureFactory {
+
+  default Authenticator getAuthenticator() { return null; }
+
+  default ContentFilter getContentFilter() { return null; }
+
+  default String getDefaultTheme() { return null; }
+
+  default void registerResponders(ResponderFactory responderFactory) throws PluginException { }
+
+  default void registerSymbolTypes(SymbolProvider symbolProvider) throws PluginException { }
+
+  default void registerWikiPageFactories(WikiPageFactoryRegistry wikiPageFactoryRegistry) throws PluginException { }
+
+  default void registerFormatters(FormatterRegistry registrar) throws PluginException { }
+
+  default void registerTestSystemFactories(TestSystemFactoryRegistry testSystemFactoryRegistry) throws PluginException { }
+
+  default void registerSlimTables(SlimTableFactory slimTableFactory) throws PluginException { }
+
+  default void registerCustomComparators(CustomComparatorRegistry customComparatorRegistry) throws PluginException { }
+
+  default void registerTestRunFactories(TestRunFactoryRegistry runFactoryRegistry) throws PluginException { }
+
+  default void registerMarkupSystems(MarkUpSystems systems) {}
+}
+}}}
+The methods ''getAuthenticator()'' should return one instance. If multiple plugins provide an authenticator, the first authenticator found will be used. The setting can be overridden by explicitly defining an authenticator in the configuration file.
+
+The same rules are applicable for ''getContentFilter()''.
+
+The ''registerXxx'' methods are invoked with the appropriate provider or registry. It is the responsibility of the plugin to register its plugins with those providers.
+
+>MarkupSystemPlugIns
+
+!2 Documentation
+Every plugin should provide documentation which should be placed in the .PlugIns folder. 
+Each plugin should add exactly one overview page directly into .PlugIns and further pages as childs to the overview page.
+ * The name of the overview page should match the plugins name.
+ * The overview page should have a lengthy help text which explains what the plugin is used for
+ * The overview page should have a tag which is identical to the current version of the plugin.

@@ -1,0 +1,37 @@
+---
+Test
+---
+A !-StopTestException-! should cause the rest of the table to be skipped.
+
+!| script                       |
+|given page|MySuite|with content|${SUT_PATH} !-
+!define TEST_SYSTEM {slim}
+-! |
+|given page|MySuite.TestPageA|with content|!-
+|import                                   |
+|fitnesse.slim.test                       |
+
+|scenario      |my division _     |numerator,denominator,my result3?|
+|setNumerator  |@numerator                                          |
+|setDenominator|@denominator                                        |
+|start         |constructor throws|stop test                        |
+|$myResult3=   |quotient                                            |
+
+Get the Division implementation from the eg package
+|Library    |
+|eg.Division|
+
+|my division                      |
+|numerator|denominator|my result3?|
+|10       |2          |5.0        |
+|20       |5          |4.0        |
+-!|
+|test results for suite|MySuite         |should contain             |my division             |
+|reject                |content contains|<span class="pass">5.0</span>                       |
+|reject                |content contains|<span class="pass">4.0</span>                       |
+|ensure                |content contains|<td class="error">10</td>                           |
+|ensure                |content contains|<td class="error">2</td>                            |
+|ensure                |content contains|5.0 <span class="ignore">Test not run</span>        |
+|ensure                |content contains|$myResult3= <span class="ignore">Test not run</span>|
+|ensure                |content contains|<td class="ignore">20</td>                          |
+|ensure                |content contains|<td class="ignore">5</td>                           |

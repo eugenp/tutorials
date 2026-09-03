@@ -1,0 +1,30 @@
+!3 This page tests line breaks.
+#
+ * First create a page with line breaks in it.
+#
+|script|
+|start|Page Builder|
+|line|one|
+|line||
+|line|two|
+|page|!-LineBreakPage-!|
+#
+ * Then request that page
+#
+|Response Requester.|
+|uri|valid?|contents?|
+|!-LineBreakPage-!|true||
+#
+ * Make sure the page has three line breaks.
+#
+|Response Examiner.|
+|type|pattern|matches?|value|
+|contents|one.*<br/>.*<br/>.*two.*<br/>.*|true||
+
+
+
+
+
+
+
+

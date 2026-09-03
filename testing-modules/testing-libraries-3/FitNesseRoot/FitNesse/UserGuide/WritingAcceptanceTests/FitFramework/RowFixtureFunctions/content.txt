@@ -1,0 +1,51 @@
+RowFixture also supports functions, so you can check on the objects that you query.  For example, lets say that we have a database of employee objects.  We want to test that the employees were paid correctly.
+
+|!-fitnesse.fixtures.EmployeePayRecordsRowFixture-!|
+|id|pay()|
+|1|1000|
+|2|2000|
+
+As you can see, we query the employees by ''id'', and then check to see that their pay was correct.  Here's what it would look like if their pay was not correct.
+
+|!-fitnesse.fixtures.EmployeePayRecordsRowFixture-!|
+|id|pay()|
+|1|1000|
+|2|3000|
+
+And here is what it would look like if there were missing or extra employees
+
+|!-fitnesse.fixtures.EmployeePayRecordsRowFixture-!|
+|id|pay()|
+|1|1000|
+|5|5000|
+
+Here is the code for the fixtures:{{{package fitnesse.fixtures;
+
+import fit.RowFixture;
+
+public class EmployeePayRecordsRowFixture extends RowFixture  {
+  public Object[] query() throws Exception {
+    EmployeePayRecord[] records = new EmployeePayRecord[2];
+    records[0] = new EmployeePayRecord(1, 1000);
+    records[1] = new EmployeePayRecord(2,2000);
+    return records;
+  }
+  public Class getTargetClass() {
+    return EmployeePayRecord.class;
+  }
+} }}}----{{{package fitnesse.fixtures;
+
+public class EmployeePayRecord {
+  public int id;
+  private double salary;
+  public EmployeePayRecord(int id, double salary) {
+    this.id = id;
+    this.salary = salary;
+  }
+  public double pay() {
+    return salary;
+  }
+} }}}
+
+!img http://files/images/runArrow.gif For more about RowFixture see RowFixtureMultipleKeys
+

@@ -1,0 +1,10 @@
+!|scenario|f|
+
+!|scenario|g|a|
+
+|script|
+|f|
+|g|1|
+|pass|
+
+

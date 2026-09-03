@@ -1,0 +1,5 @@
+Classpath widgets can cantain variables.  The text of !path widgets do not get processed with exception of variable references.
+
+!|script|
+|given page|ClasspathTestPage|with content|!define BASE_PATH {/some/path/}!-<br>-!!path &dollar;{BASE_PATH}blah.jar|
+|it should contain|classpath: /some/path/blah.jar|

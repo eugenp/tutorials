@@ -1,0 +1,17 @@
+!*< test page content definition
+!define pageContent (!include -setup SetUp
+!include IncludedPage
+Including page name is !-${PAGE_NAME}-!
+!include -teardown TearDown)
+
+*!
+
+!|script|
+|create page|SetUp|with content|Set Up page name is !-${PAGE_NAME}-!|
+|create page|TearDown|with content|Tear Down page name is !-${PAGE_NAME}-!|
+|create page|IncludedPage|with content|Included page name is !-${PAGE_NAME}-!|
+|given page|IncludingPage|with content|${pageContent}|
+|it should contain|Included page name is <a href="IncludedPage">IncludedPage|
+|it should contain|Including page name is <a href="IncludingPage">IncludingPage|
+|it should contain|Set Up page name is <a href="IncludingPage">IncludingPage|
+|it should contain|Tear Down page name is <a href="IncludingPage">IncludingPage|

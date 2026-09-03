@@ -1,0 +1,19 @@
+{{{
+<PageHistory>
+  <Page>
+    <Name>
+      FitNesse.SuiteAcceptanceTests.SuiteResponderTests.SuiteMoveResponder.TestSimpleMove
+    </Name>
+    <TestResult>
+      <Date>Tue Jul 07 11:08:34 CDT 2009</Date>
+      <ResultLink>
+        FitNesse.SuiteAcceptanceTests.SuiteResponderTests.SuiteMoveResponder.TestSimpleMove?pageHistory&resultDate=20090707110834&format=xml
+      </ResultLink>
+      <Pass>6</Pass>
+      <Fail>0</Fail>
+    </TestResult>
+    ...
+  </Page>
+  ...
+</PageHistory>
+}}}

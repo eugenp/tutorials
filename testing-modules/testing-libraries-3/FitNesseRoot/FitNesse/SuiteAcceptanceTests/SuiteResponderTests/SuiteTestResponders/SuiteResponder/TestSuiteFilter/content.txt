@@ -1,0 +1,159 @@
+When you execute a suite page with a filter, !-FitNesse-! should only run tests that have a certain suite filter/tag
+
+----
+
+Create a Suite page
+
+|script|Page Builder |
+|line  |${SUT_PATH}  |
+|page  |!-SuitePage-!|
+
+Create two sub pages
+
+|script    |Page Builder                               |
+|line      |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|attributes|Suites=good                                |
+|page      |!-SuitePage.TestPageOne-!                  |
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPageTwo-!                  |
+
+Now run the suite page.
+
+|Response Requester.                                  |
+|uri                                           |valid?|
+|!-SuitePage?responder=suite&suiteFilter=good-!|true  |
+
+|Response Examiner.|
+|contents?         |
+|                  |
+
+The suite should report the TestPages and should show no errors.
+
+|Response Examiner.                    |
+|type    |pattern             |matches?|
+|contents|!-TestPageOne-!     |true    |
+|contents|!-TestPageTwo-!     |false   |
+|contents|Test Pages:.*1 right|true    |
+
+The error log page should not have any errors
+
+|Response Requester.           |
+|uri                    |valid?|
+|!-SuitePage?executionLog-!|true  |
+
+|Response Examiner.|
+|contents?         |
+|                  |
+
+|Response Examiner.                  |
+|type    |pattern           |matches?|
+|contents|Exit code.*0.*Time|true    |
+
+---
+
+Perform the test again with alternate suite filter keyword "runTestsMatchingAnyTag"
+
+Create a Suite page
+
+|script|Page Builder |
+|line  |${SUT_PATH}  |
+|page  |!-SuitePage-!|
+
+Create two sub pages
+
+|script    |Page Builder                               |
+|line      |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|attributes|Suites=good                                |
+|page      |!-SuitePage.TestPageOne-!                  |
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPageTwo-!                  |
+
+Now run the suite page.
+
+|Response Requester.                                             |
+|uri                                                      |valid?|
+|!-SuitePage?responder=suite&runTestsMatchingAnyTag=good-!|true  |
+
+|Response Examiner.|
+|contents?         |
+|                  |
+
+The suite should report the TestPages and should show no errors.
+
+|Response Examiner.                    |
+|type    |pattern             |matches?|
+|contents|!-TestPageOne-!     |true    |
+|contents|!-TestPageTwo-!     |false   |
+|contents|Test Pages:.*1 right|true    |
+
+The error log page should not have any errors
+
+|Response Requester.           |
+|uri                    |valid?|
+|!-SuitePage?executionLog-!|true  |
+
+|Response Examiner.|
+|contents?         |
+|                  |
+
+|Response Examiner.                  |
+|type    |pattern           |matches?|
+|contents|Exit code.*0.*Time|true    |
+
+---
+
+Perform once more to ensure the new keyword holds priority over the old keyword.
+
+
+Create a Suite page
+
+|script|Page Builder |
+|line  |${SUT_PATH}  |
+|page  |!-SuitePage-!|
+
+Create two sub pages
+
+|script    |Page Builder                               |
+|line      |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|attributes|Suites=good                                |
+|page      |!-SuitePage.TestPageOne-!                  |
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPageTwo-!                  |
+
+Now run the suite page.
+
+|Response Requester.                                                             |
+|uri                                                                      |valid?|
+|!-SuitePage?responder=suite&runTestsMatchingAnyTag=good&suiteFilter=bad-!|true  |
+
+|Response Examiner.|
+|contents?         |
+|                  |
+
+The suite should report the TestPages and should show no errors.
+
+|Response Examiner.                    |
+|type    |pattern             |matches?|
+|contents|!-TestPageOne-!     |true    |
+|contents|!-TestPageTwo-!     |false   |
+|contents|Test Pages:.*1 right|true    |
+
+The error log page should not have any errors
+
+|Response Requester.           |
+|uri                    |valid?|
+|!-SuitePage?executionLog-!|true  |
+
+|Response Examiner.|
+|contents?         |
+|                  |
+
+|Response Examiner.                  |
+|type    |pattern           |matches?|
+|contents|Exit code.*0.*Time|true    |

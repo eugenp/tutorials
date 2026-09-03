@@ -1,0 +1,57 @@
+![:
+scenario:login user _ with password _:user name, password:
+check:echo:@userName:Bob
+check:echo:@password:xyzzy 
+]!
+
+![ script
+login user Bob with password xyzzy
+]!
+
+!|scenario|beat|name|with a|object|
+|check|echo|@name|Bill|
+|check|echo|@object|noodle|
+
+![ script
+beat Bill with a noodle
+]!
+
+!|login user with password|
+|user name|password|
+|Bob|xyzzy|
+
+!|script|
+|login user|Bob|with password|xyzzy|
+
+!|script|
+|login user with password;|Bob|xyzzy|
+
+!3 Scenarios can be defined without a filler name between the underscores 
+|scenario | my division _ _ _|numerator, denominator, quotient|
+|setNumerator| @numerator|
+|setDenominator| @denominator|
+|check | quotient| @quotient|
+
+Use the Division class from the eg library to implement the scenario
+|Library|
+|eg.Division|
+
+!4 Test the scenario with a decision table
+| my division |
+| # | numerator | denominator | quotient |
+| any comment| 10 | 2 | 5.0 |
+
+You can change the order of the columns
+| my division |
+|quotient | # | numerator | denominator | 
+| 5.0| any comment| 10 | 2 |
+
+
+!4 Test the scenario with a script
+the order of the parameters can't be changed!
+|script|
+|my division 20 5 4.0|
+|my division |6|| 3|| 2.0|
+|my division; |35 |5| 7.0 |
+
+

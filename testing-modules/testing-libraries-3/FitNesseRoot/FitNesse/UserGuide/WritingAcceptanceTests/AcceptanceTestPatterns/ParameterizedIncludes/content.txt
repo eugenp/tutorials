@@ -1,0 +1,16 @@
+When using the CommonIncludes pattern you may come across duplicated content that varies with only one or two values.  This can make using includes difficult but when combined with variables, includes become even more powerful.  You can parameterize included pages by declaring variables in the test page and referencing them in the included page.
+
+First we'll include a parameterized include page without defining any variables.
+!include SampleParameterizedPage
+
+Now we define the required variables.
+!define NUMERATOR {100}
+!define DENOMINATOR {10}
+!define QUOTIENT {10}
+!include SampleParameterizedPage
+
+We can redefine the variables and use the parameterized include again.
+!define NUMERATOR {555}
+!define DENOMINATOR {5}
+!define QUOTIENT {111}
+!include SampleParameterizedPage

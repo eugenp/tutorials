@@ -1,0 +1,11 @@
+!c !3 Wiki Import Suite
+Wiki Import is a key feature for development teams.  It allows each developer to have their own FitNesse playground to run tests on the code they're playing with while sharing the test definitions with a central repository.  A test author need only write a test once and all the developers will be able to import that test to their local environment.
+
+Wiki Import replaces the old, deprecated and now removed, Virtual Wiki feature.
+
+!note make sure to define PORT {80} in root.
+
+!contents
+
+!define TEST_SYSTEM {slim}
+!define INTERNAL_PORT {9123}

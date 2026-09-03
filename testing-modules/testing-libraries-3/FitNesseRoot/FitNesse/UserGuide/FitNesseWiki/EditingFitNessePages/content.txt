@@ -1,0 +1,46 @@
+!2 Editing and Creating Pages in !-FitNesse-!
+!-FitNesse-! is a [[wiki web server][http://wiki.org/wiki.cgi?WhatIsWiki]]. Before you can begin [[creating test tables][<UserGuide.WritingAcceptanceTests]], you need to know a bit about how a wiki works.
+
+A wiki allows any authorized user to make changes to any edit-enabled page, or to create new pages, simply by using their Web browser. If you are working with a copy of !-FitNesse-! on your own machine, you are probably authorized to make such changes.
+
+!3 Editing a Page
+Once you are on a page your want to change, hit the '''Edit''' button in the upper left. (If the button does not appear, then the page is not edit-enabled.)
+
+A new page will pop up with an edit frame containing the markup language of the current page. You specify formatting using a simple markup language. If you're not into wiki markup, switch to the rich text editor mode. Simply make your changes to the page and hit the '''Save''' button. ''Voila!'' Your changes appear on the page.
+
+!3 Creating New Pages
+Every !-FitNesse-! page has a name in so-called camel-case format, in which the first letter is uppercase, and, at least, one other letter in the word is uppercase. The name of this page, EditingFitNessePages, is an example. This convention makes it truly easy to create new pages and links to those pages.
+
+When you edit an existing page and insert a new camel-case word, such as !-ThisHereNewPage-!, and then click the Save button, FitNesse interprets that to be a link to a new, as-yet-uncreated page. It indicates this to you by putting a question mark at the end of the name.
+
+If you then click on that question mark, !-FitNesse-! displays an edit frame, enabling you to put something on that new page. If you type anything at all in there and click Save, your new page is created, and the link to it is enabled on the originating page.
+
+!3 Try Creating a New Page with a Link Back to This One
+Try it yourself. Click on the question mark at the end of this word: ThisHereNewPageExample Put something on the page, click the Save button, and then return here. A good thing to put on the new page is the word EditingFitNessePages so that you can return to this page easily!
+
+!3 Using Templates
+If you find yourself adding the same boilerplate wiki text in many different places, it may be worthwhile to use it as a template. All immediate children of a page named !-TemplateLibrary-! are marked as templates for all pages who have the !-TemplateLibrary-! as a brother or uncle. It will appear in the drop down box above the text area in the plain text editor. When the "Insert Template" button is clicked, it will overwrite the current selection with the selected template (or insert the template at the caret if there is no selection).
+
+!2 A Few Formatting Examples
+The wiki markup language is fairly powerful. To see how we accomplished each of the formatting examples below, you can simply click the Edit button and check it out for yourself.
+
+You can '''make text bold''' by putting three single quotes (ticks) on each side of it (e.g., !-'''make text bold'''-!).
+
+You can ''make text italic'' by putting two tick marks on each side of it (e.g., !-''make text italic''-!).
+
+You can center a line by prefixing it with !-!c-!
+
+!c This line is centered.
+You can make a horizontal rule by using four or more dashes.
+So !- ---- -! becomes
+
+----
+For more examples of wiki markup language formatting widgets (as they are called), see MarkupLanguageReference.
+
+!3 Page Properties
+Each FitNesse page has several properties (Test, Suite, Edit, etc). You can read about setting them on PageProperties.
+
+!3 Pasting tables from Excel
+In the "plain text editor", there are 2 buttons on every edit window that have to do with spreadsheets like Excel. The first '''Spreadsheet to FitNesse''' will convert copied spreadsheet content into FitNesse tables. You have to paste the spreadsheet content into the edit window and then click.
+
+The second button, '''FitNesse to Spreadsheet''', is just as useful. When clicked it will convert all the tables in the edit window into a format that can be copied and pasted into a spreadsheet.

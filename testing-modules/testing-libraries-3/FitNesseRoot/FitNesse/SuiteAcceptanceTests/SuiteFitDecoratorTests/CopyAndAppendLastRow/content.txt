@@ -1,0 +1,12 @@
+There are cases when you want to copy and append the last row of your column or row fixture certain number of times.
+
+For Ex: We make a query to the database and it return certain record 'n' number of times. Instead of writing the same record 'n' number of times in your fitnesse page, you can just specify that you expect the last column 'n' number of times using the !-CopyAndAppendLastRow-! decorator.
+
+!|Copy and Append Last Row|100|number of times|
+|Division|
+|numerator|denominator|quotient()|
+|10|2|5|
+|12.6|3|4.2|
+|100|4|25|
+
+In the above example, we want to divide 100 by 4 101 times.

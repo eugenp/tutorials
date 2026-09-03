@@ -1,0 +1,1 @@
+[[!-FitNesse's-! own acceptance test suite][.FitNesse.SuiteAcceptanceTests]] | [[Front Page][.FrontPage]] | [[User Guide][.FitNesse.UserGuide]]

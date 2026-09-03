@@ -1,0 +1,12 @@
+|import            |
+|fitnesse.slim.test|
+
+|script          |
+|$X=|echo int|199|
+|$Y=|echo int|44 |
+
+!|table: Table Table Inc First Col                          |
+|12|$${RUNNING_PAGE_NAME}=|# Assign to a new symbol         |
+|$X|$Y=                   |# Assign to an existing symbol   |
+|$Y|$Z=                   |# Assign a freshly assigned value|
+
