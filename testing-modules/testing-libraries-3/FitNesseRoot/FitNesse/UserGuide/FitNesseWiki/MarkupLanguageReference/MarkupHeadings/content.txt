@@ -1,0 +1,10 @@
+Headings are created by prefixing a line with !headings
+
+|!c '''Markup Text'''  |!c '''Displayed as'''|
+|!- !heading         -!|Table of contents    |
+
+Markup:
+{{{!headings -style decimal}}}
+
+|''' argument '''|''' description '''|
+|-style          |The CSS style of the list items, possible values: decimal, decimal-leading-zero, lower-roman, upper-roman, lower-alpha, upper-alpha, none. Default value: decimal. |

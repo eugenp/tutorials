@@ -1,0 +1,18 @@
+!c !3 Can't Import From Secure Wiki
+!define TEST_SYSTEM {slim}
+!include CreateSecureWiki
+
+Create an importing page.
+!|Page creator.|
+|Page name.   |Page contents.|valid?|
+|ImportingPage|!contents   |true   |
+
+This !-ImportingPage-! will now import the secure wiki page.
+!|Response Requester.|
+|uri   |valid?|
+|ImportingPage?responder=import&remoteUrl=http://localhost:9123/ImporteePage&nochunk=true|true|
+
+Since the wiki being imported is secure, the response will promt the user for credentials.
+!|Response Examiner|
+|type|pattern|matches?|wrapped html?|
+|contents|ImporteePage requires authentication|true||

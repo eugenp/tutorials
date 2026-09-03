@@ -1,0 +1,14 @@
+!|script|
+|given page|FrontPage|
+
+!note Make sure saveProperties is last, because it clears the write-lock
+!|operation is authenticated|
+|operation|
+|purgeHistory|
+|shutdown|
+|renamePage|
+|deletePage|
+|movePage|
+
+
+

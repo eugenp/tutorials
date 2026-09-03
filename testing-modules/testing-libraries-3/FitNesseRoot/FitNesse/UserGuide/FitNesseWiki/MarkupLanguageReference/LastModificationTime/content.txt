@@ -1,0 +1,7 @@
+You may see the time that a wiki page was last modified by using the ''!-!lastmodified-!'' widget.  It should be placed at the beginning of a line in the wiki text.
+
+!-!lastmodified-!
+
+The result of this widget is this:
+
+!lastmodified

@@ -1,0 +1,12 @@
+!3 BUG - when you define a classpath entry on a line immediately following a variable definition, the classpath entry is not processed and the fixtures are therefore not found.
+----
+First, build a page with variable definitions followed immediately by a classpath definition. Also include a test that should pass.
+
+!| script |
+| given page | ClasspathTestPage | with content | !-!define PI {3.141592}
+| fitnesse.testutil.PassFixture |-! |
+| make | ClasspathTestPage | a test page |
+| its test results should contain | PassFixture |
+| and should not contain | Exception |
+| check | request page | ErrorLogs.ClasspathTestPage | 200 |
+| show | content |

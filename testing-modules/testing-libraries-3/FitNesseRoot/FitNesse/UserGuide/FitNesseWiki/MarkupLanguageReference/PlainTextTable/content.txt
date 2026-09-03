@@ -1,0 +1,76 @@
+Tables can be created very easily from plain text.  
+
+'''Markup Text'''
+{{{![
+simple plain
+text pasted
+from somewhere
+]!}}}----
+'''Displays as:'''
+![
+simple plain
+text pasted
+from somewhere
+]!
+One note on editing plain text tables with the rich text editor: the content is displayed as
+{{{
+<plaintexttable>
+simple plain
+text pasted
+from somewhere
+</plaintexttable>
+}}}
+In order to add extra lines, use <Shift>-<Enter> to add lines when editing the plain text table. It is not possible to create plain text tables from the rich text editor.
+
+----
+These are ''literalized'' tables, so most wiki markup does not work inside them.
+
+You can create cells by declaring a delimiter as the first character after the '''['''.  Only punctuation characters will work.:
+{{{![:
+Name:Bob
+Address:Here
+Street:Cranbrook:Zip:60048
+]!}}}
+'''Displays as:'''
+![:
+Name:Bob
+Address:Here
+Street:Cranbrook:Zip:60048
+]!
+----
+If you want to hide the first row of the table, you can put it right after the delimiter following a space.  The first row is still there, it's just hidden.  
+{{{![: Location
+Name:Bob
+Address:Here
+Street:Cranbrook:Zip:60048
+]!}}}
+'''Displays as:'''
+![: Location
+Name:Bob
+Address:Here
+Street:Cranbrook:Zip:60048
+]!
+----
+If you want to hide the first row but don't want a delimiter, you still need the space right after the '''['''.
+----
+
+Example:
+{{{![ BDD:JukeBoxDriver
+Given a jukebox with price set to $1.00
+When a customer deposits $2.00
+And presses B5
+And presses C21
+Then Stairway to Heaven will play.
+And Comforably Numb will play.
+]!}}}
+'''Displays as:'''
+![ BDD:JukeBoxDriver
+Given a jukebox with price set to $1.00
+When a customer deposits $2.00
+And presses B5
+And presses C21
+Then Stairway to Heaven will play.
+And Comforably Numb will play.
+]!
+
+

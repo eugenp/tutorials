@@ -1,0 +1,73 @@
+
+''Previous page: [[!-SetUpFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.SetUpFixture]] Next page: [[!-DoFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.DoFixture]] Parent page: [[!-FitLibrary Fixtures-!][<UserGuide.FixtureGallery.FitLibraryFixtures]]''
+!2 !-CalculateFixture-!
+'''!- CalculateFixture -!'''!- is used to verify the result of one or more calculations for different combinations of input arguments. It does the same job as -!'''!- ColumnFixture -!'''!- in a different table format and with lot less code in the fixture class. -!
+
+# section Table Format
+!3 !-Table Format-!
+!- The first row of the table is the fixture class name. After that, the second row contains names for input parameters, followed by an empty cell, then followed by names of calculations (output values). All rows after that specify values for input parameters and expected outcomes for calculations. An empty cell is again used to separate inputs from expected outputs. -!
+
+{{{
+!-!-!|CalculateFixtureTest|
+|firstPart|secondPart||together|
+|Hello|World||Hello, World|
+|Houston|We Have a Problem||Houston, We Have a Problem|
+}}}
+# section Fixture class
+!3 !-Fixture class-!
+!- The fixture class should extend -!'''!- fitlibrary.CalculateFixture -!'''!-. It should declare one method for each calculation column. The method name must be equal to the calculation name concatenated with all parameter names (in this case -!'''!- togetherFirstPartSecondPart -!'''!-). You can use CamelCase naming to separate words. -!
+
+# section Java Source Code
+!3 !-Java Source Code-!
+{{{
+package info.fitnesse.fixturegallery;
+
+import fitlibrary.CalculateFixture;
+
+public class CalculateFixtureTest extends CalculateFixture{
+	public String togetherFirstPartSecondPart(String firstPart,String secondPart){
+		return firstPart+ ", "+secondPart;
+	}
+}
+}}}
+# section .NET Source Code
+!3 !-.NET Source Code-!
+{{{
+using fitlibrary;
+using System;
+
+namespace info.fitnesse.fixturegallery
+{
+	public class CalculateFixtureTest: CalculateFixture
+	{
+		public String TogetherFirstPartSecondPart(String firstPart,String secondPart)
+		{
+			return firstPart+ ", "+secondPart;
+		}
+	}
+}
+}}}
+# section Python Source Code
+!3 !-Python Source Code-!
+{{{
+from fitLib.CalculateFixture import CalculateFixture
+
+class CalculateFixtureTest(CalculateFixture):
+    _typeDict = {}
+
+    # JAVA: String togetherFirstPartSecondPart(String firstPart,String secondPart){
+    _typeDict["togetherFirstPartSecondPart.types"] = ["String", "String", "String"]
+    def togetherFirstPartSecondPart(self, firstPart, secondPart):
+        return "%s, %s" % (firstPart, secondPart)
+
+}}}
+# section Notes
+!3 !-Notes-!
+!- The method names can be very long and typing them manually is a bit error prone. Instead of that, just write the table, run the test and it will fail for the first time.<UserGuide will print the name of the methods it looked for, so you can copy and paste that into your fixture code. -!
+
+# section Usage
+!3 !-Usage-!
+!- Use the -!'''!- CalculateFixture -!'''!- to execute the same method or a set of methods for different combinations of input arguments and verify the results. If you just want to execute a method and the result is not important (or the method is -!'''!- void -!'''!-), use the -!'''!- SetUpFixture -!'''!- instead (see -![[!-SetUpFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.SetUpFixture]]!-). If you want to execute methods on a domain object after initialising the properties, the -!'''!- ColumnFixture -!'''!- (see -![[!-ColumnFixture-!][<UserGuide.FixtureGallery.BasicFitFixtures.ColumnFixture]]!-) might be a better choice. The -!'''!- ColumnFixture -!'''!- will also allow you to just print the result of the calculation, not testing it. -!'''!- CalculateFixture -!'''!- treats an empty cell as a blank string, and compares it to the result, so it will fail the test if you leave an output cell empty. -!
+
+
+''Previous page: [[!-SetUpFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.SetUpFixture]] Next page: [[!-DoFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.DoFixture]] Parent page: [[!-FitLibrary Fixtures-!][<UserGuide.FixtureGallery.FitLibraryFixtures]]''

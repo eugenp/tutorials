@@ -1,0 +1,38 @@
+The instructions for each page in the suite are displayed.
+
+----
+
+Create a Suite page
+
+!|script|Page Builder|
+|line|${SUT_PATH}|
+|page|!-SuitePage-!|
+
+Create two sub pages
+
+|script|Page Builder|
+|line|!-|script|class one|-!|
+|page|!-SuitePage.TestPageOne-!|
+
+
+|script|Page Builder|
+|line|!-|script|class two|-!|
+|page|!-SuitePage.TestPageTwo-!|
+
+Now run the instruction page and show the response.
+
+|Response Requester.|
+|uri   |valid?|
+|!-SuitePage?responder=instruction-!|true|
+
+|Response Examiner.|
+|contents?|
+||
+
+The response should list the instructions for the two pages.
+
+|Response Examiner.|
+|line  |in order?|
+|!-SuitePage.TestPageOne|[000001:000084:[000004:000015:scriptTable_0_0:000004:make:000016:scriptTableActor:000008:ClassOne:]:]-!|true|
+|!-SuitePage.TestPageTwo|[000001:000084:[000004:000015:scriptTable_0_0:000004:make:000016:scriptTableActor:000008:ClassTwo:]:]-!|true|
+

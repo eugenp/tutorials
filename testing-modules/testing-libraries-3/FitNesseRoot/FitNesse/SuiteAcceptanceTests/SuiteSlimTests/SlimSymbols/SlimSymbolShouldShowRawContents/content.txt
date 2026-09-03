@@ -1,0 +1,18 @@
+Symbols should show the raw (in this case HTML) content that is used in the tests.
+
+| script| fitnesse.fixtures.EchoFixture |
+| $Table_= | echo | !-<table><tr><td>Test</td></tr></table>-! |
+| check | echo | $Table_ | $Table_ |
+| show | echo | $Table_ |
+
+
+!| script |
+| given page | TestPage | with content | ${SUT_PATH} !-
+!define TEST_SYSTEM {slim}
+|script| fitnesse.fixtures.EchoFixture |
+| $Table= | echo | !-<table><tr><td>Test</td></tr></table>-!-!!- |
+| check | echo | $Table | $Table |
+| show | echo | $Table |
+-! |
+| test results for page | TestPage | should contain | $Table&lt;-[&lt;table&gt;&lt;tr&gt;&lt;td&gt;Test&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;] |
+| ensure | content contains | $Table->[<table><tr><td>Test</td></tr></table>] |

@@ -1,0 +1,91 @@
+!2 Test Collapsable sections
+When a section of wiki test is surrounded by:
+ * !-!*** ... ***!-! it is rendered as a collapsable section;
+ * !-!**> ... ***!-! it is rendered as a collapsed section;
+ * !-!**< ... ***!-! it is rendered as a invisible section;
+
+The number of stars is optional; at least one is required at the start and end.
+The formal format for using this widget involved multiple lines and looks like so:
+#---------------------------------------------------
+{{{TOP
+!*** section title
+content
+more content
+****************!
+BOTTOM
+}}}
+
+and will be rendered as:
+TOP
+!*** section title
+content
+more content
+****************!
+BOTTOM
+#---------------------------------------------------
+-----
+{{{TOP
+!**> section title
+content
+more content
+****************!
+BOTTOM
+}}}
+
+and will be rendered as:
+TOP
+!***> section title
+content
+more content
+****************!
+BOTTOM
+#---------------------------------------------------
+-----
+{{{TOP
+!**< section title
+content
+more content
+****************!
+BOTTOM
+}}}
+
+and will be rendered as:
+TOP
+!**< section title
+content
+more content
+****************!
+BOTTOM
+
+!*> Scenarios
+!|scenario|given a page with a collapsible section containing|text|
+|given page|PageWithCollapsibleSection|with content|!** My Section!-<br>-!@text!-<br>-!****!|
+
+!|scenario|given a page with a collapsed section containing|text|
+|given page|PageWithCollapsibleSection|with content|!*> My Section!-<br>-!@text!-<br>-!****!|
+
+!|scenario|given a page with an invisible section containing|text|
+|given page|PageWithCollapsibleSection|with content|!*< My Section!-<br>-!@text!-<br>-!****!|
+
+!|scenario|the content|text|should be in a div|
+|it should match|<div>@text(<br/>)?</div>|
+
+!|scenario|it should have|text|within a|class|div|
+|the content|@text|should be in a div|
+|and it should have a collapsible div|
+
+!|scenario|and it should have a collapsible div|
+|and should contain|div class="collapsible|
+|and should contain|p class="title">My Section|
+
+*!
+
+!|script|
+|given a page with a collapsible section containing|line one!-<br/>-!line two|
+|it should have|line one!-<br/>-!line two|within a|collapsible|div|
+||
+|given a page with a collapsed section containing|line one!-<br/>-!line two|
+|it should have|line one!-<br/>-!line two|within a|invisible|div|
+||
+|given a page with an invisible section containing|line one!-<br/>-!line two|
+|the content|line one!-<br/>-!line two|should be in a div|

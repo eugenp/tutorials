@@ -1,0 +1,46 @@
+The following pages are automatically included into other pages.  Some are included at the stop, others are included at the bottom.  Some may be included only into certain kinds of pages.  However, they all follow one identical rule.  A given page will be included only if it is a brother or uncle of the target page.
+
+Consider !-PageHeader-!.  !-PageHeader-! is included at the top of all of it's sibling pages.  If !-FitNesse-! did not have sub pages, this would make perfect sense.  The page named !-PageHeader-! would simply be included into every other page.  But !-FitNesse-! ''does'' have sub pages.  So the rule is that if a page includes !-PageHeader-! then the children of that page will include it as well.  This rule is recursive, so the childrens
+children also include !-PageHeader-! etc.
+
+Now imagine that you have a hierarchy that looks like this:
+ * Bob
+  * !-PageHeader-!
+  * Angela
+   * Alexis
+
+Bob is at the top level and there is no !-PageHeader-! at the top level.  So nothing is included into Bob.
+Angela has a sibling page named !-PageHeader-! so !-Bob.PageHeader-! is included into Angela.  And since Angela includes it, the children of Angela will include it too.  So Alexis will also include !-Bob.PageHeader-!.
+
+Clear?  Just remember brothers and uncles.
+
+
+!3 !-PageHeader-!
+Included at the top of a page.  Often used for common titles, or links.
+
+!3 !-PageFooter-!
+Included at the bottom of a page.  Used for copyrights, footers, and common links.
+
+!3 !-SetUp-!
+Included at the top of test pages only.  Used to initialize the test and supply Import tables.
+
+!3 !-TearDown-!
+Included at the bottom of test pages only.  Used to decommission resources used in a test.
+
+!3 !-SuiteSetUp-!
+Included at the top of a test page and before !-SetUp-!.  When a suite is run, this page will only be included once at the top of the suite.
+
+!3 !-SuiteTearDown-!
+Included at the bottom of a test page only, and after !-TearDown-!.  When a suite is run this page will be included only once at the end of the suite.
+
+!3 !-ScenarioLibrary-!
+These pages are intended for scenario tables.  They are included just after the !-SetUp-! in any ''SLIM'' test.  Unlike the other special pages, ''all'' brother and uncle !-ScenarioLibrary-! pages are included.  The oldest (grandest uncle) is included first.  The brother, if it exists, is included last.  This allows younger !-ScenarioLibrary-! pages to override older ones.
+
+!3 !-TemplateLibrary-!
+These pages act as a marker to find templates to show as available for insertion when editing a page. All children of a !-TemplateLibrary-! will be shown in the drop-down list of templates available for insertion. Unlike the other special pages, ''all'' brother and uncle !-TemplateLibrary-! pages are included.  The oldest (grandest uncle) is included first.  The brother, if it exists, is included last.  This allows younger !-TemplateLibrary-! pages to override older ones.
+
+
+!3 Suites.
+A special word about suites. If the suite has a deep hierarchy, and there are !-SuiteSetUp-! and/or !-SuiteTearDown-! pages below the suite page, they will not be included (unless the tests at those lower levels will also be executed). The !-SuiteSetUp-! and !-SuiteTearDown-! that are included in a suite run are (by default) the pages that are the nearest brothers or uncles of the ''Suite'' page.  
+
+The behaviour, that only the nearest brothers and uncles are executed, can be customized by defining a variable !style_code[ALL_UNCLE_SUITE_SETUPS] and give it the value '''true''' in the root of the suite. The effect of this definition is that ''all'' !-SuiteSetUp and SuiteTearDown-! up in the hierarchy (i.e. all uncle pages with these names) are executed before each test, similar to what is done for !-ScenarioLibrary-!. Inside the suite the highest (grand uncle) !-SuiteSetUp-! is added first, followed by lower ones just before the first test in the (sub)suite requiring them. And the nearest !-SuiteTearDown-! is executed immediately after the last test in the (sub)suite. So each !-SuiteSetUp and SuiteTearDown-! is executed only once, immediately before (or after) the (sub)suite that requires them.

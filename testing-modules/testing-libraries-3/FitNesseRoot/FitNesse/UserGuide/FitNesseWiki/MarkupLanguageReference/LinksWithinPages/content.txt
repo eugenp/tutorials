@@ -1,0 +1,96 @@
+When you have really longs pages it is convenient to list a bunch of links at the top of the page that will take you to sections further down in the page.  With a combination of a couple of wiki widgets, you can achieve this usefulness in FitNesse.
+
+The first component is called an '''Anchor'''.  Use anchors to designate locations in a page that you want to link to.  Create anchors like this:
+'''!-!anchor anchorName-!'''
+When saved, you wont see the anchors but they'll be there in the document.
+
+Now you just need to create a link to them.  You do that with the following syntax:
+'''!-.#pageBottom-!'''
+When saved this will turn into a link to the anchor named '''pageBottom''' in this case.
+
+.#pageBottom
+
+At the very bottom of this page, there is an anchor named '''pageBottom'''.  When you click in the link above, you will be taken to that hidden anchor.
+
+----
+And now, a little poem by '''William Butler Yeats''' to fill the space:
+
+That civilisation may not sink,
+
+Its great battle lost,
+
+Quiet the dog, tether the pony
+
+To a distant post;
+
+Our master Caesar is in the tent
+
+Where the maps ate spread,
+
+His eyes fixed upon nothing,
+
+A hand under his head.
+
+(Like a long-legged fly upon the stream
+
+His mind moves upon silence.)
+
+That the topless towers be burnt
+
+And men recall that face,
+
+Move most gently if move you must
+
+In this lonely place.
+
+She thinks, part woman, three parts a child,
+
+That nobody looks; her feet
+
+Practise a tinker shuffle
+
+Picked up on a street.
+
+(Like a long-legged fly upon the stream
+
+Her mind moves upon silence.)
+
+That girls at puberty may find
+
+The first Adam in their thought,
+
+Shut the door of the Pope's chapel,
+
+Keep those children out.
+
+There on that scaffolding reclines
+
+Michael Angelo.
+
+With no more sound than the mice make
+
+His hand moves to and fro.
+
+(Like a long-legged fly upon the stream
+
+His mind moves upon silence.)
+
+----
+
+!anchor pageBottom
+
+!c !1 You've hit the bottom of the page!
+
+
+
+
+
+
+
+
+
+
+
+
+
+

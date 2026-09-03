@@ -1,0 +1,7 @@
+!1 FitNesse Test Systems.
+!img http://files/fitnesse/images/fitnesse_architecture.jpg
+This diagram shows how !-FitNesse-! works with the two Test Systems, [[Slim][SliM]], and [[Fit][FitFramework]].
+
+[[FIT][FitFramework]] is the older of the two, and uses HTML.  The HTML parsing is done on the SUT just prior to the fixtures being called.  This means that there is a lot of code on the SUT.  Over the years many different ports of FIT have been attempted, but because FIT is large, and because programmers always have better ideas the second and third time they implement something, the various FIT ports are quite inconsistent.  This means that tests written on one platform won't work on another.
+
+[[Slim][SliM]] is newer.  As the diagram shows, there is very little code on the SUT.  This is because all the table processing is done inside FitNesse, within the Slim runners.  The Slim Executor and the fixtures are the only code that lives on the SUT.  The Slim Executor is very small and easy to port.  The Test pages are broken down into simple instructions by the Slim Runners.  Those instructions are passed to the Slim Executor which directs the fixtures to call the SUT.  This means that new features added to Slim Runners will not require changes on the Slim Executor, and that all test pages written for a Slim Runner will work on any different Slim platform.

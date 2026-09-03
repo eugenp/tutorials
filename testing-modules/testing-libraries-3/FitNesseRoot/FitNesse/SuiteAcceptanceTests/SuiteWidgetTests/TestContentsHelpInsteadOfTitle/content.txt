@@ -1,0 +1,68 @@
+!3 !-!contents-! with Help Text Option Instead of Title
+
+!include -seamless ContentsUsage
+#-------------------------------------------------
+!3 Test Rollover Help
+'''First create the parent page.'''
+-|script|
+|start|Page Builder|
+|line|I'm the parent|
+|line|!-!contents-!|
+|page|!-ParentPage-!|
+
+!include ContentsTestsIncludeWithHelp
+
+'''Then request the parent page.'''
+|Response Requester.|
+|uri|valid?|contents?|
+|!-ParentPage-!|true||
+
+'''...and examine the requested page to insure rollover help text exists'''
+!|Response Examiner.|
+|type|pattern|matches?|
+|contents|a href="ParentPage.FirstChild"[\s\w="]+ title="First Child's help">FirstChild</a|true|
+|contents|a href="ParentPage.SecondChild"[\s\w="]+ title="Second Child's help">SecondChild</a|true|
+#-------------------------------------------------
+!3 Explicitly Request Help Text Suffix
+'''First create the parent page.'''
+-|script|
+|start|Page Builder|
+|line|I'm also the parent|
+|line|!-!contents -H-!|
+|page|!-ParentPage-!|
+
+!include ContentsTestsIncludeWithHelp
+
+'''Then request the parent page.'''
+|Response Requester.|
+|uri|valid?|contents?|
+|!-ParentPage-!|true||
+
+'''...and examine the requested page to insure help text is visible'''
+!|Response Examiner.|
+|type|pattern|matches?|
+|contents|a href="ParentPage.FirstChild"[\s\w="]+>First Child's help</a|true|
+|contents|a href="ParentPage.SecondChild"[\s\w="]+>Second Child's help</a|true|
+#-------------------------------------------------
+!3 Implicitly Request Help Text Suffix via Variable
+'''First create the parent page.'''
+-|script|
+|start|Page Builder|
+|line|I'm also the parent|
+|line|!-!define HELP_INSTEAD_OF_TITLE_TOC {true}-!|
+|line|!-!contents-!|
+|line|!-!define HELP_INSTEAD_OF_TITLE_TOC {false}-!|
+|page|!-ParentPage-!|
+
+!include ContentsTestsIncludeWithHelp
+
+'''Then request the parent page.'''
+|Response Requester.|
+|uri|valid?|contents?|
+|!-ParentPage-!|true||
+
+'''...and examine the requested page to insure help text is visible'''
+!|Response Examiner.|
+|type|pattern|matches?|
+|contents|a href="ParentPage.FirstChild"[\s\w="]+>First Child's help</a|true|
+|contents|a href="ParentPage.SecondChild"[\s\w="]+>Second Child's help</a|true|

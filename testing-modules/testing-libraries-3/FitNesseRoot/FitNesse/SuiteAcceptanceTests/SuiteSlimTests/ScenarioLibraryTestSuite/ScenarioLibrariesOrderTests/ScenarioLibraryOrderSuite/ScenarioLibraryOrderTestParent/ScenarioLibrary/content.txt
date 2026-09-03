@@ -1,0 +1,2 @@
+!|scenario|three|
+|$THREE=|echo|3|

@@ -1,0 +1,52 @@
+Expressions calculate a result and substitute the result in place of the expression much like variable references.
+ * Are enclosed in ''' '' !-${=-! '' ''' and  ''' '' !-=}-! '' ''' delimiters.
+ * May appear anywhere a variable is allowed.
+ * May contain the following operators:
+   * + - * / ^
+   * unary -
+   * cos sin tan
+   * ( )
+   * E notation, e.g., 12E+3
+
+Given:
+{{{!define X {1}
+!define Y {2}
+!define Z {3} }}}
+
+The following expressions yields 10: {{{ !-${= ${X} + ${Y} + ${Z} + 4 =}-! }}}
+
+!3 Actual Markup
+!define X {1}
+!define Y {2}
+!define Z {3}
+
+The result is 10?: ${= ${X} + ${Y} + ${Z} + 4 =} yes!
+
+!3 Advanced Notation
+
+'''Complete Syntax'''
+'''!-${=-!''' ['''%''' ''format'' ''':'''] ''expression'' '''!-=}-!'''
+
+Where format is a single numeric or boolean format specifier defined by the Java Formatter class conversions.
+
+'''Examples'''
+|''' Mark Up '''                |''' Result '''             |
+|!-${=1+2+3=}-!                 |${=1+2+3=}                 |
+|!-${=12E+2 + 34=}-!            |${=12E+2 + 34=}            |
+|!-${=%03d:1+2+3=}-!            |${=%03d:1+2+3=}            |
+|!-${=%02X:10+1=}-!             |${=%02X:8+1=}              |
+|!-${= %02x : 10 + 1 =}-!       |${= %02x : 8 + 1 =}        |
+|!-${= %03.2f : 10.12345678 =}-!|${= %03.2f : 10.12345678 =}|
+|!-${=%b: 1 =}-!                |${=%b:1=}                  |
+|!-${=%b: 0 =}-!                |${=%b:0=}                  |
+|!-${=%B: 6 =}-!                |${=%B:6=}                  |
+|!-${=%B: -2 =}-!               |${=%B:-2=}                 |
+
+!3 Formatting Locale
+The formatting locale can be overriden by setting the ''FORMAT_LOCALE'' variable.
+
+'''Example'''
+{{{!-!define FORMAT_LOCALE {fr}-!}}}
+
+!see <FitNesse.SuiteAcceptanceTests.SuiteWidgetTests.TestEvaluator
+

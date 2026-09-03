@@ -1,0 +1,36 @@
+When editing pages each version is recorded in the versions list.
+
+Create a page to be requested.
+!|Page creator.|
+|Page name.|valid?|
+|VersionsPage|true|
+
+Now save the page a couple times.  This will produce a version history.
+!|Response Requester.|
+|uri|status?|
+|VersionsPage?responder=saveData&pageContent=a+change&editTime=0&ticketId=0|303|
+|VersionsPage?responder=saveData&pageContent=another+change&editTime=0&ticketId=0|303|
+
+Now load up the version list.
+!|Response Requester.|
+|uri|status?|
+|VersionsPage?versions|200|
+
+The version list has the correct headings.
+|Response Examiner.|
+|type|pattern|matches?|
+|contents|>Compare<|true|
+|contents|>Name<|true|
+|contents|>Author<|true|
+|contents|>Age<|true|
+
+The version list has 3 entries and each has a checkbox.
+|Response Examiner.|
+|type|pattern|matches?|matchCount?|
+|contents|!-href="\?responder=viewVersion&amp;version=-!|true|3|
+|contents|!-input type="checkbox" name="Version_-!|true|3|
+
+Show the contents.
+|Response Examiner.|
+|contents?|
+||
