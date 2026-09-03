@@ -1,0 +1,15 @@
+What if you want to execute the same fitnesse test multiple times. This seems like nice a candidate for a decorator.
+
+If you want to loop 5 times over a fitnesse table and make sure each time the test does not take more than 1000 milliseconds.
+
+!|Loop|5|times|
+|Max Time|1000|milliseconds|
+|Division|
+|numerator|denominator|quotient()|
+|10|2|5|
+|12.6|3|4.2|
+|100|4|25|
+
+Once you run this test, you can see actual time taken for each run. In our case, we'll see 5 actual timing printed, since we are looping 5 times.
+
+'''Note:''' As you can see, you can pipe decorators. Similar to how you can pipe Unix shell commands.

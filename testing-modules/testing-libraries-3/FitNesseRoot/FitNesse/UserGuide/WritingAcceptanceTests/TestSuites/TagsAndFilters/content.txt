@@ -1,0 +1,36 @@
+!3 Suite Tags
+
+The properties page offers a field labeled ''Tags'' where you can enter a comma-separated list of keywords. These keywords can then be used as targets for searching and executing those tests.
+
+!3 Searching for tags
+If you hit the !style_code(Search) button, You will see a form that allows you to search for pages that certain attributes or tags.  For example, you can search for all subpages that have the !style_code(Suite) property set, or all pages that are read-only, or that have the !style_code(Edit) button displayed.  Most importantly, you can search for pages marked with tags.
+
+If you put a comma separated list of tags into the !style_code(Tags) input box, and then search, you will be shows a list of pages that are marked with any of those tags.  Notice that if the pages are tests or suites, they have a link next to them that allows you to execute them.   Also, look at the bottom and see the useful text that can be copied and pasted onto other pages in order to repeat the search or test the resulting pages.
+
+Using these tools, you can easily tag some tests as "smoke" tests, or "critical", or "fast".  You can find all the "smoke" tests and run them, etc.
+
+!3 Using tags to select which tests to run.
+The easiest way to execute tagged tests is to search for the tags as described in the previous section.  Sometimes, though, you'd like to execute the tests via a RESTful service, or from the command line (see [[!-ControllingFitNesseFromTheCommandLine-!][<FitNesse.FullReferenceGuide.UserGuide.AdministeringFitNesse.ControllingFitNesseFromTheCommandLine]]).
+You can execute the tests that match a tag (or comma separated list of tags) by using the !style_code(runTestsMatchingAnyTag) query parameter with a suite url like this:
+!style_code(!-http://&lt;host>:&lt;port>/&lt;suite path and test name>?responder=suite&runTestsMatchingAnyTag=smoke,critical-!)
+
+''This parameter used to be !style_code(suiteFilter).  Both versions are supported and both versions run a test if any one tag matches for a page.''
+
+It is also possible to run test that match all of the tags in your filter.  This is done with the !style_code(runTestsMatchingAllTags) parameter, like so:
+!style_code(!-http://&lt;host>:&lt;port>/&lt;suite path and test name>?responder=suite&runTestsMatchingAllTags=smoke,critical-!)
+
+If you want to execute all the tests in a suite except those with a particular tag (eg !-NotRunningOnHudson-!) then you use the !style_code(excludeSuiteFilter) query parameter:  For example:
+!style_code(!-http://&lt;host>:&lt;port>/&lt;suite path and test name>?responder=suite&excludeSuiteFilter=NotRunningOnHudson-!)
+
+''There is no AND type behavior on excludeSuiteFilter.  Any test that matches any of the listed tags will be skipped.''
+
+Typically, you will need only a few of such filtered suites, so it is suggested to build a link on the front page or so which contains the respective suite filter parameters. (If you simply click on the ''Suites'' button to run a suite, the !-suiteFilter-! is not set, so all tests in the respective subwiki are run.)
+
+!3 Executing test starting with a certain test.
+Sometimes half the suite will run okay, but after a point all tests will start failing.   In that case you can save time re-running the tests by stating which test you would like to start with.   For instance:
+!style_code(!-http://&lt;host>:&lt;port>/&lt;suite path and test name>?responder=suite&startTest=TestTwo-!) will run all tests coming after !-TestTwo-!
+
+Remember, that the order tests run is alphabetical.  So in the above example, !-TestThree-! will not run because !-TestTwo-! actually comes after !-TestThree-!
+
+''Please note:'' if your test run is not failing from a certain point onwards, but has a few failures that you want to rerun the 'Rerun Failed' feature is probably more appropriate than 'startTest'.
+It can be accessed via the button on the suite result page (top right hand corner), or directly by going to: !style_code(!-http://&lt;host>:&lt;port>/RerunLastFailures?suite-!)

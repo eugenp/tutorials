@@ -1,0 +1,82 @@
+ * Bullet lists are created by prefixing a space and an asterisk to a line.
+  * You can create sublists by adding more spaces on the front.
+   1 Numbered lists are created by prefixing a space and a number to a line.
+
+---- '''Markup Text'''{{{
+ * Item one
+  * sub item one
+  * sub item two
+
+ * Item two.
+  1 sub item 2
+  2 sub item 3
+   * sub sub item one
+    1 sub sub sub item one.
+}}}----'''Displays as:'''
+ * Item one
+  * sub item one
+  * sub item two
+
+ * Item two.
+  1 sub item 2
+  2 sub item 3
+   * sub sub item one
+    1 sub sub sub item one.
+
+---- '''Long numeric lists'''
+Beware when using numeric lists that only single digit numbers are identified as numeric lists.
+The following 11 item list renders incorrectly.
+{{{
+ 1 item one
+ 2 item two
+ 3 item three
+ 4 item four
+ 5 item five
+ 6 item six
+ 7 item seven
+ 8 item eight
+ 9 item nine
+ 10 item ten
+ 11 item eleven
+}}}
+
+ 1 item one
+ 2 item two
+ 3 item three
+ 4 item four
+ 5 item five
+ 6 item six
+ 7 item seven
+ 8 item eight
+ 9 item nine
+ 10 item ten
+ 11 item eleven
+
+This can be corrected by simply using a single digit (1-9, but not zero)- the actual numeric value is correct as the HTML is rendered using !-&lt;ol&gt;-! notation.
+
+{{{
+ 1 item one
+ 2 item two
+ 3 item three
+ 4 item four
+ 5 item five
+ 6 item six
+ 7 item seven
+ 8 item eight
+ 9 item nine
+ 1 item ten
+ 1 item eleven
+}}}
+
+ 1 item one
+ 2 item two
+ 3 item three
+ 4 item four
+ 5 item five
+ 6 item six
+ 7 item seven
+ 8 item eight
+ 9 item nine
+ 1 item ten
+ 1 item eleven
+

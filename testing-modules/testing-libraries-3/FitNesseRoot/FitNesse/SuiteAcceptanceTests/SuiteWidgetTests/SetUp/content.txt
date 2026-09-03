@@ -1,0 +1,6 @@
+!include <SuiteAcceptanceTests.SetUp
+
+|Library|
+|echo fixture|
+|page driver|
+

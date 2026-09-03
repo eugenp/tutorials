@@ -1,0 +1,40 @@
+!contents
+
+If a symlink is created on the to-be-moved page, the symlink should be moved.
+
+!*> local setup and scenario's
+| library |
+| page driver |
+
+!| scenario | create symlink on | pageName | with name | name | link to | linkedPage |
+| check | request page | @pageName?responder=symlink&linkName=@name&linkPath=@linkedPage | 303 |
+| show | content |
+| ensure | content contains | Location: /@pageName?properties |
+
+!| scenario | move page | pageName | to | location |
+| check | request page | @pageName?responder=movePage&newLocation=@location | 303 |
+| show | content |
+| ensure | content contains | Location: /@location.@pageName |
+*!
+
+Move a page. The page contains a symlink to a sibling page of the to-be moved page and a symlink to a child page of the to-be moved page. In both cases the pages should be moved in such a way that the symlink remain valid and point to the right page.
+
+!| script |
+| create page | ToBeMovedPage | with content | main page |
+| create page | ToBeMovedPage.ChildPage | with content | child page |
+| create page | NewLocation | with content | new location |
+| create page | AnotherPage | with content | another page |
+| create symlink on | ToBeMovedPage | with name | LinkAnotherPage | link to | AnotherPage |
+| create symlink on | ToBeMovedPage | with name | LinkChildPage | link to | >ChildPage |
+| ensure | page | ToBeMovedPage.LinkAnotherPage | is a symbolic link |
+| ensure | page | ToBeMovedPage.LinkChildPage | is a symbolic link |
+
+!| script |
+| move page | ToBeMovedPage | to | NewLocation |
+| reject | page | ToBeMovedPage | exists |
+| ensure | page | NewLocation.ToBeMovedPage | exists |
+| ensure | page | NewLocation.ToBeMovedPage.LinkAnotherPage | is a symbolic link |
+| page | NewLocation.ToBeMovedPage.LinkAnotherPage | should contain | another page |
+| ensure | page | NewLocation.ToBeMovedPage.LinkChildPage | is a symbolic link |
+| page | NewLocation.ToBeMovedPage.LinkChildPage | should contain | child page |
+

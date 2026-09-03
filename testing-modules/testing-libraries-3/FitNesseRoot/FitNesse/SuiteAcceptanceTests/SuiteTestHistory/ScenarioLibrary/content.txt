@@ -1,0 +1,58 @@
+!|scenario|get history for page|page|
+|check|request page|@page?pageHistory|200|
+|$TESTPAGE=|echo|@page|
+|show|content|
+
+!|scenario|get top level history|
+|check|request page|?testHistory|200|
+|show|content|
+
+!|scenario|the number of page histories should be|number|
+|check|count of tag|TR|with id prefix|pageHistoryRow|@number|
+
+!|scenario|the page history bar for|date|should have|number|elements of class|class|
+|$date=|page history date signature of|@date|
+|check|count of tag|TD|with class|element @class|below tag|TR|with id prefix|pageHistoryRow_$date|@number|
+
+!|scenario|the page title should be|title|
+|ensure|content contains|<h1>@title</h1>|
+
+!|scenario|the page title should be a link to|page            |with value            |value           |
+|ensure   |content contains                  |<${TITLE_TAG}><a href="/@page">@value</a></${TITLE_TAG}>|
+
+
+!|scenario|the bread crumb|crumb|should be a link to|page|
+|ensure|content contains|<a href="/@page">@crumb</a>|
+
+!|scenario|The page history bar for|date|should have a|id|with class|class|and value|value|
+|$date=|page history date signature of|@date|
+|ensure|content of tag with id|pageHistoryRow_$date|contains|<td class="@id @class">@value</td>|
+|show|content of tag with id|pageHistoryRow_$date|
+
+!|scenario|The page history bar for|date|should have a date field with class|class|
+|$date=|page history date signature of|@date|
+|ensure|content of tag with id|pageHistoryRow_$date|contains|<td class="date_field @class">|
+
+!|scenario|the top level history line for|page|is a link to the page history|
+|ensure|content contains|<a href="/@page?pageHistory">@page</a>|
+
+!|scenario|The page history line for|date|should be a link to result|resultDate|
+|ensure|content contains|<a href="$TESTPAGE?pageHistory&resultDate=@resultDate">@date</a>|
+
+!|scenario|the top level history line for|page|should have a|class|link with|sign|to result|resultDate|
+|ensure|content contains|<td class="@class"><a href="@page?pageHistory&resultDate=@resultDate">@sign</a></td>|
+
+!|scenario|the top level history line for|page|should not have a link to|resultDate|
+|reject|content contains|<a href="@page?pageHistory&resultDate=@resultDate">|
+
+!|scenario|class for pass fail in top level history line|page||pass class||pass count||fail class||fail count|
+|ensure|html contains|<a href="/@page?pageHistory">@page</a></td> <td class="@passClass">@passCount</td> <td class="@failClass">@failCount</td>|
+
+!|scenario|assume time is|time|
+|freeze clock at|@time|
+
+!|scenario|with subpage|name|with content|content|
+|create page|$IT.@name|with content|@content|
+
+!|scenario|run suite|name|
+|check|request page|@name?suite|200|

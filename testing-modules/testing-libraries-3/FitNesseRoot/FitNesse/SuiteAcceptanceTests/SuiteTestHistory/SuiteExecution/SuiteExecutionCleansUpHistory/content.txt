@@ -1,0 +1,60 @@
+!***> Add lots of page history
+
+!| page history |
+| name | date | right | wrong | ignores | exceptions |
+| SuiteOne | 1-May-2009 | 20 | 30 | 0 | 0 |
+| SuiteOne | 2-May-2009 | 20 | 0 | 0 | 0 |
+| SuiteOne | 3-May-2009 | 0 | 0 | 1 | 0 |
+| SuiteOne | 4-May-2009 | 0 | 0 | 0 | 1 |
+| SuiteOne | 5-May-2009 | 0 | 1 | 0 | 0 |
+| SuiteOne | 6-May-2009 | 0 | 1 | 0 | 1 |
+| SuiteOne | 7-May-2009 | 0 | 0 | 0 | 0 |
+| SuiteOne | 8-May-2009 | 0 | 1 | 0 | 0 |
+| SuiteOne | 9-May-2009 | 0 | 1 | 0 | 0 |
+| SuiteOne | 10-May-2009 | 0 | 1 | 0 | 0 |
+| SuiteOne | 11-May-2009 | 0 | 1 | 0 | 0 |
+| SuiteOne | 12-May-2009 | 0 | 1 | 0 | 0 |
+| SuiteOne | 13-May-2009 | 0 | 1 | 0 | 0 |
+| SuiteOne | 14-May-2009 | 0 | 1 | 0 | 0 |
+| SuiteOne | 15-May-2009 | 0 | 1 | 0 | 0 |
+| SuiteOne | 16-May-2009 | 0 | 1 | 0 | 0 |
+| SuiteOne | 17-May-2009 | 0 | 1 | 0 | 0 |
+| SuiteOne | 18-May-2009 | 0 | 1 | 0 | 0 |
+| SuiteOne | 19-May-2009 | 0 | 1 | 0 | 0 |
+| SuiteOne | 20-May-2009 | 0 | 1 | 0 | 0 |
+| SuiteOne | 21-May-2009 | 0 | 1 | 0 | 0 |
+
+*!
+!***< hidding defines
+
+!define PASSING_TEST {!|script|fitnesse.slim.test.EchoScript|
+| check | echo | 7 | 7 |
+
+}
+
+!define SUITE_ONE {${SUT_PATH}
+!define TEST_SYSTEM (slim)
+}
+
+*!
+After a test run, the test history is cleaned up. In order to do so, the property ''TestHistory.days'' has been set to ${TEST_HISTORY_DAYS} days.
+
+Precondition:
+
+!| script |
+| assume time is | 5/22/2009 01:00:00 |
+| given page | SuiteOne | with content | ${SUITE_ONE} |
+| with subpage | TestOne | with content | ${PASSING_TEST} |
+| get history for page | SuiteOne |
+| the number of page histories should be | 21 |
+
+Action:
+
+!| script |
+| run suite | SuiteOne |
+
+Result:
+
+!| script |
+| get history for page | SuiteOne |
+| the number of page histories should be | ${TEST_HISTORY_DAYS} |

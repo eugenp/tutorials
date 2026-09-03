@@ -1,0 +1,118 @@
+|should I buy milk                                              |
+|cash in wallet|credit card|pints of milk remaining|go to store?|
+|0             |no         |0                      |no          |
+|10            |no         |0                      |yes         |
+|0             |yes        |0                      |yes         |
+|10            |yes        |0                      |yes         |
+|0             |no         |1                      |no          |
+|10            |no         |1                      |no          |
+|0             |yes        |1                      |no          |
+|10            |yes        |1                      |nope        |
+
+This is a decision table; sometimes known as a truth table. This particular table has three inputs and one output.
+
+Here is the fixture code that it invokes:{{{
+package fitnesse.slim.test;
+
+public class ShouldIBuyMilk {
+  private int dollars;
+  private int pints;
+  private boolean creditCard;
+
+  public void setCashInWallet(int dollars) {
+    this.dollars = dollars;
+  }
+
+  public void setPintsOfMilkRemaining(int pints) {
+    this.pints = pints;
+  }
+
+  public void setCreditCard(String valid) {
+    creditCard = "yes".equals(valid);
+  }
+
+  public String goToStore() {
+    return (pints == 0 && (dollars > 2 || creditCard)) ? "yes" : "no";
+  }
+
+  // The following functions are optional.  If they aren't declared they'll be ignored.
+  public void execute() {
+  }
+
+  public void reset() {
+  }
+
+  public void table(List<List<String>> table) {
+  }
+
+  public void beginTable() {
+  }
+
+  public void endTable() {
+  }
+} }}}
+
+That pretty much explains it all. But let's look at the details a bit more closely.
+
+First of all, there's the name of the table: "should I buy milk". This is named for a decision to be made. That's good style. Decision tables should be named for decisions. However that name also translates to the fixture class !-ShouldIBuyMilk-!. If you run this test you'll notice that the name turns green. This means that Slim found the fixture class and was able to create an instance of it.
+
+The first cell could also have been ''Decision:should I buy milk'', ''DT:should I buy milk'', or ''ShouldIBuyMilk'', etc.. The code ''Decision:'' or ''DT:'' tells Slim what kind of table this is.  Decision table is the default.
+
+Next, there's the row of column headers. If you look carefully at them you'll see that they all correspond to functions in the fixture class. However, the first three correspond to ''set'' functions. That's because they don't have a ''?''. The Decision Table considers them to be inputs, and automatically calls the appropriately named ''set'' function.
+
+The last column header does have a ''?''. Decision Table considers it to be an output and so calls it as a function and expects a return value. That return value is compared to the contents of the column and turns the corresponding cell red or green depending whether it matches. Note that the cell that contains 'nope' does not match the 'no' that is returned.
+
+The flow is very simple.
+
+ 1 First the !style_code(ShouldIBuyMilk) fixture is constructed.
+ 1 Next the !style_code(table) method is called if it exists. (see below).
+ 1 Next the !style_code(beginTable) method is called, if it exists. Use this for initializations if you want to.
+ 1 Then for each row in the table:
+   1 First the !style_code(reset) function is called (if present), just in case you want to prepare or clean up.
+   1 Then all the inputs are loaded by calling the appropriate !style_code(set) functions. Inputs are loaded in the left to right order of their appearance in the header.
+   1 Then the !style_code(execute) function of the fixture is called (if present).
+   1 Finally all the output functions are called, again in left to right order, and the return values compared to their table cells.
+ 1 Finally the !style_code(endTable) method is called, if it exists. Use this for closedown and cleanup if you want to.
+
+!4 Optional Functions
+ * !style_code(beginTable) - is called once, just after the !style_code(table) method, and just before the rows are processed. This is for setup and initialization stuff.
+ * !style_code(endTable) = is called once, just after the last row has been processed. It's the last function to be called by the table. Use it for cleanup and closedowns.
+ * !style_code(reset) - is called once for each row before any !style_code(set) or output functions are called.
+ * !style_code(execute) - is called once for each row just after all the !style_code(set) functions have been called, and just before the first output function (if any) are called.
+ * !style_code(table) - is called just after the constructor and before the first row is processed. It is passed a list of lists that contain all the cells of the table except for the very first row. The argument contains a list of rows, each row is a list of cells. This is the same format that is passed to the !style_code(doTable) method of the Table table. For the table above the argument would be: !-<br/>-!!style_code([[cash in wallet, credit card, pints of milk remaining, go to store?], [0, no, 0, no], [10, no, 0, yes], [0, yes, 0, yes], [10, yes, 0, yes], [0, no, 1, no], [10, no, 1, no], [0, yes, 1, no], [10, yes, 1, nope]])
+
+There's not much more to it than that.
+
+!4 Well, yes there is.
+But for that you should look at SymbolsInTables and ValueComparisons
+
+!4 Exceptions
+
+When exceptions occur in a decision table, they're displayed in line.
+
+|should I buy milk                                              |
+|cash in wallet|credit card|pints of milk remaining|go to store?|
+|0             |yes        |1                      |no          |
+|0             |yes        |one                    |no          |
+
+|decision table all done wrong|
+|foo      |bar      |baz?     |
+|-        |         |/        |
+|         |*        |         |
+
+!4 Documentation
+
+If you want to document the data given in a particular row you can just add an extra cell to the right.
+
+|should I buy milk                                                                            |
+|cash in wallet|credit card|pints of milk remaining|go to store?                              |
+|0             |no         |0                      |no                                        |
+|10            |no         |0                      |yes|plenty of money but no need for a pint|
+
+For more detailed documentation you can add designated comment columns anywhere. Just prefix the header with a hash symbol.
+
+
+|should I buy milk                                                                                               |
+|cash in wallet|# comment                                       |credit card|pints of milk remaining|go to store?|
+|-2            |we actually allow negative amounts, meaning debt|no         |0                      |no          |
+|1             |must have at least 2 euros                      |no         |0                      |no          |

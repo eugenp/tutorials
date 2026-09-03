@@ -1,0 +1,67 @@
+The rows in a query table represent the expected results of a query.  
+You can specify them precisely if you like as in the following:
+
+| Query:employees hired before | 10-Dec-1980 |
+| company number | employee number | first name | last name | hire date |
+| 4808147 | 9942 | Bill | Mitchell | 19-Dec-1966 |
+| 4808147 | 1429 | Bob | Martin | 10-Oct-1975 |
+
+Or you can leave cells blank and allow them to be filled in:
+
+| Query:employees hired before | 10-Dec-1980 |
+| employee number | first name | last name | hire date |
+| 1429 | | | |
+| 8832 | | | |
+
+The code for the fixture is:{{{package fitnesse.slim.test;
+
+import java.util.Date;
+import java.util.List;
+
+import static java.util.Arrays.asList;
+
+public class EmployeesHiredBefore {
+
+  public EmployeesHiredBefore(Date date) {
+  }
+
+  public void table(List<List<String>> table) {
+    // optional function
+  }
+
+  public List<List<List<String>>> query() {
+
+    return
+      asList( // table level
+        asList( // row level
+          asList("company number", "4808147"), // cell column name, value
+          asList("employee number", "1429"),
+          asList("first name", "Bob"),
+          asList("last name", "Martin"),
+          asList("hire date", "10-Oct-1974")
+        ),
+        asList(
+          asList("company number", "5123122"),
+          asList("employee number", "8832"),
+          asList("first name", "James"),
+          asList("last name", "Grenning"),
+          asList("hire date", "15-Dec-1979")
+        )
+      );
+  }
+}
+}}}
+Note the ''list'' function simply builds an !-ArrayList-! from it's arguments.  It's in the !-ListUtility-! class
+
+The first thing to notice is the ''Query:'' in the first cell of the table.  This tells the Slim table processor that this is a query table.  Next notice the constructor argument.  (See ConstructorArguments).  The column headers are ''field names''.  The fixture class must have a ''query'' method that returns a list of rows.  Each row is a list of fields.  Each field is a two-element list composed of the ''field name'' and it's string value.
+
+Each row in the table is checked to see if there is a match in the query response.  The fields are matched left to right.  If the leftmost field matches, then the row is considered to be "found".  Fields that don't match are marked in error as in the 10-Oct-1974 field above.  A cell that is left blank in the table will be filled in from the result and counted as ignored.  If the first cell of a row cannot be matched, then the row is considered ''missing''.  If there is an unmatched row remaining in the query response, it is added to the table and marked ''surplus''. The order of the rows is irrelevant.
+
+If a !style_code(table) method is declared in the fixture it will be called before the !style_code(query) function is called.  It will be passed a list of rows which are themselves lists of cells.  The rows and cells represent the all but the first row of the table.  This is the same format at the !style_code(doTable) method of Table table, and the !style_code(table) method of Decision table.
+
+In analogy to decision tables you can define comment columns by prefixing the header with the hash symbol.
+
+| Query:employees hired before | 10-Dec-1980 |
+| last name | hire date | # comment |
+| Grenning | | |
+| Martin | | we hired him first |

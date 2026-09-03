@@ -1,0 +1,55 @@
+---
+Files: no
+Prune
+RecentChanges: no
+Search: no
+Suites: negativeTest, includedByParent
+---
+#Don't remove this start magic to include and test this page in another page
+${exclamation}${minus}
+
+!|import|
+|fitnesse.slim.test|
+| java.lang |
+
+!3 Wrong method parameter types raise a meaningful exception
+!|script| test slim|
+|one int| twenty|
+
+!3 Wrong constructor parameter types raise a meaningful exception
+!5 TODO this is not as good as for methods
+!|script| test slim| five|
+
+
+!3 Wrong static method parameter types raise a meaningful exception
+
+!4 called as constructor
+!| script | java.time.Instant.now | 8.9 |
+
+!| script | java.time.Instant.ofEpochSecond | Hello |
+
+!5 Correct calls
+!| script | java.lang.String.valueOf | 5 |
+
+!| script | String.valueOf | 5 |
+
+!4 called as method
+
+!| script | Boolean | 0 |
+| $sPass= | String.valueOf | 5 |
+| $sFail= | java.time.Instant.ofEpochSecond | aWrongValue |
+| $sFail= | java.time.Instant.from | 9.8 |
+
+
+
+
+!3 Known Limitations (TODO)
+Would expect that this uses the String(String) constructor but it rather uses String(Character) and truncates the string 
+!| script | String | Hello |
+|check|to string|Hello|
+|check | get class|class java.lang.String|
+
+
+
+#Don't remove this end magic to include and test this page in another page
+${minus}${exclamation}

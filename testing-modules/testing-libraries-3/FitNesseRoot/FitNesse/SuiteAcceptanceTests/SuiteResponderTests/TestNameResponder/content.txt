@@ -1,0 +1,93 @@
+!2 !c !-NameReponder-! Specification
+
+The !-NameResponder-! is activated by a url of the form {{{[somePage]?names}}} It responds with a text/plain list of all the page names below the specified page, one per line.  If no page is specified then it responds with all page names at the root level.  No subpage names are returned.
+----
+!3 First check a single page at the root level.
+#
+ * Create one page.
+#
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-PageOne-!|page one||true|
+#
+ * Request the names at the root level
+#
+|Response Requester.|
+|uri|valid?|
+|!-?names-!|true|
+#
+ * Does the response name the page?
+#
+|Response Examiner.|
+|type|pattern|matches?|wrapped html?|
+|contents|!-PageOne-!|true||
+
+#
+|Response Examiner.|
+|type|pattern|matches?|
+|headers|text/plain|true|
+----
+!3 Now check two pages at the root level
+#
+ * Create another page.
+#
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-PageTwo-!|page two||true|
+#
+ * Request the names at the root level
+#
+|Response Requester.|
+|uri|valid?|
+|!-?names-!|true|
+#
+ * Does the response name both pages?
+#
+|Response Examiner.|
+|type|pattern|matches?|
+|contents|!-PageOne-!|true|
+|contents|!-PageTwo-!|true|
+----
+!3 Now check two pages below !-PageOne-!
+#
+ * Create another page.
+#
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-PageOne.SubOne-!|sub one||true|
+|!-PageOne.SubTwo-!|sub two||true|
+#
+ * Request the names at the root level
+#
+|Response Requester.|
+|uri|valid?|
+|!-?names-!|true|
+#
+ * Does the response name the root level pages and not the sub pages?
+#
+|Response Examiner.|
+|type|pattern|matches?|
+|contents|!-PageOne-!|true|
+|contents|!-PageTwo-!|true|
+|contents|!-SubOne-!|false|
+|contents|!-SubTwo-!|false|
+#
+ * Request the names at the !-PageOne-!level
+#
+|Response Requester.|
+|uri|valid?|
+|!-PageOne?names-!|true|
+#
+ * Does the response name the root level pages and not the sub pages?
+#
+|Response Examiner.|
+|type|pattern|matches?|
+|contents|!-PageOne-!|false|
+|contents|!-PageTwo-!|false|
+|contents|!-SubOne-!|true|
+|contents|!-SubTwo-!|true|
+
+
+
+
+

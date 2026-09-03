@@ -1,0 +1,32 @@
+!3 Included Pages are Collapsable
+When a page is included it is included within a division that is collapsable.
+
+The following is a test that demonstrates how this works.
+#
+ * First create a page to be included.
+#
+|script|
+|start|Page Builder|
+|line|included|
+|page|!-IncludedPage-!|
+#
+ * Next create a page to do the including.
+#
+|script|
+|start|Page Builder|
+|line|before|
+|line|!-&bang;include IncludedPage-! |
+|line|after|
+|page|!-IncludingPage-!|
+#
+ * Then request the including page.
+#
+|Response Requester.|
+|uri|valid?|contents?|
+|!-IncludingPage-!|true||
+#
+ * Examine the requested page to be sure the included page was in fact included.
+#
+|Response Examiner.|
+|type|pattern|matches?|value|
+|contents|class="collapsible"|true||

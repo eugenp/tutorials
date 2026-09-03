@@ -1,0 +1,36 @@
+!3 You can set an included page to be collapsed when the page is rendered.
+To do this, add the option "-c":
+
+!-!include -c SomePage-!
+
+See TestInclude for more info on included pages.
+----
+#
+ * First create a page to be included.
+#
+|script|
+|start|Page Builder|
+|line|included|
+|page|!-IncludedPage-!|
+#
+ * Next create a page to do the including.
+#
+|script|
+|start|Page Builder|
+|line|before|
+|line|!-&bang;include -c IncludedPage-! |
+|line|after|
+|page|!-IncludingPage-!|
+#
+ * Then request the including page.
+#
+|Response Requester.|
+|uri|valid?|contents?|
+|!-IncludingPage-!|true||
+#
+ * Now make sure the page was included and that the correct style and image are used.
+#
+|Response Examiner.|
+|type|pattern|matches?|
+|contents|included|true|
+|contents|class="collapsible closed"|true|

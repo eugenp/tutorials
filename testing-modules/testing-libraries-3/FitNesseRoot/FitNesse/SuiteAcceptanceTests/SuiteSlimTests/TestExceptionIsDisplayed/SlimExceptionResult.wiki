@@ -1,0 +1,177 @@
+---
+Help: fitnesse.testsystems.slim.results.SlimExceptionResult
+Suites: UNITTEST
+Test
+---
+!*> Scenario
+
+!|scenario|Transform Exception with StackTrace to Message| exception||message?||isNoInstanceException?||isNoMethodInClassException?|
+|start|SlimExceptionResult;|NOT IMPORTANT|@exception|
+|$message=|getMessage|
+|$isNoInstanceException=|isNoInstanceException|
+|$isNoMethodInClassException=|isNoMethodInClassException|
+|$isStopSuiteException=|isStopSuiteException|
+|$isStopTestException=|isStopTestException|
+|$getExecutionResult=|getExecutionResult|
+
+|import|
+|fitnesse.testsystems.slim.results|
+*!
+
+
+!3 Given a '''!-SlimExceptionResult-!'''
+!3 When the exception message has a message tag
+!3 Then the exception message is shortened
+!3 Else it is null
+
+
+!|Transform Exception with StackTrace to Message|
+|#Case|exception|message?|
+|no message tags|Hello FitNesse|null|
+|has message tags|message:<<Hello FitNesse>>|Hello FitNesse|
+|has message tags with HTML|message:<<<div>Bad things<br/><span><b>happened</b></span></div>>>|<div>Bad things<br/><span><b>happened</b></span></div>|
+|multi line message|ignored ignored message:<<Line 1!-
+Line 2
+Line 3>> ignored ignored -!|Line 1!-
+Line 2
+Line 3-!|
+|has message tags|__EXCEPTION__:ABORT_SLIM_TEST:message:<<fitnesse.slim.test.StopTestException: stop test>>!-
+	at fitnesse.slim.test.ConstructorThrows.<init>(ConstructorThrows.java:6) [file:/home/six42/git/fitnesse/build/classes/java/main/]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) [rt.jar:1.8.0_222]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) [rt.jar:1.8.0_222]
+	at fitnesse.slim.SlimService.main(SlimService.java:57) [file:/home/six42/git/fitnesse/build/classes/java/main/]]-!|fitnesse.slim.test.StopTestException: stop test|
+| no message tag|fitnesse.slim.SlimError: SETX_THROWS !-
+	at fitnesse.slim.test.DecisionTableExecuteThrows.setX(DecisionTableExecuteThrows.java:35) [file:/home/six42/git/fitnesse/build/classes/java/main/]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_222]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_222]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_222]
+	at fitnesse.slim.SlimService.main(SlimService.java:57) [file:/home/six42/git/fitnesse/build/classes/java/main/]-!|null|
+|messages in caused by exceptions might overwrite the latest exception text and information can be lost|java.lang.InstantiationException: Failed to call static method 'java.time.Instant.ofEpochSecond': !-
+-!Caused by: fitnesse.slim.SlimError: message:<<Can't convert Hello to long.>>!-
+	at fitnesse.slim.converters.LongConverter.getObject(LongConverter.java:12) [file:/home/six42/git/fitnesse/bin/main/]
+	at java.lang.Thread.run(Thread.java:748) [rt.jar:1.8.0_222]
+Caused by: java.lang.NumberFormatException: For input string: "Hello"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65) [rt.jar:1.8.0_222]
+	at java.lang.Long.parseLong(Long.java:589) [rt.jar:1.8.0_222]
+	at java.lang.Long.valueOf(Long.java:803) [rt.jar:1.8.0_222]
+	at java.lang.Thread.run(Thread.java:748) [rt.jar:1.8.0_222]-!|Can't convert Hello to long.|
+
+!3 Given a '''!-SlimExceptionResult-!'''
+!3 When the exception message has two message tags
+!3 Then the exception message is shortened
+!3 AND only the first message is printed
+
+
+!|Transform Exception with StackTrace to Message|
+|#Case|exception|message?|
+|two messages|ignored ignored message:<<Top Message!>>!-
+Line 2
+-!Caused by: fitnesse.slim.SlimError: message:<<Causing Message.>>!-
+Line 3>> ignored ignored -!|Top Message!|
+
+!3 Given a '''!-SlimExceptionResult-!'''
+!3 AND it has a message
+!3 When the message has a FLAG/TAG defined in fitnesse.slim.SlimServer
+!3 Then the exception message is split on each space
+!3 AND a transformation of the text happens
+
+!|Transform Exception with StackTrace to Message|
+|#flag|exception|message?|
+|NO_CONVERTER_FOR_ARGUMENT_NUMBER|fitnesse.slim.SlimError: message:<<NO_CONVERTER_FOR_ARGUMENT_NUMBER java.time.temporal.TemporalAccessor. ignores everything after second space>>!-
+	at fitnesse.slim.ConverterSupport.convertArg(ConverterSupport.java:36) [file:/home/six42/git/fitnesse/bin/main/]
+	at fitnesse.slim.ConverterSupport.convertArgs(ConverterSupport.java:17) [file:/home/six42/git/fitnesse/bin/main/]
+	at fitnesse.slim.fixtureInteraction.SimpleInteraction.convertArgs(SimpleInteraction.java:306) [file:/home/six42/git/fitnesse/bin/main/]
+	at fitnesse.slim.SlimService$1.run(SlimService.java:158) [file:/home/six42/git/fitnesse/bin/main/]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [rt.jar:1.8.0_222]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [rt.jar:1.8.0_222]
+	at java.lang.Thread.run(Thread.java:748) [rt.jar:1.8.0_222]-!|No converter for java.time.temporal.TemporalAccessor.|
+|COULD_NOT_INVOKE_CONSTRUCTOR|message:<<COULD_NOT_INVOKE_CONSTRUCTOR TestSlim[1] ignores everything after second space>>!-
+	at fitnesse.slim.converters.IntConverter.getObject(IntConverter.java:14) [file:/home/six42/git/fitnesse/bin/main/]
+	at fitnesse.slim.converters.IntConverter.getObject(IntConverter.java:1) [file:/home/six42/git/fitnesse/bin/main/]
+	at fitnesse.slim.ConverterSupport.convertArgs(ConverterSupport.java:17) [file:/home/six42/git/fitnesse/bin/main/]
+Caused by: java.lang.NumberFormatException: For input string: "five"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65) [rt.jar:1.8.0_222]
+	at java.lang.Integer.parseInt(Integer.java:580) [rt.jar:1.8.0_222]
+	at java.lang.Integer.valueOf(Integer.java:766) [rt.jar:1.8.0_222]-!|Could not invoke constructor for TestSlim[1]|
+|classic translation NO_METHOD_IN_CLASS used when only two spaces in the message|fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS nonExistingMethod[1] fitnesse.slim.test.TestSlim.>>!-
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:34) [file:/home/six42/git/fitnesse/bin/main/]
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:112) [file:/home/six42/git/fitnesse/bin/main/]
+	at fitnesse.slim.instructions.CallAndOptionalAssignInstruction.executeInternal(CallAndOptionalAssignInstruction.java:30) [file:/home/six42/git/fitnesse/bin/main/]
+	at fitnesse.slim.SlimService.access$0(SlimService.java:167) [file:/home/six42/git/fitnesse/bin/main/]-!|Method nonExistingMethod[1] not found in fitnesse.slim.test.TestSlim.|
+|modern translation NO_METHOD_IN_CLASS allows to gives hints to the user|fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS No Method nonExistingMethod[1] in class fitnesse.slim.test.TestSlim.!-
+ Available methods:
+addTo(int, int) -> int
+concatenateThreeArgs(java.lang.String, java.lang.String, java.lang.String) -> class java.lang.String
+createTestSlimWithString(java.lang.String) -> class fitnesse.slim.test.TestSlim
+die() -> void
+echoBoolean(boolean) -> boolean
+echoDouble(double) -> double
+echoInt(int) -> int
+echoList(java.util.List) -> interface java.util.List
+echoString(java.lang.String) -> class java.lang.String
+equals(java.lang.Object) -> boolean>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:34) [file:/home/six42/git/fitnesse/bin/main/]
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:112) [file:/home/six42/git/fitnesse/bin/main/]
+	at fitnesse.slim.instructions.CallAndOptionalAssignInstruction.executeInternal(CallAndOptionalAssignInstruction.java:30) [file:/home/six42/git/fitnesse/bin/main/]
+	at fitnesse.slim.SlimService.access$0(SlimService.java:167) [file:/home/six42/git/fitnesse/bin/main/]-!|!-No Method nonExistingMethod[1] in class fitnesse.slim.test.TestSlim.
+ Available methods:
+addTo(int, int) -> int
+concatenateThreeArgs(java.lang.String, java.lang.String, java.lang.String) -> class java.lang.String
+createTestSlimWithString(java.lang.String) -> class fitnesse.slim.test.TestSlim
+die() -> void
+echoBoolean(boolean) -> boolean
+echoDouble(double) -> double
+echoInt(int) -> int
+echoList(java.util.List) -> interface java.util.List
+echoString(java.lang.String) -> class java.lang.String
+equals(java.lang.Object) -> boolean-!|
+
+!3 Given a '''!-SlimExceptionResult-!'''
+!3 AND it has a message
+!3 When the message has a NO_METHOD_IN_CLASS or NO_INSTANCE flag
+!3 Then status flags are set on the object
+
+!|baseline: Transform Exception with StackTrace to Message|
+|#flag|exception|isNoInstanceException?|isNoMethodInClassException?|
+|COULD_NOT_INVOKE_CONSTRUCTOR|message:<<COULD_NOT_INVOKE_CONSTRUCTOR TestSlim[1] ignores everything after second space>>!-
+	at fitnesse.slim.converters.IntConverter.getObject(IntConverter.java:14) [file:/home/six42/git/fitnesse/bin/main/]
+	at fitnesse.slim.converters.IntConverter.getObject(IntConverter.java:1) [file:/home/six42/git/fitnesse/bin/main/]
+	at fitnesse.slim.ConverterSupport.convertArgs(ConverterSupport.java:17) [file:/home/six42/git/fitnesse/bin/main/]
+Caused by: java.lang.NumberFormatException: For input string: "five"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65) [rt.jar:1.8.0_222]
+	at java.lang.Integer.parseInt(Integer.java:580) [rt.jar:1.8.0_222]
+	at java.lang.Integer.valueOf(Integer.java:766) [rt.jar:1.8.0_222]-!|false|false|
+|classic translation NO_METHOD_IN_CLASS used when only two spaces in themessage|fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS nonExistingMethod[1] fitnesse.slim.test.TestSlim.>>!-
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:34) [file:/home/six42/git/fitnesse/bin/main/]
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:112) [file:/home/six42/git/fitnesse/bin/main/]
+	at fitnesse.slim.instructions.CallAndOptionalAssignInstruction.executeInternal(CallAndOptionalAssignInstruction.java:30) [file:/home/six42/git/fitnesse/bin/main/]
+	at fitnesse.slim.SlimService.access$0(SlimService.java:167) [file:/home/six42/git/fitnesse/bin/main/]-!||true|
+|modern translation NO_METHOD_IN_CLASS allows to gives hints to the user|fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS No Method nonExistingMethod[1] in class fitnesse.slim.test.TestSlim.!-
+ Available methods:
+addTo(int, int) -> int
+concatenateThreeArgs(java.lang.String, java.lang.String, java.lang.String) -> class java.lang.String
+createTestSlimWithString(java.lang.String) -> class fitnesse.slim.test.TestSlim
+die() -> void
+echoBoolean(boolean) -> boolean
+echoDouble(double) -> double
+echoInt(int) -> int
+echoList(java.util.List) -> interface java.util.List
+echoString(java.lang.String) -> class java.lang.String
+equals(java.lang.Object) -> boolean>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:34) [file:/home/six42/git/fitnesse/bin/main/]
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:112) [file:/home/six42/git/fitnesse/bin/main/]
+	at fitnesse.slim.instructions.CallAndOptionalAssignInstruction.executeInternal(CallAndOptionalAssignInstruction.java:30) [file:/home/six42/git/fitnesse/bin/main/]
+	at fitnesse.slim.SlimService.access$0(SlimService.java:167) [file:/home/six42/git/fitnesse/bin/main/]-!||true|
+|NO_INSTANCE|message:<<NO_INSTANCE TestSlim ignores everything after second space>>!-
+	at fitnesse.slim.converters.IntConverter.getObject(IntConverter.java:14) [file:/home/six42/git/fitnesse/bin/main/]
+	at java.lang.Integer.valueOf(Integer.java:766) [rt.jar:1.8.0_222]-!|true||
+|NO_METHOD_IN_CLASS but no message|fitnesse.slim.SlimError: NO_METHOD_IN_CLASS No Method nonExistingMethod[1] in class fitnesse.slim.test.TestSlim.!-
+ Available methods:
+addTo(int, int) -> int
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:34) [file:/home/six42/git/fitnesse/bin/main/]
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:112) [file:/home/six42/git/fitnesse/bin/main/]
+	at fitnesse.slim.instructions.CallAndOptionalAssignInstruction.executeInternal(CallAndOptionalAssignInstruction.java:30) [file:/home/six42/git/fitnesse/bin/main/]
+	at fitnesse.slim.SlimService.access$0(SlimService.java:167) [file:/home/six42/git/fitnesse/bin/main/]-!|||
+|NO_INSTANCE but no message|NO_INSTANCE TestSlim!-
+	at fitnesse.slim.converters.IntConverter.getObject(IntConverter.java:14) [file:/home/six42/git/fitnesse/bin/main/]
+	at java.lang.Integer.valueOf(Integer.java:766) [rt.jar:1.8.0_222]-!|||

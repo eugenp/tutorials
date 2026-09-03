@@ -1,0 +1,92 @@
+---
+Test
+---
+
+This test shows that the suite responder can work with a file containing the division of the suite, instead of calculating from scratch.
+The file is specified by the !style_code(partitionIndexFile) parameter, in addition to !style_code(partitionIndex) and !style_code(partitionCount) parameters, and should be placed in the files section.
+
+The file may contain extra tests, they are ignored.
+Tests not listed in the file are split across all partitions and put ''before'' the tests listed in the file.
+
+---
+
+!define TEST_SYSTEM {slim}
+
+Create the file section
+|file section|setup|
+
+Add some files
+|file section file adder                                                                                                                                                                                     |
+|path         |type|content                                                                                                                                                                           |valid?|
+|partition.tsv|file|!-Page	Partition	Test System	Order
+SuitePage.TestPage1	2	fit	99
+SuitePage.TestPage2	2	fit	0
+SuitePage.TestPage3	0	fit	0
+SuitePage.TestPage4	1	fit	0
+SuitePage.TestPage5	1	fit	1
+-!|true  |
+
+Create a Suite page
+
+|script|Page Builder |
+|line  |${SUT_PATH}  |
+|page  |!-SuitePage-!|
+
+Create two sub pages
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPage1-!                    |
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPage2-!                    |
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPage3-!                    |
+
+|script|Page Builder                  |
+|line  |!-!define TEST_SYSTEM {slim}-!|
+|page  |!-SuitePage.TestPage4-!       |
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPage6-!                    |
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPage7-!                    |
+
+|Response Requester.                                                                                    |
+|uri                                                                                             |valid?|
+|!-SuitePage?responder=suite&partitionCount=3&partitionIndex=0&partitionIndexFile=partition.tsv-!|true  |
+
+|Response Examiner.|
+|contents?         |
+|                  |
+
+
+|Response Examiner.                    |
+|type    |pattern             |matches?|
+|contents|!-TestPage1-!       |false   |
+|contents|!-TestPage2-!       |false   |
+|contents|!-TestPage3-!       |true    |
+|contents|!-TestPage4-!       |false   |
+|contents|!-TestPage6-!       |true    |
+|contents|!-TestPage7-!       |false   |
+|contents|Test Pages:.*2 right|true    |
+
+The error log page should not have any errors
+
+|Response Requester.              |
+|uri                       |valid?|
+|!-SuitePage?executionLog-!|true  |
+
+|Response Examiner.|
+|contents?         |
+|                  |
+
+|Response Examiner.                  |
+|type    |pattern           |matches?|
+|contents|Exit code.*0.*Time|true    |

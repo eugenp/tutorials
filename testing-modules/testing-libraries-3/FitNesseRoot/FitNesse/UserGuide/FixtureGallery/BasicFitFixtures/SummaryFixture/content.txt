@@ -1,0 +1,7 @@
+
+''Previous page: [[!-Import-!][<UserGuide.FixtureGallery.BasicFitFixtures.ImportFixture]] Parent page: [[!-Basic FIT fixtures-!][<UserGuide.FixtureGallery.BasicFitFixtures]]''
+!2 !-SummaryFixture-!
+'''!- SummaryFixture -!'''!- is a way to display a little bit of extra data on the page. Add a -!'''!- fit.SummaryFixture -!'''!- table at the bottom of your page and it will add a three-row table to the results, giving the standard counts for the page (right, wrong, ignored, and exceptions) as well as the run date and the run elapsed time for the fixture. Not terribly useful by itself, but handy when looking at a build report in order to measure the relative efficiency and running time of each individual page. -!
+
+
+''Previous page: [[!-Import-!][<UserGuide.FixtureGallery.BasicFitFixtures.ImportFixture]] Parent page: [[!-Basic FIT fixtures-!][<UserGuide.FixtureGallery.BasicFitFixtures]]''

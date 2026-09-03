@@ -1,0 +1,13 @@
+!|script|
+|create page|GrandParentPage|with content||
+|create page|GrandParentPage.ParentPage|with content||
+|create page|ScenarioLibrary|with content|granduncy|
+|create page|GrandParentPage.ScenarioLibrary|with content|uncle|
+|create page|GrandParentPage.ParentPage.ScenarioLibrary|with content|brother|
+|given slim test page|GrandParentPage.ParentPage.TestPage|
+|it should contain|brother|in line|BROTHER_LINE|
+|it should contain|uncle|in line|UNCLE_LINE|
+|it should contain|granduncy|in line|GRAND_UNCLE_LINE|
+|the line|BROTHER_LINE|should come after|UNCLE_LINE|
+|the line|UNCLE_LINE|should come after|GRAND_UNCLE_LINE|
+

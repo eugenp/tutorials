@@ -1,0 +1,24 @@
+
+!|script|
+|given read locked page|FrontPage|
+
+!|operation is authenticated|
+|operation|
+|properties|
+|edit|
+|search|
+|versions|
+|viewVersion|
+|names|
+|executeSearchProperties|
+|whereUsed|
+|refactor|
+|pageData|
+|raw|
+|rss|
+|importAndView|
+|getPage|
+|packet|
+|testHistory|
+|pageHistory|
+
