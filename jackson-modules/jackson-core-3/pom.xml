@@ -12,6 +12,8 @@
     <artifactId>jackson-core-3</artifactId>
 
     <properties>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
         <jackson3.version>3.2.1</jackson3.version>
     </properties>
 
