@@ -1,0 +1,47 @@
+!3 When we move a page from one location to another, all references to that page should be changed.
+
+First build a page, a subpage to move, and a target page to move it to.  Then build a page that references the sub child to be moved.
+
+|Page creator.|
+|Page name.          |Page contents.|valid?|
+|!-ParentPage-!        |x                     |true   |
+|!-ParentPage.SubPage-!|sub page              |true   |
+|!-NewParentPage-!     |x                     |true   |
+|!-ReferingPage-!      |!-ParentPage.SubPage-!|true   |
+
+Then move the sub page.
+
+|Response Requester.|
+|uri   |status?|
+|!-ParentPage.SubPage?responder=movePage&newLocation=NewParentPage&refactorReferences=on-!||
+
+Next fetch the moved page.
+
+|Response Requester.|
+|uri|valid?|contents?|
+|!-NewParentPage.SubPage-!|true||
+
+Make sure that the sub page can be referenced in it's new location.
+
+|Response Examiner.|
+|type  |pattern|matches?|wrapped html?|
+|contents|sub page|true||
+
+Make sure that there is no sub page beneath !-ParentPage-!.
+
+!|Response Requester.|
+|uri|valid?|contents?|
+|ParentPage.SubPage?getPage&dontCreatePage|false||
+
+Finally, make sure that the refering page now refers to the new location.
+
+|Response Requester.|
+|uri|valid?|contents?|
+|!-ReferingPage-!|true||
+
+!|Response Examiner.|
+|type  |pattern|matches?|wrapped html?|
+|contents|NewParentPage.SubPage|true||
+
+
+

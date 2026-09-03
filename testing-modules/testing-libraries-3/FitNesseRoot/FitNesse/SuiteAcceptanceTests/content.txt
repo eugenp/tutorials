@@ -1,0 +1,39 @@
+!2 ''!-FitNesse-! acceptance tests suites''
+| >SuiteWidgetTests | ''Specify the markup language of wiki pages.'' |
+| >SuiteWikiPageResponderTests | ''Specify general behavior of all wiki pages.'' |
+| >SuiteEditResponderTests | ''Specify the behavior of edit requests.'' |
+| >SuiteResponderTests | ''Specify the behavior of the responders.'' |
+| >SuiteWikiImportTests | ''Specify the behavior of the Wiki Import feature'' |
+| >SuiteAuthenticationTests | ''Specify the authentication design'' |
+| >SuiteFixtureTests | ''Specify the behavior of various fixtures'' |
+| >SuiteSymbolicLinkTests | ''Demonstrate usage and behavior of symbolic links'' |
+| >SuiteFitDecoratorTests | ''Demonstrate usage and behavior of Fit Decorators'' |
+| >SuiteSlimTests | ''Slim Specific Tests'' |
+| >SuiteTestHistory | ''Test History tests'' |
+| >SuiteVersionsControllerTests | Versions controller tests |
+| >SuiteTestSystems | Test interaction with custom test systems |
+
+!2 ''Classpaths''
+!define SUT_PATH (!-
+!path lib/*.jar
+-!)
+----
+!2 ''Port''
+FitNesse is running on port: ${FITNESSE_PORT}
+
+Use a non-default port number, so SLIM tests systems can be run as well:
+
+!define SLIM_PORT {1}
+----
+!2 ''Utilities''
+ * SuiteAcceptanceTests.PageHeader
+ * SuiteAcceptanceTests.PageFooter
+ * SuiteAcceptanceTests.SetUp
+ * SuiteAcceptanceTests.TearDown
+
+----
+!2 Collapse Set Up and Tear Down
+!define COLLAPSE_SETUP {true}
+!define COLLAPSE_TEARDOWN {true}
+
+!define TITLE_TAG {li}

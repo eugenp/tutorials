@@ -1,0 +1,18 @@
+''Previous page: [[!-Source code-!][<UserGuide.FixtureGallery.SourceCode]] Next page: [[!-FitLibrary Fixtures-!][<UserGuide.FixtureGallery.FitLibraryFixtures]] Parent page: [[!-Table of contents-!][<UserGuide.FixtureGallery.TableOfContents]]''
+!2 !-Basic FIT fixtures-!
+!- Basic FIT fixtures form a core set of test utilities that most people learn first. -!
+
+# section ColumnFixture
+[[!-ColumnFixture-!][>ColumnFixture]]
+# section ActionFixture
+[[!-ActionFixture-!][>ActionFixture]]
+# section RowFixture
+[[!-RowFixture-!][>RowFixture]]
+# section TableFixture
+[[!-TableFixture-!][>TableFixture]]
+# section Import
+[[!-Import-!][>ImportFixture]]
+# section SummaryFixture
+[[!-SummaryFixture-!][>SummaryFixture]]
+
+''Previous page: [[!-Source code-!][<UserGuide.FixtureGallery.SourceCode]] Next page: [[!-FitLibrary Fixtures-!][<UserGuide.FixtureGallery.FitLibraryFixtures]] Parent page: [[!-Table of contents-!][<UserGuide.FixtureGallery.TableOfContents]]''

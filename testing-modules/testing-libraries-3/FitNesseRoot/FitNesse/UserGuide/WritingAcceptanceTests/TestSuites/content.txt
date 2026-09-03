@@ -1,0 +1,13 @@
+!1 Suites of Tests
+A suite is a collection of test pages that can all be run together, and whose results are then collected for you on a single results page, and in TestHistory. For an example of a Suite of tests, see .FitNesse.SuiteAcceptanceTests.
+
+!3 Setting up a '''Suite''' page.
+To create a Suite page you set the "Suite" property of that page (see [[Page Properties][<UserGuide.FitNesseWiki.PageProperties]]).  That page will then include a "Suite" button that will execute all the test pages in that hierarchy.
+
+!3 Composing Suites.
+There are several ways to compose a suite.  You can convert a whole sub-wiki into a suite.  You can list individual pages using cross references, and you can create queries that search all the pages for matches.
+
+!contents -R2 -g
+
+!3 Getting suite results in XML rather than HTML format.
+If you want the results in xml, simply put !style_code(&format=xml) in the url.

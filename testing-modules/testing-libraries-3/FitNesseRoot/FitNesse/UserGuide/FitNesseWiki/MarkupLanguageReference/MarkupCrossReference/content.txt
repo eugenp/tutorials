@@ -1,0 +1,9 @@
+You can add a ''Cross Reference'' to another page with the !-!see-! statement.
+
+|!c '''Markup Text'''|!c '''Displayed as'''|
+|!-!see .FrontPage-!|!see .FrontPage|
+
+Aside from being a nice syntax for cross references, this widget is also used in [[test suites][<UserGuide.WritingAcceptanceTests.TestSuites]].  If a test suite page refers to test pages with !-!see-! statements, then when the suite is executed, the cross referenced tests will be added to the suite.  If a test page has a !-!see-! markup, it is ignored completely even if the page is part of a suite or sub-suite.
+
+The path to the referenced page may be an absolute or a relative path.
+

@@ -1,0 +1,22 @@
+A Suite Query is a regular page with the ''Suite'' property set so that it has a ''Suite'' button.  On that page are one or more tables that specify the query.  The page you are looking at right now, is a suite query.  Notice the two tables below.  They specify the query.  You can run the query (and the tests) by hitting the ''Suite'' button.
+
+!|Suite|
+|Page|FitNesse.SuiteAcceptanceTests|
+|Content|[Bb]ug|
+
+!|Suite|
+|Page|FitNesse.SuiteAcceptanceTests|
+|Title|Import|
+
+Each of these tables is called a ''Suite Specification''.  A ''Suite Specification'' is always a table whose first cell is the word ''Suite'', capitalized as shown.  The other rows must each have two cells, and the first cell in each row must be either ''Page'', ''Content'' or ''Title''.  
+ * ''Page'' - The second cell in the ''Page'' row is the fully qualified page name that forms the root of the search.  The search will proceed only with descendants of this page.
+ * ''Title'' - The second cell in the ''Title'' row specifies a regular expression to be used to match a page name. Every page in the search whose name matches that regular expression will be included in the suite.
+ * ''Content'' - The second cell in the ''Content'' row specifies a regular expression to be used to match the contents of a page.  Every page in the search whose content contains a string that matches that regular expression will be included in the suite.
+
+Every ''Suite Specification'' table represents the ''Intersection'' of the ''Page'', ''Title'', and ''Content''.  Thus, they form an ''AND'' operation.  Only those pages that are descended from ''Page'' and match ''Title'' and match ''Content'' will be in the suite.  Of course, if either ''Title'' or ''Content'' are omitted (as above) then they are ignored.  
+
+If you have multiple ''Suite Specification'' tables, then the suite will be the ''disjuction'' (The logical OR) of all of them.  
+
+!note The regular expressions conform to the Java library. 
+
+

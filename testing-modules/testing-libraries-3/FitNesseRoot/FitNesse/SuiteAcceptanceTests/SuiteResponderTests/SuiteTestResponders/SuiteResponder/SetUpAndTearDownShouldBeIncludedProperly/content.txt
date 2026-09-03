@@ -1,0 +1,56 @@
+!define TEST_SYSTEM {slim}
+
+!define PATHS {
+${SUT_PATH}
+!-!define TEST_SYSTEM (slim:A)-!
+}
+
+!|Library|
+|page driver|
+|echo fixture|
+
+!|given page with content                                                  |
+|page                                    |content                          |
+|SuiteParent                             |${PATHS}                         |
+|SuiteParent.SuiteChildOne               |                                 |
+|SuiteParent.SuiteChildOne.SuiteSetUp    |                                 |
+|SuiteParent.SuiteChildOne.SuiteTearDown |                                 |
+|SuiteParent.SuiteChildOne.TestOneOne    |                                 |
+|SuiteParent.SuiteChildOne.TestOneTwo    |                                 |
+|SuiteParent.SuiteChildTwo               |                                 |
+|SuiteParent.SuiteChildTwo.SuiteSetUp    |                                 |
+|SuiteParent.SuiteChildTwo.SuiteTearDown |                                 |
+|SuiteParent.SuiteChildTwo.TestTwoOne    |                                 |
+|SuiteParent.SuiteChildTwo.TestTwoTwo    |                                 |
+|SuiteParent.SuiteChildThree             |                                 |
+|SuiteParent.SuiteChildThree.TestThreeOne|                                 |
+|SuiteParent.SuiteChildThree.TestThreeTwo|                                 |
+|SuiteParent.SuiteChildOne.TestOneThree  |&bang;define TEST_SYSTEM {slim:B}|
+
+!|script                                 |
+|check|request page|SuiteParent?suite|200|
+
+!|ordered query:pages run in suite|SuiteChildOne|A|
+|page name                                        |
+|SuiteChildOne.SuiteSetUp                         |
+|SuiteChildOne.TestOneOne                         |
+|SuiteChildOne.TestOneTwo                         |
+|SuiteChildOne.SuiteTearDown                      |
+
+!|ordered query:pages run in suite|SuiteChildOne|B|
+|page name                                        |
+|SuiteChildOne.SuiteSetUp                         |
+|SuiteChildOne.TestOneThree                       |
+|SuiteChildOne.SuiteTearDown                      |
+
+!|ordered query:pages run in suite|SuiteChildTwo|A|
+|page name                                        |
+|SuiteChildTwo.SuiteSetUp                         |
+|SuiteChildTwo.TestTwoOne                         |
+|SuiteChildTwo.TestTwoTwo                         |
+|SuiteChildTwo.SuiteTearDown                      |
+
+!|ordered query:pages run in suite|SuiteChildThree|A|
+|page name                                          |
+|SuiteChildThree.TestThreeOne                       |
+|SuiteChildThree.TestThreeTwo                       |

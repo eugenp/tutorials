@@ -1,0 +1,168 @@
+!|scenario|given page|page|with content|content|
+|create page|@page|with content|@content|
+|$IT=|echo|@page|
+
+!|scenario|given page|page|
+|given page|@page|with content|nothing|
+|$CONTENT=|echo||
+
+!|scenario|given test page|page|
+|given page|@page|
+|make|@page|a test page|
+
+!|scenario|given slim test page|page|
+|given page|@page|with content|!define TEST_SYSTEM {slim}|
+|make|@page|a test page|
+
+|scenario|page|source|should have link to|target|
+|check|request page|@source|200|
+|ensure|content contains|<a href="@target"|
+|$IT=|echo|@source|
+
+!|scenario|it should have link to|target|
+|page|$IT|should have link to|@target|
+
+!|scenario|and it should have link to|target|
+|page|$IT|should have link to|@target|
+
+!|scenario|page|source|should have creating link to|target|
+|check|request page|@source|200|
+|ensure|content contains|@target<a title="create page" href="@target?edit&nonExistent=true">[?]</a>|
+
+!|scenario|it should have creating link to|target|
+|page|$IT|should have creating link to|@target|
+
+!|scenario|page|source|should contain|text|
+|check|request page|@source|200|
+|ensure|content contains|@text|
+|show|content|
+
+!|scenario|page|source|should not contain|text|
+|check|request page|@source|200|
+|reject|content contains|@text|
+|show|content|
+
+!|scenario|page|source|should match|text|
+|check|request page|@source|200|
+|ensure|content matches|@text|
+|show|content|
+
+!|scenario|it should contain|text|
+|page|$IT|should contain|@text|
+
+!|scenario|it should not contain|text|
+|page|$IT|should not contain|@text|
+
+!|scenario|it should contain|text|in line|symbol|
+|check|request page|$IT|200|
+|$@symbol=|line number containing|@text|
+
+!|scenario|it should match|text|
+|page|$IT|should match|@text|
+
+!|scenario|test results for page|source|should contain|text|
+|check|request page|@source?test|200|
+|ensure|content contains|@text|
+|show|content|
+
+!|scenario|test results for page in debug mode |source|should contain|text|
+|check|request page|@source?test&debug|200|
+|ensure|content contains|@text|
+|show|content|
+
+!|scenario|test results for suite|source|should contain|text|
+|check|request page|@source?suite|200|
+|ensure|content contains|@text|
+|show|content|
+
+!|scenario|its test results should contain|text|
+|test results for page|$IT|should contain|@text|
+
+!|scenario|test ressults for page|source|should not contain|text|
+|check|request page|@source?test|200|
+|reject|content contains|@text|
+|show|content|
+
+!|scenario|and should contain|text|
+|ensure|content contains|@text|
+|show|content|
+
+!|scenario|and should match|text|
+|ensure|content matches|@text|
+|show|content|
+
+!|scenario|and should not contain|text|
+|reject|content contains|@text|
+|show|content|
+
+!|scenario|widget|wikiText|should render|htmlText|
+|create page|WidgetPage|with content|@wikiText|
+|check|request page|WidgetPage|200|
+|ensure|content matches|@htmlText|
+|show|content|
+
+!|scenario|the line|after|should come after|before|
+|check|echo int|$@before|< $@after|
+
+!|scenario|pass|
+|check|echo|pass|pass|
+
+!|scenario|show collapsed|content|
+|show|@content|
+
+|scenario| show Symbol  | result|
+#NO ACTION in this scenario
+# the symbol is printed in the call of the scenario
+
+!|scenario|then |pass | assertions pass, | fail| fail, | ignore| are ignored | exception | exceptions thrown|
+|ensure|content matches|Assertions:<[^<]*@pass right, @fail wrong, @ignore ignored, @exception exceptions|
+|show|extract match;|Assertions:<[^<]*exceptions|contents|0|
+
+!|scenario|and cell |text | has result | result|
+|ensure|content matches| class="@result">@text<|
+|show|extract match;| class="[^"]+">@text<|contents|0|
+
+!define TestSTART {@@@START: Test specific content} 
+!define TestEND {@@@END: Test specific content} 
+
+!|scenario |and TestSystem setup is|content                                       |
+|$CONTENT=|echo|$CONTENT!-
+-!@content|
+
+!|scenario |and setup content is|content                                       |
+|$CONTENT=|echo|$CONTENT!-
+-!@content|
+
+!|scenario |and test content is|content                                       |
+|given page|$IT           |with content|$CONTENT ${TestSTART}!-@content-!${TestEND}|
+|make      |$IT           |a test page                                   |
+
+!|scenario| get HTML result  |
+|start |Response Examiner.|
+|setType | contents|
+|setPattern |${TestSTART}[^<]*(.*>)\s*${TestEND}|
+|setGroup|1|
+|$HTML_Result= |found|
+
+|scenario| get HTML input  |
+|start |Response Examiner.|
+|setType | pageHtml|
+|setPattern |${TestSTART}[^<]*(.*>)\s*${TestEND}|
+|setGroup|1|
+|$HTML_Input= |found|
+|show collapsed| get value|
+
+
+!|scenario|get collapsed executon log for page|source|
+|check                |request page    |@source?executionLog|200                                     |
+|show |content|
+
+!|scenario|when page|source| is tested|
+|check|request page|@source?test|200|
+|show collapsed|content|
+
+!|scenario|when page|source| is tested and HTML is extracted|
+|when page|@source| is tested|
+|get HTML result| 
+|get HTML input |
+

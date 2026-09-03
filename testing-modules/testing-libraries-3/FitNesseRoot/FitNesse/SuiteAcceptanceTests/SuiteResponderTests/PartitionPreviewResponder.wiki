@@ -1,0 +1,12 @@
+---
+Suite
+---
+
+The partition preview responder can show how the 'Suite Responder' will split a suite in sub-suites when using the !style_code(partitionIndex) and !style_code(partitionCount) parameters.
+
+When you execute a suite page indicating that you want to partition the suite (i.e. split it in parts) and only run one partition, !-FitNesse-! should only run that partition.
+
+The partition preview responder shows which pages go in which partition, and how the tests will be ordered in the test system.
+It can either provide its output in HTML (the default) or as tab separated. Tab separated format can be requested by supplying the !style_code(format) parameter with value !style_code(tsv).
+
+!contents -R2 -g -p -f -h

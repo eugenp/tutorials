@@ -1,0 +1,40 @@
+!contents -R2 -g -p -f -h
+
+!define TestPageName {Testpage}
+!define minus (-)
+!define exclamation (!)
+ 
+
+|script                                                            |
+|given test page         |${TestPageName}                          |
+|and Test System setup is|!-!define TEST_SYSTEM-! {slim}${SUT_PATH}|
+|and Test content is                |!include -seamless >TestPage                                                                                    |
+|when page                          |${TestPageName}                                      |is tested and HTML is extracted                           |
+|#when page                          |${TestPageName}                                      |is tested|
+|then                               |25                                                    |assertions pass,|50|fail,|1|are ignored|0|exceptions thrown|
+|note| !4 Tests of strings|
+|ensure| content contains|!-<span class="pass">abc</span>-!|
+|ensure| content contains|!-[<span class="diff">abc</span>] <span class="fail">expected [<span class="diff">xyz</span>]</span>-!|
+|ensure| content contains|!-[<span class="diff">a</span>bc] <span class="fail">expected [<span class="diff">x</span>bc]</span>-!|
+|ensure| content contains|!-[a<span class="diff">b</span>c] <span class="fail">expected [a<span class="diff">y</span>c]</span>-!|
+|ensure| content contains|!-[ab<span class="diff">c</span>] <span class="fail">expected [ab<span class="diff">z</span>]</span>-!|
+|ensure| content contains|!-[] <span class="fail">expected [<span class="diff">xyz</span>]</span>-!|
+|ensure| content contains|!-[<span class="diff">H</span>ello <span class="diff">W</span>or<span class="diff">l</span>d] <span class="fail">expected [<span class="diff">W</span>ell<span class="diff">c</span>o<span class="diff">me</span> <span class="diff">L</span>ord]</span>-!|
+|note| !4 Tests of smbols|
+|ensure| content contains|!-<span class="pass">def</span>-!|
+|ensure| content contains|!-[<span class="diff">def</span>] <span class="fail">expected [<span class="diff">xyz</span>]</span>-!|
+|ensure| content contains|!-[<span class="diff">d</span>ef] <span class="fail">expected [<span class="diff">x</span>ef]</span>-!|
+|ensure| content contains|!-[d<span class="diff">e</span>f] <span class="fail">expected [d<span class="diff">y</span>f]</span>-!|
+|ensure| content contains|!-[de<span class="diff">f</span>] <span class="fail">expected [de<span class="diff">z</span>]</span>-!|
+|ensure| content contains|!-&lt;span class="pass"&gt;$symbol-&gt;[def]&lt;/span&gt;-!|
+|ensure| content contains|!-[<span class="diff">xyz</span>] <span class="fail">expected [$symbol-&gt;[<span class="diff">def</span>]]</span>-!|
+|ensure| content contains|!-[<span class="diff">x</span>ef] <span class="fail">expected [$symbol-&gt;[<span class="diff">d</span>ef]]</span>-!|
+|ensure| content contains|!-[d<span class="diff">y</span>f] <span class="fail">expected [$symbol-&gt;[d<span class="diff">e</span>f]]</span>-!|
+|ensure| content contains|!-[de<span class="diff">z</span>] <span class="fail">expected [$symbol-&gt;[de<span class="diff">f</span>]]</span>-!|
+|ensure| content contains|!-[] <span class="fail">expected [$symbol-&gt;[<span class="diff">def</span>]]</span>-!|
+|note| !4 Tests of scenario|
+|ensure| content contains|!-<span class="pass">hello</span>-!|
+|ensure| content contains|!-[h<span class="diff">e</span>llo] <span class="fail">expected [h<span class="diff">a</span>llo]</span>-!|
+|note| !4 Display Test Results|
+|show Symbol                        |$HTML_Result                                                                                                    |
+

@@ -1,0 +1,20 @@
+!2 Test that HTTP links are rendered correctly
+If a string of the form !-http://-!''some_url'' appears in wiki text, it is converted to a link.
+----
+!3 Check the variables get rendered in links
+ * First create a page with a variable and http link on it.
+!|script|
+|start|Page Builder|
+|line|!define HOST {localhost:8081}|
+|line|http://&dollar;{HOST}/page||
+|page|!-HttpLinkPage-!|
+
+ * Then fetch the page.
+|Response Requester.|
+|uri|valid?|
+|!-HttpLinkPage-!|true|
+
+ * Then check that the link was properly rendered.
+|Response Examiner.|
+|type|pattern|matches?|value|
+|contents|<a href=!-"http://localhost:8081/page"-!>!-http://localhost:8081/page-!</a>|true||

@@ -1,0 +1,3 @@
+The edit responder is invoked with a url of the form {{{SomePage?edit}}}
+!contents -R2 -p
+!define TEST_SYSTEM {slim}

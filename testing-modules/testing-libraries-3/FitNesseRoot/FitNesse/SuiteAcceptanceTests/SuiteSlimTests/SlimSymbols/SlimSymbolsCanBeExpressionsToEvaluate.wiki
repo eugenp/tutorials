@@ -1,0 +1,80 @@
+---
+Test
+---
+|script      |hash fixture                         |
+|send as hash|!{subkey:subval}                     |
+|$nested=    |hash                                 |
+|send as hash|!{key1:value1,key2:$nested}          |
+|$myHashMap0=|hash                                 |
+|send as hash|!{key1:value2,key2:!{subkey:subval2}}|
+|$myHashMap= |hash                                 |
+
+
+Java hashmap symbol's value
+
+|script|echo fixture                                                              |
+|check |echo|$`myHashMap0.key1`       |value1                                     |
+|check |echo|$`myHashMap0.key2.subkey`|subval                                     |
+|check |echo|$`myHashMap0.key3`       |null                                       |
+|check |echo|$`myHashMap.key1`        |value2                                     |
+|check |echo|$`myHashMap.key2.subkey` |subval2                                    |
+|check |echo|$`myHashMap.key3`        |null                                       |
+|check |echo|$`myHashMap3.key1`       |=~/Unable to evaluate: myHashMap3.key1; .+/|
+
+Reverse (use expression value as expected value)
+|script   |echo fixture                          |
+|check    |echo|value1 |$`myHashMap0.key1`       |
+|check    |echo|subval |$`myHashMap0.key2.subkey`|
+|check    |echo|null   |$`myHashMap0.key3`       |
+|check not|echo|value3 |$`myHashMap.key1`        |
+|check    |echo|subval2|$`myHashMap.key2.subkey` |
+|check    |echo|null   |$`myHashMap.key3`        |
+
+Hashtable symbol (i.e. String) as value
+|script      |echo fixture                                            |
+|$myHashMap2=|echo|!{key1:value2,key2:!{subkey:subval1}}              |
+|check       |echo|$`myHashMap2.key1`       |value2                   |
+|check       |echo|value2                   |$`myHashMap2.key1`       |
+|check       |echo|$`myHashMap2.key2.subkey`|subval1                  |
+|check       |echo|subval1                  |$`myHashMap2.key2.subkey`|
+
+Other expressions
+
+|script |echo fixture                                 |
+|check  |echo|$`10+20`                 |30            |
+|check  |echo|$`myHashMap.size() * 1.5`|3.0           |
+|$myStr=|echo|This is a test                          |
+|check  |echo|$`myStr.toUpperCase()`   |THIS IS A TEST|
+|check  |echo|$`myStr.substr(2,5)`     |is is         |
+
+Concatenating expressions
+
+|script|echo fixture                                  |
+|check |echo|$`1+1` a      |2 a                       |
+|check |echo|$`1+1`a       |2a                        |
+|check |echo|a$`1+1`a      |a2a                       |
+|check |echo|this is value1|this is $`myHashMap0.key1`|
+
+
+Lists
+|import            |
+|fitnesse.slim.test|
+
+|script  |Test Slim With Converter                           |
+|$myList=|getList                                            |
+|start   |echo fixture                                       |
+|check   |echo|$`myList.size()`    |3                        |
+|check   |echo|$`myList.getClass()`|$`myList.getClass()`     |
+|check   |echo|$`myList.getClass()`|class java.util.ArrayList|
+
+|script   |Test Slim With Converter                            |
+|set list converter                                            |
+|$myList2=|getArrayList                                        |
+|start    |echo fixture                                        |
+|check    |echo|$`myList2.size()`    |3                        |
+|check    |echo|$`myList2.getClass()`|class java.util.ArrayList|
+
+Reset list converter to standard one after test
+
+|script   |Test Slim With Converter                            |
+|remove list converter                                         |

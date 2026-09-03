@@ -1,0 +1,20 @@
+This page tests the <title> tag.
+
+First create a page.
+
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-TitleTestPage-!|some content||true|
+
+Then request that page
+
+|Response Requester.|
+|uri|valid?|
+|!-TitleTestPage-!|true|
+
+Examine the page to be sure it has <title> tag
+
+|Response Examiner.|
+|type|pattern|matches?|value|
+|contents|<title>!-TitleTestPage-!</title>|true||
+

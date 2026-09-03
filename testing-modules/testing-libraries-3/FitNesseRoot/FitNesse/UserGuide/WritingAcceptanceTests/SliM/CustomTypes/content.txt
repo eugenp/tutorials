@@ -1,0 +1,23 @@
+!2 Adding custom type converters to Slim (Java)
+If you have a fixture whose methods take or return a class that is not one of the standard Slim types, you can add a customer type converter very easily.  There are two different ways to do this.
+
+First, you can use the standard !style_code(!-PropertyEditor-!) mechanism.  You can read about this in the Javadocs for !style_code(!-PropertyEditor-!).  In short, if you have a class named !style_code(!-MyType-!) you can create a class named !style_code(!-MyTypeEditor-!) that implements the !style_code(!-PropertyEditor-!) interface (usually by extending !style_code[!-PropertyEditorSupport-!]).  That's pretty much it.  There are three different search paths for this class, but I'll let you read about that in the Javadocs.
+!note There is an example of this in !-fitnesse.slim.test.ZorkEditor-!
+
+Or, you can use the lower level approach of registering a converter.
+The converter must derive from !-fitnesse.slim.Converter-!.
+{{{
+package fitnesse.slim;
+public interface Converter {
+  public String toString(Object o);
+  Object fromString(String arg);
+} }}} As you can see this is pretty simple.  Your derivative must implement the toString method to convert your type to a string; and it must implement the fromString method to convert the string into your custom type.
+
+Then, in the constructor of first fixture to uses that type simply put the following line of code: {{{fitnesse.slim.converters.ConverterRegistry.addConverter(MyClass.class, new MyClassConverter())}}}
+
+'''Please note''' the application of converters to methods returning !style_code[List]s is special: whether a converter is applied to a method's result depends on its ''declared'' return type:
+ * List (exactly, no sub-interface or class implementing it): converter is '''not applied''' (this is needed for some Slim tables, such as !-QueryTable-!).
+ * All return types: converter is applied, based on the actual class of the object returned, or on its declared type when !style_code[null] is returned 
+
+
+The technique for other language platforms should be similar to this.  Check the documentation of the Slim port for your platform. 
