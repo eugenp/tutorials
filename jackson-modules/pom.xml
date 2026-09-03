@@ -26,6 +26,7 @@
         <module>jackson-exceptions</module>
         <module>jackson-jr</module>
         <module>jackson-polymorphic-deserialization</module>
+        <module>jackson-core-3</module>
     </modules>
 
     <dependencies>
