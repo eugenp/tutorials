@@ -9,11 +9,7 @@ class LambdaWildcardInferenceUnitTest {
 
     @Test
     void whenImplicitlyTypedLambdaPassedToWildcardParameter_thenSuccess() {
-        Validator<? super Boolean> validator = b -> b;
-        RecordStream<Boolean> stream = RecordStream.<Boolean> create()
-            .validate(b -> b);
-
-        assertTrue(validator.test(true));
-        assertFalse(validator.test(false));
+        assertTrue(RecordStream.validate(Boolean.TRUE, b -> b));
+        assertFalse(RecordStream.validate(Boolean.FALSE, b -> b));
     }
 }
