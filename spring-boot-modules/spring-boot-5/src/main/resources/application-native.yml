@@ -1,0 +1,17 @@
+server:
+  forward-headers-strategy: NATIVE
+  tomcat:
+    remoteip:
+      remote-ip-header: X-Forwarded-For
+      protocol-header: X-Forwarded-Proto
+      host-header: X-Forwarded-Host
+      port-header: X-Forwarded-Port
+      trusted-proxies: 172\.(1[6-9]|2\d|3[0-1])\.\d{1,3}\.\d{1,3}
+    accesslog:
+      enabled: true
+      request-attributes-enabled: true
+      directory: /app/logs
+      prefix: access_log
+      suffix: .log
+      pattern: '%h %l %u %t "%r" %s %b "%{X-Forwarded-Host}i" "%{X-Forwarded-For}i" "%{X-Forwarded-Proto}i"'
+      rotate: false
