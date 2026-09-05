@@ -4,4 +4,7 @@ spring:
       api-key: ${ANTHROPIC_API_KEY}
       chat:
         options:
-          model: claude-3-5-sonnet-20241022
+          model: claude-sonnet-4-6
+          max-tokens: 500
+        cache-options:
+          strategy: SYSTEM_ONLY
