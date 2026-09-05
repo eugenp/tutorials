@@ -6,7 +6,7 @@
 
     <!-- Project Coordinates -->
     <groupId>com.baeldung.triton</groupId>
-    <artifactId>triton-java-yolo</artifactId>
+    <artifactId>triton</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
