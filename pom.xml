@@ -832,6 +832,7 @@
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
                 <module>timefold-solver</module>
+                <module>triton</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
                 <module>vector-db</module>
@@ -1354,6 +1355,7 @@
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
                 <module>timefold-solver</module>
+                <module>triton</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
                 <module>vector-db</module>
