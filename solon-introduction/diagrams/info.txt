@@ -1,0 +1,18 @@
+Diagram: solon-configuration-precedence.png
+Title: Solon Configuration Precedence
+Source: solon-configuration-precedence.dot (Graphviz DOT, UTF-8)
+Tool: Graphviz 12.2.1, dot layout engine, Cairo PNG renderer
+Font: Helvetica (install the same font to reproduce text metrics)
+
+From this directory, regenerate the high-resolution PNG with:
+
+dot -Kdot -Tpng:cairo -Gdpi=192 solon-configuration-precedence.dot -o solon-configuration-precedence.png
+
+The PNG is generated locally for the article; it is not required to build or
+test the Java module. The source uses Baeldung's Java diagram colors,
+#63b175 and #4e9359. Check the resulting file remains below 1 MB before upload.
+
+Configuration reference: https://solon.noear.org/article/301
+The diagram groups sources into the six documented precedence layers. It does
+not specify ordering among the different startup sources within L4. Cloud
+configuration requires a configured plugin; this tutorial does not enable it.

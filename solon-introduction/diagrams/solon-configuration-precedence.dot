@@ -1,0 +1,25 @@
+// Configuration layers described by https://solon.noear.org/article/301.
+// Verified against Solon 4.0.6 SolonProps and the configuration plugin APIs.
+digraph SolonConfiguration {
+    graph [rankdir=TB, bgcolor="white", pad="0.25", nodesep="0.25", ranksep="0.32",
+        fontname="Helvetica", fontsize=18, labelloc="t",
+        label="Solon Configuration Precedence\n "];
+    node [shape=box, style="rounded,filled", color="#4e9359", fillcolor="#edf6ee",
+        fontcolor="#213728", fontname="Helvetica", fontsize=15, penwidth=1.5,
+        margin="0.20,0.14", width=6.3];
+    edge [color="#4e9359", penwidth=1.8, arrowsize=0.8];
+
+    l1 [label="L1  Application Files\napp.yml / app.properties, then environment files"];
+    l2 [label="L2  Additional Resources\nsolon.config.load (classpath: or file:)"];
+    l3 [label="L3  External Configuration\nsolon.config.add"];
+    l4 [label="L4  Startup Values\nArguments, JVM properties, environment variables"];
+    l5 [label="L5  Initialization Callback\nConfiguration loaded through app.cfg()"];
+    l6 [label="L6  Cloud Configuration\nLoaded by configured Solon Cloud plugins",
+        fillcolor="#63b175", fontcolor="#102a17"];
+
+    l1 -> l2 -> l3 -> l4 -> l5 -> l6;
+
+    note [shape=plaintext, width=0, fontsize=13, fontcolor="#33483a",
+        label="Priority increases downward.\nLater layers override earlier values for the same key."];
+    l6 -> note [style=invis];
+}
