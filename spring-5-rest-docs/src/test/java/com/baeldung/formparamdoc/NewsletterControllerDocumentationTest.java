@@ -9,6 +9,7 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWit
 import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.restdocs.request.RequestDocumentation.formParameters;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
+import static org.springframework.restdocs.request.RequestDocumentation.relaxedFormParameters;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -57,6 +58,13 @@ class NewsletterControllerDocumentationTest {
             .andDo(document("newsletter-subscribe", docFormParams(), docResponseFields()));
     }
 
+    @Test
+    void whenOnlyCoreFieldsMatter_thenDocumentWithRelaxedMode() throws Exception {
+        mockMvc.perform(postSubscription())
+            .andExpect(status().isCreated())
+            .andDo(document("newsletter-subscribe-relaxed", docRelaxedCoreFormParams()));
+    }
+
     private ResponseFieldsSnippet docResponseFields() {
         return responseFields(
             fieldWithPath("id").description("Generated subscription identifier"),
@@ -74,6 +82,13 @@ class NewsletterControllerDocumentationTest {
             parameterWithName("topics").optional().description("One or more selected topic values"),
             parameterWithName("marketingAccepted").optional().description("Whether marketing messages are accepted"),
             parameterWithName("trackingId").ignored());
+    }
+
+    private FormParametersSnippet docRelaxedCoreFormParams() {
+        return relaxedFormParameters(
+            parameterWithName("email").description("The subscriber email address"),
+            parameterWithName("name").description("The display name of the subscriber"),
+            parameterWithName("frequency").description("Delivery frequency: weekly or monthly"));
     }
 
     private MockHttpServletRequestBuilder postSubscription() {
