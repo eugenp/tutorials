@@ -31,10 +31,10 @@ class ModularGsonUnitTest {
     void givenModularAndExportedPackage_whenDeserializingRecord_thenSuccess() {
         String json = """
             {
-            "name": "Java Conference",
-            "numberOfParticipants": 150
-        }
-        """;
+                "name": "Java Conference",
+                "numberOfParticipants": 150
+            }
+            """;
         Gson gson = new Gson();
 
         ConferenceRecord result = assertDoesNotThrow(() -> {

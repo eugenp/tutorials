@@ -16,9 +16,9 @@ class PojoWithLocalDateUnitTest {
     void whenObjectDateFormat_thenSuccessfulDeserialization() {
         String correctJson = """
             {
-                name:"Java Conference",
-                numberOfParticipants:500,
-                conferenceStart:{"year":2026,"month":8,"day":17}
+                "name": "Java Conference",
+                "numberOfParticipants": 500,
+                "conferenceStart": {"year": 2026,"month": 8,"day": 17}
             }
             """;
 
@@ -33,9 +33,9 @@ class PojoWithLocalDateUnitTest {
     void whenISOTextFormat_thenJsonSyntaxException() {
         String wrongDateInJson = """
             {
-                name:"Java Conference",
-                numberOfParticipants:500,
-                conferenceStart:"2026-08-17"
+                "name": "Java Conference",
+                "numberOfParticipants": 500,
+                "conferenceStart": "2026-08-17"
             }
             """;
         Gson gson = new Gson();
