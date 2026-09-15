@@ -40,5 +40,6 @@
         <module>spring-ai-mcp-annotations</module>
         <module>spring-ai-subagent-orchestrator</module>
         <module>spring-ai-ask-user-question</module>
+        <module>spring-ai-anthropic</module>
     </modules>
 </project>
