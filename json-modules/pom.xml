@@ -25,6 +25,7 @@
         <module>gson</module>
         <module>gson-2</module>
         <module>gson-3</module>
+        <module>gson-4</module>
     </modules>
 
     <build>
