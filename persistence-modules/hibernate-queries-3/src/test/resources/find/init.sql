@@ -14,7 +14,7 @@ INSERT INTO authors (author_id, name) VALUES
     (1, 'George Orwell'),
     (2, 'Haruki Murakami'),
     (3, 'Agatha Christie'),
-(4, 'Ursula K. Le Guin');
+    (4, 'Ursula K. Le Guin');
 
 INSERT INTO books (book_id, title, author_id) VALUES
     (101, '1984', 1),
