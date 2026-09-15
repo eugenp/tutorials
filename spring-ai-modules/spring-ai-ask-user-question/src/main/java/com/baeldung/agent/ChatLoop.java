@@ -2,6 +2,7 @@ package com.baeldung.agent;
 
 import java.util.Scanner;
 
+import org.springaicommunity.agent.tools.AskUserQuestionTool.InvalidUserAnswerException;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.boot.CommandLineRunner;
@@ -25,12 +26,17 @@ class ChatLoop implements CommandLineRunner {
                 String input = scanner.nextLine();
                 if ("exit".equalsIgnoreCase(input.trim())) break;
 
-                String response = chatClient.prompt()
-                    .user(input)
-                    .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, "session-1"))
-                    .call()
-                    .content();
-                System.out.println("AI: " + response + "\n");
+                try {
+                    String response = chatClient.prompt()
+                        .user(input)
+                        .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, "session-1"))
+                        .call()
+                        .content();
+                    System.out.println("AI: " + response + "\n");
+                }
+                catch (InvalidUserAnswerException e) {
+                    System.out.println("AI: Sorry, I couldn't process your answer: " + e.getMessage() + "\n");
+                }
             }
         }
     }
