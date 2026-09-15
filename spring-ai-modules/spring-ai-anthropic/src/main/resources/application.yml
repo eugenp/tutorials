@@ -1,0 +1,10 @@
+spring:
+  ai:
+    anthropic:
+      api-key: ${ANTHROPIC_API_KEY}
+      chat:
+        options:
+          model: claude-sonnet-4-6
+          max-tokens: 500
+        cache-options:
+          strategy: SYSTEM_ONLY
