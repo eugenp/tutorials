@@ -8,7 +8,9 @@ public class Book {
     @Id
     @Column(name = "book_id")
     private Long bookId;
+
     private String title;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id", nullable = false)
     private Author author;

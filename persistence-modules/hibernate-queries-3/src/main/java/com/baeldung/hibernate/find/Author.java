@@ -11,6 +11,7 @@ public class Author {
     @Id
     @Column(name = "author_id")
     private Long authorId;
+
     private String name;
 
     public Long getAuthorId() {
