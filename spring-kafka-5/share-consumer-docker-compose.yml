@@ -1,4 +1,5 @@
 version: '3.8'
+
 services:
   kafka:
     image: apache/kafka:4.3.1
