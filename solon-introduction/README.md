@@ -1,7 +1,8 @@
 ## Solon Introduction
 
-This module contains a Solon REST API backed by MyBatis-Flex, HikariCP, and an
-in-memory H2 database. It requires JDK 21 and Maven 3.9 or later.
+This module contains a REST API built with Solon 4.1.0, MyBatis-Flex 1.11.8,
+HikariCP 7.1.0, and an in-memory H2 2.5.250 database. It targets Java 25.
+Build toolchain: Eclipse Temurin JDK 25.0.4.1+1 and Maven 3.9.16.
 
 ### Running the application
 
@@ -40,10 +41,10 @@ DELETE returns 204, missing tasks return 404, and invalid titles return 400.
 
 ```bash
 mvn clean install
-mvn clean install -Pintegration
+mvn clean install -Pintegration-jdk25
 ```
 
-The first command runs the service unit tests. The integration profile reserves
+The first command runs the service unit tests. The integration-jdk25 profile reserves
 an available HTTP port and runs the real HTTP tests against a separate H2
 database. It also verifies that a service call inside a `@Rollback` test is
 rolled back before cleanup. The multi-request CRUD test uses explicit cleanup
@@ -53,12 +54,12 @@ Solon's test extension requires a public test class. The `@Rollback` test method
 is also public so that Solon's proxy intercepts it. Other JUnit 5 test methods
 remain package-private.
 
-The module participates in the repository's `default` and `integration`
+The module participates in the repository's `default-jdk25` and `integration-jdk25`
 profiles. From the repository root it can also be tested with:
 
 ```bash
-mvn -pl solon-introduction -Pdefault clean install
-mvn -pl solon-introduction -Pintegration clean install
+mvn -pl solon-introduction -Pdefault-jdk25 clean install
+mvn -pl solon-introduction -Pintegration-jdk25 clean install
 ```
 
 Diagram sources and reproduction instructions are in `diagrams/info.txt`.

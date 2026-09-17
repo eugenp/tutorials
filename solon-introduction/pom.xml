@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.noear</groupId>
         <artifactId>solon-parent</artifactId>
-        <version>4.0.6</version>
+        <version>4.1.0</version>
         <relativePath />
     </parent>
 
@@ -72,7 +72,7 @@
 
     <profiles>
         <profile>
-            <id>integration</id>
+            <id>integration-jdk25</id>
             <build>
                 <plugins>
                     <plugin>
@@ -112,12 +112,12 @@
     </profiles>
 
     <properties>
-        <java.version>21</java.version>
+        <java.version>25</java.version>
         <mybatis-flex.version>1.11.8</mybatis-flex.version>
         <hikaricp.version>7.1.0</hikaricp.version>
         <h2.version>2.5.250</h2.version>
-        <exec-maven-plugin.version>3.6.3</exec-maven-plugin.version>
-        <build-helper-maven-plugin.version>3.6.1</build-helper-maven-plugin.version>
+        <exec-maven-plugin.version>3.6.4</exec-maven-plugin.version>
+        <build-helper-maven-plugin.version>3.6.2</build-helper-maven-plugin.version>
         <test.includes>**/*UnitTest.java</test.includes>
     </properties>
 </project>
