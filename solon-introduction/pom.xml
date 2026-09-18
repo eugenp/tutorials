@@ -3,17 +3,26 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>solon-introduction</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
     <name>solon-introduction</name>
 
     <parent>
-        <groupId>org.noear</groupId>
-        <artifactId>solon-parent</artifactId>
-        <version>4.1.0</version>
-        <relativePath />
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.noear</groupId>
+                <artifactId>solon-parent</artifactId>
+                <version>${solon.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -46,6 +55,12 @@
             <artifactId>solon-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <version>${junit-platform.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -58,21 +73,12 @@
                     <mainClass>com.baeldung.solon.App</mainClass>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <includes>
-                        <include>${test.includes}</include>
-                    </includes>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
     <profiles>
         <profile>
-            <id>integration-jdk25</id>
+            <id>integration</id>
             <build>
                 <plugins>
                     <plugin>
@@ -105,19 +111,20 @@
                     </plugin>
                 </plugins>
             </build>
-            <properties>
-                <test.includes>**/*IntegrationTest.java</test.includes>
-            </properties>
         </profile>
     </profiles>
 
     <properties>
-        <java.version>25</java.version>
+        <java.version>21</java.version>
+        <maven.compiler.parameters>true</maven.compiler.parameters>
+        <solon.version>4.1.0</solon.version>
+        <junit-jupiter.version>5.14.4</junit-jupiter.version>
+        <junit-platform.version>1.14.4</junit-platform.version>
+        <maven-surefire-plugin.version>3.5.5</maven-surefire-plugin.version>
         <mybatis-flex.version>1.11.8</mybatis-flex.version>
         <hikaricp.version>7.1.0</hikaricp.version>
         <h2.version>2.5.250</h2.version>
         <exec-maven-plugin.version>3.6.4</exec-maven-plugin.version>
         <build-helper-maven-plugin.version>3.6.2</build-helper-maven-plugin.version>
-        <test.includes>**/*UnitTest.java</test.includes>
     </properties>
 </project>

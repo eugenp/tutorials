@@ -773,6 +773,7 @@
                 <module>saas-modules</module>
                 <module>security-modules</module>
                 <module>server-modules</module>
+                <module>solon-introduction</module>
                 <module>spf4j</module>
                 <module>spring-5</module>
                 <module>spring-5-rest-docs</module>
@@ -1006,7 +1007,6 @@
 
             <modules>
                 <module>core-java-modules/core-java-25</module>
-                <module>solon-introduction</module>
             </modules>
 
             <properties>
@@ -1296,6 +1296,7 @@
                 <module>saas-modules</module>
                 <module>security-modules</module>
                 <module>server-modules</module>
+                <module>solon-introduction</module>
                 <module>spf4j</module>
                 <module>spring-5</module>
                 <module>spring-5-rest-docs</module>
@@ -1509,7 +1510,6 @@
 
             <modules>
                 <module>core-java-modules/core-java-25</module>
-                <module>solon-introduction</module>
             </modules>
 
             <properties>
