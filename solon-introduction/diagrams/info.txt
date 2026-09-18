@@ -1,0 +1,9 @@
+Diagram: solon-configuration-precedence.png
+Title: Solon Configuration Precedence
+Source: solon-configuration-precedence.dot (Graphviz DOT, UTF-8)
+Tool: Graphviz 12.2.1, dot layout engine, Cairo PNG renderer
+Font: Helvetica (install the same font to reproduce text metrics)
+
+From this directory, we can regenerate the high-resolution PNG with:
+
+dot -Kdot -Tpng:cairo -Gdpi=192 solon-configuration-precedence.dot -o solon-configuration-precedence.png
