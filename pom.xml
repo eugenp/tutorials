@@ -1697,6 +1697,7 @@
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
+                <module>persistence-modules/hibernate-queries-3</module>
                 <module>testing-modules/selenium-3/scrollelementintoview</module>
                 <module>testing-modules/selenium-3/selenium-json-demo</module>
             </modules>
@@ -1766,6 +1767,7 @@
                 <module>spring-cloud-modules/spring-cloud-task/springcloudtaskbatch</module> <!-- JAVA-34716 -->
                 <module>aspectj</module> <!-- JAVA-42031 -->
                 <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
+                <module>persistence-modules/hibernate-queries-3</module>
                 <module>testing-modules/selenium-3/scrollelementintoview</module>
                 <module>testing-modules/selenium-3/selenium-json-demo</module>
                 <module>codenameone</module>
