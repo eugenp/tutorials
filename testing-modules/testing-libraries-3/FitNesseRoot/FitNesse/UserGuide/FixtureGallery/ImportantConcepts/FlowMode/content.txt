@@ -1,0 +1,105 @@
+
+''Previous page: [[!-Fixture Arguments-!][<UserGuide.FixtureGallery.ImportantConcepts.FixtureArguments]] Next page: [[!-Target objects-!][<UserGuide.FixtureGallery.ImportantConcepts.TargetObject]] Parent page: [[!-Important concepts-!][<UserGuide.FixtureGallery.ImportantConcepts]]''
+!2 !-Flow Mode-!
+!- If -!'''!- DoFixture -!'''!- or -!'''!- SequenceFixture -!'''!- are loaded by the first table on a test page, they take over the entire test page processing. This allows you to split the test table into multiple tables, to make the test more readable. -!
+
+{{{
+!-!-!|info.fitnesse.fixturegallery.DoFixtureTest|
+
+|fill|10|times with|x|
+
+|check|char at|4|x|
+
+|set list|A,B,C,D|
+
+|show|char at|2|
+}}}
+!- When the table is split like this, then each sub-table is first matched to an enclosing flow fixture method. If no such method exists, a fixture class is loaded as it would normally be, without the flow mode. This allows you to write tests that use -!'''!- DoFixture -!'''!- methods to implement story-like workflow, but still use the benefits of a more structured approach when that makes sense. -!'''!- DoFixture -!'''!- even helps you with that: if the flow mode method returns an instance of a -!'''!- fit.Fixture -!'''!- class or one of its subclasses, the rest of the active table is processed as if it were writen for that fixture. So you can use a -!'''!- DoFixture -!'''!- method to initialise other fixtures, prepare the context or clean up. If the flow method returns an array or list of objects, the table is analysed as if it was written for an -!'''!- ArrayFixture -!'''!- . Here is an example that uses an embedded fixture and array conversion: -!
+
+{{{
+!-!-!|info.fitnesse.fixturegallery.DoFixtureFlowTest|
+
+!-!-!3 The following table is executed by an embedded !-!-!-SetUpFixture-!-!-!
+
+|prepare players|
+|player|post code|balance|
+|John Smith|SW4 66Z|10.00|
+|Michael Jordan|NE1 8AT|12.00|
+
+!-!-!3 The following table is executed by an !-!-!-ArrayFixture-!-!-!
+
+|list players|
+|name|post code|balance|
+|John Smith|SW4 66Z|10.00|
+|Michael Jordan|NE1 8AT|12.00|
+}}}
+# section Java Source Code
+!3 !-Java Source Code-!
+{{{
+package info.fitnesse.fixturegallery;
+
+import info.fitnesse.fixturegallery.domain.Player;
+
+import java.util.List;
+
+import fit.Fixture;
+import fitlibrary.DoFixture;
+
+public class DoFixtureFlowTest extends DoFixture{
+	public Fixture preparePlayers(){
+		return new SetUpFixtureTest();
+	}
+	public List<Player> listPlayers(){
+		return Player.players;
+	}
+}
+}}}
+# section .NET Source Code
+!3 !-.NET Source Code-!
+{{{
+using System;
+using System.Collections.Generic;
+using System.Text;
+using fit;
+namespace info.fitnesse.fixturegallery
+{
+    public class DoFixtureFlowTest : fitlibrary.DoFixture
+    {
+        public Fixture PreparePlayers()
+        {
+            return new SetUpFixtureTest();
+        }
+        public List<Player> ListPlayers()
+        {
+            return Player.players;
+        }
+    }
+}
+}}}
+# section Python Source Code
+!3 !-Python Source Code-!
+{{{
+from fitLib.DoFixture import DoFixture
+from fit.RowFixture import RowFixture
+from info.fitnesse.fixturegallery.SetUpFixtureTest  import SetUpFixtureTest
+from info.fitnesse.fixturegallery.domain.Player     import Player
+import types
+
+class DoFixtureFlowTest(DoFixture):
+    _typeDict = {}
+
+    _typeDict["preparePlayers.types"] = [ SetUpFixtureTest ]
+    def preparePlayers(self):
+        return SetUpFixtureTest()
+
+    _typeDict["listPlayers.types"] = [ "$Array" ] #< ACTUALLY: List of Players
+    def listPlayers(self):
+        # -- DESIRED: return Player.players
+        #    But need to add type hints for list.scalarType .
+        return ( Player.players, Player._typeDict )
+        # ALTERNATIVES:
+        #   return RowFixture(Player.players, Player._typeDict)
+        #   return ArrayFixture(Player.players, Player._typeDict)
+}}}
+
+''Previous page: [[!-Fixture Arguments-!][<UserGuide.FixtureGallery.ImportantConcepts.FixtureArguments]] Next page: [[!-Target objects-!][<UserGuide.FixtureGallery.ImportantConcepts.TargetObject]] Parent page: [[!-Important concepts-!][<UserGuide.FixtureGallery.ImportantConcepts]]''

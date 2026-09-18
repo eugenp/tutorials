@@ -1,0 +1,9 @@
+Headers are created by prefixing a line with !1 or !2 or !3 or !4 or !5 or !6
+
+|!c '''Markup Text'''  |!c '''Displayed as'''|
+|!- !1 Title         -!|!1 Title             |
+|!- !2 Header        -!|!2 Header            |
+|!- !3 Second Header -!|!3 Second Header     |
+|!- !4 Third Header  -!|!4 Third Header      |
+|!- !5 Fourth Header -!|!5 Fourth Header     |
+|!- !6 Fifth Header  -!|!6 Fifth Header      |

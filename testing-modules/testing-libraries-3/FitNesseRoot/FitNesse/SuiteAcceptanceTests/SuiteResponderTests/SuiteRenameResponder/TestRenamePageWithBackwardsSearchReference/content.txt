@@ -1,0 +1,47 @@
+!3 When a page is renamed, any links to that page from backwards references pages are changed.
+
+Create the test data.
+
+!|Page creator.|
+|Page name.|Page contents.|valid?|
+|TopPage||true|
+|TopPage.TargetPage||true|
+|TopPage.MiddlePage||true|
+|TopPage.MiddlePage.MiddleTarget||true|
+|TopPage.MiddlePage.ReferingPage|<TopPage.TargetPage <TopPage.MiddlePage.MiddleTarget|true|
+
+Rename the top page.
+
+!|Response Requester.|
+|uri   |status?|
+|TopPage?responder=renamePage&newName=RenamedTopPage&refactorReferences=on||
+
+Next fetch the referring page.
+
+!|Response Requester.|
+|uri|valid?|contents?|
+|RenamedTopPage.MiddlePage.ReferingPage|true||
+
+Make sure that the references have been changed.
+
+!|Response Examiner.|
+|type  |pattern|matches?|
+|contents|<a href="RenamedTopPage\.TargetPage"><RenamedTopPage\.TargetPage</a>|true|
+|contents|<a href="RenamedTopPage\.MiddlePage\.MiddleTarget"><RenamedTopPage\.MiddlePage\.MiddleTarget</a>|true|
+
+Rename the middle page.
+
+!|Response Requester.|
+|uri   |status?|
+|RenamedTopPage.MiddlePage?responder=renamePage&newName=RenamedMiddlePage&refactorReferences=on||
+
+Next fetch the referring page.
+
+!|Response Requester.|
+|uri|valid?|contents?|
+|RenamedTopPage.RenamedMiddlePage.ReferingPage|true||
+
+!|Response Examiner.|
+|type  |pattern|matches?|
+|contents|<a href="RenamedTopPage\.TargetPage"><RenamedTopPage\.TargetPage</a>|true|
+|contents|<a href="RenamedTopPage\.RenamedMiddlePage\.MiddleTarget"><RenamedTopPage\.RenamedMiddlePage\.MiddleTarget</a>|true|

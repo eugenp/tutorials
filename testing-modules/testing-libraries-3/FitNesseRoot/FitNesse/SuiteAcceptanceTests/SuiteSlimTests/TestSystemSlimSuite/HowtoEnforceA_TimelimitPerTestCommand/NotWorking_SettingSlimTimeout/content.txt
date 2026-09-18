@@ -1,0 +1,12 @@
+!define TEST_SYSTEM (SLIM)
+
+Setting slim.timeout doesn't works :( 
+!define slim.timeout (1)
+
+
+This table should fails as the duration is above the slim.timeout but is does not :(
+!| fitnesse.slim.test.Sleep|
+|Timer | do Sleep ?|
+|12000| WakeUp 12000|
+
+

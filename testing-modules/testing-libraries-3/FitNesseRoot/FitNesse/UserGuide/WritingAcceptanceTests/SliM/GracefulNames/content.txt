@@ -1,0 +1,29 @@
+The names of fixtures, methods, inputs, and outputs can be expressed in two forms.  
+They can match their corresponding names in the fixture classes, or they can be ''graceful''.
+
+A ''graceful name'' looks like it is written in human language rather than computer language.  It has spaces that separate the words and may have a period at the end.This is a strategy and the exact implementation depends on the type of table being executed.  It is better when you define output methods with 'graceful names' to put a ? in the end of the name in order to be specified that it is an output method and not  input (set method). 
+For example, in the case of a [[Query Table][<FitNesse.UserGuide.WritingAcceptanceTests.SliM.QueryTable]], column names in the front end must exactly match those in the corresponding Fixture. So, it is always helpful to take a closer look at a specific [[table documentation][<FitNesse.UserGuide.WritingAcceptanceTests.SliM]]. 
+
+  Slim will convert ''graceful names'' into the names of the classes and methods they refer to.  So for example:
+
+!|Graceful Name|Fixture Name|
+|slim test|SlimTest|
+|login user.|LoginUser|
+|Open connection and add user.|OpenConnectionAndAddUser|
+
+!|Graceful Name|Method Name|
+|slim test?|slimTest|
+|login user ?|loginUser|
+|Open connection and add user?|openConnectionAndAddUser|
+
+In some cases, fixture names and method names do not follow this convention. For this reason FitNesse will also try the following names:
+
+!|Graceful Name|Fixture Name|
+|slim test|slimTest|
+|login user.|loginUser|
+|Open connection and add user.|openConnectionAndAddUser|
+
+!|Graceful Name|Method Name|
+|slim test?|SlimTest|
+|login user ?|LoginUser|
+|Open connection and add user?|OpenConnectionAndAddUser|

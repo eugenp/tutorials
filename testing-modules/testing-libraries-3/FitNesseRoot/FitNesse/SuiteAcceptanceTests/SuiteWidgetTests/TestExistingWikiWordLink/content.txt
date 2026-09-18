@@ -1,0 +1,65 @@
+!2 Test that ''existing'' WikiPageReference tokens are converted to links.
+ * A WikiPageReference is said to be ''existing'' if the page to which it refers already exists in the wiki.
+ * A WikiPageReference can be a simple .FitNesse.SuiteAcceptanceTests.SuiteWidgetTests.WikiWord, or it can be a WikiPagePath.
+ * A WikiPageReference that begins with a dot ("'''.'''") is taken to be relative to the ''root'' of the wiki.
+ * A WikiPageReference that does not begin with a dot is taken to be relative to the parent of the current page.
+----
+!3 Test simple relative WikiPageReference.
+ * Create pages at the root level.  One page refers to the other.
+|Page creator.|
+|Page name.|Page contents.|valid?|
+|!-SomePage-!|some page|true|
+|!-RelativeReferencePage-!|!-SomePage-!|true|
+ * Then request the page with the reference
+|Response Requester.|
+|uri|valid?|
+|!-RelativeReferencePage-!|true|
+ * Make sure the rendered page has a link.
+|Response Examiner.|
+|type|pattern|matches?|value|
+|contents|<a href="!-SomePage-!">!-SomePage-!</a>|true||
+----
+!3 Test simple global .FitNesse.SuiteAcceptanceTests.SuiteWidgetTests.WikiWord
+ * Create pages at the root level.  One page refers to the other using a global WikiPageReference.
+|Page creator.|
+|Page name.|Page contents.|valid?|
+|!-GlobalReferencePage-!|!-.SomePage-!|true|
+ * Then request the page with the reference
+|Response Requester.|
+|uri|valid?|
+|!-GlobalReferencePage-!|true|
+ * Make sure the rendered page has a link.
+|Response Examiner.|
+|type|pattern|matches?|value|
+|contents|<a href="!-SomePage-!">!-.SomePage-!</a>|true||
+----
+!3 Test relative WikiPagePath
+|Page creator.|
+|Page name.|Page contents.|valid?|
+|!-SomePage.SubPage-!|!-sub page-!|true|
+|!-SomePage.RelativeReference-!|!-SubPage-!|true|
+ * Then request the page with the reference
+|Response Requester.|
+|uri|valid?|
+|!-SomePage.RelativeReference-!|true|
+ * Make sure the link is to !-SomePage.SubPage-!
+|Response Examiner.|
+|type|pattern|matches?|value|
+|contents|<a href="!-SomePage.SubPage-!">!-SubPage-!</a>|true||
+----
+!3 Test global WikiPagePath
+|Page creator.|
+|Page name.|Page contents.|valid?|
+|!-SomePage.GlobalReference-!|!-.SomePage.SubPage-!|true|
+ * Then request the page with the reference
+|Response Requester.|
+|uri|valid?|
+|!-SomePage.GlobalReference-!|true|
+ * Make sure the link is to !-SomePage.SubPage-!
+|Response Examiner.|
+|type|pattern|matches?|value|
+|contents|<a href="!-SomePage.SubPage-!">!-.SomePage.SubPage-!</a>|true||
+
+
+
+

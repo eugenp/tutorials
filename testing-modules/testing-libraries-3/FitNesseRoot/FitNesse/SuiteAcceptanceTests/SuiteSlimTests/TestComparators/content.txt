@@ -1,0 +1,46 @@
+!*> Scenarios
+|scenario|comparator|a|accepts|b|
+|check|echo|@b|@a|
+
+|scenario|comparator|a|rejects|b|
+|check not|echo|@b|@a|
+
+|script|echo fixture|
+
+*!
+|script|
+|comparator|=5|accepts|5|
+|comparator|=5|rejects|6|
+||
+|comparator|!=5|accepts|6|
+|comparator|!=5|rejects|5|
+||
+|comparator|>=5|accepts|5|
+|comparator|>=5|rejects|4|
+||
+|comparator|>5|accepts|6|
+|comparator|>5|rejects|5|
+|comparator|>5|rejects|4|
+||
+|comparator|<=5|accepts|5|
+|comparator|<=5|rejects|6|
+||
+|comparator|<5|accepts|4|
+|comparator|<5|rejects|5|
+|comparator|<5|rejects|6|
+||
+|comparator|~=5.0|accepts|4.95|
+|comparator|~=5.0|accepts|5.05|
+|comparator|~=5.0|rejects|4.94|
+|comparator|~=5.0|rejects|5.06|
+||
+|comparator|!~=5.0|accepts|4.94|
+|comparator|!~=5.0|accepts|5.06|
+|comparator|!~=5.0|rejects|4.95|
+|comparator|!~=5.0|rejects|5.05|
+||
+|comparator|3<=_<=5|accepts|5|
+|comparator|3<=_<=5|accepts|3|
+|comparator|3<=_<=5|accepts|4|
+|comparator|3<_<5|accepts|4|
+

@@ -1,0 +1,29 @@
+!2 Starting FitNesse
+To start Fitnesse, invoke the fitnesse-standalone.jar file like this:
+
+!style_code(java -jar fitnesse-standalone.jar)
+This will start a wiki server listening on port 80.  You can modify this and other options using a CommandLineArguments.
+
+See PasswordFile for a description of how to set up per user authentication.
+
+!2 Running Rest Commands using the -c option.
+See RestfulServices
+
+!2 Stopping FitNesse
+Pressing ''ctrl-c'' generally works well for development use.  However, it's not sufficient for automated control.
+
+There are now ''stop.bat'' and ''stop.sh'' scripts to stop a running server. Invoke them with the same '''-p port_number''' option used to start the server.
+
+Both scripts run java with a class to stop FitNesse. You can invoke this class directly, as well:{{{Usage: java fitnesse.Shutdown [-pa]
+        -h <hostname> {localhost}
+        -p <port number> {80}
+        -c <username> <password> Supply user credentials.  Use when FitNesse has authentication activated.
+}}}This command will send an HTTP request to the designated server.  If the server is using authentication then the '''-c''' option should be used with appropriate username and password.
+
+Alternatively you may manually type a URL to shutdown a server. http://hostname:port/?responder=shutdown
+
+!2 Running from JUnit
+see [[!-RunningFromJunit-!][<UserGuide.WritingAcceptanceTests.RunningFromJunit]]
+
+!2 Running from Maven
+see [[!-RunningFromMaven-!][<UserGuide.WritingAcceptanceTests.RunningFromMaven]]

@@ -1,0 +1,4 @@
+To set a word or phrase in '''bold''' simply enclose the section of text in three single quotes like this:
+
+|!c '''Markup Text'''|!c '''Displayed as'''|
+|!-I want '''this''' in bold.-!|I want '''this''' in bold.|

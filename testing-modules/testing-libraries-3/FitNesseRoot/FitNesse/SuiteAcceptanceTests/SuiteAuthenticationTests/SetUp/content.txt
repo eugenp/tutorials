@@ -1,0 +1,9 @@
+!include <SuiteAcceptanceTests.SetUp
+
+|Library|
+|echo fixture|
+|page driver|
+
+!|Authenticator Setup|
+|username|password|status?|
+|Aladdin|open sesame||

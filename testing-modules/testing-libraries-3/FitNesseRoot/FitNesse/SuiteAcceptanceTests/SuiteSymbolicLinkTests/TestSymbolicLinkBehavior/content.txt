@@ -1,0 +1,24 @@
+After a Symbolic Link is created, it is possible to view it as a normal page as well as it's children.
+
+!include CreateRelativeSymbolicLink
+
+Now add a child on the linked page.
+!|Page creator.|
+|Page name.|valid?|
+|LinkedPage.ChildPage|true|
+
+Let's load and view the symbolic link page.
+!|Response Requester.|
+|uri   |status?|
+|LinkingPage.SymLink|200|
+!|Response Examiner.|
+|type  |pattern|matches?|
+|contents|<title>LinkingPage.SymLink</title>|true|
+
+Now let's load and view the child page beneath the symbolic link page.
+!|Response Requester.|
+|uri   |status?|
+|LinkingPage.SymLink.ChildPage|200|
+!|Response Examiner.|
+|type  |pattern|matches?|
+|contents|<title>LinkingPage.SymLink.ChildPage</title>|true|

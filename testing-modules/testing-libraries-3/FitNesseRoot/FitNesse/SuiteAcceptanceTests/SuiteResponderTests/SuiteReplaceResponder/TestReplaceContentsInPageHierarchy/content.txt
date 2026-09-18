@@ -1,0 +1,17 @@
+!2 Test replacing text in a simple page hierarchy.
+Replacing text in a page hierarchy should replace any matches found on all child pages.
+----
+
+!|script                                                                                     |
+|given page        |ParentPage                   |with content  |some content                |
+|and given page    |ParentPage.SubPage           |with content  |some other content          |
+|and given page    |ParentPage.SubPage.ChildPage1|with content  |non-matching page content   |
+|and given page    |ParentPage.ChildPage2        |with content  |some more matching content  |
+|when replacing    |some                         |with          |any|starting from|ParentPage|
+|it should list    |ParentPage                                                             |
+|and it should list|ParentPage.SubPage                                                     |
+|and it should list|ParentPage.ChildPage2                                                  |
+|and page          |ParentPage                   |should contain|any content                 |
+|and page          |ParentPage.SubPage           |should contain|any other content           |
+|and page          |ParentPage.SubPage.ChildPage1|should contain|non-matching page content   |
+|and page          |ParentPage.ChildPage2        |should contain|any more matching content   |

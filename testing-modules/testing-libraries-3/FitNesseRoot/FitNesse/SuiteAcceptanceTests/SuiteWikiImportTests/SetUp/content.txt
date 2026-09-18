@@ -1,0 +1,23 @@
+!include <SuiteAcceptanceTests.SetUp
+
+|Library|
+|page driver|
+|echo fixture|
+
+
+| Page creator. |
+| Page name. | Page contents. | valid? |
+| !-SampleWiki-! | !-!contents-! | true |
+| !-SampleWiki.ChildPageOne-! | child page | true |
+| !-SampleWiki.ChildPageOne.GrandChildPageOne-! | grand child page | true |
+| !-SampleWiki.ChildPageOne.GrandChildPageOne.GreatGrandChildPageOne-! | great grand child page | true |
+| !-SampleWiki.ChildPageTwo-! | child page | true |
+| !-SampleWiki.ChildPageTwo.GrandChildPageTwo-! | grand child page | true |
+| !-SampleWiki.ChildPageThree-! | child page | true |
+| !-SampleWiki.ChildWithUnicode-! | !-Here are some characters that make use of the unicode character set.  They were gathered from wikipedia.
+japanese: メインページ
+icelandic: Forsíða
+ukranian: Головна стаття
+thai: หน้าหลัก
+greek: Κύρια Σελίδα
+arabic: الصفحة الرئيسية-! | true |

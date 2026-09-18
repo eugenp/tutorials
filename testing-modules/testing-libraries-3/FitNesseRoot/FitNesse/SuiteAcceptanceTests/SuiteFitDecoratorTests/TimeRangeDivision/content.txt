@@ -1,0 +1,19 @@
+What if you want to specify a time range for your fitnesse fixtures?
+
+!|Time Range|0|milliseconds min and max|200|milliseconds|
+|Division|
+|numerator|denominator|quotient()|
+|10|2|5|
+|12.6|3|4.2|
+|100|4|25|
+
+In this example, you want to make sure all the division don't take less than 0 milliseconds and more than 50 milliseconds.
+
+By now you should be aware that these decorators ignore alternative column names.
+
+!|Time Range|0|alternative column values are ignored|200|this is ignored as well|
+|Division|
+|numerator|denominator|quotient()|
+|10|2|5|
+|12.6|3|4.2|
+|100|4|25|

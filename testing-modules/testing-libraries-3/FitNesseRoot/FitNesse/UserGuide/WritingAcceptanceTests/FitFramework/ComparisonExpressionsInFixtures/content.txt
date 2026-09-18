@@ -1,0 +1,17 @@
+!1 Comparison Expressions in Table Cells
+!note specific to certain FIT implementations.
+
+Comparison expressions can also be used in numeric cells that represent expected outputs.  In these expression the underscore character represents the return value of the method.  You can use standard inequalities.
+ * For example:
+  * '''_ < 32''' or
+  * '''_ >= 99'''.
+ * You can also use a range such as:
+  * '''38 <= _ <55'''.
+ * For simple expressions the underscore can be omitted, thus:
+  * '''<99''' is legal.
+
+There are two special functions that you can override when you write a !-ColumnFixture-!
+ * ''reset()'' will be called at the beginning of each row.
+ * ''execute()'' will be called just prior to processing the first ''()'' or ''?'' cell in each row, or after the last cell in the row has been processed, whichever comes first.
+
+You can use these two functions to treat each row as a transaction.  ''reset()'' can clear all the variables and get ready for the next transaction.  ''execute()'' can do the transaction processing.

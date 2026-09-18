@@ -1,0 +1,23 @@
+!3 [[!-SuiteSetUp and SuiteTearDown-!][.FitNesse.SuiteAcceptanceTests.SuiteResponderTests.SuiteTestResponders.SuiteSetUpAndTearDown]] are rendered as [[Collapsable Sections][.FitNesse.MarkupCollapsableSection]].
+
+ * First create a normal page, plus header and footer pages.
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-TestPage-!|test||true|
+|!-SuiteSetUp-!|suite set up||true|
+|!-SuiteTearDown-!|suite tear down||true|
+
+ * Now request the test page
+|Response Requester.|
+|uri|valid?|
+|!-TestPage-!|true|
+
+ * Ensure that the setup and and teardown text appear in the test page along with the header and footer.
+|Response Examiner.|
+|type|pattern|matches?|wrapped html?|
+|contents|.*(suite set up).*(test).*(suite tear down).*|true||
+
+!|Response Examiner.|
+|type|pattern|matches?|
+|contents|<div class="collapsible closed">.*<div>suite set up</div>|true|
+|contents|<div class="collapsible closed">.*<div>suite tear down</div>|true|

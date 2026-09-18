@@ -1,0 +1,17 @@
+Use !contents to list all or some of the child pages of the current page along with additional information such as help text, suite filters, some property settings, and graceful names. Example:
+
+{{{!contents -R2 -g -p -f -h}}}
+Instead of defining arguments on the ''!contents'' widget, variables can be defined that act as global properties.
+
+-|comment|
+|'''argument'''|'''description'''                                                            |'''Variable'''                  |
+|-R            |Include all of the descendent pages.                                         |                                |
+|!--Rn-!       |Include n levels of descendent pages.                                        |                                |
+|-f            |Show suite filters.                                                          |FILTER_TOC {true}               |
+|-g            |Show graceful names in the list.                                             |REGRACE_TOC {true}              |
+|-h            |Show help property text                                                      |HELP_TOC {true}                 |
+|-H            |Show help property text as TOC title, and show page name using small letters.|HELP_INSTEAD_OF_TITLE_TOC {true}|
+|-p            |Show property suffixes. !-
+-!Defaults:  Suite(*), Test(+), Imported(@), Symbolic(>), Skip(-).                           | PROPERTY_TOC {true} !-
+-!PROPERTY_CHARACTERS {*+@>-}|
+|-c            |Show number of test pages in a suite.                                        |                                |

@@ -1,0 +1,75 @@
+!1 Custom Test Table Styles: !-TableFixture-!
+Sometimes, none of the existing TestTableStyles is exactly what you need to represent your various inputs and outputs properly. In thise case, programmers can use the TableFixture style of [[!-FixtureCode-!][<UserGuide.WritingAcceptanceTests.FixtureCode]] to create custom test tables, by accessing and processing the cells in a table individually by row and column, and doing whatever needs doing with them.
+
+You can use TableFixture to devise any manner of custom tables, representing test inputs and outputs however you like. While this involves custom programming, it can be quite a powerful way to represent tests in a way that software development team members can all easily understand.
+
+!2 Using !-TableFixture-!
+TableFixture provides some simple methods that allow exactly the arbitrary table cell access and processing that you need to make custom test tables.
+ * The (row,column) coordinates are zero based,
+ * with (0,0) being the upper left cell.
+
+The methods of TableFixture are:
+
+|Comment|
+|{{{protected abstract void doStaticTable(int rows)}}}|TableFixture is an abstract class that you must derive from.  You must override ''doStaticTable'' to perform the functions of the fixture.  The number of rows in the table is passed in ''rows''.|
+|{{{protected Parse getCell(int row, int column)}}}|Returns the addressed table cell as a ''Parse''.|
+|{{{protected String getText(int row, int column)}}}|Returns the text within the addressed table cell.|
+|{{{protected boolean blank(int row, int column)}}}|Returns ''true'' if the addressed table cell is blank.|
+|{{{protected void wrong(int row, int column)}}}|Turns the addressed table cell red.|
+|{{{protected void right(int row, int column)}}}|Turns the addressed table cell green.|
+|{{{protected void wrong(int row, int column, String actual)}}}|Turns the addressed table cell red, and annotates it with the ''actuall'' value.|
+|{{{protected void ignore(int row, int column)}}}|Turns the addressed cell gray.|
+|{{{protected int getInt(int row, int column)}}}|Converts the addressed cell to an int, and returns it.|
+
+!2 An Example !-TableFixture-! Custom Test Table: Scoring a Bowling Game
+Consider the custom test table below.  It represents and scores an entire bowling game, showing the score for every frame. The rightmost cell represents what we expect the final score to be. Notice how closely this represents a real bowling game scoring card, or electronic game representation at a bowling alley? Let's first see the score for a perfect game:
+
+|!-eg.bowling.fixtures.FinalScore-!|
+|10|10|10|10|10|10|10|10|10|10|10|10||||||||||300|
+
+Now how about a slightly flawed game:
+
+|!-eg.bowling.fixtures.FinalScore-!|
+|10|10|4|10|10|10|10|10|10|10|10|10||||||||||262|
+
+And then finally, the sort of game you might ordinarily see. Well, I see it all the time, anyway:
+
+|!-eg.bowling.fixtures.FinalScore-!|
+|5|7|9|10|4|3|0|8|10|6|7|9||||||||||91|
+
+!3 The !-FixtureCode-! for !-FinalScore-!
+The fixture code for the above custom table style is as follows. It examines each of the input cells of the above table individually, as frame scores, and calculates the score for the game: {{{public class FinalScore extends TableFixture
+{
+  private BowlingGame game;
+
+  protected void doStaticTable(int rows)
+  {
+    game = new BowlingGame();
+    doRolls();
+    doScore();
+  }
+
+  private void doRolls()
+  {
+    for(int i = 0; i < 21; i++)
+    {
+      if(!blank(0, i))
+      {
+        int pins = getInt(0, i);
+        game.roll(pins);
+      }
+    }
+  }
+
+  private void doScore()
+  {
+    int expected = getInt(1, 21);
+    int actual = game.score(10);
+    if(actual == expected)
+      right(1, 21);
+    else
+      wrong(1, 21, "" + actual);
+  }
+}
+}}}
+

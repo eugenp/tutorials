@@ -1,0 +1,51 @@
+---
+Test
+---
+
+In this test we create a suite of 4 pages, which is partitioned in 3 parts. We expect our 4 pages to be split in one partition of 2 tests and two of 1 test (i.e. a 2-1-1 division).
+
+----
+
+Create a Suite page
+
+|script|Page Builder |
+|line  |${SUT_PATH}  |
+|page  |!-SuitePage-!|
+
+Create two sub pages
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPage1-!                    |
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPage2-!                    |
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPage3-!                    |
+
+|script|Page Builder                  |
+|line  |!-!define TEST_SYSTEM {slim}-!|
+|page  |!-SuitePage.TestPage4-!       |
+
+|Response Requester.                                                 |
+|uri                                                          |valid?|
+|!-SuitePage?responder=partition&format=tsv&partitionCount=3-!|true  |
+
+|Response Examiner.|
+|contents?         |
+|                  |
+
+The suite should report all !-TestPages-! in tab-separate format.
+
+|Response Examiner.                                         |
+|type    |pattern                                  |matches?|
+|headers |Content-Type: text/tab-separated-values  |true    |
+|contents|!-Page\tPartition\tTest System\tOrder\n-!|true    |
+|contents|!-SuitePage\.TestPage1\t0\tfit\t0\n-!    |true    |
+|contents|!-SuitePage\.TestPage2\t0\tfit\t1\n-!    |true    |
+|contents|!-SuitePage\.TestPage3\t1\tfit\t0\n-!    |true    |
+|contents|!-SuitePage\.TestPage4\t2\tslim\t0\n-!   |true    |
+

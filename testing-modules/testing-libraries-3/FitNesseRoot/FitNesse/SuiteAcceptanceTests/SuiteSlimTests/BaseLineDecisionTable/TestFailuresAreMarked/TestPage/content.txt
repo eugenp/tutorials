@@ -1,0 +1,23 @@
+|baseline: eg.Division                                           |
+|numerator|denominator|quotient?|# Explication                   |
+|10       |2          |5.0      |S1 Base scenario                |
+|20       |4          |         |S2 Same result as base - correct|
+|20       |6          |         |W3 Same result as base - wrong  |
+|         |5          |2.0      |S4 Same numerator as base       |
+|16       |           |8.0      |S5 Same denominator as base  |  |
+|22       |7          |~=3.14   |S6 Special comparator           |
+|9        |3          |7.0      |W7 Wrong result                 |
+|11       |2          |4<_<6    |S8 Special comparator           |
+|         |           |         |S9 Correct but duplicate        |
+
+Given you want to ignore outputs like ''quotient''
+Then the base scenario must ignore them already
+
+!define SLIM_DT_BASELINE (true)
+
+|eg.Division                                                    |
+|numerator|denominator|quotient?|# Explication                  |
+|10       |2          |         |S1 Base scenario - ignore      |
+|20       |4          |5.0      |S2  correct result             |
+|20       |6          |         |W3 Same result as base - ignore|
+|         |2          |5.0      |W3 Same result as base - ignore|

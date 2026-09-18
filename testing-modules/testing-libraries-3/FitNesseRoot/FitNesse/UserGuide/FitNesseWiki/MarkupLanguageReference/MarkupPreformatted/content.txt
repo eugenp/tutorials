@@ -1,0 +1,36 @@
+If you want a stretch of text that should be left alone then you can enclose that text in three braces as follows:
+'''!-{{{-!'''Text to be left alone'''!-}}}-!'''
+Between the braces no wiki words will be identified, no markup syntax will be decoded.  The text will be displayed in mono font exactly as it was typed. We use this technique a lot for showing samples of fixture code:
+{{{
+import fit.ColumnFixture;
+
+public class AddRemovePlayerFixture extends ColumnFixture {
+  public String playerName;
+  private Game theGame;
+
+  public boolean addPlayer() {
+    theGame = StaticGame.getInstance();
+    Player thePlayer = theGame.addPlayer(playerName);
+    return theGame.playerIsPlaying(thePlayer);
+  }
+
+  public int countPlayers() {
+    return theGame.getNumberOfPlayers();
+  }
+} }}}
+
+TodaysDate and MarkupVariables WILL be evaluated inside preformatted block. 
+
+!define MyVar {Hi}
+
+'''!-{{{-!'''
+Say !-${MyVar}-!, 
+today is !-!today-!
+'''!-}}}-!'''
+
+Will be rendered as:
+{{{
+Say ${MyVar}, 
+today is !today
+}}}
+

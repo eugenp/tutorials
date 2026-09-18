@@ -1,0 +1,14 @@
+You can define a custom comparator in the plugins.properties file. This is now done by providing a configuration to the SetUp constructor.
+
+!| script |
+| given page | TestPage | with content | ${SUT_PATH} !-
+!define TEST_SYSTEM {slim}
+| scenario | test in scenario |
+| check | echo | test | glob:t*t |
+
+!| script | fitnesse.fixtures.EchoFixture |
+| check | echo | test | glob:t*t |
+| test in scenario |
+-! |
+| test results for page | TestPage | should contain | t*t matches test |
+| ensure | content contains | 2 right, 0 wrong, 0 ignored, 0 exceptions |

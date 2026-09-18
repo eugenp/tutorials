@@ -1,0 +1,7 @@
+!|script|
+|one|
+|two|
+|three|
+|check|echo|$ONE|1|
+|check|echo|$TWO|2|
+|check|echo|$THREE|3|

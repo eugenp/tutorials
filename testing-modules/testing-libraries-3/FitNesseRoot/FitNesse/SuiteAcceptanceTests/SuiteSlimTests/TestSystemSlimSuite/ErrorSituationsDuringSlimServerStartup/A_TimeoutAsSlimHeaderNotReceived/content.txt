@@ -1,0 +1,23 @@
+!2 Once a connection to the socket is established the Slim Server must send a header message.
+Use the property slim.timeout to define how long the test system should wait for the slim client. The default is 10 seconds.
+
+We start the test system Slim but connect to the fitnesse wiki server instead of starting a valid slim server
+As a result we can connect to a socket but never get a Slim Header message.
+After slim.timeout seconds we should abort and stop the test.
+
+
+!| script                         |
+|create page|TestPage|with content|!-
+
+!define TEST_SYSTEM {SLIM}
+!define slim.timeout {1}
+!define slim.pool.size (1)
+!define SLIM_PORT (-!${FITNESSE_PORT}!-)
+!define SLIM_FLAGS (-v)
+-! |
+|check         |request page    |TestPage?test                             |200                     |
+|ensure        |content contains|Timeout while reading slim header from client.                     |
+|show collapsed|content                                                                             |
+|check         |request page    |TestPage?executionLog                     |200                     |
+|ensure        |content matches |!-Address already in use|java.net.BindException.* \(Bind failed\)-!|
+|show collapsed|content                                                                             |

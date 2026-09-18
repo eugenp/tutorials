@@ -1,0 +1,33 @@
+It is relatively simple to marry !-FitNesse-! to your source code control system. By default FitNesse is using a Zip-file based version control mechanism. As soon as a page is updated, a backup is made of the current version and the new version is put into place. Closely tied to the version controller is the .RecentChanges page. This page can be consulted to see who change what.
+
+The most basic implementation is the !-SimpleFileVersionsController-!. It just stores the content. This class is used as a basis for the !-ZipFileVersionsController-! and [[!-Git versions controller-!][https://github.com/amolenaar/fitnesse-git-plugin]].
+
+!2 Description of !-fitnesse.wiki.fs.VersionsController-!
+To create a version controller 3 things are important:
+
+ 1 The pages should be stored in a File system. The filesystem based wiki page is currently the only supported page type (but you're free to create your own)
+ 1 You'll need to implement the !-fitnesse.wiki.fs.VersionsController-! interface.
+ 1 To support recent changes you'll have to provide a class that implements the !-fitnesse.wiki.RecentChanges-! interface.
+
+The !-VersionsController-! interface is quite straightforward. All the relevant information is provided through the !-fitnesse.wiki.fs.FileVersion-! interface. This interface provides the file name, content, author and time information.
+
+The !-VersionsController-! interface consists of the following methods:
+
+{{{  VersionInfo makeVersion(FileVersion... fileVersion) throws IOException;}}}Create a new version/revision. This is typically called then a page is saved. Each !-FileVersion-! contains infomation about the file that is to be saved, the author and the content. Time information is usually less important. It might be that the author information is taken from the first file version provided (since all changes are to be saved as one commit anyway). Note that, since files are saved in directories, the directories are not mentioned as files-to-be-saved. It's up to the versions controller to take care of this.
+
+{{{  FileVersion[] getRevisionData(String revision, File... files);}}}Get a specific version of the files requested, given a revision indentifier. The label is either a property also provided by the !-VersionInfo-! object (typically name) or null, denoting the most recent version.
+
+{{{  Collection<? extends VersionInfo> history(File... files);}}}Obtain the history of a page. The history is as big as the depth set by setHistoryDepth(int) (see below).
+
+{{{  void addDirectory(FileVersion... files) throws IOException;}}}Create a new (versioned) directory. This operation is called from the http://files/ handlers.
+
+{{{  void rename(FileVersion fileVersion, File originalFile) throws IOException;}}}Rename a versioned file. This operation is called from the http://files/ handlers.
+
+{{{  void delete(FileVersion... files);}}}Delete the page. The author has to be set to the user performing the delete operation.
+
+{{{  void setHistoryDepth(int historyDepth);}}}Configure the depth for which versions need to be stored (in case of zip files) or the history depth for which changes are fetched (see history() above)
+
+!2 What happened to !-CmSystem-!?
+In older versions the convention was to create a !-CmSystem-! class: a class that fulfilled the !-CmSystem-! protocol. Although this appeared to work fine on paper the real world version had some downsides. For one it was not in control with the saving of the content, now the !-VersionsController-! is in charge of this. Also the protocol was quite cumbersome and it involved Java introspection logic to get it working. Why does your wiki page have to "know" about version control anyway...
+
+The !-VersionsController-! solution will be more solid can be made to provide generic solutions towards version control in FitNesse.

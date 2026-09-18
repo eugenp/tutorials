@@ -1,0 +1,66 @@
+!1 The below functions are used internally by Slim. They should not be used in normal test cases:
+* freeSymbol
+* cloneSymbol
+
+This page tests the above functions
+
+|import|
+|fitnesse.slim.test|
+
+!|Library|
+|EchoScript|
+|TableResultExtractor|
+
+!3 Check that the clone $copy of a symbol $q is a real clone and not impacted by a modification of the $q
+!|script| Test Query| 2|
+|$q= | query|
+|show | echo| $q|
+|$copy= | cloneSymbol | $q|
+|show | echo| $copy|
+|start | Test Query | 3|
+|$q= | query|
+|show | echo| $q|
+|show | echo| $copy|
+|check| echo |$copy| [[[n, 1], [2n, 2]], [[n, 2], [2n, 4]]]|
+|check |echo|$q|[[[n, 1], [2n, 2]], [[n, 2], [2n, 4]], [[n, 3], [2n, 6]]]|
+
+!3 Free the symbol
+!|script|
+|check| echo |$copy| [[[n, 1], [2n, 2]], [[n, 2], [2n, 4]]]|
+|check |echo|$q|[[[n, 1], [2n, 2]], [[n, 2], [2n, 4]], [[n, 3], [2n, 6]]]|
+|$q= | free symbol|
+|check| echo |$copy| [[[n, 1], [2n, 2]], [[n, 2], [2n, 4]]]|
+|check |echo|$q|null|
+
+!3  Get individual cell values from a query result (List<List<List<Object>>>)
+!|script|
+|check| echo |$copy| [[[n, 1], [2n, 2]], [[n, 2], [2n, 4]]]|
+|$cell= | getValueFromQueryResultSymbol;| $copy| 0| 2n|
+|check| echo |$cell|  2|
+|$cell= | getValueFromQueryResultSymbol;| $copy| 1| 2n|
+|check| echo |$cell|  4|
+|$cell= | getValueFromQueryResultSymbol;| $copy| 1| n|
+|check| echo |$cell|  2|
+|$cell= | getValueFromQueryResultSymbol;| $copy| 0| n|
+|check| echo |$cell|  1|
+
+!3 Get individual cell values from a table result (List<List<Object>>)
+!|script|
+|check| echo |$copy| [[[n, 1], [2n, 2]], [[n, 2], [2n, 4]]]|
+|$cell= | getValueFromTableResultSymbol;| $copy| 0| 0|
+|check | echo | $cell |[n, 1]|
+|$cell= | getValueFromTableResultSymbol;| $copy| 0| 1|
+|check | echo | $cell |[2n, 2]|
+|$cell= | getValueFromTableResultSymbol;| $copy| 1| 0|
+|check | echo | $cell |[n, 2]|
+|$cell= | getValueFromTableResultSymbol;| $copy| 1| 1|
+|check | echo | $cell |[2n, 4]|
+|check | getValueFromTableResultSymbol;| $copy| 1| 1| [2n, 4]|
+
+
+
+!3 Free the $copy, the $cell value must not be impacted
+|script|
+|$cell= | getValueFromTableResultSymbol;| $copy| 1| 1|
+|$copy= | free symbol|
+|check | echo | $cell |[2n, 4]|
