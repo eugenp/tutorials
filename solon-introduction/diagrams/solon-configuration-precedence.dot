@@ -1,5 +1,4 @@
 // Configuration layers described by https://solon.noear.org/article/301.
-// Verified against Solon 4.0.6 SolonProps and the configuration plugin APIs.
 digraph SolonConfiguration {
     graph [rankdir=TB, bgcolor="white", pad="0.25", nodesep="0.25", ranksep="0.32",
         fontname="Helvetica", fontsize=18, labelloc="t",
