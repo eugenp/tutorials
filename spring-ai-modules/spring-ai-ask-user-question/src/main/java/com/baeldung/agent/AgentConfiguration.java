@@ -5,7 +5,6 @@ import org.springaicommunity.agent.utils.CommandLineQuestionHandler;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
-import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,10 +12,7 @@ import org.springframework.context.annotation.Configuration;
 class AgentConfiguration {
 
     @Bean
-    ChatClient chatClient(ChatClient.Builder builder) {
-        ChatMemory chatMemory = MessageWindowChatMemory.builder()
-            .maxMessages(20)
-            .build();
+    ChatClient chatClient(ChatClient.Builder builder, ChatMemory chatMemory) {
         return builder
             .defaultSystem("You are an interactive CLI assistant.\n"
                 + "Be helpful, concise.\n"
