@@ -1,0 +1,20 @@
+You'll occasionally see a big ATTENTION message in your tests.  This typically means that something went wrong with the test and either Fit or Fitnesse had to bail out.  If you click on the link inside the message you'll be taken to a page that will show you everything we know about what went wrong, including any standard error output from any of your fixtures.
+
+The execution log information is stored alongside the test history. So you will not get it if you execute your tests with the ''?noHistory'' option enabled. 
+
+This page is ''always'' created whenever you run a test, not just when there are errors.  So even if you don't get the big ATTENTION message, you can still go to the appropriate execution log page to see things like the command that was used to run your test, and the time it took to run the test, etc.
+
+You can access the execution log of previous runs by going to the Test- or Page history. There you can select the output of a specific run. This page will contain a link to the appropriate execution log information. Note that most information (such as the command used to start the test/suite) is only saved once as part of the execution log of the initiating page.
+
+An !-execution log-! page typically looks like this:
+
+| '''Date: ''' | !-6:49:19 PM (CST) on Thursday, February 26, 2004-! |
+| '''Command: ''' | !-java -cp fitnesse.jar;classes fit.FitServer-! |
+| '''Exit code: ''' | !-0-! |
+| '''Time elapsed: ''' | !-0.28 seconds-! |
+
+----
+{{{ This is an error
+}}}
+
+!2

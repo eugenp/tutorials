@@ -1,0 +1,52 @@
+!|scenario|it should be readable with no authentication|
+|check|request page|$IT|200|
+
+!|scenario|it should not be readable with no authentication|
+|check|request page|$IT|401|
+
+!|scenario|it should be readable by user|user|password|password|
+|check|request page|$IT|authenticated by user|@user|and password|@password|200|
+
+!|scenario|it should not be readable by user|user|password|password|
+|check|request page|$IT|authenticated by user|@user|and password|@password|401|
+
+!|scenario|given read locked page|page|
+|create page|@page|with authentication|secure-read=true|
+|$IT=|echo|@page|
+
+!|scenario|given write locked page|page|
+|create page|@page|with authentication|secure-write=true|
+|$IT=|echo|@page|
+
+!|scenario|given test locked page|page|
+|create page|@page|with authentication|secure-test=true|
+|$IT=|echo|@page|
+
+!|scenario|directory|dir|should not be readable with no authentication|
+|check|request page|@dir|401|
+
+!|scenario|directory|dir|should not be readable by user|user|password|password|
+|check|request page|@dir|authenticated by user|@user|and password|@password|401|
+
+!|scenario|directory|dir|should be readable by user|user|password|password|
+|check|request page|@dir|authenticated by user|@user|and password|@password|200|
+
+!|scenario|it should be not readable with no authentication|
+|check|request page|$IT|401|
+
+!|scenario|it should not be readable by user|user|password|password|
+|check|request page|$IT|authenticated by user|@user|and password|@password|401|
+
+!|scenario|it should be readable by user|user|password|password|
+|check|request page|$IT|authenticated by user|@user|and password|@password|200|
+
+!|scenario|operation|operation|with bad authentication should fail|
+|check|request page|$IT?@operation|authenticated by user|Aladdin|and password|open please|401|
+
+!|scenario|operation|operation|with good authentication should not fail|
+|check not|request page|$IT?@operation|authenticated by user|Aladdin|and password|open sesame|401|
+
+!|scenario|operation|operation|is authenticated|
+|operation|@operation|with bad authentication should fail|
+|operation|@operation|with good authentication should not fail|
+

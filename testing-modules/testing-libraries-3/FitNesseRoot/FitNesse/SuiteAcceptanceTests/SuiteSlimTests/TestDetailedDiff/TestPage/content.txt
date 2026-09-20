@@ -1,0 +1,151 @@
+#Don't remove this start magic to include and test this page in another page
+${exclamation}${minus}
+
+!define TEST_SYSTEM {slim}
+
+!| import |
+| fitnesse.slim.test |
+
+
+Test Strings by plain compare, neither custom compare nor regular expression.
+In this case detailed diff is wanted.
+
+| Detailed Diff |
+| actual string | expected string? | #comment                                                  |
+| abc           | abc              | equal                                                     |
+| abc           | xyz              | completly different                                       |
+| abc           | xbc              | first char different                                      |
+| abc           | ayc              | middle char different                                     |
+| abc           | abz              | last char different                                       |
+|               | xyz              | actual empty, expected filled                             |
+| abc           |                  | actual filled, expected empty; will be counted as ignored |
+| <&>           | <&>              | equal with HTML special chars                             |
+| <&>           | xyz              | completly different with HTML special chars               |
+| <&>           | x&>              | first char different with HTML special chars              |
+| <&>           | <y>              | middle char different with HTML special chars             |
+| <&>           | <&z              | last char differentwith HTML special chars                |
+|               | <&>              | actual empty, expected filled with HTML special chars     |
+| abc           | <&>              | completly different with HTML special chars               |
+| abc           | <bc              | first char different with HTML special chars              |
+| abc           | a&c              | middle char different with HTML special chars             |
+| abc           | ab>              | last char different with HTML special chars               |
+| Hello World   | Wellcome Lord    | no obvious match                                          |
+
+Test Strings by regular expression.
+In this case no detailed diff is wanted.
+
+| Detailed Diff |
+| actual string | expected string? | #comment |
+| abc           | =~/abc/          | match    |
+| abc           | =~/a.c/          | match    |
+| abc           | =~/\w+/          | match    |
+| abc           | =~/\w{3}/        | match    |
+| abc           | =~/^\w{3}$/      | match    |
+| abc           | =~/\w{1}/        | match    |
+| abc           | =~/^\w{1}$/      | no match |
+| abc           | =~/[ABC]+/       | no match |
+| abc           | =~/[ABC]+/i      | wrong syntax, disable value comparison, use string comparison |
+
+
+Test integers by string comparison.
+In this case detailed diff ist wanted.
+
+| Detailed Diff |
+| actual int | expected int? | #comment |
+| 1          | 1             | equal    |
+| 1          | 2             | completly different |
+| 1          | 10            | partially different |
+|            | 1             | completly different |
+
+Test integers by value comparison, see <FitNesse.UserGuide.WritingAcceptanceTests.SliM.ValueComparisons
+In this case no detailed diff is wanted.
+
+| Detailed Diff |
+| actual int | expected int? | #comment |
+| 1          | >=1           | ok |
+| 1          | <2            | ok |
+| 1          | >1            | nok |
+| 1          | =1            | ok |
+| 1          | <1            | nok |
+| 1          | 0<_<2         | ok |
+| 1          | 2<_<0         | nok, logically wrong |
+| 1          | 0>_>2         | wrong syntax, disable value comparison, use string comparison |
+| 1          | 2>_>0         | wrong syntax, disable value comparison, use string comparison |
+
+
+Test doubles by string comparison.
+In this case detailed diff is wanted.
+
+| Detailed Diff |
+| actual double | expected double? | #comment |
+| 1.0           | 1.0              | equal    |
+| 1.1           | 222              | completly different |
+| 1.0           | 10               | partially different |
+|               | 1.0              | partially different |
+
+Test doubles by value comparison, see <FitNesse.UserGuide.WritingAcceptanceTests.SliM.ValueComparisons
+In this case no detailed diff is wanted.
+
+| Detailed Diff |
+| actual double | expected double? | #comment |
+| 1             | >=1              | ok |
+| 1             | <2               | ok |
+| 1             | >1               | nok |
+| 1             | =1               | ok |
+| 1             | <1               | nok |
+| 1             | 0<_<2            | ok |
+| 1             | 2<_<0            | nok, logically wrong |
+| 1             | 0>_>2            | wrong syntax, disable value comparison, use string comparison |
+| 1             | 2>_>0            | wrong syntax, disable value comparison, use string comparison |
+| 1.0           | ~=1              | ok |
+| 1.1           | ~=1              | ok |
+| 0.9           | ~=1              | ok |
+| 1.0           | ~=1.0            | ok |
+| 1.1           | ~=1.0            | nok |
+| 0.9           | ~=1.0            | nok |
+
+
+Test symbols by string comparison.
+
+| Detailed Diff |
+| actual symbol | expected symbol? | #comment |
+| def           | $symbol=         | |
+| $symbol       | def              | |
+| $symbol       | xyz              | |
+| $symbol       | xef              | |
+| $symbol       | dyf              | |
+| $symbol       | dez              | |
+| def           | $symbol          | |
+| xyz           | $symbol          | |
+| xef           | $symbol          | |
+| dyf           | $symbol          | |
+| dez           | $symbol          | |
+|               | $symbol          | |
+
+
+Test custom comparator, see <FitNesse.UserGuide.AdministeringFitNesse.ConfigurationFile
+The inverse comparator fitnesse.slim.test.InverseComparator negates the method String.equals(String).
+
+| script | Detailed Diff |
+| note  | everything not equals to 'abc' is ok |
+| check | echo | abc | inverse:xyz |
+| note  | everything not equals to 'abc' is ok |
+| check | echo | abc | inverse:ABC | 
+| note  | everthing not equals to 'abc' is ok |
+| check | echo | abc | inverse:cba | 
+| note  | only 'abc' is nok |
+| check | echo | abc | inverse:abc |
+
+
+Test Scenario and Script
+
+!| Scenario | Detailed Diff Scenario Test |
+| start | Detailed Diff |
+| check | echo | hello | hello |
+| check | echo | hello | hallo |
+
+!| Script |
+| Detailed Diff Scenario Test |
+
+#Don't remove this end magic to include and test this page in another page
+${minus}${exclamation}

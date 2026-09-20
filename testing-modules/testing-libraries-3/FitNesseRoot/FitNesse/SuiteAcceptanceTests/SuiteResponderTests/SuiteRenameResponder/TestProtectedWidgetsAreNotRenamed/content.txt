@@ -1,0 +1,42 @@
+!3 Only true page references should be changed during a rename.
+
+There are several widgets that contains strings that might match the pattern for a wiki word.  When
+a page is renamed, those strings should not be affected.
+
+First build a page with lots of these ''protected'' widgets.
+
+!|script|Page Builder|
+|line|!-!path TargetPage-!|
+|line|!-http://objectmentor.com/TargetPage-!|
+|line|!-!img http://objectmentor.com/TargetPage.jpg-!|
+|line|!-{{{TargetPage}}}-!|
+|line|!-# TargetPage-!|
+|line|!- !-TargetPage-! -!|
+|line|this link should be renamed !-TargetPage-!|
+|page|!-ProtectedWidgetPage-!|
+
+Next create the target page.
+
+|Page creator.|
+|Page name.|Page contents.|valid?|
+|!-TargetPage-!|whatever|true|
+
+Then rename that page.
+
+|Response Requester.|
+|uri   |status?|
+|!-TargetPage?responder=renamePage&newName=RenamedPage&refactorReferences=on-!||
+
+Next fetch the page.
+
+|Response Requester.|
+|uri|valid?|contents?|
+|!-ProtectedWidgetPage-!|true||
+
+Make sure that the new page name does not appear.
+
+|Response Examiner.|
+|type  |pattern|matchCount?|wrapped html?|
+|contents|!-RenamedPage&lt;/a>-!|1||
+
+

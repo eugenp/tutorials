@@ -1,0 +1,41 @@
+Renaming a Symbolic Link is done from the properties view of the page containing the link.  Each link in the list will have a '''Rename''' link that will initiate the renaming.  The link contains a URL of the form:
+!***********************************************< HIDDEN
+!define CODE {!-<pre><font size=-1>-!}
+!define code {!-</font></pre>-!}
+!define B    {!-<b>-!}
+!define b    {!-</b>-!}
+!define VAR  {!-<font color=blue><em>-!}
+!define var  {!-</em></font>-!}
+********************************************************!
+${CODE}${B}!-http://host/PathToPage?responder=symlink&rename=-!${b}${VAR}nameOfLink${var}${B}&newname=${b}${VAR}newNameForLink${var}${code}
+
+But first we need to create a link to rename.
+!include CreateRelativeSymbolicLink
+
+When we look at the properties page we'll see the rename link.
+!|Response Requester.|
+|uri   |status?|
+|LinkingPage?properties|200|
+!|Response Examiner.|
+|type  |pattern|matches?|contents?|
+|contents|SymLink|true||
+|contents|<a href="javascript:symbolicLinkRename\(.*\);">Rename</a>|true||
+
+Now click the '''Rename''' link.
+!|Response Requester.|
+|uri   |status?|
+|LinkingPage?responder=symlink&rename=SymLink&newname=NewLink|303|
+
+This should change the name of the symbolic link and redirect back to the properties view.
+!|Response Examiner.|
+|type  |pattern|matches?|contents?|
+|contents|Location: /LinkingPage\?properties|true||
+
+When we look at the properties page again, the symbolic link will have a different name.
+!|Response Requester.|
+|uri   |status?|
+|LinkingPage?properties|200|
+!|Response Examiner.|
+|type  |pattern|matches?|
+|contents|NewLink|true|
+|contents|SymLink|false|

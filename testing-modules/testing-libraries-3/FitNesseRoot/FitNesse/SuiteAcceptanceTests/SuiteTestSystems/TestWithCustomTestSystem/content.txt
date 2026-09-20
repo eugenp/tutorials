@@ -1,0 +1,11 @@
+!| add test system | echo | fitnesse.testsystems.example.EchoTestSystemFactory |
+
+!| script |
+| create page | TestPage | with content | !-
+!define TEST_SYSTEM {echo}
+
+An example test does not have to be in table format
+-! |
+| check | request page | TestPage?test | 200 |
+| ensure | content contains | TEST_SYSTEM=echo |
+| show | content |

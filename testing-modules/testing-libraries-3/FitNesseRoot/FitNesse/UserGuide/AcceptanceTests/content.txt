@@ -1,0 +1,41 @@
+!1 Automated Acceptance Tests: Building the Right Code
+!-FitNesse-! automated acceptance tests are power tools for fixing a broken requirements process. Skillfully applied, such tests make it possible to avoid the problems of ProjectDeathByRequirements. (Note: if you have not yet done so, you should probably first get a quick intro on !-FitNesse-! tests at the TwoMinuteExample.)
+
+!2 The Advantages of !-FitNesse-! Tests
+!-FitNesse-! automated acceptance tests have several advantages over many kinds of traditional black-box, GUI-based functional tests:
+
+ * !-FitNesse-! tests can give us feature feedback '''very early''' in the project. In fact, the tests ought to be written '''first''', so programmers can ''code to'' the tests.
+ * !-FitNesse-! tests can give us feature feedback '''very frequently'''. They can be run manually or automatically by anyone with web access to the server, as frequently as required. Every week, every day, every hour in a crunch.
+ * !-FitNesse-! tests are '''deterministic''': they either run green or red. If they run green for a given requirement, either the requirement is done and we move on to others, or the set of tests is not yet exactly right, in which case we refine them. Either way, we are '''successively refining''' the system in an orderly way. With each new test running green, we can all see the system getting better, more valuable, closer to what we need.
+ * Being based on example data, !-FitNesse-! tests '''exercise more paths through the business logic'''. When you use !-FitNesse-!, you run less risk of missing important features or functional behavior.
+
+!2 Acceptance Tests vs. Unit Tests
+If you are familiar with the emerging [[xUnit][http://encyclopedia.thefreedictionary.com/XUnit]] style of automated unit testing (e.g., using [[JUnit][http://www.junit.org]] for Java, or [[NUnit][http://www.nunit.org]] for C#), you may well wonder why both kinds of testing are necessary, and how they work together. Let's discuss that.
+
+!3 [[xUnit][http://encyclopedia.thefreedictionary.com/XUnit]]: Building the ''Code Right''
+Automated unit tests (or programmer tests, as they are increasingly called), are white-box tests that describe and verify very low-level behavior. Especially when working test-first, programmers rely on such tests to make sure that the design is sound, and that there are no defects. Such tests are built by and largely for programmers, and can be independent of functionality.
+
+If a team using [[JUnit][http://www.junit.org]] or [[NUnit][http://www.nunit.org]] to do Test-Driven Development is still hampered by a broken requirements process, they can easily end up building robust, lean, well-factored code with no business value. (This is, in fact, happening with increasing frequency.)
+
+!3 !-FitNesse-!: Building the ''Right Code''
+!-FitNesse-! automated tests are about building the right code in the first place: the code with the most business value. While programmers may be involved in writing such tests, they are not just for programmers. !-FitNesse-! tests are especially for customers, business analysts, testing professionals, support staff, management, and all other stakeholders who need evidence that the project is producing solid return on investment.
+
+!3 "Running, Tested Features"
+Ron Jeffries articulates the idea that the ultimate software project metric, the one closest to ROI, is '''[[Running, Tested Features][http://ronjeffries.com/xprog/articles/jatrtsmetric/]]'''. How many RTF did we deliver last iteration, or last month, or last release? '''Only a tool like '''!-FitNesse-!''' can answer these questions.'''
+
+Without a solid tool for automated acceptance tests, you cannot know how many RTF you produce per unit time, so perhaps you cannot easily determine what your project ROI is. Perhaps your team is headed for ProjectDeathByRequirements.
+
+!2 Consider Using Both Tools
+If you use !-FitNesse-! without using [[JUnit][http://www.junit.org]] or [[NUnit][http://www.nunit.org]] to test-drive and refactor your code, you may end up with tremendous business value, but rotten, buggy code. Even if the bugs don't kill you, this is short-sighted; it's a way of sacrificing release 3 to release 1. You have to keep the code lean and extensible to prevent code rot. Otherwise, your rotten codebase will need to be rewritten from scratch, long before it has exhausted its business value.
+
+With both tools, you can balance production and production capacity. You can deliver the features that produce highest ROI, while producing robust, clean, extensible code. You might find that you get addicted to the early, frequent feedback that automated tests provide. Your whole team could get addicted to Building the Right Code, and Building the Code Right.
+
+!2 Summary
+ * !-FitNesse-! automated acceptance tests have several advantages over traditional functional testing. These advantages are good both for requirements management and for feature verification.
+ * Only automated acceptance testing (such as that provided by !-FitNesse-!) enables you to measure [[Running, Tested Features][http://www.xprogramming.com/xpmag/jatRtsMetric.htm]], which is a key metric for measuring software project progress and success.
+ * !-FitNesse-! automated acceptance testing is a natural complement to [[xUnit][http://encyclopedia.thefreedictionary.com/XUnit]]-based unit testing. The former helps you build the right code, while the latter helps you build the code right. Consider using both tools.
+
+!2 Learning More
+If you have not yet done so, check out the TwoMinuteExample. For more information on how teams can work together with !-FitNesse-! tests to deliver better systems, see DeliveringTheRightSystem.
+
+If you are ready to start creating !-FitNesse-! pages and test tables, check out how to [[work with !-FitNesse-! wiki pages][.FitNesse.UserGuide.FitNesseWiki]] and [[create acceptance tests][.FitNesse.UserGuide.WritingAcceptanceTests]].

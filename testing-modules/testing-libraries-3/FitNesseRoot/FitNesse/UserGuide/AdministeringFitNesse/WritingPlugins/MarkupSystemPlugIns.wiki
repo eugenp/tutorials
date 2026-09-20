@@ -1,0 +1,24 @@
+A markup system plugin allows the use of markup syntax different from the standard !-FitNesse-! wiki markup.
+
+The plugin registers itself with a name and a factory function:
+{{{public class PluginFeatureFactory extends PluginFeatureFactoryBase {
+
+  @Override
+  public void registerMarkupSystems(MarkUpSystems systems) {
+    systems.register(MyMarkup.NAME, MyMarkup::new);
+    System.out.println(MyMarkup.NAME + " system registered");
+    ... any initialization required ...
+  }
+}
+}}}
+The markup system class must implement the !-MarkUpSystem-! interface:
+{{{public class MyMarkup implements MarkUpSystem {
+  public static final String NAME = "mymarkup";
+  ... implemented methods...
+}
+}}}
+To use the new markup syntax, include a comment with the markup system name on the first line of the page:
+{{{#lang mymarkup
+... page content ...
+}}}
+Other pages in the wiki will continue to use the standard wiki syntax.

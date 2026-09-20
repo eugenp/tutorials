@@ -1,0 +1,22 @@
+!1 The !-ClassPath-!: Telling FitNesse Where the FixtureCode Is
+
+For a given [[Sub Wiki][<UserGuide.FitNesseWiki.SubWiki]] of test pages, you can specify to FitNesse where it can find all of the fixture classes it needs by supplying a so-called ClassPath definition, which is a full absolute filepath to the directory that contains the package (in Java) or assembly (in C#) in which all the compiled classes can be found.  Simply include a ClassPath definition on the main page of your [[Sub Wiki][<UserGuide.FitNesseWiki.SubWiki]].
+
+
+The wiki markup widget you use is the !-!path-! widget. The format, in wiki markup language, looks like this:
+
+{{{!path   C:\workspace\TriviaGameFitNesseExample\}}}
+
+And on a page, the same definition looks like this:
+
+!path C:\workspace\TriviaGameFitNesseExample\
+
+!3 How Fit Locates ClassPath Definitions in !-SubWikis-!
+Whenever Fit processes test tables on a given page, it build its own internal class path by finding the !path directives on the current page, and on every ancestor page.  In other words, it looks '''up''' the page hierarchy of [[!-SubWikis-!][<UserGuide.FitNesseWiki.SubWiki]].
+
+This makes it possible for you to use !path directives on sub pages to override !path directives on parent pages. Thus you can create global classpaths, project specific classpaths, and even module-specific classpaths.
+
+!2 Learning More
+If you are interested in FitNesse fixture code in general, check out FixtureCode. For information on organizing test pages into hierarchies, see [[Sub Wiki][<UserGuide.FitNesseWiki.SubWiki]] and TestSuites.
+
+

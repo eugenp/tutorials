@@ -1,0 +1,12 @@
+What if you want to call the fixture 'n' times with the same row except you want to update one or two column's value?
+
+Ex: If you are using fitnesse fixtures to populate database and you want to insert a record 500 times. It would be easy to write one model record and insert that 500 times. This can be easily done with the !-CopyAndAppendLastRow-! decorator. But the database table might have a primary key. So you might want to update the primary key in each row. Now you might want to pipe !-IncrementColumnsValue-! and !-CopyAndAppendLastRow-! decorators to get the job done.
+
+Here is an example where I want to divide 5 by 1, 100 times, but I also want to update the numerator by 5 and denominator by 1.
+
+!|Copy and Append Last Row|100|times|
+|Increment Columns Value|numerator|of type|int|by|5|
+|Increment Columns Value|denominator|of type|int|by|1|
+|Division|
+|numerator|denominator|quotient()|
+|5|1|5|

@@ -1,0 +1,9 @@
+!|page history|
+|name|date|right|wrong|ignores|exceptions|
+|TestPage|5-May-2009|20|30|0|0|
+
+!|script|
+|get history for page|TestPage|
+|The page history line for|05 May, 09 00:00|should be a link to result|20090505000000|
+
+

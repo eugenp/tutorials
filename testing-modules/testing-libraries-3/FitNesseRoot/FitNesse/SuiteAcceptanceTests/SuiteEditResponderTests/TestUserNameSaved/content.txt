@@ -1,0 +1,7 @@
+The username is saved when a page is edited.  It is visible through use of the !-!lastmodified-! widget.
+
+!|script|
+|save page|MyPage|with contents|!lastModified|
+|it should not contain|bob|
+|save page|MyPage|with contents|!lastmodified|by user|bob|
+|it should contain|bob|

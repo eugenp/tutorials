@@ -1,0 +1,15 @@
+There are some special functions in FitNesse that require you to name a directory path.  You do this with the !path directive.
+
+|!c '''Markup Text'''|!c '''Displays as'''|
+|!-!path c:\directory-!|!path c:\directory|
+
+You can also specify all the .jar files in a directory by using a wildcard:
+{{{!-!path /usr/javalib/*.jar-!}}}
+
+Or you can specify all .jar files in a directory ''and all subdirectories'' by using the ** wildcard.
+{{{!-!path /usr/javalib/**.jar-!}}}
+
+Paths such as these will be used when you press the ''test'' or ''suite'' buttons on a page.
+
+
+

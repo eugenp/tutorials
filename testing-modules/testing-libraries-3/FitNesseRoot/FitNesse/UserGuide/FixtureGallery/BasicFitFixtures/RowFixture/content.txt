@@ -1,0 +1,91 @@
+''Previous page: [[!-ActionFixture-!][<UserGuide.FixtureGallery.BasicFitFixtures.ActionFixture]] Next page: [[!-TableFixture-!][<UserGuide.FixtureGallery.BasicFitFixtures.TableFixture]] Parent page: [[!-Basic FIT fixtures-!][<UserGuide.FixtureGallery.BasicFitFixtures]]''
+!2 !-RowFixture-!
+'''!- RowFixture -!'''!- tests dynamic lists of objects. It will compare the expected list (FitNesse table) with the actual result (from fixture code) and report any additional or missing items. -!
+
+# section Table Format
+!3 !-Table Format-!
+!- The first row of the table is the fixture class name. The second row describes the structure of objects in the list (the properties or methods that you want to verify). All rows after that describe expected objects in the array. -!
+
+{{{
+!-!-!include -seamless SetUpFixture
+
+!-!-!|RowFixtureTest|
+|name|post code|
+|John Smith|SW4 66Z|
+|Michael Jordan|NE1 8AT|
+}}}
+# section Fixture class
+!3 !-Fixture class-!
+!-The fixture class should extend -!'''!- fit.RowFixture -!'''!- and override the following two methods:-!
+
+!- <ul> -!!- <li> -!'''!- getTargetClass -!'''!- &mdash; returns the -!'''!- Type -!'''!- or -!'''!- Class -!'''!- object representing the type of objects contained in the array. -!!- </li> -!!- <li> -!'''!- query -!'''!- &mdash; returns the actual array of objects to be verified.-!!- </li> -!!- </ul> -!# section Java Source Code
+!3 !-Java Source Code-!
+{{{
+package info.fitnesse.fixturegallery;
+
+import info.fitnesse.fixturegallery.domain.Player;
+import fit.RowFixture;
+
+public class RowFixtureTest extends RowFixture{
+	public Class getTargetClass() {
+		return Player.class;
+	}
+	public Object[] query() throws Exception {
+			return Player.players.toArray();
+	}
+}
+}}}
+# section .NET Source Code
+!3 !-.NET Source Code-!
+{{{
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace info.fitnesse.fixturegallery
+{
+    public class RowFixtureTest: fit.RowFixture
+    {
+        public override Type GetTargetClass()
+        {
+            return typeof(Player);
+        }
+        public override object[] Query()
+        {
+            return Player.players.ToArray();
+        }
+    }
+}
+}}}
+# section Python Source Code
+!3 !-Python Source Code-!
+{{{
+from fit.RowFixture import RowFixture
+from info.fitnesse.fixturegallery.domain.Player import Player
+
+class RowFixtureTest(RowFixture):
+    def getTargetClass(self):
+        return Player
+
+    def query(self):
+        return list(Player.players) #< Return copy of players
+}}}
+# section Notes
+!3 !-Notes-!
+!-If the object has some properties that can be considered part of the identity (such as a primary key), list those properties to the left, before auxiliary properties. This will make error reports easier to read. Consider the -![[!-Figure 1-!][<UserGuide.FixtureGallery.BasicFitFixtures.RowFixture#figbasicfixturesrowmap]]!- &mdash; the error is absolutely the same in both cases, but because of the column order one test report clearly identifies the offending cell and the other just reports that a whole row is missing. -!
+
+
+!anchor figbasicfixturesrowmap
+!3 Figure 1: !-RowFixture maps rows to objects from left to right-!
+!-The -!'''!- query -!'''!- method does not allow you to pass any additional arguments. For more information on how to parameterise this list, see -![[!-Fixture Arguments-!][<UserGuide.FixtureGallery.ImportantConcepts.FixtureArguments]]!- .-!
+
+!-The order of elements in the list is irrelevant, -!'''!- RowFixture -!'''!- will ignore it. -!
+
+# section Usage
+!3 !-Usage-!
+!- Use -!'''!- RowFixture -!'''!- to test and verify lists of objects, or to execute a method on every object in the list. -!
+
+!- Do not use -!'''!- RowFixture -!'''!- when the element order is important. Use -!'''!- ArrayFixture -!'''!- instead (see -![[!-ArrayFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.ArrayFixture]]!-). -!
+
+
+''Previous page: [[!-ActionFixture-!][<UserGuide.FixtureGallery.BasicFitFixtures.ActionFixture]] Next page: [[!-TableFixture-!][<UserGuide.FixtureGallery.BasicFitFixtures.TableFixture]] Parent page: [[!-Basic FIT fixtures-!][<UserGuide.FixtureGallery.BasicFitFixtures]]''

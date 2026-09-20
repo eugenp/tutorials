@@ -1,0 +1,31 @@
+!2 How to enable for Kerberos/Active Directory
+!note Not tested as part of the normal build.  Use at your own risk.
+
+Enable this plugin by editing !style_code(plugins.properties) and adding the line:
+!style_code(!-Authenticator = fitnesse.authentication.NegotiateAuthenticator-!)
+
+If using Kerberos on Unix, create a !style_code(jaas-krb5.conf) file with these contents:
+{{{
+com.sun.security.jgss.accept  {
+       com.sun.security.auth.module.Krb5LoginModule required
+       storeKey=true
+       isInitiator=false
+       principal=&quot;HTTP/your.web.server@YOUR.REALM&quot;
+       useKeyTab=true
+       keyTab=&quot;/path/to/your/http.keytab&quot;
+       ;
+    };
+}}}
+Next, define these system properties when running the FitNesse server:
+
+{{{
+-Djavax.security.auth.useSubjectCredsOnly=false
+-Djava.security.auth.login.config=/path/to/jaas-krb5.conf
+-Dsun.security.krb5.debug=true
+}}}
+You can remove the !style_code(krb5.debug) property later, when you know it's working.
+
+{{{
+ * @author David Leonard Released into the Public domain, 2009. No warranty:
+ *         Provided as-is.
+}}}

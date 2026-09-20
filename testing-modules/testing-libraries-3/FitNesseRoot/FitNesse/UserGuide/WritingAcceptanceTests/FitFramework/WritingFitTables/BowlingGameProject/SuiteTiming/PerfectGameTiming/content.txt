@@ -1,0 +1,17 @@
+|Game timing.|
+|pins|roll()|currentFrame()|currentBall()|scorableFrame()|currentScore()|validGame()|gameOver()|
+|  - |      |      1       |      1      |      0        |      0       |   true    |   false  |
+| 10 |      |      2       |      1      |      0        |      0       |   true    |   false  |
+| 10 |      |      3       |      1      |      0        |      0       |   true    |   false  |
+| 10 |      |      4       |      1      |      1        |     30       |   true    |   false  |
+| 10 |      |      5       |      1      |      2        |     60       |   true    |   false  |
+| 10 |      |      6       |      1      |      3        |     90       |   true    |   false  |
+| 10 |      |      7       |      1      |      4        |    120       |   true    |   false  |
+| 10 |      |      8       |      1      |      5        |    150       |   true    |   false  |
+| 10 |      |      9       |      1      |      6        |    180       |   true    |   false  |
+| 10 |      |     10       |      1      |      7        |    210       |   true    |   false  |
+| 10 |      |     10       |      2      |      8        |    240       |   true    |   false  |
+| 10 |      |     10       |      3      |      9        |    270       |   true    |   false  |
+| 10 |      |     10       |      0      |     10        |    300       |   true    |   true   |
+
+|Summary|

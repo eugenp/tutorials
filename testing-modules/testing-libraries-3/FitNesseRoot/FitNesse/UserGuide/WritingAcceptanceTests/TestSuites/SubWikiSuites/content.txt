@@ -1,0 +1,22 @@
+!3 [[!-SubWiki-!][<FitNesse.FullReferenceGuide.UserGuide.FitNesseWiki.SubWiki]]: the Most Convenient Way to Organize [[!-TestSuites-!][<FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.TestSuites]]
+
+[[!-SubWikis-!][<FitNesse.FullReferenceGuide.UserGuide.FitNesseWiki.SubWiki]] are convenient for creating a hierarchical structure for your suite of tests.  You can put test pages below subsystems and/or features.  You can organize [[!-ClassPath-!][<FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.ClassPath]] and variable definitions in the parent pages.  When you hit the ''Suite'' button on a parent page, all the descendant pages that have the ''Test'' property will be executed as part of the suite.  FitNesse's own set of acceptance tests is organized this way.  See <FitNesse.SuiteAcceptanceTests.
+
+You can use the hierarchy to organize your test by Iteration, or by Feature, or by any other scheme you like.  The acceptance tests for FitNesse are organized by feature.  Other teams organize by iteration.  A typical hierarchy by iteration might look like this:
+
+{{{
+MyProject
+  IterationOne
+    StoryOne
+      TestCaseOne
+      TestCaseTwo
+      ...
+    StoryTwo
+      TestCaseOne
+      TestCaseTwo
+      ...
+    ...
+  ...
+}}}
+Of course you'd use better names than that.  You could then mark the project, iteration, and story pages as suites.  If you hit the suite button on the project page it would execute every test in the project.  If you hit the suite button on MyProject.IterationOne.StoryTwo it would execute only those tests in the second story of the first iteration.
+

@@ -1,0 +1,7 @@
+If you want to run FitNesse tests via Maven there are a couple of options:
+
+1. Use the FitNesse Launcher plugin: http://fitnesse-launcher-maven-plugin.googlecode.com/svn/maven/site/fitnesse-launcher-maven-plugin/config.html
+2. Use the Mafia Maven plugin: https://github.com/sijpesteijn/mafia-maven-plugin
+3. Use the Maven Ant plugin: http://blog.xebia.com/fitnesse-and-dependency-management-with-maven
+
+All performing the same basic tasks (start a server, run tests via a ''test'' or ''integration-test'' target).

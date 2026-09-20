@@ -1,0 +1,10 @@
+!|Import          |
+|fitnesse.fixtures|
+
+!| SetUp|!-Plugins=fitnesse.testsystems.slim.CustomTableAliasPlugin
+Plugins=fitnesse.testsystems.slim.CustomScriptTableRenderingPlugin
+CustomComparators=glob:fitnesse.testsystems.slim.GlobComparator-! |
+
+|Library     |
+|page driver |
+|echo fixture|

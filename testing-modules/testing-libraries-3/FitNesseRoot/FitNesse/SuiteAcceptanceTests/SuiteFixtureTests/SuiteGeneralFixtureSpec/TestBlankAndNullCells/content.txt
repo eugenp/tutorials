@@ -1,0 +1,21 @@
+!3 If a cell contains ''"blank"'' or ''"null"'' then treat it as truly blank or truly null.
+
+Lots of people have had trouble with blank cells.  In Fit, blank cells are automatically filled with the value of the variable or function, and no check is performed.  Unfortunately this means that there was no good test for truly null or truly blank fields.  So these keywords were added to allow users to enter them.
+
+!|fitnesse.fixtures.NullAndBlankFixture|
+|nullString|blankString|nullString?|blankString?|isNull?|isBlank?|
+|null      |blank      |null       |blank        |Y      |Y      |
+|          |           |           |             |Y      |Y      |
+|bob       |micah      |           |             |N      |N      |
+
+{{{
+public class NullAndBlankFixture extends ColumnFixture
+{
+  public String nullString;
+  public String blankString;
+  public String nullString() {return null;}
+  public String blankString() {return "";}
+  public boolean isNull() {return nullString == null;}
+  public boolean isBlank() {return blankString.length() == 0;}
+}
+}}}

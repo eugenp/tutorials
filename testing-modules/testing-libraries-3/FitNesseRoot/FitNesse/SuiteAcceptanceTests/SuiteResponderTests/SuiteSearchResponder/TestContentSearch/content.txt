@@ -1,0 +1,57 @@
+!c !2 Title Search
+
+Searches for the specified string in the content of every wiki page.
+It's triggered by the following URL:
+
+http://<host>/search?responder=search&searchType=content&searchString=<text>
+
+!include SamplePages
+
+Search for a page !-PageAbc-!
+|Response Requester.|
+|uri   |status?|
+|!-search?responder=search&searchType=content&searchString=PageAbc-!||
+
+Check for the proper title.
+|Response Examiner.|
+|type  |pattern|matches?|wrapped html?|
+|contents|Content Search|true||
+
+Since no page, not even !-PageAbc-! contains that content, no results will be returned.
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|!->PageAbc<-!|false|
+|contents|No pages matched your search criteria.|true|
+
+Now search for ABC.
+|Response Requester.|
+|uri   |status?|
+|!-search?responder=search&searchType=content&searchString=ABC-!||
+
+Make sure we get !-PageAbc-! in the result list.
+|Response Examiner.|
+|type  |pattern|matches?|wrapped html?|
+|contents|!-PageAbc-!|true||
+
+Now search for xyz.
+|Response Requester.|
+|uri   |status?|
+|!-search?responder=search&searchType=content&searchString=xyz-!||
+
+Make sure we get !-XyzPage-! in the result list.  Searches are case insensitive.
+|Response Examiner.|
+|type  |pattern|matches?|wrapped html?|
+|contents|!-XyzPage-!|true||
+
+Now search for the word page.
+|Response Requester.|
+|uri   |status?|
+|!-search?responder=search&searchType=content&searchString=page-!||
+
+Make sure we get all 4 pages in the result list.
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|!-PageAbc-!|true|
+|contents|!-XyzPage-!|true|
+|contents|!-BasePage-!|true|
+|contents|!-BasePage.ChildPage-!|true|

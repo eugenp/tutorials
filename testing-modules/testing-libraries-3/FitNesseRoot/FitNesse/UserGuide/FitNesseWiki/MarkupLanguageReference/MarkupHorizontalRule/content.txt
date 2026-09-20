@@ -1,0 +1,6 @@
+You can draw a horizontal rule by using four or more dashes.  The more dashes, the thicker the line:
+
+|!c '''Markup Text'''|!c '''Displayed as:'''|
+|!-above----below-!|!c above----!c below|
+|!-above------below-!|!c above------!c below|
+|!-above--------below-!|!c above--------!c below|

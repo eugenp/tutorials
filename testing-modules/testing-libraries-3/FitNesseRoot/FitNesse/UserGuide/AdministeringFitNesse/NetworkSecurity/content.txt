@@ -1,0 +1,234 @@
+!2 Protect your servers and your data!
+To protect the integrity of your environment it is strongly recommended to encrypt and authenticate the network traffic
+between the different FitNesse processes. Both will be achieved with SSL. 
+Without this 
+ * passwords will be send unencrypted over the network 
+ * your system under test would accept commands from any server which can access it over the network. 
+ * this is especially an issue if the system under test runs in demon mode. 
+
+In addition to this also enable user authentication with a PasswordCipher .
+ 
+!4 '''Only with self created certificates you achieve security!'''
+SSL requires ''certificates'' which identify uniquely each server.
+It just takes 1 minutes to create your own certificates, please take the time to do this.
+The certificates in the fitnesse distribution are just there for running junit tests. Never use them for your fitnesse instance. 
+
+!2 1. Creating your private SSL keys and certificates
+The below just gives the commands how you can create certificates and how to sign them yourself to get started. 
+In a professional environment your company might have further guidelines. Please contact your network or security administrator.
+If you are new to SSL browse the web to understand how it works.
+
+A minimum SSL configuration consists of 
+| |                                                                                               |value used in sample commands        |Must be changed by you|
+|1|A keystore file per server with the private key of each of your server which has been certified|'''fitnesse.jks'''                   |No                    |
+|2|A password for this keystore file                                                              |'''!-PutYourKeyStorePasswordHere-!'''|Yes                   |
+|3|A truststore file which defines with whom your servers should be allowed to communicate        |'''fittrust.jks'''                   |No                    |
+|4|A password for this truststore file                                                            |'''!-PutYourTrustPasswordHere-!'''   |Yes                   |
+
+The first three must be known by FitNesse at runtime. To do this you expand the class '''fitnesse.socketservice.SslParameters'''
+The last one is only required when you want to modify the truststore. For running FitNesse it is not required.
+
+The tool '''keytool''' is used to generate the keys. It is part of the jdk.
+
+Below are sample commands to get started. You might add or change values according to your setup.
+
+!* 1.1 Switch to the directory from which you start fitnesse 
+cd .. 
+*!
+
+!* 1.2 Create your server keys and certificate 
+keytool -genkey -keyalg RSA -alias selfsigned -keystore '''fitnesse.jks''' -storepass '''!-PutYourKeyStorePasswordHere-!''' -validity 400
+*!
+You will be asked for further input. 
+When asked for your first and last name enter your server name with the domain instead like ''www.fitnesse.org''.
+The remaining items don't matter.
+When asked for the ''key password'' just press enter.
+After this step a new file '''fitnesse.jks''' is in your current folder
+
+!* 1.3  Protect the '''fitnesse.jks''' with all measures your operating system supports
+chmod ...
+*!
+'''IMPORTANT''': Give only read access to users who need this!
+Remove read and write access for anybody else.
+
+!3 1.4 Tell FitNesse your password and the name and location of the keystore file
+
+Create the following class and add it to the classpath of FitNesse
+!* custom SSL Parameter class
+package '''your.package'''
+import fitnesse.socketservice.SslParameters;
+
+public class '''!-YourServerSslParameters-!''' extends !-SslParameters-! {
+  public '''!-YourServerSslParameters-!'''(){
+	super();
+	// Below is only for demonstration purpose 
+	// Don't hard code passwords in clear text
+	// A) Ask the user to enter it each time the system starts. That's the most secure way but often not convenient.
+	// B) Read it from a file where it is stored obfuscated.
+	String password = "'''!-PutYourKeyStorePasswordHere-!'''";
+	setKeyStorePassword(password);
+	setKeyStoreFilename("'''fitnesse.jks'''");
+	setTrustStoreFilename("'''fitnesse.jks'''");
+  }
+}
+*!
+
+You can use the same class also for '''!-YourSutSslParameters-!''' in the following steps.
+
+
+!2 2. Secure Communication between the browser and the Wiki Server
+Instead of http the communication will be https
+
+!3 2.1 Add the following to plugins.properties
+
+!*  plugins.properties
+!-##-!
+!-#  Wiki Server uses https-!
+wiki.protocol=https
+wiki.protocol.ssl.parameter.class='''your.package.YourServerSslParameters'''
+*!
+
+!3 2.2 In your browser
+Enter '''https://localhost:port''' in your webbrowser to connect to the wiki server
+
+If you signed the ''certificates'' yourself your browser will give a security warning. 
+Accept this warning after you checked the certificate. Add a permanent exception for this certificate to your browser 
+to avoid that you get this warning each time in the future.
+
+!3 2.3 Client Authentication
+If users have certificates, client authentication may be required.  To enable client authentication set the following plugins.properties:
+
+!*  plugins.properties
+!-##-!
+!-#  Wiki Server uses https-!
+wiki.protocol=https
+wiki.protocol.ssl.parameter.class='''your.package.YourServerSslParameters'''
+wiki.protocol.ssl.client.auth='''required'''
+*!
+
+Authorization can be accomplished with client certificates with the creation of a custom Authenticator.  The Authenticator has access to the peer dn from the Request.  Access can be granted or denied based on the dn.
+
+!2 3. Secure Communication between  the Test System and the System Under Test
+
+This is currently only supported for the SLIM java client.
+FIT and SLIM clients for other programming languages must still be enhanced.
+
+!3 3.1. Configuring SSL on the Test System
+The FitNesse Test System and the FitNesse Wiki server are a single process and share the same SSL configuration
+If you have not enabled https for the wiki you have to add the below to configure SSL for the test system.
+
+!*  plugins.properties
+wiki.protocol.ssl.parameter.class='''your.package.YourServerSslParameters'''
+*!
+
+!3 3.2. Configuring SSL on the SUT
+Either enable this for individual test pages by defining the variable
+!* SLIM_SSL
+ !define SLIM_SSL ('''your.package.YourSutSslParameters''') 
+*!
+
+or enable this for all SLIM Test Systems on all pages by adding below to 'plugins.properties'.
+This configuration takes precedents above an individual page configuration.
+
+!*  plugins.properties
+!-##-!
+!-#  Enable SSL on the Test Systems -!
+slim.ssl='''your.package.YourSutSslParameters'''
+*!
+
+If you use remote debugging and started the SUT manually add the following additional parameter to the command line
+!* SSL command line parameter
+-ssl '''your.package.YourSutSslParameters'''
+*!
+
+
+
+!2 4. Troubleshooting SSL configuration
+
+!3 4.1. Start FitNesse with the following two extra parameters to get more output to identify any issues
+ * -v
+ * -Djavax.net.debug=ssl,keymanager
+
+!* Example
+java ''-Djavax.net.debug=ssl,keymanager'' -cp fitnesse-standalone.jar fitnesseMain.FitNesseMain ''-v''
+*!
+!3 4.2. Define the following on your test page to get more output from the SUT
+!* variables on test pages
+!- !define-! SLIM_FLAGS (-v)
+!- !define-! COMMAND_PATTERN  (java ''-Djavax.net.debug=ssl,keymanager'' -cp %p %m)
+*! 
+
+!3 4.3. Define the following properties to speed up troubleshooting
+This reduces the number of connection attempts. A test with a faulty configuration is then aborted quicker.
+!*  plugins.properties
+slim.timeout=1
+slim.pool.size=1
+*! 
+
+
+!3 4.4. Typical error messages in the output from the SUT
+!* Error while executing SLIM instructions: Connection has been shutdown: javax.net.ssl.SSLHandshakeException: Received fatal alert: certificate_unknown
+Test System is not trusting the SUT - Add the certificate from the SUZ to the truststore on the server
+*!
+
+!* Error while executing SLIM instructions: Connection has been shutdown: javax.net.ssl.SSLHandshakeException: null cert chain
+SUT is not trustig the Test System - Add the certificate from the server to the truststore on the SUT
+*!
+
+!* java.security.NoSuchAlgorithmException: Error constructing implementation ... java.io.IOException: Keystore was tampered with, or password was incorrect
+Check the password you provided for the keystore
+*!
+
+!2 5. Configuring SSL for a multi server environment 
+If your system under test doesn't runs on the same server as your Wiki Server consider the blow setup.
+
+!* 1.1 Command to create your server keys and certificate 
+keytool -genkey -keyalg RSA -alias selfsigned -keystore '''fitnesse.jks''' -storepass '''!-PutYourKeyStorePasswordHere-!''' -validity 400
+keytool -export -alias selfsigned -file fitnesse.cer -keystore '''fitnesse.jks''' -storepass '''!-PutYourKeyStorePasswordHere-!'''
+*!
+You will be asked for further input. 
+When asked for your first and last name enter your server name with the domain instead like ''www.fitnesse.org''.
+The remaining items don't matter.
+When asked for the ''key password'' just press enter.
+
+If you have more then one server on which you run SUT you should do this for each server.
+To not overwrite the keystores and certificates change each time the '''fitnesse.jks''' and '''fitnesse.cer''' parameters.
+
+'''IMPORTANT''': Protect the '''fitnesse.jks''' with all measures your operating system supports! Give only read access to users who need this. 
+Remove read and write access for anybody else.
+
+
+!* 1.2 Commands to create your trust store 
+keytool -import -v -trustcacerts -alias '''!-uniqueSUTName-!''' -storepass '''!-PutYourTrustPasswordHere-!''' -file fitnesse.cer -keystore '''fittrust.jks'''
+*!
+If you have created more than one set of files repeat this command for each '''*.cer''' file but put all in the 
+same truststore file '''fittrust.jks''' 
+
+
+!3 1.3 Configure FitNesse with your certificates
+Once you have run these commands you have two types of files in your current directory '''fitnesse.jks''' and '''fittrust.jks'''
+Copy both into your FitNesse directoy from which you start FitNesse or your SUT. Make again sure that your '''fitnesse.jks''' 
+and '''fittrust.jks''' are protected.
+
+Create the following class and add it to the classpath of FitNesse
+!* custom SSL Parameter class
+package '''your.package'''
+import fitnesse.socketservice.SslParameters;
+
+public class '''!-YourServerSslParameters-!''' extends !-SslParameters-! {
+  public '''!-YourServerSslParameters-!'''(){
+	super();
+	// Below is only for demonstration purpose 
+	// Don't hard code passwords in clear text
+	// A) Ask the user to enter it each time the system starts. That's the most secure way but often not convenient.
+	// B) Read it from a file where it is stored obfuscated.
+	String password = "'''!-PutYourKeyStorePasswordHere-!'''";
+	setKeyStorePassword(password);
+	setKeyStoreFilename("'''fitnesse.jks'''");
+	setTrustStoreFilename("'''fittrust.jks'''");
+  }
+}
+*!
+
+Create identical classes named '''!-YourSutSslParameters-!''' for each server running SUT but give the values of the 
+'''fitnesse.jks''' you created for each server and add the class to the classpath of the SUT.

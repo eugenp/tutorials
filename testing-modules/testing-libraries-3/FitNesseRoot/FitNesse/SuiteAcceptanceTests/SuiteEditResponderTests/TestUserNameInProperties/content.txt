@@ -1,0 +1,10 @@
+The username of the person who last modified a page is displayed in the properties view of the modified page.
+
+!|script|
+|save page|PageOne|by user|Aladdin|
+|it's last modified by should be|Aladdin|
+|save page|PageTwo|by user|Genie|
+|it's last modified by should be|Genie|
+|save page|PageThree|
+|it's last modified by should be|null|
+

@@ -1,0 +1,24 @@
+Purpose:  Checks that the Define Table Type table works
+
+By default table should be parsed as a decision table.
+|Table Or Decision Fixture |
+|parsing as?               |
+|Parsed as Decision fixture|
+
+
+However after this table it should be parsed as a '''Table: table'''.
+
+|Define Table Type                 |
+|Table or Decision Fixture|as Table|
+
+
+|Table Or Decision Fixture          |
+|parsing as?|Parsed as Table fixture|
+
+The same works for script tables (which parse as decision tables in many respects).
+
+|Define Table Type                  |
+|Table or Decision Fixture|as Script|
+
+|Table Or Decision Fixture                  |
+|check|parsing as|Parsed as Decision fixture|

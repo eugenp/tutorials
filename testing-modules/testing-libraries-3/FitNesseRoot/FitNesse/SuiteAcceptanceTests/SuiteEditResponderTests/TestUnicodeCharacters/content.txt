@@ -1,0 +1,3 @@
+!|script|
+|save page|NewPage|with contents|þðæö|
+|it should contain|þðæö|

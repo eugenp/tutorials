@@ -1,0 +1,46 @@
+!3 Each page has links in the left rail. This test verifies the default set of links.
+
+Create a page.
+|Page creator.|
+|Page name.|Page contents.|valid?|
+|!-SomePage-!|any page at all|true|
+
+Request the page
+!|Response Requester.|
+|uri|valid?|
+|SomePage?properties|true|
+
+Ensure that the Page type radios are present
+!|Response Examiner.|
+|type|pattern|matches?|
+|contents|Page type:|true|
+|contents|<input type="radio" id="Static" name="PageType" value="Static" checked="checked"/>|true|
+|contents|<input type="radio" id="Test" name="PageType" value="Test"/>|true|
+|contents|<input type="radio" id="Suite" name="PageType" value="Suite"/>|true|
+|contents|<input type="checkbox" id="Prune" name="Prune"/>|true|
+
+Ensure that the Action links are present
+!|Response Examiner.|
+|type|pattern|matches?|
+|contents|Actions:|true|
+|contents|<input type="checkbox" id="Edit" name="Edit" checked="checked"/>|true|
+|contents|<input type="checkbox" id="Versions" name="Versions" checked="checked"/>|true|
+|contents|<input type="checkbox" id="Properties" name="Properties" checked="checked"/>|true|
+|contents|<input type="checkbox" id="Refactor" name="Refactor" checked="checked"/>|true|
+|contents|<input type="checkbox" id="WhereUsed" name="WhereUsed" checked="checked"/>|true|
+
+Ensure that the Navigation links are present
+!|Response Examiner.|
+|type|pattern|matches?|
+|contents|Navigation:|true|
+|contents|<input type="checkbox" id="Files" name="Files" checked="checked"/>|true|
+|contents|<input type="checkbox" id="RecentChanges" name="RecentChanges" checked="checked"/>|true|
+|contents|<input type="checkbox" id="Search" name="Search" checked="checked"/>|true|
+
+Ensure that the Security links are present
+!|Response Examiner.|
+|type|pattern|matches?|
+|contents|Security:|true|
+|contents|<input type="checkbox" id="secure-read" name="secure-read"/>|true|
+|contents|<input type="checkbox" id="secure-write" name="secure-write"/>|true|
+|contents|<input type="checkbox" id="secure-test" name="secure-test"/>|true|

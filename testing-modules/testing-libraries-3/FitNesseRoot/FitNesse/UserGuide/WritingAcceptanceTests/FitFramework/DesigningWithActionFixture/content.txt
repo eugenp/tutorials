@@ -1,0 +1,2 @@
+Action fixtures give you very simple scripting ability.  Any test that requires a simple set of interactions could be based on an Action Fixture.  For example, you ought to be able to completely test the software that controls a simple dialog box by using the appropriate 'enter', 'press', and 'check' operations.
+

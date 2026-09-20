@@ -1,0 +1,13 @@
+!1 The Fit Acceptance Testing Framework
+Fit ("Framework for Integrated Testing"), also often spelled [[FIT][http://fit.c2.com/]] is the engine that actually processes each FitNesse test table, using the FixtureCode referred to by that table. The idea of test tables and the set of >TestTableStyles come from Fit. Examples of use can be found in the [[Fixture Gallery][<UserGuide.FixtureGallery]].
+
+FitNesse is an HTML and [[wiki][http://wiki.org/wiki.cgi?WhatIsWiki]] "front-end" to Fit. While Fit makes it possible to run test tables, it does not itself provide an easy means of creating those tables or displaying the results of those tests. This is where FitNesse comes in. FitNesse makes it ''really easy'' to create, run, organize, annotate, and share Fit tests throughout a software development team.
+
+Interestingly both the wiki and Fit were developed by Ward Cunningham, and you can read about them both on Ward's [[c2 wiki][http://fit.c2.com/]].
+
+Throughout this [[User Guide][<UserGuide]], when we talk about how test tables are run, we often talk about Fit, since it is, in fact, doing the work. But for your purposes as a FitNesse user, Fit is just part of the magic: FitNesse hides Fit from you completely. You really don't need to worry about it at all.
+
+!include -seamless >TestTableStyles
+Articles and discussions on the design of FitNesse
+
+| >FitServer | The protocol between FitNesse and Fit. |

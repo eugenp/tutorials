@@ -1,0 +1,17 @@
+!-FitNesse-! is started in the set up fixture so it's running,
+!|FitNesse Status|
+|isRunning?|
+|true|
+
+A Graceful shutdown is initiated by making an HTTP request with the responder=shutdown
+!|Response Requester.|
+|uri|valid?|
+|!-?responder=shutdown-!|true|
+
+Wait a bit for things to settle down
+|Sleep|100|
+
+Now !-FitNesse-! is no longer running.
+!|FitNesse Status|
+|isRunning?|
+|false|

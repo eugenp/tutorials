@@ -1,0 +1,37 @@
+#!define SLIM_FLAGS {-v}
+
+
+The disgracer class converts user readable names into technical class and method names
+These are passed to the Slim Server and might be disgaraced again based on the implementation language  
+
+|import                          |
+|fitnesse.testsystems.slim.tables|
+
+!*>  Setup
+Ensure any kind of script exist
+!|script|EchoFixture|
+
+!| scenario         |DisgracerTest _ _ _         |userReadableName,createdClass?, createdMethodName?|
+|$createdClass=     |Disgracer.disgraceClassName |@userReadableName                                 |
+|$createdMethodName=|Disgracer.disgraceMethodName|@userReadableName                                 |
+
+*!
+
+
+!| disgracer test                                                                                                               |
+|#                                                                 |user readable name |created method name?|created class?     |
+|Remove everything which is not a letter, number, dot or underscore|Hello+-#=()world   |HelloWorld          |HelloWorld         |
+|Remove space and capitalze the following letter                   |Hello      world   |HelloWorld          |HelloWorld         |
+|do nothing if no special char                                     |nothingdone        |nothingdone         |nothingdone        |
+|do nothing if no special char                                     |still_nothingDone99|still_nothingDone99 |still_nothingDone99|
+|Remove space and capitalze the following letter                   |Hello      world   |HelloWorld          |HelloWorld         |
+|Classes are disgraced to start with upper case, methods not       |lower case         |lowerCase           |LowerCase          |
+|Don't touch if there are dots (required for static methods)       |Static.method      |Static.method       |Static.method      |
+|                                                                  |Hello.World.       |Hello.World.         |Hello.World.        |
+|Except if only the last char is a dot                                  |HelloWorld.        |HelloWorld          |HelloWorld         |
+|Don't touch class names with dollar                               |i am $ rich        |iAmRich             |i am $ rich        |
+|                                                                  |HELLOWorld         |HELLOWorld          |HELLOWorld         |
+
+
+
+

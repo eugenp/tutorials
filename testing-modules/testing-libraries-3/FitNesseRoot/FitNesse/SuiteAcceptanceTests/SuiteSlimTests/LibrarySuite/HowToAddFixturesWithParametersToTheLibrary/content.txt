@@ -1,0 +1,35 @@
+!|import           |
+|fitnesse.slim.test|
+
+!2 Create a fixture with constructor parameters
+
+Negative Test: This must raise an exception as the method query can not be found
+!|script|echo fixture                                |
+|check  |echo |AAA                |AAA               |
+|#check |query|[[[n, 1], [2n, 2]], [[n, 2], [2n, 4]]]|
+
+!3 The entries in a library table can have constructor parameters in the same way as a script fixture.
+
+!|library|
+|test query|2|
+
+!|script|echo fixture                                |
+|check  |echo |BBB                |BBB               |
+|check  |query|[[[n, 1], [2n, 2]], [[n, 2], [2n, 4]]]|
+
+If you need further set up by calling methods of the fixture before adding it to the library you can use synbols to do this.
+At the end assign the fixture itself to a symbol. 
+
+!|script|test slim|47|
+|set string   |Hello FitNesse       |
+|$ts=   |get fixture |
+
+
+Now add the previously created fixture symbol to the library
+|library|
+|$ts    |
+
+And here we go: We can use the methods of the fixture in any script
+!|script|echo fixture                                |
+|check  |echo |CCC                |CCC               |
+|check  |getStringArg|Hello FitNesse|

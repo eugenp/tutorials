@@ -1,0 +1,11 @@
+It is very common to have a many tests that look alike.  In most cases these test will have duplicate content perhaps to setup the environment for the test.  This duplication can very very painful when the environment changes.  The change to the enviroment will have to be made in all the tests that share the duplicated content.  This can very tedious and time consuming work.  Fortunately it can be avoided.
+
+Using the [[Include widget][<UserGuide.FitNesseWiki.MarkupLanguageReference.MarkupPageInclude]] is the key.  Let's assume that our tests follow the standard [[BOC][BuildOperateCheck]] pattern and they look like this:
+
+!include SampleSetupForTest
+
+!include SampleOperateForTest
+
+And now we'll perform the Check step.
+
+!|A table that checks something|

@@ -1,0 +1,120 @@
+The "Define Alias" table is designed to help you to segregate requirements from the implementation.
+
+Normally the table name must be a graceful name of the class name used in your implementation.
+
+This might not be convenient in some situations. 
+ * your implementation is a generic framework, in this case it is unlikely that classnames match the business names
+ * your implementation needs technical configuration parameters which are not important to the business 
+
+  
+Below is a dynamic decision table without any alias. This will be used in the following examples with alias definitions
+
+|ddt: add up change                                             |
+|# description       |1c|5c|10c|25c|50c|$1|total cents?|$ total?|
+|some simple addition|2 |2 |4  |0  |0  |0 |52          |0.52    |
+
+
+!4 Use Case 1
+The business expects a different name "add change" than your class name "add up change"
+
+|Define alias            |
+|add change|add up change|
+
+|ddt: add change                                                |
+|# description       |1c|5c|10c|25c|50c|$1|total cents?|$ total?|
+|some simple addition|2 |2 |4  |0  |0  |1 |152         |1.52    |
+
+!4 Use Case 2
+The business expects a different name "add up" than your class name "add up change" 
+and in addition the test case is defined as decision table but you implemented it as dynamic decision table.
+You can overwrite the table type and the name.
+
+|Define alias             |
+|add up|ddt: add up change|
+
+|dt: add up                                                     |
+|# description       |1c|5c|10c|25c|50c|$1|total cents?|$ total?|
+|some simple addition|2 |2 |4  |0  |1  |0 |102         |1.02    |
+
+!4 Use Case 3
+The names are matching but you need to overwrite the table type.
+Note that the DefineTableType table will not overwrite type definitions given in the test.
+
+|Define alias      |
+|add up change|ddt:|
+
+|dt: add up change                                              |
+|# description       |1c|5c|10c|25c|50c|$1|total cents?|$ total?|
+|some simple addition|2 |2 |4  |0  |0  |0 |52          |0.52    |
+
+
+!4 Use Case 4
+The requirements have been written beforehand with a business name.
+Your implementation requires that you prepare the test fixture in a script.
+
+|script     |add up change|
+|$myfixture=|get fixture  |
+
+|Define alias        |
+|add money|$myfixture|
+
+|ddt: add money                                                 |
+|# description       |1c|5c|10c|25c|50c|$1|total cents?|$ total?|
+|some simple addition|2 |2 |4  |4  |0  |1 |252         |2.52    |
+
+It doesn't matters if you define the alias before or after you create the fixture.
+Again you can add a table type definition if required
+
+|Define alias                       |
+|add more money|ddt: $anotherFixture|
+
+|script          |add up change|
+|$anotherFixture=|get fixture  |
+
+|add more money                                                 |
+|# description       |1c|5c|10c|25c|50c|$1|total cents?|$ total?|
+|some simple addition|2 |2 |4  |4  |0  |1 |252         |2.52    |
+
+
+Another example with a constructor parameter
+
+!|script|test query|2|
+|show   |query       |
+|$tq=   |get fixture |
+
+|Define alias       |
+|my query|query: $tq|
+
+|my query|
+|n  |2n  |
+|1  |2   |
+|2  |4   |
+
+!|script|test query|3|
+|show   |query       |
+|$tq=   |get fixture |
+
+|Define alias              |
+|my query|subset query: $tq|
+
+|my query|
+|n  |2n  |
+|2  |4   |
+|3  |6   |
+
+!4 Use Case 5
+If you can't use an [[Import][ImportTable]] statement or you have import conflicts you can't resolve.
+The alias can help you to get around these.
+
+|Define alias                                            |
+|what is in my pocket|ddt: fitnesse.slim.test.AddUpChange|
+
+
+|what is in my pocket                                           |
+|# description       |1c|5c|10c|25c|50c|$1|total cents?|$ total?|
+|some simple addition|2 |2 |4  |4  |0  |1 |252         |2.52    |
+
+The alias fixture allows QA people to implement requirements by reusing existing framework functions and without writing new code. 
+Still your test pages are easy to read, especially for project managers, BA's and Product owners who might not understand how Fitnesse works. 
+
+Hint: Try putting the "Define Alias" fixtures in the same place as your "Import" fixtures.   The setup pages are a good place for these!

@@ -1,0 +1,79 @@
+---
+Edit: no
+Files: no
+Properties: no
+Prune
+RecentChanges: no
+Refactor: no
+Search: no
+Suites: negativeTest, includedByParent
+Versions: no
+WhereUsed: no
+---
+#Don't remove this start magic to include and test this page in another page
+${exclamation}${minus}
+
+|import|
+|fitnesse.slim.test|
+
+
+!2 if you expect an exception you can test for it and pass the test
+use the keyword '''EXCEPTION:'''
+
+| Test Slim |
+|# Scenario| throw Normal?|throw Exception With Message?|
+|Testing for an expected Exception|EXCEPTION:=~/This is my exception/|EXCEPTION:=~/Test message/|
+|otherwise error is indicated. Watch how an exception with message is displayed shorter compared to a normal exception |This is my exception|Test message|
+
+!2 if you expect an exception but there is non then the cell will fail
+| Test Slim |
+|string| getStringArg?|getStringArg?|
+|Hello| Hello|EXCEPTION: Hello|
+
+
+
+!2 An exception occurring in a not cell specific function call is added to the current row.
+This applies to: execute, reset, table, beginTable, endTable
+
+!|DT:fitnesse.slim.test.DecisionTableExecuteThrows|
+|x|x?|
+|5|5|
+
+and also to constructor failures
+
+!|DT:ConstructorThrows|test goes on|
+|x|x?|
+|5|5|
+
+
+Multiple exceptions can happen in one row and in a in cell in the same row
+!|DT:fitnesse.slim.test.DecisionTableExecuteThrows|
+|Which Methods Fail|x|x?|
+|NONE| 5|5|
+|execute setX getX| 5|5|
+|reset| 2|2|
+|reset| 5|5|
+
+!4 Everything goes wrong - Fitnesse catches all 7 exceptions 
+The exceptions are added at the right level: 
+ * cell - for getter and setter 
+ * row - for reset and execute
+ * table - for table, beginTable and endTable
+ 
+!|DT:fitnesse.slim.test.DecisionTableExecuteThrows|Total Disaster|
+|x|x?|
+|5|5|
+
+
+
+!1 Scripts behave like decision tables
+
+!|script:fitnesse.slim.test.DecisionTableExecuteThrows|
+|check |execute|EXCEPTION: =~/EXECUTE_THROWS/|
+
+A stop test is counted as fail and not as error
+!|script:ConstructorThrows|stop test|
+|check |execute|Not reached as test is stopped|
+
+#Don't remove this end magic to include and test this page in another page
+${minus}${exclamation}

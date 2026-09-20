@@ -1,0 +1,68 @@
+The XML result for a test comes back in the following form:
+{{{
+<testResults>
+	<rootPath>SuiteAcceptanceTests</rootPath>
+	<result>
+		<relativePageName>SuiteWidgetTests.TestBrokenWikiWordLink</relativePageName>
+                <tags>critical,slow</tags>
+		<counts>
+			<right>24</right>
+			<wrong>0</wrong>
+			<ignores>0</ignores>
+			<exceptions>0</exceptions>
+		</counts>
+		<runTimeInMillis>
+			1022
+		</runTimeInMillis>
+		<content>
+                        <![CDATA[HTML OF TEST PAGE
+                </content>
+                <tables>
+                       <table>
+                               <name>decisionTable_0</name>
+                               <row>
+                                       <col>cell_contents</col>
+                                       ...
+                               </row>
+                               ...
+                       </table>
+                       ...
+                </tables>
+               <instructions>
+                       <instructionResult>
+                               <instruction>[decisionTable_1_0, make, decisionTable_1, SetUp]</instruction>
+                               <slimResult>OK</result>
+                               <expectation>
+                                       <instructionId>decisionTable_1_0</instructionId>
+                                       <status>right</status>
+                                       <col>0</col>
+                                       <row>0</row>
+                                       <type>ConstructionExpectation</type>
+                                       <actual>OK</actual>
+                                       <expected>SetUp</expected>
+                                       <evaluationMessage>pass(SetUp)</evaluationMessage>
+                               </expectation>
+                               ...
+                       </instructionResult>
+                       ...
+               </instructions>
+	</result>
+</testResults>
+}}}
+
+
+The 'tables' and 'instructions' elements are only for Slim tests.
+ * The 'tables' element encodes the results of all the test tables.  There is a !style_code(<table>) for each table on the test page.  Each has a set of !style_code(<row>) elements, which each have a set of !style_code(<col>) elements, which old the contents of the tested table.
+  * The contents of the columns are encoded with !style_code[pass(xxx)], !style_code[fail(xxx)] etc. These show what parts of the cell contents would be colored red or green
+  * The name of the table is encoded in the !style_code(<name>) element.  This is the name that slim gives to the table, and is used to prefix instruction tags in the expectations (see below).
+ * The instruction data documents the slim execution process.  Each instruction represents a single slim command.  You see the command as it was sent to slim, the result as it returned from slim, and the evaluation of the slim table expectation.  This is pretty detailed information, so here are a few things you should know.
+  * !style_code(instructionId) is the id of a single slim instruction.  It is constructed from the table name (see above), and the instruction number within that table.  So an id of decisionTable_1_3 means that the instruction is for the third instruction in the table named decision table_1.
+   * Scenario tables, when executed, are turned into script tables with the same number.  So !style_code(scenarioTable_22) will become !style_code(scriptTable_22).  The third instruction in scenario table 18 called from the 4th instruction in decision table 8 will be !style_code(decisionTable_8_4_scriptTable_18_3).
+  * !style_code(col,row) are the column and row of the expectation.  If scenario tables are involved it's the col,row of the ultimate scenario.
+  * !style_code(type) is the class name of the expectation.  You can pretty much work out the intent.  Here are a few of the more common ones
+   * !style_code(!-ReturnedValueExpectation-!) - This is the one that does almost all the comparisons that you are used to.  Decision tables and script tables use them a lot.
+   * !style_code(!-VoidReturnExpectation-!) - We use this when we call a function (like 'setX') and expect a void return.
+   * !style_code(!-ConstructionExpectation-!) - used when we create a fixture class.
+  * !style_code(expected) - This is the value that the expectation expects to be returned from slim.  Often this is ignored.  Only some expectations actually use it.  !style_code(!-ReturnedValueExpectation-!) uses it of course.
+  * !style_code(actual) - This is what was actually returned by slim.  You also saw this in the !style_code(slimResult) tag, but we present it here because it may have been massaged by internal processing.
+  * !style_code(evaluationMessage) - This is the result of the expectation.  It is a message littered with !style_code[pass()] and !style_code[fail()] markers that let you see the red/green results in symbolic form.

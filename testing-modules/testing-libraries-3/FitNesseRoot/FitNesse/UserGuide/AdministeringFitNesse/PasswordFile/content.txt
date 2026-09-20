@@ -1,0 +1,31 @@
+When starting FitNesse you may specify a PasswordFile by using the ''-a'' command line argument.  A PasswordFile consists of one username and password per line in the form of '''username:password'''.
+
+!3 Human Readable Passwords
+This simple way to create a password file is to list each username:password pair as plain text in the PasswordFile.  However this is not very secure in that anyone who is able to read the PasswordFile will have access to everyones password.  Here's an example:
+{{{Leonardo:katana
+Donatello:bo
+Rafael:sai
+Michaelangelo:nunchaku}}}
+4 users are defined here.  Leonardo whose password is Katana, Donatello whose password is bo, Rafael whose password is sai, and Michaelangelo whose password is nunchaka.
+!3 Hashed Passwords Created In Command Line
+A password hashing program, similar to unix's '''passwd''' command, is provided with FitNesse.
+By using the Password program with default setting and using the same usernames and passwords as above, the file ''passwords.txt'' will be generated with the following content:
+{{{!fitnesse.authentication.HashingCipher
+Leonardo:VEN4CfBvGCSafZDZNIKh
+Donatello:VvkqQdgBBfCCZHzBUo6J
+Michaelangelo:VBZ1TiB7HMptQsz3d3do
+Rafael:YHVFNHr1fHaIGkLHMTSP}}}
+You can see that the passwords have been hashed and are not humanly readable.  You may also notice a new line.
+!-!fitnesse.authentication.HashingCipher-!
+This should be left as is in the file.  It tells the program with PasswordCipher to use when hashing the passwords.  You may create your own PasswordCipher by implementing the ''!-fitnesse.authentication.PasswordCipher-!'' interface and use it for creating password files.
+
+The password file can be managed  in the following two ways:
+ * '''Passwords Created In The FitNesse UI'''
+    * Ensure you have passwords.txt file located in the same location where fitnesse jar is present. Create admin user in that file, using the command line tool described below (passing the -c option creates the file).
+    * When you are logged in (e.g. by accessing a secure page), you will see a User link in the top right corner of any page. Clicking that will take you to the page where you can change your password. The "admin" user can also create or delete other users. This uses the default PasswordCipher and default passwords.txt file.
+ * '''Updating the password file via the command line'''
+		* Call the Password program supplied with !-FitNesse-! to add a user with a password (passing the '-c' command line argument creates the file)
+	    {{{Usage: java fitnesse.authentication.Password [-f <password file>] [-c <password cipher>] <user>
+        -f <password file> {passwords.txt}
+        -c <password cipher> {fitnesse.authentication.HashingCipher} }}}
+

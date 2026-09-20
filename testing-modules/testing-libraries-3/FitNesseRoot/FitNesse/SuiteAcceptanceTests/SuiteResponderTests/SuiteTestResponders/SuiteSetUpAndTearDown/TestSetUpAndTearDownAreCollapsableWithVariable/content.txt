@@ -1,0 +1,38 @@
+!3 [[!-SetUp and TearDown-!][.FitNesse.SuiteAcceptanceTests.SuiteResponderTests.SuiteTestResponders.SuiteSetUpAndTearDown]] can be set to be automatically collapsed when rendered.
+
+By setting the variables COLLAPSE_SETUP or COLLAPSE_TEARDOWN to true (using the [[!-VariableWidget-!][.FitNesse.MarkupVariables]]), you can tell [[!-FitNesse-!][.FitNesse]] to automatically collapse !-SetUp and TearDown-! when they are rendered.
+----
+* Create a page with the variable definitions.
+
+|script|Page Builder|
+|line|!-!define COLLAPSE_SETUP {true}-!|
+|line|!-!define COLLAPSE_TEARDOWN {true}-!|
+|page|!-ParentPage-!|
+
+* Create !-SetUp-! and !-TearDown-!
+|Page creator.|
+|Page name.|Page contents.|valid?|
+|!-SetUp-!|set up|true|
+|!-TearDown-!|tear down|true|
+
+* Create a child test page
+
+|script|Page Builder|
+|line|test something|
+|page|!-ParentPage.TestPage-!|
+
+* Now request the test page
+|Response Requester.|
+|uri|valid?|contents?|
+|!-ParentPage.TestPage-!|true||
+
+* Verify that the setup and and teardown text appear in the test page.
+|Response Examiner.|
+|type|pattern|matches?|
+|contents|.*(set up).*(test).*(tear down).*|true|
+
+* Verify that the right style is being rendered.
+!|Response Examiner.|
+|type|pattern|matches?|
+|contents|<div class="collapsible closed">.*<div>set up</div>|true|
+|contents|<div class="collapsible closed">.*<div>tear down</div>|true|
