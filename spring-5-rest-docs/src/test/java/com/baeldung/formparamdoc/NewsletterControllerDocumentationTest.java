@@ -5,8 +5,6 @@ import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.docu
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessRequest;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessResponse;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
-import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
-import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.restdocs.request.RequestDocumentation.formParameters;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.restdocs.request.RequestDocumentation.relaxedFormParameters;
@@ -22,9 +20,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
+import org.springframework.restdocs.constraints.ConstraintDescriptions;
 import org.springframework.restdocs.RestDocumentationContextProvider;
 import org.springframework.restdocs.RestDocumentationExtension;
-import org.springframework.restdocs.payload.ResponseFieldsSnippet;
 import org.springframework.restdocs.request.FormParametersSnippet;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -55,7 +53,7 @@ class NewsletterControllerDocumentationTest {
         mockMvc.perform(postSubscription())
             .andExpect(status().isCreated())
             .andExpect(jsonPath("$.id").isNumber())
-            .andDo(document("newsletter-subscribe", docFormParams(), docResponseFields()));
+            .andDo(document("newsletter-subscribe", docFormParams()));
     }
 
     @Test
@@ -65,23 +63,19 @@ class NewsletterControllerDocumentationTest {
             .andDo(document("newsletter-subscribe-relaxed", docRelaxedCoreFormParams()));
     }
 
-    private ResponseFieldsSnippet docResponseFields() {
-        return responseFields(
-            fieldWithPath("id").description("Generated subscription identifier"),
-            fieldWithPath("email").description("Email copied from the request"),
-            fieldWithPath("frequency").description("Frequency copied from the request"),
-            fieldWithPath("topics[]").description("Topics copied from the request parameters"),
-            fieldWithPath("marketingAccepted").description("Boolean flag copied from the request"));
-    }
-
     private FormParametersSnippet docFormParams() {
         return formParameters(
             parameterWithName("email").description("The subscriber email address"),
             parameterWithName("name").description("The display name of the subscriber"),
-            parameterWithName("frequency").description("Delivery frequency: weekly or monthly"),
+            parameterWithName("frequency").description("Delivery frequency. Constraints: " + constraintsFor("frequency")),
             parameterWithName("topics").optional().description("One or more selected topic values"),
             parameterWithName("marketingAccepted").optional().description("Whether marketing messages are accepted"),
             parameterWithName("trackingId").ignored());
+    }
+
+    private String constraintsFor(String property) {
+        ConstraintDescriptions constraints = new ConstraintDescriptions(SubscriptionForm.class);
+        return String.join(", ", constraints.descriptionsForProperty(property));
     }
 
     private FormParametersSnippet docRelaxedCoreFormParams() {
