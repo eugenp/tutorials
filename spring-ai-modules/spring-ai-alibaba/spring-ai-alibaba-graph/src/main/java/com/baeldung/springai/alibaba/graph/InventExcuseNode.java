@@ -35,7 +35,9 @@ class InventExcuseNode implements NodeAction {
 
     @Override
     public Map<String, Object> apply(OverAllState state) {
-        String situation = state.value("situation", "");
+        String situation = state.value("situation", String.class)
+            .orElseThrow(IllegalStateException::new);
+
         String previousExcuse = state.value("excuse", "none yet");
         List<String> managerReplies = state.value("managerReplies", List.of());
         Integer attempts = state.value("attempts", 0);
