@@ -29,8 +29,10 @@ class ManagerReactsNode implements NodeAction {
 
     @Override
     public Map<String, Object> apply(OverAllState state) {
-        String situation = state.value("situation", "");
-        String excuse = state.value("excuse", "");
+        String situation = state.value("situation", String.class)
+            .orElseThrow(IllegalStateException::new);
+        String excuse = state.value("excuse", String.class)
+            .orElseThrow(IllegalStateException::new);;
 
         ManagerReaction managerReaction = chatClient
             .prompt()
