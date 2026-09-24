@@ -12,5 +12,4 @@
         <property name="hibernate.hbm2ddl.auto">validate</property>
         <property name="show_sql">true</property>
     </session-factory>
-
 </hibernate-configuration>
