@@ -32,7 +32,7 @@ class ManagerReactsNode implements NodeAction {
         String situation = state.value("situation", String.class)
             .orElseThrow(IllegalStateException::new);
         String excuse = state.value("excuse", String.class)
-            .orElseThrow(IllegalStateException::new);;
+            .orElseThrow(IllegalStateException::new);
 
         ManagerReaction managerReaction = chatClient
             .prompt()
