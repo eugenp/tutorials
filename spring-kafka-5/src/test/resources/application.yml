@@ -1,0 +1,8 @@
+share:
+  consumer:
+    concurrency: 1
+
+logging:
+  level:
+    org.apache.kafka: DEBUG
+    org.springframework.kafka: INFO
