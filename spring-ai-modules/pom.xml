@@ -23,6 +23,7 @@
         <module>spring-ai-a2a</module>
         <module>spring-ai-agent-skills</module>
         <module>spring-ai-agentic-patterns</module>
+        <module>spring-ai-alibaba</module>
         <module>spring-ai-anthropic-agent-skills</module>
         <module>spring-ai-chat</module>
         <module>spring-ai-chat-stream</module>
