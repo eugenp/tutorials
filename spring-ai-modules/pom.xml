@@ -32,6 +32,7 @@
         <module>spring-ai-mcp-elicitations</module>
 <!--        <module>spring-ai-mcp-oauth</module>--><!-- test failures -->
         <module>spring-ai-multiple-llms</module>
+        <module>spring-ai-rag</module>
         <module>spring-ai-recursive-advisors</module>
         <module>spring-ai-semantic-caching</module>
         <module>spring-ai-session</module>
