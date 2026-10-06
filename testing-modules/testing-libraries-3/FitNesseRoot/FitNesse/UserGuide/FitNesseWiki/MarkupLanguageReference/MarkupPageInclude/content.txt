@@ -1,0 +1,25 @@
+To include the content from one page into another you may use the !-!include-! widget
+
+Usage:
+'''!-!include PageName-!'''
+
+For example if you wanted to all the content from .FrontPage to be displayed here you would simply type:
+
+!-!include .FrontPage-!
+
+As a result you will see .FrontPage below:
+-----
+!include .FrontPage
+-----
+|'''Parameters:'''|
+|!style_code(-seamless)|''causes the included page to be rendered without an enclosing box.''|
+|!style_code(-c)|''causes the included page to be collapsed.''|
+|!style_code(-setup)|''causes the included page to be used for test/suite setup.''|
+|!style_code(-teardown)|''causes the included page to be used for test/suite teardown.''|
+
+!3 '''Watch out for !include cycles'''
+Don't include a page that already includes the page that you are including from. ;-)
+
+!3 Including Test snippets
+It is often useful to include portions of test tables into your tests. You do this to bring in common setup data or common test sequences (possibly modified with variables).  A convenient way to do this is to use the Backwards Search notation as follows:{{{!include <UtilityPage.MyUtility}}}
+This will hunt up the parent chain until !-UtilityPage-! is found, and then its child !-MyUtility-! will be included.

@@ -1,0 +1,53 @@
+When you execute a suite page with "runTestsMatchingAllTags" defined, !-FitNesse-! should only run tests that have all suite filters/tags specified.
+
+----
+
+Create a Suite page
+
+|script|Page Builder|
+|line|${SUT_PATH}|
+|page|!-SuitePage-!|
+
+Create two sub pages
+
+|script|Page Builder|
+|line|!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|attributes|Suites=good!COMMA!better|
+|page|!-SuitePage.TestPageOne-!|
+
+|script|Page Builder|
+|line|!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|attributes|Suites=good|
+|page|!-SuitePage.TestPageTwo-!|
+
+Now run the suite page.
+
+|Response Requester.|
+|uri   |valid?|
+|!-SuitePage?responder=suite&runTestsMatchingAllTags=good,better-!|true|
+
+|Response Examiner.|
+|contents?|
+||
+
+The suite should report the TestPages and should show no errors.
+
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|!-TestPageOne-!|true|
+|contents|!-TestPageTwo-!|false|
+|contents|Test Pages:.*1 right|true|
+
+The error log page should not have any errors
+
+|Response Requester.|
+|uri   |valid?|
+|!-SuitePage?executionLog-!|true|
+
+|Response Examiner.|
+|contents?|
+||
+
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|Exit code.*0.*Time|true|

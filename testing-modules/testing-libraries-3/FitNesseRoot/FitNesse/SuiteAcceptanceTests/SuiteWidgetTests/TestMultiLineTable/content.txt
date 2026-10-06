@@ -1,0 +1,41 @@
+!3 This page tests a multi-line table.
+A multi-line table is created as follows {{{|a|b|c|
+|d|e|f|}}} The resulting text will be rendered in a one line table of the form.{{{<table>
+<tr><td>a</td><td>b</td><td>c</td></tr>
+<tr><td>d</td><td>e</td><td>f</td></tr>
+</table>}}}
+#
+ * First create a page with a simple table in it.
+#
+|script|
+|start|Page Builder|
+|line|!-|a|b|c|-!|
+|line|!-|d|e|f|-!|
+|page|!-MultiLineTablePage-!|
+#
+ * Then request that page
+#
+|Response Requester.|
+|uri|valid?|contents?|
+|!-MultiLineTablePage-!|true||
+#
+ * Make sure the html is correct for a simple table.
+#
+|Response Examiner.|
+|type|pattern|matches?|wrapped html?|
+|contents|a|true||
+
+|Response Examiner.|
+|type|number|string?|
+|line|1|!-&lt;table>-!|
+|line|2|!-&lt;tr>-!|
+|line|3|!-&lt;td>a&lt;/td>-!|
+|line|4|!-&lt;td>b&lt;/td>-!|
+|line|5|!-&lt;td>c&lt;/td>-!|
+|line|6|!-&lt;/tr>-!|
+|line|7|!-&lt;tr>-!|
+|line|8|!-&lt;td>d&lt;/td>-!|
+|line|9|!-&lt;td>e&lt;/td>-!|
+|line|10|!-&lt;td>f&lt;/td>-!|
+|line|11|!-&lt;/tr>-!|
+|line|12|!-&lt;/table>-!|

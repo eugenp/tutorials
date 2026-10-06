@@ -1,0 +1,39 @@
+Some markup elements can not be nested within other markup elements without creating an ambiguous meaning. In this case, we can use the nesting delimiters '''!-!(-!''' and '''!-)!-!'''.  These delimiters act like parenthesis - they do not add any content to the page but just group the interpretation of the enclosed markup correctly.
+
+We can use this to nest tables, for example:
+
+!-|this|table|-!
+!-|has| !(|a|nested|table|)! |-!
+
+displays as:
+
+|this|table|
+|has| !(|a|nested|table|)! |
+
+Without nesting:
+
+!-|this|table|-!
+!-|has| |a|nested|table| |-!
+
+is displayed as a single table.
+
+|this|table|
+|has| |a|nested|table| |
+
+Nesting always creates a 'virtual' new line, so elements that must start on a new line can be nested within other content.
+
+!-This line has !(!note a nested note)! within.-!
+
+displays as:
+
+This line has !(!note a nested note)! within.
+
+Without nesting:
+
+!-This line has !note a nested note within.-!
+
+displays as:
+
+This line has !note a nested note within.
+
+ 

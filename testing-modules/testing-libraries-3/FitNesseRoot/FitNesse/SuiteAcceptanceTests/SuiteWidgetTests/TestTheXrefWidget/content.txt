@@ -1,0 +1,68 @@
+The !-!see-! widget takes a page name as argument.  It displays the fully qualified page name in bold, prefixed by '''See:'''
+
+|Comment|
+|!c '''Markup Text'''|!c '''Displayed as'''|
+|!-!see SomeTestPage-!|!see SomeTestPage|
+
+Create some page.
+
+|script|
+|start|Page Builder|
+|line|Dummy Text|
+|page|!-SomePage-!|
+
+Create a suite page with a !-!see-! widget
+
+|script|
+|start|Page Builder|
+|line|!-!see SomePage-!|
+|page|!-SuitePage-!|
+
+Get the Suite page.
+
+|Response Requester.|
+|uri   |valid?|
+|!-SuitePage-!|true|
+
+|Response Examiner.|
+|contents?|
+||
+
+Make sure the page name is formatted properly
+
+!|Response Examiner.|
+|type  |pattern|matches?|
+|contents|<b>See: <a href=.*>SomePage</a></b>|true|
+
+
+Check the !-!see-! widget with decorated !-SubWiki-! markup.
+
+Create another page.
+
+|script|
+|start|Page Builder|
+|line|Dummy Text|
+|page|!-AnotherPage-!|
+
+Create a page with a !-!see-! widget with decorated markup
+
+|script|
+|start|Page Builder|
+|line|!-!see [[another page][.AnotherPage]]-!|
+|page|!-YetAnotherPage-!|
+
+Get the Suite page.
+
+|Response Requester.|
+|uri   |valid?|
+|!-YetAnotherPage-!|true|
+
+|Response Examiner.|
+|contents?|
+||
+
+Make sure the page name is formatted properly
+
+!|Response Examiner.|
+|type  |pattern|matches?|
+|contents|<b>See: <a href=.*>another page</a></b>|true|

@@ -1,0 +1,8 @@
+The replacement responder is invoked with a url of the form {{{SomePage?replace&searchString=search&replacementString=replacement}}}
+The search string thereby follows the convention from the [[Java API description][http://java.sun.com/javase/6/docs/api/java/util/regex/Pattern.html]].
+
+----
+
+ ^TestReplacesContent
+ ^TestReplacementWithPatternGroups
+ ^TestReplaceContentsInPageHierarchy

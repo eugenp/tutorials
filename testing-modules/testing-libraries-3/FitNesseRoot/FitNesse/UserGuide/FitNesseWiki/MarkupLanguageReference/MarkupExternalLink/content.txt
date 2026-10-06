@@ -1,0 +1,9 @@
+A link to an external web page is created by typing the URL.
+
+|!c '''Markup Text'''|!c '''Displayed as:'''|
+|!-http://www.objectmentor.com-!|http://www.objectmentor.com|
+
+If you would like to create a link to the '''files''' section of the local FitNesse installation, you may omit the domain name.
+
+|!c '''Markup Text'''|!c '''Displayed as:'''|
+|!-http://files/images/-!|http://files/images/|

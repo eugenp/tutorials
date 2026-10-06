@@ -1,0 +1,29 @@
+!2 Debugging with a local wiki site
+
+To debug fixture execution when wiki pages are accessible over a local file system, see RunningFromJunit.
+
+Debugging is also possible with the ''FitNesse'' language plugin for !-IntelliJ-! IDEA.
+ 
+!2 Debugging with a remote wiki site
+
+Fixture code of a remote FitNesse wiki site can be debugged using the remote debugger to connect to the slim executor or fit client.
+
+To set up debugging for your fixture code:
+ 1 If necessary (it should work out of the box for java and C# slim), set up the '''REMOTE_DEBUG_COMMAND''' and '''REMOTE_DEBUG_RUNNER''' in your wiki.  Together these commands should start the server in debug mode and wait for the debugger to connect before the code is run.  As these variales are only used when you start a test in debug mode it is a good idea to specify this define on root page of your wiki.
+ 2 When you want to debug a test, start by adding '''?responder=test&remote_debug=true''' to the url for the test.
+ 3 After starting the test in FitNesse, start a remote debugging process in your debugging tool which should connect to slim/fit server.  Remember to make sure you are using the right port.  (Port 8000 if you are using the default settings for java)
+
+The Tools menu contains a Remote Debug action that can be used to start a test run in debug mode.
+
+Alternatively, just drag the following link to the bookmark toolbar of your favourite browser: !-<a title="Debug FitNesse" id="debugfitnesse" href="javascript:(function(){var url = document.location.pathname + '?responder=test&remote_debug=true'; window.location = url;})();"><span>Debug FitNesse</span></a>-! (since the link contains javascript, this may not work for all browsers).
+
+!2 Alternative way to debug when using Slim
+For.NET it was found to be easier to debug starting the slim runner with the debugger attached and then getting fitnesse to connect to this started instance.  
+
+To do it this way:
+1. Make sure !define MANUALLY_START_TEST_RUNNER_ON_DEBUG=true is set on the page you want to debug running
+2. Start the runner, on the default slim port.   To find out what this is try ${SLIM_PORT} on your page. 
+3. Start fitnesse.   It should automatically connect to the runner you started. 
+
+One thing to note is that when fitnesse finishes the page it will automatically close down the runner.   So you will need to start the slim runner each time you go to debug. 
+

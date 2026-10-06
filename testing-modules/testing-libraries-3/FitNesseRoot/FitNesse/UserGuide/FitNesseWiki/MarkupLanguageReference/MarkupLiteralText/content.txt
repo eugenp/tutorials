@@ -1,0 +1,9 @@
+Sometimes you want to show a !-WikiWord-! without having it turn into a link.  Or sometimes you might want to show some wiki markup text such as !-'''bold'''-! without having the markup take effect.  To do this you use the ''literal'' markup text.
+
+Any text enclosed in '''!-!--!''' and '''-!''' will be treated as a literal and will not be processed for wiki words or other markup widgets.  This is also a "cool" way to add HTML to a wiki page.
+
+|!c '''Markup Text'''|!c '''Displays as'''|
+|!-!-WikiWord-!-!|!-WikiWord-!|
+|!-!-'''bold'''-!-!|!-'''bold'''-!|
+|!-!-&lt;i&gt;hello&lt;/i&gt;-!-!|!-<i>hello</i>-!|
+

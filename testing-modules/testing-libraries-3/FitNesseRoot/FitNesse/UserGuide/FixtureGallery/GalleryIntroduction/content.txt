@@ -1,0 +1,22 @@
+''Next page: [[!-Source code-!][<UserGuide.FixtureGallery.SourceCode]] Parent page: [[!-Table of contents-!][<UserGuide.FixtureGallery.TableOfContents]]''
+!2 !-Introduction-!
+!- Fixture Gallery is a cookbook for FIT<UserGuide tests. It provides developers with a quick overview of the most important fixture types and concepts for agile acceptance testing using the FIT framework. For each fixture type, this document explains the table format and fixture class structure and provides advice when to use and when not to use it. Each example is accompanied by the source code for Java, .NET and Python FIT implementations, in a form that can be easily copied and used as a template for similar fixtures. -!
+
+!- This document is released in three forms: a print-ready PDF, an executable<UserGuide wiki and a live web site. You can get the latest<UserGuide and PDF versions of this document, along with the source code, from -!http://gojko.net/fitnesse !-. The live version is online at -!http://www.fitnesse.info/fixturegallery !-. -!
+
+# section Intended audience
+!3 !-Intended audience-!
+!- This document will be most useful to people who are already using FIT and<UserGuide to some extent and know the basics, although experienced FIT<UserGuide users might also find a few new tricks here. This is not a good guide to help you get started with FIT or<UserGuide. See -!http://www.fitnesse.info/resources !- for a list of resources that will help you take that first step. -!
+
+# section What's new in this version?
+!3 !-What's new in this version?-!
+!-The biggest change in version 2.0 are Python examples. FitLibrary fixtures section is now expanded with examples for ConstraintFixture, CombinationFixture, CalculateFixture and notes about SetFixture and SubSetFixture. Many thanks to Jens Engel and Mike Stockdale for their contributions to this version. -!
+
+# section This is an open documentation effort &mdash; please contribute
+!3 !-This is an open documentation effort &mdash; please contribute-!
+!- My intention with the Fixture Gallery is to start an open documentation project where other people can contribute their notes and ideas about how best to use FIT<UserGuide fixtures. The source code for the document and all examples is hosted on SourceForge (see -!http://sourceforge.net/projects/fixturegallery/ !-). Please help to make this document better either by directly changing it on SourceForge or by modifying the live wiki version on -!http://www.fitnesse.info/fixturegallery !-. -!
+
+!-To leave comments or feedback, please use the form on -!http://gojko.net/fitnesse/fixturegallery !-.-!
+
+
+''Next page: [[!-Source code-!][<UserGuide.FixtureGallery.SourceCode]] Parent page: [[!-Table of contents-!][<UserGuide.FixtureGallery.TableOfContents]]''

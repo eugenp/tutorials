@@ -1,0 +1,109 @@
+
+''Previous page: [[!-ColumnFixture-!][<UserGuide.FixtureGallery.BasicFitFixtures.ColumnFixture]] Next page: [[!-RowFixture-!][<UserGuide.FixtureGallery.BasicFitFixtures.RowFixture]] Parent page: [[!-Basic FIT fixtures-!][<UserGuide.FixtureGallery.BasicFitFixtures]]''
+!2 !-ActionFixture-!
+'''!- ActionFixture -!'''!- was originally intended for workflow-style tests that are not repetitive. It uses a UI metaphor to automate other fixtures. -!
+
+# section Table Format
+!3 !-Table Format-!
+!- The first row of an -!'''!- ActionFixture -!'''!- table always initialises the fixture class, in this case the -!'''!- ActionFixture -!'''!- itself and not a custom subclass. All rows after the first begin with a command cell, followed by command arguments in the remaining cells. Some rows will have two and some will have three cells. The second row is typically used for the -!'''!- start -!'''!- command, which expects one argument &mdash; the class name for the actual fixture to automate. After that, you can use the following commands to describe the test: -!
+
+!- <ul> -!!- <li> -!'''!- check -!'''!- &mdash; executes a method and verifies its value. -!!- </li> -!!- <li> -!'''!- press -!'''!- &mdash; executes a -!'''!- void -!'''!- method without testing anything. -!!- </li> -!!- <li> -!'''!- enter -!'''!- &mdash; executes a method and passes an argument to it. -!!- </li> -!!- </ul> -!!- You can imagine an -!'''!- ActionFixture -!'''!- as an automation tool to populate UI forms and click on buttons that are connected to methods. -!
+
+{{{
+!-!-!|ActionFixture|
+|start|ActionFixtureTest|
+|enter|firstPart|Hello|
+|enter|secondPart|World|
+|press|join|
+|check|together|Hello, World|
+}}}
+# section Fixture class
+!3 !-Fixture class-!
+!- An important difference between -!'''!- ActionFixture -!'''!- and all other fixtures is that you should not extend the -!'''!- ActionFixture -!'''!- class in order to use it. Instead, you should extend the -!'''!- fit.Fixture -!'''!- class directly for your fixture and then pass it on to the -!'''!- ActionFixture -!'''!- using the -!'''!- start -!'''!- command. -!
+
+# section Java Source Code
+!3 !-Java Source Code-!
+{{{
+package info.fitnesse.fixturegallery;
+
+public class ActionFixtureTest extends fit.Fixture{
+	private String first, second, both;
+	public void firstPart(String s){
+		first=s;
+	}
+	public void  secondPart(String s){
+		second=s;
+	}
+	public void join(){
+		both=first+ ", "+second;
+	}
+	public String together(){
+		return both;
+	}
+}
+}}}
+# section .NET Source Code
+!3 !-.NET Source Code-!
+{{{
+using System;
+
+namespace info.fitnesse.fixturegallery
+{
+	public class ActionFixtureTest: fit.Fixture
+	 {
+		public String firstPart, secondPart, together;
+		public void join()
+		{
+			together=firstPart+ ", "+secondPart;
+		}
+	}
+}
+}}}
+# section Python Source Code
+!3 !-Python Source Code-!
+{{{
+
+from fit.Fixture import Fixture
+
+class ActionFixtureTest(Fixture):
+    _typeDict = {}
+
+    def __init__(self):
+        Fixture.__init__(self)
+        self.__first  = ""    #< Private attributes (Python convention).
+        self.__second = ""
+        self.__both   = ""
+
+    # JAVA: void firstPart(String s)
+    _typeDict["firstPart"] = "String"
+    def firstPart(self, s):
+        self.__first = s
+
+    # JAVA: void  secondPart(String s)
+    _typeDict["secondPart"] = "String"
+    def secondPart(self, s):
+        self.__second = s
+
+    # JAVA: void join()
+    _typeDict["join"] = "Default"      #< AUTO-DETECT: None = void
+    def join(self):
+        self.__both = "%s, %s" % (self.__first, self.__second)
+
+    # JAVA: String together()
+    _typeDict["together"] = "String"
+    def together(self):
+        return self.__both
+
+}}}
+# section Notes
+!3 !-Notes-!
+!- In the Java version, -!'''!- ActionFixture -!'''!- only works on methods. in the .NET version, -!'''!- enter -!'''!- and -!'''!- check -!'''!- can get and set fields and properties as well. -!
+
+# section Usage
+!3 !-Usage-!
+!-You can use the -!'''!- ActionFixture -!'''!- to describe UI-style verifications.-!
+
+!- In general, -!'''!- ActionFixture -!'''!- has been replaced by -!'''!- DoFixture -!'''!- (see -![[!-DoFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.DoFixture]]!- ) and there are very few reasons why you would want to use an -!'''!- ActionFixture -!'''!- today. -!'''!- DoFixture -!'''!- allows you to write workflow-style tests much easier, with less code in both the fixture and FitNesse table. It also supports direct domain object wrapping. -!
+
+
+''Previous page: [[!-ColumnFixture-!][<UserGuide.FixtureGallery.BasicFitFixtures.ColumnFixture]] Next page: [[!-RowFixture-!][<UserGuide.FixtureGallery.BasicFitFixtures.RowFixture]] Parent page: [[!-Basic FIT fixtures-!][<UserGuide.FixtureGallery.BasicFitFixtures]]''

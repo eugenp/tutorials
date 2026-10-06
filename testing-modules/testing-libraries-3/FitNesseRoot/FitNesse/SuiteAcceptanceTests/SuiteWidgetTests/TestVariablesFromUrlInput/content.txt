@@ -1,0 +1,55 @@
+!2 Test that variables can be defined in url input
+ * Variables defined in url input take precedence over page and system properties.
+----
+!3 Test a variable defined in system properties
+
+#
+ * Set a system property.
+#
+|System property setter fixture|
+|key|value|
+|xKey|xValue|
+#
+ * Create a page that uses that property as a variable.
+#
+|script|
+|start|Page Builder|
+|attributes|Test=true|
+|line|!-xKey is ${xKey}-!|
+|page|!-VariablePage-!|
+#
+ * Fetch that page.
+#
+|Response Requester.|
+|uri|valid?|contents?|
+|!-VariablePage?responder=getPage&xKey=xUriValue-!|true||
+#
+ * Inspect the text to see if the variable was expressed.
+#
+|Response Examiner.|
+|type|pattern|matches?|wrapped html?|
+|contents|xKey is xUriValue|true||
+
+!3 Test a variable re-defined via URL
+
+#
+ * Create a page that defines and uses variable.
+#
+|script|
+|start|Page Builder|
+|attributes|Test=true|
+|line|!-!define xKey [page defined]-!|
+|line|!-xKey is ${xKey}-!|
+|page|!-VariablePage-!|
+#
+ * Fetch that page.
+#
+|Response Requester.|
+|uri|valid?|contents?|
+|!-VariablePage?responder=getPage&xKey=xUriValue-!|true||
+#
+ * Inspect the text to see if the variable was expressed.
+#
+|Response Examiner.|
+|type|pattern|matches?|wrapped html?|
+|contents|xKey is xUriValue|true||

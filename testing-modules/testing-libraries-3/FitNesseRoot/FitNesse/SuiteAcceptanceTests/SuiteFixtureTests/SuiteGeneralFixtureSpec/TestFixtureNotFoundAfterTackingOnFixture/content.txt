@@ -1,0 +1,26 @@
+!3 When testing a table, if the first cell of the table does not refer to a class in the classpath, then the following message should appear in that cell:
+{{{Could not find fixture: fixtureName.}}}
+
+ * Here is a fitnesse page that should generate the error
+
+!note The !-!path-! must point to fitnesse.jar
+| Action fixture |
+| start | Page builder |
+| enter | attributes | Test=true |
+| enter | line | ${SUT_PATH} |
+| enter | line | !-!|NoSuch|-! |
+| enter | page | !-NoSuchFixturePage-! |
+
+!| Response Requester |
+| uri | status? |
+| NoSuchFixturePage?test | 200 |
+
+ * The error message should show up in the response
+
+!| Response examiner |
+| type | pattern | matches? | contents? |
+| contents | Could not find fixture: NoSuch | true | |
+
+!| Response requester |
+| uri | contents? |
+| NoSuchFixturePage?executionLog | |

@@ -1,0 +1,29 @@
+!3 If the Suite attribute is set to true, the Suite button should show up on top with a break between it and the other action buttons.
+Create a suite page.
+
+|Page creator.                                      |
+|Page name.  |Page contents. |page attributes|valid?|
+|!-SomePage-!|any page at all|Suite=true     |true  |
+
+Request the page
+
+|Response Requester.          |
+|uri         |valid?|contents?|
+|!-SomePage-!|true  |         |
+
+Examine the requested page to ensure the correct links are displayed in the correct order.
+
+!| Response Examiner.                                                                        |
+|line                                                                               |inOrder?|
+|<a class="nav-link text-secondary" href="SomePage?suite" accesskey="t">Suite</a>   |true    |
+|<a class="nav-link text-secondary" href="SomePage?edit" accesskey="e">Edit</a>     |true    |
+|<a class="dropdown-item" href="SomePage?properties" accesskey="p">Properties</a>   |true    |
+|<a class="dropdown-item" href="SomePage?whereUsed" accesskey="w">Where Used</a>    |true    |
+|<a class="dropdown-item" href="SomePage?versions" accesskey="v">Versions</a>       |true    |
+|<a class="dropdown-item" href="/files" accesskey="f">Files</a>                     |true    |
+|<a class="dropdown-item" href="?search" accesskey="s">Search</a>                   |true    |
+|<a class="dropdown-item" href="/RecentChanges" accesskey="">Recent Changes</a>     |true    |
+|<a class="dropdown-item" href="?testHistory">Test History</a>                      |true    |
+|<a class="dropdown-item" href="SomePage?pageHistory" accesskey="h">Page History</a>|true    |
+|<a class="dropdown-item" href="?suite&amp;remote_debug">Remote Debug</a>           |true    |
+|<a class="dropdown-item" href="/FitNesse.UserGuide" accesskey="">User Guide</a>    |true    |

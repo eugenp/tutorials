@@ -1,0 +1,5 @@
+!|script|
+|given page|ParentPage|
+|given page|ParentPage.ChildPage|with content|>SetUp|
+|given page|ParentPage.ChildPage.SetUp|
+|page|ParentPage.ChildPage|should have link to|ParentPage.ChildPage.SetUp|

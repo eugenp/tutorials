@@ -1,0 +1,14 @@
+!c !3 Symbolic Links
+
+Symbolic Links allow a user to easily create parent-child links between pages without permanently affecting the wiki structure.  One common reason need for Symbolic Links is the the testing of a system on multiple environments.  For example, imagine an application that site on top of an Oracle database.  Hundreds of FitNesse tests have been written for this application using Oracle settings and then the team is confronted with the need to run the application on !-MySql-!.  Getting both databases running under the same suite of tests can be very difficult and may result in duplicating all the tests.  With Symbolic Links, the database configurations can be stored in high level pages along with appropriate path elements.  Then the high-level pages may symbolically link to the test suite.  In this manner one suite of tests can be executed in multiple environments.
+
+
+>TestCreatingRelativeSymbolicLink
+>TestCreatingAbsoluteSymbolicLink
+>TestCreatingSubPageSymbolicLink
+>TestCreatingBackwardSymbolicLink
+>TestRemovingSymbolicLink
+>TestSymbolicLinkBehavior
+----
+All Subpages:
+!contents

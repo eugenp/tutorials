@@ -1,0 +1,26 @@
+!1 The Fixture Code for Action Fixtures
+
+Here is our example test table from the ActionFixture page:
+
+|Action Fixture.|
+|start|!-fitnesse.fixtures.CountFixture-!|
+|check|counter|0|
+|press|count|
+|check|counter|1|
+|press|count|
+|check|counter|2|
+|enter|counter|5|
+|press|count|
+|check|counter|6|
+
+And here is the code for the !-CountFixture-!:{{{public class CountFixture extends Fixture {
+  private int counter = 0;
+
+  public void count() {
+    counter++;
+  }
+
+  public int counter() {
+    return counter;
+  }
+} }}}  As you can see, the names of the buttons (''check'', ''press'', and ''enter'') and registers (''count'' and ''counter'') correspond directly to methods in the 'started' fixture. And the meter values (the numbers in the rightmost column) are returned by the ''counter()'' method. It's really as simple as that. 

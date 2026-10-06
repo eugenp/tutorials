@@ -1,0 +1,34 @@
+!3 A sub list
+
+A list created as follows {{{ * Item one
+  * Item two}}} should be rendered as a list with a sub list.
+#
+ * First create a page with a simple table in it.
+#
+!note We use backslash is a way to capture the leading space before the *.
+!|script|
+|start|Page Builder|
+|line|\ * Item One|
+|line|\  * Item Two|
+|page|SubList|
+#
+ * Then request that page
+#
+!|Response Requester.|
+|uri|valid?|contents?|
+|SubList|true||
+#
+ * Make sure the html is correct for a simple table.
+#
+!|Response Examiner.|
+|type|pattern|matches?|value|
+|contents|<li>Item One<ul>|true||
+
+!|Response Examiner.|
+|type|number|string?|
+|line|1|<ul>|
+|line|2|<li>Item One<ul>|
+|line|3|<li>Item Two</li>|
+|line|4|</ul>|
+|line|5|</li>|
+|line|6|</ul>|

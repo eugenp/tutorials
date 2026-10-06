@@ -1,0 +1,7 @@
+!| page history |
+| name | date | right | wrong | ignores | exceptions |
+| SuitePage.TestPage | 5-May-2009 | 20 | 30 | 0 | 0 |
+
+!| script |
+| get top level history |
+| the page title should be | Test history |

@@ -1,0 +1,32 @@
+!3 A simple list
+
+A list created as follows {{{ 1 Item one
+ 2 Item two}}} should be rendered as a two item ordered list.
+#
+ * First create a page with a simple table in it.
+#
+!note We use backslash is a way to capture the leading space before the *.
+!|script|
+|start|Page Builder|
+|line|\ 1 Item One|
+|line|\ 2 Item Two|
+|page|SimpleList|
+#
+ * Then request that page
+#
+!|Response Requester.|
+|uri|valid?|contents?|
+|SimpleList|true||
+#
+ * Make sure the html is correct for a simple table.
+#
+!|Response Examiner.|
+|type|pattern|matches?|value|
+|contents|<li>Item One</li>|true||
+
+!|Response Examiner.|
+|type|number|string?|
+|line|1|<ol>|
+|line|2|<li>Item One</li>|
+|line|3|<li>Item Two</li>|
+|line|4|</ol>|

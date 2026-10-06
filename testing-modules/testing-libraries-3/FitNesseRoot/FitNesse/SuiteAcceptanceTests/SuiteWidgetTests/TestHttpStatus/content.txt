@@ -1,0 +1,23 @@
+Test that the http status entries returned in a wiki page are correct.
+
+First create a page with normal text on it.
+
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-NormalTextPage-!|This is normal text||true|
+
+Then request that page
+
+|Response Requester.|
+|uri|valid?|
+|!-NormalTextPage-!|true|
+
+Examine the response for its status.
+
+|Response Examiner.|
+|type|pattern|matches?|value|
+|status|200|true||
+|headers|Cache-Control: max-age=0|true||
+
+
+

@@ -1,0 +1,10 @@
+!1 Components and Licenses
+
+Fitnesse is released under [[Common Public License version 1.0][http://opensource.org/licenses/cpl1.0.php]]
+
+
+Also it uses some additional components which can be found in the following libraries:
+
+|Name       |Version|Web-site                 |License    |
+|Code Mirror|4.12   |https://codemirror.net/  |MIT License|
+|Jasmine    |1.3.1  |http://jasmine.github.io/|MIT License|

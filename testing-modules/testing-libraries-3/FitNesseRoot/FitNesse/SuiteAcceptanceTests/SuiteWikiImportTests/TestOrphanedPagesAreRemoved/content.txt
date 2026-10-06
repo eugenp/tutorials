@@ -1,0 +1,46 @@
+!c !3 Orphaned pages are removed.
+
+Create a page tree to be imported.
+!|Page creator.|
+|Page name.   |Page contents.|valid?|
+|ImportedRoot|!contents   |true   |
+|ImportedRoot.PageOne|page one   |true   |
+|ImportedRoot.PageOne.ChildOne|child one   |true   |
+|ImportedRoot.PageTwo|page two   |true   |
+
+Create an importing page.
+!|Page creator.|
+|Page name.   |Page contents.|valid?|
+|ImportingPage|!contents   |true   |
+
+This !-ImportingPage-! will now import the !-ImportingRoot-! page created above.
+!|Response Requester.|
+|uri   |valid?|
+|ImportingPage?responder=import&remoteUrl=http://localhost:${INTERNAL_PORT}/ImportedRoot&nochunk=true|true|
+
+We see all 3 pages imported.
+!|Response Examiner|
+|type|pattern|matches?|
+|contents|3 pages were imported|true|
+
+Now delete one of the pages from the imported root.
+!|Response Requester.|
+|uri   |status?|
+|ImportedRoot.PageOne?responder=deletePage&confirmed=yes|303|
+
+Importing again will shows only that that orphaned pages have been removed.
+!|Response Requester.|
+|uri   |valid?|
+|ImportingPage?responder=import&nochunk=true|true|
+
+!|Response Examiner|
+|type|pattern|matches?|contents?|
+|contents|0 pages were imported|true||
+
+!|Response Examiner|
+|type|pattern|matches?|
+|contents|2 orphaned pages were found and have been removed.|true|
+|contents|Orphans:|true|
+|contents|PageOne|true|
+|contents|PageOne.ChildOne|true|
+

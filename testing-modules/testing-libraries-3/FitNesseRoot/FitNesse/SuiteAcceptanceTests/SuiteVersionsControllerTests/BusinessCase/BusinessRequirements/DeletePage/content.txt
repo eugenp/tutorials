@@ -1,0 +1,7 @@
+!help
+#!| script | versions controller fixture | ${VERSION_CONTROLLER_CLASS} |
+!| script | 
+| Given a wiki page with history |
+| When the page is deleted |
+|Then the deleted page can't be retrieved |
+#| check | contentFromPage |  TestPage| [Error: Page doesn't exists]|

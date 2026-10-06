@@ -1,0 +1,28 @@
+!3 Security Overview
+Pages can be marked with three levels of security:
+
+|''secure-read''|Only authenticated users can read the page|
+|''secure-write''|Only authenticated users can write the page.|
+|''secure-test''|Only authenticated users can test the page.|
+
+These levels are not hierarchical.  secure-write does not imply secure-read.  Indeed, the three are completely independent flags that you can set on any page.
+
+!3 Setting Security
+You set the security of a page by going to it's properties and clicking on the appropriate checkboxes. If none of the checkboxes are checked, then the page is completely insecure and anybody can do anything to it.  This is the default.
+
+!3 Security Inheritance
+Pages inherit their security from their parent pages.  If a parent page has ''secure-read'' then all its children will be protected from reading, even though they don't have ''secure-read'' set themselves.  There is no way to relax security in child pages.  Where security is concerned, the parents rule.
+
+!3 Details
+ * If a unauthenticated user attempts to display a page that has ''secure-read'' set, he will be prompted for his username and password.  If he survives this authentication then he will be redirected to the requested page.
+ * If an unauthenticated user attempts to write a page that has ''secure-write'' set, he will be authenticated before the write is allowed to take place.
+ * If an unauthenticated user attempts to test a page that has ''secure-test'' set, he will be authenticated before the test is allowed to take place.  This works the same for both tests and suites.
+ * A user must be authenticated to do any kind of refactoring.
+ * A user must be authenticated to change the properties of a page.
+ * A user must be authenticated to inspect or change the /files directory structure.  However, unauthenticated readers can read files from the /files directory.
+ * Searching, [[!-WhereUsed-!][<UserGuide.FitNesseWiki.WhereUsed]], Sisterhood, and other queries of that kind are not secure and do not require authentication.
+
+!3 Authentication
+The users and their passwords are supplied to FitNesse by using the -a as one of the CommandLineArguments.
+!3 SPNEGO/GSSAPI Authentication
+See >SpnegoAuthentication

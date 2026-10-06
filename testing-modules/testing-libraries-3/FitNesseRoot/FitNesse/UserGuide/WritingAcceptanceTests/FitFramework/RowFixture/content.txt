@@ -1,0 +1,125 @@
+!1 Checking Query Results Using !-RowFixture-!
+This style of test table is best for checking the results of queries. For the sake of discussion, let's call each of the items that you get back from a query a '''record'''. A RowFixture lets you test that you get back '''exactly the set of records''' from a query that you expect to get.
+
+Here is a simplistic example. Let's say that we have asked our application for the first five prime numbers.  We want to make sure we got them all.
+
+|!-fitnesse.fixtures.PrimeNumberRowFixture-!|
+|prime|
+|3|
+|2|
+|5|
+|7|
+|11|
+
+This test table style does not read the way that a ColumnFixture style test table does. In this case, each cell in the ''prime'' column represents a '''key''' that identifies one of the records we expect to get back (in this case, a prime number). And '''the entire set of rows of data''' represent the output we expect to get back: no more and no less than that '''exact set of records''' (though they need not be in that exact order).
+
+Hit the test button to run this test. OK, we got them all. For an explanation of the fixture code for this RowFixture example, see RowFixtureCode.
+
+!2 Missing Records
+The following table shows what happens when you ask for a record that doesn't exist. ''(Note the extra 12.'')
+
+|!-fitnesse.fixtures.PrimeNumberRowFixture-!|
+|prime|
+|2|
+|3|
+|5|
+|7|
+|11|
+|12|
+
+!2 Surplus Records
+And this table shows what happens when you don't ask for a record that ''is'' in the query results.  ''(Note the 11 is missing.)''
+
+|!-fitnesse.fixtures.PrimeNumberRowFixture-!|
+|prime|
+|2|
+|3|
+|5|
+|7|
+
+!2 Testing Fields in Returned Records
+Often you want to see that you got a specific set of records back, '''and'''  you want to '''test certain fields in the returned records'''. For this you use the same question-mark syntax we saw used for output columns in ColumnFixture style tables.
+
+For example, lets say that we have a database of employee records.  We want to test that the employees were paid correctly. The ''pay?'' column in the table below specifies the exact amount we expect to get back for the pay field of each returned employee record:
+
+|!-fitnesse.fixtures.EmployeePayRecordsRowFixture-!|
+|id|pay?|
+|1|1000|
+|2|2000|
+
+!3 Incorrect Output
+Here's what it would look like if the pay was not correct for the employee whose id is 2. It looks just as it does for incorrect output values in a ColumnFixture table cell:
+
+|!-fitnesse.fixtures.EmployeePayRecordsRowFixture-!|
+|id|pay?|
+|1|1000|
+|2|3000|
+
+!3 Missing or Extra Records
+And regardless whether you check aspects of queried records, FitNesse shows you whether any are missing or extra:
+
+|!-fitnesse.fixtures.EmployeePayRecordsRowFixture-!|
+|id|pay()|
+|1|1000|
+|5|5000|
+
+To see the fixture code for these tables, see RowFixtureCode.
+
+!2 Querying Using Multiple "Keys"
+Sometimes we need more than one piece of data to uniquely identify a record.
+
+Suppose we have records for the last three months' worth of paychecks.  Each paycheck is uniquely identified by the ''employeeId'' and the ''date''.  We want to make sure that the checks were generated properly. We use a RowFixture table to ask for a set of checks identified by both ''employeeId'' '''and''' ''date'':
+
+|!-fitnesse.fixtures.PayCheckRecordFixture-!|
+|date|employeeId|name|pay()|
+|3/1/03|1||1000|
+|3/1/03|2||2002|
+|4/1/03|1||1015|
+|4/1/03|2||2003|
+
+Notice, once again, that the order of the table rows doesn't matter.  For example, this table also works fine for that same query:
+
+|!-fitnesse.fixtures.PayCheckRecordFixture-!|
+|date|employeeId|name|pay()|
+|4/1/03|1||1015|
+|3/1/03|1||1000|
+|4/1/03|2||2003|
+|3/1/03|2||2002|
+
+!3 Blank Fields
+Notice the ''name'' field. We provided the field name, knowing that it was part of each record, but we provided no expected values in that column. As a result, FitNesse did not make this field part of the key for finding records, but merely filled in the values found for that field in each record, so we could see them. Here's what would have happened if we filled in the ''name'' column correctly for some cells, and incorrectly for another.
+
+|!-fitnesse.fixtures.PayCheckRecordFixture-!|
+|date|employeeId|name|pay()|
+|3/1/03|1|Bob|1000|
+|4/1/03|1|Bob|1015|
+|3/1/03|2|Bill|2002|
+|4/1/03|2|Biff|2003|
+
+And here's what would happen if a row were missing or surplus.
+
+|!-fitnesse.fixtures.PayCheckRecordFixture-!|
+|date|employeeId|name|pay()|
+|3/1/03|1||1000|
+|4/1/03|1||1015|
+|3/1/03|2||2002|
+|4/1/03|3||2003|
+
+!2 Summary
+  * RowFixture tables are designed for checking that you get back exactly the set of records you want from a query.
+  * FitNesse will cause the test to fail if the query had any '''missing''' or '''surplus''' records.
+  * You can also test fields in the returned records.
+  * If you provide a field name column, but provide no expected values for it, then FitNesse will fill in the returned values so you can see them.
+
+!2 Learning More
+To learn about the fixture code for the above examples, see RowFixtureCode.
+Also check out the other TestTableStyles.
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,93 @@
+!1 How RowFixture Fixture Code Works
+
+Here is our simplistic prime number test table again:
+
+|!-fitnesse.fixtures.PrimeNumberRowFixture-!|
+|prime|
+|2|
+|3|
+|5|
+|7|
+|11|
+
+Hit the test button to run this test. OK, we got them all. How does the table tell the code what to expect?
+
+Each data column specifies a query '''key'''. Above, ''prime'' is our only key. We just want to see whether our set of primes contains each of these numbers.
+
+Now here is the code for the !-PrimeNumberRowFixture-!:{{{package fitnesse.fixtures;
+
+import fit.RowFixture;
+
+public class PrimeNumberRowFixture extends RowFixture {
+  public Object[] query() throws Exception {
+    PrimeData[] array = new PrimeData[5];
+    array[0] = new PrimeData(11);
+    array[1] = new PrimeData(5);
+    array[2] = new PrimeData(3);
+    array[3] = new PrimeData(7);
+    array[4] = new PrimeData(2);
+    return array;
+  }
+
+  public Class getTargetClass() {
+    return PrimeData.class;
+  }
+} }}} All we are doing is assembling and returning an array of !-PrimeData-! objects: these are our ''records''. We also use the special ''getTargetClass()'' method to specify to Fit the type of the '''record''' objects we need it to inspect for us. In this case, ''!-PrimeData.class-!''.
+
+Notice that the '''key''' column name (''prime'') in the table corresponds to the public member variable ''prime'' in !-PrimeData-!.  Fit inspects each of the !-PrimeData-! objects in the returned array, comparing the table cell values in the ''prime'' column with the contents of the ''prime'' variable in !-PrimeData-!. Here is the code for !-PrimeData-!: {{{package fitnesse.fixtures;
+
+public class PrimeData {
+  public int prime;
+  public PrimeData(int prime) {
+    this.prime = prime;
+  }
+} }}}  Notice also that the order of the records in our query array is not the same as the order of key values in the table.  RowFixture does not care about the order of the records returned by a query, as long as they are all there, and as long as there are no extras.
+
+!2 Employee Pay Records Example: Testing Fields in Returned Records
+Here is our sample table (from the RowFixture page) that checks that a company's employees were paid correctly:
+
+|!-fitnesse.fixtures.EmployeePayRecordsRowFixture-!|
+|id|pay()|
+|1|1000|
+|2|2000|
+
+And here is the corresponding fixture code:{{{package fitnesse.fixtures;
+
+import fit.RowFixture;
+
+public class EmployeePayRecordsRowFixture extends RowFixture  {
+  public Object[] query() throws Exception {
+    EmployeePayRecord[] records = new EmployeePayRecord[2];
+    records[0] = new EmployeePayRecord(1, 1000);
+    records[1] = new EmployeePayRecord(2,2000);
+    return records;
+  }
+  public Class getTargetClass() {
+    return EmployeePayRecord.class;
+  }
+} }}} Again, we are merely assembling an array of records; in this case, employee payroll records. We also identify the class of the '''record''' type Fit must inspect: ''!-EmployeePayRecord.class-!''. Now here is !-EmployeePayRecord-!: {{{package fitnesse.fixtures;
+
+public class EmployeePayRecord {
+  public int id;
+  private double salary;
+  public EmployeePayRecord(int id, double salary) {
+    this.id = id;
+    this.salary = salary;
+  }
+  public double pay() {
+    return salary;
+  }
+} }}} To identify each row in the table, Fit finds the corresponding !style_code(!-EmployeePayRecord-!) by matching the ''id'' value in the table with the contents of the ''id'' variable, and matching the ''salary'' value in the table with the contents of the ''salary'' variable. For each found record, Fit then checks the value in the ''pay?'' column against the amount returned by the ''pay()'' method.
+
+!3 Wait a Minute. We're Just Assembling The Query Results in the Fixture!
+Yeah, you're right. We're cheating, in the interest of clarity and simplicity. These examples show the mechanics of RowFixtureCode, but not a realistic use. It will rarely make sense to be assembling the array you need within the fixture code, since that does not demonstrate that your production code correctly provides the query results you need.
+
+When you write application code in order to get tests like the above to pass, you will likely want to have an array of the right objects already handy, so that something like !-EmployeePayRecordsRowFixture-! can just grab it, instead of having to assemble it. Alternatively, you might have production code ready to grab the array of query results from a database. In either case, the fixture code would just ask the production code to return the array of records it needs.
+
+!2 Learning More
+To learn more about the RowFixture style of test table, see RowFixture.
+To learn more about how FitNesse fixture code works in general, check out [[!-FixtureCode-!][<UserGuide.WritingAcceptanceTests.FixtureCode]].
+Also check out the other TestTableStyles.
+
+
+

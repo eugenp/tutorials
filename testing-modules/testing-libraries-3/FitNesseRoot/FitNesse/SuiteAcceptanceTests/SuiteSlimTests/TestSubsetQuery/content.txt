@@ -1,0 +1,25 @@
+The empty set is always a subset.
+
+!|Subset Query:duplicate rows|A|
+|x                             |
+
+Complete set is a subset (we do not mean proper subset).
+
+!|Subset Query:duplicate rows|A|
+|x                             |
+|SuiteChildOne.SuiteSetUp      |
+|SuiteChildOne.TestOneOne      |
+|SuiteChildOne.TestOneTwo      |
+|SuiteChildOne.SuiteTearDown   |
+|SuiteChildOne.SuiteSetUp      |
+|SuiteChildOne.TestOneThree    |
+|SuiteChildOne.SuiteTearDown   |
+
+Only some of the rows (in different order) form a subset.
+
+!|Subset Query:duplicate rows|A|
+|x                             |
+|SuiteChildOne.TestOneTwo      |
+|SuiteChildOne.SuiteTearDown   |
+|SuiteChildOne.SuiteSetUp      |
+|SuiteChildOne.TestOneThree    |

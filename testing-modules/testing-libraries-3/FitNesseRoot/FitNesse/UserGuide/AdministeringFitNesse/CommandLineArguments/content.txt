@@ -1,0 +1,30 @@
+!1 Command line arguments
+
+A subset of configuration options can be provided through the command line. Command line properties take precedence over properties set in the configuration file and system properties (''-Dproperty=value''). 
+
+| ''Command!-&nbsp;-!line!-&nbsp;-!parameter'' | ''Configuration!-&nbsp;-!property'' | ''Default'' | ''Description'' |
+| {{{-p <port>}}} | Port | 80 | The port number that FitNesse listens to.  The default is 80 because this is the port that internet browsers use by default.  If your machine already has a web server running, it will be using port 80, so FitNesse should be set up to use a different port, like 8080.{{{java -jar fitnesse-standalone.jar -p 8080}}} |
+| {{{-d <path> }}} | !-RootPath-! | . | The directory in which FitNesse expects to find its page root.  It defaults to the current directory ('.'). |
+| {{{-r <path> }}} | !-FitNesseRoot-! | !-FitNesseRoot-! | The directory in which FitNesse looks for top level pages. |
+| {{{-v }}} | !-LogLevel=verbose-! | normal | Set the system log level to verbose. |
+| {{{-l <path> }}} | !-LogDirectory-! | ''no logging'' | If this argument is not present, then FitNesse will not create access log files.  Otherwise it will create access log files in the specified directory.  See LogFiles. Please note that access logging is different from system logging. |
+| {{{-e <days> }}} | !-VersionsController.days-! | 14 | Sets the expiration date for page versions.  Any page version older that the number of days specified by this argument are considered to have expired.  Expired pages are subject to deletion.  Just ''when'' they are deleted is not specified. |
+| {{{-o }}} | !-OmittingUpdates-! | ''install updates'' | When a new version of FitNesse is run for the first time, it checks the existing environment to see if any changes need to be made in order for the existing environment to be compatible with the new version of FitNesse.  For example, if we change the icon on the upper right, FitNesse might go to the http://fitnesse.org/files site and automatically download the new icon.  Or if the format of the properties files, or of the wikipages changes, FitNesse might run through all the existing pages and update their format.  This process is called ''updating''.  Sometimes you don't want updating to take place.  If so, then use the '''-o''' argument to disable updating. |
+| {{{-a authentication-parameter}}} | Credentials | ''none'' | Enable authentication. ---- If the authentication-parameter is of the form "username:password" then single user authentication is enabled, and just that one user will be known to the system. ---- If the authentication-parameter is of the form "filename" then the file will be read.  It will consist of any number of lines of the form username:password and all those users will be known to the system. See PasswordFile for more information |
+| {{{-i}}} | !-InstallOnly-! | ''no'' | Install only, do not run fitnesse after install. |
+| {{{-c <command>}}} | Command | ''none'' | Run a Rest Command and then exit. You can find more information on the -c options at RestfulServices. |
+| {{{-b <filename>}}} | !-RedirectOutput-! | ''stdout'' | redirect command output. This is most useful in conjunction with the ''-c'' option |
+| {{{-f <config file>}}} | n.a. | plugins.properties | Load an alternative configuration file. The file format adhere's to the java standard of property files. If this option is not provided, the default file ''plugins.properties'' will be loaded if it exists. |
+| {{{-lh}}} | !-LocalhostOnly-! | ''false'' | Bind only to the local loopback interface, preventing access to the wiki from other computers in the network |
+| {{{-w <workers>}}} | !-MaximumWorkers-! | 100 | The maximum number of workers to use to handle incoming requests (must be at least 5)|
+
+!1 Java system properties
+
+Some system properties can be used to control and/or to configure FitNesse (-Dproperty=value):
+
+|''System property''        |''Description''|
+|{{{slim.port}}}            |If you are using [[Slim][<UserGuide.WritingAcceptanceTests.SliM]], you can also pass in -Dslim.port to hard code the port that the Slim server uses, or configure slim.port in the configuration file.  This can be used in conjunction with Jenkins Port Allocator Plugin or the reserver-network-port mojo of the Maven build-helper plugin.|
+|{{{prevent.system.exit}}}  |If this property is set to true, then the ''!-SystemExitSecurityManager-!'' is activated to catch System.exit() calls and prevent them from terminating the VM. Default is set to ''true''.|
+
+See also: ConfigurationFile.
+

@@ -1,0 +1,82 @@
+!2 Defining and Expressing Variables.
+You can define a variable to represent any amount of text.
+ * Variable names may contain letters, numbers, periods and underscores; e.g., MYTEST.someVar or user.name or USER_NAME 
+ * You can define a variable in three ways: 
+  * !style_code(!-!define var {text}-!) - as a delimited block of text 
+  * !style_code[!-!define var othervar-!] - by copying the value of another variable 
+  * !style_code(!-!define var {${= 10 / 2 =}}-!) - as an [[expression][MarkupExpressions]] 
+ * The variable text can span many lines as shown below:
+!style_code{!define myVariable {
+This is the
+text of my
+variable
+}}
+!define myVariable {
+this is the
+text of my
+variable
+}
+
+You express the value of a variable like this: !style_code{!-${myVariable}-!}.  This expression is replaced with the value of the variable.
+
+''The value of the variable is: ${myVariable}.''
+
+If the variable value contains wiki markup, it is interpreted as the variable is expressed.
+
+!style_code{!-!define markedUp {This is '''bold'''}-!}
+!define markedUp {This is '''bold'''}
+!style_code{!-${markedUp}-!} is expressed as: ${markedUp}
+
+A variable can reference other variables.
+
+!style_code{!-!define y {y-value}-!}
+!define y {y-value}
+!style_code{!-!define x {The value of y is ${y}}-!}
+!define x {The value of y is ${y}}
+!style_code{!-${x}-!} is expressed as: ${x}
+!style_code{!-!define y {new-y-value}-!}
+!define y {new-y-value}
+!style_code{!-${x}-!} is expressed as: ${x}
+
+A variable can be copied from another variable.
+!style_code{!-!define z y-!}
+!define z y
+!style_code{!-${z}-!} is expressed as: ${z}
+
+A variable can contain an expression
+!style_code{!-!define n 10-!}
+!define n {10}
+!style_code{!-!define q 2 -!}
+!define q {2}
+!style_code{!-!define d {${= ${n} / ${q} =}}-!}
+!define d {${= ${n} / ${q} =}}
+!style_code{!-${d}-!} is : ${d}
+IMPORTANT: If the variables used in the expression change than also the result changes! 
+!style_code{!-!define q 5 -!}
+!define q {5}
+!style_code{!-${d}-!} is : ${d}
+
+!3 Variable Scope
+If a variable is expressed on a page, but is not found, then its parent pages are searched in order.
+If the variable is not found in any ancestor pages, FitNesse will inspect System.properties.
+
+!3 Defining Variables In URL Input
+You can define variables in the URL input by using the format of ''key''=''value'' (''key'' as variable name & ''value'' as variable value).  ''key'' and ''value'' can be any string values.  Multiple variables can be specified separated by ''&''.
+Variable values specified in the URL input are given precedence over variables defined on the page or in System.properties for the same key.
+
+See [[Restful Services][<UserGuide.AdministeringFitNesse.RestfulServices]]
+
+!3 Variables on [[included pages][MarkupPageInclude]]
+ * if you include a sub page into a  main page than you can use the variables define on the main page also in the included pages.
+ * If you modify a variable on the sub page then the main page will also have the modified value.
+ * If you define a variable on the sub page you can reference it later on the main page. 
+See [[Parameterized Includes][<UserGuide.WritingAcceptanceTests.AcceptanceTestPatterns.ParameterizedIncludes]] 
+
+!3 Difference between variables and [[SLIM symbols][<UserGuide.WritingAcceptanceTests.SliM.SymbolsInTables]] 
+ * Variables are evaluated at render time, before the test executes. This allows for values to be set based on page hierarchy and other things that are purely inputs to the tests.
+ * Symbols only exist at execution time. They can be changed at runtime, so are distinct from variables, which cannot.
+
+!3 Predefined Variables
+There are several [[pre-defined variables][<UserGuide.QuickReferenceGuide#VARIABLES]] that you can use on your pages.
+
+See [[Variable fitnesse test][.FitNesse.SuiteAcceptanceTests.SuiteWidgetTests.TestVariables]], [[Parent Variable fitnesse test][.FitNesse.SuiteAcceptanceTests.SuiteWidgetTests.TestParentVariables]], [[Define Variables in System Properties test][.FitNesse.SuiteAcceptanceTests.SuiteWidgetTests.TestVariablesFromSystemProperties]] and [[Variables, Symbols and Include pages][.FitNesse.SuiteAcceptanceTests.SuiteSlimTests.VariablesUsedInSubSubpage]]

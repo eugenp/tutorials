@@ -1,0 +1,86 @@
+FitNesse is a wiki server. It's also a test execution engine.
+
+In this section the application structure is described. The application can be divided in four main components:
+
+ * [[Wiki server][#wikiserver]]
+ * [[Test execution engine][#testsystem]]
+ * [[System under test][#systemundertest]] (SUT)
+ * [[Reporting engine][#testreporting]]
+
+{{{   ,---------------.
+   |  Wiki Server  |<-------------.
+   `---------------'              v
+           |               ,-------------.
+           |               |  Reporting  |
+           v               `-------------'
+   ,---------------.              ^
+   |  Test System  |--------------'
+   `---------------'
+           |
+           |
+           v
+,---------------------.
+|  System Under Test  |
+`---------------------'}}}
+The wiki server is the component responsible for serving the web pages and handling user requests. One of the operations is starting a test run. This will start the system under test with some extra code: the Fit or Slim server. The output of the test run is stored to serve the page and test history pages.Next to the main components, there are a few extra features:
+
+ * JUnit support
+ * [[System configuration][#systemconfiguration]]
+
+!anchor wikiserver
+!2 Wiki server
+The wiki server is the first thing a user sees when  starting FitNesse. The most notable class is the Responder. Responders can be configured via the [[configuration file][<UserGuide.AdministeringFitNesse.ConfigurationFile]]. Per request a responder is created. The type of responder depends on the URL sent to FitNesse. By default the !-WikiPageResponder-! is loaded.
+
+The configuration of a running FitNesse server is maintained in the wiki module, in a !-FitNesseContext-! instance. This context is configured at system startup and does not change during the lifetime of the application.
+
+The following packages are part of this subsystem:
+
+ * fitnesse: Basic server setup. Configuration classes are also here.
+ * fitnesse.authentication: authentication features for Responders
+ * fitnesse.html.template: utilities for page creation, mainly Velocity templating
+ * fitnesse.http: HTTP protocol handling
+ * fitnesse.resources: static resources, served under ''/files/fitnesse''
+ * fitnesse.responders: the responders, handlers for
+ * fitnesse.socketservice: low level connection handling
+ * fitnesse.testrunner: code for starting test systems and feeding wiki page content to the test system(s), used from the test and suite responders.
+ * fitnesse.wiki: wiki page handling
+ * fitnesse.wikitext: Wiki text parser
+
+!anchor testsystem
+!2 Test execution engine
+The Test system subsystem is responsible for executing pages: starting a SUT and interpret page content. By default 2 test systems are present: good old Fit and Slim. Custom test systems can be configured via the !-TestSystems-! configuration property or a Plugin class.
+
+The following packages are part of this subsystem:
+
+ * fitnesse.testsystem: Test system main code.
+ * fitnesse.testsystem.fit: Fit test system code (client side)
+ * fitnesse.testsystem.slim: Slim test system code (client side)
+
+!anchor systemundertest
+!2 System under test
+The system under test consists of the user code running in (normally) a separate process.
+
+The following packages are part of this subsystem:
+
+ * fit: The FIT server
+ * fitnesse.slim: the Slim server
+
+!anchor testreporting
+!2 Reporting engine
+The reporting facility is responsible for passing on test system output to the browser, but also for maintaining the test execution history. Reports manifest themselves as test system listeners: they connect to events resulting from test execution).
+
+The following packages are part of this subsystem:
+
+ * fitnesse.reporting
+
+!anchor systemconfiguration
+!2 System configuration
+Configuration of responser, wiki symbols, test systems, reporting and more can be done via either a Plugin class or entries configured in the configuration file. 
+
+FitNesse uses are generic way to construct objects from (configured) classes: a !-ComponentFactory-!. The component factory knows about the configured properties and is able to create instances based on class name. The following constructor signatures will be looked for (in order):
+
+ * Component(!-ComponentFactory-! factory)
+ * Component(Properties properties)
+ * Component()
+
+The properties contain all configuration properties, read from file and command line.

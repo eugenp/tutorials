@@ -1,0 +1,26 @@
+!3 Interaction Aware Fixture
+
+The Java Slim server allows a fixture to 'intercept' all calls made to it by Slim. This allows a fixture to implement (generic) behavior without having to add it to all of its methods invoked by Slim. So a fixture can do pre- or postprocessing or exception handling in a single place, instead of adding it to each method to should have this behavior.
+
+Examples of such generic behavior:
+ * exception handling allowing exceptions from any of its methods to be converted to !-fitnesse.slim.SlimExceptions-! (without having to implement that in each method invoked), or
+ * waiting for the system under test to be in a stable state before invoking the next method (again without having to add that waiting to each method).
+
+Implementing this behavior is done by making a fixture implement 'fitnesse.slim.fixtureInteraction.InteractionAwareFixture', which has only a single method ('aroundSlimInvoke'). In the implementation of this method the fixture is free to perform extra work before or after invoking the method to be called, or even choosing to do something completely different than invoking the method Slim intended to have executed. For fixtures implementing this interface the Java Slim server will no longer invoke any other method than 'aroundSlimInvoke', the fixture is responsible to ensure the correct behavior is executed.
+To allow the fixture to do that the arguments to 'aroundSlimInvoke' indicate which method would normally have been called, and with what arguments. Furthermore an addition arguments provides Slim's 'FixtureInteraction'. The 'interaction' is Slim's abstraction that would normally handle calling the actual method. The implementation of 'aroundSlimInvoke' can have the normal method be invoked by calling 'interaction.methodInvoke(method, this, arguments)'.
+
+A sample implementation of 'InteractionAwareFixture' from FitNesse's unit tests is contrived, but shows this mechanism being used to track which methods have been called on the fixture:
+{{{
+public class TestSlimInvocationAware extends TestSlim implements InteractionAwareFixture {
+  private static final List<String> METHODS = new ArrayList<String>();
+
+  @Override
+  public Object aroundSlimInvoke(FixtureInteraction interaction, Method method, Object... arguments) throws Throwable {
+    METHODS.add(method.getName());
+    return interaction.methodInvoke(method, this, arguments);
+  }
+}}}
+
+In [[HSAC's fixtures][https://github.com/fhoeben/hsac-fitnesse-fixtures/wiki/2.-Slim-Fixtures]] this mechanism is used to show screen shots in the wiki whenever a method of !-BrowserTest-! throws an exception, and to wait for !-AngularJs'-! DOM manipulation to be complete before having !-NgBrowserTest-! interact with the Angular application. By implementing !-InteractionAwareFixture-! these features can be implemented in a single method, instead of having to be added to each and every public method of the fixtures.
+
+!note To add generic behavior to all method calls made by Slim (irrespective of the fixture) one can configure the 'interaction' used by Slim. This is done by specifying the '-i <classname>' option on the Slim command line (for instance by using '!-!define slim.flags {-i your.package.YourOwnInteraction}-!' in the suite's root page). The class specified must implement 'fitnesse.slim.fixtureInteraction.FixtureInteraction' (for instance by extending 'fitnesse.slim.fixtureInteraction.DefaultInteraction'). This way one can not only control all methods being invoked but also how instances are obtained by Slim (which makes it possible to have them be wired up with dependency injection, instead of just being created by their default constructor).  

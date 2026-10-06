@@ -1,0 +1,136 @@
+---
+Test
+---
+
+When you execute a suite page indicating that you want to partition the suite (i.e. split it in parts) and only run one partition, !-FitNesse-! should only run that partition.
+
+In this test we create a suite of 4 pages, which is partitioned in 3 parts. We expect our 4 pages to be split in one partition of 2 tests and two of 1 test (i.e. a 2-1-1 division).
+
+The parameters !style_code(partitionIndex) and !style_code(partitionCount) configure which sub-list to run.
+
+----
+
+!2 Run the 1st partition
+
+Create a Suite page
+
+|script|Page Builder |
+|line  |${SUT_PATH}  |
+|page  |!-SuitePage-!|
+
+Create two sub pages
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPage1-!                    |
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPage2-!                    |
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPage3-!                    |
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPage4-!                    |
+
+Now run the suite page, indicating that you want to split in 3 parts and run the first.
+So when we run the first partition only the first 2 pages should be executed.
+
+|Response Requester.                                                   |
+|uri                                                            |valid?|
+|!-SuitePage?responder=suite&partitionCount=3&partitionIndex=0-!|true  |
+
+|Response Examiner.|
+|contents?         |
+|                  |
+
+The suite should report the TestPages and should show no errors.
+
+|Response Examiner.                    |
+|type    |pattern             |matches?|
+|contents|!-TestPage1-!       |true    |
+|contents|!-TestPage2-!       |true    |
+|contents|!-TestPage3-!       |false   |
+|contents|!-TestPage4-!       |false   |
+|contents|Test Pages:.*2 right|true    |
+
+The error log page should not have any errors
+
+|Response Requester.              |
+|uri                       |valid?|
+|!-SuitePage?executionLog-!|true  |
+
+|Response Examiner.|
+|contents?         |
+|                  |
+
+|Response Examiner.                  |
+|type    |pattern           |matches?|
+|contents|Exit code.*0.*Time|true    |
+
+---
+
+Perform the test again, now running the second partition. Now only one page (page three) should be run.
+
+!2 Run the 2nd partition
+
+Create a Suite page
+
+|script|Page Builder |
+|line  |${SUT_PATH}  |
+|page  |!-SuitePage-!|
+
+Create two sub pages
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPage1-!                    |
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPage2-!                    |
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPage3-!                    |
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPage4-!                    |
+
+Now run the suite page, indicating that you want to split in 3 parts and run the 2nd.
+
+|Response Requester.                                                   |
+|uri                                                            |valid?|
+|!-SuitePage?responder=suite&partitionCount=3&partitionIndex=1-!|true  |
+
+|Response Examiner.|
+|contents?         |
+|                  |
+
+The suite should report the TestPages and should show no errors.
+
+|Response Examiner.                    |
+|type    |pattern             |matches?|
+|contents|!-TestPage1-!       |false   |
+|contents|!-TestPage2-!       |false   |
+|contents|!-TestPage3-!       |true    |
+|contents|!-TestPage4-!       |false   |
+|contents|Test Pages:.*1 right|true    |
+
+The error log page should not have any errors
+
+|Response Requester.              |
+|uri                       |valid?|
+|!-SuitePage?executionLog-!|true  |
+
+|Response Examiner.|
+|contents?         |
+|                  |
+
+|Response Examiner.                  |
+|type    |pattern           |matches?|
+|contents|Exit code.*0.*Time|true    |

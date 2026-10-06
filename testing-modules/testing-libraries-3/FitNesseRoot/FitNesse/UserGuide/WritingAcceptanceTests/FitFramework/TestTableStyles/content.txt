@@ -1,0 +1,28 @@
+As we've seen, every FitNesse test table begins with a row that contains the classname of the [[Fixture Code][<UserGuide.WritingAcceptanceTests.FixtureCode]] that will interpret the rest of the table. The rest of the rows in a test table depend on which style of table and fixture we are using (each style of test table has its own style of fixture code).
+
+Here we point you to pages that describe each of the styles of FitNesse test table, and the fixture code used to interpret and run them as tests.
+
+!2 The Most Common Table/Fixture Styles
+|ColumnFixture|''This is the style you may end up using most: rows of data represent inputs and expected outputs.''|
+|RowFixture|''This is good for testing queries that should return an exact set of values (order-independently).''|
+|ActionFixture|''This style allows you write a script that emulates a series of events (such as controls manipulated on a user interface).''|
+|CommentTables|''Sometimes you want a tabular comment that is not executed as a test.''|
+
+!2 Less Frequently-Used Table/Fixture Styles
+|RowEntryFixture|''A special case of ColumnFixture for processing rows of data.''|
+|TableFixture|''A fixture style that lets you create completely custom test table formats, and process them however you like.''|
+|SummaryFixture|''A fixture that generates a report of all the tests on a page.''|
+
+!2 Some Table and Fixture Examples
+|PayrollTests|''An example using ColumnFixture''|
+
+!2 Some extra things about Fit Tables that vary from port to port.
+|SymbolsInTestTables|''Some ports of FIT allow symbols to be passed in Column and Row fixtures.  This is very inconsistent amongst the different FIT ports.''|
+|KeywordsInTestTables|''Some ports of FIT allow keywords blank, null, and error.  This is very inconsistent between FIT ports.''|
+|ComparisonExpressionsInFixtures|''You can put comparison expressions in the cells of your test tables.''|
+|ParametersInFixtures|''Allows you to pass arguments into a fixture.''|
+|DataTypesInFixtures|''Which data types FitNesse and Fit can handle in test tables.''|
+|TroubleShootingAcceptanceTests|''How to investigate problems when running test tables.''|
+
+!2 Writing Fit Tables
+|WritingFitTables|''How to write tests.''|

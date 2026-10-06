@@ -1,0 +1,52 @@
+When you execute a suite page with a specified start test, !-FitNesse-! should only run tests that start after the start test.
+
+----
+
+Create a Suite page
+
+!|script|Page Builder|
+|line|${SUT_PATH}|
+|page|!-SuitePage-!|
+
+Create two sub pages
+
+|script|Page Builder|
+|line|!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page|!-SuitePage.TestPageOne-!|
+
+
+|script|Page Builder|
+|line|!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page|!-SuitePage.TestPageTwo-!|
+
+Now run the suite page.
+
+|Response Requester.|
+|uri   |valid?|
+|!-SuitePage?responder=suite&firstTest=TestPageTwo-!|true|
+
+|Response Examiner.|
+|contents?|
+||
+
+The suite should report the TestPages and should show no errors.
+
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|!-TestPageTwo-!|true|
+|contents|!-TestPageOne-!|false|
+|contents|Test Pages:.*1 right|true|
+
+The error log page should not have any errors
+
+|Response Requester.|
+|uri   |valid?|
+|!-SuitePage?executionLog-!|true|
+
+|Response Examiner.|
+|contents?|
+||
+
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|Exit code.*0.*Time|true|

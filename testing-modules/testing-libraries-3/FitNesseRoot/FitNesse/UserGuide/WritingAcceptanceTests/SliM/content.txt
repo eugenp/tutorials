@@ -1,0 +1,68 @@
+!define TEST_SYSTEM {slim}
+!2 The ''SLIM'' Test System
+Slim (Simple List Invocation Method) is an alternative to Fit. Rather than running all the HTML processing, comparisons, and colorizing in the System Under Test (SUT), Slim keeps all that behavior on in FitNesse. What executes in the SUT is a very tiny kernel that implements the [[''Slim Protocol''][>SlimProtocol]]. This protocol is a bare bones RPC system that allows FitNesse to call functions in the SUT.
+
+This strategy has a number of advantages:
+
+ * The Slim protocol is very easy to port. Getting new platforms to use SLIM is a matter of a few hours of work.
+ * All the features are on the FitNesse side, so test tables remain consistent regardless of the platform of the SUT.
+ * Since HTML is not an intrinsic part of SLIM, new test syntaxes can be explored.
+
+!3 Using the SLIM Test System
+If you want a test page to be run under SLIM, you simply set the TEST_SYSTEM variable to "slim" instead of "fit".
+
+{{{&bang;define TEST_SYSTEM {slim} }}}If this variable is set on your page, (as it is on this page!) or on any parent page, then your page will be run with Slim. That's all there is to it.
+
+!3 The Slim Tables
+The first cell of a slim table tells you what kind of table it is. Here are the table types so far:
+
+| [[Decision Table][>DecisionTable]] | Supplies the inputs and outputs for decisions. This is similar to the Fit Column Fixture |
+| [[Baseline Decision Table][.FitNesse.SuiteAcceptanceTests.SuiteSlimTests.BaseLineDecisionTable]]|Almost identical to a >DecisionTable but more readable for very big tables with many columns as only the changed values from one line to the baseline must be specified. The fixture implementation is identical to >DecisionTable.|
+| [[Dynamic Decision Table][>DynamicDecisionTable]]                                               |Has the same syntax as a >DecisionTable, but differs in the fixture implementation. It passes the column headers as parameters to the fixture.                                                                                     |
+| [[Hybrid Decision Table][.FitNesse.SuiteAcceptanceTests.SuiteSlimTests.HybridDecisionTable]]    |Combines the advantages in the fixture implementation of a Decision and a Dynamic Decision Table. Also supported by a [[Baseline Decision Table][.FitNesse.SuiteAcceptanceTests.SuiteSlimTests.BaseLineDecisionTable]]             |
+| [[Query Table][>QueryTable]] | Supplies the expected results of a query. This is similar to the Fit Row Fixture |
+| [[Subset Query Table][>SubsetQueryTable]] | Supplies a subset of the expected results of a query. |
+| [[Ordered query Table][>OrderedQueryTable]] | Supplies the expected results of a query. The rows are expected to be in order. This is similar to the Fit Row Fixture |
+| [[Script Table][>ScriptTable]] | A series of actions and checks. Similar to Do Fixture. |
+| [[Table Table][>TableTable]] | Whatever you want it to be! |
+| [[Import][>ImportTable]] | Add a path to the fixture search path. |
+| [[Comment][>CommentTable]] | A table that does nothing. |
+| [[Scenario Table][>ScenarioTable]] | A table that can be called from other tables. |
+| [[Library Table][>LibraryTable]] | A table that installs fixtures available for all test pages |
+| [[Define Table Type][>DefineTableType]] | A helper table that defines the default table type for named fixtures. |
+| [[Define Alias][>DefineAlias]] | A helper table that defines alias names for fixtures. |
+
+!4 Data Types.
+The data in your tables is all Strings. However your fixtures don't want to be constrained to Strings. So Slim comes with several standard data type converters that will automatically convert the strings in the tables into the data types expected by your fixtures.
+
+!see >DataTypes
+You can also create your own custom type converters if you like.
+
+!see >CustomTypes
+Content returned from the SUT will be escaped by default, so your fixture can return a piece of output without the need to transform it to HTML compatible output. On the other hand, if you're returning HTML content (e.g. a <table>..</table>), FitNesse will try to detect that (based on a valid HTML start and end tag) and will render the HTML in-line.
+
+!4 Configure SLIM
+The Slim test system can be configured using the following properties:
+
+| slim.port | 8085 | Base port for SLIM. |
+| slim.pool.size | 10 | The size of the pool of ports to cycle through. By default the ports 8085 up to 8095 are used (''slim.port'' + ''slim.pool.size''). |
+| slim.host | localhost | The host the SLIM server will be running on. This is mostly useful if you're running a remote SLIM server. |
+| slim.flags | | Extra flags to provide to the SLIM server. Arguments supported by the slim service are: !-
+-![-v] [-i interactionClass] [-s statementTimeout] [-d] [-ssl parameterClass] |
+| slim.timeout | 10 seconds | Connection timeout starting and finishing a test run. |
+| slim.debug.timeout | ''slim.timeout'' | Same as ''slim.timeout'', used when the debug property is set (falls back to ''slim.timeout''). |
+| manually.start.test.runner.on.debug | false | Do not launch a SLIM server if the test is ran in debug mode. |
+
+Those properties can be either provided by a wiki page, on the command line (e.g. ''-Dslim.port=9000'') or in the plugins.properties file.
+
+!4 Extra Goodies that are consistent throughout all Slim tables and ports.
+| [[''Exception Handling''][>ExceptionHandling]] |
+| [[''Symbols in tables''][>SymbolsInTables]] |
+| [[''Expressions in tables''][>ExpressionsInTables]] |
+| [[''Constructor arguments''][>ConstructorArguments]] |
+| [[''Value comparisons''][>ValueComparisons]] |
+| [[''Graceful names''][>GracefulNames]] |
+
+!4 Java goodies
+| [[''System Under Test''][>SystemUnderTest]] |
+| [[''Interaction Aware Fixture''][>InteractionAwareFixture]] |

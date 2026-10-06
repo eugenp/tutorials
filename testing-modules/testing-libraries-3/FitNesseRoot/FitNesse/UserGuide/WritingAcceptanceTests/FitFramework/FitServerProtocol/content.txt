@@ -1,0 +1,31 @@
+!c !3 A description of the FitServer component that is required for each FIT.
+!c !3 This is the protocol of communication between FIT and FitNesse.
+'''Invocation:'''
+FitServer is invoked by a simple console command.
+''!-java fit.FitServer-!''
+
+'''Command Line Arguments:'''
+Java usage: !-java fit.FitServer [-v]-! ''host port socketTicket''
+
+'''Execution:'''
+ * '''Connecting'''
+  1 Use the ''socketTicket'' to build an HTTP request of the form:
+   * !-GET /?responder=socketCatcher&ticket=-!''socketTicket'' !-HTTP/1.1\r\n\r\n-!
+  1 open socket connection to the given ''host'' and ''port''.
+  2 write the http request over the socket (do not precede with size)
+  5 receive ''STATUS'' as ''INTEGER''.
+ * '''Transactions''' - loops until a 0 ''INTEGER'' is read as the size of a document.
+  1 ''READ'' document from socket
+  2 process document and ''WRITE'' processed document to socket.
+   * the processes document may be written in 1 to many chunks.
+  3 write 0 to socket an an ''INTEGER''.
+  4 ''WRITE COUNTS'' for document to socket
+ * '''Closing''' - invoked by reading a document size of 0.
+  1 close the socket.
+  2 exit execution with a value of (wrongs + exceptions)
+!include FitProtocol
+
+
+'''Errors and Exceptions:'''
+ - ''Connection Error'': If the ''STATUS'' recieved at connection is not zero, then somehitng has gone wrong.  The value of ''STATUS'' is the length of the error message the FitNesse will send.  Before exiting FitServer should read the error message and print it to standard error.
+ - ''Transaction Error'': If an exception is thrown during the processing of transactions then the exception should be wrapped in an HTML table and written back over the socket as though it were the test results.  An exception thrown at any other point is considered fatal and may invoke abnormal termination.

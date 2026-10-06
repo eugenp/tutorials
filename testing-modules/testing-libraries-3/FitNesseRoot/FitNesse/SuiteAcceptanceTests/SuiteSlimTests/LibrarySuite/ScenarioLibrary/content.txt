@@ -1,0 +1,30 @@
+!|scenario|given installed library echo support|
+|note|Library is installed via Library table above|
+
+!|scenario|when a method not present on the fixture is called|
+|echo|
+
+!|scenario|then it should be called on the installed library|
+|ensure|echo support called|
+
+!|scenario|given multiple libraries with the same methods|
+|note|See for installed libraries the Library table above|
+
+!|scenario|when such a method is called|
+|echo|
+
+!|scenario|then the last library created takes precedence over earlier created libraries|
+|ensure|special echo support called|
+|reject|echo support called|
+
+!|scenario|given a library installed in the setup page|
+|given installed library echo support|
+
+!|scenario|then is should have been invoked on the library in the setup page|
+|ensure|echo in set up library called|
+
+!|scenario|then the one one installed in this page takes precedence over the one in the setup page|
+|ensure|echo support called|
+|reject|echo in set up library called|
+
+

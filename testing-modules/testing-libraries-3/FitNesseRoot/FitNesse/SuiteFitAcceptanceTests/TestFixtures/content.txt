@@ -1,0 +1,3885 @@
+!-
+
+<div class=Section1>
+
+<h1><a href="index.html">Fit Specification</a>: Fixtures</h1>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>Fit do<st1:PersonName>c</st1:PersonName>uments are owned by the <st1:PersonName>c</st1:PersonName>ustomers
+and domain experts on your team.<span style='mso-spacerun:yes'>  </span>The do<st1:PersonName>c</st1:PersonName>uments
+<st1:PersonName>c</st1:PersonName>ontain examples of how the program should
+work and Fit <st1:PersonName>c</st1:PersonName>he<st1:PersonName>c</st1:PersonName>ks
+the examples against the a<st1:PersonName>c</st1:PersonName>tual program.<span
+style='mso-spacerun:yes'>  </span>The examples are pla<st1:PersonName>c</st1:PersonName>ed
+in tables with a spe<st1:PersonName>c</st1:PersonName>ial first row, but other
+than that, there are no limitations on how the examples are stru<st1:PersonName>c</st1:PersonName>tured.<span
+style='mso-spacerun:yes'>  </span>Customers should write tables in the way that
+<st1:PersonName>c</st1:PersonName>omes most naturally to them.</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>Sin<st1:PersonName>c</st1:PersonName>e there arent any limits to the way
+tables are stru<st1:PersonName>c</st1:PersonName>tured, Fit <st1:PersonName>c</st1:PersonName>ant
+interpret the tables automati<st1:PersonName>c</st1:PersonName>ally.<span
+style='mso-spacerun:yes'>  </span>It requires a fixture to interpret the
+table.<span style='mso-spacerun:yes'>  </span>A <i>fixture </i>is a pie<st1:PersonName>c</st1:PersonName>e
+of <st1:PersonName>c</st1:PersonName>ode, written by the teams programmers,
+that understands the stru<st1:PersonName>c</st1:PersonName>ture of ea<st1:PersonName>c</st1:PersonName>h
+type of table and how to <st1:PersonName>c</st1:PersonName>he<st1:PersonName>c</st1:PersonName>k
+it against the a<st1:PersonName>c</st1:PersonName>tual program.</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p><b style='mso-bidi-font-weight:normal'><u>Contents:<o:p></o:p></u></b></p>
+
+<p>&nbsp;</p>
+
+<p class=MsoToc2 style='tab-stops:right dotted 431.5pt'><!--[if supportFields]><b><span
+style='text-transform:uppercase'><span style='mso-element:field-begin'></span><span
+style='mso-spacerun:yes'> </span>TOC \o &quot;2-3&quot; \h \z \u <span
+style='mso-element:field-separator'></span></span></b><![endif]--><span
+class=MsoHyperlink><span style='mso-no-proof:yes'><a href="#_Toc92539404">Loading
+Fixtures<span style='color:windowtext;display:none;mso-hide:screen;text-decoration:
+none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span> PAGEREF
+_Toc92539404 \h </span><span style='color:windowtext;text-decoration:none;
+text-underline:none'><span style='display:none;mso-hide:screen'><span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>1<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000D0000005F0054006F006300390032003500330039003400300034000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:"Times New Roman";mso-no-proof:
+yes'><o:p></o:p></span></p>
+
+<p class=MsoToc3 style='tab-stops:right dotted 431.5pt'><span
+class=MsoHyperlink><span style='mso-no-proof:yes'><a href="#_Toc92539405">Errors<span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span> PAGEREF
+_Toc92539405 \h </span><span style='color:windowtext;text-decoration:none;
+text-underline:none'><span style='display:none;mso-hide:screen'><span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>2<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000D0000005F0054006F006300390032003500330039003400300035000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:"Times New Roman";font-style:
+normal;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc2 style='tab-stops:right dotted 431.5pt'><span
+class=MsoHyperlink><span style='mso-no-proof:yes'><a href="#_Toc92539406">Interpreting
+Tables<span style='color:windowtext;display:none;mso-hide:screen;text-decoration:
+none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span> PAGEREF
+_Toc92539406 \h </span><span style='color:windowtext;text-decoration:none;
+text-underline:none'><span style='display:none;mso-hide:screen'><span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>2<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000D0000005F0054006F006300390032003500330039003400300036000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:"Times New Roman";mso-no-proof:
+yes'><o:p></o:p></span></p>
+
+<p class=MsoToc3 style='tab-stops:right dotted 431.5pt'><span
+class=MsoHyperlink><span style='mso-no-proof:yes'><a href="#_Toc92539407">Default
+Interpretation<span style='color:windowtext;display:none;mso-hide:screen;
+text-decoration:none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span> PAGEREF
+_Toc92539407 \h </span><span style='color:windowtext;text-decoration:none;
+text-underline:none'><span style='display:none;mso-hide:screen'><span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>3<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000D0000005F0054006F006300390032003500330039003400300037000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:"Times New Roman";font-style:
+normal;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc2 style='tab-stops:right dotted 431.5pt'><span
+class=MsoHyperlink><span style='mso-no-proof:yes'><a href="#_Toc92539408">Checking
+Cells<span style='color:windowtext;display:none;mso-hide:screen;text-decoration:
+none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span> PAGEREF
+_Toc92539408 \h </span><span style='color:windowtext;text-decoration:none;
+text-underline:none'><span style='display:none;mso-hide:screen'><span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>4<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000D0000005F0054006F006300390032003500330039003400300038000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:"Times New Roman";mso-no-proof:
+yes'><o:p></o:p></span></p>
+
+<p class=MsoToc3 style='tab-stops:right dotted 431.5pt'><span
+class=MsoHyperlink><span style='mso-no-proof:yes'><a href="#_Toc92539409">Right
+and Wrong<span style='color:windowtext;display:none;mso-hide:screen;text-decoration:
+none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span> PAGEREF
+_Toc92539409 \h </span><span style='color:windowtext;text-decoration:none;
+text-underline:none'><span style='display:none;mso-hide:screen'><span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>4<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000D0000005F0054006F006300390032003500330039003400300039000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:"Times New Roman";font-style:
+normal;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc3 style='tab-stops:right dotted 431.5pt'><span
+class=MsoHyperlink><span style='mso-no-proof:yes'><a href="#_Toc92539410">Empty
+Cells<span style='color:windowtext;display:none;mso-hide:screen;text-decoration:
+none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span> PAGEREF
+_Toc92539410 \h </span><span style='color:windowtext;text-decoration:none;
+text-underline:none'><span style='display:none;mso-hide:screen'><span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>4<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000D0000005F0054006F006300390032003500330039003400310030000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:"Times New Roman";font-style:
+normal;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc3 style='tab-stops:right dotted 431.5pt'><span
+class=MsoHyperlink><span style='mso-no-proof:yes'><a href="#_Toc92539411">Unexpected
+Errors<span style='color:windowtext;display:none;mso-hide:screen;text-decoration:
+none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span> PAGEREF
+_Toc92539411 \h </span><span style='color:windowtext;text-decoration:none;
+text-underline:none'><span style='display:none;mso-hide:screen'><span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>4<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000D0000005F0054006F006300390032003500330039003400310031000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:"Times New Roman";font-style:
+normal;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc3 style='tab-stops:right dotted 431.5pt'><span
+class=MsoHyperlink><span style='mso-no-proof:yes'><a href="#_Toc92539412">Expected
+Errors<span style='color:windowtext;display:none;mso-hide:screen;text-decoration:
+none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span> PAGEREF
+_Toc92539412 \h </span><span style='color:windowtext;text-decoration:none;
+text-underline:none'><span style='display:none;mso-hide:screen'><span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>5<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000D0000005F0054006F006300390032003500330039003400310032000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:"Times New Roman";font-style:
+normal;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc3 style='tab-stops:right dotted 431.5pt'><span
+class=MsoHyperlink><span style='mso-no-proof:yes'><a href="#_Toc92539413">Expected
+Blank<span style='color:windowtext;display:none;mso-hide:screen;text-decoration:
+none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span> PAGEREF
+_Toc92539413 \h </span><span style='color:windowtext;text-decoration:none;
+text-underline:none'><span style='display:none;mso-hide:screen'><span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>5<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000D0000005F0054006F006300390032003500330039003400310033000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:"Times New Roman";font-style:
+normal;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc3 style='tab-stops:right dotted 431.5pt'><span
+class=MsoHyperlink><span style='mso-no-proof:yes'><a href="#_Toc92539414">Cell
+HTML Converts to Text<span style='color:windowtext;display:none;mso-hide:screen;
+text-decoration:none;text-underline:none'><span style='mso-tab-count:1 dotted'> </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span> PAGEREF
+_Toc92539414 \h </span><span style='color:windowtext;text-decoration:none;
+text-underline:none'><span style='display:none;mso-hide:screen'><span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>6<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000D0000005F0054006F006300390032003500330039003400310034000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:"Times New Roman";font-style:
+normal;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc3 style='tab-stops:right dotted 431.5pt'><span
+class=MsoHyperlink><span style='mso-no-proof:yes'><a href="#_Toc92539415">Comparison
+Values Convert to HTML<span style='color:windowtext;display:none;mso-hide:screen;
+text-decoration:none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span> PAGEREF
+_Toc92539415 \h </span><span style='color:windowtext;text-decoration:none;
+text-underline:none'><span style='display:none;mso-hide:screen'><span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>6<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000D0000005F0054006F006300390032003500330039003400310035000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:"Times New Roman";font-style:
+normal;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc2 style='tab-stops:right dotted 431.5pt'><span
+class=MsoHyperlink><span style='mso-no-proof:yes'><a href="#_Toc92539416">Type
+Conversion<span style='color:windowtext;display:none;mso-hide:screen;
+text-decoration:none;text-underline:none'><span style='mso-tab-count:1 dotted'>.. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span> PAGEREF
+_Toc92539416 \h </span><span style='color:windowtext;text-decoration:none;
+text-underline:none'><span style='display:none;mso-hide:screen'><span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>7<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000D0000005F0054006F006300390032003500330039003400310036000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:"Times New Roman";mso-no-proof:
+yes'><o:p></o:p></span></p>
+
+<p class=MsoToc3 style='tab-stops:right dotted 431.5pt'><span
+class=MsoHyperlink><span style='mso-no-proof:yes'><a href="#_Toc92539417">HTML
+to Text Conversion<span style='color:windowtext;display:none;mso-hide:screen;
+text-decoration:none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span> PAGEREF
+_Toc92539417 \h </span><span style='color:windowtext;text-decoration:none;
+text-underline:none'><span style='display:none;mso-hide:screen'><span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>7<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000D0000005F0054006F006300390032003500330039003400310037000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:"Times New Roman";font-style:
+normal;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc3 style='tab-stops:right dotted 431.5pt'><span
+class=MsoHyperlink><span style='mso-no-proof:yes'><a href="#_Toc92539418">Type
+Conversion<span style='color:windowtext;display:none;mso-hide:screen;
+text-decoration:none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span> PAGEREF
+_Toc92539418 \h </span><span style='color:windowtext;text-decoration:none;
+text-underline:none'><span style='display:none;mso-hide:screen'><span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>7<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000D0000005F0054006F006300390032003500330039003400310038000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:"Times New Roman";font-style:
+normal;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc2 style='tab-stops:right dotted 431.5pt'><span
+class=MsoHyperlink><span style='mso-no-proof:yes'><a href="#_Toc92539419">Predefined
+Fixtures<span style='color:windowtext;display:none;mso-hide:screen;text-decoration:
+none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span> PAGEREF
+_Toc92539419 \h </span><span style='color:windowtext;text-decoration:none;
+text-underline:none'><span style='display:none;mso-hide:screen'><span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>7<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000D0000005F0054006F006300390032003500330039003400310039000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:"Times New Roman";mso-no-proof:
+yes'><o:p></o:p></span></p>
+
+<p class=MsoToc2 style='tab-stops:right dotted 431.5pt'><span
+class=MsoHyperlink><span style='mso-no-proof:yes'><a href="#_Toc92539420">Run
+Results<span style='color:windowtext;display:none;mso-hide:screen;text-decoration:
+none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span> PAGEREF
+_Toc92539420 \h </span><span style='color:windowtext;text-decoration:none;
+text-underline:none'><span style='display:none;mso-hide:screen'><span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>8<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000D0000005F0054006F006300390032003500330039003400320030000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:"Times New Roman";mso-no-proof:
+yes'><o:p></o:p></span></p>
+
+<p><!--[if supportFields]><b><span style='font-size:10.0pt;text-transform:uppercase'><span
+style='mso-element:field-end'></span></span></b><![endif]--><o:p>&nbsp;</o:p></p>
+
+<h2><a name="_Toc92539404">Loading Fixtures</a></h2>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>The first row of a table is always the name of the fixture used to interpret
+that table.<span style='mso-spacerun:yes'>  </span>Theres no spe<st1:PersonName>c</st1:PersonName>ial
+logi<st1:PersonName>c</st1:PersonName> applied; if the first <st1:PersonName>c</st1:PersonName>ell
+in the first row is not the <st1:PersonName>c</st1:PersonName>orre<st1:PersonName>c</st1:PersonName>t
+fixture name, Fit wont try to guess where it is.<span
+style='mso-spacerun:yes'>  </span>(Note: we use the keyword (missing) to indi<st1:PersonName>c</st1:PersonName>ate
+a missing fixture name in the table below.)</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
+ mso-yfti-tbllook:480;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
+ .5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='color:silver'>fat.FixtureNameFixture<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Table</b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>FixtureName()</b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>[exampleFixture]</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>exampleFixture</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>[exampleFixture]</p>
+  <p>[1] [2]</p>
+  <p>[3] [4]</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>exampleFixture</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>[] [exampleFixture]</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p style='tab-stops:46.5pt'>(missing)<span style='mso-tab-count:1'>  </span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>[exampleFixture] [foo]</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>exampleFixture</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>[]</p>
+  <p>[exampleFixture]</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>(missing)</p>
+  </td>
+ </tr>
+</table>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>The fixture name is the full name of the <st1:PersonName>c</st1:PersonName>ode
+that will interpret the table.<span style='mso-spacerun:yes'>  </span>(In Java,
+its a <st1:PersonName>c</st1:PersonName>lass.)<span style='mso-spacerun:yes'> 
+</span>The fixture name is <st1:PersonName>c</st1:PersonName>ase sensitive and
+must be fully qualified (that is, in<st1:PersonName>c</st1:PersonName>lude any
+namespa<st1:PersonName>c</st1:PersonName>e information).<span
+style='mso-spacerun:yes'>  </span>All implementations of Fit use the dot
+notation of Java to qualify names.</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
+ mso-yfti-tbllook:480;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
+ .5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='color:silver'>fat.FixtureLoadFixture<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>FixtureName</b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>LoadResult()<o:p></o:p></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>fat.ExampleFixture</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>loaded</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>fat.exampleFixture</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>error</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>Fat.ExampleFixture</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>error</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>ExampleFixture</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>error</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>fat.Example</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>error</p>
+  </td>
+ </tr>
+</table>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<h3><a name="_Toc92539405">Errors</a></h3>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>When the fixture isnt valid, Fit annotates the <st1:PersonName>c</st1:PersonName>ell
+with an explanatory error message.<span style='mso-spacerun:yes'>  </span>What
+makes something a fixture or not depends on whi<st1:PersonName>c</st1:PersonName>h
+implementation of Fit youre using.<span style='mso-spacerun:yes'>  </span>In
+Java, for example, only <st1:PersonName>c</st1:PersonName>lasses that extend
+the Fixture <st1:PersonName>c</st1:PersonName>lass are fixtures.<span
+style='mso-spacerun:yes'>  </span>Other languages might use the presen<st1:PersonName>c</st1:PersonName>e
+of spe<st1:PersonName>c</st1:PersonName>ifi<st1:PersonName>c</st1:PersonName>
+methods to determine whether something is a fixture or not.</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>This error message may be displayed as part of additional information, su<st1:PersonName>c</st1:PersonName>h
+as an ex<st1:PersonName>c</st1:PersonName>eption sta<st1:PersonName>c</st1:PersonName>k
+tra<st1:PersonName>c</st1:PersonName>e.</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='margin-left:5.8pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0in 5.4pt 0in 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='color:silver'>fat.FixtureLoadFixture<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>FixtureName</b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>LoadResult()<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>ErrorMessage()<o:p></o:p></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>fat.ExampleFixture</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>loaded</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>(none)</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>NoSu<st1:PersonName>c</st1:PersonName>hFixture</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>error</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='background:yellow;mso-highlight:yellow'>The fixture
+  &quot;NoSu</span><st1:PersonName><span style='background:yellow;mso-highlight:
+   yellow'>c</span></st1:PersonName><span style='background:yellow;mso-highlight:
+  yellow'>hFixture&quot; was not found.<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>fat.NotAFixture</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>error</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='background:yellow;mso-highlight:yellow'>&quot;fat.NotAFixture
+  was found, but its not a fixture.<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>Case-sensitivity errors use the same error message as other not found
+errors.</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='margin-left:5.8pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0in 5.4pt 0in 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='color:silver'>fat.FixtureLoadFixture<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>FixtureName</b><o:p></o:p></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>LoadResult()<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>ErrorMessage()<o:p></o:p></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='color:gray'>fat.</span><b style='mso-bidi-font-weight:normal'><u>e</u></b><span
+  style='color:gray'>xampleFixture</span><o:p></o:p></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>error<o:p></o:p></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>The fixture &quot;fat.exampleFixture&quot; was not found.<o:p></o:p></p>
+  </td>
+ </tr>
+</table>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p><b style='mso-bidi-font-weight:normal'>NOTE TO IMPLEMENTORS:<o:p></o:p></b></p>
+
+<p>The remainder of this do<st1:PersonName>c</st1:PersonName>ument is in<st1:PersonName>c</st1:PersonName>omplete.<span
+style='mso-spacerun:yes'>  </span>The above examples should pass.<span
+style='mso-spacerun:yes'>  </span>Dont try to make any of the following
+examples pass, as they will surely change.<o:p></o:p></p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<h2><a name="_Toc92539406">Interpreting Tables</a></h2>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>By default, fixtures interpret tables from left to right and top to bottom.</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='margin-left:5.8pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0in 5.4pt 0in 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='color:silver'>fat.InterpretationOrderFixture<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Table</b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>InterpretationOrder()<o:p></o:p></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>[fat.Con<st1:PersonName>c</st1:PersonName>atenateFixture]</p>
+  <p>[top left] [top middle] [top right]</p>
+  <p>[bottom left] [bottom middle] [bottom right]</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>top left, top middle, top right, bottom left, bottom middle, bottom right</p>
+  </td>
+ </tr>
+</table>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>Although left-to-right and top-to-bottom is the default, fixtures may
+interpret tables in any order they please.<span style='mso-spacerun:yes'> 
+</span>The fixture in the following example interprets tables <st1:PersonName>c</st1:PersonName>olumn
+by <st1:PersonName>c</st1:PersonName>olumn, from right to left and top to
+bottom.</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='margin-left:5.8pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0in 5.4pt 0in 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='color:silver'>fat.InterpretationOrderFixture<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Table</b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>InterpretationOrder()<o:p></o:p></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>[fat.ReverseCon<st1:PersonName>c</st1:PersonName>atenateFixture]</p>
+  <p>[top left] [top middle] [top right]</p>
+  <p>[bottom left] [bottom middle] [bottom right]</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>top right, bottom right, top middle, bottom middle, top left, bottom left</p>
+  </td>
+ </tr>
+</table>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<h3><a name="_Toc92539407">Default Interpretation</a></h3>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>Fits default interpretation of a <st1:PersonName>c</st1:PersonName>ell
+is to mark it with the ignore standard annotation.<span
+style='mso-spacerun:yes'>  </span>(See the <a href="annotation.html">annotation
+specification</a> for details about standard annotations.)</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='margin-left:5.8pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0in 5.4pt 0in 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='color:silver'>fat.InterpreterFixture<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b style='mso-bidi-font-weight:normal'>InputTable<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>InterpretedTable()<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>RenderedOutput()<o:p></o:p></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>[fat.DoNothingFixture]</p>
+  <p>[left] [right]</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>&lt;table&gt;</p>
+  <p><span style='mso-spacerun:yes'> 
+  </span>&lt;tr&gt;&lt;td&gt;fat.DoNothingFixture&lt;/td&gt;&lt;/tr&gt;</p>
+  <p><span style='mso-spacerun:yes'>  </span>&lt;tr&gt;&lt;td bg<st1:PersonName>c</st1:PersonName>olor=&quot;#efefef&quot;&gt;left&lt;/td&gt;&lt;td
+  bg<st1:PersonName>c</st1:PersonName>olor=&quot;#efefef&quot;&gt;right&lt;/td&gt;&lt;/tr&gt;</p>
+  <p>&lt;/table&gt;</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+</table>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>If an error o<st1:PersonName>c</st1:PersonName><st1:PersonName>c</st1:PersonName>urs
+while interpreting a <st1:PersonName>c</st1:PersonName>ell, Fit marks it with
+the error annotation and in<st1:PersonName>c</st1:PersonName>ludes whatever
+error information is available.<span style='mso-spacerun:yes'>  </span>(In
+Java, this is a sta<st1:PersonName>c</st1:PersonName>k tra<st1:PersonName>c</st1:PersonName>e.)</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='margin-left:5.8pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0in 5.4pt 0in 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='color:silver'>??<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b><o:p>&nbsp;</o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b><o:p>&nbsp;</o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b><o:p>&nbsp;</o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b><o:p>&nbsp;</o:p></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+</table>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>Fixtures may override the default interpretation and do whatever they
+wish.<span style='mso-spacerun:yes'>  </span>The fixture in the following
+example marks all <st1:PersonName>c</st1:PersonName>ells with the right
+standard annotation unless an error o<st1:PersonName>c</st1:PersonName><st1:PersonName>c</st1:PersonName>urs,
+in whi<st1:PersonName>c</st1:PersonName>h <st1:PersonName>c</st1:PersonName>ase
+it is marked with the ignore standard annotation.</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='margin-left:5.8pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0in 5.4pt 0in 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='color:silver'>??<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b><o:p>&nbsp;</o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b><o:p>&nbsp;</o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b><o:p>&nbsp;</o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b><o:p>&nbsp;</o:p></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+</table>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<h2><a name="_Toc92539408">Che</a><st1:PersonName><span style='mso-bookmark:
+ _Toc92539408'>c</span></st1:PersonName><span style='mso-bookmark:_Toc92539408'>king
+Cells</span></h2>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>Fit provides a standard servi<st1:PersonName>c</st1:PersonName>e
+for <st1:PersonName>c</st1:PersonName>he<st1:PersonName>c</st1:PersonName>king
+a table <st1:PersonName>c</st1:PersonName>ells <st1:PersonName>c</st1:PersonName>orre<st1:PersonName>c</st1:PersonName>tness.<span
+style='mso-spacerun:yes'>  </span>Given a table <st1:PersonName>c</st1:PersonName>ell
+and a value, Fit <st1:PersonName>c</st1:PersonName>ompares the two and annotates
+the <st1:PersonName>c</st1:PersonName>ell a<st1:PersonName>c</st1:PersonName><st1:PersonName>c</st1:PersonName>ordingly.<span
+style='mso-spacerun:yes'>  </span>(This se<st1:PersonName>c</st1:PersonName>tion
+assumes that the <st1:PersonName>c</st1:PersonName>omparison value is a
+string.<span style='mso-spacerun:yes'>  </span>See Type Conversion, below,
+for information about what happens when its not.)</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h3><a name="_Toc92539409">Right and Wrong</a></h3>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>When the table <st1:PersonName>c</st1:PersonName>ell and the
+<st1:PersonName>c</st1:PersonName>omparison value mat<st1:PersonName>c</st1:PersonName>h,
+Fit marks the <st1:PersonName>c</st1:PersonName>ell right using a standard
+annotation.<span style='mso-spacerun:yes'>  </span>(See the <a
+href="annotation.html">annotation specification</a> for more about standard
+annotations.)</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='margin-left:5.8pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0in 5.4pt 0in 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='color:silver'>fat.Che</span><st1:PersonName><span
+   style='color:silver'>c</span></st1:PersonName><span style='color:silver'>kFixture<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b style='mso-bidi-font-weight:normal'>Cell<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>ComparisonValue<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Annotation()<o:p></o:p></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>&lt;td&gt;Something&lt;/td&gt;</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>Something</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>right</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>When they dont mat<st1:PersonName>c</st1:PersonName>h, Fit
+marks the <st1:PersonName>c</st1:PersonName>ell wrong and in<st1:PersonName>c</st1:PersonName>ludes
+the <st1:PersonName>c</st1:PersonName>omparison value.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='margin-left:5.8pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0in 5.4pt 0in 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='color:silver'>fat.Che</span><st1:PersonName><span
+   style='color:silver'>c</span></st1:PersonName><span style='color:silver'>kFixture<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b style='mso-bidi-font-weight:normal'>Cell<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>ComparisonValue<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Annotation()<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Expe</b><st1:PersonName><b>c</b></st1:PersonName><b>ted()<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>A</b><st1:PersonName><b>c</b></st1:PersonName><b>tual()<o:p></o:p></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>&lt;td&gt;Something&lt;/td&gt;</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>Something else</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>wrong</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>Something</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>Something else</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h3><a name="_Toc92539410">Empty Cells</a></h3>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>If the table <st1:PersonName>c</st1:PersonName>ell is empty,
+Fit uses the info standard annotation to put the <st1:PersonName>c</st1:PersonName>omparison
+value in the <st1:PersonName>c</st1:PersonName>ell.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='margin-left:5.8pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0in 5.4pt 0in 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='color:silver'>fat.Che</span><st1:PersonName><span
+   style='color:silver'>c</span></st1:PersonName><span style='color:silver'>kFixture<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b style='mso-bidi-font-weight:normal'>Cell<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>ComparisonValue<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Annotation()<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Info()<o:p></o:p></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>&lt;td&gt;&lt;/td&gt;</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>Anything</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>info</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>Anything</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h3><a name="_Toc92539411">Unexpe</a><st1:PersonName><span style='mso-bookmark:
+ _Toc92539411'>c</span></st1:PersonName><span style='mso-bookmark:_Toc92539411'>ted
+Errors</span></h3>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>If an error o<st1:PersonName>c</st1:PersonName><st1:PersonName>c</st1:PersonName>urs
+while <st1:PersonName>c</st1:PersonName>omparing the table <st1:PersonName>c</st1:PersonName>ell
+to the fixtures value, Fit uses the error standard annotation to put
+information about the error into the table.<span style='mso-spacerun:yes'> 
+</span>If a sta<st1:PersonName>c</st1:PersonName>k tra<st1:PersonName>c</st1:PersonName>e
+or similar information is available, it is in<st1:PersonName>c</st1:PersonName>luded.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>The following examples use the keyword (<st1:PersonName>c</st1:PersonName>auses
+error) in the ComparisonValue <st1:PersonName>c</st1:PersonName>olumn to
+indi<st1:PersonName>c</st1:PersonName>ate that an error o<st1:PersonName>c</st1:PersonName><st1:PersonName>c</st1:PersonName>urs.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='margin-left:5.8pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0in 5.4pt 0in 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='color:silver'>fat.Che</span><st1:PersonName><span
+   style='color:silver'>c</span></st1:PersonName><span style='color:silver'>kFixture<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b style='mso-bidi-font-weight:normal'>Cell<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>ComparisonValue<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Annotation()<o:p></o:p></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>&lt;td&gt;something&lt;/td&gt;</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>(<st1:PersonName>c</st1:PersonName>auses error)</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>error</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>If the table <st1:PersonName>c</st1:PersonName>ell is empty,
+Fit uses the info standard annotation to put the word error into the
+table.<span style='mso-spacerun:yes'>  </span>No error information (su<st1:PersonName>c</st1:PersonName>h
+as a sta<st1:PersonName>c</st1:PersonName>k tra<st1:PersonName>c</st1:PersonName>e)
+is in<st1:PersonName>c</st1:PersonName>luded.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='margin-left:5.8pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0in 5.4pt 0in 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='color:silver'>fat.Che</span><st1:PersonName><span
+   style='color:silver'>c</span></st1:PersonName><span style='color:silver'>kFixture<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b style='mso-bidi-font-weight:normal'>Cell<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>ComparisonValue<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Annotation()<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Info()<o:p></o:p></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>&lt;td&gt;&lt;/td&gt;</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>(<st1:PersonName>c</st1:PersonName>auses error)</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>info</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>error</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h3><a name="_Toc92539412">Expe</a><st1:PersonName><span style='mso-bookmark:
+ _Toc92539412'>c</span></st1:PersonName><span style='mso-bookmark:_Toc92539412'>ted
+Errors</span></h3>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>If the table <st1:PersonName>c</st1:PersonName>ell <st1:PersonName>c</st1:PersonName>ontains
+the word error, Fit assumes that an error was expe<st1:PersonName>c</st1:PersonName>ted.<span
+style='mso-spacerun:yes'>  </span>If an error o<st1:PersonName>c</st1:PersonName><st1:PersonName>c</st1:PersonName>urs,
+Fit marks the <st1:PersonName>c</st1:PersonName>ell right.<span
+style='mso-spacerun:yes'>  </span>If it doesnt, Fit marks the <st1:PersonName>c</st1:PersonName>ell
+wrong.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='margin-left:5.8pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0in 5.4pt 0in 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='color:silver'>fat.Che</span><st1:PersonName><span
+   style='color:silver'>c</span></st1:PersonName><span style='color:silver'>kFixture<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b style='mso-bidi-font-weight:normal'>Cell<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>ComparisonValue<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Annotation()<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Expe</b><st1:PersonName><b>c</b></st1:PersonName><b>ted()<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>A</b><st1:PersonName><b>c</b></st1:PersonName><b>tual()<o:p></o:p></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>&lt;td&gt;error&lt;/td&gt;</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>(<st1:PersonName>c</st1:PersonName>auses error)</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>right</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>n/a</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>n/a</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>&lt;td&gt;error&lt;/td&gt;</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>Anything</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>wrong</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>error</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>Anything</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h3><a name="_Toc92539413">Expe</a><st1:PersonName><span style='mso-bookmark:
+ _Toc92539413'>c</span></st1:PersonName><span style='mso-bookmark:_Toc92539413'>ted
+Blank</span></h3>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>Fit does <i style='mso-bidi-font-style:normal'>not </i>support
+a standard blank keyword similar to the error keyword.<span
+style='mso-spacerun:yes'>  </span>(Although the following example uses a
+(blank) keyword to indi<st1:PersonName>c</st1:PersonName>ate a blank <st1:PersonName>c</st1:PersonName>omparison
+value, this keyword was programmed as part of fat.Che<st1:PersonName>c</st1:PersonName>kFixture
+and is not a standard part of Fit.)</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='margin-left:5.8pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0in 5.4pt 0in 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='color:silver'>fat.Che</span><st1:PersonName><span
+   style='color:silver'>c</span></st1:PersonName><span style='color:silver'>kFixture<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b style='mso-bidi-font-weight:normal'>Cell<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>ComparisonValue<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Annotation()<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Expe</b><st1:PersonName><b>c</b></st1:PersonName><b>ted()<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>A</b><st1:PersonName><b>c</b></st1:PersonName><b>tual()<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Info()<o:p></o:p></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>&lt;td&gt;blank&lt;/td&gt;</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>(blank)</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>wrong</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>blank</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>(blank)</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>n/a</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>&lt;td&gt;blank&lt;/td&gt;</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>Anything</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>wrong</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>blank</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>Anything</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>n/a</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>&lt;td&gt;&lt;/td&gt;</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>(blank)</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>info</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>n/a</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>n/a</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>(blank)</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>&lt;td&gt;&lt;/td&gt;</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>Anything</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>info</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>n/a</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>n/a</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>Anything</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>If a fixture wishes to allow blank values, it must handle
+this on its own.<span style='mso-spacerun:yes'>  </span>A <st1:PersonName>c</st1:PersonName>ommon
+approa<st1:PersonName>c</st1:PersonName>h is for the fixture to look for blank
+results and to <st1:PersonName>c</st1:PersonName>onvert them into a spe<st1:PersonName>c</st1:PersonName>ial
+keyword, su<st1:PersonName>c</st1:PersonName>h as (blank) or (none).<span
+style='mso-spacerun:yes'>  </span>Use this keyword in the table when a blank
+result is expe<st1:PersonName>c</st1:PersonName>ted.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h3><a name="_Toc92539414">Cell HTML Converts to Text</a></h3>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>The <st1:PersonName>c</st1:PersonName>ontents of the <st1:PersonName>c</st1:PersonName>ell
+are <st1:PersonName>c</st1:PersonName>onverted from HTML to text as des<st1:PersonName>c</st1:PersonName>ribed
+in the <a href="parse.html">parsing specification</a>.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='margin-left:5.8pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0in 5.4pt 0in 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='color:silver'>fat.Che</span><st1:PersonName><span
+   style='color:silver'>c</span></st1:PersonName><span style='color:silver'>kFixture<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b style='mso-bidi-font-weight:normal'>Cell<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>ComparisonValue<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Annotation()<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Expe</b><st1:PersonName><b>c</b></st1:PersonName><b>ted()<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>A</b><st1:PersonName><b>c</b></st1:PersonName><b>tual()<o:p></o:p></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>&lt;td&gt;&lt;i&gt;anything&lt;/i&gt;&lt;/td&gt;</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>anything</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>right</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>n/a</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>n/a</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>&lt;td&gt;&lt;i&gt;anything&lt;/i&gt;&lt;/td&gt;</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>&lt;i&gt;anything&lt;/i&gt;</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>wrong</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>anything</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>&lt;i&gt;anything&lt;/i&gt;</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>&lt;td&gt;&amp;lt;i&gt;anything&amp;lt;/i&gt;&lt;/td&gt;</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>&lt;i&gt;anything&lt;/i&gt;</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>right</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>n/a</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>n/a</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>&lt;td&gt;&amp;lt;i&gt;anything&amp;lt;/i&gt;&lt;/td&gt;</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>anything</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>wrong</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>&lt;i&gt;anything&lt;/i&gt;</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>anything</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>This <st1:PersonName>c</st1:PersonName>onversion applies to
+blank <st1:PersonName>c</st1:PersonName>ells and the error keyword as well.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='margin-left:5.8pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0in 5.4pt 0in 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='color:silver'>fat.Che</span><st1:PersonName><span
+   style='color:silver'>c</span></st1:PersonName><span style='color:silver'>kFixture<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b style='mso-bidi-font-weight:normal'>Cell<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>ComparisonValue<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Annotation()<o:p></o:p></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Info()<o:p></o:p></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>&lt;td&gt;&amp;nbsp;&lt;/td&gt;</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>anything</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>info</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>anything</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>&lt;td&gt;&lt;font <st1:PersonName>c</st1:PersonName>olor=&quot;red&quot;&gt;error&lt;/font&gt;&lt;/td&gt;</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>(<st1:PersonName>c</st1:PersonName>auses error)</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>right</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>n/a</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h3><a name="_Toc92539415">Comparison Values Convert to HTML</a></h3>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>When a <st1:PersonName>c</st1:PersonName>omparison value is
+used in an annotation, its <st1:PersonName>c</st1:PersonName>onverted to HTML
+as des<st1:PersonName>c</st1:PersonName>ribed in the <a href="annotation.html">annotations
+specification</a>.<span style='mso-spacerun:yes'>  </span>See that section for
+examples.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h2><a name="_Toc92539416">Type Conversion</a></h2>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p>(to do)</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>Converting strings to obje<st1:PersonName>c</st1:PersonName>ts</p>
+
+<p>Converting obje<st1:PersonName>c</st1:PersonName>ts to strings</p>
+
+<p>Comparing obje<st1:PersonName>c</st1:PersonName>ts</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<h2><a name="_Toc92539419">Predefined Fixtures</a></h2>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>Fit in<st1:PersonName>c</st1:PersonName>ludes several predefined
+fixtures.<span style='mso-spacerun:yes'>  </span>Ea<st1:PersonName>c</st1:PersonName>h
+fixture is des<st1:PersonName>c</st1:PersonName>ribed in a separate do<st1:PersonName>c</st1:PersonName>ument,
+shown in the table below.</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
+ mso-yfti-tbllook:480;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
+ .5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='color:silver'>fat.Referen</span><st1:PersonName><span
+   style='color:silver'>c</span></st1:PersonName><span style='color:silver'>eFixture<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Des</b><st1:PersonName><b>c</b></st1:PersonName><b>ription</b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Lo</b><st1:PersonName><b>c</b></st1:PersonName><b>ation</b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Result()</b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>Primitive Fixture</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>primitive-fixture.html</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>Column Fixture</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><st1:PersonName>c</st1:PersonName>olumn-fixture.html</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>Row Fixture</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>row-fixture.html</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>A<st1:PersonName>c</st1:PersonName>tion Fixture </p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>a<st1:PersonName>c</st1:PersonName>tion-fixture.html</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>Summary Fixture</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>summary-fixture.html</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+</table>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<h2><a name="_Toc92539420">Run Results</a></h2>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;mso-padding-alt:0in 0in 0in 0in'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td valign=top style='padding:0in 5.4pt 0in 5.4pt'>
+  <p><span style='color:silver'>fit.Summary</span></p>
+  </td>
+ </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>(to do)</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>Be sure to in<st1:PersonName>c</st1:PersonName>lude right, wrong, ex<st1:PersonName>c</st1:PersonName>eption,
+and ignore <st1:PersonName>c</st1:PersonName>ounts in <st1:PersonName>c</st1:PersonName>he<st1:PersonName>c</st1:PersonName>k
+dis<st1:PersonName>c</st1:PersonName>ussion</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<div class=MsoNormal align=center style='text-align:center'>
+
+<hr size=2 width="100%" align=center>
+
+</div>
+
+<p><b>Che</b><st1:PersonName><b>c</b></st1:PersonName><b>k</b> </p>
+
+<p>Expe<st1:PersonName>c</st1:PersonName>ted values spe<st1:PersonName>c</st1:PersonName>ified
+in <st1:PersonName>c</st1:PersonName>ells are tested for equality with a<st1:PersonName>c</st1:PersonName>tual
+values extra<st1:PersonName>c</st1:PersonName>ted from the program under test. </p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='mso-cellspacing:0in;mso-padding-alt:2.25pt 2.25pt 2.25pt 2.25pt'>
+ <tr style='mso-yfti-irow:0'>
+  <td colspan=4 style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>fat.Equals </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>type </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>x </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>y </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>= </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>boolean </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>true </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>TRUE </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>true </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>integer </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>00001 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>1 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>true </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>real </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>1000 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>1e3 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>true </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>string </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>ab<st1:PersonName>c</st1:PersonName> </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>ABC </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>false </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6;mso-yfti-lastrow:yes'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>string </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>a b <st1:PersonName>c</st1:PersonName> </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>a b <st1:PersonName>c</st1:PersonName> </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>true </p>
+  </td>
+ </tr>
+</table>
+
+<p>A sequen<st1:PersonName>c</st1:PersonName>e of values <st1:PersonName>c</st1:PersonName>an
+be entered and <st1:PersonName>c</st1:PersonName>he<st1:PersonName>c</st1:PersonName>ked
+as a single (<st1:PersonName>c</st1:PersonName>omposite) value. </p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='mso-cellspacing:0in;mso-padding-alt:2.25pt 2.25pt 2.25pt 2.25pt'>
+ <tr style='mso-yfti-irow:0'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>fat.Equals</p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>type </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>x </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>y </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>= </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>integers </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>1, 3, 5 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>01,03,05 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>true </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>integers </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>1, 3, 5 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>01,05,03 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>false </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>booleans </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>true, true, false </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>true, false </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>false </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5;mso-yfti-lastrow:yes'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>strings </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>a , b , <st1:PersonName>c</st1:PersonName> </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>a,b,<st1:PersonName>c</st1:PersonName> </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>true </p>
+  </td>
+ </tr>
+</table>
+
+<p>Domain values <st1:PersonName>c</st1:PersonName>an be <st1:PersonName>c</st1:PersonName>onstru<st1:PersonName>c</st1:PersonName>ted
+from <st1:PersonName>c</st1:PersonName>ell <st1:PersonName>c</st1:PersonName>ontents.
+Equality <st1:PersonName>c</st1:PersonName>omparisons will be subje<st1:PersonName>c</st1:PersonName>t
+to appropriate domain rules (i.e. delegated to the domain obje<st1:PersonName>c</st1:PersonName>ts.)
+</p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='mso-cellspacing:0in;mso-padding-alt:2.25pt 2.25pt 2.25pt 2.25pt'>
+ <tr style='mso-yfti-irow:0'>
+  <td colspan=4 style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>fat.Equals </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>type </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>x </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>y </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>= </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>date </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>Jan 1, 1995 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>January 1, 1995 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>true </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3;mso-yfti-lastrow:yes'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>money </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>$10000 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>$10,000.00 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>true </p>
+  </td>
+ </tr>
+</table>
+
+<p>Floating point numbers are <st1:PersonName>c</st1:PersonName>he<st1:PersonName>c</st1:PersonName>ked
+to the pre<st1:PersonName>c</st1:PersonName>ision that is normal in the host
+language. It is possible for a domain obje<st1:PersonName>c</st1:PersonName>t
+to infer pre<st1:PersonName>c</st1:PersonName>ision from the string
+representation of expe<st1:PersonName>c</st1:PersonName>ted values. For
+example, <a href="http://192.168.2.114/fit/edit.cgi?ScientificDouble">[?]</a>S<st1:PersonName>c</st1:PersonName>ientifi<st1:PersonName>c</st1:PersonName>Double
+<st1:PersonName>c</st1:PersonName>he<st1:PersonName>c</st1:PersonName>ks
+equality to the pre<st1:PersonName>c</st1:PersonName>ision implied by the
+number of signifi<st1:PersonName>c</st1:PersonName>ant digits in a value. </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo2;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>non-zeros -- 123.45 is 5 digits </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo2;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>zeros between non-zeros -- 100003 is 6 digits </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo2;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>zeros in the fra<st1:PersonName>c</st1:PersonName>tion
+part -- 12.20 is 4 digits </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo2;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>but not leading zeros -- 0001000 is 4 digits </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo2;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>and not exponent digits -- 6.02e23 is 3 digits </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo2;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>left argument (re<st1:PersonName>c</st1:PersonName>eiver)
+<st1:PersonName>c</st1:PersonName>ontroles pre<st1:PersonName>c</st1:PersonName>ision
+</p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='mso-cellspacing:0in;mso-padding-alt:2.25pt 2.25pt 2.25pt 2.25pt'>
+ <tr style='mso-yfti-irow:0'>
+  <td colspan=4 style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>fat.Equals </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>type </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>x </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>y </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>= </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>real </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>123.45 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>123.449 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>false </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>s<st1:PersonName>c</st1:PersonName>ientifi<st1:PersonName>c</st1:PersonName>
+  </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>123.45 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>123.449 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>true </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>s<st1:PersonName>c</st1:PersonName>ientifi<st1:PersonName>c</st1:PersonName>
+  </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>100003 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>100003.1 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>true </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>s<st1:PersonName>c</st1:PersonName>ientifi<st1:PersonName>c</st1:PersonName>
+  </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>100003.1 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>100003 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>false </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>s<st1:PersonName>c</st1:PersonName>ientifi<st1:PersonName>c</st1:PersonName>
+  </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>12.20 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>12.210 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>false </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:7;mso-yfti-lastrow:yes'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>s<st1:PersonName>c</st1:PersonName>ientifi<st1:PersonName>c</st1:PersonName>
+  </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>12.21 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>12.210 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>true </p>
+  </td>
+ </tr>
+</table>
+
+<p>Improperly spe<st1:PersonName>c</st1:PersonName>ified values may throw ex<st1:PersonName>c</st1:PersonName>eptions
+whi<st1:PersonName>c</st1:PersonName>h are reported in the <st1:PersonName>c</st1:PersonName>ell
+that <st1:PersonName>c</st1:PersonName>ontains the invalid number. Improper
+value dete<st1:PersonName>c</st1:PersonName>tion is only as good as would be
+expe<st1:PersonName>c</st1:PersonName>ted in the host language. (We are
+assuming that in<st1:PersonName>c</st1:PersonName>orre<st1:PersonName>c</st1:PersonName>tly
+<st1:PersonName>c</st1:PersonName>onverted values will lead to dete<st1:PersonName>c</st1:PersonName>ted
+errors elsewhere.) </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l20 level1 lfo4;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>xyz is not an integer </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l20 level1 lfo4;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>10000000000000000000000000 may or may not be an
+integer </p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='mso-cellspacing:0in;mso-padding-alt:2.25pt 2.25pt 2.25pt 2.25pt'>
+ <tr style='mso-yfti-irow:0'>
+  <td colspan=2 style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>fat.Table </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>fat.Equals </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>&nbsp;</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>type </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>x </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>integer </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>200 </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4;mso-yfti-lastrow:yes'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>integer </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>xyz </p>
+  </td>
+ </tr>
+</table>
+
+<p><span style='display:none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='mso-cellspacing:0in;mso-padding-alt:2.25pt 2.25pt 2.25pt 2.25pt'>
+ <tr style='mso-yfti-irow:0'>
+  <td colspan=2 style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>fat.Color </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>white </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>white </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>white </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>white </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>white </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>white </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4;mso-yfti-lastrow:yes'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>white </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>yellow </p>
+  </td>
+ </tr>
+</table>
+
+<p>Some <st1:PersonName>c</st1:PersonName>hara<st1:PersonName>c</st1:PersonName>ter
+strings have spe<st1:PersonName>c</st1:PersonName>ial meaning outside of type <st1:PersonName>c</st1:PersonName>onversion.
+</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo6;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>blank -- omit <st1:PersonName>c</st1:PersonName>he<st1:PersonName>c</st1:PersonName>k,
+report value (reported in gray letters) </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo6;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>error -- expe<st1:PersonName>c</st1:PersonName>t
+an error </p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='mso-cellspacing:0in;mso-padding-alt:2.25pt 2.25pt 2.25pt 2.25pt'>
+ <tr style='mso-yfti-irow:0'>
+  <td colspan=3 style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>fat.Table </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>fat.Divide </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>&nbsp;</p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>&nbsp;</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>x </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>y </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>divide() </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>100 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>2 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>50 </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>100 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>2 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>&nbsp;</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>100 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>0 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>error </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6;mso-yfti-lastrow:yes'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>100 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>0 </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>&nbsp;</p>
+  </td>
+ </tr>
+</table>
+
+<p><span style='display:none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='mso-cellspacing:0in;mso-padding-alt:2.25pt 2.25pt 2.25pt 2.25pt'>
+ <tr style='mso-yfti-irow:0'>
+  <td colspan=3 style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>fat.Color </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>white </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>white </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>white </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>white </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>white </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>white </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>white </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>white </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>green </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>white </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>white </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>gray/white </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>white </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>white </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>green </p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6;mso-yfti-lastrow:yes'>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>white </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>white </p>
+  </td>
+  <td style='padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p>gray/white </p>
+  </td>
+ </tr>
+</table>
+
+<p>The framework looks for parse support in different pla<st1:PersonName>c</st1:PersonName>es.
+</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l11 level1 lfo8;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>fixture </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l11 level1 lfo8;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>domain obje<st1:PersonName>c</st1:PersonName>t </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l11 level1 lfo8;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>type adapter </p>
+
+<p>The framework will allow fixtures to implement <st1:PersonName>c</st1:PersonName>ustom
+parsing. </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l14 level1 lfo10;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>yea = true </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l14 level1 lfo10;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>nay = false </p>
+
+<div class=MsoNormal align=center style='text-align:center'>
+
+<hr size=2 width="100%" align=center>
+
+</div>
+
+<p><b>Fixture</b> </p>
+
+<p>By default <st1:PersonName>c</st1:PersonName>ells are pro<st1:PersonName>c</st1:PersonName>essed
+in order, by table, by row within tables, and by <st1:PersonName>c</st1:PersonName>ell
+within rows. Distin<st1:PersonName>c</st1:PersonName>t routines handle sequen<st1:PersonName>c</st1:PersonName>ing
+(plural) and interpretation (singular). </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l1 level1 lfo12;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>doTables -- sequen<st1:PersonName>c</st1:PersonName>e
+tables within a do<st1:PersonName>c</st1:PersonName>ument </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l1 level1 lfo12;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>doTable -- interpret a table </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l1 level1 lfo12;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>doRows -- sequen<st1:PersonName>c</st1:PersonName>e
+rows within a table </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l1 level1 lfo12;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>doRow -- interpret a row </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l1 level1 lfo12;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>doCells -- sequen<st1:PersonName>c</st1:PersonName>e
+<st1:PersonName>c</st1:PersonName>ells within a row </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l1 level1 lfo12;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>doCell -- interpret a row </p>
+
+<p>The default interpretation of a <st1:PersonName>c</st1:PersonName>ell is to
+mark it as ignored. </p>
+
+<p>Cells <st1:PersonName>c</st1:PersonName>ontain givens or expe<st1:PersonName>c</st1:PersonName>ted
+results. The fixture is responsible for distinguishing givens from expe<st1:PersonName>c</st1:PersonName>ted
+results, <st1:PersonName>c</st1:PersonName>he<st1:PersonName>c</st1:PersonName>king
+expe<st1:PersonName>c</st1:PersonName>ted results against a<st1:PersonName>c</st1:PersonName>tuals,
+and indi<st1:PersonName>c</st1:PersonName>ating the result with the ba<st1:PersonName>c</st1:PersonName>kground
+annotation as follows. </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l15 level1 lfo14;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>white -- no <st1:PersonName>c</st1:PersonName>he<st1:PersonName>c</st1:PersonName>k
+wanted (blank input) </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l15 level1 lfo14;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>green -- right: expe<st1:PersonName>c</st1:PersonName>ted
+equals a<st1:PersonName>c</st1:PersonName>tual </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l15 level1 lfo14;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>red -- wrong: expe<st1:PersonName>c</st1:PersonName>ted
+not equal a<st1:PersonName>c</st1:PersonName>tual </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l15 level1 lfo14;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>yellow -- ex<st1:PersonName>c</st1:PersonName>eption:
+trouble <st1:PersonName>c</st1:PersonName>omputing a<st1:PersonName>c</st1:PersonName>tual
+or <st1:PersonName>c</st1:PersonName>omparing result </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l15 level1 lfo14;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>gray -- ignore: desired <st1:PersonName>c</st1:PersonName>he<st1:PersonName>c</st1:PersonName>k
+not possible </p>
+
+<p>Fixtures <st1:PersonName>c</st1:PersonName>ooperate to <st1:PersonName>c</st1:PersonName>ount
+the number of ea<st1:PersonName>c</st1:PersonName>h result. </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l9 level1 lfo16;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><st1:PersonName>c</st1:PersonName>ounts a<st1:PersonName>c</st1:PersonName><st1:PersonName>c</st1:PersonName>umulate
+between tables </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l9 level1 lfo16;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><st1:PersonName>c</st1:PersonName>ounts are
+summarized as &quot;# right, # wrong, # ex<st1:PersonName>c</st1:PersonName>eptions,
+# ignores&quot;. </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l9 level1 lfo16;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>runner fixtures (e.g. <a
+href="http://192.168.2.114/fit/wiki.cgi?AllFiles">AllFiles</a>) <st1:PersonName>c</st1:PersonName>an
+<st1:PersonName>c</st1:PersonName>ontrol a<st1:PersonName>c</st1:PersonName><st1:PersonName>c</st1:PersonName>umulation
+of <st1:PersonName>c</st1:PersonName>ounts </p>
+
+<p>Fixtures <st1:PersonName>c</st1:PersonName>ooperate to a<st1:PersonName>c</st1:PersonName><st1:PersonName>c</st1:PersonName>umulate
+state that <st1:PersonName>c</st1:PersonName>an be summarized at any point in
+the pro<st1:PersonName>c</st1:PersonName>essing of a do<st1:PersonName>c</st1:PersonName>ument.
+</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l12 level1 lfo18;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>state variables </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l12 level1 lfo18;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>state lifetime </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l12 level1 lfo18;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>state summary </p>
+
+<div class=MsoNormal align=center style='text-align:center'>
+
+<hr size=2 width="100%" align=center>
+
+</div>
+
+<p><b><a href="http://192.168.2.114/fit/wiki.cgi?PrimitiveFixture">PrimitiveFixture</a></b>
+</p>
+
+<p>The primitive fixture does not depend on <a
+href="http://192.168.2.114/fit/wiki.cgi?TypeAdapter">TypeAdapter</a>. Type spe<st1:PersonName>c</st1:PersonName>ifi<st1:PersonName>c</st1:PersonName>
+fun<st1:PersonName>c</st1:PersonName>tions handle all <st1:PersonName>c</st1:PersonName>he<st1:PersonName>c</st1:PersonName>king.
+</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l6 level1 lfo20;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><st1:PersonName>c</st1:PersonName>he<st1:PersonName>c</st1:PersonName>kBoolean
+</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l6 level1 lfo20;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><st1:PersonName>c</st1:PersonName>he<st1:PersonName>c</st1:PersonName>kInteger
+</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l6 level1 lfo20;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><st1:PersonName>c</st1:PersonName>he<st1:PersonName>c</st1:PersonName>kFloat
+</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l6 level1 lfo20;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><st1:PersonName>c</st1:PersonName>he<st1:PersonName>c</st1:PersonName>kString
+</p>
+
+<div class=MsoNormal align=center style='text-align:center'>
+
+<hr size=2 width="100%" align=center>
+
+</div>
+
+<p><b><a href="http://192.168.2.114/fit/wiki.cgi?ColumnFixture">ColumnFixture</a></b>
+</p>
+
+<p>A <st1:PersonName>c</st1:PersonName>olumn fixture distinguishes givens from
+expe<st1:PersonName>c</st1:PersonName>ted values by the form of the <st1:PersonName>c</st1:PersonName>olumn
+head. </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l3 level1 lfo22;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>name is setter or field </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l3 level1 lfo22;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>name() is getter or field </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l3 level1 lfo22;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><st1:PersonName>c</st1:PersonName>amel <st1:PersonName>c</st1:PersonName>ase
+-- present value ( ) = presentValue() </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l3 level1 lfo22;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>depre<st1:PersonName>c</st1:PersonName>ate exe<st1:PersonName>c</st1:PersonName>ute()
+</p>
+
+<div class=MsoNormal align=center style='text-align:center'>
+
+<hr size=2 width="100%" align=center>
+
+</div>
+
+<p><b><a href="http://192.168.2.114/fit/wiki.cgi?RowFixture">RowFixture</a></b>
+</p>
+
+<p>A row fixture expe<st1:PersonName>c</st1:PersonName>ts all rows to be expe<st1:PersonName>c</st1:PersonName>ted
+values. The fixture is assumed to have a<st1:PersonName>c</st1:PersonName><st1:PersonName>c</st1:PersonName>ess
+to a<st1:PersonName>c</st1:PersonName>tual rows whi<st1:PersonName>c</st1:PersonName>h
+it pairs with expe<st1:PersonName>c</st1:PersonName>ted rows. </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l18 level1 lfo24;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>name is field or getter </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l18 level1 lfo24;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>name() is getter </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l18 level1 lfo24;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><st1:PersonName>c</st1:PersonName>amel <st1:PersonName>c</st1:PersonName>ase
+</p>
+
+<p>Rows are mat<st1:PersonName>c</st1:PersonName>hed by <st1:PersonName>c</st1:PersonName>omparing
+just enough values from the left most <st1:PersonName>c</st1:PersonName>olumns
+to get a unique mat<st1:PersonName>c</st1:PersonName>h. </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l17 level1 lfo26;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>some given, none a<st1:PersonName>c</st1:PersonName>tual
+-- missing row </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l17 level1 lfo26;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>none given, some a<st1:PersonName>c</st1:PersonName>tual
+-- surplus rows </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l17 level1 lfo26;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>one given, one a<st1:PersonName>c</st1:PersonName>tual
+-- <st1:PersonName>c</st1:PersonName>he<st1:PersonName>c</st1:PersonName>k
+remaining <st1:PersonName>c</st1:PersonName>olumns </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l17 level1 lfo26;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>many given, many a<st1:PersonName>c</st1:PersonName>tual
+-- mat<st1:PersonName>c</st1:PersonName>h on more <st1:PersonName>c</st1:PersonName>olumns
+</p>
+
+<p>Missing and surplus rows are marked as su<st1:PersonName>c</st1:PersonName>h
+in their first <st1:PersonName>c</st1:PersonName>olumn </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l5 level1 lfo28;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>ea<st1:PersonName>c</st1:PersonName>h <st1:PersonName>c</st1:PersonName>ounts
+as one wrong </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l5 level1 lfo28;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>surplus rows added to table in gray </p>
+
+<div class=MsoNormal align=center style='text-align:center'>
+
+<hr size=2 width="100%" align=center>
+
+</div>
+
+<p><b><a href="http://192.168.2.114/fit/wiki.cgi?ActionFixture">ActionFixture</a></b>
+</p>
+
+<p>An a<st1:PersonName>c</st1:PersonName>tion fixture distinguishes given from
+expe<st1:PersonName>c</st1:PersonName>ted values based on keywords in the first
+<st1:PersonName>c</st1:PersonName>olumn. </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l8 level1 lfo30;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>enter -- put given in setter or field </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l8 level1 lfo30;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><st1:PersonName>c</st1:PersonName>he<st1:PersonName>c</st1:PersonName>k
+-- <st1:PersonName>c</st1:PersonName>he<st1:PersonName>c</st1:PersonName>k
+value with getter or field </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l8 level1 lfo30;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>press -- <st1:PersonName>c</st1:PersonName>all a<st1:PersonName>c</st1:PersonName>tion
+(no <st1:PersonName>c</st1:PersonName>he<st1:PersonName>c</st1:PersonName>k
+other than for exe<st1:PersonName>c</st1:PersonName>ptions) </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l8 level1 lfo30;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>start -- new a<st1:PersonName>c</st1:PersonName>tor
+</p>
+
+<p>An a<st1:PersonName>c</st1:PersonName>tor represents some interfa<st1:PersonName>c</st1:PersonName>e
+state su<st1:PersonName>c</st1:PersonName>h as the <st1:PersonName>c</st1:PersonName>urrently
+a<st1:PersonName>c</st1:PersonName>tive window. The a<st1:PersonName>c</st1:PersonName>tor
+gives meaning to many of the words in the se<st1:PersonName>c</st1:PersonName>ond
+<st1:PersonName>c</st1:PersonName>olumn (field to be entered and buttons to be
+pressed). </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l4 level1 lfo32;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>a<st1:PersonName>c</st1:PersonName>tor persists
+between tables </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l4 level1 lfo32;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>initial a<st1:PersonName>c</st1:PersonName>tor
+is a<st1:PersonName>c</st1:PersonName>tion fixture (sub<st1:PersonName>c</st1:PersonName>lass)
+itself </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l4 level1 lfo32;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>start with no argument spe<st1:PersonName>c</st1:PersonName>ifies
+initial a<st1:PersonName>c</st1:PersonName>tor </p>
+
+<p>Start <st1:PersonName>c</st1:PersonName>ould have various meanings depending
+on the nature of the interfa<st1:PersonName>c</st1:PersonName>e being modeled. </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l16 level1 lfo34;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><st1:PersonName>c</st1:PersonName>reate a new a<st1:PersonName>c</st1:PersonName>tor
+</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l16 level1 lfo34;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>return to an existing a<st1:PersonName>c</st1:PersonName>tor
+</p>
+
+<p>Other a<st1:PersonName>c</st1:PersonName>tions, like press, <st1:PersonName>c</st1:PersonName>an
+<st1:PersonName>c</st1:PersonName>hange the <st1:PersonName>c</st1:PersonName>urrent
+a<st1:PersonName>c</st1:PersonName>tor. </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l13 level1 lfo36;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>repla<st1:PersonName>c</st1:PersonName>e the <st1:PersonName>c</st1:PersonName>urrent
+a<st1:PersonName>c</st1:PersonName>tor with a new a<st1:PersonName>c</st1:PersonName>tor
+</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l13 level1 lfo36;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>repla<st1:PersonName>c</st1:PersonName>e the <st1:PersonName>c</st1:PersonName>urrent
+a<st1:PersonName>c</st1:PersonName>tor with another preexisting a<st1:PersonName>c</st1:PersonName>tor
+</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l13 level1 lfo36;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>restore the previous a<st1:PersonName>c</st1:PersonName>tor
+</p>
+
+<p>Sub<st1:PersonName>c</st1:PersonName>lasses of a<st1:PersonName>c</st1:PersonName>tion
+fixture <st1:PersonName>c</st1:PersonName>an add new a<st1:PersonName>c</st1:PersonName>tion
+words. </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l22 level1 lfo38;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><st1:PersonName>c</st1:PersonName>amel <st1:PersonName>c</st1:PersonName>ase
+</p>
+
+<div class=MsoNormal align=center style='text-align:center'>
+
+<hr size=2 width="100%" align=center>
+
+</div>
+
+<p><b>Runner</b> </p>
+
+<p>A runner <st1:PersonName>c</st1:PersonName>reates top-level Fixtures and
+provides them with parsed do<st1:PersonName>c</st1:PersonName>uments to be
+annotated. </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l19 level1 lfo40;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>top-level fixture is instan<st1:PersonName>c</st1:PersonName>e
+of Fixture </p>
+
+<p>A runner retrieves and disposes of do<st1:PersonName>c</st1:PersonName>uments
+as appropriate to its environment. The <a
+href="http://192.168.2.114/fit/wiki.cgi?FileRunner">FileRunner</a> reads and
+writes html files. </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l7 level1 lfo42;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>input-file only -- default output </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l7 level1 lfo42;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>input-file output-file -- spe<st1:PersonName>c</st1:PersonName>ifi<st1:PersonName>c</st1:PersonName>
+output </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l7 level1 lfo42;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>input-dire<st1:PersonName>c</st1:PersonName>tory
+only -- default output in dire<st1:PersonName>c</st1:PersonName>tory </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l7 level1 lfo42;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>input-dire<st1:PersonName>c</st1:PersonName>tory
+output-dire<st1:PersonName>c</st1:PersonName>tory -- default outputs in spe<st1:PersonName>c</st1:PersonName>ifi<st1:PersonName>c</st1:PersonName>
+dire<st1:PersonName>c</st1:PersonName>tory </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l7 level1 lfo42;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>index.html result summaries </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l7 level1 lfo42;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>- is standard in/out </p>
+
+<p>A runner signals the presen<st1:PersonName>c</st1:PersonName>e of errors to
+its environment so that subsequent pro<st1:PersonName>c</st1:PersonName>essing <st1:PersonName>c</st1:PersonName>an
+be triggered. </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo44;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>exit status is sum of wrong and ex<st1:PersonName>c</st1:PersonName>eptions
+up to 255 </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo44;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>main is fa<st1:PersonName>c</st1:PersonName>tored
+to simplify <a href="http://192.168.2.114/fit/edit.cgi?RunnerFixtures">[?]</a>RunnerFixtures
+</p>
+
+<p>A runner establishes run spe<st1:PersonName>c</st1:PersonName>ifi<st1:PersonName>c</st1:PersonName>
+state that may influen<st1:PersonName>c</st1:PersonName>e loading and/or <st1:PersonName>c</st1:PersonName>onfiguration
+of the program under test. </p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l21 level1 lfo46;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><a
+href="http://192.168.2.114/fit/edit.cgi?AssemblyPath">[?]</a>AssemblyPath ???</p>
+
+<p><o:p>&nbsp;</o:p></p>
+-!

@@ -1,0 +1,16 @@
+|Define table type |
+|Bowling | as Table |
+
+The "Define table type" table is designed to help you write more readable tests. 
+
+In the above example we have defined Bowling as a Table fixture.   Once you have defined the type like this you can just use "Bowling" in your test table and don't need to write "Table: Bowling".
+
+For example, the following table will now work:
+|Bowling|
+|3|5|4|/|X||X||3|4|6|/|7|2|3|4|9|-|4|/|3|
+||8 ||28||51||68||75||92||101||108||117|||127|
+
+Using this fixture makes your test pages easier to read, especially for project managers, BA's and Product owners who might not understand how Fitnesse works.   (The "table:" or "query:" strings are just a test implementation detail and therefore it is good to leave them out where ever possible.)
+
+Hint: Try putting the "Define Table Type" fixtures in the same place as your "Import" fixtures.   The setup pages are a good place for these!
+

@@ -1,0 +1,31 @@
+!define TEST_SYSTEM {slim}
+
+!path lib/*.jar
+!define PACKET {|Bob|
+||Angela|
+|||Lexy|6|
+|||Sami|4|
+|||Mandy|2|
+||Micah|
+|||Luka|5|
+||Gina|
+||Justin|
+}
+
+!define JSON ({"tables": [{"Bob": {
+ "Angela": {
+  "Lexy": "6",
+  "Mandy": "2",
+  "Sami": "4"
+ },
+ "Gina": {},
+ "Justin": {},
+ "Micah": {"Luka": "5"}
+}}]})
+
+!|script|page driver|
+|given page|PacketPage|with content|${PACKET}|
+|request page|$IT?packet|
+|contains json packet|${JSON}|
+|show|content|
+

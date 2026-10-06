@@ -1,0 +1,22 @@
+!|scenario|and given page|page|with content|content|
+|given page|@page|with content|@content|
+
+!|scenario|when replacing|searchString|with|replacementString|starting from|pageName|
+|check|request page|@pageName?replace&searchString=@searchString&replacementString=@replacementString|200|
+|$RESPONSE=|content|
+
+!|scenario|replacement response from|searchString|with|replacementString|should contain|contents|
+|check|request page|$IT?replace&searchString=@searchString&replacementString=@replacementString|200|
+|ensure|content contains|@contents|
+|show|content|
+
+!|scenario|it should list|pageName|
+|ensure|content contains|@pageName|
+|show|content|
+
+!|scenario|and it should list|pageName|
+|it should list|@pageName|
+
+!|scenario|and page|pageName|should contain|content|
+|page|@pageName|should contain|@content|
+

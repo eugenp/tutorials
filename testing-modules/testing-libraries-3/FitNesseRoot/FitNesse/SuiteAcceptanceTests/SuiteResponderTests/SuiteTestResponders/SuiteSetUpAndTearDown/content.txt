@@ -1,0 +1,7 @@
+!2 !-SetUp-! and !-TearDown-!
+
+'''!-SetUp-! and !-TearDown-! pages behave just like [[!-PageHeader-! and !-PageFooter-!][.FitNesse.SuiteAcceptanceTests.SuiteWikiPageResponderTests.TestHeadersAndFooters]] except that they apply only to pages that have the ''Test'' attribute set.'''
+
+Any tables that you want executed '''before''' every Test page should go in !-SetUp-!.
+Any tables that you want executed '''after''' every Test page should go in !-TearDown-!.
+----!contents

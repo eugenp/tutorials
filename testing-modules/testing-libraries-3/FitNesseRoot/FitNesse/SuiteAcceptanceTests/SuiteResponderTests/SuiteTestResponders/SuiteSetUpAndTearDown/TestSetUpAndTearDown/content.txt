@@ -1,0 +1,63 @@
+!3 Test normal [[!-SetUp and TearDown-!][.FitNesse.SuiteAcceptanceTests.SuiteResponderTests.SuiteTestResponders.SuiteSetUpAndTearDown]]
+----
+ * First create a normal page, plus header and footer pages.
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-NormalPage-!|normal||true|
+|!-TestPage-!|test||true|
+|!-PageHeader-!|header||true|
+|!-PageFooter-!|footer||true|
+|!-SetUp-!|set up||true|
+|!-TearDown-!|tear down||true|
+ * Then request the normal page
+|Response Requester.|
+|uri|valid?|
+|!-NormalPage-!|true|
+ * Ensure that the header and and footer text appear in the normal page.
+|Response Examiner.|
+|type|pattern|matches?|wrapped html?|
+|contents|!-(header).*(normal).*(footer)-!|true||
+ * Ensure that setup and teardown are not in this page.
+|Response Examiner.|
+|type|pattern|matches?|
+|contents|set up|false|
+|contents|tear down|false|
+ * Now request the test page
+|Response Requester.|
+|uri|valid?|
+|!-TestPage-!|true|
+ * Ensure that the setup and and teardown text appear in the test page along with the header and footer.
+|Response Examiner.|
+|type|pattern|matches?|wrapped html?|
+|contents|!-(header).*(set up).*(test).*(tear down).*(footer)-!|true||
+----
+!3 Test that sub pages inherit setups and tear downs.
+ * Create a sub page
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-NormalPage.TestSubPage-!|test sub page||true|
+ * Then request the Sub page
+|Response Requester.|
+|uri|valid?|
+|!-NormalPage.TestSubPage-!|true|
+ * Ensure that the setup and and teardown text are inherited by the sub page.
+|Response Examiner.|
+|type|pattern|matches?|wrapped html?|
+|contents|!-(header).*(set up).*(test sub page).*(tear down).*(footer)-!|true||
+----
+!3 Test that sub setups and sub teardowns override inherited setups and teardowns.
+ * Create sub setup and sub teardown
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-NormalPage.SetUp-!|sub setup||true|
+|!-NormalPage.TearDown-!|sub teardown||true|
+ * Then request the Sub page
+|Response Requester.|
+|uri|valid?|
+|!-NormalPage.TestSubPage-!|true|
+ * Ensure that the sub header and and sub footer text are inherited override their parents..
+|Response Examiner.|
+|type|pattern|matches?|wrapped html?|
+|contents|!-(header).*(sub setup).*(test sub page).*(sub teardown).*(footer)-!|true||
+
+

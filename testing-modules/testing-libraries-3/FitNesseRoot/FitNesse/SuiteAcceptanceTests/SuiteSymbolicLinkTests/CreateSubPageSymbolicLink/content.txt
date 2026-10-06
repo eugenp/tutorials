@@ -1,0 +1,12 @@
+Create a symbolic link to a sub-page:
+
+First we need to create some pages to play with.
+!|Page creator.|
+|Page name.              |PageContents. |valid?|
+|LinkingPage             |LINKING PAGE  |true  |
+|LinkingPage.LinkedChild |LINKED CHILD  |true  |
+
+Now we create a symbolic link named !-SymLink-!.  This links !-LinkingPage.LinkedChild-! as a child of !-LinkingPage-!.
+!|Response Requester.|
+|uri   |status?|
+|LinkingPage?responder=symlink&linkName=SymLink&linkPath=>LinkedChild|303|

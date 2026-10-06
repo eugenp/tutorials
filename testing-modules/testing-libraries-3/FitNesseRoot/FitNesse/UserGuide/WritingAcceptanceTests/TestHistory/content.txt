@@ -1,0 +1,30 @@
+Every time you run a test or a suite, the results are recorded in the ''test history database''.  You can view the history by clicking on the !style_code(Test History) button.  The reports are pretty self-explanatory.
+
+When you click on !style_code(Test History) you will be shown the directory of all tests and suites that are in the ''test history database''.  This directory also shows you the status of the most recent results from each test or suite. By default, the last 20 results are shown, but you can now choose to display only the !style_code(Last 3), !style_code(Last 5), !style_code(Last 10), or !style_code(Last 20) results using the button group at the top of the page. This makes it easier to focus on recent trends or reduce clutter from older test runs. These buttons can be configured to have more or less options.
+
+Each row in the table shows a test or suite name, the number of passed and failed runs, the date of the latest run, and a bar graph with the recent outcomes (!style_code(+) for pass, !style_code(-) for fail). You can click on the name of the test or suite to get a detailed ''page history'', or you can click on any of the individual status symbols to view the specific test result.
+
+If a shared prefix exists in test or suite names (e.g., !style_code(FitNesse.SuiteAcceptanceTests.)), a checkbox labeled !style_code(Trim page names) will appear. When selected, this option trims the redundant prefix from the displayed names, improving readability of deeply nested pages.
+
+To further improve clarity and usability, the table is now displayed with alternating row stripes. Column headers also include small info icons with tooltips, offering helpful explanations such as "Number of tests passed", "Latest test run", or "Recent result status" when hovered over.
+
+!4 Details
+The ''test history database'' is kept in !style_code(!-FitNesseRoot/files/testResults-!).  Beneath this directory there is a subdirectory for each test or suite.  These directories contain the ''page history'' and are named for the page that contains the test or suite.  Beneath the page history directory is a file for each test result.
+
+The test result files are named using the following scheme !style_code(YYYYMMDDHHMMSS_R_W_I_E.xml)  where YYYYMMDDHHMMSS is the date and time of the test run, and R, W, I, and E are integers representing the number of Right, Wrong, Ignored, and Exception counts for the test or suite.  For tests they are assertion counts.  For suites they are test counts.  (Example: !style_code(20090513134259_12_20_4_2.xml))
+
+The test files contain the XML that describes the test run.  The format of this XML is identical to the XML packet returned by the format=xml flag when you run a test.  (See <UserGuide.RestfulTests).
+
+You also have the possibility to disable !style_code(Test Histories) for a selected page by going to the !style_code(?properties) page and check the ''!-DisableTestHistory-!'' option. Setting this property on a Suite, will disable the !style_code(Test Histories) for the whole Suite.
+
+!4 Purging
+There are buttons at the top of the ''Test History'' page that allow you to purge old history files.  You have your choice of ''all'', ''>7 days'', or ''>30 days''.  If you want to purge a different number of days, you can change the ''TestHistory.purgeOptions'' in the [[configuration file][<UserGuide.AdministeringFitNesse.ConfigurationFile]] to allow additional purge options, or you can use the RESTful URL form.  (See [[!-RestfulServices-!][<UserGuide.AdministeringFitNesse.RestfulServices]]).
+
+You can also clean up the test history right after a test execution. To do so, configure a property ''TestHistory.days'' in the [[configuration file][<UserGuide.AdministeringFitNesse.ConfigurationFile]] or as a [[page variable][<UserGuide.FitNesseWiki.MarkupLanguageReference.MarkupVariables]] and assign it the number of days you want to keep history. Additionally, you can configure the property ''TestHistory.maxCount'' in the [[configuration file][<UserGuide.AdministeringFitNesse.ConfigurationFile]] to limit the number of histories to keep.
+
+!4 Comparing History
+When viewing the history for a page, you can select any two test results by clicking in their checkboxes.  Then, if you click the ''Compare'' button, you will be shown the two test results side-by-side along with an indicator that tells you if the results are identical or not.
+
+Only tests can be compared this way.  Suites cannot.
+
+Notice that the comparison is pretty smart.  It tries to line up the two tests on a table-by-table basis.  It can detect if tables have been inserted or deleted.  The % code that you see on the left is just the match score for the tables.

@@ -1,0 +1,12 @@
+To diplay todays date:
+
+|!c '''Markup Text'''|!c '''Displayed as'''|
+|!style_code(!-Today is !today.-!)|Today is !today.|
+|!style_code(!-XML is !today -xml.-!)|XML is !today -xml.|
+|!style_code[!-Right now it is !today -t.-!]|Right now it is !today -t.|
+|!style_code[!-Tomorrow is !today +1.-!]|Tomorrow is !today +1.|
+|!style_code[!-Last week was !today -7.-!]|Last week was !today -7.|
+|!style_code[!-The month is !today (MMM).-!]|The month is !today (MMM).|
+
+As you can see, you can add or subtract days.  You can include the time with -t.  And you can use your own format for the time.  (See !style_code(!-SimpleDataFormat-!) for the syntax.)
+

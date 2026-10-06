@@ -1,0 +1,23 @@
+!2 Default Handling of exceptions.
+The default way Slim handles exceptions is to indicate in the test table that an exception was thrown, and increment the exceptions count for the test.   You will also find the full stack trace for the exception is listed at the top of the test.  Slim will then try and continue on with the test.
+
+!2 Specifying a custom message
+You can specify a custom message to be written into the test output instead of a stack trace.  This is done by prefixing your message with {{{message:<<}}} and ending with {{{>>}}}  For instance if you want the message to be "Can't create object" then the text for your exception should be {{{message:<<Can't create object>>}}}
+!2 Stopping the execution of the test.
+If your exception indicates an error that cannot be recovered from, then you may want the test execution to stop at that point.   You can do this by throwing an exception with "!-StopTest-!" in the class name. Teardown for the test will still be executed. If the test is part of a suite, then the next test in the suite to be be started afterwards.
+
+By throwing an exception with "!-StopSuite-!" in the class name you can stop both current test and the suite execution. Tear down procedure for the running test and the suite will still be executed, but all the consequent tests in the suite will not run.
+
+!2 Ignoring Tests during execution
+If you want to ignore or skip certain parts of your test during execution you can do this by throwing an ignore exception. You can do this by throwing an exception with "!-IgnoreScriptTest-!" in the class name which will then ignore and skip the instructions in the rest of that script table.
+If you want to ignore or skip all subsequent parts of the current test on that page during execution you can do this by throwing an ignore all exception. You can do this by throwing an exception with "!-IgnoreAllTests-!" in the class name.
+
+!2 Testing for an exception
+You can validate that your code throws an exception in a given scenario. Start the expected text with '''EXCEPTION:''' followed by a regular expression which matches the exception text or stacktrace 
+
+!|DT:fitnesse.slim.test.TestSlim|
+|throwNormal?| 
+| EXCEPTION:=~/This is my exception/ |
+
+!2 Further Reading: 
+.FitNesse.SuiteAcceptanceTests.SuiteSlimTests.TestExceptionIsDisplayed.TestPage

@@ -1,0 +1,3 @@
+A reference to a wiki page. A WikiPageReference can be a simple .FitNesse.SuiteAcceptanceTests.SuiteWidgetTests.WikiWord, or it can be a WikiPagePath.
+ * A .FitNesse.SuiteAcceptanceTests.SuiteWidgetTests.WikiWord is a word with no punctuation with capital letters as the word seperators.
+ * A WikiPagePath is a set of .FitNesse.SuiteAcceptanceTests.SuiteWidgetTests.WikiWord elements separated by dots.

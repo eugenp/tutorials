@@ -1,0 +1,20 @@
+You can include external HTML pages as sub-wikis within the !-FitNesse-! wiki. If you have a set of tests that were written in HTML before you started to use !-FitNesse-!, you can include these in your current test suites without converting them to !-FitNesse-! wiki pages.  If you prefer not to use the !-FitNesse-! wiki syntax and !-FitNesse-! editor to maintain your tests, you can still use !-FitNesse-! to execute your tests, both interactively and in batch, view test results and track test history.
+
+To include a folder of HTML files in the !-FitNesse-! wiki, simply place the folder somewhere beneath the !-FitNesseRoot-! folder that holds all the !-FitNesse-! wiki files.  Each folder containing HTML files will appear as a page and the HTML files will appear as child pages.
+
+Here's an example:
+
+ * We create a static wiki page called !-MyExternalPages-! and put the !contents widget in it.  This creates a folder called !-MyExternalPages-! with some wiki files in it (content.txt, properties.xml and maybe some zip files).
+ *  We create a folder called !-HtmlPages-! as a sub-folder of !-MyExternalPages-! and create several HTML files in !-HTMLPages-!: !-TestA.html-!, !-TestB.html-! and !-TestC.html-!.
+ * !-FitNesse-! now shows a page called !-HtmlPages-! as a child of !-MyExternalPages-! and three child pages of !-HtmlPages-! called !-TestA-!, !-TestB-! and !-TestC-!.
+
+The external HTML pages appear as read-only pages - you cannot edit them from !-FitNesse-! or change their properties (yet!).  The folder pages are always marked with the Suite property and the HTML pages are marked with the Test property if they contain at least one HTML table.  You can create !-SuiteSetup.html-! and !-SetUp.html-! files and !-FitNesse-! will treat these as special test pages, the same as wiki pages.
+
+This is a first version of this feature and so there are a few caveats:
+ * If you use the ?edit or ?properties URL syntax, you can get to the edit and properties pages, but they will fail if you try to save.
+ * The contents of the HTML files are placed as is inside a !-FitNesse-! page, and may break the page display if there are unbalanced tags or other HTML problems that may not be apparent when the HTML is displayed on its own.
+ * Hyperlinks, images, Javascript files and other external references in the HTML may not behave as expected when placed inside a !-FitNesse-! page.
+ * Wiki page names are generated from the HTML file names, but there is no check to avoid potential name collisions.  For example, !-TestA.html-! and testa.html will both generate !-TestA-! as a wiki page name.
+
+If you can avoid these issues, this feature should work well for you: it has been successfully used on a large suite of hundreds of HTML files.
+

@@ -1,0 +1,34 @@
+!3 When we move a page that is !included, the !include should be changed appropriately.
+
+First build a page, a subpage to move, and a target page to move it to.  Then build a page that references the sub child to be moved.
+
+|Page creator.|
+|Page name.          |Page contents.|valid?|
+|!-ParentPage-!        |x                     |true   |
+|!-ParentPage.SubPage-!|sub page              |true   |
+|!-NewParentPage-!     |x                     |true   |
+|!-ReferingPage-!      |!-!include ParentPage.SubPage-!|true   |
+
+Then move the sub page.
+
+|Response Requester.|
+|uri   |status?|
+|!-ParentPage.SubPage?responder=movePage&newLocation=NewParentPage&refactorReferences=on-!||
+
+Make sure that the refering page now !includes the old page at the new location.
+
+|Response Requester.|
+|uri|valid?|contents?|
+|!-ReferingPage-!|true||
+
+|Response Examiner.|
+|type  |pattern|matches?|wrapped html?|
+|contents|!-.NewParentPage.SubPage-!|true||
+
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|sub page|true|
+
+
+
+

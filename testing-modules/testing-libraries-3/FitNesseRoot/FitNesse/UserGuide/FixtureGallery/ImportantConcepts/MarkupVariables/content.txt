@@ -1,0 +1,19 @@
+''Previous page: [[!-Symbols-!][<UserGuide.FixtureGallery.ImportantConcepts.FixtureSymbols]] Parent page: [[!-Important concepts-!][<UserGuide.FixtureGallery.ImportantConcepts]]''
+!2 !-Markup Variables-!
+Markup variables are used for macro-replacement in pages. They provide another way to parameterize your tests with static values (not changing during a test execution). Define a variable using: {{{
+!define variablename {value} }}}
+and then use it anywhere in the page with this syntax: {{{
+!-${value}-! }}}
+Unlike symbols, markup variables can be used also as a part of a cell. Note that variables are processed while building the HTML page, so they are not available to fixtures at runtime. Here is an example: {{{
+!define town {Houston}
+
+|ColumnFixtureTest|
+|firstPart|secondPart|together?|
+|Hello|World|Hello, World|
+|&dollar;{town}|We Have a Problem|&dollar;{town}, We Have a Problem|
+
+}}}
+Markup variables are especially useful to extract a common value to a single place, so that it can be changed easily. They can also be used to parameterise included pages. For example, you can write a test component that is frequently used, and then call it with different parameter values by using markup variables. See <UserGuide.ParameterizedIncludes for an example.
+
+
+''Previous page: [[!-Symbols-!][<UserGuide.FixtureGallery.ImportantConcepts.FixtureSymbols]] Parent page: [[!-Important concepts-!][<UserGuide.FixtureGallery.ImportantConcepts]]''

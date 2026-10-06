@@ -1,0 +1,25 @@
+The values in symbols can be blank or null.
+
+|Import|
+|fitnesse.slim.test|
+
+|null fixture|
+|get null?   |
+|$NULL=                       |
+|null|
+
+|null fixture|$NULL|
+
+|script|test slim|
+|check|echo string|$NULL|null|
+
+
+|null fixture|
+|get blank?   |
+|$BLANK=                       |
+
+
+|null fixture|$BLANK|
+
+|script|test slim|
+|check|echo string|$BLANK||

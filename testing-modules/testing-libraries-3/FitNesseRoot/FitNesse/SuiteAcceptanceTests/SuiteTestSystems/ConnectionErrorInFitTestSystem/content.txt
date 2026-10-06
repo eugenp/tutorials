@@ -1,0 +1,14 @@
+#!define TEST_SYSTEM {fit}
+#|fitnesse.fixtures.SystemExitTable|
+#|system exit code                 |
+#|3                                |
+
+!| script                        |
+|given page|TestPage|with content|${SUT_PATH} !-
+!define TEST_SYSTEM {fit}
+
+|fitnesse.fixtures.SystemExitTable|
+|system exit code                 |
+|3                                |
+-! |
+|test results for page|TestPage             |should contain|Could not complete testing:|

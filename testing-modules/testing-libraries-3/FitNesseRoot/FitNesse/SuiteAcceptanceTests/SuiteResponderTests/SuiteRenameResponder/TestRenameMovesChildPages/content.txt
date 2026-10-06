@@ -1,0 +1,27 @@
+!c !3 When a page is renamed all of its child pages remain intact.
+
+First build the page with children.
+
+!|Page creator.|
+|Page name.|Page contents.|valid?|
+|ParentPage|parent|true|
+|ParentPage.ChildPage|child page|true|
+
+Then rename the parent page.
+
+!|Response Requester.|
+|uri   |status?|
+|ParentPage?responder=renamePage&newName=NewParentPage||
+
+Next fetch the child page using the parent's new name.
+
+!|Response Requester.|
+|uri|valid?|contents?|
+|NewParentPage.ChildPage|true||
+
+The child page's content should be the same.
+
+|Response Examiner.|
+|type  |pattern|matches?|wrapped html?|
+|contents|child page|true||
+

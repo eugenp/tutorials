@@ -1,0 +1,20 @@
+You can [[Define aliases][DefineAliasTest]] via tables in the wiki. It's also possible to add aliases via plugins. This has the advantage that the wiki is not cluttered with techical concerns.
+
+To demonstrate this a class ''!-fitnesse.testsystems.slim.CustomTableAliasPlugin-!'' has been loaded in SetUp.
+
+This plugin makes an alias from ''aliased echo fixture'' to the good old echo fixture.
+
+So the following test table works:
+
+!|script|
+|given page|AliasTest|with content|!-!define TEST_SYSTEM {slim}
+
+| import |
+| fitnesse.slim.test |
+
+| script : my requirement |
+| check | do business logic | 42 |
+-!|
+|check|request page|AliasTest?test|200|
+|ensure|content contains|class="pass"|
+|show|content|

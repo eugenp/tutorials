@@ -1,0 +1,143 @@
+!2 Test the Link Alias syntax.
+Aliases to links can be created using the !-[[tag][link]]-! syntax.
+The tag is interpreted for markup syntax, so it can be italic, or bold, or an image, etc.  The link can be a relative or global wiki word, or it can be an http link.
+
+----
+!3 Test relative link alias
+ * First create two sub pages.  One has a relative link to the other.
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-SomePage.TargetPage-!|target page||true|
+|!-SomePage.LinkPage-!|!-[[tag][TargetPage]]-!||true|
+ * Then get the page with the relative link on it.
+|Response Requester.|
+|uri|valid?|
+|!-SomePage.LinkPage-!|true|
+ * Then make sure the relative link is properly constructed.
+|Response Examiner.|
+|type|pattern|matches?|value|
+|contents|<a href=!-"SomePage.TargetPage"-!>tag</a>|true||
+----
+!3 Test global link alias
+ * First create a sub page that has a global reference to another sub page.
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-SomePage.GlobalLinkPage-!|!-[[tag][.SomePage.TargetPage]]-!||true|
+ * Then fetch that page.
+|Response Requester.|
+|uri|valid?|
+|!-SomePage.GlobalLinkPage-!|true|
+ * Make sure the link is properly formed.
+|Response Examiner.|
+|type|pattern|matches?|value|
+|contents|<a href=!-"SomePage.TargetPage"-!>tag</a>|true||
+----
+!3 Test variables get rendered in http link alias
+ * First create a page with a variable and http link on it.
+!|script|
+|start|Page Builder|
+|line|&bang;define HOST {localhost:8080}|
+|line|!-[[tag][http://${HOST}/page]]-! works fine.|
+|page|!-HttpLinkPage-!|
+
+ * Fetch the page.
+|Response Requester.|
+|uri|valid?|
+|!-HttpLinkPage-!|true|
+ * Make sure the link is properly constructed.
+|Response Examiner.|
+|type|pattern|matches?|value|
+|contents|<a href=!-"http://localhost:8080/page"-!>tag</a> works fine.|true||
+----
+!3 Test variables defined in parent page get rendered in http link alias on child pages
+ * First define parent page with variable definition and child page with a http link which uses the variable.
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-SomePage.ParentPage-!|!-!define HOST {localhost:8080}-!||true|
+|!-SomePage.ParentPage.ChildPage-!|!-[[tag][http://${HOST}/page]]-! works fine.||true|
+
+ * Fetch the page.
+|Response Requester.|
+|uri|valid?|
+|!-SomePage.ParentPage.ChildPage-!|true|
+
+ * Make sure the link is properly constructed.
+|Response Examiner.|
+|type|pattern|matches?|value|
+|contents|<a href=!-"http://localhost:8080/page"-!>tag</a> works fine.|true||
+-----
+!3 Test expressions without variables in link alias
+ * Create pages to refer to
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-PageLink2-!|contents||true|
+|!-PageLink4-!|contents||true|
+|!-PageLink10-!|contents||true|
+
+ * First create a page with a variables and http link on it.
+|script|
+|start|Page Builder|
+|line|!-!define X {5}-!|
+|line|!-!define Y (4)-!|
+|line|!-!define EXPR (${=3+2-1=})-!|
+|line|!-[[tag][PageLink${= 3 - 2 + 1 =}]]-! works fine.|
+|line|!-[[tag][PageLink${EXPR}]]-! works too.|
+|line|!-[[tag][PageLink${=${X}+${Y}+1=}]]-! works as well.|
+|page|!-HttpExprPage-!|
+
+ * Fetch the page.
+|Response Requester.|
+|uri|valid?|contents?|
+|!-HttpExprPage-!|true||
+
+ * Make sure the link is properly constructed.
+|Response Examiner.|
+|type|pattern|matches?|
+|contents|<a href=!-"PageLink2"-!>tag</a> works fine.|true|
+|contents|<a href=!-"PageLink4"-!>tag</a> works too.|true|
+|contents|<a href=!-"PageLink10"-!>tag</a> works as well.|true|
+
+!3 Test that links with query strings and fragments are handled properly.
+ * Create a page hierarchy
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-QueryPageRoot-!                  |!-!anchor QPLabel   -!||true|
+|!-QueryPageRoot.TopPage-!          |!-!anchor QPTopLabel-!||true|
+
+ * Create a page of query and fragment links...and a child
+|script|
+|start|Page Builder|
+|line|!-[[tag1 ][TopPage?edit]]-! has query.|
+|line|!-[[tag2 ][TopPage?edit#QPTopLabel]]-! has query and frag.|
+|line|!-[[tag3 ][TopPage#QPTopLabel]]-! has fragment.|
+|line|!-[[tag4 ][<QueryPageRoot.TopPage?edit]]-! back has query.|
+|line|!-[[tag5 ][.QueryPageRoot.TopPage?edit]]-! root has query.|
+|line|!-[[tag6 ][<QueryPageRoot.TopPage?edit#QPTopLabel]]-! back has query and frag.|
+|line|!-[[tag7 ][<QueryPageRoot.TopPage#QPTopLabel]]-! back has fragment.|
+|line|!-[[tag8 ][>ChildFrag?edit]]-! child has query.|
+|line|!-[[tag9 ][>ChildFrag?edit#QPTopLabel]]-! child has query and frag.|
+|line|!-[[tag10][>ChildFrag#QPTopLabel]]-! child has fragment.|
+|page|!-QueryPageRoot.QueryFragmentLinks-!|
+
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-QueryPageRoot.QueryFragmentLinks.ChildFrag-!|!-!anchor QPChild-!||true|
+
+ * Fetch the page.
+|Response Requester.|
+|uri|valid?|contents?|
+|!-QueryPageRoot.QueryFragmentLinks-!|true||
+
+ * Make sure the query and fragments don't interfere with page paths.
+|Response Examiner.|
+|type|pattern|matches?|
+|contents|<a href=!-"QueryPageRoot\.TopPage\?edit"-!>tag1 </a> has query.|true|
+|contents|<a href=!-"QueryPageRoot\.TopPage\?edit#QPTopLabel"-!>tag2 </a> has query and frag.|true|
+|contents|<a href=!-"QueryPageRoot\.TopPage#QPTopLabel"-!>tag3 </a> has fragment.|true|
+|contents|<a href=!-"QueryPageRoot\.TopPage\?edit"-!>tag4 </a> back has query.|true|
+|contents|<a href=!-"QueryPageRoot\.TopPage\?edit"-!>tag5 </a> root has query.|true|
+|contents|<a href=!-"QueryPageRoot\.TopPage\?edit#QPTopLabel"-!>tag6 </a> back has query and frag.|true|
+|contents|<a href=!-"QueryPageRoot\.TopPage#QPTopLabel"-!>tag7 </a> back has fragment.|true|
+|contents|<a href=!-"QueryPageRoot\.QueryFragmentLinks\.ChildFrag\?edit"-!>tag8 </a> child has query.|true|
+|contents|<a href=!-"QueryPageRoot\.QueryFragmentLinks\.ChildFrag\?edit#QPTopLabel"-!>tag9 </a> child has query and frag.|true|
+|contents|<a href=!-"QueryPageRoot\.QueryFragmentLinks\.ChildFrag#QPTopLabel"-!>tag10</a> child has fragment.|true|

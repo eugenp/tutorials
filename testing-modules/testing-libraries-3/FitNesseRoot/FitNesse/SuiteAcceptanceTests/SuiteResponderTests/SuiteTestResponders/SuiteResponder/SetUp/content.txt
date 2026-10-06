@@ -1,0 +1,3 @@
+!include -c <SuiteAcceptanceTests.SetUp
+
+!define VariableUsedInTest {foo}

@@ -1,0 +1,116 @@
+
+''Next page: [[!-Flow Mode-!][<UserGuide.FixtureGallery.ImportantConcepts.FlowMode]] Parent page: [[!-Important concepts-!][<UserGuide.FixtureGallery.ImportantConcepts]]''
+!2 !-Fixture Arguments-!
+!-The first row of a FIT table is normally used to initialise the fixture class. In addition to that, you can pass arguments to the fixture by appending cells after the class name in that row. Fixture arguments work very similar to command-line arguments of a -!'''!- main -!'''!- method and they can be accessed using the -!'''!- args -!'''!- array in the fixture. -!
+
+!-You can use this feature to parameterise your fixtures and make them more reusable. For example, arguments allow you to pass parameters to a -!'''!- RowFixture -!'''!-:-!
+
+{{{
+
+!-!-!|ArgumentsTest|Hello World|Houston We Have a Problem|
+|word|
+|Hello|
+|World|
+|Houston|
+|We|
+|Have|
+|a|
+|Problem|
+}}}
+# section Java Source Code
+!3 !-Java Source Code-!
+{{{
+package info.fitnesse.fixturegallery;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import fitlibrary.SetFixture;
+import fitlibrary.parse.Table;
+
+public class ArgumentsTest extends SetFixture{
+	public class Word{
+		public String word;
+		public Word(String w){
+			this.word=w;
+		}
+	}
+	public void doTable(Table arg0) {
+	  Set<Word> set=new HashSet<Word>();
+		for(String s: args){
+			for (String word: s.split(" ")) set.add(new Word(word));
+		}
+		this.setActualCollection(set);
+		super.doTable(arg0);
+	}
+}
+}}}
+# section .NET Source Code
+!3 !-.NET Source Code-!
+{{{
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace info.fitnesse.fixturegallery
+{
+
+    public class ArgumentsTest: fit.RowFixture
+    {
+        public override Type GetTargetClass()
+        {
+            return typeof(Text);
+        }
+        public override object[] Query()
+        {
+            List<Text> t = new List<Text>();
+            foreach (String s in Args)
+            {
+                foreach (String w in s.Split(new char[] { ' ' }))
+                {
+                    t.Add(new Text(w));
+                }
+
+            }
+            return t.ToArray();
+        }
+    }
+}
+}}}
+# section Python Source Code
+!3 !-Python Source Code-!
+{{{
+# REQUIRE: Python >= 2.4, due to set() usage
+
+from fitLib.SetFixture import SetFixture
+import types
+
+class Word(object):
+    """Simple ValueObject class to store a word as string."""
+    _typeDict = { "word": "String" }
+
+    def __init__(self, word):
+        assert isinstance(word, types.StringTypes)
+        self.word = word
+
+class ArgumentsTest(SetFixture):
+
+    def getTargetClass(self):
+        return Word #< CLASS-HINT: For _typeDict lookup.
+
+    def doTable(self, table):
+        wordSet = set()
+        for s in self.args:
+            for word in s.split(" "):
+                wordSet.add( Word(word) )
+        # -- WEIRD: setActualCollection() takes no arg -> Preassign first.
+        self.paramCollection = wordSet
+        self.setActualCollection()
+        SetFixture.doTable(self, table)
+}}}
+!- Note that arguments are just plain strings. Symbols do not work automatically with arguments, so trying to pass -!'''!- <<symbolname -!'''!- in .NET will not work out-of-the-box. If you want to process arguments like normal cells in .NET, you can use the -!'''!- GetArgumentInput -!'''!- method (see -!http://syterra.com/FixtureArguments.html !-). -!
+
+!-A very important thing to remember related to arguments is that they will not be available in the fixture constructor, since they are initialised after the class is loaded. They will be available to other methods, however.-!
+
+
+''Next page: [[!-Flow Mode-!][<UserGuide.FixtureGallery.ImportantConcepts.FlowMode]] Parent page: [[!-Important concepts-!][<UserGuide.FixtureGallery.ImportantConcepts]]''

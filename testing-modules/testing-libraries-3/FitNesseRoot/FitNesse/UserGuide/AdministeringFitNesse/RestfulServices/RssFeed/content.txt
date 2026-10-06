@@ -1,0 +1,19 @@
+!img-r http://www.reallysimplesyndication.com/mainResponderResources/userlandIcons/xmlCoffeeMug
+!c !2 FitNesse supports RSS 2.0
+
+The RSS URL has the simple form:
+ * ''!-http://[myWikiAddress]/[somePage]?responder=rss-!''
+
+This will send you a list of all the recent changes for ''[somePage]'' and all pages below.  If you omit ''[somePage]'' then you'll get a list of all the recent changes in the whole wiki.
+
+There is one caveat.  Without help FitNesse doesn't know how to build fully qulified URL to it's pages.  This will result in bad links in the RSS feed.  You can help out by defining the '''RSS_PREFIX''' variable.  Here's how:
+ 1 Goto the root page of your FitNesse site
+  * use the '''root''' keyword in the URL.  !-http://localhost/root-!
+ 2 Click the '''edit''' button (or add ?edit to the end of the URL)
+ 3 Define the '''RSS_PREFIX''' variable.
+  * !-!define RSS_PREFIX {http://www.mysite.com/}-!
+
+
+Example:{{{http://fitnesse.org/FitNesse?responder=rss}}}
+
+!note !meta Make sure your !-RecentChanges-! page is well formed.  If it's corrupted, then the RSS feed responder can crash.

@@ -1,0 +1,12 @@
+!3 !-SetUp-! and !-TearDown-!
+Sometimes you will need to delete a test database at the end of each test in a suite, or create an empty database at the beginning of each test.  Operations like this can be performed by writing special fixtures that perform these functions in their constructors.  These fixtures can then be invoked in the '''!-SetUp-!''' and '''!-TearDown-!''' pages of the suite.  See <FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.SpecialPages.
+
+To perform operations at the beginning or end of an entire suite, rather than for each test, define the operations on pages named '''!-SuiteSetUp-!''' and '''!-SuiteTearDown-!'''.
+
+!-SuiteSetUp and SuiteTearDown-! are associated with a test page by "Uncle Inheritance" as described in <FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.SpecialPages.  
+
+A suite has many different test pages and can contain subsuites, and it is possible that some will have different !-SuiteSetUp and SuiteTearDown-! pages.  
+
+By default only the 'nearest' uncle !-SuiteSetUp and SuiteTearDown-! pages are executed. Therefore tests in a suite are organized into groups that share the same !-SuiteSetup and SuiteTearDown-! pages.  The tests are executed in those groups, with the !-SuiteSetUp-! preceding them, and the !-SuiteTearDown-! following them. This means the same !-SuiteSetup or SuiteTearDown-! is potentially excuted multiple times, once for each group.
+
+This behaviour can be customized by defining a variable !style_code[ALL_UNCLE_SUITE_SETUPS] and give it the value '''true''' in the root of the suite. The effect of this definition is that all !-SuiteSetUp and SuiteTearDown-! up in the hierarchy (i.e. all uncle pages with these names) are executed before each test. Inside the suite the highest !-SuiteSetUp-! is added first, followed by lower ones just before the first test in the (sub)suite requiring them. And the nearest !-SuiteTearDown-! is executed immediately after the last test in the (sub)suite. So each !-SuiteSetUp and SuiteTearDown-! is executed only once, immediately before (or after) the (sub)suite that requires them.

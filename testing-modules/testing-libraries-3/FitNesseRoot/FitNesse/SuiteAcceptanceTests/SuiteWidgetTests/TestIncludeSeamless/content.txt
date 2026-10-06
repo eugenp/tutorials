@@ -1,0 +1,45 @@
+!3 This page tests seamless includes on a wiki page.
+
+'''NOTE - this is not part of the 20050301 release, but is checked in and will be part of the next release'''
+
+You can follow !include (see TestInclude) with the option "!--seamless-!", which renders the included comment with no additional decoration.
+
+The following is a test that demonstrates how this works.
+#
+ * First create a page to be included.
+#
+|script|
+|start|Page Builder|
+|line|included line 1|
+|line|included line 2|
+|page|!-IncludedPage-!|
+#
+ * Next create a page to do the including.
+#
+|script|
+|start|Page Builder|
+|line|before|
+|line|!-&bang;include -seamless IncludedPage-! |
+|line|after|
+|page|!-IncludingPage-!|
+#
+ * Then request the including page.
+#
+|Response Requester.|
+|uri|valid?|contents?|
+|!-IncludingPage-!|true||
+#
+ * Examine the requested page to be sure the included page was in fact included.
+#
+|Response Examiner.|
+|type|pattern|matches?|value|
+|contents|included|true||
+#
+ * Now look at every line on the including page to make sure that the inclusions were done in order.
+#
+|Response Examiner.|
+|type|number|string?|
+|line|1|before|
+|line|2|included line 1|
+|line|3|included line 2|
+|line|4|after|

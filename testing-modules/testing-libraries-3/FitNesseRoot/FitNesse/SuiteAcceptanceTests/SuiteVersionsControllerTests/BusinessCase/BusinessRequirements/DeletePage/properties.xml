@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<properties>
+	<Edit>true</Edit>
+	<Files>true</Files>
+	<Help>Delete a page will remove the history.</Help>
+	<LastModifyingUser>sa</LastModifyingUser>
+	<Properties>true</Properties>
+	<RecentChanges>true</RecentChanges>
+	<Refactor>true</Refactor>
+	<Search>true</Search>
+	<Test/>
+	<Versions>true</Versions>
+	<WhereUsed>true</WhereUsed>
+</properties>

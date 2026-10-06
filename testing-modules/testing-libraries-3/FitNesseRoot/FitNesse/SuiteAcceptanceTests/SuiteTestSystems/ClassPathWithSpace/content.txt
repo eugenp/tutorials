@@ -1,0 +1,10 @@
+!3 A space in the classpath must still allow to start the test system
+!path abc xyz
+
+!3 A trailing space in classpath definition  must still allow to start the test system
+!define TS (trailingspace )
+!path ${TS}
+#!path trailingspace 
+
+|script              |
+|check|echo|pass|pass|

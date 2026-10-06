@@ -1,0 +1,16 @@
+!3 Generating reports inside pages using Table tables.
+
+Since you can pass back any size result to a Table table, and since you can create a Table table that has only one row, you can generate reports.
+
+For example:
+
+|table:counts|
+
+This table will execute the !style_code(doTable) method of the !style_code(counts) fixture.  If that method returns a table like this:{{{[
+  [report:Employees,pass:22],
+  [report:Managers,fail:21]
+]}}} then the resulting table will be
+
+|!style_pass(table:counts)|
+|Employees|!style_pass(22)|
+|Managers|!style_fail(21)|

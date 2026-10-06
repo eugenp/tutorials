@@ -1,0 +1,17 @@
+{{{
+{
+ "Edit": true,
+ "Properties": true,
+ "Prune": false,
+ "RecentChanges": true,
+ "Refactor": true,
+ "Search": true,
+ "Suite": false,
+ "Test": false,
+ "Versions": true,
+ "WhereUsed": true,
+ "secure-read": false,
+ "secure-test": false,
+ "secure-write": false
+}
+}}}

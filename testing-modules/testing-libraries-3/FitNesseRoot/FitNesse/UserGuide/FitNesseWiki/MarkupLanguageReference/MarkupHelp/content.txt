@@ -1,0 +1,15 @@
+We can display the help text that's been defined for the current page:
+
+!-!help-!
+
+displays as:
+
+!help
+
+We can also make a link to edit the page properties.
+
+!-!help -editable-!
+
+displays as:
+
+!help -editable

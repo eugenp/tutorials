@@ -1,0 +1,27 @@
+!1 Improving Readability using ''Graceful Names''
+If you are not yet accustomed to it, you can make your test tables much more pleasant to read by using ''graceful name'' notation.
+
+Say you have a fixture class named ''!-payroll.fixtures.PaycheckInspector-!'' you can references in your fixture tables as ''Paycheck inspector''.  Both Fit and Slim will manipulate that name back into ''!-PaycheckInspector-!'' by removing punctuation and using camel case.  They will then hunt through a list of known packages for the fixture.
+
+A similar transformation happens with variable and method names too.
+
+Therefore instead of this:
+
+!|payroll.fixtures.PaycheckInspector|
+|employeeId|employeeName|payAmount()|
+|24|Bob|1500|
+
+You can have this:
+
+!|Paycheck inspector.|
+|employee id|employee name|pay amount?|
+|24|Bob|1500|
+
+You can add to the list of packages by using the ''Import'' fixture as follows.
+
+|Import|
+|payroll.fixtures|
+
+This table should appear ''above'' the tables that use the ''!-PaycheckInspector-!'' fixture.  It's a good idea to put your ''Import'' fixtures in a !-SetUp-! page.
+
+

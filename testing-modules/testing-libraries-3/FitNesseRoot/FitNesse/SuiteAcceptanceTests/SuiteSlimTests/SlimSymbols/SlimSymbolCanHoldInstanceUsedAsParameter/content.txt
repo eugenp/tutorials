@@ -1,0 +1,29 @@
+!|import           |
+|fitnesse.slim.test|
+
+You can store an object instance in a Slim symbol and then use the instance in parameters for methods or constructors.
+Here createTestSlimWithString(string) is a factory method that creates a new !-TestSlim-! instance, sets the given string and returns the object.
+
+The boolean isSame(Object other) method returns whether the other object is the same as the current !-TestSlim-! table actor.
+The !-getStringFromOther(TestSlim other)-! method returns !-other.getStringArg()-!.
+
+!|script             |test slim                                             |
+|$TEST_SLIM_INSTANCE=|create test slim with string|Uncle                    |
+|check               |get string arg              |null                     |
+|reject              |is same                     |$TEST_SLIM_INSTANCE      |
+|check               |get string from other       |$TEST_SLIM_INSTANCE|Uncle|
+|check               |return constructor arg      |0                        |
+
+!-TestSlim-! has a constructor !-TestSlim(int, TestSlim)-!
+
+!|script                                            |
+|start |test slim             |1|$TEST_SLIM_INSTANCE|
+|check |get string arg        |Uncle                |
+|check |return constructor arg|1                    |
+|reject|is same               |$TEST_SLIM_INSTANCE  |
+
+An instance stored in a Slim symbol can also be used for instance chaining (ChainWithInstanceTest).
+
+!|script|$TEST_SLIM_INSTANCE        |
+|ensure |is same|$TEST_SLIM_INSTANCE|
+

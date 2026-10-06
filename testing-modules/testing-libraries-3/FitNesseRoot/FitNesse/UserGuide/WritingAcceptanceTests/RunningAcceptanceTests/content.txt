@@ -1,0 +1,20 @@
+Acceptance tests are run by hitting the '''Test''' button (or typing ''ALT-t'').  This button appears on any page that has the '''Test''' attribute set.  See [[Page Attributes][PageProperties]].
+
+Any tables that are on the page are run through the Fit framework (See http://fit.c2.com ).
+
+So, for example, click the '''Test''' button (or type ''ALT-t'') and see what happens to the table below:
+
+|eg.Division|
+|numerator|denominator|quotient?|
+|10|2|5|
+|12.6|3|4.2|
+|-3|3|-1|
+|100|0|0|
+|33|3|11|
+
+TroubleshootingAcceptanceTests
+
+!see CustomizingTestExecution
+
+----
+You may also run FitNesseTests by using the CommandLineTestRunner!

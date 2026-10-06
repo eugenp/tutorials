@@ -1,0 +1,93 @@
+In this section you can read about the >TestSystems FitNesse provides out-of-the-box:
+ * [[Fit][>FitFramework]] 
+ * [[Slim][>SliM]]
+
+Organize tests:
+ * >TestSuites
+ * >SpecialPages
+ * >TestHistory
+ * >AcceptanceTestPatterns
+
+Implement the tests:
+ * >FixtureCode
+ * >ClassPath
+ * >VariableScope
+
+Running tests:
+ * >RunningAcceptanceTests
+ * >RunningFromJunit
+ * >RunningFromMaven
+ * >CustomizingTestExecution
+
+If it does not work directly:
+ * >AttentionMessagesInTestResults
+ * >DebuggingFitNesseTables
+ * >DebuggingFixtureCode
+
+Odds and ends:
+ * >RestfulTests
+
+Pages can be marked as [[''Test'' pages][<UserGuide.FitNesseWiki.PageProperties]]. Those pages can be executes by a >TestSystems. In this section you'll learn about creating test tables, linking those to your application code and receiving feedback from you >TestSuites.
+
+Each page that has tests will consist of a series of HTML tables. Fitnesse understands various formats of tables, and if those formats are not sufficient, developers are welcome to add additional ones. Generally, the tables take the basic form of a Command cell and some Parameter cells, which are followed by some Output cells. When a test is run, the command and parameters are evaluated to see if the correct output is given. [[The Two minute example][<UserGuide.TwoMinuteExample]] should get you started.
+
+!3 Creating the Table
+Okay, so you saw what FitNesse can do. You ran a test with some inputs, checked to make sure the outputs were as expected, and saw how easy it was to determine whether the application worked correctly or not. Now you'd like to create some tests of your own. How do you do it? If you go back and edit the [[Example page][<UserGuide.TwoMinuteExample]], you'll see some wiki markup that looks like this:{{{
+|eg.Division|
+|numerator|denominator|quotient?|
+|10       |2          |5        |
+|12.6     |3          |4.2      |
+|100      |4          |33       |  }}}The vertical bars delimit table cells. For this table, there is not much more to it than that. You don't have to line up the vertical bars this way; we just do it to make it easier to read. Go ahead and modify this page a little. Add some extra rows with some additional numbers to test, or change some of the numbers around. Then save the page, and click the Test button. You'll see how the system is set up to show successes and failures ''each time you run the test''. This ability to modify a test and immediately see the result is a big benefit of having integration tests.
+
+!1 Getting Test Tables Onto the Page
+As we have seen FitNesse expresses WritingAcceptanceTests as tables of '''input''' data and '''expected output''' data. (If you have not done so, you should probably check out the example table tutorial in the [[Two minute example][<UserGuide.TwoMinuteExample]]. You should then check out the wiki page-editing tutorial on [[editing FitNesse pages][<UserGuide.FitNesseWiki.EditingFitNessePages]].) Yet again, let's look at our test table for testing the division function of a calculator application:
+
+!| eg.Division |
+| numerator | denominator | quotient? |
+| 10 | 2 | 5 |
+| 12.6 | 3 | 4.2 |
+| 100 | 4 | 33 |
+
+So how do we get this table on to the page? Well the [[wiki markup language][<UserGuide.FitNesseWiki.MarkupLanguageReference]] that defines the above table looks like this:{{{
+|eg.Division|
+|numerator|denominator|quotient?|
+|10       |2          |5        |
+|12.6     |3          |4.2      |
+|100      |4          |33       |  }}}
+
+!3 Typing it In By Hand
+We can pretty easily type in the above markup code for our Division table by hand in the page editing window. The vertical bars (!-|-!) delimit cells within rows. As long as you have the right number of vertical bars between data elements, FitNesse will correctly format your table for you. For small tables that will not change frequently, that's a perfectly reasonable way to do it.
+
+!3 Using a Spreadsheet to Create Tables
+Let's face it: a simple text-editing frame (such as the FitNesse edit frame) is not the best tool in the world for manipulating tabular representations of data. It's not especially easy to copy and paste rows or columns, move rows or columns, etc. That's the sort of thing that spreadsheets are great at. When you work with lots of FitNesse tables, particularly large ones, it's great to be able to work in a spreadsheet like Excel to get the table just the way you want it, then copy it over to FitNesse, formatted properly using the wiki markup language. Fortunately, FitNesse makes this easy to do.
+
+!3 Spreadsheet Example
+Let's say that you have the ''Division'' table in Excel and you want to move it into FitNesse.
+
+ * Within Excel, select the table and copy it to the clipboard.
+ * Go to the FitNesse page where you want the table and ''Edit'' it (or create it).
+ * Paste the table into the edit pane. It will show up without any wiki markup formatting:
+
+{{{
+eg.Division
+numerator        denominator        quotient?
+10        2        5
+12.6        3        4.2
+100        4        33 }}}
+
+ * Now click the '''!-Spreadsheet to FitNesse-!''' button on the bottom of the page.
+
+''Voila!'' FitNesse reformats the table (and any other table on the page) with the proper wiki markup delimiters:{{{
+!|eg.Division|
+|numerator|denominator|quotient?|
+|10|2|5|
+|12.6|3|4.2|
+|100|4|33| }}}
+
+'''Note: This is best done one table at a time''', one page at a time. Furthermore, the table must have '''at least two columns'''. When you click the '''!-Spreadsheet to FitNesse-!''' button, FitNesse attempts to format everything on the page that '''might''' be a table.
+
+!3 Copying Tables From FitNesse to the Spreadsheet
+You can also take an existing FitNesse table, select it, and click the '''!-FitNesse to Spreadsheet-!''' button to get it back into non-wiki markup language format. You can then easily paste it back into the spreadsheet application.
+
+!2 Learning More
+If you are interested in the fixture code that makes it possible to run test tables, check out >FixtureCode. If you want to learn what the different styles of test tables are and how to apply them, check out >TestSystems and their table types.

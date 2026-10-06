@@ -1,0 +1,79 @@
+!define TEST_SYSTEM {slim}
+!2 Wiki pages should display page tags within the header.
+
+!3 Page with tags specified - should include tags in header.
+ * Create a wiki page with tags specified.
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-PageWithTags-!|page with tags|Suites=Tags For The Page|true|
+
+ * Request the page.
+|Response Requester.|
+|uri|valid?|
+|!-PageWithTags-!|true|
+
+ * Examine the requested page to be sure the tags are displayed.
+!|Response Examiner.                                         |
+|type    |pattern                                   |matches?|
+|contents|<span class="tag">Tags For The Page</span>|true    |
+
+
+!3 Page with no tags specified - should not include blank H5 html element in header.
+ * Create a wiki page with no tags specified.
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-PageWithNoTags.-!|page with no tags||true|
+
+ * Request the page.
+|Response Requester.|
+|uri|valid?|
+|!-PageWithNoTags-!|true|
+
+ * Examine the requested page to be sure the tag's H5 element is not displayed in header.
+!|Response Examiner.|
+|type|pattern|matches?|
+|contents|<header>.*<h5>.*</h5>.*</header>|false|
+
+
+!3 Refactor confirmation page with tags specified - should include tags in header.
+ * Request the move (refactor) wiki page for a page with tags specified.
+|Response Requester.|
+|uri|valid?|
+|!-PageWithTags-!?refactor&type=move|true|
+
+ * Examine the requested page to be sure the tags are displayed.
+!|Response Examiner.                                         |
+|type    |pattern                                   |matches?|
+|contents|<span class="tag">Tags For The Page</span>|true    |
+
+
+!3 Test results page with tags specified - should include tags in header.
+
+ * Create a simple test page
+|script|Page Builder|
+|attributes|Suites=Tags On Test Page|
+|line|${SUT_PATH}|
+|line|!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page|!-TestPage-!|
+
+ * Run the test page.
+|Response Requester.|
+|uri   |valid?|
+|!-TestPage?responder=test-!|true|
+
+ * Examine the test results page to be sure the tags are displayed.
+!|Response Examiner.|
+|type|pattern|matches?|
+|contents|Tags On Test Page|true|
+
+
+!3 Test results error log page with tags specified - should include test's tags in header.
+ * Request the page.
+|Response Requester.|
+|uri   |valid?|
+|!-TestPage?executionLog-!|true|
+
+ * Examine the requested page to be sure the tags are displayed.
+|Response Examiner.                                          |
+|type    |pattern                                   |matches?|
+|contents|<span class="tag">Tags On Test Page</span>|true    |

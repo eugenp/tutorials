@@ -1,0 +1,12 @@
+!1 Using Comment Tables
+Sometimes you just want to explain something using a table. You don't want it to be a test table. But FitNesse presumes all tables are test tables. You need a CommentTable.
+
+You can make comment tables using the ''Comment'' table notation. It's simple. Simply put the word ''Comment'' all alone in the first row of the table, like so:
+
+|Comment|
+|This table is just a comment|
+|and will not participate|
+|in the tests on this page.|
+
+If you click the Test button on a page containing such comment tables, FitNesse and the [[!-FitFramework-!][<UserGuide.WritingAcceptanceTests.FitFramework]] will ignore the comment tables.
+

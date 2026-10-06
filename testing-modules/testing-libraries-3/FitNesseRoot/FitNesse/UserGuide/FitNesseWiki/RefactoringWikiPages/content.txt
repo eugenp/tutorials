@@ -1,0 +1,5 @@
+The '''Refactor''' button on each page allows you to delete or rename that page in the wiki.
+
+ * '''Delete''' - If you delete a page, all references to that page will become dead.  You'll see them with '''[?]''' following them.
+ * '''Rename''' - If you rename a page, all references to that page will be renamed.
+ * '''Move''' - If you move a page, it will be moved with all it's children.  Any references to it or its children will be appropriately modified.

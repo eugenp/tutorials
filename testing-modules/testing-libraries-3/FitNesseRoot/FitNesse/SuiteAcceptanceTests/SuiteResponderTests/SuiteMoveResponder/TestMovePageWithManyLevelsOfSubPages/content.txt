@@ -1,0 +1,24 @@
+!3 BUG.  Given A.B.C.D, moving A.B to A.E causes C and D to be deleted.
+
+First build a page, a subpage to move, sub pages of the sub page, and a target page to move it to.
+
+|Page creator.|
+|Page name.                               |Page contents.  |valid?|
+|!-ParentPage-!                         |x             |true   |
+|!-ParentPage.ChildPage-!               |child page    |true   |
+|!-ParentPage.ChildPage.GrandchildPage-!|grandchild page| true  |
+|!-NewParentPage-!                      |x             |true   |
+
+Then move the entire tree beneath the target page.
+
+|Response Requester.|
+|uri   |status?|
+|!-ParentPage?responder=movePage&newLocation=NewParentPage-!||
+
+Next fetch the moved page, and each of it's children.  They should all be there.
+
+|Response Requester.|
+|uri|valid?|contents?|
+|!-NewParentPage.ParentPage-!|true||
+|!-NewParentPage.ParentPage.ChildPage-!|true||
+|!-NewParentPage.ParentPage.ChildPage.GrandchildPage-!|true||

@@ -1,0 +1,41 @@
+!3 When a page is renamed, any links to that page from subpages pages are changed.
+
+First build parent & child pages where one refers to the other.
+
+|Page creator.|
+|Page name.|Page contents.|valid?|
+|!-ParentPage-!|!-refer to nothing-!|true|
+|!-ParentPage.BrotherPage-!|!-you are my SisterPage-!|true|
+|!-ParentPage.SisterPage-!|!- thanks brother, love SisterPage-!|true|
+
+Then rename the target page.
+
+|Response Requester.|
+|uri   |status?|
+|!-ParentPage.SisterPage?responder=renamePage&newName=NewSister&refactorReferences=on-!||
+
+Next fetch the Source page.
+
+|Response Requester.|
+|uri|valid?|contents?|
+|!-ParentPage.BrotherPage-!|true||
+
+Make sure that the new target name is present and that the old name is not.
+
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|!-NewSister-!|true|
+|contents|!-SisterPage-!|false|
+
+Next fetch the Target page.
+
+|Response Requester.|
+|uri|valid?|contents?|
+|!-ParentPage.NewSister-!|true||
+
+Make sure that the new target name is present and that the old name is not.
+
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|!-NewSister-!|true|
+|contents|!-SisterPage-!|false|

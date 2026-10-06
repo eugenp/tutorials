@@ -1,0 +1,33 @@
+
+''Previous page: [[!-Flow Mode-!][<UserGuide.FixtureGallery.ImportantConcepts.FlowMode]] Next page: [[!-System under test-!][<UserGuide.FixtureGallery.ImportantConcepts.SystemUnderTest]] Parent page: [[!-Important concepts-!][<UserGuide.FixtureGallery.ImportantConcepts]]''
+!2 !-Target objects-!
+!-In the .NET implementation of FIT, -!'''!- ColumnFixture -!'''!- can bind the FIT table to a domain object directly, so that you do not have to redeclare all properties and methods in a fixture class. This is useful if you want to use a -!'''!- ColumnFixture -!'''!- test but have a good data transfer object already. To bind the table to a domain object, override the -!'''!- GetTargetObject -!'''!- method and return the appropriate target object. If a target object is used, all table columns are mapped to that object. If you want to use some verifications that do not exist in the business class, you will have to extend the business class, add new methods, and then use that new class as a target for the table. -!
+
+!-This feature is .NET specific, and not available in Java. -!
+
+{{{
+!-!-!|TargetObjectTest|
+|word|total length?|
+|Houston|7|
+}}}
+# section .NET Source Code
+!3 !-.NET Source Code-!
+{{{
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace info.fitnesse.fixturegallery
+{
+    public class TargetObjectTest:fit.ColumnFixture
+    {
+        private Text txt=new Text("");
+        public override object  GetTargetObject()
+ 	    {
+            return txt;
+        }
+    }
+}
+}}}
+
+''Previous page: [[!-Flow Mode-!][<UserGuide.FixtureGallery.ImportantConcepts.FlowMode]] Next page: [[!-System under test-!][<UserGuide.FixtureGallery.ImportantConcepts.SystemUnderTest]] Parent page: [[!-Important concepts-!][<UserGuide.FixtureGallery.ImportantConcepts]]''

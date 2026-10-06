@@ -1,0 +1,125 @@
+!2 Test that variables are properly defined and expressed on a page.
+ * Variables are defined as !-!define name {value}-!.
+ * Alternately they are defined as !-!define name (value)-!.
+  * This is so that you can create variables with {} or () in them.
+ * They are expressed using !-${name}-!
+-----
+!3 Test a variable defined and used on the same page.
+#
+ * Create a page with a variable definition and use..
+#
+|script|
+|start|Page Builder|
+|line|!-!define x {1}-!|
+|line|!-x is ${x}-!|
+|line|!-PAGE_NAME is ${PAGE_NAME}-!|
+|line|!-PAGE_PATH is ${PAGE_PATH}-!|
+|page|!-VariablePage-!|
+#
+ * Fetch that page.
+#
+|Response Requester.|
+|uri|valid?|contents?|
+|!-VariablePage-!|true||
+#
+ * Inspect the text to see if the variable was expressed.
+#
+|Response Examiner.|
+|type|pattern|matches?|
+|contents|x is 1|true|
+|contents|PAGE_NAME is !-&lt-!;a href="Variable!--!Page"!-&gt;-!Variable!--!Page|true|
+|contents|PAGE_PATH is .|true|
+
+----
+!3 Test a variable defined and used on the same page using () syntax.
+#
+ * Create a page with a variable definition and use..
+#
+|script|
+|start|Page Builder|
+|line|!-!define x (1)-!|
+|line|!-x is ${x}-!|
+|page|!-ParenVariablePage-!|
+#
+ * Fetch that page.
+#
+|Response Requester.|
+|uri|valid?|contents?|
+|!-ParenVariablePage-!|true||
+#
+ * Inspect the text to see if the variable was expressed.
+#
+|Response Examiner.|
+|type|pattern|matches?|wrapped html?|
+|contents|x is 1|true||
+
+----
+!3 Test literals in variables with {} and () syntax.
+!note The internal representation of a literal is changed from !lit(n) to !lit?n? so as to avoid conflict with the !define X () widget syntax.
+#
+ * Create a page with a variable definition and use..
+#
+|script|
+|start|Page Builder|
+|line|!-!-!define xLitBRACE {!-!-!-xLitBRACE-!-!-!}|
+|line|!!--!define xLitPAREN (!-!-!-xLitPAREN-!-!-!)|
+|line|!-xLitBRACE is ${xLitBRACE}-!|
+|line|!-xLitPAREN is ${xLitPAREN}-!|
+|page|!-ParenVariablePage-!|
+#
+ * Fetch that page.
+#
+|Response Requester.|
+|uri|valid?|contents?|
+|!-ParenVariablePage-!|true||
+#
+ * Inspect the text to see if the variable was expressed.
+#
+|Response Examiner.|
+|type|pattern|matches?|wrapped html?|
+|contents|xLitPAREN is xLitPAREN|true||
+|contents|xLitBRACE is xLitBRACE|true||
+
+----
+!3 Test a variables with periods
+#
+ * Create a page with a variable definitions with periods.
+#
+|script|
+|start|Page Builder|
+|line|!-!define xy. (1)-!|
+|line|!-!define x.y (2)-!|
+|line|!-!define .xy (3)-!|
+|line|!-!define .x.y. (4)-!|
+|line|!-!define .xy. (5)-!|
+|line|!-!define .x.y (6)-!|
+|line|!-!define x.y. (7)-!|
+|line|!-!define x..y (8)-!|
+|line|!-~xy. is ${xy.}~-!|
+|line|!-~x.y is ${x.y}~-!|
+|line|!-~.xy is ${.xy}~-!|
+|line|!-~.x.y. is ${.x.y.}~-!|
+|line|!-~.xy. is ${.xy.}~-!|
+|line|!-~.x.y is ${.x.y}~-!|
+|line|!-~x.y. is ${x.y.}~-!|
+|line|!-~x..y is ${x..y}~-!|
+|page|!-ParenVariablePage-!|
+#
+ * Fetch that page.
+#
+|Response Requester.|
+|uri|valid?|contents?|
+|!-ParenVariablePage-!|true||
+#
+ * Inspect the text to see if the variables were expressed properly.
+#
+|Response Examiner.|
+|type|pattern|matches?|wrapped html?|
+|contents|~xy. is 1~|true||
+|contents|~x.y is 2~|true||
+|contents|~.xy is 3~|true||
+|contents|~.x.y. is 4~|true||
+|contents|~.xy. is 5~|true||
+|contents|~.x.y is 6~|true||
+|contents|~x.y. is 7~|true||
+|contents|~x..y is 8~|true||
