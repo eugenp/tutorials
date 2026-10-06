@@ -24,4 +24,5 @@ spring:
                 - openid
                 - email
                 - profile
+                - account
 

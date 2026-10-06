@@ -1,5 +1,6 @@
 package com.baeldung.auth.server.customclaims.config;
 
+import com.baeldung.auth.server.customclaims.components.UserInfoMapper;
 import com.baeldung.auth.server.customclaims.components.UserInfoService;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
@@ -67,34 +68,7 @@ public class AuthServerConfiguration {
     }
 
     private Function<OidcUserInfoAuthenticationContext, OidcUserInfo> userInfoMapper() {
-        return context -> {
-
-            var auth = context.getAuthentication();
-            var userInfo = userInfoService.getUserInfoByUsername(auth.getName());
-            return OidcUserInfo.builder()
-              .subject(auth.getName())
-              .email(userInfo.email())
-              .name(userInfo.name())
-              .givenName(userInfo.givenName())
-              .familyName(userInfo.familyName())
-              .locale(userInfo.locale()
-                .toLanguageTag())
-              .gender(userInfo.gender())
-              .birthdate(userInfo.birthdate()
-                .toString())
-              .zoneinfo(userInfo.zoneId()
-                .toString())
-              .preferredUsername(userInfo.username())
-              .claim("account_id", userInfo.accountId()
-                .toString())
-              .claim("created_at", userInfo.createdAt()
-                .toString())
-              .claim("updated_at", userInfo.updatedAt()
-                .toString())
-              .claim("account_expires_at", userInfo.accountExpiresAt()
-                .toString())
-              .build();
-        };
+        return new UserInfoMapper(userInfoService);
     }
 
     @Bean

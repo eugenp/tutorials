@@ -64,7 +64,7 @@ class CustomClaimsAuthServerUnitTest {
           .uri( b -> b.path(authEndpoint.getPath())
             .queryParam("response_type", "code")
             .queryParam("client_id", "client1")
-            .queryParam("scope", String.join(" ","openid","email","profile"))
+            .queryParam("scope", String.join(" ","openid","email","profile","account"))
             .queryParam("redirect_uri", redirectUri)
             .queryParam("state", state)
             .build())

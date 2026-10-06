@@ -7,10 +7,7 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class UserInfoService {
@@ -22,6 +19,7 @@ public class UserInfoService {
         "Alice",
         "Smith",
         "alice.smith@example.com",
+        true,
         Locale.forLanguageTag("en-US"),
         "female",
         LocalDate.of(1990, 1, 1),
@@ -33,8 +31,8 @@ public class UserInfoService {
         )
     );
 
-    public UserInfo getUserInfoByUsername(String username) {
-        return users.get(username);
+    public Optional<UserInfo> getUserInfoByUsername(String username) {
+        return Optional.ofNullable(users.get(username));
     }
 
     public record UserInfo(
@@ -43,6 +41,7 @@ public class UserInfoService {
         String givenName,
         String familyName,
         String email,
+        boolean emailVerified,
         Locale locale,
         String gender,
         LocalDate birthdate,
