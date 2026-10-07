@@ -16,8 +16,7 @@ public class UserInfoMapper implements Function<OidcUserInfoAuthenticationContex
     @Override
     public OidcUserInfo apply(OidcUserInfoAuthenticationContext context) {
 
-        var auth = context.getAuthentication();
-        var subject = auth.getName();
+        var subject = context.getAuthentication().getName();
         var scopes = context.getAuthorization().getAuthorizedScopes();
         var userInfo = userInfoService.getUserInfoByUsername(subject);
 

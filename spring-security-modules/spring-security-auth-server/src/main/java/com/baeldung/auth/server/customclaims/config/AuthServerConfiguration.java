@@ -43,9 +43,7 @@ public class AuthServerConfiguration {
 
     @Bean
     @Order(Ordered.HIGHEST_PRECEDENCE)
-    SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http) {
-
-        log.info("Creating authorization sever SecurityFilterChain");
+    SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http, UserInfoMapper userInfoMapper) {
 
         // @formatter:off
         return http.oauth2AuthorizationServer(sas -> {
@@ -58,7 +56,7 @@ public class AuthServerConfiguration {
           if ( enableCustomUserInfo ) {
             sas.oidc(oidc -> oidc
               .userInfoEndpoint(userInfo -> userInfo
-                .userInfoMapper(userInfoMapper())));
+                .userInfoMapper(userInfoMapper)));
           }
           else {
             sas.oidc(withDefaults());
@@ -67,7 +65,8 @@ public class AuthServerConfiguration {
         // @formatter:on
     }
 
-    private Function<OidcUserInfoAuthenticationContext, OidcUserInfo> userInfoMapper() {
+    @Bean
+    UserInfoMapper userInfoMapper() {
         return new UserInfoMapper(userInfoService);
     }
 
