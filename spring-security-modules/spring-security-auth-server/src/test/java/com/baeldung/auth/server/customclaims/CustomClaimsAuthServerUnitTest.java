@@ -40,7 +40,7 @@ class CustomClaimsAuthServerUnitTest {
 
     // Happy path integration test
     @Test
-    void whenAuthorizationRequestWithValidCredentials_thenSuccess() {
+    void givenAuthorizationRequestWithValidCredentials_whenAuthorize_thenSuccess() {
 
         var response = restTestClient.get().uri("/.well-known/openid-configuration").exchange();
 

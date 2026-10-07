@@ -79,7 +79,7 @@ class UserInfoMapperTest {
           "gender","birthdate","zoneinfo","preferred_username", "updated_at");
         assertTrue(claims.keySet().containsAll(expectedClaims));
 
-        // Ensure that account claims are not present
+        // Ensure that account claims are *not* present
         assertFalse(claims.containsKey("account"));
 
     }
@@ -100,14 +100,13 @@ class UserInfoMapperTest {
         var expectedClaims = Set.of("account_id", "created_at", "account_expires_at");
         assertTrue(claims.keySet().containsAll(expectedClaims));
 
-        // Ensure that email and name claims are not present
+        // Ensure that email and name claims are *not *present
         assertFalse(claims.containsKey("email"));
         assertFalse(claims.containsKey("name"));
 
     }
 
-
-    // Sample users for testing
+    // Sample user for testing
     private  static final UserInfoService.UserInfo ALICE = new UserInfoService.UserInfo(
       "user", "Alice Smith", "Alice", "Smith",
       "user@example.com", true,
