@@ -1,0 +1,11 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+
+data:
+  generator:
+    enabled: ${DATA_GENERATOR_ENABLED:true}
+
+share:
+  consumer:
+    concurrency: ${SHARED_CONSUMER_THREADS:1}
