@@ -4,11 +4,9 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.stereotype.Component;
 
 import com.baeldung.spring.kafka.shareconsumer.model.Event;
 
-@Component
 public class EventShareConsumer {
 
     private static final Logger log = LoggerFactory.getLogger(EventShareConsumer.class);
@@ -18,6 +16,7 @@ public class EventShareConsumer {
         log.info("Thread: {} - Doing some heavy work for key {} ...", Thread.currentThread()
             .threadId(), record.key());
         try {
+            // 5 second wait that simulates a long-running process
             Thread.sleep(5000L);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);

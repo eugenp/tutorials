@@ -33,6 +33,8 @@ public class ShareConsumerConfig {
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JacksonJsonDeserializer.class);
+        props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, 1);
+        props.put(ConsumerConfig.SHARE_ACQUIRE_MODE_CONFIG, "record_limit");
         props.put(JacksonJsonDeserializer.TRUSTED_PACKAGES, "com.baeldung.spring.kafka.shareconsumer.model");
         return new DefaultShareConsumerFactory<>(props);
     }
