@@ -26,7 +26,7 @@ import com.baeldung.spring.kafka.shareconsumer.model.Event;
 
 @SpringBootTest(classes = { ShareConsumerConfig.class, EventShareConsumer.class, EventProducerConfig.class })
 @Import(TestcontainersConfiguration.class)
-class EventShareConsumerTest {
+class EventShareConsumerIntegrationTest {
 
     private static final String TOPIC = "stopic";
 
@@ -51,7 +51,7 @@ class EventShareConsumerTest {
     }
 
     @Test
-    void shouldConsumeSingleEvent() throws InterruptedException {
+    void givenSingleEvent_whenSent_thenConsumed() throws InterruptedException {
         Event expected = new Event(1L, "test-event");
         String key = UUID.randomUUID()
             .toString();
@@ -64,11 +64,10 @@ class EventShareConsumerTest {
                 verify(eventShareConsumer).consume(argThat((ConsumerRecord<String, Event> record) -> key.equals(record.key())));
             });
 
-        Thread.sleep(30000L);
     }
 
     @Test
-    void shouldConsumeMultipleEvents() {
+    void givenMultipleEvents_whenSent_thenAllConsumed() {
         kafkaTemplate.send(TOPIC, new Event(1L, "first"));
         kafkaTemplate.send(TOPIC, new Event(2L, "second"));
         kafkaTemplate.send(TOPIC, new Event(3L, "third"));
@@ -81,7 +80,7 @@ class EventShareConsumerTest {
     }
 
     @Test
-    void shouldProcessEventWithCorrectPayload() {
+    void givenEvent_whenSent_thenPayloadPreserved() {
         Event expected = new Event(42L, "manolis");
         String key = UUID.randomUUID()
             .toString();

@@ -18,6 +18,7 @@ public class EventShareConsumer {
         log.info("Thread: {} - Doing some heavy work for key {} ...", Thread.currentThread()
             .threadId(), record.key());
         try {
+            // 5 second wait that simulates a long-running process
             Thread.sleep(5000L);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);

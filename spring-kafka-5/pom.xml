@@ -61,7 +61,7 @@
         <dependency>
             <groupId>org.awaitility</groupId>
             <artifactId>awaitility</artifactId>
-            <version>4.2.0</version>
+            <version>${awaitility.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -82,6 +82,7 @@
         <junit-jupiter.version>6.0.3</junit-jupiter.version>
         <logback.version>1.5.34</logback.version>
         <testcontainers.version>1.21.4</testcontainers.version>
+        <awaitility.version>4.2.0</awaitility.version>
     </properties>
 
 </project>
