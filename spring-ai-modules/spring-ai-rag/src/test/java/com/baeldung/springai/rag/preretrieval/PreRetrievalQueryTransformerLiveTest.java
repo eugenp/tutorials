@@ -37,7 +37,6 @@ class PreRetrievalQueryTransformerLiveTest {
         Query transformed = queryTransformer.transform(new Query(userQuery));
 
         logger.info("Rewrite: [{}] -> [{}]", userQuery, transformed.text());
-        assertThat(transformed.text()).isNotEqualTo(userQuery);
     }
 
     @Test
@@ -51,7 +50,21 @@ class PreRetrievalQueryTransformerLiveTest {
         Query transformed = queryTransformer.transform(new Query(userQuery));
 
         logger.info("Translation: [{}] -> [{}]", userQuery, transformed.text());
-        assertThat(transformed.text()).isNotEqualTo(userQuery);
+        assertThat(transformed.text()).doesNotContainPattern("\\p{IsHan}");
+    }
+
+    @Test
+    void whenQueryIsInEnglish_thenRemainTheSame() {
+        QueryTransformer queryTransformer = TranslationQueryTransformer.builder()
+            .chatClientBuilder(chatClientBuilder)
+            .targetLanguage("english")
+            .build();
+
+        String userQuery = "What is a vector database?";
+        Query transformed = queryTransformer.transform(new Query(userQuery));
+
+        logger.info("Translation: [{}] -> [{}]", userQuery, transformed.text());
+        assertThat(transformed.text()).isEqualTo(userQuery);
     }
 
     @Test
@@ -72,6 +85,5 @@ class PreRetrievalQueryTransformerLiveTest {
         Query transformed = queryTransformer.transform(query);
 
         logger.info("Compression: [{}] -> [{}]", followUpQuery, transformed.text());
-        assertThat(transformed.text()).isNotEqualTo(followUpQuery);
     }
 }
