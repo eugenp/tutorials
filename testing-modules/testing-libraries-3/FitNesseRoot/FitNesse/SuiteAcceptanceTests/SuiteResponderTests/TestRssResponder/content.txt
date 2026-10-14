@@ -1,0 +1,32 @@
+!c !2 RSS - Real Simple Syndication
+
+Use the following following url to get an RSS feed.
+http://-host-/PageName?responder=rss
+
+For FitNesse to generate the links properly, the RSS_PREFIX variable must be defined.
+
+Now lets set the RSS_PREFIX variable in the root page so that it is valid for the entire site.  We'll also edit a couple pages.
+|Response Requester.|
+|uri   |status?|
+|!-root?responder=saveData&editTime=1&ticketId=2&pageContent=!define+RSS_PREFIX+{http://www.myserver.com/}-!|303|
+|!-PageOne?responder=saveData&editTime=1&ticketId=2&pageContent=blah-!|303|
+|!-PageTwo?responder=saveData&editTime=1&ticketId=2&pageContent=blah-!|303|
+
+Get the RSS!
+|Response Requester.|
+|uri   |status?|
+|!-?responder=rss-!|200|
+
+Let's have a look.
+|Response Examiner.|
+|type  |pattern|matches?|wrapped html?|
+|contents|<\?xml version="1.0" encoding="UTF-8" standalone="no"\?>|true||
+
+Make sure it has all the right values.
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|<rss version="2.0">|true|
+|contents|<title>!-PageOne-!</title>|true|
+|contents|<link>!-http://www.myserver.com/PageOne-!</link>|true|
+|contents|<title>!-PageTwo-!</title>|true|
+|contents|<link>!-http://www.myserver.com/PageTwo-!</link>|true|

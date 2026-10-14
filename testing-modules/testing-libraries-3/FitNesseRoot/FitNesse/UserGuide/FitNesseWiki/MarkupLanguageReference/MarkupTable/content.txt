@@ -1,0 +1,52 @@
+Tables can be created very easily.  Use the vertical stroke as the first character of the line, and separate each table cell with it:
+
+'''Markup Text'''
+{{{|Alpha|
+|Beta|gamma|Delta|
+|1|2|3|}}}----
+'''Displays as:'''
+|Alpha|
+|Beta|gamma|Delta|
+|1|2|3|
+----
+You can use most wiki markup directives in table cells, including !c, !1, !2, !3, bold, and italic.
+!2 Literal tables.
+If you don't want any markup directives interpreted in the table, then you can use a special form that is preceded with a ! and like this:
+
+'''Markup Text'''
+{{{!|ThisTableWillNotInterpret|!c any directives|'''it is treated'''|
+|!1 like a literal|--and is especially useful--|''for test tables.''|
+|^SinceTheyTend| * to have WikiWord symbols in them.|}}}
+'''Displays as:'''
+!|ThisTableWillNotInterpret|!c any directives|'''it is treated'''|
+|!1 like a literal|--and is especially useful--|''for test tables.''|
+|^SinceTheyTend| * to have WikiWord symbols in them.|
+
+!2 No Link Generating tables
+If you don't want Wikiwords, URL's or E-mail adresses interpreted in the table, but you do want symbols like !-!today-! interpreted, then you can use a special form where your table is preceded with a ^ character:
+'''Markup Text'''
+{{{^|ThisTableWillExclude|WikiWords, http://links|and email@adress.es          |
+|from being parsed,  |however                |''it will respect formatting''|
+|and parse symbols like !-!today (yyyyMMdd)-!                               |}}}
+'''Displays as:'''
+^|ThisTableWillExclude|WikiWords, http://links|and email@adress.es          |
+|from being parsed,  |however                |''it will respect formatting''|
+|and parse symbols like !today (yyyyMMdd)                                   |
+
+!2 Hidden table heads
+You can hide the first row of a table. This allows you to write comment tables that just look like ordinary HTML tables.
+The complete table still gets executed, the first row is just hidden by a CSS rule.
+Precede the first row with a '-'. This also works for literal tables.
+
+'''Markup Text'''
+{{{-!|Comment|
+|Beta|gamma|Delta|
+|1|2|3|}}}
+'''Displays as:'''
+-!|Comment|
+|Beta|gamma|Delta|
+|1|2|3|
+
+!2 Plain Text Tables
+
+!see [[!-PlainTextTable-!][<UserGuide.FitNesseWiki.MarkupLanguageReference.PlainTextTable]]

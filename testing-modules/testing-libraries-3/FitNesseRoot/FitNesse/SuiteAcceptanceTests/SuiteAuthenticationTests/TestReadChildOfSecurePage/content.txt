@@ -1,0 +1,8 @@
+Children of a page whose 'secure-read' property is set, also require authentication in order to read.  The 'secure-read' property acts as though it were inherited by the children pages.
+
+!|script|
+|given read locked page|ParentPage|
+|given page|ParentPage.ChildPage|
+|it should not be readable with no authentication|
+|it should not be readable by user|Aladdin|password|open please|
+|it should be readable by user|Aladdin|password|open sesame|

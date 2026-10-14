@@ -1,0 +1,1 @@
+To access the root of the whole !-FitNesse-! wiki use the following URL:{{{http://<fitnesse-location>/root}}} You can put variable definitions, and '''!path''' directives on this page.  All pages in the wiki will inherit these attributes.

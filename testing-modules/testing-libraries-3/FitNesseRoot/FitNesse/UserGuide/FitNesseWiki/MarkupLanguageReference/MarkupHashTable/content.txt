@@ -1,0 +1,25 @@
+Hash Tables are collections of name-value pairs that can be passed as arguments into test fixtures.  They render as tables.  !-DoFixture-! will decode a name-value pair table into a true hashtable. Java_Slim and Ruby_Slim will both convert this HTML string into a Map<String,String> (or a hash in the case of Ruby)
+
+Any text enclosed in '''!-!{-!''' and '''}''' will be treated as a Hash Table.
+
+|!c '''Markup Text'''|!c '''Displays as'''|
+|!-!{fname:Bob, lname:Martin, dob:5-Dec-1952}-!|!{fname:Bob, lname:Martin, dob:5-Dec-1952}|
+
+The key name must be plain text, but the value can be any reasonable wiki construct.
+
+|!c '''Markup Text'''|!c '''Displays as'''|
+|!-!{fname:''Bob'', lname:''Martin'', today:!today, hash:!{fname:Bob, lname:Martin, dob:5-Dec-1952}}-!|!{fname:''Bob'', lname:''Martin'', today:!today, hash:!{fname:Bob, lname:Martin, dob:5-Dec-1952}}|
+
+
+!3 Syntax issues.
+
+ * A colon, comma and closing brace simply cannot be placed in either the name or the value.  
+ * The hash widget can be written on many lines as follows: 
+{{{
+     !{
+     Name:Bob,
+     Address:There,
+     Time:Now
+     }! }}}
+!3 CSS
+You can change their appearance using the css classes !style_code(hash_table), !style_code(hash_row), !style_code(hash_key), !style_code(and hash_value)

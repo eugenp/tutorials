@@ -1,0 +1,8 @@
+!2 Test replacing text on a simple page.
+The replacement should replace page contents of the current page when there are no other sibling pages.
+----
+
+!|script                                                                      |
+|given page               |SomePage|with content  |some content               |
+|replacement response from|some    |with          |any|should contain|SomePage|
+|page                     |SomePage|should contain|any content                |

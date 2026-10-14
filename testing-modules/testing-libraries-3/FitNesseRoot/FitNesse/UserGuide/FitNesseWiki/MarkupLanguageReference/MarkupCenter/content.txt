@@ -1,0 +1,7 @@
+You can center a line by prefixing it with !c
+
+!c This line is centered.
+
+|!c '''Markup Text'''|!c '''Displayed as'''|
+|!-this line is not centered-!|this line is not centered|
+|!-!c this text is centered-!|!c this text is centered|

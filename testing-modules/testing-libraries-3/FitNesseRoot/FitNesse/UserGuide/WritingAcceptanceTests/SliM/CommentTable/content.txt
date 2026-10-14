@@ -1,0 +1,4 @@
+|Comment|
+|Comment tables are simply not executed|
+|You|Can|Put|Anything|You|Want|Into|Them|
+|The only requirement|is that the first|cell of the table|must be the word|comment|

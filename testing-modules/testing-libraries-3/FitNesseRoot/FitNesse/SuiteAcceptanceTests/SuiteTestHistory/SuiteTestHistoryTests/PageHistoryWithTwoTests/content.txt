@@ -1,0 +1,17 @@
+!|page history|
+|name|date|right|wrong|ignores|exceptions|
+|TestPage|5-May-2009|20|30|0|0|
+|TestPage|6-May-2009|60|40|0|0|
+
+!|script|
+|get history for page|TestPage|
+|the number of page histories should be|2|
+
+|the page history bar for|date|should have|n|elements of class|class|
+|date|number|class|
+|5-May-2009|10|pass|
+|5-May-2009|15|fail|
+|5-May-2009|25|ignore|
+|6-May-2009|30|pass|
+|6-May-2009|20|fail|
+|6-May-2009|0|ignore|

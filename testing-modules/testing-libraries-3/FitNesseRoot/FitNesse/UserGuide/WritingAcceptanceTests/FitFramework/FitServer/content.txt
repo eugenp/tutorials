@@ -1,0 +1,4 @@
+A program that is required for each implementation of FIT that couples FIT to FitNesse.
+
+FitServer is executed by FitNesse and will communicate through a socket with FitNesse.  The protocol used is described in FitServerProtocol.
+

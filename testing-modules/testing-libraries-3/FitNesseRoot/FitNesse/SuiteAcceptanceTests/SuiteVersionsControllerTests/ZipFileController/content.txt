@@ -1,0 +1,10 @@
+The ZIP implementations doesn't creates a backup for new pages
+!define Create_backup_for_initial_page_version (0)
+
+!contents -R2 -g -p -f -h
+#!define VERSION_CONTROLLER_CLASS {!-fitnesse.wiki.fs.ZipFileVersionsController-!}
+#!define VERSION_CONTROLLER_FIRST_INDEX {0}
+
+
+
+

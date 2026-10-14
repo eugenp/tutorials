@@ -1,0 +1,34 @@
+!3 !-!contents-! with Recursive option
+!include -seamless ContentsUsage
+'''First create the parent page.'''
+|script|
+|start|Page Builder|
+|line|I'm the parent|
+|line|!-!contents-! -R|
+|page|!-ParentPage-!|
+
+!include -seamless ContentsTestsInclude
+'''Next create a grandchild'''
+|script|
+|start|Page Builder|
+|line|You're too young to be grandparents|
+|page|!-ParentPage.FirstChild.GrandChild-!|
+
+'''Then request the parent page.'''
+|Response Requester.|
+|uri|valid?|contents?|
+|!-ParentPage-!|true||
+
+'''...and examine the requested page to be sure that the descendent pages are included'''
+#
+!|Response Examiner.|
+|type|pattern|matches?|
+|contents|a href="ParentPage.FirstChild" class="suite">FirstChild</a|true|
+|contents|a href="ParentPage.FirstChild.GrandChild" class="static">GrandChild</a|true|
+|contents|a href="ParentPage.SecondChild" class="static linked pruned">SecondChild</a|true|
+
+'''Also note that the html assigns css classes named toc1, toc2, etc depending on how far down you go. This allows you to define different characteristics for each level in the hierarchy by editing /files/css/fitnesse.css.'''
+!|Response Examiner.|
+|type|pattern|matches?|
+|contents|ul class="toc1"|true|
+|contents|ul class="toc2"|true|

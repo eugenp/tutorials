@@ -1,0 +1,51 @@
+Raising an exception with the term "StopTest" in it during "SuiteSetUp" will make sure all remaining tests are skipped.
+
+!| script |
+| given page | MySuite | with content | ${SUT_PATH} !-
+!define TEST_SYSTEM {slim}
+-! |
+| given page | MySuite.SuiteSetUp | with content | !-
+| import |
+| fitnesse.slim.test |
+
+| constructor throws | stop test |
+
+| table in page setup never to be executed |
+
+-! |
+| given page | MySuite.TestPageA | with content | !-
+| import |
+| fitnesse.slim.test |
+
+| table in page A never to be executed |
+
+-! |
+| given page | MySuite.TestPageB | with content | !-
+| import |
+| fitnesse.slim.test |
+
+| table in page B never to be executed |
+
+-! |
+| given page | MySuite.TearDown | with content | !-
+| import |
+| fitnesse.slim.test |
+
+| script | echo script |
+| check | echo | tear down after ${PAGE_NAME} | tear down after ${PAGE_NAME} |
+
+-! |
+| given page | MySuite.SuiteTearDown | with content | !-
+| import |
+| fitnesse.slim.test |
+
+| script | echo script |
+| check | echo | suite tear down executed | suite tear down executed |
+
+-! |
+| test results for suite | MySuite | should contain | table in page setup never to be executed <span class="ignore">Test not run</span> |
+| ensure | content contains | table in page A never to be executed <span class="ignore">Test not run</span> |
+| ensure | content contains | tear down after <a href="MySuite.TestPageA">TestPageA</a> <span class="ignore">Test not run</span> |
+| ensure | content contains | table in page B never to be executed <span class="ignore">Test not run</span> |
+| ensure | content contains | tear down after <a href="MySuite.TestPageB">TestPageB</a> <span class="ignore">Test not run</span> |
+| ensure | content contains | <span class="pass">suite tear down executed</span> |

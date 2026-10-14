@@ -1,0 +1,8 @@
+!2 Test replacing text using pattern groups.
+This replacement uses regular expression and matching group to exchange two words in a some page content.
+----
+
+!|script                                                                                                            |
+|given page               |SomePage                         |with content  |group1 nogroup group2                   |
+|replacement response from|(group[^ ]*) nogroup (group[^ ]*)|with          |$2 irrelevant $1|should contain|SomePage|
+|page                     |SomePage                         |should contain|group2 irrelevant group1                |

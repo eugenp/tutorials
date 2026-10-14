@@ -1,0 +1,38 @@
+!| widget should render |
+| wiki text | html text |
+| normal text | normal text |
+| this is ''italic'' text | this is <i>italic</i> text | italic widget |
+| this is '''bold''' text | this is <b>bold</b> text | bold widget |
+| !c This is centered text | <center>This is centered text</center> |
+|!1 header                                          |<h1 id="0">header</h1>                                                                                                                                         |
+|!2 header                                          |<h2 id="0">header</h2>                                                                                                                                         |
+|!3 header                                          |<h3 id="0">header</h3>                                                                                                                                         |
+|!4 header                                          |<h4 id="0">header</h4>                                                                                                                                         |
+|!5 header                                          |<h5 id="0">header</h5>                                                                                                                                         |
+|!6 header                                          |<h6 id="0">header</h6>                                                                                                                                         |
+| http://files/x | <a href="files/x">http://files/x</a> | file link |
+| http://fitnesse.org | <a href="http://fitnesse.org">http://fitnesse.org</a> | http link |
+| SomePage | SomePage<a title="create page" href="SomePage\?edit&nonExistent=true">\[\?\]</a> | missing wiki word |
+| [[tag][WidgetPage]] | <a href="WidgetPage">tag</a> | link alias |
+| [[tag][http://fitnesse.org]] | <a href="http://fitnesse\.org">tag</a> | http link alias |
+| [[tag][http://files/x]] | <a href="files/x">tag</a> | files alias |
+| !- !-This is literal text-!-! | This is literal text | simple literal |
+| !- !-This is ''literal'' text-! -! | !-This is ''literal'' text-! | literal text with markup |
+| !-This is normal, ''italic'', and '''bold''' text-! | This is normal, <i>italic</i>, and <b>bold</b> text | Mixed Italic and Bold |
+| !-!note hello-! | <p class="note">hello</p> |
+| !-{{{prefomatted text}}}-! | <pre>prefomatted text</pre> |
+| !-''x''-! | <i>x</i> | ''David Hookers bug.  Single character italics didn't parse correctly.'' |
+| !---strike---! | <strike>strike</strike> |
+| !-!style_myStyle(hello)-! | <span class="myStyle">hello</span> |
+| !-!style_myStyle[hello]-! | <span class="myStyle">hello</span> |
+| !-!style_myStyle{hello}-! | <span class="myStyle">hello</span> |
+| WikiWord | WikiWord<a title="create page" href="WikiWord\?edit&nonExistent=true">\[\?\]</a> |
+| MdM | MdM<a title="create page" href="MdM\?edit&nonExistent=true">\[\?\]</a> |
+| AbCdEfGhIjKlMnOpQrTuVxYz | AbCdEfGhIjKlMnOpQrTuVxYz<a title="create page" href="AbCdEfGhIjKlMnOpQrTuVxYz\?edit&nonExistent=true">\[\?\]</a> |
+| TheNumber1 | TheNumber1<a title="create page" href="TheNumber1\?edit&nonExistent=true">\[\?\]</a> |
+| ParenT.ChilD | ParenT.ChilD<a title="create page" href="ParenT.ChilD\?edit&nonExistent=true">\[\?\]</a> |
+| ^SubPage | \^SubPage<a title="create page" href="WidgetPage.SubPage\?edit&nonExistent=true">\[\?\]</a> | DEPRECATED |
+| >SubPage | >SubPage<a title="create page" href="WidgetPage.SubPage\?edit&nonExistent=true">\[\?\]</a> |
+| This is an@email.com text | This is <a href="mailto:an@email.com">an@email.com</a> text | email widget |
+
+>DavidHookersBug

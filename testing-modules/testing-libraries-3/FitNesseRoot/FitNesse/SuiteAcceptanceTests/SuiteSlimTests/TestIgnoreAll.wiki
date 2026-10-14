@@ -1,0 +1,14 @@
+Raising an exception with the term "ignore all" in it will make sure all tests on that page are ignored from that point, but "TearDown" and rest of suite is executed.
+
+|script      |echo fixture          |
+|check       |echo      |Hello|Hello|
+|echo and log|me here               |
+|check       |ignore all|Hello|hello|
+|check       |echo      |Hello|Hello|
+
+
+
+|script      |echo fixture    |
+|check       |echo|Hello|Hello|
+|check       |echo|Hello|Hello|
+|echo and log|me here         |

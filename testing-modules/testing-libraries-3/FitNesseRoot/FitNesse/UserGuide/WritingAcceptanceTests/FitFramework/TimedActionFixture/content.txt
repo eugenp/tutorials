@@ -1,0 +1,23 @@
+!2 Seeing How Long ActionFixture Actions Take: !-TimedActionFixture-!
+
+You can used !-TimedActionFixture-! if you want to see visual feedback on how long certain functions take to execute.
+
+|!-fit.TimedActionFixture-!|
+|start|!-fitnesse.fixtures.DelayedCountFixture-!|
+|check|counter|0|
+|press|count|
+|check|counter|1|
+|press|count|
+|check|counter|2|
+|enter|counter|5|
+|press|count|
+|check|counter|6|
+
+The !-DelayedCountFixture-! used above simply adds a random delay to the ''count'' function.
+
+The !-TimedActionFixture-! does not report any delays that are less than one second.  I don't know why Ward decided to impose this lower limit.  Perhaps he'll remove it one day.
+
+This fixture does not appear to give you access to the time or the ''split''.  It just displays them for your edification.
+
+For more on ActionFixture see: DesigningWithActionFixture.
+

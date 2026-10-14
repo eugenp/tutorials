@@ -1,0 +1,84 @@
+
+''Previous page: [[!-Target objects-!][<UserGuide.FixtureGallery.ImportantConcepts.TargetObject]] Next page: [[!-Symbols-!][<UserGuide.FixtureGallery.ImportantConcepts.FixtureSymbols]] Parent page: [[!-Important concepts-!][<UserGuide.FixtureGallery.ImportantConcepts]]''
+!2 !-System under test-!
+'''!- DoFixture -!'''!- and -!'''!- SequenceFixture -!'''!- can be used to automate testing of your business domain classes directly, without the need to redeclare or wrap the business class methods in a fixture. That feature is called -!''!-System under test-!''!-. In Java, call the -!'''!- setSystemUnderTest -!'''!- method and pass your business domain object. In .NET, assign the business object to the -!'''!- mySystemUnderTest -!'''!- property. Note that generic (template) classes cannot be used for this purpose in Java, because FIT will fail to find the appropriate class parameters and try to use -!'''!- Object -!'''!- arguments for all methods. -!
+
+!-Even when the system under test is defined, you can still call methods of the fixture in your tests. If there is no appropriate method of the fixture, FIT looks for an appropriate method in the system under test. Here is an example that works with standard .NET queues (to make it work with Java, we have to wrap the generic -!'''!- Queue -!'''!- interface into a non-generic class).-!
+
+{{{
+!-!-!|SystemUnderTest|
+|Enqueue|directly calling queue|
+|check|count|1|
+|Generate|12|Messages|
+|check|count|13|
+|check|dequeue|directly calling queue|
+}}}
+# section Java Source Code
+!3 !-Java Source Code-!
+{{{
+package info.fitnesse.fixturegallery;
+
+import fitlibrary.DoFixture;
+import info.fitnesse.fixturegallery.domain.*;
+
+public class SystemUnderTest extends DoFixture{
+
+	Queue  queue;
+	public SystemUnderTest (){
+		queue=new Queue();
+		setSystemUnderTest(queue);
+	}
+	public void generateMessages(int i){
+		for (int cnt=0; cnt<i;cnt++){
+			queue.enqueue("M"+i);
+		}
+	}
+}
+}}}
+# section .NET Source Code
+!3 !-.NET Source Code-!
+{{{
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace info.fitnesse.fixturegallery
+{
+    public class SystemUnderTest: fitlibrary.DoFixture
+    {
+        Queue<string> queue = new Queue<string>();
+        public SystemUnderTest()
+        {
+            this.mySystemUnderTest = queue;
+        }
+        public void GenerateMessages(int howmuch)
+        {
+            for (int i = 0; i < howmuch; i++)
+                queue.Enqueue("M" + i);
+        }
+    }
+}
+}}}
+# section Python Source Code
+!3 !-Python Source Code-!
+{{{
+from fitLib.DoFixture import DoFixture
+from info.fitnesse.fixturegallery.domain.Queue import Queue
+
+class SystemUnderTest(DoFixture):
+    _typeDict = {
+        # -- NEEDED-FOR: SystemUnderTestExample
+        "GenerateMessages.RenameTo": "generateMessages"
+    }
+
+    def __init__(self):
+        self.queue = Queue()
+        self.setSystemUnderTest(self.queue)
+
+    _typeDict["generateMessages.types"] = [ None, "Integer" ]
+    def generateMessages(self, i):
+        for dummy in xrange(i):
+            self.queue.enqueue("M%d" % i)
+}}}
+
+''Previous page: [[!-Target objects-!][<UserGuide.FixtureGallery.ImportantConcepts.TargetObject]] Next page: [[!-Symbols-!][<UserGuide.FixtureGallery.ImportantConcepts.FixtureSymbols]] Parent page: [[!-Important concepts-!][<UserGuide.FixtureGallery.ImportantConcepts]]''

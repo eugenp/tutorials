@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<properties>
+	<Edit>true</Edit>
+	<Files>true</Files>
+	<Help>Table of Content of the Fitnesse User Guide</Help>
+	<Properties>true</Properties>
+	<RecentChanges>true</RecentChanges>
+	<Refactor>true</Refactor>
+	<Search>true</Search>
+	<SymbolicLinks>
+		<UserGuide>.FitNesse.UserGuide</UserGuide>
+	</SymbolicLinks>
+	<Versions>true</Versions>
+	<WhereUsed>true</WhereUsed>
+</properties>
+

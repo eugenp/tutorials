@@ -1,0 +1,27 @@
+When using authentication, the username is recorded when the page is edited and is diplayed in the version list among other places.
+
+First setup the Authentication module.
+!|Authenticator Setup|
+|username|password|status?|
+|Aladdin|open sesame||
+
+Create a page to be requested.
+!|Page creator.|
+|Page name.|valid?|
+|FrontPage |true|
+
+No save the page a couple times wih the user logged in.  This will produce a version edited by the user.
+!|Response Requester.|
+|uri|username|password|status?|
+|FrontPage?responder=saveData&pageContent=hi+there&editTime=0&ticketId=0|Aladdin|open sesame|303|
+|FrontPage?responder=saveData&pageContent=by now&editTime=0&ticketId=0|Aladdin|open sesame|303|
+
+Now load up the version list.
+!|Response Requester.|
+|uri|username|password|status?|
+|FrontPage?versions|Aladdin|open sesame|200|
+
+The user name will be in a <TD> element without any extra characters.
+|Response Examiner.|
+|type  |pattern|matches?|contents?|
+|contents|>Aladdin<|true||

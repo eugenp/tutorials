@@ -1,0 +1,36 @@
+You can run FitNesse Java (Fit and Slim) tests from a developer IDE without starting the FitNesse server. This is a developer-centric approach to running tests and is not suitable for collaboration with customers or testers, but it is very efficient for troubleshooting purposes. FitNesse includes a set of JUnit 4 runner that enables you to execute a test or a suite using JUnit. The runner will execute FitNesse tests in-process by default, allowing you to debug and inspect the fixture or domain code during test execution. Test pass/failure reports are integrated with JUnit but the normal page output (tables etc) gets saved to the disk for later inspection, if required.
+
+The !-FitNese-! runner will report about individual test pages being executed by JUnit. For IDE's this means that the JUnit report window and give you detailed statistics for individual tests in a suite.
+
+!2 Using the !-FitNese-! runner
+To use the !-FitNese-! runner, Define !-fitnesse.junit.FitNesseRunner-! as the runner for a specific test class, using @org.junit.runner.RunWith(). Set the test or suite name to run using the @Name attribute, the root FitNesse path using !-@FitNesseDir-! attribute and the result directory using !-@OutputDir-! attribute.[[Here's a full example.][https://github.com/unclebob/fitnesse/blob/master/test/fitnesse/junit/FitNesseRunnerTest.java]]
+
+!2 What about JUnitHelper?
+JUitHelper is no more. Main reason for this is that FitNesse has become more modular. Now it's possible to execute a set of tests with only a few lines of code. The basics are:
+
+ * build a context:
+
+{{{FitNesseContext context = new ContextConfigurator(properties /* a java.util.Properties instance */).makeFitNesseContext();}}}
+
+ * get a set of pages you want to execute:
+
+{{{List<WikiPage> pagesToExecute = new SuiteContentsFinder(suiteRoot, null /* optional fitnesse.testrunner.SuiteFilter */, context.root).getAllPagesToRunForThisSuite();}}}
+
+ * build a test runner, provide a descriptor with the execution details (e.g. debug mode) for the tests:
+
+{{{final String classPath = new ClassPathBuilder().buildClassPath(pages);
+final PagesByTestSystem pagesByTestSystem = new PagesByTestSystem(pages, context.root, new PagesByTestSystem.DescriptorFactory() {
+    @Override
+    public Descriptor create(WikiPage page) {
+        return new WikiPageDescriptor(page.readOnlyData(), true /* run in-process */, false /* remote debug */, classPath);
+    }
+});
+MultipleTestsRunner testRunner = new MultipleTestsRunner(pagesByTestSystem, context.runningTestingTracker, context.testSystemFactory);}}}
+
+ * register a !-TestSystemListener-! on the test runner:
+
+{{{testRunner.addTestSystemListener(new TestSystemListener() { ... });}}}
+
+ * execute the tests; test results are reported through the listener:
+
+{{{testRunner.executeTestPages();}}}

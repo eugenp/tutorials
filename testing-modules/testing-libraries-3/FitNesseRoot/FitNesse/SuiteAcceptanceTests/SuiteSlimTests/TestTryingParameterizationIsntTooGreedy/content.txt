@@ -1,0 +1,33 @@
+|import            |
+|fitnesse.slim.test|
+
+
+There was a bug in the Scenario selection process that caused a scenario with no inputs to be selected when it should have been method on the driver class.  This happened because the !-ScenarioTable-! class was enhanced to try all rows as parameterized.  So it took "login" and tried "login _ ".  This resulted in the "login" scenario being used instead of the "loginWithUsernameAndPassword" method when "connect as with" scenario was called.  This page demonstrates the fix.
+
+
+!2 Scenario with no arguments and a shared root
+!|scenario |login |
+|connect to server|
+
+!2 
+!|scenario          |connect as|username    |with|password|
+|login with username|@username |and Password|@password    |
+
+
+!2 Scenario With one argument and a shared root.
+!|scenario           |login with|name|
+|connect to server as|@name          |
+
+
+!2 Now calling a scenario that does take arguments, but since it isn't in parameterized format, the scenario with an argument isn't called, even though it shares a common root.
+!|scenario          |connect as|username    |with|password|
+|login with username|@username |and Password|@password    |
+
+
+
+
+!|script                                 |
+|start     |Login Dialog Driver|bob |xyzz|
+|connect as|bob                |with|xyzz|
+
+

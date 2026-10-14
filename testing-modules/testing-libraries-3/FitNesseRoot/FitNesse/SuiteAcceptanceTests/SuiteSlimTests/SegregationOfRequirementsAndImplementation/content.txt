@@ -1,0 +1,29 @@
+One of the key goals of FitNesse is to encourage that requirements in FitNesse are written before the coding of the implementation starts.
+Having said that the defintion of the requirements must be independent of the technical solution used to implement it.
+This sample page shows that the same requirement defintion can be implemented once with a java class implementing the decision table protokoll and once with a senario.
+
+
+The requirements are defined in a decision table on a sub page. 
+The first implementation used is the Devision class from the eg library.
+|import|
+|eg|
+
+!include >CalculatorRequirements
+
+
+Now we define a second technical solution using a FitNesse scenario
+|scenario | Division _ _ _|numerator, denominator, quotient?|
+|setNumerator| @numerator|
+|setDenominator| @denominator|
+|$quotient=| quotient|
+
+
+Generate an instance of the class used by the scenario:
+| Library | 
+| eg.Division|
+
+
+
+We retest the requirements and get the same results.
+
+!include >CalculatorRequirements

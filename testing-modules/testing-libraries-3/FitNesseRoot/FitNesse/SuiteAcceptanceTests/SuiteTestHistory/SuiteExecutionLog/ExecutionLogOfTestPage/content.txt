@@ -1,0 +1,41 @@
+!define BlockEnd {-!}
+
+!| script |
+| given page | TestPage | with content | ${SUT_PATH} !-
+!define TEST_SYSTEM {slim}
+
+| import |
+| fitnesse.slim.test |
+
+| script:echo script |
+| echo to stdout | This is standard output |
+| echo to stderr | This is error output |
+| echo to stdout | !-This is multiline std output
+std line 2
+std line 3-!${BlockEnd}!- |
+| echo to stderr | !-This is multiline error output
+error line 2
+error line 3
+-!${BlockEnd}!- |
+
+-! |
+|check |request page    |TestPage?test     |200    |
+|check |request page    |TestPage?executionLog     |200    |
+| ensure | content contains | slim:fitnesse.slim.SlimService |
+| ensure | html without | \r|  contains | !-
+<h4>Standard Output:</h4>
+<pre>This is standard output
+This is multiline std output
+std line 2
+std line 3
+</pre>
+<hr/>
+<h4>Standard Error:</h4>
+<pre>This is error output
+This is multiline error output
+error line 2
+error line 3
+
+</pre>-!|
+|show  collapsed |content |
+

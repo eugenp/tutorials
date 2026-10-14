@@ -1,0 +1,54 @@
+!2 Every wiki page displays a series of links (breadcrumbs) to the ancestors of the current page.
+ * The last breadcrumb should name the current page without a link.
+!3 Test top level page
+ * Create a top level page
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-TopLevelPage-!|top level page||true|
+
+ * Request the page.
+|Response Requester.|
+|uri|valid?|contents?|
+|!-TopLevelPage-!|true||
+
+ * Examine the requested page to be sure the link to itself is displayed.
+!|Response Examiner.                                        |
+|type    |pattern                                  |matches?|
+|contents|<${TITLE_TAG}>TopLevelPage</${TITLE_TAG}>|true    |
+
+!3 A second level page - the top level should link up, the current page should not link.
+ * Create a top level page
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-TopLevelPage.SecondLevelPage-!|second level page||true|
+
+ * Request the page.
+|Response Requester.|
+|uri|valid?|contents?|
+|!-TopLevelPage.SecondLevelPage-!|true||
+
+ * Examine the requested page to be sure the link to itself is displayed.
+!|Response Examiner.                                           |
+|type    |pattern                                     |matches?|
+|contents|<a href="/TopLevelPage">TopLevelPage</a>.   |true    |
+|contents|<${TITLE_TAG}>SecondLevelPage</${TITLE_TAG}>|true    |
+
+!3 A second level page - the top four levels should link up, the current page should not link.
+ * Create a fifth level page
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-TopLevelPage.SecondLevelPage.ThirdLevelPage.FourthLevelPage.FifthLevelPage-!|fifth level page||true|
+
+ * Request the page.
+|Response Requester.|
+|uri|valid?|contents?|
+|!-TopLevelPage.SecondLevelPage.ThirdLevelPage.FourthLevelPage.FifthLevelPage-!|true||
+
+ * Examine the requested page to be sure the link to itself is displayed.
+!|Response Examiner.                                                                                         |
+|line                                                                                               |inOrder?|
+|<li><a href="/TopLevelPage">TopLevelPage</a></li>                                                  |true    |
+|<li><a href="/TopLevelPage.SecondLevelPage">SecondLevelPage</a></li>                               |true    |
+|<li><a href="/TopLevelPage.SecondLevelPage.ThirdLevelPage">ThirdLevelPage</a></li>                 |true    |
+|<li><a href="/TopLevelPage.SecondLevelPage.ThirdLevelPage.FourthLevelPage">FourthLevelPage</a></li>|true    |
+|<${TITLE_TAG}>FifthLevelPage</${TITLE_TAG}>                                                        |true    |

@@ -1,0 +1,61 @@
+!2 Test that variables can be defined as system properties
+ * If Fitnesse can not find a variable definition on any pages it will look to system properties.
+----
+!3 Test a variable defined in system properties
+
+#
+ * Set a system property.
+#
+|System property setter fixture|
+|key|value|
+|xKey|xValue|
+#
+ * Create a page that uses that property as a variable.
+#
+|script|
+|start|Page Builder|
+|line|!-xKey is ${xKey}-!|
+|page|!-VariablePage-!|
+#
+ * Fetch that page.
+#
+|Response Requester.|
+|uri|valid?|contents?|
+|!-VariablePage-!|true||
+#
+ * Inspect the text to see if the variable was expressed.
+#
+|Response Examiner.|
+|type|pattern|matches?|wrapped html?|
+|contents|xKey is xValue|true||
+
+
+----
+!3 Test that a variable defined in a page supercedes one set in system properties
+
+#
+ * Set a system property.
+#
+|System property setter fixture|
+|key|value|
+|xKey|xValue|
+#
+ * Create a page that defines the same variable and uses it.
+#
+|script|
+|start|Page Builder|
+|line|!-!define xKey {xValueFromPage}-!|
+|line|!-xKey is ${xKey}-!|
+|page|!-VariablePage-!|
+#
+ * Fetch that page.
+#
+|Response Requester.|
+|uri|valid?|contents?|
+|!-VariablePage-!|true||
+#
+ * Inspect the text to see if the variable was expressed.
+#
+|Response Examiner.|
+|type|pattern|matches?|wrapped html?|
+|contents|xKey is xValueFromPage|true||

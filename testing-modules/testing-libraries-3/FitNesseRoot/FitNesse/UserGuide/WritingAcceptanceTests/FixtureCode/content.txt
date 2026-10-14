@@ -1,0 +1,162 @@
+!***< hidden
+
+!define TEST_SYSTEM {slim}
+*!
+
+In the [[Two Minute Example][<UserGuide.TwoMinuteExample]] we saw how a table containing acceptance tests can be created. The example in itself was pretty trivial. Here we dig more into the details of FitNesse and its fixtures.
+
+!2 Something a Bit More Realistic: A Trivia Game
+As much as we might like to, we shall not immediately leap into an application to analyze the seismic data resulting from setting off dozens of sticks of dynamite on the floor of the Gulf of Mexico. Partly because so many fish would die, and partly because that's going too far in the complexity direction.
+
+Instead let's imagine that we are building a trivia game. The overall design of our trivia game is straightforward: players take turns rolling a single die, and move around a circular board. When they land on a square, they are asked a trivia question of some category. There will be requirements and test tables later on for answering questions incorrectly, for winning, and so on.
+
+For now let's imagine that we are addressing a specific first requirement or user story (call it what you like):
+
+!3 "You can add players to the game, and you can ask the game how many players are playing."
+Sounds pretty straightforward. Let's first set up a ClassPath that points to where our trivia game project is. Without the ClassPath, FitNesse would not be able to find our fixture code:
+
+!path C:\workspace\TriviaGameFitNesseExample\
+How about this for a test table?
+
+!| eg.triviaGameExample.fitnesseFixtures.AddRemovePlayerFixture |
+| playerName | addPlayer? | countPlayers? |
+| Al | true | 1 |
+| Bertha | true | 2 |
+
+It says that if we add a player named Al to our game successfully, the total number of players should be 1, and if we then add a player named Bertha, our total number of players should be 2.
+
+!3 The Code for !-AddRemovePlayerFixture-!
+What might the fixture code for that look like (so far)? How about this:{{{
+import fit.ColumnFixture;
+
+public class AddRemovePlayerFixture {
+  private String playerName;
+  private Game theGame;
+
+  public void setPlayerName(String playerName) {
+    this.playerName = playerName;
+  }
+
+  public boolean addPlayer() {
+    theGame = StaticGame.theGame;
+    Player thePlayer = theGame.addPlayer(playerName);
+    return theGame.playerIsPlaying(thePlayer);
+  }
+
+  public int countPlayers() {
+    return theGame.getNumberOfPlayers();
+  }
+} }}}Yes, I think we have arrived at a more realistic level of complexity. What does this code mean? Well, we have a setter named ''setPlayerName'', as required, and we have methods named ''addPlayer()'' and ''countPlayers()''. Straightforward enough.
+
+But '''what is that private Game field, and what are those methods calling, and why'''?
+
+!2 Piping and Wiring: Delegating to Real Code
+Our fixture's ''addPlayer()'' method is indeed thin: it merely calls an ''addPlayer()'' method on a Game class, which does the real work. Here is that Game class, such as it currently is:{{{
+public class Game {
+  private ArrayList players;
+
+  public Game() {
+    players = new ArrayList();
+  }
+
+  public Player addPlayer(String aPlayerName) {
+    Player aPlayer = new Player(aPlayerName);
+    players.add(aPlayer);
+    return aPlayer;
+  }
+
+  public boolean playerIsPlaying(Player aPlayer) {
+    return players.contains(aPlayer);
+  }
+
+  public int getNumberOfPlayers() {
+    return players.size();
+  }
+} }}}Game adds our players to an !-ArrayList-!, and returns the new Player object. The ''playerIsPlaying()'' method reports whether a player is playing, and ''getNumberOfPlayers('') returns the number of players in the collection. Not much of a trivia game yet, but it meets our one requirement: we can add players and count them.
+
+Notice that our fixture code's ''addPlayer()'' method above calls ''playerIsPlaying()'' to determine whether a player was successfully added: a fairly meaningful return value. Notice that our fixture's ''countPlayers()'' is even thinner: it returns the result from a single call to ''getNumberOfPlayers()'' on Game.
+
+But what is that call  to !-StaticGame-! for?
+
+!3 What That Call To !-StaticGame-! Is For
+Each row of our table above involves a separate call to our ''!-AddRemovePlayerFixture-!'' class. Since we are adding players to the same game, we need to ensure that we are talking to the same Game object each time.
+
+Furthermore, we will have several test pages for our suite of tests for the trivia game. Each of those test pages will use more than one table to set up and test a condition in a Game instance. We need it to be the same Game instance being tested by all the test tables on a page. So we need a Singleton Game instance for the tables and their corresponding fixture classes to share. Here is the code for !-StaticGame-!:{{{
+public abstract class StaticGame {
+  public static Game theGame = new Game();
+} }}}It just a static variable that holds an instance of Game. And for safety's sake, it is abstract: you cannot instantiate !-StaticGame-!.
+
+!2 Enabling Multiple Test Tables to Share a Common Object
+OK. Let's justify that !-StaticGame-! thing a bit more thoroughly. Say we have another requirement that goes like this:
+
+!3 "Once the game has started, players cannot be added or removed."
+For this test, we'll ask the game to take a fake turn by specifying that the player whose turn it is "rolls" a 6. That should start the game. We'll check the result of that by checking to see which player it was who actually took the turn (we expect it to be Al), and whether indeed the game has started. Note that this fixture, in order to work properly, will need to talk to the same Game object that our !-AddRemovePlayerFixture-! talked to above. That's what !-StaticGame-! does for us.
+
+!| eg.triviaGameExample.fitnesseFixtures.GameTurnFixture |
+| roll | player? | gameHasStarted? |
+| 6 | Al | true |
+
+Now that the game has started, we'll try to add a new player to the game, and this should fail (we should get back false from addPlayer()). And we should still have only two players in the game:
+
+!| eg.triviaGameExample.fitnesseFixtures.AddRemovePlayerFixture |
+| playerName | addPlayer? | countPlayers? |
+| Joe | false | 2 |
+
+Finally, we'll try to remove a player from the game, and this too should fail:
+
+!| eg.triviaGameExample.fitnesseFixtures.AddRemovePlayerFixture |
+| playerName | removePlayer? | countPlayers? |
+| Al | false | 2 |
+
+This shows how you can use a sequence of tables to verify a requirement by setting up and testing different states in your application code.
+
+Click the Test button to see how it all turns out.
+
+!3 New Code for removePlayer()
+Our removePlayer() on !-AddRemovePlayerFixture-! works much as addPlayer() does:{{{
+public boolean removePlayer() {
+  theGame = StaticGame.getInstance();
+  thePlayer = theGame.getPlayerNamed(playerName);
+  theGame.removePlayer(thePlayer);
+  return (playerWasRemoved(thePlayer));
+}
+
+private boolean playerWasRemoved(Player aPlayer) {
+  return (!theGame.playerIsPlaying(aPlayer));
+} }}}It too shares the Game instance supplied by !-StaticGame-!. And you can see that our !-GameTurnFixture-! methods do the same:{{{
+public class GameTurnFixture {
+  private int roll;
+  private Game theGame;
+
+  public String player() {
+    theGame = StaticGame.theGame;
+    return theGame.takeTurn(roll);
+  }
+
+  public void execute() {
+    StaticGame.theGame.takeTurn(roll);
+  }
+
+  public boolean gameHasStarted() {
+    theGame = StaticGame.theGame;
+    return theGame.gameHasStarted();
+  }
+
+  public void setRoll(int roll) {
+    this.roll = roll;
+  }
+} }}}So, as !-AddRemovePlayerFixture-! and !-GameTurnFixture-! are repeatedly called, they make changes to, and check the state of, a single Game object.
+
+This is a common pattern. One way or another, Fitnesse test tables on a single page often need to share a common object. We grant you that there is more than one way to skin this particular cat. This is the way we chose to skin it. It will show up in examples ahead of us.
+
+Note the ''execute'' method of !style_code(!-GameTurnFixture-!).  This will be called after all the setters have been called, and just before the output functions are called.
+
+!2 Summary
+ * A fixture is the class that FitNesse and Slim use to process a particular test table when the Test button is clicked. For each row of data in a test table, Slim sets its inputs using setter methods, and then calls the specified output methods. FitNesse uses the return values to determine whether to turn output table cells green or red.
+ * You need to use a ClassPath to specify to Slim where your fixture code resides.
+ * Fixture code should be as thin as possible: its methods should merely delegate to, and return values from, methods on application code. To process our player-adding test tables above when we click the Test button, Slim uses our !-AddRemovePlayerFixture-! Java class to pass data between the table and underlying Java application classes (Game and Player).
+ * Sometimes fixtures get involved in pulling together test data for input, and formatting returned data for display, but fixtures should contain no business logic.
+ * Often the test tables on a page need to share an object. We've illustrated the use of a static variable to solve this problem. Your mileage may vary.
+
+!2 Learning More
+To learn more about the different styles of test tables and the fixture code used to process them, see [[Slim][<UserGuide.WritingAcceptanceTests.SliM]].

@@ -1,0 +1,24 @@
+The name of a ''fitnesse test page'' begins with '''"Test"''', or has the '''Test''' attribute set.  See [[Page Attributes][<UserGuide.FitNesseWiki.PageProperties]].  This makes sure that the page will have a '''Test''' button.
+
+''Fitnesse tests'' are written in ''Fit'' format (http://fit.c2.com ).  This format is very simple.  The page can contain any text at all.  Any tables that exist on the page will be interpreted by ''Fit''.
+
+A ''Fit'' table begins with a row that contains the classname of the test fixture that will interpret the rest of the table.  Usually you write these test fixtures.  There are a number of test fixture base classes that make writing these fixtures very simple.
+
+The rest of the rows in a ''Fit'' table have formats that are determined by the fixture.
+
+|!c !3 Fixtures and Examples                                                                                                                                     |
+|TableFixture                                                      |''A simple fixture for dealing with static tables of data.''                                 |
+|ColumnFixture                                                     |''Each row loads a data structure and then invokes functions upon it.''                      |
+|RowEntryFixture                                                   |''A special case of ColumnFixture for processing rows of data.''                             |
+|RowFixture                                                        |''Allows you to match all the rows from a simple query, independent of order.''              |
+|ActionFixture                                                     |''A fixture that allows you write a script that emulates a user interface.''                 |
+|.                                                                                                                                                               |
+|ParametersInFixtures                                              |''Allows you to pass arguments into any Fixture.''                                           |
+|SymbolsInTestTables                                               |''Allows you to store outputs fromm one fixture and use them as inputs to another.''         |
+|KeywordsInTestTables                                              |''There are certain keywords that can be used in fixtures. I.e. null and blank''             |
+|DataTypesInFixtures                                               |''There are several data types that can be used in fixtures.''                               |
+|[[Graceful Names][<UserGuide.WritingAcceptanceTests.GracefulName]]|''Managing the names of fixtures, packages, and variables''                                  |
+|[[Comment Tables][CommentTables]]                                 |''Sometimes you want a table in a test, that is not part of the test, but is just a comment''|
+|.                                                                                                                                                               |
+|^BowlingGameProject                                               |''A simple example of some custom acceptance tests.''                                        |
+

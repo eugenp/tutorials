@@ -1,0 +1,88 @@
+!3 This page tests the construction of tables.
+#
+ * First create a page with comment text on it.
+#
+|script|
+|start|Page Builder|
+|line|!-|1 Row 1 Cell|-!|
+|page|!-TableTestPage-!|
+#
+ * Then request that page
+#
+|Response Requester.|
+|uri|valid?|contents?|
+|!-TableTestPage-!|true||
+#
+ * Examine the page to be sure it is empty.
+#
+|Response Examiner.|
+|type|pattern|matches?|wrapped html?|
+|contents|<table.*<tr>\s*<td>\s*1 Row 1 Cell\s*</td>\s*</tr>\s*</table>|true||
+
+'''Test that spaces inside table cells don't get interpreted.'''
+|script|
+|start|Page Builder|
+|line|!-| 1 is not a list|-!|
+|page|!-TableTestPageTwo-!|
+#
+#
+|Response Requester.|
+|uri|valid?|contents?|
+|!-TableTestPageTwo-!|true||
+#
+#
+|Response Examiner.|
+|type|pattern|matches?|wrapped html?|
+|contents|1 is not a list|true||
+#
+|Response Examiner.|
+|type|pattern|matches?|
+|contents|<ol>|false|
+|contents|1 is not a list|true|
+#
+
+'''Test that nothing gets interpreted inside literal tables.'''
+|script|
+|start|Page Builder|
+|line|!-!|'''bold'''|''italic''|-!|
+|page|!-TableTestPageThree-!|
+#
+#
+|Response Requester.|
+|uri|valid?|contents?|
+|!-TableTestPageThree-!|true||
+#
+#
+|Response Examiner.|
+|type|pattern|matches?|wrapped html?|
+|contents|!-'''bold'''-!|true||
+#
+|Response Examiner.|
+|type|pattern|matches?|
+|contents|!-''italic''-!|true|
+#
+
+
+'''Test that wikiwords, http links and e-mail adresses don't get interpreted inside no-links tables.'''
+|script                                               |
+|start|Page Builder                                   |
+|line |!-^|WikiWord|https://localhost|test@mail.com|-!|
+|page |!-TableTestPageFour-!                          |
+#
+#
+|Response Requester.                   |
+|uri                  |valid?|contents?|
+|!-TableTestPageFour-!|true  |         |
+#
+#
+|Response Examiner.                                               |
+|type    |pattern                          |matches?|wrapped html?|
+|contents|!-&lt;td&gt;WikiWord&lt;/td&gt;-!|true    |             |
+#
+|Response Examiner.                                                                                                |
+|type    |pattern                                                                                         |matches?|
+|contents|!-WikiWord&lt;a title="create page" href="WikiWord?edit&amp;nonExistent=true"&gt;[?]&lt;/a&gt;-!|false   |
+|contents|!-&lt;td&gt;https://localhost&lt;/td&gt;-!                                                      |true    |
+|contents|!-&lt;a href="https://localhost"&gt;https://localhost&lt;/a&gt;-!                               |false   |
+|contents|!-&lt;td&gt;test@mail.com&lt;/td&gt;-!                                                          |true    |
+|contents|!-&lt;a href="mailto:test@mail.com"&gt;test@mail.com&lt;/a&gt;-!                                |false   |

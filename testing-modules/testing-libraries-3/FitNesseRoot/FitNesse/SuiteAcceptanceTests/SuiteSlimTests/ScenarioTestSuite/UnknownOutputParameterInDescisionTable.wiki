@@ -1,0 +1,27 @@
+---
+Test
+---
+Using a output column in a decision table which is not defined by the scenarion should raise an exception.
+
+!| script                       |
+|given page|MySuite|with content|${SUT_PATH} !-
+!define TEST_SYSTEM {slim}
+-! |
+|given page    |MySuite.TestPageA|with content                       |!-
+|scenario      |my division      |numerator||denominator||my result2?|
+|setNumerator  |@numerator                                           |
+|setDenominator|@denominator                                         |
+|$myResult2=   |quotient                                             |
+
+Get the Division implementation from the eg package
+|Library    |
+|eg.Division|
+
+|my division                               |
+|numerator|denominator|my result2?|missing?|
+|10       |2          |5.0        |3       |
+-!|
+|test results for suite|MySuite         |should contain                                                 |my division                                                |
+|reject                |content contains|<span class="pass">5.0</span>                                                                                              |
+|reject                |content contains|<span class="ignore">Test not run</span>                                                                                   |
+|ensure                |content contains|<span class="error"><strong> my division: Bad table! The argument missing is not an output of the scenario.</strong></span>|

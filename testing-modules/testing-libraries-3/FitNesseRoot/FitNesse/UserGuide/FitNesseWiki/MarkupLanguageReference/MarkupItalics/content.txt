@@ -1,0 +1,4 @@
+To set a word or phrase in ''italics'' simply enclose the section of text in two single quotes like this:
+
+|!c '''Markup Text'''|!c '''Displayed as'''|
+|!-I want ''this'' in italics.-!|I want ''this'' in italics.|

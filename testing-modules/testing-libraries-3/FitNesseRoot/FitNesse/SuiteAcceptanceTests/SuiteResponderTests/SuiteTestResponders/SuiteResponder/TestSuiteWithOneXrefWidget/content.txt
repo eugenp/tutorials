@@ -1,0 +1,55 @@
+When you execute a suite page, !-FitNesse-! tests all the pages mentioned in !-!see-! cross reference widgets.
+''Note: the classpath for the cross referenced pages is not determined by the referencing page, it is determined by the referenced pages.''
+
+----
+Create a simple test page
+
+|script|Page Builder|
+|line|${SUT_PATH}|
+|line|!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page|!-TestPage-!|
+
+Create a Suite page that mentions the test page in a !-!see-! widget
+
+|script|Page Builder|
+|line|!-!see TestPage-!|
+|page|!-SuitePage-!|
+
+|Response Requester.|
+|uri   |valid?|
+|!-SuitePage-!|true|
+
+|Response Examiner.|
+|contents?|
+||
+
+Now run the suite page.
+
+|Response Requester.|
+|uri   |valid?|
+|!-SuitePage?responder=suite-!|true|
+
+|Response Examiner.|
+|contents?|
+||
+
+The suite should report the !-TestPage-! and should show no errors.
+
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|!-TestPage-!|true|
+|contents|Test Pages:.*1 right|true|
+
+The error log page should not have any errors
+
+|Response Requester.|
+|uri   |valid?|
+|!-SuitePage?executionLog-!|true|
+
+|Response Examiner.|
+|contents?|
+||
+
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|Exit code.*0.*Time|true|

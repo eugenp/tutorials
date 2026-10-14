@@ -1,0 +1,44 @@
+A Library Table is a table that can be used to install support fixtures so they are available for all pages underneath.
+
+The format of the Library table is similar to the ImportTable.
+
+|Library    |
+|echo script|
+
+The first row contains the word '''Library'''. This is a reserved word so slim knows which table is executed. All subsequent rows are fixtures. In this case !-SliM-! will expect two fixtures: !-EchoSupport-! and !-FileSupport-!. These fixtures will be located the same as "normal" fixtures, meaning it will use the ImportTable's paths to scan.
+
+Whenever a method is called that is '''not''' available on the fixture, then all installed libraries are scanned if that method is available and if so that one will be invoked.
+
+Usage example:
+
+'''File cleanup'''.
+{{{
+public class FileSupport {
+  public void delete(String folder) {
+    // do stuff here
+  }
+}
+
+public class MyFixture {
+  public void doBusinessLogic(String folder) {
+    myFileCreatingService.createFileInFolder(..);
+  }
+}
+}}}
+
+|script|my fixture                                                                |
+|check |do business logic                           |42                           |
+|note  |The following invocation is triggered on the "echo script" library fixture|
+|echo  |Hello world                                                               |
+
+
+'''Order of method execution'''
+
+The order of method execution is as follows:
+
+1. Find method on fixture, if present execute
+2. Find method on SystemUnderTest, if present execute
+3. Find method on installed Library in '''reversed''' order of creation. So last one created takes precedence over the ones created earlier.
+
+If you need to initialise the fixture you want to add to the library or your fixture has constructor parameters than this is possible as well.
+See details on [[How To Add Fixtures With Parameters To The Library][.FitNesse.SuiteAcceptanceTests.SuiteSlimTests.LibrarySuite.HowToAddFixturesWithParametersToTheLibrary]]  

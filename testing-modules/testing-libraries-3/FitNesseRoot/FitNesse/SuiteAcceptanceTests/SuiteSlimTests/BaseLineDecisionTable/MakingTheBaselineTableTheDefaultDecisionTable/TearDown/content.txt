@@ -1,0 +1,3 @@
+!define SLIM_DT_BASELINE ()
+
+!include  .FitNesse.SuiteAcceptanceTests.TearDown 

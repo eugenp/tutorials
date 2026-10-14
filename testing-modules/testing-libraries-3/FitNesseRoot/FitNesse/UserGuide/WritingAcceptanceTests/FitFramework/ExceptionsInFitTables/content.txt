@@ -1,0 +1,28 @@
+If something goes wrong when you push the ''test'' button, the most likely cause is that you haven't specified the classpath.  Edit the test page and add a !path directive for every classpath that you want included.  See BuildingClassPaths for more information.
+
+Another common problem is a mispelling of the test fixture, or one of the column names.  The symptom is an exception appearing in the table cell that contains the mispelling.
+
+Hit the ''Test'' button to see what these errors look like.
+
+!|eg.thisTestFixtureDoesNotExist|
+|just some data|
+
+!|eg.Division|
+|dividend|divisor|quotient()|
+|5|1|5|
+
+Another odd problem can occurr if the name of the fixture is a WikiWord.  If the corresponding wiki page does not exist, then a ? is appended to it.  Fit sees this ? and thinks it's part of the classname.  Hit the ''Test'' button and then look at the table below.  You should see a ? in the table at the end of the fixture name.  You should also see that ? in the exception report that follows it.  Look closely.
+
+!|somePackage.ClassThatLooksLikeWikiWordButIsntOne|
+|a|b|c|
+
+If you have a problem like this, then what you need to do is surround the name of the fixture in !-!- -! and !- -!-! (see MarkupLiteralText).
+{{{|! -somePackage.ClassThatLooksLikeWikiWordButIsntOne- !|
+|a|b|c|}}}
+Or you can also use the literal tables like this:
+{{{!|somePackage.ClassThatLooksLikeWikiWordButIsntOne|
+|a|b|c|}}}
+'''Tip for viewing exceptions in small font'''
+If you have a scroll-wheel mouse, hold the ctrl key and scroll the wheel. It increases/decreases the font size quickly in most browsers.
+
+

@@ -1,0 +1,132 @@
+!-FitNesse-! is a web application, therefore all of it's functions can be accessed by passing it URLs.  The structure of !-FitNesse-! urls is very simple.
+
+ * !style_code(http://)''host''!style_code(:)''port''!style_code(/)''resource''!style_code(?)''responder''!style_code(&)''inputs''
+   * The ''host'' and ''port'' specify the location of the !-FitNesse-! server.
+   * ''resource'' is usually the name of the !-FitNesse-! wiki page being referenced.  Sometimes it refers to a path below the ''files'' section.  It is not used in all urls.
+   * ''responder'' is the name of the operation to be performed.  This is typically something like !style_code(?edit) to edit a page, or !style_code(?properties) to bring up the properties dialog.  A responder corresponds roughly to a servlet.
+   * ''inputs'' is the list of parameters to the operation.  As in all URL query strings these are name-value pairs and will be things like !style_code(&format=xml) or !style_code(&dontCreatePage).
+ * A wiki page can be fetched by leaving the query string blank as in !style_code(http://myHost:myPort/MyWikiPage).
+ * A responder can be specified by using the ''responder'' input as in: !style_code(http://myHost:myPort/MyWikiPage?responder=edit) instead of !style_code(http://myHost:myPort/MyWikiPage?edit).  The former is ''proper'', but the latter has become so idiomatic that it will not be deprecated any time soon.
+ * The files section of the wiki can be accessed by using the word ''files'' followed by a directory path as in !style_code(http://myHost:myPort/files/images/bob.gif)
+ * The root page can be accessed by using the word ''root'' instead of the ''page'' as in !style_code(http://myHost:myPort/root)
+
+!2 Responders
+| !meta name | !meta inputs | !meta description |
+| addChild | | Creates a new child page beneath the selected page |
+| | pageName | The name of the page to be created. |
+| | pageContent | The contents of the new page. |
+| | pageTemplate | If present must point to a valid wiki page. The new page will have the same properties as the referred page. |
+| | pageType | If present must be {Test, Suite, Static} and sets the page type accordingly.  Otherwise page type is set based on the name of the page as usual. This option does nothing if the ''pageTemplate'' option is set. |
+| compareHistory | | Generates a report comparing two test results. |
+| | TestResult_''yyyyMMddHHmmss_rr_ww_ii_xx''.xml | One of the files to be compared.  Always two there are. |
+| createDir | | Create a new directory in the ''files'' section.  The directory will be created below the ''resource'' |
+| | dirname | The name of the directory to create |
+| deletePage | | Deletes the specified page. |
+| | confirmed=yes | Bypasses the confirmation screen. |
+| deleteFile | | Deletes a file in the ''files'' section.  The ''resource'' is the directory in which the file exists. |
+| | filename | the name of the file to be deleted. |
+| edit | | returns the edit screen for a wiki page.  The ''save'' button invokes the ''saveData'' responder. |
+| | redirectToReferer | instructs the ''edit'' responder to pass the ''redirect'' input to the ''saveData'' responder.  The input is constructed from the ''Referer'' header and the ''redirectAction'' input and has the form ''referer''?''action''. |
+| | redirectAction=action | see above. |
+| | nonExistent | Causes the ''edit'' responder to load the edit window with default page contents and changes some message from ''edit'' to ''create'' |
+| executeSearchProperties | | Returns a list of pages that match the search criteria |
+| | pageType | a list of page types to include in the search {Normal, Test, Suite} or the word "Any" |
+| | Suites | a comma separated list of tags (as used by the ''suite'' responder) to include in the search |
+| | Action | a list of actions !-{Edit, Versions,Properties, Refactor, WhereUsed, RecentChanges, Files, Search}-! or the word "Any" to include in the search |
+| | !-ExcludeSetUp-! | Exclude setup pages from the search. |
+| | !-ExcludeTearDown-! | Exclude teardown pages from the search. |
+| | !-ExcludeObsolete-! | Exclude pages with the "skipped" attribute selected from the search. |
+| files | | Displays a directory in the ''files'' section.  The ''resource'' is the directory to be displayed. |
+| getPage | | View the selected page |
+| | dontCreatePage | if present, will prevent the responder from attempting to create a page if it doesn't exist. |
+| | ''key''=''value'' | If present creates a markup variable with ''key'' as name & ''value'' as value.  ''key'' and ''value'' can be any string values.  Multiple pairs can be specified.  |
+| import | | Imports a page hierarchy from a foreign !-FitNesse-! |
+| | remoteUsername | The user name to log in as (optional) |
+| | remotePassword | The password to use (optional) |
+| | remoteUrl | The url to the complete pathname of the parent page to be imported. |
+| | autoUpdate | If present, will cause a re-import of changed pages whenever a test is run. |
+| importAndView | | imports (if necessary) and views the selected page. |
+| instruction | | displays the Slim instructions for a suite of Slim tests. This is intended as input for further analysis or for low level debugging.|
+| movePage | | moves the selected page below a different parent. |
+| | newLocation | The full path name of the page that will be the new parent. |
+| names | | Displays a list of the pages at the current level.  If no page name is supplied, then the list is all the pages at the top level.  Otherwise it is the list of direct children (not grandchildren) of the supplied page. |
+| | format=json | returns the list as a JSON array |
+| | Recursive | prints also child, grand-child, ... pages |
+| | !-LeafOnly-! | in combination with the "Recursive" option prints only leaf pages that don't have further children |
+| | !-ShowTags-! | prints the tags associated with a page in []-brackets, e.g., [hello][world] |
+| | !-ShowChildCount-! | adds the count of children to each page name after a space. |
+| new | | Like ''edit'', but used for new pages. |
+| | pageTemplate | Define a page to use as a template for the to be created page  |
+| | pageType | If present must be {Test, Suite, Static} and sets the page type accordingly.  Otherwise page type is set based on the name of the page as usual. This option does nothing if the ''pageTemplate'' option is set. |
+| packet | | Returns a json packet containing all the tables on the page.  See: [[!-RestfulPackets-!][<UserGuide.AdministeringFitNesse.RestfulServices.RestfulPackets]] |
+| | jsonp=function | Wraps the json packet into a function call for JSONP, see: [[!-RestfulPackets-!][<UserGuide.AdministeringFitNesse.RestfulServices.RestfulPackets]] |
+| pageData | | Returns the raw wiki-text of the page. |
+| pageHistory | | Displays the test history of the specified page. |
+| | resultDate | if present the date (yyyyMMddHHmmss) of the test to show, or the word "latest".  Otherwise show a list of all dates for this page. | |
+| | format=xml | Returns an XML report.  See: >PageHistoryXml and [[!-RestfulTests-!][<UserGuide.WritingAcceptanceTests.RestfulTests]] |
+| properties | | Displays the properties form for the selected page. |
+| | format=json | shows the properties in JSON format   See >JsonProperties |
+| publish | | Publishes the site as a set of static HTML files. See [[!-PublishingHtml-!][>PublishingHtml]]. |
+| | destination | The root path where the HTML files will be written. |
+| purgeHistory | | Purges old test history files |
+| | days | The number of days of history to preserve |
+| raw | | returns the raw wiki-text of the selected page |
+| refactor | | Displays the refactoring screen. |
+| renameFile | | Renames a file in the ''files'' section.  The ''resource'' is the directory that contains the file. |
+| | filename | the file to be renamed. |
+| | newName | the new name of the file. |
+| renamePage | | Renames the selected page. |
+| | newName | The new name for the page.  Must be a simple wiki word without any dots.  You can't use this responder to move a page! |
+| rollback | | Rollback the page to the selected version. |
+| | version | The version identifier of the version to rollback to.  See: ''viewVersion'' |
+| rss | | Returns an rss feed for the current page and all it's children.  See [[!-RssFeed-!][<UserGuide.AdministeringFitNesse.RestfulServices.RssFeed]] |
+| saveData | | Saves the data for a wiki page.  Usually called by the ''edit'' responder.  Usually invoked as a POST.  If the ''ticketId'' and ''saveTime'' suggest that a merge is needed, this responder will return the merge form without doing a save. |
+| | pageContent | The content to be saved into the page. |
+| | editTime | The time (in milliseconds) that the page was fetched for this edit.  Used to determine whether or not a merge is needed.  (Optional) |
+| | ticketId | A random number associated with the edit session.  Used to determine whether or not a merge is needed.  (Optional) |
+| | redirect | The URL to redirect to after the page is saved. |
+| saveProperties | | Saves the properties for the selected page.  Usually called from the ''properties'' responder.  Usually called as a POST. |
+| | pageType | Must be one of: {Normal, Test, Suite}, sets the page type. |
+| | ''attribute'' | Must be one of: !-{Edit, Versions,Properties, Refactor, WhereUsed, RecentChanges, Files, Search, Prune}-! These are booleans.  If present they will be set.  If absent they will be reset. |
+| | Suites | a comma separated list of tags used by the ''suite'' responder. |
+| | !-HelpText-! | The help text that can show up in TOC listings. |
+| search | | Searches for pages that match the query.  Returns an HTML table of results found. |
+| | searchString | The string to search for.  For text search, this is a string, not a regular expression. For method search, it is a line from wiki which evaluates to a method or a scenario name. |
+| | searchType | For method search, it always searches content. For text search, it may be "title" or "content".  If "title" then searches for pages whose names contain the ''searchString'', otherwise searches for pages whose content contains the ''searchString''. |
+| searchForm | | Returns the search form that allows users to specify a search. |
+| shutdown | | Shuts !-FitNesse-! down. |
+| stoptest | | Stops running tests. |
+| | id | If present, is the process id of the test to stop.  Otherwise stops ''all'' running tests. |
+| suite | | Runs a suite of tests.  The tests run are all those below the wiki page that are marked as tests.  Returns a suite report. |
+| | format=xml | See >RestfulSuiteXmlFormat |
+| | format=junit | Produces simple jUnit XML format|
+| | debug | See test |
+| | remote_debug | See test | |
+| | suiteFilter | A comma separated list of tags.  If present only tests that one or more of these tags will be run. |
+| | excludeSuiteFilter | a comma separated list of tags.  If present only test that DO NOT have any of these tags will be run. |
+| | firstTest | if present, only tests whose full path names are lexigraphically greater (later in alphabetical order) will be run.  This is of questionable use since tests are not guaranteed to be run in any particular order. |
+| | nohistory | Do not generate test history files when running the suite.  Don't use this with format=xml since xml reports depend upon history. |
+| | includehtml | If format=xml then this will cause the XML to contain a 'content' tag that holds the HTML of the tested page.  Beware, this can lead to !-OutOfMemory-! errors for large suites. |
+| | ''key''=''value'' | If present creates a markup variable with ''key'' as name & ''value'' as value.  ''key'' and ''value'' can be any string values.  Multiple pairs can be specified.|
+| symlink | | Creates a symbolic link between pages in the same !-FitNesse-! |
+| | removal | If present is the name of a symbolic link to be removed. |
+| | rename | If present is the name of a symbolic link to be renamed. |
+| | newname | The new name of the symbolic link being renamed. |
+| | linkName | If present is the name of a new symbolic link to be added to the page named by the ''resource''. |
+| | linkPath | The path that the link refers to. |
+| test | | runs a test on the specified page, returns result in html |
+| | format=xml | Returns results in XML.  See [[!-RestfulTests-!][<UserGuide.WritingAcceptanceTests.RestfulTests]] |
+| | debug | (Only works for Java fixtures.) Attempts to run the test in the same JVM that !-FitNesse-! is running in.  Allows you to attach a debugger to your fixtures before you run the test. | |
+| | remote_debug | Causes the REMOTE_DEBUG_COMMAND and REMOTE_DEBUG_RUNNER variables to be used in place of COMMAND_PATTERN and TEST_RUNNER when creating the command to execute the test.  See [[!-CustomizingTestExecution-!][<UserGuide.WritingAcceptanceTests.CustomizingTestExecution]] for defaults |
+| | ''key''=''value'' | If present creates a markup variable with ''key'' as name & ''value'' as value.  ''key'' and ''value'' can be any string values.  Multiple pairs can be specified.  |
+| testHistory | | Displays the current test history below the selected page, or all history if no page is selected. |
+| | format=xml | Returns an XML report of test history. See >TestHistoryXml |
+| upload | | Upload a new file into the files section.  The ''resource'' is the directory into which the new file will be stored. |
+| | file | An object of type !style_code(fitnesse.http.UploadedFile) |
+| versions | | Returns the form that shows the saved versions of the wiki page |
+| viewVersion | | Shows the selected version of the wiki page. |
+| | version | The version identifier.  The version identifier is just the name of the zip file (without the .zip) that holds the version.  The format of this file name is (generally) ''user''-''id''-''yyyyMMddHHmmss'' where user might not be present. |
+| whereUsed | | Returns a list of pages that contains references (links) to the selected page |
+| variables | | Returns a list of variables that are available on this page |
+
+ * ''nochunk''  can be added to many urls to turn off chunking.  This is most useful for test and suite urls when writing programs to parse the output.

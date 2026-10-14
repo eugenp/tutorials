@@ -1,0 +1,35 @@
+!3 This page tests that [[!-TodaysDate-!][.FitNesse.UserGuide.FitNesseWiki.MarkupLanguageReference.TodaysDate]] (!-!today-!) renders in a preformatted text block
+
+#
+ * First create a page with a preformatted text in it using [[!-TodaysDate-!][.FitNesse.UserGuide.FitNesseWiki.MarkupLanguageReference.TodaysDate]]
+#
+|script                                |
+|start|Page Builder                    |
+|line |!-{{{-!                         |
+|line |!-today is !today-!             |
+|line |!-tomorrow is !today +1-!       |
+|line |!-}}}-!                         |
+|page |!-TodaysDateInPreformattedText-!|
+#
+ * Then request that page
+#
+|Response Requester.                              |
+|uri                             |valid?|contents?|
+|!-TodaysDateInPreformattedText-!|true  |         |
+#
+ * Make sure the html is correct
+#
+|Response Examiner.                             |
+|type    |pattern        |matches?|wrapped html?|
+|contents|today is !today|true    |             |
+
+#
+ * Check rendered content
+#
+|Response Examiner.               |
+|type|number|string?              |
+|line|1     |<pre>                |
+|line|2     |today is !today      |
+|line|3     |tomorrow is !today +1|
+|line|4     |</pre>               |
+

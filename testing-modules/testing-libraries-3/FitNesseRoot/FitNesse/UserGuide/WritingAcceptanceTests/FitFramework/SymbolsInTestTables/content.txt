@@ -1,0 +1,19 @@
+!1 Symbols: Passing Data Between Test Tables
+Sometimes you want to pass information between test tables.  Let's say you added a record to a database, and the database automatically generated a key to that record.  And lets say that in another table you wanted to use that key to fetch the record back.  You can use ''symbols'' for this.
+
+!|SaveRecordInDatabase|
+|name|date |=key?  |
+|Bob |today|bobKey |
+|Bill|later|billKey|
+
+In this table two records are added to the database.  The keys for each record are saved in symbols named ''bobKey'' and ''billKey''.  The ''=key?'' header indicates that the output of the ''key()'' method of the fixture is to be stored in a symbol whose name is in the cell.
+
+!|FetchRecordsFromDatabase|
+|key=   |fetch()|name|date |
+|billKey|true   |Bill|later|
+|bobKey |true   |Bob |today|
+
+In this table the two keys are used to fetch the database records.  The ''key='' header indicates that the value of the symbol whose name is in the cell should be stored in the ''key'' variable of the fixture.
+
+
+

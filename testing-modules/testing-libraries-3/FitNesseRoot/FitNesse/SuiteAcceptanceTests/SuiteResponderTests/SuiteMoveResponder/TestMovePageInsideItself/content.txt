@@ -1,0 +1,21 @@
+!c !3 BUG! submitted by Etienne Charignon
+!c !3 When you attempt to move a page inside of itself, you should get an error message.
+!c ''prior to fix, an endless number of nested pages, all with the same name, would get created untill the os complained.''
+
+First build a page to move.
+
+!|Page creator.|
+|Page name.          |Page contents.|valid?|
+|TestPage| some content |true   |
+
+Then try to move the sub page inside itself.  We should get an error (400).
+
+!|Response Requester.|
+|uri   |status?|
+|TestPage?responder=movePage&newLocation=TestPage|400|
+
+We should be told that we cannot move the page.
+
+|Response Examiner.|
+|type  |pattern|matches?|wrapped html?|
+|contents|Cannot move|true||

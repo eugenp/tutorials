@@ -1,0 +1,4 @@
+The RowFixture implementations that you have seen here have been simplistic, but educational.  In each case the fixture just built up an array of little objects.  In most cases you will build that array up by inspecting your real application data.
+
+However, think about this.  If you have these tests written up front, then you will know what kind of objects they are going to need.  You might be able to create applications that have these objects in them.  Then the fixtures would simply return those objects without having to build them.
+

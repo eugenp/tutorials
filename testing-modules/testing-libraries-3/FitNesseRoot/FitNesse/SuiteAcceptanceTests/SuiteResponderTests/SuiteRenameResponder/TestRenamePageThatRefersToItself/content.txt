@@ -1,0 +1,33 @@
+!3 When a page is renamed, any internal links to that page are changed.
+
+If you have a page that refers to itself, then its internal references will be changed.
+
+First build the page with a self reference.
+
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-MyPage-!|!-refer to self MyPage-!||true|
+
+Then rename that page.
+
+|Response Requester.|
+|uri   |status?|
+|!-MyPage?responder=renamePage&newName=ThePage&refactorReferences=on-!||
+
+Next fetch the page.
+
+|Response Requester.|
+|uri|valid?|contents?|
+|!-ThePage-!|true||
+
+Make sure that the new name is present and that the old name is not.
+
+|Response Examiner.|
+|type  |pattern|matches?|wrapped html?|
+|contents|!-ThePage-!|true||
+
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|!-MyPage-!|false|
+
+

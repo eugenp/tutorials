@@ -1,0 +1,14 @@
+Rules of bowling.
+
+Spare: 10 + next ball.
+Strike: 10 + next two balls.
+Otherwise sum of two balls in frame.
+
+|Final score|
+|1|4|3|7|5|2|10|10|5|5|3|2|1|0|7|1|5|5|3|||112|
+
+|Final score|
+|10|10|10|10|10|10|10|10|10|10|10|10||||||||||300|
+
+|Final score|
+|10|10|10|10|10|10|10|10|10|10|10|9||||||||||299|

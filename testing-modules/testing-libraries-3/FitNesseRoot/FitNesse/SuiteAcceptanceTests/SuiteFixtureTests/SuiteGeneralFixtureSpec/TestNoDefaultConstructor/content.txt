@@ -1,0 +1,22 @@
+!3 When testing a table, if the first cell of the table refers to a fixture class without a default (no argument) constructor, then the following message should appear in that cell:
+{{{Class fixtureName has no default constructor.}}}
+
+ * Here is a fitnesse page that should generate the error
+!note The !-!path-! must point to fitnesse.jar
+!note !-NoDefaultConstructorFixture-! is a real class, but is not a Fixture
+|Action fixture|
+|start|Page builder|
+|enter|attributes|Test=true|
+|enter|line|${SUT_PATH}|
+|enter|line|!-|-!!-!-fit.testFxtr.NoDefaultConstructorFixture-!-!!-|-!|
+|enter|page|!-NotFixturePage-!|
+
+!|Response Requester|
+|uri|status?|
+|NotFixturePage?test&debug|200|
+
+ * The error message should show up in the response
+
+!|Response examiner|
+|type|pattern|matches?|contents?|
+|contents|Class fit.testFxtr.NoDefaultConstructorFixture has no default constructor.|true||

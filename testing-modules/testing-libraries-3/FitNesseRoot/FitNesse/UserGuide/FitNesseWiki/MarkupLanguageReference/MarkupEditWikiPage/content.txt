@@ -1,0 +1,15 @@
+ * You create a new wiki page by clicking on the '''[?]''' at the end of a new WikiWord.
+ * You edit an existing wiki page by clicking on the '''Edit''' button (or typing ''alt-e'', then ''Enter'').
+
+Both of these operations take you to the edit page, in which the current markup text of the wiki page is shown.  You can edit the markup using standard text editing operations.
+
+When you click the '''Save''' button (or push ALT+S) ''!-FitNesse-!'' saves the wiki text and redisplays the page.
+----
+!3 Editing Accessories
+ *  '''Paste From Excel'''
+  * The edit page contains a PasteFromExcel button, which will allow you to paste a table copied from a Microsoft Excel spreadsheet into the text window.  The table will be reformatted to the standard Fitnesse [[table][MarkupTable]] conventions.
+ * '''Setting Page Attributes.'''
+  * Hitting the '''Properties''' button (or typing ''alt-p'') will bring up a form that shows the attributes for this page. Some attributes are associated with a button on the wiki page.  You can hide or show these buttons by clearing of setting their check boxes and hitting '''Save'''.
+
+See [[Page Attributes][PageProperties]].
+

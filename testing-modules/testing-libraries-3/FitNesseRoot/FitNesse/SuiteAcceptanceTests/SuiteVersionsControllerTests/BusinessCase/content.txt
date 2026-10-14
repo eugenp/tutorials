@@ -1,0 +1,7 @@
+This page is required for technical reasons:
+By setting the property flag "Skip (Recursive)" it stops the test suite from testing the business requirements directly.
+The requirements should only be tested via suites which implement them and link to the requirements via a symbolic link.
+if the "Skip (Recursive)" flag would be set on the >BusinessRequirements suite page direcly the suite would be skipped when called via a symbolic link.
+Therfore this page is required.
+ 
+!contents -R2 -g -p -f -h

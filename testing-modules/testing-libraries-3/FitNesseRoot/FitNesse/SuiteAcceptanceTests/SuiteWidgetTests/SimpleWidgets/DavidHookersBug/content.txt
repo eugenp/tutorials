@@ -1,0 +1,12 @@
+{{{From David Hooker:
+
+In my page, I have the following markup:
+
+All files received within the ''do...while'' loop will be stored using the
+names "reply'''-x'''", where ''x'' is a number corresponding to which pass
+through the loop the fixture is taking.
+
+If I put two single quotes around the letter x (in red above), it starts an
+italic section, but the closing two single quotes do not stop the italics,
+and the entire rest of my page is itallics.  Bold markup does not seem to have
+this problem.}}}

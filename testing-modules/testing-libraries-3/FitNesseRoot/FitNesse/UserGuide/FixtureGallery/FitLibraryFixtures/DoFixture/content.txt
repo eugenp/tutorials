@@ -1,0 +1,148 @@
+
+''Previous page: [[!-CalculateFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.CalculateFixture]] Next page: [[!-SequenceFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.SequenceFixture]] Parent page: [[!-FitLibrary Fixtures-!][<UserGuide.FixtureGallery.FitLibraryFixtures]]''
+!2 !-DoFixture-!
+'''!- DoFixture -!'''!- can be used to describe story-like tests, almost in plain English. It is a much more efficient replacement for -!'''!- ActionFixture -!'''!- and also has some great features like flow-mode coordination (see -![[!-Flow Mode-!][<UserGuide.FixtureGallery.ImportantConcepts.FlowMode]]!-) and wrapping domain objects (see -![[!-System under test-!][<UserGuide.FixtureGallery.ImportantConcepts.SystemUnderTest]]!-). -!
+
+# section Table Format
+!3 !-Table Format-!
+!- The first row of the table lists the fixture class name. All rows after that are used to execute verifications or perform actions by executing methods of the fixture class. The method name is constructed by joining odd cells in the row. Argument values are taken from even cells. -!
+
+!- If the method returns a -!'''!- boolean -!'''!- value, the row is considered to be a test and returning -!'''!- FALSE -!'''!- will make the test fail. If the method is -!'''!- void -!'''!- or returns something other than a -!'''!- boolean -!'''!- value, then it is just executed without any effect on the outcome of the test unless an exception is thrown. -!
+
+{{{
+!-!-!|DoFixtureTest|
+|fill|10|times with|x|
+|char at|4|is|x|
+|set list|A,B,C,D|
+|char at|2|is|C|
+}}}
+# section Fixture class
+!3 !-Fixture class-!
+!- The fixture class should extend -!'''!- fitlibrary.DoFixture -!'''!-. Declare public methods for all verifications and actions by joining the even cells to get the method name and using odd cells as arguments. You do not have to type the method names directly, just write the table first, then run the test to make it fail for the first time and copy expected method names from the test report. -!
+
+# section Java Source Code
+!3 !-Java Source Code-!
+{{{
+package info.fitnesse.fixturegallery;
+import java.util.Arrays;
+import fitlibrary.DoFixture;
+
+public class DoFixtureTest extends DoFixture {
+	public String letters;
+	public void fillTimesWith(int count,char c){
+		char[] arr=new char[count];
+		Arrays.fill(arr,c);
+		letters=new String(arr);
+	}
+	public boolean charAtIs(int position, char c){
+		return letters.charAt(position)==c;
+	}
+	public void setList(char[] array){
+		letters=new String(array);
+	}
+	public char charAt(int position){
+		return letters.charAt(position);
+	}
+}
+}}}
+# section .NET Source Code
+!3 !-.NET Source Code-!
+{{{
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace info.fitnesse.fixturegallery
+{
+    public class DoFixtureTest : fitlibrary.DoFixture
+    {
+        private String contents;
+        public void FillTimesWith(int howmany, String what)
+        {
+            contents = "";
+            for (int i = 0; i < howmany; i++)
+            {
+                contents = contents + what;
+            }
+        }
+        public bool CharAtIs(int index, char c)
+        {
+            return contents[index]==c;
+        }
+        public void SetList(String[] strings)
+        {
+            contents = "";
+            foreach (String s in strings)
+            {
+                contents = contents + s;
+            }
+        }
+        //
+        public char CharAt(int index)
+        {
+            return contents[index];
+        }
+    }
+}
+}}}
+# section Python Source Code
+!3 !-Python Source Code-!
+{{{
+# NOTES:
+#   This Fixture is not sensible in Python.
+#   Python does not worry about character arrays, strings are used instead.
+#   Therefore, a TypeAdapter for char is not supported by PyFIT.
+#   I supplied one in this package
+
+from fitLib.DoFixture import DoFixture
+from info.fitnesse.fixturegallery.typeadapter import buildListTypeAdapterFor
+
+class DoFixtureTest(DoFixture):
+    _typeDict = {
+        "letters": "String"
+    }
+
+    def __init__(self):
+        DoFixture.__init__(self)
+        self.letters = ""
+
+    # JAVA: void fillTimesWith(int count,char c){
+    _typeDict["fillTimesWith.types"] = [None, "Integer", "Char" ]
+    def fillTimesWith(self, count, c):
+        self.letters = c * count    #< FILL: Repeat char ``count`` times.
+
+    # JAVA: boolean charAtIs(int position, char c){
+    _typeDict["charAtIs.types"] = ["Boolean", "Integer", "Char" ]
+    def charAtIs(self, position, c):
+        return self.letters[position] == c
+
+    # JAVA: void setList(char[] array){
+    ARRAY_OF_CHAR_TYPE_ADAPTER = buildListTypeAdapterFor("Char")
+    _typeDict["setList.types"] = [ None, ARRAY_OF_CHAR_TYPE_ADAPTER ]
+    def setList(self, array):
+        self.letters = "".join(array)
+
+    # JAVA: char charAt(int position){
+    _typeDict["charAt.types"] = [ "Char", "Integer" ]
+    def charAt(self, position):
+        return self.letters[position]
+}}}
+# section Notes
+!3 !-Notes-!
+'''!- DoFixture -!'''!- also supports a number of keywords that can be used as a prefix to the method name. If a keyword is used, then the odd cells are used to construct the method name. Even cells (apart from the first one) are used as arguments in that case. Here are some of the commonly used keywords: -!
+
+!- <ul> -!!- <li> -!'''!- reject -!'''!- will invert the logic of a test, returning -!'''!- TRUE -!'''!- will make the test fail if the row is prefixed with -!'''!- reject -!'''!-. -!!- </li> -!!- <li> -!'''!- show -!'''!- will print out the value of a calculation in the test results (similar to an empty cell in -!'''!- ColumnFixture -!'''!-). -!!- </li> -!!- <li> -!'''!- check -!'''!- allows you to verify results of non-boolean calculations. Prefix the row with -!'''!- check -!'''!- and put the expected value of the calculation on the end of the row, in a new cell. -!!- </li> -!!- </ul> -!!- In the Java implementation of FIT, -!'''!- check -!'''!- and -!'''!- show -!'''!- map directly to JavaBean properties, so you do not need to write the -!'''!- get -!'''!- prefix. However, these keywords cannot be used on public fields. In the .NET implementation, you can use them on fields, properties and methods equally. In addition, you can use the -!'''!- set -!'''!- keyword in .NET to set a field or property value. -!
+
+{{{
+!-!-!|DoFixtureTest|
+|fill|10|times with|x|
+|check|char at|4|x|
+|set list|A,B,C,D|
+|show|char at|2|
+}}}
+# section Usage
+!3 !-Usage-!
+!- Use -!'''!- DoFixture -!'''!- to describe workflow tests or tests that do not follow any particular repetitive structure. -!'''!- DoFixture -!'''!- is very good for coordinating other fixtures (see -![[!-Flow Mode-!][<UserGuide.FixtureGallery.ImportantConcepts.FlowMode]]!-). -!
+
+
+''Previous page: [[!-CalculateFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.CalculateFixture]] Next page: [[!-SequenceFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.SequenceFixture]] Parent page: [[!-FitLibrary Fixtures-!][<UserGuide.FixtureGallery.FitLibraryFixtures]]''

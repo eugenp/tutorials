@@ -1,0 +1,16 @@
+!|page history|
+|name|date|right|wrong|ignores|exceptions|
+|SuitePage.TestPage|5-May-2009|20|30|0|0|
+
+!|script|
+|get history for page|SuitePage.TestPage|
+|the number of page histories should be|1|
+|the page title should be a link to|SuitePage.TestPage|with value|TestPage|
+|the bread crumb|SuitePage|should be a link to|SuitePage|
+
+|Response Examiner|
+|wrapped html?|
+||
+
+
+

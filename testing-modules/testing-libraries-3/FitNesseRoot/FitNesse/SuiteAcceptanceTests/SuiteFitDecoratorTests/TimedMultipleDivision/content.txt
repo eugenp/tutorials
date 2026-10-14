@@ -1,0 +1,12 @@
+What if you want to run the same fitnesse fixture, 5 times and want to make sure that each time it runs it does not take more than 200 milliseconds? Also you want to make sure overall, it does not take more than 1000 milliseconds.
+
+!|Max Time|1000|milliseconds|
+|Loop|5|times|
+|Max Time|200|milliseconds|
+|Division|
+|numerator|denominator|quotient()|
+|10|2|5|
+|12.6|3|4.2|
+|100|4|25|
+
+'''Note:''' Again you can see here, how you can pipe different decorators and create powerful decorator patterns.

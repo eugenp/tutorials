@@ -1,0 +1,33 @@
+If you access a page with the ?packet responder as in !style_code(http://myFitNesseHost/MyPage?packet) you will get back a JSON packet that represents the tables on that page.  Only the tables will be part of the packet, any other text is ignored.  The JSON packet begins with an array named !style_code(tables).  Each element of that array corresponds to a table on the page.  The tables use an indentation style to represent the packets.  For example:
+
+!|Customer|
+||name|Bob Someone|
+||id|8402|
+||addr|
+|||Street|555 Witherspoon st.|
+|||city|Anyville|
+|||state|IL|
+|||zip|60083|
+||phone|555-1212|
+
+If you get the packet for this page by accessing http://localhost:${FITNESSE_PORT}/FitNesse.UserGuide.RestfulPackets?packet you will get the following JSON packet:
+{{{
+{"tables": [
+ {"Customer":
+  { "addr":
+   { "Street": "555 Witherspoon st.",
+     "city": "Anyville",
+     "state": "IL",
+     "zip": "60083"
+   },
+    "id": "8402",
+    "name": "Bob Someone",
+    "phone": "555-1212"
+  }
+ }
+]}
+}}}
+
+!3 JSONP
+If you'd like to use ''JSONP'' to fetch the packets. (Or any kind of script injection tecnique).  You can get fitnesse to return the appropriate format by adding !style_code(&jsonp=some_function) on the end of the url.  This will wrap the JSON packet in a function call that looks like this !style_code[some_function({...})]  So, for example, try this link: !style_code(http://localhost:${FITNESSE_PORT}/FitNesse.UserGuide.RestfulPackets?packet&jsonp=load_me).
+

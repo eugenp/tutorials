@@ -1,0 +1,41 @@
+!3 This page tests includes on a wiki page.
+When a !include is the first string on a line in a wiki page, then the argument of the !include is presumed to be another wiki page.  The contents of that wiki page are inserted in place of the !include.
+
+The following is a test that demonstrates how this works.
+#
+ * First create a page to be included.
+#
+|script|
+|start|Page Builder|
+|line|included|
+|page|!-IncludedPage-!|
+#
+ * Next create a page to do the including.
+#
+|script|
+|start|Page Builder|
+|line|before|
+|line|&bang;include !-IncludedPage-! |
+|line|after|
+|page|!-IncludingPage-!|
+#
+ * Then request the including page.
+#
+|Response Requester.|
+|uri|valid?|contents?|
+|!-IncludingPage-!|true||
+#
+ * Examine the requested page to be sure the included page was in fact included.
+#
+|Response Examiner.|
+|type|pattern|matches?|value|
+|contents|included|true||
+#
+ * Now look at every line on the including page to make sure that the inclusions were done in order.
+#
+|Response Examiner.|
+|line|occurs after?|
+|before|true|
+|included|true|
+|after|true|
+

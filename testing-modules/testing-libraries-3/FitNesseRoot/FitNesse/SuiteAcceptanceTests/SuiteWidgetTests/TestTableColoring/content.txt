@@ -1,0 +1,140 @@
+!2 This page tests table coloring.
+ * Test pages that use the Slim test system should have table row coloring to better highlight test flow.
+
+!3 Test Fit test system does not include coloring.
+ * First create the test page.
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-FitTestPage-!|!-!define TEST_SYSTEM {fit}
+|Import|
+|fit.Fixture|
+
+|fitnesse.fixtures.ColumnFixtureTestFixture|
+|input|=output?|
+|1|one|
+
+|fitnesse.fixtures.PrimeNumberRowFixture|
+|prime|
+|2|
+
+| script: echo fixture |
+| check | echo | Hello | Hello |
+
+|fitnesse.fixtures.TearDown|-!||true|
+|!-PageHeader-!|header||true|
+|!-PageFooter-!|footer||true|
+
+ * Then request the page.
+|Response Requester.|
+|uri|valid?|
+|!-FitTestPage-!|true|
+ * Ensure that the table have no markup coloring class entries.
+|Response Examiner.|
+|type|pattern|matches?|wrapped html?|
+|contents|!-.*slimRowTitle.*-!|false||
+|contents|!-.*slimRowColor.*-!|false||
+----
+!3 Test Slim test system static page does NOT include coloring.
+ * First create the test page.
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-SlimTestPage-!|!-!define TEST_SYSTEM {slim}
+|Import|
+|fit.Fixture|
+
+|fitnesse.fixtures.ColumnFixtureTestFixture|
+|input|=output?|
+|1|one|
+
+|fitnesse.fixtures.PrimeNumberRowFixture|
+|prime|
+|2|
+
+|Library|
+|echo support|
+
+|scenario|f|a||b|
+|start|fitnesse.slim.test.TestSlim|
+
+|fit.TimedActionFixture|
+|start|fitnesse.fixtures.DelayedCountFixture|
+|check|counter|0|
+|press|count|
+|check|counter|1|
+
+|fitnesse.fixtures.TearDown|-!||true|
+|!-PageHeader-!|header||true|
+|!-PageFooter-!|footer||true|
+
+ * Then request the page.
+|Response Requester.|
+|uri|valid?|
+|!-SlimTestPage-!|true|
+ * Ensure that the table have correct number of title & row markups for coloring.
+|Response Examiner.|
+|type|pattern|matches?|wrapped html?|
+|contents|!-.*slimRowTitle.*-!|false||
+|contents|!-.*slimRowColor.*-!|false||
+
+!3 Test Slim test system test page does include coloring.
+ * First create the test page.
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-SlimTestPage-!|!-!define TEST_SYSTEM {slim}
+|Import|
+|fit.Fixture|
+
+|fitnesse.fixtures.ColumnFixtureTestFixture|
+|input|=output?|
+|1|one|
+
+|fitnesse.fixtures.PrimeNumberRowFixture|
+|prime|
+|2|
+
+|Library|
+|echo support|
+
+|scenario|f|a||b|
+|start|fitnesse.slim.test.TestSlim|
+
+|fit.TimedActionFixture|
+|start|fitnesse.fixtures.DelayedCountFixture|
+|check|counter|0|
+|press|count|
+|check|counter|1|
+
+decision table based on scenario
+|f|
+|a|b|
+|1|2|
+
+|comment|
+|this should not be coloured|
+
+|comment: Hello|
+|and neither should this|
+
+probably decision table based on class
+|hello world|
+|in|out?|
+|John|Hi John|
+
+|script|echo fixture|
+|check|echo|Hi John|Hi John|
+|check|echo|Hi Pete|Hi Pete|
+
+
+|fitnesse.fixtures.TearDown|-!|Test=a|true|
+|!-PageHeader-!|header||true|
+|!-PageFooter-!|footer||true|
+
+ * Then request the page.
+|Response Requester.|
+|uri|valid?|
+|!-SlimTestPage-!|true|
+ * Ensure that the table have correct number of title & row markups for coloring.
+|Response Examiner.|
+|type|pattern|match count?|wrapped html?|
+|contents|!-slimRowTitle-!|15||
+|contents|!-slimRowColor-!|12||

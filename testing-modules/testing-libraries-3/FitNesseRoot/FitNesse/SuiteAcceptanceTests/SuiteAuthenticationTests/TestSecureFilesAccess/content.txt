@@ -1,0 +1,11 @@
+!|FileSection|setup|
+
+Requesting a file from the ''files''' directory does not require authentication, but requesting a directory does.
+A response with status 401 will be received signifying lack of authentication.
+
+!|script|
+|directory|files/|should not be readable with no authentication|
+|directory|files/|should not be readable by user|Aladdin|password|open please|
+|directory|files/|should be readable by user|Aladdin|password|open sesame|
+
+!|FileSection|teardown|

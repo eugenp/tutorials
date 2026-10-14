@@ -1,0 +1,92 @@
+
+''Next page: [[!-CalculateFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.CalculateFixture]] Parent page: [[!-FitLibrary Fixtures-!][<UserGuide.FixtureGallery.FitLibraryFixtures]]''
+!2 !-SetUpFixture-!
+'''!- SetUpFixture -!'''!- is an excellent replacement for -!'''!- ColumnFixture -!'''!- if you do not want to test anything, just to prepare the stage for other fixtures. For example, you can use -!'''!- SetUpFixture -!'''!- to insert rows into a database table or to create domain objects that will be used in later tests. -!
+
+# section Table Format
+!3 !-Table Format-!
+!- The first row of a -!'''!- SetUpFixture -!'''!- table is the fixture class name. The second row lists property names for your object. All rows after that contain the property values. There are no output cells in a -!'''!- SetUpFixture -!'''!- table, all cells are used for inputs. -!
+
+{{{
+!-!-!|SetUpFixtureTest|
+|player|post code|balance|
+|John Smith|SW4 66Z|10.00|
+|Michael Jordan|NE1 8AT|12.00|
+}}}
+# section Fixture class
+!3 !-Fixture class-!
+!- The fixture class should extend -!'''!- fitlibrary.SetUpFixture -!'''!- and declare a single method. The method name should be equal to all the property names from the table joined together (you can use CamelCase capitalisation to separate words). The method should have an argument for each column in the table. The -!'''!- SetUpFixture -!'''!- table is executed by calling the method once for each data row in the table. -!
+
+# section Java Source Code
+!3 !-Java Source Code-!
+{{{
+package info.fitnesse.fixturegallery;
+
+import info.fitnesse.fixturegallery.domain.Player;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import fitlibrary.SetUpFixture;
+
+public class SetUpFixtureTest extends SetUpFixture{
+	public SetUpFixtureTest() {
+		 Player.players.clear();
+	}
+	public void playerPostCodeBalance(String name, String postCode, double balance){
+	 Player.addPlayer(name, postCode, balance) ;
+ }
+}
+}}}
+# section .NET Source Code
+!3 !-.NET Source Code-!
+{{{
+
+namespace info.fitnesse.fixturegallery
+{
+    public class SetUpFixtureTest : fitlibrary.SetUpFixture
+    {
+        public SetUpFixtureTest()
+        {
+            Player.players.Clear();
+        }
+        public void PlayerPostcodeBalance(string player, string postCode, decimal balance)
+        {
+            Player p = new Player();
+            p.Name = player;
+            p.PostCode = postCode;
+            p.Balance = balance;
+            Player.players.Add(p);
+        }
+       }
+}
+}}}
+# section Python Source Code
+!3 !-Python Source Code-!
+{{{
+from fitLib.SetUpFixture import SetUpFixture
+from info.fitnesse.fixturegallery.domain.Player import Player
+
+class SetUpFixtureTest(SetUpFixture):
+    _typeDict = {}
+
+    def __init__(self):
+        Player.players = []
+
+    # JAVA: void playerPostCodeBalance(String name, String postCode, double balance){
+    _typeDict["playerPostCodeBalance.types"] = [ None, "String", "String", "Float" ]
+    def playerPostCodeBalance(self, name, postCode, balance):
+        Player.addPlayer(name, postCode, balance)
+}}}
+# section Notes
+!3 !-Notes-!
+!- The method name can be very long and typing it manually is a bit error prone. Instead of that, just write the table, run the test and it will fail for the first time.<UserGuide will print the name of the method it looked for, so you can copy and paste that into your source code. -!
+
+# section Usage
+!3 !-Usage-!
+!- Use the -!'''!- SetUpFixture -!'''!- to quickly initialise a list of domain objects, to prepare a database table or to execute a method several times with different arguments. -!
+
+!- Do not use the -!'''!- SetUpFixture -!'''!- if the result of the operation or error verification is important. Use the -!'''!- ColumnFixture -!'''!- (see -![[!-ColumnFixture-!][<UserGuide.FixtureGallery.BasicFitFixtures.ColumnFixture]]!-) or the -!'''!- CalculateFixture -!'''!- instead. -!
+
+
+''Next page: [[!-CalculateFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.CalculateFixture]] Parent page: [[!-FitLibrary Fixtures-!][<UserGuide.FixtureGallery.FitLibraryFixtures]]''

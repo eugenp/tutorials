@@ -1,0 +1,99 @@
+!***< Hidden
+
+!define TEST_SYSTEM {slim}
+*!
+!1 An Example !-FitNesse-! Test
+If you were testing the division function of a calculator application, you might like to see some examples working. You might want to see what you get back if you ask it to divide 10 by 2. (You might be hoping for a 5!)
+
+In !-FitNesse-!, tests are expressed as tables of '''input''' data and '''expected output''' data. Here is one way to specify a few division tests in !-FitNesse-!:
+
+|eg.Division                    |
+|numerator|denominator|quotient?|
+|10       |2          |5.0      |
+|12.6     |3          |4.2      |
+|22       |7          |~=3.14   |
+|9        |3          |<5       |
+|11       |2          |4<_<6    |
+|100      |4          |33       |
+
+This style of !-FitNesse-! test table is called a [[Decision Table][<UserGuide.WritingAcceptanceTests.SliM.DecisionTable]], each row represents a complete scenario of example inputs and outputs. Here, the "numerator" and "denominator" columns are for inputs, and the question mark in the "quotient?" column tells !-FitNesse-! that this is our column of expected outputs. Notice our "10/2 = 5.0" scenario. Try reading it as a question: ''"If I give you a numerator of 10 and denominator of 2, do I get back a 5?"''
+
+!3 Running our test table: Click the Test button
+If you are reading this page on a local copy of !-FitNesse-!, run this test table. See the '''Test''' button in the top bar next to the FitNesse logo? Click it and see what happens.
+
+!*** Now, if you're reading this on the web site, ...
+
+... you probably found that the FitNesse Test button in that example didn't work as advertised. It's been disabled on purpose to minimize stress on the site. But that's ok - since among other things, FitNesse is a wiki, you can simply download and run it, and read these same web pages as served up by your local system. When you do that, you'll be able to run the tests. Why not [[download it now][http://fitnesse.org/FitNesseDownload]]?
+
+*!
+Ah, color! In the green cells, we got back the expected values from our code. When we divided 10 by 2, we expected and got back 5. When we divided 12.6 by 3, we expected and got back 4.2.
+
+What about red? A cell turns red when we get back a different value than what we expected. We also see two values: the '''expected''' value and the '''actual''' value. Above we expected 33 back when we divided 100 by 4, but we got back 25. Ah, a flaw in our test table. That happens!
+
+Notice also the comparisons.  22/7 is approximately equal (~=) to 3.14.  9/3 is less than 5.  11/2 is between 4 and 6.
+
+!3 Creating the Table
+How did we put that test table on this page in the first place? Well, we used !-FitNesse-! itself to do it!
+
+!-FitNesse-! is a [[wiki][http://wiki.org/wiki.cgi?WhatIsWiki]], which is a style of web server that allows any visitor to make any edits, including changing existing pages and creating new pages. A simple markup language lets you easily create headings, make text bold, underline, and italic, create bulleted lists, and do other kinds of simple formatting. You can read more about it on [[Editing FitNesse Pages][<UserGuide.FitNesseWiki.EditingFitNessePages]].
+
+Once you download !-FitNesse-! to your own computer, you can edit any page simply by clicking on the Edit button on the left (just below the Test button). If you are reading this page on your own copy of !-FitNesse-! on your own machine, you can click the Edit button and see for yourself.
+
+The wiki markup for our table above (with some omissions) looks like this:{{{|eg.Division|
+|numerator|denominator|quotient?|
+|10       |2          |5        |
+|12.6     |3          |4.2      |
+|100      |4          |33       |}}}The vertical bars delimit table cells. For this table, there is not much more to it than that. You don't have to line up the vertical bars this way; we just do it to make it easier to read.
+
+Note that if you don't like mucking about with a markup language at all, you can create your test tables in a spreadsheet such as Excel, copy them to the clipboard, and use the '''Spreadsheet to Fitnesse''' button on the Edit page to have FitNesse format your table properly for you.
+
+'''Note''' also that if you change "eg.Division" to any other name, you may need to use a ! before the fixture to avoid confusing FitNesse with [[!-WikiWord-!][<FitNesse.FullReferenceGuide.UserGuide.FitNesseWiki.WikiWord]]s (see [[Markup Table][<FitNesse.FullReferenceGuide.UserGuide.FitNesseWiki.MarkupLanguageReference.MarkupTable]])
+
+!3 Fixture Code
+What '''really''' happens when we click that test button? (Try clicking it again.) What gets run?
+
+ * First, FitNesse submits the test table to [[Slim][<UserGuide.WritingAcceptanceTests.SliM]], the underlying test system (a test system contains the code required to actually perform the tests).
+ * Slim looks for and runs the fixture code corresponding to the test table.
+ * By design, the fixture code calls some underlying application code to do the real work, and report results back to the fixture
+ * Fit gives Fitnesse back the results from running the fixture code
+ * FitNesse figures out whether to turn table cells red or green (or yellow, if an exception was thrown) and displays the results page accordingly
+
+!3 What is Fixture Code?
+The fixture is the Java (or some other supported language) class that Slim will use to process the contents of the table. In the top row of the table above, "eg" specifies a Java package (or other language namespace), and "Division" specifies the actual class to be called.
+
+Here is what the Java version of the Division class might look like:{{{
+public class Division {
+  private double numerator, denominator;
+  
+  public void setNumerator(double numerator) {
+    this.numerator = numerator;
+  }
+  
+  public void setDenominator(double denominator) {
+    this.denominator = denominator;
+  }
+  
+  public double quotient() {
+    return numerator/denominator;
+  }
+} }}}
+
+!3 How Slim Uses Fixture Code to Process the Test Table
+The Division table is an example of a [[Decision Table][<UserGuide.WritingAcceptanceTests.SliM.DecisionTable]]; just one of many different kinds of tables. Slim processes the rows of example data ('''from left to right'''), it stores the values from the ''numerator'' and ''denominator'' columns in the corresponding fields in our Division class using the setter functions. For each row, it then calls the quotient() method on our Division class, which returns what we would expect it to: the numerator divided by the denominator. So the Decision Table directs Slim to call setNumerator(10) and setDenominator(2); and then to call quotient().  The value is returned to the Decision Table which colors the appropriate cell.
+
+Click the Test button again and see what happens to the column of expected outputs under the ''quotient?'' header. For each cell of expected output, the Decision Table compares the value it expects to get back with what it actually gets. If the return value matches the value in the corresponding table cell, FitNesse turns the cell green. Otherwise FitNesse turns the cell red, and shows both the expected and actual values. (If Slim encounters an exception, or cannot find a fixture, field, or method, it turns the corresponding table cell yellow, and inserts a stack trace.)
+
+!3 Wait a Minute. That's ''Too'' Simple.
+How right you are. In the real world, the fixture code would not be doing any of the real work (though a single division operation is not much work). The fixture code would delegate to real application code, which in turn would do the work. In general, fixture code should be '''as thin as possible'''. It should be nothing but '''piping and wiring''' between the FitNesse table and the application code under test.
+
+So with that bit of wisdom in our minds, you can have a look at [[something a bit more realistic][<UserGuide.WritingAcceptanceTests.FixtureCode]].
+
+!3 Learning More
+!4 More Technical Detail...
+If you are more interested in learning how to create the code that makes test tables work, see [[Fixture Code][<FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.FixtureCode]]. If you want to start diving into installing and running FitNesse, check out [[fitnesse.org][http://fitnesse.org/FitNesseDownload]].
+
+!4 More Usage Detail...
+If you are more interested in why and how to get teams to use FitNesse, see AcceptanceTests.  If you want to learn how to create and run FitNesse tests, check out [[Editing FitNesse Pages][<FitNesse.FullReferenceGuide.UserGuide.FitNesseWiki.EditingFitNessePages]], [[Creating Test Tables][<FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests]], and [[Test Table Styles][<FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.SliM]].
+
+!4 Or Take Your Own Path
+Finally, if you want to zoom back out and look at all of the FitNesse topics, check out the table of contents on the <UserGuide.

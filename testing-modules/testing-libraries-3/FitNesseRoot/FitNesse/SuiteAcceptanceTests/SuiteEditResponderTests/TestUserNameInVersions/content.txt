@@ -1,0 +1,7 @@
+When viewing versions, the user who created each ''previous'' version is listed along with each version.  Anonymous users are omitted.
+
+!|script|
+|save page|MyPage|by user|Bob|
+|save page|MyPage|by user|Bill|
+|it's versions should contain|Bob|
+|and should match|>\d+<|

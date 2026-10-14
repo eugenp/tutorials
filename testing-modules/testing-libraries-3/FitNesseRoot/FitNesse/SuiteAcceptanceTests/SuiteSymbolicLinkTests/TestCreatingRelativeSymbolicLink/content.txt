@@ -1,0 +1,17 @@
+!include CreateRelativeSymbolicLink
+
+Creating a symlink will redirect back to the properties page.
+!|Response Examiner.|
+|type  |pattern|matches?|contents?|
+|contents|Location: /LinkingPage\?properties|true||
+
+Let's have a look at the properties view.
+!|Response Requester.|
+|uri   |status?|
+|LinkingPage?properties|200|
+
+The newly created symbolic link will be listed along with a link to the linked page.
+!|Response Examiner.|
+|type  |pattern|matches?|
+|contents|SymLink|true|
+|contents|<a href=".LinkedPage">LinkedPage</a>|true|

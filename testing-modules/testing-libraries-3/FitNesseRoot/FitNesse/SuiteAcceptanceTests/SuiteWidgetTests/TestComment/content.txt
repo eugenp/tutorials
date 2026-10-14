@@ -1,0 +1,6 @@
+!3 This page tests comments on a wiki page.
+
+!|script|
+|given page|CommentTextPage|with content|one!-<br/>-!#two!-<br/>-!three|
+|it should contain|one!-<br/>-!three|
+|and should not contain|two|

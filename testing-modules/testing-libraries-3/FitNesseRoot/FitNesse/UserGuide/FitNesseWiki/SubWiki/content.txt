@@ -1,0 +1,26 @@
+!1 The SubWiki: Organizing !-FitNesse-! Pages into Hierarchies
+!2 Why Do We Need Page Hierachies?
+FitNesse, you recall, is a [[wiki][EditingFitNessePages]], but more than a normal one! A normal wiki is a collection of pages with a flat structure.  All the pages are peers.  FitNesse, on the other hand, is meant to manage many projects.  We'd like each project to have its own wiki hierarchy so that name collisions can be avoided, fixture code can be found easily, etc. We might even need hierarchies within those hierarchies.
+
+For example, project one and project two each have their own [[Test suites][<UserGuide.WritingAcceptanceTests.TestSuites]]. Some of the suites might in turn contain smaller suites. These projects probably also use completely different [[Class path][<UserGuide.WritingAcceptanceTests.ClassPath]] definitions. We'd like each project to be able to run acceptance tests using their own class path definitions. So we want a different class path page for each. This is what the FitNesse SubWiki feature makes possible.
+
+!2 How SubWiki Works
+A SubWiki is a whole new page hierarchy that lives beneath a single FitNesse page. In fact, such a SubWiki is an entirely separate wiki, with an entirely separate page namespace. Any FitNesse page can be the parent of such a SubWiki. For example the name of this page is [[<!-UserGuide.FitNesseWiki.SubWiki-!][<UserGuide.FitNesseWiki.SubWiki]].  Thus, this page is the SubWiki page whose parent is the [[<!-UserGuide.FitNesseWiki-!][<UserGuide.FitNesseWiki]] page. ''(Put your mouse on each of these links and look at the bottom of the display to see where they will be directed.)'' For any such SubWiki, you could have a separate page named SubWiki, and FitNesse would keep them all straight (you might have some trouble, if you did not organize your page links carefully, but that's another story).
+
+!3 Creating a SubWiki
+To create a sub wiki, simply create the parent page, and then add pages below it using the ''Add'' menu item, the ''!-ParentPage.SubPage-!'' syntax or the shortcut ''!->SubPage-!'' markup language syntax.
+
+When a sub-page is displayed, any unqualified links are assumed to be at the current level.  If you want to access a global page, you need to precede the link with a dot.  For example, from where we are now on this page, the link !-RecentChanges-! is really a link to !-.FitNesse.RecentChanges-! (which does not exist), whereas the link .RecentChanges is a link to the global page that contains the list of most recently changed pages.
+
+!3 Navigating through Sub Wikis
+ * The '''!contents '''widget will create a list of all the immediate child pages of a parent page.
+ * Absolute references look like this: !-.TopPage.MyPage.YourPage-! where !-TopPage-! is at the highest level.
+ * Relative references look like this: !-YourPage.MyPage.HisPage-! where !-YourPage-! is a sibling of the page that holds the reference.
+ * Sub page references look like this: !->ChildPage.GrandChildPage-! where !-ChildPage-! is a child of the page that holds the reference.
+ * Backwards Search References look like this: !-&lt;AncestorPage.SomePage-! where !-AncestorPage-! is a parent, grandparent, or somewhere up the parent chain.  You can use this to search backwards through the page hierarchy until you find the named page.
+
+!3 [[!-Test Suites-!][<UserGuide.WritingAcceptanceTests.TestSuites]]: the Perfect Application of the SubWiki
+When you organize a suite of test pages, you will naturally want to make each of the individual test pages a child page of the main suite page.
+
+!3 Page Headers and Footers in !-SubWikis-!
+The PageHeader and PageFooter classes can be used to add specific headers and footers to sub wikis.  For example, the footer of this page is coming from <UserGuide.PageFooter.  These headers and footers can be inherited from parent pages.  So if there's no PageHeader or PageFooter at the current level, FitNesse will search upwards in the hierarchy until we find one. (See <UserGuide.WritingAcceptanceTests.SpecialPages)

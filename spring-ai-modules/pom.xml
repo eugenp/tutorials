@@ -23,6 +23,7 @@
         <module>spring-ai-a2a</module>
         <module>spring-ai-agent-skills</module>
         <module>spring-ai-agentic-patterns</module>
+        <module>spring-ai-alibaba</module>
         <module>spring-ai-anthropic-agent-skills</module>
         <module>spring-ai-chat</module>
         <module>spring-ai-chat-stream</module>
@@ -35,9 +36,11 @@
         <module>spring-ai-recursive-advisors</module>
         <module>spring-ai-semantic-caching</module>
         <module>spring-ai-session</module>
+        <module>spring-ai-structured-output</module>
         <module>spring-ai-text-to-sql</module>
         <module>spring-ai-vector-stores</module>
         <module>spring-ai-mcp-annotations</module>
         <module>spring-ai-subagent-orchestrator</module>
+        <module>spring-ai-anthropic</module>
     </modules>
 </project>

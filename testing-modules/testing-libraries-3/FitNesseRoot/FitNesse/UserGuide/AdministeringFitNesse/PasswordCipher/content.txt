@@ -1,0 +1,9 @@
+A class used to encrypt password that will be written to a PasswordFile.  Here is the interface.
+{{{
+package fitnesse.authentication;
+
+public interface PasswordCipher
+{
+	public String encrypt(String password) throws Exception;
+}
+}}}

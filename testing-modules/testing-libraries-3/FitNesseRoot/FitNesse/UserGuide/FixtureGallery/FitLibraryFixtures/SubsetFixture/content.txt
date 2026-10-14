@@ -1,0 +1,11 @@
+
+''Previous page: [[!-SetFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.SetFixture]] Parent page: [[!-FitLibrary Fixtures-!][<UserGuide.FixtureGallery.FitLibraryFixtures]]''
+!2 !-SubsetFixture-!
+'''!- SubsetFixture -!'''!- is a variation of -!'''!- SetFixture -!'''!- (see -![[!-SetFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.SetFixture]]!-) with one difference: the rows in the fixture table can be a subset of the actual rows. -!
+
+# section Usage
+!3 !-Usage-!
+!-Use -!'''!- SubsetFixture -!'''!- instead of -!'''!- RowFixture -!'''!- and -!'''!- SetFixture -!'''!- when you want to ignore surplus elements (for example, check whether some rows exist in a database regardless of other rows that might be in the same database table).-!
+
+
+''Previous page: [[!-SetFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.SetFixture]] Parent page: [[!-FitLibrary Fixtures-!][<UserGuide.FixtureGallery.FitLibraryFixtures]]''

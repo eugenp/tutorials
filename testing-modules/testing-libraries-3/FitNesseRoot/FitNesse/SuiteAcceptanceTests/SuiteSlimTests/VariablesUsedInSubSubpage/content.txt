@@ -1,0 +1,43 @@
+!2 Variables are always passed "by reference" and not "by value"
+if a variable is changed on a sub page and then referenced again on the parent page the variable has the value assigned on the sub page and not the value from the parent page.
+
+This behaviour is shown in the below examples:
+
+!3 Define initial values for numerator, denominator and quotient
+!define numerator {10}
+!define denominator {1}
+!define quotient {${= %3.0f : ${numerator} / ${denominator} =}.0}
+!define quotient2 quotient
+
+!include >VariablesRedefinedMultipleTimesOnSamePageAndUsedInSubpage
+
+!3 Check values from variables and symbols 
+|script|
+| #| $ {numerator} has the value as defined on this page|
+|check | echo | ${numerator} | 10 |
+| #| $ {denominator} has the value as defined on the sub page|
+|check | echo | ${denominator} | 2.5 |
+| #| $ {quotient4} has the value from expression on the sub sub page|
+|check | echo | ${quotient4} | 4.0 |
+| #| $ {result} has the value as defined on the sub sub page|
+|check | echo | ${result} | 77.0 |
+|#| $ result Symbol from sub sub page can be accessed| 
+|check | echo | $result | 4.0| 
+
+!3 Redefine numerator
+!define numerator {20}
+
+!include >VariablesRedefinedMultipleTimesOnSamePageAndUsedInSubpage
+
+!3 Check values from variables and symbols again
+|script|
+| #| $ {numerator} has the value as defined on this page|
+|check | echo | ${numerator} | 20 |
+| #| $ {denominator} has the value as defined on the sub page|
+|check | echo | ${denominator} | 2.5 |
+| #| $ {quotient4} has the value from expression on the sub sub page|
+|check | echo | ${quotient4} | 8.0 |
+| #| $ {result} has the value as defined on the sub sub page|
+|check | echo | ${result} | 77.0 |
+|#| $ result Symbol from sub sub page can be accessed| 
+|check | echo | $result | 8.0| 

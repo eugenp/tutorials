@@ -1,0 +1,23 @@
+!2 Trying to connect to a socket where no slim server is running should fail quickly.
+
+To test this we run in debug mode and request to start the slim server ourselfs. But we never start one :)
+
+Use the property slim.timeout to define how long the test system should wait for the slim client. The default is 10 seconds.
+In this test we set it to 1 second.
+
+# To run this test interactive don't forget to add at the end "&remote_debug" to the rest test command
+
+!| script                         |
+|create page|TestPage|with content|!-
+!define TEST_SYSTEM {SLIM}
+!define slim.timeout {1}
+!define SLIM_PORT {8099}
+!define MANUALLY_START_TEST_RUNNER_ON_DEBUG (true)
+
+-! |
+|check         |request page    |TestPage?test&remote_debug                                      |200                                      |
+|ensure        |content contains|Unable to start test system 'SLIM': fitnesse.slim.SlimError: Error connecting to SLiM server on localhost:|
+|show collapsed|content                                                                                                                    |
+|check         |request page    |TestPage?executionLog                                           |200                                      |
+|ensure        |content matches |Time elapsed:.* seconds                                                                                   |
+|show collapsed|content                                                                                                                    |

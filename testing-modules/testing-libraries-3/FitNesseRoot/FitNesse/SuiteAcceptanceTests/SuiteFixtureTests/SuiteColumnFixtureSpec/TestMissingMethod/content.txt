@@ -1,0 +1,34 @@
+!3 When testing a column fixture, if the header row mentions a method that is not in the fixture, then the following message should appear in that cell:
+{{{Could not find method: methodName.}}}
+
+ * Here is a fitnesse page that should generate the error
+!note The !-!path-! must point to fitnesse.jar
+!note !-ColumnFixtureTestFixture-! is a special class used for testing Column fixtures.
+|Action fixture|
+|start|Page builder|
+|enter|attributes|Test=true|
+|enter|line|${SUT_PATH}|
+|enter|line|!-|Import|-!|
+|enter|line|!-|fitnesse.fixtures|-!|
+|enter|line||
+|enter|line|!-|Column fixture test fixture|-!|
+|enter|line|!-|no such method()|-!|
+|enter|page|!-ColumnFixtureTestPage-!|
+
+!|Response requester|
+|uri|contents?|
+|ColumnFixtureTestPage||
+
+!|Response examiner|
+|contents?|
+||
+
+!|Response Requester|
+|uri|status?|
+|ColumnFixtureTestPage?test|200|
+
+ * The error message should show up in the response
+
+!|Response examiner|
+|type|pattern|matches?|contents?|
+|contents|Could not find method: no such method()|true||

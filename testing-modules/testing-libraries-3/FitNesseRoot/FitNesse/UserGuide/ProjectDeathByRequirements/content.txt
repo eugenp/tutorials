@@ -1,0 +1,33 @@
+!1 How to Kill a Software Project
+There are many ways to kill a software project, but this is one of the most common. If you have been in software development for awhile, you may have seen the following scenario before:
+!3 A Project Launches
+  * With the world's best intentions, a talented development team launches a project, full of gusto and high hopes.
+  * They articulate their requirements for the system to each other using a natural language such as English, in formal or informal documents. Included are some diagrams, charts, user interface mockups and screenshots, and/or other artifacts.
+  * Design and programming take place.
+  * Weeks and months go by.
+  * Some black-box functional testing takes place.
+  * Wait a minute. Something is wrong here...
+!3 Problems!
+At some point, usually late in the project, the team discovers that among other problems, they are finding one or more of the following problems with the features being delivered:
+  * They are '''not''' exactly what the customers/analysts/product managers think they '''asked for'''.
+  * They are '''not''' exactly what those folks '''wanted or needed'''.
+  * They are '''not useable''' by the system's eventual users.
+  * Subsystems '''cannot be integrated''' with one another, because their interfaces are incompatible.
+  * There is increasing dissention and mutual recrimination between team members about these issues. ("I did it the way you told me to!" "No you didn't! You never do!") People are getting angrier; morale is on the way down.
+Management steps in and takes action:
+  * Emergency meetings are scheduled. Even longer than normal, these affairs are particularly acrimonious.
+  * Everybody works longer and longer hours. We must save the deadline and the system!
+Despite heroic efforts, problems are not resolved as well as were hoped. The deadline and system remain under threat.
+
+And so on. What went wrong? How did we get in this boat together?
+!2 What Went Wrong
+Many of these problems boil down to the following:
+  * Natural languages are necessary to specify requirements, but '''they are not sufficient'''. The team misinterpreted the natural language requirements descriptions (despite all the charts, UI mockups, etc).
+  * Throughout the project, the team received '''too little feedback''' about features being built.
+  * The team did not begin receiving feature feedback '''early enough'''.
+  * Throughout the project, the team received feature feedback '''too infrequently'''.
+  * Post-facto, manual, GUI-based functional testing (despite its enormous costs) does a lousy job of exercising all the paths through a system's business logic. It's easy for such testing to miss parts of the system. So the team got poor feedback about whether all the right features were being delivered as required.
+  * The combination of natural language requirements descriptions and executable AcceptanceTests is '''necessary and sufficient''' to describe requirements '''completely, precisely, and deterministically'''.
+
+!2 With FitNesse AcceptanceTests, You Can Avoid These Problems
+[[Check it out!][AcceptanceTests]]

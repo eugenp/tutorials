@@ -1,0 +1,32 @@
+!2 The GT Sub Page widget.
+!note We are in the process of deprecating the ^ widget and replacing it with >.  This test proves that the > widget works.
+
+Sometimes we want to conveniently create a link to a sub page.  We could do this by using the syntax ''!-SuperPage.SubPage-!'', but this is inconvenient.  Instead we want to be able to say ''!->SubPage-!''.
+
+!|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|SuperPage|>SubPage||true|
+
+!|Response Requester.|
+|uri|valid?|contents?|
+|SuperPage|true||
+
+The widget should translate into a ? link of the form:
+ * ''!->SubPage-!<a title="create page" href="!-SuperPage.SubPage-!?edit&amp;nonExistent=true">[?]</a>''
+!|Response Examiner.|
+|type  |pattern|matches?|value|
+|contents|>SubPage<a title="create page" href="SuperPage.SubPage\?edit&nonExistent=true">\[\?\]</a>|true||
+
+If the sub page is already present, then the widget should translate into a normal link.
+
+!|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|SuperPage.SubPage|nothing||true|
+
+!|Response Requester.|
+|uri|valid?|contents?|
+|SuperPage|true||
+
+!|Response Examiner.|
+|type  |pattern|matches?|value|
+|contents|<a href="SuperPage.SubPage">>SubPage</a>|true||
