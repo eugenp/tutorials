@@ -60,7 +60,7 @@ class PreRetrievalQueryTransformerLiveTest {
             .targetLanguage("english")
             .build();
 
-        String userQuery = "What is a vector database?";
+        String userQuery = "Gblorvak tensig quimbo darnel?";
         Query transformed = queryTransformer.transform(new Query(userQuery));
 
         logger.info("Translation: [{}] -> [{}]", userQuery, transformed.text());
@@ -85,5 +85,25 @@ class PreRetrievalQueryTransformerLiveTest {
         Query transformed = queryTransformer.transform(query);
 
         logger.info("Compression: [{}] -> [{}]", followUpQuery, transformed.text());
+    }
+
+    @Test
+    void whenQuerySwitchesToUnrelatedTopicWithHistory_thenCompress() {
+        QueryTransformer queryTransformer = CompressionQueryTransformer.builder()
+            .chatClientBuilder(chatClientBuilder)
+            .build();
+
+        List<Message> history = List.of(
+            new UserMessage("What is Spring AI?"),
+            new AssistantMessage("Spring AI is an application framework that brings Spring's design principles to AI engineering."));
+        String newTopicQuery = "What's a good recipe for carbonara?";
+        Query query = Query.builder()
+            .text(newTopicQuery)
+            .history(history)
+            .build();
+
+        Query transformed = queryTransformer.transform(query);
+
+        logger.info("Compression: [{}] -> [{}]", newTopicQuery, transformed.text());
     }
 }
