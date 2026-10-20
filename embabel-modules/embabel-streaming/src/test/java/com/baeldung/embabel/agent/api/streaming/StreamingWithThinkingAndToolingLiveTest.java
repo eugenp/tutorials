@@ -38,9 +38,9 @@ import reactor.core.publisher.Flux;
     }
 )
 @ActiveProfiles("tool-reasoning")
-class StreamingWithThinkingAndToolingIntegrationTest {
+class StreamingWithThinkingAndToolingLiveTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(StreamingWithThinkingAndToolingIntegrationTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(StreamingWithThinkingAndToolingLiveTest.class);
 
     @Autowired
     private Ai ai;

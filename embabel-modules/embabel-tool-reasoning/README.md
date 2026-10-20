@@ -6,7 +6,7 @@ OPENAI_API_KEY=<your-key>
 ## TEST EXECUTION
 
 ```bash
- mvn test -Dtest=ToolCallReasoningIntegrationTest
+ mvn test -Dtest=ToolCallReasoningLiveTest
 
 ```
 
