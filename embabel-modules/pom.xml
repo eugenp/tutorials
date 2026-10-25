@@ -10,9 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
+        <artifactId>parent-boot-4</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-3</relativePath>
+        <relativePath>../parent-boot-4</relativePath>
     </parent>
 
     <modules>
@@ -20,5 +20,9 @@
         <module>embabel-tool-reasoning</module>
         <module>embabel-streaming</module>
     </modules>
+
+    <properties>
+        <spring-boot.version>4.0.7</spring-boot.version>
+    </properties>
 
 </project>
