@@ -39,6 +39,7 @@
         <module>spring-ai-session</module>
         <module>spring-ai-structured-output</module>
         <module>spring-ai-text-to-sql</module>
+        <module>spring-ai-tool-calling</module>
         <module>spring-ai-vector-stores</module>
         <module>spring-ai-mcp-annotations</module>
         <module>spring-ai-subagent-orchestrator</module>
