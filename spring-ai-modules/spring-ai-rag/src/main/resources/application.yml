@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: spring-ai-rag
+
+  profiles:
+    active: pre-retrieval

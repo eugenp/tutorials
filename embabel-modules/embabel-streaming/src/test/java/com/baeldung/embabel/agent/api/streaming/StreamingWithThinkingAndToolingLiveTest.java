@@ -29,18 +29,18 @@ import reactor.core.publisher.Flux;
 @SpringBootTest(
     classes = AgentTestApplication.class,
     properties = {
-        "embabel.models.cheapest=claude-sonnet-4-5",
-        "embabel.models.best=claude-sonnet-4-5",
-        "embabel.models.default-llm=claude-sonnet-4-5",
+        "embabel.models.cheapest=claude-opus-4-8",
+        "embabel.models.best=claude-opus-4-8",
+        "embabel.models.default-llm=claude-opus-4-8",
         "embabel.agent.platform.llm-operations.prompts.defaultTimeout=240s",
         "embabel.agent.platform.llm-operations.data-binding.fixedBackoffMillis=6000",
         "embabel.agent.platform.scanning.annotation=false"
     }
 )
 @ActiveProfiles("tool-reasoning")
-class StreamingWithThinkingAndToolingIntegrationTest {
+class StreamingWithThinkingAndToolingLiveTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(StreamingWithThinkingAndToolingIntegrationTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(StreamingWithThinkingAndToolingLiveTest.class);
 
     @Autowired
     private Ai ai;

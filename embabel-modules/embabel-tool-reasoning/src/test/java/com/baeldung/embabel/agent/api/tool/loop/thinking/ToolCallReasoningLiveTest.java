@@ -57,7 +57,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
     }
 )
 @ActiveProfiles("tool-reasoning")
-class ToolCallReasoningIntegrationTest {
+class ToolCallReasoningLiveTest {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
