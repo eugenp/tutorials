@@ -1,6 +1,6 @@
 # embabel-streaming
 
-Integration tests for Embabel Agent streaming with OpenAI and Anthropic.
+Live tests for Embabel Agent streaming with Anthropic. These require an API key and make provider calls.
 
 ## Setup
 
@@ -14,14 +14,14 @@ export ANTHROPIC_API_KEY=your-anthropic-key
 
 **All tests:**
 ```bash
-$ mvn test -pl embabel-streaming -P integration
+$ mvn test -pl embabel-streaming -Dtest=StreamingWithThinkingAndToolingLiveTest
 
 ```
 
 **Single test:**
 ```bash
-$ mvn test -pl embabel-streaming -P integration -Dtest=StreamingWithThinkingAndToolingIntegrationTest#whenStreaming_thenReceivesParkingRecommendation
-$ mvn test -pl embabel-streaming -P integration -Dtest=StreamingWithThinkingAndToolingIntegrationTest#whenStreamingMultipleScenarios_thenReceivesRecommendationPerScenario
-$ mvn test -pl embabel-streaming -P integration -Dtest=StreamingWithThinkingAndToolingIntegrationTest#whenStreamingWithThinking_thenReceivesReasoningAndRecommendation
-$ mvn test -pl embabel-streaming -P integration -Dtest=StreamingWithThinkingAndToolingIntegrationTest#whenStreamingWithThinkingAndTooling_thenReceivesRecommendationAndReasoning
+$ mvn test -pl embabel-streaming -Dtest=StreamingWithThinkingAndToolingLiveTest#whenStreaming_thenReceivesParkingRecommendation
+$ mvn test -pl embabel-streaming -Dtest=StreamingWithThinkingAndToolingLiveTest#whenStreamingMultipleScenarios_thenReceivesRecommendationPerScenario
+$ mvn test -pl embabel-streaming -Dtest=StreamingWithThinkingAndToolingLiveTest#whenStreamingWithThinking_thenReceivesReasoningAndRecommendation
+$ mvn test -pl embabel-streaming -Dtest=StreamingWithThinkingAndToolingLiveTest#whenStreamingWithThinkingAndTooling_thenReceivesRecommendationAndReasoning
 ```

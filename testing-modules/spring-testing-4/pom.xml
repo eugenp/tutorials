@@ -55,6 +55,8 @@
     <properties>
         <java.version>17</java.version>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+        <!-- the *IntTest classes start Testcontainers (Docker), so failsafe skips them unless -Pintegration -->
+        <skipITs>true</skipITs>
     </properties>
 
     <build>
@@ -90,4 +92,13 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>integration</id>
+            <properties>
+                <skipITs>false</skipITs>
+            </properties>
+        </profile>
+    </profiles>
 </project>
