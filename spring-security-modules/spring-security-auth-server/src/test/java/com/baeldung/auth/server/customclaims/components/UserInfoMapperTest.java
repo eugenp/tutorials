@@ -79,6 +79,8 @@ class UserInfoMapperTest {
           "gender","birthdate","zoneinfo","preferred_username", "updated_at");
         assertTrue(claims.keySet().containsAll(expectedClaims));
 
+        assertInstanceOf(Number.class, claims.get("updated_at"));
+
         // Ensure that account claims are *not* present
         assertFalse(claims.containsKey("account"));
 
@@ -99,6 +101,10 @@ class UserInfoMapperTest {
 
         var expectedClaims = Set.of("account_id", "created_at", "account_expires_at");
         assertTrue(claims.keySet().containsAll(expectedClaims));
+
+        // Ensure created_at and account_expires_at are of type Long (epoch seconds)
+        assertInstanceOf(Long.class, claims.get("created_at"));
+        assertInstanceOf(Long.class, claims.get("account_expires_at"));
 
         // Ensure that email and name claims are *not *present
         assertFalse(claims.containsKey("email"));

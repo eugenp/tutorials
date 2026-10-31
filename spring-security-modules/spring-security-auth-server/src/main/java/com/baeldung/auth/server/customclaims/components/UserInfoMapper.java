@@ -1,6 +1,7 @@
 package com.baeldung.auth.server.customclaims.components;
 
 import org.springframework.security.oauth2.core.oidc.OidcUserInfo;
+import org.springframework.security.oauth2.core.oidc.StandardClaimNames;
 import org.springframework.security.oauth2.server.authorization.oidc.authentication.OidcUserInfoAuthenticationContext;
 
 import java.util.function.Function;
@@ -46,14 +47,14 @@ public class UserInfoMapper implements Function<OidcUserInfoAuthenticationContex
               .birthdate(user.birthdate().toString())
               .zoneinfo(user.zoneId().toString())
               .preferredUsername(user.username())
-              .updatedAt(user.updatedAt().toString());
+              .claim(StandardClaimNames.UPDATED_AT,user.updatedAt().getEpochSecond());
         }
 
         // Add custom claims only if authorized. Here, we'll use the "account" as an example
         if ( scopes.contains("account") ) {
             b.claim("account_id", user.accountId().toString())
-              .claim("created_at", user.createdAt().toString())
-              .claim("account_expires_at", user.accountExpiresAt().toString());
+              .claim("created_at", user.createdAt().getEpochSecond())
+              .claim("account_expires_at", user.accountExpiresAt().getEpochSecond());
         }
 
         // Build the final result
