@@ -1,0 +1,9 @@
+spring:
+  ai:
+    openai:
+      api-key: ${GEMINI_API_KEY}
+      base-url: https://generativelanguage.googleapis.com/v1beta/openai/
+      chat:
+        model: ${GEMINI_MODEL:gemini-3.8-flash}
+        reasoning-effort: low
+        max-completion-tokens: 1024

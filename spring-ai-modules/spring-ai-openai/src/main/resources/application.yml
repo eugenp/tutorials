@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: spring-ai-openai
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      base-url: https://api.openai.com/v1
+      timeout: 30s
+      max-retries: 0
+      chat:
+        model: ${OPENAI_MODEL:gpt-6-luna}
+        reasoning-effort: none
+        max-completion-tokens: 256
