@@ -1,0 +1,43 @@
+!3 Designing Tests with ColumnFixture
+Think of each row of a ColumnFixture as one or more function calls.  The values of the named variables are set, and then the functions are called.
+
+For example, lets say you were writing an inventory system, and you wanted to test its ability to keep track of stocked items.  You might write tables like this:
+
+|!-inventory.AddStockFixture-!|
+|partNumber|quantity|valid?|
+|324|28|true|
+|586|14|true|
+
+This test adds two stock items.  The valid() function calls the parts of the system that cause a stock item to be added.  The code for the !-AddStockFixture-! might look like this:{{{
+package inventory;
+import fit.ColumnFixture;
+public class AddStockFixture extends ColumnFixture {
+  public int partNumber;
+  public int quantity;
+  public boolean valid() {
+    try {
+      StockItem item = new StockItem(partNumber);
+      Inventory.addStockItem(item,quantity);
+      return true;
+    } catch (Exception e) {
+      return false;
+    }
+  }
+}
+}}}Next, we might write a table that simulates some purchases that reduce the stock of an item.
+
+|!-inventory.PurchaseItemFixture-!|
+|partNumber|quantity|valid?|
+|324|3|true|
+|586|2|true|
+
+It should be clear how this fixture would be written.
+
+Finally we'd write a table that checked to make sure that the inventory had been properly updated.
+
+|!-inventory.CheckInventoryFixture-!|
+|partNumber|quantity()|
+|324|25|
+|586|12|
+
+See how easy this is?

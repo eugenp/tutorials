@@ -1,0 +1,133 @@
+!*> Setup
+
+|import                          |
+|fitnesse.testsystems.slim.tables|
+
+!|scenario            |Test Json Method Extractor Configuration                  _ _ _ _|configuration, example column name, generated method name?,parameter list?|
+|start                |Method Extractor                                                 |@configuration                                                            |
+|$RR=                 |findRule                                                         |@exampleColumnName                                                        |
+|start                |$RR                                                                                                                                         |
+|$generatedMethodName=|getMethod Name                                                                                                                              |
+|$generatedMethodName=|get Disgraced Method Name                                                                                                                   |
+|$parameterList=      |getParameters                                                                                                                               |
+
+!|scenario            |Test Object Method Extractor Configuration                  _ _ _|example column name, generated method name?,parameter list?|
+|start                |$TestMethodExtractorConfiguration                                                                                            |
+|$RR=                 |findRule                                                         |@exampleColumnName                                         |
+|start                |$RR                                                                                                                          |
+|$generatedMethodName=|getMethod Name                                                                                                               |
+|$generatedMethodName=|get Disgraced Method Name                                                                                                    |
+|$parameterList=      |getParameters                                                                                                                |
+
+
+*!
+
+
+!3 Build a JSON configuration string
+
+!4 Hint: use this table to construct your Json expression.
+ 
+|script                           |Method Extractor                                                        |
+|#                                 |Scope Pattern                               |Target Name |Parameter List|
+|add;                              |Cell\s+(\w+):(\d+)\s*                       |getRowColumn|$2,$1         |
+|# used a named group in the pattern                                                                        |
+|add;                              |Named\s+Cell\s+(?<column>\w+):(?<row>\d+)\s*|getRowColumn|$row,$column  |
+|# used a fixed value as parameter                                                                          |
+|add;                              |Header\s+Column\s+(\w+)\s*                  |getRowColumn|0,$1          |
+|# Function name in bold everything else is ignored|
+|add;|(?s).*<b>(.*)</b>.*|set $1||
+|# Function in the first line followed by a description in the following lines|
+|add;|(?s)^([^\n]*)\n.*|set $1||
+|# Default (match all pattern) catches every column name                                                    |
+|add;                              |.+                                          |set         |$0            |
+|# The first matching rule is used. The below will never be used as it comes after the default rule         |
+|add;                              |Last.*                                      |Unreachable |              |
+|show collapsed                    |to Json                                                                 |
+|$TestMethodExtractorConfiguration=|get fixture                                                             |
+
+!3 Test the above defined configuration
+
+!4 Hint: use this table to test your own definitions.
+
+|Test Object Method Extractor Configuration                 |
+|example column name|generated method name?|parameter list? |
+|hallo              |set                   |[hallo]         |
+|Cell A:5           |getRowColumn          |[5, A]          |
+|Named Cell BX:451  |getRowColumn          |[451, BX]       |
+|Header Column F    |getRowColumn          |[0, F]          |
+|Cell 7             |set                   |[Cell 7]        |
+|!- hello    
+ This is a Description
+ to explain the column purpose.
+ It will be ignored for the 
+ function identitication -!| setHello|[] |
+|!- The bold word    
+ -! is ''' the key ''' in this !- 
+ long text -!| setTheKey|[] |
+|Last and Least     |set                   |[Last and Least]|
+
+
+!3 Test a JSON configuration string
+
+
+
+|Test Json Method Extractor Configuration|having|configuration|!-
+{
+"FormatVersion":"1.0",
+"MethodExtractorRules":[
+  {
+    "Scope":"char at (\\d)",
+    "TargetName":"char at",
+    "Parameters":"$1"
+  },
+  {
+    "Scope":"index of '(\\w)'",
+    "TargetName":"index of",
+    "Parameters":"$1"
+  },
+  {
+    "Scope":"Element\\s(\\d)",
+    "TargetName":"get",
+    "Parameters":"$1"
+  },
+  {
+    "Scope":"property\\s+(\\w*)\\s*",
+    "TargetName":"get property",
+    "Parameters":"$1"
+  },
+  {
+    "Scope":"has Value\\s+'(\\w*)'\\s*",
+    "TargetName":"contains Value",
+    "Parameters":"$1"
+  },
+  {
+    "Scope":"(?s).*<[b]>(.*)</b>.*",
+    "TargetName":"set $1",
+    "Parameters":""
+  },
+  {
+    "Scope":"(?s)^([^\\n]*)\\n.*",
+    "TargetName":"set $1",
+    "Parameters":""
+  },
+  {
+    "Scope":".+",
+    "TargetName":"set $0",
+    "Parameters":""
+  }
+ ]
+}
+-!|
+|example column name|generated method name?|parameter list?|
+|hallo              |setHallo              |[]             |
+|property abc       |getProperty           |[abc]          |
+|Element 5          |get                   |[5]            |
+|!- hello    
+ This is a Description
+ to explain the column purpose.
+ It will be ignored for the 
+ function identitication -!| setHello|[] |
+|!- The bold word    
+ -! is ''' the key ''' in this !- 
+ long text -!| setTheKey|[] |
+|no match|setNoMatch|[]|

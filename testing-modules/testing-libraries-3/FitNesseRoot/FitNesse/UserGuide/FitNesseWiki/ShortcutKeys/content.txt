@@ -1,0 +1,10 @@
+Some of the buttons on the wiki page have shortcut keys.  These may or may not work in your browser!
+|'''Edit'''|''ALT-e''|
+|'''Properties'''|''ALT-p''|
+|'''Test'''|''ALT-t''|
+|'''Search'''|''ALT-s''|
+|'''Versions'''|''ALT-v''|
+
+Due to the above shortcut keys not working on most browsers a set of more modern shortcut keys have been provided.  Pressing ? on any normal wiki page (not the edit page, etc.) will bring up a modal dialog showing the standard set of shortcut keys.
+
+!img http://files/fitnesse/images/keyboard_shortcuts.png

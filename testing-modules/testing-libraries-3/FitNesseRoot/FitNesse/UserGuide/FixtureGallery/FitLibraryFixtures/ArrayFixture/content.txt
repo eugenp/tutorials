@@ -1,0 +1,85 @@
+
+''Previous page: [[!-SequenceFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.SequenceFixture]] Next page: [[!-CombinationFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.CombinationFixture]] Parent page: [[!-FitLibrary Fixtures-!][<UserGuide.FixtureGallery.FitLibraryFixtures]]''
+!2 !-ArrayFixture-!
+'''!- ArrayFixture -!'''!- was built as a replacement for -!'''!- RowFixture -!'''!-. It works very similar to that other fixture type, with two main differences:-!
+
+!- <ol> -!!- <li> -!!-Element order is important for -!'''!- ArrayFixture -!'''!-.-!!- </li> -!!- <li> -!'''!- ArrayFixture -!'''!- can work with generic collections as well as with arrays.-!!- </li> -!!- </ol> -!# section Table Format
+!3 !-Table Format-!
+!- The first row of the table should list the fixture class name. The second row lists the structure of collection elements &mdash; names of fields, properties and methods. -!
+
+{{{
+!-!-!include -seamless SetUpFixture
+
+!-!-!|ArrayFixtureTest|
+|name|post code|credit limit|
+|John Smith|SW4 66Z|10|
+|Michael Jordan|NE1 8AT|12|
+}}}
+# section Fixture class
+!3 !-Fixture class-!
+!-The fixture class should extend -!'''!- fitlibrary.ArrayFixture -!'''!-. Instead of a query method, -!'''!- ArrayFixture -!'''!- works with an internal property called -!'''!- actualCollection -!'''!- in the Java version. Initialise that collection in the constructor of your fixture to the actual results that should be compared to the table. In the .NET version, this has to be done by passing the collection to the base class constructor. -!
+
+# section Java Source Code
+!3 !-Java Source Code-!
+{{{
+package info.fitnesse.fixturegallery;
+import info.fitnesse.fixturegallery.domain.Player;
+import fitlibrary.ArrayFixture;
+
+public class ArrayFixtureTest extends ArrayFixture{
+	public ArrayFixtureTest() {
+		setActualCollection(Player.players);
+	}
+}
+}}}
+# section .NET Source Code
+!3 !-.NET Source Code-!
+{{{
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace info.fitnesse.fixturegallery
+{
+    public class ArrayFixtureTest: fitlibrary.ArrayFixture
+    {
+        public ArrayFixtureTest():base(Player.players)
+        {
+        }
+    }
+}
+}}}
+# section Python Source Code
+!3 !-Python Source Code-!
+{{{
+from fitLib.ArrayFixture import ArrayFixture
+from info.fitnesse.fixturegallery.domain.Player import Player
+
+class ArrayFixtureTest(ArrayFixture):
+    def __init__(self):
+        ArrayFixture.__init__(self)
+        self.paramCollection = Player.players
+        self.setActualCollection()
+
+    def getTargetClass(self):
+        return Player   #< TYPE-HINT: For ValueObject class.
+
+}}}
+# section Notes
+!3 !-Notes-!
+!- In the Java version, -!'''!- ArrayFixture -!'''!- can work correctly with JavaBeans properties as well (so if you have a getter such as -!'''!- getCreditLimit -!'''!-, you can name the column -!'''!- credit limit -!'''!-. -!
+
+!- In the .NET version, properties, fields and methods are treated equally, you can use any one of them in the fixture table -!
+
+!- FitLibrary also has a -!'''!- SetFixture -!'''!- that ignores element order and a -!'''!- SubSetFixture -!'''!- that will ignore additional elements in the actual results. Those two fixtures are very similar to the -!'''!- ArrayFixture -!'''!- in the table format and fixture class structure. -!
+
+# section Usage
+!3 !-Usage-!
+!- You can use the -!'''!- ArrayFixture -!'''!- instead of -!'''!- RowFixture -!'''!- when the element order is important or to avoid conversion of an object list into an array. -!
+
+'''!- DoFixture -!'''!- will automatically wrap methods that return a list or an array into an -!'''!- ArrayFixture -!'''!-, so you can use this class implicitly with -!'''!- DoFixture -!'''!- to test lists of objects without having to write an additional -!'''!- RowFixture -!'''!- class. For an example, see -![[!-Flow Mode-!][<UserGuide.FixtureGallery.ImportantConcepts.FlowMode]]!-. Similarly, methods that return a set of objects are automatically wrapped into a -!'''!- SetFixture -!'''!-. -!
+
+!- In Java, it might make more sense to use -!'''!- ArrayFixture -!'''!- for lists of business domain objects since this fixture type works correctly with JavaBeans getters. -!
+
+
+''Previous page: [[!-SequenceFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.SequenceFixture]] Next page: [[!-CombinationFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.CombinationFixture]] Parent page: [[!-FitLibrary Fixtures-!][<UserGuide.FixtureGallery.FitLibraryFixtures]]''

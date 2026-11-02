@@ -1,0 +1,11 @@
+!1 Data types
+ * For numerics, the Java format is used. e.g. Integer.parseInt() or Double,parseDouble() calls.
+ * Boolean maps to the strings "true" and "false".
+ * Dates convert in and out of a date format of the form dd-MMM-yyyy. (e.g. 10-Oct-1970)
+ * Lists of strings are mapped to simple strings of the form ''[a, b, c]''.  Note the brackets and spaces.  This is the standard ''toString'' format for Java Lists.
+ * Arrays of Booleans, Integers, Strings, and Doubles map to the form ''[x, y, z]''.
+ * !see CustomTypes
+
+!3 Maps.
+The [[Hash Widget][<UserGuide.FitNesseWiki.MarkupLanguageReference.MarkupHashTable]] sends HTML as a string to the Slim Fixture.  Java_Slim and Ruby_Slim will both convert this HTML string into a Map<String,String> (or a hash in the case of Ruby).
+  

@@ -1,0 +1,13 @@
+!define TEST_SYSTEM {slim}
+!path /home/michael/tutorials/testing-modules/testing-libraries-3/test-data/classes
+
+!|import|
+|com.baeldung.fitnesse|
+
+!|Bank Account Fixture|
+|initial balance|deposit|withdraw|balance?|
+|1000           |500    |0       |1500.0    |
+|1000           |0      |200     |800.0     |
+|1000           |300    |100     |1200.0    |
+|1000           |300    |20    |1280.0    |
+|1000           |300    |50     |1250.0    |

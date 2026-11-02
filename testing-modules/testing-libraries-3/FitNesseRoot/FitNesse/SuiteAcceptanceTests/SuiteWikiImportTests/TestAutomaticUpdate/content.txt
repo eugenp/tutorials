@@ -1,0 +1,52 @@
+!c !3 Importing pages can be configured to automatically update upon test.
+
+Create a page tree to be imported.
+!|Page creator.|
+|Page name.   |Page contents.|valid?|
+|ImportedRoot|!contents   |true   |
+|ImportedRoot.PageOne|page one   |true   |
+|ImportedRoot.PageOne.ChildOne|child one   |true   |
+|ImportedRoot.PageTwo|page two   |true   |
+
+Create an importing page.
+!|Page creator.|
+|Page name.   |Page contents.|valid?|
+|ImportingPage|!contents   |true   |
+
+This !-ImportingPage-! will now import the !-ImportingRoot-! page created above.
+'''Auto Update is turned one'''
+!|Response Requester.|
+|uri   |valid?|
+|ImportingPage?responder=import&autoUpdate=0&remoteUrl=http://localhost:${INTERNAL_PORT}/ImportedRoot&nochunk=true|true|
+
+We see all 3 pages imported.
+!|Response Examiner|
+|type|pattern|matches?|
+|contents|3 pages were imported|true|
+
+Sleep a bit so that the last modification time actually changes.
+|Sleep|1000|
+
+Change one of the imported pages.
+!|Save Page Requester|
+|uri   |save contents|status!|
+|ImportedRoot.PageOne?edit|Some ultra fresh content|303|
+
+Now lets run the Suite.
+!|Response Requester.|
+|uri   |valid?|
+|ImportingPage?suite|true|
+
+An import message is displayed in the test output.
+!|Response Examiner|
+|type|pattern|matches?|contents?|
+|contents|Updating imported content...|true||
+
+Looking at the imported copy of the modified page will reveal that it was indeed updated.
+!|Response Requester.|
+|uri   |valid?|
+|ImportingPage.PageOne|true|
+
+!|Response Examiner|
+|type|pattern|matches?|
+|contents|Some ultra fresh content|true|

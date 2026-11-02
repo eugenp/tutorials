@@ -41,6 +41,7 @@
         <module>junit5-migration</module>
         <module>k6</module>
         <module>load-testing-comparison</module>
+        <module>microcks</module>
         <module>mockito</module>
         <module>mockito-simple</module>
         <module>mocks</module>
@@ -56,6 +57,7 @@
         <module>selenium</module>
         <module>selenium-2</module>
         <module>selenium-3</module>
+        <module>selenium-4</module>
         <module>selenium-testng</module>
         <module>spring-mockito</module>
         <module>spring-testing-2</module>

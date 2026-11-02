@@ -5,16 +5,15 @@ import org.junit.Test;
 
 import java.text.ParseException;
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 public class DateWithoutTimeUnitTest {
-
-    private static final long MILLISECONDS_PER_DAY = 24 * 60 * 60 * 1000;
 
     @Test
     public void whenGettingDateWithoutTimeUsingCalendar_thenReturnDateWithoutTime() {
@@ -29,16 +28,7 @@ public class DateWithoutTimeUnitTest {
         assertEquals(0, calendar.get(Calendar.SECOND));
         assertEquals(0, calendar.get(Calendar.MILLISECOND));
 
-        // we get the day of the date
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-        // if we add the mills of one day minus 1 we should get the same day
-        calendar.setTimeInMillis(dateWithoutTime.getTime() + MILLISECONDS_PER_DAY - 1);
-        assertEquals(day, calendar.get(Calendar.DAY_OF_MONTH));
-
-        // if we add one full day in millis we should get a different day
-        calendar.setTimeInMillis(dateWithoutTime.getTime() + MILLISECONDS_PER_DAY);
-        assertNotEquals(day, calendar.get(Calendar.DAY_OF_MONTH));
+        assertCalendarDayBoundary(calendar);
     }
 
     @Test
@@ -54,16 +44,27 @@ public class DateWithoutTimeUnitTest {
         assertEquals(0, calendar.get(Calendar.SECOND));
         assertEquals(0, calendar.get(Calendar.MILLISECOND));
 
-        // we get the day of the date
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        assertCalendarDayBoundary(calendar);
+    }
 
-        // if we add the mills of one day minus 1 we should get the same day
-        calendar.setTimeInMillis(dateWithoutTime.getTime() + MILLISECONDS_PER_DAY - 1);
-        assertEquals(day, calendar.get(Calendar.DAY_OF_MONTH));
+    @Test
+    public void whenAdvancingAcrossDstFallback_thenCalendarDayBoundaryIsCorrect() {
+        Calendar startOfDay = bucharestAtStartOfDay(2026, Calendar.OCTOBER, 25);
+        Calendar nextDay = (Calendar) startOfDay.clone();
+        nextDay.add(Calendar.DATE, 1);
+        assertEquals(TimeUnit.HOURS.toMillis(25),
+            nextDay.getTimeInMillis() - startOfDay.getTimeInMillis());
+        assertCalendarDayBoundary(startOfDay);
+    }
 
-        // if we add one full day in millis we should get a different day
-        calendar.setTimeInMillis(dateWithoutTime.getTime() + MILLISECONDS_PER_DAY);
-        assertNotEquals(day, calendar.get(Calendar.DAY_OF_MONTH));
+    @Test
+    public void whenAdvancingAcrossDstSpringForward_thenCalendarDayBoundaryIsCorrect() {
+        Calendar startOfDay = bucharestAtStartOfDay(2026, Calendar.MARCH, 29);
+        Calendar nextDay = (Calendar) startOfDay.clone();
+        nextDay.add(Calendar.DATE, 1);
+        assertEquals(TimeUnit.HOURS.toMillis(23),
+            nextDay.getTimeInMillis() - startOfDay.getTimeInMillis());
+        assertCalendarDayBoundary(startOfDay);
     }
 
     @Test
@@ -71,22 +72,25 @@ public class DateWithoutTimeUnitTest {
         // get the local date
         LocalDate localDate = DateWithoutTime.getLocalDate();
 
-        // get the millis of our LocalDate
-        long millisLocalDate = localDate
-          .atStartOfDay()
-          .toInstant(OffsetDateTime
-            .now()
-            .getOffset())
-          .toEpochMilli();
+        // LocalDate represents a date without a time.
+        assertEquals(LocalDate.now(), localDate);
+    }
 
-        Calendar calendar = Calendar.getInstance();
-        // if we add the millis of one day minus 1 we should get the same day
-        calendar.setTimeInMillis(millisLocalDate + MILLISECONDS_PER_DAY - 1);
-        assertEquals(localDate.getDayOfMonth(), calendar.get(Calendar.DAY_OF_MONTH));
+    private static Calendar bucharestAtStartOfDay(int year, int month, int day) {
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Bucharest"));
+        calendar.clear();
+        calendar.set(year, month, day);
+        return calendar;
+    }
 
-        // if we add one full day in millis we should get a different day
-        calendar.setTimeInMillis(millisLocalDate + MILLISECONDS_PER_DAY);
-        assertNotEquals(localDate.getDayOfMonth(), calendar.get(Calendar.DAY_OF_MONTH));
+    private static void assertCalendarDayBoundary(Calendar calendar) {
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        Calendar nextDay = (Calendar) calendar.clone();
+        nextDay.add(Calendar.DATE, 1);
+        nextDay.add(Calendar.MILLISECOND, -1);
+        assertEquals(day, nextDay.get(Calendar.DAY_OF_MONTH));
+        nextDay.add(Calendar.MILLISECOND, 1);
+        assertNotEquals(day, nextDay.get(Calendar.DAY_OF_MONTH));
     }
 
 }

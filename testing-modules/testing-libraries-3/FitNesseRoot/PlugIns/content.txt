@@ -1,0 +1,16 @@
+!1 Get more out of !-FitNesse-!
+!3 Add Plugins to your installation and extend !-FitNesse-! with additional great features.
+ * Suport for other programming languages
+ * Additional table types to express your tests and requirements in other ways
+ * Additional Wiki Markup commands 
+ * Fixture frameworks you can use 
+ * and more ...
+
+See [[All Available Plugins][http://fitnesse.org/PlugIns?getPage&FitnesseVersion=${FITNESSE_VERSION}]] for a list of all available extensions.
+
+Read [[Writing Plugins][FitNesse.UserGuide.AdministeringFitNesse.WritingPlugins]] to understand how to install them or write your ownn.
+
+
+Below is the list of all installed plugins in this system:
+
+!contents -R1 -g -p -f -h

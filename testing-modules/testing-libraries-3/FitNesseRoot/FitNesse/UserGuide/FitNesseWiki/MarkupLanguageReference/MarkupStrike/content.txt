@@ -1,0 +1,4 @@
+To put a --strike-- through word or phrase simply surround the text with two dashes.
+
+|!c '''Markup Text'''|!c '''Displayed as'''|
+|!-I want --this-- to be struck.-!|I want --this-- to be struck.|

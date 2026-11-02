@@ -1,0 +1,37 @@
+|import            |
+|fitnesse.slim.test|
+
+
+!1 Symbols values and assignments can be used in Table Table fixtures 
+
+!2 Given some symbol values
+|script         |
+|$A=|echo int|99|
+|$B=|echo int|5 |
+|$C=|echo int|14|
+
+!2 Then in a Table Table the symbols can be used and values can be assigned to existing or new symbols.
+!3 The fixture requires no code to handle symbols!
+
+|table: Table Table Inc First Col|
+|$A          |$resultA=          |
+|$B          |$resultB=          |
+|$C          |$C=                |
+
+|script                     |
+|check|echo int|$resultA|100|
+|check|echo int|$resultB|6  |
+|check|echo int|$C      |15 |
+
+
+!2 But you can't use assignments done in one row in subsequent rows. 
+
+!include SymbolAssignmentAndReferenceOfTheSameInOneTable
+
+!2 Z is 45 and not 201 :(
+!|script                                |
+|check|echo int|$Z                   |45|
+|check|echo int|$${RUNNING_PAGE_NAME}|13|
+
+This requires symbol aware code in the fixture. 
+See TestTableTableImplementingStatementExecutorConsumer how to do this.

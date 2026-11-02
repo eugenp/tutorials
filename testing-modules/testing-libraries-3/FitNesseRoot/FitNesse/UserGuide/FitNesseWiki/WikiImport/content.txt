@@ -1,0 +1,16 @@
+!3 What is WikiImport?
+WikiImport is a feature that allows you to import an entire wiki or subwiki from another FitNesse site.  All of the pages from the remote wiki will be copied to your local FitNesse installation and become part of your local wiki.
+
+!3 Why should I use WikiImport?
+In a development environment it is most practical to have a main FitNesse server where all the tests are maintained and new tests are added.  However, it is not practical for all the developers to run the tests on one server. Therefore each developer should have a FitNesse installation in their development environment.  The test pages from the main server get imported by each developer so they can execute the most recent tests against their current code base.
+
+!3 How do I use WikiImport?
+Create a page or use an existing page that will contain the imported wiki.  Open the ''properties'' view of this page.  There is a form title Wiki Import.  Supply the URL to the remote wiki that you'd like to import and submit the form.  This will take you to an import view where you will see all the imported pages being listed.  It may take a few moments for the import to complete.  You will know it's complete when the bottom of the page is visible and ends with an imported page count.
+
+Once a wiki has been imported, it may be updated at any time.  Simple open the ''properties'' view of the importing page or any imported page.  There will be a button in the '''Import Wiki''' section.  Clicking this button initiate an update of all the imported pages beneath the currently selected page.
+
+!3 New Edit Buttons
+Once you have imported a wiki, the '''Edit''' button will be turned off and two new edit buttons will be added: '''Edit Locally''' and '''Edit Remotely'''.  '''Edit Locally''' behaves just like the '''Edit''' button that you've used all along.  '''Edit Remotely''' allows you to easily edit the page from where the content is being imported.
+
+!3 Automatic Update Option
+In the WikiImport section of the ''properties'' page, you'll see a check box that says: "Automatically update imported content when executing tests".  Enabling this option will kick off an update for any test page prior to execution.  Child pages will inherit this option from parent pages, which means you need only set on the root of you test hierarchy.

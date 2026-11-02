@@ -1,0 +1,16 @@
+|baseline: eg.Division                                           |
+|numerator|denominator|quotient?|# Explication                   |
+|10       |2          |5.0      |S1 Base scenario                |
+|20       |4          |         |S2 Same result as base - correct|
+|         |5          |2.0      |S4 Same numerator as base       |
+|16       |           |8.0      |S5 Same denominator as base     |
+|22       |7          |~=3.14   |S6 Special comparator           |
+|11       |2          |4<_<6    |S8 Special comparator           |
+|         |           |         |S9 Correct but useless duplicate|
+
+
+|baseline: eg.Division                                           |
+|numerator|denominator|quotient?|# Explication                   |
+|10       |2          |4<_<6    |S1 Base scenario                |
+|20       |4          |         |S2 Same result as base - correct|
+|11       |2          |         |S8 Special comparator           |

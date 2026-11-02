@@ -1,0 +1,6 @@
+!|script|
+|given page|ParentPage|
+|add child page|ChildPage|of type|Test|containing|child content|to parent page|ParentPage|should return Redirect|
+|page|ParentPage.ChildPage|should contain|child content|
+|ensure|page|ParentPage.ChildPage|has attribute|Test|
+|reject|page|ParentPage.ChildPage|has attribute|Suite|

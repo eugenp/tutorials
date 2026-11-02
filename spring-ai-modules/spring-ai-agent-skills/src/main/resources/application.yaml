@@ -5,3 +5,7 @@ spring:
       chat:
         options:
           model: gpt-5.5
+
+agent:
+  memory:
+    dir: ./baeldung/memory

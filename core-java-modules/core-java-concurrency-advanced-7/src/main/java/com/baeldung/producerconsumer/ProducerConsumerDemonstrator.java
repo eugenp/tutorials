@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProducerConsumerDemonstrator {
+
     private static final int MAX_QUEUE_CAPACITY = 5;
 
     public static void demoSingleProducerAndSingleConsumer() {
@@ -43,7 +44,7 @@ public class ProducerConsumerDemonstrator {
         List<Producer> producers = new ArrayList<>();
         List<Consumer> consumers = new ArrayList<>();
 
-        for(int i = 0; i < producerCount; i++) {
+        for (int i = 0; i < producerCount; i++) {
             Producer producer = new Producer(dataQueue);
             Thread producerThread = new Thread(producer);
             producerThread.start();
@@ -51,7 +52,7 @@ public class ProducerConsumerDemonstrator {
             producers.add(producer);
         }
 
-        for(int i = 0; i < consumerCount; i++) {
+        for (int i = 0; i < consumerCount; i++) {
             Consumer consumer = new Consumer(dataQueue);
             Thread consumerThread = new Thread(consumer);
             consumerThread.start();

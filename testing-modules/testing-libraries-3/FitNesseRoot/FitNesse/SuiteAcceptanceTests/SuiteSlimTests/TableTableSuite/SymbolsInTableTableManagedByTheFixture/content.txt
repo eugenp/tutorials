@@ -1,0 +1,45 @@
+|import            |
+|fitnesse.slim.test|
+
+!1 Symbol Handling by Fixtures
+
+If you need advanced symbol handling in your [[!-TableTable-!][.FitNesse.FullReferenceGuide.UserGuide.WritingAcceptanceTests.SliM.TableTable]] fixtures than your fixture code must handle this.
+Advanced means that you assign to a symbol a value and need to reference this new value again in the same table.
+Think if you really need this as it makes your code more complicated.
+
+
+!3 Load the symbol aware fixture
+|import                                      |
+|fitnesse.slim.test.statementexecutorconsumer|
+
+
+!include SymbolAssignmentAndReferenceOfTheSameInOneTable
+
+
+
+!3 Check the results Z is now 201 :)
+!|script                                 |
+|check|echo int|$Z                   |201|
+|check|echo int|$${RUNNING_PAGE_NAME}|13 |
+
+
+
+!3 The fixture handles a chain of assignments
+
+|script     |
+|$X=|echo|99|
+
+|table: Table Table Inc First Col|
+|$X             |$X=             |
+|$X             |$X=             |
+|$X             |$X=             |
+|$X             |$X=             |
+|$X             |$X=             |
+|$X             |$Y=             |
+
+
+
+|script           |
+|check|echo|$X|104|
+|check|echo|$Y|105|
+

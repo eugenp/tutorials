@@ -1,0 +1,9 @@
+Values in hash tables should be handled in the same fashion as normal values passed to Slim.
+| script | hash fixture |
+| send | !{script:<em><b>bold</b></em>} | as hash |
+| check | hash | script | is | <em><b>bold</b></em> |
+
+For comparison, this is how it works with a normal value:
+
+!| script | echo fixture |
+| echo | <em><b>bold</b></em> | and log |

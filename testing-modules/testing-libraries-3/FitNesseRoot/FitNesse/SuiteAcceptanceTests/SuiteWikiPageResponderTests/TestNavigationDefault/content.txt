@@ -1,0 +1,25 @@
+!3 Each page has links in the left rail. This test verifies the default set of links.
+Create a page.
+
+|Page creator.                      |
+|Page name.  |Page contents. |valid?|
+|!-SomePage-!|any page at all|true  |
+
+Request the page
+
+|Response Requester.          |
+|uri         |valid?|contents?|
+|!-SomePage-!|true  |         |
+
+Examine the requested page to ensure the correct links are displayed in the correct order.
+
+!| Response Examiner.                                                                              |
+|line                                                                                     |inOrder?|
+|<li><a class="nav-link text-secondary" href="SomePage?edit" accesskey="e">Edit</a></li>  |true    |
+|<li><a class="dropdown-item" href="SomePage?properties" accesskey="p">Properties</a></li>|true    |
+|<li><a class="dropdown-item" href="SomePage?whereUsed" accesskey="w">Where Used</a></li> |true    |
+|<li><a class="dropdown-item" href="SomePage?versions" accesskey="v">Versions</a></li>    |true    |
+|<a class="dropdown-item" href="/files" accesskey="f">Files</a></li>                      |true    |
+|<li><a class="dropdown-item" href="?search" accesskey="s">Search</a></li>                |true    |
+|<li><a class="dropdown-item" href="/RecentChanges" accesskey="">Recent Changes</a></li>  |true    |
+|<a class="dropdown-item" href="/FitNesse.UserGuide" accesskey="">User Guide</a></li>     |true    |

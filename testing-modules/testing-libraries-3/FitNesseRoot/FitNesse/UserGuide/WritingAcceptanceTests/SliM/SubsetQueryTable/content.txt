@@ -1,0 +1,7 @@
+|Subset Query:employees hired before|10-Dec-1980                     |
+|employee number                    |first name|last name|hire date  |
+|1429                               |Bob       |Martin   |10-Oct-1974|
+
+The first thing to notice is the ''Subset Query:'' in the first cell of the table.  This tells the Slim table processor that this is a subset query table. Subset query tables are almost identical to [[Query tables][QueryTable]] except that we only need to put those rows into the table that we want to make sure to exist in the query response.
+
+Our definition of subset here is not ''proper'' subset. Thus the table may contain all the rows of the query response.

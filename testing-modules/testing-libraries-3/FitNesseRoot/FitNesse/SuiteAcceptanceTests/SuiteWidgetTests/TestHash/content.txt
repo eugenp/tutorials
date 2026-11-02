@@ -1,0 +1,15 @@
+!|script|
+|given page|HashPage|with content|!-!{a:b}-!|
+|it should match|.table class="hash_table"|
+|it should match|tr class="hash_row"|
+|it should match|td class="hash_key"|
+|it should match|td class="hash_value"|
+
+|Response Examiner|
+|wrapped html?|
+||
+
+!|script|
+|given page|HashPageTwo|with content|!-!{a:b,c:d}-!|
+|it should match|.tr class="hash_row">.*td class="hash_key">.*a.*/td>.*td class="hash_value">.*b.*/td>.*/tr>|
+|it should match|.tr class="hash_row">.*td class="hash_key">.*c.*/td>.*td class="hash_value">.*d.*/td>.*/tr>|

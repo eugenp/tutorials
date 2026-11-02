@@ -1,0 +1,4 @@
+!|script|
+|given page|ParentPage|
+|add child page|TestChild|containing|child content|to parent page|ParentPage|should return Redirect|
+|ensure|page|ParentPage.TestChild|has attribute|Test|

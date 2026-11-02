@@ -1,0 +1,4 @@
+!include -c .FitNesse.SuiteAcceptanceTests.SuiteSlimTests.LibrarySuite.SetUp
+
+|Library|
+|library in set up|

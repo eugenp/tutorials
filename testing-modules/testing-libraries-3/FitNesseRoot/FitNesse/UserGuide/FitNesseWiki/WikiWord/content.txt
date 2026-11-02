@@ -1,0 +1,10 @@
+The syntax of a wiki word is ''Camel Case'': an alternating pattern of upper and lower case letters.  Strictly speaking a wiki word is a string of two more capital letters with lower case letters or numbers between them.
+
+ * '''!-BobMartin-!''' is a wiki word.
+ * '''!-SalesReport1972-!''' is a wiki word.
+ * '''!-USAforEver-!''' is not, because there are two capitals in a row.
+ * '''!-Usa1776-!''' is not because there is only one capital.
+ * '''!-RcM-!''' is a wiki word because it is two or more capitals separated by lower case letters.
+ * '''!-ItDoesNotMatterHowManyCapitalsThereAreYouCanHave1000IfYouLike-!''' is a wiki word with lots of capitals.
+----
+!note The Java Regular expression that we are using to represent a wiki word is: {{{\b[A-Z](?:[a-z0-9]+[A-Z][a-z0-9]*)+}}}

@@ -1,0 +1,25 @@
+!3 Numerical Comparisons
+You can use relational comparisons for the numeric values in your table cells.
+
+|DT:Some Decision Table|
+|input|output?|
+|3|<5|
+|5|>=3|
+|8|3<_<9|
+
+You can use all the normal operators: <, >, <=, >=, !=.
+
+The ''~='' relational operator means ''approximately equal''.  It applies to floating point numbers.  So if ''~=3.0'' then the ''3.0'' sets the precision so that 2.95 or 3.049 will both show equality.  It is the number of decimals on the right side of the operator that determines the precision.
+
+So 2.5~=3 but 2.5 is not ~= 3.0.
+
+!3 Regular Expression Comparisons
+You can match regular expressions by using the syntax =~/''regex''/.  For example:
+
+|check|echo|Bob|=~/Bob/|
+|check|echo|My name is Bob."|=~/B.b/|
+
+The regular expression syntax is the '''Java''' standard.  
+
+
+

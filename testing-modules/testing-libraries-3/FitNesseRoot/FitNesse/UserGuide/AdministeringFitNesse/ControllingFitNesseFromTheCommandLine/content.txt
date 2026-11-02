@@ -1,0 +1,71 @@
+!3 Motivations
+
+It is possible to issue single commands to FitNesse from the command line. This is useful when:
+ * Running test suites from your build scripts (see how this is achieved for Ant [[below][#antIntegration]])
+ * Generating XML output from a test execution to a file
+
+!3 Command Syntax
+
+You can run any REST command (See RestfulServices) from the command line by using the -c command line option as follows:
+
+|!style_code(java -jar fitnesse-standalone.jar -c <rest-command>)|
+
+This starts up fitnesse, runs the command, emits the output to standard out, and then exits.
+
+Most often you will use this to run tests and/or suites from the command line as follows:
+
+|!style_code(!-java -jar fitnesse-standalone.jar -c "MyTestPage?test&format=text"-!)|
+
+The ''text'' format causes a simple summary of the tests to be printed to standard output.  It looks like this:{{{
+Starting Test System: slim using fitnesse.slim.SlimService.
+. 07:37:29 R:0    W:0    I:0    E:0    JunkPage (JunkPage) 0.124 seconds
+X 07:37:29 R:0    W:0    I:0    E:3    ExceptionTest    (JunkPage.ExceptionTest) 0.034 seconds
+. 07:37:29 R:0    W:0    I:0    E:0    FirstPage        (JunkPage.FirstPage) 0.329 seconds
+. 07:37:29 R:2    W:0    I:0    E:0    GivWenZen        (JunkPage.GivWenZen) 0.528 seconds
+F 07:37:30 R:6    W:1    I:0    E:0    HashTablePage    (JunkPage.HashTablePage) 0.045 seconds
+F 07:37:30 R:1    W:20   I:0    E:8    CanTotalOrder    (JunkPage.ImportingPage.CanTotalOrder) 0.623 seconds
+X 07:37:30 R:0    W:0    I:0    E:6    JunkPage (JunkPage.JunkPage) 0.083 seconds
+. 07:37:30 R:0    W:0    I:0    E:0    JunkTest (JunkPage.JunkTest) 0.884 seconds
+F 07:37:30 R:1    W:20   I:0    E:8    CanTotalOrder    (JunkPage.PointOfSale.CanTotalOrder) 0.004 seconds
+. 07:37:30 R:0    W:0    I:0    E:0    SeeTest  (JunkPage.SeeTest) 0.765 seconds
+. 07:37:31 R:1    W:0    I:0    E:0    SymbolPage       (JunkPage.SymbolPage) 0.198 seconds
+. 07:37:31 R:0    W:0    I:0    E:0    TestNothing      (JunkPage.TestNothing) 0.923 seconds
+X 07:37:31 R:2    W:0    I:0    E:2    TestTableTable   (JunkPage.TestTableTable) 1.120 seconds
+X 07:37:31 R:0    W:0    I:0    E:4    UseVarPage       (JunkPage.UseVarPage) 0.034 seconds
+. 07:37:31 R:0    W:0    I:0    E:0    VariableTest     (JunkPage.VariableTest) 0.512 seconds
+. 07:37:31 R:0    W:0    I:0    E:0    SuiteSetUp       (JunkPage.ParentSuite.SuiteChildTwo.SuiteSetUp) 0.321 seconds
+. 07:37:31 R:0    W:0    I:0    E:0    TestPage (JunkPage.ParentSuite.SuiteChildTwo.TestPage) 0.432 seconds
+. 07:37:31 R:0    W:0    I:0    E:0    SuiteTearDown    (JunkPage.ParentSuite.SuiteChildTwo.SuiteTearDown) 0.387 seconds
+. 07:37:31 R:0    W:0    I:0    E:0    SuiteSetUp       (JunkPage.ParentSuite.SuiteSetUp) 0.712 seconds
+. 07:37:31 R:0    W:0    I:0    E:0    TestPage (JunkPage.ParentSuite.TestPage) 0.209 seconds
+. 07:37:31 R:0    W:0    I:0    E:0    SuiteTearDown    (JunkPage.ParentSuite.SuiteTearDown) 0.314 seconds
+. 07:37:31 R:0    W:0    I:0    E:0    SuiteSetUp       (JunkPage.ParentSuite.SuiteChildOne.SuiteSetUp) 0.159 seconds
+. 07:37:32 R:0    W:0    I:0    E:0    TestPage (JunkPage.ParentSuite.SuiteChildOne.TestPage) 0.265 seconds
+. 07:37:32 R:0    W:0    I:0    E:0    SuiteTearDown    (JunkPage.ParentSuite.SuiteChildOne.SuiteTearDown) 0.358 seconds
+--------
+24 Tests,       7 Failures.      90.409 seconds.}}}
+Each line begins with . if the test passes, F if the test fails, or X if the test throws an exception.
+The key for the counts is Right, Wrong, Ignored, Exceptions.
+The rest should be self explanatory.
+
+The exit code for the command is 0 unless you run a test with ''text'' formatting, in which case it is the number of failing tests.
+
+!anchor antIntegration
+
+!2 Executing Tests from Ant
+You can run a test suite with Ant using the following ant task {{{
+  <target name="my_fitnesse_tests">
+    <java jar="dist/fitnesse.jar" failonerror="true" fork="true">
+      <arg value="-c"/>
+      <arg value="FitNesse.MySuitePage?suite&amp;format=text"/>
+      <arg value="-p"/>
+      <arg value="9234"/>
+    </java>
+  </target>}}}
+!note !style_green[You only need to set the port if the default command port (9123) will collide with something.]
+
+!2 Running Password-Protected Suites or Tests
+Some work environments which do not allow FitNesse instances without authentication (as the FitNesse tests may access password-protected databases).
+In these cases, the suites and pages will need to be password-protected and authentication must be provided as part of the -c command:
+
+|!style_code(!-java -jar fitnesse.jar -a [user:pwd or user-file-name] -c "username:password:MyTestPage?test&format=text"-!)|

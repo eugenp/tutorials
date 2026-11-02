@@ -1,0 +1,53 @@
+When you execute a suite page with a 'not' filter, !-FitNesse-! should only run tests that do not have a certain suite filter/tag
+
+----
+
+Create a Suite page
+
+|script|Page Builder|
+|line|${SUT_PATH}|
+|line|!-!path fitnesse.jar-!|
+|page|!-SuitePage-!|
+
+Create two sub pages
+
+|script|Page Builder|
+|line|!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|attributes|Suites=bad|
+|page|!-SuitePage.TestPageOne-!|
+
+|script|Page Builder|
+|line|!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page|!-SuitePage.TestPageTwo-!|
+
+Now run the suite page.
+
+|Response Requester.|
+|uri   |valid?|
+|!-SuitePage?responder=suite&excludeSuiteFilter=bad-!|true|
+
+|Response Examiner.|
+|contents?|
+||
+
+The suite should report the TestPages and should show no errors.
+
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|!-TestPageOne-!|false|
+|contents|!-TestPageTwo-!|true|
+|contents|Test Pages:.*1 right|true|
+
+The error log page should not have any errors
+
+|Response Requester.|
+|uri   |valid?|
+|!-SuitePage?executionLog-!|true|
+
+|Response Examiner.|
+|contents?|
+||
+
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|Exit code.*0.*Time|true|

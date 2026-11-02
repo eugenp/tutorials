@@ -10,9 +10,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-ai-agent-skills</artifactId>
-    <version>0.0.1</version>
     <name>spring-ai-agent-skills</name>
 
     <dependencies>
@@ -36,6 +34,11 @@
             <artifactId>spring-boot-starter-webmvc-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -43,6 +46,10 @@
         <spring-boot.version>4.0.6</spring-boot.version>
         <spring-ai.version>2.0.0</spring-ai.version>
         <spring-ai-agent-utils.version>0.10.0</spring-ai-agent-utils.version>
+        <!-- Baeldung parent pins junit to 5.11.0-M2, which lacks
+             ExtensionContext.Store.computeIfAbsent required by spring-test 7.0.7.
+             Realign with Spring Boot 4.0.6's managed JUnit version. -->
+        <junit-jupiter.version>6.0.3</junit-jupiter.version>
     </properties>
 
     <build>
@@ -50,6 +57,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.baeldung.agentskills.Application</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -1,0 +1,21 @@
+You can make a link to another wiki page simply by stating the name of the wiki page.  For example, the name of this page is MarkupInternalLink.
+
+The name of a page has a special syntax known as a [[!-WikiWord-!][<UserGuide.FitNesseWiki.WikiWord]].  A [[!-WikiWord-!][<UserGuide.FitNesseWiki.WikiWord]] starts with a capital letter and has at least one more capital letter in it.  Between the capitals there must be lower case letters or numbers.  There cannot be two capitals in a row.
+
+Thus:
+
+|!c '''Wiki Words'''|!c '''Non-Wiki Words'''|
+|!-BobMartin-!|Bob|
+|!-RobertCecilMartin-!|hello|
+|!-ObjecT-!|Object|
+|!-NumbersLike123AreAllowedNow-!|Butnotlikethis123|
+
+If you place a [[!-WikiWord-!][<UserGuide.FitNesseWiki.WikiWord]] in the markup text, but no such page exists, then you will see something like this on the page:
+
+NoSuchWikiWord
+
+If you click on the question mark it will create that page for you, and allow you to edit it.
+
+If the link to other pages is long, such as the link to a page in another [[!-SubWiki-!][<UserGuide.FitNesseWiki.SubWiki]] like <UserGuide.FitNesseWiki.SubWiki, then the link can replaced with easier to read text by using this markup:
+
+{{{[[text shown on screen][<LinkToOther.SubWiki]]}}}

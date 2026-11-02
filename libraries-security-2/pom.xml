@@ -94,6 +94,16 @@
             <version>${jaxb-api.version}</version>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>org.casbin</groupId>
+            <artifactId>jcasbin</artifactId>
+            <version>${jcasbin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -128,6 +138,8 @@
         <scribejava.version>8.3.3</scribejava.version>
         <jaxb-core.version>2.3.0.1</jaxb-core.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
+        <jcasbin.version>1.99.0</jcasbin.version>
+        <commons-io.version>2.17.0</commons-io.version>
     </properties>
 
 </project>

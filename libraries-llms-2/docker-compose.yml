@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  docling-serve:
+    image: quay.io/docling-project/docling-serve:latest
+    container_name: docling-serve
+    ports:
+      - "5001:5001"
+    environment:
+      - DOCLING_STORAGE_DIR=/data
+      - DOCLING_PORT=5001
+    volumes:
+      - ./data/docling:/data
+    restart: unless-stopped

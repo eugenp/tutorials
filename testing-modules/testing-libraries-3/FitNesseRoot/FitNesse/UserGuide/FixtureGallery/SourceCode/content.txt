@@ -1,0 +1,239 @@
+''Previous page: [[!-Introduction-!][<UserGuide.FixtureGallery.GalleryIntroduction]] Next page: [[!-Basic FIT fixtures-!][<UserGuide.FixtureGallery.BasicFitFixtures]] Parent page: [[!-Table of contents-!][<UserGuide.FixtureGallery.TableOfContents]]''
+!2 !-Source code-!
+!-You can get the source code for all the examples from this document from SourceForge (-!http://sourceforge.net/projects/fixturegallery !-). A lot of examples in this document demonstrate how to work with business domain services and objects. To keep things as simple as possible, and still show all relevant features, all those examples use the following "business" classes:-!
+
+# section Java domain code
+!3 !-Java domain code-!
+{{{
+package info.fitnesse.fixturegallery.domain;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Player{
+	public String name;
+	public String postCode;
+	public double balance;
+	public double getCreditLimit(){
+		return balance;
+	}
+	public Player(){
+	}
+	public Player(String name, String postCode, double balance){
+		this.name=name; this.postCode=postCode; this.balance=balance;
+	}
+	public static List<Player> players=new ArrayList<Player>();
+	public static void addPlayer(String name, String postCode, double balance){
+		players.add(new Player(name,postCode,balance));
+	}
+}
+}}}
+{{{
+package info.fitnesse.fixturegallery.domain;
+
+import java.util.LinkedList;
+
+public class Queue {
+	private LinkedList<String> ll=new java.util.LinkedList<String>();
+	public String dequeue(){
+		return ll.poll();
+	}
+	public void enqueue(String s){
+		ll.add(s);
+	}
+	public int getCount(){
+		return ll.size();
+	}
+}
+}}}
+{{{
+package info.fitnesse.fixturegallery.domain;
+
+public class TaxCalculator
+{
+  public double GetTax(String code, double price)
+  {
+    if (code.startsWith("B")) return 0;
+    return 0.1 * price;
+  }
+}
+}}}
+{{{
+package info.fitnesse.fixturegallery.domain;
+
+public class Words {
+	public String firstPart;
+	public String secondPart;
+	public String together(){
+		return firstPart+", "+secondPart;
+	}
+	public String getSentence(){
+		return together();
+	}
+	public static Words[] firstExample(){
+		Words[] someWords=new Words[2];
+		someWords[0]=new Words();
+		someWords[0].firstPart="Hello";
+		someWords[0].secondPart="World";
+		someWords[1]=new Words();
+		someWords[1].firstPart="Houston";
+		someWords[1].secondPart="We Have a Problem";
+		return someWords;
+	}
+}
+}}}
+# section .NET domain code
+!3 !-.NET domain code-!
+{{{
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace info.fitnesse.fixturegallery
+{
+
+    public class Player
+    {
+        public static List<Player> players=new List<Player>();
+
+        private string _name;
+
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+        private string _postCode;
+
+        public string PostCode
+        {
+            get { return _postCode; }
+            set { _postCode= value; }
+        }
+        private decimal _balance;
+
+        public decimal Balance
+        {
+            get { return _balance; }
+            set { _balance = value; }
+        }
+        public decimal CreditLimit()
+        {
+            return _balance;
+        }
+    }
+    public class Text
+    {
+        public String word;
+        public Text(String w)
+        {
+            word = w;
+        }
+        public int TotalLength
+        {
+            get { return word.Length; }
+        }
+    }
+    public class TaxCalculator
+    {
+        public decimal GetTax(String code, decimal price)
+        {
+            if (code.StartsWith("B")) return 0;
+            return 0.1m * price;
+        }
+    }
+
+
+}
+}}}
+# section Python domain code
+!3 !-Python domain code-!
+{{{
+class Player(object):
+    _typeDict = {
+        "name":     "String",
+        "postCode": "String",
+        "balance":  "Float"
+    }
+
+    def __init__(self, name="", postCode="", balance=0.0):
+        self.name     = name
+        self.postCode = postCode
+        self.balance  = balance
+
+    def getCreditLimit(self):
+        return self.balance
+
+    _typeDict["creditLimit"] = "Float"
+    creditLimit = property(getCreditLimit)
+
+    # -- DATA STORE: Players object store, simplistic database.
+    players = []    #< CLASS-ATTRIBUTE
+    @classmethod
+    def addPlayer(cls, name, postCode, balance):
+        cls.players.append(Player(name, postCode, balance))
+}}}
+{{{
+class Queue(object):
+    _typeDict = {
+        "Enqueue.RenameTo": "enqueue" #< NEEDED-FOR: SystemUnderTestExample
+    }
+
+    def __init__(self):
+        self.ll = []
+
+    _typeDict["dequeue"] = "String"
+    _typeDict["dequeue.types"] = [ "String" ]
+    def dequeue(self):
+        return self.ll.pop(0)
+
+    _typeDict["enqueue"] = "String"
+    _typeDict["enqueue.types"] = [ None, "String" ]
+    def enqueue(self, s):
+        return self.ll.append(s)
+
+    def getCount(self):
+        return len(self.ll)
+    _typeDict["count"] = "Integer"
+    count = property(getCount)
+}}}
+{{{
+import types
+
+class TaxCalculator(object):
+
+    def getTax(self, code, price):
+        assert isinstance(code, types.StringTypes)
+        assert type(price) == types.FloatType
+        if code.startswith("B"):
+            return 0
+        return 0.1 * price
+}}}
+{{{
+class Words(object):
+    _typeDict = {
+        "firstPart":  "String",
+        "secondPart": "String"
+    }
+
+    def __init__(self, firstPart="", secondPart=""):
+        self.firstPart  = firstPart
+        self.secondPart = secondPart
+
+    _typeDict["together"] = "String"
+    def together(self):
+        return "%s, %s" % (self.firstPart, self.secondPart)
+
+    _typeDict["getSentence"] = "String"
+    def getSentence(self):
+        return self.together()
+
+    @staticmethod
+    def firstExample():
+        someWords = [ None, None ]
+        someWords[0] = Words(firstPart="Hello",   secondPart="World")
+        someWords[1] = Words(firstPart="Houston", secondPart="We Have a Problem")
+        return someWords
+}}}
+
+''Previous page: [[!-Introduction-!][<UserGuide.FixtureGallery.GalleryIntroduction]] Next page: [[!-Basic FIT fixtures-!][<UserGuide.FixtureGallery.BasicFitFixtures]] Parent page: [[!-Table of contents-!][<UserGuide.FixtureGallery.TableOfContents]]''

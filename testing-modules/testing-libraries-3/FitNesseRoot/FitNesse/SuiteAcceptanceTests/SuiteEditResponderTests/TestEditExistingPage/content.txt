@@ -1,0 +1,13 @@
+!2 Test editing an existent page.
+The form should have a normal header, an edit area filled with the current contents of the page, and a save button.
+----
+
+!|script|
+|given page|SomePage|with content|some content|
+|the edit response should contain|SomePage|
+|and should match|<textarea.*>some content</textarea>|
+|and should match|<form.*>|
+|and should match|action="SomePage"|
+|and should match|<input.*>|
+|and should match|type="submit"|
+|and should match|value="Save"|

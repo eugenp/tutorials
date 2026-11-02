@@ -1,0 +1,31 @@
+The format for a suite is similar to the format for a test as shown in <UserGuide.RestfulTests.  The big difference is that the majority of the content for each test result is replaced by a link to the appropriate page history.  This keeps the suite response very small, and allows the user to obtain all the detail they need by issuing a page history request.
+{{{
+<testResults>
+	<rootPath>SuiteAcceptanceTests</rootPath>
+	<result>
+		<relativePageName>SuiteWidgetTests.TestBrokenWikiWordLink</relativePageName>
+                <tags>critical,slow</tags>
+		<counts>
+			<right>24</right>
+			<wrong>0</wrong>
+			<ignores>0</ignores>
+			<exceptions>0</exceptions>
+		</counts>
+		<runTimeInMillis>
+			1022
+		</runTimeInMillis>
+                <pageHistoryLink>FitNesse.SuiteAcceptanceTests.SuiteWidgetTests.SuiteWidgetTests.TestBrokenWikiWordLink?pageHistory&resultDate=20090820&format=xml</pageHistoryLink>
+	</result>
+	...
+
+	<finalCounts>
+		<right>182</right>
+		<wrong>0</wrong>
+		<ignores>0</ignores>
+		<exceptions>0</exceptions>
+	</finalCounts>
+	<totalRunTimeInMillis>
+		6234
+	</totalRunTimeInMillis>
+</testResults>
+}}}

@@ -1,0 +1,36 @@
+FitNesse pages can have attributes that alter the way the pages are displayed, and how they behave.  These can be enabled or disabled for a page by hitting the Properties menu item.
+
+!3 Page Type
+ * '''Static''': This is just a content page.
+ * '''Test''': This property instructs ''!-FitNesse-!'' to treat the page as a fitnesse test page:
+   * It enables the '''Test''' button, which submits the page to Fit to process all of the page's test tables.
+   * Pages with the Test property enabled will have the '''!-SetUp-!''' and '''!-TearDown-!''' text applied to them. See<UserGuide.AcceptanceTests.SpecialPages.
+     * !-SetUp-! will be prepended to the page, just after the !-PageHeader-! (if any).
+     * !-TearDown-! will be appended to the page, just before the !-PageFooter-! page (if any).
+   * Pages with this property will be included in ''test suite runs''.
+ * '''Suite''': Pages with this property are test suites. All sub pages are considered part of the suite. Any sub page with the '''Test'''property set is considered a test within the suite.
+   * The '''Test Suite''' button is enabled by this property.
+   * A ''test suite run'' is activated by hitting the '''Test Suite''' button. All tests within the suite are run and their results reported.
+
+!3  
+!4 Implicit Page Attributes
+
+ * Pages that begin or end with '''"Test"''' or '''"Example"''' will automatically have the '''Test''' property set.
+ * Pages that begin or end with '''"Suite"''' or end with "'''Examples'''" will automatically have the '''Suite''' property set.
+ * Once these pages are created, you can set or clear these properties as usual.
+
+!3 Actions
+ * '''Edit''':  When set, this property causes the '''Edit''' button to be displayed.  This is a poor man's read-only switch.  If you clear this checkbox then users will not have a convenient way to edit the page.  Of course they can always edit it by typing the ''page?edit'' URL -- but we don't have to tell them how to do that, do we?--
+ * '''Search''':  This property enables or disables the '''Search''' button.  There's no real good reason to disable this button, but we put the ability in just for symmetry.
+ * '''Versions''': Enables the '''Versions''' button.  Hitting this button brings up a list of old versions of the page.  If this property is not set, then the button will not be displayed, but versions will still be tracked.
+ * '''Properties''': Enables the '''Properties''' button.  Hitting this button brings up a pages that allows you to edit all page properties mentioned here.  If you disable this property users will not have a convenient way to change the properties of a page.  (Of course they can always use the ''page?properties'' URL.)
+
+!3 Navigation
+The following entries are shown in the Tools menu, if enabled
+
+ * Recent Changes: links to the .RecentChanges page
+ * Files: links to the http://files/ section
+ * Search: opens an advanced search dialog.
+
+!3 Security
+The permissions for the page can be changed to read, write and test.

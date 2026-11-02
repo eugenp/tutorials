@@ -1,0 +1,58 @@
+!3 This fixture is just like a RowFixture except that it allows you to pass arguments into the fixture.
+
+Below you can see a simple ParametricRowFixture that takes a single integer argument and produces the prime factors of that argument.
+
+|!-fitnesse.fixtures.PrimeFactorsFixture-!|6|
+|factor|
+|2|
+|3|
+
+The code for this fixture is shown below.  Note that the ''query'' method takes a ''String args[]'' argument.  The arguments to the fixture are passed in through this array.   The arguments are all the table cells that follow the fixture name.  (Note the "6" that follows the fixture name above.)  You can put as many arguments there as you like.
+{{{
+public class PrimeFactorsFixture extends ParametricRowFixture
+{
+  public static class Factor
+  {
+    public Factor(int factor)
+    {
+      this.factor = factor;
+    }
+
+    public int factor;
+  }
+
+  public Object[] query(String[] args)
+  {
+    int n = Integer.parseInt(args[0]);
+    ArrayList factors = new ArrayList();
+    for(int f = 2; n > 1; f++)
+      for(; n % f == 0; n /= f)
+        factors.add(new Factor(f));
+    return (Factor[]) factors.toArray(new Factor[0]);
+  }
+
+  public Class getTargetClass()             // get expected type of row
+  {
+    return Factor.class;
+  }
+}
+
+}}}
+As in RowFixture, the order of the rows is unimportant.  As shown below the rows will be matched and found regardless of their order.
+|!-fitnesse.fixtures.PrimeFactorsFixture-!|1000|
+|factor|
+|2|
+|5|
+|2|
+|5|
+|5|
+|2|
+
+As in RowFixture, and as shown below, any cells that are missing, or extra will be marked in red.
+|!-fitnesse.fixtures.PrimeFactorsFixture-!|63|
+|factor|
+|7|
+|3|
+|5|
+
+

@@ -1,0 +1,113 @@
+
+''Next page: [[!-ActionFixture-!][<UserGuide.FixtureGallery.BasicFitFixtures.ActionFixture]] Parent page: [[!-Basic FIT fixtures-!][<UserGuide.FixtureGallery.BasicFitFixtures]]''
+!2 !-ColumnFixture-!
+'''!- ColumnFixture -!'''!- maps table columns directly to properties, methods and fields of the fixture class. It is very useful for repetitive verifications if the same test needs to be repeated for different combinations of input arguments. -!
+
+# section Table Format
+!3 !-Table Format-!
+!- The first row of the table is the test class name. The second row lists column names, specifying a field or method that the column is related to. Output values must have a question mark -!'''!- ? -!'''!- or parentheses -!'''!- () -!'''!- after the field or method name. All following rows list combinations of input arguments and expected values of output arguments. -!
+
+{{{
+!-!-!|info.fitnesse.fixturegallery.ColumnFixtureTest|
+|firstPart|secondPart|together?|totalLength?|
+|Hello|World|Hello, World|10|
+|Houston|We Have a Problem|Houston, We Have a Problem|24|
+}}}
+# section Fixture class
+!3 !-Fixture class-!
+!-The fixture class should extend -!'''!- fit.ColumnFixture -!'''!- and declare public fields and methods to match the second table row. -!
+
+# section Java Source Code
+!3 !-Java Source Code-!
+{{{
+package info.fitnesse.fixturegallery;
+
+import fit.ColumnFixture;
+
+public class ColumnFixtureTest extends ColumnFixture {
+	public String firstPart;
+	public String secondPart;
+	private int length;
+	public String together(){
+		length=firstPart.length()+secondPart.length();
+		return firstPart+ ", "+secondPart;
+	}
+	public int totalLength(){
+		return length;
+	}
+}
+}}}
+# section .NET Source Code
+!3 !-.NET Source Code-!
+{{{
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace info.fitnesse.fixturegallery
+{
+    public class ColumnFixtureTest: fit.ColumnFixture
+    {
+        public String firstPart;
+        public String secondPart;
+        public String Together
+        {
+            get
+            {
+                return firstPart + ", " + secondPart;
+            }
+        }
+        public int TotalLength()
+        {
+            return firstPart.Length+secondPart.Length;
+        }
+    }
+}
+}}}
+# section Python Source Code
+!3 !-Python Source Code-!
+{{{
+from fit.ColumnFixture import ColumnFixture
+
+class ColumnFixtureTest(ColumnFixture):
+    _typeDict = {
+        "firstPart":  "String",
+        "secondPart": "String"
+    }
+
+    def __init__(self):
+        ColumnFixture.__init__(self)
+        self.firstPart  = ""
+        self.secondPart = ""
+
+    # JAVA: public String together(){
+    _typeDict["together"] = "String"
+    def together(self):
+        return "%s, %s" % (self.firstPart, self.secondPart)
+
+    # JAVA: public int totalLength(){
+    _typeDict["totalLength"] = "Integer"
+    def totalLength(self):
+        return len(self.firstPart) + len(self.secondPart)
+
+}}}
+# section Notes
+!3 !-Notes-!
+!- In the Java version, class fields can only be used as inputs and class methods can only be used as outputs. JavaBean properties are not supported directly (getters will work as output methods, but you will have to specify the full method name such as -!'''!- getCreditLimit -!'''!-). In the .NET version, both fields and properties can be used as inputs and outputs. In addition, parameterless methods can be used as outputs as well. The Java implementation is case sensitive, the .NET version ignores character case in property names. -!
+
+!- The table rows are executed top-down, with cells being executed from left to right. That means that side-effects of methods persist for the following cells in the same row and for the cells in the next row as well. If you have to do any special cleanup between executing rows to make them independent, override the -!'''!- reset() -!'''!- method. -!
+
+!- .NET version of FIT supports wrapping domain objects with -!'''!- ColumnFixture -!'''!-, which enables you to use a -!'''!- ColumnFixture -!'''!- test without redeclaring all the properties and methods of your domain objects in the fixture. This is explained in more detail in -![[!-Target objects-!][<UserGuide.FixtureGallery.ImportantConcepts.TargetObject]]!-. -!
+
+!-Leave an output cell empty to just print the current value, without testing anything.-!
+
+# section Usage
+!3 !-Usage-!
+'''!- ColumnFixture -!'''!- is great for describing calculation-based business rules and state machines. It should be used when the same type of calculation should be verified for a range of different input values, and you know in advance all the different combinations. -!
+
+!-If the test is not repetitive (there is just one step), using -!'''!- ColumnFixture -!'''!- might not be the best way to do it. Consider using a -!'''!- DoFixture -!'''!- (see -![[!-DoFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.DoFixture]]!- ) in flow mode for that. If you want to test a dynamic list of objects, use either the -!'''!- ArrayFixture -!'''!- (see -![[!-ArrayFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.ArrayFixture]]!-) or the -!'''!- RowFixture -!'''!- because they verify the contents of the list as well. -!
+
+!- People often misuse -!'''!- ColumnFixture -!'''!- for setting up other tests, especially to create domain objects or to insert records into the database. A typical pattern of that is to execute an additional method, often called -!'''!- Create -!'''!-, in the last column of the table. That method typically returns some status code such as -!'''!- OK -!'''!-. This makes sense only if you want to check business rules for creation (and error codes that will be returned in case of problems). If you just want to prepare the stage for other tests, use the -!'''!- SetUpFixture -!'''!- (see -![[!-SetUpFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.SetUpFixture]]!- ). That will make the test page more focused and easier to read, and you will have to write less code for the fixture as well. -!
+
+
+''Next page: [[!-ActionFixture-!][<UserGuide.FixtureGallery.BasicFitFixtures.ActionFixture]] Parent page: [[!-Basic FIT fixtures-!][<UserGuide.FixtureGallery.BasicFitFixtures]]''

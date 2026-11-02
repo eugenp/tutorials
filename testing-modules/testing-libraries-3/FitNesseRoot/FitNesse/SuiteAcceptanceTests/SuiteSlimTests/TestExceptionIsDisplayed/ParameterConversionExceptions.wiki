@@ -1,0 +1,43 @@
+---
+Test
+---
+!contents -R2 -g -p -f -h
+
+!define TestPageName {Testpage}
+!define minus (-)
+!define exclamation (!)
+
+|script                                                            |
+|given test page         |${TestPageName}                          |
+|and Test System setup is|!-!define TEST_SYSTEM-! {slim}${SUT_PATH}|
+|and Setup content is                                              |!-
+
+!define SLIM_FLAGS {-v}
+
+|import            |
+|fitnesse.slim.test|
+
+-!|
+|and Test content is                |!include -seamless >TestPage                                                                                    |
+|when page                          |${TestPageName}                                      |is tested and HTML is extracted                           |
+|then                               |1                                                    |assertions pass,|1|fail,|0|are ignored|6|exceptions thrown|
+|and cell                           |Could not invoke constructor for !-TestSlim.1.-!     |has result      |error                                    |
+|and cell                           |No converter for java.time.Clock.*                    |has result      |error                                    |
+|and cell                           |Can't convert Hello to long.*?                         |has result      |error                                    |
+|and cell                           |Can't convert aWrongValue to long.*?                   |has result      |error                                    |
+|and cell                           |No converter for java.time.temporal.TemporalAccessor.*?|has result      |error                                    |
+|and cell                           |Can't convert twenty to integer.*?                     |has result      |error                                    |
+|ensure |	content contains|<span class="fail">expected [H<span class="diff">ello</span>]</span>|
+|and cell                           |expected.*                     |has result      |fail                                     |
+|show Symbol                        |$HTML_Result                                                                                                    |
+|note                               |!4 As a TDD developer !-
+To have fast turnaround times
+I need to see the exceptions stack trace in the execution log with verbose logging enabled
+-!|
+|get collapsed executon log for page|${TestPageName}                                                                                                 |
+|and should contain                 |java.lang.NumberFormatException: For input string: "twenty"                                                     |
+|and should contain                 |java.lang.NumberFormatException: For input string: "five"                                                       |
+|and should contain                 |NO_CONVERTER_FOR_ARGUMENT_NUMBER java.time.Clock                                                                |
+|and should contain                 |java.lang.NumberFormatException: For input string: "Hello"                                                      |
+|and should contain                 |java.lang.NumberFormatException: For input string: "aWrongValue"                                                |
+|and should contain                 |NO_CONVERTER_FOR_ARGUMENT_NUMBER java.time.temporal.TemporalAccessor.                                           |

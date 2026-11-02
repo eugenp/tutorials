@@ -1,0 +1,16 @@
+''Previous page: [[!-FitLibrary Fixtures-!][<UserGuide.FixtureGallery.FitLibraryFixtures]] Parent page: [[!-Table of contents-!][<UserGuide.FixtureGallery.TableOfContents]]''
+!2 !-Important concepts-!
+# section Fixture Arguments
+[[!-Fixture Arguments-!][>FixtureArguments]]
+# section Flow Mode
+[[!-Flow Mode-!][>FlowMode]]
+# section Target objects
+[[!-Target objects-!][>TargetObject]]
+# section System under test
+[[!-System under test-!][>SystemUnderTest]]
+# section Symbols
+[[!-Symbols-!][>FixtureSymbols]]
+# section Markup Variables
+[[!-Markup Variables-!][>MarkupVariables]]
+
+''Previous page: [[!-FitLibrary Fixtures-!][<UserGuide.FixtureGallery.FitLibraryFixtures]] Parent page: [[!-Table of contents-!][<UserGuide.FixtureGallery.TableOfContents]]''
