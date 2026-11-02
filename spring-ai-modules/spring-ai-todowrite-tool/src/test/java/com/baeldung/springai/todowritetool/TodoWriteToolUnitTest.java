@@ -20,6 +20,18 @@ class TodoWriteToolUnitTest {
         List<TodoItem> written = todoWriteTool.todoWrite(todos);
 
         assertThat(written).hasSize(3);
+        assertThat(written)
+            .usingRecursiveComparison()
+            .isEqualTo(todos);
+        assertThat(todoWriteTool.todoRead())
+            .extracting(TodoItem::id)
+            .containsExactly("1", "2", "3");
+        assertThat(todoWriteTool.todoRead())
+            .extracting(TodoItem::content)
+            .containsExactly("Set up project", "Write TodoWriteTool", "Add tests");
+        assertThat(todoWriteTool.todoRead())
+            .extracting(TodoItem::priority)
+            .containsExactly(TodoItem.Priority.high, TodoItem.Priority.high, TodoItem.Priority.medium);
         assertThat(todoWriteTool.todoRead())
             .extracting(TodoItem::status)
             .containsExactly(TodoItem.Status.completed, TodoItem.Status.in_progress, TodoItem.Status.pending);

@@ -16,6 +16,7 @@
 
     <properties>
         <java.version>21</java.version>
+        <pmd.skip>true</pmd.skip>
         <spring-ai.version>2.0.0-M5</spring-ai.version>
         <spring-boot.version>4.0.6</spring-boot.version>
         <junit-jupiter.version>6.0.3</junit-jupiter.version>

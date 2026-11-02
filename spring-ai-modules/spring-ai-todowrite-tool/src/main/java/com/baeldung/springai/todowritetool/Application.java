@@ -22,12 +22,12 @@ public class Application {
     @Profile("!test")
     CommandLineRunner demo(TodoAgentService todoAgentService) {
         return args -> {
-            String response = todoAgentService.ask(
+            var result = todoAgentService.ask(
                 """
                 Track these steps as a todo list: set up the project, write the tool, add tests
                 """
             );
-            logger.info("{}", response);
+            logger.info("{}", result.response());
         };
     }
 }

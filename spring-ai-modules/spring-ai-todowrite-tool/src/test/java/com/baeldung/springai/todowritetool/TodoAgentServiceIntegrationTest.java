@@ -3,6 +3,7 @@ package com.baeldung.springai.todowritetool;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.baeldung.springai.todowritetool.config.TodoAgentService;
+import com.baeldung.springai.todowritetool.config.TodoAgentService.AskResult;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,16 +18,13 @@ class TodoAgentServiceIntegrationTest {
     @Autowired
     private TodoAgentService todoAgentService;
 
-    @Autowired
-    private TodoService todoService;
-
     @Test
     void whenUserAsksToTrackSteps_thenTodoListIsPopulated() {
-        String response = todoAgentService.ask(
+        AskResult result = todoAgentService.ask(
             "Track these steps as a todo list: set up the project, "
                 + "write the tool, add tests");
 
-        assertThat(response).isNotBlank();
-        assertThat(todoService.read()).isNotEmpty();
+        assertThat(result.response()).isNotBlank();
+        assertThat(result.todos()).isNotEmpty();
     }
 }
