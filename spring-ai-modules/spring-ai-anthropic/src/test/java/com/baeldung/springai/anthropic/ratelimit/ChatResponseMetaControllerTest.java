@@ -1,12 +1,12 @@
 package com.baeldung.springai.anthropic.ratelimit;
 
-import java.time.Duration;
-
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.time.Duration;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,18 +30,41 @@ class ChatResponseMetaControllerTest {
         when(builder.build()).thenReturn(chatClient);
 
         ChatResponse chatResponse = mock(ChatResponse.class, Mockito.RETURNS_DEEP_STUBS);
-        when(chatResponse.getMetadata().getModel()).thenReturn("claude-sonnet");
-        when(chatResponse.getMetadata().getRateLimit().getRequestsLimit()).thenReturn(100L);
-        when(chatResponse.getMetadata().getRateLimit().getRequestsRemaining()).thenReturn(90L);
-        when(chatResponse.getMetadata().getRateLimit().getTokensReset()).thenReturn(Duration.ofSeconds(30));
-        when(chatResponse.getMetadata().getRateLimit().getTokensLimit()).thenReturn(10000L);
-        when(chatResponse.getMetadata().getRateLimit().getTokensRemaining()).thenReturn(9000L);
-        when(chatResponse.getMetadata().getUsage().getPromptTokens()).thenReturn(12);
-        when(chatResponse.getMetadata().getUsage().getCompletionTokens()).thenReturn(24);
-        when(chatResponse.getResult().getOutput().getText()).thenReturn("A short story.");
+        when(chatResponse.getMetadata()
+            .getModel()).thenReturn("claude-sonnet");
+        when(chatResponse.getMetadata()
+            .getRateLimit()
+            .getRequestsLimit()).thenReturn(100L);
+        when(chatResponse.getMetadata()
+            .getRateLimit()
+            .getRequestsRemaining()).thenReturn(90L);
+        when(chatResponse.getMetadata()
+            .getRateLimit()
+            .getTokensReset()).thenReturn(Duration.ofSeconds(30));
+        when(chatResponse.getMetadata()
+            .getRateLimit()
+            .getTokensLimit()).thenReturn(10000L);
+        when(chatResponse.getMetadata()
+            .getRateLimit()
+            .getTokensRemaining()).thenReturn(9000L);
+        when(chatResponse.getMetadata()
+            .getUsage()
+            .getPromptTokens()).thenReturn(12);
+        when(chatResponse.getMetadata()
+            .getUsage()
+            .getCompletionTokens()).thenReturn(24);
+        when(chatResponse.getResult()
+            .getOutput()
+            .getText()).thenReturn("A short story.");
 
-        when(chatClient.prompt().user(DEFAULT_MESSAGE).call().chatResponse()).thenReturn(chatResponse);
-        when(chatClient.prompt().user("Write a story").call().chatResponse()).thenReturn(chatResponse);
+        when(chatClient.prompt()
+            .user(DEFAULT_MESSAGE)
+            .call()
+            .chatResponse()).thenReturn(chatResponse);
+        when(chatClient.prompt()
+            .user("Write a story")
+            .call()
+            .chatResponse()).thenReturn(chatResponse);
 
         mockMvc = MockMvcBuilders.standaloneSetup(new ChatResponseMetaController(builder))
             .build();
