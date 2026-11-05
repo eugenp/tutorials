@@ -1,0 +1,81 @@
+---
+Test
+---
+
+This test shows that the partitioner can work with a file containing the division of the suite, instead of calculating from scratch.
+The file is specified by the !style_code(partitionIndexFile) parameter and should be placed in the files section.
+
+The file may contain extra tests, they are ignored.
+Tests not listed in the file are split across all partitions and put ''before'' the tests listed in the file.
+
+---
+
+!define TEST_SYSTEM {slim}
+
+Create the file section
+|file section|setup|
+
+Add some files
+|file section file adder                                                                                                                                                                                     |
+|path         |type|content                                                                                                                                                                           |valid?|
+|partition.txt|file|!-Page	Partition	Test System	Order
+SuitePage.TestPage1	2	fit	99
+SuitePage.TestPage2	2	fit	0
+SuitePage.TestPage3	1	fit	0
+SuitePage.TestPage4	0	fit	0
+SuitePage.TestPage5	0	fit	1
+-!|true  |
+
+Create a Suite page
+
+|script|Page Builder |
+|line  |${SUT_PATH}  |
+|page  |!-SuitePage-!|
+
+Create two sub pages
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPage1-!                    |
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPage2-!                    |
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPage3-!                    |
+
+|script|Page Builder                  |
+|line  |!-!define TEST_SYSTEM {slim}-!|
+|page  |!-SuitePage.TestPage4-!       |
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPage6-!                    |
+
+|script|Page Builder                               |
+|line  |!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page  |!-SuitePage.TestPage7-!                    |
+
+|Response Requester.                                                                                  |
+|uri                                                                                           |valid?|
+|!-SuitePage?responder=partition&format=tsv&partitionCount=3&partitionIndexFile=partition.txt-!|true  |
+
+|Response Examiner.|
+|contents?         |
+|                  |
+
+The suite should report all !-TestPages-! in tab-separate format.
+
+|Response Examiner.                                         |
+|type    |pattern                                  |matches?|
+|headers |Content-Type: text/tab-separated-values  |true    |
+|contents|!-Page\tPartition\tTest System\tOrder\n-!|true    |
+|contents|!-SuitePage\.TestPage1\t2\tfit\t1\n-!    |true    |
+|contents|!-SuitePage\.TestPage2\t2\tfit\t0\n-!    |true    |
+|contents|!-SuitePage\.TestPage3\t1\tfit\t1\n-!    |true    |
+|contents|!-SuitePage\.TestPage4\t0\tslim\t1\n-!   |true    |
+|contents|!-SuitePage\.TestPage6\t0\tfit\t0\n-!    |true    |
+|contents|!-SuitePage\.TestPage7\t1\tfit\t0\n-!    |true    |
+

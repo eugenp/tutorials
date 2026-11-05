@@ -1,0 +1,8 @@
+spring:
+  ai:
+    openai:
+      base-url: ${OLLAMA_BASE_URL:http://localhost:11434/v1}
+      api-key: ${OPENAI_API_KEY:ollama} # required by the client but not validated by local Ollama
+      chat:
+        options:
+          model: ${OLLAMA_MODEL:qwen3:8b}

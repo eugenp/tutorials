@@ -1,0 +1,21 @@
+!|scenario|given editable page|page|
+|create page|@page|with authentication|Edit|
+|$IT=|echo|@page|
+
+!|scenario|import|importedPage|into|importingPage|
+|check|request page|@importingPage?responder=import&remoteUrl=http://localhost:${INTERNAL_PORT}/@importedPage|200|
+
+!|scenario|Water mark and edit buttons should be on page|page|
+|check|request page|@page?properties|200|
+|show|content|
+|check|request page|@page|200|
+|show|content|
+|ensure|content matches|<body class="imported">|
+|ensure|content matches|Edit Locally|
+|ensure|content matches|Edit Remotely|
+
+!|scenario|Water mark and edit buttons should not be on page|page|
+|check|request page|@page|200|
+|reject|content matches|<body class="imported">|
+|reject|content matches|Edit Locally|
+|reject|content matches|Edit Remotely|

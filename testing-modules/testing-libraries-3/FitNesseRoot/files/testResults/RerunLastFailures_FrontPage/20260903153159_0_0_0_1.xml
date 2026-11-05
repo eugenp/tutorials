@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<suiteResults>
+  <FitNesseVersion>v20260313</FitNesseVersion>
+  <rootPath>RerunLastFailures_FrontPage</rootPath>
+  <date>2026-09-03T15:31:59+01:00</date>
+  <pageHistoryLink>RerunLastFailures_FrontPage?pageHistory&amp;resultDate=20260903153159</pageHistoryLink>
+  <pageHistoryReference>
+    <name>FrontPage</name>
+    <date>2026-09-03T15:31:59+01:00</date>
+    <pageHistoryLink>FrontPage?pageHistory&amp;resultDate=20260903153159</pageHistoryLink>
+    <counts>
+      <right>0</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>21</exceptions>
+    </counts>
+    <runTimeInMillis>198</runTimeInMillis>
+  </pageHistoryReference>
+  <executionLog>
+    <testSystem>slim:fitnesse.slim.SlimService</testSystem>
+    <command>java -cp /home/michael/tutorials/testing-modules/testing-libraries-3/target/classes:/home/michael/.m2/repository/org/fitnesse/fitnesse/20260313/fitnesse-20260313.jar fitnesse.slim.SlimService 1</command>
+    <exitCode>0</exitCode>
+    <stdOut></stdOut>
+    <stdErr></stdErr>
+  </executionLog>
+  <finalCounts>
+    <right>0</right>
+    <wrong>0</wrong>
+    <ignores>0</ignores>
+    <exceptions>1</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>551</totalRunTimeInMillis>
+</suiteResults>
+

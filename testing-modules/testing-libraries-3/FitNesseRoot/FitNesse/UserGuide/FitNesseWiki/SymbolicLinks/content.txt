@@ -1,0 +1,22 @@
+!img-r http://files/fitnesse/images/symlinkDiagram.gif
+!3 What are SymbolicLinks?
+Symbolic Links allow a user to easily create parent-child links between pages without permanently affecting the wiki structure.  Refer to the diagram on the right.  You will notice that the !-ApplicationTests-! page has a child page named !-SuiteTests-! which contains several other pages.  The !-EnvironmentOne-! page has no static child pages but it does have a symbolic link to the !-SuiteTests-! page.  This symbolic link acts like a child page in almost every way and give two full names to the !-SuiteTests-! page:
+
+ * !-.ApplicationTests.SuiteTests-! is the real name,
+ * !-.EnviromentOne.SymbolicLink-! is a symbolic name for the same page.
+
+SymbolicLinks may also be made to external FitNesse directories.  See below.
+
+!3 Why Should I Use SymbolicLinks?
+One common reason need for Symbolic Links is the the testing of a system on multiple environments.  For example, imagine an application that site on top of an Oracle database.  Hundreds of FitNesse tests have been written for this application using Oracle settings and then the team is confronted with the need to run the application on !-MySql-!.  Getting both databases running under the same suite of tests can be very difficult and may result in duplicating all the tests.  With Symbolic Links, the database configurations can be stored in high level pages along with appropriate path elements.  Then the high-level pages may symbolically link to the test suite.  In this manner one suite of tests can be executed in multiple environments.
+
+Another reason is that you want to test two implementations for the same interface. 
+.FitNesse.SuiteAcceptanceTests.SuiteVersionsControllerTests is a practical example using symbolic links.
+
+!3 How do I use SymbolicLinks?
+Navigate to the page where you'd like to add a symbolic link.  Click the '''Properties''' button to load the ''properties'' view.  There is a section titled '''Symbolic Links'''.  There is a form here where may create a new symbolic link by suppling a single WikiWord name for the link and relative or absolute path to the page to which you'd like to link.  Once created, the symbolic link will be listed in the '''Symbolic Links''' section of the same ''properties'' view.    You may remove or rename existing links by clicking the corresponding '''Unlink''' or '''Create/Replace''' link.
+
+!3 External SymbolicLinks
+For various reasons, you may want to keep a branch of your FitNesse wiki in a different location on your disk, than the rest of the wiki.  You may link external branches into the main wiki by using SymbolicLinks.  To do so, simply provide the file path to the external FitNesse directory in URL format preceded with '''file:/''', e.g. ''!-<i>file:///User/MicahMartin/fitnesse/ExternalFitNesseRoot</i>-!''
+
+SymbolicLinks can also use environment variables to find a branch to add to your wiki, e.g. ''!-<i>file://${HOME}/MicahMartin/fitnesse/ExternalFitNesseRoot</i>-!''

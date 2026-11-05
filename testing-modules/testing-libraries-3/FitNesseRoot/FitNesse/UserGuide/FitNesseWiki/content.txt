@@ -1,0 +1,22 @@
+!2 Working With !-FitNesse-! Wiki Pages
+!-FitNesse-! provides an easy-to-use [[wiki][http://wiki.org/wiki.cgi?WhatIsWiki]] to create web pages that are run as tests. Test pages have a button on them allowing all the tests on the page to be run, so any user can go to that page and click the button at any time, and see if the tests are passing. Also, !-FitNesse-! provides means to automatically run tests, so it can be easily added to your automated build scripts.
+
+So what does a test page look like? A page name has the form of a >WikiWord. A >WikiWord consists of two or more concatenated words, each word begins with a capital letter.
+
+Although FitNesse is about writing acceptance tests, you'll probably want to study these tips for using the wiki:
+
+|[[Editing !-FitNesse-! Pages][>EditingFitNessePages]]  |''An intro to creating and changing ''!-FitNesse-!'' pages using the wiki markup language.''|
+|[[Shortcut keys][>ShortcutKeys]]                       |''The shortcuts for the buttons.''                                                          |
+|[[Markup Language Reference][>MarkupLanguageReference]]|''A reference for formatting ''!-FitNesse-!'' pages using the wiki markup language.''       |
+|[[Sub-wikis][>SubWiki]]                                |''How to create hierarchies of ''!-FitNesse-!'' pages.''                                    |
+|[[Wiki Import][>WikiImport]]                           |''Importing wiki pages from a remote ''!-FitNesse-!'' server.''                             |
+|[[Page Properties][>PageProperties]]                   |''Enabling and disabling page properties (also called attributes).''                        |
+|[[Symbolic Links][>SymbolicLinks]]                     |''Dynamically altering the wiki page structure.''                                           |
+|[[Refactoring pages][>RefactoringWikiPages]]           |''Renaming, moving and deleting existing pages.''                                           |
+|[[Where Used][>WhereUsed]]                             |''Finding out which pages reference the current page.''                                     |
+|[[Headers and footers][>MarkupHeaderAndFooter]]        |''Specifying Headers and Footers for wiki pages''                                           |
+|[[Files section][>FilesSection]]                       |''The location for attachments, images, etc.''                                              |
+|[[External HTML pages][>ExternalHtmlPages]]            |''In case you've already written some pages in HTML and want to use then in FitNesse''      |
+
+!3 [[External editors][>ExternalEditor]]
+Since FitNesse stores its wiki pages as files on disk, it's also possible to edit pages with a [[external editor][>ExternalEditor]], such as Notepad, Sublime text, Eclipse or !-IntelliJ-!.

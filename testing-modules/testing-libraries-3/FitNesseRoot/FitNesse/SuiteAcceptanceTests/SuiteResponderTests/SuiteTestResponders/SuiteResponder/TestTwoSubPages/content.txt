@@ -1,0 +1,51 @@
+When you execute a suite page, !-FitNesse-! tests all the subpages.
+This example shows just one test subpage being executed.
+
+----
+
+Create a Suite page
+
+|script|Page Builder|
+|line|${SUT_PATH}|
+|page|!-SuitePage-!|
+
+Create two sub pages
+
+|script|Page Builder|
+|line|!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page|!-SuitePage.TestPageOne-!|
+
+|script|Page Builder|
+|line|!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page|!-SuitePage.TestPageTwo-!|
+
+Now run the suite page.
+
+|Response Requester.|
+|uri   |valid?|
+|!-SuitePage?responder=suite-!|true|
+
+|Response Examiner.|
+|contents?|
+||
+
+The suite should report the TestPages and should show no errors.
+
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|!-TestPageOne.*TestPageTwo-!|true|
+|contents|Test Pages:.*2 right|true|
+
+The error log page should not have any errors
+
+|Response Requester.|
+|uri   |valid?|
+|!-SuitePage?executionLog-!|true|
+
+|Response Examiner.|
+|contents?|
+||
+
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|Exit code.*0.*Time|true|

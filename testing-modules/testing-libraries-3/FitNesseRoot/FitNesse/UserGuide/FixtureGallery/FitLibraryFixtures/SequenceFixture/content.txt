@@ -1,0 +1,108 @@
+
+''Previous page: [[!-DoFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.DoFixture]] Next page: [[!-ArrayFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.ArrayFixture]] Parent page: [[!-FitLibrary Fixtures-!][<UserGuide.FixtureGallery.FitLibraryFixtures]]''
+!2 !-SequenceFixture-!
+'''!- SequenceFixture -!'''!- is very similar to -!'''!- DoFixture -!'''!- and has almost the same features &mdash; in fact the only difference between those two is the naming convention for methods. Instead of using odd cells to construct a method name, -!'''!- SequenceFixture -!'''!- takes the first cell in each row as the method name, and all other cells as arguments (if there are no keywords to modify the row functionality). All -!'''!- DoFixture -!'''!- keywords are supported in -!'''!- SequenceFixture -!'''!- too, as well as the flow mode (see -![[!-Flow Mode-!][<UserGuide.FixtureGallery.ImportantConcepts.FlowMode]]!- ) and domain object wrapping (see -![[!-System under test-!][<UserGuide.FixtureGallery.ImportantConcepts.SystemUnderTest]]!-). -!
+
+# section Table Format
+!3 !-Table Format-!
+!-The table format is the same as for -!'''!- DoFixture -!'''!- (see -![[!-DoFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.DoFixture]]!-), with the difference in method naming. -!
+
+{{{
+!-!-!|SequenceFixtureTest|
+|fill|10|x|
+|check|char at|4|x|
+|set list|A,B,C,D|
+|check|char at|2|C|
+}}}
+# section Fixture class
+!3 !-Fixture class-!
+!- The fixture class should extend -!'''!- fitlibrary.SequenceFixture -!'''!-. Declare public methods for all verifications and actions by taking the first cells as the method name, and using all other cells as arguments. -!
+
+# section Java Source Code
+!3 !-Java Source Code-!
+{{{
+package info.fitnesse.fixturegallery;
+import java.util.Arrays;
+import fitlibrary.SequenceFixture;
+
+public class SequenceFixtureTest extends SequenceFixture{
+	public String letters;
+	public void fill(int count,char c){
+		char[] arr=new char[count];
+		Arrays.fill(arr,c);
+		letters=new String(arr);
+	}
+	public void setList(char[] array){
+		letters=new String(array);
+	}
+	public char charAt(int position){
+		return letters.charAt(position);
+	}
+}
+}}}
+# section .NET Source Code
+!3 !-.NET Source Code-!
+{{{
+using System;
+
+namespace info.fitnesse.fixturegallery
+{
+    public class SequenceFixtureTest : fitlibrary.SequenceFixture
+    {
+        private String contents;
+        public void Fill(int howmany, String what)
+        {
+            contents = "";
+            for (int i = 0; i < howmany; i++)
+            {
+                contents = contents + what;
+            }
+        }
+        public void SetList(String[] strings)
+        {
+            contents = "";
+            foreach (String s in strings)
+            {
+                contents = contents + s;
+            }
+        }
+        public char CharAt(int index)
+        {
+            return contents[index];
+        }
+    }
+}
+}}}
+# section Python Source Code
+!3 !-Python Source Code-!
+{{{
+from fitLib.SequenceFixture import SequenceFixture
+from info.fitnesse.fixturegallery.typeadapter import buildListTypeAdapterFor
+
+class SequenceFixtureTest(SequenceFixture):
+    _typeDict = {}
+
+    def __init__(self):
+        self.letters = ""
+
+    _typeDict["fill.types"] = [ None, "Integer", "Char" ]
+    def fill(self, count, c):
+        self.letters = c * count    #< FILL: Repeact char count times.
+
+    # JAVA: public void setList(char[] array){
+    ARRAY_OF_CHAR_TYPE_ADAPTER = buildListTypeAdapterFor("Char")
+    _typeDict["setList.types"] = [ None, ARRAY_OF_CHAR_TYPE_ADAPTER ]
+    def setList(self, array):
+        self.letters = "".join(array)   #< Concatenate array of chars to string.
+
+    _typeDict["charAt.types"] = [ "Char", "Integer" ]
+    def charAt(self, position):
+        return self.letters[position]
+
+}}}
+# section Usage
+!3 !-Usage-!
+'''!- SequenceFixture -!'''!- has all the flexibility and power of -!'''!- DoFixture -!'''!-, but without the silly method names. It is most useful for more technical workflow tests, especially to directly map<UserGuide tables to existing business domain services (see -![[!-System under test-!][<UserGuide.FixtureGallery.ImportantConcepts.SystemUnderTest]]!-). -!
+
+
+''Previous page: [[!-DoFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.DoFixture]] Next page: [[!-ArrayFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.ArrayFixture]] Parent page: [[!-FitLibrary Fixtures-!][<UserGuide.FixtureGallery.FitLibraryFixtures]]''

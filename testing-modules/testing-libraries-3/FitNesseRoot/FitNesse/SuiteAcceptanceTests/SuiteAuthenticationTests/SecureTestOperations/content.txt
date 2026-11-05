@@ -1,0 +1,16 @@
+!define PATHS {
+${SUT_PATH}
+!define TEST_SYSTEM (slim)
+}
+
+!|script|
+|given page|ParentPage|with content|${PATHS}|
+|given test locked page|ParentPage.AwkwardTurtle|
+
+!|operation is authenticated|
+|operation|
+|suite|
+|test|
+
+
+

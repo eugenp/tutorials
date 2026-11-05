@@ -1,0 +1,46 @@
+!3 !-!contents-! with Properties Option
+!include -seamless ContentsUsage
+!3 Explicit Property Option
+'''First create the parent page.'''
+|Script|
+|start|Page Builder|
+|line|I'm the parent|
+|line|!-!define PROPERTY_CHARACTERS {ABCDE}-!|
+|line|!-!contents -p-!|
+|page|!-ParentPage-!|
+
+!include ContentsTestsInclude
+
+'''Then request the parent page.'''
+|Response Requester.|
+|uri|valid?|contents?|
+|!-ParentPage-!|true||
+
+'''...and examine the requested page to be sure that the child pages are included'''
+!|Response Examiner.|
+|type|pattern|matches?|
+|contents|a href="ParentPage.FirstChild" class="suite">FirstChild AB</a|true|
+|contents|a href="ParentPage.SecondChild" class="static linked pruned">SecondChild CE</a|true|
+
+!3 Indirect via PROPERTY_TOC Variable
+'''First create the parent page.'''
+|script|
+|start|Page Builder|
+|line|I'm also the parent|
+|line|!-!define PROPERTY_TOC {true}-!|
+|line|!-!contents-!|
+|line|!-!define PROPERTY_TOC {false}-!|
+|page|!-ParentPage-!|
+
+!include ContentsTestsInclude
+
+'''Then request the parent page.'''
+|Response Requester.|
+|uri|valid?|contents?|
+|!-ParentPage-!|true||
+
+'''...and examine the requested page to be sure that the child pages are included'''
+!|Response Examiner.|
+|type|pattern|matches?|
+|contents|a href="ParentPage.FirstChild" class="suite">FirstChild \*\+</a|true|
+|contents|a href="ParentPage.SecondChild" class="static linked pruned">SecondChild @-</a|true|

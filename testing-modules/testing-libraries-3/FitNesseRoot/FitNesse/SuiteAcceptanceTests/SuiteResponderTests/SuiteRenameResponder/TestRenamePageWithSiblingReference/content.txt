@@ -1,0 +1,31 @@
+!3 When a page is renamed, any links to that page on other pages are changed.
+
+If you have a page that refers to the renamed page, then that reference will be changed.
+
+First build sibling pages where one refers to the other
+
+|Page creator.|
+|Page name.|Page contents.|valid?|
+|!-SourcePage-!|!-refer to TargetPage-!|true|
+|!-TargetPage-!|some page|true|
+
+Then rename the target page.
+
+|Response Requester.|
+|uri   |status?|
+|!-TargetPage?responder=renamePage&newName=NewTarget&refactorReferences=on-!||
+
+Next fetch the Source page.
+
+|Response Requester.|
+|uri|valid?|contents?|
+|!-SourcePage-!|true||
+
+Make sure that the new target name is present and that the old name is not.
+
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|!-NewTarget-!|true|
+|contents|!-TargetPage-!|false|
+
+

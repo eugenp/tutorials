@@ -1,0 +1,9 @@
+!help 
+!| script  |
+| Given a wiki page with history |
+| Then the history size is ${= ${Create_backup_for_initial_page_version} +1 =}|
+| Then the new version can be retrieved|
+| Then the first version can be retrieved|
+
+
+

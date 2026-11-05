@@ -3,12 +3,14 @@ package com.baeldung.verticalslices.author.usecases;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
+import com.baeldung.verticalslices.author.domain.AuthorRepository;
 import com.baeldung.verticalslices.events.ArticleCreatedEvent;
 
 @Component
-class CreateArticleUseCase {
+public class CreateArticleUseCase {
 
     private final ApplicationEventPublisher eventPublisher;
+    private final AuthorRepository authorRepository;
 
     void createArticle(CreateArticleRequest article) {
         saveToDatabase(article);
@@ -25,7 +27,8 @@ class CreateArticleUseCase {
 
     }
 
-    CreateArticleUseCase(ApplicationEventPublisher eventPublisher) {
+    CreateArticleUseCase(AuthorRepository authorRepository, ApplicationEventPublisher eventPublisher) {
+        this.authorRepository = authorRepository;
         this.eventPublisher = eventPublisher;
     }
 }

@@ -1,0 +1,15 @@
+For this test to perform we reduce the timeout to 1 seconds. If the server is not responding in time, we should raise an error.
+
+
+!|script                         |
+|given page|TestPage|with content|${SUT_PATH} !-
+!define TEST_SYSTEM {slim}
+!define slim.flags {-s 1}
+#Will pass
+|fitnesse.fixtures.Sleep|20|
+
+#Will fail
+|fitnesse.fixtures.Sleep|90000|
+-!|
+|test results for page in debug mode|TestPage|should contain|The instruction timed out after 1 seconds          |
+|test results for page in debug mode|TestPage|should contain|!-span class="pass">fitnesse.fixtures.Sleep</span-!|

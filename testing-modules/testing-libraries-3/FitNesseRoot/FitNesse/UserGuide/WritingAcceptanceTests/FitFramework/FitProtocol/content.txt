@@ -1,0 +1,16 @@
+ * ''INTEGER'' : A integer value in the form of a 10 byte string
+  * !-0000000000 = 0-!
+  * !-0000000005 = 5-!
+  * !-0000000123 = 123-!
+ * ''READ'' : Reading a value involves two step.
+  1 read an ''INTEGER'' value, n
+  2 read n bytes.
+ * ''WRITE'' : Writing a value involves two steps
+  1 count the bytes in value and write the size as an ''INTEGER''
+  2 write the value as bytes
+ * ''WRITE COUNTS'' : Write the counts as 4 ''INTEGER''s
+  1 right
+  2 wrong
+  3 ignores
+  4 exceptions
+ * ''STATUS'' : Length of Error Message. If it is zero, the connection has been established. If not, it is followed by the Error Message.

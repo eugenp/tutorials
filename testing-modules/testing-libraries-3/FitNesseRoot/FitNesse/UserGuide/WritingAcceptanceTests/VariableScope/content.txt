@@ -1,0 +1,10 @@
+Variable are in scope if they are defined on the page in question or in somewhere in the parent hierarchy of the page in question.
+
+For example, lets say the variable we are interested in is X.
+
+ * If X is defined on this page then it is definately in scope.
+ * If X is not defined on this page but is defined in the page .FitNesse (this page's parent), then X is still in scope.
+ * If X is defined on .FitNesse.UserGuide.FitNesseWiki then X is not in scope because .FitNesse.UserGuide.FitNesseWiki is not a parent of this page.
+
+All variables that have been declared using !style_code(!define) can be checked by adding !style_code(?variables) at the end of the page's url.
+For example !style_code(!-http://myFitNesseHost/FitNesse.UserGuide.FitNesseWiki?variables-!) will show a table with the names, their values and the pages the values are defined.

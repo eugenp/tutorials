@@ -1,0 +1,5 @@
+solon.dataSources:
+  tasks!:
+    jdbcUrl: jdbc:h2:mem:tasks-test-${server.port}
+
+server.host: 127.0.0.1

@@ -35,7 +35,7 @@ public class BenchmarkVirtualThread {
     public void benchmark() throws InterruptedException, IOException {
         List<Thread> threads = new ArrayList<>();
         IntStream.range(0, CONCURRENCY).forEach(i -> threads.add(Thread.startVirtualThread(() -> cartService.update(UUID.randomUUID()
-                .toString(), 2))));
+            .toString(), 2))));
 
         threads.forEach(th -> {
             try {

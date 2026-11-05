@@ -1,0 +1,34 @@
+!*< test page content definition
+!define pageContent (!include -setup SetUp
+!include IncludedPage
+Including Page running page name is !-${RUNNING_PAGE_NAME}-!
+!include -teardown TearDown)
+!define firstLevelPageContent (!include SecondLevelIncludedPage
+First Level Included running page name is !-${RUNNING_PAGE_NAME}-!)
+
+*!
+
+!3 Test that the RUNNING_PAGE_NAME variable is always the top level running page's name
+!|script|
+|create page|SetUp|with content|Set Up running page name is !-${RUNNING_PAGE_NAME}-!|
+|create page|TearDown|with content|Tear Down running page name is !-${RUNNING_PAGE_NAME}-!|
+|create page|IncludedPage|with content|Included Page running page name is !-${RUNNING_PAGE_NAME}-!|
+|given page|IncludingPage|with content|${pageContent}|
+|it should contain|Included Page running page name is <a href="IncludingPage">IncludingPage|
+|it should contain|Including Page running page name is <a href="IncludingPage">IncludingPage|
+|it should contain|Set Up running page name is <a href="IncludingPage">IncludingPage|
+|it should contain|Tear Down running page name is <a href="IncludingPage">IncludingPage|
+
+
+!3 Test that the RUNNING_PAGE_NAME variable recurses over multiple levels of included pages
+!|script|
+|create page|SetUp|with content|Set Up running page name is !-${RUNNING_PAGE_NAME}-!|
+|create page|TearDown|with content|Tear Down running page name is !-${RUNNING_PAGE_NAME}-!|
+|create page|SecondLevelIncludedPage|with content|Second Level Included Page running page name is !-${RUNNING_PAGE_NAME}-!|
+|create page|IncludedPage|with content|${firstLevelPageContent}|
+|given page|IncludingPage|with content|${pageContent}|
+|it should contain|Set Up running page name is <a href="IncludingPage">IncludingPage|
+|it should contain|Tear Down running page name is <a href="IncludingPage">IncludingPage|
+|it should contain|Second Level Included Page running page name is <a href="IncludingPage">IncludingPage|
+|it should contain|First Level Included running page name is <a href="IncludingPage">IncludingPage|
+|it should contain|Including Page running page name is <a href="IncludingPage">IncludingPage|

@@ -1,0 +1,31 @@
+|import            |
+|fitnesse.slim.test|
+
+!3 Slim symbols names must start with a letter, followed by letters, digits and underscores
+
+!|test slim          |
+|string|getStringArg?|
+|foo   |$x3_=        |
+|$x3_  |foo          |
+
+!3 Referencing undefined Slim symbols names raise no error but return the symbol name
+
+!|test slim              |
+|string    |getStringArg?|
+|$UNDEFINED|$UNDEFINED   |
+
+!3 Slim symbols names are case sensitive
+
+!|test slim          |
+|string|getStringArg?|
+|lower |$x=          |
+|upper |$X=          |
+|$x    |lower        |
+|$X    |upper        |
+
+!3 Slim symbols names also support UTF8 names
+
+!|test slim                 |
+|string       |getStringArg?|
+|ØÅÆØÅÆ_ØÅÆØÅÆ|$Æ_ØÅ=       |
+|$Æ_ØÅ        |ØÅÆØÅÆ_ØÅÆØÅÆ|

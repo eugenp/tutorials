@@ -1,0 +1,2 @@
+!contents -g -p
+!define TEST_SYSTEM {slim}

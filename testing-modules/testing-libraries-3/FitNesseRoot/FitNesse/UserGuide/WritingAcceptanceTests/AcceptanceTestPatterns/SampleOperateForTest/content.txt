@@ -1,0 +1,5 @@
+This is the Opertation step of our sample test.
+
+It is common among multiple tests so it is saved in a separate page that can be included by test pages.
+
+!|A table the performs an operation that needs checking|

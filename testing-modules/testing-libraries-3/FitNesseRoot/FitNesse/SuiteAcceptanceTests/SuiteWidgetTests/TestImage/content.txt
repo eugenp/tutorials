@@ -1,0 +1,41 @@
+!3 This page tests the inclusion of images.
+#
+ * First create a page with a set of images in it.
+#
+|script|
+|start|Page Builder|
+|line|!-!img name-!|
+|line|!-!img-l name-!|
+|line|!-!img-r name-!|
+|line|!-!img -w 512 name-!|
+|line|!-Image should be inline !img name with the text-!|
+|line|!-!img-l -w 200 name-!|
+|line|!-!img-r -w 150 name-!|
+|line|!-!img -m 5 -b 1 name-!|
+|line|!-!img-r -w 640 -m 10 -b 2 url-!|
+|page|!-ImagePage-!|
+#
+ * Then request that page
+#
+|Response Requester.|
+|uri|valid?|contents?|
+|!-ImagePage-!|true||
+#
+ * Make sure the html is correct for the images included.
+#
+|Response Examiner.|
+|type|pattern|matches?|wrapped html?|
+|contents|a|true||
+
+|Response Examiner.|
+|type|number|string?|
+|line|1|!-&lt;img src="name"/>-!|
+|line|2|!-&lt;img src="name" class="left"/>-!|
+|line|3|!-&lt;img src="name" class="right"/>-!|
+|line|4|!-&lt;img src="name" width="512"/>-!|
+|line|5|!-Image should be inline &lt;img src="name"/> with the text-!|
+|line|6|!-&lt;img src="name" class="left" width="200"/>-!|
+|line|7|!-&lt;img src="name" class="right" width="150"/>-!|
+|line|8|!-&lt;img src="name" style="border:1px solid black;margin:5px;"/>-!|
+|line|9|!-&lt;img src="url" class="right" width="640" style="border:2px solid black;margin:10px;"/>-!|
+

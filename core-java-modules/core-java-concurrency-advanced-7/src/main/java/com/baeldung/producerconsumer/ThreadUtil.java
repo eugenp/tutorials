@@ -3,8 +3,9 @@ package com.baeldung.producerconsumer;
 import java.util.List;
 
 public class ThreadUtil {
+
     public static void waitForAllThreadsToComplete(List<Thread> threads) {
-        for(Thread thread: threads) {
+        for (Thread thread : threads) {
             try {
                 thread.join();
             } catch (InterruptedException e) {

@@ -1,0 +1,27 @@
+To set the style of a word or phrase use the !-!style_<class>(text)-! widget. This widget has three forms.  !style_code[!-!style_<class>(text)-!], !style_code(!-!style_<class>{text}-!), and !style_code{!-!style_<class>[text]-!}
+
+!note Yes, that means that you cannot put a style around a single string that has all three closing terminators.  I'm sure you can figure out the workaround.
+Here are some of the available classes you can use.
+
+| !c '''Markup Text''' | !c '''Displayed as''' |
+| !-!style_error(an error)-! | !style_error(an error) |
+| !-!style_pass(pass)-! | !style_pass(pass) |
+| !-!style_fail(fail)-! | !style_fail(fail) |
+| !-!style_ignore(ignore)-! | !style_ignore(ignore) |
+| !-!style_caps{Caps}-! | !style_caps{Caps} |
+| !-!style_code[code]-! | !style_code[code] |
+| !-!style_red[red]-! and other colors... | !style_red[red], !style_orange[orange], !style_yellow[yellow], !style_green[green], !style_blue[blue], !style_indigo[indigo], !style_violet[violet], !style_pink[pink], !style_lightYellow[lightYellow], !style_lightGreen[lightGreen], !style_lightBlue[lightBlue], !style_chocolate[chocolate], !style_darkOrange[darkOrange], !style_darkRed[darkRed], !style_olive[olive], !style_darkBlue[darkBlue], !style_darkGreen[darkGreen] |
+| !-!style_code(!style_red[code red])-! | !style_code(!style_red[code red]) |
+| !-!style_note[note]-! | !style_note[note] |
+| !-!style_right[right]-! | !style_right[right] |
+| !-!style_strike[strike]-! | !style_strike[strike] |
+| !-!style_meta[meta]-! | !style_meta[meta] |
+| !-!style_included[included]-! | !style_included[included] |
+| !-!style_setup[setup]-! | !style_setup[setup] |
+| !-!style_collapse_rim[collapse_rim]-! | !style_collapse_rim[collapse_rim] |
+| !-!style_pageHelp[pageHelp]-! | !style_pageHelp[pageHelp] |
+| !-x !style_hidden[hidden] x-! | x !style_hidden[hidden] x |
+| !-!style_test_output_name[test_output_name]-! | !style_test_output_name[test_output_name] |
+| !-!style_fit_label[fit_label]-! | !style_fit_label[fit_label] |
+| !-!style_fit_stacktrace[fit_stacktrace]-! | !style_fit_stacktrace[fit_stacktrace] |
+| !-!style_fit_grey[fit_grey]-! | !style_fit_grey[fit_grey] |

@@ -1,0 +1,35 @@
+Removing a Symbolic Link is also done from the properties view of the page containing the link.  Each link in the list will have an '''Unlink''' link that will perform the removal of the link.  The link contains a URL of the form:
+
+!-<pre><b>http://host/PathToPage?responder=symlink&remove=</b>-!''nameOfLink''!-</pre>-!
+
+But first we need to create a link to remove.
+!include CreateRelativeSymbolicLink
+
+When we look at the properties page we'll see the Unlink link.
+!|Response Requester.          |
+|uri                   |status?|
+|LinkingPage?properties|200    |
+
+!|Response Examiner.                                                                |
+|type    |pattern                                                |matches?|contents?|
+|contents|<a href="\?responder=symlink&removal=SymLink">Unlink</a>|true    |         |
+
+Now click the '''remove''' link.
+!|Response Requester.                                 |
+|uri                                          |status?|
+|LinkingPage?responder=symlink&removal=SymLink|303    |
+
+This should remove the symbolic link and redirect back to the properties view.
+!|Response Examiner.                                          |
+|type    |pattern                          |matches?|contents?|
+|contents|Location: /LinkingPage\?properties|true    |         |
+
+When we look at the properties page again, the symbolic link will no longer be listed.
+!|Response Requester.                    |
+|uri                   |status?|contents?|
+|LinkingPage?properties|200    |         |
+
+
+!|Response Examiner.      |
+|type    |pattern|matches?|
+|contents|SymLink|false   |

@@ -1,0 +1,17 @@
+!|scenario|add child page|page|containing|content|to parent page|parentPage|should return Redirect|
+|add child page|@page|containing|@content|to parent page|@parentPage|should return|303|
+
+!|scenario|add child page|page|containing|content|to parent page|parent page|should return Not Found|
+|add child page|@page|containing|@content|to parent page|@parentPage|should return|404|
+
+!|scenario|add child page|page|containing|content|to parent page|parent page|should return BadRequest|
+|add child page|@page|containing|@content|to parent page|@parentPage|should return|400|
+
+!|scenario|add child page|page|containing|content|to parent page|parent page|should return|return code|
+|add child page|@page|of type|Default|containing|@content|to parent page|@parentPage|should return|@returnCode|
+
+!|scenario|add child page|page|of type|type|containing|content|to parent page|parent page|should return Redirect|
+|add child page|@page|of type|@type|containing|@content|to parent page|@parentPage|should return|303|
+
+!|scenario|add child page|page|of type|type|containing|content|to parent page|parent page|should return|return code|
+|check|request page|@parentPage?addChild&pageName=@page&pageContent=@content&pageType=@type|@returnCode|

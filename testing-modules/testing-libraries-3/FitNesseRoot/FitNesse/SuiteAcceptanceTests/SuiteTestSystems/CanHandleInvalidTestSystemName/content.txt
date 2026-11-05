@@ -1,0 +1,8 @@
+!| script                         |
+|create page|TestPage|with content|!-!define TEST_SYSTEM {foo}
+-! |
+
+!| script                                          |
+|check |request page    |TestPage?test     |200    |
+|ensure|content contains|Unknown test system: 'foo'|
+|show  |content                                    |

@@ -1,0 +1,16 @@
+---
+Suites: configuration
+Test
+---
+!2 You can redefine the keyword which catches exceptions
+This is intended for backward compatibility to be able to switch this feature off
+Don't use in other cases
+
+!define SLIM_EXCEPTION_COMPARATOR (HelloEXCEPTION:)
+
+|import|
+|fitnesse.slim.test|
+
+|Test Slim                                                                                                             |
+|# Scenario               |throw Normal?                         |getStringArg?             |string                    |
+|redefined Comparator name|HelloEXCEPTION:=~/This is my exception/|EXCEPTION:=~/Test message/|EXCEPTION:=~/Test message/|

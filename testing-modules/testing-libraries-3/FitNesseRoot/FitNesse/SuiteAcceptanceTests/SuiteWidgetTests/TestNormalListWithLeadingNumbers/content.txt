@@ -1,0 +1,30 @@
+!3 Normal lists with leading numbers
+An old bug in Fitnesse.  If you created a normal list with leading numbers in the text, the parser got confused and thought that the leading numbers were part of a numeric list.
+
+A list created as follows {{{* 50 ways to leave your lover}}} should be rendered as a normal list with "50 ways to leave your lover" as the text of the list.
+#
+ * First create a page with a simple table in it.
+#
+!note We use \ here as a way to capture the leading space before the *.
+!|script|
+|start|Page Builder|
+|line|\ * 50 ways to leave your lover.|
+|page|NormalListWithLeadingNumericPage|
+#
+ * Then request that page
+#
+!|Response Requester.|
+|uri|valid?|contents?|
+|NormalListWithLeadingNumericPage|true||
+#
+ * Make sure the html is correct for a simple table.
+#
+!|Response Examiner.|
+|type|pattern|matches?|value|
+|contents|<li>50 ways to leave your lover.</li>|true||
+
+!|Response Examiner.|
+|type|number|string?|
+|line|1|<ul>|
+|line|2|<li>50 ways to leave your lover.</li>|
+|line|3|</ul>|

@@ -1,0 +1,596 @@
+!-
+<div class=Section1>
+
+<h1>Fit Spe<st1:PersonName>c</st1:PersonName>ifi<st1:PersonName>c</st1:PersonName>ation,
+v1.1</h1>
+
+<p>&nbsp;</p>
+
+<p>Fit is a tool for improving <st1:PersonName>c</st1:PersonName>ommuni<st1:PersonName>c</st1:PersonName>ation
+between <st1:PersonName>c</st1:PersonName>ustomers, programmers, and
+testers.&nbsp; It allows the <st1:PersonName>c</st1:PersonName>ustomer to des<st1:PersonName>c</st1:PersonName>ribe
+his or her requirements in a way that <st1:PersonName>c</st1:PersonName>an be <st1:PersonName>c</st1:PersonName>he<st1:PersonName>c</st1:PersonName>ked
+against the a<st1:PersonName>c</st1:PersonName>tual program.</p>
+
+<p>&nbsp;</p>
+
+<p>The te<st1:PersonName>c</st1:PersonName>hnique Fit uses is <st1:PersonName>c</st1:PersonName>alled
+&quot;spe<st1:PersonName>c</st1:PersonName>ifi<st1:PersonName>c</st1:PersonName>ation
+by example.&quot;&nbsp; It allows <st1:PersonName>c</st1:PersonName>ustomers to
+<st1:PersonName>c</st1:PersonName>reate a do<st1:PersonName>c</st1:PersonName>ument
+with tables that des<st1:PersonName>c</st1:PersonName>ribe spe<st1:PersonName>c</st1:PersonName>ifi<st1:PersonName>c</st1:PersonName>
+examples of how the software should work.&nbsp; Fit looks at the do<st1:PersonName>c</st1:PersonName>ument
+and <st1:PersonName>c</st1:PersonName>he<st1:PersonName>c</st1:PersonName>ks to
+see if the software works the way the tables say it should.</p>
+
+<p>&nbsp;</p>
+
+<p>Fit uses small programs, <st1:PersonName>c</st1:PersonName>alled
+&quot;fixtures,&quot; to <st1:PersonName>c</st1:PersonName>onne<st1:PersonName>c</st1:PersonName>t
+tables to software.&nbsp; Programmers on the development team are responsible
+for <st1:PersonName>c</st1:PersonName>reating those fixtures.&nbsp; Customers
+are responsible for <st1:PersonName>c</st1:PersonName>reating the tables.&nbsp;
+Testers work with both groups of people to help make sure that all situations
+are adequately <st1:PersonName>c</st1:PersonName>overed.&nbsp; The three groups
+work together, intera<st1:PersonName>c</st1:PersonName>tively, to <st1:PersonName>c</st1:PersonName>reate
+great software.</p>
+
+<p>&nbsp;</p>
+
+<p>This do<st1:PersonName>c</st1:PersonName>ument, and the do<st1:PersonName>c</st1:PersonName>uments
+it referen<st1:PersonName>c</st1:PersonName>es, des<st1:PersonName>c</st1:PersonName>ribes
+Fit using spe<st1:PersonName>c</st1:PersonName>ifi<st1:PersonName>c</st1:PersonName>ation
+by example.&nbsp; It is, itself, an example of how to use Fit.<span
+style='mso-spacerun:yes'>  </span>If all the pass <st1:PersonName>c</st1:PersonName>ells
+in the table below are <st1:PersonName>c</st1:PersonName>olored green, then you
+<st1:PersonName>c</st1:PersonName>an be <st1:PersonName>c</st1:PersonName>onfident
+that your <st1:PersonName>c</st1:PersonName>opy of Fit meets this spe<st1:PersonName>c</st1:PersonName>ifi<st1:PersonName>c</st1:PersonName>ation.</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>Using Fit to test itself, as we do here, leads to <st1:PersonName>c</st1:PersonName>ir<st1:PersonName>c</st1:PersonName>ular
+logi<st1:PersonName>c</st1:PersonName> that <st1:PersonName>c</st1:PersonName>an
+be unraveled more easily by the <st1:PersonName>c</st1:PersonName>omputer than
+by humans.<span style='mso-spacerun:yes'>  </span>To avoid a heada<st1:PersonName>c</st1:PersonName>he,
+ignore the fa<st1:PersonName>c</st1:PersonName>t that this do<st1:PersonName>c</st1:PersonName>ument
+is written in HTML or that the tables use Fit fixtures.<span
+style='mso-spacerun:yes'>  </span>Instead, just think of it as a regular do<st1:PersonName>c</st1:PersonName>ument--one
+that happens to be <st1:PersonName>c</st1:PersonName>olored green and red.</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>Fun<st1:PersonName>c</st1:PersonName>tional <st1:PersonName>c</st1:PersonName>hanges
+to <span class=GramE>Fit</span> that are new in this version of the spe<st1:PersonName>c</st1:PersonName>
+are <span style='background:yellow;mso-highlight:yellow'>highlighted yellow</span>.<span
+style='mso-spacerun:yes'>  </span>Layout, formatting, and other non-fun<st1:PersonName>c</st1:PersonName>tional
+<st1:PersonName>c</st1:PersonName>hanges to the spe<st1:PersonName>c</st1:PersonName>ifi<st1:PersonName>c</st1:PersonName>ation
+are not highlighted.</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<h2>Details</h2>
+
+<p>&nbsp;</p>
+
+<p>Fit knows how to do these things:</p>
+
+<p>&nbsp;</p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
+ mso-yfti-tbllook:480;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
+ .5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span class=SpellE><span style='color:silver'>fat.Referen</span></span><st1:PersonName><span
+   class=SpellE><span style='color:silver'>c</span></span></st1:PersonName><span
+  class=SpellE><span style='color:silver'>eFixture</span></span><span
+  style='color:silver'><o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Des</b><st1:PersonName><b>c</b></st1:PersonName><b>ription</b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Lo</b><st1:PersonName><b>c</b></st1:PersonName><b>ation</b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Result()</b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b><i style='mso-bidi-font-style:normal'>Note<o:p></o:p></i></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>Parse HTML do<st1:PersonName>c</st1:PersonName>uments</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><a href="parse.html">parse.html</a></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>pass</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>Modify HTML do<st1:PersonName>c</st1:PersonName>uments</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><a href="annotation.html">annotation.html</a></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>pass</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>Interpret tables using fixtures<span style='mso-tab-count:1'>     </span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><a href="fixtures.html">fixtures.html</a></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><i style='mso-bidi-font-style:normal'>in</i><st1:PersonName><i
+   style='mso-bidi-font-style:normal'>c</i></st1:PersonName><i
+  style='mso-bidi-font-style:normal'>omplete<o:p></o:p></i></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>Provide a <st1:PersonName>c</st1:PersonName>ommand-line interfa<st1:PersonName>c</st1:PersonName>e</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><st1:PersonName>c</st1:PersonName>li.html</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><i style='mso-bidi-font-style:normal'>in</i><st1:PersonName><i
+   style='mso-bidi-font-style:normal'>c</i></st1:PersonName><i
+  style='mso-bidi-font-style:normal'>omplete<o:p></o:p></i></p>
+  </td>
+ </tr>
+</table>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>Cli<st1:PersonName>c</st1:PersonName>k the links for details about how Fit
+does ea<st1:PersonName>c</st1:PersonName>h of these things.<span
+style='mso-spacerun:yes'>  </span>This spe<st1:PersonName>c</st1:PersonName>ifi<st1:PersonName>c</st1:PersonName>ation
+is a work in progress and the fixtures and <st1:PersonName>c</st1:PersonName>ommand-line
+interfa<st1:PersonName>c</st1:PersonName>e portion are in<st1:PersonName>c</st1:PersonName>omplete.<span
+style='mso-spacerun:yes'>  </span>Implementers: you may ignore these se<st1:PersonName>c</st1:PersonName>tions
+for now.</p>
+
+<div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0in 0in 1.0pt 0in'>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>Fit is available for many programming languages.<span
+style='mso-spacerun:yes'>  </span>The se<st1:PersonName>c</st1:PersonName>tions
+above apply to all implementations of Fit.<span style='mso-spacerun:yes'> 
+</span>Extensions spe<st1:PersonName>c</st1:PersonName>ifi<st1:PersonName>c</st1:PersonName>
+to this implementation of Fit are des<st1:PersonName>c</st1:PersonName>ribed
+here:</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
+ mso-yfti-tbllook:480;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
+ .5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0'>
+  <td valign=top style='border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><span class=SpellE><span style='color:silver'>fat.Referen</span></span><st1:PersonName><span
+   class=SpellE><span style='color:silver'>c</span></span></st1:PersonName><span
+  class=SpellE><span style='color:silver'>eFixture</span></span><span
+  style='color:silver'><o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+  <td valign=top style='border:solid windowtext 1.0pt;border-left:none;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Des</b><st1:PersonName><b>c</b></st1:PersonName><b>ription</b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Lo</b><st1:PersonName><b>c</b></st1:PersonName><b>ation</b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><b>Result()</b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid windowtext 1.0pt;border-top:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>Implementation-spe<st1:PersonName>c</st1:PersonName>ifi<st1:PersonName>c</st1:PersonName>
+  extensions</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p><a href="extensions.html">extensions.html</a></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p>pass</p>
+  </td>
+ </tr>
+</table>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<h2><a name="_Toc90928256">Errata</a></h2>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>Known errors and omissions, to be fixed in a future version:</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo3;tab-stops:list .5in'>The
+     &lt;<span class=SpellE>wiki</span>&gt; tag is not spe<st1:PersonName>c</st1:PersonName>ified.</li>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo3;tab-stops:list .5in'>Parsing-related
+     errors are des<st1:PersonName>c</st1:PersonName>ribed but the errors
+     arent spe<st1:PersonName>c</st1:PersonName>ified.</li>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo3;tab-stops:list .5in'>Nested
+     tables are not spe<st1:PersonName>c</st1:PersonName>ified</li>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo3;tab-stops:list .5in'>Argument
+     list (next to fixture name) is not spe<st1:PersonName>c</st1:PersonName>ified.</li>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo3;tab-stops:list .5in'>Parser
+     <st1:PersonName>c</st1:PersonName>an handle any XML <span class=SpellE>heirar</span><st1:PersonName><span
+      class=SpellE>c</span></st1:PersonName><span class=SpellE>hy</span>, but
+     only &lt;table&gt;, &lt;<span class=SpellE><span class=GramE>tr</span></span>&gt;,
+     &lt;td&gt; is spe<st1:PersonName>c</st1:PersonName>ified.</li>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo3;tab-stops:list .5in'>Files
+     are expe<st1:PersonName>c</st1:PersonName>ted to be CP1252, but this is
+     not spe<st1:PersonName>c</st1:PersonName>ified.</li>
+</ul>
+
+<h2><a name="_Toc90928257">To Do</a></h2>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>To look at in a future release:</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l4 level1 lfo3;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Why is info text <st1:PersonName>c</st1:PersonName>oming
+out with a line break when this spe<st1:PersonName>c</st1:PersonName> is
+run?<span style='mso-spacerun:yes'>  </span>(Be<st1:PersonName>c</st1:PersonName>ause
+Word <st1:PersonName>c</st1:PersonName>reates empty <st1:PersonName>c</st1:PersonName>ells
+with this markup: &lt;p&gt;&amp;<span class=SpellE><span class=GramE>nbsp</span></span><span
+class=GramE>;</span>&lt;/p&gt;.<span style='mso-spacerun:yes'>  </span><span
+class=SpellE>A</span><st1:PersonName><span class=SpellE>c</span></st1:PersonName><st1:PersonName><span
+ class=SpellE>c</span></st1:PersonName><span class=SpellE>omodate</span> this?)</p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo3;tab-stops:list .5in'>Possible
+     bug: when a variable <st1:PersonName>c</st1:PersonName>olumn has a blank <st1:PersonName>c</st1:PersonName>ell
+     (in a <span class=SpellE>ColumnFixture</span>), the value is filled in but
+     it isnt shown in grey.</li>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo3;tab-stops:list .5in'>More
+     flexibility in <st1:PersonName><span class=SpellE>c</span></st1:PersonName><span
+     class=SpellE>harset</span> handling.</li>
+</ul>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>Possible feature <st1:PersonName>c</st1:PersonName>hanges:</p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo3;tab-stops:list .5in'>Add
+     blank keyword?</li>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo3;tab-stops:list .5in'><span
+     class=GramE>make</span> <span class=SpellE>fat.Referen</span><st1:PersonName><span
+      class=SpellE>c</span></st1:PersonName><span class=SpellE>eFixture</span>
+     a standard fit fixture?</li>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo3;tab-stops:list .5in'>Provide
+     a way for <span class=SpellE>ColumnFixture</span> to easily annotate a <st1:PersonName>c</st1:PersonName>ell
+     (in<st1:PersonName>c</st1:PersonName>luding when it passes)</li>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo3;tab-stops:list .5in'>Data
+     setup fixture, similar to <span class=SpellE>RowFixture</span>[?]</li>
+</ul>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<h2>Change History</h2>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>Changes in version 1.1:</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo7;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b>HTML to text: Added</b> support for class
+attribute in MS Word &lt;p&gt; tag parsing</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo7;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b>HTML to text: Clarified </b>handling of
+leading and trailing line breaks</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo7;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b>Text to HTML: Changed </b>handling of ba<st1:PersonName>c</st1:PersonName>kwards
+line feed</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo7;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b>Fixture loading: Added </b>spe<st1:PersonName>c</st1:PersonName>ifi<st1:PersonName>c</st1:PersonName>
+error messages when fixtures dont load</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo7;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b>Standard annotations: Changed </b>all HTML to
+put quotes around <st1:PersonName>c</st1:PersonName>olor attributes</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo7;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b>Standard annotations: Changed </b>error and
+info annotations to <st1:PersonName>c</st1:PersonName>onvert new text to
+HTML.</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo7;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b>Standard annotations: Changed</b> wrong and
+error annotations to strip mark-up from original <st1:PersonName>c</st1:PersonName>ell.</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo7;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b>Standard annotations: Changed </b><span
+style='mso-bidi-font-weight:bold'>error annotation to use standard font size
+for error message.</span></p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo7;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b>Malformed HTML Parsing: Changed </b><span
+style='mso-bidi-font-weight:bold'>un</span><st1:PersonName><span
+ style='mso-bidi-font-weight:bold'>c</span></st1:PersonName><span
+style='mso-bidi-font-weight:bold'>losed table, <span class=SpellE><span
+class=GramE>tr</span></span>, and td tags to generate an error.</span></p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo7;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span class=SpellE><b>ColumnFixture</b></span><b>:
+Changed </b><span style='mso-bidi-font-weight:bold'>headers to allow multiple words.<span
+style='mso-spacerun:yes'>  </span>(<span class=GramE>not</span> yet spe</span><st1:PersonName><span
+ style='mso-bidi-font-weight:bold'>c</span></st1:PersonName><span
+style='mso-bidi-font-weight:bold'>ified.)</span></p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo7;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b style='mso-bidi-font-weight:normal'>Fixture
+loading: Added</b> argument list by fixture name.<span
+style='mso-spacerun:yes'>  </span>(<span class=GramE>not</span> yet spe<st1:PersonName>c</st1:PersonName>ified.)</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo7;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b style='mso-bidi-font-weight:normal'>Parsing:
+Added</b> support for nested tables.<span style='mso-spacerun:yes'> 
+</span>(not yet spe<st1:PersonName>c</st1:PersonName>ified.)</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>Changes in version 1.0:</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo9;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b>Rewrite </b>of the spe<st1:PersonName>c</st1:PersonName>.</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo9;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b>HTML to text: Changed </b>&amp;<span
+class=SpellE>nbsp</span>; entity to <st1:PersonName>c</st1:PersonName>ombine
+with other leading and trailing <span class=SpellE>whitespa</span><st1:PersonName><span
+ class=SpellE>c</span></st1:PersonName><span class=SpellE>e</span>.</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo9;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b>HTML to text: Changed </b>non-breaking spa<st1:PersonName>c</st1:PersonName>e
+<st1:PersonName>c</st1:PersonName>hara<st1:PersonName>c</st1:PersonName>ter to <i>not</i>
+<st1:PersonName>c</st1:PersonName>ombine with other internal <span
+class=SpellE>whitespa</span><st1:PersonName><span class=SpellE>c</span></st1:PersonName><span
+class=SpellE>e</span>.</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo9;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b>HTML to text: Added </b><st1:PersonName>c</st1:PersonName>onversion
+of &lt;<span class=SpellE>br</span>&gt; and &lt;p&gt; tags to line-feed <st1:PersonName>c</st1:PersonName>hara<st1:PersonName>c</st1:PersonName>ters.</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo9;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b>HTML to text: Added </b><st1:PersonName>c</st1:PersonName>onversion
+of smart quotes to regular quotes.</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo9;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b>Text to HTML: Added </b><st1:PersonName>c</st1:PersonName>onversion
+of line-feed <st1:PersonName>c</st1:PersonName>hara<st1:PersonName>c</st1:PersonName>ters
+to &lt;<span class=SpellE>br</span>&gt; tags.</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo9;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b>Text to HTML: Added </b><st1:PersonName>c</st1:PersonName>onversion
+of adjoining spa<st1:PersonName>c</st1:PersonName>es to &amp;<span
+class=SpellE>nbsp</span>; entities.</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>Initial version:</p>
+
+<p style='margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo9;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Experimental spe<st1:PersonName>c</st1:PersonName>ifi<st1:PersonName>c</st1:PersonName>ation
+<st1:PersonName>c</st1:PersonName>reated by <st1:PersonName>Ward Cunningham</st1:PersonName>
+and <st1:PersonName>Jim Shore</st1:PersonName>.</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<p>&nbsp;</p>
+
+</div>
+
+<p style='margin-bottom:12.0pt'><o:p>&nbsp;</o:p></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;mso-padding-alt:0in 0in 0in 0in'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td valign=top style='padding:0in 5.4pt 0in 5.4pt'>
+  <p><span class=SpellE><span style='color:silver'>fit.Summary</span></span></p>
+  </td>
+ </tr>
+</table>
+
+<p>&nbsp;</p>
+
+-!
+----
+!contents

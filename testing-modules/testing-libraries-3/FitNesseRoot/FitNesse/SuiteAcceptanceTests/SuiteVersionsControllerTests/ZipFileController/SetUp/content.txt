@@ -1,0 +1,11 @@
+| import |
+| fitnesse.wiki.fs |
+
+
+!|Library|
+|  versions controller fixture | fitnesse.wiki.fs.ZipFileVersionsController|
+
+First, make sure we start with a clean slate.
+
+| script | 
+| clean up |

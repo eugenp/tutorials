@@ -1,0 +1,65 @@
+When you execute a suite page, !-FitNesse-! tests all the pages mentioned in !-!see-! cross reference widgets.
+This test ensures that any !-!see-! cross references that are aliased also work as expected.
+
+----
+Create a hierarchy of pages
+
+|script|Page Builder|
+|line|Top-level page forming sub-wiki|
+|page|!-TopPage-!|
+
+|script|Page Builder|
+|line|${SUT_PATH}|
+|line|!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page|!-TopPage.TestPage-!|
+
+Create a Suite page that mentions the test page in a !-!see-! widget
+
+|script|Page Builder|
+|line|!-!see [[Test page][.TopPage.TestPage]]-!|
+|page|!-SuitePage-!|
+
+|Response Requester.|
+|uri   |valid?|
+|!-SuitePage-!|true|
+
+|Response Examiner.|
+|contents?|
+||
+
+Check the suite page has the !-!see-! reference on it.
+
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|!-See:.*TopPage\.TestPage.*Test page-!|true|
+
+Now run the suite page.
+
+|Response Requester.|
+|uri   |valid?|
+|!-SuitePage?responder=suite-!|true|
+
+|Response Examiner.|
+|contents?|
+||
+
+The suite should report the !-TestPage-! and should show no errors.
+
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|!-TopPage\.TestPage-!|true|
+|contents|Test Pages:.*1 right|true|
+
+The error log page should not have any errors
+
+|Response Requester.|
+|uri   |valid?|
+|!-SuitePage?executionLog-!|true|
+
+|Response Examiner.|
+|contents?|
+||
+
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|Exit code.*0.*Time|true|

@@ -1,0 +1,15 @@
+
+''Previous page: [[!-ConstraintFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.ConstraintFixture]] Next page: [[!-SubsetFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.SubsetFixture]] Parent page: [[!-FitLibrary Fixtures-!][<UserGuide.FixtureGallery.FitLibraryFixtures]]''
+!2 !-SetFixture-!
+'''!- SetFixture -!'''!- is the same as -!'''!- ArrayFixture -!'''!- (see -![[!-ArrayFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.ArrayFixture]]!-) with one difference: the order of the rows is not checked. -!
+
+# section Notes
+!3 !-Notes-!
+!-In Java flow mode, sets returned from the flow fixture method are automatically mapped to a -!'''!- SetFixture -!'''
+
+# section Usage
+!3 !-Usage-!
+!-Use -!'''!- SetFixture -!'''!- instead of -!'''!- RowFixture -!'''!- in Java when working with JavaBeans objects, because it works correctly with JavaBeans getters. Use it instead of -!'''!- ArrayFixture -!'''!- when the order of elements is not important.-!
+
+
+''Previous page: [[!-ConstraintFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.ConstraintFixture]] Next page: [[!-SubsetFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.SubsetFixture]] Parent page: [[!-FitLibrary Fixtures-!][<UserGuide.FixtureGallery.FitLibraryFixtures]]''

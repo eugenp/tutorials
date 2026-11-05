@@ -1,0 +1,50 @@
+---
+Help: For distributed testing or to debug fixture code locally it can be helpful to connect to a manually started SlimService
+Suites: noJunit
+Test
+---
+The below configuration option is useful in two scenarios
+
+!3 1) Pretesting on a developer workstation
+GIVEN you run a central !-FitNesse-! Wiki
+WHEN your developer did some code changes on his workstation
+AND he wants to see if the test still pass
+THEN you can start a !-SlimService-! on his workstation manual
+AND can execute all tests from your central Wiki 
+
+!3 2) Distributed Testing
+Given you run a central !-FitNesse-! Wiki on Linux
+WHEN you need to test some .net code on Windows
+THEN you can start a .Net !-SlimService-! on your Windows Server manual and run it in daemon mode
+AND can execute the test case from your central Wiki 
+
+Configure the test system as below:
+
+{{{
+!define MANUALLY_START_TEST_RUNNER (true)
+!define slim.pool.size (1)
+!define SLIM_PORT {YOUR TEST PORT}
+!define SLIM_HOST {WORKSTATION or SERVER NAME}
+}}}
+
+To demonstrate this we connect to the local Fitnesse Wiki webserver. This should connect but fail with a message that no Slim Header has been provided.
+Tip: Increase the slim.timeout if you need more time to startup the !-SlimService-! manual
+Important: '''!define slim.pool.size (1)'''  to avoid to try any other port than the port you specified.
+Note: if run from Junit no wiki server is started and this test would fail. The tag 'noJunit' has been added to remove it from Junit testing. :)
+
+!| script |
+| create page | TestPage | with content | !-
+!define TEST_SYSTEM {SLIM}
+!define slim.timeout {1}
+!define MANUALLY_START_TEST_RUNNER (true)
+!define slim.pool.size (1)
+!define SLIM_PORT {-!${FITNESSE_PORT}!-}
+!define SLIM_HOST {127.0.0.1}
+
+-! |
+| check | request page | TestPage?test | 200 |
+|ensure |content matches |class="error".{0,60}SlimError: Timeout while reading slim header from client. Check that you are connecting to the right port and that the slim client is running.|
+| show collapsed| content |
+| check | request page | TestPage?executionLog| 200 |
+|ensure | content matches  | Command.{0,20}Connection to running SlimService: 127.0.0.1:${FITNESSE_PORT} |
+| show collapsed| content |

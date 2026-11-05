@@ -1,0 +1,7 @@
+There are three keywords that can appear in a test table.
+
+|null|''is replaced with a true null when used in a string column''|
+|blank|''is replaced with an empty string when used in a string column''|
+|error|''Turns the cell red if there were no errors.  Turns the cell green if there was an exception.''|
+
+Click [[here][.FitNesse.SuiteAcceptanceTests.SuiteFixtureTests.SuiteGeneralFixtureSpec.TestBlankAndNullCells]] to see the acceptance tests for null and blank.

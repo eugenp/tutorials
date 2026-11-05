@@ -1,0 +1,28 @@
+!| script |
+| given page | SuitePage | with content | ${SUT_PATH} !-
+!define TEST_SYSTEM {slim}
+-! |
+| given page | SuitePage.TestPage | with content | !-
+| import |
+| fitnesse.slim.test |
+
+| script:echo script |
+| echo to stdout | This is standard output |
+| echo to stderr | This is error output |
+-! |
+|check |request page    |SuitePage?suite     |200    |
+
+!|script |
+|check |request page    |SuitePage?executionLog     |200    |
+| ensure | content contains | slim:fitnesse.slim.SlimService |
+| ensure | content contains | This is standard output |
+| ensure | content contains | This is error output |
+|show  collapsed |content |
+
+!|script |
+|check |request page    |SuitePage.TestPage?executionLog     |200    |
+| ensure | content contains | This test ran as part of a suite. |
+| ensure | content contains | This is standard output |
+| ensure | content contains | This is error output |
+|show  collapsed |content |
+

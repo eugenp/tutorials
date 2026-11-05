@@ -1,0 +1,41 @@
+!3 BUG:  When moving a page that has children, references to the children are not renamed properly.
+
+Given: A.B.C.E, Move A.B.C to A.D.  References to A.B.C.E should be renamed to A.D.C.E
+
+|Page creator.|
+|Page name.                                   |Page contents.                               |valid?|
+|!-ReferencePage-!                          |!-ParentPageAy.ChildBee.ChildCee.ChildEee-!|true|
+|!-ParentPageAy-!                           |!-^ChildBee-!                              |true   |
+|!-ParentPageAy.ChildBee-!                  |!-^ChildCee-!                              |true   |
+|!-ParentPageAy.ChildBee.ChildCee-!         |page C                                     |true   |
+|!-ParentPageAy.ChildBee.ChildCee.ChildEee-!|Page E                                     |true   |
+|!-ParentPageAy.ChildDee-!                  |page D                                     |true   |
+
+Then move the sub page.
+
+|Response Requester.|
+|uri   |status?|
+|!-ParentPageAy.ChildBee.ChildCee?responder=movePage&newLocation=ParentPageAy.ChildDee&refactorReferences=on-!||
+
+Next fetch reference page and make sure the reference has been changed.
+
+|Response Requester.|
+|uri|valid?|contents?|
+|!-ReferencePage-!|true||
+
+|Response Examiner.|
+|type  |pattern|matches?|wrapped html?|
+|contents|!-ParentPageAy.ChildDee.ChildCee.ChildEee-!|true||
+
+Make sure we can't get the old A.B.C page.
+
+!|Response Requester.|
+|uri|valid?|status?|
+|ParentPageAy.ChildBee.ChildCee?getPage&dontCreatePage|false||
+
+Make sure we ''can'' get the A.D.C.E page at it's new location.
+
+|Response Requester.|
+|uri|valid?|contents?|
+|!-ParentPageAy.ChildDee.ChildCee.ChildEee-!|true||
+

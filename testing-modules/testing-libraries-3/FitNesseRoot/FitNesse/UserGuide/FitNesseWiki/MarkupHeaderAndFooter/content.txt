@@ -1,0 +1,3 @@
+ * If there is a wiki page named PageHeader its contents will be displayed at the top of every wiki page.
+ * If there is a wiki page named PageFooter its contents will be displayed at the bottom of every wiki page.
+ * PageHeader and PageFooter are inherited by a SubWiki

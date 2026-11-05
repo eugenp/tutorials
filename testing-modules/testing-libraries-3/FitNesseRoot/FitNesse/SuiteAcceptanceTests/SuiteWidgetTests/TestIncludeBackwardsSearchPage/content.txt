@@ -1,0 +1,33 @@
+!3 This page tests includes of a backwards search page.
+
+Make sure the !-!include <MyAncestorPage.MyPage-! syntax works.
+#
+ * First create a page to be included.
+#
+|script|
+|start|Page Builder|
+|line|this subpage was included 3.14159|
+|page|!-ParentPage.MiddlePage.IncludedPage-!|
+#
+ * Next create a page to do the including.
+#
+|script|
+|start|Page Builder|
+|line|before|
+|line|!-&bang;include <MiddlePage.IncludedPage
+-! |
+|line|after|
+|page|!-ParentPage.MiddlePage.MiddlePageTwo.IncludingPage-!|
+#
+ * Then request the including page.
+#
+|Response Requester.|
+|uri|valid?|contents?|
+|!-ParentPage.MiddlePage.MiddlePageTwo.IncludingPage-!|true||
+#
+ * Examine the requested page to be sure the included page was in fact included.
+#
+|Response Examiner.|
+|type|pattern|matches?|value|
+|contents|this subpage was included 3.14159|true||
+#

@@ -1,0 +1,146 @@
+!include -c .FitNesse.SuiteAcceptanceTests.SetUp
+----
+A Scenario table is a table that can be called from other tables; namely ScriptTable and DecisionTable.
+
+The format of a Scenario table is the same as the format of a ScriptTable, but with a few differences.  You can see a Scenario table in action [[here][.FitNesse.SuiteAcceptanceTests.SuiteWidgetTests.SimpleWidgets]].
+
+!4 Declaring Scenarios using ''Interposed'' style
+The basic format looks like this:
+
+!| scenario | widget | wikiText | renders | htmlText |
+| create page | WidgetPage | with content | @wikiText |
+| check | request page | WidgetPage | 200 |
+| ensure | content matches | @htmlText |
+| show | content |
+
+!***> No Peeking
+
+| script | page driver |
+
+*!
+The first word in the table is ''Scenario''.  Following that is the signature of the scenario.  This signature is a lot like a function declaration.  The name of the scenario in the table above is ''!-WidgetRenders-!'', and it takes two arguments: ''wikiText'' and ''htmlText''.  Notice how this looks a lot like a function call in a ScriptTable.  The name is composed of every other table cell appropriately camel-cased.  The arguments are the interposed cells, also appropriately camel-cased.  Scenario names will be camel-cased with a leading upper-case letter.  Arguments will be camel-cased with a leading ''lower-case'' letter.
+
+!4 Declaring Scenarios using ''Parameterized'' style.
+You can also declare a scenario by embedding underscores within a string.  Each underscore represents an argument.  The arguments are named in a comma separated list in the following cell.
+
+!| scenario | widget _ renders _ | wikiText,htmlText |
+| create page | WidgetPage | with content | @wikiText |
+| check | request page | WidgetPage | 200 |
+| ensure | content matches | @htmlText |
+| show | content |
+
+The body of the scenario uses the arguments by prefixing them with an '@' sign. The token that follows the '@' ''must be the camel-cased name of the argument.''   Arguments that share a common root string can use optional braces to force the correct evaluation of the full name of the argument.  Thus, if you have arguments ''job'' and ''job code'', you can use @{jobCode} to make sure you get the argument with the longer name.
+
+!4 Invoking a scenario from a DecisionTable
+!| widget renders |
+| wiki text | html text |
+| this is ''italic'' text | this is <i>italic</i> text | italic widget |
+| this is '''bold''' text | this is <b>bold</b> text | bold widget |
+
+Notice that the name of the decision table, once camel-cased, will be ''!-WidgetRenders-!''.  Since this is the name of the above scenario, the scenario will be called rather than a fixture.  This is important!  Remember that if a scenario is on your page, or included into your page, then its name will override any fixture that has the same name.  Scenarios come first!
+
+If you'd rather you can reference the scenario with parameters so long as you make sure the argument names in the reference exactly match the argument names in the declaration.  For example the above test could have been written as:
+
+!| widget | wiki text | renders | html text |
+| wiki text | html text |
+| this is ''italic'' text | this is <i>italic</i> text | italic widget |
+| this is '''bold''' text | this is <b>bold</b> text | bold widget |
+
+The column headers of the DecisionTable are named for the arguments of the scenario (again, once properly camel-cased).  The scenario processor simply replaces the arguments in the scenario with the contents of the table cells below the corresponding header.
+
+If you hit the test button, you will see the scenario operate.  It's pretty self-explanatory.  If you look at the resulting DecisionTable you'll see that an extra column has been added to each row.  That column contains a collapsed section with the entire scenario table with all the arguments replaced.  You can expand it by clicking on the litte arrow. Try it.
+
+!5 Output parameters
+You can also use ''output parameters'' with scenarios. These are basically symbols you assign in the scenario that you can then refer to in the decision table by creating a column whose name ends on '?'. This allows you to capture values in your scenario, making the symbols filled explicit and allowing different comparisons (for instance equality, greater than, etc) in different rows.
+
+!| scenario | widget _ renders _ code _ | wikiText,htmlText,responseCode? |
+| create page | WidgetPage | with content | @wikiText |
+| $responseCode= | request page | WidgetPage |
+| ensure | content matches | @htmlText |
+| show | content |
+
+!| widget renders code |
+| wiki text | html text | response code? |
+| this is ''italic'' text | this is <i>italic</i> text | 200 |
+| this is '''bold''' text | this is <b>bold</b> text | > 100 |
+
+!5 Constructor parameters
+When all rows in a decision table need to set the same value for some parameters these can be specified using ‘’constructor parameters’’, instead of repeating them for each row. This can make the decision tables more readable. In the example below the input variables "wiki text" and “html text” are given on the table construction line and not repeated in each row.
+
+!| widget renders code | given | wiki text | this is ''italic'' text | html text | this is <i>italic</i> text |
+| response code? |
+| 200 |
+| > 100 |
+
+The Syntax is - Scenario Name - !-[given|having]-! - 1. Variable Name - 1. Variable Value - 2. Variable Name - 2. Variable Value - ....
+
+To ensure backward compatibility constructor parameters are first checked if they are part of a scenario name.
+
+If a senario is found it will be used and no constructor values are passed. Only if no such scenario is found the constructor parameters can be used.
+
+!4 Invoking a scenario from a script table using ''Interposed'' style
+!| Script |
+| widget | !3 hello | renders | <h3>hello</h3> |
+
+Notice how the scenario is called exactly the way a function is called.  Remember though that scenarios do not have return values.  So you can't call a scenario from within a 'check' or 'show' row in a script table.  Also keep in mind that scenario names come first, so a scenario will override a function in the current fixture.
+
+By the way, what fixture was being used here?  If you look inside the ''No Peeking'' section above, you'll see where I started the fixture.  What's neat about this is that you can start any fixture you like, so long as it has appropriately named functions.  So the scenario and script calls are ''polymorphic'' with respect to the fixture.  (Let the reader understand and beware!)
+
+!4 Invoking a scenario using ''Parameterized'' style
+!| Script |
+| widget !3 hello renders <h3>hello</h3> |
+
+As you can see you can also drop the table cells and simply write the scenario name and arguments on a single line without any separators.  The scenario with the ''most'' arguments that matches the statement will be selected.  So given two scenarios: !style_code(widget _ renders _) and !style_code(widget _), both match the statement !style_code(widget foo renders bar), but the first will be invoked because it has more arguments than the second.
+
+!4 A complex example
+It's even possible to have multiple arguments at the end of the scenario declaration. Nested scenario's can be called similarly, with a semi-colon after the "method" name:
+
+| scenario | show values _ | a,b,c |
+| note | a = @a |
+| note | b = @b |
+| note | c = @c |
+
+| scenario | execute this _ | a,b,c |
+| show values; | @a | @b | @c |
+
+Called from decision table:
+
+| execute this |
+| a | b | c |
+| 1 | 2 | 2 |
+
+!4 Nested Scenarios
+Scenarios can also be nested! If you hit the test button, you'll see scenarios executing within other scenarios.
+
+!| scenario | make page | page name | with | wikiText |
+| create page | @pageName | with content | @wikiText |
+| check | request page | @pageName | 200 |
+
+!| scenario | page | wiki text | renders | html text |
+| make page | MyPage | with | @wikiText |
+| ensure | content matches | @htmlText |
+| show | content |
+
+!| Script |
+| page | !3 hello | renders | <h3>hello</h3> |
+
+!4 A note on parameter matching
+Note that the replacement of parameters is based on straightforward text matching. In the following example the outcome may look a bit weird, but the algorithm has been kept as simple as possible:
+
+!| scenario | make misleading page _ with content _ | page, pageContent |
+| create page | @page | with content | @pageContent |
+| check | request page | @page | 200 |
+
+!| Script |
+| make misleading page | PageName | with content | some content |
+| reject | content matches | some content |
+
+In this example, the ''@page'' tokens are replaced with the page name, hence ''@pageContent'' becomes ''!-<i>PageNameContent</i>-!'' (''@page'' is replaced, ''-Content'' remains).
+
+!4 Philosophy
+There are no ''if'' or ''while'' statements within scenarios.  They are macros, not programs.  They are constructed via text substitution.  Their purpose is to help you eliminate redundancy in your tests.
+
+!4 Scenario Libraries
+See <UserGuide.SpecialPages.  You can place libraries of scenarios into pages named !-ScenarioLibrary-!. These pages will be automatically included into any Slim test page using the familiar ''uncle hierarchy'' used for !-SetUp-!, !-TearDown-!, etc.  !-ScenarioLibrary-! pages are special because all uncles and brothers are loaded.
+
+!include -c .FitNesse.SuiteAcceptanceTests.TearDown

@@ -1,0 +1,103 @@
+---
+Help: Working from an external editor
+---
+
+!2 Using an external editor
+It might not always be convenient to use the in-browser editor. For example when you're writing fixture code. For those cases it is more convenient to edit wiki pages with the same editor you use to craft the fixtures.
+
+To work efficiently with wiki pages you need to know one or two things:
+
+Since August 2016, FitNesse provides a simple single file format to store wiki pages (see note 1). The wiki file ends on a ''.wiki'' extension, so they can be easily recognised. The file basically consists of two sections:
+
+1. a meta-data section (front matter)
+2. the wiki page content
+
+To create a new page, simply create a file with a ''.wiki'' extension. For wiki pages, alphanumeric characters and underscores are allowed. It is not strictly necessary to use !-WikiWord-! page names. However, if you do not use !-WikiWords-!, you'll need to take some extra care when cross referencing.
+
+To create a sub-wiki, simply create a directory with the same name as the wiki page, without the file extension.
+
+If wiki files are ordered like this:
+
+{{{MyPage.wiki
+MyPage/
+    SubWiki.wiki}}}Then this means there are two wiki pages: ''!-MyPage-!'' and ''!-MyPage.SubWiki-!''.
+
+To edit content, one can directly start with editing the wiki page file. Those files can contain just page content, in which case they will be considered "static" pages. If pages start or end with either ''Test'' or ''Suite'' they are treated as such.
+
+To add some meta data we use a Front matter. Front matters are made popular by static site generators such as [[Jekyll][https://jekyllrb.com]]. It's basically a clearly delimited section at the beginning of the file. A front matter starts with a line of three dashes and ends with a similar line.
+
+{{{---
+Test
+Help: one line explanation of a page
+---
+And some WikiText can end up here, along with tables and such.
+}}}
+
+In this example there are two lines in defined in the front matter:
+
+1. ''Test'' defines the Test property, so the page is an actual test page
+2. ''Help'' contains a small summary of the page. This page has one too, shown at the top of the page
+
+After the three dashes ( --- ) the real page content begins.--
+
+!2 Front matter options
+At this point you know that you can provide some page meta data in the front matter section. But which properties are there? One way to find out is to set the properties with the Properties page of the wiki and see what changed to the page.
+
+For starters, here's a list of useful properties:
+
+ * ''Test'' - the page is a test page
+ * ''Suite'' - the page is a test suite; use either ''Test'' or ''Suite''
+ * ''Help'' - Provide a descriptive text for the page
+ * ''Suites'' - (plural) this property defines the tags defined to a page
+
+!3 Menu properties
+The following properties define the options available in the menu. These are enabled by default and can be disabled by setting them to ''false'', e.g. ''Edit: no'' will disable the edit functionality.
+
+ * ''Edit'' - enable the edit button in the wiki
+ * ''Versions'' - show version history
+ * ''Properties'' - enter the properties page
+ * ''Refactor'' - includes rename, move and delete functionality
+ * ''!-WhereUsed-!'' - the where-used menu option is shown
+ * ''!-RecentChanges-!'' - links to the recently changed page
+ * ''Files'' - links to the files section
+ * ''Search'' - links to the search page
+
+!3 Security
+The next set of properties will enable security for a wiki page. Disabled by default. Thet can be enabled by just defining them.
+
+ * ''secure-read''
+ * ''secure-write''
+ * ''secure-test''
+
+!3 Symbolic links
+SymbolicLinks can also be defined in this section, although they're hard to test if you're not using the web interface:
+
+{{{SymbolicLinks
+  Pagename: .FitNesse.UserGuide
+}}}
+
+Note the indentation. ''Pagename'' is the local page name and ''!-.FitNesse.UserGuide-!'' is the link destination. all rules for normal SymbolicLinks apply.
+
+Here's an example for a fairly extensively edited front matter:
+
+{{{ ---
+Suite
+Suites: tag1, meta
+Help: Helping out with a small description
+Files: no
+Prune
+RecentChanges: no
+Versions: no
+secure-read
+SymbolicLinks
+  Pagename: .FitNesse.UserGuide
+ ---
+[page text comes here]
+}}}
+
+The following terms are considered "falsy": ''n'', ''no'', ''f'', ''false'', and ''0''. Truthy terms are: ''y'', ''yes'', ''t'', ''true'', and ''1''.
+
+Note that the wiki will save the properties alphabetically ordered.
+
+!2 The old days
+In the old days, a wiki page consisted of a directory containing a ''content.txt'' file and an (optional) ''properties.xml'' file. The first was used to store the wiki content, the latter to store page properties. Editing pages was kind of a hassle, due to how files were structured.

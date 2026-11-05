@@ -63,20 +63,31 @@
         <dependency>
             <groupId>uk.org.webcompere</groupId>
             <artifactId>test-gadgets-jupiter</artifactId>
-            <version>1.0.2</version>
+            <version>${test-gadgets.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>uk.org.webcompere</groupId>
             <artifactId>test-gadgets-junit4</artifactId>
-            <version>1.0.2</version>
+            <version>${test-gadgets.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>uk.org.webcompere</groupId>
             <artifactId>test-gadgets-core</artifactId>
-            <version>1.0.2</version>
+            <version>${test-gadgets.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.fitnesse</groupId>
+            <artifactId>fitnesse</artifactId>
+            <version>${fitnesse.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${common-lang3.version}</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
@@ -113,6 +124,10 @@
         <system-lambda.version>1.0.0</system-lambda.version>
         <system-rules.version>1.19.0</system-rules.version>
         <java.version>11</java.version>
+        <fitnesse.version>20260313</fitnesse.version>
+        <test-gadgets.version>1.0.2</test-gadgets.version>
+        <lombok.version>1.18.46</lombok.version>
+        <common-lang3.version>3.20.0</common-lang3.version>
     </properties>
 
 </project>

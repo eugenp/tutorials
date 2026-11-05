@@ -15,19 +15,19 @@ public class SessionConfig {
     @Bean
     public SessionService sessionService() {
         return DefaultSessionService.builder()
-            .sessionRepository(InMemorySessionRepository.builder().build())
-            .build();
+          .sessionRepository(InMemorySessionRepository.builder().build())
+          .build();
     }
 
     @Bean
     public SessionMemoryAdvisor sessionMemoryAdvisor(SessionService sessionService) {
         return SessionMemoryAdvisor.builder(sessionService)
-            .defaultUserId("alice")
-            .compactionTrigger(new TurnCountTrigger(20))
-            .compactionStrategy(SlidingWindowCompactionStrategy.builder()
-                .maxEvents(10)
-                .build())
-            .build();
+          .defaultUserId("alice")
+          .compactionTrigger(new TurnCountTrigger(20))
+          .compactionStrategy(SlidingWindowCompactionStrategy.builder()
+            .maxEvents(10)
+            .build())
+          .build();
     }
 
 }

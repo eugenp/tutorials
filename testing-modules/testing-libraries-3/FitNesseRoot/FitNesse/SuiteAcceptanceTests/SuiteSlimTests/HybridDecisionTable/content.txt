@@ -1,0 +1,213 @@
+The Hybrid Decision Table is a combination of the Decision Table  and the Dynamic Decision Table. 
+A decision table requires for each table column the definition of a method. 
+This is impractical when you deal with structured data that has a varying size like: hash maps, XML, properties, database tables, etc.
+The number of methods you need to write could be infinite.
+
+A dynamic decision table has just one method which is called for all columns and your fixture has to do the dispatching. 
+This solves the above problem but dispatching should be done by the test system and not by your fixture.
+
+Sometimes you want both features in one table and that is when you use the Hybrid Decision table.
+
+The Hybrid Decision Table allows the methods called for each column to be 
+redefined and method parameters can be extracted from the column names.
+
+
+
+Example
+
+!*>  Setup
+
+|import            |
+|fitnesse.slim.test|
+|java.util         |
+
+!5 define some string variables (just to show that this is supported)
+|script: Test Query|5                                  |
+|$S1=              |echo|abcdefghijklmnopqrstuvwxyz    |
+|$S2=              |echo|123456789                     |
+|$S3=              |echo|"The fox jumps over the wall."|
+
+!define SLIM_DT_GETTER (!-
+{
+"FormatVersion":"1.0",
+"MethodExtractorRules":[
+  {
+    "Scope":"property\\s+(\\w*)\\s*",
+    "TargetName":"get property",
+    "Parameters":"$1"
+  },
+  {
+    "Scope":"has Value\\s+'(\\w*)'\\s*",
+    "TargetName":"contains Value",
+    "Parameters":"$1"
+  },
+  {
+    "Scope":"(?s).*<[i]>(.*)</i>.*",
+    "TargetName":"$1",
+    "Parameters":""
+  },
+  {
+    "Scope":"(?s)^([^\\n]*)\\n.*",
+    "TargetName":"$1",
+    "Parameters":""
+  }
+ ]
+}
+-!)
+!define SLIM_DT_SETTER (!-
+{
+"FormatVersion":"1.0",
+"MethodExtractorRules":[
+  {
+    "Scope":"property\\s+(\\w*)\\s*",
+    "TargetName":"set property",
+    "Parameters":"$1"
+  },
+  {
+    "Scope":"(?s).*<[i]>(.*)</i>.*",
+    "TargetName":"set $1",
+    "Parameters":""
+  },
+  {
+    "Scope":"(?s)^([^\\n]*)\\n.*",
+    "TargetName":"set $1",
+    "Parameters":""
+  },
+  {
+    "Scope":".+",
+    "TargetName":"set $0",
+    "Parameters":""  }
+ ]
+}
+-!)
+
+*!
+
+!3 Based on your test cases you might expect or need to add a varying number of properties to a collection.
+!4 Test Case with 2 properties
+|Properties                                                                                       |
+|#|property a|property b                    |size?|property a?|property b?|has Value '123456789' ?|
+| |$S1       |123456789                     |2    |$S1        |123456789  |true                   |
+| |$S2       |"The fox jumps over the wall."|2    |123456789  |$S3        |true                   |
+| |$S3       |abcdefghijklmnopqrstuvwxyz    |2    |$S3        |$S1        |false                  |
+
+!4 Test Case with 3 properties added and 2 expected
+|Properties                                                                                                            |
+|#|property NEW|property a|property b|size?|property NEW?|property b?|has Value '123456789' ?|has Value '!-FitNesse-!'?|
+| |Hello       |$S1       |$S2       |3    |Hello        |123456789  |true                   |false                    |
+| |!-FitNesse-!|$S2       |$S3       |3    |             |$S3        |true                   |true                     |
+| |World       |$S3       |$S1       |3    |World        |$S1        |false                  |false                    |
+
+
+!4 Look in the collapsed setup how the mapping between column names and method names is done.
+The magic is done with two variables:
+SLIM_DT_SETTER  -  for input columns
+SLIM_DT_GETTER  - for output columns
+
+For each variable you can define a list of ''Method Extractor Rules'' in JSON format. A Method Extractor Rule has 3 properties:
+1. Scope - a regular expression which identifies all columns for which this extractor should be applied.
+2. Target Name - a replacement string for the "Column Name" regular expression. This will be passed to the Disgracer to generate the final method name.
+3. Parameters - a colon separated list of parameters passed to the method called. 
+
+The list of rules is preceded with a version number ''Format Version''. This must currently be always "1.0". 
+Future versions might define additional features and will require a different version number. 
+
+If no Method Extractor Rule matches the current column name than the default rules of the Decision Table are used ("set " + column name).
+
+The Hybrid Decision Table is no new table type but it modifies the behavior of the decision table with the help of the above variables.
+This has the advantage that you don't need to specify the table type in your test cases
+and leaves the decision to the implementer of the test cases if he wants to use a hybrid, dynamic or normal decision table.
+
+
+!3 More verbose decision tables
+
+The flexible pattern matching of the hybrid table can also be used to document your decision tables even more
+ * describe the business logic for a column
+ * or use GIVEN, WHEN, THEN verbosity in the table header directly
+
+compare the below two tables with the standard one on this page .FitNesse.UserGuide.WritingAcceptanceTests.SliM.DecisionTable 
+
+
+|should I buy milk|
+|GIVEN I have '''ZERO'''!-
+-!''pints of milk remaining''!- 
+in my fridge -!| WHEN I have '''AT LEAST''' 3$!-<sup>1</sup>
+-! ''cash in wallet'' ----- !- <sup>1</sup>: the price for 
+a bottle of milk -!| OR I '''HAVE''' a ''credit card''|THEN I ''go to store'' !-
+and buy milk-!!|
+|0|0|no |no |
+|0|1|no |no |
+|0|2|no |no |
+|0|3|no |yes|
+|0|1|yes|yes|
+|1|1|yes|no |
+|2|5|yes|no |
+
+
+!meta if you like use in addition colours or other markup
+
+
+|baseline: should I buy milk|
+|GIVEN I have '''zero'''!-
+-!!style_indigo{''pints of milk remaining''}!- 
+in my fridge -!| WHEN I have '''AT LEAST 3$'''!-<sup>1</sup>
+-! !style_indigo[''cash in wallet''] ----- !- <sup>1</sup>: the price for 
+a bottle of milk -!| OR I '''have''' a !-<u>-!''credit card''!-</u>-!|THEN I ''go to store'' !-
+and buy milk-!!|
+|0|0|no |no |
+| |1|   |   |
+| |2|   |   |
+| |3|   |yes|
+| |1|yes|yes|
+|1|1|yes|no |
+|2|5|yes|no |
+
+
+The test case writer has just to set the function name in ''italic''
+and can use any other text and formatting to descibe the scenario further
+The pattern used in the hybrid table is the below. 
+
+{{{
+!define SLIM_DT_GETTER (!!---!
+{
+"FormatVersion":"1.0",
+"MethodExtractorRules":[
+  {
+    "Scope":"(?s).*<[i]>(.*)</i>.*",
+    "TargetName":"$1",
+    "Parameters":""
+  },
+  {
+    "Scope":"(?s)^([^\\n]*)\\n.*",
+    "TargetName":"$1",
+    "Parameters":""
+  }
+ ]
+}
+!- --!!)
+!define SLIM_DT_SETTER (!!---!
+{
+"FormatVersion":"1.0",
+"MethodExtractorRules":[
+  {
+    "Scope":"(?s).*<[i]>(.*)</i>.*",
+    "TargetName":"set $1",
+    "Parameters":""
+  },
+  {
+    "Scope":".+",
+    "TargetName":"set $0",
+    "Parameters":""  }
+ ]
+}
+!- --!!)
+
+}}}
+
+
+!3 IMPORTANT: to avoid side effects always add a >TearDown page to reset the mappings to the defaults.  
+
+
+
+Further Reading:
+!contents -R2 -g -p -f -h

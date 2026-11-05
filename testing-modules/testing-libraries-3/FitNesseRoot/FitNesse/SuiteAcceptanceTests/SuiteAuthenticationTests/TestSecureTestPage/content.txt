@@ -1,0 +1,22 @@
+If we try to test a page that is marked secure-test, we'll have to authenticate.
+A response with status 401 will be received signifying lack of authentication.
+
+Create a page to be tested.
+!|Page creator.|
+|Page name.|page attributes|valid?|
+|FrontPage |secure-test=true|true|
+
+Now request a page.  We should get a 401 since we didn't suply any credentials.
+!|Response Requester.|
+|uri|status?|
+|FrontPage?test |401     |
+
+When we supply bad credintials we get a 401.
+!|Response Requester.|
+|uri|username|password|status?|
+|FrontPage?test |Aladdin|open please|401|
+
+Proper credentials give a successfull response.
+!|Response Requester.|
+|uri|username|password|status?|
+|FrontPage?test |Aladdin|open sesame|200|
