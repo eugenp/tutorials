@@ -20,7 +20,7 @@ public class ChatResponseMetaController {
     }
 
     @GetMapping("/story-gen")
-    public MetadataResponse chat(@RequestParam(defaultValue = "Tell a story in less than 100 words") String message) {
+    public MetadataResponse chat(@RequestParam(name = "message", defaultValue = "Tell a story in less than 100 words") String message) {
 
         ChatResponse chatResponse = chatClient.prompt()
             .user(message)
