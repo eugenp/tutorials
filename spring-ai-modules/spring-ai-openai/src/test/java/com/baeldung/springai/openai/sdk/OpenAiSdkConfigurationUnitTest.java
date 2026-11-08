@@ -32,7 +32,7 @@ class OpenAiSdkConfigurationUnitTest {
 
     @ParameterizedTest
     @CsvSource({ "default, /v1/, gpt-6-luna, test-openai-key, none, 256",
-            "gemini, /v1beta/openai/, gemini-3.8-flash, test-gemini-key, low, 1024" })
+            "gemini, /v1beta/openai/, gemini-3.5-flash-lite, test-gemini-key, low, 1024" })
     void givenProviderConfiguration_whenSummarizing_thenUseConfiguredSdkRequest(String profile, String basePath,
             String model, String apiKey, String reasoningEffort, int maxCompletionTokens) throws Exception {
         try (MockWebServer server = new MockWebServer()) {

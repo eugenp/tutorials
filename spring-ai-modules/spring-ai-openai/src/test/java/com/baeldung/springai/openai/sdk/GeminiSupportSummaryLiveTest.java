@@ -22,7 +22,7 @@ class GeminiSupportSummaryLiveTest {
     private SupportSummaryService summaryService;
 
     @Test
-    @Timeout(60)
+    @Timeout(180)
     void givenSupportRequest_whenCallingGemini_thenReturnSummary() {
         String summary = summaryService
                 .summarize("I was charged twice for my subscription. Please refund the duplicate charge.");
