@@ -22,14 +22,11 @@ public class ManualAckEventShareConsumer {
             acknowledgment.release();
         } catch (RuntimeException e) {
             acknowledgment.reject();
-        } finally {
-            acknowledgment.reject();
         }
     }
 
     private void doConsume(ConsumerRecord<String, Event> record) {
         if (record.value()
-            .id() < 0L || record.value()
             .id() % 2 == 0) {
             // Happy scenario
             log.info("Acknowledging event {}", record.value());

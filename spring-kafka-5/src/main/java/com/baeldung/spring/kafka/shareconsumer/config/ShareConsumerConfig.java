@@ -1,9 +1,16 @@
 package com.baeldung.spring.kafka.shareconsumer.config;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
+import org.apache.kafka.clients.admin.Admin;
+import org.apache.kafka.clients.admin.AdminClientConfig;
+import org.apache.kafka.clients.admin.AlterConfigOp;
+import org.apache.kafka.clients.admin.ConfigEntry;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.common.config.ConfigResource;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -21,14 +28,17 @@ import com.baeldung.spring.kafka.shareconsumer.model.Event;
 @Configuration
 public class ShareConsumerConfig {
 
+    private static final String SHARE_GROUP_ID = "shgroup";
+
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapServers;
 
-    @Value("${share.consumer.concurrency:5}")
+    @Value("${share.consumer.concurrency:1}")
     private int concurrency;
 
     @Bean
-    public ShareConsumerFactory<String, Event> shareConsumerFactory() {
+    public ShareConsumerFactory<String, Event> shareConsumerFactory() throws ExecutionException, InterruptedException {
+        configureShareGroupOffsetReset();
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
@@ -46,6 +56,16 @@ public class ShareConsumerConfig {
             .setShareAckMode(ContainerProperties.ShareAckMode.IMPLICIT);
         factory.setConcurrency(concurrency);
         return factory;
+    }
+
+    private void configureShareGroupOffsetReset() throws ExecutionException, InterruptedException {
+        try (Admin admin = Admin.create(Map.of(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers))) {
+            ConfigResource shareGroup = new ConfigResource(ConfigResource.Type.GROUP, SHARE_GROUP_ID);
+            AlterConfigOp earliestOffsetReset = new AlterConfigOp(new ConfigEntry("share.auto.offset.reset", "earliest"), AlterConfigOp.OpType.SET);
+            admin.incrementalAlterConfigs(Map.of(shareGroup, List.of(earliestOffsetReset)))
+                .all()
+                .get();
+        }
     }
 
 }
