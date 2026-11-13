@@ -111,6 +111,7 @@ class StreamingWithThinkingAndToolingLiveTest {
         An advisor needs to park in Midtown Manhattan for a 3-hour client meeting starting in 30 minutes.
         Use the available tools to probe parking options, then recommend three options, the best one first.
         Arriving late is not acceptable.
+        Write any reasoning only inside <think></think> tags, and put each JSON object on its own line.
         """;
 
     /**
@@ -133,13 +134,13 @@ class StreamingWithThinkingAndToolingLiveTest {
     /**
      * Verifies structured streaming output with thinking enabled and with no tools.
      *
-     * <p>Token budget must stay below {@code max_tokens} (8192 for {@code claude-sonnet-4-5}).
+     * <p>Token budget must stay below the model's {@code max_tokens}.
      * Reasoning arrives as multiple {@link com.embabel.common.core.streaming.StreamingEvent.Thinking}
      * events — one per line, not as a single block.
      */
     @Test
     void whenStreamingWithThinking_thenReceivesReasoningAndRecommendation() {
-        // budget_tokens must be < max_tokens (8192). This also enables more rigorous reasoning
+        // budget_tokens must be < max_tokens. This also enables more rigorous reasoning
         LlmOptions thinkingOptions = new LlmOptions().withThinking(Thinking.withTokenBudget(8000));
         PromptRunner runner = ai.withDefaultLlm()
             .withLlm(thinkingOptions);
@@ -148,11 +149,10 @@ class StreamingWithThinkingAndToolingLiveTest {
 
 
     /**
-     * Verifies that streaming with tools produces reasoning and a recommendation informed by tool results.
+     * Verifies that streaming with tools produces reasoning and recommendations informed by tool results.
      *
-     * <p>Reasoning events are emitted after all tool calls complete.
-     * Reasoning while deciding which tools to call
-     * is not surfaced to the subscriber, as each Spring AI-managed tool-loop iteration starts a new stream.
+     * <p>Text before and after tool calls can end up on one line. A recommendation on that line
+     * would be read as reasoning, so the prompt asks for each JSON object on its own line.
      */
     @Test
     void whenStreamingWithThinkingAndTooling_thenReceivesRecommendationAndReasoning() {
@@ -162,6 +162,11 @@ class StreamingWithThinkingAndToolingLiveTest {
         streamParkingRecommendationsWithThinking(runner, TOOL_PARKING_PROMPT);
     }
 
+    /**
+     * Streams recommendations with reasoning and logs each event.
+     * The model wraps reasoning in {@code <think>} tags, as the prompt asks. Some events carry only
+     * a tag and no text; those are not logged.
+     */
     private void streamParkingRecommendationsWithThinking(PromptRunner runner, String prompt) {
         assertTrue(runner.supportsStreaming(), "Default LLM must support streaming");
 
@@ -179,11 +184,16 @@ class StreamingWithThinkingAndToolingLiveTest {
                         logger.info("Received recommendation: scenario={}, option={}, cost={}, summary={}",
                             rec.scenario(), rec.chosenOption(), rec.estimatedTotalCost(), rec.summary());
                     }
-                } else if (event.isThinking()) {
+                } else if (event.isThinking() && !isTagOnly(event.getThinking())) {
                     logger.info("Received reasoning: {}", event.getThinking());
                 }
             })
             .blockLast(Duration.ofSeconds(240));
+    }
+
+    // True for events such as "<think>", "</think>" or "</think><think>": no text once the tags are removed
+    private static boolean isTagOnly(String thinking) {
+        return thinking == null || thinking.replaceAll("</?think>", "").isBlank();
     }
 
     private void streamParkingRecommendations(String prompt) {
