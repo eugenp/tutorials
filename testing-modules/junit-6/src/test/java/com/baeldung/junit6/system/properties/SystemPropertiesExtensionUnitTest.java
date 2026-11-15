@@ -10,7 +10,7 @@ import org.junit.jupiter.api.util.ClearSystemProperty;
 import org.junit.jupiter.api.util.RestoreSystemProperties;
 import org.junit.jupiter.api.util.SetSystemProperty;
 
-class SystemPropertiesExtensionTest {
+class SystemPropertiesExtensionUnitTest {
 
     @Test
     void whenSetProperty_thenLeaksToNextTest() {
@@ -23,14 +23,14 @@ class SystemPropertiesExtensionTest {
     @Disabled("only for demonstration purposes, fails if whenSetProperty_thenLeaksToNextTest runs first")
     void whenPropertyNotSet_thenShouldBeNull() {
         // fails if whenSetProperty_thenLeaksToNextTest runs first
-        //   "app.mode" will is still be "debug"
+        //   "app.mode" is still "debug"
         assertThat(System.getProperty("app.mode"))
             .isNull();
     }
 
     @Test
     @SetSystemProperty(key = "app.mode", value = "debug")
-    void givenSetProperty_thenGetPropertyReturnsValue() {
+    void givenSetPropertyAnnotation_whenGetProperty_thenReturnsValue() {
         assertThat(System.getProperty("app.mode"))
             .isEqualTo("debug");
     }
