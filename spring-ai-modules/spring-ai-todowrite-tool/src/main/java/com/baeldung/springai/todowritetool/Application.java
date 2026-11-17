@@ -28,6 +28,7 @@ public class Application {
                 """
             );
             logger.info("{}", result.response());
+            logger.info("Todos: {}", result.todos());
         };
     }
 }

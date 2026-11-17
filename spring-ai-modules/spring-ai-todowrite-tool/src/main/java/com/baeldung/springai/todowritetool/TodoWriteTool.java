@@ -18,7 +18,8 @@ public class TodoWriteTool {
     public List<TodoItem> todoWrite(
         @ToolParam(description = "The full list of todo items, including "
             + "unchanged ones") List<TodoItem> todos) {
-        return todoService.write(todos);
+        todoService.write(todos);
+        return todos;
     }
 
     @Tool(description = "Read the current todo list for the session")

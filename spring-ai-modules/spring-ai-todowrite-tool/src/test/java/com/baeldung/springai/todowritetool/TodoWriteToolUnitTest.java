@@ -17,23 +17,10 @@ class TodoWriteToolUnitTest {
             new TodoItem("2", "Write TodoWriteTool", TodoItem.Status.in_progress, TodoItem.Priority.high),
             new TodoItem("3", "Add tests", TodoItem.Status.pending, TodoItem.Priority.medium));
 
-        List<TodoItem> written = todoWriteTool.todoWrite(todos);
+        todoWriteTool.todoWrite(todos);
 
-        assertThat(written).hasSize(3);
-        assertThat(written)
+        assertThat(todoWriteTool.todoRead())
             .usingRecursiveComparison()
             .isEqualTo(todos);
-        assertThat(todoWriteTool.todoRead())
-            .extracting(TodoItem::id)
-            .containsExactly("1", "2", "3");
-        assertThat(todoWriteTool.todoRead())
-            .extracting(TodoItem::content)
-            .containsExactly("Set up project", "Write TodoWriteTool", "Add tests");
-        assertThat(todoWriteTool.todoRead())
-            .extracting(TodoItem::priority)
-            .containsExactly(TodoItem.Priority.high, TodoItem.Priority.high, TodoItem.Priority.medium);
-        assertThat(todoWriteTool.todoRead())
-            .extracting(TodoItem::status)
-            .containsExactly(TodoItem.Status.completed, TodoItem.Status.in_progress, TodoItem.Status.pending);
     }
 }
