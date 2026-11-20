@@ -9,6 +9,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 import static org.junit.Assert.*;
+import static org.junit.Assume.*;
 
 public class OpenHtmlFilesUnitTest {
     public URL url;
@@ -16,30 +17,35 @@ public class OpenHtmlFilesUnitTest {
 
     public OpenHtmlFilesUnitTest() throws URISyntaxException {
         url = getClass().getResource("/test.html");
-        assert url != null;
+        assertNotNull(url);
         File file = new File(url.toURI());
-        if (!file.exists()) {
-            fail();
-        }
+        assertTrue(file.exists());
         absolutePath = file.getAbsolutePath();
     }
-    /*
+
     @Test
     public void givenHtmlFile_whenUsingDesktopClass_thenOpenFileInDefaultBrowser() throws IOException {
-        File htmlFile = new File(absolutePath);
-        Desktop.getDesktop().browse(htmlFile.toURI());
-        assertTrue(true);
+        assumeFalse("No display available", GraphicsEnvironment.isHeadless());
+        assumeTrue(Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE));
+
+        Desktop.getDesktop().browse(new File(absolutePath).toURI());
     }
-    */
+
     @Test
     public void givenHtmlFile_whenUsingProcessBuilder_thenOpenFileInDefaultBrowser() throws IOException {
+        assumeFalse("No display available", GraphicsEnvironment.isHeadless());
+
+        String os = System.getProperty("os.name").toLowerCase();
         ProcessBuilder pb;
-        if (System.getProperty("os.name").toLowerCase().contains("win")) {
-            pb = new ProcessBuilder("cmd.exe", "/c", "start", absolutePath);
+        if (os.contains("win")) {
+            pb = new ProcessBuilder("cmd.exe", "/c", "start", "", absolutePath);
+        } else if (os.contains("mac")) {
+            pb = new ProcessBuilder("open", absolutePath);
         } else {
             pb = new ProcessBuilder("xdg-open", absolutePath);
         }
-        pb.start();
-        assertTrue(true);
+
+        Process process = pb.start();
+        assertNotNull(process);
     }
 }

@@ -8,6 +8,7 @@ import javax.net.ssl.X509TrustManager;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
@@ -19,18 +20,20 @@ import java.security.cert.X509Certificate;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Enumeration;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CertificatesUnitTest {
 
-    private static final String GODADDY_CA_ALIAS = "godaddyrootg2ca [jdk]";
+    // Aliases differ between JDK vendors (e.g. "godaddyrootg2ca [jdk]" in OpenJDK/Oracle,
+    // something else in Temurin or Debian/Ubuntu builds), so we match on the certificate subject instead
+    private static final String GODADDY_CA_SUBJECT = "CN=Go Daddy Root Certificate Authority - G2";
 
     @Test
     public void whenLoadingCacertsKeyStore_thenCertificatesArePresent() throws Exception {
@@ -48,7 +51,7 @@ public class CertificatesUnitTest {
     @Test
     public void whenLoadingDefaultKeyStore_thenCertificatesArePresent() throws Exception {
         TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-        trustManagerFactory.init((KeyStore)null);
+        trustManagerFactory.init((KeyStore) null);
 
         List<TrustManager> trustManagers = Arrays.asList(trustManagerFactory.getTrustManagers());
         List<X509Certificate> certificates = trustManagers.stream()
@@ -65,29 +68,44 @@ public class CertificatesUnitTest {
     public void whenLoadingKeyStore_thenGoDaddyCALabelIsPresent() throws Exception {
         KeyStore keyStore = loadKeyStore();
 
-        Enumeration<String> aliasEnumeration = keyStore.aliases();
-        List<String> aliases = Collections.list(aliasEnumeration);
+        Optional<String> goDaddyAlias = findAliasBySubject(keyStore, GODADDY_CA_SUBJECT);
 
-        assertTrue(aliases.contains(GODADDY_CA_ALIAS));
+        assertTrue(goDaddyAlias.isPresent());
+        assertTrue(keyStore.containsAlias(goDaddyAlias.get()));
     }
 
     @Test
     public void whenLoadingKeyStore_thenGoDaddyCertificateIsPresent() throws Exception {
         KeyStore keyStore = loadKeyStore();
 
-        Certificate goDaddyCertificate = keyStore.getCertificate(GODADDY_CA_ALIAS);
+        Optional<String> goDaddyAlias = findAliasBySubject(keyStore, GODADDY_CA_SUBJECT);
+        assertTrue(goDaddyAlias.isPresent());
+
+        Certificate goDaddyCertificate = keyStore.getCertificate(goDaddyAlias.get());
 
         assertNotNull(goDaddyCertificate);
+    }
+
+    private Optional<String> findAliasBySubject(KeyStore keyStore, String subject) throws KeyStoreException {
+        for (String alias : Collections.list(keyStore.aliases())) {
+            Certificate certificate = keyStore.getCertificate(alias);
+            if (certificate instanceof X509Certificate
+              && ((X509Certificate) certificate).getSubjectX500Principal().getName().contains(subject)) {
+                return Optional.of(alias);
+            }
+        }
+        return Optional.empty();
     }
 
     private KeyStore loadKeyStore() throws CertificateException, NoSuchAlgorithmException, IOException, KeyStoreException {
         String relativeCacertsPath = "/lib/security/cacerts".replace("/", File.separator);
         String filename = System.getProperty("java.home") + relativeCacertsPath;
-        FileInputStream is = new FileInputStream(filename);
 
         KeyStore keystore = KeyStore.getInstance(KeyStore.getDefaultType());
         String password = "changeit";
-        keystore.load(is, password.toCharArray());
+        try (InputStream is = new FileInputStream(filename)) {
+            keystore.load(is, password.toCharArray());
+        }
 
         return keystore;
     }
