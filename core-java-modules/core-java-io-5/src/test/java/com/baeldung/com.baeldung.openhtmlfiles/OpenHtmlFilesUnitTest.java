@@ -9,7 +9,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 import static org.junit.Assert.*;
-import static org.junit.Assume.assumeFalse;
+import static org.junit.Assume.*;
 
 public class OpenHtmlFilesUnitTest {
     public URL url;
