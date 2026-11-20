@@ -1,0 +1,21 @@
+|Page creator.|
+|Page name.|Page contents.|Page attributes.|valid?|
+|!-HelpTestPage-!| !-some content !help-! | Help= Sample help string|true|
+|!-HelpTestPage2-!| !-some content !help -editable-! | |true|
+
+|Response Requester.|
+|uri|valid?|
+|!-HelpTestPage-!|true|
+
+|Response Examiner.|
+|type|pattern|matches?|value|
+|contents| Sample help string |true||
+|contents| (edit help text) |false||
+
+|Response Requester.|
+|uri|valid?|
+|!-HelpTestPage2-!|true|
+
+|Response Examiner.|
+|type|pattern|matches?|value|
+|contents| (edit help text) |true||

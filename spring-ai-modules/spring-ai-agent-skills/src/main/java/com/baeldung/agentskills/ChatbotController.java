@@ -1,0 +1,34 @@
+package com.baeldung.agentskills;
+
+import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+class ChatbotController {
+
+    private final ChatClient chatClient;
+
+    ChatbotController(ChatClient chatClient) {
+        this.chatClient = chatClient;
+    }
+
+    @PostMapping("/chat")
+    ResponseEntity<ChatbotResponse> chat(@RequestBody ChatbotRequest chatbotRequest) {
+        String answer = chatClient
+            .prompt()
+            .user(chatbotRequest.question)
+            .call()
+            .content();
+        return ResponseEntity.ok(new ChatbotResponse(answer));
+    }
+
+    record ChatbotRequest(String question) {
+    }
+
+    record ChatbotResponse(String answer) {
+    }
+
+}

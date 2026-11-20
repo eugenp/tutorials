@@ -1,0 +1,8 @@
+!1 !c Acceptance Test Patterns.
+There seem to be patterns associated with writing acceptance tests with Fit and FitNesse.
+
+| >BuildOperateCheck | ''Three tables for each test.'' |
+| >CommonIncludes | ''Avoid duplicate test content by creating pages that are included into tests.'' |
+| >ParameterizedIncludes | ''Using variables and Includes together to achieve function-like behavior.'' |
+| >StaticBeforeDynamic | ''First check the end results, then check the in-process results.'' |
+| >OperateFunction | ''Column Fixtures often need a special function to perform an operation between input and output.'' |

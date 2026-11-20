@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1 th:inline="text" >
+       [[${title}]]
+       <small th:text="${subtitle}">subtitle</small>
+    </h1>
+
+    <!-- Alternative Method: Preserving HTML Structure by Rendering Text in a Child Element -->
+    <!--h1>
+        <span th:text="${title}" th:remove="tag">title</span>
+        <small th:text="${subtitle}" >subtitle</small>
+    </h1-->
+</body>
+</html>

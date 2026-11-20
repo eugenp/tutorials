@@ -3,9 +3,9 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>ShippingFunction</artifactId>
-    <name>ShippingFunction</name>
     <version>1.0</version>
     <packaging>jar</packaging>
+    <name>ShippingFunction</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -45,7 +45,6 @@
             <artifactId>HikariCP</artifactId>
             <version>${hikari.cp.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>

@@ -1,0 +1,48 @@
+See also: >TestPage.
+
+!define TestPageName {Testpage}
+
+!| script                                                      |
+|given test page         |${TestPageName}                      |
+|and Test System setup is|!define TEST_SYSTEM {slim}${SUT_PATH}|
+|and Setup content is                                          |!-
+|import                                                        |
+|fitnesse.slim.test                                            |
+
+-!|
+|and Test content is|!-
+#
+|baseline: eg.Division                                           |
+|numerator|denominator|quotient?|# Explication                   |
+|10       |2          |5.0      |S1 Base scenario                |
+|20       |4          |         |S2 Same result as base - correct|
+|20       |6          |         |W3 Same result as base - wrong  |
+|         |5          |2.0      |S4 Same numerator as base       |
+|16       |           |8.0      |S5 Same denominator as base  |  |
+|22       |7          |~=3.14   |S6 Special comparator           |
+|9        |3          |7        |W7 Wrong result                 |
+|11       |2          |4<_<6    |S8 Special comparator           |
+|         |           |         |S9 Correct but duplicate        |
+
+Given you want to ignore outputs like ''quotient''
+Then the base scenario must ignore them already
+
+!define SLIM_DT_BASELINE (true)
+
+|eg.Division                                                    |
+|numerator|denominator|quotient?|# Explication                  |
+|10       |2.5        |         |S1 Base scenario - ignore      |
+|20       |4          |5.0      |S2  correct result             |
+|20       |20         |         |W3 Same result as base - ignore|
+#
+-!|
+|when page                          |${TestPageName}|is tested and HTML is extracted                           |
+|then                               |8              |assertions pass,|2|fail,|2|are ignored|0|exceptions thrown|
+|and cell                           |3.333[^<]*     |has result      |diff                                     |
+|and cell                           |expected \[5   |has result      |fail                                     |
+|and cell                           |3.0            |has result      |diff                                     |
+|and cell                           |4.0            |has result      |ignore                                   |
+|and cell                           |1.0            |has result      |ignore                                   |
+|show Symbol                        |$HTML_Input                                                               |
+|show Symbol                        |$HTML_Result                                                              |
+|get collapsed executon log for page|${TestPageName}                                                           |

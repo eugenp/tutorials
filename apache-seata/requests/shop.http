@@ -1,0 +1,16 @@
+# Success
+POST http://localhost:8080/shop/success HTTP/1.1
+
+###
+# Fails in Inventory service
+POST http://localhost:8080/shop/inventory HTTP/1.1
+
+###
+# Fails in Order service
+POST http://localhost:8080/shop/order HTTP/1.1
+
+###
+# Fails in Billing service
+POST http://localhost:8080/shop/blling HTTP/1.1
+
+###

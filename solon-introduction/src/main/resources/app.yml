@@ -1,0 +1,20 @@
+solon.app:
+  name: task-api
+  group: examples
+
+server.port: 8080
+solon.logging.logger.root.level: INFO
+
+solon.dataSources:
+  tasks!:
+    class: com.zaxxer.hikari.HikariDataSource
+    jdbcUrl: jdbc:h2:mem:tasks
+    username: sa
+    password: ""
+    maximumPoolSize: 4
+
+mybatisFlex:
+  mapperLocations:
+    - com.baeldung.solon.persistence
+  globalConfig:
+    printBanner: false

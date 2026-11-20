@@ -1,0 +1,193 @@
+# Gemini curl tests for simple-openai compatible features
+#
+# Environment
+# These examples assume a POSIX compatible shell such as bash on a Linux machine.
+# The commands have been exercised on Linux and should also work on macOS with a few notes:
+# - macOS provides base64 without the -w0 option. To produce base64 on a single line we can use:
+#     BASE64_IMAGE=$(base64 "$IMAGE_PATH" | tr -d '\n')
+#   instead of the base64 -w0 call in Test 4.
+# On Windows the simplest way to run these commands is to use a Unix like environment such as
+# Windows Subsystem for Linux or Git Bash. PowerShell can also be used but the syntax for
+# environment variables and pipes will be different from the examples here.
+#
+# Prerequisites
+# - curl
+# - jq
+# - base64 utility
+# - a valid Gemini API key
+#
+# Before running the tests, let's set the GEMINI_API_KEY environment variable in our shell:
+#
+#   export GEMINI_API_KEY="GEMINI_API_KEY_HERE"
+#
+# Every request uses the OpenAI compatible Gemini endpoints and will consume tokens from
+# our Gemini free tier or paid quota.
+
+export GEMINI_API_KEY="..."
+
+---
+Test 1 - Basic chat completion (required for SimpleOpenAIGeminiGoogle)
+
+curl -s "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $GEMINI_API_KEY" \
+  -d '{
+    "model": "gemini-2.5-flash",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Explain what Baeldung is in at most 50 words."
+      }
+    ]
+  }' | jq .
+
+---
+Test 2 - Chat completions in streaming with Gemini (stream=true)
+
+curl -sN "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $GEMINI_API_KEY" \
+  -d '{
+    "model": "gemini-2.5-flash",
+    "stream": true,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an assistant that always reply in English."
+      },
+      {
+        "role": "user",
+        "content": "Briefly describe the city of Florence in at most 80 words."
+      }
+    ]
+  }'
+
+---
+Test 3 - Function Calling (Tools) with Gemini
+
+curl -s "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $GEMINI_API_KEY" \
+  -d '{
+    "model": "gemini-2.5-flash",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the weather like in Chicago today? Please call the get_weather function instead of answering directly."
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "get_weather",
+          "description": "Get the current weather in a given location",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "The city and state, e.g. Chicago, IL"
+              },
+              "unit": {
+                "type": "string",
+                "enum": ["celsius", "fahrenheit"]
+              }
+            },
+            "required": ["location"]
+          }
+        }
+      }
+    ],
+    "tool_choice": "auto"
+  }' | jq .
+
+---
+Test 4 - Chat completion with vision (image understanding)
+
+1. Convert the image to base64 and write the JSON payload to a file
+
+IMAGE_PATH="image.jpg"
+
+# Base64 on a single line
+BASE64_IMAGE=$(base64 -w0 "$IMAGE_PATH")
+
+cat > /tmp/gemini_vision_request.json <<EOF
+{
+  "model": "gemini-2.5-flash",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "What is in this image? Answer in at most 30 words in English."
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "data:image/jpeg;base64,$BASE64_IMAGE"
+          }
+        }
+      ]
+    }
+  ]
+}
+EOF
+
+2. Call Gemini (vision, OpenAI compatible endpoint)
+
+curl -s "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $GEMINI_API_KEY" \
+  -d @/tmp/gemini_vision_request.json | jq '.choices[0].message'
+
+---
+Test 5 - Structured outputs (JSON schema) with response_format
+
+curl -s "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $GEMINI_API_KEY" \
+  -d '{
+    "model": "gemini-2.5-flash",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Extract the name and age from the sentence: \"Mario Rossi is 35 years old\". Return only valid JSON."
+      }
+    ],
+    "response_format": {
+      "type": "json_schema",
+      "json_schema": {
+        "name": "person",
+        "strict": true,
+        "schema": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "age": { "type": "integer" }
+          },
+          "required": ["name", "age"],
+          "additionalProperties": false
+        }
+      }
+    }
+  }' | tee /tmp/gemini_structured_raw.json
+
+cat /tmp/gemini_structured_raw.json | jq -r '.choices[0].message.content' | jq .
+
+---
+Test 6 - Embeddings (vectorizing text with Gemini)
+
+curl -s "https://generativelanguage.googleapis.com/v1beta/openai/embeddings" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $GEMINI_API_KEY" \
+  -d '{
+    "model": "text-embedding-004",
+    "input": [
+      "Hello world",
+      "Baeldung is a tutorial site for Java and Spring developers."
+    ]
+  }' | tee /tmp/gemini_embeddings_raw.json
+
+cat /tmp/gemini_embeddings_raw.json | jq .

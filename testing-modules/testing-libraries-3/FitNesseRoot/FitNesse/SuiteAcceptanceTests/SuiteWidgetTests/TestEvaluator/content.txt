@@ -1,0 +1,328 @@
+!1 Evaluator of expressions: $!--!{= =}
+!2 Syntax
+'''{{{       $!--!{= [format:] expression =} }}}'''
+!3 Expression
+An expression may be a combination of constants, variables, and opertors.  All internal calculations use the Java ''double'' numeric type.
+!3 Format
+A format is a specifier that describes the rendering of the numeric result.  The format specifier is described by the Java 5 String class's .format() method:
+{{{       %[flags][width][.precision]conversion}}} *!note N.B., The ''[argument_index$]'' specifier is not permitted.
+
+Additionally, a formatting locale can be defined by setting the variable ''FORMAT_LOCALE'' to override the default JVM locale.
+!3 Links
+ * [[format string][http://java.sun.com/j2se/1.5.0/docs/api/java/util/Formatter.html#syntax]]
+ * [[String.format()][http://docs.oracle.com/javase/1.5.0/docs/api/java/lang/String.html#format(java.util.Locale,%20java.lang.String,%20java.lang.Object...)]]
+ * [[String class][http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html]]
+!3 Examples
+{{{    $!--!{= 12 + 23 =} renders (sand brackets) as [35]
+    $!--!{=%5.4f:1.414=} : [1.4140]
+    $!--!{=%05X:14+14=}  : [0001C]
+    $!--!{= %-10s : 123 =}   : [123       ]}}}
+
+And when specifying a formatting locale:
+{{{    !define FORMAT_LOCALE {fr}
+    $!--!{=%5.4f:1.414=} : [1,4140]}}}
+!3 Operators supported
+|Comment       |!note Spaces between items are optional                                                              |
+|'''Operator'''|'''Argument'''            |'''Description'''                                                         |
+|!c ''arg''    |''constant or variable''  |Examples: 3, 12.4, 4E+8, $!--!{VALUE}, $!--!{some.var}                    |
+|!c ''expr''   |!c ''expression''         |Any valid combination of arguments and optional operations and parentheses|
+|!c '''+'''    |!c ''expr'' + ''expr''    |Addition                                                                  |
+|!c '''-'''    |!c -''expr''              |Unary negation                                                            |
+|!c '''-'''    |!c ''expr'' - ''expr''    |Subtraction                                                               |
+|!c '''!-*-!'''|!c ''expr'' !-*-! ''expr''|Multiplication                                                            |
+|!c '''/'''    |!c ''expr'' / ''expr''    |Division                                                                  |
+|!c '''^'''    |!c ''expr'' ^ ''expr''    |Exponentiation                                                            |
+|!c '''sin'''  |!c sin ''expr''           |Radian Sine of ''expr''                                                   |
+|!c '''cos'''  |!c cos ''expr''           |Radian Cosine of ''expr''                                                 |
+|!c '''tan ''' |!c cos ''expr''           |Radian Tangent of ''expr''                                                |
+|!c '''( )'''  |!c ( ''expr'' )           |Parenthetical grouping of an expression                                   |
+#-----------------------------------------------------------------
+-----
+!3 Test Blank Expressions
+''' Build blank expression page '''
+!|script                  |
+|start|Page Builder       |
+|line |~1a:&dollar;{==}~  |
+|line |~1b:&dollar;{= =}~ |
+|line |~1c:&dollar;{=  =}~|
+|page |ExpressionPage     |
+
+''' Render it '''
+!|Response Requester  |
+|uri           |valid?|
+|ExpressionPage|true  |
+
+!**> Contents
+!|Response Examiner|
+|type     |string? |
+|contents |        |
+
+!|Response Examiner    |
+|type    |wrapped html?|
+|contents|             |
+
+***!
+
+''' Verify results '''
+!|Response Examiner       |
+|type    |pattern|matches?|
+|contents|~1a:~  |true    |
+|contents|~1b:~  |true    |
+|contents|~1c:~  |true    |
+
+#-----------------------------------------------------------------
+-----
+!3 Test Single Argument Expressions
+''' Build expression page '''
+!|script                            |
+|start|Page Builder                 |
+|line |!- ~2a:${=3=}~   -!          |
+|line |!- ~2b:${= 4.2 =}~  -!       |
+|line |!- ~2c:${= 2E+1 =}~ -!       |
+|line |!- ~2d:${=  2.3E+42  =}~ -!  |
+|line |!- ~2e:${=  4.2E + 24  =}~ -!|
+|page |ExpressionPage               |
+
+''' Render it '''
+!|Response Requester  |
+|uri           |valid?|
+|ExpressionPage|true  |
+
+!**> Contents
+!|Response Examiner|
+|type     |string? |
+|contents |        |
+
+!|Response Examiner    |
+|type    |wrapped html?|
+|contents|             |
+
+***!
+
+''' Verify results '''
+!|Response Examiner            |
+|type    |pattern     |matches?|
+|contents|~2a:3~      |true    |
+|contents|~2b:4.2~    |true    |
+|contents|~2c:20~     |true    |
+|contents|~2d:2.3E+42~|true    |
+|contents|~2e:4.2E+24~|true    |
+
+#-----------------------------------------------------------------
+-----
+!3 Test spaces around experssions
+''' Build expression page '''
+!|script                     |
+|start|Page Builder          |
+|line |!- ~3a:${=1+1=}~ -!   |
+|line |!- ~3b:${=2 + 2=}~ -! |
+|line |!- ~3c:${= 3 + 3=}~ -!|
+|line |!- ~3d:${=4 + 4 =}~ -!|
+|line |!- ~3e:${=5 +5 =}~ -! |
+|page |ExpressionPage        |
+
+''' Render it '''
+!|Response Requester  |
+|uri           |valid?|
+|ExpressionPage|true  |
+
+!**> Contents
+!|Response Examiner|
+|type     |string? |
+|contents |        |
+
+!|Response Examiner    |
+|type    |wrapped html?|
+|contents|             |
+
+***!
+
+''' Verify results '''
+!|Response Examiner       |
+|type    |pattern|matches?|
+|contents|~3a:2~ |true    |
+|contents|~3b:4~ |true    |
+|contents|~3c:6~ |true    |
+|contents|~3d:8~ |true    |
+|contents|~3e:10~|true    |
+
+#-----------------------------------------------------------------
+-----
+!3 Test each operator
+''' Build expression page '''
+!|script                                         |
+|start|Page Builder                              |
+|line |!- ~4plus:${= 1 + 2 =}~     -!            |
+|line |!- ~4minus:${= 2 - 3 =}~    -!            |
+|line |!- ~4unary:${= -12 =}~      -!            |
+|line |!- ~4mult:${= 3 * 4 =}~     -!            |
+|line |!- ~4div:${= 4 / 5 =}~      -!            |
+|line |!- ~4exp:${=%2d: 5 ^ 6 =}~  -!            |
+|line |!- ~4sin1:${=%5.4f: sin0.39269875   =}~ -!|
+|line |!- ~4sin2:${=%5.4f: sin 0.39269875  =}~ -!|
+|line |!- ~4sin3:${=%5.4f: sin(0.39269875) =}~ -!|
+|line |!- ~4sin4:${=%5.4f: sin(3.14159/8)  =}~ -!|
+|line |!- ~4sin5:${=%5.4f: sin (3.14159/8) =}~ -!|
+|line |!- ~4cos:${=%5.4f: cos(3.14159 / 8) =}~ -!|
+|line |!- ~4tan:${=%5.4f: tan(3.14159 / 8) =}~ -!|
+|page |ExpressionPage                            |
+
+''' Render it '''
+!|Response Requester  |
+|uri           |valid?|
+|ExpressionPage|true  |
+
+!**> Contents
+!|Response Examiner|
+|type     |string? |
+|contents |        |
+
+!|Response Examiner    |
+|type    |wrapped html?|
+|contents|             |
+
+***!
+
+''' Verify results '''
+!|Response Examiner              |
+|type    |pattern       |matches?|
+|contents|~4plus:3~     |true    |
+|contents|~4minus:-1~   |true    |
+|contents|~4unary:-12~  |true    |
+|contents|~4mult:12~    |true    |
+|contents|~4div:0.8~    |true    |
+|contents|~4exp:15625~  |true    |
+|contents|~4sin1:0.3827~|true    |
+|contents|~4sin2:0.3827~|true    |
+|contents|~4sin3:0.3827~|true    |
+|contents|~4sin4:0.3827~|true    |
+|contents|~4sin5:0.3827~|true    |
+|contents|~4cos:0.9239~ |true    |
+|contents|~4tan:0.4142~ |true    |
+
+#-----------------------------------------------------------------
+-----
+!3 Test parentheses
+''' Build expression page '''
+!|script                                              |
+|start|Page Builder                                   |
+|line |!- ~5a:${= 2 * 3 + 4 / 2 - 3             =}~ -!|
+|line |!- ~5b:${= 2 * ( 3 + 4 ) / 2 - 3         =}~ -!|
+|line |!- ~5c:${= 2 * ( 3 + 4 ) / ( 2 - 3 )     =}~ -!|
+|line |!- ~5d:${= 2 * ( 3 + ( 4 / ( 2 - 3 ) ) ) =}~ -!|
+|page |ExpressionPage                                 |
+
+''' Render it '''
+!|Response Requester  |
+|uri           |valid?|
+|ExpressionPage|true  |
+
+!**> Contents
+!|Response Examiner|
+|type     |string? |
+|contents |        |
+
+!|Response Examiner    |
+|type    |wrapped html?|
+|contents|             |
+
+***!
+
+''' Verify results '''
+!|Response Examiner        |
+|type    |pattern |matches?|
+|contents|~5a:5~  |true    |
+|contents|~5b:4~  |true    |
+|contents|~5c:-14~|true    |
+|contents|~5d:-2~ |true    |
+
+#-----------------------------------------------------------------
+-----
+!3 Test formatting
+''' Build expression page '''
+!|script                                   |
+|start|Page Builder                        |
+|line |!- ~6a:${=%d:2                =}~ -!|
+|line |!- ~6b:${= %d : 3.2           =}~ -!|
+|line |!- ~6c:${=%02d: 2 + 1        =}~  -!|
+|line |!- ~6d:${= %4.4f: 2.2 / 3.4 =}~   -!|
+|line |!- ~6e:${=%03o: 16 =}~            -!|
+|line |!- ~6f:${= %03o : 18 =}~          -!|
+|line |!- ~6g:${=%03x: 26 =}~            -!|
+|line |!- ~6h:${=%03X: 27 =}~            -!|
+|line |!- ~6i:${= %-12s : 123 =}~        -!|
+|line |!- ~6j:${=%TY: 73422123127 =}~    -!|
+|line |!- ~6k:${=%b: 27 =}~              -!|
+|line |!- ~6l:${=%b: 0 =}~               -!|
+|line |!- ~6m:${=%B: 27 =}~              -!|
+|line |!- ~6n:${=%B: 0 =}~               -!|
+|line |!- ~6o:${= % d : 3.2          =}~ -!|
+|page |ExpressionPage                      |
+
+''' Render it '''
+!|Response Requester  |
+|uri           |valid?|
+|ExpressionPage|true  |
+
+!**> Contents
+!|Response Examiner|
+|type     |string? |
+|contents |        |
+
+!|Response Examiner    |
+|type    |wrapped html?|
+|contents|             |
+
+***!
+
+''' Verify results '''
+!|Response Examiner                                                              |
+|type    |pattern                                                       |matches?|
+|contents|~6a:2~                                                        |true    |
+|contents|~6b:3~                                                        |true    |
+|contents|~6c:03~                                                       |true    |
+|contents|~6d:0.6471~                                                   |true    |
+|contents|~6e:020~                                                      |true    |
+|contents|~6f:022~                                                      |true    |
+|contents|~6g:01a~                                                      |true    |
+|contents|~6h:01B~                                                      |true    |
+|contents|~6i:123&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~|true    |
+|contents|~6j:1972~                                                     |true    |
+|contents|~6k:true~                                                     |true    |
+|contents|~6l:false~                                                    |true    |
+|contents|~6m:true~                                                     |true    |
+|contents|~6n:false~                                                    |true    |
+|contents|~6o: 3~                                                       |true    |
+
+#-----------------------------------------------------------------
+-----
+!3 Test formatting with specific locale
+''' Build expression page '''
+!|script                                   |
+|start|Page Builder                        |
+|line |!-!define FORMAT_LOCALE {fr}-!      |
+|line |!- ~7a:${= %4.4f: 2.2 / 3.4 =}~   -!|
+|page |ExpressionPage                      |
+
+''' Render it '''
+!|Response Requester  |
+|uri           |valid?|
+|ExpressionPage|true  |
+
+!**> Contents
+!|Response Examiner|
+|type     |string? |
+|contents |        |
+
+!|Response Examiner    |
+|type    |wrapped html?|
+|contents|             |
+
+***!
+
+''' Verify results '''
+!|Response Examiner           |
+|type    |pattern    |matches?|
+|contents|~7a:0,6471~|true    |
+
+#---[EOT]---

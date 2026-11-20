@@ -1,0 +1,88 @@
+To publish a site, use the URL: ''!-http://MySite:MyPort?publish&destination=my/path-!''
+
+The entire site will be written as static HTML files, in a directory structure the same as the page structure.
+
+Two files must be supplied in the ''!-FitNesseRoot/files/fitnesse-!'' directory:
+
+''publishResources.txt'' provides a list of resources to be extracted into ''my/path/files/fitnesse''.
+
+Sample:
+{{{css/fitnesse_wiki.css
+css/fitnesse_pages.css
+bootstrap/css/fitnesse-bootstrap.css
+javascript/jquery-3.5.1.min.js
+javascript/fitnesse.js
+bootstrap/js/bootstrap.js
+bootstrap/js/respond.js
+bootstrap/img/plus-sign.png
+bootstrap/img/minus-sign.png
+images/collapsibleClosed.png
+images/collapsibleOpen.png
+images/fitnesse-logo-large.png
+images/fitnesse-logo-small.png
+images/fitnesse-logo.png
+images/fitnesse_architecture.jpg
+images/keyboard_shortcuts.png
+images/symlinkDiagram.gif}}}
+
+''publish.vm'' provides a Velocity template for the HTML files. This can contain the following tokens that will be replaced with content from each page:
+* $content
+* $footerContent
+* $helpText
+* $pageTitle
+* $title
+
+Sample:
+{{{<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>$title</title>
+    <link rel="shortcut icon" type="image/png" href="files/fitnesse/images/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="files/fitnesse/css/fitnesse_wiki.css">
+    <link rel="stylesheet" type="text/css" href="files/fitnesse/css/fitnesse_pages.css">
+    <link rel="stylesheet" type="text/css" href="files/fitnesse/bootstrap/css/fitnesse-bootstrap.css">
+    <script src="files/fitnesse/javascript/jquery-3.5.1.min.js" type="text/javascript"></script>
+    <script src="files/fitnesse/javascript/fitnesse.js" type="text/javascript"></script>
+    <script src="files/fitnesse/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+    <script src="files/fitnesse/bootstrap/js/respond.js" type="text/javascript"></script>
+  </head>
+  <body class="wikiPage">
+    <nav class="navbar-fixed-top " role="navigation">
+      <div class="navbar navbar-default">
+        <div class="navbar-header">
+          <a href="FrontPage" class="navbar-brand" ><span>FitNesse</span></a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="FitNesseFeatures">Features</a></li>
+          <li><a href="FitNesseDownload">Download</a></li>
+          <li><a href="PlugIns">Plug-ins</a></li>
+          <li><a href="FitNesse.UserGuide">User Guide</a></li>
+        </ul>
+      </div>
+      <ol class="page-actions btn-group">
+        <li class="expandall btn btn-xs">Expand All</li>
+        <li class="collapseall btn btn-xs">Collapse All</li>
+      </ol>
+      <ol class="breadcrumb">
+#foreach($breadCrumb in $pageTitle.BreadCrumbs)
+        <li><a href="$breadCrumb.Link">$breadCrumb.Name</a></li>
+#end
+        <li>$pageTitle.Title</li>
+      </ol>
+    </nav>
+    <header>
+#if( $!helpText )
+      <p class="lead">$helpText</p>
+#end
+    </header>
+    <article>
+      $content
+    </article>
+    <footer>
+      $footerContent
+    </footer>
+  </body>
+</html>}}}
+

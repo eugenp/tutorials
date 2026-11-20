@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.hibernate.SQL" level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="org.hibernate.orm.jdbc.bind" level="TRACE">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="org.springframework.jdbc.core.JdbcTemplate" level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="org.springframework.jdbc.core.StatementCreatorUtils" level="TRACE">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="net.ttddyy.dsproxy.listener" level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

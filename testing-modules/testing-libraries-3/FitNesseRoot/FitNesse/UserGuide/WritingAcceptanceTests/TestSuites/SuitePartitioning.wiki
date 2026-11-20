@@ -1,0 +1,51 @@
+!2 Suite Partitioning
+
+Suites can be partitioned, that is split into multiple parts, for instance to run each partition in parallel. By running the parts in parallel the total execution time can be reduced.
+!-FitNesse-! is not thread-safe so each partition's run should be executed by a separate Java process. But this can be a very effective way to speed up the time needed for testing when tests do not interfere which each other. In CI/CD servers one can spread test execution across multiple workers and get very quick tests results, even when test sizes grow.
+
+There are multiple ways to select certain parts of a suite. SubWikiSuites and TagsAndFilters both allow suites to be split, but these are static. And if the goal is only to improve a test suite's execution time, it could be considered improper use of these mechanisms as they are intended to define functional aspects of tests.
+A purpose-build mechanism to partition a suite is also available. When running a suite one can provide a !style_code(partitionCount) and !style_code(partitionIndex) parameter (zero-based) to indicate in how many parts the suite should be split, and which part to run now.
+An example usage of this mechanism is a call to !style_code(!-http://&lt;host>:&lt;port>/&lt;suite path>?suite&partitionCount=2&partitionIndex=0-!). This would partition the suite in two, executing the first.
+
+So one can start multiple runs for the same suite, all using the same partition count, but a different partition index.
+By starting 'partition count' runs all tests are run, without the need to manually define and maintain exactly which tests should go in which partition, even when tests are added and removed from the suite.
+
+!3 Partition Preview
+
+A specific partition responder is available which will list the partitions (and test order in them) that will be created for a specific suite and partition count. It will list all test pages in HTML (or tab-separated text) format indicating in which partition the test will be placed and what its order in the partition will be.
+So one could for instance do !style_code(!-http://&lt;host>:&lt;port>/&lt;suite path>?partition&partitionCount=5-!) to so see how that suite would be divided in 5 partitions.
+
+Tab separated format can be requested by supplying the !style_code(format) parameter with value !style_code(tsv), e.g. !style_code(!-http://&lt;host>:&lt;port>/&lt;suite path>?partition&format=tsv&partitionCount=5-!).
+
+!3 Partition Index File
+
+One can also supply a file containing a partitioning in the tab-separated format created by the partition preview responder when running a suite. This file can list the desired partitioning for all known test pages. Any other pages found in the suite will be spread evenly across all partitions.
+The filename for such a file must be supplied to the suite responder using the !style_code(partitionIndexFile) parameter. The file will be looked up inside the wiki's [[files section][.FitNesse.UserGuide.FitNesseWiki.FilesSection]].
+
+So for example a call to !style_code(!-http://&lt;host>:&lt;port>/&lt;suite path>?suite&partitionCount=2&partitionIndex=1&partitionIndexFile=partitions.tsv-!). This would partition the tests in the suite in two groups using the division described in a file called !style_code(partitions.tsv) in the files section, executing the second group.
+The file's content could look something like this (where whitespace between columns should be tab characters):
+{{{
+Page	Partition	Test System	Order
+FitNesse.SuiteAcceptanceTests.SuiteAuthenticationTests.AlwaysSecureOperation	0	slim	0
+FitNesse.SuiteAcceptanceTests.SuiteAuthenticationTests.SecureReadOperations	1	slim	0
+FitNesse.SuiteAcceptanceTests.SuiteAuthenticationTests.SecureTestOperations	1	slim	1
+}}}
+It is also possible to specify any level in the tree for a partition. For example, all tests under !-SuiteWikiImportTests-! in below table will be included in partition 0 and !-SuiteAuthenticationTests-! will be in partition 1. Remaining tests not included in this file will be evenly spread across all partitions.
+Closest match in the tree takes precedence in case of a conflict. For example, if you specify both the test page and parent level in this file, test page partitioning index will be applied for that test.
+{{{
+Page	Partition	Test System	Order
+FitNesse.SuiteAcceptanceTests.SuiteWikiImportTests	0	slim	0
+FitNesse.SuiteAcceptanceTests.SuiteAuthenticationTests	1	slim	0
+}}}
+
+!3 Partitioning Algorithm
+
+The standard partitioning algorithm tries to make partitions with the same number of tests. It will, for instance, for a partition count of 4:
+ * split a suite of 100 tests into 4 partitions of 25 elements and
+ * a suite of 102 elements would be split into 2 partitions of 26 elements and 2 of 25.
+
+Plugins can tailor this behaviour by registering a custom 'test run factory'. For instance when historic run times of tests are known a plugin could use this information to create partitions with an equal expected run time.
+
+!3 Usage via !-FitNesseRunner-!
+
+When [[running tests from jUnit][.FitNesse.UserGuide.WritingAcceptanceTests.RunningFromJunit]] using the !style_code(!-FitNesseRunner-!) one can use this feature by applying the !style_code(@Partition), and possibly the !style_code(!-@PartitionFile-!), annotation to the test class.

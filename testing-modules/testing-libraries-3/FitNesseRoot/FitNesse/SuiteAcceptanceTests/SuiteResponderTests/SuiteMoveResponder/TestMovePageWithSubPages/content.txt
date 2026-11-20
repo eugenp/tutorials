@@ -1,0 +1,45 @@
+!3 We should be able to move a page that has sub pages from one location to another.  The sub pages should move with the page.
+
+First build a page, a subpage to move, sub pages of the sub page, and a target page to move it to.
+
+|Page creator.|
+|Page name.                               |Page contents.  |valid?|
+|!-ParentPage-!                         |x             |true   |
+|!-ParentPage.ChildPage-!               |child page    |true   |
+|!-ParentPage.ChildPage.GrandchildPage-!|grandchild page| true  |
+|!-NewParentPage-!                      |x             |true   |
+
+Then move that page.
+
+|Response Requester.|
+|uri   |status?|
+|!-ParentPage.ChildPage?responder=movePage&newLocation=NewParentPage-!||
+
+Next fetch the moved page.
+
+|Response Requester.|
+|uri|valid?|contents?|
+|!-NewParentPage.ChildPage-!|true||
+
+Make sure that the sub page can be referenced in it's new location.
+
+|Response Examiner.|
+|type  |pattern|matches?|wrapped html?|
+|contents|child page|true||
+
+Make sure that the grandchild page can be referenced in its new location
+
+|Response Requester.|
+|uri|valid?|contents?|
+|!-NewParentPage.ChildPage.GrandchildPage-!|true||
+
+|Response Examiner.|
+|type  |pattern|matches?|wrapped html?|
+|contents|grandchild page|true||
+
+Make sure that there is no sub page beneath !-ParentPage-!.
+
+!|Response Requester.|
+|uri|valid?|contents?|
+|ParentPage.SubPage?getPage&dontCreatePage|false||
+

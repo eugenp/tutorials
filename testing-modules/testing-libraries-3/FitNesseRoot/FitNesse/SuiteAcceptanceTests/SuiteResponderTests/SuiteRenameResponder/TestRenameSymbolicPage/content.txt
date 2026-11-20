@@ -1,0 +1,32 @@
+!contents
+
+If a symlink is created on the to-be-moved page, the symlink should be moved.
+
+!*> local setup and scenario's
+| library |
+| page driver |
+
+!| scenario | create symlink on | pageName | with name | name | link to | linkedPage |
+| check | request page | @pageName?responder=symlink&linkName=@name&linkPath=@linkedPage | 303 |
+| show | content |
+| ensure | content contains | Location: /@pageName?properties |
+
+!| scenario | rename page | pageName | to | newPageName |
+| check | request page | @pageName?responder=renamePage&newName=@newPageName | 303 |
+| show | content |
+| ensure | content contains | Location: /@newPageName |
+*!
+
+Rename a page. The page contains a symlink to a sibling page of the to-be moved page and a symlink to a child page of the to-be moved page. In both cases the pages should be moved in such a way that the symlink remain valid and point to the right page.
+
+!| script |
+| create page | AnotherPage | with content | another page |
+| create symlink on | | with name | LinkAnotherPage | link to | AnotherPage |
+| ensure | page | LinkAnotherPage | is a symbolic link |
+
+!| script |
+| rename page | LinkAnotherPage | to | LinkSomeOtherPage |
+| reject | page | LinkAnotherPage | exists |
+| ensure | page | AnotherPage | exists |
+| ensure | page | LinkSomeOtherPage | is a symbolic link |
+| page | LinkSomeOtherPage | should contain | another page |

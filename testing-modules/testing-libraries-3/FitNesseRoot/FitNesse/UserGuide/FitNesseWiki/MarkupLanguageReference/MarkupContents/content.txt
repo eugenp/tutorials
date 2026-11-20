@@ -1,0 +1,44 @@
+!include -seamless <FitNesse.SuiteAcceptanceTests.SuiteWidgetTests.ContentsUsage
+The ''' !contents ''' widget is replaced with a list of all the immediate child pages.  If there are no child pages, then it is replaced with an empty list.
+
+Markup:
+{{{!contents -R}}} will replace itself with a list of child pages in which case the widget will recurse down the hierarchy from the page you're on. So you get the immediate child pages, all of their immediate child pages, all of theirs, etc, until all of the leaves have been reached.
+
+!3 Usage
+The table that follows describes variables that modify the display of !contents from the point where that variable is defined.
+
+'''Limited Recursion'''
+The depth of the recursion of the -R option may be limited by specifying the number of levels to descend as part of the -R option; e.g., -R2 shows only two levels of child pages regardless of the full depth of the tree.  If more levels of the hierarchy exist at any node past the specified depth, an ellipsis (...) is shown to denote more levels exist.  Similarly, the -R1 option shows only the immediate children (like !contents with no -R option,) but the ellipsis will be displayed when more levels exist.  The ellipsis may be changed to a different string via the MORE_SUFFIX_TOC variable.
+
+'''Help Text'''
+To define a particular page's help text, navigate to that page, click '''Properties''', and enter the help text in the input box labeled "Help Text".  When the -h option is specified, or the HELP_TOC variable is "true", the help text is appended to the corresponding line in the TOC.  If neither the -h option, nor the HELP_TOC is true, the help text displays as a mouse-over balloon.  The delimiter that starts the appended help text defaults to ": " and may be changed via the HELP_PREFIX_TOC variable.
+
+'''Page Properties'''
+To facilitate the verification of test, suite, and symbolic links, the -p option will append a series of characters to denote a particular property that is set for that page.  The default characters are:
+|''' Character '''|''' Property '''|''' Description '''                                                                           |
+|!c *             |Suite           |The Suite property box is checked                                                             |
+|!c +             |Test            |The Test property box is checked                                                              |
+|!c @             |Imported        |The page is imported from an external source                                                  |
+|!c >             |Symbolic Link   |The page is a symbolic link of the current page                                               |
+|!c -             |Skipped         |The skip property box is checked; this page and all its chidlren are excluded from suite tests|
+
+The character set for properties may be changed via the PROPERTY_CHARACTERS variable; this variable is positional in the order specified above.
+
+!3 Global Variables that Modify TOC
+|''' NAME '''       |''' Default '''|''' Values '''    |''' Notes '''                                |
+|FILTER_TOC         |false          |true!-|-!false    |'' Append suite fiters to TOC (-f flag) ''   |
+|HELP_PREFIX_TOC    |:<''space''>   |''any string''    |'' Define prefix for help text suffix ''     |
+|HELP_TOC           |false          |true!-|-!false    |'' Append help text to TOC (-h flag) ''      |
+|MORE_SUFFIX_TOC    |<''space''>... |''any string''    |'' Define sequence to show more TOC levels ''|
+|PROPERTY_CHARACTERS|!- *+@>- -!    |''any characters''|'' Define property icons for TOC ''          |
+|PROPERTY_TOC       |false          |true!-|-!false    |'' Append property icons to TOC (-p flag) '' |
+|REGRACE_TOC        |false          |true!-|-!false    |'' Makes !contents list graceful (-g flag) ''|
+!note (See the ''root'' page for overrides)
+
+!3 !-AcceptanceTests-! for the ''' !contents ''' widget
+ * .FitNesse.SuiteAcceptanceTests.SuiteWidgetTests.TestContents
+ * .FitNesse.SuiteAcceptanceTests.SuiteWidgetTests.TestContentsWithRecursion
+ * .FitNesse.SuiteAcceptanceTests.SuiteWidgetTests.TestContentsRegraced
+ * .FitNesse.SuiteAcceptanceTests.SuiteWidgetTests.TestContentsProperties
+ * .FitNesse.SuiteAcceptanceTests.SuiteWidgetTests.TestContentsFilters
+ * .FitNesse.SuiteAcceptanceTests.SuiteWidgetTests.TestContentsHelp

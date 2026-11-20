@@ -57,6 +57,7 @@
     </dependencies>
 
     <properties>
+        <spring-boot.version>3.5.7</spring-boot.version>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
         <org.springframework.version>6.0.6</org.springframework.version>
     </properties>

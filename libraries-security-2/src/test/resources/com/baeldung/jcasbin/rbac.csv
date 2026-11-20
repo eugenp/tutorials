@@ -1,0 +1,7 @@
+p, alice, data1, read
+p, data2_admin, data2, read
+p, data2_admin, data2, write
+
+g, bob, data2_admin
+g, superuser, data2_admin
+g, carol, superuser

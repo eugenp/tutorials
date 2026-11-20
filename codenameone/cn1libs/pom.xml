@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>  <artifactId>dailyroutine</artifactId>
+        <groupId>com.baeldung.cn1tutorial</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.baeldung.cn1tutorial</groupId>
+    <artifactId>dailyroutine-cn1libs</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>dailyroutine-cn1libs</name>
+    <profiles>
+    <!-- Profile injected by install-cn1lib goal for NativeLogsReader cn1lib -->
+<profile>
+  <id>NativeLogsReader.cn1lib-cn1lib</id>
+  <activation>
+    <file><exists>${basedir}/NativeLogsReader/pom.xml</exists></file>
+  </activation>  <modules><module>NativeLogsReader</module></modules>
+</profile>
+<profile>
+  <id>NativeLogsReader.cn1lib-cn1lib-fromroot</id>
+  <activation>
+    <file><exists>${basedir}/cn1libs/NativeLogsReader/pom.xml</exists></file>
+  </activation>  <modules><module>NativeLogsReader</module></modules>
+</profile>
+
+</profiles>
+</project>

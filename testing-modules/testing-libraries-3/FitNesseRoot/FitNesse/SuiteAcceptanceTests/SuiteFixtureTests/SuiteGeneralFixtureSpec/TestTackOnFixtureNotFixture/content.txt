@@ -1,0 +1,22 @@
+!3 When testing a table, if the first cell of the table refers to a class (after adding 'Fixture' to the end of the name) that does not extend Fixture, then the following message should appear in that cell:
+{{{Class fixtureName is not a fixture.}}}
+
+ * Here is a fitnesse page that should generate the error
+!note The !-!path-! must point to fitnesse.jar
+!note !-WouldBeFixture-! is a real class, but is not a Fixture
+|Action fixture|
+|start|Page builder|
+|enter|attributes|Test=true|
+|enter|line|${SUT_PATH}|
+|enter|line|!-|-!!-!-fit.testFxtr.WouldBe-!-!!-|-!|
+|enter|page|!-NotFixturePage-!|
+
+!|Response Requester|
+|uri|status?|
+|NotFixturePage?test|200|
+
+ * The error message should show up in the response
+
+!|Response examiner|
+|type|pattern|matches?|contents?|
+|contents|Class fit.testFxtr.WouldBeFixture is not a fixture.|true||

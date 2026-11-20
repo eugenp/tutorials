@@ -1,0 +1,121 @@
+@startuml djl_cld
+'https://plantuml.com/class-diagram
+
+hide empty attribute
+skinparam classBorderThickness 2
+skinparam backgroundColor #000000
+skinparam ArrowThickness 2
+skinparam shadowing false
+
+
+' ---- GLOBAL TEXT ----
+skinparam defaultFontColor white
+skinparam defaultFontSize 14
+
+' ---- CLASSES ----
+skinparam class {
+    BackgroundColor black
+    BorderColor #267438
+    FontColor white
+}
+
+' ---- INTERFACES ----
+skinparam interface {
+    BackgroundColor black
+    BorderColor #267438
+    FontColor white
+}
+
+' ---- ARROWS / LINES ----
+skinparam arrow {
+    Color #267438
+}
+
+' ---- NOTES / STEREOTYPES ----
+skinparam note {
+    BackgroundColor black
+    BorderColor #267438
+    FontColor white
+}
+
+skinparam stereotype {
+    FontColor white
+}
+
+interface Model {
+  + {static} newInstance(name: String): Model
+  + load(modelPath: Path): void
+  + newPredictor(translator: Translator<I, O>): Predictor<I, O>
+  + newTrainer(TrainingConfig): Trainer
+  + close(): void
+}
+
+
+class Criteria<I, O> {
+    +builder(): Criteria.Builder<I,O>
+    +loadModel()
+}
+
+class "Criteria.Builder<I, O>" as crBuilder {
+    +optApplication(Application): Criteria.Builder<I, O>
+    +optModelName(String): Criteria.Builder<I, O>
+    +setTypes(Class<P>, Class<Q>): Criteria.Builder<P, Q>
+    +optFilter(String, String): Criteria.Builder<I, O>
+    +build(): Criteria<I, O>
+}
+
+class ZooModel<I, O> {
+    +newPredictor(): Predictor<I, O>
+    +newPredictor(Device): Predictor<I, O>
+    +close()
+}
+
+class Predictor<I, O> {
+    +predict(I) : O
+    +batchPredict(List<I>) : List<O>
+    +close()
+}
+
+interface Translator<I, O> {
+    +processInput(I)
+    +processOutput(O)
+}
+
+class Application {
+    interface CV
+    interface NLP
+    interface Audio
+    interface TimeSeries
+
+}
+
+class Image {
+
+}
+
+class Classifications {
+    +items(): List<Classification>
+    +best(): Classification
+}
+
+class Classification {
+    +getClassName()
+    +getProbability()
+}
+
+' --- Relationships reflecting the code flow ---
+
+Criteria -left-> ZooModel : loadModel()
+ZooModel --> Predictor : newPredictor()
+ZooModel -up-|> Model : implements
+Predictor -right-> Translator : uses
+
+Criteria ..> Application : optApplication()
+Criteria ..> Image : input type
+Criteria .right.> Classifications : output type
+crBuilder --* Criteria : builds
+
+Classifications *-up- Classification : contains
+
+
+@enduml

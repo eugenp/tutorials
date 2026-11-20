@@ -1,0 +1,40 @@
+!define TEST_SYSTEM (SLIM)
+
+!1 How to enforce that a test command takes only a limited amount of time during testing
+
+The slim client needs an extra parrameter -s timeoutLimit but this is not passed by default
+
+
+Defining the parameter via slim_flags will do the job. The timeout is now 1 second.
+!define SLIM_FLAGS (-s 1)
+
+To test that slim_flags are parsed correctly we also add the verbose option (-v) and have multiple spaces between the parameters. The extra spaces must be ignored.
+!define SLIM_FLAGS (   -v      -s 1    )
+
+
+This table passes as the duration is less than the timeout
+!| fitnesse.slim.test.Sleep|
+|Timer | do Sleep ?|
+|100| WakeUp 100|
+
+This table passes as the duration of each command is less than the timeout also the duration of the full table is longer
+!| fitnesse.slim.test.Sleep|
+|Timer | do Sleep ?|
+|100| WakeUp 100|
+|200| WakeUp 200|
+|300| WakeUp 300|
+|400| WakeUp 400|
+|500| WakeUp 500|
+|600| WakeUp 600|
+
+This table fails as the duration is above the timeout
+Note that the endTable command also creates an exception which is wrong
+!| fitnesse.slim.test.Sleep|
+|Timer | do Sleep ?|
+|20000| WakeUp 20000|
+
+Once a Timeout occured every test afterwards fails which is wrong
+!| fitnesse.slim.test.Sleep|
+|Timer | do Sleep ?|
+|100| WakeUp 100|
+

@@ -25,7 +25,7 @@ import org.apache.lucene.document.Document;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.TermQuery;
-import org.apache.lucene.store.RAMDirectory;
+import org.apache.lucene.store.ByteBuffersDirectory;
 import org.junit.Test;
 
 public class LuceneAnalyzerIntegrationTest {
@@ -37,12 +37,13 @@ public class LuceneAnalyzerIntegrationTest {
     public void whenUseStandardAnalyzer_thenAnalyzed() throws IOException {
         List<String> result = analyze(SAMPLE_TEXT, new StandardAnalyzer());
 
-        assertThat(result, contains("baeldung.com", "lucene", "analyzers", "test"));
+        // In Lucene 10, StandardAnalyzer no longer filters stop words by default
+        assertThat(result, contains("this", "is", "baeldung.com", "lucene", "analyzers", "test"));
     }
 
     @Test
     public void whenUseStopAnalyzer_thenAnalyzed() throws IOException {
-        List<String> result = analyze(SAMPLE_TEXT, new StopAnalyzer());
+        List<String> result = analyze(SAMPLE_TEXT, new StopAnalyzer(EnglishAnalyzer.ENGLISH_STOP_WORDS_SET));
 
         assertThat(result, contains("baeldung", "com", "lucene", "analyzers", "test"));
     }
@@ -100,7 +101,7 @@ public class LuceneAnalyzerIntegrationTest {
     
     @Test
     public void givenTermQuery_whenUseCustomAnalyzer_thenCorrect() {
-        InMemoryLuceneIndex luceneIndex = new InMemoryLuceneIndex(new RAMDirectory(), new MyCustomAnalyzer());
+        InMemoryLuceneIndex luceneIndex = new InMemoryLuceneIndex(new ByteBuffersDirectory(), new MyCustomAnalyzer());
         luceneIndex.indexDocument("introduction", "introduction to lucene");
         luceneIndex.indexDocument("analyzers", "guide to lucene analyzers");
         Query query = new TermQuery(new Term("body", "Introduct"));
@@ -117,7 +118,7 @@ public class LuceneAnalyzerIntegrationTest {
 
         PerFieldAnalyzerWrapper wrapper =
           new PerFieldAnalyzerWrapper(new StandardAnalyzer(), analyzerMap);
-        InMemoryLuceneIndex luceneIndex = new InMemoryLuceneIndex(new RAMDirectory(), wrapper);
+        InMemoryLuceneIndex luceneIndex = new InMemoryLuceneIndex(new ByteBuffersDirectory(), wrapper);
         luceneIndex.indexDocument("introduction", "introduction to lucene");
         luceneIndex.indexDocument("analyzers", "guide to lucene analyzers");
         

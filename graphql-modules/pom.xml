@@ -14,6 +14,13 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <modules>
+        <module>graphql-dgs</module>
+        <module>graphql-java</module>
+        <module>graphql-spqr</module>
+        <module>graphql-spqr-boot-starter</module>
+    </modules>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -26,12 +33,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <modules>
-        <module>graphql-dgs</module>
-        <module>graphql-java</module>
-        <module>graphql-spqr</module>
-        <module>graphql-spqr-boot-starter</module>
-    </modules>
 
 </project>

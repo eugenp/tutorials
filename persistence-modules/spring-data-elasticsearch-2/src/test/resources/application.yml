@@ -1,0 +1,2 @@
+elasticsearch:
+  hostAndPort: localhost:9200

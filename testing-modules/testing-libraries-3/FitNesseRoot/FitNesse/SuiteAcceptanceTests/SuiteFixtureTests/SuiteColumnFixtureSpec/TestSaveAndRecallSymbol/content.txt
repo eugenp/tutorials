@@ -1,0 +1,41 @@
+!3 You can save and recall symbols in a !-ColumnFixture-!.  You do this by using the =id? and id= syntax.
+
+ * =id? or =id() takes the output of a function and stores it in the symbol named by the cell.  In the example below the integer 1 is stored in the symbol ''one'', and the integer 2 is stored in the symbol ''two''.
+ * id= recalls the value of the symbol named by the cell, and puts it in the ''id'' variable.
+
+!|fitnesse.fixtures.ColumnFixtureTestFixture|
+|input|=output?|
+|1|one|
+|2|two|
+
+!|fitnesse.fixtures.ColumnFixtureTestFixture|
+|input=|output?|
+|one|1|
+|two|2|
+
+'''With classed integral types, there's a chance the value may be null as a correct result:'''
+!|fitnesse.fixtures.ColumnFixtureTestFixture|
+|integerInput|=integerOutput?|
+|1|one|
+|2|two|
+|null|three|
+
+!|fitnesse.fixtures.ColumnFixtureTestFixture|
+|integerInput=|integerOutput?|
+|one|1|
+|two|2|
+|three|null|
+
+{{{
+public class ColumnFixtureTestFixture extends ColumnFixture
+{
+  public int input;
+  public int output() {return input;}
+
+  public Integer integerInput;
+  public Integer integerOutput() { return integerInput; }
+
+  public boolean exception() throws Exception {throw new Exception("I thowed up");}
+}
+}}}
+

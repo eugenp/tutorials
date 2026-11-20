@@ -39,12 +39,18 @@
             <artifactId>fastutil</artifactId>
             <version>${fastutil.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring-core.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <eclipse-collections.version>8.2.0</eclipse-collections.version>
         <hppc.version>0.7.2</hppc.version>
         <fastutil.version>8.1.0</fastutil.version>
+        <spring-core.version>6.1.2</spring-core.version>
     </properties>
 
 </project>

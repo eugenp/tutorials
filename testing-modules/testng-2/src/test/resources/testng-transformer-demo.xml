@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Transformer Demo Suite">
+    <listeners>
+        <listener class-name="com.baeldung.testng.conditionalskip.SkipAnnotationTransformer"/>
+    </listeners>
+    <test name="Transformer Demo">
+        <classes>
+            <class name="com.baeldung.testng.conditionalskip.SkipAnnotationTransformerUnitTest"/>
+        </classes>
+    </test>
+</suite>
+

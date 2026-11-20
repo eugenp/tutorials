@@ -1,0 +1,9 @@
+A simple list of prime numbers.  This fixture should pass.
+
+|!-fitnesse.fixtures.PrimeNumberRowFixture-!|
+|prime|
+|2|
+|3|
+|5|
+|7|
+|11|

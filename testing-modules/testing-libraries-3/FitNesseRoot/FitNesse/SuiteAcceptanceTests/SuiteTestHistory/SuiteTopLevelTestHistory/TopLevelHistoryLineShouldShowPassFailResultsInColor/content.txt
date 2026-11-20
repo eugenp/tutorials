@@ -1,0 +1,18 @@
+!|page history|
+|name          |date      |right|wrong|ignores|exceptions|
+|OneFailPage   |5-May-2009|20   |30   |0      |0         |
+|OnePassPage   |5-May-2009|20   |0    |0      |0         |
+|OnePassOneFail|5-May-2009|1    |0    |0      |0         |
+|OnePassOneFail|6-May-2009|0    |1    |0      |0         |
+|OneError      |5-May-2009|0    |0    |0      |1         |
+
+!|script|
+|get top level history|
+
+!|class for pass fail in top level history line|
+|page          |pass class|pass count|fail class|fail count|
+|OneFailPage   |ignore    |0         |fail      |1         |
+|OnePassPage   |pass      |1         |ignore    |0         |
+|OnePassOneFail|pass      |1         |fail      |1         |
+|OneError      |ignore    |0         |fail      |1         |
+

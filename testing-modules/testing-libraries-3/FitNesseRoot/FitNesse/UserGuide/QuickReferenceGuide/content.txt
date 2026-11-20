@@ -1,0 +1,330 @@
+!***< HIDDEN!
+
+###### TEMPLATE
+
+#!anchor ?
+
+#| ? |${CODE} ? ${CODEend}|
+
+!define TopFONT {!-<font style="font-family:Arial;font-size:8pt">-!}
+!define FONTend {!-</font>-!}
+!define TopOfPAGE (${TopFONT}${SPC}${SPC}${SPC}${SPC}${SPC}${SPC}${SPC}${SPC}[[${LPAREN}to top${RPAREN}][#TopOfPAGE]]${FONTend})
+!define FitNESSE {!-FitNesse-!}
+| !define OPT {''[''} | !define OPTend {'']''} | !define OR {''!-        |-!''} |
+| !define DOT {'''.'''} | !define LT {'''<'''} | !define GT {'''>'''} |
+| !define BAR {'''!- | -!'''} | !define LBRACE ('''{''') | !define RBRACE ('''}''') |
+| !define DIVend {!-</div>-!} | !define LPAREN {'''('''} | !define RPAREN {''')'''} |
+| !define BANG {'''!-!-!'''} |!define SPC {!- -!}''' | !define NL {!-<br/>-!} |
+| !define TEXT {''text''} | | !define SLASH {'''/'''} | !define NUL {} |
+| !define PageNAME {''!-PageName-!''} | !define PagePATH {''!-PagePath-!''} |
+| !define LabelNAME {''label-name''} | !define AnyPagePATH {''!-AnyPagePath-!''} |
+| !define CODE {!-<font style="font-family:Courier New">-!} | !define CODEend (${FONTend}) |
+
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+!define BUTTON {!-<span style="color:white;background-color:darkblue">-!}
+!define BUTTONend {!- </span>-!}
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+!define FitNesseCHARACTERSET (${OPT}'''-Dfile.encoding=UTF-8'''${OPTend})
+!define FitNesseOptCLASSPATH ('''-cp fitnesse.jar'''${OPT}''';'''${NUL}''other.jar.or.path''${OPTend}...)
+!define FitNesseOptEXPIRE ('''-e''' ''days'')
+!define FitNesseOptOMIT ('''-o''')
+!define FitNesseOptPORT ('''-p''' ''port#'')
+!define FitNesseOptROOT ('''-r''' ''N${NUL}ameOfRootPage'')
+!define FitNesseOptDIR ('''-d''' ''/path/to/fitnesse/root'')
+!define FitNesseOptLOG ('''-l''' ''/log/file/path/and/name'')
+!define FitNesseOptOneAUTH (''username''${NUL}''':'''${NUL}''password'')
+!define FitNesseOptFileAUTH (''/auth/file/path/and/name'')
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+!define HorizontalLINES (|${CODE}''over-text''${NUL}'''!------!'''${NUL}''under-text''${CODEend}|thinnest|
+| ${CODE}''over-text''${NUL}'''!-------!'''${NUL}''under-text''${CODEend}    |safest - no conflict with workflow phase separators|
+|${CODE}''over-text''${NUL}'''!-----------!'''${NUL}''under-text''${CODEend}|thicker                                            |
+)
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!define HEADER LINES (${BANG}'''1''' ''largest heading text''
+${BANG}'''2''' ''middle heading text''
+${BANG}'''3''' ''smaller heading text''
+and so on up to ${BANG}'''6'''
+)
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!define HEADINGS (${BANG}'''!headings''' generates a list of all header lines
+)
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!define CollapsibleEXPANDED (${BANG}'''*''' ${OPT}''title''${OPTend}
+${SPC}${SPC}'' multi-line wiki text ''
+${SPC}${SPC}'' N.B.: Multiple asterisks are allowed, e.g.,'' ${BANG}'''****''' ${TEXT}
+'''*'''${BANG}
+)
+!define CollapsibleCOLLAPSED (${BANG}'''*'''${GT} ${OPT}''title''${OPTend}
+${SPC}${SPC}'' multi-line wiki text ''
+${SPC}${SPC}'' N.B.: Multiple asterisks are allowed, e.g.,'' '''${BANG}****'''${GT} ${TEXT}
+'''*'''${BANG}
+)
+!define CollapsibleINVISIBLE (${BANG}'''*'''${LT} ${OPT}''title''${OPTend}
+${SPC}${SPC}'' multi-line wiki text ''
+${SPC}${SPC}'' N.B.: Multiple asterisks are allowed, e.g.,'' ${BANG}'''****'''${LT} ${TEXT}
+'''*'''${BANG}
+)
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!define LSQUARE {'''['''}
+!define RSQUARE {''']'''}
+!define PageLINKS (|${CODE} ${DOT}R${NUL}ootPage${OPT}${DOT}C${NUL}hildPage${OPTend}  ${CODEend}| from root         |
+|${CODE} S${NUL}ameLevelPage${OPT}${DOT}C${NUL}hildPage${OPTend}   ${CODEend}|sibling          |
+|${CODE} ${GT}C${NUL}hildPage${OPT}${DOT}C${NUL}hildPage${OPTend}  ${CODEend}|child or symbolic|
+|${CODE} ${LSQUARE}${LSQUARE}${TEXT}${RSQUARE}${LSQUARE}${AnyPagePATH}${RSQUARE}${RSQUARE} ${CODEend} | in an alias |
+)
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!define CollapSIBLE (|${CODE} ${CollapsibleEXPANDED}  ${CODEend}| expanded  | |
+|${CODE} ${CollapsibleCOLLAPSED} ${CODEend}|collapsed|                                     |
+|${CODE} ${CollapsibleINVISIBLE} ${CODEend}|invisible|''useful for hidding define's, etc.''|
+)
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!define HASH {'''!-#-!'''} |
+
+!define JumpTO (
+| ${CODE} ${TEXT} ${HASH}${LabelNAME} ${TEXT} ${CODEend} | in-line |
+| ${CODE} ${DOT}${HASH}${LabelNAME} ${CODEend} | left-justified |
+| ${CODE} ${LSQUARE}${LSQUARE}${TEXT}${RSQUARE}${LSQUARE}${HASH}${LabelNAME}${RSQUARE}${RSQUARE} ${CODEend} | in an alias |
+)
+
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+!define ExternalLINKS (|${CODE} '''http:'''${SLASH}${SLASH}''url-path'' ${NL} ${CODEend}| Web    |
+| ${CODE} '''http:'''${SLASH}${SLASH}'''files'''${SLASH}''localPath'' ${CODEend} | Local |
+| ${CODE} ${LSQUARE}${LSQUARE}${TEXT}${RSQUARE}${LSQUARE}/files'''${SLASH}''localPath''${NUL}${RSQUARE}${RSQUARE} ${CODEend}''' | Alias |
+| ${CODE} ${LSQUARE}${LSQUARE}${TEXT}${RSQUARE}${LSQUARE}${AnyPagePATH}${HASH}${LabelNAME}${RSQUARE}${RSQUARE} ${CODEend} | Alias |
+| ${CODE} ${TEXT}'''@'''${TEXT}${DOT}${TEXT} ${CODEend} | mailto |
+)
+
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+!define IncludePAGE (|${CODE} ${BANG}'''include''' ${AnyPagePATH}    ${CODEend}| expanded border  |
+| ${CODE} ${BANG}'''include -c''' ${AnyPagePATH} ${CODEend} | collapsed border |
+| ${CODE} ${BANG}'''include -seamless''' ${AnyPagePATH} ${CODEend} | no border |
+| ${CODE} ${BANG}'''include -setup''' ${AnyPagePATH} ${CODEend} | appears like S${NUL}etUp |
+| ${CODE} ${BANG}'''include -teardown''' ${AnyPagePATH} ${CODEend} | appears like T${NUL}earDown |
+| ${CODE} ${BAR}${SPC}${BANG}'''include ''' ${AnyPagePATH}${SPC}${BAR} ${CODEend} | in a table cell |
+
+)
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!define TocInsert (| Contents List | ${CODE} ${BANG}'''contents'''     ${CODEend} |
+| Contents Tree | ${CODE} ${BANG}'''contents -R'''  ${CODEend} |
+| Contents Sub-tree | ${CODE} ${BANG}'''contents -R'''${OPT}''nn''${OPTend}${CODEend} |
+| Contents List - Graceful | ${CODE} ${BANG}'''contents -g'''     ${CODEend} |
+| Contents List - Properties | ${CODE} ${BANG}'''contents -p'''     ${CODEend} |
+| Contents List - Suite Filters | ${CODE} ${BANG}'''contents -f'''     ${CODEend} |
+| Contents List - Help Text | ${CODE} ${BANG}'''contents -h'''     ${CODEend} |
+| Contents List - Test Page Count | ${CODE} ${BANG}'''contents -c'''     ${CODEend} |
+)
+
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+!define PictureINSERT (|${CODE} ${BANG}'''img''' ''url-to-image-file'' ${CODEend}| in-line |
+| ${CODE} ${BANG}'''img-l''' ''url-to-image-file'' ${CODEend} | image left-justified, text wraps on right |
+| ${CODE} ${BANG}'''img-r''' ''url-to-image-file'' ${CODEend} | image right-justified, text wraps on the left |
+| ${CODE} '''${BANG}'''img'''${OPT}'''-l'''${OR}'''-r'''${OPTend} ''url-to-image-file''${NUL}''' ${CODEend} | as a clickable link |
+
+)
+
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+!define FixtureTABLE (${BANG}${BAR} ''fixture specification'' ${BAR}
+${OPT}${BAR} ''optional table row'' ${BAR}${OPT} ''optional 2nd column'' ${BAR}${OPTend}'''...'''${OPTend} ${OPT}${BAR} ''optional table row'' ${BAR}${OPT} ''optional 2nd column'' ${BAR}${OPTend}'''...'''${OPTend} ${SPC}${SPC}${SPC}${SPC}${SPC}${SPC}${SPC}''':''' )
+
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+!define SearchForFIXTURE (G${NUL}raceFullName${NL}'''fit.'''G${NUL}raceFullName${NL}G${NUL}raceFullName'''Fixture'''${NL}'''fit.'''G${NUL}raceFullName'''Fixture''')
+!define SearchForMETHOD (graceFullMethod${LPAREN}${RPAREN}${NL}'''get'''G${NUL}raceFullMethod${LPAREN}${RPAREN}${NL}'''set'''G${NUL}raceFullMethod${LPAREN}${RPAREN} ${LPAREN}if setter context${RPAREN})
+!define SearchForARG1 (methodName${LPAREN}''p1''${RPAREN}${NL}'''get'''M${NUL}ethodName(''p1''${RPAREN}${NL} '''set'''M${NUL}ethodName(''p1''${RPAREN})
+!define SearchForARG1TOO (methodNameToo${LPAREN}''p1''${RPAREN}${NL}'''get'''M${NUL}ethodNameToo${LPAREN}''p1''${RPAREN}${NL}'''set'''M${NUL}ethodNameToo${LPAREN}''p1''${RPAREN})
+!define SearchForARG2 (methodName${LPAREN}''p1'',''p2''${RPAREN}${NL}'''get'''M${NUL}ethodName${LPAREN}''p1'',''p2''${RPAREN}${NL}'''set'''M${NUL}ethodName${LPAREN}''p1'',''p2''${RPAREN})
+!define SearchForARG2TOO (methodNameToo${LPAREN}''p1'',''p2''${RPAREN}${NL}'''get'''M${NUL}ethodNameToo${LPAREN}''p1'',''p2''${RPAREN}${NL}'''set'''M${NUL}ethodNameToo${LPAREN}''p1'',''p2''${RPAREN})
+!define FixtureNAMING (|!note The cells below are on one line regardless of word-wrapping |
+| '''table spec''' | '''Searches for:''' |
+| ${CODE} ${BANG}${BAR} Grace Full Name ${BAR} ${CODEend} | ${SearchForFIXTURE} |
+| ${CODE} ${BANG}${BAR} grace full method ${BAR} ${CODEend} | ${SearchForMETHOD} |
+| ${CODE} ${BANG}${BAR} method name ${BAR}''p1''${BAR} ${CODEend} | ${SearchForARG1} |
+| ${CODE} ${BANG}${BAR} method name ${BAR}''p1''${BAR} too ${BAR} ${CODEend} | ${SearchForARG1TOO} |
+| ${CODE} ${BANG}${BAR} method name ${BAR}''p1''${BAR} also ${BAR}''p2''${BAR} ${CODEend} | ${SearchForARG2} |
+| ${CODE} ${BANG}${BAR} method name ${BAR}''p1''${BAR}''' also ${BAR}''p2''${BAR} too ${BAR} ${CODEend}''' | ${SearchForARG2TOO} |
+
+)
+
+*!
+#*******************************************************************************************
+
+#*******************************************************************************************
+
+#*******************************************************************************************
+
+!1 ${FitNESSE} Cheat Sheet
+!anchor TopOfPAGE
+!2 Sections
+ * '''[[ ${FitNESSE} Command Line ][#FitNesseCommandLINE]] '''
+ * '''[[ Character Formatting     ][#CharacterFORMATTING]] '''
+ * '''[[ Line & Block Formatting  ][#LineBlockFORMATTING]] '''
+ * '''[[ Links & References       ][#LinksAndREFERENCES]] '''
+ * '''[[ Includes & Informational ][#IncludesINFORMATIONAL]] '''
+ * '''[[ Variable Usage           ][#VARIABLES]] '''
+ * '''[[ Global Variables         ][#GlobalVARIABLES]] '''
+ * '''[[ Global Properties        ][#GlobalPROPERTIES]] '''
+ * '''[[ Testable Tables          ][#TestTABLES]] '''
+ * '''[[ Wiki Page Actions        ][#FitNesseACTIONS]] '''
+
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+!2 Glossary
+| ${PagePATH} | ${CODE} ${PageNAME}${DOT}${OPT}${PageNAME}${OPTend} ${CODEend} |
+| ${AnyPagePATH} | ${CODE} ${OPT}${LT}${OR}${DOT}${OR}${GT}${OPTend}${PagePATH} ${CODEend} |
+| Symbolic Link | A locally-defined alias to any accessible page.${NL}Symbolic links are created by clicking ${BUTTON}Properties${BUTTONend}${NL}and entering information in the bottom section${NL}titled "Symbolic Links". |
+
+#---------------------------------------------------------------------------------------------
+
+!anchor FitNesseCommandLINE
+----
+!2 !-FitNesse-! Command Line and Options ${TopOfPAGE}
+| ${CODE} ${OPT}''path/to/java/''${OPTend}'''java''' ${FitNesseCHARACTERSET} ${FitNesseOptCLASSPATH} '''fitnesse.${FitNESSE}''' ${OPT}${FitNesseOptOMIT}${OPTend} ${OPT}${FitNesseOptPORT}${OPTend} ${OPT}${FitNesseOptDIR}${OPTend} ${OPT}${FitNesseOptROOT}${OPTend} ${OPT}${FitNesseOptEXPIRE}${OPTend} ${OPT}${FitNesseOptLOG}${OPTend} ${OPT}'''-a''' ''{''${FitNesseOptOneAUTH} ${OR} ${FitNesseOptFileAUTH}''}''${OPTend} ${OPT}''other arguments''${OPTend} ${CODEend} |
+| ''' ''option'' ''' | ''' ''default'' ''' | ''' ''description'' ''' |
+| ${CODE}'''-a''' ${FitNesseOptOneAUTH}${CODEend} | ${CODE} ''no auth''     ${CODEend} | Enforces access for one user |
+| ${CODE}'''-a''' ${FitNesseOptFileAUTH}${CODEend} | ${CODE} ''no auth''     ${CODEend} | Enforces access for a file of users with encrypted passwords |
+| ${CODE}${FitNesseOptDIR}${CODEend} | ${CODE} ${DOT}          ${CODEend} | Path to the fitnesse ''wiki'' home where ${FitNESSE}Root or ''-r name'' resides |
+| ${CODE}${FitNesseOptEXPIRE}${CODEend} | ${CODE} '''14'''        ${CODEend} | Number of days to retain older versions (.zip files) |
+| ${CODE}${FitNesseOptLOG}${CODEend} | ${CODE} ''off''         ${CODEend} | Where to put and what to call the run log |
+| ${CODE}${FitNesseOptOMIT}${CODEend} | ${CODE} ''update''      ${CODEend} | Prevents (omits) updating ${FitNESSE}Root content|
+| ${CODE}${FitNesseOptPORT}${CODEend} | ${CODE} '''80'''        ${CODEend} | Port for ${FitNESSE} to listen on |
+| ${CODE}${FitNesseOptROOT}${CODEend} | ${CODE} '''${FitNESSE}Root''' ${CODEend} | Name of root folder in the fitnesse ''wiki'' home or ''-d'' path |
+| ${CODE}${FitNesseCHARACTERSET}${CODEend} | ${CODE} ''off'' ${CODEend} | Unicode characters support in Test History Page |
+
+
+#---------------------------------------------------------------------------------------------
+
+!anchor FitNesseACTIONS
+!2 !-FitNesse-! Actions ${TopOfPAGE}
+| '''Edit''' this page | ${CODE} ''url''${NUL}'''?edit'''        ${CODEend} |
+| '''Create''' a new page directly | ${CODE}''current-url''${NUL}'''.'''!-NewPageName-!${NUL}${CODEend}${NL}'''or''' ${NL} ${CODE}''current-url''${NUL}'''.'''!-NewPageName-!${NUL}'''?edit'''${CODEend} |
+| '''Test''' this page | ${CODE} ''url''${NUL}'''?test'''        ${CODEend} |
+| '''Suite''' test this page | ${CODE} ''url''${NUL}'''?suite'''        ${CODEend} |
+| Set '''properties''' of this page | ${CODE} ''url''${NUL}'''?properties'''  ${CODEend} |
+| See '''versions''' of this page | ${CODE} ''url''${NUL}'''?versions'''    ${CODEend} |
+| '''Refactor''' this page | ${CODE} ''url''${NUL}'''?refactor'''    ${CODEend} |
+| '''Search''' pages from here | ${CODE} ''url''${NUL}'''?searchForm'''  ${CODEend} |
+| '''Where''' is this page referenced? | ${CODE} ''url''${NUL}'''?whereUsed'''   ${CODEend} |
+| '''Debug''' this test page | ${CODE} ''url''${NUL}'''?debug'''       ${CODEend} |
+| '''Suite''' test this page with a suite filter "passing" | ${CODE} ''url''${NUL}'''?responder=suite&suiteFilter=passing'''       ${CODEend} |
+
+#---------------------------------------------------------------------------------------------
+
+!anchor CharacterFORMATTING
+!2 Character Formatting ${TopOfPAGE}
+| Comment | ${CODE} '''!-#-!'''${TEXT}    ${CODEend} | ''Can also be used to comment-out markup'' |
+| Italics | ${CODE} '''!-''-!'''${TEXT}'''!-''-!'''   ${CODEend} | |
+| Bold | ${CODE} '''!-'''-!'''${TEXT}'''!-'''-!''' ${CODEend} | |
+| Style | ${CODE} '''!-!style_<someStyle>(text)-!''' ${CODEend} | The style of ''text'' will be the CSS class ''<someStyle>'' |
+| Strike-through | ${CODE} '''!----!'''${TEXT}'''!----!'''   ${CODEend} | |
+| "As-is"/escaping | ${CODE} '''${BANG}-'''${TEXT}'''-${BANG}''' ${CODEend} | ''Can also be used to insert HTML tags directly'' |
+| "As-is" | ${CODE} '''${BANG}<'''${TEXT}'''>${BANG}''' ${CODEend} | ''Will escape HTML tags so they display in plain text.'' |
+| Alias Link | ${CODE} '''${TEXT}''' ${CODEend} | |
+
+#---------------------------------------------------------------------------------------------
+
+!anchor LineBlockFORMATTING
+!2 Line & Block Formatting ${TopOfPAGE}
+| workflow break | ${CODE} '''!------!''' ${CODEend}...separates each "phase" |
+| Horizontal Line | ${HorizontalLINES} |
+| Note | ${CODE} ${BANG}'''note''' ${TEXT} ${CODEend} |
+| Headings | ${CODE} ${HEADINGS} ${CODEend} |
+| Centered | ${CODE} ${BANG}'''c''' ${TEXT} ${CODEend} |
+| Formatted "as is" | ${CODE} '''!-{{{-!'''${TEXT}'''!-}}}-!''' ${CODEend} | note: causes extra line afterward |
+| Collapsible | ${CollapSIBLE} |
+
+#---------------------------------------------------------------------------------------------
+
+!anchor LinksAndREFERENCES
+!2 Links & References ${TopOfPAGE}
+| Page links | ${PageLINKS} |
+| Cross-reference &${NL}Suite Include | ${CODE} ${BANG}'''see''' ${AnyPagePATH} ${CODEend} |
+| Define "in-page" label | ${CODE} ${BANG}'''anchor''' ${LabelNAME} ${CODEend} | a.k.a. anchor |
+| Jump to "in-page" label | ${JumpTO} |
+| External Links | ${ExternalLINKS} |
+!note Link texts containing !-WikiText-! may be escaped. E.g. ''!-[[-!'''${BANG}-'''!-FitNesse-!'''-${BANG}'''!-][http://fitnesse.org]]-!''.
+
+#---------------------------------------------------------------------------------------------
+
+!anchor IncludesINFORMATIONAL
+!2 Includes & Informational ${TopOfPAGE}
+| Timestamp | ${CODE} ${BANG}'''lastmodified'''     ${CODEend} |
+| Timestamp | ${CODE} ${BANG}'''today'''            ${CODEend} |
+| Help text | ${CODE} ${BANG}'''help'''            ${CODEend} |
+| [[Table of Content][FitNesseWiki.MarkupLanguageReference.MarkupContents]]| ${TocInsert} |
+| [[Include Page][WritingAcceptanceTests.AcceptanceTestPatterns.ParameterizedIncludes]] | ${IncludePAGE} |
+| [[Picture Insert][FitNesseWiki.MarkupLanguageReference.MarkupPicture]] | ${PictureINSERT} |
+
+#---------------------------------------------------------------------------------------------
+
+!anchor VARIABLES
+!2 [[Variables][FitNesseWiki.MarkupLanguageReference.MarkupVariables]] ${TopOfPAGE}
+| Variable Definition | ${CODE} ${BANG}'''define''' ''name'' ${LBRACE}''value''${RBRACE} ${NL}${BANG}'''define''' ''name'' '''('''${NUL}''value''${NUL}''')'''${NL}${BANG}'''define''' ''name'' '''['''${NUL}''value''${NUL}''']''' ${CODEend}${NL} |
+| Variable Usage | ${CODE} '''$'''${LBRACE}''name''${RBRACE} ${CODEend} |
+| [[Expression Evaluation][FitNesseWiki.MarkupLanguageReference.MarkupExpressions]] | ${CODE} '''!-${=-!'''${NUL}''expression''${NUL}'''!-=}-!''' ${CODEend} | ''expression'' may contain variables |
+
+#---------------------------------------------------------------------------------------------
+
+!anchor GlobalVARIABLES
+!2 Global Variables ${TopOfPAGE}
+| ''' NAME ''' | ''' Java Default ''' | '''!-FitLibrary (Unix) Default-!''' | ''' .NET Default       ''' |
+| ${CODE} COMMAND_PATTERN   ${CODEend} | !- java -cp %p %m -! | !- java -cp %p %m -! | !- %m %p  -! |
+| ${CODE} REMOTE_DEBUG_COMMAND${CODEend} | !- REMOTE DEBUG COMMAND, or java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000 -cp %p %m-! | !-java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000 -cp %p %m-! | !-java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000 -cp %p %m-! |
+| ${CODE} PATH_SEPARATOR    ${CODEend} | ${SPC} : ${SPC} ''!-(system-dependent)-!'' | ${SPC} : ${SPC} ''!-(system-dependent)-!'' | ${SPC} !-;-! ${SPC} |
+| ${CODE} TEST_RUNNER       ${CODEend} | !-fit.FitServer-! | !-fitlibrary.suite.FitLibraryServer-! | !-dotnet\FitServer.exe-! |
+| ${CODE} REMOTE_DEBUG_RUNNER ${CODEend} | !-TEST_RUNNER -! | !-same as for java-! | !-dotnet\FitServer.exe-! |
+
+| ''' NAME ''' | ''' Default ''' | ''' Values ''' | ''' Notes ''' |
+| ${CODE} TEST_SYSTEM ${CODEend} | !c fit | !c fit&bar;slim | '' Selects the test system to use for this, and descendant pages.'' |
+| ${CODE} SLIM_PORT ${CODEend} ''(deprecated)''| !c 1 | !c integer | '' !-1= communicate via STDIN/STDOUT requires no network ports
+0= find a free port automatically
+else Defines the starting port number and rotates in a range defined by slim.pool.size (10).-!'' |
+| ${CODE} SLIM_HOST ${CODEend} ''(deprecated)''| !c localhost | !c string | '' The name of the host on which !-SlimServer-! is running.'' |
+| ${CODE} SLIM_VERSION ${CODEend} | !c nil | !c string | '' The minimum Slim Protocol Version required for this page.  Used to turn off slim protocol error messages.'' |
+| ${CODE} [[MANUALLY_START_TEST_RUNNER][.FitNesse.SuiteAcceptanceTests.SuiteSlimTests.TestSystemSlimSuite.ManualStartofSlimService]] ${CODEend} | !c false | !c true${BAR}false | '' When set to true then fitnesse will not create it's own slim runner, and will instead connect to an existing runner on port ${CODE} SLIM_PORT ${CODEend} on host ${CODE} SLIM_HOST ${CODEend}.'' |
+| ${CODE} MANUALLY_START_TEST_RUNNER_ON_DEBUG ${CODEend} | !c false | !c true${BAR}false | '' Same as above but only when and a page is run in debug mode .'' |
+| ${CODE} CLASSPATH_PROPERTY ${CODEend} | !c nil | !c ''an environment variable'' | '' If not nil, loads classpath (as gathered from !path) into the named environment variable.  See [[Customizing Test Execution][WritingAcceptanceTests.CustomizingTestExecution]].'' |
+| ${CODE} COLLAPSE_SETUP ${CODEend} | !c false | !c true${BAR}false | '' Collapses all !-SetUps-! '' |
+| ${CODE} COLLAPSE_TEARDOWN ${CODEend} | !c false | !c true${BAR}false | '' Collapses all !-TearDowns-! '' |
+| ${CODE} FILTER_TOC ${CODEend} | !c false | !c true${BAR}false | '' Append suite fiters to TOC '' |
+| ${CODE} HELP_PREFIX_TOC ${CODEend} | !c :<''space''> | !c ''any string'' | '' Define prefix for help text suffix '' |
+| ${CODE} HELP_TOC ${CODEend} | !c false | !c true${BAR}false | '' Append help text to TOC '' |
+| ${CODE} MORE_SUFFIX_TOC ${CODEend} | !c <''space''>... | !c ''any string'' | '' Define sequence to show more TOC levels '' |
+| ${CODE} PROPERTY_CHARACTERS ${CODEend} | !c !- *+@>- -! | !c ''any characters'' | '' Define property icons for TOC '' |
+| ${CODE} PROPERTY_TOC ${CODEend} | !c false | !c true${BAR}false | '' Append property icons to TOC '' |
+| ${CODE} REGRACE_LINK ${CODEend} | !c false | !c true${BAR}false | '' Makes links graceful '' |
+| ${CODE} REGRACE_TOC ${CODEend} | !c false | !c true${BAR}false | '' Makes !contents list graceful '' |
+| ${CODE} RSS_PREFIX ${CODEend} | !c | !c | '' Link prefix for [[RSS Feeds][AdministeringFitNesse.RestfulServices.RssFeed]] '' |
+| ${CODE} INCLUDE_SCENARIO_LIBRARIES ${CODEend} | !c false* | !c true${BAR}false | ''Test pages should include [[!-ScenarioLibrary-!][WritingAcceptanceTests.SpecialPages]] pages''!-
+-! * defaults to true if the SLiM test system is defined. |
+| ${CODE} FORMAT_LOCALE ${CODEend} | !c nil | !c IETF language tag | '' IETF language tag for the locale used for formatting evaluated expressions '' |
+| ${CODE} ''PAGE_NAME'' ${CODEend} | !c | !c Read Only | '' Name of current page'' |
+| ${CODE} ''PAGE_PATH '' ${CODEend} | !c | !c Read Only | '' Fully qualified name of parent. '' |
+| ${CODE} ''RUNNING_PAGE_NAME'' ${CODEend} | !c | !c Read Only | '' Name of current top level running page'' |
+| ${CODE} ''RUNNING_PAGE_PATH '' ${CODEend} | !c | !c Read Only | '' Fully qualified name of the current tope level running  page's parent. '' |
+| ${CODE} ''FITNESSE_PORT'' ${CODEend} | !c | !c Read Only | '' Port number that fitnesse is using. '' |
+
+!note (See the [[''root'' page][""root""]] for overrides)
+#---------------------------------------------------------------------------------------------
+
+!anchor GlobalPROPERTIES
+!2 Global Properties   ${TopOfPAGE}
+| ${CODE} path.separator         ${CODEend} | ''!-(system-dependent)-!'' |
+
+!note (See the [[''root'' page][""root""]] for overrides)
+#---------------------------------------------------------------------------------------------
+
+!anchor TestTABLES
+!2 Testable Tables ${TopOfPAGE}
+| Classpath include | ${CODE} ${BANG}'''path''' ''java.path.spec'' ${CODEend} |
+| "Insert Fixture Table"${NL}Edit List Include | ${CODE} ${BANG}'''fixture''' ''path.fixture'' ${CODEend} |
+| Prevent Wikification | ${CODE} ${BANG}${BAR} ''"as is" or escaped content'' ${BAR} ${CODEend} |
+| Smallest Table | ${CODE} ${BAR} ${TEXT} ${BAR} ${CODEend} |
+| Fixture Table | ${CODE} ${FixtureTABLE} ${CODEend} |
+| Graceful Naming | ${FixtureNAMING} |

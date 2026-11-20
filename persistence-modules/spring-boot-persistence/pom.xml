@@ -85,7 +85,7 @@
         <start-class>com.baeldung.boot.Application</start-class>
         <spring-boot.version>3.2.0</spring-boot.version>
         <oracle-spring-boot-starter-ucp.version>24.2.0</oracle-spring-boot-starter-ucp.version>
-        <hikari.version>6.2.1</hikari.version>
+        <hikari.version>7.0.2</hikari.version>
     </properties>
 
 </project>

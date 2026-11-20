@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.j2cl</groupId>
     <artifactId>j2cl</artifactId>
-    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <dependencies>
         <dependency>

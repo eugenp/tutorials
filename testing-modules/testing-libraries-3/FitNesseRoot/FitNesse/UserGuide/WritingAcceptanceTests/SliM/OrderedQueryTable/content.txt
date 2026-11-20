@@ -1,0 +1,12 @@
+|Ordered query:employees hired before|10-Dec-1980                     |
+|employee number                     |first name|last name|hire date  |
+|8832                                |James     |Grenning |12-May-1999|
+|1429                                |Bob       |Martin   |10-Oct-1975|
+|9924                                |Bill      |Mitchell |19-Dec-1966|
+
+
+The first thing to notice is the ''Ordered query:'' in the first cell of the table.  This tells the Slim table processor that this is an ordered query table.  Ordered query tables are almost identical to [[Query tables][QueryTable]] except that order is important.  The order of the rows in the table must be the same as the order of the rows returned by the query.
+
+The matching algorithm is ''relative'' which means that if the table rows have the following order !style_code({A, B, C}) and the query returns !style_code({B, C, A}) then rows !style_code(B) and !style_code(C) will be green, and only row !style_code[A] will be marked in red as ''out of order: row 3''.  The row number in the error message is the ordinal position (based on 1) of that row in the query result.
+
+A little thought should convince you that this means that the first row in the ''table'' can never be out of order.

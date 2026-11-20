@@ -1,0 +1,15 @@
+Creating a symbolic link is done in the properties view of the page that will contain the link.  There is a form where a user supplies a name for the link and a path for the linked page.  When submitted the URL has the following form:
+
+!-http://host/PathToPage?responder=symlink&linkName=<linkName>&linkPath=<linkPath>-!
+
+First we need to create some pages to play with.
+!|Page creator.|
+|Page name.|valid?|
+|LinkingPage|true|
+|LinkedPage|true|
+
+Now we create a symbolic link named !-SymLink-!.  This links !-LinkedPage-! as a child of !-LinkingPage-!.
+!|Response Requester.|
+|uri   |status?|
+|LinkingPage?responder=symlink&linkName=SymLink&linkPath=LinkedPage|303|
+

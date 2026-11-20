@@ -1,0 +1,26 @@
+!*< hidding defines
+!define PASSING_TEST {!|script|fitnesse.slim.test.EchoScript|
+|check|echo|7|7|
+}
+
+!define FAILING_TEST {!|script|fitnesse.slim.test.EchoScript|
+|check|echo|7|8|
+}
+
+!define SUITE_ONE {${SUT_PATH}
+!define TEST_SYSTEM (slim)
+}
+*!
+
+!|script|
+|assume time is|12/5/2009 00:00:00|
+|given page|SuiteOne|with content|${SUITE_ONE}|
+|with subpage|TestOne|with content|${PASSING_TEST}|
+|with subpage|TestTwo|with content|${PASSING_TEST}|
+|with subpage|TestThree|with content|${FAILING_TEST}|
+|run suite|SuiteOne|
+|get history for page|SuiteOne|
+|the number of page histories should be|1|
+|The page history bar for|5-Dec-2009|should have a|fail_count|with class|fail|and value|1|
+|The page history bar for|5-Dec-2009|should have a|pass_count|with class|pass|and value|2|
+

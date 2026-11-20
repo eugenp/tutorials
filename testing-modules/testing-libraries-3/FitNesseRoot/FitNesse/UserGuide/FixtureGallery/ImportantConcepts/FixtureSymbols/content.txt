@@ -1,0 +1,110 @@
+
+''Previous page: [[!-System under test-!][<UserGuide.FixtureGallery.ImportantConcepts.SystemUnderTest]] Next page: [[!-Markup Variables-!][<UserGuide.FixtureGallery.ImportantConcepts.MarkupVariables]] Parent page: [[!-Important concepts-!][<UserGuide.FixtureGallery.ImportantConcepts]]''
+!2 !-Symbols-!
+!- Symbols are global variables in FIT. They can be used to dynamically exchange values between tables. For example, you can create a new domain object (eg a player) and store his ID or the whole object into a symbol, so that it can later be used in a different test. -!
+
+# section Symbols in Java
+!3 !-Symbols in Java-!
+!- In the Java implementation of FIT, -!'''!- ColumnFixture -!'''!- supports a special syntax for symbols. Add an equals sign before the column name to signal that the value of the method should not be tested, but instead stored into a symbol. Then put the symbol names into the cells instead of expected outcomes. To retrieve the symbol later in a different table, put the equals sign after the column name and again use the symbol name in the cell. -!
+
+{{{
+!-!-!|ColumnFixtureTest|
+|firstPart|secondPart|=together()|
+|Hello|World|line1|
+
+!-!-!|SymbolsTest|
+|check|symbol value|line1|Hello, World|
+|set symbol value|line2|Hello|
+
+!-!-!|ColumnFixtureTest|
+|firstPart=|secondPart|together()|
+|line1|World|Hello, World, World|
+|line2|World|Hello, World|
+
+}}}
+!- There are no changes required to the -!'''!- ColumnFixture -!'''!- class &mdash; it does not care about the fact that symbols are used at all. When you run the test, the actual symbol values will be printed in the cell for your convenience (see -![[!-Figure 2-!][<UserGuide.FixtureGallery.ImportantConcepts.FixtureSymbols#figconceptssymbols]]!-). -!
+
+
+!anchor figconceptssymbols
+!3 Figure 2: !-UserGuide prints symbol values in test reports-!
+!img http://files/images/javasym.png
+!- You can access the symbol values programmatically from your code using static methods -!'''!- Fixture.getSymbol -!'''!- and -!'''!- Fixture.setSymbol -!'''!- in the Java implementation of FIT. Here is the source code for the middle table from the previous example: -!
+
+{{{
+package info.fitnesse.fixturegallery;
+
+import fitlibrary.SequenceFixture;
+import fit.Fixture;;
+
+public class SymbolsTest extends SequenceFixture{
+	public Object symbolValue(String s){
+		return Fixture.getSymbol(s);
+	}
+	public void setSymbolValue(String symbol, String value){
+		Fixture.setSymbol(symbol, value);
+	}
+}
+}}}
+# section Symbols in .NET
+!3 !-Symbols in .NET-!
+!- Symbols are much more flexible in the .NET implementation of FIT. Instead of entire columns, symbols work for individual cells. Use -!'''!- >>name -!'''!- to store a cell value into a symbol, or -!'''!- <<name -!'''!- to read the value of of the symbol and use it in a cell. Like in the Java implementation, the current symbol value is printed in the cell when you run the test to make it easier to troubleshoot. -!
+
+{{{
+!-!-!|ColumnFixtureTest|
+|firstpart|secondpart|together?|
+|Hello|World|Hello, World|
+|Houston|We Have a Problem|>>houston|
+
+
+!-!-!|ColumnFixtureTest|
+|firstpart|secondpart|together?|
+|<<houston|World|Houston, We Have a Problem, World|
+
+}}}
+!- This syntax works in all fixtures, not just for -!'''!- ColumnFixture -!'''!-. By default, it is not active in FitLibrary fixtures, but you can turn that feature on with the following table: -!
+
+{{{
+!|Cell Handler Loader|
+|load|SymbolSaveHandler|FitLibrary|
+|load|SymbolRecallHandler|FitLibrary|
+}}}
+!- In the .NET implementation of FIT, -!'''!- Fixture.Save -!'''!- and -!'''!- Fixture.Recall -!'''!- are used to set and read symbol values from the code. -!
+
+# section Symbols in Python
+!3 !-Symbols in Python-!
+!-Python supports the Java syntax and a symbol cell syntax as well, similar to .NET. The difference is that -!'''!- << -!'''!- is always used, but the operation depends on the position relative to the symbol name. Use -!'''!- name<< -!'''!- to store a cell value into a symbol, or -!'''!- <<name -!'''!- to read the value of of the symbol and use it in a cell. -!
+
+{{{
+!-!-!*** Variant 1: When all rows require symbol storage or retrieval
+!-!-!|ColumnFixtureTest|
+|firstPart|secondPart|=together()|
+|Hello|World|line1|
+
+!-!-!|SymbolsTest|
+|check|symbol value|line1|Hello, World|
+|set symbol value|line2|Hello|
+
+!-!-!|ColumnFixtureTest|
+|firstPart=|secondPart|together()|
+|line1|World|Hello, World, World|
+|line2|World|Hello, World|
+
+***!-!-!
+!-!-!*** Variant 2: When one or more rows require symbol storage or retrieval
+!-!-!|ColumnFixtureTest|
+|firstPart|secondPart|together()|
+|Hello|World|<<line1|
+
+!-!-!|SymbolsTest|
+|check|symbol value|line1|Hello, World|
+|set symbol value|line2|Hello|
+
+!-!-!|ColumnFixtureTest|
+|firstPart|secondPart|together()|
+|line1<<|World|Hello, World, World|
+|line2<<|World|Hello, World|
+
+***!-!-!
+}}}
+
+''Previous page: [[!-System under test-!][<UserGuide.FixtureGallery.ImportantConcepts.SystemUnderTest]] Next page: [[!-Markup Variables-!][<UserGuide.FixtureGallery.ImportantConcepts.MarkupVariables]] Parent page: [[!-Important concepts-!][<UserGuide.FixtureGallery.ImportantConcepts]]''

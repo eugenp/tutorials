@@ -1,0 +1,66 @@
+
+''Previous page: [[!-CombinationFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.CombinationFixture]] Next page: [[!-SetFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.SetFixture]] Parent page: [[!-FitLibrary Fixtures-!][<UserGuide.FixtureGallery.FitLibraryFixtures]]''
+!2 !-ConstraintFixture-!
+'''!- ConstraintFixture -!'''!- is a variation of -!'''!- CalculateFixture -!'''!- (see -![[!-CalculateFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.CalculateFixture]]!-) that has an expected value of -!'''!- true -!'''!- for each calculation. -!
+
+# section Table Format
+!3 !-Table Format-!
+!- The first row of the table is the fixture class name. After that, the second row contains names for input parameters. All rows after that specify values for the input parameters. -!
+
+{{{
+!-!-!|ConstraintFixtureTest|
+|firstPart|secondPart|
+|1|2|
+|2|3|
+}}}
+# section Fixture class
+!3 !-Fixture class-!
+!- The fixture class should extend -!'''!- fitlibrary.ConstraintFixture -!'''!-. It should declare a boolean method with a name concatenated from all parameter names (in this case -!'''!- firstPartSecondPart -!'''!-). -!
+
+# section Java Source Code
+!3 !-Java Source Code-!
+{{{
+package info.fitnesse.fixturegallery;
+
+import fitlibrary.ConstraintFixture;
+
+public class ConstraintFixtureTest extends ConstraintFixture{
+	public boolean firstPartSecondPart(int firstPart,int secondPart){
+		return firstPart<secondPart;
+	}
+}
+}}}
+# section .NET Source Code
+!3 !-.NET Source Code-!
+{{{
+using fitlibrary;
+using System;
+
+namespace info.fitnesse.fixturegallery
+{
+	public class ConstraintFixtureTest: ConstraintFixture
+	{
+		public bool FirstPartSecondPart(int  firstPart,int secondPart)
+		{
+			return firstPart<secondPart;
+		}
+	}
+}
+}}}
+# section Python Source Code
+!3 !-Python Source Code-!
+{{{
+# PYTHON: info.fitnesse.fixturegallery.CombinationFixtureTest
+from fitLib.ConstraintFixture import ConstraintFixture
+
+class ConstraintFixtureTest(ConstraintFixture):
+    _typeDict = {}
+
+    # PY3K: firstPartSecondPart(firstPart : int, secondPart : int) : bool
+    _typeDict["firstPartSecondPart.types"] = [ "Boolean", "Int", "Int" ]
+    def firstPartSecondPart(self, firstPart, secondPart):
+        return firstPart < secondPart
+
+}}}
+
+''Previous page: [[!-CombinationFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.CombinationFixture]] Next page: [[!-SetFixture-!][<UserGuide.FixtureGallery.FitLibraryFixtures.SetFixture]] Parent page: [[!-FitLibrary Fixtures-!][<UserGuide.FixtureGallery.FitLibraryFixtures]]''

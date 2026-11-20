@@ -1,0 +1,185 @@
+Various plugins are supported by FitNesse.
+
+!3 Overview
+Below are a list of customizations you can make via this plugin architecture.  Each plugin will require an entry in the ''plugins.properties'' file.  This should be located in the working directory of FitNesse.   If the file does not exist FitNesse will run normally.  To enable a plugin, create this file, and add the specified entries.  All plugins will require complied Java code so make sure that the class path contains an entry to locate your plugins.
+
+See also: CommandLineArguments.
+
+!3 Theme
+''required property:'' '''!-Theme-! = <theme name>'''
+
+''motivation:'' Customize the look and feel to match your liking. See WikiTheming for details.
+
+!3 Context root
+''required property:'' '''!-ContextRoot-! = <root path name>'''
+
+''motivation:'' Customize the root url of !-FitNesse-!. This is convenient if !-FitNesse-! is running behind a proxy server.
+
+!3 Wiki Page Factory
+''required property:'' '''!-WikiPageFactory-! = <class name>'''
+
+''motivation:'' By default, wiki pages are stored as files on a file system (using the !-FileSystemWikiPage-! class). Providing a custom wiki page plugin allows pages to be stored using other means such as a database. Alternatively, !-FileSystemWikiPage-! can be extended to provide custom behavior when pages are create, saved, deleted, etc.
+
+The class specified must implement the ''fitnesse.wiki.!-WikiPageFactory-!'' interface. It must provide a public default constructor or a constructor with the form:''public !-WikiPageFactory-!(Properties properties).'' The Properties define the properties defined in the configuration properties file and on the command line.
+
+!3 Versions Controller
+''required property:'' '''!-VersionsController-! = <class name>'''
+
+''motivation:'' Custom version management for file system pages.
+
+By default FitNesse makes backups of pages (as zip files). This property can be used to define version management for the wiki pages. By default FitNesse supports a Git based versions controller (!-fitnesse.wiki.fs.GitFileVersionsController-!) and a simple implementation that does not track changes (!-fitnesse.wiki.fs.SimpleFileVersionsController-!). Custom versions controllers can be defined, as long as they implement the !-fitnesse.wiki.fs.VersionsController-! interface.
+
+!3 Recent Changes
+''required property:'' '''!-RecentChanges-! = <class name>'''
+
+''motivation:'' If you have a custom versions controller installed, it's nice to see those changes on the recent changes page
+
+By default FitNesse maintains a page ([[!-RecentChanges-!][.RecentChanges]]) that keeps track of changes made to the wiki. If you're using Git versioning, it's much more convenient to just list the changes from the SCM, instead of the ones maintained in the files (let alone the potential merge conflicts). For Git, !-fitnesse.wiki.fs.GitFileVersionsController-! supports the !-fitnesse.wiki.RecentChanges-! interface, so changes of the repository can be displayed, instead of the ones maintained in the !-RecentChanges-! file.
+
+!3 Responders
+''required property:'' '''!-Responders-! = <key:class name>[,<key:class name>]'''
+
+''motivation:'' Allows functional customization.  With this plugin you can customize the way FitNesse responds to HTTP requests.
+
+The property provided should be a comma separated list of key:value pairs, where value is the name of a class that implements ''fitnesse.Responder''.  The key is used in the URL to designate which responder to invoke.  An example responder plugin might be an !-RssResponder-! that would generate RSS feeds for wiki page updates.  To do this you would first create the !-RssResponder-! to generate the RSS.  Then add the plugin property !style_code[''!-Responders=rss:your.package.RssResponder-!''].  Then to invoke it you would use a URL like !style_code(''!-http://fitnesse.org/RecentChanges?responder=rss-!'') to get a feed on all the changes made to the [[!-RecentChanges-!][.RecentChanges]] page.
+
+!4 Disabled Responder
+The !-DisabledResponder-! is provided as a way to turn off at a very deep level other responders.  Using the Responders property in the !style_code(plugins.properties), you can disable any existing responder by defining it to use the !-DisabledResponder-! instead.  For example, the following line, will disable the addChild and new responders.
+
+Responders =addChild:fitnesse.responders.DisabledResponder,new:org.fitnesse.responders.DisabledResponder
+
+!3 Authenticator
+''required property:'' '''!-Authenticator-! = <class name>'''
+
+''motivation:'' Custom security scheme. The class provided must extend the fitnesse.authentication.Authenticator class.  The class will be instantiated and asked ''isAuthenticated(String username, String password)'' when ever authentication is required.  See SecurityDescription for more information on security.
+
+!3 !-Symbol Types-!
+''required property:'' '''!-SymbolTypes-! = <class name>[,<class name]'''
+
+''motivation:'' Custom look-n-feel, or custom functionality hook.
+
+The plug-in class must extend ''!-fitnesse.wikitext.SymbolType-!''. A plug-in class can specify up to four pieces of information for the parser.
+
+The first is a name, specified in the super constructor. The name is just used for error reporting and debugging and so it can be any descriptive string.
+
+The second is the wikiMatcher. This is an object that knows how to identify the symbol type in the source string. The Matcher class provides a lot of common matching behavior, so you can look at the Matcher source to find matching behavior.
+
+The third is the wikiRule, which not all symbol types require. This is an object that implements a grammar production rule if our symbol type is composed of other symbol types (a non-terminal, in grammar-speak). A symbol type that is a terminal doesn't need a production rule. Look at the fitnesse.wikitext.parser package to see examples of how production rule classes are written.
+
+The fourth is the htmlTranslation. This is an object that renders the symbol type as a string in the HTML output. We can implement the Translation interface and specify this as our translation object. The toTarget method renders our output.
+
+Example:
+
+{{{
+public class PiSymbolType extends SymbolType implements Translation {
+    public PiSymbolType () {
+        super("Pi");
+        wikiMatcher(new Matcher().string("!pi"));
+        htmlTranslation(this);
+    }
+
+    public String toTarget(Translator translator, Symbol symbol) {
+        return Double.toString(Math.PI);
+    }
+}
+}}}
+
+!3 !-Content Filter-!
+''required property:'' '''!-ContentFilter-! = <class name>'''
+
+''motivation:'' Restrict the content that is saved on wiki pages. (Damn spammers!)
+
+The classes supplied must extend ''!-fitnesse.responders.editing.ContentFilter-!''.  !-ContentFilter-! is an interface that declares one method:  '''!-boolean isContentAcceptable(String content, String pageName)-!'''.  When ever user attempts to save a page, ''!-isContentAcceptable()-!'' is invoked and the content is saved only if ''true'' is returned.
+
+!3 !-Slim Tables-!
+''required property:'' '''!-SlimTables-! = <table name:class name>[,<table name:class name>]'''
+
+''motivation:'' Allow for custom SLiM table types to be supported.
+
+There may be certain (rare) situations where the default table types are not sufficient. This hook allows for custom SLiM table types. A custom table must extend fitnesse.slimTables.
+
+!3 !-Custom Comparators-!
+''required property:'' '''!-CustomComparators-! = <prefix:class name>[,<prefix:class name>]'''
+
+''motivation:'' The Slim protocol is all String values. It means that comparison of an expected and actual result for complex datatypes is limited to String equality or Regular Expression matching. If that is not sufficient, a Custom Comparator can do more sophisticated comparisons. Once registered, a Custom Comparator is triggered by its prefix, followed by a colon, in front of the expected value.
+
+Example Comparator implementation:
+
+{{{
+public class JSONAssertComparator implements CustomComparator {
+  @Override
+  public boolean matches(String actual, String expected) {
+    try {
+      JSONAssert.assertEquals(expected, actual, false);
+      return true;
+    } catch (JSONException e) {
+      throw new RuntimeException(e.getMessage(), e);
+    }
+  }
+}
+}}}
+
+Example plugins.properties:
+
+{{{
+CustomComparators = json:com.acme.JSONAssertComparator
+}}}
+
+Example !-ScriptTable-! usage:
+
+{{{
+|script|Customer                                 |
+|check |get|cust1|json:{id:cust1,name:"John Doe"}|
+}}}
+
+!3 !-Test Systems-!
+''required property:'' '''!-TestSystems-! = <key:class name>[,<key:class name>]'''
+
+''motivation:'' Allow for custom test systems to be supported.
+
+In case there are situations where you can not get your tests working with the default test systems (Fit and Slim), you have the ability to define custom test systems. Classes should implement the !-fitnesse.testsystems.TestSystemFactory-! interface.
+
+!3 !-Formatters-!
+''required property:'' '''!-Formatters-! = <class name>[,<class name>]'''
+
+''motivation:'' Allow for extra reporting facilities during test execution.
+
+Classes should implement the !-fitnesse.reporting.Formatter-! interface.
+
+!3 !-Plug-ins-!
+''required property:'' '''!-Plugins-! = <class name>[,<class name>]'''
+
+''motivation:'' Register multiple Responders, symbol types, !-WikiPage-! factories, test systems, Slim tables or comparators from a single Java class, instead of multiple entries in plugins.properties.
+
+Please also have a look at the page on WritingPlugins. It provides an alternative (simpler) way to register plugins by using the Java Service loader facility.
+
+Plugins classes can provide one or more of the following methods to register components:
+
+ * '''registerResponders(!-ResponderFactory-! responderFactory)''' - register responders using ''!-ResponderFactory.addResponder(String key, Class responderClass)-!''
+ * '''registerSymbolTypes(!-SymbolProvider-! symbolProvider)''' - register wiki symbol types using ''!-symbolProvider.add(SymbolType symbolType)-!''
+ * '''registerWikiPageFactories(!-WikiPageFactoryRegistry-! wikiPageFactoryRegistry)''' - register page factories used for specific sub pages using ''!-wikiPageFactoryRegistry.registerWikiPageFactory(WikiPageFactory wikiPageFactory)-!''
+ * '''registerTestSystemFactories(!-TestSystemFactoryRegistry-! testSystemFactoryRegistry)''' - register test system factories using ''!-testSystemFactoryRegistry.registerTestSystemFactory(String name, TestSystemFactory testSystemFactory)-!''
+ * '''registerSlimTableFactories(!-SlimTableFactory-! slimTableFactory)''' - register Slim table factories using ''!-slimTableFactory.addTableType(String nameOrPrefix, Class<? extends SlimTable> tableClass)-!''
+ * '''registerCustomComparatorRegistries(!-CustomComparatorRegistry-! customComparatorRegistry)''' - register custom comparators for checks done by the Slim test system using ''!-customComparatorRegistry.addCustomComparator(String prefix, CustomComparator customComparator)-!''
+ * '''registerFormatters(!-FormatterRegistry-! formatterRegistry)''' - register custom formatters using ''!-formatterRegistry.registerFormatter(Class formatterClass)-!''
+
+Plugins are instantiated by FitNesse's !-ComponentFactory-!. By doing so they can support either one of those constructors:
+
+ * Plugin(!-ComponentFactory-! componentFactory)
+ * Plugin(Properties properties)
+ * Plugin()
+
+!1 Other properties
+
+There are more properties which can be used to tweak parts of FitNesse:
+
+ * '''NewPage.default.content''' - default page content for an empty page, in case you're not creating a new page based on a template page.
+ * '''VersionsController.days''' - number of days to keep old page versions around when using the Zip file based versions controller.
+ * '''TestHistory.days''' - The number of days to keep test results around. Cleaned up after a new test run.
+ * '''TestHistory.path''' - Location to store the test results. The default location is ''!-FitNesseRoot-!/files/testResults''.
+ * '''TestHistory.purgeOptions''' - A comma separated list of the age, in number of days, to offer as purge options on the ''Test History'' page.
+ * '''TestHistory.maxCount''' - The number of histories to keep around per page. Cleaned up after a new test run.
+ * '''TestHistory.historyOptions''' - A comma separated list of options to offer on the ''Test History'' page, to change the displayed numbers of Histories. This value is limited by the maxCount configuration.
+ * Any variable that can be defined on a wiki page.
+
+The Slim test system has a set of [[custom properties][<UserGuide.WritingAcceptanceTests.SliM]] that can either be set on a page or in the configuration file.

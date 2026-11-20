@@ -1,0 +1,43 @@
+Output parameters in scenarios are flagged with a question mark in the header row, like in decision tables.
+For each output parameter a symbol with the same name must be assigned a value in the scenario.
+
+See below a sample of a division scenario with output parameter "my result" 
+
+|scenario      |my division|numerator||denominator||my result?|
+|setNumerator  |@numerator                                    |
+|setDenominator|@denominator                                  |
+|$myResult=    |quotient                                      |
+
+
+Get the Division implementation from the eg package
+|Library    |
+|eg.Division|
+
+
+
+|my division                     |
+|numerator|denominator|my result?|
+|10       |2          |$x=       |
+|$x       |1          |5.0       |
+
+
+!3 A result calculated in one row and assigned to a symbol can be used in the next row
+and the order of the columns doesn't matters
+
+|my division                     |
+|my result?|numerator|denominator|
+|$x=       |1000     |2          |
+|$x=       |$x       |2          |
+|$x=       |$x       |2          |
+|$x=       |$x       |2          |
+|$x=       |$x       |2          |
+|$x=       |$x       |2          |
+|7.8125    |$x       |2          |
+
+!3 A result can be used in multiple columns in the decion table to do different checks
+|my division                                |
+|numerator|denominator|my result?|my result?|
+|10       |2          |5.0       |< 7.0     |
+|12.6     |3          |4.2       |> 3.0     |
+
+

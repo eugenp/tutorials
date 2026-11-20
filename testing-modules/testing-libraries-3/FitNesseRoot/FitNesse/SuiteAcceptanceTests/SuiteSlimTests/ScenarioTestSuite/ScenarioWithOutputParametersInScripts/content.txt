@@ -1,0 +1,47 @@
+!1 Scripts can call scenarios with output parameters
+
+Output parameters in scenarios are flagged with a question mark in the header row, like in decision tables.
+For each output parameter a symbol with the same name must be assigned a value in the scenario.
+
+In the calling script you can than access the output parameter.
+A scenario can have also more than one output parameter
+
+See below a sample of a division scenario with output parameter "quotient" 
+
+|scenario | Mydivision |numerator|  | denominator|  | quotient?|
+|setNumerator| @numerator|
+|setDenominator| @denominator|
+|$quotient= | quotient|
+
+
+Get the Division implementation from the eg package
+|Library|
+|eg.Division|
+
+The recommended syntax to call the scnario from a script is as below
+
+|script|
+|Mydivision; |35| 5 |
+|check |echo| $quotient| 7.0| 
+
+|script|
+| Mydivision |40|  | 4|  |
+|check |echo| $quotient| 10.0| 
+
+The below is not recommended and might not work in the future
+|script|
+| Mydivision |40|  | 10|  | _|
+|check |echo| $quotient| 4.0| 
+
+|script|
+|Mydivision; |35 |5| _ |
+|check |echo| $quotient| 7.0| 
+
+
+The following syntax is currently  not working
+!|script|
+|# Mydivision 35 5 |
+|# check |echo| $quotient| 7.0| 
+
+
+

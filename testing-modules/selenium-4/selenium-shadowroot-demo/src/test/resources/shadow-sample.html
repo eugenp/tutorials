@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shadow DOM Example</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Light DOM</h1>
+    <div id="shadow-host"></div>
+    <script>
+        const host = document.getElementById('shadow-host');
+        const root = host.attachShadow({ mode: 'open' });
+        root.innerHTML = `
+            <style>
+                .wrapper {
+                    border: 1px solid #ccc;
+                    padding: 0 20px 20px;
+                }
+                input, button {
+                    padding: 5px;
+                }
+            </style>
+            <div class="wrapper">
+                <h2>Shadow DOM</h2>
+                <input type="text" id="search-input" placeholder="Search Google...">
+                <button id="search-button">Search</button>
+            </div>
+        `;
+
+        root.getElementById('search-button').addEventListener('click', () => {
+            const query = root.getElementById('search-input').value.trim();
+            const encodedQuery = encodeURIComponent(query);
+
+            if (query) {
+                window.location.href = "https://google.com/search?q=" + encodedQuery;
+            }
+        });
+    </script>
+</body>
+</html>

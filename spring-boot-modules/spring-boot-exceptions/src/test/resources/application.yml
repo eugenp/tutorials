@@ -1,0 +1,3 @@
+example:
+  service:
+    timeout: 5000

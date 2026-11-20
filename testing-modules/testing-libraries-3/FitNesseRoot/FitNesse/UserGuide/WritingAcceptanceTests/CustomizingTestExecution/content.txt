@@ -1,0 +1,37 @@
+You may customize the way tests are executed to suit your needs. You can even change the language of execution!
+The is done by defining any of a few special variables in the scope (see VariableScope) of the tests you wish to execute.
+The special variables are:
+
+ * TEST_SYSTEM
+ * COMMAND_PATTERN
+ * TEST_RUNNER
+ * PATH_SEPARATOR
+ * REMOTE_DEBUG_COMMAND
+ * REMOTE_DEBUG_RUNNER
+ * CLASSPATH_PROPERTY
+
+'''TEST_SYSTEM''' Defines the interface that FitNesse will use to execute tests.  Right now there are two such interfaces: {fit | slim}
+''default: '' '''<undefined>''' which implies fit.
+
+'''COMMAND_PATTERN''' is the basis for every execution performed in FitNesse.  It specifies the command that will be executed.
+''default: '' '''java -cp %p %m'''
+There are two special symbols used that will get replaced before execution.
+ * '''%p''' will be replaces with the calculated path/classpath.  This is the accumulation of all the ''!path'' elements on all the ''ClassPath'' pages in the scope of the current page.
+ * '''%m''' stands for '''main''' or '''main class'''.  For Java it is the name of the class that will be executed.
+
+'''TEST_RUNNER''' is the name of the class or executable that will be used when the ''Test'' button is clicked.
+''default: '' '''!-fit.FitServer-!'''
+If you're running tests in Java you probably don't want to change this.
+
+'''PATH_SEPARATOR''' is the charater that is used to separate all the path elements in the calculated path.
+''default: '' '''system dependant.... either ; or :'''
+
+'''REMOTE_DEBUG_COMMAND''' is the command pattern used to execute tests in debug mode.  See DebugingFixtureCode for more details.
+''default:'' Same as command pattern, except if contains "java" then '''"java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000 -cp %p %m"''' is used instead
+It has the same format as the standand '''COMMAND_PATTERN'''
+
+'''REMOTE_DEBUG_RUNNER''' is the test runner used to execute tests in debug mode.  See DebugingFixtureCode for more details.
+''default:'' Same as TEST_RUNNER, except substring "runner.exe" is replaced by '''"runnerw.exe"'''
+It has the same format as the standand '''TEST_RUNNER'''
+
+'''CLASSPATH_PROPERTY''' specifies the name of the environment variable into which the classpath (gathered from !path statements) will be placed before running the test.  This is most commonly used when the size of the classpath is too large for certain inept operating systems to deal with.  Instead of specifying the %p argument of the COMMAND_PATTERN, you can instead !style_code[!-!define CLASSPATH_PROPERTY {CLASSPATH}-!].  This is most useful for Java.  For other languages it may not have much meaning.

@@ -1,0 +1,34 @@
+When you execute a suite page, the execution status box will be displayed in the upper right hand corner.
+----
+Create a Suite page
+
+!|script|Page Builder|
+|line|${SUT_PATH}|
+|page|!-SuitePage-!|
+
+Create a simple test page
+
+!|script|Page Builder|
+|line|!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page|!-SuitePage.TestPage-!|
+
+Now run the suite page.
+
+|Response Requester.|
+|uri   |valid?|
+|!-SuitePage?responder=suite-!|true|
+
+|Response Examiner.|
+|contents?|
+||
+
+The suite should containt the execution-status div
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|!-TestPage-!|true|
+
+The error log page should not have any errors
+
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|<div id="test-action">|true|

@@ -1,0 +1,22 @@
+!c !3 Import Form on Properties Page
+Users will initiate a Wiki Import by visiting the page that will do the importing.  The properties view of the page will have a form where the user will supply the URL of the wiki to import and then click the Import button.
+
+First we need a page.
+!|Page creator.|
+|Page name.   |Page contents.|valid?|
+|ImportingPage|!contents   |true   |
+
+Request the properties view of this page.
+!|Response Requester.|
+|uri   |valid?|
+|ImportingPage?properties|true|
+
+Now lets look at the form.
+!|Response Examiner|
+|type|pattern|matches?|wrapped html?|
+|contents|Wiki Import.|true||
+
+!|Response Examiner|
+|type|pattern|matches?|
+|contents|<input .* name="remoteUrl"|true|
+|contents|<input .* type="submit" .* value="Import"|true|

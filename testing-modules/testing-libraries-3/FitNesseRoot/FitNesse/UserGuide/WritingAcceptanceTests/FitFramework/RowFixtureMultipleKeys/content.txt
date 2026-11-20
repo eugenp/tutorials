@@ -1,0 +1,42 @@
+The queries in a RowFixture can use more than one key.
+
+Suppose we have records of the last three months worth of paychecks.  Each paycheck is uniquely identified by the ''employeeId'' and the ''date''.  We want to make sure that the checks were generated properly.
+
+|!-fitnesse.fixtures.PayCheckRecordFixture-!|
+|date|employeeId|name|pay()|
+|3/1/03|1||1000|
+|4/1/03|1||1015|
+|3/1/03|2||2002|
+|4/1/03|2||2003|
+
+Notice, once again, that the order of the table rows doesn't matter.  For example:
+
+|!-fitnesse.fixtures.PayCheckRecordFixture-!|
+|date|employeeId|name|pay()|
+|3/1/03|2||2002|
+|3/1/03|1||1000|
+|4/1/03|1||1015|
+|4/1/03|2||2003|
+
+Notice also that the blank cell was not used as part of the key.  Rather it was just filled in for you so you could visually check things.  Here's what would have happened if we had tried to fill in the ''name'' column.
+
+|!-fitnesse.fixtures.PayCheckRecordFixture-!|
+|date|employeeId|name|pay()|
+|3/1/03|1|Bob|1000|
+|4/1/03|1|Bob|1015|
+|3/1/03|2|Bill|2002|
+|4/1/03|2|Biff|2003|
+
+And here's what would happen if a row were missing or surplus.
+
+|!-fitnesse.fixtures.PayCheckRecordFixture-!|
+|date|employeeId|name|pay()|
+|3/1/03|1||1000|
+|4/1/03|1||1015|
+|3/1/03|2||2002|
+|4/1/03|3||2003|
+
+!img http://files/images/runArrow.gif Now check out DesigningWithRowFixture.
+
+
+

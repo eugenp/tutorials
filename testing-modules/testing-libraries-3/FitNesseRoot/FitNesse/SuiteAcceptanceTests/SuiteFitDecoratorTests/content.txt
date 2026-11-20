@@ -1,0 +1,17 @@
+!-FitDecorator-! is a framework for writing decorator for FIT fixtures. !-FitDecorator-! help you to add new functionality to existing fixture classes without having to update them. You can just decorate the table on the fitnesse page with the appropriate !-FitDecorator-!.
+
+For example, if you want to approximately know how much time each fixture is taking during a fitnesse test, you can decorate the existing fitnesse table with a !-MaxTime-! decorator.
+
+List of available decorators and their functionality with an example:
+
+ * [[Measure Max Time taken by the Division Fixture by using !-MaxTime-! decorator][^MaxTimeDivision]]
+ * [[Execute Division Fixture multiple times using Loop Decorator][^MultipleDivision]]
+ * [[Example of piping !-MaxTime-! and Loop decorator to build complex decorators][^TimedMultipleDivision]]
+ * [[Measure if the Division Fixture is executed in the given Time Range using the !-TimeRange-! decorator][^TimeRangeDivision]]
+ * [[Copy the last row and append it to the end of the table 'n' number of times using !-CopyAndAppendLastRow-! decorator][^CopyAndAppendLastRow]]
+ * [[Increment all the subsequent column values using the !-IncrementColumnsValues-! decorator][^IncrementColumnsValues]]
+ * [[Example of piping !-CopyAndAppendLastRow-! and !-IncrementColumnsValues-! decorators][^CopyAppendLastRowAndIncrementColumnValues]]
+
+'''Note:''' !-FitDecorator-! does not support [[Fit Library][http://fitlibrary.sourceforge.net]] as of now. 
+
+!contents

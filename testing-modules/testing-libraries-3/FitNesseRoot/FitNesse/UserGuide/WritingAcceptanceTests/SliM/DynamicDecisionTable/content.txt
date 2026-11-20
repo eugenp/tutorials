@@ -1,0 +1,50 @@
+| ddt: add up change |
+| # description | 1c | 5c | 10c | 25c | 50c | $1 | total cents? | $ total? |
+| some simple addition | 2 | 2 | 4 | 0 | 0 | 0 | 52 | 0.52 |
+| save the total cents in a symbol | 56 | 0 | 0 | 0 | 1 | 20 | $totalCents= | 21.06 |
+| now use the total cents that were stored | $totalCents | 0 | 0 | 0 | 0 | 10 | 3106 | ~=31.1 | An example for ValueComparisons |
+
+This is a dynamic decision table. The syntax is the same as that of a DecisionTable, except that the first cell has to be prefixed by ''ddt:'' or ''dynamic decision:''.
+
+The dynamic decision table provides an alternative to the DecisionTable when the GracefulNames of the column headers are not well suited as method names.
+
+The source code of the fixture !-AddUpChange-! looks like this:{{{
+public class AddUpChange {
+  private Integer totalCents = 0;
+  private static Map<String, Integer> COIN_VALUES = new HashMap<String, Integer>();
+  static {
+    COIN_VALUES.put("1c", 1);
+    COIN_VALUES.put("5c", 5);
+    COIN_VALUES.put("10c", 10);
+    COIN_VALUES.put("25c", 25);
+    COIN_VALUES.put("50c", 50);
+    COIN_VALUES.put("$1", 100);
+  }
+
+  public void reset() {
+    totalCents = 0;
+  }
+
+  public void set(String coin, Integer amount) {
+    if (!COIN_VALUES.containsKey(coin)) {
+      throw new IllegalArgumentException("Unknown coin type " + coin);
+    }
+    totalCents += amount * COIN_VALUES.get(coin);
+  }
+
+  public String get(String requestedValue) {
+    if ("$ total".equals(requestedValue)) {
+      return String.format(Locale.US, "%.2f", totalCents / 100.0);
+    }
+    return String.format("%d", totalCents);
+  }
+}
+}}}
+
+The cells with column headers that do not end with a ''?'' are considered inputs and they result in a method call !style_code(set(''header'', ''value'')). The cells with column headers that end with a ''?'' are considered outputs and they result in a method call !style_code(get(''header'')).
+
+Apart from that the same methods are called as for a DecisionTable (!style_code(table), !style_code(beginTable), !style_code(reset), !style_code(execute), !style_code(endTable)).
+
+As in a DecisionTable, all the !style_code(set) method calls are done before the !style_code(execute) call and all the !style_code(get) method calls are done after the !style_code(execute) call.
+
+You can use SymbolsInTables and ValueComparisons as well as comment column headers prefixed with ''#'' and use additional cells as comments.

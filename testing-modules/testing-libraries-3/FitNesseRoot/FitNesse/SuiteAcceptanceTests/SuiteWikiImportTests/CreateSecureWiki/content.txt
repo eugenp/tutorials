@@ -1,0 +1,10 @@
+First setup the Authentication module.
+!|Authenticator Setup|
+|username|password|status?|
+|Aladdin|open sesame||
+
+Create a page to be requested.
+!|Page creator.|
+|Page name.|page attributes|valid?|
+|ImporteePage |secure-read=true|true|
+|ImporteePage.ChildPage||true|

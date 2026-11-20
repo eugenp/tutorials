@@ -1,0 +1,22 @@
+'''What is the 'files' section?'''
+The 'files' section is a directory where FitNesse keeps all of its non-wiki files such as images and other static files.
+
+'''How do I access the FilesSection?'''
+Simply add "/files/" on the end of the URL used to visit the FitNesse installation.  To get to the 'files' section of fitnesse.org the following url is used.
+http://www.fitnesse.org/files/
+
+Notice that this looks like a directory listing.  That is because the root of the FilesSection is a directory.  By clicking on a directory or file you will be redirected to that selection.  If it is a directory you will see a listing of its contents and if it is a file you will see the contents of the file.
+
+In general FitNesse will serve files from the FilesSection like any other web server would.
+
+'''How can I link to files in the FilesSection?'''
+Any file located in the FilesSection can be linked to from any Wiki page.  For example the link to the images directory would look like this:
+http://files/images/
+Notice that there is no domain name in the URL.  You could have put the domain name in like this:
+http://www.fitnesse.org/files/images/
+But that would not be taking advantage of the shortcut we have provided.
+
+'''Modifying the FilesSection?'''
+When you view a directory in the FilesSection you will see several controls at the bottom of the page.  They allows you to upload files from your hard drive to the current directory, add a new directory to the current directory, rename or delete an existing file.
+
+This allows you to upload and manage special documents and link to them from the appropriate page. You could also upload your most recent build to run tests against.

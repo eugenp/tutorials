@@ -1,0 +1,51 @@
+!3 System Under Test
+
+'''Currently only available in Java'''
+
+!-Using SystemUnderTest allows you to let SliM directly invoke a method on your SystemUnderTest without having to create a method in a SliM fixture for it.-!
+
+!4 Example
+{{{
+import fitnesse.slim.SystemUnderTest;
+
+/**
+ * The slim fixture.
+ */
+public class SlimDriver {
+  
+  // field MUST be declared PUBLIC
+  @SystemUnderTest
+  public Service service = new Service();
+
+  public void init() {
+    Database.clean();
+  }
+
+}
+
+/**
+ * The service under test.
+ */
+public class Service {
+
+  public void createPerson(String name) {
+    Database.persist(new Person("name"));
+  }
+
+  public boolean exists(String name) {
+    return Database.get(name) != null;
+  }
+ 
+}
+
+}}}
+
+With the !-@SystemUnderTest-! annotation you can now say:
+
+!|script|SlimDriver|
+|init|
+|create person|Ben Vonk|
+|ensure|exists|Ben Vonk|
+
+When a method that should be invoked on the !-SliM-! fixture is missing, it will try to invoke that method on a '''public''' field annotated with !-SystemUnderTest-!.
+

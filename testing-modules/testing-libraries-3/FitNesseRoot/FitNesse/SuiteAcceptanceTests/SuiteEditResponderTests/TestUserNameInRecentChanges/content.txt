@@ -1,0 +1,6 @@
+!-RecentChanges-! displays the username of the last user that modified each page.  If the user is anonymous then it is not displayed.
+
+!|script|
+|page|RecentChanges|should not contain|Aladdin|
+|save page|SomePage|by user|Aladdin|
+|page|RecentChanges|should contain|Aladdin|

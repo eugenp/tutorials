@@ -1,0 +1,11 @@
+!c !3 !-FitNesse-! Fixture Gallery
+
+!c version 2.0, 2008-06-09
+
+!c [[Gojko Adzic][http://gojko.net]]
+!c [[Mike Stockdale][http://www.syterra.com]]
+!c Jens Engel
+
+Fixture Gallery is a cookbook for !-FIT/FitNesse-! tests. It provides developers with a quick overview of the most important fixture types and concepts for agile acceptance testing using the FIT framework. For each fixture type, this document explains the table format and fixture class structure and provides advice when to use and when not to use it. Each example is accompanied by the source code for Java, .NET and Python FIT implementations, in a form that can be easily copied and used as a template for similar fixtures. This document is available in three forms: a FitNesse wiki site that you are viewing at the moment and a [[print-ready PDF][http://sourceforge.net/project/showfiles.php?group_id=216871]].
+
+!include -seamless >TableOfContents

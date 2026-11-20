@@ -1,0 +1,19 @@
+spring:
+  autoconfigure:
+    exclude: org.springframework.ai.model.vertexai.autoconfigure.embedding.VertexAiEmbeddingConnectionAutoConfiguration
+  ai:
+    model:
+      chat: google-genai
+      image: none
+      moderation: none
+      embedding: none
+      embedding.text: none
+      embedding.multimodal: none
+      audio.speech: none
+      audio.transcription: none
+    google:
+      genai:
+        api-key: ${GEMINI_API_KEY}
+        chat:
+          options:
+            model: gemini-3.5-flash

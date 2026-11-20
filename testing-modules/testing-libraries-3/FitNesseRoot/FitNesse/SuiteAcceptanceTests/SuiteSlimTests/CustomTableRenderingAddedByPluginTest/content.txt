@@ -1,0 +1,36 @@
+Plugins are able to modify rendering of wiki symbols, e.g. tables.
+
+For example, see plugin ''!-fitnesse.testsystems.slim.CustomScriptTableRenderingPlugin-!'' that has been loaded in SetUp.
+This plugin makes an alias from ''my use case'' to the existing dummy ''my fixture''. Also, the plugin ensures that all script tables using the new alias will generate an extra class attribute value on the corresponding ''table'' HTML tag. This can be then used for custom styling applied via css.
+
+Modify rendering when new alias is used:
+
+!| script                         |
+|given page|AliasTest|with content|!-!define TEST_SYSTEM {slim}
+
+|import            |
+|fitnesse.slim.test|
+
+|script : my use case      |
+|check|do business logic|42|
+-! |
+|check |request page    |AliasTest?test   |200  |
+|ensure|content contains|class="pass"           |
+|ensure|content contains|table class="myUseCase"|
+|show  |content                                 |
+
+Do not touch rendering when new alias isn't used:
+
+!| script                         |
+|given page|AliasTest|with content|!-!define TEST_SYSTEM {slim}
+
+|import            |
+|fitnesse.slim.test|
+
+|script : my fixture       |
+|check|do business logic|42|
+-! |
+|check |request page    |AliasTest?test   |200  |
+|ensure|content contains|class="pass"           |
+|reject|content contains|table class="myUseCase"|
+|show  |content                                 |

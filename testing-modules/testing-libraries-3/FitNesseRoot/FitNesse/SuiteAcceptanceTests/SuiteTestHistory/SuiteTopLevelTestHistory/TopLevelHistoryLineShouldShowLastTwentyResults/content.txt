@@ -1,0 +1,53 @@
+The page history shows the last 20 test results. Below table is larger, so the last tests drop off.
+
+!| page history |
+| name | date | right | wrong | ignores | exceptions |
+| SuitePage.TestPage | 1-May-2009 | 20 | 30 | 0 | 0 |
+| SuitePage.TestPage | 2-May-2009 | 20 | 0 | 0 | 0 |
+| SuitePage.TestPage | 3-May-2009 | 0 | 0 | 1 | 0 |
+| SuitePage.TestPage | 4-May-2009 | 0 | 0 | 0 | 1 |
+| SuitePage.TestPage | 5-May-2009 | 0 | 1 | 0 | 0 |
+| SuitePage.TestPage | 6-May-2009 | 0 | 1 | 0 | 1 |
+| SuitePage.TestPage | 7-May-2009 | 0 | 0 | 0 | 0 |
+| SuitePage.TestPage | 8-May-2009 | 0 | 1 | 0 | 0 |
+| SuitePage.TestPage | 9-May-2009 | 0 | 1 | 0 | 0 |
+| SuitePage.TestPage | 10-May-2009 | 0 | 1 | 0 | 0 |
+| SuitePage.TestPage | 11-May-2009 | 0 | 1 | 0 | 0 |
+| SuitePage.TestPage | 12-May-2009 | 0 | 1 | 0 | 0 |
+| SuitePage.TestPage | 13-May-2009 | 0 | 1 | 0 | 0 |
+| SuitePage.TestPage | 14-May-2009 | 0 | 1 | 0 | 0 |
+| SuitePage.TestPage | 15-May-2009 | 0 | 1 | 0 | 0 |
+| SuitePage.TestPage | 16-May-2009 | 0 | 1 | 0 | 0 |
+| SuitePage.TestPage | 17-May-2009 | 0 | 1 | 0 | 0 |
+| SuitePage.TestPage | 18-May-2009 | 0 | 1 | 0 | 0 |
+| SuitePage.TestPage | 19-May-2009 | 0 | 1 | 0 | 0 |
+| SuitePage.TestPage | 20-May-2009 | 0 | 1 | 0 | 0 |
+| SuitePage.TestPage | 21-May-2009 | 0 | 1 | 0 | 0 |
+
+!| script |
+| get top level history |
+
+!| script |
+| the top level history line for | SuitePage.TestPage | should not have a link to | 20090501000000 |
+
+!| the top level history line for | page | should have a | class | link with | sign | to result | resultDate |
+| page | class | sign | resultDate |
+| SuitePage.TestPage | pass | + | 20090502000000 |
+| SuitePage.TestPage | ignore | - | 20090503000000 |
+| SuitePage.TestPage | error | - | 20090504000000 |
+| SuitePage.TestPage | fail | - | 20090505000000 |
+| SuitePage.TestPage | fail | - | 20090506000000 |
+| SuitePage.TestPage | ignore | - | 20090507000000 |
+| SuitePage.TestPage | fail | - | 20090508000000 |
+| SuitePage.TestPage | fail | - | 20090509000000 |
+| SuitePage.TestPage | fail | - | 20090510000000 |
+| SuitePage.TestPage | fail | - | 20090511000000 |
+| SuitePage.TestPage | fail | - | 20090512000000 |
+| SuitePage.TestPage | fail | - | 20090513000000 |
+| SuitePage.TestPage | fail | - | 20090514000000 |
+| SuitePage.TestPage | fail | - | 20090515000000 |
+| SuitePage.TestPage | fail | - | 20090516000000 |
+| SuitePage.TestPage | fail | - | 20090517000000 |
+| SuitePage.TestPage | fail | - | 20090518000000 |
+| SuitePage.TestPage | fail | - | 20090519000000 |
+| SuitePage.TestPage | fail | - | 20090520000000 |

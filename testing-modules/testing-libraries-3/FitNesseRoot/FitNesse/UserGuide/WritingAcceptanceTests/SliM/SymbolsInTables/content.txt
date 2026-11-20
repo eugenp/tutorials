@@ -1,0 +1,20 @@
+|DT:some decision table|
+|input     |output?    |
+|3         |$V=        |
+|$V        |8          |
+|9         |$V         |
+
+
+If a $''<symbolName>'' appears in an output cell (whether in a Decision Table, Script Table, or any other kind of table that can call functions) then that symbol will be loaded with that output.  Both the slim server running in the SUT and !-FitNesse-! will remember that symbol.
+
+The first row above loads the return value of the ''output'' function into the symbol ''V''.  The second row will load the previously stored value of ''V'' into the input.  (If you think about this in the context of the SlimProtocol you'll realize that this means that the symbol must be stored on the SUT).  The third row compares the output with the previously stored value of the symbol.
+
+You can combine symbols as follows:
+
+|$V and $X are symbols|
+
+The symbols V and X will be replaced with their values...  
+
+!3 Read also:
+
+.FitNesse.SuiteAcceptanceTests.SuiteSlimTests.SlimSymbols

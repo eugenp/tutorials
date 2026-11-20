@@ -1,0 +1,11 @@
+spring:
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: gpt-5-nano
+          temperature: 1
+judge:
+  score-threshold: 0.75
+  max-refinements: 2

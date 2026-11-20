@@ -1,0 +1,9 @@
+!|page history|
+|name|date|right|wrong|ignores|exceptions|
+|TestPage|5-May-2009|20|30|0|0|
+
+!|script|
+|get history for page|TestPage|
+|the number of page histories should be|1|
+|The page history bar for|5-May-2009|should have a|fail_count|with class|fail|and value|30|
+

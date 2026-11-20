@@ -84,7 +84,26 @@ public class NullChecksUnitTest {
 
     }
 
+    @Test
+    public void givenEqualObjects_whenHashCodesMatch_thenCollectionsBehaveCorrectly() {
+        Person a = new Person("Bob", 20);
+        Person b = new Person("Bob", 20);
+        assertTrue(a.equals(b));
+        assertEquals(a.hashCode(), b.hashCode());
+    }
+
+    @Test
+    public void givenStrings_whenComparingReferences_thenStringPoolAffectsEquality() {
+        String a = "hello";
+        String b = "hello";
+        assertTrue(a == b); // both point to the same pooled instance
+
+        String c = new String("hello");
+        assertFalse(a == c); // c isn't taken from the pool
+    }
+
     private class Person {
+
         private String name;
         private int age;
 
@@ -111,8 +130,12 @@ public class NullChecksUnitTest {
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
             Person person = (Person) o;
             return age == person.age && Objects.equals(name, person.name);
         }

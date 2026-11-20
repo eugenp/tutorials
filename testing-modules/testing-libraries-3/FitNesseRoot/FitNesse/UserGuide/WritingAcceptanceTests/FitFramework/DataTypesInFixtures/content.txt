@@ -1,0 +1,21 @@
+You can use all the standard Java data types in RowFixture and ColumnFixture.  These types are automatically translated in and out of cell contents for you.  They include:
+
+ * String
+  * A trimmed string.  You can use the keyword ''null'' or ''blank'' to mean a true java null, or an empty string respectively
+ * byte or Byte
+ * short or Short
+ * int or Integer
+ * long or Long
+ * float or Float
+ * double or Double
+ * char or Character
+ * boolean or Boolean
+  * Will interpret ''true'', ''yes'', ''y'', ''+'', ''1'' to be true.
+  * All else will be false.
+ * Array
+  * Any comma separated list of items will be converted into an array.
+  * Click [[here][.FitNesse.SuiteAcceptanceTests.SuiteFixtureTests.SuiteColumnFixtureSpec.TestArraysInColumnFixture]] to see the acceptance test for this.
+
+!3 Managing your own types with Fit.
+Any user defined type that implements toString and parse will be managed correctly by RowFixture and ColumnFixture.  The signatures of these methods are:{{{String toString();
+static Object parse(String s);}}}

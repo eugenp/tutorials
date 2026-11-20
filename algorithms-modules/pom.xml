@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>algorithms-modules</artifactId>
-    <name>algorithms-modules</name>
     <packaging>pom</packaging>
+    <name>algorithms-modules</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -26,6 +26,7 @@
         <module>algorithms-miscellaneous-9</module>
         <module>algorithms-miscellaneous-10</module>
         <module>algorithms-numeric</module>
+        <module>algorithms-optimization</module>
         <module>algorithms-searching</module>
         <module>algorithms-sorting</module>
         <module>algorithms-sorting-2</module>

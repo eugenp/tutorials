@@ -1,0 +1,41 @@
+When you execute a test page, !-FitNesse-! gathers up the html and passes it to FIT which runs the fixtures and colorizes the HTML appropriately.
+
+----
+
+Create a simple test page
+
+|script|Page Builder|
+|line|${SUT_PATH}|
+|line|!-|!-fitnesse.testutil.PassFixture-!-!!-|-!|
+|page|!-TestPage-!|
+
+Now run the test page.
+
+|Response Requester.|
+|uri   |valid?|
+|!-TestPage?responder=test-!|true|
+
+|Response Examiner.|
+|contents?|
+||
+
+The bgcolor of the cell should turn green
+
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|class="pass"|true|
+|contents|Assertions:.*1 right, 0 wrong, 0 ignored, 0 exceptions|true|
+
+The error log page should not have any errors
+
+|Response Requester.|
+|uri   |valid?|
+|!-TestPage?executionLog-!|true|
+
+|Response Examiner.|
+|contents?|
+||
+
+|Response Examiner.|
+|type  |pattern|matches?|
+|contents|Exit code.*0.*Time|true|

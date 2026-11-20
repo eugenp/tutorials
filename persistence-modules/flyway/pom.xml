@@ -63,7 +63,7 @@
     </build>
 
     <properties>
-        <flyway-maven-plugin.version>10.7.1</flyway-maven-plugin.version>
+        <flyway-maven-plugin.version>11.17.0</flyway-maven-plugin.version>
     </properties>
 
 </project>

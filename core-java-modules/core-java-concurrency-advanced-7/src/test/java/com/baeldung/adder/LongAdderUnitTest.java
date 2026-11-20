@@ -12,6 +12,7 @@ import java.util.stream.IntStream;
 import org.junit.Test;
 
 public class LongAdderUnitTest {
+
     @Test
     public void givenMultipleThread_whenTheyWriteToSharedLongAdder_thenShouldCalculateSumForThem() throws InterruptedException {
         //given
@@ -23,8 +24,8 @@ public class LongAdderUnitTest {
 
         //when
         Runnable incrementAction = () -> IntStream
-          .range(0, numberOfIncrements)
-          .forEach((i) -> counter.increment());
+            .range(0, numberOfIncrements)
+            .forEach((i) -> counter.increment());
 
         for (int i = 0; i < numberOfThreads; i++) {
             executorService.execute(incrementAction);
@@ -49,8 +50,8 @@ public class LongAdderUnitTest {
 
         //when
         Runnable incrementAction = () -> IntStream
-          .range(0, numberOfIncrements)
-          .forEach((i) -> counter.increment());
+            .range(0, numberOfIncrements)
+            .forEach((i) -> counter.increment());
 
         for (int i = 0; i < numberOfThreads; i++) {
             executorService.execute(incrementAction);

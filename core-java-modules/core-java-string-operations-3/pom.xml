@@ -68,6 +68,7 @@
         <gradle-core.version>6.1.1</gradle-core.version>
         <jackson-core.version>2.16.0</jackson-core.version>
         <semver4j.version>3.1.0</semver4j.version>
+        <commons-lang3.version>3.14.0</commons-lang3.version>
     </properties>
 
 </project>

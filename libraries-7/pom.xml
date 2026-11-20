@@ -63,6 +63,37 @@
             <artifactId>webmagic-extension</artifactId>
             <version>1.0.3</version>
         </dependency>
+        <dependency>
+            <groupId>org.mybatis.dynamic-sql</groupId>
+            <artifactId>mybatis-dynamic-sql</artifactId>
+            <version>${mybatis-dynamic-sql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>gg.jte</groupId>
+            <artifactId>jte-spring-boot-starter-3</artifactId>
+            <version>${jte.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.hypersistence</groupId>
+            <artifactId>hypersistence-tsid</artifactId>
+            <version>${hypersistence.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shardingsphere.elasticjob</groupId>
+            <artifactId>elasticjob-bootstrap</artifactId>
+            <version>${elasticjob.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kagkarlsson</groupId>
+            <artifactId>db-scheduler</artifactId>
+            <version>${db-scheduler.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -104,6 +135,12 @@
         <manifold.version>2024.1.20</manifold.version>
         <record-builder.version>47</record-builder.version>
         <jena.version>5.5.0</jena.version>
+        <mybatis-dynamic-sql.version>1.5.2</mybatis-dynamic-sql.version>
+        <jte.version>3.2.2</jte.version>
+        <hypersistence.version>2.1.4</hypersistence.version>
+        <elasticjob.version>3.0.5</elasticjob.version>
+        <db-scheduler.version>16.12.0</db-scheduler.version>
+        <hsqldb.version>2.7.4</hsqldb.version>
     </properties>
 
 </project>

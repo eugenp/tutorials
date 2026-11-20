@@ -1,0 +1,37 @@
+!contents -R2 -g -p -f -h
+
+!define TestPageName {Testpage}
+!define minus (-)
+!define exclamation (!)
+
+| script                                                      |
+|given test page         |${TestPageName}                      |
+|and Test System setup is|!-!define TEST_SYSTEM-! {slim}${SUT_PATH}|
+|and Setup content is                                          |!-
+|import                                                        |
+|fitnesse.slim.test                                            |
+
+-!|
+|and Test content is|!include -seamless >TestPage |
+|when page                          |${TestPageName}|is tested and HTML is extracted                           |
+|then                               |8              |assertions pass,|1|fail,|0|are ignored|18|exceptions thrown|
+|and cell                           |.This is my exception. found in:[^<]*     |has result      |pass                                     |
+|and cell                           |.Test message. found in:[^<]*   |has result      |pass                                     |
+|and cell                           |This is my exception./span>./td>./tr>.tr class="exception-detail closed-detail">.td>__EXCEPTION__:java.lang.Excep[^<]*|has result      |error                                     |
+|and cell                           |Test message|has result      |error                                     |
+|and cell                           |java.lang.RuntimeException: test goes on|has result      |error                                     |
+|and cell                           |The instance decisionTable_\d.setX. does not exist|has result      |error                                     |
+|and cell                           |5..span...td...tr..tr class="exception-detail closed-detail"..td.__EXCEPTION__:fitnesse.slim.SlimError: SETX_THROWS[^<]*|has result      |error                                   |
+|and cell                           |.table>.tr class="exception closed">.td> .span class="error">5|has result      |error                                   |
+|and cell                           |5..span...td...tr..tr class="exception-detail closed-detail"..td.__EXCEPTION__:fitnesse.slim.SlimError: GETX_THROWS[^<]*|has result      |error                                   |
+|and cell                           |.td colspan="2">.pre>__EXCEPTION__:fitnesse.slim.SlimError: ENDTABLE_THROWS[^<]*|has result      |exception-detail closed-detail                                     |
+|and cell                           |.td colspan="2">.pre>__EXCEPTION__:fitnesse.slim.SlimError: BEGINTABLE_THROWS[^<]*|has result      |exception-detail closed-detail                                     |
+|and cell                           |.td colspan="2">.pre>__EXCEPTION__:fitnesse.slim.SlimError: DOTABLE_THROWS[^<]*|has result      |exception-detail closed-detail                                     |
+|and cell                           |expected ..span class="diff".EXCEPTION: ..span.Hello.            |has result      |fail                                   |
+|and cell                           |EXCEPTION:../span>Hello]            |has result      |diff                                   |
+|and cell                           |fitnesse.slim.test.StopTestException: stop test            |has result      |fail                                   |
+|and cell                           |Test not run            |has result      |ignore                                   |
+|# show Symbol                        |$HTML_Input                                                               |
+|show Symbol                        |$HTML_Result                                                              |
+|get collapsed executon log for page|${TestPageName}                                                           |
+

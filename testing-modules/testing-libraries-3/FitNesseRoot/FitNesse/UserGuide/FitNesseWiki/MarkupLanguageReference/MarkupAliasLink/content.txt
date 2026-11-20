@@ -1,0 +1,22 @@
+You can take any word, phrase, or image and turn it into a link using the following syntax:{{{
+[[word or phrase][wikiPage]]}}}Here are some examples:
+
+|!c Markup Text|!c Displayed as:|
+|!-click [[here][.FrontPage]].-!|click [[here][.FrontPage]].|
+|!-[[!img http://objectmentor.com/Images/OMI_HeaderArea_Logo.png][http://www.objectmentor.com]]-!|[[!img http://objectmentor.com/Images/OMI_HeaderArea_Logo.png][http://www.objectmentor.com]]|
+|!-[[''Recent Changes''][RecentChanges]]-!|[[''Recent Changes''][.RecentChanges]]|
+
+ * When the text is a wiki word, the link to the wiki word takes precedence, so you cannot override one wiki word to link to another.
+
+|!c Markup Text|!c Displayed as:|
+|!-click [[.RecentChanges][.FrontPage]].-!|click [[.RecentChanges][.FrontPage]].|
+
+ * When the link is a wiki word then, as usual, it may include a relative or an absolute path with respect to the parent page using < . > characters, or is a sibling if no path is specified. (See SubWiki for more details.)
+
+|!c Markup Text|!c Displayed as:|
+|!-click [[here][.FrontPage]].-!|click [[here][.FrontPage]].|
+|!-click [[here][MarkupAliasLink]].-!|click [[here][MarkupAliasLink]].|
+
+ * When the link is to an anchor on a different page, append the anchor's name.  (See LinksWithinPages)
+|!c Markup Text|!c Displayed as:|
+|!-click [[Bottom of Page][LinksWithinPages#pageBottom]].-!|click [[Bottom of Page][LinksWithinPages#pageBottom]].|

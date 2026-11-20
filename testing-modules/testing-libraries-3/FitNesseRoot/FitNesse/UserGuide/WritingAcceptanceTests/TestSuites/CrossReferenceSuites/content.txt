@@ -1,0 +1,11 @@
+!3 Suite Cross References
+Sometimes you want to compose a test suite from test pages that are in many different modules, subsystems, or features.  For example you might want a test suite that lists all the test pages for the current iteration, or you might want a test suite that lists all the currently passing tests, or you may want to create a test suite for all the quickly executing tests, and another for all the slow tests.
+
+To do this you can use the [['''!-!see-!'''][<UserGuide.FitNesseWiki.MarkupLanguageReference.MarkupCrossReference]] command in a test suite.  Any test pages referenced by '''!-!see-!''' on a suite page will be executed as part of that suite.
+
+The suite page might look like this:
+{{{
+!see .MyProject.MyFeature.IterationOne.StoryOne.TestCaseOne
+!see .MyProject.MyFeature.IterationTwo.StoryTwelve.TestCaseThirteen
+...
+}}}

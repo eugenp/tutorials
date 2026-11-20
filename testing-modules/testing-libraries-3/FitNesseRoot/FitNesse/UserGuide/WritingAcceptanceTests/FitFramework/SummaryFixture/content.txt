@@ -1,0 +1,21 @@
+!3 A Fixture for summarising the tests run on a page.
+
+The [[!-FitFramework-!][<UserGuide.WritingAcceptanceTests.FitFramework]] provides a fixture that will, when the page is run as a test, print a summary of the test results like so:
+
+-!|Comment|
+|Summary|
+|counts|2 right, 1 wrong, 7 ignored, 0 exceptions|
+|run date|Sat Mar 07 15:58:46 GMT 2015|
+|run elapsed time|0:00.10|
+
+Run this page to see an example.  We include the division example to provide some statistics to summarise.
+
+!| eg.Division |
+| numerator | denominator | quotient? |
+| 10 | 2 | 5 |
+| 12.6 | 3 | 4.2 |
+| 100 | 4 | 33 |
+
+And here is the summary.
+
+!|Summary|

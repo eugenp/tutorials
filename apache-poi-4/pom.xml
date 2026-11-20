@@ -45,6 +45,11 @@
             <version>${commons-collections4.version}</version>
         </dependency>
         <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.poi.xwpf.converter.xhtml</artifactId>
+            <version>${fr.opensagres.poi.xwpf.converter.xhtml.version}</version>
+        </dependency>
+        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback-classic.version}</version>
@@ -68,6 +73,7 @@
         <logback-classic.version>1.5.6</logback-classic.version>
         <logback-core.version>1.5.6</logback-core.version>
         <log4j.version>2.23.1</log4j.version>
+        <fr.opensagres.poi.xwpf.converter.xhtml.version>2.1.0</fr.opensagres.poi.xwpf.converter.xhtml.version>
     </properties>
 
 </project>

@@ -1,0 +1,24 @@
+''Previous page: [[!-Basic FIT fixtures-!][<UserGuide.FixtureGallery.BasicFitFixtures]] Next page: [[!-Important concepts-!][<UserGuide.FixtureGallery.ImportantConcepts]] Parent page: [[!-Table of contents-!][<UserGuide.FixtureGallery.TableOfContents]]''
+!2 !-FitLibrary Fixtures-!
+!- FitLibrary started as a third-party set of fixtures, but it was so useful that it is now considered part of the standard test types. For the Java version, it is still maintained as a separate library but it is packaged within the UserGuide bundle. The .NET versions of FIT and FitLibrary are distributed together in the same package ( FitLibrary is just a separate DLL). -!
+
+# section SetUpFixture
+[[!-SetUpFixture-!][>SetUpFixture]]
+# section CalculateFixture
+[[!-CalculateFixture-!][>CalculateFixture]]
+# section DoFixture
+[[!-DoFixture-!][>DoFixture]]
+# section SequenceFixture
+[[!-SequenceFixture-!][>SequenceFixture]]
+# section ArrayFixture
+[[!-ArrayFixture-!][>ArrayFixture]]
+# section CombinationFixture
+[[!-CombinationFixture-!][>CombinationFixture]]
+# section ConstraintFixture
+[[!-ConstraintFixture-!][>ConstraintFixture]]
+# section SetFixture
+[[!-SetFixture-!][>SetFixture]]
+# section SubsetFixture
+[[!-SubsetFixture-!][>SubsetFixture]]
+
+''Previous page: [[!-Basic FIT fixtures-!][<UserGuide.FixtureGallery.BasicFitFixtures]] Next page: [[!-Important concepts-!][<UserGuide.FixtureGallery.ImportantConcepts]] Parent page: [[!-Table of contents-!][<UserGuide.FixtureGallery.TableOfContents]]''

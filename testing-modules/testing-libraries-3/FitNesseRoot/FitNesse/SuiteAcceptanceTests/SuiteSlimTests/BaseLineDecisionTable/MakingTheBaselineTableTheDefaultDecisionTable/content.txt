@@ -1,0 +1,30 @@
+GIVEN you want that all decision tables behave like the baseline table 
+AND you don't want to add "baeline:" in each table
+THEN define the variable SLIM_DT_BASELINE somewhere on our root page
+
+!define SLIM_DT_BASELINE (true)
+
+
+
+!*>  Dependencies
+
+|import            |
+|fitnesse.slim.test|
+
+*!
+
+
+
+
+Given I have at least one milk remaining
+Then I should NOT go to the store
+
+|should I buy milk                                              |
+|cash in wallet|credit card|pints of milk remaining|go to store?|
+|0             |no         |1                      |no          |
+|              |           |2                      |            |
+|              |           |7                      |            |
+|10            |           |                       |            |
+|              |yes        |                       |            |
+|10            |yes        |                       |            |
+|1             |           |1                      |            |

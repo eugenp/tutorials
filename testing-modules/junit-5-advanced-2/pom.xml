@@ -36,14 +36,14 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.10.0</version>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.10.0</version>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -79,6 +79,7 @@
         <jmockit.version>1.49</jmockit.version>
         <junit-platform.version>1.10.1</junit-platform.version>
         <system-lambda.version>1.2.1</system-lambda.version>
+        <junit-jupiter.version>5.11.0-M2</junit-jupiter.version>
     </properties>
 
 </project>

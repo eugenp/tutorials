@@ -1,0 +1,5 @@
+|''If you see exceptions in the tables.''|!c ExceptionsInFitTables|
+|''If you see an ATTENTION message.''    |!c <UserGuide.WritingAcceptanceTests.AttentionMessagesInTestResults|
+|''If you want to debug a table.''       |!c <UserGuide.WritingAcceptanceTests.DebuggingFitNesseTables|
+
+

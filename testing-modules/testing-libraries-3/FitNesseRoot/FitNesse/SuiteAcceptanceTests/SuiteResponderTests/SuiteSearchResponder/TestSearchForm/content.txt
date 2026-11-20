@@ -1,0 +1,21 @@
+!c !2 Search Form
+Is located at http://-host-/...?searchForm
+
+Load the search form page
+
+|Response Requester.                |
+|uri                        |status?|
+|!-?searchForm&amp;nochunk-!|200    |
+
+Make sure where on the right page and that the form has all the proper text.
+
+|Response Examiner.                                                |
+|type    |pattern                           |matches?|wrapped html?|
+|contents|!-[<]title>Search Form[<]/title>-!|true    |             |
+
+|Response Examiner.                                           |
+|type    |pattern                                    |matches?|
+|contents|document\.forms\[0\].searchString.focus\(\)|true    |
+|contents|Search Properties                          |true    |
+|contents|Search Titles                              |true    |
+|contents|Search Content                             |true    |

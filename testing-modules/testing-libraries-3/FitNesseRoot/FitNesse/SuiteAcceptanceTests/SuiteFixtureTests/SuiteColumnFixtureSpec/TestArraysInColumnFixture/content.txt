@@ -1,0 +1,16 @@
+!3 You can put arrays of objects into ColumnFixture fixtures.
+
+!|fitnesse.fixtures.ComplexAddFixture|
+|a|b|sum?|
+|1,2|3,4|4,6|
+
+{{{
+public class ComplexAddFixture extends ColumnFixture
+{
+  public int[] a;
+  public int[] b;
+  public int[] sum() {
+    return new int[] {a[0]+b[0], a[1]+b[1]};
+  }
+}
+}}}

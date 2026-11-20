@@ -1,0 +1,35 @@
+!| scenario | Given a new wiki page |
+| create wiki root |
+| save page | TestPage | with content | test data |
+
+!| scenario | When the page is updated |
+| save page | TestPage | with content | new test data |
+
+!| scenario | Given a wiki page with history |
+| Given a new wiki page |
+| When the page is updated |
+
+!| scenario | When the page is again updated |
+| save page | TestPage | with content | latest test data |
+
+!| scenario | When the page is deleted |
+| delete page | TestPage |
+
+!| scenario | Then the first version can be retrieved |
+| check | content for revision | 0 | test data |
+
+!| scenario | Then the second version can be retrieved |
+| check | content for revision | 1 | new test data |
+#| check | content for revision| 1 | from page |  TestPage|new test data|
+
+!| scenario | Then the current version can be retrieved |
+| check | content from page |  TestPage| latest test data|
+
+!| scenario | Then the new version can be retrieved |
+| check | content from page |  TestPage| new test data|
+
+!| scenario | Then the deleted page can't be retrieved |
+| check | content from page |  TestPage| [Error: Page doesn't exists]|
+
+!| scenario | Then the history size is | historysize |
+|check 	|history size| 	@historysize|

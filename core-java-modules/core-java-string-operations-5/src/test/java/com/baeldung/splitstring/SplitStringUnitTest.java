@@ -1,12 +1,12 @@
 package com.baeldung.splitstring;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import org.apache.commons.lang3.StringUtils;
+import org.junit.Test;
 
 import java.util.StringTokenizer;
 
-import org.apache.commons.lang3.StringUtils;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class SplitStringUnitTest {
     private static final String SPACE = " ";
@@ -49,7 +49,7 @@ public class SplitStringUnitTest {
     @Test
     public void givenWhiteSpaceSeparatedString_whenSplitUsingWhiteSpaceRegex_shouldGetExpectedResult() {
         String whitespaceRegex = SPACE + "|" + TAB + "|" + NEW_LINE;
-        String[] allSamples = new String[] { FRUITS_SPACE_SEPARATED, FRUITS_TAB_SEPARATED, FRUITS_NEWLINE_SEPARATED };
+        String[] allSamples = new String[]{FRUITS_SPACE_SEPARATED, FRUITS_TAB_SEPARATED, FRUITS_NEWLINE_SEPARATED};
         for (String fruits : allSamples) {
             String[] fruitArray = fruits.split(whitespaceRegex);
             verifySplit(fruitArray);
@@ -59,7 +59,7 @@ public class SplitStringUnitTest {
     @Test
     public void givenNewlineSeparatedString_whenSplitUsingWhiteSpaceMetaChar_shouldGetExpectedResult() {
         String whitespaceMetaChar = "\\s";
-        String[] allSamples = new String[] { FRUITS_SPACE_SEPARATED, FRUITS_TAB_SEPARATED, FRUITS_NEWLINE_SEPARATED };
+        String[] allSamples = new String[]{FRUITS_SPACE_SEPARATED, FRUITS_TAB_SEPARATED, FRUITS_NEWLINE_SEPARATED};
         for (String fruits : allSamples) {
             String[] fruitArray = fruits.split(whitespaceMetaChar);
             verifySplit(fruitArray);
@@ -80,7 +80,7 @@ public class SplitStringUnitTest {
 
     @Test
     public void givenWhiteSpaceSeparatedString_whenSplitUsingStringUtils_shouldGetExpectedResult() {
-        String[] allSamples = new String[] { FRUITS_SPACE_SEPARATED, FRUITS_TAB_SEPARATED, FRUITS_NEWLINE_SEPARATED };
+        String[] allSamples = new String[]{FRUITS_SPACE_SEPARATED, FRUITS_TAB_SEPARATED, FRUITS_NEWLINE_SEPARATED};
         for (String fruits : allSamples) {
             String[] fruitArray = StringUtils.split(fruits);
             verifySplit(fruitArray);
@@ -100,5 +100,27 @@ public class SplitStringUnitTest {
         assertEquals("Banana", fruitArray[1]);
         assertEquals("Mango", fruitArray[2]);
         assertEquals("Orange", fruitArray[3]);
+    }
+
+    @Test
+    public void givenTextBlockWithMixedWhitespace_whenSplitUsingWhiteSpacePlus_shouldGetExpectedResult() {
+        String fruitsTextBlock = """
+          Apple Banana
+          Mango	Orange
+          Guava  Peach
+          Cherry   Lime
+          """;
+
+        String[] fruitArray = fruitsTextBlock.trim().split("\\s+");
+
+        assertEquals(8, fruitArray.length);
+        assertEquals("Apple", fruitArray[0]);
+        assertEquals("Banana", fruitArray[1]);
+        assertEquals("Mango", fruitArray[2]);
+        assertEquals("Orange", fruitArray[3]);
+        assertEquals("Guava", fruitArray[4]);
+        assertEquals("Peach", fruitArray[5]);
+        assertEquals("Cherry", fruitArray[6]);
+        assertEquals("Lime", fruitArray[7]);
     }
 }

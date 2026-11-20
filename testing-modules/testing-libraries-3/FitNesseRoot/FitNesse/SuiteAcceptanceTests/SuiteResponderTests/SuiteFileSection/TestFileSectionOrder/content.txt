@@ -1,0 +1,47 @@
+!The directory listing in the files section displays directories in alphabetical order - directories first, then files.
+
+Create the file section
+|file section|setup|
+
+Add some files
+|file section file adder|
+|path|type|valid?|
+|cFile.txt|file|true|
+|dDir|dir|true|
+|cDir|dir|true|
+|bFile.txt|file|true|
+|dFile.txt|file|true|
+|bDir|dir|true|
+|aFile.txt|file|true|
+|aDir|dir|true|
+
+Verify that it's present through the file system
+|query:file section directory listing|
+|path|
+|aFile.txt|
+|bFile.txt|
+|cFile.txt|
+|dFile.txt|
+|aDir|
+|bDir|
+|cDir|
+|dDir|
+| testResults |
+
+Now request the directory through fitnesse
+|Response Requester|
+|uri|valid?|contents?|
+|files/|true||
+
+|Response Examiner|
+|line|inOrder?|
+|<a href="aDir/">|true|
+|<a href="bDir/">|true|
+|<a href="cDir/">|true|
+|<a href="dDir/">|true|
+|<a href="aFile.txt">|true|
+|<a href="bFile.txt">|true|
+|<a href="cFile.txt">|true|
+|<a href="dFile.txt">|true|
+
+|file section|teardown|

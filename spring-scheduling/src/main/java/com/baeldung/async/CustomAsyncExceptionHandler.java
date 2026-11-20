@@ -8,10 +8,12 @@ public class CustomAsyncExceptionHandler implements AsyncUncaughtExceptionHandle
 
     @Override
     public void handleUncaughtException(final Throwable throwable, final Method method, final Object... obj) {
-        System.out.println("Exception message - " + throwable.getMessage());
-        for (final Object param : obj) {
-            System.out.println("Param - " + param);
+        System.err.println("Async Exception Detected!");
+        System.err.println("Exception message - " + throwable.getMessage());
+        System.err.println("Method name - " + method.getName());
+        for (Object param : obj) {
+            System.err.println("Parameter value - " + param);
         }
     }
-
 }
+

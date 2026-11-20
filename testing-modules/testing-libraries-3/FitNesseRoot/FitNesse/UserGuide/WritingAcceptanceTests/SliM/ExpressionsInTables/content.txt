@@ -1,0 +1,19 @@
+|DT:some decision table          |
+|input                   |output?|
+|!{key1:value1,key2:val2}|$map=  |
+|$`map.key1`             |value1 |
+|$`1+2`                  |3      |
+
+If an $''`expression`'' appears in a cell (whether in a Decision Table, Script Table, or any other kind of table that can call functions) then that expression will be evaluated.
+
+The first row above loads a hashtable in the symbol named ''map''.  The second row will valuate the expression ''map.key1'' and return the expression's result (value1). The third row evaluates an expression that doesn't use a symbol that's stored.
+
+You can combine symbols as follows:
+
+|$`map.key1` and $`1+2` come from expressions|
+
+Both expressions will be evaluated and replaced with their result values.
+
+!3 Read also:
+
+.FitNesse.SuiteAcceptanceTests.SuiteSlimTests.SlimSymbols

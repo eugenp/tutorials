@@ -1,0 +1,45 @@
+!|import           |
+|fitnesse.slim.test|
+
+The fixture chaining with instances allows you to store an object instance in a Slim symbol and to use the instance as the table actor for an arbitrary Slim table.
+Here createTestSlimWithString(string) is a factory method that creates a new !-TestSlim-! instance, sets the given string and returns the object.
+
+see SlimSymbolCanHoldInstanceUsedAsParameter
+
+!|script             |test slim                         |
+|$TEST_SLIM_INSTANCE=|create test slim with string|Uncle|
+|start               |$TEST_SLIM_INSTANCE               |
+|check               |get string arg              |Uncle|
+
+We can use it for a decision table.
+
+|$TEST_SLIM_INSTANCE|
+|get string arg?    |
+|Uncle              |
+
+The !-SlimHelperLibrary-! is a class that is automatically available as a library fixture. It contains methods to get and set the script table actor in the Slim !-StatementExecutor-!.
+
+ * getFixture() returns the current table actor
+ * pushFixture() gets the current table actor and pushes it onto a stack
+ * popFixture() pops the actor from the stack and sets it in the !-StatementExecutor-!
+
+The pushFixture() and popFixture() methods can be used to have scenarios that change the current actor, but restore it at the end of the scenario.
+So a scenario can behave more like a sub routine with local scope (but is not limited to it).
+
+!|scenario       |do something with|name|and restore old fixture|
+|push fixture                                                   |
+|start           |test slim                                     |
+|set string      |@name                                         |
+|check           |get fixture      |TestSlim: 0, @name          |
+|check           |get string arg   |@name                       |
+|$@name_INSTANCE=|get fixture                                   |
+|pop fixture                                                    |
+
+!|script          |test slim     |2                      |
+|set string       |Uncle                                 |
+|check            |get fixture   |TestSlim: 2, Uncle     |
+|do something with|Bob           |and restore old fixture|
+|check            |get string arg|Uncle                  |
+
+!|script|$Bob_INSTANCE     |
+|check  |get string arg|Bob|

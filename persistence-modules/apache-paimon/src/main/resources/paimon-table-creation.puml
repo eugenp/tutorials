@@ -1,0 +1,49 @@
+@startuml
+
+    interface Catalog {
+        +createDatabase(String name, boolean ignoreIfExists)
+        +dropDatabase(String name, boolean ignoreIfExists, boolean cascade)
+        +databaseExists(String name): boolean
+        +listDatabases(): List<String>
+        +createTable(Identifier identifier, Schema schema, boolean ignoreIfExists)
+        +getTable(Identifier identifier): Table
+        +dropTable(Identifier identifier, boolean ignoreIfExists)
+        +renameTable(Identifier from, Identifier to, boolean ignoreIfExists)
+        +alterTable(Identifier identifier, List<SchemaChange> changes, boolean ignoreIfExists)
+    }
+
+    interface Table {
+        +name(): String
+        +rowType(): RowType
+        +partitionKeys(): List<String>
+        +primaryKeys(): List<String>
+        +options(): Map<String, String>
+        +comment(): Optional<String>
+        +copy(Map<String, String> dynamicOptions): Table
+    }
+
+    class Schema {
+        -fields: List<DataField>
+        -partitionKeys: List<String>
+        -primaryKeys: List<String>
+        -options: Map<String, String>
+    }
+
+    class DataField {
+        +id(): int
+        +name(): String
+        +type(): DataType
+        +description(): String
+    }
+
+    interface InternalRow {
+        +getField(int pos): Object
+    }
+
+
+    Catalog ..> Table : creates/retrieves
+    Table --> Schema : defined by
+    Schema "1" *-- "many" DataField : contains
+    Table ..> InternalRow : represents records as
+
+@enduml

@@ -5,20 +5,16 @@ import static org.springframework.test.web.client.match.MockRestRequestMatchers.
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 import com.baeldung.boot.Application;
-import com.baeldung.boot.client.Details;
-import com.baeldung.boot.client.DetailsServiceClient;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.client.MockRestServiceServer;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 
-@RunWith(SpringRunner.class)
 @RestClientTest({ DetailsServiceClient.class, Application.class })
 public class DetailsServiceClientIntegrationTest {
 
@@ -31,7 +27,7 @@ public class DetailsServiceClientIntegrationTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         String detailsString = objectMapper.writeValueAsString(new Details("John Smith", "john"));
         this.server.expect(requestTo("/john/details"))

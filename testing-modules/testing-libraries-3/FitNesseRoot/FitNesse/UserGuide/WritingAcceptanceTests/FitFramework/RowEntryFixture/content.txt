@@ -1,0 +1,37 @@
+!3 A Fixture for entering rows of data.
+
+Sometimes, as in the [[!-BuildOperateCheck-!][<UserGuide.WritingAcceptanceTests.AcceptanceTestPatterns.BuildOperateCheck]] pattern, we want to add a bunch of data to a database.  Or sometimes we want to call a function over and over again with different arguments.  This is often done in order to configure the system for a subsequent fixture that will run tests based upon the configured data.
+
+We have seen examples where this was done with the help of a ''valid()'' function.
+
+RowEntryFixture is a better option in many cases.
+
+ * RowEntryFixture is an abstract class.  You have to derive from it.
+ * It derives from ColumnFixture and works just the same way it does.
+ * You override the ''enterRow'' function to add your data to the database.
+  * If you have trouble adding your data, you throw an exception loaded with a message explaining the problem.
+
+|Comment|
+|{{{public abstract void enterRow() throws Exception;}}}|Override this function to add your row of data.  Throw an exception if there are any problems.|
+
+Here is an example of a very simple RowEntryFixture:
+{{{public class RowEntryExample extends RowEntryFixture
+{
+  public int v;
+  public void enterRow() throws Exception
+  {
+    if (v == 0)
+      throw new Exception("Oh, no!  Zero!");
+  }
+} }}}
+And here you can see it running.
+
+|!-fitnesse.fixtures.RowEntryExample-!|
+|v|
+|1|
+|0|
+
+
+
+
+

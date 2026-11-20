@@ -1,0 +1,64 @@
+If a decision table is implemented with a class you can specify constructor arguments.
+See  .FitNesse.UserGuide.WritingAcceptanceTests.SliM.ConstructorArguments for details.
+
+If a decision table is implemented with a scenario you can specify constructor arguments as well they have the following meaning:
+ 
+|scenario | Division _ _ _|numerator, denominator, quotient?|
+|setNumerator| @numerator|
+|setDenominator| @denominator|
+|$quotient= | quotient|
+
+|library|
+|eg.Division|
+
+!3 Calling a Scenario with Constructor Parameters
+
+The input variable "numerator" is given on the table construction line and must not be repeated in each row.
+This can make the decison tables more readable.
+
+| Division | having |numerator| 9| 
+|   denominator | quotient? |
+|  3 | 3.0 |
+|  2 | 4.5 |
+
+The Syntax is - Scenario Name - [given|having] - 1. Variable Name - 1. Variable Value - 2. Variable Name - 2. Variable Value - ....
+
+!5 To ensure backward compatibility constructor parameters are first checked if they are part of a scenario name 
+If a senario is found it will be used and no constructor values are passed.
+Only if no such scenario is found the constructor parameters can be used.
+
+Example:
+
+Again a scenario with the same signature as above
+|scenario | Division _ _ _|numerator, denominator, quotient?|
+|check| echo | @numerator|7|
+
+| Division | having |numerator| 7| 
+|   denominator |
+|  3 |
+
+Now a higher priority scenario name
+This new scenario has a name which matches the constructor parameter name "numerator".  
+Calling again the same decision table will use this scenario. 
+But numerator will not have a value.  
+|scenario | Division Numerator _ _ _| numerator, denominator, quotient?|
+|check| echo | @numerator|@numerator|
+|check not |echo| @numerator|12|
+
+
+| Division | having |numerator| 12| 
+|   denominator |
+|  3 |
+
+!3 Scenario without output parameters can be used as well with constructor parameters
+In this case the full line will be collered with the scenario test result. In scenarios with output parameters only the output column cells are colored.
+|scenario | myDivision _ _ _|numerator, denominator, quotient|
+|setNumerator| @numerator|
+|setDenominator| @denominator|
+|check | quotient| @quotient |
+
+| myDivision | having |numerator| 12| 
+|   denominator |quotient|
+|  3 | 4.0|
+|6|2.0|
+|4|3.0|

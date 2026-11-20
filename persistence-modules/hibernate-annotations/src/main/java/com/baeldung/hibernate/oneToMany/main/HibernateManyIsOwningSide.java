@@ -41,10 +41,10 @@ public class HibernateManyIsOwningSide {
             Transaction tx = session.beginTransaction();
 
             // Save the Model object
-            session.save(cart);
-            session.save(cart2);
-            session.save(item1);
-            session.save(item2);
+            session.persist(cart);
+            session.persist(cart2);
+            session.persist(item1);
+            session.persist(item2);
 
             // Commit transaction
             tx.commit();

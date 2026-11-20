@@ -13,6 +13,7 @@ import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
+import org.apache.lucene.index.StoredFields;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.classic.QueryParser;
@@ -65,9 +66,10 @@ public class InMemoryLuceneIndex {
             IndexReader indexReader = DirectoryReader.open(memoryIndex);
             IndexSearcher searcher = new IndexSearcher(indexReader);
             TopDocs topDocs = searcher.search(query, 10);
+            StoredFields storedFields = searcher.storedFields();
             List<Document> documents = new ArrayList<>();
             for (ScoreDoc scoreDoc : topDocs.scoreDocs) {
-                documents.add(searcher.doc(scoreDoc.doc));
+                documents.add(storedFields.document(scoreDoc.doc));
             }
 
             return documents;
@@ -94,9 +96,10 @@ public class InMemoryLuceneIndex {
             IndexReader indexReader = DirectoryReader.open(memoryIndex);
             IndexSearcher searcher = new IndexSearcher(indexReader);
             TopDocs topDocs = searcher.search(query, 10);
+            StoredFields storedFields = searcher.storedFields();
             List<Document> documents = new ArrayList<>();
             for (ScoreDoc scoreDoc : topDocs.scoreDocs) {
-                documents.add(searcher.doc(scoreDoc.doc));
+                documents.add(storedFields.document(scoreDoc.doc));
             }
 
             return documents;
@@ -112,9 +115,10 @@ public class InMemoryLuceneIndex {
             IndexReader indexReader = DirectoryReader.open(memoryIndex);
             IndexSearcher searcher = new IndexSearcher(indexReader);
             TopDocs topDocs = searcher.search(query, 10, sort);
+            StoredFields storedFields = searcher.storedFields();
             List<Document> documents = new ArrayList<>();
             for (ScoreDoc scoreDoc : topDocs.scoreDocs) {
-                documents.add(searcher.doc(scoreDoc.doc));
+                documents.add(storedFields.document(scoreDoc.doc));
             }
 
             return documents;

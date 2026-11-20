@@ -1,0 +1,8 @@
+The Bowling Game is a simple sample project showing acceptance testing.
+
+^SuiteGames
+^SuiteTiming
+
+^SetUp
+
+

@@ -1,0 +1,29 @@
+FitNesse has two different types of logging: system logging and access logging.
+
+!2 System logging
+System logging is performed via ''java.util.logging''. This is the default logging facility bundled with Java. By default only messages with info level and up are logged. The -v option can enable more verbose logging by default. Logging is sent to stderr.
+
+It's possible to fully customize the logging output, including redirecting it to files. In order to do so, one has to create a log configuration file in accordance to the properties available to the different handlers. See the API documentation for [[!-LogManager-!][http://docs.oracle.com/javase/7/docs/api/index.html?java/util/logging/LogManager.html]], [[!-ConsoleHandler-!][http://docs.oracle.com/javase/7/docs/api/index.html?java/util/logging/ConsoleHandler.html]] and [[!-FileHandler-!][http://docs.oracle.com/javase/7/docs/api/index.html?java/util/logging/FileHandler.html]] for some inspiration. FitNesse by default uses a custom log formatter: ''!-<i>fitnesse.logging.LogFormatter</i>-!''. This formatter provides some simple formatting and does only print log severity and exception stack traces for warning level and up.
+
+The default log configuration looks like this:
+
+{{{handlers = java.util.logging.ConsoleHandler
+java.util.logging.ConsoleHandler.formatter = fitnesse.logging.LogFormatter}}}
+!2 Access file
+
+If File logging is turned on (with the -l command line argument) then FitNesse will record all accesses in log files.
+
+A new log file is created every day.
+
+Log files are named fitnesseyyyymmddhhmmss.log, where yyyymmddhhmmss is the time of the first log entry in the file.
+
+Each line in the log file records a separate access.  They are written in standard (common) web log format.  They look like this:{{{
+65.194.52.68 - - [06/Mar/2003:16:33:48 -0600] "GET /FitNesse.UserGuide HTTP/1.1" 200 1965
+65.194.52.68 - - [06/Mar/2003:16:33:49 -0600] "GET /files/images/FitNesseLogoIcon.jpg HTTP/1.1" 200 15026
+65.194.52.68 - - [06/Mar/2003:16:33:54 -0600] "GET /files HTTP/1.1" 404 380
+65.194.52.68 - - [06/Mar/2003:16:34:00 -0600] "GET /files/ HTTP/1.1" 200 650
+65.194.52.68 - - [06/Mar/2003:16:34:00 -0600] "GET /files/images/FitNesseLogoIcon.jpg HTTP/1.1" 200 15026
+65.194.52.68 - - [06/Mar/2003:16:34:04 -0600] "GET /files/logs/ HTTP/1.1" 200 414
+65.194.52.68 - - [06/Mar/2003:16:34:04 -0600] "GET /files/images/FitNesseLogoIcon.jpg HTTP/1.1" 200 15026
+65.194.52.68 - - [06/Mar/2003:16:34:05 -0600] "GET /files/logs/fitnesse20030306163348.log HTTP/1.1" 200 650
+}}}

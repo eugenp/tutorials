@@ -1,0 +1,47 @@
+!1 ActionFixture: Testing Sequences of Events
+
+Sometimes the software behavior you are testing is inherently sequential: a series of events occur in a prescribed order. The ActionFixture style of test table (and [[!-FixtureCode-!][<UserGuide.WritingAcceptanceTests.FixtureCode]]) make it easy to write and run tests for such sequences of events. The metaphor for this fixture is a simple control panel:
+ * You ''enter'' values into '''registers''' that have specified names.
+ * You ''press'' '''buttons''' that have specified names.
+ * You ''check'' the values of named '''meters'''.
+
+
+For example, let's write a test for a simple counter.
+
+|Action Fixture.|
+|start|!-fitnesse.fixtures.CountFixture-!|
+|check|counter|0|
+|press|count|
+|check|counter|1|
+|press|count|
+|check|counter|2|
+|enter|counter|5|
+|press|count|
+|check|counter|6|
+
+Many kinds of event sequences can be boiled down to sets of these simple actions: entering, pressing, and checking. This style of table is often used, for example, to check sequences of user interface events.
+
+To see the [[!-FixtureCode-!][<UserGuide.WritingAcceptanceTests.FixtureCode]] for this example, check out ActionFixtureCode.
+
+!2 Seeing How Long ActionFixture Actions Take: !-TimedActionFixture-!
+
+You can used !-TimedActionFixture-! if you want to see visual feedback on how long certain functions take to execute. (Technical note: This is strictly a matter of making sure that the FixtureCode for your table extends !-TimedActionFixture-! instead of ActionFixture.) Here is a version of our counter example that uses !-TimedActionFixture-!:
+
+|!-fit.TimedActionFixture-!|
+|start|!-fitnesse.fixtures.DelayedCountFixture-!|
+|check|counter|0|
+|press|count|
+|check|counter|1|
+|press|count|
+|check|counter|2|
+|enter|counter|5|
+|press|count|
+|check|counter|6|
+
+This !-DelayedCountFixture-! example simply adds a random delay to the ''count'' function.
+
+!-TimedActionFixture-! does not give you a means of testing the time or the ''split''.  It simply displays them for visual inspection. Also note that the TimedActionFixture does not report any delays that are less than one second.  We don't know why Ward (inventor of the [[!-FitFramework-!][<UserGuide.WritingAcceptanceTests.FitFramework]]) decided to impose this lower limit.  Perhaps he'll remove it one day.
+
+!2 Learning More
+To see an example of the fixture code for the ActionFixture test table style, check out ActionFixtureCode. Also check out the other TestTableStyles.
+

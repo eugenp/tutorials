@@ -1,0 +1,28 @@
+We check whether a custom converter for lists can be used to change how lists are returned to the wiki.
+
+Whether a converter is applied to a method's result depends on its declared return type:
+
+ * List (exactly, no sub-interface or class implementing it): converter is '''not applied''' (this is needed for some Slim tables, such as !-QueryTable-!).
+ * All return types: converter is applied, based on the actual class of the object returned, or on its declared type when !style_code[null] is returned 
+
+
+|import            |
+|fitnesse.slim.test|
+
+|script   |!-TestSlimWithConverter-!|
+|reset converters                   |
+|check    |get object     |[a, b, c]|
+|check    |get list       |[a, b, c]|
+|check    |get array list |[a, b, c]|
+|same list|[a, b, c]                |
+|set list converter                 |
+|check    |get object     |{a, b, c}|
+|check    |get list       |[a, b, c]|
+|check    |get array list |{a, b, c}|
+|same list|{a, b, c}                |
+|same list|[a, b, c]                |
+|remove list converter              |
+|check    |get object     |[a, b, c]|
+|check    |get list       |[a, b, c]|
+|check    |get array list |[a, b, c]|
+|same list|[a, b, c]                |

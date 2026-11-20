@@ -1,0 +1,13 @@
+!|page history|
+|name|date|right|wrong|ignores|exceptions|
+|SuitePage.TestPage|5-May-2009|20|30|0|0|
+
+!|script|
+|get top level history|
+|the top level history line for|SuitePage.TestPage|should have a|fail|link with|-|to result|20090505000000|
+
+
+
+
+
+

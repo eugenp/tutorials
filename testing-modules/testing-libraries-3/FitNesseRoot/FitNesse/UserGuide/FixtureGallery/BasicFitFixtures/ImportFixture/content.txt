@@ -1,0 +1,25 @@
+
+''Previous page: [[!-TableFixture-!][<UserGuide.FixtureGallery.BasicFitFixtures.TableFixture]] Next page: [[!-SummaryFixture-!][<UserGuide.FixtureGallery.BasicFitFixtures.SummaryFixture]] Parent page: [[!-Basic FIT fixtures-!][<UserGuide.FixtureGallery.BasicFitFixtures]]''
+!2 !-Import-!
+'''!- Import -!'''!- fixture can be used to tell FitNesse where to look for fixture classes. After you import a namespace or package you do not have to write fully-qualified fixture class names any more, making the tables more readable. -!
+
+# section Table Format
+!3 !-Table Format-!
+!- The first row of the table should just be -!'''!- Import -!'''!-. All following rows list namespaces or packages to import &mdash; one cell per row. -!
+
+{{{
+|Import|
+|info.fitnesse.fixturegallery|
+}}}
+# section Notes
+!3 !-Notes-!
+!-The .NET version is case-insensitive, so you can write the first row as -!'''!- import -!'''!- or -!'''!- Import -!'''!-. Java version is case-sensitive, and it will complain if the first row is not properly capitalised. -!
+
+!-Remember that in the flow mode the -!'''!- Import -!'''!- table has to come after the initial flow class name, or the flow mode will not work (see -![[!-Flow Mode-!][<UserGuide.FixtureGallery.ImportantConcepts.FlowMode]]!-). -!
+
+# section Usage
+!3 !-Usage-!
+!- Use the -!'''!- Import -!'''!- fixture to make your test pages easier to read. You will typically want to put this table into the -!''!-SetUp-!''!- pages for test suites. -!
+
+
+''Previous page: [[!-TableFixture-!][<UserGuide.FixtureGallery.BasicFitFixtures.TableFixture]] Next page: [[!-SummaryFixture-!][<UserGuide.FixtureGallery.BasicFitFixtures.SummaryFixture]] Parent page: [[!-Basic FIT fixtures-!][<UserGuide.FixtureGallery.BasicFitFixtures]]''

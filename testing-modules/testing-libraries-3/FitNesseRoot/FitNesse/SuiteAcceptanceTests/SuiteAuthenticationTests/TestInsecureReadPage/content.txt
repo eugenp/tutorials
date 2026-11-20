@@ -1,0 +1,8 @@
+Make a request for an insecure page with out supplying any credentials.  It should succeed.
+
+!|script|
+|given page|FrontPage|
+|it should be readable with no authentication|
+|it should be readable by user|Aladdin|password|open sesame|
+|it should be readable by user|Aladdin|password|open please|
+|it should be readable by user|Bob|password|xyzzy|

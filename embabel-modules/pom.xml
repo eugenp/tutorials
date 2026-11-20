@@ -10,13 +10,30 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
+        <artifactId>parent-boot-4</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-3</relativePath>
+        <relativePath>../parent-boot-4</relativePath>
     </parent>
 
     <modules>
         <module>embabel-quiz-generator</module>
+        <module>embabel-tool-reasoning</module>
+        <module>embabel-streaming</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <spring-boot.version>4.0.7</spring-boot.version>
+        <junit-jupiter.version>6.0.3</junit-jupiter.version>
+        <junit-platform.version>6.0.3</junit-platform.version>
+        <logback.version>1.5.34</logback.version>
+    </properties>
 
 </project>

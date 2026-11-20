@@ -1,0 +1,17 @@
+!define TEST_SYSTEM {slim}
+
+!|import|
+|fitnesse.slim.test|
+
+!|Scenario|Stop Test|
+|start|ConstructorThrows|stop test|
+
+!|Scenario|Not Executed|MESSAGE |
+|check|echo|@MESSAGE|cannot fail @MESSAGE|
+
+!|Script|
+|Stop Test|
+|Not Executed and should be ignored|
+
+!|Script|
+|Not Executed and should be ignored as well|

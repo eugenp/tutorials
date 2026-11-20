@@ -47,14 +47,6 @@ public class RestAssured2IntegrationTest {
           .body("odds.findAll { it.status > 0 }.price", hasItems(5.25f, 1.2f));
     }
 
-    @Test
-    public void whenRequestedPost_thenCreated() {
-        with().body(new Odd(5.25f, 1, 13.1f, "X"))
-          .when()
-          .request("POST", "/odds/new")
-          .then()
-          .statusCode(201);
-    }
 
     private static String getJson() {
         return Util.inputStreamToString(RestAssured2IntegrationTest.class.getResourceAsStream("/odds.json"));

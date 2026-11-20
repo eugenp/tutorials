@@ -1,0 +1,56 @@
+(new since April 2012)
+
+As of April 2012, !-FitNesse-! has a new layout. There are a few reasons for making this (incompatible) change:
+
+ * !-FitNesse-! had quite a techie edge to it. The menu items were not well structured and some pages looked messy (like Search)
+ * Web standards have evolved, so should !-FitNesse-!
+ * Lots of markup was generated directly from java code, now [[Velocity][http://velocity.apache.org]] is performing the rendering
+ * !-FitNesse-! was not easy to customize
+ * The web interface looked old fashioned. Having a fresh look and feel appeals to people (yes it does)
+ * !-FitNesse-! style related files (css, javascript, templates) were put in !-FitNesseRoot-!. This is not desired since it mixes application files with user data (with pages)
+
+So here you are, in your new !-FitNesse-!, with a look and feel you're not accustomed to. How to deal with that?
+
+!2 Theming to the rescue
+One of the benefits you'll have from the new layout is that the page L&F is easier to change. !-FitNesse-! comes with a few styles built-in:
+
+ * ''fitnesse_straight'' - the default style
+ * ''fitnesse_mint'' - a classy style
+ * ''fitnesse_topnav'' - a minimalistic style
+ * ''bootstrap'' - uses [[Twitter Bootstrap][http://twitter.github.com/bootstrap]] as a basis for its styling
+
+For all styles the HTML remains the same. The default style can be configured through ''plugins.properties'', !-FitNesse-!'s settings file (this is where you also configure custom symbols). Add the line
+
+{{{
+Theme=fitnesse_mint
+}}}(re)start !-FitNesse-! and the style will have completely changed.
+
+Apart from the layout style, fitnesse loads a few stylesheets by default: ''fitnesse_pages.css'' and ''fitnesse_wiki.css''. Both files serve the boilerplate for pages (like the properties page) and the wiki text.
+
+!2 Rolling your own
+FitNesse still has the ability to support custom user styling. In [[!-FitNesseRoot/files/fitnesse-!][/files/fitnesse]] you can place your own files. Stylesheets go in a ''css'' directory, Javascript in ''javascript'' and images are filed in the ''images'' folder (note: those directories are not present by default, you'll have to create them by hand).
+
+Now say you want to create your own style, named ''my-style''. You'll need to create a stylesheet ''!-FitNesseRoot/files/fitnesse/css/my-style.css-!'' and an optional Javascript file ''!-FitNesseRoot/files/fitnesse/javascript/my-style.js-!''.
+
+The stylesheet can contain just your own styling or a combination of existing styles with your own additions on top of it.
+
+To reuse one of the existing styles as an entry point, create a custom css file and import the base style you like to use, e.g.:
+
+{{{
+@import url(fitnesse_straight.css); 
+}}}
+
+Now you can simply add custom elements to it.
+For example, changing the logo to something fitting your project can be done by placing a 200 x 37 logo file names ''fitnesse-logo-small.png'' file in files/images/ and then shift-f5 reloading the page.
+
+!3 Create a theme based on Bootstrap
+The Bootstrap theme took a slightly different route. It's using a subfolder for it's resources. The skeleton.vm template  ([[files/fitnesse/bootstrap/templates/skeleton.vm][http://files/fitnesse/bootstrap/templates/skeleton.vm]]) contains the general markup and layout. It also contains references to the other resources used. You can find the resources used to compile the bootstrap style (lesscss templates) in fitnesse.jar: fitnesse/resources/bootstrap/less. Use those as a basis for the custom theme. There are a few more template files that are overwritten by the bootstrap theme. If the theme needs to be reusable, refer (''#parse'') the the bootstrap templates for a start and add your own customisations along the way.
+
+!2 Packaging themes
+It's also possible to distribute themes in jar files (for example if you want to support a corporate theme for all your !-FitNesse-! projects). For that, package the css and javascript in a jar file, like this:
+
+ * fitnesse/resources/css/my-style.css
+ * fitnesse/resources/javascript/my-style.js
+ * fitnesse/resources/images/some-image.png
+
+Add the jar file to your classpath and define the style (''my-style'') in your ''plugins.properties''.

@@ -1,0 +1,41 @@
+!c !3 Importing Sample Wiki
+The Wiki Import feature is triggered by requesting a wiki page along with two parameters:
+ * responder=import
+ * remoteUrl=<url of wiki to import>
+
+e.g. !-http://localhost/ImportingPage?responder=import&remoteUrl=http://fitnesse.org/FitNesse-!
+
+A wiki page structure is provided by the set up page.
+
+Create an importing page.
+!|Page creator.|
+|Page name.   |Page contents.|valid?|
+|ImportingPage|!contents   |true   |
+
+This !-ImportingPage-! will now import the !-SampleWiki-! page.
+!|Response Requester.|
+|uri   |valid?|
+|ImportingPage?responder=import&remoteUrl=http://localhost:9123/SampleWiki|true|
+
+The above request will initiate a chunked response where all the imported pages are listed.
+!|Response Examiner|
+|type|pattern|matches?|wrapped html?|
+|contents|ChildPageOne|true||
+
+!|Response Examiner|
+|type|pattern|matches?|
+|contents|GrandChildPageOne|true|
+|contents|GreatGrandChildPageOne|true|
+|contents|ChildPageTwo|true|
+|contents|GrandChildPageTwo|true|
+|contents|ChildPageThree|true|
+
+All the pages that were import can now be retrieved.
+!|Response Requester.|
+|uri   |valid?|
+|ImportingPage.ChildPageOne|true|
+|ImportingPage.ChildPageOne.GrandChildPageOne|true|
+|ImportingPage.ChildPageOne.GrandChildPageOne.GreatGrandChildPageOne|true|
+|ImportingPage.ChildPageTwo|true|
+|ImportingPage.ChildPageTwo.GrandChildPageTwo|true|
+|ImportingPage.ChildPageThree|true|

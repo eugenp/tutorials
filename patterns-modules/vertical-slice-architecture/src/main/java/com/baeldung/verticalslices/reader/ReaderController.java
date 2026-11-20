@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.hexagonal.dto.ArticleDto;
-
 
 @RestController
 @RequestMapping("articles")
 class ReaderController {
 
+    record ReadArticleDto(Long id, String name, String slug, String content) {}
+
     private final ReadArticleUseCase viewArticle;
     private final SearchArticleUseCase searchArticle;
 
     @GetMapping("{id}")
-    ResponseEntity<ArticleDto> readArticle(@PathVariable Long id) {
+    ResponseEntity<ReadArticleDto> readArticle(@PathVariable Long id) {
         viewArticle.apply(id);
         return null;
     }

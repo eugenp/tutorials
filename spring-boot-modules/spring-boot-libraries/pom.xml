@@ -111,7 +111,7 @@
         <!-- Bucket4j -->
         <dependency>
             <groupId>com.bucket4j</groupId>
-            <artifactId>bucket4j-core</artifactId>
+            <artifactId>bucket4j_jdk17-core</artifactId>
             <version>${bucket4j.version}</version>
         </dependency>
         <dependency>
@@ -300,8 +300,11 @@
     </profiles>
 
     <properties>
+        <spring-boot.version>3.5.7</spring-boot.version>
+        <logback.version>1.5.20</logback.version>
+        <org.slf4j.version>2.0.17</org.slf4j.version>
         <start-class>com.baeldung.openapi.OpenApiApplication</start-class>
-        <spring-modulith-bom.version>1.2.2</spring-modulith-bom.version>
+        <spring-modulith-bom.version>1.4.5</spring-modulith-bom.version>
         <rome.version>1.9.0</rome.version>
         <graphql-java-tools.version>5.2.4</graphql-java-tools.version>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
@@ -311,16 +314,16 @@
         <barcode4j.version>2.1</barcode4j.version>
         <qrgen.version>2.6.0</qrgen.version>
         <zxing.version>3.3.0</zxing.version>
-        <bucket4j.version>8.9.0</bucket4j.version>
-        <bucket4j-spring-boot-starter.version>0.10.3</bucket4j-spring-boot-starter.version>
-        <caffeine.version>3.1.8</caffeine.version>
+        <bucket4j.version>8.15.0</bucket4j.version>
+        <bucket4j-spring-boot-starter.version>0.13.0</bucket4j-spring-boot-starter.version>
+        <caffeine.version>3.2.3</caffeine.version>
         <okapi.version>0.4.6</okapi.version>
         <qrcodegen.version>1.8.0</qrcodegen.version>
         <resilience4j-spring-boot2.version>2.0.2</resilience4j-spring-boot2.version>
         <wiremock-jre8.version>2.34.0</wiremock-jre8.version>
-        <openapi-generator.version>7.8.0</openapi-generator.version>
-        <springdoc.version>1.7.0</springdoc.version>
-        <jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
+        <openapi-generator.version>7.16.0</openapi-generator.version>
+        <springdoc.version>1.8.0</springdoc.version>
+        <jackson-databind-nullable.version>0.2.8</jackson-databind-nullable.version>
     </properties>
 
 </project>

@@ -1,0 +1,11 @@
+!2 Comments.
+#
+# This is a comment
+#
+You can add a comment to the wiki markup text by simply putting the '#' sign as the first character of a line.  The entire line, including the line end, will be ignored.
+{{{#
+# This is a comment
+#}}}
+There is a slightly different behaviour when you put the '#' sign in front of the first row of a MarkupTable.
+
+See the [[Comment Acceptance Test][.FitNesse.SuiteAcceptanceTests.SuiteWidgetTests.TestComment]]

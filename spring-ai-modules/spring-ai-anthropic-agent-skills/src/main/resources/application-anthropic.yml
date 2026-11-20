@@ -1,0 +1,8 @@
+spring:
+
+  application:
+    name: agentskills-anthropic
+
+  ai:
+    anthropic:
+      api-key: "${ANTHROPIC_API_KEY}"

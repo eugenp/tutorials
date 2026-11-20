@@ -1,0 +1,9 @@
+!3 Redefine denominator 
+!define denominator {2}
+
+!include TestWithVariable
+
+!3 Redefine denominator 
+!define denominator {2.5}
+
+!include TestWithVariable

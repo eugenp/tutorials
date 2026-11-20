@@ -1,0 +1,13 @@
+{{{
+<TestHistory>
+  <Page>
+    <Name>FitNesse.SuiteAcceptanceTests</Name>
+    <PageHistoryLink>FitNesse.SuiteAcceptanceTests?pageHistory&format=xml</PageHistoryLink>
+    <Pass>16</Pass>
+    <Fail>1</Fail>
+    <MinDate>Tue Jun 23 14:49:49 CDT 2009</MinDate>
+    <MaxDate>Tue Jul 07 13:08:07 CDT 2009</MaxDate>
+  </Page>
+...
+</TestHistory>
+}}}

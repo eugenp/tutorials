@@ -1,0 +1,5 @@
+^TestGutterGameTiming
+^TestNoMarksTiming
+^TestSpareAndStrikeTiming
+^PerfectGameTiming
+

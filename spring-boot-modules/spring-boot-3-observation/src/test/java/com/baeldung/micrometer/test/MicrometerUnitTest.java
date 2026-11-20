@@ -45,11 +45,19 @@ class MicrometerUnitTest {
     }
 
     @Test
-    void whenFooIsCalled_thenTimerIsRegistered() {
+    void whenFooIsCalled_thenTimerAndCounterAreRegistered() {
+        fooService.foo();
+        fooService.foo();
         fooService.foo();
 
         MeterRegistryAssert.assertThat(meterRegistry)
-            .hasTimerWithName("foo.time");
+            .counter("foo.count")
+            .hasCount(3);
+
+        MeterRegistryAssert.assertThat(meterRegistry)
+            .timer("foo.time")
+            .totalTime()
+            .isBetween(ofMillis(30), ofMillis(400));
     }
 
 }

@@ -1,0 +1,113 @@
+
+''Previous page: [[!-RowFixture-!][<UserGuide.FixtureGallery.BasicFitFixtures.RowFixture]] Next page: [[!-Import-!][<UserGuide.FixtureGallery.BasicFitFixtures.ImportFixture]] Parent page: [[!-Basic FIT fixtures-!][<UserGuide.FixtureGallery.BasicFitFixtures]]''
+!2 !-TableFixture-!
+'''!- TableFixture -!'''!- is an additional class in the FitNesse package (it does not exist in the core FIT fixture set, but is distributed as part of the same library with FitNesse). It is used to execute free-form tables that do not have a repetitive structure. -!
+
+# section Table Format
+!3 !-Table Format-!
+!- With -!'''!- TableFixture -!'''!-, you decide what the format is and which cells are actually used as part of the test. The only limitation is that the first row has to point to the class name of your fixture. The rest is up to you. This class can be used to turn existing invoices, reports or documents into FitNesse tests. In this example, borrowed from -![[!-Test Driven .NET Development with FitNesse-!][http://gojko.net/fitnesse/book]] !-, we use an invoice to verify the tax calculation. -!
+
+{{{
+!-!-!|TableFixtureTest|
+|Item|Product code|Price|
+|Pragmatic Programmer|B978-0201616224|34.03|
+|Sony RDR-GX330|ERDR-GX330|94.80|
+|Test Driven Development By Example|B978-0321146533|32.39|
+|Net Total||161.22|
+|Tax (10% on applicable items)||9.48|
+|Total||170.70|
+}}}
+# section Fixture class
+!3 !-Fixture class-!
+!- The fixture class should extend -!'''!- fitnesse.fixtures.TableFixture -!'''!- and override the -!'''!- doStaticTable(int rows) -!'''!- method. In that method, process the table by retrieving the contents of relevant cells with -!'''!- getText(row, column) -!'''!-. You can mark test cells as correct with -!'''!- right(row,column) -!'''!- or incorrect with -!'''!- wrong(row,column,actualValue) -!'''!-. -!
+
+!-The following example verifies that the total tax from the invoice matches the value in the third cell of the second row from the bottom:-!
+
+# section Java Source Code
+!3 !-Java Source Code-!
+{{{
+package info.fitnesse.fixturegallery;
+
+import info.fitnesse.fixturegallery.domain.TaxCalculator;
+import fitnesse.fixtures.TableFixture;
+
+public class TableFixtureTest extends TableFixture{
+	protected void doStaticTable(int rows) {
+		 TaxCalculator tc=new TaxCalculator();
+	      double totaltax = 0;
+
+	      for (int row = 1; row < rows - 3; row++)
+	      {
+	        totaltax += tc.GetTax(getText(row, 1),
+	          Double.parseDouble(getText(row, 2)));
+	      }
+	      double taxintable = Double.parseDouble(getText(rows - 2, 2));
+	      if (taxintable == totaltax)
+	        right(rows - 2, 2);
+	      else
+	        wrong(rows - 2, 2,String.valueOf(totaltax));
+	    }
+}
+
+}}}
+# section .NET Source Code
+!3 !-.NET Source Code-!
+{{{
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace info.fitnesse.fixturegallery
+{
+    public class TableFixtureTest : global::fitnesse.fixtures.TableFixture
+    {
+        protected override void DoStaticTable(int rows)
+        {
+            TaxCalculator tc = new TaxCalculator();
+            decimal totaltax = 0;
+            for (int row = 1; row < rows - 3; row++)
+            {
+                totaltax += tc.GetTax(GetString(row, 1),
+                  Decimal.Parse(GetString(row, 2)));
+            }
+            decimal taxintable = Decimal.Parse(GetString(rows - 2, 2));
+            if (taxintable == totaltax)
+                Right(rows - 2, 2);
+            else
+                Wrong(rows - 2, 2, totaltax.ToString());
+        }
+    }
+
+}
+}}}
+# section Python Source Code
+!3 !-Python Source Code-!
+{{{
+from info.fitnesse.fixturegallery.domain.TaxCalculator import TaxCalculator
+from fitnesse.fixtures.TableFixture import TableFixture
+
+class TableFixtureTest(TableFixture):
+    def doStaticTable(self, rows):
+        tc = TaxCalculator()
+        totalTax = 0.0
+
+        for row in range(1, rows - 3):
+            totalTax += tc.getTax(self.getText(row, 1),
+                                  float(self.getText(row, 2)))
+
+        taxinTable = float(self.getText(rows - 2, 2))
+        if taxinTable == totalTax:
+            self.right(self.getCell(rows - 2, 2))
+        else:
+            self.wrong(self.getCell(rows - 2, 2), str(totalTax))
+}}}
+# section Notes
+!3 !-Notes-!
+!-You can also use -!'''!- getInt -!'''!- to retrieve the cell value converted to an integer. -!
+
+# section Usage
+!3 !-Usage-!
+!- Use -!'''!- TableFixture -!'''!- when you want to describe your tests in a business-specific table format that cannot easily work with any other fixture type. This is especially convenient if you already have some documents that can be exported to HTML tables, since you can paste that HTML directly into FitNesse. -!
+
+
+''Previous page: [[!-RowFixture-!][<UserGuide.FixtureGallery.BasicFitFixtures.RowFixture]] Next page: [[!-Import-!][<UserGuide.FixtureGallery.BasicFitFixtures.ImportFixture]] Parent page: [[!-Basic FIT fixtures-!][<UserGuide.FixtureGallery.BasicFitFixtures]]''

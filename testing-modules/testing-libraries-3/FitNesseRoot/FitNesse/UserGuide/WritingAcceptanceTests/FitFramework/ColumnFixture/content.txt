@@ -1,0 +1,81 @@
+!1 Using !-ColumnFixtures-!
+This table style is probably the most generally useful in FitNesse. Many kinds of software features can be tested with ColumnFixture: any feature that can be expressed as rows of inputs and outputs.
+
+ColumnFixture has the advantages of being easy to design and easy to understand. Below, we show a few more examples of uses for ColumnFixture. For starters, let's look at our test table for testing the division function of a calculator application:
+
+!| eg.Division |
+| numerator | denominator | quotient? |
+| 10 | 2 | 5 |
+| 12.6 | 3 | 4.2 |
+| 100 | 4 | 33 |
+
+The top row of the table provides the name of the ColumnFixtureCode that Fit will use to process the table. The second row specifies the inputs and outputs of the fixture; the column headings ''numerator'' and ''denominator'' specify columns of input values, and the ''quotient?'' heading specifies a column of expected return values. So if we divide 10 by 2, we expect to get back 5.
+
+For a description of the fixture code for the Division example, see ColumnFixtureCode.
+
+!2 A Slightly More Complex Example: A Trivia Game
+Let's imagine that we are building a trivia game. The overall design of our trivia game is straightforward: players take turns rolling a single die, and move around a circular board. When they land on a square, they are asked a trivia question of some category. There are requirements for answering questions incorrectly, for winning, and so on.
+
+For now let's imagine that we are addressing a specific first requirement or user story (call it what you like):
+
+!3 "You can add players to the game, and you can ask the game how many players are playing."
+Sounds pretty straightforward. Let's first set up a [[!-ClassPath-!][<UserGuide.WritingAcceptanceTests.ClassPath]] that points to where our trivia game project is. Without the [[!-ClassPath-!][<UserGuide.WritingAcceptanceTests.ClassPath]], FitNesse would not be able to find our fixture code:
+
+How about this for a test table for this requirement?
+
+!| eg.triviaGameExample.fitnesseFixtures.AddRemovePlayerFixture |
+| playerName | addPlayer? | countPlayers? |
+| Al | true | 1 |
+| Bertha | true | 2 |
+
+It says that if we add a player named Al to our game successfully, the total number of players should be 1, and if we then add a player named Bertha, our total number of players should be 2. If you click Test, you'll see that we have met this requirement. This is well and good, but it will be seldom that we can use a single table to do all the work to test a single requirement. We will typically need to use more than one table.
+
+Say we have another requirement that goes like this:
+
+!3 "Once the game has started, players cannot be added or removed."
+For this test, we'll ask the game to take a fake turn by specifying that the player whose turn it is "rolls" a 6. That should start the game. We'll check the result of that by checking to see which player it was who actually took the turn (we expect it to be Al), and whether indeed the game has started.
+
+!| eg.triviaGameExample.fitnesseFixtures.GameTurnFixture |
+| roll | player? | gameHasStarted? |
+| 6 | Al | true |
+
+Now that the game has started, we'll try to add a new player to the game, and this should fail (we should get back false from addPlayer()). And we should still have only two players in the game:
+
+!| eg.triviaGameExample.fitnesseFixtures.AddRemovePlayerFixture |
+| playerName | addPlayer? | countPlayers? |
+| Joe | false | 2 |
+
+Finally, we'll try to remove a player from the game, and this too should fail:
+
+!| eg.triviaGameExample.fitnesseFixtures.AddRemovePlayerFixture |
+| playerName | removePlayer? | countPlayers? |
+| Al | false | 2 |
+
+This shows how you can use a sequence of tables to verify a requirement by setting up and testing different states in your application code. This table sequence also illustrates one of the common [[!-AcceptanceTestPatterns-!][<UserGuide.WritingAcceptanceTests.AcceptanceTestPatterns]]: [[!-BuildOperateCheck-!][<UserGuide.WritingAcceptanceTests.AcceptanceTestPatterns.BuildOperateCheck]].
+
+For a description of the fixture code for the trivia Game example, see ColumnFixtureCode.
+
+!2 Another Example: an Inventory System
+Let's say you were writing an inventory system, and you wanted to test its ability to keep track of stocked items.  You might write tables like this:
+
+| !-inventory.AddStockFixture-! |
+| partNumber | quantity | valid? |
+| 324 | 28 | true |
+| 586 | 14 | true |
+
+This test adds two stock items.  The valid() method calls the parts of the system that cause a stock item to be added.  Next, we might write a table that simulates some purchases that reduce the stock of an item.
+
+| !-inventory.PurchaseItemFixture-! |
+| partNumber | quantity | valid? |
+| 324 | 3 | true |
+| 586 | 2 | true |
+
+Finally we'd write a table that checked to make sure that the inventory had been properly updated.
+
+| !-inventory.CheckInventoryFixture-! |
+| partNumber | quantity() |
+| 324 | 25 |
+| 586 | 12 |
+
+!2 Learning More
+To learn about the fixture code for the above examples, see ColumnFixtureCode. Check out the other TestTableStyles to see which one suites your purposes best.
