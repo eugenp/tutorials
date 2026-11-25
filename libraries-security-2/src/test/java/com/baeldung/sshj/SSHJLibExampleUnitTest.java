@@ -8,9 +8,9 @@ import net.schmizz.sshj.sftp.FileAttributes;
 import net.schmizz.sshj.sftp.SFTPClient;
 import org.apache.sshd.server.SshServer;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -47,7 +47,7 @@ public class SSHJLibExampleUnitTest {
 
     private static String privateKeyPath;
 
-    @BeforeClass
+    @BeforeAll
     public static void setUp() throws Exception {
         Path resourcesPath = Paths.get("src", "main", "resources");
 
@@ -69,7 +69,7 @@ public class SSHJLibExampleUnitTest {
         sftpClient = sshClient.newSFTPClient();
     }
 
-    @AfterClass
+    @AfterAll
     public static void shutdownServer() throws Exception {
         FileUtils.cleanDirectory(new File(downLoadPath));
         if (sshClient != null && sshClient.isConnected()) {
