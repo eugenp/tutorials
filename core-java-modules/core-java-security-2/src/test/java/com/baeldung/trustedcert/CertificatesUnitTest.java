@@ -19,18 +19,16 @@ import java.security.cert.X509Certificate;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Enumeration;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class CertificatesUnitTest {
 
-    private static final String GODADDY_CA_ALIAS = "godaddyrootg2ca [jdk]";
+    private static final String GODADDY_CA_SUBJECT = "CN=Go Daddy Root Certificate Authority - G2";
 
     @Test
     public void whenLoadingCacertsKeyStore_thenCertificatesArePresent() throws Exception {
@@ -65,19 +63,31 @@ public class CertificatesUnitTest {
     public void whenLoadingKeyStore_thenGoDaddyCALabelIsPresent() throws Exception {
         KeyStore keyStore = loadKeyStore();
 
-        Enumeration<String> aliasEnumeration = keyStore.aliases();
-        List<String> aliases = Collections.list(aliasEnumeration);
+        String goDaddyAlias = findGoDaddyAlias(keyStore);
 
-        assertTrue(aliases.contains(GODADDY_CA_ALIAS));
+        assertNotNull(goDaddyAlias);
     }
 
     @Test
     public void whenLoadingKeyStore_thenGoDaddyCertificateIsPresent() throws Exception {
         KeyStore keyStore = loadKeyStore();
 
-        Certificate goDaddyCertificate = keyStore.getCertificate(GODADDY_CA_ALIAS);
+        String goDaddyAlias = findGoDaddyAlias(keyStore);
+        Certificate goDaddyCertificate = goDaddyAlias == null ? null : keyStore.getCertificate(goDaddyAlias);
 
         assertNotNull(goDaddyCertificate);
+    }
+
+    // Aliases differ between JDK builds (e.g. "godaddyrootg2ca [jdk]" vs distro-generated ones), so match on subject.
+    private String findGoDaddyAlias(KeyStore keyStore) throws KeyStoreException {
+        for (String alias : Collections.list(keyStore.aliases())) {
+            Certificate certificate = keyStore.getCertificate(alias);
+            if (certificate instanceof X509Certificate
+              && ((X509Certificate) certificate).getSubjectX500Principal().getName().contains(GODADDY_CA_SUBJECT)) {
+                return alias;
+            }
+        }
+        return null;
     }
 
     private KeyStore loadKeyStore() throws CertificateException, NoSuchAlgorithmException, IOException, KeyStoreException {
