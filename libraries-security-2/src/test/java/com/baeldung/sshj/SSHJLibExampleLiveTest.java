@@ -21,7 +21,8 @@ import java.nio.file.Paths;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class SSHJLibExampleUnitTest {
+//depends on a live server
+public class SSHJLibExampleLiveTest {
 
     private static final String rebex_username = "demo";
     private static final String rebex_password = "password";
