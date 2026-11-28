@@ -589,7 +589,7 @@
         </profile>
 
         <profile>
-            <id>default</id>
+            <id>default</id> <!-- test -->
             <build>
                 <plugins>
                     <plugin>
