@@ -1,20 +1,16 @@
 package com.baeldung.quizzard;
 
-import com.embabel.agent.config.annotation.EnableAgentShell;
-import com.embabel.agent.config.annotation.EnableAgents;
-import com.embabel.agent.config.annotation.McpServers;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@EnableAgentShell
 @SpringBootApplication
-@EnableAgents(mcpServers = {
-    McpServers.DOCKER_DESKTOP
-})
 class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication app = new SpringApplication(Application.class);
+        // MCP tools (fetch) come from the Docker MCP gateway, configured in application-docker-desktop.yaml
+        app.setAdditionalProfiles("docker-desktop");
+        app.run(args);
     }
 
 }

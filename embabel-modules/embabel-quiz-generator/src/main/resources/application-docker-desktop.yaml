@@ -1,0 +1,24 @@
+spring:
+  ai:
+    mcp:
+      client:
+        enabled: true
+        name: embabel
+        version: 1.0.0
+        request-timeout: 30s
+        type: SYNC
+        stdio:
+          connections:
+            # Docker MCP gateway (Docker MCP Toolkit); serves the fetch tool used to read the blog.
+            # Works as is with Docker Desktop (macOS, Windows, Linux).
+            docker-mcp:
+              command: docker
+              args:
+                - mcp
+                - gateway
+                - run
+                - --servers=fetch
+              # Docker Engine without Docker Desktop (Linux, docker mcp plugin installed):
+              # uncomment so the gateway does not wait for Docker Desktop on startup.
+              # env:
+              #   DOCKER_MCP_IN_CONTAINER: "1"
